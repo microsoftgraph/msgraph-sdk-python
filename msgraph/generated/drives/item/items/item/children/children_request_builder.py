@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.drive_item import DriveItem
@@ -44,7 +46,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         url_tpl_params["driveItem%2Did1"] = drive_item_id1
         return DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DriveItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[ChildrenRequestBuilderGetQueryParameters]] = None) -> Optional[DriveItemCollectionResponse]:
         """
         Return a collection of DriveItems in the children relationship of a DriveItem. DriveItems with a non-null folder or package facet can have one or more child DriveItems.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,13 +67,12 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DriveItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DriveItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DriveItem]:
+    async def post(self,body: DriveItem, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DriveItem]:
         """
         Create new navigation property to children for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
-        Find more info here: https://learn.microsoft.com/graph/api/driveitem-post-children?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,7 +90,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ChildrenRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Return a collection of DriveItems in the children relationship of a DriveItem. DriveItems with a non-null folder or package facet can have one or more child DriveItems.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DriveItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: DriveItem, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create new navigation property to children for drives
         param body: The request body
@@ -115,7 +116,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> ChildrenRequestBuilder:
+    def with_url(self,raw_url: str) -> ChildrenRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -139,7 +140,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         """
         Return a collection of DriveItems in the children relationship of a DriveItem. DriveItems with a non-null folder or package facet can have one or more child DriveItems.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -189,5 +190,19 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class ChildrenRequestBuilderGetRequestConfiguration(RequestConfiguration[ChildrenRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class ChildrenRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

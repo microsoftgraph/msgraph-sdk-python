@@ -15,7 +15,7 @@ class AuthenticationMethodModeDetailCollectionResponse(BaseCollectionPaginationC
     value: Optional[List[AuthenticationMethodModeDetail]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodModeDetailCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AuthenticationMethodModeDetailCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

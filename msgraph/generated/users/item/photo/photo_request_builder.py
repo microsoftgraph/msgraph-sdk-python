@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
@@ -28,7 +30,7 @@ class PhotoRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/photo{?%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete navigation property photo for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,12 +48,11 @@ class PhotoRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfilePhoto]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[PhotoRequestBuilderGetQueryParameters]] = None) -> Optional[ProfilePhoto]:
         """
-        Get the specified profilePhoto or its metadata (profilePhoto properties). The supported sizes of HD photos on Microsoft 365 are as follows: 48x48, 64x64, 96x96, 120x120, 240x240,360x360, 432x432, 504x504, and 648x648. Photos can be any dimension if they're stored in Microsoft Entra ID. You can get the metadata of the largest available photo or specify a size to get the metadata for that photo size.If the size you request is unavailable, you can still get a smaller size that the user has uploaded and made available.For example, if the user uploads a photo that is 504x504 pixels, all but the 648x648 size of the photo is available for download.
+        The user's profile photo. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfilePhoto]
-        Find more info here: https://learn.microsoft.com/graph/api/profilephoto-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +68,7 @@ class PhotoRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProfilePhoto, error_mapping)
     
-    async def patch(self,body: Optional[ProfilePhoto] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfilePhoto]:
+    async def patch(self,body: ProfilePhoto, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ProfilePhoto]:
         """
         Update the navigation property photo in users
         param body: The request body
@@ -90,7 +91,7 @@ class PhotoRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProfilePhoto, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property photo for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +102,9 @@ class PhotoRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PhotoRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the specified profilePhoto or its metadata (profilePhoto properties). The supported sizes of HD photos on Microsoft 365 are as follows: 48x48, 64x64, 96x96, 120x120, 240x240,360x360, 432x432, 504x504, and 648x648. Photos can be any dimension if they're stored in Microsoft Entra ID. You can get the metadata of the largest available photo or specify a size to get the metadata for that photo size.If the size you request is unavailable, you can still get a smaller size that the user has uploaded and made available.For example, if the user uploads a photo that is 504x504 pixels, all but the 648x648 size of the photo is available for download.
+        The user's profile photo. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +113,7 @@ class PhotoRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ProfilePhoto] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: ProfilePhoto, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the navigation property photo in users
         param body: The request body
@@ -127,7 +128,7 @@ class PhotoRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> PhotoRequestBuilder:
+    def with_url(self,raw_url: str) -> PhotoRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -147,11 +148,18 @@ class PhotoRequestBuilder(BaseRequestBuilder):
         return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class PhotoRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class PhotoRequestBuilderGetQueryParameters():
         """
-        Get the specified profilePhoto or its metadata (profilePhoto properties). The supported sizes of HD photos on Microsoft 365 are as follows: 48x48, 64x64, 96x96, 120x120, 240x240,360x360, 432x432, 504x504, and 648x648. Photos can be any dimension if they're stored in Microsoft Entra ID. You can get the metadata of the largest available photo or specify a size to get the metadata for that photo size.If the size you request is unavailable, you can still get a smaller size that the user has uploaded and made available.For example, if the user uploads a photo that is 504x504 pixels, all but the 648x648 size of the photo is available for download.
+        The user's profile photo. Read-only.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -166,5 +174,19 @@ class PhotoRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class PhotoRequestBuilderGetRequestConfiguration(RequestConfiguration[PhotoRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class PhotoRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

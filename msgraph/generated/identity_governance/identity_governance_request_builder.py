@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ..models.identity_governance.identity_governance import IdentityGovernance
@@ -33,7 +35,7 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityGovernance]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[IdentityGovernanceRequestBuilderGetQueryParameters]] = None) -> Optional[IdentityGovernance]:
         """
         Get identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -53,7 +55,7 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityGovernance, error_mapping)
     
-    async def patch(self,body: Optional[IdentityGovernance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityGovernance]:
+    async def patch(self,body: IdentityGovernance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[IdentityGovernance]:
         """
         Update identityGovernance
         param body: The request body
@@ -76,7 +78,7 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityGovernance, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[IdentityGovernanceRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Get identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -87,7 +89,7 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[IdentityGovernance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: IdentityGovernance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update identityGovernance
         param body: The request body
@@ -102,7 +104,7 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> IdentityGovernanceRequestBuilder:
+    def with_url(self,raw_url: str) -> IdentityGovernanceRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -171,7 +173,7 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         """
         Get identityGovernance
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -191,5 +193,19 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class IdentityGovernanceRequestBuilderGetRequestConfiguration(RequestConfiguration[IdentityGovernanceRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class IdentityGovernanceRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

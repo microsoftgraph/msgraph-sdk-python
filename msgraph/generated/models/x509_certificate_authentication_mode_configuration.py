@@ -23,7 +23,7 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Backe
     x509_certificate_authentication_default_mode: Optional[X509CertificateAuthenticationMode] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> X509CertificateAuthenticationModeConfiguration:
+    def create_from_discriminator_value(parse_node: ParseNode) -> X509CertificateAuthenticationModeConfiguration:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

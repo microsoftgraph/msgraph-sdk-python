@@ -42,7 +42,7 @@ class ThreatAssessmentRequest(Entity):
     status: Optional[ThreatAssessmentStatus] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThreatAssessmentRequest:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ThreatAssessmentRequest:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

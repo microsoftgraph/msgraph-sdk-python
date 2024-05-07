@@ -15,7 +15,7 @@ class EducationClassCollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[EducationClass]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationClassCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> EducationClassCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

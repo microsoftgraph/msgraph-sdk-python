@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .azure_ad_pop_token_authentication import AzureAdPopTokenAuthentication
+    from .azure_ad_token_authentication import AzureAdTokenAuthentication
 
 @dataclass
 class CustomExtensionAuthenticationConfiguration(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,7 +19,7 @@ class CustomExtensionAuthenticationConfiguration(AdditionalDataHolder, BackedMod
     odata_type: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomExtensionAuthenticationConfiguration:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CustomExtensionAuthenticationConfiguration:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object
@@ -34,6 +35,10 @@ class CustomExtensionAuthenticationConfiguration(AdditionalDataHolder, BackedMod
             from .azure_ad_pop_token_authentication import AzureAdPopTokenAuthentication
 
             return AzureAdPopTokenAuthentication()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureAdTokenAuthentication".casefold():
+            from .azure_ad_token_authentication import AzureAdTokenAuthentication
+
+            return AzureAdTokenAuthentication()
         return CustomExtensionAuthenticationConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -42,8 +47,10 @@ class CustomExtensionAuthenticationConfiguration(AdditionalDataHolder, BackedMod
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .azure_ad_pop_token_authentication import AzureAdPopTokenAuthentication
+        from .azure_ad_token_authentication import AzureAdTokenAuthentication
 
         from .azure_ad_pop_token_authentication import AzureAdPopTokenAuthentication
+        from .azure_ad_token_authentication import AzureAdTokenAuthentication
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.alert import Alert
@@ -27,13 +29,14 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/alerts/{alert%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Alert]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AlertItemRequestBuilderGetQueryParameters]] = None) -> Optional[Alert]:
         """
         Retrieve the properties and relationships of an alert object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Alert]
         Find more info here: https://learn.microsoft.com/graph/api/alert-get?view=graph-rest-1.0
         """
+        warn("The legacy Graph Security API is deprecated and will stop returning data on January 31, 2025. Please use the new Graph Security API. as of 2024-01/Deprecation", DeprecationWarning)
         request_info = self.to_get_request_information(
             request_configuration
         )
@@ -48,7 +51,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Alert, error_mapping)
     
-    async def patch(self,body: Optional[Alert] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Alert]:
+    async def patch(self,body: Alert, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Alert]:
         """
         Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
         param body: The request body
@@ -56,6 +59,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
         Returns: Optional[Alert]
         Find more info here: https://learn.microsoft.com/graph/api/alert-update?view=graph-rest-1.0
         """
+        warn("The legacy Graph Security API is deprecated and will stop returning data on January 31, 2025. Please use the new Graph Security API. as of 2024-01/Deprecation", DeprecationWarning)
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
@@ -72,24 +76,26 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Alert, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AlertItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of an alert object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The legacy Graph Security API is deprecated and will stop returning data on January 31, 2025. Please use the new Graph Security API. as of 2024-01/Deprecation", DeprecationWarning)
         request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Alert] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Alert, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The legacy Graph Security API is deprecated and will stop returning data on January 31, 2025. Please use the new Graph Security API. as of 2024-01/Deprecation", DeprecationWarning)
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
@@ -98,12 +104,13 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> AlertItemRequestBuilder:
+    def with_url(self,raw_url: str) -> AlertItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
         Returns: AlertItemRequestBuilder
         """
+        warn("The legacy Graph Security API is deprecated and will stop returning data on January 31, 2025. Please use the new Graph Security API. as of 2024-01/Deprecation", DeprecationWarning)
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AlertItemRequestBuilder(self.request_adapter, raw_url)
@@ -113,7 +120,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
         """
         Retrieve the properties and relationships of an alert object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -133,5 +140,19 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class AlertItemRequestBuilderGetRequestConfiguration(RequestConfiguration[AlertItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class AlertItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

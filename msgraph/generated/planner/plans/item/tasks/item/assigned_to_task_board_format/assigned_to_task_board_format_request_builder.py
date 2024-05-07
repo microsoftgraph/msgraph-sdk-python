@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
@@ -27,7 +29,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/planner/plans/{plannerPlan%2Did}/tasks/{plannerTask%2Did}/assignedToTaskBoardFormat{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete navigation property assignedToTaskBoardFormat for planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +47,11 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AssignedToTaskBoardFormatRequestBuilderGetQueryParameters]] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
         """
-        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerAssignedToTaskBoardTaskFormat]
-        Find more info here: https://learn.microsoft.com/graph/api/plannerassignedtotaskboardtaskformat-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +67,12 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerAssignedToTaskBoardTaskFormat, error_mapping)
     
-    async def patch(self,body: Optional[PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
+    async def patch(self,body: PlannerAssignedToTaskBoardTaskFormat, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
         """
         Update the navigation property assignedToTaskBoardFormat in planner
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerAssignedToTaskBoardTaskFormat]
-        Find more info here: https://learn.microsoft.com/graph/api/plannerassignedtotaskboardtaskformat-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +90,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerAssignedToTaskBoardTaskFormat, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property assignedToTaskBoardFormat for planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +101,9 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AssignedToTaskBoardFormatRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: PlannerAssignedToTaskBoardTaskFormat, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the navigation property assignedToTaskBoardFormat in planner
         param body: The request body
@@ -127,7 +127,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> AssignedToTaskBoardFormatRequestBuilder:
+    def with_url(self,raw_url: str) -> AssignedToTaskBoardFormatRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -138,11 +138,18 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         return AssignedToTaskBoardFormatRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
+    class AssignedToTaskBoardFormatRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class AssignedToTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -162,5 +169,19 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration(RequestConfiguration[AssignedToTaskBoardFormatRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class AssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

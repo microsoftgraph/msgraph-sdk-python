@@ -18,7 +18,7 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
     attachment_item: Optional[AttachmentItem] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateUploadSessionPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CreateUploadSessionPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

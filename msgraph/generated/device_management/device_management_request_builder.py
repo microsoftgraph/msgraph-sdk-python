@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ..models.device_management import DeviceManagement
@@ -88,12 +90,12 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagement]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeviceManagementRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceManagement]:
         """
         Read properties and relationships of the deviceManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-wip-devicemanagement-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-auditing-devicemanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -109,7 +111,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagement, error_mapping)
     
-    def get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> GetEffectivePermissionsWithScopeRequestBuilder:
+    def get_effective_permissions_with_scope(self,scope: str) -> GetEffectivePermissionsWithScopeRequestBuilder:
         """
         Provides operations to call the getEffectivePermissions method.
         param scope: Usage: scope='{scope}'
@@ -121,13 +123,13 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
 
         return GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
     
-    async def patch(self,body: Optional[DeviceManagement] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagement]:
+    async def patch(self,body: DeviceManagement, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceManagement]:
         """
         Update the properties of a deviceManagement object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mstunnel-devicemanagement-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-raimportcerts-devicemanagement-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -145,7 +147,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagement, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceManagementRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Read properties and relationships of the deviceManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -156,7 +158,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DeviceManagement] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: DeviceManagement, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the properties of a deviceManagement object.
         param body: The request body
@@ -171,7 +173,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
+    def verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: str) -> VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
         """
         Provides operations to call the verifyWindowsEnrollmentAutoDiscovery method.
         param domain_name: Usage: domainName='{domainName}'
@@ -183,7 +185,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
 
         return VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domain_name)
     
-    def with_url(self,raw_url: Optional[str] = None) -> DeviceManagementRequestBuilder:
+    def with_url(self,raw_url: str) -> DeviceManagementRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -729,7 +731,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         """
         Read properties and relationships of the deviceManagement object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -749,5 +751,19 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class DeviceManagementRequestBuilderGetRequestConfiguration(RequestConfiguration[DeviceManagementRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class DeviceManagementRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

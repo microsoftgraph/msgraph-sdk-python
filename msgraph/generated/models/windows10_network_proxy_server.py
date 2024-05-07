@@ -24,7 +24,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, BackedModel, Parsable):
     use_for_local_addresses: Optional[bool] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10NetworkProxyServer:
+    def create_from_discriminator_value(parse_node: ParseNode) -> Windows10NetworkProxyServer:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

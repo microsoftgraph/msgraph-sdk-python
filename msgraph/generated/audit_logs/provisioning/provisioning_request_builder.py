@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
@@ -44,7 +46,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         url_tpl_params["provisioningObjectSummary%2Did"] = provisioning_object_summary_id
         return ProvisioningObjectSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProvisioningObjectSummaryCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[ProvisioningRequestBuilderGetQueryParameters]] = None) -> Optional[ProvisioningObjectSummaryCollectionResponse]:
         """
         Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +67,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProvisioningObjectSummaryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ProvisioningObjectSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProvisioningObjectSummary]:
+    async def post(self,body: ProvisioningObjectSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ProvisioningObjectSummary]:
         """
         Create new navigation property to provisioning for auditLogs
         param body: The request body
@@ -88,7 +90,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProvisioningObjectSummary, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ProvisioningRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +101,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ProvisioningObjectSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: ProvisioningObjectSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create new navigation property to provisioning for auditLogs
         param body: The request body
@@ -114,7 +116,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> ProvisioningRequestBuilder:
+    def with_url(self,raw_url: str) -> ProvisioningRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -138,7 +140,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         """
         Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -188,5 +190,19 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class ProvisioningRequestBuilderGetRequestConfiguration(RequestConfiguration[ProvisioningRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class ProvisioningRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

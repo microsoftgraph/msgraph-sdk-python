@@ -15,7 +15,7 @@ class AgreementFileLocalizationCollectionResponse(BaseCollectionPaginationCountR
     value: Optional[List[AgreementFileLocalization]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementFileLocalizationCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AgreementFileLocalizationCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

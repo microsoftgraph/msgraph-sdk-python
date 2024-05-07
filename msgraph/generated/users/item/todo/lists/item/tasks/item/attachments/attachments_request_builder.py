@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .........models.attachment_base import AttachmentBase
@@ -45,12 +47,11 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["attachmentBase%2Did"] = attachment_base_id
         return AttachmentBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttachmentBaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AttachmentsRequestBuilderGetQueryParameters]] = None) -> Optional[AttachmentBaseCollectionResponse]:
         """
-        Get a list of the taskFileAttachment objects and their properties. The contentBytes property will not be returned in the response. Use the Get attachment API to view the contentBytes.
+        A collection of file attachments for the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttachmentBaseCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/todotask-list-attachments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +67,12 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AttachmentBaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AttachmentBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttachmentBase]:
+    async def post(self,body: AttachmentBase, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AttachmentBase]:
         """
-        Add a new taskFileAttachment object to a todoTask. This operation limits the size of the attachment you can add to under 3 MB. If the size of the file attachments is more than 3 MB, create an upload session to upload the attachments.
+        Create new navigation property to attachments for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttachmentBase]
-        Find more info here: https://learn.microsoft.com/graph/api/todotask-post-attachments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,9 +90,9 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AttachmentBase, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AttachmentsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of the taskFileAttachment objects and their properties. The contentBytes property will not be returned in the response. Use the Get attachment API to view the contentBytes.
+        A collection of file attachments for the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +101,9 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AttachmentBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: AttachmentBase, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Add a new taskFileAttachment object to a todoTask. This operation limits the size of the attachment you can add to under 3 MB. If the size of the file attachments is more than 3 MB, create an upload session to upload the attachments.
+        Create new navigation property to attachments for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -116,7 +116,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> AttachmentsRequestBuilder:
+    def with_url(self,raw_url: str) -> AttachmentsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -147,9 +147,9 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Get a list of the taskFileAttachment objects and their properties. The contentBytes property will not be returned in the response. Use the Get attachment API to view the contentBytes.
+        A collection of file attachments for the task.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -189,5 +189,19 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class AttachmentsRequestBuilderGetRequestConfiguration(RequestConfiguration[AttachmentsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class AttachmentsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

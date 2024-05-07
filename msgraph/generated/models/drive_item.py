@@ -96,9 +96,9 @@ class DriveItem(BaseItem):
     special_folder: Optional[SpecialFolder] = None
     # The set of subscriptions on the item. Only supported on the root of a drive.
     subscriptions: Optional[List[Subscription]] = None
-    # Collection of [thumbnailSet][] objects associated with the item. For more information, see [getting thumbnails][]. Read-only. Nullable.
+    # Collection of thumbnailSet objects associated with the item. For more information, see getting thumbnails. Read-only. Nullable.
     thumbnails: Optional[List[ThumbnailSet]] = None
-    # The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
+    # The list of previous versions of the item. For more info, see getting previous versions. Read-only. Nullable.
     versions: Optional[List[DriveItemVersion]] = None
     # Video metadata, if the item is a video. Read-only.
     video: Optional[Video] = None
@@ -108,7 +108,7 @@ class DriveItem(BaseItem):
     workbook: Optional[Workbook] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DriveItem:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DriveItem:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

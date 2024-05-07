@@ -15,7 +15,7 @@ class ServiceAnnouncementAttachmentCollectionResponse(BaseCollectionPaginationCo
     value: Optional[List[ServiceAnnouncementAttachment]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceAnnouncementAttachmentCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ServiceAnnouncementAttachmentCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

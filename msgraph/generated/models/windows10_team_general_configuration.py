@@ -60,7 +60,7 @@ class Windows10TeamGeneralConfiguration(DeviceConfiguration):
     welcome_screen_meeting_information: Optional[WelcomeScreenMeetingInformation] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10TeamGeneralConfiguration:
+    def create_from_discriminator_value(parse_node: ParseNode) -> Windows10TeamGeneralConfiguration:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

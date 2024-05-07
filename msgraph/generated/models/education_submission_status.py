@@ -7,4 +7,5 @@ class EducationSubmissionStatus(str, Enum):
     Returned = "returned",
     UnknownFutureValue = "unknownFutureValue",
     Reassigned = "reassigned",
+    Excused = "excused",
 

@@ -20,7 +20,7 @@ class PermutPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     number_chosen: Optional[Json] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermutPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> PermutPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

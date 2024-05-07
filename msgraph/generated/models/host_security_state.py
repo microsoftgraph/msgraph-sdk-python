@@ -33,7 +33,7 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     risk_score: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HostSecurityState:
+    def create_from_discriminator_value(parse_node: ParseNode) -> HostSecurityState:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

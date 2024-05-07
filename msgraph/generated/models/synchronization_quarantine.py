@@ -32,7 +32,7 @@ class SynchronizationQuarantine(AdditionalDataHolder, BackedModel, Parsable):
     series_count: Optional[int] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationQuarantine:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SynchronizationQuarantine:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

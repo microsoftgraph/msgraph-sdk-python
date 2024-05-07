@@ -40,7 +40,7 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
     value_type: Optional[RegistryValueType] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RegistryKeyState:
+    def create_from_discriminator_value(parse_node: ParseNode) -> RegistryKeyState:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

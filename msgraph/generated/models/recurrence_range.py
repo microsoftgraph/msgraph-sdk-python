@@ -29,7 +29,7 @@ class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
     type: Optional[RecurrenceRangeType] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecurrenceRange:
+    def create_from_discriminator_value(parse_node: ParseNode) -> RecurrenceRange:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

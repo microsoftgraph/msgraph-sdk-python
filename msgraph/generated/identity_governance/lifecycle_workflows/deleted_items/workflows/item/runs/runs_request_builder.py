@@ -3,6 +3,7 @@ import datetime
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -10,6 +11,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.identity_governance.run_collection_response import RunCollectionResponse
@@ -45,12 +47,11 @@ class RunsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["run%2Did"] = run_id
         return RunItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RunCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[RunsRequestBuilderGetQueryParameters]] = None) -> Optional[RunCollectionResponse]:
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Workflow runs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RunCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-list-runs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +67,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RunCollectionResponse, error_mapping)
     
-    def microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time(self,end_date_time: Optional[datetime.datetime] = None, start_date_time: Optional[datetime.datetime] = None) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
         """
         Provides operations to call the summary method.
         param end_date_time: Usage: endDateTime={endDateTime}
@@ -81,9 +82,9 @@ class RunsRequestBuilder(BaseRequestBuilder):
 
         return MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RunsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Workflow runs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -92,7 +93,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> RunsRequestBuilder:
+    def with_url(self,raw_url: str) -> RunsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -114,9 +115,9 @@ class RunsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RunsRequestBuilderGetQueryParameters():
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Workflow runs.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -166,5 +167,12 @@ class RunsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class RunsRequestBuilderGetRequestConfiguration(RequestConfiguration[RunsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

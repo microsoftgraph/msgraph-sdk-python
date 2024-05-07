@@ -21,7 +21,7 @@ class DeviceManagementSettings(AdditionalDataHolder, BackedModel, Parsable):
     secure_by_default: Optional[bool] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementSettings:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DeviceManagementSettings:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

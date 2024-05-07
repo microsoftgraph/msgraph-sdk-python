@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.inference_classification_override import InferenceClassificationOverride
@@ -27,12 +29,11 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete an override specified by its ID.
+        Delete navigation property overrides for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/inferenceclassificationoverride-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,7 +47,7 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[InferenceClassificationOverride]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[InferenceClassificationOverrideItemRequestBuilderGetQueryParameters]] = None) -> Optional[InferenceClassificationOverride]:
         """
         A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,13 +67,12 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, InferenceClassificationOverride, error_mapping)
     
-    async def patch(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[InferenceClassificationOverride]:
+    async def patch(self,body: InferenceClassificationOverride, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[InferenceClassificationOverride]:
         """
-        Change the classifyAs field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender.
+        Update the navigation property overrides in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InferenceClassificationOverride]
-        Find more info here: https://learn.microsoft.com/graph/api/inferenceclassificationoverride-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,9 +90,9 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, InferenceClassificationOverride, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete an override specified by its ID.
+        Delete navigation property overrides for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,7 +101,7 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[InferenceClassificationOverrideItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,9 +112,9 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: InferenceClassificationOverride, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Change the classifyAs field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender.
+        Update the navigation property overrides in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +127,7 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> InferenceClassificationOverrideItemRequestBuilder:
+    def with_url(self,raw_url: str) -> InferenceClassificationOverrideItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -138,11 +138,18 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
         return InferenceClassificationOverrideItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
+    class InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters():
         """
         A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -157,5 +164,19 @@ class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration(RequestConfiguration[InferenceClassificationOverrideItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

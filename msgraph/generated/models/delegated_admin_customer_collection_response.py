@@ -15,7 +15,7 @@ class DelegatedAdminCustomerCollectionResponse(BaseCollectionPaginationCountResp
     value: Optional[List[DelegatedAdminCustomer]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminCustomerCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DelegatedAdminCustomerCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -23,7 +23,7 @@ class InformationProtection(AdditionalDataHolder, BackedModel, Parsable):
     threat_assessment_requests: Optional[List[ThreatAssessmentRequest]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InformationProtection:
+    def create_from_discriminator_value(parse_node: ParseNode) -> InformationProtection:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

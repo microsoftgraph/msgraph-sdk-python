@@ -13,11 +13,11 @@ from .file_plan_descriptor_template import FilePlanDescriptorTemplate
 class CategoryTemplate(FilePlanDescriptorTemplate):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The subcategories property
+    # Represents all subcategories under a particular category.
     subcategories: Optional[List[SubcategoryTemplate]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CategoryTemplate:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CategoryTemplate:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

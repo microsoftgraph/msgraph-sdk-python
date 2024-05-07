@@ -14,7 +14,7 @@ class InternalSponsors(SubjectSet):
     odata_type: Optional[str] = "#microsoft.graph.internalSponsors"
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InternalSponsors:
+    def create_from_discriminator_value(parse_node: ParseNode) -> InternalSponsors:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

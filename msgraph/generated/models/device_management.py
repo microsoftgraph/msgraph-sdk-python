@@ -211,7 +211,7 @@ class DeviceManagement(Entity):
     windows_malware_overview: Optional[WindowsMalwareOverview] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagement:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DeviceManagement:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -15,7 +15,7 @@ class HostCollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[Host]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HostCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> HostCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

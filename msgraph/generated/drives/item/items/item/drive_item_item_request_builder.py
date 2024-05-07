@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.drive_item import DriveItem
@@ -58,12 +60,11 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a DriveItem by using its ID or path.Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.
+        Delete navigation property items for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/driveitem-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -77,7 +78,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def delta_with_token(self,token: Optional[str] = None) -> DeltaWithTokenRequestBuilder:
+    def delta_with_token(self,token: str) -> DeltaWithTokenRequestBuilder:
         """
         Provides operations to call the delta method.
         param token: Usage: token='{token}'
@@ -89,7 +90,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
 
         return DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DriveItem]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DriveItemItemRequestBuilderGetQueryParameters]] = None) -> Optional[DriveItem]:
         """
         All items contained in the drive. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -109,7 +110,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
     
-    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: str, interval: str, start_date_time: str) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         param end_date_time: Usage: endDateTime='{endDateTime}'
@@ -127,13 +128,12 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
 
         return GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
     
-    async def patch(self,body: Optional[DriveItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DriveItem]:
+    async def patch(self,body: DriveItem, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DriveItem]:
         """
-        Update the metadata for a driveItem by ID or path. You can also use update to move an item to another parent by updating the item's parentReference property.
+        Update the navigation property items in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
-        Find more info here: https://learn.microsoft.com/graph/api/driveitem-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -151,7 +151,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
     
-    def search_with_q(self,q: Optional[str] = None) -> SearchWithQRequestBuilder:
+    def search_with_q(self,q: str) -> SearchWithQRequestBuilder:
         """
         Provides operations to call the search method.
         param q: Usage: q='{q}'
@@ -163,9 +163,9 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
 
         return SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a DriveItem by using its ID or path.Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.
+        Delete navigation property items for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -174,7 +174,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DriveItemItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         All items contained in the drive. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -185,9 +185,9 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DriveItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: DriveItem, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the metadata for a driveItem by ID or path. You can also use update to move an item to another parent by updating the item's parentReference property.
+        Update the navigation property items in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -200,7 +200,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> DriveItemItemRequestBuilder:
+    def with_url(self,raw_url: str) -> DriveItemItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -463,11 +463,18 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         return WorkbookRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class DriveItemItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class DriveItemItemRequestBuilderGetQueryParameters():
         """
         All items contained in the drive. Read-only. Nullable.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -487,5 +494,19 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class DriveItemItemRequestBuilderGetRequestConfiguration(RequestConfiguration[DriveItemItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class DriveItemItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

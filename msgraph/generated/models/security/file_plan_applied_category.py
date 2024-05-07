@@ -13,11 +13,11 @@ from .file_plan_descriptor_base import FilePlanDescriptorBase
 class FilePlanAppliedCategory(FilePlanDescriptorBase):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The subcategory property
+    # Represents the file plan descriptor for a subcategory under a specific category, which has been assigned to a particular retention label.
     subcategory: Optional[FilePlanSubcategory] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FilePlanAppliedCategory:
+    def create_from_discriminator_value(parse_node: ParseNode) -> FilePlanAppliedCategory:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

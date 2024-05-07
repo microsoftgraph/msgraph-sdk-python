@@ -80,7 +80,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, BackedModel, Parsable):
     windows_p_e: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceHealthAttestationState:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DeviceHealthAttestationState:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

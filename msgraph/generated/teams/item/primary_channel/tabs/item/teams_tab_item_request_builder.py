@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
@@ -28,12 +30,11 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/primaryChannel/tabs/{teamsTab%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Removes (unpins) a tab from the specified channel within a team. 
+        Delete navigation property tabs for teams
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/channel-delete-tabs?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,12 +48,11 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTab]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[TeamsTabItemRequestBuilderGetQueryParameters]] = None) -> Optional[TeamsTab]:
         """
-        Retrieve the properties and relationships of the specified tab in a channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
-        Find more info here: https://learn.microsoft.com/graph/api/channel-get-tabs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,13 +68,12 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsTab, error_mapping)
     
-    async def patch(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTab]:
+    async def patch(self,body: TeamsTab, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TeamsTab]:
         """
-        Update the properties of the specified tab.This API can be used to configure the content of the tab.
+        Update the navigation property tabs in teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
-        Find more info here: https://learn.microsoft.com/graph/api/channel-patch-tabs?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,9 +91,9 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsTab, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Removes (unpins) a tab from the specified channel within a team. 
+        Delete navigation property tabs for teams
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,9 +102,9 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TeamsTabItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of the specified tab in a channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +113,9 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: TeamsTab, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of the specified tab.This API can be used to configure the content of the tab.
+        Update the navigation property tabs in teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> TeamsTabItemRequestBuilder:
+    def with_url(self,raw_url: str) -> TeamsTabItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -149,11 +148,18 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
         return TeamsAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class TeamsTabItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class TeamsTabItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of the specified tab in a channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -173,5 +179,19 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class TeamsTabItemRequestBuilderGetRequestConfiguration(RequestConfiguration[TeamsTabItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class TeamsTabItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

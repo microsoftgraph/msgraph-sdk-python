@@ -24,7 +24,7 @@ class AppConsentRequest(Entity):
     user_consent_requests: Optional[List[UserConsentRequest]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentRequest:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AppConsentRequest:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

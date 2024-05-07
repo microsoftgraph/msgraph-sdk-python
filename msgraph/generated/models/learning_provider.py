@@ -34,7 +34,7 @@ class LearningProvider(Entity):
     square_logo_web_url_for_light_theme: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LearningProvider:
+    def create_from_discriminator_value(parse_node: ParseNode) -> LearningProvider:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

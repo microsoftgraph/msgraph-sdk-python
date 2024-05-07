@@ -17,7 +17,7 @@ class SimulationNotification(BaseEndUserNotification):
     targetted_user_type: Optional[TargettedUserType] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationNotification:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SimulationNotification:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

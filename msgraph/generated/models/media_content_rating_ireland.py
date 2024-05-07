@@ -23,7 +23,7 @@ class MediaContentRatingIreland(AdditionalDataHolder, BackedModel, Parsable):
     tv_rating: Optional[RatingIrelandTelevisionType] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingIreland:
+    def create_from_discriminator_value(parse_node: ParseNode) -> MediaContentRatingIreland:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

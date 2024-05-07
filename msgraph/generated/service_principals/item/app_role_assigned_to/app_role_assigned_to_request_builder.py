@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.app_role_assignment import AppRoleAssignment
@@ -44,9 +46,9 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
         url_tpl_params["appRoleAssignment%2Did"] = app_role_assignment_id
         return AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignedToRequestBuilderGetQueryParameters]] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
         """
-        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
+        Read the properties and relationships of an appRoleAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignmentCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-approleassignedto?view=graph-rest-1.0
@@ -65,7 +67,7 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppRoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignment]:
+    async def post(self,body: AppRoleAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AppRoleAssignment]:
         """
         Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
         param body: The request body
@@ -89,9 +91,9 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppRoleAssignment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignedToRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
+        Read the properties and relationships of an appRoleAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,7 +102,7 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: AppRoleAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
         param body: The request body
@@ -115,7 +117,7 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> AppRoleAssignedToRequestBuilder:
+    def with_url(self,raw_url: str) -> AppRoleAssignedToRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -137,9 +139,9 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppRoleAssignedToRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
+        Read the properties and relationships of an appRoleAssignment object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -189,5 +191,19 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class AppRoleAssignedToRequestBuilderGetRequestConfiguration(RequestConfiguration[AppRoleAssignedToRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class AppRoleAssignedToRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

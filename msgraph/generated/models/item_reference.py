@@ -14,9 +14,9 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a [drive][]. Read-only.
+    # Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a drive. Read-only.
     drive_id: Optional[str] = None
-    # Identifies the type of drive. Only returned if the item is located in a [drive][]. See [drive][] resource for values.
+    # Identifies the type of drive. Only returned if the item is located in a drive. See drive resource for values.
     drive_type: Optional[str] = None
     # Unique identifier of the driveItem in the drive or a listItem in a list. Read-only.
     id: Optional[str] = None
@@ -26,15 +26,15 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # Path that can be used to navigate to the item. Read-only.
     path: Optional[str] = None
-    # A unique identifier for a shared resource that can be accessed via the [Shares][] API.
+    # A unique identifier for a shared resource that can be accessed via the Shares API.
     share_id: Optional[str] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
     sharepoint_ids: Optional[SharepointIds] = None
-    # For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
+    # For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that site resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
     site_id: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemReference:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ItemReference:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

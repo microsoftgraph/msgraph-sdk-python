@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.domain_dns_record import DomainDnsRecord
@@ -44,7 +46,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["domainDnsRecord%2Did"] = domain_dns_record_id
         return DomainDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DomainDnsRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[VerificationDnsRecordsRequestBuilderGetQueryParameters]] = None) -> Optional[DomainDnsRecordCollectionResponse]:
         """
         Retrieve a list of domainDnsRecord objects. You cannot use an associated domain with your Microsoft Entra tenant until ownership is verified. To verify the ownership of the domain, retrieve the domain verification records and add the details to the zone file of the domain. This can be done through the domain registrar or DNS server configuration. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +67,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DomainDnsRecordCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DomainDnsRecord]:
+    async def post(self,body: DomainDnsRecord, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DomainDnsRecord]:
         """
         Create new navigation property to verificationDnsRecords for domains
         param body: The request body
@@ -88,7 +90,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DomainDnsRecord, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[VerificationDnsRecordsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Retrieve a list of domainDnsRecord objects. You cannot use an associated domain with your Microsoft Entra tenant until ownership is verified. To verify the ownership of the domain, retrieve the domain verification records and add the details to the zone file of the domain. This can be done through the domain registrar or DNS server configuration. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +101,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: DomainDnsRecord, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create new navigation property to verificationDnsRecords for domains
         param body: The request body
@@ -114,7 +116,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> VerificationDnsRecordsRequestBuilder:
+    def with_url(self,raw_url: str) -> VerificationDnsRecordsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -138,7 +140,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         """
         Retrieve a list of domainDnsRecord objects. You cannot use an associated domain with your Microsoft Entra tenant until ownership is verified. To verify the ownership of the domain, retrieve the domain verification records and add the details to the zone file of the domain. This can be done through the domain registrar or DNS server configuration. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -188,5 +190,19 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class VerificationDnsRecordsRequestBuilderGetRequestConfiguration(RequestConfiguration[VerificationDnsRecordsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class VerificationDnsRecordsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

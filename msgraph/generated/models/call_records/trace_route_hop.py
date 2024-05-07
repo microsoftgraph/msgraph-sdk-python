@@ -18,11 +18,11 @@ class TraceRouteHop(AdditionalDataHolder, BackedModel, Parsable):
     ip_address: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
+    # The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in ISO 8601 format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
     round_trip_time: Optional[datetime.timedelta] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TraceRouteHop:
+    def create_from_discriminator_value(parse_node: ParseNode) -> TraceRouteHop:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

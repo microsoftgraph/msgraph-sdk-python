@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
@@ -31,7 +33,7 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/print/shares/{printerShare%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete a printer share (unshare the associated printer). This action can't be undone. If the printer is shared again in the future, any Windows users who had previously installed the printer needs to discover and reinstall it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -50,7 +52,7 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrinterShare]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[PrinterShareItemRequestBuilderGetQueryParameters]] = None) -> Optional[PrinterShare]:
         """
         Retrieve the properties and relationships of a printer share.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +73,7 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrinterShare, error_mapping)
     
-    async def patch(self,body: Optional[PrinterShare] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrinterShare]:
+    async def patch(self,body: PrinterShare, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[PrinterShare]:
         """
         Update the properties of a printer share. This method can be used to swap printers. For example, if a physical printer device breaks, an administrator can register a new printer device and update this printerShare to point to the new printer without requiring users to take any action.
         param body: The request body
@@ -95,7 +97,7 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrinterShare, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete a printer share (unshare the associated printer). This action can't be undone. If the printer is shared again in the future, any Windows users who had previously installed the printer needs to discover and reinstall it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +108,7 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PrinterShareItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a printer share.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -117,7 +119,7 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrinterShare] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: PrinterShare, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the properties of a printer share. This method can be used to swap printers. For example, if a physical printer device breaks, an administrator can register a new printer device and update this printerShare to point to the new printer without requiring users to take any action.
         param body: The request body
@@ -132,7 +134,7 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> PrinterShareItemRequestBuilder:
+    def with_url(self,raw_url: str) -> PrinterShareItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -179,11 +181,18 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
         return PrinterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class PrinterShareItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class PrinterShareItemRequestBuilderGetQueryParameters():
         """
         Retrieve the properties and relationships of a printer share.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -203,5 +212,19 @@ class PrinterShareItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class PrinterShareItemRequestBuilderGetRequestConfiguration(RequestConfiguration[PrinterShareItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class PrinterShareItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

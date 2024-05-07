@@ -27,7 +27,7 @@ class TermColumn(AdditionalDataHolder, BackedModel, Parsable):
     term_set: Optional[Set] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermColumn:
+    def create_from_discriminator_value(parse_node: ParseNode) -> TermColumn:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

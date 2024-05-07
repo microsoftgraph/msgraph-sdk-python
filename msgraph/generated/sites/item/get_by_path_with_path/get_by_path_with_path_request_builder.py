@@ -1,6 +1,8 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -8,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
@@ -50,7 +53,7 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
             path_parameters['path'] = str(path)
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/getByPath(path='{path}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Site]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Site]:
         """
         Invoke function getByPath
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -70,7 +73,7 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Site, error_mapping)
     
-    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: str, interval: str, start_date_time: str) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         param end_date_time: Usage: endDateTime='{endDateTime}'
@@ -88,7 +91,7 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
 
         return GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
     
-    def get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> GetApplicableContentTypesForListWithListIdRequestBuilder:
+    def get_applicable_content_types_for_list_with_list_id(self,list_id: str) -> GetApplicableContentTypesForListWithListIdRequestBuilder:
         """
         Provides operations to call the getApplicableContentTypesForList method.
         param list_id: Usage: listId='{listId}'
@@ -100,7 +103,7 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
 
         return GetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, self.path_parameters, list_id)
     
-    def get_by_path_with_path1(self,path1: Optional[str] = None) -> GetByPathWithPath1RequestBuilder:
+    def get_by_path_with_path1(self,path1: str) -> GetByPathWithPath1RequestBuilder:
         """
         Provides operations to call the getByPath method.
         param path1: Usage: path='{path1}'
@@ -112,7 +115,7 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
 
         return GetByPathWithPath1RequestBuilder(self.request_adapter, self.path_parameters, path1)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Invoke function getByPath
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +126,7 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> GetByPathWithPathRequestBuilder:
+    def with_url(self,raw_url: str) -> GetByPathWithPathRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -294,5 +297,12 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
         from .term_stores.term_stores_request_builder import TermStoresRequestBuilder
 
         return TermStoresRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @dataclass
+    class GetByPathWithPathRequestBuilderGetRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

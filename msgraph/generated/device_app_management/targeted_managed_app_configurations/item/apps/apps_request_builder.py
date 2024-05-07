@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.managed_mobile_app import ManagedMobileApp
@@ -44,7 +46,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["managedMobileApp%2Did"] = managed_mobile_app_id
         return ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedMobileAppCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AppsRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedMobileAppCollectionResponse]:
         """
         List of apps to which the policy is deployed.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +66,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedMobileAppCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedMobileApp]:
+    async def post(self,body: ManagedMobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedMobileApp]:
         """
         Create new navigation property to apps for deviceAppManagement
         param body: The request body
@@ -87,7 +89,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedMobileApp, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AppsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         List of apps to which the policy is deployed.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +100,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: ManagedMobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create new navigation property to apps for deviceAppManagement
         param body: The request body
@@ -113,7 +115,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> AppsRequestBuilder:
+    def with_url(self,raw_url: str) -> AppsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -137,7 +139,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
         """
         List of apps to which the policy is deployed.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -187,5 +189,19 @@ class AppsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class AppsRequestBuilderGetRequestConfiguration(RequestConfiguration[AppsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class AppsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

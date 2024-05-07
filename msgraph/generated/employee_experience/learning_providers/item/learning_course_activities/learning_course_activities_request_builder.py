@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.learning_course_activity import LearningCourseActivity
@@ -44,11 +46,12 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["learningCourseActivity%2Did"] = learning_course_activity_id
         return LearningCourseActivityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningCourseActivityCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[LearningCourseActivitiesRequestBuilderGetQueryParameters]] = None) -> Optional[LearningCourseActivityCollectionResponse]:
         """
-        Get learningCourseActivities from employeeExperience
+        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningCourseActivityCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/learningcourseactivity-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,7 +67,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LearningCourseActivityCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningCourseActivity]:
+    async def post(self,body: LearningCourseActivity, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[LearningCourseActivity]:
         """
         Create a new learningCourseActivity object. A learning course activity can be one of two types: - Assignment- Self-initiated Use this method to create either type of activity.
         param body: The request body
@@ -88,9 +91,9 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LearningCourseActivity, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[LearningCourseActivitiesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get learningCourseActivities from employeeExperience
+        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +102,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: LearningCourseActivity, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create a new learningCourseActivity object. A learning course activity can be one of two types: - Assignment- Self-initiated Use this method to create either type of activity.
         param body: The request body
@@ -114,7 +117,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> LearningCourseActivitiesRequestBuilder:
+    def with_url(self,raw_url: str) -> LearningCourseActivitiesRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -136,9 +139,9 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LearningCourseActivitiesRequestBuilderGetQueryParameters():
         """
-        Get learningCourseActivities from employeeExperience
+        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -188,5 +191,19 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class LearningCourseActivitiesRequestBuilderGetRequestConfiguration(RequestConfiguration[LearningCourseActivitiesRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class LearningCourseActivitiesRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

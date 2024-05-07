@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.event import Event
@@ -38,7 +40,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar/events/{event%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete navigation property events for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -56,7 +58,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Event]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[EventItemRequestBuilderGetQueryParameters]] = None) -> Optional[Event]:
         """
         The events in the calendar. Navigation property. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -76,13 +78,12 @@ class EventItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Event, error_mapping)
     
-    async def patch(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Event]:
+    async def patch(self,body: Event, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Event]:
         """
-        Update an event object.
+        Update the navigation property events in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
-        Find more info here: https://learn.microsoft.com/graph/api/group-update-event?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -100,7 +101,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Event, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property events for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +112,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[EventItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         The events in the calendar. Navigation property. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -122,9 +123,9 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Event, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update an event object.
+        Update the navigation property events in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +138,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> EventItemRequestBuilder:
+    def with_url(self,raw_url: str) -> EventItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -247,11 +248,18 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         return TentativelyAcceptRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class EventItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class EventItemRequestBuilderGetQueryParameters():
         """
         The events in the calendar. Navigation property. Read-only.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -271,5 +279,19 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class EventItemRequestBuilderGetRequestConfiguration(RequestConfiguration[EventItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class EventItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

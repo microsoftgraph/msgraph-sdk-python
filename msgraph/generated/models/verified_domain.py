@@ -17,7 +17,7 @@ class VerifiedDomain(AdditionalDataHolder, BackedModel, Parsable):
     is_default: Optional[bool] = None
     # true if this is the initial domain associated with the tenant; otherwise, false.
     is_initial: Optional[bool] = None
-    # The domain name; for example, contoso.com`.
+    # The domain name; for example, contoso.com.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -25,7 +25,7 @@ class VerifiedDomain(AdditionalDataHolder, BackedModel, Parsable):
     type: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VerifiedDomain:
+    def create_from_discriminator_value(parse_node: ParseNode) -> VerifiedDomain:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -20,7 +20,7 @@ class TeamsAppAuthorization(AdditionalDataHolder, BackedModel, Parsable):
     required_permission_set: Optional[TeamsAppPermissionSet] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsAppAuthorization:
+    def create_from_discriminator_value(parse_node: ParseNode) -> TeamsAppAuthorization:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

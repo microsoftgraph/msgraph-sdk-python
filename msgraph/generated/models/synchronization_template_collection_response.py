@@ -15,7 +15,7 @@ class SynchronizationTemplateCollectionResponse(BaseCollectionPaginationCountRes
     value: Optional[List[SynchronizationTemplate]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationTemplateCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SynchronizationTemplateCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

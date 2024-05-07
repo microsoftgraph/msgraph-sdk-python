@@ -20,7 +20,7 @@ class BitandPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     number2: Optional[Json] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitandPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> BitandPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

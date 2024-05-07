@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.mail_folder import MailFolder
@@ -29,7 +31,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders*}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top,includeHiddenFolders*}", path_parameters)
     
     def by_mail_folder_id1(self,mail_folder_id1: str) -> MailFolderItemRequestBuilder:
         """
@@ -45,12 +47,11 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["mailFolder%2Did1"] = mail_folder_id1
         return MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MailFolderCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[ChildFoldersRequestBuilderGetQueryParameters]] = None) -> Optional[MailFolderCollectionResponse]:
         """
         The collection of child folders in the mailFolder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolderCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +67,12 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MailFolderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MailFolder]:
+    async def post(self,body: MailFolder, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MailFolder]:
         """
-        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Create new navigation property to childFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
-        Find more info here: https://learn.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +90,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MailFolder, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ChildFoldersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         The collection of child folders in the mailFolder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +101,9 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: MailFolder, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Create new navigation property to childFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -116,7 +116,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> ChildFoldersRequestBuilder:
+    def with_url(self,raw_url: str) -> ChildFoldersRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -149,7 +149,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         """
         The collection of child folders in the mailFolder.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -167,6 +167,8 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
                 return "includeHiddenFolders"
             if original_name == "orderby":
                 return "%24orderby"
+            if original_name == "search":
+                return "%24search"
             if original_name == "select":
                 return "%24select"
             if original_name == "skip":
@@ -190,6 +192,9 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         # Order items by property values
         orderby: Optional[List[str]] = None
 
+        # Search items by search phrases
+        search: Optional[str] = None
+
         # Select properties to be returned
         select: Optional[List[str]] = None
 
@@ -199,5 +204,19 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class ChildFoldersRequestBuilderGetRequestConfiguration(RequestConfiguration[ChildFoldersRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class ChildFoldersRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

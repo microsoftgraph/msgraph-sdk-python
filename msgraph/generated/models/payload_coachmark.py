@@ -30,7 +30,7 @@ class PayloadCoachmark(AdditionalDataHolder, BackedModel, Parsable):
     order: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PayloadCoachmark:
+    def create_from_discriminator_value(parse_node: ParseNode) -> PayloadCoachmark:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

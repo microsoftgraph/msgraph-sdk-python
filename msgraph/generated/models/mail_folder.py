@@ -41,7 +41,7 @@ class MailFolder(Entity):
     unread_item_count: Optional[int] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailFolder:
+    def create_from_discriminator_value(parse_node: ParseNode) -> MailFolder:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

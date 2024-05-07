@@ -27,7 +27,7 @@ class ItemRetentionLabel(Entity):
     retention_settings: Optional[RetentionLabelSettings] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemRetentionLabel:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ItemRetentionLabel:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

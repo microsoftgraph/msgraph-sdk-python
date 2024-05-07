@@ -32,7 +32,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     sharepoint: Optional[Sharepoint] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Admin:
+    def create_from_discriminator_value(parse_node: ParseNode) -> Admin:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

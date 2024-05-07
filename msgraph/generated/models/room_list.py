@@ -19,7 +19,7 @@ class RoomList(Place):
     rooms: Optional[List[Room]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoomList:
+    def create_from_discriminator_value(parse_node: ParseNode) -> RoomList:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

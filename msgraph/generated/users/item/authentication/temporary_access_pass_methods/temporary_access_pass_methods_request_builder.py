@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
@@ -44,7 +46,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["temporaryAccessPassAuthenticationMethod%2Did"] = temporary_access_pass_authentication_method_id
         return TemporaryAccessPassAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TemporaryAccessPassAuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[TemporaryAccessPassMethodsRequestBuilderGetQueryParameters]] = None) -> Optional[TemporaryAccessPassAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +67,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TemporaryAccessPassAuthenticationMethodCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TemporaryAccessPassAuthenticationMethod]:
+    async def post(self,body: TemporaryAccessPassAuthenticationMethod, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TemporaryAccessPassAuthenticationMethod]:
         """
         Create a new temporaryAccessPassAuthenticationMethod object on a user. A user can only have one Temporary Access Pass that's usable within its specified lifetime. If the user requires a new Temporary Access Pass while the current Temporary Access Pass is valid, the admin can create a new Temporary Access Pass for the user, the previous Temporary Access Pass will be deleted, and a new Temporary Access Pass will be created.
         param body: The request body
@@ -89,7 +91,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TemporaryAccessPassAuthenticationMethod, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TemporaryAccessPassMethodsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +102,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: TemporaryAccessPassAuthenticationMethod, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create a new temporaryAccessPassAuthenticationMethod object on a user. A user can only have one Temporary Access Pass that's usable within its specified lifetime. If the user requires a new Temporary Access Pass while the current Temporary Access Pass is valid, the admin can create a new Temporary Access Pass for the user, the previous Temporary Access Pass will be deleted, and a new Temporary Access Pass will be created.
         param body: The request body
@@ -115,7 +117,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> TemporaryAccessPassMethodsRequestBuilder:
+    def with_url(self,raw_url: str) -> TemporaryAccessPassMethodsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -139,7 +141,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
         """
         Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -189,5 +191,19 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration(RequestConfiguration[TemporaryAccessPassMethodsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

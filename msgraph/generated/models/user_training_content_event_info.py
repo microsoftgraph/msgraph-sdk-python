@@ -26,7 +26,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, BackedModel, Parsable):
     potential_score_impact: Optional[float] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingContentEventInfo:
+    def create_from_discriminator_value(parse_node: ParseNode) -> UserTrainingContentEventInfo:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

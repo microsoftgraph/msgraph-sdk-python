@@ -24,7 +24,7 @@ class WorkDay_IntlPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     weekend: Optional[Json] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkDay_IntlPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> WorkDay_IntlPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

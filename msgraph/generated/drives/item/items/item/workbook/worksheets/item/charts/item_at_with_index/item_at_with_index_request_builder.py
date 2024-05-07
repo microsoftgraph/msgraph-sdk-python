@@ -1,6 +1,8 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -8,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ..........models.o_data_errors.o_data_error import ODataError
@@ -42,11 +45,12 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
             path_parameters['index'] = str(index)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/itemAt(index={index})", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChart]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WorkbookChart]:
         """
-        Invoke function itemAt
+        Gets a chart based on its position in the collection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
+        Find more info here: https://learn.microsoft.com/graph/api/chartcollection-itemat?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -62,7 +66,7 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChart, error_mapping)
     
-    def image_with_width(self,width: Optional[int] = None) -> ImageWithWidthRequestBuilder:
+    def image_with_width(self,width: int) -> ImageWithWidthRequestBuilder:
         """
         Provides operations to call the image method.
         param width: Usage: width={width}
@@ -74,7 +78,7 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
 
         return ImageWithWidthRequestBuilder(self.request_adapter, self.path_parameters, width)
     
-    def image_with_width_with_height(self,height: Optional[int] = None, width: Optional[int] = None) -> ImageWithWidthWithHeightRequestBuilder:
+    def image_with_width_with_height(self,height: int, width: int) -> ImageWithWidthWithHeightRequestBuilder:
         """
         Provides operations to call the image method.
         param height: Usage: height={height}
@@ -89,7 +93,7 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
 
         return ImageWithWidthWithHeightRequestBuilder(self.request_adapter, self.path_parameters, height, width)
     
-    def image_with_width_with_height_with_fitting_mode(self,fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> ImageWithWidthWithHeightWithFittingModeRequestBuilder:
+    def image_with_width_with_height_with_fitting_mode(self,fitting_mode: str, height: int, width: int) -> ImageWithWidthWithHeightWithFittingModeRequestBuilder:
         """
         Provides operations to call the image method.
         param fitting_mode: Usage: fittingMode='{fittingMode}'
@@ -107,9 +111,9 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
 
         return ImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fitting_mode, height, width)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke function itemAt
+        Gets a chart based on its position in the collection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +122,7 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> ItemAtWithIndexRequestBuilder:
+    def with_url(self,raw_url: str) -> ItemAtWithIndexRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -217,5 +221,12 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
 
         return WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @dataclass
+    class ItemAtWithIndexRequestBuilderGetRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

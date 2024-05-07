@@ -14,7 +14,7 @@ class Bundle(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # If the bundle is an [album][], then the album property is included
+    # If the bundle is an album, then the album property is included
     album: Optional[Album] = None
     # Number of children contained immediately within this container.
     child_count: Optional[int] = None
@@ -22,7 +22,7 @@ class Bundle(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Bundle:
+    def create_from_discriminator_value(parse_node: ParseNode) -> Bundle:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

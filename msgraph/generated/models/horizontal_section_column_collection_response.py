@@ -15,7 +15,7 @@ class HorizontalSectionColumnCollectionResponse(BaseCollectionPaginationCountRes
     value: Optional[List[HorizontalSectionColumn]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HorizontalSectionColumnCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> HorizontalSectionColumnCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

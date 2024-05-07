@@ -15,7 +15,7 @@ class AccessPackageResourceEnvironmentCollectionResponse(BaseCollectionPaginatio
     value: Optional[List[AccessPackageResourceEnvironment]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageResourceEnvironmentCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AccessPackageResourceEnvironmentCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

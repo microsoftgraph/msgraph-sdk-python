@@ -18,7 +18,7 @@ class SecondPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     serial_number: Optional[Json] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecondPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SecondPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -24,7 +24,7 @@ class HlookupPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     table_array: Optional[Json] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HlookupPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> HlookupPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

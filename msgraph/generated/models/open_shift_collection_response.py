@@ -15,7 +15,7 @@ class OpenShiftCollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[OpenShift]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OpenShiftCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> OpenShiftCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

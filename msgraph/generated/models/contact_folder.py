@@ -29,7 +29,7 @@ class ContactFolder(Entity):
     single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ContactFolder:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ContactFolder:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

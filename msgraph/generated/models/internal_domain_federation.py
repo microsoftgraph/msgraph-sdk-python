@@ -31,7 +31,7 @@ class InternalDomainFederation(SamlOrWsFedProvider):
     signing_certificate_update_status: Optional[SigningCertificateUpdateStatus] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InternalDomainFederation:
+    def create_from_discriminator_value(parse_node: ParseNode) -> InternalDomainFederation:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

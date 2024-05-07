@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
@@ -44,12 +46,11 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["userFlowLanguagePage%2Did"] = user_flow_language_page_id
         return UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserFlowLanguagePageCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[OverridesPagesRequestBuilderGetQueryParameters]] = None) -> Optional[UserFlowLanguagePageCollectionResponse]:
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguagePageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/userflowlanguageconfiguration-list-overridespages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +66,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserFlowLanguagePageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserFlowLanguagePage]:
+    async def post(self,body: UserFlowLanguagePage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UserFlowLanguagePage]:
         """
         Create new navigation property to overridesPages for identity
         param body: The request body
@@ -88,9 +89,9 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserFlowLanguagePage, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[OverridesPagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +100,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: UserFlowLanguagePage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create new navigation property to overridesPages for identity
         param body: The request body
@@ -114,7 +115,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> OverridesPagesRequestBuilder:
+    def with_url(self,raw_url: str) -> OverridesPagesRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -136,9 +137,9 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OverridesPagesRequestBuilderGetQueryParameters():
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -188,5 +189,19 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class OverridesPagesRequestBuilderGetRequestConfiguration(RequestConfiguration[OverridesPagesRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class OverridesPagesRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.detected_app import DetectedApp
@@ -44,7 +46,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["detectedApp%2Did"] = detected_app_id
         return DetectedAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DetectedAppCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DetectedAppsRequestBuilderGetQueryParameters]] = None) -> Optional[DetectedAppCollectionResponse]:
         """
         List properties and relationships of the detectedApp objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +67,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DetectedAppCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DetectedApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DetectedApp]:
+    async def post(self,body: DetectedApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DetectedApp]:
         """
         Create a new detectedApp object.
         param body: The request body
@@ -89,7 +91,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DetectedApp, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DetectedAppsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         List properties and relationships of the detectedApp objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +102,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DetectedApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: DetectedApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create a new detectedApp object.
         param body: The request body
@@ -115,7 +117,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> DetectedAppsRequestBuilder:
+    def with_url(self,raw_url: str) -> DetectedAppsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -139,7 +141,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
         """
         List properties and relationships of the detectedApp objects.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -189,5 +191,19 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class DetectedAppsRequestBuilderGetRequestConfiguration(RequestConfiguration[DetectedAppsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class DetectedAppsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

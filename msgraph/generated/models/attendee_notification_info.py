@@ -19,7 +19,7 @@ class AttendeeNotificationInfo(AdditionalDataHolder, BackedModel, Parsable):
     time_zone: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendeeNotificationInfo:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AttendeeNotificationInfo:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

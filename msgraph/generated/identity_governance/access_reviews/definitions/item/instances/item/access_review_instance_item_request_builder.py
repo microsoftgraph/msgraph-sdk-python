@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.access_review_instance import AccessReviewInstance
@@ -36,7 +38,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}/instances/{accessReviewInstance%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete navigation property instances for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -54,7 +56,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewInstance]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AccessReviewInstanceItemRequestBuilderGetQueryParameters]] = None) -> Optional[AccessReviewInstance]:
         """
         Read the properties and relationships of an accessReviewInstance object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -75,7 +77,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewInstance, error_mapping)
     
-    async def patch(self,body: Optional[AccessReviewInstance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewInstance]:
+    async def patch(self,body: AccessReviewInstance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AccessReviewInstance]:
         """
         Update the properties of an accessReviewInstance object. Only the reviewers and fallbackReviewers properties can be updated but the scope property is also required in the request body. You can only add reviewers to the fallbackReviewers property but can't remove existing fallbackReviewers. To update an accessReviewInstance, it's status must be InProgress.
         param body: The request body
@@ -99,7 +101,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewInstance, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property instances for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +112,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AccessReviewInstanceItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Read the properties and relationships of an accessReviewInstance object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -121,7 +123,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AccessReviewInstance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: AccessReviewInstance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the properties of an accessReviewInstance object. Only the reviewers and fallbackReviewers properties can be updated but the scope property is also required in the request body. You can only add reviewers to the fallbackReviewers property but can't remove existing fallbackReviewers. To update an accessReviewInstance, it's status must be InProgress.
         param body: The request body
@@ -136,7 +138,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> AccessReviewInstanceItemRequestBuilder:
+    def with_url(self,raw_url: str) -> AccessReviewInstanceItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -228,11 +230,18 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         return StopRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class AccessReviewInstanceItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class AccessReviewInstanceItemRequestBuilderGetQueryParameters():
         """
         Read the properties and relationships of an accessReviewInstance object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -252,5 +261,19 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class AccessReviewInstanceItemRequestBuilderGetRequestConfiguration(RequestConfiguration[AccessReviewInstanceItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class AccessReviewInstanceItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

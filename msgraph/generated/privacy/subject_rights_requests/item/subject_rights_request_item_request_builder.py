@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -34,7 +35,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete navigation property subjectRightsRequests for privacy
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -53,7 +54,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SubjectRightsRequest]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SubjectRightsRequestItemRequestBuilderGetQueryParameters]] = None) -> Optional[SubjectRightsRequest]:
         """
         Read the properties and relationships of a subjectRightsRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -75,7 +76,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SubjectRightsRequest, error_mapping)
     
-    async def patch(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SubjectRightsRequest]:
+    async def patch(self,body: SubjectRightsRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SubjectRightsRequest]:
         """
         Update the properties of a subjectRightsRequest object.
         param body: The request body
@@ -100,7 +101,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SubjectRightsRequest, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property subjectRightsRequests for privacy
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +113,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SubjectRightsRequestItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Read the properties and relationships of a subjectRightsRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -124,7 +125,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: SubjectRightsRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the properties of a subjectRightsRequest object.
         param body: The request body
@@ -140,7 +141,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> SubjectRightsRequestItemRequestBuilder:
+    def with_url(self,raw_url: str) -> SubjectRightsRequestItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -206,11 +207,18 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         return TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class SubjectRightsRequestItemRequestBuilderGetQueryParameters():
         """
         Read the properties and relationships of a subjectRightsRequest object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -230,5 +238,19 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class SubjectRightsRequestItemRequestBuilderGetRequestConfiguration(RequestConfiguration[SubjectRightsRequestItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

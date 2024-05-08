@@ -15,7 +15,7 @@ class EdiscoveryNoncustodialDataSourceCollectionResponse(BaseCollectionPaginatio
     value: Optional[List[EdiscoveryNoncustodialDataSource]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryNoncustodialDataSourceCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> EdiscoveryNoncustodialDataSourceCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

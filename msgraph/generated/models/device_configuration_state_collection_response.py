@@ -15,7 +15,7 @@ class DeviceConfigurationStateCollectionResponse(BaseCollectionPaginationCountRe
     value: Optional[List[DeviceConfigurationState]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceConfigurationStateCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DeviceConfigurationStateCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

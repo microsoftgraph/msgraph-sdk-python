@@ -115,7 +115,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         self.path_parameters["base_url"] = self.request_adapter.base_url
         self.request_adapter.enable_backing_store(backing_store)
     
-    def applications_with_app_id(self,app_id: Optional[str] = None) -> ApplicationsWithAppIdRequestBuilder:
+    def applications_with_app_id(self,app_id: str) -> ApplicationsWithAppIdRequestBuilder:
         """
         Provides operations to manage the collection of application entities.
         param app_id: Alternate key of application
@@ -127,7 +127,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
 
         return ApplicationsWithAppIdRequestBuilder(self.request_adapter, self.path_parameters, app_id)
     
-    def applications_with_unique_name(self,unique_name: Optional[str] = None) -> ApplicationsWithUniqueNameRequestBuilder:
+    def applications_with_unique_name(self,unique_name: str) -> ApplicationsWithUniqueNameRequestBuilder:
         """
         Provides operations to manage the collection of application entities.
         param unique_name: Alternate key of application
@@ -139,7 +139,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
 
         return ApplicationsWithUniqueNameRequestBuilder(self.request_adapter, self.path_parameters, unique_name)
     
-    def devices_with_device_id(self,device_id: Optional[str] = None) -> DevicesWithDeviceIdRequestBuilder:
+    def devices_with_device_id(self,device_id: str) -> DevicesWithDeviceIdRequestBuilder:
         """
         Provides operations to manage the collection of device entities.
         param device_id: Alternate key of device
@@ -151,7 +151,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
 
         return DevicesWithDeviceIdRequestBuilder(self.request_adapter, self.path_parameters, device_id)
     
-    def directory_roles_with_role_template_id(self,role_template_id: Optional[str] = None) -> DirectoryRolesWithRoleTemplateIdRequestBuilder:
+    def directory_roles_with_role_template_id(self,role_template_id: str) -> DirectoryRolesWithRoleTemplateIdRequestBuilder:
         """
         Provides operations to manage the collection of directoryRole entities.
         param role_template_id: Alternate key of directoryRole
@@ -163,7 +163,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
 
         return DirectoryRolesWithRoleTemplateIdRequestBuilder(self.request_adapter, self.path_parameters, role_template_id)
     
-    def groups_with_unique_name(self,unique_name: Optional[str] = None) -> GroupsWithUniqueNameRequestBuilder:
+    def groups_with_unique_name(self,unique_name: str) -> GroupsWithUniqueNameRequestBuilder:
         """
         Provides operations to manage the collection of group entities.
         param unique_name: Alternate key of group
@@ -175,7 +175,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
 
         return GroupsWithUniqueNameRequestBuilder(self.request_adapter, self.path_parameters, unique_name)
     
-    def service_principals_with_app_id(self,app_id: Optional[str] = None) -> ServicePrincipalsWithAppIdRequestBuilder:
+    def service_principals_with_app_id(self,app_id: str) -> ServicePrincipalsWithAppIdRequestBuilder:
         """
         Provides operations to manage the collection of servicePrincipal entities.
         param app_id: Alternate key of servicePrincipal

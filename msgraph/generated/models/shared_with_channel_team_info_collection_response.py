@@ -15,7 +15,7 @@ class SharedWithChannelTeamInfoCollectionResponse(BaseCollectionPaginationCountR
     value: Optional[List[SharedWithChannelTeamInfo]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedWithChannelTeamInfoCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SharedWithChannelTeamInfoCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ..models.application import Application
@@ -30,7 +32,7 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
             path_parameters['uniqueName'] = str(unique_name)
         super().__init__(request_adapter, "{+baseurl}/applications(uniqueName='{uniqueName}'){?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete an application object. When deleted, apps are moved to a temporary container and can be restored within 30 days. After that time, they are permanently deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,7 +51,7 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Application]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[ApplicationsWithUniqueNameRequestBuilderGetQueryParameters]] = None) -> Optional[Application]:
         """
         Get the properties and relationships of an application object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -70,7 +72,7 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Application, error_mapping)
     
-    async def patch(self,body: Optional[Application] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Application]:
+    async def patch(self,body: Application, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Application]:
         """
         Create a new application object if it doesn't exist, or update the properties of an existing application object.
         param body: The request body
@@ -94,7 +96,7 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Application, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete an application object. When deleted, apps are moved to a temporary container and can be restored within 30 days. After that time, they are permanently deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +107,7 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ApplicationsWithUniqueNameRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Get the properties and relationships of an application object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +118,7 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Application] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Application, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create a new application object if it doesn't exist, or update the properties of an existing application object.
         param body: The request body
@@ -131,7 +133,7 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> ApplicationsWithUniqueNameRequestBuilder:
+    def with_url(self,raw_url: str) -> ApplicationsWithUniqueNameRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -142,11 +144,18 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         return ApplicationsWithUniqueNameRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
+    class ApplicationsWithUniqueNameRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class ApplicationsWithUniqueNameRequestBuilderGetQueryParameters():
         """
         Get the properties and relationships of an application object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -166,5 +175,19 @@ class ApplicationsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class ApplicationsWithUniqueNameRequestBuilderGetRequestConfiguration(RequestConfiguration[ApplicationsWithUniqueNameRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class ApplicationsWithUniqueNameRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

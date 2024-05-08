@@ -15,7 +15,7 @@ class PlannerTaskCollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[PlannerTask]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerTaskCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> PlannerTaskCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

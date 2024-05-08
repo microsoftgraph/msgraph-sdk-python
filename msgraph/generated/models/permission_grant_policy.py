@@ -13,13 +13,13 @@ from .policy_base import PolicyBase
 class PermissionGrantPolicy(PolicyBase):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.permissionGrantPolicy"
-    # Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
+    # Condition sets that are excluded in this permission grant policy. Automatically expanded on GET.
     excludes: Optional[List[PermissionGrantConditionSet]] = None
-    # Condition sets which are included in this permission grant policy. Automatically expanded on GET.
+    # Condition sets that are included in this permission grant policy. Automatically expanded on GET.
     includes: Optional[List[PermissionGrantConditionSet]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermissionGrantPolicy:
+    def create_from_discriminator_value(parse_node: ParseNode) -> PermissionGrantPolicy:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

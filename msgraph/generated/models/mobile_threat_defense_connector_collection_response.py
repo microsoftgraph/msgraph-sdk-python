@@ -15,7 +15,7 @@ class MobileThreatDefenseConnectorCollectionResponse(BaseCollectionPaginationCou
     value: Optional[List[MobileThreatDefenseConnector]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileThreatDefenseConnectorCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> MobileThreatDefenseConnectorCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

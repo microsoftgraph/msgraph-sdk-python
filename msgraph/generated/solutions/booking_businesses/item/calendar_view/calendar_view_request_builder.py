@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.booking_appointment import BookingAppointment
@@ -44,9 +46,9 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         url_tpl_params["bookingAppointment%2Did"] = booking_appointment_id
         return BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingAppointmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[CalendarViewRequestBuilderGetQueryParameters]] = None) -> Optional[BookingAppointmentCollectionResponse]:
         """
-        The set of appointments of this business in a specified date range. Read-only. Nullable.
+        Get the collection of bookingAppointment objects for a bookingBusiness that occurs in the specified date range.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointmentCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-calendarview?view=graph-rest-1.0
@@ -65,7 +67,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BookingAppointmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingAppointment]:
+    async def post(self,body: BookingAppointment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[BookingAppointment]:
         """
         Create new navigation property to calendarView for solutions
         param body: The request body
@@ -88,9 +90,9 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BookingAppointment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CalendarViewRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The set of appointments of this business in a specified date range. Read-only. Nullable.
+        Get the collection of bookingAppointment objects for a bookingBusiness that occurs in the specified date range.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +101,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: BookingAppointment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create new navigation property to calendarView for solutions
         param body: The request body
@@ -114,7 +116,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> CalendarViewRequestBuilder:
+    def with_url(self,raw_url: str) -> CalendarViewRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -136,9 +138,9 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarViewRequestBuilderGetQueryParameters():
         """
-        The set of appointments of this business in a specified date range. Read-only. Nullable.
+        Get the collection of bookingAppointment objects for a bookingBusiness that occurs in the specified date range.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -198,5 +200,19 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class CalendarViewRequestBuilderGetRequestConfiguration(RequestConfiguration[CalendarViewRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class CalendarViewRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

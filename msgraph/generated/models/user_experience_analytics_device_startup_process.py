@@ -27,7 +27,7 @@ class UserExperienceAnalyticsDeviceStartupProcess(Entity):
     startup_impact_in_ms: Optional[int] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserExperienceAnalyticsDeviceStartupProcess:
+    def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsDeviceStartupProcess:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

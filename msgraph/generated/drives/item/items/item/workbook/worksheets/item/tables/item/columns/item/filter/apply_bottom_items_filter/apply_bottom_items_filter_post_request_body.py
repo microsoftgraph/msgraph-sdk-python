@@ -15,7 +15,7 @@ class ApplyBottomItemsFilterPostRequestBody(AdditionalDataHolder, BackedModel, P
     count: Optional[int] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplyBottomItemsFilterPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ApplyBottomItemsFilterPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

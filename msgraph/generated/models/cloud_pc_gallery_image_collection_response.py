@@ -15,7 +15,7 @@ class CloudPcGalleryImageCollectionResponse(BaseCollectionPaginationCountRespons
     value: Optional[List[CloudPcGalleryImage]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudPcGalleryImageCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CloudPcGalleryImageCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

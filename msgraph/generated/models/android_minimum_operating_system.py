@@ -50,7 +50,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, BackedModel, Parsable)
     v9_0: Optional[bool] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidMinimumOperatingSystem:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AndroidMinimumOperatingSystem:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

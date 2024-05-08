@@ -30,7 +30,7 @@ class IosDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
     notification_settings: Optional[List[IosNotificationSettings]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosDeviceFeaturesConfiguration:
+    def create_from_discriminator_value(parse_node: ParseNode) -> IosDeviceFeaturesConfiguration:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

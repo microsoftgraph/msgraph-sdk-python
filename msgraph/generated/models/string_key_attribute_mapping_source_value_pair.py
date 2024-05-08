@@ -22,7 +22,7 @@ class StringKeyAttributeMappingSourceValuePair(AdditionalDataHolder, BackedModel
     value: Optional[AttributeMappingSource] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StringKeyAttributeMappingSourceValuePair:
+    def create_from_discriminator_value(parse_node: ParseNode) -> StringKeyAttributeMappingSourceValuePair:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -15,7 +15,7 @@ class ActivityBasedTimeoutPolicyCollectionResponse(BaseCollectionPaginationCount
     value: Optional[List[ActivityBasedTimeoutPolicy]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ActivityBasedTimeoutPolicyCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ActivityBasedTimeoutPolicyCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

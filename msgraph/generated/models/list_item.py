@@ -25,7 +25,7 @@ class ListItem(BaseItem):
     content_type: Optional[ContentTypeInfo] = None
     # Version information for a document set version created by a user.
     document_set_versions: Optional[List[DocumentSetVersion]] = None
-    # For document libraries, the driveItem relationship exposes the listItem as a [driveItem][]
+    # For document libraries, the driveItem relationship exposes the listItem as a driveItem
     drive_item: Optional[DriveItem] = None
     # The values of the columns set on this list item.
     fields: Optional[FieldValueSet] = None
@@ -35,7 +35,7 @@ class ListItem(BaseItem):
     versions: Optional[List[ListItemVersion]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListItem:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ListItem:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

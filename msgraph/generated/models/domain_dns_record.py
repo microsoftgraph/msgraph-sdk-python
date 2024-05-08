@@ -15,7 +15,7 @@ from .entity import Entity
 
 @dataclass
 class DomainDnsRecord(Entity):
-    # If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
+    # If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain.
     is_optional: Optional[bool] = None
     # Value used when configuring the name of the DNS record at the DNS host.
     label: Optional[str] = None
@@ -29,7 +29,7 @@ class DomainDnsRecord(Entity):
     ttl: Optional[int] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsRecord:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DomainDnsRecord:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

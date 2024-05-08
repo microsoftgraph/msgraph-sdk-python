@@ -20,7 +20,7 @@ class ActivitySettings(AdditionalDataHolder, BackedModel, Parsable):
     url_to_item_resolvers: Optional[List[UrlToItemResolverBase]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ActivitySettings:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ActivitySettings:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

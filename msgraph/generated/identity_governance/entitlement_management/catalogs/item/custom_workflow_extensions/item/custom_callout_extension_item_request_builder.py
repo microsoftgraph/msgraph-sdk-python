@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.custom_callout_extension import CustomCalloutExtension
@@ -27,7 +29,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/catalogs/{accessPackageCatalog%2Did}/customWorkflowExtensions/{customCalloutExtension%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete an accessPackageAssignmentRequestWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +48,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomCalloutExtension]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[CustomCalloutExtensionItemRequestBuilderGetQueryParameters]] = None) -> Optional[CustomCalloutExtension]:
         """
         Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,13 +69,13 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomCalloutExtension, error_mapping)
     
-    async def patch(self,body: Optional[CustomCalloutExtension] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomCalloutExtension]:
+    async def patch(self,body: CustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CustomCalloutExtension]:
         """
-        Update the properties of an accessPackageAssignmentWorkflowExtension object.
+        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomCalloutExtension]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentworkflowextension-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +93,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomCalloutExtension, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete an accessPackageAssignmentRequestWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +104,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CustomCalloutExtensionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,9 +115,9 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CustomCalloutExtension] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: CustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of an accessPackageAssignmentWorkflowExtension object.
+        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -128,7 +130,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> CustomCalloutExtensionItemRequestBuilder:
+    def with_url(self,raw_url: str) -> CustomCalloutExtensionItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -139,11 +141,18 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         return CustomCalloutExtensionItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
+    class CustomCalloutExtensionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class CustomCalloutExtensionItemRequestBuilderGetQueryParameters():
         """
         Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -163,5 +172,19 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class CustomCalloutExtensionItemRequestBuilderGetRequestConfiguration(RequestConfiguration[CustomCalloutExtensionItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class CustomCalloutExtensionItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

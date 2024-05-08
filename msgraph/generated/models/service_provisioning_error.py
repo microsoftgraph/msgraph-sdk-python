@@ -25,7 +25,7 @@ class ServiceProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
     service_instance: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceProvisioningError:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ServiceProvisioningError:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

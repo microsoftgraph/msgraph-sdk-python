@@ -15,7 +15,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Backe
     is_synced_from_on_premises: Optional[bool] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetAvailableExtensionPropertiesPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> GetAvailableExtensionPropertiesPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

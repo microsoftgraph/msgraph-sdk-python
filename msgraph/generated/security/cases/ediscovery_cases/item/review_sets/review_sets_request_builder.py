@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
@@ -44,7 +46,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["ediscoveryReviewSet%2Did"] = ediscovery_review_set_id
         return EdiscoveryReviewSetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewSetCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[ReviewSetsRequestBuilderGetQueryParameters]] = None) -> Optional[EdiscoveryReviewSetCollectionResponse]:
         """
         Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +67,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewSetCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EdiscoveryReviewSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewSet]:
+    async def post(self,body: EdiscoveryReviewSet, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EdiscoveryReviewSet]:
         """
         Create a new ediscoveryReviewSet object.
         param body: The request body
@@ -89,7 +91,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewSet, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ReviewSetsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +102,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EdiscoveryReviewSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: EdiscoveryReviewSet, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create a new ediscoveryReviewSet object.
         param body: The request body
@@ -115,7 +117,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> ReviewSetsRequestBuilder:
+    def with_url(self,raw_url: str) -> ReviewSetsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -139,7 +141,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         """
         Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -189,5 +191,19 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class ReviewSetsRequestBuilderGetRequestConfiguration(RequestConfiguration[ReviewSetsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class ReviewSetsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

@@ -16,13 +16,13 @@ class DomainState(AdditionalDataHolder, BackedModel, Parsable):
     last_action_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Type of asynchronous operation. The values can be ForceDelete or Verification
+    # Type of asynchronous operation. The values can be ForceDelete or Verification.
     operation: Optional[str] = None
-    # Current status of the operation.  Scheduled - Operation has been scheduled but has not started.  InProgress - Task has started and is in progress.  Failed - Operation has failed.
+    # Current status of the operation.  Scheduled - Operation is scheduled but hasn't started.  InProgress - Task is in progress.  Failed - The operation failed.
     status: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainState:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DomainState:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -15,7 +15,7 @@ class TermCollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[Term]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> TermCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

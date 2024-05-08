@@ -15,7 +15,7 @@ class AdditionalAccessGetResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[AccessPackageAssignment]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AdditionalAccessGetResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AdditionalAccessGetResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

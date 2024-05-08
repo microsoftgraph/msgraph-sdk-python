@@ -66,7 +66,7 @@ class ColumnDefinition(Entity):
     is_sealed: Optional[bool] = None
     # This column's data is looked up from another source in the site.
     lookup: Optional[LookupColumn] = None
-    # The API-facing name of the column as it appears in the [fields][] on a [listItem][]. For the user-facing name, see displayName.
+    # The API-facing name of the column as it appears in the fields on a listItem. For the user-facing name, see displayName.
     name: Optional[str] = None
     # This column stores number values.
     number: Optional[NumberColumn] = None
@@ -96,7 +96,7 @@ class ColumnDefinition(Entity):
     validation: Optional[ColumnValidation] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ColumnDefinition:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ColumnDefinition:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

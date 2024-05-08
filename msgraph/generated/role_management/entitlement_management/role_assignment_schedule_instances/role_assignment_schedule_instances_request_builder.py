@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
@@ -45,7 +47,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["unifiedRoleAssignmentScheduleInstance%2Did"] = unified_role_assignment_schedule_instance_id
         return UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: str) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         param on: Usage: on='{on}'
@@ -57,12 +59,11 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters]] = None) -> Optional[UnifiedRoleAssignmentScheduleInstanceCollectionResponse]:
         """
-        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
+        Instances for active role assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentScheduleInstanceCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/rbacapplication-list-roleassignmentscheduleinstances?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -78,7 +79,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentScheduleInstanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UnifiedRoleAssignmentScheduleInstance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleInstance]:
+    async def post(self,body: UnifiedRoleAssignmentScheduleInstance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UnifiedRoleAssignmentScheduleInstance]:
         """
         Create new navigation property to roleAssignmentScheduleInstances for roleManagement
         param body: The request body
@@ -101,9 +102,9 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentScheduleInstance, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
+        Instances for active role assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +113,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UnifiedRoleAssignmentScheduleInstance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: UnifiedRoleAssignmentScheduleInstance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create new navigation property to roleAssignmentScheduleInstances for roleManagement
         param body: The request body
@@ -127,7 +128,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> RoleAssignmentScheduleInstancesRequestBuilder:
+    def with_url(self,raw_url: str) -> RoleAssignmentScheduleInstancesRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -149,9 +150,9 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters():
         """
-        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
+        Instances for active role assignments.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -201,5 +202,19 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class RoleAssignmentScheduleInstancesRequestBuilderGetRequestConfiguration(RequestConfiguration[RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class RoleAssignmentScheduleInstancesRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

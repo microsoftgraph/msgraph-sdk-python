@@ -15,7 +15,7 @@ class UserExperienceAnalyticsWorkFromAnywhereMetricCollectionResponse(BaseCollec
     value: Optional[List[UserExperienceAnalyticsWorkFromAnywhereMetric]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserExperienceAnalyticsWorkFromAnywhereMetricCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsWorkFromAnywhereMetricCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -21,7 +21,7 @@ class SendVirtualAppointmentReminderSmsPostRequestBody(AdditionalDataHolder, Bac
     remind_before_time_in_minutes_type: Optional[RemindBeforeTimeInMinutesType] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SendVirtualAppointmentReminderSmsPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SendVirtualAppointmentReminderSmsPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

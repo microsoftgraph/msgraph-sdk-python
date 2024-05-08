@@ -15,7 +15,7 @@ class WindowsMobileMSICollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[WindowsMobileMSI]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsMobileMSICollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> WindowsMobileMSICollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

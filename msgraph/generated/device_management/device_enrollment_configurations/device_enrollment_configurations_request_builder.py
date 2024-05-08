@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.device_enrollment_configuration import DeviceEnrollmentConfiguration
@@ -44,12 +46,12 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceEnrollmentConfiguration%2Did"] = device_enrollment_configuration_id
         return DeviceEnrollmentConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceEnrollmentConfigurationCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeviceEnrollmentConfigurationsRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceEnrollmentConfigurationCollectionResponse]:
         """
-        List properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration objects.
+        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentplatformrestrictionsconfiguration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +67,13 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceEnrollmentConfigurationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
+    async def post(self,body: DeviceEnrollmentConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Create a new deviceEnrollmentPlatformRestrictionsConfiguration object.
+        Create a new deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentplatformrestrictionsconfiguration-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +91,9 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceEnrollmentConfiguration, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceEnrollmentConfigurationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration objects.
+        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +102,9 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: DeviceEnrollmentConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new deviceEnrollmentPlatformRestrictionsConfiguration object.
+        Create a new deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -115,7 +117,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> DeviceEnrollmentConfigurationsRequestBuilder:
+    def with_url(self,raw_url: str) -> DeviceEnrollmentConfigurationsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -137,9 +139,9 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration objects.
+        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -189,5 +191,19 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class DeviceEnrollmentConfigurationsRequestBuilderGetRequestConfiguration(RequestConfiguration[DeviceEnrollmentConfigurationsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class DeviceEnrollmentConfigurationsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

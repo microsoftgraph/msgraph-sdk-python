@@ -13,4 +13,5 @@ class ServiceSource(str, Enum):
     UnknownFutureValue = "unknownFutureValue",
     MicrosoftDefenderForCloud = "microsoftDefenderForCloud",
     MicrosoftSentinel = "microsoftSentinel",
+    MicrosoftInsiderRiskManagement = "microsoftInsiderRiskManagement",
 

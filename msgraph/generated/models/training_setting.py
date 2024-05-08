@@ -25,7 +25,7 @@ class TrainingSetting(AdditionalDataHolder, BackedModel, Parsable):
     setting_type: Optional[TrainingSettingType] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TrainingSetting:
+    def create_from_discriminator_value(parse_node: ParseNode) -> TrainingSetting:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

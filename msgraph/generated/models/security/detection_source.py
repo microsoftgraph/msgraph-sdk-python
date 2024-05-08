@@ -35,5 +35,6 @@ class DetectionSource(str, Enum):
     ScheduledAlerts = "scheduledAlerts",
     MicrosoftDefenderThreatIntelligenceAnalytics = "microsoftDefenderThreatIntelligenceAnalytics",
     BuiltInMl = "builtInMl",
+    MicrosoftInsiderRiskManagement = "microsoftInsiderRiskManagement",
     MicrosoftSentinel = "microsoftSentinel",
 

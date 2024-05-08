@@ -28,7 +28,7 @@ class Beta_DistPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     x: Optional[Json] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Beta_DistPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> Beta_DistPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

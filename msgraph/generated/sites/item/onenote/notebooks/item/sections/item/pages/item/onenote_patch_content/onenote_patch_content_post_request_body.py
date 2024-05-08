@@ -18,7 +18,7 @@ class OnenotePatchContentPostRequestBody(AdditionalDataHolder, BackedModel, Pars
     commands: Optional[List[OnenotePatchContentCommand]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenotePatchContentPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> OnenotePatchContentPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

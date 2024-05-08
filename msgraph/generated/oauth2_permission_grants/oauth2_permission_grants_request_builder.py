@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ..models.o_auth2_permission_grant import OAuth2PermissionGrant
@@ -45,7 +47,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["oAuth2PermissionGrant%2Did"] = o_auth2_permission_grant_id
         return OAuth2PermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[Oauth2PermissionGrantsRequestBuilderGetQueryParameters]] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
         """
         Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +68,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OAuth2PermissionGrantCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OAuth2PermissionGrant]:
+    async def post(self,body: OAuth2PermissionGrant, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[OAuth2PermissionGrant]:
         """
         Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted.
         param body: The request body
@@ -90,7 +92,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OAuth2PermissionGrant, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[Oauth2PermissionGrantsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +103,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: OAuth2PermissionGrant, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted.
         param body: The request body
@@ -116,7 +118,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> Oauth2PermissionGrantsRequestBuilder:
+    def with_url(self,raw_url: str) -> Oauth2PermissionGrantsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -149,7 +151,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         """
         Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -199,5 +201,19 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration(RequestConfiguration[Oauth2PermissionGrantsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class Oauth2PermissionGrantsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

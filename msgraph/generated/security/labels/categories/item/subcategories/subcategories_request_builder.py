@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
@@ -44,11 +46,12 @@ class SubcategoriesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["subcategoryTemplate%2Did"] = subcategory_template_id
         return SubcategoryTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SubcategoryTemplateCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SubcategoriesRequestBuilderGetQueryParameters]] = None) -> Optional[SubcategoryTemplateCollectionResponse]:
         """
-        Get subcategories from security
+        Get a list of subcategories subcategoryTemplate associated with a category template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubcategoryTemplateCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/security-categorytemplate-list-subcategories?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,12 +67,13 @@ class SubcategoriesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SubcategoryTemplateCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[SubcategoryTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SubcategoryTemplate]:
+    async def post(self,body: SubcategoryTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SubcategoryTemplate]:
         """
-        Create new navigation property to subcategories for security
+        Create a new subcategoryTemplate object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubcategoryTemplate]
+        Find more info here: https://learn.microsoft.com/graph/api/security-categorytemplate-post-subcategories?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -87,9 +91,9 @@ class SubcategoriesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SubcategoryTemplate, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SubcategoriesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get subcategories from security
+        Get a list of subcategories subcategoryTemplate associated with a category template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,9 +102,9 @@ class SubcategoriesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[SubcategoryTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: SubcategoryTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to subcategories for security
+        Create a new subcategoryTemplate object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +117,7 @@ class SubcategoriesRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> SubcategoriesRequestBuilder:
+    def with_url(self,raw_url: str) -> SubcategoriesRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -135,9 +139,9 @@ class SubcategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubcategoriesRequestBuilderGetQueryParameters():
         """
-        Get subcategories from security
+        Get a list of subcategories subcategoryTemplate associated with a category template.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -187,5 +191,19 @@ class SubcategoriesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class SubcategoriesRequestBuilderGetRequestConfiguration(RequestConfiguration[SubcategoriesRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class SubcategoriesRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

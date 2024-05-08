@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,10 +10,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.education_submission import EducationSubmission
     from .......models.o_data_errors.o_data_error import ODataError
+    from .excuse.excuse_request_builder import ExcuseRequestBuilder
     from .outcomes.outcomes_request_builder import OutcomesRequestBuilder
     from .reassign.reassign_request_builder import ReassignRequestBuilder
     from .resources.resources_request_builder import ResourcesRequestBuilder
@@ -35,7 +38,7 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/me/assignments/{educationAssignment%2Did}/submissions/{educationSubmission%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete navigation property submissions for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -53,12 +56,11 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationSubmission]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[EducationSubmissionItemRequestBuilderGetQueryParameters]] = None) -> Optional[EducationSubmission]:
         """
-        Retrieve a particular submission. Only teachers, students, and applications with application permissions can perform this operation. A submission object represents a student's work for an assignment. Resources associated with the submission represent this work. Only the assignedTo student can see and modify the submission. A teacher or application with application permissions has full access to all submissions. The grade and feedback from a teacher are part of the educationOutcome associated with this object. Only teachers or applications with application permissions can add or change grades and feedback. Students will not see the grade or feedback until the assignment has been released.
+        Once published, there's a submission object for each student representing their work and grade. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationSubmission]
-        Find more info here: https://learn.microsoft.com/graph/api/educationsubmission-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,7 +76,7 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationSubmission, error_mapping)
     
-    async def patch(self,body: Optional[EducationSubmission] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationSubmission]:
+    async def patch(self,body: EducationSubmission, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EducationSubmission]:
         """
         Update the navigation property submissions in education
         param body: The request body
@@ -97,7 +99,7 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationSubmission, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property submissions for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -108,9 +110,9 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[EducationSubmissionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve a particular submission. Only teachers, students, and applications with application permissions can perform this operation. A submission object represents a student's work for an assignment. Resources associated with the submission represent this work. Only the assignedTo student can see and modify the submission. A teacher or application with application permissions has full access to all submissions. The grade and feedback from a teacher are part of the educationOutcome associated with this object. Only teachers or applications with application permissions can add or change grades and feedback. Students will not see the grade or feedback until the assignment has been released.
+        Once published, there's a submission object for each student representing their work and grade. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +121,7 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EducationSubmission] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: EducationSubmission, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the navigation property submissions in education
         param body: The request body
@@ -134,7 +136,7 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> EducationSubmissionItemRequestBuilder:
+    def with_url(self,raw_url: str) -> EducationSubmissionItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -143,6 +145,15 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return EducationSubmissionItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def excuse(self) -> ExcuseRequestBuilder:
+        """
+        Provides operations to call the excuse method.
+        """
+        from .excuse.excuse_request_builder import ExcuseRequestBuilder
+
+        return ExcuseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def outcomes(self) -> OutcomesRequestBuilder:
@@ -217,11 +228,18 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
         return UnsubmitRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class EducationSubmissionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class EducationSubmissionItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a particular submission. Only teachers, students, and applications with application permissions can perform this operation. A submission object represents a student's work for an assignment. Resources associated with the submission represent this work. Only the assignedTo student can see and modify the submission. A teacher or application with application permissions has full access to all submissions. The grade and feedback from a teacher are part of the educationOutcome associated with this object. Only teachers or applications with application permissions can add or change grades and feedback. Students will not see the grade or feedback until the assignment has been released.
+        Once published, there's a submission object for each student representing their work and grade. Read-only. Nullable.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -241,5 +259,19 @@ class EducationSubmissionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class EducationSubmissionItemRequestBuilderGetRequestConfiguration(RequestConfiguration[EducationSubmissionItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class EducationSubmissionItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

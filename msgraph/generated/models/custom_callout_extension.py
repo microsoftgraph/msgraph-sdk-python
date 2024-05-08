@@ -6,11 +6,13 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
     from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
+    from .custom_authentication_extension import CustomAuthenticationExtension
     from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
     from .custom_extension_client_configuration import CustomExtensionClientConfiguration
     from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
     from .entity import Entity
     from .identity_governance.custom_task_extension import CustomTaskExtension
+    from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
 from .entity import Entity
 
@@ -30,7 +32,7 @@ class CustomCalloutExtension(Entity):
     odata_type: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomCalloutExtension:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CustomCalloutExtension:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object
@@ -50,10 +52,18 @@ class CustomCalloutExtension(Entity):
             from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
 
             return AccessPackageAssignmentWorkflowExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customAuthenticationExtension".casefold():
+            from .custom_authentication_extension import CustomAuthenticationExtension
+
+            return CustomAuthenticationExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtension".casefold():
             from .identity_governance.custom_task_extension import CustomTaskExtension
 
             return CustomTaskExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartCustomExtension".casefold():
+            from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+
+            return OnTokenIssuanceStartCustomExtension()
         return CustomCalloutExtension()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -63,19 +73,23 @@ class CustomCalloutExtension(Entity):
         """
         from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
         from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
+        from .custom_authentication_extension import CustomAuthenticationExtension
         from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
         from .custom_extension_client_configuration import CustomExtensionClientConfiguration
         from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
         from .entity import Entity
         from .identity_governance.custom_task_extension import CustomTaskExtension
+        from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
         from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
         from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
+        from .custom_authentication_extension import CustomAuthenticationExtension
         from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
         from .custom_extension_client_configuration import CustomExtensionClientConfiguration
         from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
         from .entity import Entity
         from .identity_governance.custom_task_extension import CustomTaskExtension
+        from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(CustomExtensionAuthenticationConfiguration)),

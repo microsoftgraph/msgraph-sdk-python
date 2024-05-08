@@ -21,7 +21,7 @@ class MeetingPolicyUpdatedEventMessageDetail(EventMessageDetail):
     meeting_chat_id: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingPolicyUpdatedEventMessageDetail:
+    def create_from_discriminator_value(parse_node: ParseNode) -> MeetingPolicyUpdatedEventMessageDetail:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

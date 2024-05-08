@@ -51,7 +51,7 @@ class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
     user_role: Optional[OnenoteUserRole] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyNotebookModel:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CopyNotebookModel:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

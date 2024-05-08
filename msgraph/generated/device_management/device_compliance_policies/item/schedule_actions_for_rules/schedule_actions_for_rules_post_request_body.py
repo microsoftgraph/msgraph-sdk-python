@@ -18,7 +18,7 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, BackedModel, 
     device_compliance_scheduled_action_for_rules: Optional[List[DeviceComplianceScheduledActionForRule]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleActionsForRulesPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ScheduleActionsForRulesPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

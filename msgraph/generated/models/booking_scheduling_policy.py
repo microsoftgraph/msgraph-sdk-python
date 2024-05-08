@@ -29,7 +29,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
     time_slot_interval: Optional[datetime.timedelta] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingSchedulingPolicy:
+    def create_from_discriminator_value(parse_node: ParseNode) -> BookingSchedulingPolicy:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

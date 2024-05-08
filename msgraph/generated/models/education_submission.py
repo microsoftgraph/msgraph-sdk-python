@@ -16,6 +16,10 @@ from .entity import Entity
 
 @dataclass
 class EducationSubmission(Entity):
+    # The excusedBy property
+    excused_by: Optional[IdentitySet] = None
+    # The excusedDateTime property
+    excused_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The outcomes property
@@ -50,7 +54,7 @@ class EducationSubmission(Entity):
     web_url: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmission:
+    def create_from_discriminator_value(parse_node: ParseNode) -> EducationSubmission:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object
@@ -80,6 +84,8 @@ class EducationSubmission(Entity):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "excusedBy": lambda n : setattr(self, 'excused_by', n.get_object_value(IdentitySet)),
+            "excusedDateTime": lambda n : setattr(self, 'excused_date_time', n.get_datetime_value()),
             "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(EducationOutcome)),
             "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(IdentitySet)),
             "reassignedDateTime": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),

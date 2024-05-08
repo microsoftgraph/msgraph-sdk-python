@@ -18,7 +18,7 @@ class SecurityGroupEvidence(AlertEvidence):
     security_group_id: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecurityGroupEvidence:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SecurityGroupEvidence:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

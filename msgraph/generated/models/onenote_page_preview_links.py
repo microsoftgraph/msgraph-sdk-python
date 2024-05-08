@@ -20,7 +20,7 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, BackedModel, Parsable):
     preview_image_url: Optional[ExternalLink] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenotePagePreviewLinks:
+    def create_from_discriminator_value(parse_node: ParseNode) -> OnenotePagePreviewLinks:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

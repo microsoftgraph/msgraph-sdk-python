@@ -65,7 +65,7 @@ class ThreatIntelligence(Entity):
     whois_records: Optional[List[WhoisRecord]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThreatIntelligence:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ThreatIntelligence:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

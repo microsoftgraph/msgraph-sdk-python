@@ -15,7 +15,7 @@ class AttributeSetCollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[AttributeSet]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttributeSetCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AttributeSetCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

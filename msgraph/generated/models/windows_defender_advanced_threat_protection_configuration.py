@@ -21,7 +21,7 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
     enable_expedited_telemetry_reporting: Optional[bool] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsDefenderAdvancedThreatProtectionConfiguration:
+    def create_from_discriminator_value(parse_node: ParseNode) -> WindowsDefenderAdvancedThreatProtectionConfiguration:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -30,7 +30,7 @@ class SharingLink(AdditionalDataHolder, BackedModel, Parsable):
     web_url: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharingLink:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SharingLink:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

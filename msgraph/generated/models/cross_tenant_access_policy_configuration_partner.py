@@ -31,6 +31,8 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
     identity_synchronization: Optional[CrossTenantIdentitySyncPolicyPartner] = None
     # Determines the partner-specific configuration for trusting other Conditional Access claims from external Microsoft Entra organizations.
     inbound_trust: Optional[CrossTenantAccessPolicyInboundTrust] = None
+    # Identifies whether a tenant is a member of a multitenant organization.
+    is_in_multi_tenant_organization: Optional[bool] = None
     # Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
     is_service_provider: Optional[bool] = None
     # The OdataType property
@@ -39,7 +41,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
     tenant_id: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyConfigurationPartner:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CrossTenantAccessPolicyConfigurationPartner:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object
@@ -72,6 +74,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
             "b2bDirectConnectOutbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
             "identitySynchronization": lambda n : setattr(self, 'identity_synchronization', n.get_object_value(CrossTenantIdentitySyncPolicyPartner)),
             "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
+            "isInMultiTenantOrganization": lambda n : setattr(self, 'is_in_multi_tenant_organization', n.get_bool_value()),
             "isServiceProvider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
@@ -93,6 +96,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         writer.write_object_value("b2bDirectConnectOutbound", self.b2b_direct_connect_outbound)
         writer.write_object_value("identitySynchronization", self.identity_synchronization)
         writer.write_object_value("inboundTrust", self.inbound_trust)
+        writer.write_bool_value("isInMultiTenantOrganization", self.is_in_multi_tenant_organization)
         writer.write_bool_value("isServiceProvider", self.is_service_provider)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("tenantId", self.tenant_id)

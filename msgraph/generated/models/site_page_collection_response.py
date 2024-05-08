@@ -15,7 +15,7 @@ class SitePageCollectionResponse(BaseCollectionPaginationCountResponse):
     value: Optional[List[SitePage]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SitePageCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SitePageCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

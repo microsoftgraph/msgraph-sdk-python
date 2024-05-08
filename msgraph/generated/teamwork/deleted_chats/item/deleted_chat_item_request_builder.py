@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.deleted_chat import DeletedChat
@@ -28,7 +30,7 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/teamwork/deletedChats/{deletedChat%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
         Delete navigation property deletedChats for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +48,7 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeletedChat]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeletedChatItemRequestBuilderGetQueryParameters]] = None) -> Optional[DeletedChat]:
         """
         Read the properties and relationships of a deletedChat object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +69,7 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeletedChat, error_mapping)
     
-    async def patch(self,body: Optional[DeletedChat] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeletedChat]:
+    async def patch(self,body: DeletedChat, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeletedChat]:
         """
         Update the navigation property deletedChats in teamwork
         param body: The request body
@@ -90,7 +92,7 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeletedChat, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property deletedChats for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +103,7 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeletedChatItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Read the properties and relationships of a deletedChat object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +114,7 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DeletedChat] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: DeletedChat, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the navigation property deletedChats in teamwork
         param body: The request body
@@ -127,7 +129,7 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> DeletedChatItemRequestBuilder:
+    def with_url(self,raw_url: str) -> DeletedChatItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -147,11 +149,18 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
         return UndoDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class DeletedChatItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class DeletedChatItemRequestBuilderGetQueryParameters():
         """
         Read the properties and relationships of a deletedChat object.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -171,5 +180,19 @@ class DeletedChatItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    @dataclass
+    class DeletedChatItemRequestBuilderGetRequestConfiguration(RequestConfiguration[DeletedChatItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class DeletedChatItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

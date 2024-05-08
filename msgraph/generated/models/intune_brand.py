@@ -50,7 +50,7 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
     theme_color: Optional[RgbColor] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IntuneBrand:
+    def create_from_discriminator_value(parse_node: ParseNode) -> IntuneBrand:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

@@ -39,7 +39,7 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
     target_environment: Optional[BrowserSiteTargetEnvironment] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BrowserSiteHistory:
+    def create_from_discriminator_value(parse_node: ParseNode) -> BrowserSiteHistory:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

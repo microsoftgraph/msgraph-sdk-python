@@ -18,7 +18,7 @@ class CommitPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     file_encryption_info: Optional[FileEncryptionInfo] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CommitPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CommitPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

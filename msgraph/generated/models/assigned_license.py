@@ -20,7 +20,7 @@ class AssignedLicense(AdditionalDataHolder, BackedModel, Parsable):
     sku_id: Optional[UUID] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignedLicense:
+    def create_from_discriminator_value(parse_node: ParseNode) -> AssignedLicense:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

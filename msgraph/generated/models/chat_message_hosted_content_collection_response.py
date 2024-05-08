@@ -15,7 +15,7 @@ class ChatMessageHostedContentCollectionResponse(BaseCollectionPaginationCountRe
     value: Optional[List[ChatMessageHostedContent]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageHostedContentCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ChatMessageHostedContentCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

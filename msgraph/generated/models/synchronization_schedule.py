@@ -25,7 +25,7 @@ class SynchronizationSchedule(AdditionalDataHolder, BackedModel, Parsable):
     state: Optional[SynchronizationScheduleState] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationSchedule:
+    def create_from_discriminator_value(parse_node: ParseNode) -> SynchronizationSchedule:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

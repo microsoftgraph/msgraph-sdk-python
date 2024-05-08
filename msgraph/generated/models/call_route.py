@@ -25,7 +25,7 @@ class CallRoute(AdditionalDataHolder, BackedModel, Parsable):
     routing_type: Optional[RoutingType] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRoute:
+    def create_from_discriminator_value(parse_node: ParseNode) -> CallRoute:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

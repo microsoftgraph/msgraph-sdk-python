@@ -15,7 +15,7 @@ class ApplyBottomPercentFilterPostRequestBody(AdditionalDataHolder, BackedModel,
     percent: Optional[int] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplyBottomPercentFilterPostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ApplyBottomPercentFilterPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

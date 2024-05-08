@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
@@ -26,7 +28,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/photos{?%24filter,%24orderby,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/photos{?%24count,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_profile_photo_id(self,profile_photo_id: str) -> ProfilePhotoItemRequestBuilder:
         """
@@ -42,7 +44,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         url_tpl_params["profilePhoto%2Did"] = profile_photo_id
         return ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfilePhotoCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[PhotosRequestBuilderGetQueryParameters]] = None) -> Optional[ProfilePhotoCollectionResponse]:
         """
         Retrieve a list of profilePhoto objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +65,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProfilePhotoCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PhotosRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Retrieve a list of profilePhoto objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -74,7 +76,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> PhotosRequestBuilder:
+    def with_url(self,raw_url: str) -> PhotosRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -89,7 +91,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         """
         Retrieve a list of profilePhoto objects.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -97,10 +99,14 @@ class PhotosRequestBuilder(BaseRequestBuilder):
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
+            if original_name == "count":
+                return "%24count"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
                 return "%24orderby"
+            if original_name == "search":
+                return "%24search"
             if original_name == "select":
                 return "%24select"
             if original_name == "skip":
@@ -109,11 +115,17 @@ class PhotosRequestBuilder(BaseRequestBuilder):
                 return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
         # Filter items by property values
         filter: Optional[str] = None
 
         # Order items by property values
         orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
 
         # Select properties to be returned
         select: Optional[List[str]] = None
@@ -124,5 +136,12 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class PhotosRequestBuilderGetRequestConfiguration(RequestConfiguration[PhotosRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

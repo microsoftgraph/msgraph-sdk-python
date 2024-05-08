@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.calendar import Calendar
@@ -28,7 +30,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendars{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendars{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_calendar_id(self,calendar_id: str) -> CalendarItemRequestBuilder:
         """
@@ -44,12 +46,11 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["calendar%2Did"] = calendar_id
         return CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CalendarCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[CalendarsRequestBuilderGetQueryParameters]] = None) -> Optional[CalendarCollectionResponse]:
         """
-        Get all the user's calendars (/calendars navigation property), get the calendars from the default calendar group or from a specific calendar group.
+        The user's calendars. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-calendars?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +66,12 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CalendarCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Calendar] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Calendar]:
+    async def post(self,body: Calendar, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Calendar]:
         """
-        Create a new calendar for a user.
+        Create new navigation property to calendars for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Calendar]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-calendars?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +89,9 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Calendar, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CalendarsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get all the user's calendars (/calendars navigation property), get the calendars from the default calendar group or from a specific calendar group.
+        The user's calendars. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +100,9 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Calendar] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Calendar, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new calendar for a user.
+        Create new navigation property to calendars for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -115,7 +115,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> CalendarsRequestBuilder:
+    def with_url(self,raw_url: str) -> CalendarsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -137,9 +137,9 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarsRequestBuilderGetQueryParameters():
         """
-        Get all the user's calendars (/calendars navigation property), get the calendars from the default calendar group or from a specific calendar group.
+        The user's calendars. Read-only. Nullable.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -155,6 +155,8 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
                 return "%24filter"
             if original_name == "orderby":
                 return "%24orderby"
+            if original_name == "search":
+                return "%24search"
             if original_name == "select":
                 return "%24select"
             if original_name == "skip":
@@ -175,6 +177,9 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         # Order items by property values
         orderby: Optional[List[str]] = None
 
+        # Search items by search phrases
+        search: Optional[str] = None
+
         # Select properties to be returned
         select: Optional[List[str]] = None
 
@@ -184,5 +189,19 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class CalendarsRequestBuilderGetRequestConfiguration(RequestConfiguration[CalendarsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class CalendarsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 

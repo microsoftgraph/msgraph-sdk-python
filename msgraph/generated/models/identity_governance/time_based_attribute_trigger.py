@@ -19,7 +19,7 @@ class TimeBasedAttributeTrigger(WorkflowExecutionTrigger):
     time_based_attribute: Optional[WorkflowTriggerTimeBasedAttribute] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeBasedAttributeTrigger:
+    def create_from_discriminator_value(parse_node: ParseNode) -> TimeBasedAttributeTrigger:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

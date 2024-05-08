@@ -15,7 +15,7 @@ class ArchivePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     should_set_spo_site_read_only_for_members: Optional[bool] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ArchivePostRequestBody:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ArchivePostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

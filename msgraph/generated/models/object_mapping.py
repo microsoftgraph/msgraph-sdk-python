@@ -37,7 +37,7 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
     target_object_name: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ObjectMapping:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ObjectMapping:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

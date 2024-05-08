@@ -16,11 +16,11 @@ class DispositionReviewStage(Entity):
     odata_type: Optional[str] = None
     # A collection of reviewers at each stage.
     reviewers_email_addresses: Optional[List[str]] = None
-    # The sequence number for each stage of the disposition review.
+    # The unique sequence number for each stage of the disposition review.
     stage_number: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DispositionReviewStage:
+    def create_from_discriminator_value(parse_node: ParseNode) -> DispositionReviewStage:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

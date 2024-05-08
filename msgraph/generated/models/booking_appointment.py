@@ -23,6 +23,14 @@ class BookingAppointment(Entity):
     additional_information: Optional[str] = None
     # The URL of the meeting to join anonymously.
     anonymous_join_web_url: Optional[str] = None
+    # The customerEmailAddress property
+    customer_email_address: Optional[str] = None
+    # The customerName property
+    customer_name: Optional[str] = None
+    # Notes from the customer associated with this appointment.
+    customer_notes: Optional[str] = None
+    # The customerPhone property
+    customer_phone: Optional[str] = None
     # The time zone of the customer. For a list of possible values, see dateTimeTimeZone.
     customer_time_zone: Optional[str] = None
     # A collection of customer properties for an appointment. An appointment contains a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
@@ -71,7 +79,7 @@ class BookingAppointment(Entity):
     start_date_time: Optional[DateTimeTimeZone] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingAppointment:
+    def create_from_discriminator_value(parse_node: ParseNode) -> BookingAppointment:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object
@@ -103,6 +111,10 @@ class BookingAppointment(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "anonymousJoinWebUrl": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
+            "customerEmailAddress": lambda n : setattr(self, 'customer_email_address', n.get_str_value()),
+            "customerName": lambda n : setattr(self, 'customer_name', n.get_str_value()),
+            "customerNotes": lambda n : setattr(self, 'customer_notes', n.get_str_value()),
+            "customerPhone": lambda n : setattr(self, 'customer_phone', n.get_str_value()),
             "customerTimeZone": lambda n : setattr(self, 'customer_time_zone', n.get_str_value()),
             "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(BookingCustomerInformationBase)),
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
@@ -141,6 +153,10 @@ class BookingAppointment(Entity):
         super().serialize(writer)
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_str_value("anonymousJoinWebUrl", self.anonymous_join_web_url)
+        writer.write_str_value("customerEmailAddress", self.customer_email_address)
+        writer.write_str_value("customerName", self.customer_name)
+        writer.write_str_value("customerNotes", self.customer_notes)
+        writer.write_str_value("customerPhone", self.customer_phone)
         writer.write_str_value("customerTimeZone", self.customer_time_zone)
         writer.write_collection_of_object_values("customers", self.customers)
         writer.write_object_value("endDateTime", self.end_date_time)

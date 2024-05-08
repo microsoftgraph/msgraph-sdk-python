@@ -15,7 +15,7 @@ class UserExperienceAnalyticsAppHealthApplicationPerformanceCollectionResponse(B
     value: Optional[List[UserExperienceAnalyticsAppHealthApplicationPerformance]] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserExperienceAnalyticsAppHealthApplicationPerformanceCollectionResponse:
+    def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsAppHealthApplicationPerformanceCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

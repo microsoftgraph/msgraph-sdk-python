@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .content_customization import ContentCustomization
     from .entity import Entity
     from .login_page_layout_configuration import LoginPageLayoutConfiguration
     from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
@@ -26,6 +27,8 @@ class OrganizationalBrandingProperties(Entity):
     banner_logo_relative_url: Optional[str] = None
     # A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
     cdn_list: Optional[List[str]] = None
+    # The contentCustomization property
+    content_customization: Optional[ContentCustomization] = None
     # A custom URL for resetting account credentials. This URL must be in ASCII format or non-ASCII characters must be URL encoded, and not exceed 128 characters.
     custom_account_reset_credentials_url: Optional[str] = None
     # CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
@@ -105,12 +108,14 @@ class OrganizationalBrandingProperties(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .content_customization import ContentCustomization
         from .entity import Entity
         from .login_page_layout_configuration import LoginPageLayoutConfiguration
         from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
         from .organizational_branding import OrganizationalBranding
         from .organizational_branding_localization import OrganizationalBrandingLocalization
 
+        from .content_customization import ContentCustomization
         from .entity import Entity
         from .login_page_layout_configuration import LoginPageLayoutConfiguration
         from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
@@ -124,6 +129,7 @@ class OrganizationalBrandingProperties(Entity):
             "bannerLogo": lambda n : setattr(self, 'banner_logo', n.get_bytes_value()),
             "bannerLogoRelativeUrl": lambda n : setattr(self, 'banner_logo_relative_url', n.get_str_value()),
             "cdnList": lambda n : setattr(self, 'cdn_list', n.get_collection_of_primitive_values(str)),
+            "contentCustomization": lambda n : setattr(self, 'content_customization', n.get_object_value(ContentCustomization)),
             "customAccountResetCredentialsUrl": lambda n : setattr(self, 'custom_account_reset_credentials_url', n.get_str_value()),
             "customCSS": lambda n : setattr(self, 'custom_c_s_s', n.get_bytes_value()),
             "customCSSRelativeUrl": lambda n : setattr(self, 'custom_c_s_s_relative_url', n.get_str_value()),
@@ -168,6 +174,7 @@ class OrganizationalBrandingProperties(Entity):
         writer.write_bytes_value("bannerLogo", self.banner_logo)
         writer.write_str_value("bannerLogoRelativeUrl", self.banner_logo_relative_url)
         writer.write_collection_of_primitive_values("cdnList", self.cdn_list)
+        writer.write_object_value("contentCustomization", self.content_customization)
         writer.write_str_value("customAccountResetCredentialsUrl", self.custom_account_reset_credentials_url)
         writer.write_bytes_value("customCSS", self.custom_c_s_s)
         writer.write_str_value("customCSSRelativeUrl", self.custom_c_s_s_relative_url)

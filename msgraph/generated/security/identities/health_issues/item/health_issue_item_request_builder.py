@@ -13,32 +13,32 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from ...........models.o_data_errors.o_data_error import ODataError
-    from ...........models.workbook_chart_data_labels import WorkbookChartDataLabels
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.security.health_issue import HealthIssue
 
-class DataLabelsRequestBuilder(BaseRequestBuilder):
+class HealthIssueItemRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to manage the dataLabels property of the microsoft.graph.workbookChart entity.
+    Provides operations to manage the healthIssues property of the microsoft.graph.security.identityContainer entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
-        Instantiates a new DataLabelsRequestBuilder and sets the default values.
+        Instantiates a new HealthIssueItemRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/item(name='{name}')/dataLabels{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/security/identities/healthIssues/{healthIssue%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property dataLabels for drives
+        Delete navigation property healthIssues for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors.o_data_error import ODataError
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
@@ -47,52 +47,52 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[DataLabelsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartDataLabels]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[HealthIssueItemRequestBuilderGetQueryParameters]] = None) -> Optional[HealthIssue]:
         """
-        Represents the data labels on the chart. Read-only.
+        Get healthIssues from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[WorkbookChartDataLabels]
+        Returns: Optional[HealthIssue]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors.o_data_error import ODataError
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models.workbook_chart_data_labels import WorkbookChartDataLabels
+        from .....models.security.health_issue import HealthIssue
 
-        return await self.request_adapter.send_async(request_info, WorkbookChartDataLabels, error_mapping)
+        return await self.request_adapter.send_async(request_info, HealthIssue, error_mapping)
     
-    async def patch(self,body: WorkbookChartDataLabels, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WorkbookChartDataLabels]:
+    async def patch(self,body: HealthIssue, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[HealthIssue]:
         """
-        Update the navigation property dataLabels in drives
+        Update the navigation property healthIssues in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[WorkbookChartDataLabels]
+        Returns: Optional[HealthIssue]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...........models.o_data_errors.o_data_error import ODataError
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models.workbook_chart_data_labels import WorkbookChartDataLabels
+        from .....models.security.health_issue import HealthIssue
 
-        return await self.request_adapter.send_async(request_info, WorkbookChartDataLabels, error_mapping)
+        return await self.request_adapter.send_async(request_info, HealthIssue, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property dataLabels for drives
+        Delete navigation property healthIssues for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +101,9 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DataLabelsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[HealthIssueItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the data labels on the chart. Read-only.
+        Get healthIssues from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,9 +112,9 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: WorkbookChartDataLabels, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: HealthIssue, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property dataLabels in drives
+        Update the navigation property healthIssues in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,27 +127,27 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: str) -> DataLabelsRequestBuilder:
+    def with_url(self,raw_url: str) -> HealthIssueItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: DataLabelsRequestBuilder
+        Returns: HealthIssueItemRequestBuilder
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DataLabelsRequestBuilder(self.request_adapter, raw_url)
+        return HealthIssueItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
-    class DataLabelsRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class HealthIssueItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class DataLabelsRequestBuilderGetQueryParameters():
+    class HealthIssueItemRequestBuilderGetQueryParameters():
         """
-        Represents the data labels on the chart. Read-only.
+        Get healthIssues from security
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -171,14 +171,14 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
 
     
     @dataclass
-    class DataLabelsRequestBuilderGetRequestConfiguration(RequestConfiguration[DataLabelsRequestBuilderGetQueryParameters]):
+    class HealthIssueItemRequestBuilderGetRequestConfiguration(RequestConfiguration[HealthIssueItemRequestBuilderGetQueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class DataLabelsRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class HealthIssueItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

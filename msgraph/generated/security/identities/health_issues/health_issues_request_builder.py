@@ -13,86 +13,85 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from ...models.managed_app_policy import ManagedAppPolicy
-    from ...models.managed_app_policy_collection_response import ManagedAppPolicyCollectionResponse
-    from ...models.o_data_errors.o_data_error import ODataError
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.security.health_issue import HealthIssue
+    from ....models.security.health_issue_collection_response import HealthIssueCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
-    from .item.managed_app_policy_item_request_builder import ManagedAppPolicyItemRequestBuilder
+    from .item.health_issue_item_request_builder import HealthIssueItemRequestBuilder
 
-class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
+class HealthIssuesRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
+    Provides operations to manage the healthIssues property of the microsoft.graph.security.identityContainer entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
-        Instantiates a new ManagedAppPoliciesRequestBuilder and sets the default values.
+        Instantiates a new HealthIssuesRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppPolicies{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/security/identities/healthIssues{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    def by_managed_app_policy_id(self,managed_app_policy_id: str) -> ManagedAppPolicyItemRequestBuilder:
+    def by_health_issue_id(self,health_issue_id: str) -> HealthIssueItemRequestBuilder:
         """
-        Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
-        param managed_app_policy_id: The unique identifier of managedAppPolicy
-        Returns: ManagedAppPolicyItemRequestBuilder
+        Provides operations to manage the healthIssues property of the microsoft.graph.security.identityContainer entity.
+        param health_issue_id: The unique identifier of healthIssue
+        Returns: HealthIssueItemRequestBuilder
         """
-        if not managed_app_policy_id:
-            raise TypeError("managed_app_policy_id cannot be null.")
-        from .item.managed_app_policy_item_request_builder import ManagedAppPolicyItemRequestBuilder
+        if not health_issue_id:
+            raise TypeError("health_issue_id cannot be null.")
+        from .item.health_issue_item_request_builder import HealthIssueItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedAppPolicy%2Did"] = managed_app_policy_id
-        return ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+        url_tpl_params["healthIssue%2Did"] = health_issue_id
+        return HealthIssueItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[HealthIssuesRequestBuilderGetQueryParameters]] = None) -> Optional[HealthIssueCollectionResponse]:
         """
-        List properties and relationships of the managedAppConfiguration objects.
+        Get healthIssues from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ManagedAppPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappconfiguration-list?view=graph-rest-1.0
+        Returns: Optional[HealthIssueCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors.o_data_error import ODataError
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.managed_app_policy_collection_response import ManagedAppPolicyCollectionResponse
+        from ....models.security.health_issue_collection_response import HealthIssueCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, ManagedAppPolicyCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, HealthIssueCollectionResponse, error_mapping)
     
-    async def post(self,body: ManagedAppPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedAppPolicy]:
+    async def post(self,body: HealthIssue, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[HealthIssue]:
         """
-        Create new navigation property to managedAppPolicies for deviceAppManagement
+        Create new navigation property to healthIssues for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ManagedAppPolicy]
+        Returns: Optional[HealthIssue]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors.o_data_error import ODataError
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.managed_app_policy import ManagedAppPolicy
+        from ....models.security.health_issue import HealthIssue
 
-        return await self.request_adapter.send_async(request_info, ManagedAppPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, HealthIssue, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[HealthIssuesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppConfiguration objects.
+        Get healthIssues from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +100,9 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: ManagedAppPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_post_request_information(self,body: HealthIssue, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to managedAppPolicies for deviceAppManagement
+        Create new navigation property to healthIssues for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -116,15 +115,15 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: str) -> ManagedAppPoliciesRequestBuilder:
+    def with_url(self,raw_url: str) -> HealthIssuesRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: ManagedAppPoliciesRequestBuilder
+        Returns: HealthIssuesRequestBuilder
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ManagedAppPoliciesRequestBuilder(self.request_adapter, raw_url)
+        return HealthIssuesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -136,9 +135,9 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
-    class ManagedAppPoliciesRequestBuilderGetQueryParameters():
+    class HealthIssuesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppConfiguration objects.
+        Get healthIssues from security
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -192,14 +191,14 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
 
     
     @dataclass
-    class ManagedAppPoliciesRequestBuilderGetRequestConfiguration(RequestConfiguration[ManagedAppPoliciesRequestBuilderGetQueryParameters]):
+    class HealthIssuesRequestBuilderGetRequestConfiguration(RequestConfiguration[HealthIssuesRequestBuilderGetQueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class ManagedAppPoliciesRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class HealthIssuesRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

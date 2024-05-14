@@ -49,7 +49,7 @@ class TitleRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TitleRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartTitle]:
         """
-        Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
+        Represents the title of the specified chart, including the text, visibility, position and formatting of the title. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartTitle]
         """
@@ -103,7 +103,7 @@ class TitleRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TitleRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
+        Represents the title of the specified chart, including the text, visibility, position and formatting of the title. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class TitleRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TitleRequestBuilderGetQueryParameters():
         """
-        Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
+        Represents the title of the specified chart, including the text, visibility, position and formatting of the title. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

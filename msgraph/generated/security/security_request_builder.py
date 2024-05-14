@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .alerts_v2.alerts_v2_request_builder import Alerts_v2RequestBuilder
     from .attack_simulation.attack_simulation_request_builder import AttackSimulationRequestBuilder
     from .cases.cases_request_builder import CasesRequestBuilder
+    from .identities.identities_request_builder import IdentitiesRequestBuilder
     from .incidents.incidents_request_builder import IncidentsRequestBuilder
     from .labels.labels_request_builder import LabelsRequestBuilder
     from .microsoft_graph_security_run_hunting_query.microsoft_graph_security_run_hunting_query_request_builder import MicrosoftGraphSecurityRunHuntingQueryRequestBuilder
@@ -156,6 +157,15 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         from .cases.cases_request_builder import CasesRequestBuilder
 
         return CasesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def identities(self) -> IdentitiesRequestBuilder:
+        """
+        Provides operations to manage the identities property of the microsoft.graph.security entity.
+        """
+        from .identities.identities_request_builder import IdentitiesRequestBuilder
+
+        return IdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def incidents(self) -> IncidentsRequestBuilder:

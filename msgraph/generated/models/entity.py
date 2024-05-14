@@ -617,6 +617,7 @@ if TYPE_CHECKING:
     from .security.file_plan_descriptor import FilePlanDescriptor
     from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
     from .security.file_plan_reference_template import FilePlanReferenceTemplate
+    from .security.health_issue import HealthIssue
     from .security.host import Host
     from .security.hostname import Hostname
     from .security.host_component import HostComponent
@@ -626,6 +627,7 @@ if TYPE_CHECKING:
     from .security.host_reputation import HostReputation
     from .security.host_ssl_certificate import HostSslCertificate
     from .security.host_tracker import HostTracker
+    from .security.identity_container import IdentityContainer
     from .security.incident import Incident
     from .security.indicator import Indicator
     from .security.intelligence_profile import IntelligenceProfile
@@ -2171,6 +2173,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             return IdentityBuiltInUserFlowAttribute()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityContainer".casefold():
             from .identity_container import IdentityContainer
+            from .security.identity_container import IdentityContainer
 
             return IdentityContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityCustomUserFlowAttribute".casefold():
@@ -3384,6 +3387,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.file_plan_reference_template import FilePlanReferenceTemplate
 
             return FilePlanReferenceTemplate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.healthIssue".casefold():
+            from .security.health_issue import HealthIssue
+
+            return HealthIssue()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.host".casefold():
             from .security.host import Host
 
@@ -3420,6 +3427,11 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.host_tracker import HostTracker
 
             return HostTracker()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.identityContainer".casefold():
+            from .identity_container import IdentityContainer
+            from .security.identity_container import IdentityContainer
+
+            return IdentityContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.incident".casefold():
             from .security.incident import Incident
 
@@ -5136,6 +5148,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.file_plan_descriptor import FilePlanDescriptor
         from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
         from .security.file_plan_reference_template import FilePlanReferenceTemplate
+        from .security.health_issue import HealthIssue
         from .security.host import Host
         from .security.hostname import Hostname
         from .security.host_component import HostComponent
@@ -5145,6 +5158,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.host_reputation import HostReputation
         from .security.host_ssl_certificate import HostSslCertificate
         from .security.host_tracker import HostTracker
+        from .security.identity_container import IdentityContainer
         from .security.incident import Incident
         from .security.indicator import Indicator
         from .security.intelligence_profile import IntelligenceProfile
@@ -6033,6 +6047,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.file_plan_descriptor import FilePlanDescriptor
         from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
         from .security.file_plan_reference_template import FilePlanReferenceTemplate
+        from .security.health_issue import HealthIssue
         from .security.host import Host
         from .security.hostname import Hostname
         from .security.host_component import HostComponent
@@ -6042,6 +6057,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.host_reputation import HostReputation
         from .security.host_ssl_certificate import HostSslCertificate
         from .security.host_tracker import HostTracker
+        from .security.identity_container import IdentityContainer
         from .security.incident import Incident
         from .security.indicator import Indicator
         from .security.intelligence_profile import IntelligenceProfile

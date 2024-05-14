@@ -49,7 +49,7 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DataLabelsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartDataLabels]:
         """
-        Represents the datalabels on the chart. Read-only.
+        Represents the data labels on the chart. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartDataLabels]
         """
@@ -103,7 +103,7 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DataLabelsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the datalabels on the chart. Read-only.
+        Represents the data labels on the chart. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class DataLabelsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DataLabelsRequestBuilderGetQueryParameters():
         """
-        Represents the datalabels on the chart. Read-only.
+        Represents the data labels on the chart. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

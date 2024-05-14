@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..subject_rights_request import SubjectRightsRequest
     from .alert import Alert
     from .cases_root import CasesRoot
+    from .identity_container import IdentityContainer
     from .incident import Incident
     from .labels_root import LabelsRoot
     from .threat_intelligence import ThreatIntelligence
@@ -30,6 +31,8 @@ class Security(Entity):
     attack_simulation: Optional[AttackSimulationRoot] = None
     # The cases property
     cases: Optional[CasesRoot] = None
+    # The identities property
+    identities: Optional[IdentityContainer] = None
     # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
     incidents: Optional[List[Incident]] = None
     # The labels property
@@ -73,6 +76,7 @@ class Security(Entity):
         from ..subject_rights_request import SubjectRightsRequest
         from .alert import Alert
         from .cases_root import CasesRoot
+        from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
         from .threat_intelligence import ThreatIntelligence
@@ -87,6 +91,7 @@ class Security(Entity):
         from ..subject_rights_request import SubjectRightsRequest
         from .alert import Alert
         from .cases_root import CasesRoot
+        from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
         from .threat_intelligence import ThreatIntelligence
@@ -98,6 +103,7 @@ class Security(Entity):
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(Alert)),
             "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(AttackSimulationRoot)),
             "cases": lambda n : setattr(self, 'cases', n.get_object_value(CasesRoot)),
+            "identities": lambda n : setattr(self, 'identities', n.get_object_value(IdentityContainer)),
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
             "labels": lambda n : setattr(self, 'labels', n.get_object_value(LabelsRoot)),
             "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(SecureScoreControlProfile)),
@@ -124,6 +130,7 @@ class Security(Entity):
         writer.write_collection_of_object_values("alerts_v2", self.alerts_v2)
         writer.write_object_value("attackSimulation", self.attack_simulation)
         writer.write_object_value("cases", self.cases)
+        writer.write_object_value("identities", self.identities)
         writer.write_collection_of_object_values("incidents", self.incidents)
         writer.write_object_value("labels", self.labels)
         writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)

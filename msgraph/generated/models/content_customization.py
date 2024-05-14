@@ -4,40 +4,53 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .key_value import KeyValue
+
 @dataclass
-class BookingQuestionAssignment(AdditionalDataHolder, BackedModel, Parsable):
+class ContentCustomization(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Indicates whether it's mandatory to answer the custom question.
-    is_required: Optional[bool] = None
+    # Represents the content options of External Identities to be customized throughout the authentication flow for a tenant.
+    attribute_collection: Optional[List[KeyValue]] = None
+    # A relative URL for the content options of External Identities to be customized throughout the authentication flow for a tenant.
+    attribute_collection_relative_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The ID of the custom question.
-    question_id: Optional[str] = None
+    # The registrationCampaign property
+    registration_campaign: Optional[List[KeyValue]] = None
+    # The registrationCampaignRelativeUrl property
+    registration_campaign_relative_url: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: ParseNode) -> BookingQuestionAssignment:
+    def create_from_discriminator_value(parse_node: ParseNode) -> ContentCustomization:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object
-        Returns: BookingQuestionAssignment
+        Returns: ContentCustomization
         """
         if not parse_node:
             raise TypeError("parse_node cannot be null.")
-        return BookingQuestionAssignment()
+        return ContentCustomization()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .key_value import KeyValue
+
+        from .key_value import KeyValue
+
         fields: Dict[str, Callable[[Any], None]] = {
-            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "attributeCollection": lambda n : setattr(self, 'attribute_collection', n.get_collection_of_object_values(KeyValue)),
+            "attributeCollectionRelativeUrl": lambda n : setattr(self, 'attribute_collection_relative_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
+            "registrationCampaign": lambda n : setattr(self, 'registration_campaign', n.get_collection_of_object_values(KeyValue)),
+            "registrationCampaignRelativeUrl": lambda n : setattr(self, 'registration_campaign_relative_url', n.get_str_value()),
         }
         return fields
     
@@ -49,9 +62,11 @@ class BookingQuestionAssignment(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isRequired", self.is_required)
+        writer.write_collection_of_object_values("attributeCollection", self.attribute_collection)
+        writer.write_str_value("attributeCollectionRelativeUrl", self.attribute_collection_relative_url)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_str_value("questionId", self.question_id)
+        writer.write_collection_of_object_values("registrationCampaign", self.registration_campaign)
+        writer.write_str_value("registrationCampaignRelativeUrl", self.registration_campaign_relative_url)
         writer.write_additional_data_value(self.additional_data)
     
 

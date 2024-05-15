@@ -32,7 +32,7 @@ packaging==24.0 ; python_version >= '3.7'
 
 pathlib2==2.3.7.post1
 
-platformdirs==4.2.1 ; python_version >= '3.7'
+platformdirs==4.2.2 ; python_version >= '3.7'
 
 pylint==3.1.1
 

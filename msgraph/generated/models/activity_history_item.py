@@ -19,15 +19,15 @@ class ActivityHistoryItem(Entity):
     activity: Optional[UserActivity] = None
     # Set by the server. DateTime in UTC when the object was created on the server.
     created_date_time: Optional[datetime.datetime] = None
-    # Optional. UTC DateTime when the historyItem will undergo hard-delete. Can be set by the client.
+    # Optional. UTC DateTime when the activityHistoryItem will undergo hard-delete. Can be set by the client.
     expiration_date_time: Optional[datetime.datetime] = None
-    # Optional. UTC DateTime when the historyItem (activity session) was last understood as active or finished - if null, historyItem status should be Ongoing.
+    # Optional. UTC DateTime when the activityHistoryItem (activity session) was last understood as active or finished - if null, activityHistoryItem status should be Ongoing.
     last_active_date_time: Optional[datetime.datetime] = None
     # Set by the server. DateTime in UTC when the object was modified on the server.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Required. UTC DateTime when the historyItem (activity session) was started. Required for timeline history.
+    # Required. UTC DateTime when the activityHistoryItem (activity session) was started. Required for timeline history.
     started_date_time: Optional[datetime.datetime] = None
     # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
     status: Optional[Status] = None

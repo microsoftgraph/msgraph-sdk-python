@@ -1,6 +1,7 @@
 -i https://pypi.org/simple
 
-astroid ; python_full_version >= '3.7.2'
+astroid==3.1.0 ; python_full_version >= '3.7.2'
+
 build==1.2.1
 
 bumpver==2023.1129
@@ -33,7 +34,7 @@ pathlib2==2.3.7.post1
 
 platformdirs==4.2.2 ; python_version >= '3.7'
 
-pylint==3.2.0
+pylint==3.1.1
 
 pyproject-hooks==1.1.0 ; python_version >= '3.7'
 

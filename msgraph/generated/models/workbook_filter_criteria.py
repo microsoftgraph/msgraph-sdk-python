@@ -15,23 +15,23 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The color property
+    # The color applied to the cell.
     color: Optional[str] = None
-    # The criterion1 property
+    # A custom criterion.
     criterion1: Optional[str] = None
-    # The criterion2 property
+    # A custom criterion.
     criterion2: Optional[str] = None
-    # The dynamicCriteria property
+    # A dynamic formula specified in a custom filter.
     dynamic_criteria: Optional[str] = None
-    # The filterOn property
+    # Indicates whether a filter is applied to a column.
     filter_on: Optional[str] = None
-    # The icon property
+    # An icon applied to a cell via conditional formatting.
     icon: Optional[WorkbookIcon] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The operator property
+    # An operator in a cell; for example, =, >, <, <=, or <>.
     operator: Optional[str] = None
-    # The values property
+    # The values that appear in the cell.
     values: Optional[Json] = None
     
     @staticmethod

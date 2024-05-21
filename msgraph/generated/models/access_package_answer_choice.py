@@ -20,7 +20,7 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, BackedModel, Parsable):
     localizations: Optional[List[AccessPackageLocalizedText]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The text property
+    # The string to display for this answer; if an Accept-Language header is provided, and there is a matching localization in localizations, this string will be the matching localized string; otherwise, this string remains as the default non-localized string. Required.
     text: Optional[str] = None
     
     @staticmethod

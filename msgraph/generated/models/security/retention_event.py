@@ -24,11 +24,11 @@ class RetentionEvent(Entity):
     description: Optional[str] = None
     # Name of the event.
     display_name: Optional[str] = None
-    # The eventPropagationResults property
+    # Represents the success status of a created event and additional information.
     event_propagation_results: Optional[List[EventPropagationResult]] = None
     # Represents the workload (SharePoint Online, OneDrive for Business, Exchange Online) and identification information associated with a retention event.
     event_queries: Optional[List[EventQuery]] = None
-    # The eventStatus property
+    # Status of event propogation to the scoped locations after the event has been created.
     event_status: Optional[RetentionEventStatus] = None
     # Optional time when the event should be triggered.
     event_trigger_date_time: Optional[datetime.datetime] = None

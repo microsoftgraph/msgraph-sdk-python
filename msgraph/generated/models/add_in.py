@@ -15,13 +15,13 @@ class AddIn(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The id property
+    # The unique identifier for the addIn object.
     id: Optional[UUID] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The properties property
+    # The collection of key-value pairs that define parameters that the consuming service can use or call. You must specify this property when performing a POST or a PATCH operation on the addIns collection. Required.
     properties: Optional[List[KeyValue]] = None
-    # The type property
+    # The unique name for the functionality exposed by the app.
     type: Optional[str] = None
     
     @staticmethod

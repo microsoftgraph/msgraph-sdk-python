@@ -44,15 +44,15 @@ class SecureScoreControlProfile(Entity):
     remediation_impact: Optional[str] = None
     # Service that owns the control (Exchange, Sharepoint, Microsoft Entra ID).
     service: Optional[str] = None
-    # List of threats the control mitigates (accountBreach, dataDeletion, dataExfiltration, dataSpillage,
+    # List of threats the control mitigates (accountBreach, dataDeletion, dataExfiltration, dataSpillage, elevationOfPrivilege, maliciousInsider, passwordCracking, phishingOrWhaling, spoofing).
     threats: Optional[List[str]] = None
-    # The tier property
+    # Control tier (Core, Defense in Depth, Advanced.)
     tier: Optional[str] = None
-    # The title property
+    # Title of the control.
     title: Optional[str] = None
-    # The userImpact property
+    # User impact of implementing control (low, moderate, high).
     user_impact: Optional[str] = None
-    # The vendorInformation property
+    # Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
     vendor_information: Optional[SecurityVendorInformation] = None
     
     @staticmethod

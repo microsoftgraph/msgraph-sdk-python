@@ -15,7 +15,7 @@ class PayloadDetail(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Payload coachmark details.
+    # The coachmarks property
     coachmarks: Optional[List[PayloadCoachmark]] = None
     # Payload content details.
     content: Optional[str] = None

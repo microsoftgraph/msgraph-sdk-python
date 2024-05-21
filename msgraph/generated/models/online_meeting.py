@@ -17,9 +17,9 @@ from .online_meeting_base import OnlineMeetingBase
 class OnlineMeeting(OnlineMeetingBase):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onlineMeeting"
-    # The attendeeReport property
+    # The content stream of the attendee report of a Microsoft Teams live event. Read-only.
     attendee_report: Optional[bytes] = None
-    # The broadcastSettings property
+    # Settings related to a live event.
     broadcast_settings: Optional[BroadcastMeetingSettings] = None
     # The meeting creation time in UTC. Read-only.
     creation_date_time: Optional[datetime.datetime] = None
@@ -27,7 +27,7 @@ class OnlineMeeting(OnlineMeetingBase):
     end_date_time: Optional[datetime.datetime] = None
     # The externalId property
     external_id: Optional[str] = None
-    # The isBroadcast property
+    # Indicates if this is a Teams live event.
     is_broadcast: Optional[bool] = None
     # The participants associated with the online meeting.  This includes the organizer and the attendees.
     participants: Optional[MeetingParticipants] = None

@@ -12,7 +12,7 @@ from .print_usage import PrintUsage
 class PrintUsageByPrinter(PrintUsage):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.printUsageByPrinter"
-    # The printerId property
+    # The ID of the printer represented by these statistics.
     printer_id: Optional[str] = None
     # The name of the printer represented by these statistics.
     printer_name: Optional[str] = None

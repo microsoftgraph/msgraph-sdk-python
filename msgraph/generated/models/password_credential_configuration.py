@@ -15,7 +15,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsabl
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The maxLifetime property
+    # Value that can be used as the maximum number for setting password expiration time in days, hours, minutes or seconds. Defined in ISO 8601 format for Durations. For example, 'P4DT12H30M5S' represents a duration of four days, twelve hours, thirty minutes, and five seconds. This property is required when restriction type is set to passwordLifetime.
     max_lifetime: Optional[datetime.timedelta] = None
     # The OdataType property
     odata_type: Optional[str] = None

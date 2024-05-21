@@ -30,7 +30,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete attendeeReport for the navigation property onlineMeetings in users
+        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         """
@@ -48,7 +48,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
         """
-        Get attendeeReport for the navigation property onlineMeetings from users
+        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
@@ -66,7 +66,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: bytes, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
         """
-        Update attendeeReport for the navigation property onlineMeetings in users
+        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -87,7 +87,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete attendeeReport for the navigation property onlineMeetings in users
+        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +98,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Get attendeeReport for the navigation property onlineMeetings from users
+        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update attendeeReport for the navigation property onlineMeetings in users
+        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

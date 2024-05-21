@@ -26,7 +26,7 @@ class Alert(Entity):
     additional_data_property: Optional[Dictionary] = None
     # The ID of the policy that generated the alert, and populated when there is a specific policy that generated the alert, whether configured by a customer or a built-in policy.
     alert_policy_id: Optional[str] = None
-    # The alertWebUrl property
+    # URL for the Microsoft 365 Defender portal alert page.
     alert_web_url: Optional[str] = None
     # Owner of the alert, or null if no owner is assigned.
     assigned_to: Optional[str] = None
@@ -62,7 +62,7 @@ class Alert(Entity):
     mitre_techniques: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The productName property
+    # The name of the product which published this alert.
     product_name: Optional[str] = None
     # The ID of the alert as it appears in the security provider product that generated the alert.
     provider_alert_id: Optional[str] = None

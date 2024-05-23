@@ -34,7 +34,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
     finishings: Optional[List[PrintFinishing]] = None
     # The default fitPdfToPage setting. True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
     fit_pdf_to_page: Optional[bool] = None
-    # The inputBin property
+    # The default input bin that serves as the paper source.
     input_bin: Optional[str] = None
     # The default media (such as paper) color to print the document on.
     media_color: Optional[str] = None

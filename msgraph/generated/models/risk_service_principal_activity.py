@@ -18,7 +18,7 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, BackedModel, Parsable):
     detail: Optional[RiskDetail] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The riskEventTypes property
+    # The type of risk event detected. The possible values are: investigationsThreatIntelligence, generic, adminConfirmedServicePrincipalCompromised, suspiciousSignins, leakedCredentials, anomalousServicePrincipalActivity, maliciousApplication, suspiciousApplication.
     risk_event_types: Optional[List[str]] = None
     
     @staticmethod

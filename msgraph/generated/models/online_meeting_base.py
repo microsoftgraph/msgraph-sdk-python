@@ -54,7 +54,7 @@ class OnlineMeetingBase(Entity):
     odata_type: Optional[str] = None
     # Indicates whether to record the meeting automatically.
     record_automatically: Optional[bool] = None
-    # The shareMeetingChatHistoryDefault property
+    # Specifies whether meeting chat history is shared with participants.  Possible values are: all, none, unknownFutureValue.
     share_meeting_chat_history_default: Optional[MeetingChatHistoryDefaultMode] = None
     # The subject of the online meeting.
     subject: Optional[str] = None

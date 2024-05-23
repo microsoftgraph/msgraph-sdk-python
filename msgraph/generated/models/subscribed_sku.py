@@ -33,7 +33,7 @@ class SubscribedSku(Entity):
     sku_id: Optional[UUID] = None
     # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
     sku_part_number: Optional[str] = None
-    # The subscriptionIds property
+    # A list of all subscription IDs associated with this SKU.
     subscription_ids: Optional[List[str]] = None
     
     @staticmethod

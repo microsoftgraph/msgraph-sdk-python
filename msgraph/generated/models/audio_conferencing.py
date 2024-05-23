@@ -17,11 +17,11 @@ class AudioConferencing(AdditionalDataHolder, BackedModel, Parsable):
     dialin_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The tollFreeNumber property
+    # The toll-free number that connects to the Audio Conference Provider.
     toll_free_number: Optional[str] = None
     # List of toll-free numbers that are displayed in the meeting invite.
     toll_free_numbers: Optional[List[str]] = None
-    # The tollNumber property
+    # The toll number that connects to the Audio Conference Provider.
     toll_number: Optional[str] = None
     # List of toll numbers that are displayed in the meeting invite.
     toll_numbers: Optional[List[str]] = None

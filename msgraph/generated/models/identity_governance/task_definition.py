@@ -14,7 +14,7 @@ from ..entity import Entity
 class TaskDefinition(Entity):
     # The category property
     category: Optional[LifecycleTaskCategory] = None
-    # The continueOnError property
+    # Defines if the workflow will continue if the task has an error.
     continue_on_error: Optional[bool] = None
     # The description of the taskDefinition.
     description: Optional[str] = None

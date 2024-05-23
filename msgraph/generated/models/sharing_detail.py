@@ -22,11 +22,11 @@ class SharingDetail(AdditionalDataHolder, BackedModel, Parsable):
     shared_by: Optional[InsightIdentity] = None
     # The date and time the file was last shared. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     shared_date_time: Optional[datetime.datetime] = None
-    # The sharingReference property
+    # Reference properties of the document, such as the URL and type of the document. Read-only
     sharing_reference: Optional[ResourceReference] = None
     # The subject with which the document was shared.
     sharing_subject: Optional[str] = None
-    # Determines the way the document was shared, can be by a 'Link', 'Attachment', 'Group', 'Site'.
+    # Determines the way the document was shared. Can be by a 1Link1, 1Attachment1, 1Group1, 1Site1.
     sharing_type: Optional[str] = None
     
     @staticmethod

@@ -28,7 +28,7 @@ class PlannerPlan(Entity):
     details: Optional[PlannerPlanDetails] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The owner property
+    # Use the container property instead. ID of the group that owns the plan. After it's set, this property can’t be updated. This property won't return a valid group ID if the container of the plan isn't a group.
     owner: Optional[str] = None
     # Read-only. Nullable. Collection of tasks in the plan.
     tasks: Optional[List[PlannerTask]] = None

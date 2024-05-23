@@ -18,9 +18,9 @@ from .entity import Entity
 class Permission(Entity):
     # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there's no expiration set for this permission. Optional.
     expiration_date_time: Optional[datetime.datetime] = None
-    # The grantedTo property
+    # For user type permissions, the details of the users and applications for this permission. Read-only.
     granted_to: Optional[IdentitySet] = None
-    # The grantedToIdentities property
+    # For type permissions, the details of the users to whom permission was granted. Read-only.
     granted_to_identities: Optional[List[IdentitySet]] = None
     # For link type permissions, the details of the users to whom permission was granted. Read-only.
     granted_to_identities_v2: Optional[List[SharePointIdentitySet]] = None

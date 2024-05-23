@@ -14,11 +14,11 @@ class MeetingParticipants(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The attendees property
+    # Information about the meeting attendees.
     attendees: Optional[List[MeetingParticipantInfo]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The organizer property
+    # Information about the meeting organizer.
     organizer: Optional[MeetingParticipantInfo] = None
     
     @staticmethod

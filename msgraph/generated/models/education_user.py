@@ -64,7 +64,7 @@ class EducationUser(Entity):
     mobile_phone: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The officeLocation property
+    # The office location for the user.
     office_location: Optional[str] = None
     # Additional information used to associate the Microsoft Entra user with its Active Directory counterpart.
     on_premises_info: Optional[EducationOnPremisesInfo] = None
@@ -78,7 +78,7 @@ class EducationUser(Entity):
     primary_role: Optional[EducationUserRole] = None
     # The plans that are provisioned for the user. Read-only. Not nullable.
     provisioned_plans: Optional[List[ProvisionedPlan]] = None
-    # The refreshTokensValidFromDateTime property
+    # Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application needs to acquire a new refresh token by requesting the authorized endpoint. Returned only on $select. Read-only.
     refresh_tokens_valid_from_date_time: Optional[datetime.datetime] = None
     # Related records associated with the user. Read-only.
     related_contacts: Optional[List[RelatedContact]] = None

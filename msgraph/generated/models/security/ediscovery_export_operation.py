@@ -17,7 +17,7 @@ from .case_operation import CaseOperation
 class EdiscoveryExportOperation(CaseOperation):
     # The description provided for the export.
     description: Optional[str] = None
-    # The exportFileMetadata property
+    # Contains the properties for an export file metadata, including downloadUrl, fileName, and size.
     export_file_metadata: Optional[List[ExportFileMetadata]] = None
     # The options provided for the export. For more information, see reviewSet: export. Possible values are: originalFiles, text, pdfReplacement,  tags.
     export_options: Optional[ExportOptions] = None

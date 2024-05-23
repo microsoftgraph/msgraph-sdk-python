@@ -24,7 +24,7 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
     api_expressions: Optional[List[StringKeyStringValuePair]] = None
     # true if value of this attribute should be treated as case-sensitive. This setting affects how the synchronization engine detects changes for the attribute.
     case_exact: Optional[bool] = None
-    # The defaultValue property
+    # The default value of the attribute.
     default_value: Optional[str] = None
     # 'true' to allow null values for attributes.
     flow_null_values: Optional[bool] = None

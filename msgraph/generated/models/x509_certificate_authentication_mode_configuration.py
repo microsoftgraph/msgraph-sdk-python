@@ -5,6 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .x509_certificate_affinity_level import X509CertificateAffinityLevel
     from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
     from .x509_certificate_rule import X509CertificateRule
 
@@ -21,6 +22,8 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Backe
     rules: Optional[List[X509CertificateRule]] = None
     # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue.
     x509_certificate_authentication_default_mode: Optional[X509CertificateAuthenticationMode] = None
+    # The x509CertificateDefaultRequiredAffinityLevel property
+    x509_certificate_default_required_affinity_level: Optional[X509CertificateAffinityLevel] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> X509CertificateAuthenticationModeConfiguration:
@@ -38,9 +41,11 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Backe
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .x509_certificate_affinity_level import X509CertificateAffinityLevel
         from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
         from .x509_certificate_rule import X509CertificateRule
 
+        from .x509_certificate_affinity_level import X509CertificateAffinityLevel
         from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
         from .x509_certificate_rule import X509CertificateRule
 
@@ -48,6 +53,7 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Backe
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(X509CertificateRule)),
             "x509CertificateAuthenticationDefaultMode": lambda n : setattr(self, 'x509_certificate_authentication_default_mode', n.get_enum_value(X509CertificateAuthenticationMode)),
+            "x509CertificateDefaultRequiredAffinityLevel": lambda n : setattr(self, 'x509_certificate_default_required_affinity_level', n.get_enum_value(X509CertificateAffinityLevel)),
         }
         return fields
     
@@ -62,6 +68,7 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Backe
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("rules", self.rules)
         writer.write_enum_value("x509CertificateAuthenticationDefaultMode", self.x509_certificate_authentication_default_mode)
+        writer.write_enum_value("x509CertificateDefaultRequiredAffinityLevel", self.x509_certificate_default_required_affinity_level)
         writer.write_additional_data_value(self.additional_data)
     
 

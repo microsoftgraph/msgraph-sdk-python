@@ -13,25 +13,25 @@ class SelfSignedCertificate(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The customKeyIdentifier property
+    # Custom key identifier.
     custom_key_identifier: Optional[bytes] = None
-    # The displayName property
+    # The friendly name for the key.
     display_name: Optional[str] = None
-    # The endDateTime property
+    # The date and time at which the credential expires. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on January 1, 2014 is 2014-01-01T00:00:00Z.
     end_date_time: Optional[datetime.datetime] = None
-    # The key property
+    # The value for the key credential. Should be a Base-64 encoded value.
     key: Optional[bytes] = None
-    # The keyId property
+    # The unique identifier (GUID) for the key.
     key_id: Optional[UUID] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The startDateTime property
+    # The date and time at which the credential becomes valid. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on January 1, 2014 is 2014-01-01T00:00:00Z.
     start_date_time: Optional[datetime.datetime] = None
-    # The thumbprint property
+    # The thumbprint value for the key.
     thumbprint: Optional[str] = None
-    # The type property
+    # The type of key credential. AsymmetricX509Cert.
     type: Optional[str] = None
-    # The usage property
+    # A string that describes the purpose for which the key can be used. The possible value is Verify.
     usage: Optional[str] = None
     
     @staticmethod

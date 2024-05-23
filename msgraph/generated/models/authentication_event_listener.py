@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class AuthenticationEventListener(Entity):
-    # The authenticationEventsFlowId property
+    # Indicates the authenticationEventListener is associated with an authenticationEventsFlow. Read-only.
     authentication_events_flow_id: Optional[str] = None
     # The conditions on which this authenticationEventListener should trigger.
     conditions: Optional[AuthenticationConditions] = None

@@ -37,31 +37,31 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     feed_orientation: Optional[PrinterFeedOrientation] = None
     # Finishing processes to use when printing.
     finishings: Optional[List[PrintFinishing]] = None
-    # The fitPdfToPage property
+    # True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
     fit_pdf_to_page: Optional[bool] = None
     # The input bin (tray) to use when printing. See the printer's capabilities for a list of supported input bins.
     input_bin: Optional[str] = None
     # The margin settings to use when printing.
     margin: Optional[PrintMargin] = None
-    # The media size to use when printing. Supports standard size names for ISO and ANSI media sizes.
+    # The media size to use when printing. Supports standard size names for ISO and ANSI media sizes. Valid values listed in the printerCapabilities topic.
     media_size: Optional[str] = None
-    # The mediaType property
+    # The default media (such as paper) type to print the document on.
     media_type: Optional[str] = None
-    # The multipageLayout property
+    # The direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
     multipage_layout: Optional[PrintMultipageLayout] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The orientation property
+    # The orientation setting the printer should use when printing the job. Valid values are described in the following table.
     orientation: Optional[PrintOrientation] = None
-    # The outputBin property
+    # The output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
     output_bin: Optional[str] = None
-    # The pageRanges property
+    # The page ranges to print. Read-only.
     page_ranges: Optional[List[IntegerRange]] = None
-    # The pagesPerSheet property
+    # The number of document pages to print on each sheet.
     pages_per_sheet: Optional[int] = None
-    # The quality property
+    # The print quality to use when printing the job. Valid values are described in the table below. Read-only.
     quality: Optional[PrintQuality] = None
-    # The scaling property
+    # Specifies how the printer should scale the document data to fit the requested media. Valid values are described in the following table.
     scaling: Optional[PrintScaling] = None
     
     @staticmethod

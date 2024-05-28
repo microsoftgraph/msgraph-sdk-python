@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.identity_container import IdentityContainer
     from ..models.o_data_errors.o_data_error import ODataError
     from .api_connectors.api_connectors_request_builder import ApiConnectorsRequestBuilder
+    from .authentication_events_flows.authentication_events_flows_request_builder import AuthenticationEventsFlowsRequestBuilder
     from .authentication_event_listeners.authentication_event_listeners_request_builder import AuthenticationEventListenersRequestBuilder
     from .b2x_user_flows.b2x_user_flows_request_builder import B2xUserFlowsRequestBuilder
     from .conditional_access.conditional_access_request_builder import ConditionalAccessRequestBuilder
@@ -132,6 +133,15 @@ class IdentityRequestBuilder(BaseRequestBuilder):
         from .authentication_event_listeners.authentication_event_listeners_request_builder import AuthenticationEventListenersRequestBuilder
 
         return AuthenticationEventListenersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def authentication_events_flows(self) -> AuthenticationEventsFlowsRequestBuilder:
+        """
+        Provides operations to manage the authenticationEventsFlows property of the microsoft.graph.identityContainer entity.
+        """
+        from .authentication_events_flows.authentication_events_flows_request_builder import AuthenticationEventsFlowsRequestBuilder
+
+        return AuthenticationEventsFlowsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def b2x_user_flows(self) -> B2xUserFlowsRequestBuilder:

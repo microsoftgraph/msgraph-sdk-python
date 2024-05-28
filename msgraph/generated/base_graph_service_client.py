@@ -81,6 +81,7 @@ if TYPE_CHECKING:
     from .shares.shares_request_builder import SharesRequestBuilder
     from .sites.sites_request_builder import SitesRequestBuilder
     from .solutions.solutions_request_builder import SolutionsRequestBuilder
+    from .storage.storage_request_builder import StorageRequestBuilder
     from .subscribed_skus.subscribed_skus_request_builder import SubscribedSkusRequestBuilder
     from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
     from .teams.teams_request_builder import TeamsRequestBuilder
@@ -726,6 +727,15 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         from .solutions.solutions_request_builder import SolutionsRequestBuilder
 
         return SolutionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def storage(self) -> StorageRequestBuilder:
+        """
+        Provides operations to manage the storage singleton.
+        """
+        from .storage.storage_request_builder import StorageRequestBuilder
+
+        return StorageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def subscribed_skus(self) -> SubscribedSkusRequestBuilder:

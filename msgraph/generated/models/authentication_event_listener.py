@@ -6,7 +6,11 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authentication_conditions import AuthenticationConditions
     from .entity import Entity
+    from .on_attribute_collection_listener import OnAttributeCollectionListener
+    from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+    from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
     from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
+    from .on_user_create_start_listener import OnUserCreateStartListener
 
 from .entity import Entity
 
@@ -32,10 +36,26 @@ class AuthenticationEventListener(Entity):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionListener".casefold():
+            from .on_attribute_collection_listener import OnAttributeCollectionListener
+
+            return OnAttributeCollectionListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAuthenticationMethodLoadStartListener".casefold():
+            from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+
+            return OnAuthenticationMethodLoadStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartListener".casefold():
+            from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
+
+            return OnInteractiveAuthFlowStartListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartListener".casefold():
             from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
 
             return OnTokenIssuanceStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onUserCreateStartListener".casefold():
+            from .on_user_create_start_listener import OnUserCreateStartListener
+
+            return OnUserCreateStartListener()
         return AuthenticationEventListener()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,11 +65,19 @@ class AuthenticationEventListener(Entity):
         """
         from .authentication_conditions import AuthenticationConditions
         from .entity import Entity
+        from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
+        from .on_user_create_start_listener import OnUserCreateStartListener
 
         from .authentication_conditions import AuthenticationConditions
         from .entity import Entity
+        from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
+        from .on_user_create_start_listener import OnUserCreateStartListener
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authenticationEventsFlowId": lambda n : setattr(self, 'authentication_events_flow_id', n.get_str_value()),

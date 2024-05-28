@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .authentication_events_flow import AuthenticationEventsFlow
     from .authentication_event_listener import AuthenticationEventListener
     from .b2x_identity_user_flow import B2xIdentityUserFlow
     from .conditional_access_root import ConditionalAccessRoot
@@ -21,6 +22,8 @@ class IdentityContainer(Entity):
     api_connectors: Optional[List[IdentityApiConnector]] = None
     # Represents listeners for custom authentication extension events in Azure AD for workforce and customers.
     authentication_event_listeners: Optional[List[AuthenticationEventListener]] = None
+    # Represents the entry point for self-service sign-up and sign-in user flows in both Microsoft Entra workforce and external tenants.
+    authentication_events_flows: Optional[List[AuthenticationEventsFlow]] = None
     # Represents entry point for B2X/self-service sign-up identity userflows.
     b2x_user_flows: Optional[List[B2xIdentityUserFlow]] = None
     # the entry point for the Conditional Access (CA) object model.
@@ -50,6 +53,7 @@ class IdentityContainer(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .authentication_events_flow import AuthenticationEventsFlow
         from .authentication_event_listener import AuthenticationEventListener
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .conditional_access_root import ConditionalAccessRoot
@@ -59,6 +63,7 @@ class IdentityContainer(Entity):
         from .identity_provider_base import IdentityProviderBase
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
+        from .authentication_events_flow import AuthenticationEventsFlow
         from .authentication_event_listener import AuthenticationEventListener
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .conditional_access_root import ConditionalAccessRoot
@@ -71,6 +76,7 @@ class IdentityContainer(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "apiConnectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(IdentityApiConnector)),
             "authenticationEventListeners": lambda n : setattr(self, 'authentication_event_listeners', n.get_collection_of_object_values(AuthenticationEventListener)),
+            "authenticationEventsFlows": lambda n : setattr(self, 'authentication_events_flows', n.get_collection_of_object_values(AuthenticationEventsFlow)),
             "b2xUserFlows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(B2xIdentityUserFlow)),
             "conditionalAccess": lambda n : setattr(self, 'conditional_access', n.get_object_value(ConditionalAccessRoot)),
             "customAuthenticationExtensions": lambda n : setattr(self, 'custom_authentication_extensions', n.get_collection_of_object_values(CustomAuthenticationExtension)),
@@ -92,6 +98,7 @@ class IdentityContainer(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("apiConnectors", self.api_connectors)
         writer.write_collection_of_object_values("authenticationEventListeners", self.authentication_event_listeners)
+        writer.write_collection_of_object_values("authenticationEventsFlows", self.authentication_events_flows)
         writer.write_collection_of_object_values("b2xUserFlows", self.b2x_user_flows)
         writer.write_object_value("conditionalAccess", self.conditional_access)
         writer.write_collection_of_object_values("customAuthenticationExtensions", self.custom_authentication_extensions)

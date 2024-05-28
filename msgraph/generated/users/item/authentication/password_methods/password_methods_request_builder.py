@@ -48,7 +48,7 @@ class PasswordMethodsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PasswordMethodsRequestBuilderGetQueryParameters]] = None) -> Optional[PasswordAuthenticationMethodCollectionResponse]:
         """
-        Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
+        Represents the password registered to a user for authentication. For security, the password itself is never returned in the object, but action can be taken to reset a password.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PasswordAuthenticationMethodCollectionResponse]
         """
@@ -91,7 +91,7 @@ class PasswordMethodsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PasswordMethodsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
+        Represents the password registered to a user for authentication. For security, the password itself is never returned in the object, but action can be taken to reset a password.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +137,7 @@ class PasswordMethodsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PasswordMethodsRequestBuilderGetQueryParameters():
         """
-        Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
+        Represents the password registered to a user for authentication. For security, the password itself is never returned in the object, but action can be taken to reset a password.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

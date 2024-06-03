@@ -16,7 +16,7 @@ configuration:
       - isIssue
       - isOpen
       - hasLabel:
-          label: 'needs author feedback'
+          label: 'status:waiting-for-author-feedback'
       - hasLabel:
           label: 'Status: No Recent Activity'
       - noActivitySince:
@@ -31,7 +31,7 @@ configuration:
       - isIssue
       - isOpen
       - hasLabel:
-          label: 'needs author feedback'
+          label: 'status:waiting-for-author-feedback'
       - noActivitySince:
           days: 4
       - isNotLabeledWith:
@@ -64,13 +64,13 @@ configuration:
       - isActivitySender:
           issueAuthor: True
       - hasLabel:
-          label: 'needs author feedback'
+          label: 'status:waiting-for-author-feedback'
       - isOpen
       then:
       - addLabel:
           label: 'Needs: Attention :wave:'
       - removeLabel:
-          label: 'needs author feedback'
+          label: 'status:waiting-for-author-feedback'
       description: 
     - if:
       - payloadType: Issues

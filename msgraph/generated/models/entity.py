@@ -126,6 +126,9 @@ if TYPE_CHECKING:
     from .call import Call
     from .call_recording import CallRecording
     from .call_records.call_record import CallRecord
+    from .call_records.organizer import Organizer
+    from .call_records.participant import Participant
+    from .call_records.participant_base import ParticipantBase
     from .call_records.segment import Segment
     from .call_records.session import Session
     from .call_transcript import CallTranscript
@@ -841,6 +844,8 @@ if TYPE_CHECKING:
     from .windows81_compliance_policy import Windows81CompliancePolicy
     from .windows81_general_configuration import Windows81GeneralConfiguration
     from .windows_app_x import WindowsAppX
+    from .windows_autopilot_deployment_profile import WindowsAutopilotDeploymentProfile
+    from .windows_autopilot_deployment_profile_assignment import WindowsAutopilotDeploymentProfileAssignment
     from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
     from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
     from .windows_device_malware_state import WindowsDeviceMalwareState
@@ -1422,6 +1427,19 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .call_records.call_record import CallRecord
 
             return CallRecord()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.organizer".casefold():
+            from .call_records.organizer import Organizer
+
+            return Organizer()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.participant".casefold():
+            from .call_records.participant import Participant
+            from .participant import Participant
+
+            return Participant()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.participantBase".casefold():
+            from .call_records.participant_base import ParticipantBase
+
+            return ParticipantBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.segment".casefold():
             from .call_records.segment import Segment
 
@@ -2858,6 +2876,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
 
             return OutlookUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.participant".casefold():
+            from .call_records.participant import Participant
             from .participant import Participant
 
             return Participant()
@@ -4289,6 +4308,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .windows_app_x import WindowsAppX
 
             return WindowsAppX()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAutopilotDeploymentProfile".casefold():
+            from .windows_autopilot_deployment_profile import WindowsAutopilotDeploymentProfile
+
+            return WindowsAutopilotDeploymentProfile()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAutopilotDeploymentProfileAssignment".casefold():
+            from .windows_autopilot_deployment_profile_assignment import WindowsAutopilotDeploymentProfileAssignment
+
+            return WindowsAutopilotDeploymentProfileAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAutopilotDeviceIdentity".casefold():
             from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
 
@@ -4697,6 +4724,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .call import Call
         from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
+        from .call_records.organizer import Organizer
+        from .call_records.participant import Participant
+        from .call_records.participant_base import ParticipantBase
         from .call_records.segment import Segment
         from .call_records.session import Session
         from .call_transcript import CallTranscript
@@ -5412,6 +5442,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .windows81_compliance_policy import Windows81CompliancePolicy
         from .windows81_general_configuration import Windows81GeneralConfiguration
         from .windows_app_x import WindowsAppX
+        from .windows_autopilot_deployment_profile import WindowsAutopilotDeploymentProfile
+        from .windows_autopilot_deployment_profile_assignment import WindowsAutopilotDeploymentProfileAssignment
         from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
         from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
         from .windows_device_malware_state import WindowsDeviceMalwareState
@@ -5604,6 +5636,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .call import Call
         from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
+        from .call_records.organizer import Organizer
+        from .call_records.participant import Participant
+        from .call_records.participant_base import ParticipantBase
         from .call_records.segment import Segment
         from .call_records.session import Session
         from .call_transcript import CallTranscript
@@ -6319,6 +6354,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .windows81_compliance_policy import Windows81CompliancePolicy
         from .windows81_general_configuration import Windows81GeneralConfiguration
         from .windows_app_x import WindowsAppX
+        from .windows_autopilot_deployment_profile import WindowsAutopilotDeploymentProfile
+        from .windows_autopilot_deployment_profile_assignment import WindowsAutopilotDeploymentProfileAssignment
         from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
         from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
         from .windows_device_malware_state import WindowsDeviceMalwareState

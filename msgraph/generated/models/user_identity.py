@@ -12,7 +12,7 @@ from .identity import Identity
 class UserIdentity(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.userIdentity"
-    # Indicates the client IP address used by user performing the activity (audit log only).
+    # Indicates the client IP address associated with the user performing the activity (audit log only).
     ip_address: Optional[str] = None
     # The userPrincipalName attribute of the user.
     user_principal_name: Optional[str] = None

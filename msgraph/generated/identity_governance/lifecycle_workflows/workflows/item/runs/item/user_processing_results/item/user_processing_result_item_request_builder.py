@@ -33,9 +33,10 @@ class UserProcessingResultItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UserProcessingResultItemRequestBuilderGetQueryParameters]] = None) -> Optional[UserProcessingResult]:
         """
-        The associated individual user execution.
+        Get the user processing result of a user processing result of a run.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserProcessingResult]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-userprocessingresult-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -53,7 +54,7 @@ class UserProcessingResultItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UserProcessingResultItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The associated individual user execution.
+        Get the user processing result of a user processing result of a run.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -93,7 +94,7 @@ class UserProcessingResultItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserProcessingResultItemRequestBuilderGetQueryParameters():
         """
-        The associated individual user execution.
+        Get the user processing result of a user processing result of a run.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

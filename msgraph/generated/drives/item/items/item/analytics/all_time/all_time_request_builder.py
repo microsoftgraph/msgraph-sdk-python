@@ -31,9 +31,10 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AllTimeRequestBuilderGetQueryParameters]] = None) -> Optional[ItemActivityStat]:
         """
-        Get allTime from drives
+        Get itemAnalytics about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the getActivitiesByInterval API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ItemActivityStat]
+        Find more info here: https://learn.microsoft.com/graph/api/itemanalytics-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -51,7 +52,7 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AllTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get allTime from drives
+        Get itemAnalytics about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the getActivitiesByInterval API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +74,7 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllTimeRequestBuilderGetQueryParameters():
         """
-        Get allTime from drives
+        Get itemAnalytics about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the getActivitiesByInterval API.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

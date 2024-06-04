@@ -47,9 +47,10 @@ class TaskProcessingResultsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TaskProcessingResultsRequestBuilderGetQueryParameters]] = None) -> Optional[TaskProcessingResultCollectionResponse]:
         """
-        The associated individual task execution.
+        Get the task processing result from a userProcessingResult either directly or through a run.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TaskProcessingResultCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-userprocessingresult-list-taskprocessingresults?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +68,7 @@ class TaskProcessingResultsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TaskProcessingResultsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The associated individual task execution.
+        Get the task processing result from a userProcessingResult either directly or through a run.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +99,7 @@ class TaskProcessingResultsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TaskProcessingResultsRequestBuilderGetQueryParameters():
         """
-        The associated individual task execution.
+        Get the task processing result from a userProcessingResult either directly or through a run.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

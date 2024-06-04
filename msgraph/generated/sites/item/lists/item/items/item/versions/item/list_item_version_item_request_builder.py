@@ -51,9 +51,10 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ListItemVersionItemRequestBuilderGetQueryParameters]] = None) -> Optional[ListItemVersion]:
         """
-        The list of previous versions of the list item.
+        Retrieve the metadata for a specific version of a ListItem.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItemVersion]
+        Find more info here: https://learn.microsoft.com/graph/api/listitemversion-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -105,7 +106,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ListItemVersionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The list of previous versions of the list item.
+        Retrieve the metadata for a specific version of a ListItem.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +168,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemVersionItemRequestBuilderGetQueryParameters():
         """
-        The list of previous versions of the list item.
+        Retrieve the metadata for a specific version of a ListItem.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

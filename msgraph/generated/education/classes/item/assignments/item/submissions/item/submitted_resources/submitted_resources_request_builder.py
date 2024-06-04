@@ -48,9 +48,10 @@ class SubmittedResourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SubmittedResourcesRequestBuilderGetQueryParameters]] = None) -> Optional[EducationSubmissionResourceCollectionResponse]:
         """
-        Get submittedResources from education
+        List the educationSubmissionResource objects that were officially submitted for grading. Only teachers, students, and applications with application permissions can perform this operation. The student who owns the submission can't change the submitted list without resubmitting the assignment. This resource is a wrapper around the real resource and can contain a pointer back to the actual assignment resource if this resource was copied from the assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationSubmissionResourceCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/educationsubmission-list-submittedresources?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +92,7 @@ class SubmittedResourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SubmittedResourcesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get submittedResources from education
+        List the educationSubmissionResource objects that were officially submitted for grading. Only teachers, students, and applications with application permissions can perform this operation. The student who owns the submission can't change the submitted list without resubmitting the assignment. This resource is a wrapper around the real resource and can contain a pointer back to the actual assignment resource if this resource was copied from the assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +138,7 @@ class SubmittedResourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubmittedResourcesRequestBuilderGetQueryParameters():
         """
-        Get submittedResources from education
+        List the educationSubmissionResource objects that were officially submitted for grading. Only teachers, students, and applications with application permissions can perform this operation. The student who owns the submission can't change the submitted list without resubmitting the assignment. This resource is a wrapper around the real resource and can contain a pointer back to the actual assignment resource if this resource was copied from the assignment.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

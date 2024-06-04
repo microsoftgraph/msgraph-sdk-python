@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class SydPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,14 +11,6 @@ class SydPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The cost property
-    cost: Optional[Json] = None
-    # The life property
-    life: Optional[Json] = None
-    # The per property
-    per: Optional[Json] = None
-    # The salvage property
-    salvage: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SydPostRequestBody:
@@ -39,15 +28,7 @@ class SydPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "cost": lambda n : setattr(self, 'cost', n.get_object_value(Json)),
-            "life": lambda n : setattr(self, 'life', n.get_object_value(Json)),
-            "per": lambda n : setattr(self, 'per', n.get_object_value(Json)),
-            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(Json)),
         }
         return fields
     
@@ -59,10 +40,6 @@ class SydPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("cost", self.cost)
-        writer.write_object_value("life", self.life)
-        writer.write_object_value("per", self.per)
-        writer.write_object_value("salvage", self.salvage)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -31,9 +31,10 @@ class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property resources for education
+        Delete a specific educationAssignmentResource attached to an assignment. In general, only teachers in the class can remove a resource. However, teachers can't remove resources marked as 'distributeToStudents', after the assignment has been published to students.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignmentresource-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +50,10 @@ class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[EducationAssignmentResourceItemRequestBuilderGetQueryParameters]] = None) -> Optional[EducationAssignmentResource]:
         """
-        Learning objects that are associated with this assignment. Only teachers can modify this list. Nullable.
+        Get the properties of an education assignment resource associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignmentResource]
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignmentresource-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +94,7 @@ class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property resources for education
+        Delete a specific educationAssignmentResource attached to an assignment. In general, only teachers in the class can remove a resource. However, teachers can't remove resources marked as 'distributeToStudents', after the assignment has been published to students.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[EducationAssignmentResourceItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Learning objects that are associated with this assignment. Only teachers can modify this list. Nullable.
+        Get the properties of an education assignment resource associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +149,7 @@ class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationAssignmentResourceItemRequestBuilderGetQueryParameters():
         """
-        Learning objects that are associated with this assignment. Only teachers can modify this list. Nullable.
+        Get the properties of an education assignment resource associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

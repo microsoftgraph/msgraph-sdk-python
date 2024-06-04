@@ -31,7 +31,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/items{?%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/items{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_list_item_id(self,list_item_id: str) -> ListItemItemRequestBuilder:
         """
@@ -160,6 +160,8 @@ class ItemsRequestBuilder(BaseRequestBuilder):
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
+            if original_name == "count":
+                return "%24count"
             if original_name == "expand":
                 return "%24expand"
             if original_name == "filter":
@@ -176,6 +178,9 @@ class ItemsRequestBuilder(BaseRequestBuilder):
                 return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
         # Expand related entities
         expand: Optional[List[str]] = None
 

@@ -30,7 +30,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar/calendarView?endDateTime={endDateTime}&startDateTime={startDateTime}{&%24count,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar/calendarView?endDateTime={endDateTime}&startDateTime={startDateTime}{&%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_event_id(self,event_id: str) -> EventItemRequestBuilder:
         """
@@ -122,6 +122,8 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
                 return "%24count"
             if original_name == "end_date_time":
                 return "endDateTime"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -143,6 +145,9 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
 
         # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
         end_date_time: Optional[str] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
 
         # Filter items by property values
         filter: Optional[str] = None

@@ -26,7 +26,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/events/{event%2Did}/instances/{event%2Did1}/attachments/$count{?%24filter}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/events/{event%2Did}/instances/{event%2Did1}/attachments/$count{?%24filter,%24search}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CountRequestBuilderGetQueryParameters]] = None) -> Optional[int]:
         """
@@ -82,10 +82,15 @@ class CountRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "search":
+                return "%24search"
             return original_name
         
         # Filter items by property values
         filter: Optional[str] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
 
     
     @dataclass

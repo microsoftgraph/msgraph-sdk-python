@@ -9,7 +9,38 @@ permissions:
   contents: write
 
 jobs:
+  version:
+    name: Update version
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install poetry
+        run: |
+          pip install --upgrade poetry
+      - name: Update version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          poetry version $VERSION
+      - name: Commit changes
+        run: |
+          git config --local user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git config --local user.name "${{ secrets.GIT_USER_NAME }}"
+          git commit -am "Update version"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
   build:
+    needs: [version]
     uses: ./.github/workflows/build.yml
 
   publish:
@@ -20,11 +51,11 @@ jobs:
     needs: [build]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v2
         with:
-          python-version: 3.12
+          python-version: 3.9
       - name: Install flit
         run: |
           pip install flit
@@ -33,8 +64,7 @@ jobs:
         env:
           FLIT_INDEX_URL: https://upload.pypi.org/legacy/
           FLIT_USERNAME: __token__
-          FLIT_PASSWORD: ${{ secrets. PYPI_API_TOKEN }}
-  
+          FLIT_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 
   release:
     name: Create release
@@ -42,7 +72,7 @@ jobs:
     needs: [publish]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Extract release notes
         id: extract-release-notes
         uses: ffurrer2/extract-release-notes@v2

@@ -16,7 +16,7 @@ from .entity import Entity
 class IdentityUserFlowAttribute(Entity):
     # The dataType property
     data_type: Optional[IdentityUserFlowAttributeDataType] = None
-    # The description of the user flow attribute that's shown to the user at the time of sign-up.
+    # The description of the user flow attribute that's shown to the user at the time of sign up.
     description: Optional[str] = None
     # The display name of the user flow attribute.  Supports $filter (eq, ne).
     display_name: Optional[str] = None

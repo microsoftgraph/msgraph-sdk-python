@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .root import Root
+    from .site_archival_details import SiteArchivalDetails
 
 @dataclass
 class SiteCollection(AdditionalDataHolder, BackedModel, Parsable):
@@ -14,6 +15,8 @@ class SiteCollection(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+    # The archivalDetails property
+    archival_details: Optional[SiteArchivalDetails] = None
     # The geographic region code for where this site collection resides. Only present for multi-geo tenants. Read-only.
     data_location_code: Optional[str] = None
     # The hostname for the site collection. Read-only.
@@ -40,10 +43,13 @@ class SiteCollection(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .root import Root
+        from .site_archival_details import SiteArchivalDetails
 
         from .root import Root
+        from .site_archival_details import SiteArchivalDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "archivalDetails": lambda n : setattr(self, 'archival_details', n.get_object_value(SiteArchivalDetails)),
             "dataLocationCode": lambda n : setattr(self, 'data_location_code', n.get_str_value()),
             "hostname": lambda n : setattr(self, 'hostname', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -59,6 +65,7 @@ class SiteCollection(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
+        writer.write_object_value("archivalDetails", self.archival_details)
         writer.write_str_value("dataLocationCode", self.data_location_code)
         writer.write_str_value("hostname", self.hostname)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -32,11 +32,11 @@ class Authentication(Entity):
     odata_type: Optional[str] = None
     # Represents the status of a long-running operation.
     operations: Optional[List[LongRunningOperation]] = None
-    # Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
+    # Represents the password registered to a user for authentication. For security, the password itself is never returned in the object, but action can be taken to reset a password.
     password_methods: Optional[List[PasswordAuthenticationMethod]] = None
     # The phone numbers registered to a user for authentication.
     phone_methods: Optional[List[PhoneAuthenticationMethod]] = None
-    # The software OATH TOTP applications registered to a user for authentication.
+    # The software OATH time-based one-time password (TOTP) applications registered to a user for authentication.
     software_oath_methods: Optional[List[SoftwareOathAuthenticationMethod]] = None
     # Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
     temporary_access_pass_methods: Optional[List[TemporaryAccessPassAuthenticationMethod]] = None

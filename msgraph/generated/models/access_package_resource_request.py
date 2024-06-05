@@ -25,7 +25,7 @@ class AccessPackageResourceRequest(Entity):
     request_type: Optional[AccessPackageRequestType] = None
     # The resource property
     resource: Optional[AccessPackageResource] = None
-    # The outcome of whether the service was able to add the resource to the catalog.  The value is delivered if the resource was added or removed, and deliveryFailed if it could not be added or removed. Read-only.
+    # The outcome of whether the service was able to add the resource to the catalog. The value is delivered if the resource was added or removed, and deliveryFailed if it couldn't be added or removed. Read-only.
     state: Optional[AccessPackageRequestState] = None
     
     @staticmethod

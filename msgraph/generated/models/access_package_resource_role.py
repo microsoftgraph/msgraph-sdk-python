@@ -17,9 +17,9 @@ class AccessPackageResourceRole(Entity):
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The unique identifier of the resource role in the origin system. For a SharePoint Online site, the originId will be the sequence number of the role in the site.
+    # The unique identifier of the resource role in the origin system. For a SharePoint Online site, the originId is the sequence number of the role in the site.
     origin_id: Optional[str] = None
-    # The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup.
+    # The type of the resource in the origin system, such as SharePointOnline, AadApplication, or AadGroup.
     origin_system: Optional[str] = None
     # The resource property
     resource: Optional[AccessPackageResource] = None

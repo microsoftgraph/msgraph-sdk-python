@@ -85,6 +85,7 @@ if TYPE_CHECKING:
     from .authentication import Authentication
     from .authentication_combination_configuration import AuthenticationCombinationConfiguration
     from .authentication_context_class_reference import AuthenticationContextClassReference
+    from .authentication_events_flow import AuthenticationEventsFlow
     from .authentication_event_listener import AuthenticationEventListener
     from .authentication_flows_policy import AuthenticationFlowsPolicy
     from .authentication_method import AuthenticationMethod
@@ -295,6 +296,7 @@ if TYPE_CHECKING:
     from .external_connectors.identity import Identity
     from .external_connectors.schema import Schema
     from .external_domain_name import ExternalDomainName
+    from .external_users_self_service_sign_up_events_flow import ExternalUsersSelfServiceSignUpEventsFlow
     from .e_book_install_summary import EBookInstallSummary
     from .feature_rollout_policy import FeatureRolloutPolicy
     from .federated_identity_credential import FederatedIdentityCredential
@@ -304,6 +306,8 @@ if TYPE_CHECKING:
     from .field_value_set import FieldValueSet
     from .file_assessment_request import FileAssessmentRequest
     from .file_attachment import FileAttachment
+    from .file_storage import FileStorage
+    from .file_storage_container import FileStorageContainer
     from .filter_operator_schema import FilterOperatorSchema
     from .governance_insight import GovernanceInsight
     from .group import Group
@@ -459,10 +463,14 @@ if TYPE_CHECKING:
     from .onenote_section import OnenoteSection
     from .online_meeting import OnlineMeeting
     from .online_meeting_base import OnlineMeetingBase
+    from .on_attribute_collection_listener import OnAttributeCollectionListener
+    from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+    from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
     from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
     from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
     from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
+    from .on_user_create_start_listener import OnUserCreateStartListener
     from .open_shift import OpenShift
     from .open_shift_change_request import OpenShiftChangeRequest
     from .open_type_extension import OpenTypeExtension
@@ -1254,6 +1262,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .authentication_event_listener import AuthenticationEventListener
 
             return AuthenticationEventListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationEventsFlow".casefold():
+            from .authentication_events_flow import AuthenticationEventsFlow
+
+            return AuthenticationEventsFlow()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationFlowsPolicy".casefold():
             from .authentication_flows_policy import AuthenticationFlowsPolicy
 
@@ -2094,6 +2106,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .external_domain_name import ExternalDomainName
 
             return ExternalDomainName()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalUsersSelfServiceSignUpEventsFlow".casefold():
+            from .external_users_self_service_sign_up_events_flow import ExternalUsersSelfServiceSignUpEventsFlow
+
+            return ExternalUsersSelfServiceSignUpEventsFlow()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.featureRolloutPolicy".casefold():
             from .feature_rollout_policy import FeatureRolloutPolicy
 
@@ -2126,6 +2142,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .file_attachment import FileAttachment
 
             return FileAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileStorage".casefold():
+            from .file_storage import FileStorage
+
+            return FileStorage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileStorageContainer".casefold():
+            from .file_storage_container import FileStorageContainer
+
+            return FileStorageContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.filterOperatorSchema".casefold():
             from .filter_operator_schema import FilterOperatorSchema
 
@@ -2712,6 +2736,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .office_graph_insights import OfficeGraphInsights
 
             return OfficeGraphInsights()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionListener".casefold():
+            from .on_attribute_collection_listener import OnAttributeCollectionListener
+
+            return OnAttributeCollectionListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAuthenticationMethodLoadStartListener".casefold():
+            from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+
+            return OnAuthenticationMethodLoadStartListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenote".casefold():
             from .onenote import Onenote
 
@@ -2744,6 +2776,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .onenote_section import OnenoteSection
 
             return OnenoteSection()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartListener".casefold():
+            from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
+
+            return OnInteractiveAuthFlowStartListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onlineMeeting".casefold():
             from .online_meeting import OnlineMeeting
 
@@ -2768,6 +2804,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
 
             return OnTokenIssuanceStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onUserCreateStartListener".casefold():
+            from .on_user_create_start_listener import OnUserCreateStartListener
+
+            return OnUserCreateStartListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShift".casefold():
             from .open_shift import OpenShift
 
@@ -4616,6 +4656,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authentication import Authentication
         from .authentication_combination_configuration import AuthenticationCombinationConfiguration
         from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_events_flow import AuthenticationEventsFlow
         from .authentication_event_listener import AuthenticationEventListener
         from .authentication_flows_policy import AuthenticationFlowsPolicy
         from .authentication_method import AuthenticationMethod
@@ -4826,6 +4867,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .external_connectors.identity import Identity
         from .external_connectors.schema import Schema
         from .external_domain_name import ExternalDomainName
+        from .external_users_self_service_sign_up_events_flow import ExternalUsersSelfServiceSignUpEventsFlow
         from .e_book_install_summary import EBookInstallSummary
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .federated_identity_credential import FederatedIdentityCredential
@@ -4835,6 +4877,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .field_value_set import FieldValueSet
         from .file_assessment_request import FileAssessmentRequest
         from .file_attachment import FileAttachment
+        from .file_storage import FileStorage
+        from .file_storage_container import FileStorageContainer
         from .filter_operator_schema import FilterOperatorSchema
         from .governance_insight import GovernanceInsight
         from .group import Group
@@ -4990,10 +5034,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_section import OnenoteSection
         from .online_meeting import OnlineMeeting
         from .online_meeting_base import OnlineMeetingBase
+        from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
+        from .on_user_create_start_listener import OnUserCreateStartListener
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
         from .open_type_extension import OpenTypeExtension
@@ -5515,6 +5563,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authentication import Authentication
         from .authentication_combination_configuration import AuthenticationCombinationConfiguration
         from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_events_flow import AuthenticationEventsFlow
         from .authentication_event_listener import AuthenticationEventListener
         from .authentication_flows_policy import AuthenticationFlowsPolicy
         from .authentication_method import AuthenticationMethod
@@ -5725,6 +5774,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .external_connectors.identity import Identity
         from .external_connectors.schema import Schema
         from .external_domain_name import ExternalDomainName
+        from .external_users_self_service_sign_up_events_flow import ExternalUsersSelfServiceSignUpEventsFlow
         from .e_book_install_summary import EBookInstallSummary
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .federated_identity_credential import FederatedIdentityCredential
@@ -5734,6 +5784,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .field_value_set import FieldValueSet
         from .file_assessment_request import FileAssessmentRequest
         from .file_attachment import FileAttachment
+        from .file_storage import FileStorage
+        from .file_storage_container import FileStorageContainer
         from .filter_operator_schema import FilterOperatorSchema
         from .governance_insight import GovernanceInsight
         from .group import Group
@@ -5889,10 +5941,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_section import OnenoteSection
         from .online_meeting import OnlineMeeting
         from .online_meeting_base import OnlineMeetingBase
+        from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
+        from .on_user_create_start_listener import OnUserCreateStartListener
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
         from .open_type_extension import OpenTypeExtension

@@ -5,6 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
     from .result_template_dictionary import ResultTemplateDictionary
 
 @dataclass
@@ -30,6 +31,10 @@ class Dictionary(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileStorageContainerCustomPropertyDictionary".casefold():
+            from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+
+            return FileStorageContainerCustomPropertyDictionary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resultTemplateDictionary".casefold():
             from .result_template_dictionary import ResultTemplateDictionary
 
@@ -41,8 +46,10 @@ class Dictionary(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
         from .result_template_dictionary import ResultTemplateDictionary
 
+        from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
         from .result_template_dictionary import ResultTemplateDictionary
 
         fields: Dict[str, Callable[[Any], None]] = {

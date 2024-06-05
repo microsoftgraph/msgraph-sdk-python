@@ -31,7 +31,7 @@ class AccessPackageAssignment(Entity):
     schedule: Optional[EntitlementManagementSchedule] = None
     # The state of the access package assignment. The possible values are: delivering, partiallyDelivered, delivered, expired, deliveryFailed, unknownFutureValue. Read-only. Supports $filter (eq).
     state: Optional[AccessPackageAssignmentState] = None
-    # More information about the assignment lifecycle.  Possible values include Delivering, Delivered, NearExpiry1DayNotificationTriggered, or ExpiredNotificationTriggered.  Read-only.
+    # More information about the assignment lifecycle. Possible values include Delivering, Delivered, NearExpiry1DayNotificationTriggered, or ExpiredNotificationTriggered. Read-only.
     status: Optional[str] = None
     # The subject of the access package assignment. Read-only. Nullable. Supports $expand. Supports $filter (eq) on objectId.
     target: Optional[AccessPackageSubject] = None

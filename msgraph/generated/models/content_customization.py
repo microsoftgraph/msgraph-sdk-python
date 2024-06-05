@@ -20,9 +20,9 @@ class ContentCustomization(AdditionalDataHolder, BackedModel, Parsable):
     attribute_collection_relative_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The registrationCampaign property
+    # Represents content options to customize during MFA proofup interruptions.
     registration_campaign: Optional[List[KeyValue]] = None
-    # The registrationCampaignRelativeUrl property
+    # The relative URL of the content options to customize during MFA proofup interruptions.
     registration_campaign_relative_url: Optional[str] = None
     
     @staticmethod

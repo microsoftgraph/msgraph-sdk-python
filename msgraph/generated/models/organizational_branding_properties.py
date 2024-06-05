@@ -17,7 +17,7 @@ from .entity import Entity
 class OrganizationalBrandingProperties(Entity):
     # Color that appears in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
     background_color: Optional[str] = None
-    # Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+    # Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image reduces bandwidth requirements and make the page load faster.
     background_image: Optional[bytes] = None
     # A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
     background_image_relative_url: Optional[str] = None
@@ -27,7 +27,7 @@ class OrganizationalBrandingProperties(Entity):
     banner_logo_relative_url: Optional[str] = None
     # A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
     cdn_list: Optional[List[str]] = None
-    # The contentCustomization property
+    # Represents the content options to be customized throughout the authentication flow for a tenant. NOTE: Supported by Microsoft Entra External ID in external tenants only.
     content_customization: Optional[ContentCustomization] = None
     # A custom URL for resetting account credentials. This URL must be in ASCII format or non-ASCII characters must be URL encoded, and not exceed 128 characters.
     custom_account_reset_credentials_url: Optional[str] = None

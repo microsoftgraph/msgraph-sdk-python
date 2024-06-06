@@ -9,7 +9,8 @@ on:
   workflow_call:
 
 jobs:
-  build:
+   validate:
+    name: Validate code accuracy
     runs-on: ubuntu-latest
     timeout-minutes: 40
     strategy:

@@ -5,7 +5,6 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .json import Json
     from .workbook_icon import WorkbookIcon
 
 @dataclass
@@ -31,8 +30,6 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # An operator in a cell; for example, =, >, <, <=, or <>.
     operator: Optional[str] = None
-    # The values that appear in the cell.
-    values: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookFilterCriteria:
@@ -50,10 +47,8 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .json import Json
         from .workbook_icon import WorkbookIcon
 
-        from .json import Json
         from .workbook_icon import WorkbookIcon
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -65,7 +60,6 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
             "icon": lambda n : setattr(self, 'icon', n.get_object_value(WorkbookIcon)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
-            "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
     
@@ -85,7 +79,6 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("icon", self.icon)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operator", self.operator)
-        writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
     
 

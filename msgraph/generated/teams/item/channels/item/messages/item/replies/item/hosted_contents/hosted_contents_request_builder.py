@@ -48,9 +48,10 @@ class HostedContentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[HostedContentsRequestBuilderGetQueryParameters]] = None) -> Optional[ChatMessageHostedContentCollectionResponse]:
         """
-        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
+        Retrieve the list of chatMessageHostedContent objects from a message. This API only lists the hosted content objects. To get the content bytes, see get chatmessage hosted content.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessageHostedContentCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-list-hostedcontents?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +92,7 @@ class HostedContentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[HostedContentsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
+        Retrieve the list of chatMessageHostedContent objects from a message. This API only lists the hosted content objects. To get the content bytes, see get chatmessage hosted content.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +138,7 @@ class HostedContentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostedContentsRequestBuilderGetQueryParameters():
         """
-        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
+        Retrieve the list of chatMessageHostedContent objects from a message. This API only lists the hosted content objects. To get the content bytes, see get chatmessage hosted content.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -5,7 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .json import Json
 
 from .entity import Entity
 
@@ -15,8 +14,6 @@ class WorkbookFunctionResult(Entity):
     error: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The value property
-    value: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookFunctionResult:
@@ -35,14 +32,11 @@ class WorkbookFunctionResult(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .json import Json
 
         from .entity import Entity
-        from .json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_str_value()),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +52,5 @@ class WorkbookFunctionResult(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("error", self.error)
-        writer.write_object_value("value", self.value)
     
 

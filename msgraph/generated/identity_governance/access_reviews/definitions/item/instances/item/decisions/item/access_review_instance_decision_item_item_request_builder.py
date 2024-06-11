@@ -50,9 +50,10 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AccessReviewInstanceDecisionItemItemRequestBuilderGetQueryParameters]] = None) -> Optional[AccessReviewInstanceDecisionItem]:
         """
-        Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+        Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewInstanceDecisionItem]
+        Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstancedecisionitem-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +105,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AccessReviewInstanceDecisionItemItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+        Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -157,7 +158,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessReviewInstanceDecisionItemItemRequestBuilderGetQueryParameters():
         """
-        Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+        Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

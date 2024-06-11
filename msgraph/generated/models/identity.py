@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+    from .call_records.user_identity import UserIdentity
     from .communications_application_identity import CommunicationsApplicationIdentity
     from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
     from .communications_encrypted_identity import CommunicationsEncryptedIdentity
@@ -32,9 +33,9 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The display name of the identity. The display name might not always be available or up to date. For example, if a user changes their display name, the API might show the new value in a future response, but the items associated with the user won't show up as having changed when using delta.
+    # The display name of the identity. The display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as having changed when using delta.
     display_name: Optional[str] = None
-    # Unique identifier for the identity.
+    # Unique identifier for the identity. When the unique identifier is unavailable, the displayName property is provided for the identity, but the id property isn't included in the response.
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -56,6 +57,11 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
             from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
 
             return AzureCommunicationServicesUserIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.userIdentity".casefold():
+            from .call_records.user_identity import UserIdentity
+            from .user_identity import UserIdentity
+
+            return UserIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsApplicationIdentity".casefold():
             from .communications_application_identity import CommunicationsApplicationIdentity
 
@@ -125,6 +131,7 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
 
             return TeamworkUserIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userIdentity".casefold():
+            from .call_records.user_identity import UserIdentity
             from .user_identity import UserIdentity
 
             return UserIdentity()
@@ -136,6 +143,7 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+        from .call_records.user_identity import UserIdentity
         from .communications_application_identity import CommunicationsApplicationIdentity
         from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
         from .communications_encrypted_identity import CommunicationsEncryptedIdentity
@@ -156,6 +164,7 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_identity import UserIdentity
 
         from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+        from .call_records.user_identity import UserIdentity
         from .communications_application_identity import CommunicationsApplicationIdentity
         from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
         from .communications_encrypted_identity import CommunicationsEncryptedIdentity

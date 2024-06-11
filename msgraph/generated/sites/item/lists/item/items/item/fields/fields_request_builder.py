@@ -69,10 +69,11 @@ class FieldsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: FieldValueSet, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[FieldValueSet]:
         """
-        Update the navigation property fields in sites
+        Update the properties on a listItem.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FieldValueSet]
+        Find more info here: https://learn.microsoft.com/graph/api/listitem-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -114,7 +115,7 @@ class FieldsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: FieldValueSet, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property fields in sites
+        Update the properties on a listItem.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

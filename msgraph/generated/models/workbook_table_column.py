@@ -5,7 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .json import Json
     from .workbook_filter import WorkbookFilter
 
 from .entity import Entity
@@ -20,8 +19,6 @@ class WorkbookTableColumn(Entity):
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
-    values: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookTableColumn:
@@ -40,18 +37,15 @@ class WorkbookTableColumn(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .json import Json
         from .workbook_filter import WorkbookFilter
 
         from .entity import Entity
-        from .json import Json
         from .workbook_filter import WorkbookFilter
 
         fields: Dict[str, Callable[[Any], None]] = {
             "filter": lambda n : setattr(self, 'filter', n.get_object_value(WorkbookFilter)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,6 +63,5 @@ class WorkbookTableColumn(Entity):
         writer.write_object_value("filter", self.filter)
         writer.write_int_value("index", self.index)
         writer.write_str_value("name", self.name)
-        writer.write_object_value("values", self.values)
     
 

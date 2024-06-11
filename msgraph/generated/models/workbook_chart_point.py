@@ -5,7 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .json import Json
     from .workbook_chart_point_format import WorkbookChartPointFormat
 
 from .entity import Entity
@@ -16,8 +15,6 @@ class WorkbookChartPoint(Entity):
     format: Optional[WorkbookChartPointFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Returns the value of a chart point. Read-only.
-    value: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartPoint:
@@ -36,16 +33,13 @@ class WorkbookChartPoint(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .json import Json
         from .workbook_chart_point_format import WorkbookChartPointFormat
 
         from .entity import Entity
-        from .json import Json
         from .workbook_chart_point_format import WorkbookChartPointFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
             "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartPointFormat)),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,6 +55,5 @@ class WorkbookChartPoint(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("format", self.format)
-        writer.write_object_value("value", self.value)
     
 

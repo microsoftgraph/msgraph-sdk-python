@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class F_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,12 +11,6 @@ class F_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The degFreedom1 property
-    deg_freedom1: Optional[Json] = None
-    # The degFreedom2 property
-    deg_freedom2: Optional[Json] = None
-    # The probability property
-    probability: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> F_InvPostRequestBody:
@@ -37,14 +28,7 @@ class F_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "degFreedom1": lambda n : setattr(self, 'deg_freedom1', n.get_object_value(Json)),
-            "degFreedom2": lambda n : setattr(self, 'deg_freedom2', n.get_object_value(Json)),
-            "probability": lambda n : setattr(self, 'probability', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +40,6 @@ class F_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("degFreedom1", self.deg_freedom1)
-        writer.write_object_value("degFreedom2", self.deg_freedom2)
-        writer.write_object_value("probability", self.probability)
         writer.write_additional_data_value(self.additional_data)
     
 

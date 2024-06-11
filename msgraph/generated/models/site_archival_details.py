@@ -14,7 +14,7 @@ class SiteArchivalDetails(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The archiveStatus property
+    # Represents the current archive status of the site collection. Returned only on $select. The possible values are: recentlyArchived, fullyArchived, reactivating, unknownFutureValue.
     archive_status: Optional[SiteArchiveStatus] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -48,9 +48,10 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AttendanceReportsRequestBuilderGetQueryParameters]] = None) -> Optional[MeetingAttendanceReportCollectionResponse]:
         """
-        The attendance reports of an online meeting. Read-only.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting or a virtualEvent. Each time an online meeting or a virtual event ends, an attendance report is generated for that session.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MeetingAttendanceReportCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/meetingattendancereport-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +92,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AttendanceReportsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The attendance reports of an online meeting. Read-only.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting or a virtualEvent. Each time an online meeting or a virtual event ends, an attendance report is generated for that session.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +138,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttendanceReportsRequestBuilderGetQueryParameters():
         """
-        The attendance reports of an online meeting. Read-only.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting or a virtualEvent. Each time an online meeting or a virtual event ends, an attendance report is generated for that session.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

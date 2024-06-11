@@ -7,7 +7,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .activity_history_item import ActivityHistoryItem
     from .entity import Entity
-    from .json import Json
     from .status import Status
     from .visual_info import VisualInfo
 
@@ -23,8 +22,6 @@ class UserActivity(Entity):
     app_activity_id: Optional[str] = None
     # Optional. Short text description of the app used to generate the activity for use in cases when the app is not installed on the user’s local device.
     app_display_name: Optional[str] = None
-    # Optional. A custom piece of data - JSON-LD extensible description of content according to schema.org syntax.
-    content_info: Optional[Json] = None
     # Optional. Used in the event the content can be rendered outside of a native or web-based app experience (for example, a pointer to an item in an RSS feed).
     content_url: Optional[str] = None
     # Set by the server. DateTime in UTC when the object was created on the server.
@@ -64,13 +61,11 @@ class UserActivity(Entity):
         """
         from .activity_history_item import ActivityHistoryItem
         from .entity import Entity
-        from .json import Json
         from .status import Status
         from .visual_info import VisualInfo
 
         from .activity_history_item import ActivityHistoryItem
         from .entity import Entity
-        from .json import Json
         from .status import Status
         from .visual_info import VisualInfo
 
@@ -79,7 +74,6 @@ class UserActivity(Entity):
             "activitySourceHost": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
             "appActivityId": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "contentInfo": lambda n : setattr(self, 'content_info', n.get_object_value(Json)),
             "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
@@ -107,7 +101,6 @@ class UserActivity(Entity):
         writer.write_str_value("activitySourceHost", self.activity_source_host)
         writer.write_str_value("appActivityId", self.app_activity_id)
         writer.write_str_value("appDisplayName", self.app_display_name)
-        writer.write_object_value("contentInfo", self.content_info)
         writer.write_str_value("contentUrl", self.content_url)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)

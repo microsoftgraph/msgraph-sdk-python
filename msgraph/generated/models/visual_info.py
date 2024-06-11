@@ -6,7 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .image_info import ImageInfo
-    from .json import Json
 
 @dataclass
 class VisualInfo(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,8 +18,6 @@ class VisualInfo(AdditionalDataHolder, BackedModel, Parsable):
     attribution: Optional[ImageInfo] = None
     # Optional. Background color used to render the activity in the UI - brand color for the application source of the activity. Must be a valid hex color
     background_color: Optional[str] = None
-    # Optional. Custom piece of data - JSON object used to provide custom content to render the activity in the Windows Shell UI
-    content: Optional[Json] = None
     # Optional. Longer text description of the user's unique activity (example: document name, first sentence, and/or metadata)
     description: Optional[str] = None
     # Required. Short text description of the user's unique activity (for example, document name in cases where an activity refers to document creation)
@@ -45,15 +42,12 @@ class VisualInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .image_info import ImageInfo
-        from .json import Json
 
         from .image_info import ImageInfo
-        from .json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attribution": lambda n : setattr(self, 'attribution', n.get_object_value(ImageInfo)),
             "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
-            "content": lambda n : setattr(self, 'content', n.get_object_value(Json)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayText": lambda n : setattr(self, 'display_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -70,7 +64,6 @@ class VisualInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("attribution", self.attribution)
         writer.write_str_value("backgroundColor", self.background_color)
-        writer.write_object_value("content", self.content)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayText", self.display_text)
         writer.write_str_value("@odata.type", self.odata_type)

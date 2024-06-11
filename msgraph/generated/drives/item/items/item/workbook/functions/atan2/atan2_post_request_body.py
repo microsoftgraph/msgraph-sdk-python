@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class Atan2PostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,10 +11,6 @@ class Atan2PostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The xNum property
-    x_num: Optional[Json] = None
-    # The yNum property
-    y_num: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Atan2PostRequestBody:
@@ -35,13 +28,7 @@ class Atan2PostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "xNum": lambda n : setattr(self, 'x_num', n.get_object_value(Json)),
-            "yNum": lambda n : setattr(self, 'y_num', n.get_object_value(Json)),
         }
         return fields
     
@@ -53,8 +40,6 @@ class Atan2PostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("xNum", self.x_num)
-        writer.write_object_value("yNum", self.y_num)
         writer.write_additional_data_value(self.additional_data)
     
 

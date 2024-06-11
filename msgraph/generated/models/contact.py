@@ -43,7 +43,7 @@ class Contact(OutlookItem):
     extensions: Optional[List[Extension]] = None
     # The name the contact is filed under.
     file_as: Optional[str] = None
-    # The contact's generation.
+    # The contact's suffix.
     generation: Optional[str] = None
     # The contact's given name.
     given_name: Optional[str] = None

@@ -33,7 +33,7 @@ class InvitedUserRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[InvitedUserRequestBuilderGetQueryParameters]] = None) -> Optional[User]:
         """
-        The user created as part of the invitation creation. Read-Only
+        The user created as part of the invitation creation. Read-only. The id property is required in the request body to reset a redemption status.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
         """
@@ -53,7 +53,7 @@ class InvitedUserRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[InvitedUserRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The user created as part of the invitation creation. Read-Only
+        The user created as part of the invitation creation. Read-only. The id property is required in the request body to reset a redemption status.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -93,7 +93,7 @@ class InvitedUserRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InvitedUserRequestBuilderGetQueryParameters():
         """
-        The user created as part of the invitation creation. Read-Only
+        The user created as part of the invitation creation. Read-only. The id property is required in the request body to reset a redemption status.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

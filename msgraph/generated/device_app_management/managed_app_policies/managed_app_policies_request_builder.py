@@ -48,10 +48,10 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        List properties and relationships of the windowsInformationProtection objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotection-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-targetedmanagedappprotection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +92,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsInformationProtection objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsInformationProtection objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

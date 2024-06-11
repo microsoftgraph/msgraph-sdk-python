@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from .authentication_method_modes import AuthenticationMethodModes
     from .entity import Entity
     from .fido2_combination_configuration import Fido2CombinationConfiguration
+    from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
 from .entity import Entity
 
@@ -34,6 +35,10 @@ class AuthenticationCombinationConfiguration(Entity):
             from .fido2_combination_configuration import Fido2CombinationConfiguration
 
             return Fido2CombinationConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.x509CertificateCombinationConfiguration".casefold():
+            from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
+
+            return X509CertificateCombinationConfiguration()
         return AuthenticationCombinationConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -44,10 +49,12 @@ class AuthenticationCombinationConfiguration(Entity):
         from .authentication_method_modes import AuthenticationMethodModes
         from .entity import Entity
         from .fido2_combination_configuration import Fido2CombinationConfiguration
+        from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
         from .authentication_method_modes import AuthenticationMethodModes
         from .entity import Entity
         from .fido2_combination_configuration import Fido2CombinationConfiguration
+        from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appliesToCombinations": lambda n : setattr(self, 'applies_to_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),

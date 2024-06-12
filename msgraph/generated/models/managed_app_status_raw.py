@@ -4,7 +4,6 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .json import Json
     from .managed_app_status import ManagedAppStatus
 
 from .managed_app_status import ManagedAppStatus
@@ -16,8 +15,6 @@ class ManagedAppStatusRaw(ManagedAppStatus):
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.managedAppStatusRaw"
-    # Status report content.
-    content: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ManagedAppStatusRaw:
@@ -35,14 +32,11 @@ class ManagedAppStatusRaw(ManagedAppStatus):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .json import Json
         from .managed_app_status import ManagedAppStatus
 
-        from .json import Json
         from .managed_app_status import ManagedAppStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "content": lambda n : setattr(self, 'content', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,6 +51,5 @@ class ManagedAppStatusRaw(ManagedAppStatus):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("content", self.content)
     
 

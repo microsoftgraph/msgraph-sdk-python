@@ -30,7 +30,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarPermissions{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarPermissions{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_calendar_permission_id(self,calendar_permission_id: str) -> CalendarPermissionItemRequestBuilder:
         """
@@ -149,10 +149,14 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
                 return "%24orderby"
+            if original_name == "search":
+                return "%24search"
             if original_name == "select":
                 return "%24select"
             if original_name == "skip":
@@ -164,11 +168,17 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
         # Include count of items
         count: Optional[bool] = None
 
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
         # Filter items by property values
         filter: Optional[str] = None
 
         # Order items by property values
         orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
 
         # Select properties to be returned
         select: Optional[List[str]] = None

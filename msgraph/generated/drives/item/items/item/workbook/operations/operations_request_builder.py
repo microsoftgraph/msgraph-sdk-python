@@ -30,7 +30,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/operations{?%24expand,%24orderby,%24search,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/operations{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_workbook_operation_id(self,workbook_operation_id: str) -> WorkbookOperationItemRequestBuilder:
         """
@@ -147,18 +147,32 @@ class OperationsRequestBuilder(BaseRequestBuilder):
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
+            if original_name == "count":
+                return "%24count"
             if original_name == "expand":
                 return "%24expand"
+            if original_name == "filter":
+                return "%24filter"
             if original_name == "orderby":
                 return "%24orderby"
             if original_name == "search":
                 return "%24search"
             if original_name == "select":
                 return "%24select"
+            if original_name == "skip":
+                return "%24skip"
+            if original_name == "top":
+                return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
         # Expand related entities
         expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
 
         # Order items by property values
         orderby: Optional[List[str]] = None
@@ -168,6 +182,12 @@ class OperationsRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
 
     
     @dataclass

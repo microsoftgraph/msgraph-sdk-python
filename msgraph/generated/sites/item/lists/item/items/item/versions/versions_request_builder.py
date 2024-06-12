@@ -48,9 +48,10 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[VersionsRequestBuilderGetQueryParameters]] = None) -> Optional[ListItemVersionCollectionResponse]:
         """
-        The list of previous versions of the list item.
+        SharePoint can be configured to retain the history for list items. Previous versions may be retained for a finite period of time depending on admin settings which may be unique per user or location.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItemVersionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/listitem-list-versions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +92,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[VersionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The list of previous versions of the list item.
+        SharePoint can be configured to retain the history for list items. Previous versions may be retained for a finite period of time depending on admin settings which may be unique per user or location.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +138,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class VersionsRequestBuilderGetQueryParameters():
         """
-        The list of previous versions of the list item.
+        SharePoint can be configured to retain the history for list items. Previous versions may be retained for a finite period of time depending on admin settings which may be unique per user or location.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

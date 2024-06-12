@@ -37,7 +37,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar/calendarView/{event%2Did}/instances/{event%2Did1}?endDateTime={endDateTime}&startDateTime={startDateTime}{&%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar/calendarView/{event%2Did}/instances/{event%2Did1}?endDateTime={endDateTime}&startDateTime={startDateTime}{&%24expand,%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[EventItemRequestBuilderGetQueryParameters]] = None) -> Optional[Event]:
         """
@@ -185,6 +185,8 @@ class EventItemRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "end_date_time":
                 return "endDateTime"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "select":
                 return "%24select"
             if original_name == "start_date_time":
@@ -193,6 +195,9 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         
         # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
         end_date_time: Optional[str] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
 
         # Select properties to be returned
         select: Optional[List[str]] = None

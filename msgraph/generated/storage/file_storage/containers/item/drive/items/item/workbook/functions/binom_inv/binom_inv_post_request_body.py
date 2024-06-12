@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ...........models.json import Json
-
 @dataclass
 class Binom_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,12 +11,6 @@ class Binom_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The alpha property
-    alpha: Optional[Json] = None
-    # The probabilityS property
-    probability_s: Optional[Json] = None
-    # The trials property
-    trials: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Binom_InvPostRequestBody:
@@ -37,14 +28,7 @@ class Binom_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...........models.json import Json
-
-        from ...........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(Json)),
-            "probabilityS": lambda n : setattr(self, 'probability_s', n.get_object_value(Json)),
-            "trials": lambda n : setattr(self, 'trials', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +40,6 @@ class Binom_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("alpha", self.alpha)
-        writer.write_object_value("probabilityS", self.probability_s)
-        writer.write_object_value("trials", self.trials)
         writer.write_additional_data_value(self.additional_data)
     
 

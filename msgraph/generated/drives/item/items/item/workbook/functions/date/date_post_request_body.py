@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class DatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,12 +11,6 @@ class DatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The day property
-    day: Optional[Json] = None
-    # The month property
-    month: Optional[Json] = None
-    # The year property
-    year: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DatePostRequestBody:
@@ -37,14 +28,7 @@ class DatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "day": lambda n : setattr(self, 'day', n.get_object_value(Json)),
-            "month": lambda n : setattr(self, 'month', n.get_object_value(Json)),
-            "year": lambda n : setattr(self, 'year', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +40,6 @@ class DatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("day", self.day)
-        writer.write_object_value("month", self.month)
-        writer.write_object_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class ImSubPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,10 +11,6 @@ class ImSubPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The inumber1 property
-    inumber1: Optional[Json] = None
-    # The inumber2 property
-    inumber2: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ImSubPostRequestBody:
@@ -35,13 +28,7 @@ class ImSubPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "inumber1": lambda n : setattr(self, 'inumber1', n.get_object_value(Json)),
-            "inumber2": lambda n : setattr(self, 'inumber2', n.get_object_value(Json)),
         }
         return fields
     
@@ -53,8 +40,6 @@ class ImSubPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("inumber1", self.inumber1)
-        writer.write_object_value("inumber2", self.inumber2)
         writer.write_additional_data_value(self.additional_data)
     
 

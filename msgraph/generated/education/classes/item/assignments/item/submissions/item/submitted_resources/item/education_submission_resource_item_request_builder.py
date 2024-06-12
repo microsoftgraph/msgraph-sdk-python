@@ -49,9 +49,10 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[EducationSubmissionResourceItemRequestBuilderGetQueryParameters]] = None) -> Optional[EducationSubmissionResource]:
         """
-        Get submittedResources from education
+        Retrieve a submitted resource. Only teachers, students, and applications with application permissions can perform this operation. Resources are available to a teacher or an application with application permissions after a student submits it, and are available to the student after the teacher returns the submission. Teachers can leave notes in some resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationSubmissionResource]
+        Find more info here: https://learn.microsoft.com/graph/api/educationsubmittedsubmissionresource-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +104,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[EducationSubmissionResourceItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get submittedResources from education
+        Retrieve a submitted resource. Only teachers, students, and applications with application permissions can perform this operation. Resources are available to a teacher or an application with application permissions after a student submits it, and are available to the student after the teacher returns the submission. Teachers can leave notes in some resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +148,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationSubmissionResourceItemRequestBuilderGetQueryParameters():
         """
-        Get submittedResources from education
+        Retrieve a submitted resource. Only teachers, students, and applications with application permissions can perform this operation. Resources are available to a teacher or an application with application permissions after a student submits it, and are available to the student after the teacher returns the submission. Teachers can leave notes in some resources.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

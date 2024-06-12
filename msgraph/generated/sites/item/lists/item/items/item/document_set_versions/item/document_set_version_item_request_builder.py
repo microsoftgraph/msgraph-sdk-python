@@ -33,9 +33,10 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property documentSetVersions for sites
+        Delete a version of a document set in a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/documentsetversion-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,9 +52,10 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DocumentSetVersionItemRequestBuilderGetQueryParameters]] = None) -> Optional[DocumentSetVersion]:
         """
-        Version information for a document set version created by a user.
+        Read the properties and relationships of a documentSetVersion object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DocumentSetVersion]
+        Find more info here: https://learn.microsoft.com/graph/api/documentsetversion-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -94,7 +96,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property documentSetVersions for sites
+        Delete a version of a document set in a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +107,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DocumentSetVersionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Version information for a document set version created by a user.
+        Read the properties and relationships of a documentSetVersion object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +169,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DocumentSetVersionItemRequestBuilderGetQueryParameters():
         """
-        Version information for a document set version created by a user.
+        Read the properties and relationships of a documentSetVersion object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

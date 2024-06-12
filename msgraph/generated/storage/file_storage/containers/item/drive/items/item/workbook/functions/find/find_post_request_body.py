@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ...........models.json import Json
-
 @dataclass
 class FindPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,12 +11,6 @@ class FindPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The findText property
-    find_text: Optional[Json] = None
-    # The startNum property
-    start_num: Optional[Json] = None
-    # The withinText property
-    within_text: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> FindPostRequestBody:
@@ -37,14 +28,7 @@ class FindPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...........models.json import Json
-
-        from ...........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "findText": lambda n : setattr(self, 'find_text', n.get_object_value(Json)),
-            "startNum": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
-            "withinText": lambda n : setattr(self, 'within_text', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +40,6 @@ class FindPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("findText", self.find_text)
-        writer.write_object_value("startNum", self.start_num)
-        writer.write_object_value("withinText", self.within_text)
         writer.write_additional_data_value(self.additional_data)
     
 

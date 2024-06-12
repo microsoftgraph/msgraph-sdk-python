@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ..........models.json import Json
-
 @dataclass
 class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -18,8 +15,6 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     index: Optional[int] = None
     # The name property
     name: Optional[str] = None
-    # The values property
-    values: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AddPostRequestBody:
@@ -37,14 +32,9 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ..........models.json import Json
-
-        from ..........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
     
@@ -58,7 +48,6 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("index", self.index)
         writer.write_str_value("name", self.name)
-        writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -48,9 +48,10 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TasksRequestBuilderGetQueryParameters]] = None) -> Optional[TaskCollectionResponse]:
         """
-        The tasks in the workflow.
+        Get a list of task objects in a workflowVersion.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TaskCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflowversion-list-tasks?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +92,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TasksRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The tasks in the workflow.
+        Get a list of task objects in a workflowVersion.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +138,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TasksRequestBuilderGetQueryParameters():
         """
-        The tasks in the workflow.
+        Get a list of task objects in a workflowVersion.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

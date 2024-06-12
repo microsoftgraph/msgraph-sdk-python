@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class Z_TestPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,12 +11,6 @@ class Z_TestPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The array property
-    array: Optional[Json] = None
-    # The sigma property
-    sigma: Optional[Json] = None
-    # The x property
-    x: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Z_TestPostRequestBody:
@@ -37,14 +28,7 @@ class Z_TestPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "array": lambda n : setattr(self, 'array', n.get_object_value(Json)),
-            "sigma": lambda n : setattr(self, 'sigma', n.get_object_value(Json)),
-            "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +40,6 @@ class Z_TestPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("array", self.array)
-        writer.write_object_value("sigma", self.sigma)
-        writer.write_object_value("x", self.x)
         writer.write_additional_data_value(self.additional_data)
     
 

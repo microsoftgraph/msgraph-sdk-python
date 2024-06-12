@@ -31,9 +31,10 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property outcomes for education
+        Delete a feedback resource from a submission. This can only be done by a teacher.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/educationfeedbackresourceoutcome-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: EducationOutcome, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EducationOutcome]:
         """
-        Update the navigation property outcomes in education
+        Update the properties of an educationOutcome object. Only teachers can perform this operation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationOutcome]
+        Find more info here: https://learn.microsoft.com/graph/api/educationoutcome-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property outcomes for education
+        Delete a feedback resource from a submission. This can only be done by a teacher.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +116,7 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: EducationOutcome, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property outcomes in education
+        Update the properties of an educationOutcome object. Only teachers can perform this operation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

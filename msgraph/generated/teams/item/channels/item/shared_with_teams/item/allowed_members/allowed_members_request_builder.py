@@ -47,9 +47,10 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AllowedMembersRequestBuilderGetQueryParameters]] = None) -> Optional[ConversationMemberCollectionResponse]:
         """
-        A collection of team members who have access to the shared channel.
+        Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with Guest role- Users who are externally authenticated in the tenant
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMemberCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/sharedwithchannelteaminfo-list-allowedmembers?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +68,7 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AllowedMembersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        A collection of team members who have access to the shared channel.
+        Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with Guest role- Users who are externally authenticated in the tenant
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +99,7 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllowedMembersRequestBuilderGetQueryParameters():
         """
-        A collection of team members who have access to the shared channel.
+        Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with Guest role- Users who are externally authenticated in the tenant
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

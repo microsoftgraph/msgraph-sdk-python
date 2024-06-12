@@ -9,7 +9,7 @@ on:
   workflow_call:
 
 jobs:
-   validate:
+  validate:
     name: Validate code accuracy
     runs-on: ubuntu-latest
     steps:

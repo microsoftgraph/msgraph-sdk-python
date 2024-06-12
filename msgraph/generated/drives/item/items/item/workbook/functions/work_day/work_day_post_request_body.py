@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class WorkDayPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,12 +11,6 @@ class WorkDayPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The days property
-    days: Optional[Json] = None
-    # The holidays property
-    holidays: Optional[Json] = None
-    # The startDate property
-    start_date: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkDayPostRequestBody:
@@ -37,14 +28,7 @@ class WorkDayPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "days": lambda n : setattr(self, 'days', n.get_object_value(Json)),
-            "holidays": lambda n : setattr(self, 'holidays', n.get_object_value(Json)),
-            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +40,6 @@ class WorkDayPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("days", self.days)
-        writer.write_object_value("holidays", self.holidays)
-        writer.write_object_value("startDate", self.start_date)
         writer.write_additional_data_value(self.additional_data)
     
 

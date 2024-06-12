@@ -31,7 +31,7 @@ class MicrosoftGraphSecurityAsHierarchyRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphSecurityAsHierarchyRequestBuilderGetQueryParameters]] = None) -> Optional[AsHierarchyGetResponse]:
         """
-        Invoke function asHierarchy
+        List eDiscovery review tags with the tag hierarchy shown.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AsHierarchyGetResponse]
         """
@@ -51,7 +51,7 @@ class MicrosoftGraphSecurityAsHierarchyRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphSecurityAsHierarchyRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Invoke function asHierarchy
+        List eDiscovery review tags with the tag hierarchy shown.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +73,7 @@ class MicrosoftGraphSecurityAsHierarchyRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MicrosoftGraphSecurityAsHierarchyRequestBuilderGetQueryParameters():
         """
-        Invoke function asHierarchy
+        List eDiscovery review tags with the tag hierarchy shown.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

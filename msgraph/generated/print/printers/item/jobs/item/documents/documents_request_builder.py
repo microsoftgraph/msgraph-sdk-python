@@ -48,9 +48,10 @@ class DocumentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DocumentsRequestBuilderGetQueryParameters]] = None) -> Optional[PrintDocumentCollectionResponse]:
         """
-        Get documents from print
+        Download the binary file associated with a printDocument. Calling this method yields a redirect response with a preauthenticated URL that can be used to download the payload.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintDocumentCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/printdocument-get-file?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +92,7 @@ class DocumentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DocumentsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get documents from print
+        Download the binary file associated with a printDocument. Calling this method yields a redirect response with a preauthenticated URL that can be used to download the payload.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +138,7 @@ class DocumentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DocumentsRequestBuilderGetQueryParameters():
         """
-        Get documents from print
+        Download the binary file associated with a printDocument. Calling this method yields a redirect response with a preauthenticated URL that can be used to download the payload.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

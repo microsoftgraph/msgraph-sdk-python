@@ -31,7 +31,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/threads/{conversationThread%2Did}/posts/{post%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/threads/{conversationThread%2Did}/posts/{post%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_attachment_id(self,attachment_id: str) -> AttachmentItemRequestBuilder:
         """
@@ -49,9 +49,10 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AttachmentsRequestBuilderGetQueryParameters]] = None) -> Optional[AttachmentCollectionResponse]:
         """
-        Read-only. Nullable. Supports $expand.
+        Retrieve a list of attachment objects attached to a post.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttachmentCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/post-list-attachments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AttachmentsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Supports $expand.
+        Retrieve a list of attachment objects attached to a post.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +148,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Supports $expand.
+        Retrieve a list of attachment objects attached to a post.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -165,6 +166,8 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
                 return "%24filter"
             if original_name == "orderby":
                 return "%24orderby"
+            if original_name == "search":
+                return "%24search"
             if original_name == "select":
                 return "%24select"
             if original_name == "skip":
@@ -184,6 +187,9 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
 
         # Order items by property values
         orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
 
         # Select properties to be returned
         select: Optional[List[str]] = None

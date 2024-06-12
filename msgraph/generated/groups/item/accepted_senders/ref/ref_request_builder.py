@@ -28,7 +28,7 @@ class RefRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/acceptedSenders/$ref?@id={%40id}{&%24count,%24filter,%24orderby,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/acceptedSenders/$ref?@id={%40id}{&%24count,%24filter,%24orderby,%24search,%24skip,%24top}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[RefRequestBuilderDeleteQueryParameters]] = None) -> None:
         """
@@ -109,7 +109,7 @@ class RefRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, '{+baseurl}/groups/{group%2Did}/acceptedSenders/$ref{?%24count,%24filter,%24orderby,%24skip,%24top}', self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/groups/{group%2Did}/acceptedSenders/$ref{?%24count,%24filter,%24orderby,%24search,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -186,6 +186,8 @@ class RefRequestBuilder(BaseRequestBuilder):
                 return "%24filter"
             if original_name == "orderby":
                 return "%24orderby"
+            if original_name == "search":
+                return "%24search"
             if original_name == "skip":
                 return "%24skip"
             if original_name == "top":
@@ -200,6 +202,9 @@ class RefRequestBuilder(BaseRequestBuilder):
 
         # Order items by property values
         orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
 
         # Skip the first n items
         skip: Optional[int] = None

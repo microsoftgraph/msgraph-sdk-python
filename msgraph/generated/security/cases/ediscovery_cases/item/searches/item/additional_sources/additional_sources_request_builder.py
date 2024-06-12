@@ -48,9 +48,10 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AdditionalSourcesRequestBuilderGetQueryParameters]] = None) -> Optional[DataSourceCollectionResponse]:
         """
-        Adds an additional source to the eDiscovery search.
+        Get the list of additional sources associated with an eDiscovery search.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataSourceCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverysearch-list-additionalsources?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,10 +69,11 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: DataSource, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DataSource]:
         """
-        Create new navigation property to additionalSources for security
+        Create a new additional source associated with an eDiscovery search.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataSource]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverysearch-post-additionalsources?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +93,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AdditionalSourcesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Adds an additional source to the eDiscovery search.
+        Get the list of additional sources associated with an eDiscovery search.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +104,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: DataSource, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to additionalSources for security
+        Create a new additional source associated with an eDiscovery search.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +139,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdditionalSourcesRequestBuilderGetQueryParameters():
         """
-        Adds an additional source to the eDiscovery search.
+        Get the list of additional sources associated with an eDiscovery search.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

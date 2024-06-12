@@ -52,7 +52,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Schema, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Schema]:
         """
-        Create a new schema object.
+        Create a new or update an existing schema for a Microsoft Search connection.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Schema]
@@ -87,7 +87,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Schema, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new schema object.
+        Create a new or update an existing schema for a Microsoft Search connection.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

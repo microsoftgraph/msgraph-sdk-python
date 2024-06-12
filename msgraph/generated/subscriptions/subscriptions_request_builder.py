@@ -29,7 +29,7 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/subscriptions{?%24count,%24filter,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/subscriptions{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_subscription_id(self,subscription_id: str) -> SubscriptionItemRequestBuilder:
         """
@@ -141,8 +141,12 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "orderby":
+                return "%24orderby"
             if original_name == "search":
                 return "%24search"
             if original_name == "select":
@@ -156,8 +160,14 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
         # Include count of items
         count: Optional[bool] = None
 
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
         # Filter items by property values
         filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
 
         # Search items by search phrases
         search: Optional[str] = None

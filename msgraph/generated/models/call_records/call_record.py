@@ -9,6 +9,8 @@ if TYPE_CHECKING:
     from ..identity_set import IdentitySet
     from .call_type import CallType
     from .modality import Modality
+    from .organizer import Organizer
+    from .participant import Participant
     from .session import Session
 
 from ..entity import Entity
@@ -25,10 +27,14 @@ class CallRecord(Entity):
     modalities: Optional[List[Modality]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The organizing party's identity.
+    # The organizing party's identity. The organizer property is deprecated and will stop returning data on June 30, 2026. Going forward, use the organizer_v2 relationship.
     organizer: Optional[IdentitySet] = None
-    # List of distinct identities involved in the call.
+    # Identity of the organizer of the call. This relationship is expanded by default in callRecord methods.
+    organizer_v2: Optional[Organizer] = None
+    # List of distinct identities involved in the call. Limited to 130 entries. The participants property is deprecated and will stop returning data on June 30, 2026. Going forward, use the participants_v2 relationship.
     participants: Optional[List[IdentitySet]] = None
+    # List of distinct participants in the call.
+    participants_v2: Optional[List[Participant]] = None
     # List of sessions involved in the call. Peer-to-peer calls typically only have one session, whereas group calls typically have at least one session per participant. Read-only. Nullable.
     sessions: Optional[List[Session]] = None
     # UTC time when the first user joined the call. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -58,12 +64,16 @@ class CallRecord(Entity):
         from ..identity_set import IdentitySet
         from .call_type import CallType
         from .modality import Modality
+        from .organizer import Organizer
+        from .participant import Participant
         from .session import Session
 
         from ..entity import Entity
         from ..identity_set import IdentitySet
         from .call_type import CallType
         from .modality import Modality
+        from .organizer import Organizer
+        from .participant import Participant
         from .session import Session
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -72,7 +82,9 @@ class CallRecord(Entity):
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "modalities": lambda n : setattr(self, 'modalities', n.get_collection_of_enum_values(Modality)),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(IdentitySet)),
+            "organizer_v2": lambda n : setattr(self, 'organizer_v2', n.get_object_value(Organizer)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(IdentitySet)),
+            "participants_v2": lambda n : setattr(self, 'participants_v2', n.get_collection_of_object_values(Participant)),
             "sessions": lambda n : setattr(self, 'sessions', n.get_collection_of_object_values(Session)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(CallType)),
@@ -96,7 +108,9 @@ class CallRecord(Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_enum_values("modalities", self.modalities)
         writer.write_object_value("organizer", self.organizer)
+        writer.write_object_value("organizer_v2", self.organizer_v2)
         writer.write_collection_of_object_values("participants", self.participants)
+        writer.write_collection_of_object_values("participants_v2", self.participants_v2)
         writer.write_collection_of_object_values("sessions", self.sessions)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("type", self.type)

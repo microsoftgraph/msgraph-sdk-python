@@ -31,7 +31,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_attachment_id(self,attachment_id: str) -> AttachmentItemRequestBuilder:
         """
@@ -165,8 +165,14 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
                 return "%24filter"
             if original_name == "orderby":
                 return "%24orderby"
+            if original_name == "search":
+                return "%24search"
             if original_name == "select":
                 return "%24select"
+            if original_name == "skip":
+                return "%24skip"
+            if original_name == "top":
+                return "%24top"
             return original_name
         
         # Include count of items
@@ -181,8 +187,17 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         # Order items by property values
         orderby: Optional[List[str]] = None
 
+        # Search items by search phrases
+        search: Optional[str] = None
+
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
 
     
     @dataclass

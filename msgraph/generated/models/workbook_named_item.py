@@ -5,7 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .json import Json
     from .workbook_worksheet import WorkbookWorksheet
 
 from .entity import Entity
@@ -22,8 +21,6 @@ class WorkbookNamedItem(Entity):
     scope: Optional[str] = None
     # Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
     type: Optional[str] = None
-    # Represents the formula that the name is defined to refer to. for example, =Sheet14!$B$2:$H$12, =4.75, etc. Read-only.
-    value: Optional[Json] = None
     # Specifies whether the object is visible or not.
     visible: Optional[bool] = None
     # Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
@@ -46,11 +43,9 @@ class WorkbookNamedItem(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .json import Json
         from .workbook_worksheet import WorkbookWorksheet
 
         from .entity import Entity
-        from .json import Json
         from .workbook_worksheet import WorkbookWorksheet
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -58,7 +53,6 @@ class WorkbookNamedItem(Entity):
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
             "visible": lambda n : setattr(self, 'visible', n.get_bool_value()),
             "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(WorkbookWorksheet)),
         }
@@ -79,7 +73,6 @@ class WorkbookNamedItem(Entity):
         writer.write_str_value("name", self.name)
         writer.write_str_value("scope", self.scope)
         writer.write_str_value("type", self.type)
-        writer.write_object_value("value", self.value)
         writer.write_bool_value("visible", self.visible)
         writer.write_object_value("worksheet", self.worksheet)
     

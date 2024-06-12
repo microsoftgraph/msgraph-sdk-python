@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ........models.json import Json
-
 @dataclass
 class VdbPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,20 +11,6 @@ class VdbPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The cost property
-    cost: Optional[Json] = None
-    # The endPeriod property
-    end_period: Optional[Json] = None
-    # The factor property
-    factor: Optional[Json] = None
-    # The life property
-    life: Optional[Json] = None
-    # The noSwitch property
-    no_switch: Optional[Json] = None
-    # The salvage property
-    salvage: Optional[Json] = None
-    # The startPeriod property
-    start_period: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> VdbPostRequestBody:
@@ -45,18 +28,7 @@ class VdbPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.json import Json
-
-        from ........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "cost": lambda n : setattr(self, 'cost', n.get_object_value(Json)),
-            "endPeriod": lambda n : setattr(self, 'end_period', n.get_object_value(Json)),
-            "factor": lambda n : setattr(self, 'factor', n.get_object_value(Json)),
-            "life": lambda n : setattr(self, 'life', n.get_object_value(Json)),
-            "noSwitch": lambda n : setattr(self, 'no_switch', n.get_object_value(Json)),
-            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(Json)),
-            "startPeriod": lambda n : setattr(self, 'start_period', n.get_object_value(Json)),
         }
         return fields
     
@@ -68,13 +40,6 @@ class VdbPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("cost", self.cost)
-        writer.write_object_value("endPeriod", self.end_period)
-        writer.write_object_value("factor", self.factor)
-        writer.write_object_value("life", self.life)
-        writer.write_object_value("noSwitch", self.no_switch)
-        writer.write_object_value("salvage", self.salvage)
-        writer.write_object_value("startPeriod", self.start_period)
         writer.write_additional_data_value(self.additional_data)
     
 

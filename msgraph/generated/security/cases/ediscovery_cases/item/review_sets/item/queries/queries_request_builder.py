@@ -48,9 +48,10 @@ class QueriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueriesRequestBuilderGetQueryParameters]] = None) -> Optional[EdiscoveryReviewSetQueryCollectionResponse]:
         """
-        Represents queries within the review set.
+        Get the list of queries associated with an eDiscovery review set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewSetQueryCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-list-queries?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,10 +69,11 @@ class QueriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: EdiscoveryReviewSetQuery, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
-        Create new navigation property to queries for security
+        Create a new ediscoveryReviewSetQuery object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewSetQuery]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-post-queries?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +93,7 @@ class QueriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueriesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents queries within the review set.
+        Get the list of queries associated with an eDiscovery review set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +104,7 @@ class QueriesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: EdiscoveryReviewSetQuery, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to queries for security
+        Create a new ediscoveryReviewSetQuery object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +139,7 @@ class QueriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class QueriesRequestBuilderGetQueryParameters():
         """
-        Represents queries within the review set.
+        Get the list of queries associated with an eDiscovery review set.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

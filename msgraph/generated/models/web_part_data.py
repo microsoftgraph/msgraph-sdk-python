@@ -5,7 +5,6 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .json import Json
     from .server_processed_content import ServerProcessedContent
 
 @dataclass
@@ -21,8 +20,6 @@ class WebPartData(AdditionalDataHolder, BackedModel, Parsable):
     description: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Properties bag of the web part.
-    properties: Optional[Json] = None
     # Contains collections of data that can be processed by server side services like search index and link fixup.
     server_processed_content: Optional[ServerProcessedContent] = None
     # Title of the web part.
@@ -44,17 +41,14 @@ class WebPartData(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .json import Json
         from .server_processed_content import ServerProcessedContent
 
-        from .json import Json
         from .server_processed_content import ServerProcessedContent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "dataVersion": lambda n : setattr(self, 'data_version', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "properties": lambda n : setattr(self, 'properties', n.get_object_value(Json)),
             "serverProcessedContent": lambda n : setattr(self, 'server_processed_content', n.get_object_value(ServerProcessedContent)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
@@ -71,7 +65,6 @@ class WebPartData(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("dataVersion", self.data_version)
         writer.write_str_value("description", self.description)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("properties", self.properties)
         writer.write_object_value("serverProcessedContent", self.server_processed_content)
         writer.write_str_value("title", self.title)
         writer.write_additional_data_value(self.additional_data)

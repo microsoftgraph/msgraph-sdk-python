@@ -15,6 +15,8 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.call_records.call_record import CallRecord
     from ....models.o_data_errors.o_data_error import ODataError
+    from .organizer_v2.organizer_v2_request_builder import Organizer_v2RequestBuilder
+    from .participants_v2.participants_v2_request_builder import Participants_v2RequestBuilder
     from .sessions.sessions_request_builder import SessionsRequestBuilder
 
 class CallRecordItemRequestBuilder(BaseRequestBuilder):
@@ -50,7 +52,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CallRecordItemRequestBuilderGetQueryParameters]] = None) -> Optional[CallRecord]:
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord: You can use the $expand query parameter to optionally include session and segment details, as shown in the Get full details example. When you expand session details, the maximum page size is 60 sessions.
+        Retrieve the properties and relationships of a callRecord object. You can get the id of a callRecord in two ways:* Subscribe to change notifications to the /communications/callRecords endpoint.* Use the callChainId property of a call. The call record is available only after the associated call is completed.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallRecord]
         Find more info here: https://learn.microsoft.com/graph/api/callrecords-callrecord-get?view=graph-rest-1.0
@@ -105,7 +107,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CallRecordItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord: You can use the $expand query parameter to optionally include session and segment details, as shown in the Get full details example. When you expand session details, the maximum page size is 60 sessions.
+        Retrieve the properties and relationships of a callRecord object. You can get the id of a callRecord in two ways:* Subscribe to change notifications to the /communications/callRecords endpoint.* Use the callChainId property of a call. The call record is available only after the associated call is completed.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,6 +142,24 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
         return CallRecordItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def organizer_v2(self) -> Organizer_v2RequestBuilder:
+        """
+        Provides operations to manage the organizer_v2 property of the microsoft.graph.callRecords.callRecord entity.
+        """
+        from .organizer_v2.organizer_v2_request_builder import Organizer_v2RequestBuilder
+
+        return Organizer_v2RequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def participants_v2(self) -> Participants_v2RequestBuilder:
+        """
+        Provides operations to manage the participants_v2 property of the microsoft.graph.callRecords.callRecord entity.
+        """
+        from .participants_v2.participants_v2_request_builder import Participants_v2RequestBuilder
+
+        return Participants_v2RequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def sessions(self) -> SessionsRequestBuilder:
         """
         Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
@@ -158,7 +178,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CallRecordItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord: You can use the $expand query parameter to optionally include session and segment details, as shown in the Get full details example. When you expand session details, the maximum page size is 60 sessions.
+        Retrieve the properties and relationships of a callRecord object. You can get the id of a callRecord in two ways:* Subscribe to change notifications to the /communications/callRecords endpoint.* Use the callChainId property of a call. The call record is available only after the associated call is completed.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

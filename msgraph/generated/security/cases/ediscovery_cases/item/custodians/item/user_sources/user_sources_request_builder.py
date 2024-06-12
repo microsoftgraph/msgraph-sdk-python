@@ -48,9 +48,10 @@ class UserSourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UserSourcesRequestBuilderGetQueryParameters]] = None) -> Optional[UserSourceCollectionResponse]:
         """
-        Data source entity for a the custodian. This is the container for a custodian's mailbox and OneDrive for Business site.
+        Get a list of the userSource objects associated with an ediscoveryCustodian.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserSourceCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycustodian-list-usersources?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,10 +69,11 @@ class UserSourcesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: UserSource, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UserSource]:
         """
-        Create new navigation property to userSources for security
+        Create a new userSource object associated with an eDiscovery custodian.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserSource]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycustodian-post-usersources?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +93,7 @@ class UserSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UserSourcesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Data source entity for a the custodian. This is the container for a custodian's mailbox and OneDrive for Business site.
+        Get a list of the userSource objects associated with an ediscoveryCustodian.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +104,7 @@ class UserSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: UserSource, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to userSources for security
+        Create a new userSource object associated with an eDiscovery custodian.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +139,7 @@ class UserSourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserSourcesRequestBuilderGetQueryParameters():
         """
-        Data source entity for a the custodian. This is the container for a custodian's mailbox and OneDrive for Business site.
+        Get a list of the userSource objects associated with an ediscoveryCustodian.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

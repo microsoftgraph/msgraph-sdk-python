@@ -4,9 +4,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from ...........models.json import Json
-
 @dataclass
 class RriPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -14,12 +11,6 @@ class RriPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The fv property
-    fv: Optional[Json] = None
-    # The nper property
-    nper: Optional[Json] = None
-    # The pv property
-    pv: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RriPostRequestBody:
@@ -37,14 +28,7 @@ class RriPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...........models.json import Json
-
-        from ...........models.json import Json
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "fv": lambda n : setattr(self, 'fv', n.get_object_value(Json)),
-            "nper": lambda n : setattr(self, 'nper', n.get_object_value(Json)),
-            "pv": lambda n : setattr(self, 'pv', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +40,6 @@ class RriPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("fv", self.fv)
-        writer.write_object_value("nper", self.nper)
-        writer.write_object_value("pv", self.pv)
         writer.write_additional_data_value(self.additional_data)
     
 

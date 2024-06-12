@@ -32,9 +32,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[RefRequestBuilderDeleteQueryParameters]] = None) -> None:
         """
-        Delete ref of navigation property categories for education
+        Remove an educationCategory from an educationAssignment. Only teachers can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-remove-category?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,9 +51,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RefRequestBuilderGetQueryParameters]] = None) -> Optional[StringCollectionResponse]:
         """
-        When set, enables users to easily find assignments of a given type. Read-only. Nullable.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-list-categories?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +72,11 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ReferenceCreate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Create new navigation property ref to categories for education
+        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-post-categories?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +94,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[RefRequestBuilderDeleteQueryParameters]] = None) -> RequestInformation:
         """
-        Delete ref of navigation property categories for education
+        Remove an educationCategory from an educationAssignment. Only teachers can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +105,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RefRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        When set, enables users to easily find assignments of a given type. Read-only. Nullable.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +116,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ReferenceCreate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property ref to categories for education
+        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +142,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Delete ref of navigation property categories for education
+        Remove an educationCategory from an educationAssignment. Only teachers can perform this operation.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -167,7 +170,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderGetQueryParameters():
         """
-        When set, enables users to easily find assignments of a given type. Read-only. Nullable.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

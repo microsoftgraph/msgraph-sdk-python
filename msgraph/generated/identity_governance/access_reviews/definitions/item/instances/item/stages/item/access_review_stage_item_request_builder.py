@@ -51,9 +51,10 @@ class AccessReviewStageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AccessReviewStageItemRequestBuilderGetQueryParameters]] = None) -> Optional[AccessReviewStage]:
         """
-        If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
+        Retrieve the properties and relationships of an accessReviewStage object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewStage]
+        Find more info here: https://learn.microsoft.com/graph/api/accessreviewstage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,10 +72,11 @@ class AccessReviewStageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: AccessReviewStage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AccessReviewStage]:
         """
-        Update the navigation property stages in identityGovernance
+        Update the properties of an accessReviewStage object. Only the reviewers and fallbackReviewers properties can be updated. You can only add reviewers to the fallbackReviewers property but can't remove existing fallbackReviewers. To update an accessReviewStage, its status must be NotStarted, Initializing, or InProgress.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewStage]
+        Find more info here: https://learn.microsoft.com/graph/api/accessreviewstage-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -105,7 +107,7 @@ class AccessReviewStageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AccessReviewStageItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
+        Retrieve the properties and relationships of an accessReviewStage object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +118,7 @@ class AccessReviewStageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: AccessReviewStage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property stages in identityGovernance
+        Update the properties of an accessReviewStage object. Only the reviewers and fallbackReviewers properties can be updated. You can only add reviewers to the fallbackReviewers property but can't remove existing fallbackReviewers. To update an accessReviewStage, its status must be NotStarted, Initializing, or InProgress.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -167,7 +169,7 @@ class AccessReviewStageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessReviewStageItemRequestBuilderGetQueryParameters():
         """
-        If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
+        Retrieve the properties and relationships of an accessReviewStage object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

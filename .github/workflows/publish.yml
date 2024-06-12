@@ -9,7 +9,34 @@ permissions:
   contents: write
 
 jobs:
+  version:
+    name: Update version
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install poetry
+        run: |
+          pip install --upgrade poetry
+      - name: Update version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          poetry version $VERSION
+      - name: Commit changes
+        run: |
+          git config --local user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git config --local user.name "${{ secrets.GIT_USER_NAME }}"
+          git commit -am "Update version"
+          git push origin ${{ github.ref }}
+        
+
   build:
+    needs: [version]
     uses: ./.github/workflows/build.yml
 
   publish:
@@ -24,18 +51,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - name: Install dependencies
+          python-version: 3.12
+      - name: Install flit
         run: |
-          python -m pip install --upgrade pip
-          pip install build
-      - name: Build package
-        run: python -m build
-      - name: Publish package
-        uses: pypa/gh-action-pypi-publish@81e9d935c883d0b210363ab89cf05f3894778450
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          pip install flit
+      - name: Publish the distibution to PyPI
+        run: flit publish
+        env:
+          FLIT_INDEX_URL: https://upload.pypi.org/legacy/
+          FLIT_USERNAME: __token__
+          FLIT_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 
   release:
     name: Create release

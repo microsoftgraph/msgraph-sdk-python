@@ -2,14 +2,11 @@ name: Build and validate generated code
 
 on:
   workflow_dispatch:
-  workflow_call:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main, dev ]
-
-permissions:
-  contents: read
+  workflow_call:
 
 jobs:
   validate:
@@ -27,3 +24,4 @@ jobs:
         pip install -r requirements-dev.txt
     - name: Lint with Pylint
       run: pylint msgraph --disable=W --rcfile=.pylintrc
+

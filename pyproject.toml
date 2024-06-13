@@ -4,7 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msgraph-sdk"
+# The SDK version
+# x-release-please-start-version
 version = "1.5.0"
+# x-release-please-end
 authors = [{name = "Microsoft", email = "graphtooling+python@microsoft.com"}]
 description = "The Microsoft Graph Python SDK"
 dependencies = [

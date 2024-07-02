@@ -47,7 +47,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PassiveDnsRequestBuilderGetQueryParameters]] = None) -> Optional[PassiveDnsRecordCollectionResponse]:
         """
-        Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
+        Get a list of passiveDnsRecord resources associated with a host. This method is a forward DNS lookup that queries the IP address of the specified host using its hostname. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PassiveDnsRecordCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-host-list-passivedns?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PassiveDnsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
+        Get a list of passiveDnsRecord resources associated with a host. This method is a forward DNS lookup that queries the IP address of the specified host using its hostname. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +99,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PassiveDnsRequestBuilderGetQueryParameters():
         """
-        Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
+        Get a list of passiveDnsRecord resources associated with a host. This method is a forward DNS lookup that queries the IP address of the specified host using its hostname. 
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

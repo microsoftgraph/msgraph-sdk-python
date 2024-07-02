@@ -45,7 +45,7 @@ class Device(DirectoryObject):
     is_compliant: Optional[bool] = None
     # true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     is_managed: Optional[bool] = None
-    # true if the device is rooted; false if the device is jail-broken. This property can only be updated by Intune.
+    # true if the device is rooted or jail-broken. This property can only be updated by Intune.
     is_rooted: Optional[bool] = None
     # The management channel of the device. This property is set by Intune. Possible values are: eas, mdm, easMdm, intuneClient, easIntuneClient, configurationManagerClient, configurationManagerClientMdm, configurationManagerClientMdmEas, unknown, jamf, googleCloudDevicePolicyController.
     management_type: Optional[str] = None

@@ -24,7 +24,7 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Path that can be used to navigate to the item. Read-only.
+    # Percent-encoded path that can be used to navigate to the item. Read-only.
     path: Optional[str] = None
     # A unique identifier for a shared resource that can be accessed via the Shares API.
     share_id: Optional[str] = None

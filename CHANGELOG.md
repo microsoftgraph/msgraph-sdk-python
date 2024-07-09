@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.5.1](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.5.0...v1.5.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* avoid using default mutable arguments ([4912f5a](https://github.com/microsoftgraph/msgraph-sdk-python/commit/4912f5a54c9063a42b3edf9f1276878d49e5bf6b))
+
+
+### Documentation
+
+* fix typo in README ([71463a6](https://github.com/microsoftgraph/msgraph-sdk-python/commit/71463a64fa3c3e43cb5f4c36f46a1aef3a703b29))
+
 ## [1.5.0] - 2024-05-23
 
 ### Changed

@@ -13,46 +13,61 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors.o_data_error import ODataError
-    from .....models.service_provisioning_error_collection_response import ServiceProvisioningErrorCollectionResponse
+    from ...models.directory_object_collection_response import DirectoryObjectCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
+    from .item.directory_object_item_request_builder import DirectoryObjectItemRequestBuilder
 
-class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
+class InvitedUserSponsorsRequestBuilder(BaseRequestBuilder):
     """
-    Builds and executes requests for operations under /invitations/{invitation-id}/invitedUser/serviceProvisioningErrors
+    Provides operations to manage the invitedUserSponsors property of the microsoft.graph.invitation entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
-        Instantiates a new ServiceProvisioningErrorsRequestBuilder and sets the default values.
+        Instantiates a new InvitedUserSponsorsRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/invitations/{invitation%2Did}/invitedUser/serviceProvisioningErrors{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/invitations/invitedUserSponsors{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[ServiceProvisioningErrorsRequestBuilderGetQueryParameters]] = None) -> Optional[ServiceProvisioningErrorCollectionResponse]:
+    def by_directory_object_id(self,directory_object_id: str) -> DirectoryObjectItemRequestBuilder:
         """
-        Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from a user object .  Supports $filter (eq, not, for isResolved and serviceInstance).
+        Provides operations to manage the invitedUserSponsors property of the microsoft.graph.invitation entity.
+        param directory_object_id: The unique identifier of directoryObject
+        Returns: DirectoryObjectItemRequestBuilder
+        """
+        if not directory_object_id:
+            raise TypeError("directory_object_id cannot be null.")
+        from .item.directory_object_item_request_builder import DirectoryObjectItemRequestBuilder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["directoryObject%2Did"] = directory_object_id
+        return DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    async def get(self,request_configuration: Optional[RequestConfiguration[InvitedUserSponsorsRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObjectCollectionResponse]:
+        """
+        The users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ServiceProvisioningErrorCollectionResponse]
+        Returns: Optional[DirectoryObjectCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors.o_data_error import ODataError
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.service_provisioning_error_collection_response import ServiceProvisioningErrorCollectionResponse
+        from ...models.directory_object_collection_response import DirectoryObjectCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, ServiceProvisioningErrorCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObjectCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ServiceProvisioningErrorsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[InvitedUserSponsorsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from a user object .  Supports $filter (eq, not, for isResolved and serviceInstance).
+        The users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,15 +76,15 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def with_url(self,raw_url: str) -> ServiceProvisioningErrorsRequestBuilder:
+    def with_url(self,raw_url: str) -> InvitedUserSponsorsRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: ServiceProvisioningErrorsRequestBuilder
+        Returns: InvitedUserSponsorsRequestBuilder
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, raw_url)
+        return InvitedUserSponsorsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -81,9 +96,9 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
-    class ServiceProvisioningErrorsRequestBuilderGetQueryParameters():
+    class InvitedUserSponsorsRequestBuilderGetQueryParameters():
         """
-        Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from a user object .  Supports $filter (eq, not, for isResolved and serviceInstance).
+        The users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -137,7 +152,7 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
 
     
     @dataclass
-    class ServiceProvisioningErrorsRequestBuilderGetRequestConfiguration(RequestConfiguration[ServiceProvisioningErrorsRequestBuilderGetQueryParameters]):
+    class InvitedUserSponsorsRequestBuilderGetRequestConfiguration(RequestConfiguration[InvitedUserSponsorsRequestBuilderGetQueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

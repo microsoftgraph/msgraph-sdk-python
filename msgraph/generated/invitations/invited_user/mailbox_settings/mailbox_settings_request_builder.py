@@ -13,12 +13,12 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from .....models.mailbox_settings import MailboxSettings
-    from .....models.o_data_errors.o_data_error import ODataError
+    from ....models.mailbox_settings import MailboxSettings
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class MailboxSettingsRequestBuilder(BaseRequestBuilder):
     """
-    Builds and executes requests for operations under /invitations/{invitation-id}/invitedUser/mailboxSettings
+    Builds and executes requests for operations under /invitations/invitedUser/mailboxSettings
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
@@ -27,7 +27,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/invitations/{invitation%2Did}/invitedUser/mailboxSettings{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/invitations/invitedUser/mailboxSettings{?%24expand,%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxSettingsRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxSettings]:
         """
@@ -38,14 +38,14 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors.o_data_error import ODataError
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.mailbox_settings import MailboxSettings
+        from ....models.mailbox_settings import MailboxSettings
 
         return await self.request_adapter.send_async(request_info, MailboxSettings, error_mapping)
     
@@ -61,14 +61,14 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors.o_data_error import ODataError
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.mailbox_settings import MailboxSettings
+        from ....models.mailbox_settings import MailboxSettings
 
         return await self.request_adapter.send_async(request_info, MailboxSettings, error_mapping)
     

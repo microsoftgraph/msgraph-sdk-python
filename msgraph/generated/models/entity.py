@@ -916,6 +916,7 @@ if TYPE_CHECKING:
     from .workbook_worksheet_protection import WorkbookWorksheetProtection
     from .workforce_integration import WorkforceIntegration
     from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
+    from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
 @dataclass
 class Entity(AdditionalDataHolder, BackedModel, Parsable):
@@ -4596,6 +4597,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
             return X509CertificateAuthenticationMethodConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.x509CertificateCombinationConfiguration".casefold():
+            from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
+
+            return X509CertificateCombinationConfiguration()
         return Entity()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -5514,6 +5519,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .workbook_worksheet_protection import WorkbookWorksheetProtection
         from .workforce_integration import WorkforceIntegration
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
+        from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
         from .aad_user_conversation_member import AadUserConversationMember
         from .access_package import AccessPackage
@@ -6426,6 +6432,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .workbook_worksheet_protection import WorkbookWorksheetProtection
         from .workforce_integration import WorkforceIntegration
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
+        from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),

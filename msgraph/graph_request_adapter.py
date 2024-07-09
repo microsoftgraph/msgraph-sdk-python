@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import Optional
 import httpx
 from kiota_abstractions.authentication import AuthenticationProvider
 from kiota_http.middleware.options import UrlReplaceHandlerOption
@@ -20,5 +20,7 @@ options = {
 
 class GraphRequestAdapter(BaseGraphRequestAdapter):
     def __init__(self, auth_provider: AuthenticationProvider,
-                 client: Optional[httpx.AsyncClient] = GraphClientFactory.create_with_default_middleware(options=options)) -> None:
+                 client: Optional[httpx.AsyncClient] = None) -> None:
+        if client is None:
+            client = GraphClientFactory.create_with_default_middleware(options=options)
         super().__init__(auth_provider, http_client=client)

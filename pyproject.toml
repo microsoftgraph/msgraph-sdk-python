@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=65.5.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
 
 [project]
 name = "msgraph-sdk"
@@ -43,6 +43,9 @@ dev = ["yapf", "bumpver", "isort", "pylint", "pytest", "mypy"]
 homepage = "https://github.com/microsoftgraph/msgraph-sdk-python#readme"
 repository = "https://github.com/microsoftgraph/msgraph-sdk-python"
 documentation = "https://github.com/microsoftgraph/msgraph-sdk-python/docs"
+
+[tool.flit.module]
+name = "msgraph-sdk"
 
 [tool.mypy]
 warn_unused_configs = true

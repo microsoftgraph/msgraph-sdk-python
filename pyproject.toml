@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 name = "msgraph-sdk"
 # The SDK version
 # x-release-please-start-version
-version = "1.5.1"
+version = "1.5.2"
 # x-release-please-end
 authors = [{name = "Microsoft", email = "graphtooling+python@microsoft.com"}]
 description = "The Microsoft Graph Python SDK"

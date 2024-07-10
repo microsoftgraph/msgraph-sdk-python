@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.5.2](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.5.1...v1.5.2) (2024-07-10)
+
+
+### Bug Fixes
+
+* fixes module name for release ([941f6b2](https://github.com/microsoftgraph/msgraph-sdk-python/commit/941f6b2325555962af9c412c05b609797d7319c4))
+
 ## [1.5.1](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.5.0...v1.5.1) (2024-07-09)
 
 

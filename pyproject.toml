@@ -45,7 +45,7 @@ repository = "https://github.com/microsoftgraph/msgraph-sdk-python"
 documentation = "https://github.com/microsoftgraph/msgraph-sdk-python/docs"
 
 [tool.flit.module]
-name = "msgraph-sdk"
+name = "msgraph"
 
 [tool.mypy]
 warn_unused_configs = true

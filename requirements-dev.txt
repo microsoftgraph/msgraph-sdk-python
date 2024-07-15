@@ -53,7 +53,7 @@ packaging==24.1
 pathlib2==2.3.7.post1
 pendulum==3.0.0
 platformdirs==4.2.2
-portalocker==2.10.0
+portalocker==2.10.1
 pycparser==2.22
 PyJWT==2.8.0
 pylint==3.2.5

@@ -31,7 +31,7 @@ class CreatedOnBehalfOfRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CreatedOnBehalfOfRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObject]:
         """
-        The user (or application) that created the group. NOTE: This is not set if the user is an administrator. Read-only.
+        The user (or application) that created the group. NOTE: This property isn't set if the user is an administrator. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
         """
@@ -51,7 +51,7 @@ class CreatedOnBehalfOfRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CreatedOnBehalfOfRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The user (or application) that created the group. NOTE: This is not set if the user is an administrator. Read-only.
+        The user (or application) that created the group. NOTE: This property isn't set if the user is an administrator. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +73,7 @@ class CreatedOnBehalfOfRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CreatedOnBehalfOfRequestBuilderGetQueryParameters():
         """
-        The user (or application) that created the group. NOTE: This is not set if the user is an administrator. Read-only.
+        The user (or application) that created the group. NOTE: This property isn't set if the user is an administrator. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

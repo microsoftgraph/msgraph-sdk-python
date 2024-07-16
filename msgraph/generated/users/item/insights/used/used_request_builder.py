@@ -48,7 +48,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UsedRequestBuilderGetQueryParameters]] = None) -> Optional[UsedInsightCollectionResponse]:
         """
-        Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+        Calculated relationship that identifies the latest documents viewed or modified by a user, including OneDrive for work or school and SharePoint documents, ranked by recency of use.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UsedInsightCollectionResponse]
         """
@@ -91,7 +91,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UsedRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+        Calculated relationship that identifies the latest documents viewed or modified by a user, including OneDrive for work or school and SharePoint documents, ranked by recency of use.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +137,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsedRequestBuilderGetQueryParameters():
         """
-        Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+        Calculated relationship that identifies the latest documents viewed or modified by a user, including OneDrive for work or school and SharePoint documents, ranked by recency of use.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

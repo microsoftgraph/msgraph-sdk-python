@@ -13,7 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from ......models.o_data_errors.o_data_error import ODataError
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class CountRequestBuilder(BaseRequestBuilder):
     """
@@ -26,7 +26,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/invitations/{invitation%2Did}/invitedUser/serviceProvisioningErrors/$count{?%24filter,%24search}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/invitations/invitedUserSponsors/$count{?%24filter,%24search}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CountRequestBuilderGetQueryParameters]] = None) -> Optional[int]:
         """
@@ -37,7 +37,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors.o_data_error import ODataError
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "XXX": ODataError,

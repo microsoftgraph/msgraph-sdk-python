@@ -40,7 +40,7 @@ microsoft-kiota-serialization-form==0.1.0
 microsoft-kiota-serialization-json==1.2.0
 microsoft-kiota-serialization-multipart==0.1.0
 microsoft-kiota-serialization-text==1.0.0
-msal==1.29.0
+msal==1.30.0
 msal-extensions==1.2.0
 msgraph-core==1.1.2
 multidict==6.0.5

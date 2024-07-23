@@ -12,6 +12,8 @@ if TYPE_CHECKING:
     from .blob_container_evidence import BlobContainerEvidence
     from .blob_evidence import BlobEvidence
     from .cloud_application_evidence import CloudApplicationEvidence
+    from .cloud_logon_request_evidence import CloudLogonRequestEvidence
+    from .cloud_logon_session_evidence import CloudLogonSessionEvidence
     from .container_evidence import ContainerEvidence
     from .container_image_evidence import ContainerImageEvidence
     from .container_registry_evidence import ContainerRegistryEvidence
@@ -114,6 +116,14 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .cloud_application_evidence import CloudApplicationEvidence
 
             return CloudApplicationEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudLogonRequestEvidence".casefold():
+            from .cloud_logon_request_evidence import CloudLogonRequestEvidence
+
+            return CloudLogonRequestEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudLogonSessionEvidence".casefold():
+            from .cloud_logon_session_evidence import CloudLogonSessionEvidence
+
+            return CloudLogonSessionEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.containerEvidence".casefold():
             from .container_evidence import ContainerEvidence
 
@@ -275,6 +285,8 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .blob_container_evidence import BlobContainerEvidence
         from .blob_evidence import BlobEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
+        from .cloud_logon_request_evidence import CloudLogonRequestEvidence
+        from .cloud_logon_session_evidence import CloudLogonSessionEvidence
         from .container_evidence import ContainerEvidence
         from .container_image_evidence import ContainerImageEvidence
         from .container_registry_evidence import ContainerRegistryEvidence
@@ -322,6 +334,8 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .blob_container_evidence import BlobContainerEvidence
         from .blob_evidence import BlobEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
+        from .cloud_logon_request_evidence import CloudLogonRequestEvidence
+        from .cloud_logon_session_evidence import CloudLogonSessionEvidence
         from .container_evidence import ContainerEvidence
         from .container_image_evidence import ContainerImageEvidence
         from .container_registry_evidence import ContainerRegistryEvidence

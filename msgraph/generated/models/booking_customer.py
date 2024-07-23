@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -19,10 +20,14 @@ class BookingCustomer(BookingCustomerBase):
     odata_type: Optional[str] = "#microsoft.graph.bookingCustomer"
     # Addresses associated with the customer. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.
     addresses: Optional[List[PhysicalAddress]] = None
+    # The createdDateTime property
+    created_date_time: Optional[datetime.datetime] = None
     # The name of the customer.
     display_name: Optional[str] = None
     # The SMTP address of the customer.
     email_address: Optional[str] = None
+    # The lastUpdatedDateTime property
+    last_updated_date_time: Optional[datetime.datetime] = None
     # Phone numbers associated with the customer, including home, business and mobile numbers.
     phones: Optional[List[Phone]] = None
     
@@ -52,8 +57,10 @@ class BookingCustomer(BookingCustomerBase):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(PhysicalAddress)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
         }
         super_fields = super().get_field_deserializers()
@@ -70,8 +77,10 @@ class BookingCustomer(BookingCustomerBase):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("addresses", self.addresses)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("emailAddress", self.email_address)
+        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_collection_of_object_values("phones", self.phones)
     
 

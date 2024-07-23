@@ -15,7 +15,11 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.virtual_event_webinar import VirtualEventWebinar
+    from .presenters.presenters_request_builder import PresentersRequestBuilder
     from .registrations.registrations_request_builder import RegistrationsRequestBuilder
+    from .registrations_with_email.registrations_with_email_request_builder import RegistrationsWithEmailRequestBuilder
+    from .registrations_with_user_id.registrations_with_user_id_request_builder import RegistrationsWithUserIdRequestBuilder
+    from .registration_configuration.registration_configuration_request_builder import RegistrationConfigurationRequestBuilder
     from .sessions.sessions_request_builder import SessionsRequestBuilder
 
 class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
@@ -93,6 +97,30 @@ class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, VirtualEventWebinar, error_mapping)
     
+    def registrations_with_email(self,email: str) -> RegistrationsWithEmailRequestBuilder:
+        """
+        Provides operations to manage the registrations property of the microsoft.graph.virtualEventWebinar entity.
+        param email: Alternate key of virtualEventRegistration
+        Returns: RegistrationsWithEmailRequestBuilder
+        """
+        if not email:
+            raise TypeError("email cannot be null.")
+        from .registrations_with_email.registrations_with_email_request_builder import RegistrationsWithEmailRequestBuilder
+
+        return RegistrationsWithEmailRequestBuilder(self.request_adapter, self.path_parameters, email)
+    
+    def registrations_with_user_id(self,user_id: str) -> RegistrationsWithUserIdRequestBuilder:
+        """
+        Provides operations to manage the registrations property of the microsoft.graph.virtualEventWebinar entity.
+        param user_id: Alternate key of virtualEventRegistration
+        Returns: RegistrationsWithUserIdRequestBuilder
+        """
+        if not user_id:
+            raise TypeError("user_id cannot be null.")
+        from .registrations_with_user_id.registrations_with_user_id_request_builder import RegistrationsWithUserIdRequestBuilder
+
+        return RegistrationsWithUserIdRequestBuilder(self.request_adapter, self.path_parameters, user_id)
+    
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property webinars for solutions
@@ -139,6 +167,24 @@ class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return VirtualEventWebinarItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def presenters(self) -> PresentersRequestBuilder:
+        """
+        Provides operations to manage the presenters property of the microsoft.graph.virtualEvent entity.
+        """
+        from .presenters.presenters_request_builder import PresentersRequestBuilder
+
+        return PresentersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def registration_configuration(self) -> RegistrationConfigurationRequestBuilder:
+        """
+        Provides operations to manage the registrationConfiguration property of the microsoft.graph.virtualEventWebinar entity.
+        """
+        from .registration_configuration.registration_configuration_request_builder import RegistrationConfigurationRequestBuilder
+
+        return RegistrationConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def registrations(self) -> RegistrationsRequestBuilder:

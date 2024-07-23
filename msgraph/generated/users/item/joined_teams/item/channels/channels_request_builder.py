@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .get_all_messages.get_all_messages_request_builder import GetAllMessagesRequestBuilder
+    from .get_all_retained_messages.get_all_retained_messages_request_builder import GetAllRetainedMessagesRequestBuilder
     from .item.channel_item_request_builder import ChannelItemRequestBuilder
 
 class ChannelsRequestBuilder(BaseRequestBuilder):
@@ -143,6 +144,15 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
         from .get_all_messages.get_all_messages_request_builder import GetAllMessagesRequestBuilder
 
         return GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_all_retained_messages(self) -> GetAllRetainedMessagesRequestBuilder:
+        """
+        Provides operations to call the getAllRetainedMessages method.
+        """
+        from .get_all_retained_messages.get_all_retained_messages_request_builder import GetAllRetainedMessagesRequestBuilder
+
+        return GetAllRetainedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ChannelsRequestBuilderGetQueryParameters():

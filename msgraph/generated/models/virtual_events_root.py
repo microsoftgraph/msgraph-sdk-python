@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .virtual_event import VirtualEvent
+    from .virtual_event_townhall import VirtualEventTownhall
     from .virtual_event_webinar import VirtualEventWebinar
 
 from .entity import Entity
@@ -16,6 +17,8 @@ class VirtualEventsRoot(Entity):
     events: Optional[List[VirtualEvent]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The townhalls property
+    townhalls: Optional[List[VirtualEventTownhall]] = None
     # The webinars property
     webinars: Optional[List[VirtualEventWebinar]] = None
     
@@ -37,14 +40,17 @@ class VirtualEventsRoot(Entity):
         """
         from .entity import Entity
         from .virtual_event import VirtualEvent
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
 
         from .entity import Entity
         from .virtual_event import VirtualEvent
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
 
         fields: Dict[str, Callable[[Any], None]] = {
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(VirtualEvent)),
+            "townhalls": lambda n : setattr(self, 'townhalls', n.get_collection_of_object_values(VirtualEventTownhall)),
             "webinars": lambda n : setattr(self, 'webinars', n.get_collection_of_object_values(VirtualEventWebinar)),
         }
         super_fields = super().get_field_deserializers()
@@ -61,6 +67,7 @@ class VirtualEventsRoot(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("events", self.events)
+        writer.write_collection_of_object_values("townhalls", self.townhalls)
         writer.write_collection_of_object_values("webinars", self.webinars)
     
 

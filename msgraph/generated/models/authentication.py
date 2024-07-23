@@ -30,7 +30,7 @@ class Authentication(Entity):
     microsoft_authenticator_methods: Optional[List[MicrosoftAuthenticatorAuthenticationMethod]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Represents the status of a long-running operation.
+    # Represents the status of a long-running operation, such as a password reset operation.
     operations: Optional[List[LongRunningOperation]] = None
     # Represents the password registered to a user for authentication. For security, the password itself is never returned in the object, but action can be taken to reset a password.
     password_methods: Optional[List[PasswordAuthenticationMethod]] = None

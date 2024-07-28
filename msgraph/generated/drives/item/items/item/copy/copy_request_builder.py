@@ -52,7 +52,7 @@ class CopyRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         from ......models.drive_item import DriveItem
 
-        return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,body: CopyPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

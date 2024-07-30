@@ -34,7 +34,7 @@ class Directory(Entity):
     odata_type: Optional[str] = None
     # A container for on-premises directory synchronization functionalities that are available for the organization.
     on_premises_synchronization: Optional[List[OnPremisesDirectorySynchronization]] = None
-    # The subscriptions property
+    # List of commercial subscriptions that an organization acquired.
     subscriptions: Optional[List[CompanySubscription]] = None
     
     @staticmethod

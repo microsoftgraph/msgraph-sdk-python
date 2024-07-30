@@ -18,17 +18,17 @@ from .entity import Entity
 class EducationRubric(Entity):
     # The user who created this resource.
     created_by: Optional[IdentitySet] = None
-    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # The description of this rubric.
     description: Optional[EducationItemBody] = None
     # The name of this rubric.
     display_name: Optional[str] = None
-    # The grading type of this rubric -- null for a no-points rubric, or educationAssignmentPointsGradeType for a points rubric.
+    # The grading type of this rubric. You can use null for a no-points rubric or educationAssignmentPointsGradeType for a points rubric.
     grading: Optional[EducationAssignmentGradeType] = None
     # The last user to modify the resource.
     last_modified_by: Optional[IdentitySet] = None
-    # Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Moment in time when the resource was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The collection of levels making up this rubric.
     levels: Optional[List[RubricLevel]] = None

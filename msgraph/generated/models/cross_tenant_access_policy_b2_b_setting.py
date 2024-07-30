@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
+    from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
 
 @dataclass
 class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsable):
@@ -30,6 +31,14 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
         """
         if not parse_node:
             raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicyTenantRestrictions".casefold():
+            from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
+
+            return CrossTenantAccessPolicyTenantRestrictions()
         return CrossTenantAccessPolicyB2BSetting()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -38,8 +47,10 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
 
         from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(CrossTenantAccessPolicyTargetConfiguration)),

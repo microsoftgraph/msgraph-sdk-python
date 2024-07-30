@@ -50,7 +50,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignmentItemRequestBuilderGetQueryParameters]] = None) -> Optional[AppRoleAssignment]:
         """
-        Represents the app roles a user has been granted for an application. Supports $expand.
+        Represents the app roles a user is granted for an application. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
         """
@@ -104,7 +104,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignmentItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the app roles a user has been granted for an application. Supports $expand.
+        Represents the app roles a user is granted for an application. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppRoleAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Represents the app roles a user has been granted for an application. Supports $expand.
+        Represents the app roles a user is granted for an application. Supports $expand.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

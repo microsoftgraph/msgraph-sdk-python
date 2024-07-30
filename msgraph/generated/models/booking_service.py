@@ -21,6 +21,8 @@ class BookingService(Entity):
     """
     # Additional information that is sent to the customer when an appointment is confirmed.
     additional_information: Optional[str] = None
+    # The createdDateTime property
+    created_date_time: Optional[datetime.datetime] = None
     # Contains the set of custom questions associated with a particular service.
     custom_questions: Optional[List[BookingQuestionAssignment]] = None
     # The default length of the service, represented in numbers of days, hours, minutes, and seconds. For example, P11D23H59M59.999999999999S.
@@ -39,12 +41,16 @@ class BookingService(Entity):
     display_name: Optional[str] = None
     # True if the URL to join the appointment anonymously (anonymousJoinWebUrl) will be generated for the appointment booked for this service.
     is_anonymous_join_enabled: Optional[bool] = None
+    # The isCustomerAllowedToManageBooking property
+    is_customer_allowed_to_manage_booking: Optional[bool] = None
     # True means this service is not available to customers for booking.
     is_hidden_from_customers: Optional[bool] = None
     # True indicates that the appointments for the service will be held online. Default value is false.
     is_location_online: Optional[bool] = None
     # The language of the self-service booking page.
     language_tag: Optional[str] = None
+    # The lastUpdatedDateTime property
+    last_updated_date_time: Optional[datetime.datetime] = None
     # The maximum number of customers allowed in a service. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment. To create a customer, use the Create bookingCustomer operation.
     maximum_attendees_count: Optional[int] = None
     # Additional information about this service.
@@ -96,6 +102,7 @@ class BookingService(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(BookingQuestionAssignment)),
             "defaultDuration": lambda n : setattr(self, 'default_duration', n.get_timedelta_value()),
             "defaultLocation": lambda n : setattr(self, 'default_location', n.get_object_value(Location)),
@@ -105,9 +112,11 @@ class BookingService(Entity):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isAnonymousJoinEnabled": lambda n : setattr(self, 'is_anonymous_join_enabled', n.get_bool_value()),
+            "isCustomerAllowedToManageBooking": lambda n : setattr(self, 'is_customer_allowed_to_manage_booking', n.get_bool_value()),
             "isHiddenFromCustomers": lambda n : setattr(self, 'is_hidden_from_customers', n.get_bool_value()),
             "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
             "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
@@ -131,6 +140,7 @@ class BookingService(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("additionalInformation", self.additional_information)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("customQuestions", self.custom_questions)
         writer.write_timedelta_value("defaultDuration", self.default_duration)
         writer.write_object_value("defaultLocation", self.default_location)
@@ -140,9 +150,11 @@ class BookingService(Entity):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isAnonymousJoinEnabled", self.is_anonymous_join_enabled)
+        writer.write_bool_value("isCustomerAllowedToManageBooking", self.is_customer_allowed_to_manage_booking)
         writer.write_bool_value("isHiddenFromCustomers", self.is_hidden_from_customers)
         writer.write_bool_value("isLocationOnline", self.is_location_online)
         writer.write_str_value("languageTag", self.language_tag)
+        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
         writer.write_str_value("notes", self.notes)
         writer.write_timedelta_value("postBuffer", self.post_buffer)

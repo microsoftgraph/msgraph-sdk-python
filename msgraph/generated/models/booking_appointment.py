@@ -23,6 +23,10 @@ class BookingAppointment(Entity):
     additional_information: Optional[str] = None
     # The URL of the meeting to join anonymously.
     anonymous_join_web_url: Optional[str] = None
+    # Custom label that can be stamped on this appointment by users.
+    appointment_label: Optional[str] = None
+    # The createdDateTime property
+    created_date_time: Optional[datetime.datetime] = None
     # The customerEmailAddress property
     customer_email_address: Optional[str] = None
     # The customerName property
@@ -41,10 +45,14 @@ class BookingAppointment(Entity):
     end_date_time: Optional[DateTimeTimeZone] = None
     # The current number of customers in the appointment
     filled_attendees_count: Optional[int] = None
+    # The isCustomerAllowedToManageBooking property
+    is_customer_allowed_to_manage_booking: Optional[bool] = None
     # If true, indicates that the appointment will be held online. Default value is false.
     is_location_online: Optional[bool] = None
     # The URL of the online meeting for the appointment.
     join_web_url: Optional[str] = None
+    # The lastUpdatedDateTime property
+    last_updated_date_time: Optional[datetime.datetime] = None
     # The maximum number of customers allowed in an appointment. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment. To create a customer, use the Create bookingCustomer operation.
     maximum_attendees_count: Optional[int] = None
     # The OdataType property
@@ -111,6 +119,8 @@ class BookingAppointment(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "anonymousJoinWebUrl": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
+            "appointmentLabel": lambda n : setattr(self, 'appointment_label', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customerEmailAddress": lambda n : setattr(self, 'customer_email_address', n.get_str_value()),
             "customerName": lambda n : setattr(self, 'customer_name', n.get_str_value()),
             "customerNotes": lambda n : setattr(self, 'customer_notes', n.get_str_value()),
@@ -120,8 +130,10 @@ class BookingAppointment(Entity):
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
             "filledAttendeesCount": lambda n : setattr(self, 'filled_attendees_count', n.get_int_value()),
+            "isCustomerAllowedToManageBooking": lambda n : setattr(self, 'is_customer_allowed_to_manage_booking', n.get_bool_value()),
             "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
             "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
             "optOutOfCustomerEmail": lambda n : setattr(self, 'opt_out_of_customer_email', n.get_bool_value()),
             "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
@@ -153,6 +165,8 @@ class BookingAppointment(Entity):
         super().serialize(writer)
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_str_value("anonymousJoinWebUrl", self.anonymous_join_web_url)
+        writer.write_str_value("appointmentLabel", self.appointment_label)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("customerEmailAddress", self.customer_email_address)
         writer.write_str_value("customerName", self.customer_name)
         writer.write_str_value("customerNotes", self.customer_notes)
@@ -160,8 +174,10 @@ class BookingAppointment(Entity):
         writer.write_str_value("customerTimeZone", self.customer_time_zone)
         writer.write_collection_of_object_values("customers", self.customers)
         writer.write_object_value("endDateTime", self.end_date_time)
+        writer.write_bool_value("isCustomerAllowedToManageBooking", self.is_customer_allowed_to_manage_booking)
         writer.write_bool_value("isLocationOnline", self.is_location_online)
         writer.write_str_value("joinWebUrl", self.join_web_url)
+        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
         writer.write_bool_value("optOutOfCustomerEmail", self.opt_out_of_customer_email)
         writer.write_timedelta_value("postBuffer", self.post_buffer)

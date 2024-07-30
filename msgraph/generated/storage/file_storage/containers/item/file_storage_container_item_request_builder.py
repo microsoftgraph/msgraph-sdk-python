@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .activate.activate_request_builder import ActivateRequestBuilder
     from .drive.drive_request_builder import DriveRequestBuilder
+    from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
 
 class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
@@ -157,6 +158,15 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
         from .drive.drive_request_builder import DriveRequestBuilder
 
         return DriveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permanent_delete(self) -> PermanentDeleteRequestBuilder:
+        """
+        Provides operations to call the permanentDelete method.
+        """
+        from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
+
+        return PermanentDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def permissions(self) -> PermissionsRequestBuilder:

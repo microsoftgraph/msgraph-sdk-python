@@ -44,7 +44,7 @@ msal==1.30.0
 msal-extensions==1.2.0
 msgraph-core==1.1.2
 multidict==6.0.5
-mypy==1.11.0
+mypy==1.11.1
 mypy-extensions==1.0.0
 opentelemetry-api==1.26.0
 opentelemetry-sdk==1.26.0

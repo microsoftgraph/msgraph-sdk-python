@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.5.4](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.5.3...v1.5.4) (2024-08-02)
+
+
+### Bug Fixes
+
+* requires a higher version of the JSON dependency ([955f85f](https://github.com/microsoftgraph/msgraph-sdk-python/commit/955f85fe35ddfc0eb6f2f2c6a58d59ec04f3b073))
+
 ## [1.5.3](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.5.2...v1.5.3) (2024-07-17)
 
 

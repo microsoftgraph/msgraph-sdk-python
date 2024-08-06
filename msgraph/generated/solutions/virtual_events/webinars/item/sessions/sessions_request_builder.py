@@ -48,9 +48,10 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SessionsRequestBuilderGetQueryParameters]] = None) -> Optional[VirtualEventSessionCollectionResponse]:
         """
-        Read the properties and relationships of a virtualEventSession object.
+        Get a list of all virtualEventSession summary objects under a virtual event. A session summary contains only the endDateTime, id, joinWebUrl, startDateTime, and subject of a virtual event session. The rest of session properties will be null. Currently, the following virtual event types are supported: - virtualEventTownhall- virtualEventWebinar
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventSessionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualevent-list-sessions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +92,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SessionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a virtualEventSession object.
+        Get a list of all virtualEventSession summary objects under a virtual event. A session summary contains only the endDateTime, id, joinWebUrl, startDateTime, and subject of a virtual event session. The rest of session properties will be null. Currently, the following virtual event types are supported: - virtualEventTownhall- virtualEventWebinar
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +138,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SessionsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a virtualEventSession object.
+        Get a list of all virtualEventSession summary objects under a virtual event. A session summary contains only the endDateTime, id, joinWebUrl, startDateTime, and subject of a virtual event session. The rest of session properties will be null. Currently, the following virtual event types are supported: - virtualEventTownhall- virtualEventWebinar
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

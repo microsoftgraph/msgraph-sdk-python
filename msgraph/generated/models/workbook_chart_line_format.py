@@ -10,7 +10,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartLineFormat(Entity):
-    # HTML color code representing the color of lines in the chart.
+    # The HTML color code that represents the color of lines in the chart.
     color: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

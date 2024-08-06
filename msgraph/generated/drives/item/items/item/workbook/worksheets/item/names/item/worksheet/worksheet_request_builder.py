@@ -31,7 +31,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorksheetRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookWorksheet]:
         """
-        Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+        Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
         """
@@ -51,7 +51,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorksheetRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+        Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +73,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorksheetRequestBuilderGetQueryParameters():
         """
-        Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+        Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

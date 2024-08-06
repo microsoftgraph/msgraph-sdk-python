@@ -50,7 +50,7 @@ class UsedInsightItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UsedInsightItemRequestBuilderGetQueryParameters]] = None) -> Optional[UsedInsight]:
         """
-        Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+        Calculated relationship that identifies the latest documents viewed or modified by a user, including OneDrive for work or school and SharePoint documents, ranked by recency of use.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UsedInsight]
         """
@@ -104,7 +104,7 @@ class UsedInsightItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UsedInsightItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+        Calculated relationship that identifies the latest documents viewed or modified by a user, including OneDrive for work or school and SharePoint documents, ranked by recency of use.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -157,7 +157,7 @@ class UsedInsightItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsedInsightItemRequestBuilderGetQueryParameters():
         """
-        Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+        Calculated relationship that identifies the latest documents viewed or modified by a user, including OneDrive for work or school and SharePoint documents, ranked by recency of use.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -49,7 +49,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PivotTablesRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookPivotTableCollectionResponse]:
         """
-        Collection of PivotTables that are part of the worksheet.
+        The list of piot tables that are part of the worksheet.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookPivotTableCollectionResponse]
         """
@@ -92,7 +92,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PivotTablesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Collection of PivotTables that are part of the worksheet.
+        The list of piot tables that are part of the worksheet.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PivotTablesRequestBuilderGetQueryParameters():
         """
-        Collection of PivotTables that are part of the worksheet.
+        The list of piot tables that are part of the worksheet.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

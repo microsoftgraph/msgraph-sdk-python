@@ -11,15 +11,15 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartTitle(Entity):
-    # Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
+    # The formatting of a chart title, which includes fill and font formatting. Read-only.
     format: Optional[WorkbookChartTitleFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Boolean value representing if the chart title will overlay the chart or not.
+    # Indicates whether the chart title will overlay the chart or not.
     overlay: Optional[bool] = None
-    # Represents the title text of a chart.
+    # The title text of the chart.
     text: Optional[str] = None
-    # A boolean value that represents the visibility of a chart title object.
+    # Indicates whether the chart title is visible.
     visible: Optional[bool] = None
     
     @staticmethod

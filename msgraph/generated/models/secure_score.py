@@ -22,7 +22,7 @@ class SecureScore(Entity):
     azure_tenant_id: Optional[str] = None
     # Contains tenant scores for a set of controls.
     control_scores: Optional[List[ControlScore]] = None
-    # The date when the entity is created.
+    # When the report was created.
     created_date_time: Optional[datetime.datetime] = None
     # Tenant current attained score on specified date.
     current_score: Optional[float] = None

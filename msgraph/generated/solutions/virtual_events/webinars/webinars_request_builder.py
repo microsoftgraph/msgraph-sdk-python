@@ -98,10 +98,11 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: VirtualEventWebinar, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VirtualEventWebinar]:
         """
-        Create new navigation property to webinars for solutions
+        Create a new virtualEventWebinar object in draft mode.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventWebinar]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualeventsroot-post-webinars?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -132,7 +133,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: VirtualEventWebinar, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to webinars for solutions
+        Create a new virtualEventWebinar object in draft mode.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

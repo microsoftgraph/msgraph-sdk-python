@@ -61,7 +61,7 @@ class FilterRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FilterRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookFilter]:
         """
-        Retrieve the filter applied to the column. Read-only.
+        The filter applied to the column. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookFilter]
         """
@@ -115,7 +115,7 @@ class FilterRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FilterRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the filter applied to the column. Read-only.
+        The filter applied to the column. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -267,7 +267,7 @@ class FilterRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FilterRequestBuilderGetQueryParameters():
         """
-        Retrieve the filter applied to the column. Read-only.
+        The filter applied to the column. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

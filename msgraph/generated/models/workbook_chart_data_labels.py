@@ -17,19 +17,19 @@ class WorkbookChartDataLabels(Entity):
     odata_type: Optional[str] = None
     # DataLabelPosition value that represents the position of the data label. The possible values are: None, Center, InsideEnd, InsideBase, OutsideEnd, Left, Right, Top, Bottom, BestFit, Callout.
     position: Optional[str] = None
-    # String representing the separator used for the data labels on a chart.
+    # String that represents the separator used for the data labels on a chart.
     separator: Optional[str] = None
-    # Boolean value representing if the data label bubble size is visible or not.
+    # Boolean value that represents whether the data label bubble size is visible.
     show_bubble_size: Optional[bool] = None
-    # Boolean value representing if the data label category name is visible or not.
+    # Boolean value that represents whether the data label category name is visible.
     show_category_name: Optional[bool] = None
-    # Boolean value representing if the data label legend key is visible or not.
+    # Boolean value that represents whether the data label legend key is visible.
     show_legend_key: Optional[bool] = None
-    # Boolean value representing if the data label percentage is visible or not.
+    # Boolean value that represents whether the data label percentage is visible.
     show_percentage: Optional[bool] = None
-    # Boolean value representing if the data label series name is visible or not.
+    # Boolean value that represents whether the data label series name is visible.
     show_series_name: Optional[bool] = None
-    # Boolean value representing if the data label value is visible or not.
+    # Boolean value that represents whether the data label value is visible.
     show_value: Optional[bool] = None
     
     @staticmethod

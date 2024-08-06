@@ -344,6 +344,7 @@ if TYPE_CHECKING:
     from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
     from .inference_classification import InferenceClassification
     from .inference_classification_override import InferenceClassificationOverride
+    from .insights_settings import InsightsSettings
     from .internal_domain_federation import InternalDomainFederation
     from .internet_explorer_mode import InternetExplorerMode
     from .invitation import Invitation
@@ -370,6 +371,7 @@ if TYPE_CHECKING:
     from .item_activity_stat import ItemActivityStat
     from .item_analytics import ItemAnalytics
     from .item_attachment import ItemAttachment
+    from .item_insights import ItemInsights
     from .item_retention_label import ItemRetentionLabel
     from .landing_page import LandingPage
     from .landing_page_detail import LandingPageDetail
@@ -676,6 +678,7 @@ if TYPE_CHECKING:
     from .service_health_issue import ServiceHealthIssue
     from .service_principal import ServicePrincipal
     from .service_principal_risk_detection import ServicePrincipalRiskDetection
+    from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
     from .service_update_message import ServiceUpdateMessage
     from .setting_state_device_summary import SettingStateDeviceSummary
     from .shared_drive_item import SharedDriveItem
@@ -704,6 +707,8 @@ if TYPE_CHECKING:
     from .standard_web_part import StandardWebPart
     from .start_hold_music_operation import StartHoldMusicOperation
     from .stop_hold_music_operation import StopHoldMusicOperation
+    from .storage_quota_breakdown import StorageQuotaBreakdown
+    from .storage_settings import StorageSettings
     from .sts_policy import StsPolicy
     from .subject_rights_request import SubjectRightsRequest
     from .subscribed_sku import SubscribedSku
@@ -781,6 +786,7 @@ if TYPE_CHECKING:
     from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
     from .unified_role_schedule_base import UnifiedRoleScheduleBase
     from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
+    from .unified_storage_quota import UnifiedStorageQuota
     from .unmute_participant_operation import UnmuteParticipantOperation
     from .update_recording_status_operation import UpdateRecordingStatusOperation
     from .url_assessment_request import UrlAssessmentRequest
@@ -814,19 +820,28 @@ if TYPE_CHECKING:
     from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
     from .user_flow_language_configuration import UserFlowLanguageConfiguration
     from .user_flow_language_page import UserFlowLanguagePage
+    from .user_insights_settings import UserInsightsSettings
     from .user_install_state_summary import UserInstallStateSummary
     from .user_registration_details import UserRegistrationDetails
     from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
     from .user_settings import UserSettings
     from .user_sign_in_insight import UserSignInInsight
+    from .user_storage import UserStorage
     from .user_teamwork import UserTeamwork
     from .vertical_section import VerticalSection
     from .virtual_endpoint import VirtualEndpoint
     from .virtual_event import VirtualEvent
     from .virtual_events_root import VirtualEventsRoot
+    from .virtual_event_presenter import VirtualEventPresenter
     from .virtual_event_registration import VirtualEventRegistration
+    from .virtual_event_registration_configuration import VirtualEventRegistrationConfiguration
+    from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
+    from .virtual_event_registration_predefined_question import VirtualEventRegistrationPredefinedQuestion
+    from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
     from .virtual_event_session import VirtualEventSession
+    from .virtual_event_townhall import VirtualEventTownhall
     from .virtual_event_webinar import VirtualEventWebinar
+    from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
     from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
     from .vpp_token import VppToken
     from .web_app import WebApp
@@ -916,6 +931,7 @@ if TYPE_CHECKING:
     from .workbook_worksheet_protection import WorkbookWorksheetProtection
     from .workforce_integration import WorkforceIntegration
     from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
+    from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
 @dataclass
 class Entity(AdditionalDataHolder, BackedModel, Parsable):
@@ -2302,6 +2318,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .inference_classification_override import InferenceClassificationOverride
 
             return InferenceClassificationOverride()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.insightsSettings".casefold():
+            from .insights_settings import InsightsSettings
+
+            return InsightsSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
             from .internal_domain_federation import InternalDomainFederation
 
@@ -2406,6 +2426,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .item_attachment import ItemAttachment
 
             return ItemAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemInsights".casefold():
+            from .item_insights import ItemInsights
+
+            return ItemInsights()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemRetentionLabel".casefold():
             from .item_retention_label import ItemRetentionLabel
 
@@ -3635,6 +3659,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
             return ServicePrincipalRiskDetection()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceStorageQuotaBreakdown".casefold():
+            from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
+
+            return ServiceStorageQuotaBreakdown()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceUpdateMessage".casefold():
             from .service_update_message import ServiceUpdateMessage
 
@@ -3747,6 +3775,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .stop_hold_music_operation import StopHoldMusicOperation
 
             return StopHoldMusicOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.storageQuotaBreakdown".casefold():
+            from .storage_quota_breakdown import StorageQuotaBreakdown
+
+            return StorageQuotaBreakdown()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.storageSettings".casefold():
+            from .storage_settings import StorageSettings
+
+            return StorageSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.stsPolicy".casefold():
             from .sts_policy import StsPolicy
 
@@ -4056,6 +4092,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
             return UnifiedRoleScheduleInstanceBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedStorageQuota".casefold():
+            from .unified_storage_quota import UnifiedStorageQuota
+
+            return UnifiedStorageQuota()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unmuteParticipantOperation".casefold():
             from .unmute_participant_operation import UnmuteParticipantOperation
 
@@ -4188,6 +4228,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_flow_language_page import UserFlowLanguagePage
 
             return UserFlowLanguagePage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userInsightsSettings".casefold():
+            from .user_insights_settings import UserInsightsSettings
+
+            return UserInsightsSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userInstallStateSummary".casefold():
             from .user_install_state_summary import UserInstallStateSummary
 
@@ -4208,6 +4252,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_sign_in_insight import UserSignInInsight
 
             return UserSignInInsight()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userStorage".casefold():
+            from .user_storage import UserStorage
+
+            return UserStorage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userTeamwork".casefold():
             from .user_teamwork import UserTeamwork
 
@@ -4224,10 +4272,30 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .virtual_event import VirtualEvent
 
             return VirtualEvent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventPresenter".casefold():
+            from .virtual_event_presenter import VirtualEventPresenter
+
+            return VirtualEventPresenter()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistration".casefold():
             from .virtual_event_registration import VirtualEventRegistration
 
             return VirtualEventRegistration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationConfiguration".casefold():
+            from .virtual_event_registration_configuration import VirtualEventRegistrationConfiguration
+
+            return VirtualEventRegistrationConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationCustomQuestion".casefold():
+            from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
+
+            return VirtualEventRegistrationCustomQuestion()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationPredefinedQuestion".casefold():
+            from .virtual_event_registration_predefined_question import VirtualEventRegistrationPredefinedQuestion
+
+            return VirtualEventRegistrationPredefinedQuestion()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationQuestionBase".casefold():
+            from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
+
+            return VirtualEventRegistrationQuestionBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventSession".casefold():
             from .virtual_event_session import VirtualEventSession
 
@@ -4236,10 +4304,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .virtual_events_root import VirtualEventsRoot
 
             return VirtualEventsRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventTownhall".casefold():
+            from .virtual_event_townhall import VirtualEventTownhall
+
+            return VirtualEventTownhall()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventWebinar".casefold():
             from .virtual_event_webinar import VirtualEventWebinar
 
             return VirtualEventWebinar()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventWebinarRegistrationConfiguration".casefold():
+            from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
+
+            return VirtualEventWebinarRegistrationConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.voiceAuthenticationMethodConfiguration".casefold():
             from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
 
@@ -4596,6 +4672,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
             return X509CertificateAuthenticationMethodConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.x509CertificateCombinationConfiguration".casefold():
+            from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
+
+            return X509CertificateCombinationConfiguration()
         return Entity()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -4942,6 +5022,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
         from .inference_classification import InferenceClassification
         from .inference_classification_override import InferenceClassificationOverride
+        from .insights_settings import InsightsSettings
         from .internal_domain_federation import InternalDomainFederation
         from .internet_explorer_mode import InternetExplorerMode
         from .invitation import Invitation
@@ -4968,6 +5049,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .item_activity_stat import ItemActivityStat
         from .item_analytics import ItemAnalytics
         from .item_attachment import ItemAttachment
+        from .item_insights import ItemInsights
         from .item_retention_label import ItemRetentionLabel
         from .landing_page import LandingPage
         from .landing_page_detail import LandingPageDetail
@@ -5274,6 +5356,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .service_health_issue import ServiceHealthIssue
         from .service_principal import ServicePrincipal
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
+        from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
         from .service_update_message import ServiceUpdateMessage
         from .setting_state_device_summary import SettingStateDeviceSummary
         from .shared_drive_item import SharedDriveItem
@@ -5302,6 +5385,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .standard_web_part import StandardWebPart
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
+        from .storage_quota_breakdown import StorageQuotaBreakdown
+        from .storage_settings import StorageSettings
         from .sts_policy import StsPolicy
         from .subject_rights_request import SubjectRightsRequest
         from .subscribed_sku import SubscribedSku
@@ -5379,6 +5464,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
         from .unified_role_schedule_base import UnifiedRoleScheduleBase
         from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
+        from .unified_storage_quota import UnifiedStorageQuota
         from .unmute_participant_operation import UnmuteParticipantOperation
         from .update_recording_status_operation import UpdateRecordingStatusOperation
         from .url_assessment_request import UrlAssessmentRequest
@@ -5412,19 +5498,28 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
         from .user_flow_language_page import UserFlowLanguagePage
+        from .user_insights_settings import UserInsightsSettings
         from .user_install_state_summary import UserInstallStateSummary
         from .user_registration_details import UserRegistrationDetails
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight
+        from .user_storage import UserStorage
         from .user_teamwork import UserTeamwork
         from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint
         from .virtual_event import VirtualEvent
         from .virtual_events_root import VirtualEventsRoot
+        from .virtual_event_presenter import VirtualEventPresenter
         from .virtual_event_registration import VirtualEventRegistration
+        from .virtual_event_registration_configuration import VirtualEventRegistrationConfiguration
+        from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
+        from .virtual_event_registration_predefined_question import VirtualEventRegistrationPredefinedQuestion
+        from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
         from .virtual_event_session import VirtualEventSession
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
+        from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp
@@ -5514,6 +5609,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .workbook_worksheet_protection import WorkbookWorksheetProtection
         from .workforce_integration import WorkforceIntegration
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
+        from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
         from .aad_user_conversation_member import AadUserConversationMember
         from .access_package import AccessPackage
@@ -5854,6 +5950,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
         from .inference_classification import InferenceClassification
         from .inference_classification_override import InferenceClassificationOverride
+        from .insights_settings import InsightsSettings
         from .internal_domain_federation import InternalDomainFederation
         from .internet_explorer_mode import InternetExplorerMode
         from .invitation import Invitation
@@ -5880,6 +5977,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .item_activity_stat import ItemActivityStat
         from .item_analytics import ItemAnalytics
         from .item_attachment import ItemAttachment
+        from .item_insights import ItemInsights
         from .item_retention_label import ItemRetentionLabel
         from .landing_page import LandingPage
         from .landing_page_detail import LandingPageDetail
@@ -6186,6 +6284,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .service_health_issue import ServiceHealthIssue
         from .service_principal import ServicePrincipal
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
+        from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
         from .service_update_message import ServiceUpdateMessage
         from .setting_state_device_summary import SettingStateDeviceSummary
         from .shared_drive_item import SharedDriveItem
@@ -6214,6 +6313,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .standard_web_part import StandardWebPart
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
+        from .storage_quota_breakdown import StorageQuotaBreakdown
+        from .storage_settings import StorageSettings
         from .sts_policy import StsPolicy
         from .subject_rights_request import SubjectRightsRequest
         from .subscribed_sku import SubscribedSku
@@ -6291,6 +6392,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
         from .unified_role_schedule_base import UnifiedRoleScheduleBase
         from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
+        from .unified_storage_quota import UnifiedStorageQuota
         from .unmute_participant_operation import UnmuteParticipantOperation
         from .update_recording_status_operation import UpdateRecordingStatusOperation
         from .url_assessment_request import UrlAssessmentRequest
@@ -6324,19 +6426,28 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
         from .user_flow_language_page import UserFlowLanguagePage
+        from .user_insights_settings import UserInsightsSettings
         from .user_install_state_summary import UserInstallStateSummary
         from .user_registration_details import UserRegistrationDetails
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight
+        from .user_storage import UserStorage
         from .user_teamwork import UserTeamwork
         from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint
         from .virtual_event import VirtualEvent
         from .virtual_events_root import VirtualEventsRoot
+        from .virtual_event_presenter import VirtualEventPresenter
         from .virtual_event_registration import VirtualEventRegistration
+        from .virtual_event_registration_configuration import VirtualEventRegistrationConfiguration
+        from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
+        from .virtual_event_registration_predefined_question import VirtualEventRegistrationPredefinedQuestion
+        from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
         from .virtual_event_session import VirtualEventSession
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
+        from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp
@@ -6426,6 +6537,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .workbook_worksheet_protection import WorkbookWorksheetProtection
         from .workforce_integration import WorkforceIntegration
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
+        from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),

@@ -31,7 +31,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PrincipalRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObject]:
         """
-        Referencing the assigned principal. Read-only. Supports $expand.
+        Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
         """
@@ -51,7 +51,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PrincipalRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Referencing the assigned principal. Read-only. Supports $expand.
+        Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +73,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrincipalRequestBuilderGetQueryParameters():
         """
-        Referencing the assigned principal. Read-only. Supports $expand.
+        Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

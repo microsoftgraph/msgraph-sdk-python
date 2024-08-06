@@ -12,11 +12,11 @@ class AssignedLicense(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # A collection of the unique identifiers for plans that have been disabled.
+    # A collection of the unique identifiers for plans that have been disabled. IDs are available in servicePlans > servicePlanId in the tenant's subscribedSkus or serviceStatus > servicePlanId in the tenant's companySubscription.
     disabled_plans: Optional[List[UUID]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The unique identifier for the SKU.
+    # The unique identifier for the SKU. Corresponds to the skuId from subscribedSkus or companySubscription.
     sku_id: Optional[UUID] = None
     
     @staticmethod

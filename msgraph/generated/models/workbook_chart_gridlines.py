@@ -15,7 +15,7 @@ class WorkbookChartGridlines(Entity):
     format: Optional[WorkbookChartGridlinesFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Boolean value representing if the axis gridlines are visible or not.
+    # Indicates whether the axis gridlines are visible.
     visible: Optional[bool] = None
     
     @staticmethod

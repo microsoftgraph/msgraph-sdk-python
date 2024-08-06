@@ -32,7 +32,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RowsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookTableRowCollectionResponse]:
         """
-        Represents a collection of all the rows in the table. Read-only.
+        The list of all the rows in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRowCollectionResponse]
         """
@@ -75,7 +75,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RowsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents a collection of all the rows in the table. Read-only.
+        The list of all the rows in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RowsRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all the rows in the table. Read-only.
+        The list of all the rows in the table. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

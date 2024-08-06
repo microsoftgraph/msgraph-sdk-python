@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .app_management_configuration import AppManagementConfiguration
+    from .app_management_application_configuration import AppManagementApplicationConfiguration
+    from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
     from .policy_base import PolicyBase
 
 from .policy_base import PolicyBase
@@ -14,11 +15,11 @@ class TenantAppManagementPolicy(PolicyBase):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.tenantAppManagementPolicy"
     # Restrictions that apply as default to all application objects in the tenant.
-    application_restrictions: Optional[AppManagementConfiguration] = None
+    application_restrictions: Optional[AppManagementApplicationConfiguration] = None
     # Denotes whether the policy is enabled. Default value is false.
     is_enabled: Optional[bool] = None
     # Restrictions that apply as default to all service principal objects in the tenant.
-    service_principal_restrictions: Optional[AppManagementConfiguration] = None
+    service_principal_restrictions: Optional[AppManagementServicePrincipalConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> TenantAppManagementPolicy:
@@ -36,16 +37,18 @@ class TenantAppManagementPolicy(PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .app_management_configuration import AppManagementConfiguration
+        from .app_management_application_configuration import AppManagementApplicationConfiguration
+        from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
         from .policy_base import PolicyBase
 
-        from .app_management_configuration import AppManagementConfiguration
+        from .app_management_application_configuration import AppManagementApplicationConfiguration
+        from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
         from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationRestrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(AppManagementConfiguration)),
+            "applicationRestrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(AppManagementApplicationConfiguration)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "servicePrincipalRestrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(AppManagementConfiguration)),
+            "servicePrincipalRestrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(AppManagementServicePrincipalConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

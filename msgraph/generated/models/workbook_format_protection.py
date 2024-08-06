@@ -10,9 +10,9 @@ from .entity import Entity
 
 @dataclass
 class WorkbookFormatProtection(Entity):
-    # Indicates if Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
+    # Indicates whether Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
     formula_hidden: Optional[bool] = None
-    # Indicates if Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
+    # Indicates whether Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
     locked: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookNamedItem(Entity):
-    # Represents the comment associated with this name.
+    # The comment associated with this name.
     comment: Optional[str] = None
     # The name of the object. Read-only.
     name: Optional[str] = None
@@ -19,11 +19,11 @@ class WorkbookNamedItem(Entity):
     odata_type: Optional[str] = None
     # Indicates whether the name is scoped to the workbook or to a specific worksheet. Read-only.
     scope: Optional[str] = None
-    # Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
+    # The type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
     type: Optional[str] = None
-    # Specifies whether the object is visible or not.
+    # Indicates whether the object is visible.
     visible: Optional[bool] = None
-    # Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+    # Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None
     
     @staticmethod

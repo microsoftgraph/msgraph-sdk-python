@@ -50,7 +50,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FormatRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartPointFormat]:
         """
-        Encapsulates the format properties chart point. Read-only.
+        The format properties of the chart point. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPointFormat]
         """
@@ -104,7 +104,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FormatRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Encapsulates the format properties chart point. Read-only.
+        The format properties of the chart point. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -157,7 +157,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FormatRequestBuilderGetQueryParameters():
         """
-        Encapsulates the format properties chart point. Read-only.
+        The format properties of the chart point. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

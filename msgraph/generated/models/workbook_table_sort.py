@@ -11,11 +11,11 @@ from .entity import Entity
 
 @dataclass
 class WorkbookTableSort(Entity):
-    # Represents the current conditions used to last sort the table. Read-only.
+    # The list of the current conditions last used to sort the table. Read-only.
     fields: Optional[List[WorkbookSortField]] = None
-    # Represents whether the casing impacted the last sort of the table. Read-only.
+    # Indicates whether the casing impacted the last sort of the table. Read-only.
     match_case: Optional[bool] = None
-    # Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
+    # The Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
     method: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

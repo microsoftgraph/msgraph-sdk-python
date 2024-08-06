@@ -48,7 +48,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RepliesRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
         """
-        Get replies from drives
+        The list of replies to the comment. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReplyCollectionResponse]
         """
@@ -91,7 +91,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RepliesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get replies from drives
+        The list of replies to the comment. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +137,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():
         """
-        Get replies from drives
+        The list of replies to the comment. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

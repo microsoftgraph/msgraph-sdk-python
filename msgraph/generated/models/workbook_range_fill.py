@@ -10,7 +10,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookRangeFill(Entity):
-    # HTML color code representing the color of the border line, of the form #RRGGBB (for example 'FFA500') or as a named HTML color (for example 'orange')
+    # HTML color code representing the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or be a named HTML color, for example 'orange'.
     color: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

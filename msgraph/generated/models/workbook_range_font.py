@@ -10,19 +10,19 @@ from .entity import Entity
 
 @dataclass
 class WorkbookRangeFont(Entity):
-    # Represents the bold status of font.
+    # Inidicates whether the font is bold.
     bold: Optional[bool] = None
-    # HTML color code representation of the text color. for example #FF0000 represents Red.
+    # The HTML color code representation of the text color. For example, #FF0000 represents the color red.
     color: Optional[str] = None
-    # Represents the italic status of the font.
+    # Inidicates whether the font is italic.
     italic: Optional[bool] = None
-    # Font name (for example 'Calibri')
+    # The font name. For example, 'Calibri'.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Font size.
+    # The font size.
     size: Optional[float] = None
-    # Type of underline applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
+    # The type of underlining applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
     underline: Optional[str] = None
     
     @staticmethod

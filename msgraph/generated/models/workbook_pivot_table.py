@@ -11,11 +11,11 @@ from .entity import Entity
 
 @dataclass
 class WorkbookPivotTable(Entity):
-    # Name of the PivotTable.
+    # The name of the pivot table.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The worksheet containing the current PivotTable. Read-only.
+    # The worksheet that contains the current pivot table. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None
     
     @staticmethod

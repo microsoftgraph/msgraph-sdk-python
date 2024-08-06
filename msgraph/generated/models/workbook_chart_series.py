@@ -12,13 +12,13 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartSeries(Entity):
-    # Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
+    # The formatting of a chart series, which includes fill and line formatting. Read-only.
     format: Optional[WorkbookChartSeriesFormat] = None
-    # Represents the name of a series in a chart.
+    # The name of a series in a chart.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Represents a collection of all points in the series. Read-only.
+    # A collection of all points in the series. Read-only.
     points: Optional[List[WorkbookChartPoint]] = None
     
     @staticmethod

@@ -51,7 +51,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
         Get a list of all registration records of a webinar.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventRegistrationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/virtualeventwebinar-list-registrations?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/virtualeventregistration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +69,11 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: VirtualEventRegistration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VirtualEventRegistration]:
         """
-        Create new navigation property to registrations for solutions
+        Create a registration record for a registrant of a webinar. This method registers the person for the webinar. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventRegistration]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualeventwebinar-post-registrations?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +104,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: VirtualEventRegistration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to registrations for solutions
+        Create a registration record for a registrant of a webinar. This method registers the person for the webinar. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -9,7 +9,7 @@ azure-identity==1.17.1
 build==1.2.1
 bumpver==2023.1129
 certifi==2024.7.4
-cffi==1.16.0
+cffi==1.17.0
 charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6

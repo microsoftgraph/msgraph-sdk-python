@@ -51,7 +51,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FormatRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartTitleFormat]:
         """
-        Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
+        The formatting of a chart title, which includes fill and font formatting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartTitleFormat]
         """
@@ -105,7 +105,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FormatRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
+        The formatting of a chart title, which includes fill and font formatting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FormatRequestBuilderGetQueryParameters():
         """
-        Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
+        The formatting of a chart title, which includes fill and font formatting. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

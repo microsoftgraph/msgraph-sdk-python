@@ -6,6 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .shift_preferences import ShiftPreferences
+    from .user_insights_settings import UserInsightsSettings
+    from .user_storage import UserStorage
     from .windows_setting import WindowsSetting
 
 from .entity import Entity
@@ -16,10 +18,14 @@ class UserSettings(Entity):
     contribution_to_content_discovery_as_organization_disabled: Optional[bool] = None
     # When set to true, the delegate access to the user's trending API is disabled. When set to true, documents in the user's Office Delve are disabled. When set to true, the relevancy of the content displayed in Microsoft 365, for example in Suggested sites in SharePoint Home and the Discover view in OneDrive for Business is affected. Users can control this setting in Office Delve.
     contribution_to_content_discovery_disabled: Optional[bool] = None
+    # The itemInsights property
+    item_insights: Optional[UserInsightsSettings] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The shiftPreferences property
     shift_preferences: Optional[ShiftPreferences] = None
+    # The storage property
+    storage: Optional[UserStorage] = None
     # The windows property
     windows: Optional[List[WindowsSetting]] = None
     
@@ -41,16 +47,22 @@ class UserSettings(Entity):
         """
         from .entity import Entity
         from .shift_preferences import ShiftPreferences
+        from .user_insights_settings import UserInsightsSettings
+        from .user_storage import UserStorage
         from .windows_setting import WindowsSetting
 
         from .entity import Entity
         from .shift_preferences import ShiftPreferences
+        from .user_insights_settings import UserInsightsSettings
+        from .user_storage import UserStorage
         from .windows_setting import WindowsSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contributionToContentDiscoveryAsOrganizationDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_as_organization_disabled', n.get_bool_value()),
             "contributionToContentDiscoveryDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_disabled', n.get_bool_value()),
+            "itemInsights": lambda n : setattr(self, 'item_insights', n.get_object_value(UserInsightsSettings)),
             "shiftPreferences": lambda n : setattr(self, 'shift_preferences', n.get_object_value(ShiftPreferences)),
+            "storage": lambda n : setattr(self, 'storage', n.get_object_value(UserStorage)),
             "windows": lambda n : setattr(self, 'windows', n.get_collection_of_object_values(WindowsSetting)),
         }
         super_fields = super().get_field_deserializers()
@@ -68,7 +80,9 @@ class UserSettings(Entity):
         super().serialize(writer)
         writer.write_bool_value("contributionToContentDiscoveryAsOrganizationDisabled", self.contribution_to_content_discovery_as_organization_disabled)
         writer.write_bool_value("contributionToContentDiscoveryDisabled", self.contribution_to_content_discovery_disabled)
+        writer.write_object_value("itemInsights", self.item_insights)
         writer.write_object_value("shiftPreferences", self.shift_preferences)
+        writer.write_object_value("storage", self.storage)
         writer.write_collection_of_object_values("windows", self.windows)
     
 

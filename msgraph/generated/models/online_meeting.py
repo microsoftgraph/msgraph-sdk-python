@@ -27,13 +27,13 @@ class OnlineMeeting(OnlineMeetingBase):
     end_date_time: Optional[datetime.datetime] = None
     # The externalId property
     external_id: Optional[str] = None
-    # Indicates if this is a Teams live event.
+    # Indicates whether this meeting is a Teams live event.
     is_broadcast: Optional[bool] = None
-    # The participants associated with the online meeting.  This includes the organizer and the attendees.
+    # The participants associated with the online meeting, including the organizer and the attendees.
     participants: Optional[MeetingParticipants] = None
     # The recordings of an online meeting. Read-only.
     recordings: Optional[List[CallRecording]] = None
-    # The meeting start time in UTC. Required when you create an online meeting.
+    # The meeting start time in UTC.
     start_date_time: Optional[datetime.datetime] = None
     # The transcripts of an online meeting. Read-only.
     transcripts: Optional[List[CallTranscript]] = None

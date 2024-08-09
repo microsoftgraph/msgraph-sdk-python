@@ -15,7 +15,9 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.user_settings import UserSettings
+    from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
     from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
+    from .storage.storage_request_builder import StorageRequestBuilder
     from .windows.windows_request_builder import WindowsRequestBuilder
 
 class SettingsRequestBuilder(BaseRequestBuilder):
@@ -140,6 +142,15 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         return SettingsRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def item_insights(self) -> ItemInsightsRequestBuilder:
+        """
+        Provides operations to manage the itemInsights property of the microsoft.graph.userSettings entity.
+        """
+        from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
+
+        return ItemInsightsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def shift_preferences(self) -> ShiftPreferencesRequestBuilder:
         """
         Provides operations to manage the shiftPreferences property of the microsoft.graph.userSettings entity.
@@ -147,6 +158,15 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
 
         return ShiftPreferencesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def storage(self) -> StorageRequestBuilder:
+        """
+        Provides operations to manage the storage property of the microsoft.graph.userSettings entity.
+        """
+        from .storage.storage_request_builder import StorageRequestBuilder
+
+        return StorageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def windows(self) -> WindowsRequestBuilder:

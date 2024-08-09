@@ -31,7 +31,7 @@ class DirectoryScopeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DirectoryScopeRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObject]:
         """
-        The directory object that is the scope of the assignment. Read-only. Supports $expand.
+        The directory object that is the scope of the assignment. Read-only. Supports $expand for the directory provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
         """
@@ -51,7 +51,7 @@ class DirectoryScopeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DirectoryScopeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The directory object that is the scope of the assignment. Read-only. Supports $expand.
+        The directory object that is the scope of the assignment. Read-only. Supports $expand for the directory provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +73,7 @@ class DirectoryScopeRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DirectoryScopeRequestBuilderGetQueryParameters():
         """
-        The directory object that is the scope of the assignment. Read-only. Supports $expand.
+        The directory object that is the scope of the assignment. Read-only. Supports $expand for the directory provider.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

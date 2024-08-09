@@ -48,7 +48,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CombinationConfigurationsRequestBuilderGetQueryParameters]] = None) -> Optional[AuthenticationCombinationConfigurationCollectionResponse]:
         """
-        Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
+        Get the authenticationCombinationConfiguration objects for an authentication strength policy. The objects can be of one or more of the following derived types:* fido2combinationConfigurations* x509certificatecombinationconfiguration authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationCombinationConfigurationCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationstrengthpolicy-list-combinationconfigurations?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: AuthenticationCombinationConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AuthenticationCombinationConfiguration]:
         """
-        Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
+        Create a new authenticationCombinationConfiguration object which can be of one of the following derived types:* fido2combinationConfiguration* x509certificatecombinationconfiguration
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationCombinationConfiguration]
@@ -93,7 +93,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CombinationConfigurationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
+        Get the authenticationCombinationConfiguration objects for an authentication strength policy. The objects can be of one or more of the following derived types:* fido2combinationConfigurations* x509certificatecombinationconfiguration authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +104,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: AuthenticationCombinationConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
+        Create a new authenticationCombinationConfiguration object which can be of one of the following derived types:* fido2combinationConfiguration* x509certificatecombinationconfiguration
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CombinationConfigurationsRequestBuilderGetQueryParameters():
         """
-        Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
+        Get the authenticationCombinationConfiguration objects for an authentication strength policy. The objects can be of one or more of the following derived types:* fido2combinationConfigurations* x509certificatecombinationconfiguration authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

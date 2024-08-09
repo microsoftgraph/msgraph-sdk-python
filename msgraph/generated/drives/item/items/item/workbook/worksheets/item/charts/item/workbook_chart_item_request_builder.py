@@ -62,7 +62,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorkbookChartItemRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChart]:
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        The list of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
         """
@@ -161,7 +161,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorkbookChartItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        The list of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -295,7 +295,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookChartItemRequestBuilderGetQueryParameters():
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        The list of charts that are part of the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

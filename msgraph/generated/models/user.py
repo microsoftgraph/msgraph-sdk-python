@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from .event import Event
     from .extension import Extension
     from .inference_classification import InferenceClassification
+    from .item_insights import ItemInsights
     from .license_assignment_state import LicenseAssignmentState
     from .license_details import LicenseDetails
     from .mailbox_settings import MailboxSettings
@@ -34,7 +35,6 @@ if TYPE_CHECKING:
     from .managed_device import ManagedDevice
     from .message import Message
     from .object_identity import ObjectIdentity
-    from .office_graph_insights import OfficeGraphInsights
     from .onenote import Onenote
     from .online_meeting import OnlineMeeting
     from .on_premises_extension_attributes import OnPremisesExtensionAttributes
@@ -75,9 +75,9 @@ class User(DirectoryObject):
     age_group: Optional[str] = None
     # The user's terms of use acceptance statuses. Read-only. Nullable.
     agreement_acceptances: Optional[List[AgreementAcceptance]] = None
-    # Represents the app roles a user has been granted for an application. Supports $expand.
+    # Represents the app roles a user is granted for an application. Supports $expand.
     app_role_assignments: Optional[List[AppRoleAssignment]] = None
-    # The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate between directly assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
+    # The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate between directly assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly assigned and inherited licenses. Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
     assigned_licenses: Optional[List[AssignedLicense]] = None
     # The plans that are assigned to the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq and not).
     assigned_plans: Optional[List[AssignedPlan]] = None
@@ -87,7 +87,7 @@ class User(DirectoryObject):
     authorization_info: Optional[AuthorizationInfo] = None
     # The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z. Returned only on $select.
     birthday: Optional[datetime.datetime] = None
-    # The telephone numbers for the user. NOTE: Although it is a string collection, only one number can be set for this property. Read-only for users synced from the on-premises directory. Returned by default. Supports $filter (eq, not, ge, le, startsWith).
+    # The telephone numbers for the user. NOTE: Although it's a string collection, only one number can be set for this property. Read-only for users synced from the on-premises directory. Returned by default. Supports $filter (eq, not, ge, le, startsWith).
     business_phones: Optional[List[str]] = None
     # The user's primary calendar. Read-only.
     calendar: Optional[Calendar] = None
@@ -103,21 +103,21 @@ class User(DirectoryObject):
     city: Optional[str] = None
     # The cloudClipboard property
     cloud_clipboard: Optional[CloudClipboardRoot] = None
-    # The name of the company that the user is associated with. This property can be useful for describing the company that an external user comes from. The maximum length is 64 characters.Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # The name of the company that the user is associated with. This property can be useful for describing the company that a guest comes from. The maximum length is 64 characters.Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     company_name: Optional[str] = None
-    # Sets whether consent was obtained for minors. Allowed values: null, Granted, Denied and NotRequired. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
+    # Sets whether consent was obtained for minors. Allowed values: null, Granted, Denied, and NotRequired. For more information, see legal age group property definitions. Returned only on $select. Supports $filter (eq, ne, not, and in).
     consent_provided_for_minor: Optional[str] = None
     # The user's contacts folders. Read-only. Nullable.
     contact_folders: Optional[List[ContactFolder]] = None
     # The user's contacts. Read-only. Nullable.
     contacts: Optional[List[Contact]] = None
-    # The country or region where the user is located; for example, US or UK. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # The country/region where the user is located; for example, US or UK. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     country: Optional[str] = None
-    # The date and time the user was created, in ISO 8601 format and UTC. The value cannot be modified and is automatically populated when the entity is created. Nullable. For on-premises users, the value represents when they were first created in Microsoft Entra ID. Property is null for some users created before June 2018 and on-premises users that were synced to Microsoft Entra ID before June 2018. Read-only. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
+    # The date and time the user was created, in ISO 8601 format and UTC. The value can't be modified and is automatically populated when the entity is created. Nullable. For on-premises users, the value represents when they were first created in Microsoft Entra ID. Property is null for some users created before June 2018 and on-premises users that were synced to Microsoft Entra ID before June 2018. Read-only. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
     created_date_time: Optional[datetime.datetime] = None
     # Directory objects that the user created. Read-only. Nullable.
     created_objects: Optional[List[DirectoryObject]] = None
-    # Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by an external user signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
+    # Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by a guest signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
     creation_type: Optional[str] = None
     # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). The filter value is case-sensitive.
     custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
@@ -129,7 +129,7 @@ class User(DirectoryObject):
     device_management_troubleshooting_events: Optional[List[DeviceManagementTroubleshootingEvent]] = None
     # The users and contacts that report to the user. (The users and contacts that have their manager property set to this user.) Read-only. Nullable. Supports $expand.
     direct_reports: Optional[List[DirectoryObject]] = None
-    # The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderby, and $search.
+    # The name displayed in the address book for the user. This value is usually the combination of the user's first name, middle initial, and family name. This property is required when a user is created and it can't be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderby, and $search.
     display_name: Optional[str] = None
     # The user's OneDrive. Read-only.
     drive: Optional[Drive] = None
@@ -151,7 +151,7 @@ class User(DirectoryObject):
     events: Optional[List[Event]] = None
     # The collection of open extensions defined for the user. Read-only. Supports $expand. Nullable.
     extensions: Optional[List[Extension]] = None
-    # For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Returned only on $select. Supports $filter (eq, ne, not , in).
+    # For a guest invited to the tenant using the invitation API, this property represents the invited user's invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Returned only on $select. Supports $filter (eq, ne, not , in).
     external_user_state: Optional[str] = None
     # Shows the timestamp for the latest change to the externalUserState property. Returned only on $select. Supports $filter (eq, ne, not , in).
     external_user_state_change_date_time: Optional[datetime.datetime] = None
@@ -161,19 +161,19 @@ class User(DirectoryObject):
     followed_sites: Optional[List[Site]] = None
     # The given name (first name) of the user. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
     given_name: Optional[str] = None
-    # The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z. Returned only on $select.  Note: This property is specific to SharePoint Online. We recommend using the native employeeHireDate property to set and update hire date values using Microsoft Graph APIs.
+    # The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z. Returned only on $select.  Note: This property is specific to SharePoint in Microsoft 365. We recommend using the native employeeHireDate property to set and update hire date values using Microsoft Graph APIs.
     hire_date: Optional[datetime.datetime] = None
-    # Represents the identities that can be used to sign in to this user account. Microsoft (also known as a local account), organizations, or social identity providers such as Facebook, Google, and Microsoft can provide identity and tie it to a user account. It may contain multiple items with the same signInType value. Returned only on $select.  Supports $filter (eq) with limitations.
+    # Represents the identities that can be used to sign in to this user account. Microsoft (also known as a local account), organizations, or social identity providers such as Facebook, Google, and Microsoft can provide identity and tie it to a user account. It might contain multiple items with the same signInType value. Returned only on $select.  Supports $filter (eq) with limitations.
     identities: Optional[List[ObjectIdentity]] = None
     # The instant message voice-over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith).
     im_addresses: Optional[List[str]] = None
     # Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
     inference_classification: Optional[InferenceClassification] = None
     # The insights property
-    insights: Optional[OfficeGraphInsights] = None
+    insights: Optional[ItemInsights] = None
     # A list for the user to describe their interests. Returned only on $select.
     interests: Optional[List[str]] = None
-    # Do not use – reserved for future use.
+    # Don't use – reserved for future use.
     is_resource_account: Optional[bool] = None
     # The user's job title. Maximum length is 128 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
     job_title: Optional[str] = None
@@ -181,9 +181,9 @@ class User(DirectoryObject):
     joined_teams: Optional[List[Team]] = None
     # The time when this Microsoft Entra user last changed their password or when their password was created, whichever date the latest action was performed. The date and time information uses ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
     last_password_change_date_time: Optional[datetime.datetime] = None
-    # Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, MinorWithOutParentalConsent, MinorWithParentalConsent, MinorNoParentalConsentRequired, NotAdult, and Adult. Refer to the legal age group property definitions for further information. Returned only on $select.
+    # Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, MinorWithOutParentalConsent, MinorWithParentalConsent, MinorNoParentalConsentRequired, NotAdult, and Adult. For more information, see legal age group property definitions. Returned only on $select.
     legal_age_group_classification: Optional[str] = None
-    # State of license assignments for this user. Also indicates licenses that are directly assigned or the user has inherited through group memberships. Read-only. Returned only on $select.
+    # State of license assignments for this user. Also indicates licenses that are directly assigned or the user inherited through group memberships. Read-only. Returned only on $select.
     license_assignment_states: Optional[List[LicenseAssignmentState]] = None
     # A collection of this user's license details. Read-only.
     license_details: Optional[List[LicenseDetails]] = None
@@ -219,7 +219,7 @@ class User(DirectoryObject):
     on_premises_domain_name: Optional[str] = None
     # Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during the creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Returned only on $select. Supports $filter (eq, ne, not, in).
     on_premises_extension_attributes: Optional[OnPremisesExtensionAttributes] = None
-    # This property is used to associate an on-premises Active Directory user account to their Microsoft Entra user object. This property must be specified when creating a new user account in the Graph if you're using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters can't be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
+    # This property is used to associate an on-premises Active Directory user account to their Microsoft Entra user object. This property must be specified when creating a new user account in the Graph if you're using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters can't be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
     on_premises_immutable_id: Optional[str] = None
     # Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
@@ -227,7 +227,7 @@ class User(DirectoryObject):
     on_premises_provisioning_errors: Optional[List[OnPremisesProvisioningError]] = None
     # Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
     on_premises_sam_account_name: Optional[str] = None
-    # Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select.  Supports $filter (eq including on null values).
+    # Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select. Supports $filter (eq including on null values).
     on_premises_security_identifier: Optional[str] = None
     # true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Microsoft Entra ID. Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
     on_premises_sync_enabled: Optional[bool] = None
@@ -237,15 +237,15 @@ class User(DirectoryObject):
     onenote: Optional[Onenote] = None
     # Information about a meeting, including the URL used to join a meeting, the attendees list, and the description.
     online_meetings: Optional[List[OnlineMeeting]] = None
-    # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property can't contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
+    # A list of other email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property can't contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
     other_mails: Optional[List[str]] = None
     # The outlook property
     outlook: Optional[OutlookUser] = None
-    # Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+    # Devices the user owns. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_devices: Optional[List[DirectoryObject]] = None
-    # Directory objects that are owned by the user. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+    # Directory objects the user owns. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_objects: Optional[List[DirectoryObject]] = None
-    # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Microsoft Entra password policies. Supports $filter (ne, not, and eq on null values).
+    # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two might be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Microsoft Entra password policies. Supports $filter (ne, not, and eq on null values).
     password_policies: Optional[str] = None
     # Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
     password_profile: Optional[PasswordProfile] = None
@@ -265,7 +265,7 @@ class User(DirectoryObject):
     postal_code: Optional[str] = None
     # The preferred data location for the user. For more information, see OneDrive Online Multi-Geo.
     preferred_data_location: Optional[str] = None
-    # The preferred language for the user. The preferred language format is based on RFC 4646. The name is a combination of an ISO 639 two-letter lowercase culture code associated with the language and an ISO 3166 two-letter uppercase subculture code associated with the country or region. Example: 'en-US', or 'es-ES'. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
+    # The preferred language for the user. The preferred language format is based on RFC 4646. The name is a combination of an ISO 639 two-letter lowercase culture code associated with the language, and an ISO 3166 two-letter uppercase subculture code associated with the country or region. Example: 'en-US', or 'es-ES'. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
     preferred_language: Optional[str] = None
     # The preferred name for the user. Not Supported. This attribute returns an empty string.Returned only on $select.
     preferred_name: Optional[str] = None
@@ -275,35 +275,35 @@ class User(DirectoryObject):
     print: Optional[UserPrint] = None
     # The plans that are provisioned for the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le).
     provisioned_plans: Optional[List[ProvisionedPlan]] = None
-    # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of 10 unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
+    # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address, while those addresses prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of 10 unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
     proxy_addresses: Optional[List[str]] = None
     # Devices that are registered for the user. Read-only. Nullable. Supports $expand and returns up to 100 objects.
     registered_devices: Optional[List[DirectoryObject]] = None
     # A list for the user to enumerate their responsibilities. Returned only on $select.
     responsibilities: Optional[List[str]] = None
-    # A list for the user to enumerate the schools they have attended. Returned only on $select.
+    # A list for the user to enumerate the schools they attended. Returned only on $select.
     schools: Optional[List[str]] = None
     # The scopedRoleMemberOf property
     scoped_role_member_of: Optional[List[ScopedRoleMembership]] = None
     # Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith).
     security_identifier: Optional[str] = None
-    # Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from a user object .  Supports $filter (eq, not, for isResolved and serviceInstance).
+    # Errors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.  Supports $filter (eq, not, for isResolved and serviceInstance).
     service_provisioning_errors: Optional[List[ServiceProvisioningError]] = None
     # The settings property
     settings: Optional[UserSettings] = None
     # Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.
     show_in_address_list: Optional[bool] = None
-    # Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require a Microsoft Entra ID P1 or P2 license and the AuditLog.Read.All permission.This property is not returned for a user who has never signed in or last signed in before April 2020.
+    # Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require a Microsoft Entra ID P1 or P2 license and the AuditLog.Read.All permission.This property isn't returned for a user who never signed in or last signed in before April 2020.
     sign_in_activity: Optional[SignInActivity] = None
-    # Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application needs to acquire a new refresh token by requesting the authorized endpoint. Read-only. Use revokeSignInSessions to reset. Returned only on $select.
+    # Any refresh tokens or session tokens (session cookies) issued before this time are invalid. Applications get an error when using an invalid refresh or session token to acquire a delegated access token (to access APIs such as Microsoft Graph). If this happens, the application needs to acquire a new refresh token by requesting the authorized endpoint. Read-only. Use revokeSignInSessions to reset. Returned only on $select.
     sign_in_sessions_valid_from_date_time: Optional[datetime.datetime] = None
     # A list for the user to enumerate their skills. Returned only on $select.
     skills: Optional[List[str]] = None
-    # The users and groups responsible for this guest user's privileges in the tenant and keep the guest user's information and access updated. (HTTP Methods: GET, POST, DELETE.). Supports $expand.
+    # The users and groups responsible for this guest's privileges in the tenant and keeping the guest's information and access updated. (HTTP Methods: GET, POST, DELETE.). Supports $expand.
     sponsors: Optional[List[DirectoryObject]] = None
     # The state or province in the user's address. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     state: Optional[str] = None
-    # The street address of the user's place of business. Maximum length is 1024 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # The street address of the user's place of business. Maximum length is 1,024 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     street_address: Optional[str] = None
     # The user's surname (family name or last name). Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     surname: Optional[str] = None
@@ -313,11 +313,11 @@ class User(DirectoryObject):
     todo: Optional[Todo] = None
     # The groups, including nested groups, and directory roles that a user is a member of. Nullable.
     transitive_member_of: Optional[List[DirectoryObject]] = None
-    # A two-letter country code (ISO standard 3166). Required for users that are assigned licenses due to legal requirements to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # A two-letter country code (ISO standard 3166). Required for users that are assigned licenses due to legal requirements to check for availability of services in countries. Examples include: US, JP, and GB. Not nullable. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     usage_location: Optional[str] = None
-    # The user principal name (UPN) of the user. The UPN is an Internet-style sign-in name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where the domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: This property can't contain accent characters. Only the following characters are allowed A - Z, a - z, 0 - 9, ' . - _ ! # ^ ~. For the complete list of allowed characters, see username policies. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith) and $orderby.
+    # The user principal name (UPN) of the user. The UPN is an Internet-style sign-in name for the user based on the Internet standard RFC 822. By convention, this value should map to the user's email name. The general format is alias@domain, where the domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: This property can't contain accent characters. Only the following characters are allowed A - Z, a - z, 0 - 9, ' . - _ ! # ^ ~. For the complete list of allowed characters, see username policies. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith) and $orderby.
     user_principal_name: Optional[str] = None
-    # A string value that can be used to classify user types in your directory. The possible values are Member and Guest. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values). NOTE: For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?
+    # A string value that can be used to classify user types in your directory. The possible values are Member and Guest. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values). NOTE: For more information about the permissions for members and guests, see What are the default user permissions in Microsoft Entra ID?
     user_type: Optional[str] = None
     
     @staticmethod
@@ -357,6 +357,7 @@ class User(DirectoryObject):
         from .event import Event
         from .extension import Extension
         from .inference_classification import InferenceClassification
+        from .item_insights import ItemInsights
         from .license_assignment_state import LicenseAssignmentState
         from .license_details import LicenseDetails
         from .mailbox_settings import MailboxSettings
@@ -365,7 +366,6 @@ class User(DirectoryObject):
         from .managed_device import ManagedDevice
         from .message import Message
         from .object_identity import ObjectIdentity
-        from .office_graph_insights import OfficeGraphInsights
         from .onenote import Onenote
         from .online_meeting import OnlineMeeting
         from .on_premises_extension_attributes import OnPremisesExtensionAttributes
@@ -411,6 +411,7 @@ class User(DirectoryObject):
         from .event import Event
         from .extension import Extension
         from .inference_classification import InferenceClassification
+        from .item_insights import ItemInsights
         from .license_assignment_state import LicenseAssignmentState
         from .license_details import LicenseDetails
         from .mailbox_settings import MailboxSettings
@@ -419,7 +420,6 @@ class User(DirectoryObject):
         from .managed_device import ManagedDevice
         from .message import Message
         from .object_identity import ObjectIdentity
-        from .office_graph_insights import OfficeGraphInsights
         from .onenote import Onenote
         from .online_meeting import OnlineMeeting
         from .on_premises_extension_attributes import OnPremisesExtensionAttributes
@@ -497,7 +497,7 @@ class User(DirectoryObject):
             "identities": lambda n : setattr(self, 'identities', n.get_collection_of_object_values(ObjectIdentity)),
             "imAddresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
             "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_object_value(InferenceClassification)),
-            "insights": lambda n : setattr(self, 'insights', n.get_object_value(OfficeGraphInsights)),
+            "insights": lambda n : setattr(self, 'insights', n.get_object_value(ItemInsights)),
             "interests": lambda n : setattr(self, 'interests', n.get_collection_of_primitive_values(str)),
             "isResourceAccount": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
             "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),

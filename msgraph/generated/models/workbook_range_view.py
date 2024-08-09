@@ -10,15 +10,15 @@ from .entity import Entity
 
 @dataclass
 class WorkbookRangeView(Entity):
-    # Returns the number of visible columns. Read-only.
+    # The number of visible columns. Read-only.
     column_count: Optional[int] = None
-    # Index of the range.
+    # The index of the range.
     index: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Returns the number of visible rows. Read-only.
+    # The number of visible rows. Read-only.
     row_count: Optional[int] = None
-    # Represents a collection of range views associated with the range. Read-only. Read-only.
+    # The collection of range views associated with the range. Read-only. Read-only.
     rows: Optional[List[WorkbookRangeView]] = None
     
     @staticmethod

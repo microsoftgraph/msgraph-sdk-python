@@ -54,7 +54,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorkbookTableColumnItemRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookTableColumn]:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
         """
@@ -108,7 +108,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorkbookTableColumnItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -197,7 +197,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookTableColumnItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

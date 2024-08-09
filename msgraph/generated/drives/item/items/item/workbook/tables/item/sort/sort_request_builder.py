@@ -52,7 +52,7 @@ class SortRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SortRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookTableSort]:
         """
-        Represents the sorting for the table. Read-only.
+        The sorting for the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableSort]
         """
@@ -106,7 +106,7 @@ class SortRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SortRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the sorting for the table. Read-only.
+        The sorting for the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -177,7 +177,7 @@ class SortRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SortRequestBuilderGetQueryParameters():
         """
-        Represents the sorting for the table. Read-only.
+        The sorting for the table. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

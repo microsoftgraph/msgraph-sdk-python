@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartPoint(Entity):
-    # Encapsulates the format properties chart point. Read-only.
+    # The format properties of the chart point. Read-only.
     format: Optional[WorkbookChartPointFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None

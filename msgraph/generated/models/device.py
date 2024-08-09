@@ -25,11 +25,11 @@ class Device(DirectoryObject):
     compliance_expiration_date_time: Optional[datetime.datetime] = None
     # User-defined property set by Intune to automatically add devices to groups and simplify managing devices.
     device_category: Optional[str] = None
-    # Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
+    # Unique identifier set by Azure Device Registration Service at the time of registration. This alternate key can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
     device_id: Optional[str] = None
     # For internal use only. Set to null.
     device_metadata: Optional[str] = None
-    # Ownership of the device. This property is set by Intune. Possible values are: unknown, company, personal.
+    # Ownership of the device. Intune sets this property. Possible values are: unknown, company, personal.
     device_ownership: Optional[str] = None
     # For internal use only.
     device_version: Optional[int] = None
@@ -37,7 +37,7 @@ class Device(DirectoryObject):
     display_name: Optional[str] = None
     # Enrollment profile applied to the device. For example, Apple Device Enrollment Profile, Device enrollment - Corporate device identifiers, or Windows Autopilot profile name. This property is set by Intune.
     enrollment_profile_name: Optional[str] = None
-    # Enrollment type of the device. This property is set by Intune. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement.
+    # Enrollment type of the device. Intune sets this property. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth,appleUserEnrollment, appleUserEnrollmentWithServiceAccount. NOTE: This property might return other values apart from those listed.
     enrollment_type: Optional[str] = None
     # The collection of open extensions defined for the device. Read-only. Nullable.
     extensions: Optional[List[Extension]] = None
@@ -45,7 +45,7 @@ class Device(DirectoryObject):
     is_compliant: Optional[bool] = None
     # true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     is_managed: Optional[bool] = None
-    # true if the device is rooted; false if the device is jail-broken. This property can only be updated by Intune.
+    # true if the device is rooted or jail-broken. This property can only be updated by Intune.
     is_rooted: Optional[bool] = None
     # The management channel of the device. This property is set by Intune. Possible values are: eas, mdm, easMdm, intuneClient, easIntuneClient, configurationManagerClient, configurationManagerClientMdm, configurationManagerClientMdmEas, unknown, jamf, googleCloudDevicePolicyController.
     management_type: Optional[str] = None
@@ -81,7 +81,7 @@ class Device(DirectoryObject):
     system_labels: Optional[List[str]] = None
     # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
     transitive_member_of: Optional[List[DirectoryObject]] = None
-    # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Microsoft Entra ID). For more details, see Introduction to device management in Microsoft Entra ID.
+    # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud-only joined devices), ServerAd (on-premises domain joined devices joined to Microsoft Entra ID). For more information, see Introduction to device management in Microsoft Entra ID.
     trust_type: Optional[str] = None
     
     @staticmethod

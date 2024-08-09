@@ -51,7 +51,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorkbookNamedItemItemRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookNamedItem]:
         """
-        Returns collection of names that are associated with the worksheet. Read-only.
+        The list of names that are associated with the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItem]
         """
@@ -105,7 +105,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorkbookNamedItemItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns collection of names that are associated with the worksheet. Read-only.
+        The list of names that are associated with the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookNamedItemItemRequestBuilderGetQueryParameters():
         """
-        Returns collection of names that are associated with the worksheet. Read-only.
+        The list of names that are associated with the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

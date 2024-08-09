@@ -28,7 +28,7 @@ from .entity import Entity
 
 @dataclass
 class ColumnDefinition(Entity):
-    # This column stores boolean values.
+    # This column stores Boolean values.
     boolean: Optional[BooleanColumn] = None
     # This column's data is calculated based on other columns.
     calculated: Optional[CalculatedColumn] = None

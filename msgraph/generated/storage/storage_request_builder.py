@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from ..models.storage import Storage
     from .file_storage.file_storage_request_builder import FileStorageRequestBuilder
+    from .settings.settings_request_builder import SettingsRequestBuilder
 
 class StorageRequestBuilder(BaseRequestBuilder):
     """
@@ -117,6 +118,15 @@ class StorageRequestBuilder(BaseRequestBuilder):
         from .file_storage.file_storage_request_builder import FileStorageRequestBuilder
 
         return FileStorageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def settings(self) -> SettingsRequestBuilder:
+        """
+        Provides operations to manage the settings property of the microsoft.graph.storage entity.
+        """
+        from .settings.settings_request_builder import SettingsRequestBuilder
+
+        return SettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class StorageRequestBuilderGetQueryParameters():

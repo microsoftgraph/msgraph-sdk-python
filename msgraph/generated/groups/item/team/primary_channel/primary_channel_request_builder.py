@@ -15,6 +15,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.channel import Channel
     from .....models.o_data_errors.o_data_error import ODataError
+    from .archive.archive_request_builder import ArchiveRequestBuilder
     from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
     from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder import DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder
     from .files_folder.files_folder_request_builder import FilesFolderRequestBuilder
@@ -24,6 +25,7 @@ if TYPE_CHECKING:
     from .remove_email.remove_email_request_builder import RemoveEmailRequestBuilder
     from .shared_with_teams.shared_with_teams_request_builder import SharedWithTeamsRequestBuilder
     from .tabs.tabs_request_builder import TabsRequestBuilder
+    from .unarchive.unarchive_request_builder import UnarchiveRequestBuilder
 
 class PrimaryChannelRequestBuilder(BaseRequestBuilder):
     """
@@ -147,6 +149,15 @@ class PrimaryChannelRequestBuilder(BaseRequestBuilder):
         return PrimaryChannelRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def archive(self) -> ArchiveRequestBuilder:
+        """
+        Provides operations to call the archive method.
+        """
+        from .archive.archive_request_builder import ArchiveRequestBuilder
+
+        return ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def complete_migration(self) -> CompleteMigrationRequestBuilder:
         """
         Provides operations to call the completeMigration method.
@@ -226,6 +237,15 @@ class PrimaryChannelRequestBuilder(BaseRequestBuilder):
         from .tabs.tabs_request_builder import TabsRequestBuilder
 
         return TabsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unarchive(self) -> UnarchiveRequestBuilder:
+        """
+        Provides operations to call the unarchive method.
+        """
+        from .unarchive.unarchive_request_builder import UnarchiveRequestBuilder
+
+        return UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PrimaryChannelRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

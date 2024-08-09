@@ -17,7 +17,8 @@ if TYPE_CHECKING:
     from ..models.invitation_collection_response import InvitationCollectionResponse
     from ..models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
-    from .item.invitation_item_request_builder import InvitationItemRequestBuilder
+    from .invited_user.invited_user_request_builder import InvitedUserRequestBuilder
+    from .invited_user_sponsors.invited_user_sponsors_request_builder import InvitedUserSponsorsRequestBuilder
 
 class InvitationsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,20 +32,6 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/invitations{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
-    
-    def by_invitation_id(self,invitation_id: str) -> InvitationItemRequestBuilder:
-        """
-        Provides operations to manage the collection of invitation entities.
-        param invitation_id: The unique identifier of invitation
-        Returns: InvitationItemRequestBuilder
-        """
-        if not invitation_id:
-            raise TypeError("invitation_id cannot be null.")
-        from .item.invitation_item_request_builder import InvitationItemRequestBuilder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["invitation%2Did"] = invitation_id
-        return InvitationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[InvitationsRequestBuilderGetQueryParameters]] = None) -> Optional[InvitationCollectionResponse]:
         """
@@ -68,7 +55,7 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Invitation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Invitation]:
         """
-        Use this API to create a new invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
+        Use this API to create a new invitation or reset the redemption status for a guest user who already redeemed their invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Invitation]
@@ -103,7 +90,7 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Invitation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Use this API to create a new invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
+        Use this API to create a new invitation or reset the redemption status for a guest user who already redeemed their invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -134,6 +121,24 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def invited_user(self) -> InvitedUserRequestBuilder:
+        """
+        Provides operations to manage the invitedUser property of the microsoft.graph.invitation entity.
+        """
+        from .invited_user.invited_user_request_builder import InvitedUserRequestBuilder
+
+        return InvitedUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def invited_user_sponsors(self) -> InvitedUserSponsorsRequestBuilder:
+        """
+        Provides operations to manage the invitedUserSponsors property of the microsoft.graph.invitation entity.
+        """
+        from .invited_user_sponsors.invited_user_sponsors_request_builder import InvitedUserSponsorsRequestBuilder
+
+        return InvitedUserSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InvitationsRequestBuilderGetQueryParameters():

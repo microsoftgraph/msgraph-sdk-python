@@ -13,9 +13,9 @@ from .entity import Entity
 class WorkbookWorksheetProtection(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # Sheet protection options. Read-only.
+    # Worksheet protection options. Read-only.
     options: Optional[WorkbookWorksheetProtectionOptions] = None
-    # Indicates if the worksheet is protected.  Read-only.
+    # Indicates whether the worksheet is protected.  Read-only.
     protected: Optional[bool] = None
     
     @staticmethod

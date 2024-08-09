@@ -21,7 +21,7 @@ class PropertyRule(AdditionalDataHolder, BackedModel, Parsable):
     operation: Optional[RuleOperation] = None
     # The property from the externalItem schema. Required.
     property_: Optional[str] = None
-    # A collection with one or many strings. The specified string(s) will be matched with the specified property using the specified operation. Required.
+    # A collection with one or many strings. One or more specified strings are matched with the specified property using the specified operation. Required.
     values: Optional[List[str]] = None
     # The valuesJoinedBy property
     values_joined_by: Optional[BinaryOperator] = None

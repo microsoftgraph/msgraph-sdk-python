@@ -52,9 +52,10 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SubscriptionsWithCommerceSubscriptionIdRequestBuilderGetQueryParameters]] = None) -> Optional[CompanySubscription]:
         """
-        Get subscriptions from directory
+        Get a specific commercial subscription that an organization acquired.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CompanySubscription]
+        Find more info here: https://learn.microsoft.com/graph/api/companysubscription-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -106,7 +107,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SubscriptionsWithCommerceSubscriptionIdRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get subscriptions from directory
+        Get a specific commercial subscription that an organization acquired.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -150,7 +151,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubscriptionsWithCommerceSubscriptionIdRequestBuilderGetQueryParameters():
         """
-        Get subscriptions from directory
+        Get a specific commercial subscription that an organization acquired.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

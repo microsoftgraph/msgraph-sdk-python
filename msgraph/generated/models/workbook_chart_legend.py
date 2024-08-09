@@ -15,11 +15,11 @@ class WorkbookChartLegend(Entity):
     format: Optional[WorkbookChartLegendFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Boolean value for whether the chart legend should overlap with the main body of the chart.
+    # Indicates whether the chart legend should overlap with the main body of the chart.
     overlay: Optional[bool] = None
     # Represents the position of the legend on the chart. The possible values are: Top, Bottom, Left, Right, Corner, Custom.
     position: Optional[str] = None
-    # A boolean value the represents the visibility of a ChartLegend object.
+    # Indicates whether the chart legend is visible.
     visible: Optional[bool] = None
     
     @staticmethod

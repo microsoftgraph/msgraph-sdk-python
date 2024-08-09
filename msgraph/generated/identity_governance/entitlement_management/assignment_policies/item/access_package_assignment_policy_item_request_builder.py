@@ -75,11 +75,10 @@ class AccessPackageAssignmentPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: AccessPackageAssignmentPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AccessPackageAssignmentPolicy]:
         """
-        Update an existing accessPackageAssignmentPolicy object to change one or more of its properties, such as the display name or description.
+        Update the navigation property assignmentPolicies in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageAssignmentPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentpolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -121,7 +120,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: AccessPackageAssignmentPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update an existing accessPackageAssignmentPolicy object to change one or more of its properties, such as the display name or description.
+        Update the navigation property assignmentPolicies in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

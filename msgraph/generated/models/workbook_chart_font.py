@@ -10,19 +10,19 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartFont(Entity):
-    # Represents the bold status of font.
+    # Indicates whether the fond is bold.
     bold: Optional[bool] = None
-    # HTML color code representation of the text color. for example #FF0000 represents Red.
+    # The HTML color code representation of the text color. For example #FF0000 represents Red.
     color: Optional[str] = None
-    # Represents the italic status of the font.
+    # Indicates whether the fond is italic.
     italic: Optional[bool] = None
-    # Font name (for example 'Calibri')
+    # The font name. For example 'Calibri'.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Size of the font (for example 11)
+    # The size of the font. For example,  11.
     size: Optional[float] = None
-    # Type of underline applied to the font. The possible values are: None, Single.
+    # The type of underlining applied to the font. The possible values are: None, Single.
     underline: Optional[str] = None
     
     @staticmethod

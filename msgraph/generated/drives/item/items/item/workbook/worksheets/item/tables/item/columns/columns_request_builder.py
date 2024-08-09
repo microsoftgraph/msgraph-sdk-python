@@ -50,7 +50,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ColumnsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookTableColumnCollectionResponse]:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumnCollectionResponse]
         """
@@ -105,7 +105,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ColumnsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +160,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

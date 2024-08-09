@@ -19,17 +19,17 @@ class UnifiedRoleAssignment(Entity):
     app_scope_id: Optional[str] = None
     # The condition property
     condition: Optional[str] = None
-    # The directory object that is the scope of the assignment. Read-only. Supports $expand.
+    # The directory object that is the scope of the assignment. Read-only. Supports $expand for the directory provider.
     directory_scope: Optional[DirectoryObject] = None
     # Identifier of the directory object representing the scope of the assignment. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications, unlike app scopes that are defined and understood by a resource application only. Supports $filter (eq, in).
     directory_scope_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Referencing the assigned principal. Read-only. Supports $expand.
+    # Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal to which the assignment is granted. Supported principals are users, role-assignable groups, and service principals. Supports $filter (eq, in).
     principal_id: Optional[str] = None
-    # The roleDefinition the assignment is for.  Supports $expand.
+    # The roleDefinition the assignment is for. Supports $expand.
     role_definition: Optional[UnifiedRoleDefinition] = None
     # Identifier of the unifiedRoleDefinition the assignment is for. Read-only. Supports $filter (eq, in).
     role_definition_id: Optional[str] = None

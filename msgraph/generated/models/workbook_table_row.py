@@ -10,7 +10,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookTableRow(Entity):
-    # Returns the index number of the row within the rows collection of the table. Zero-indexed. Read-only.
+    # The index of the row within the rows collection of the table. Zero-based. Read-only.
     index: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None

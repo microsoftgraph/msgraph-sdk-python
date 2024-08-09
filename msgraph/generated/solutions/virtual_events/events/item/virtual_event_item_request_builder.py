@@ -15,6 +15,9 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.virtual_event import VirtualEvent
+    from .cancel.cancel_request_builder import CancelRequestBuilder
+    from .presenters.presenters_request_builder import PresentersRequestBuilder
+    from .publish.publish_request_builder import PublishRequestBuilder
     from .sessions.sessions_request_builder import SessionsRequestBuilder
 
 class VirtualEventItemRequestBuilder(BaseRequestBuilder):
@@ -137,6 +140,33 @@ class VirtualEventItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return VirtualEventItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def cancel(self) -> CancelRequestBuilder:
+        """
+        Provides operations to call the cancel method.
+        """
+        from .cancel.cancel_request_builder import CancelRequestBuilder
+
+        return CancelRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def presenters(self) -> PresentersRequestBuilder:
+        """
+        Provides operations to manage the presenters property of the microsoft.graph.virtualEvent entity.
+        """
+        from .presenters.presenters_request_builder import PresentersRequestBuilder
+
+        return PresentersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def publish(self) -> PublishRequestBuilder:
+        """
+        Provides operations to call the publish method.
+        """
+        from .publish.publish_request_builder import PublishRequestBuilder
+
+        return PublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def sessions(self) -> SessionsRequestBuilder:

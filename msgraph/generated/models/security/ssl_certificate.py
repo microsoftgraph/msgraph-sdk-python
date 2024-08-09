@@ -27,7 +27,7 @@ class SslCertificate(Artifact):
     issuer: Optional[SslCertificateEntity] = None
     # The most recent date and time when this sslCertificate was observed. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_seen_date_time: Optional[datetime.datetime] = None
-    # The hosts related with this sslCertificate.
+    # The host resources related with this sslCertificate.
     related_hosts: Optional[List[Host]] = None
     # The serial number associated with an SSL certificate.
     serial_number: Optional[str] = None

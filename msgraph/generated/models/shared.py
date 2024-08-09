@@ -19,7 +19,7 @@ class Shared(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # The identity of the owner of the shared item. Read-only.
     owner: Optional[IdentitySet] = None
-    # Indicates the scope of how the item is shared: anonymous, organization, or users. Read-only.
+    # Indicates the scope of how the item is shared. The possible values are: anonymous, organization, or users. Read-only.
     scope: Optional[str] = None
     # The identity of the user who shared the item. Read-only.
     shared_by: Optional[IdentitySet] = None

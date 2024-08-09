@@ -32,7 +32,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PointsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartPointCollectionResponse]:
         """
-        Represents a collection of all points in the series. Read-only.
+        A collection of all points in the series. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPointCollectionResponse]
         """
@@ -75,7 +75,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PointsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents a collection of all points in the series. Read-only.
+        A collection of all points in the series. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PointsRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all points in the series. Read-only.
+        A collection of all points in the series. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -17,7 +17,7 @@ class WorkbookChartAxisTitle(Entity):
     odata_type: Optional[str] = None
     # Represents the axis title.
     text: Optional[str] = None
-    # A boolean that specifies the visibility of an axis title.
+    # A Boolean that specifies the visibility of an axis title.
     visible: Optional[bool] = None
     
     @staticmethod

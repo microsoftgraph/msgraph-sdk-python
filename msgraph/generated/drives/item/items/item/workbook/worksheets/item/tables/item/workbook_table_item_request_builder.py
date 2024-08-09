@@ -60,7 +60,7 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorkbookTableItemRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookTable]:
         """
-        Collection of tables that are part of the worksheet. Read-only.
+        The list of tables that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTable]
         """
@@ -114,7 +114,7 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorkbookTableItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Collection of tables that are part of the worksheet. Read-only.
+        The list of tables that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -257,7 +257,7 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookTableItemRequestBuilderGetQueryParameters():
         """
-        Collection of tables that are part of the worksheet. Read-only.
+        The list of tables that are part of the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

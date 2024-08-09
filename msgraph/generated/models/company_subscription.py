@@ -12,31 +12,31 @@ from .entity import Entity
 
 @dataclass
 class CompanySubscription(Entity):
-    # The commerceSubscriptionId property
+    # The ID of this subscription in the commerce system. Alternate key.
     commerce_subscription_id: Optional[str] = None
-    # The createdDateTime property
+    # The date and time when this subscription was created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The isTrial property
+    # Whether the subscription is a free trial or purchased.
     is_trial: Optional[bool] = None
-    # The nextLifecycleDateTime property
+    # The date and time when the subscription will move to the next state (as defined by the status property) if not renewed by the tenant. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     next_lifecycle_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The ownerId property
+    # The object ID of the account admin.
     owner_id: Optional[str] = None
-    # The ownerTenantId property
+    # The unique identifier for the Microsoft partner tenant that created the subscription on a customer tenant.
     owner_tenant_id: Optional[str] = None
-    # The ownerType property
+    # Indicates the entity that ownerId belongs to, for example, 'User'.
     owner_type: Optional[str] = None
-    # The serviceStatus property
+    # The provisioning status of each service included in this subscription.
     service_status: Optional[List[ServicePlanInfo]] = None
-    # The skuId property
+    # The object ID of the SKU associated with this subscription.
     sku_id: Optional[str] = None
-    # The skuPartNumber property
+    # The SKU associated with this subscription.
     sku_part_number: Optional[str] = None
-    # The status property
+    # The status of this subscription. Possible values are: Enabled, Deleted, Suspended, Warning, LockedOut.
     status: Optional[str] = None
-    # The totalLicenses property
+    # The number of licenses included in this subscription.
     total_licenses: Optional[int] = None
     
     @staticmethod

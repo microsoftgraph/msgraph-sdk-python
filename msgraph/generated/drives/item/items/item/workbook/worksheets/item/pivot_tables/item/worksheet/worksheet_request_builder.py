@@ -31,7 +31,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorksheetRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookWorksheet]:
         """
-        The worksheet containing the current PivotTable. Read-only.
+        The worksheet that contains the current pivot table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
         """
@@ -51,7 +51,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorksheetRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The worksheet containing the current PivotTable. Read-only.
+        The worksheet that contains the current pivot table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +73,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorksheetRequestBuilderGetQueryParameters():
         """
-        The worksheet containing the current PivotTable. Read-only.
+        The worksheet that contains the current pivot table. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

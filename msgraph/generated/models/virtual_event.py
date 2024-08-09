@@ -8,29 +8,33 @@ if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
     from .entity import Entity
     from .item_body import ItemBody
+    from .virtual_event_presenter import VirtualEventPresenter
     from .virtual_event_session import VirtualEventSession
     from .virtual_event_status import VirtualEventStatus
+    from .virtual_event_townhall import VirtualEventTownhall
     from .virtual_event_webinar import VirtualEventWebinar
 
 from .entity import Entity
 
 @dataclass
 class VirtualEvent(Entity):
-    # Identity information for the creator of the virtual event. Inherited from virtualEvent.
+    # The identity information for the creator of the virtual event. Inherited from virtualEvent.
     created_by: Optional[CommunicationsIdentitySet] = None
-    # Description of the virtual event.
+    # A description of the virtual event.
     description: Optional[ItemBody] = None
-    # Display name of the virtual event.
+    # The display name of the virtual event.
     display_name: Optional[str] = None
-    # End time of the virtual event. The timeZone property can be set to any of the time zones currently supported by Windows. For details on how to get all available time zones using PowerShell, see Get-TimeZone.
+    # The end time of the virtual event. The timeZone property can be set to any of the time zones currently supported by Windows. For details on how to get all available time zones using PowerShell, see Get-TimeZone.
     end_date_time: Optional[DateTimeTimeZone] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Sessions for the virtual event.
+    # The virtual event presenters.
+    presenters: Optional[List[VirtualEventPresenter]] = None
+    # The sessions for the virtual event.
     sessions: Optional[List[VirtualEventSession]] = None
     # Start time of the virtual event. The timeZone property can be set to any of the time zones currently supported by Windows. For details on how to get all available time zones using PowerShell, see Get-TimeZone.
     start_date_time: Optional[DateTimeTimeZone] = None
-    # Status of the virtual event. The possible values are: draft, published, canceled, unknownFutureValue.
+    # The status of the virtual event. The possible values are: draft, published, canceled, and unknownFutureValue.
     status: Optional[VirtualEventStatus] = None
     
     @staticmethod
@@ -46,6 +50,10 @@ class VirtualEvent(Entity):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventTownhall".casefold():
+            from .virtual_event_townhall import VirtualEventTownhall
+
+            return VirtualEventTownhall()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventWebinar".casefold():
             from .virtual_event_webinar import VirtualEventWebinar
 
@@ -61,16 +69,20 @@ class VirtualEvent(Entity):
         from .date_time_time_zone import DateTimeTimeZone
         from .entity import Entity
         from .item_body import ItemBody
+        from .virtual_event_presenter import VirtualEventPresenter
         from .virtual_event_session import VirtualEventSession
         from .virtual_event_status import VirtualEventStatus
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
 
         from .communications_identity_set import CommunicationsIdentitySet
         from .date_time_time_zone import DateTimeTimeZone
         from .entity import Entity
         from .item_body import ItemBody
+        from .virtual_event_presenter import VirtualEventPresenter
         from .virtual_event_session import VirtualEventSession
         from .virtual_event_status import VirtualEventStatus
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -78,6 +90,7 @@ class VirtualEvent(Entity):
             "description": lambda n : setattr(self, 'description', n.get_object_value(ItemBody)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
+            "presenters": lambda n : setattr(self, 'presenters', n.get_collection_of_object_values(VirtualEventPresenter)),
             "sessions": lambda n : setattr(self, 'sessions', n.get_collection_of_object_values(VirtualEventSession)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(VirtualEventStatus)),
@@ -99,6 +112,7 @@ class VirtualEvent(Entity):
         writer.write_object_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("endDateTime", self.end_date_time)
+        writer.write_collection_of_object_values("presenters", self.presenters)
         writer.write_collection_of_object_values("sessions", self.sessions)
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_enum_value("status", self.status)

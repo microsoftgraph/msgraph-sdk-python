@@ -51,7 +51,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[BookingAppointmentItemRequestBuilderGetQueryParameters]] = None) -> Optional[BookingAppointment]:
         """
-        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The startDateTime and endDateTime properties are always returned in UTC.
+        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The start and end properties are always returned in UTC.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointment]
         Find more info here: https://learn.microsoft.com/graph/api/bookingappointment-get?view=graph-rest-1.0
@@ -107,7 +107,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[BookingAppointmentItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The startDateTime and endDateTime properties are always returned in UTC.
+        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The start and end properties are always returned in UTC.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +160,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingAppointmentItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The startDateTime and endDateTime properties are always returned in UTC.
+        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The start and end properties are always returned in UTC.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

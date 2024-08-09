@@ -51,6 +51,8 @@ class Incident(Entity):
     severity: Optional[AlertSeverity] = None
     # The status property
     status: Optional[IncidentStatus] = None
+    # The overview of an attack. When applicable, the summary contains details of what occurred, impacted assets, and the type of attack.
+    summary: Optional[str] = None
     # The system tags associated with the incident.
     system_tags: Optional[List[str]] = None
     # The Microsoft Entra tenant in which the alert was created.
@@ -105,6 +107,7 @@ class Incident(Entity):
             "resolvingComment": lambda n : setattr(self, 'resolving_comment', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(IncidentStatus)),
+            "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
             "systemTags": lambda n : setattr(self, 'system_tags', n.get_collection_of_primitive_values(str)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
@@ -137,6 +140,7 @@ class Incident(Entity):
         writer.write_str_value("resolvingComment", self.resolving_comment)
         writer.write_enum_value("severity", self.severity)
         writer.write_enum_value("status", self.status)
+        writer.write_str_value("summary", self.summary)
         writer.write_collection_of_primitive_values("systemTags", self.system_tags)
         writer.write_str_value("tenantId", self.tenant_id)
     

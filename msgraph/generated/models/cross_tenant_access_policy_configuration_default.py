@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
     from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+    from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
     from .default_invitation_redemption_identity_provider_configuration import DefaultInvitationRedemptionIdentityProviderConfiguration
     from .entity import Entity
     from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
@@ -32,6 +33,8 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity):
     is_service_default: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # Defines the default tenant restrictions configuration for users in your organization who access an external organization on your network or devices.
+    tenant_restrictions: Optional[CrossTenantAccessPolicyTenantRestrictions] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CrossTenantAccessPolicyConfigurationDefault:
@@ -51,12 +54,14 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity):
         """
         from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
         from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .default_invitation_redemption_identity_provider_configuration import DefaultInvitationRedemptionIdentityProviderConfiguration
         from .entity import Entity
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
         from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
         from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .default_invitation_redemption_identity_provider_configuration import DefaultInvitationRedemptionIdentityProviderConfiguration
         from .entity import Entity
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
@@ -70,6 +75,7 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity):
             "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
             "invitationRedemptionIdentityProviderConfiguration": lambda n : setattr(self, 'invitation_redemption_identity_provider_configuration', n.get_object_value(DefaultInvitationRedemptionIdentityProviderConfiguration)),
             "isServiceDefault": lambda n : setattr(self, 'is_service_default', n.get_bool_value()),
+            "tenantRestrictions": lambda n : setattr(self, 'tenant_restrictions', n.get_object_value(CrossTenantAccessPolicyTenantRestrictions)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -92,5 +98,6 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity):
         writer.write_object_value("inboundTrust", self.inbound_trust)
         writer.write_object_value("invitationRedemptionIdentityProviderConfiguration", self.invitation_redemption_identity_provider_configuration)
         writer.write_bool_value("isServiceDefault", self.is_service_default)
+        writer.write_object_value("tenantRestrictions", self.tenant_restrictions)
     
 

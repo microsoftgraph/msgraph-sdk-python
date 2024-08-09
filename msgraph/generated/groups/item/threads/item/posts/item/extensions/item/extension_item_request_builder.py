@@ -70,7 +70,7 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Extension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Extension]:
         """
-        Update an open extension (openTypeExtension object) with the properties in the request body: The data in an extension can be primitive types, or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
+        Update an open extension (openTypeExtension object) on a supported resource type.- If a property in the request body matches the name of an existing property in the extension, the data in the extension is updated.- Otherwise, that property and its data are added to the extension.  The data in an extension can be primitive types or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Extension]
@@ -116,7 +116,7 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Extension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update an open extension (openTypeExtension object) with the properties in the request body: The data in an extension can be primitive types, or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
+        Update an open extension (openTypeExtension object) on a supported resource type.- If a property in the request body matches the name of an existing property in the extension, the data in the extension is updated.- Otherwise, that property and its data are added to the extension.  The data in an extension can be primitive types or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.virtual_events_root import VirtualEventsRoot
     from .events.events_request_builder import EventsRequestBuilder
+    from .townhalls.townhalls_request_builder import TownhallsRequestBuilder
     from .webinars.webinars_request_builder import WebinarsRequestBuilder
 
 class VirtualEventsRequestBuilder(BaseRequestBuilder):
@@ -147,6 +148,15 @@ class VirtualEventsRequestBuilder(BaseRequestBuilder):
         from .events.events_request_builder import EventsRequestBuilder
 
         return EventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def townhalls(self) -> TownhallsRequestBuilder:
+        """
+        Provides operations to manage the townhalls property of the microsoft.graph.virtualEventsRoot entity.
+        """
+        from .townhalls.townhalls_request_builder import TownhallsRequestBuilder
+
+        return TownhallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def webinars(self) -> WebinarsRequestBuilder:

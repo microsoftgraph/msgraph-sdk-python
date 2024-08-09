@@ -11,11 +11,11 @@ from .entity import Entity
 
 @dataclass
 class WorkbookTableColumn(Entity):
-    # Retrieve the filter applied to the column. Read-only.
+    # The filter applied to the column. Read-only.
     filter: Optional[WorkbookFilter] = None
-    # Returns the index number of the column within the columns collection of the table. Zero-indexed. Read-only.
+    # The index of the column within the columns collection of the table. Zero-indexed. Read-only.
     index: Optional[int] = None
-    # Returns the name of the table column.
+    # The name of the table column.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

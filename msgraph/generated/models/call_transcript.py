@@ -14,7 +14,7 @@ from .entity import Entity
 class CallTranscript(Entity):
     # The content of the transcript. Read-only.
     content: Optional[bytes] = None
-    # Date and time at which the transcript was created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+    # Date and time at which the transcript was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The unique identifier of the online meeting related to this transcript. Read-only.
     meeting_id: Optional[str] = None
@@ -34,7 +34,7 @@ class CallTranscript(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CallTranscript
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return CallTranscript()
     
@@ -67,7 +67,7 @@ class CallTranscript(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bytes_value("content", self.content)

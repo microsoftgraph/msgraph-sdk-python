@@ -18,7 +18,7 @@ class ExternalUsersSelfServiceSignUpEventsFlow(AuthenticationEventsFlow):
     odata_type: Optional[str] = "#microsoft.graph.externalUsersSelfServiceSignUpEventsFlow"
     # The configuration for what to invoke when attributes are ready to be collected from the user.
     on_attribute_collection: Optional[OnAttributeCollectionHandler] = None
-    # Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.
+    # Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
     on_authentication_method_load_start: Optional[OnAuthenticationMethodLoadStartHandler] = None
     # Required. The configuration for what to invoke when an authentication flow is ready to be initiated.
     on_interactive_auth_flow_start: Optional[OnInteractiveAuthFlowStartHandler] = None
@@ -32,7 +32,7 @@ class ExternalUsersSelfServiceSignUpEventsFlow(AuthenticationEventsFlow):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ExternalUsersSelfServiceSignUpEventsFlow
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return ExternalUsersSelfServiceSignUpEventsFlow()
     
@@ -69,7 +69,7 @@ class ExternalUsersSelfServiceSignUpEventsFlow(AuthenticationEventsFlow):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("onAttributeCollection", self.on_attribute_collection)

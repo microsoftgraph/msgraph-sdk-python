@@ -28,7 +28,7 @@ class TeamsAppResourceSpecificPermission(AdditionalDataHolder, BackedModel, Pars
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TeamsAppResourceSpecificPermission
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return TeamsAppResourceSpecificPermission()
     
@@ -54,7 +54,7 @@ class TeamsAppResourceSpecificPermission(AdditionalDataHolder, BackedModel, Pars
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("permissionType", self.permission_type)

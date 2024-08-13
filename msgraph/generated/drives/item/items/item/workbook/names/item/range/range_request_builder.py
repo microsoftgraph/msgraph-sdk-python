@@ -31,10 +31,10 @@ class RangeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WorkbookRange]:
         """
-        Returns the range object that is associated with the name. Throws an exception if the named item's type is not a range.
+        Retrieve the properties and relationships of range object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
-        Find more info here: https://learn.microsoft.com/graph/api/nameditem-range?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/range-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,7 +52,7 @@ class RangeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Returns the range object that is associated with the name. Throws an exception if the named item's type is not a range.
+        Retrieve the properties and relationships of range object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -67,7 +67,7 @@ class RangeRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: RangeRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RangeRequestBuilder(self.request_adapter, raw_url)
     

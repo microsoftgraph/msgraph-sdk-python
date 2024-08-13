@@ -10,7 +10,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookRangeFill(Entity):
-    # HTML color code representing the color of the border line, of the form #RRGGBB (for example 'FFA500') or as a named HTML color (for example 'orange')
+    # HTML color code representing the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or be a named HTML color, for example 'orange'.
     color: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -22,7 +22,7 @@ class WorkbookRangeFill(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRangeFill
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookRangeFill()
     
@@ -48,7 +48,7 @@ class WorkbookRangeFill(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("color", self.color)

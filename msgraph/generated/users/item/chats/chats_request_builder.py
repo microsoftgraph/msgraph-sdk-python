@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .get_all_messages.get_all_messages_request_builder import GetAllMessagesRequestBuilder
+    from .get_all_retained_messages.get_all_retained_messages_request_builder import GetAllRetainedMessagesRequestBuilder
     from .item.chat_item_request_builder import ChatItemRequestBuilder
 
 class ChatsRequestBuilder(BaseRequestBuilder):
@@ -39,7 +40,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
         param chat_id: The unique identifier of chat
         Returns: ChatItemRequestBuilder
         """
-        if not chat_id:
+        if chat_id is None:
             raise TypeError("chat_id cannot be null.")
         from .item.chat_item_request_builder import ChatItemRequestBuilder
 
@@ -75,7 +76,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Chat]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -109,7 +110,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +124,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ChatsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ChatsRequestBuilder(self.request_adapter, raw_url)
     
@@ -145,6 +146,15 @@ class ChatsRequestBuilder(BaseRequestBuilder):
 
         return GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def get_all_retained_messages(self) -> GetAllRetainedMessagesRequestBuilder:
+        """
+        Provides operations to call the getAllRetainedMessages method.
+        """
+        from .get_all_retained_messages.get_all_retained_messages_request_builder import GetAllRetainedMessagesRequestBuilder
+
+        return GetAllRetainedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class ChatsRequestBuilderGetQueryParameters():
         """
@@ -156,7 +166,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

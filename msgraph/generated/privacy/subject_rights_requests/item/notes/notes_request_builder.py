@@ -39,7 +39,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
         Returns: AuthoredNoteItemRequestBuilder
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
-        if not authored_note_id:
+        if authored_note_id is None:
             raise TypeError("authored_note_id cannot be null.")
         from .item.authored_note_item_request_builder import AuthoredNoteItemRequestBuilder
 
@@ -78,7 +78,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
         Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-post-notes?view=graph-rest-1.0
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -114,7 +114,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -129,7 +129,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
         Returns: NotesRequestBuilder
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return NotesRequestBuilder(self.request_adapter, raw_url)
     
@@ -153,7 +153,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

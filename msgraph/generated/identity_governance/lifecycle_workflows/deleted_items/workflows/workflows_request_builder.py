@@ -37,7 +37,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
         param workflow_id: The unique identifier of workflow
         Returns: WorkflowItemRequestBuilder
         """
-        if not workflow_id:
+        if workflow_id is None:
             raise TypeError("workflow_id cannot be null.")
         from .item.workflow_item_request_builder import WorkflowItemRequestBuilder
 
@@ -83,7 +83,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: WorkflowsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return WorkflowsRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

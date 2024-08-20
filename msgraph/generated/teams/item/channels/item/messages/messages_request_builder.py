@@ -39,7 +39,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         param chat_message_id: The unique identifier of chatMessage
         Returns: ChatMessageItemRequestBuilder
         """
-        if not chat_message_id:
+        if chat_message_id is None:
             raise TypeError("chat_message_id cannot be null.")
         from .item.chat_message_item_request_builder import ChatMessageItemRequestBuilder
 
@@ -70,13 +70,13 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ChatMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ChatMessage]:
         """
-        Send a new chatMessage in the specified channel.
+        Send a new chatMessage in the specified channel or a chat.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/channel-post-messages?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-post?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -105,12 +105,12 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ChatMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Send a new chatMessage in the specified channel.
+        Send a new chatMessage in the specified channel or a chat.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -124,7 +124,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: MessagesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return MessagesRequestBuilder(self.request_adapter, raw_url)
     
@@ -157,7 +157,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

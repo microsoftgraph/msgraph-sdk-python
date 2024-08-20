@@ -24,7 +24,7 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Path that can be used to navigate to the item. Read-only.
+    # Percent-encoded path that can be used to navigate to the item. Read-only.
     path: Optional[str] = None
     # A unique identifier for a shared resource that can be accessed via the Shares API.
     share_id: Optional[str] = None
@@ -40,7 +40,7 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ItemReference
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return ItemReference()
     
@@ -72,7 +72,7 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("driveId", self.drive_id)
         writer.write_str_value("driveType", self.drive_type)

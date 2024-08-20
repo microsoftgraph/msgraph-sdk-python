@@ -42,7 +42,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
         param user_id: The unique identifier of user
         Returns: UserItemRequestBuilder
         """
-        if not user_id:
+        if user_id is None:
             raise TypeError("user_id cannot be null.")
         from .item.user_item_request_builder import UserItemRequestBuilder
 
@@ -52,10 +52,10 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UsersRequestBuilderGetQueryParameters]] = None) -> Optional[UserCollectionResponse]:
         """
-        Retrieve a list of user objects.
+        List properties and relationships of the user objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,13 +73,13 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: User, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[User]:
         """
-        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
+        Create a new user object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-create?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -97,7 +97,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UsersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve a list of user objects.
+        List properties and relationships of the user objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +108,12 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: User, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
+        Create a new user object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -127,7 +127,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: UsersRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return UsersRequestBuilder(self.request_adapter, raw_url)
     
@@ -179,7 +179,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of user objects.
+        List properties and relationships of the user objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -187,7 +187,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

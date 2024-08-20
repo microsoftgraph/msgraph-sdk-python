@@ -37,7 +37,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
         param task_id: The unique identifier of task
         Returns: TaskItemRequestBuilder
         """
-        if not task_id:
+        if task_id is None:
             raise TypeError("task_id cannot be null.")
         from .item.task_item_request_builder import TaskItemRequestBuilder
 
@@ -82,7 +82,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: TasksRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return TasksRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

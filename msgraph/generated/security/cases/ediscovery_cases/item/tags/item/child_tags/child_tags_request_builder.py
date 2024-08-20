@@ -37,7 +37,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
         param ediscovery_review_tag_id1: The unique identifier of ediscoveryReviewTag
         Returns: EdiscoveryReviewTagItemRequestBuilder
         """
-        if not ediscovery_review_tag_id1:
+        if ediscovery_review_tag_id1 is None:
             raise TypeError("ediscovery_review_tag_id1 cannot be null.")
         from .item.ediscovery_review_tag_item_request_builder import EdiscoveryReviewTagItemRequestBuilder
 
@@ -82,7 +82,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ChildTagsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ChildTagsRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

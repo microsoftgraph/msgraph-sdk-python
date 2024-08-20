@@ -38,7 +38,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
         param claims_mapping_policy_id: The unique identifier of claimsMappingPolicy
         Returns: ClaimsMappingPolicyItemRequestBuilder
         """
-        if not claims_mapping_policy_id:
+        if claims_mapping_policy_id is None:
             raise TypeError("claims_mapping_policy_id cannot be null.")
         from .item.claims_mapping_policy_item_request_builder import ClaimsMappingPolicyItemRequestBuilder
 
@@ -84,7 +84,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ClaimsMappingPoliciesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ClaimsMappingPoliciesRequestBuilder(self.request_adapter, raw_url)
     
@@ -117,7 +117,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

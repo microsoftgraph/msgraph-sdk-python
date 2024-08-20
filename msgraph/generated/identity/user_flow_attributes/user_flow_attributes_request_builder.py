@@ -38,7 +38,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
         param identity_user_flow_attribute_id: The unique identifier of identityUserFlowAttribute
         Returns: IdentityUserFlowAttributeItemRequestBuilder
         """
-        if not identity_user_flow_attribute_id:
+        if identity_user_flow_attribute_id is None:
             raise TypeError("identity_user_flow_attribute_id cannot be null.")
         from .item.identity_user_flow_attribute_item_request_builder import IdentityUserFlowAttributeItemRequestBuilder
 
@@ -75,7 +75,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
         Returns: Optional[IdentityUserFlowAttribute]
         Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattribute-post?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -109,7 +109,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +123,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: UserFlowAttributesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return UserFlowAttributesRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,7 +147,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

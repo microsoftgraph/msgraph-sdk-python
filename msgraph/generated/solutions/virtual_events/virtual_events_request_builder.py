@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.virtual_events_root import VirtualEventsRoot
     from .events.events_request_builder import EventsRequestBuilder
+    from .townhalls.townhalls_request_builder import TownhallsRequestBuilder
     from .webinars.webinars_request_builder import WebinarsRequestBuilder
 
 class VirtualEventsRequestBuilder(BaseRequestBuilder):
@@ -76,7 +77,7 @@ class VirtualEventsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventsRoot]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -121,7 +122,7 @@ class VirtualEventsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -135,7 +136,7 @@ class VirtualEventsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: VirtualEventsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return VirtualEventsRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,6 +148,15 @@ class VirtualEventsRequestBuilder(BaseRequestBuilder):
         from .events.events_request_builder import EventsRequestBuilder
 
         return EventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def townhalls(self) -> TownhallsRequestBuilder:
+        """
+        Provides operations to manage the townhalls property of the microsoft.graph.virtualEventsRoot entity.
+        """
+        from .townhalls.townhalls_request_builder import TownhallsRequestBuilder
+
+        return TownhallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def webinars(self) -> WebinarsRequestBuilder:
@@ -175,7 +185,7 @@ class VirtualEventsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

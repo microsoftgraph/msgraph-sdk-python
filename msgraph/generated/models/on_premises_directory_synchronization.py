@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class OnPremisesDirectorySynchronization(Entity):
-    # Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant.
+    # Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant. Nullable.
     configuration: Optional[OnPremisesDirectorySynchronizationConfiguration] = None
     # The features property
     features: Optional[OnPremisesDirectorySynchronizationFeature] = None
@@ -26,7 +26,7 @@ class OnPremisesDirectorySynchronization(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OnPremisesDirectorySynchronization
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return OnPremisesDirectorySynchronization()
     
@@ -57,7 +57,7 @@ class OnPremisesDirectorySynchronization(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)

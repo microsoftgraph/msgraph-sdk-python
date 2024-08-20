@@ -19,7 +19,7 @@ class Shared(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # The identity of the owner of the shared item. Read-only.
     owner: Optional[IdentitySet] = None
-    # Indicates the scope of how the item is shared: anonymous, organization, or users. Read-only.
+    # Indicates the scope of how the item is shared. The possible values are: anonymous, organization, or users. Read-only.
     scope: Optional[str] = None
     # The identity of the user who shared the item. Read-only.
     shared_by: Optional[IdentitySet] = None
@@ -33,7 +33,7 @@ class Shared(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Shared
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Shared()
     
@@ -61,7 +61,7 @@ class Shared(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("owner", self.owner)

@@ -39,7 +39,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         param workbook_chart_point_id: The unique identifier of workbookChartPoint
         Returns: WorkbookChartPointItemRequestBuilder
         """
-        if not workbook_chart_point_id:
+        if workbook_chart_point_id is None:
             raise TypeError("workbook_chart_point_id cannot be null.")
         from .item.workbook_chart_point_item_request_builder import WorkbookChartPointItemRequestBuilder
 
@@ -49,7 +49,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PointsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartPointCollectionResponse]:
         """
-        Represents a collection of all points in the series. Read-only.
+        A collection of all points in the series. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPointCollectionResponse]
         """
@@ -73,7 +73,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         param index: Usage: index={index}
         Returns: ItemAtWithIndexRequestBuilder
         """
-        if not index:
+        if index is None:
             raise TypeError("index cannot be null.")
         from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
@@ -86,7 +86,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPoint]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -104,7 +104,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PointsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents a collection of all points in the series. Read-only.
+        A collection of all points in the series. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -134,7 +134,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PointsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PointsRequestBuilder(self.request_adapter, raw_url)
     
@@ -150,7 +150,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PointsRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all points in the series. Read-only.
+        A collection of all points in the series. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -158,7 +158,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

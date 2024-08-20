@@ -53,10 +53,10 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AgreementItemRequestBuilderGetQueryParameters]] = None) -> Optional[Agreement]:
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Agreement]
-        Find more info here: https://learn.microsoft.com/graph/api/agreement-list-files?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agreement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,7 +80,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
         Returns: Optional[Agreement]
         Find more info here: https://learn.microsoft.com/graph/api/agreement-update?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -109,7 +109,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AgreementItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,7 +125,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -139,7 +139,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AgreementItemRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AgreementItemRequestBuilder(self.request_adapter, raw_url)
     
@@ -180,7 +180,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AgreementItemRequestBuilderGetQueryParameters():
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -188,7 +188,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

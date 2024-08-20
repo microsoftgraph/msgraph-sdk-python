@@ -38,7 +38,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
         param virtual_event_registration_id: The unique identifier of virtualEventRegistration
         Returns: VirtualEventRegistrationItemRequestBuilder
         """
-        if not virtual_event_registration_id:
+        if virtual_event_registration_id is None:
             raise TypeError("virtual_event_registration_id cannot be null.")
         from .item.virtual_event_registration_item_request_builder import VirtualEventRegistrationItemRequestBuilder
 
@@ -51,7 +51,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
         Get a list of all registration records of a webinar.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventRegistrationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/virtualeventwebinar-list-registrations?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/virtualeventregistration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,12 +69,13 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: VirtualEventRegistration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VirtualEventRegistration]:
         """
-        Create new navigation property to registrations for solutions
+        Create a registration record for a registrant of a webinar. This method registers the person for the webinar. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventRegistration]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualeventwebinar-post-registrations?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -103,12 +104,12 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: VirtualEventRegistration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to registrations for solutions
+        Create a registration record for a registrant of a webinar. This method registers the person for the webinar. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -122,7 +123,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: RegistrationsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RegistrationsRequestBuilder(self.request_adapter, raw_url)
     
@@ -146,7 +147,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

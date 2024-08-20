@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
     from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+    from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
     from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
     from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
@@ -39,6 +40,8 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
     odata_type: Optional[str] = None
     # The tenant identifier for the partner Microsoft Entra organization. Read-only. Key.
     tenant_id: Optional[str] = None
+    # Defines the partner-specific tenant restrictions configuration for users in your organization who access a partner organization using partner supplied identities on your network or devices.
+    tenant_restrictions: Optional[CrossTenantAccessPolicyTenantRestrictions] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CrossTenantAccessPolicyConfigurationPartner:
@@ -47,7 +50,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CrossTenantAccessPolicyConfigurationPartner
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return CrossTenantAccessPolicyConfigurationPartner()
     
@@ -58,11 +61,13 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         """
         from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
         from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
         from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
         from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
@@ -78,6 +83,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
             "isServiceProvider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantRestrictions": lambda n : setattr(self, 'tenant_restrictions', n.get_object_value(CrossTenantAccessPolicyTenantRestrictions)),
         }
         return fields
     
@@ -87,7 +93,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("automaticUserConsentSettings", self.automatic_user_consent_settings)
         writer.write_object_value("b2bCollaborationInbound", self.b2b_collaboration_inbound)
@@ -100,6 +106,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         writer.write_bool_value("isServiceProvider", self.is_service_provider)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_object_value("tenantRestrictions", self.tenant_restrictions)
         writer.write_additional_data_value(self.additional_data)
     
 

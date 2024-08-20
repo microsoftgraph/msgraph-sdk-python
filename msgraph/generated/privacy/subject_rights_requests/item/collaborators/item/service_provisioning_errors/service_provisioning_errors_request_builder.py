@@ -32,7 +32,7 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ServiceProvisioningErrorsRequestBuilderGetQueryParameters]] = None) -> Optional[ServiceProvisioningErrorCollectionResponse]:
         """
-        Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from a user object .  Supports $filter (eq, not, for isResolved and serviceInstance).
+        Errors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.  Supports $filter (eq, not, for isResolved and serviceInstance).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceProvisioningErrorCollectionResponse]
         """
@@ -53,7 +53,7 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ServiceProvisioningErrorsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from a user object .  Supports $filter (eq, not, for isResolved and serviceInstance).
+        Errors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.  Supports $filter (eq, not, for isResolved and serviceInstance).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -70,7 +70,7 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
         Returns: ServiceProvisioningErrorsRequestBuilder
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, raw_url)
     
@@ -86,7 +86,7 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServiceProvisioningErrorsRequestBuilderGetQueryParameters():
         """
-        Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from a user object .  Supports $filter (eq, not, for isResolved and serviceInstance).
+        Errors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.  Supports $filter (eq, not, for isResolved and serviceInstance).
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -94,7 +94,7 @@ class ServiceProvisioningErrorsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

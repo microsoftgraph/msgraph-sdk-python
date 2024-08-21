@@ -13,7 +13,7 @@ from .entity import Entity
 
 @dataclass
 class EducationAssignmentDefaults(Entity):
-    # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+    # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. You must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: studentsOnly. The default value is none.
     add_to_calendar_action: Optional[EducationAddToCalendarOptions] = None
     # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
     added_student_action: Optional[EducationAddedStudentAction] = None
@@ -31,7 +31,7 @@ class EducationAssignmentDefaults(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignmentDefaults
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return EducationAssignmentDefaults()
     
@@ -64,7 +64,7 @@ class EducationAssignmentDefaults(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)

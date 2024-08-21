@@ -39,7 +39,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
         param workbook_pivot_table_id: The unique identifier of workbookPivotTable
         Returns: WorkbookPivotTableItemRequestBuilder
         """
-        if not workbook_pivot_table_id:
+        if workbook_pivot_table_id is None:
             raise TypeError("workbook_pivot_table_id cannot be null.")
         from .item.workbook_pivot_table_item_request_builder import WorkbookPivotTableItemRequestBuilder
 
@@ -49,7 +49,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PivotTablesRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookPivotTableCollectionResponse]:
         """
-        Collection of PivotTables that are part of the worksheet.
+        The list of piot tables that are part of the worksheet.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookPivotTableCollectionResponse]
         """
@@ -74,7 +74,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookPivotTable]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -92,7 +92,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PivotTablesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Collection of PivotTables that are part of the worksheet.
+        The list of piot tables that are part of the worksheet.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +108,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -122,7 +122,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PivotTablesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PivotTablesRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,7 +147,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PivotTablesRequestBuilderGetQueryParameters():
         """
-        Collection of PivotTables that are part of the worksheet.
+        The list of piot tables that are part of the worksheet.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -155,7 +155,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

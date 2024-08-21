@@ -39,7 +39,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
         param managed_app_registration_id: The unique identifier of managedAppRegistration
         Returns: ManagedAppRegistrationItemRequestBuilder
         """
-        if not managed_app_registration_id:
+        if managed_app_registration_id is None:
             raise TypeError("managed_app_registration_id cannot be null.")
         from .item.managed_app_registration_item_request_builder import ManagedAppRegistrationItemRequestBuilder
 
@@ -49,10 +49,10 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppRegistrationsRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppRegistrationCollectionResponse]:
         """
-        List properties and relationships of the androidManagedAppRegistration objects.
+        List properties and relationships of the managedAppRegistration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppRegistrationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappregistration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappregistration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -76,7 +76,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
         Returns: Optional[ManagedAppRegistration]
         Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappregistration-create?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -94,7 +94,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppRegistrationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the androidManagedAppRegistration objects.
+        List properties and relationships of the managedAppRegistration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -124,7 +124,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ManagedAppRegistrationsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ManagedAppRegistrationsRequestBuilder(self.request_adapter, raw_url)
     
@@ -149,7 +149,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppRegistrationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the androidManagedAppRegistration objects.
+        List properties and relationships of the managedAppRegistration objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -157,7 +157,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

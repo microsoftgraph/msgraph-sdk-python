@@ -32,7 +32,7 @@ class OnAuthenticationMethodLoadStartRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[OnAuthenticationMethodLoadStartRequestBuilderGetQueryParameters]] = None) -> Optional[OnAuthenticationMethodLoadStartHandler]:
         """
-        Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.
+        Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnAuthenticationMethodLoadStartHandler]
         """
@@ -52,7 +52,7 @@ class OnAuthenticationMethodLoadStartRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[OnAuthenticationMethodLoadStartRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.
+        Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -67,7 +67,7 @@ class OnAuthenticationMethodLoadStartRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: OnAuthenticationMethodLoadStartRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return OnAuthenticationMethodLoadStartRequestBuilder(self.request_adapter, raw_url)
     
@@ -83,7 +83,7 @@ class OnAuthenticationMethodLoadStartRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnAuthenticationMethodLoadStartRequestBuilderGetQueryParameters():
         """
-        Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.
+        Required. The configuration for what to invoke when authentication methods are ready to be presented to the user. Must have at least one identity provider linked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -91,7 +91,7 @@ class OnAuthenticationMethodLoadStartRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

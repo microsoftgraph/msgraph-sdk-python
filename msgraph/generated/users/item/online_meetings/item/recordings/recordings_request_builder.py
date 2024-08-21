@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ......models.call_recording_collection_response import CallRecordingCollectionResponse
     from ......models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
     from .item.call_recording_item_request_builder import CallRecordingItemRequestBuilder
 
 class RecordingsRequestBuilder(BaseRequestBuilder):
@@ -38,7 +39,7 @@ class RecordingsRequestBuilder(BaseRequestBuilder):
         param call_recording_id: The unique identifier of callRecording
         Returns: CallRecordingItemRequestBuilder
         """
-        if not call_recording_id:
+        if call_recording_id is None:
             raise TypeError("call_recording_id cannot be null.")
         from .item.call_recording_item_request_builder import CallRecordingItemRequestBuilder
 
@@ -73,7 +74,7 @@ class RecordingsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallRecording]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -107,7 +108,7 @@ class RecordingsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -121,7 +122,7 @@ class RecordingsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: RecordingsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RecordingsRequestBuilder(self.request_adapter, raw_url)
     
@@ -134,6 +135,15 @@ class RecordingsRequestBuilder(BaseRequestBuilder):
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def delta(self) -> DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        from .delta.delta_request_builder import DeltaRequestBuilder
+
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class RecordingsRequestBuilderGetQueryParameters():
         """
@@ -145,7 +155,7 @@ class RecordingsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

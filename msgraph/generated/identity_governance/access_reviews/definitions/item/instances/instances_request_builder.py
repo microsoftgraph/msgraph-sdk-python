@@ -39,7 +39,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         param access_review_instance_id: The unique identifier of accessReviewInstance
         Returns: AccessReviewInstanceItemRequestBuilder
         """
-        if not access_review_instance_id:
+        if access_review_instance_id is None:
             raise TypeError("access_review_instance_id cannot be null.")
         from .item.access_review_instance_item_request_builder import AccessReviewInstanceItemRequestBuilder
 
@@ -53,7 +53,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         param on: Usage: on='{on}'
         Returns: FilterByCurrentUserWithOnRequestBuilder
         """
-        if not on:
+        if on is None:
             raise TypeError("on cannot be null.")
         from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
@@ -87,7 +87,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewInstance]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -121,7 +121,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -135,7 +135,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: InstancesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return InstancesRequestBuilder(self.request_adapter, raw_url)
     
@@ -159,7 +159,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

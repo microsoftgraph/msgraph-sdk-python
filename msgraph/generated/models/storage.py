@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .file_storage import FileStorage
+    from .storage_settings import StorageSettings
 
 @dataclass
 class Storage(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,6 +19,8 @@ class Storage(AdditionalDataHolder, BackedModel, Parsable):
     file_storage: Optional[FileStorage] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The settings property
+    settings: Optional[StorageSettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Storage:
@@ -26,7 +29,7 @@ class Storage(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Storage
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Storage()
     
@@ -36,12 +39,15 @@ class Storage(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .file_storage import FileStorage
+        from .storage_settings import StorageSettings
 
         from .file_storage import FileStorage
+        from .storage_settings import StorageSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "fileStorage": lambda n : setattr(self, 'file_storage', n.get_object_value(FileStorage)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(StorageSettings)),
         }
         return fields
     
@@ -51,10 +57,11 @@ class Storage(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("fileStorage", self.file_storage)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("settings", self.settings)
         writer.write_additional_data_value(self.additional_data)
     
 

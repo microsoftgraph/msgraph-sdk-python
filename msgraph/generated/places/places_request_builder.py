@@ -29,7 +29,7 @@ class PlacesRequestBuilder(BaseRequestBuilder):
         param place_id: The unique identifier of place
         Returns: PlaceItemRequestBuilder
         """
-        if not place_id:
+        if place_id is None:
             raise TypeError("place_id cannot be null.")
         from .item.place_item_request_builder import PlaceItemRequestBuilder
 

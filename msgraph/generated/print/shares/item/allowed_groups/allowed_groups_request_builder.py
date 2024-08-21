@@ -38,7 +38,7 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
         param group_id: The unique identifier of group
         Returns: GroupItemRequestBuilder
         """
-        if not group_id:
+        if group_id is None:
             raise TypeError("group_id cannot be null.")
         from .item.group_item_request_builder import GroupItemRequestBuilder
 
@@ -84,7 +84,7 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AllowedGroupsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AllowedGroupsRequestBuilder(self.request_adapter, raw_url)
     
@@ -117,7 +117,7 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

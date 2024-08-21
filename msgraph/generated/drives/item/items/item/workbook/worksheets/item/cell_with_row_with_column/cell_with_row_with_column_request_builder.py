@@ -15,6 +15,36 @@ from warnings import warn
 if TYPE_CHECKING:
     from .........models.o_data_errors.o_data_error import ODataError
     from .........models.workbook_range import WorkbookRange
+    from .bounding_rect_with_another_range.bounding_rect_with_another_range_request_builder import BoundingRectWithAnotherRangeRequestBuilder
+    from .clear.clear_request_builder import ClearRequestBuilder
+    from .columns_after.columns_after_request_builder import ColumnsAfterRequestBuilder
+    from .columns_after_with_count.columns_after_with_count_request_builder import ColumnsAfterWithCountRequestBuilder
+    from .columns_before.columns_before_request_builder import ColumnsBeforeRequestBuilder
+    from .columns_before_with_count.columns_before_with_count_request_builder import ColumnsBeforeWithCountRequestBuilder
+    from .column_with_column1.column_with_column1_request_builder import ColumnWithColumn1RequestBuilder
+    from .delete.delete_request_builder import DeleteRequestBuilder
+    from .entire_column.entire_column_request_builder import EntireColumnRequestBuilder
+    from .entire_row.entire_row_request_builder import EntireRowRequestBuilder
+    from .format.format_request_builder import FormatRequestBuilder
+    from .insert.insert_request_builder import InsertRequestBuilder
+    from .intersection_with_another_range.intersection_with_another_range_request_builder import IntersectionWithAnotherRangeRequestBuilder
+    from .last_cell.last_cell_request_builder import LastCellRequestBuilder
+    from .last_column.last_column_request_builder import LastColumnRequestBuilder
+    from .last_row.last_row_request_builder import LastRowRequestBuilder
+    from .merge.merge_request_builder import MergeRequestBuilder
+    from .offset_range_with_row_offset_with_column_offset.offset_range_with_row_offset_with_column_offset_request_builder import OffsetRangeWithRowOffsetWithColumnOffsetRequestBuilder
+    from .resized_range_with_delta_rows_with_delta_columns.resized_range_with_delta_rows_with_delta_columns_request_builder import ResizedRangeWithDeltaRowsWithDeltaColumnsRequestBuilder
+    from .rows_above.rows_above_request_builder import RowsAboveRequestBuilder
+    from .rows_above_with_count.rows_above_with_count_request_builder import RowsAboveWithCountRequestBuilder
+    from .rows_below.rows_below_request_builder import RowsBelowRequestBuilder
+    from .rows_below_with_count.rows_below_with_count_request_builder import RowsBelowWithCountRequestBuilder
+    from .row_with_row1.row_with_row1_request_builder import RowWithRow1RequestBuilder
+    from .sort.sort_request_builder import SortRequestBuilder
+    from .unmerge.unmerge_request_builder import UnmergeRequestBuilder
+    from .used_range.used_range_request_builder import UsedRangeRequestBuilder
+    from .used_range_with_values_only.used_range_with_values_only_request_builder import UsedRangeWithValuesOnlyRequestBuilder
+    from .visible_view.visible_view_request_builder import VisibleViewRequestBuilder
+    from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
 
 class CellWithRowWithColumnRequestBuilder(BaseRequestBuilder):
     """
@@ -33,6 +63,54 @@ class CellWithRowWithColumnRequestBuilder(BaseRequestBuilder):
             path_parameters['column'] = str(column)
             path_parameters['row'] = str(row)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/cell(row={row},column={column})", path_parameters)
+    
+    def bounding_rect_with_another_range(self,another_range: str) -> BoundingRectWithAnotherRangeRequestBuilder:
+        """
+        Provides operations to call the boundingRect method.
+        param another_range: Usage: anotherRange='{anotherRange}'
+        Returns: BoundingRectWithAnotherRangeRequestBuilder
+        """
+        if another_range is None:
+            raise TypeError("another_range cannot be null.")
+        from .bounding_rect_with_another_range.bounding_rect_with_another_range_request_builder import BoundingRectWithAnotherRangeRequestBuilder
+
+        return BoundingRectWithAnotherRangeRequestBuilder(self.request_adapter, self.path_parameters, another_range)
+    
+    def column_with_column1(self,column1: int) -> ColumnWithColumn1RequestBuilder:
+        """
+        Provides operations to call the column method.
+        param column1: Usage: column={column1}
+        Returns: ColumnWithColumn1RequestBuilder
+        """
+        if column1 is None:
+            raise TypeError("column1 cannot be null.")
+        from .column_with_column1.column_with_column1_request_builder import ColumnWithColumn1RequestBuilder
+
+        return ColumnWithColumn1RequestBuilder(self.request_adapter, self.path_parameters, column1)
+    
+    def columns_after_with_count(self,count: int) -> ColumnsAfterWithCountRequestBuilder:
+        """
+        Provides operations to call the columnsAfter method.
+        param count: Usage: count={count}
+        Returns: ColumnsAfterWithCountRequestBuilder
+        """
+        if count is None:
+            raise TypeError("count cannot be null.")
+        from .columns_after_with_count.columns_after_with_count_request_builder import ColumnsAfterWithCountRequestBuilder
+
+        return ColumnsAfterWithCountRequestBuilder(self.request_adapter, self.path_parameters, count)
+    
+    def columns_before_with_count(self,count: int) -> ColumnsBeforeWithCountRequestBuilder:
+        """
+        Provides operations to call the columnsBefore method.
+        param count: Usage: count={count}
+        Returns: ColumnsBeforeWithCountRequestBuilder
+        """
+        if count is None:
+            raise TypeError("count cannot be null.")
+        from .columns_before_with_count.columns_before_with_count_request_builder import ColumnsBeforeWithCountRequestBuilder
+
+        return ColumnsBeforeWithCountRequestBuilder(self.request_adapter, self.path_parameters, count)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WorkbookRange]:
         """
@@ -55,6 +133,84 @@ class CellWithRowWithColumnRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookRange, error_mapping)
     
+    def intersection_with_another_range(self,another_range: str) -> IntersectionWithAnotherRangeRequestBuilder:
+        """
+        Provides operations to call the intersection method.
+        param another_range: Usage: anotherRange='{anotherRange}'
+        Returns: IntersectionWithAnotherRangeRequestBuilder
+        """
+        if another_range is None:
+            raise TypeError("another_range cannot be null.")
+        from .intersection_with_another_range.intersection_with_another_range_request_builder import IntersectionWithAnotherRangeRequestBuilder
+
+        return IntersectionWithAnotherRangeRequestBuilder(self.request_adapter, self.path_parameters, another_range)
+    
+    def offset_range_with_row_offset_with_column_offset(self,column_offset: int, row_offset: int) -> OffsetRangeWithRowOffsetWithColumnOffsetRequestBuilder:
+        """
+        Provides operations to call the offsetRange method.
+        param column_offset: Usage: columnOffset={columnOffset}
+        param row_offset: Usage: rowOffset={rowOffset}
+        Returns: OffsetRangeWithRowOffsetWithColumnOffsetRequestBuilder
+        """
+        if column_offset is None:
+            raise TypeError("column_offset cannot be null.")
+        if row_offset is None:
+            raise TypeError("row_offset cannot be null.")
+        from .offset_range_with_row_offset_with_column_offset.offset_range_with_row_offset_with_column_offset_request_builder import OffsetRangeWithRowOffsetWithColumnOffsetRequestBuilder
+
+        return OffsetRangeWithRowOffsetWithColumnOffsetRequestBuilder(self.request_adapter, self.path_parameters, column_offset, row_offset)
+    
+    def resized_range_with_delta_rows_with_delta_columns(self,delta_columns: int, delta_rows: int) -> ResizedRangeWithDeltaRowsWithDeltaColumnsRequestBuilder:
+        """
+        Provides operations to call the resizedRange method.
+        param delta_columns: Usage: deltaColumns={deltaColumns}
+        param delta_rows: Usage: deltaRows={deltaRows}
+        Returns: ResizedRangeWithDeltaRowsWithDeltaColumnsRequestBuilder
+        """
+        if delta_columns is None:
+            raise TypeError("delta_columns cannot be null.")
+        if delta_rows is None:
+            raise TypeError("delta_rows cannot be null.")
+        from .resized_range_with_delta_rows_with_delta_columns.resized_range_with_delta_rows_with_delta_columns_request_builder import ResizedRangeWithDeltaRowsWithDeltaColumnsRequestBuilder
+
+        return ResizedRangeWithDeltaRowsWithDeltaColumnsRequestBuilder(self.request_adapter, self.path_parameters, delta_columns, delta_rows)
+    
+    def row_with_row1(self,row1: int) -> RowWithRow1RequestBuilder:
+        """
+        Provides operations to call the row method.
+        param row1: Usage: row={row1}
+        Returns: RowWithRow1RequestBuilder
+        """
+        if row1 is None:
+            raise TypeError("row1 cannot be null.")
+        from .row_with_row1.row_with_row1_request_builder import RowWithRow1RequestBuilder
+
+        return RowWithRow1RequestBuilder(self.request_adapter, self.path_parameters, row1)
+    
+    def rows_above_with_count(self,count: int) -> RowsAboveWithCountRequestBuilder:
+        """
+        Provides operations to call the rowsAbove method.
+        param count: Usage: count={count}
+        Returns: RowsAboveWithCountRequestBuilder
+        """
+        if count is None:
+            raise TypeError("count cannot be null.")
+        from .rows_above_with_count.rows_above_with_count_request_builder import RowsAboveWithCountRequestBuilder
+
+        return RowsAboveWithCountRequestBuilder(self.request_adapter, self.path_parameters, count)
+    
+    def rows_below_with_count(self,count: int) -> RowsBelowWithCountRequestBuilder:
+        """
+        Provides operations to call the rowsBelow method.
+        param count: Usage: count={count}
+        Returns: RowsBelowWithCountRequestBuilder
+        """
+        if count is None:
+            raise TypeError("count cannot be null.")
+        from .rows_below_with_count.rows_below_with_count_request_builder import RowsBelowWithCountRequestBuilder
+
+        return RowsBelowWithCountRequestBuilder(self.request_adapter, self.path_parameters, count)
+    
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Gets the range object containing the single cell based on row and column numbers. The cell can be outside the bounds of its parent range, so long as it's stays within the worksheet grid.
@@ -66,15 +222,198 @@ class CellWithRowWithColumnRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
+    def used_range_with_values_only(self,values_only: bool) -> UsedRangeWithValuesOnlyRequestBuilder:
+        """
+        Provides operations to call the usedRange method.
+        param values_only: Usage: valuesOnly={valuesOnly}
+        Returns: UsedRangeWithValuesOnlyRequestBuilder
+        """
+        if values_only is None:
+            raise TypeError("values_only cannot be null.")
+        from .used_range_with_values_only.used_range_with_values_only_request_builder import UsedRangeWithValuesOnlyRequestBuilder
+
+        return UsedRangeWithValuesOnlyRequestBuilder(self.request_adapter, self.path_parameters, values_only)
+    
     def with_url(self,raw_url: str) -> CellWithRowWithColumnRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
         Returns: CellWithRowWithColumnRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CellWithRowWithColumnRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def clear(self) -> ClearRequestBuilder:
+        """
+        Provides operations to call the clear method.
+        """
+        from .clear.clear_request_builder import ClearRequestBuilder
+
+        return ClearRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def columns_after(self) -> ColumnsAfterRequestBuilder:
+        """
+        Provides operations to call the columnsAfter method.
+        """
+        from .columns_after.columns_after_request_builder import ColumnsAfterRequestBuilder
+
+        return ColumnsAfterRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def columns_before(self) -> ColumnsBeforeRequestBuilder:
+        """
+        Provides operations to call the columnsBefore method.
+        """
+        from .columns_before.columns_before_request_builder import ColumnsBeforeRequestBuilder
+
+        return ColumnsBeforeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delete_path(self) -> DeleteRequestBuilder:
+        """
+        Provides operations to call the delete method.
+        """
+        from .delete.delete_request_builder import DeleteRequestBuilder
+
+        return DeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def entire_column(self) -> EntireColumnRequestBuilder:
+        """
+        Provides operations to call the entireColumn method.
+        """
+        from .entire_column.entire_column_request_builder import EntireColumnRequestBuilder
+
+        return EntireColumnRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def entire_row(self) -> EntireRowRequestBuilder:
+        """
+        Provides operations to call the entireRow method.
+        """
+        from .entire_row.entire_row_request_builder import EntireRowRequestBuilder
+
+        return EntireRowRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def format(self) -> FormatRequestBuilder:
+        """
+        Provides operations to manage the format property of the microsoft.graph.workbookRange entity.
+        """
+        from .format.format_request_builder import FormatRequestBuilder
+
+        return FormatRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def insert(self) -> InsertRequestBuilder:
+        """
+        Provides operations to call the insert method.
+        """
+        from .insert.insert_request_builder import InsertRequestBuilder
+
+        return InsertRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_cell(self) -> LastCellRequestBuilder:
+        """
+        Provides operations to call the lastCell method.
+        """
+        from .last_cell.last_cell_request_builder import LastCellRequestBuilder
+
+        return LastCellRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_column(self) -> LastColumnRequestBuilder:
+        """
+        Provides operations to call the lastColumn method.
+        """
+        from .last_column.last_column_request_builder import LastColumnRequestBuilder
+
+        return LastColumnRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_row(self) -> LastRowRequestBuilder:
+        """
+        Provides operations to call the lastRow method.
+        """
+        from .last_row.last_row_request_builder import LastRowRequestBuilder
+
+        return LastRowRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def merge(self) -> MergeRequestBuilder:
+        """
+        Provides operations to call the merge method.
+        """
+        from .merge.merge_request_builder import MergeRequestBuilder
+
+        return MergeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def rows_above(self) -> RowsAboveRequestBuilder:
+        """
+        Provides operations to call the rowsAbove method.
+        """
+        from .rows_above.rows_above_request_builder import RowsAboveRequestBuilder
+
+        return RowsAboveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def rows_below(self) -> RowsBelowRequestBuilder:
+        """
+        Provides operations to call the rowsBelow method.
+        """
+        from .rows_below.rows_below_request_builder import RowsBelowRequestBuilder
+
+        return RowsBelowRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sort(self) -> SortRequestBuilder:
+        """
+        Provides operations to manage the sort property of the microsoft.graph.workbookRange entity.
+        """
+        from .sort.sort_request_builder import SortRequestBuilder
+
+        return SortRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unmerge(self) -> UnmergeRequestBuilder:
+        """
+        Provides operations to call the unmerge method.
+        """
+        from .unmerge.unmerge_request_builder import UnmergeRequestBuilder
+
+        return UnmergeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def used_range(self) -> UsedRangeRequestBuilder:
+        """
+        Provides operations to call the usedRange method.
+        """
+        from .used_range.used_range_request_builder import UsedRangeRequestBuilder
+
+        return UsedRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def visible_view(self) -> VisibleViewRequestBuilder:
+        """
+        Provides operations to call the visibleView method.
+        """
+        from .visible_view.visible_view_request_builder import VisibleViewRequestBuilder
+
+        return VisibleViewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def worksheet(self) -> WorksheetRequestBuilder:
+        """
+        Provides operations to manage the worksheet property of the microsoft.graph.workbookRange entity.
+        """
+        from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
+
+        return WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CellWithRowWithColumnRequestBuilderGetRequestConfiguration(RequestConfiguration[QueryParameters]):

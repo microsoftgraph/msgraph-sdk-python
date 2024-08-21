@@ -37,7 +37,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
         param passive_dns_record_id: The unique identifier of passiveDnsRecord
         Returns: PassiveDnsRecordItemRequestBuilder
         """
-        if not passive_dns_record_id:
+        if passive_dns_record_id is None:
             raise TypeError("passive_dns_record_id cannot be null.")
         from .item.passive_dns_record_item_request_builder import PassiveDnsRecordItemRequestBuilder
 
@@ -47,7 +47,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PassiveDnsRequestBuilderGetQueryParameters]] = None) -> Optional[PassiveDnsRecordCollectionResponse]:
         """
-        Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
+        Get a list of passiveDnsRecord resources associated with a host. This method is a forward DNS lookup that queries the IP address of the specified host using its hostname. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PassiveDnsRecordCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-host-list-passivedns?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PassiveDnsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
+        Get a list of passiveDnsRecord resources associated with a host. This method is a forward DNS lookup that queries the IP address of the specified host using its hostname. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -83,7 +83,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PassiveDnsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PassiveDnsRequestBuilder(self.request_adapter, raw_url)
     
@@ -99,7 +99,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PassiveDnsRequestBuilderGetQueryParameters():
         """
-        Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
+        Get a list of passiveDnsRecord resources associated with a host. This method is a forward DNS lookup that queries the IP address of the specified host using its hostname. 
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -107,7 +107,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

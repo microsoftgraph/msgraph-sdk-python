@@ -38,7 +38,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         param approval_stage_id: The unique identifier of approvalStage
         Returns: ApprovalStageItemRequestBuilder
         """
-        if not approval_stage_id:
+        if approval_stage_id is None:
             raise TypeError("approval_stage_id cannot be null.")
         from .item.approval_stage_item_request_builder import ApprovalStageItemRequestBuilder
 
@@ -73,7 +73,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApprovalStage]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -107,7 +107,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -121,7 +121,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: StagesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return StagesRequestBuilder(self.request_adapter, raw_url)
     
@@ -145,7 +145,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

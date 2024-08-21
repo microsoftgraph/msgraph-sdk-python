@@ -15,23 +15,23 @@ from .entity import Entity
 
 @dataclass
 class WorkbookWorksheet(Entity):
-    # Returns collection of charts that are part of the worksheet. Read-only.
+    # The list of charts that are part of the worksheet. Read-only.
     charts: Optional[List[WorkbookChart]] = None
     # The display name of the worksheet.
     name: Optional[str] = None
-    # Returns collection of names that are associated with the worksheet. Read-only.
+    # The list of names that are associated with the worksheet. Read-only.
     names: Optional[List[WorkbookNamedItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Collection of PivotTables that are part of the worksheet.
+    # The list of piot tables that are part of the worksheet.
     pivot_tables: Optional[List[WorkbookPivotTable]] = None
     # The zero-based position of the worksheet within the workbook.
     position: Optional[int] = None
-    # Returns sheet protection object for a worksheet. Read-only.
+    # The sheet protection object for a worksheet. Read-only.
     protection: Optional[WorkbookWorksheetProtection] = None
-    # Collection of tables that are part of the worksheet. Read-only.
+    # The list of tables that are part of the worksheet. Read-only.
     tables: Optional[List[WorkbookTable]] = None
-    # The Visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
+    # The visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
     visibility: Optional[str] = None
     
     @staticmethod
@@ -41,7 +41,7 @@ class WorkbookWorksheet(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookWorksheet
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookWorksheet()
     
@@ -84,7 +84,7 @@ class WorkbookWorksheet(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("charts", self.charts)

@@ -13,7 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from ....models.office_graph_insights import OfficeGraphInsights
+    from ....models.item_insights import ItemInsights
     from ....models.o_data_errors.o_data_error import ODataError
     from .shared.shared_request_builder import SharedRequestBuilder
     from .trending.trending_request_builder import TrendingRequestBuilder
@@ -50,11 +50,11 @@ class InsightsRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[InsightsRequestBuilderGetQueryParameters]] = None) -> Optional[OfficeGraphInsights]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[InsightsRequestBuilderGetQueryParameters]] = None) -> Optional[ItemInsights]:
         """
-        Get insights from users
+        Represents relationships between a user and items such as OneDrive for work or school documents, calculated using advanced analytics and machine learning techniques. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[OfficeGraphInsights]
+        Returns: Optional[ItemInsights]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,18 +66,18 @@ class InsightsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.office_graph_insights import OfficeGraphInsights
+        from ....models.item_insights import ItemInsights
 
-        return await self.request_adapter.send_async(request_info, OfficeGraphInsights, error_mapping)
+        return await self.request_adapter.send_async(request_info, ItemInsights, error_mapping)
     
-    async def patch(self,body: OfficeGraphInsights, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[OfficeGraphInsights]:
+    async def patch(self,body: ItemInsights, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ItemInsights]:
         """
         Update the navigation property insights in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[OfficeGraphInsights]
+        Returns: Optional[ItemInsights]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -89,9 +89,9 @@ class InsightsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.office_graph_insights import OfficeGraphInsights
+        from ....models.item_insights import ItemInsights
 
-        return await self.request_adapter.send_async(request_info, OfficeGraphInsights, error_mapping)
+        return await self.request_adapter.send_async(request_info, ItemInsights, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
@@ -106,7 +106,7 @@ class InsightsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[InsightsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get insights from users
+        Represents relationships between a user and items such as OneDrive for work or school documents, calculated using advanced analytics and machine learning techniques. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,14 +115,14 @@ class InsightsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: OfficeGraphInsights, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: ItemInsights, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update the navigation property insights in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -136,7 +136,7 @@ class InsightsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: InsightsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return InsightsRequestBuilder(self.request_adapter, raw_url)
     
@@ -177,7 +177,7 @@ class InsightsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InsightsRequestBuilderGetQueryParameters():
         """
-        Get insights from users
+        Represents relationships between a user and items such as OneDrive for work or school documents, calculated using advanced analytics and machine learning techniques. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -185,7 +185,7 @@ class InsightsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

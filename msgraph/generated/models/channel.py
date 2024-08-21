@@ -28,7 +28,9 @@ class Channel(Entity):
     email: Optional[str] = None
     # Metadata for the location where the channel's files are stored.
     files_folder: Optional[DriveItem] = None
-    # Indicates whether the channel should automatically be marked 'favorite' for all members of the team. Can only be set programmatically with Create team. Default: false.
+    # Indicates whether the channel is archived. Read-only.
+    is_archived: Optional[bool] = None
+    # Indicates whether the channel should be marked as recommended for all members of the team to show in their channel list. Note: All recommended channels automatically show in the channels list for education and frontline worker users. The property can only be set programmatically via the Create team method. The default value is false.
     is_favorite_by_default: Optional[bool] = None
     # A collection of membership records associated with the channel.
     members: Optional[List[ConversationMember]] = None
@@ -56,7 +58,7 @@ class Channel(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Channel
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Channel()
     
@@ -89,6 +91,7 @@ class Channel(Entity):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(DriveItem)),
+            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "isFavoriteByDefault": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
             "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(ChannelMembershipType)),
@@ -109,7 +112,7 @@ class Channel(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
@@ -117,6 +120,7 @@ class Channel(Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("email", self.email)
         writer.write_object_value("filesFolder", self.files_folder)
+        writer.write_bool_value("isArchived", self.is_archived)
         writer.write_bool_value("isFavoriteByDefault", self.is_favorite_by_default)
         writer.write_collection_of_object_values("members", self.members)
         writer.write_enum_value("membershipType", self.membership_type)

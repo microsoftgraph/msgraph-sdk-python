@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookNamedItem(Entity):
-    # Represents the comment associated with this name.
+    # The comment associated with this name.
     comment: Optional[str] = None
     # The name of the object. Read-only.
     name: Optional[str] = None
@@ -19,11 +19,11 @@ class WorkbookNamedItem(Entity):
     odata_type: Optional[str] = None
     # Indicates whether the name is scoped to the workbook or to a specific worksheet. Read-only.
     scope: Optional[str] = None
-    # Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
+    # The type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
     type: Optional[str] = None
-    # Specifies whether the object is visible or not.
+    # Indicates whether the object is visible.
     visible: Optional[bool] = None
-    # Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+    # Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None
     
     @staticmethod
@@ -33,7 +33,7 @@ class WorkbookNamedItem(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookNamedItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookNamedItem()
     
@@ -66,7 +66,7 @@ class WorkbookNamedItem(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("comment", self.comment)

@@ -11,21 +11,21 @@ class DeviceDetail(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Indicates the browser information of the used for signing in.
+    # Indicates the browser information of the used in the sign-in. Populated for devices registered in Microsoft Entra.
     browser: Optional[str] = None
-    # Refers to the UniqueID of the device used for signing in.
+    # Refers to the unique ID of the device used in the sign-in. Populated for devices registered in Microsoft Entra.
     device_id: Optional[str] = None
-    # Refers to the name of the device used for signing in.
+    # Refers to the name of the device used in the sign-in. Populated for devices registered in Microsoft Entra.
     display_name: Optional[str] = None
-    # Indicates whether the device is compliant.
+    # Indicates whether the device is compliant or not.
     is_compliant: Optional[bool] = None
-    # Indicates whether the device is managed.
+    # Indicates if the device is managed or not.
     is_managed: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates the operating system name and version used for signing in.
+    # Indicates the OS name and version used in the sign-in.
     operating_system: Optional[str] = None
-    # Provides information about whether the signed-in device is Workplace Joined, AzureAD Joined, Domain Joined.
+    # Indicates information on whether the device used in the sign-in is workplace-joined, Microsoft Entra-joined, domain-joined.
     trust_type: Optional[str] = None
     
     @staticmethod
@@ -35,7 +35,7 @@ class DeviceDetail(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceDetail
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return DeviceDetail()
     
@@ -62,7 +62,7 @@ class DeviceDetail(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("browser", self.browser)
         writer.write_str_value("deviceId", self.device_id)

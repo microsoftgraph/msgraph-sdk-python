@@ -37,7 +37,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
         param fido2_authentication_method_id: The unique identifier of fido2AuthenticationMethod
         Returns: Fido2AuthenticationMethodItemRequestBuilder
         """
-        if not fido2_authentication_method_id:
+        if fido2_authentication_method_id is None:
             raise TypeError("fido2_authentication_method_id cannot be null.")
         from .item.fido2_authentication_method_item_request_builder import Fido2AuthenticationMethodItemRequestBuilder
 
@@ -82,7 +82,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: Fido2MethodsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return Fido2MethodsRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

@@ -5,6 +5,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .bookings_availability import BookingsAvailability
+    from .bookings_availability_window import BookingsAvailabilityWindow
+
 @dataclass
 class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
     """
@@ -15,8 +19,14 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # True if to allow customers to choose a specific person for the booking.
+    # True to allow customers to choose a specific person for the booking.
     allow_staff_selection: Optional[bool] = None
+    # Custom availability of the service in a given time frame.
+    custom_availabilities: Optional[List[BookingsAvailabilityWindow]] = None
+    # General availability of the service defined by the scheduling policy.
+    general_availability: Optional[BookingsAvailability] = None
+    # Indicates whether the meeting invite is sent to the customers. The default value is false.
+    is_meeting_invite_to_customers_enabled: Optional[bool] = None
     # Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
     maximum_advance: Optional[datetime.timedelta] = None
     # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
@@ -35,7 +45,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BookingSchedulingPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return BookingSchedulingPolicy()
     
@@ -44,8 +54,17 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .bookings_availability import BookingsAvailability
+        from .bookings_availability_window import BookingsAvailabilityWindow
+
+        from .bookings_availability import BookingsAvailability
+        from .bookings_availability_window import BookingsAvailabilityWindow
+
         fields: Dict[str, Callable[[Any], None]] = {
             "allowStaffSelection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
+            "customAvailabilities": lambda n : setattr(self, 'custom_availabilities', n.get_collection_of_object_values(BookingsAvailabilityWindow)),
+            "generalAvailability": lambda n : setattr(self, 'general_availability', n.get_object_value(BookingsAvailability)),
+            "isMeetingInviteToCustomersEnabled": lambda n : setattr(self, 'is_meeting_invite_to_customers_enabled', n.get_bool_value()),
             "maximumAdvance": lambda n : setattr(self, 'maximum_advance', n.get_timedelta_value()),
             "minimumLeadTime": lambda n : setattr(self, 'minimum_lead_time', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -60,9 +79,12 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
+        writer.write_collection_of_object_values("customAvailabilities", self.custom_availabilities)
+        writer.write_object_value("generalAvailability", self.general_availability)
+        writer.write_bool_value("isMeetingInviteToCustomersEnabled", self.is_meeting_invite_to_customers_enabled)
         writer.write_timedelta_value("maximumAdvance", self.maximum_advance)
         writer.write_timedelta_value("minimumLeadTime", self.minimum_lead_time)
         writer.write_str_value("@odata.type", self.odata_type)

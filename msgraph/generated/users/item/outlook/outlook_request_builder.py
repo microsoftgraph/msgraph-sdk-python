@@ -59,7 +59,7 @@ class OutlookRequestBuilder(BaseRequestBuilder):
         param time_zone_standard: Usage: TimeZoneStandard='{TimeZoneStandard}'
         Returns: SupportedTimeZonesWithTimeZoneStandardRequestBuilder
         """
-        if not time_zone_standard:
+        if time_zone_standard is None:
             raise TypeError("time_zone_standard cannot be null.")
         from .supported_time_zones_with_time_zone_standard.supported_time_zones_with_time_zone_standard_request_builder import SupportedTimeZonesWithTimeZoneStandardRequestBuilder
 
@@ -82,7 +82,7 @@ class OutlookRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: OutlookRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return OutlookRequestBuilder(self.request_adapter, raw_url)
     
@@ -124,7 +124,7 @@ class OutlookRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

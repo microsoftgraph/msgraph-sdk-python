@@ -11,11 +11,11 @@ from .entity import Entity
 
 @dataclass
 class WorkbookTableSort(Entity):
-    # Represents the current conditions used to last sort the table. Read-only.
+    # The list of the current conditions last used to sort the table. Read-only.
     fields: Optional[List[WorkbookSortField]] = None
-    # Represents whether the casing impacted the last sort of the table. Read-only.
+    # Indicates whether the casing impacted the last sort of the table. Read-only.
     match_case: Optional[bool] = None
-    # Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
+    # The Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
     method: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -27,7 +27,7 @@ class WorkbookTableSort(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookTableSort
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookTableSort()
     
@@ -57,7 +57,7 @@ class WorkbookTableSort(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("fields", self.fields)

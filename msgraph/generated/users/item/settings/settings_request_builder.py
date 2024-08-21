@@ -15,7 +15,9 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.user_settings import UserSettings
+    from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
     from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
+    from .storage.storage_request_builder import StorageRequestBuilder
     from .windows.windows_request_builder import WindowsRequestBuilder
 
 class SettingsRequestBuilder(BaseRequestBuilder):
@@ -76,7 +78,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserSettings]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -121,7 +123,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -135,9 +137,18 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: SettingsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SettingsRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def item_insights(self) -> ItemInsightsRequestBuilder:
+        """
+        Provides operations to manage the itemInsights property of the microsoft.graph.userSettings entity.
+        """
+        from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
+
+        return ItemInsightsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def shift_preferences(self) -> ShiftPreferencesRequestBuilder:
@@ -147,6 +158,15 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
 
         return ShiftPreferencesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def storage(self) -> StorageRequestBuilder:
+        """
+        Provides operations to manage the storage property of the microsoft.graph.userSettings entity.
+        """
+        from .storage.storage_request_builder import StorageRequestBuilder
+
+        return StorageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def windows(self) -> WindowsRequestBuilder:
@@ -175,7 +195,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

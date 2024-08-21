@@ -27,7 +27,7 @@ class TransferPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TransferPostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return TransferPostRequestBody()
     
@@ -54,7 +54,7 @@ class TransferPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("transferTarget", self.transfer_target)
         writer.write_object_value("transferee", self.transferee)

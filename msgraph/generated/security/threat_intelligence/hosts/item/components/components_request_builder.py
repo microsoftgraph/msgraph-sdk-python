@@ -37,7 +37,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
         param host_component_id: The unique identifier of hostComponent
         Returns: HostComponentItemRequestBuilder
         """
-        if not host_component_id:
+        if host_component_id is None:
             raise TypeError("host_component_id cannot be null.")
         from .item.host_component_item_request_builder import HostComponentItemRequestBuilder
 
@@ -83,7 +83,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ComponentsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ComponentsRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

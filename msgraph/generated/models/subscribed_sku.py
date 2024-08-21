@@ -17,7 +17,7 @@ class SubscribedSku(Entity):
     account_id: Optional[str] = None
     # The name of the account this SKU belongs to.
     account_name: Optional[str] = None
-    # The target class for this SKU. Only SKUs with target class User are assignable. Possible values are: 'User', 'Company'.
+    # The target class for this SKU. Only SKUs with target class User are assignable. Possible values are: User, Company.
     applies_to: Optional[str] = None
     # Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.
     capability_status: Optional[str] = None
@@ -31,7 +31,7 @@ class SubscribedSku(Entity):
     service_plans: Optional[List[ServicePlanInfo]] = None
     # The unique identifier (GUID) for the service SKU.
     sku_id: Optional[UUID] = None
-    # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
+    # The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
     sku_part_number: Optional[str] = None
     # A list of all subscription IDs associated with this SKU.
     subscription_ids: Optional[List[str]] = None
@@ -43,7 +43,7 @@ class SubscribedSku(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SubscribedSku
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return SubscribedSku()
     
@@ -82,7 +82,7 @@ class SubscribedSku(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("accountId", self.account_id)

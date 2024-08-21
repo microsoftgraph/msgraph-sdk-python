@@ -67,7 +67,7 @@ class GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder(BaseRequest
         param raw_url: The raw URL to use for the request builder.
         Returns: GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder(self.request_adapter, raw_url)
     

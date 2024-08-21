@@ -31,7 +31,7 @@ class HostItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[HostItemRequestBuilderGetQueryParameters]] = None) -> Optional[Host]:
         """
-        The hosts related with this sslCertificate.
+        The host resources related with this sslCertificate.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Host]
         """
@@ -51,7 +51,7 @@ class HostItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[HostItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The hosts related with this sslCertificate.
+        The host resources related with this sslCertificate.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,14 +66,14 @@ class HostItemRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: HostItemRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return HostItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class HostItemRequestBuilderGetQueryParameters():
         """
-        The hosts related with this sslCertificate.
+        The host resources related with this sslCertificate.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -81,7 +81,7 @@ class HostItemRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

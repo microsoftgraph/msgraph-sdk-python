@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .identity_set import IdentitySet
     from .online_meeting_role import OnlineMeetingRole
+    from .virtual_event_presenter_info import VirtualEventPresenterInfo
 
 @dataclass
 class MeetingParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
@@ -31,8 +32,16 @@ class MeetingParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MeetingParticipantInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventPresenterInfo".casefold():
+            from .virtual_event_presenter_info import VirtualEventPresenterInfo
+
+            return VirtualEventPresenterInfo()
         return MeetingParticipantInfo()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -42,9 +51,11 @@ class MeetingParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .identity_set import IdentitySet
         from .online_meeting_role import OnlineMeetingRole
+        from .virtual_event_presenter_info import VirtualEventPresenterInfo
 
         from .identity_set import IdentitySet
         from .online_meeting_role import OnlineMeetingRole
+        from .virtual_event_presenter_info import VirtualEventPresenterInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
@@ -60,7 +71,7 @@ class MeetingParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("identity", self.identity)
         writer.write_str_value("@odata.type", self.odata_type)

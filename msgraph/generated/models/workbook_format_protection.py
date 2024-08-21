@@ -10,9 +10,9 @@ from .entity import Entity
 
 @dataclass
 class WorkbookFormatProtection(Entity):
-    # Indicates if Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
+    # Indicates whether Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
     formula_hidden: Optional[bool] = None
-    # Indicates if Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
+    # Indicates whether Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
     locked: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -24,7 +24,7 @@ class WorkbookFormatProtection(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookFormatProtection
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookFormatProtection()
     
@@ -51,7 +51,7 @@ class WorkbookFormatProtection(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("formulaHidden", self.formula_hidden)

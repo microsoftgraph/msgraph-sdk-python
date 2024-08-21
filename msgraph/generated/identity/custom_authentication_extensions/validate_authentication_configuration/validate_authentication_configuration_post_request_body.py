@@ -27,7 +27,7 @@ class ValidateAuthenticationConfigurationPostRequestBody(AdditionalDataHolder, B
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ValidateAuthenticationConfigurationPostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return ValidateAuthenticationConfigurationPostRequestBody()
     
@@ -54,7 +54,7 @@ class ValidateAuthenticationConfigurationPostRequestBody(AdditionalDataHolder, B
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
         writer.write_object_value("endpointConfiguration", self.endpoint_configuration)

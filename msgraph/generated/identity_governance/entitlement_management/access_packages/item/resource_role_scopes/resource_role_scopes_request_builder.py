@@ -38,7 +38,7 @@ class ResourceRoleScopesRequestBuilder(BaseRequestBuilder):
         param access_package_resource_role_scope_id: The unique identifier of accessPackageResourceRoleScope
         Returns: AccessPackageResourceRoleScopeItemRequestBuilder
         """
-        if not access_package_resource_role_scope_id:
+        if access_package_resource_role_scope_id is None:
             raise TypeError("access_package_resource_role_scope_id cannot be null.")
         from .item.access_package_resource_role_scope_item_request_builder import AccessPackageResourceRoleScopeItemRequestBuilder
 
@@ -74,7 +74,7 @@ class ResourceRoleScopesRequestBuilder(BaseRequestBuilder):
         Returns: Optional[AccessPackageResourceRoleScope]
         Find more info here: https://learn.microsoft.com/graph/api/accesspackage-post-resourcerolescopes?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -108,7 +108,7 @@ class ResourceRoleScopesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -122,7 +122,7 @@ class ResourceRoleScopesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ResourceRoleScopesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ResourceRoleScopesRequestBuilder(self.request_adapter, raw_url)
     
@@ -146,7 +146,7 @@ class ResourceRoleScopesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

@@ -38,7 +38,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         param app_role_assignment_id: The unique identifier of appRoleAssignment
         Returns: AppRoleAssignmentItemRequestBuilder
         """
-        if not app_role_assignment_id:
+        if app_role_assignment_id is None:
             raise TypeError("app_role_assignment_id cannot be null.")
         from .item.app_role_assignment_item_request_builder import AppRoleAssignmentItemRequestBuilder
 
@@ -69,13 +69,13 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: AppRoleAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AppRoleAssignment]:
         """
-        Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
+        Assign an app role to a user, creating an appRoleAssignment object. To grant an app role assignment to a user, you need three identifiers:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
         Find more info here: https://learn.microsoft.com/graph/api/user-post-approleassignments?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -104,12 +104,12 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: AppRoleAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
+        Assign an app role to a user, creating an appRoleAssignment object. To grant an app role assignment to a user, you need three identifiers:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +123,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AppRoleAssignmentsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AppRoleAssignmentsRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,7 +147,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

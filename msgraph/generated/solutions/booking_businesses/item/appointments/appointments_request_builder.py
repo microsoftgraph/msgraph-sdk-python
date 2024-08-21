@@ -38,7 +38,7 @@ class AppointmentsRequestBuilder(BaseRequestBuilder):
         param booking_appointment_id: The unique identifier of bookingAppointment
         Returns: BookingAppointmentItemRequestBuilder
         """
-        if not booking_appointment_id:
+        if booking_appointment_id is None:
             raise TypeError("booking_appointment_id cannot be null.")
         from .item.booking_appointment_item_request_builder import BookingAppointmentItemRequestBuilder
 
@@ -75,7 +75,7 @@ class AppointmentsRequestBuilder(BaseRequestBuilder):
         Returns: Optional[BookingAppointment]
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-post-appointments?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -109,7 +109,7 @@ class AppointmentsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +123,7 @@ class AppointmentsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AppointmentsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AppointmentsRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,7 +147,7 @@ class AppointmentsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

@@ -21,7 +21,7 @@ class WorkbookRange(Entity):
     cell_count: Optional[int] = None
     # Represents the total number of columns in the range. Read-only.
     column_count: Optional[int] = None
-    # Represents if all columns of the current range are hidden.
+    # Indicates whether all columns of the current range are hidden.
     column_hidden: Optional[bool] = None
     # Represents the column number of the first cell in the range. Zero-indexed. Read-only.
     column_index: Optional[int] = None
@@ -33,7 +33,7 @@ class WorkbookRange(Entity):
     odata_type: Optional[str] = None
     # Returns the total number of rows in the range. Read-only.
     row_count: Optional[int] = None
-    # Represents if all rows of the current range are hidden.
+    # Indicates whether all rows of the current range are hidden.
     row_hidden: Optional[bool] = None
     # Returns the row number of the first cell in the range. Zero-indexed. Read-only.
     row_index: Optional[int] = None
@@ -49,7 +49,7 @@ class WorkbookRange(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRange
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookRange()
     
@@ -93,7 +93,7 @@ class WorkbookRange(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("address", self.address)

@@ -40,7 +40,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         param workbook_table_column_id: The unique identifier of workbookTableColumn
         Returns: WorkbookTableColumnItemRequestBuilder
         """
-        if not workbook_table_column_id:
+        if workbook_table_column_id is None:
             raise TypeError("workbook_table_column_id cannot be null.")
         from .item.workbook_table_column_item_request_builder import WorkbookTableColumnItemRequestBuilder
 
@@ -50,7 +50,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ColumnsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookTableColumnCollectionResponse]:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumnCollectionResponse]
         """
@@ -74,7 +74,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         param index: Usage: index={index}
         Returns: ItemAtWithIndexRequestBuilder
         """
-        if not index:
+        if index is None:
             raise TypeError("index cannot be null.")
         from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
@@ -87,7 +87,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -105,7 +105,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ColumnsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +121,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -135,7 +135,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ColumnsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ColumnsRequestBuilder(self.request_adapter, raw_url)
     
@@ -160,7 +160,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -168,7 +168,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

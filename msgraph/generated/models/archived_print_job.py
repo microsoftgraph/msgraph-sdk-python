@@ -20,7 +20,7 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
     acquired_by_printer: Optional[bool] = None
     # The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
     acquired_date_time: Optional[datetime.datetime] = None
-    # The dateTimeOffset when the job was completed, canceled or aborted. Read-only.
+    # The dateTimeOffset when the job was completed, canceled, or aborted. Read-only.
     completion_date_time: Optional[datetime.datetime] = None
     # The number of copies that were printed. Read-only.
     copies_printed: Optional[int] = None
@@ -46,7 +46,7 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ArchivedPrintJob
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return ArchivedPrintJob()
     
@@ -82,7 +82,7 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("acquiredByPrinter", self.acquired_by_printer)
         writer.write_datetime_value("acquiredDateTime", self.acquired_date_time)

@@ -31,7 +31,7 @@ class RoleDefinitionRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RoleDefinitionRequestBuilderGetQueryParameters]] = None) -> Optional[UnifiedRoleDefinition]:
         """
-        The roleDefinition the assignment is for.  Supports $expand.
+        The roleDefinition the assignment is for. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleDefinition]
         """
@@ -51,7 +51,7 @@ class RoleDefinitionRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RoleDefinitionRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The roleDefinition the assignment is for.  Supports $expand.
+        The roleDefinition the assignment is for. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,14 +66,14 @@ class RoleDefinitionRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: RoleDefinitionRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RoleDefinitionRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class RoleDefinitionRequestBuilderGetQueryParameters():
         """
-        The roleDefinition the assignment is for.  Supports $expand.
+        The roleDefinition the assignment is for. Supports $expand.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -81,7 +81,7 @@ class RoleDefinitionRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

@@ -37,7 +37,7 @@ class AlertsRequestBuilder(BaseRequestBuilder):
         param alert_id: The unique identifier of alert
         Returns: AlertItemRequestBuilder
         """
-        if not alert_id:
+        if alert_id is None:
             raise TypeError("alert_id cannot be null.")
         from .item.alert_item_request_builder import AlertItemRequestBuilder
 
@@ -82,7 +82,7 @@ class AlertsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AlertsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AlertsRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class AlertsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

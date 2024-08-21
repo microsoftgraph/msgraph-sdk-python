@@ -15,15 +15,15 @@ from .entity import Entity
 class Invitation(Entity):
     # The URL the user can use to redeem their invitation. Read-only.
     invite_redeem_url: Optional[str] = None
-    # The URL the user should be redirected to once the invitation is redeemed. Required.
+    # The URL the user should be redirected to after the invitation is redeemed. Required.
     invite_redirect_url: Optional[str] = None
-    # The user created as part of the invitation creation. Read-Only
+    # The user created as part of the invitation creation. Read-only. The id property is required in the request body to reset a redemption status.
     invited_user: Optional[User] = None
     # The display name of the user being invited.
     invited_user_display_name: Optional[str] = None
     # The email address of the user being invited. Required. The following special characters aren't permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name, including at the beginning or end of the name.
     invited_user_email_address: Optional[str] = None
-    # Additional configuration for the message being sent to the invited user, including customizing message text, language, and cc recipient list.
+    # Contains configuration for the message being sent to the invited user, including customizing message text, language, and cc recipient list.
     invited_user_message_info: Optional[InvitedUserMessageInfo] = None
     # The users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date.
     invited_user_sponsors: Optional[List[DirectoryObject]] = None
@@ -31,7 +31,7 @@ class Invitation(Entity):
     invited_user_type: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. For more information about using this property, see Reset redemption status for a guest user.
+    # Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. When true, the invitedUser/id relationship is required. For more information about using this property, see Reset redemption status for a guest user.
     reset_redemption: Optional[bool] = None
     # Indicates whether an email should be sent to the user being invited. The default is false.
     send_invitation_message: Optional[bool] = None
@@ -45,7 +45,7 @@ class Invitation(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Invitation
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Invitation()
     
@@ -87,7 +87,7 @@ class Invitation(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("inviteRedeemUrl", self.invite_redeem_url)

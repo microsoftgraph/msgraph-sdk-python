@@ -38,7 +38,7 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
         param authentication_condition_application_app_id: The unique identifier of authenticationConditionApplication
         Returns: AuthenticationConditionApplicationAppItemRequestBuilder
         """
-        if not authentication_condition_application_app_id:
+        if authentication_condition_application_app_id is None:
             raise TypeError("authentication_condition_application_app_id cannot be null.")
         from .item.authentication_condition_application_app_item_request_builder import AuthenticationConditionApplicationAppItemRequestBuilder
 
@@ -48,7 +48,7 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[IncludeApplicationsRequestBuilderGetQueryParameters]] = None) -> Optional[AuthenticationConditionApplicationCollectionResponse]:
         """
-        List the applications linked to an authenticationEventsFlow. These are the applications for which the authentication experience defined by the user flow is enabled.
+        List the applications linked to an external identities self-service sign up user flow that's represented by an externalUsersSelfServiceSignupEventsFlow object. These are the applications for which the authentication experience that's defined by the user flow is enabled. To find the user flow that's linked to an application, see Example 4: List user flow associated with specific application ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationConditionApplicationCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationconditionsapplications-list-includeapplications?view=graph-rest-1.0
@@ -69,13 +69,13 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: AuthenticationConditionApplication, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AuthenticationConditionApplication]:
         """
-        Add or link an application to a user flow, or authenticationEventsFlow. This enables the authentication experience defined by the user flow to be enabled for the application. An application can only be linked to one user flow.
+        Add or link an application to a user flow, or authenticationEventsFlow. This enables the authentication experience defined by the user flow to be enabled for the application. An application can only be linked to one user flow. The app must have an associated service principal in the tenant.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationConditionApplication]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationconditionsapplications-post-includeapplications?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -93,7 +93,7 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[IncludeApplicationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List the applications linked to an authenticationEventsFlow. These are the applications for which the authentication experience defined by the user flow is enabled.
+        List the applications linked to an external identities self-service sign up user flow that's represented by an externalUsersSelfServiceSignupEventsFlow object. These are the applications for which the authentication experience that's defined by the user flow is enabled. To find the user flow that's linked to an application, see Example 4: List user flow associated with specific application ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: AuthenticationConditionApplication, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Add or link an application to a user flow, or authenticationEventsFlow. This enables the authentication experience defined by the user flow to be enabled for the application. An application can only be linked to one user flow.
+        Add or link an application to a user flow, or authenticationEventsFlow. This enables the authentication experience defined by the user flow to be enabled for the application. An application can only be linked to one user flow. The app must have an associated service principal in the tenant.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +123,7 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: IncludeApplicationsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return IncludeApplicationsRequestBuilder(self.request_adapter, raw_url)
     
@@ -139,7 +139,7 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IncludeApplicationsRequestBuilderGetQueryParameters():
         """
-        List the applications linked to an authenticationEventsFlow. These are the applications for which the authentication experience defined by the user flow is enabled.
+        List the applications linked to an external identities self-service sign up user flow that's represented by an externalUsersSelfServiceSignupEventsFlow object. These are the applications for which the authentication experience that's defined by the user flow is enabled. To find the user flow that's linked to an application, see Example 4: List user flow associated with specific application ID.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -147,7 +147,7 @@ class IncludeApplicationsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

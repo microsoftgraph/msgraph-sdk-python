@@ -38,7 +38,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
         param browser_shared_cookie_id: The unique identifier of browserSharedCookie
         Returns: BrowserSharedCookieItemRequestBuilder
         """
-        if not browser_shared_cookie_id:
+        if browser_shared_cookie_id is None:
             raise TypeError("browser_shared_cookie_id cannot be null.")
         from .item.browser_shared_cookie_item_request_builder import BrowserSharedCookieItemRequestBuilder
 
@@ -75,7 +75,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
         Returns: Optional[BrowserSharedCookie]
         Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-post-sharedcookies?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -109,7 +109,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +123,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: SharedCookiesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SharedCookiesRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,7 +147,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

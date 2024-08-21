@@ -11,27 +11,27 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Represents the worksheet protection option of allowing using auto filter feature.
+    # Indicates whether the worksheet protection option to allow the use of the autofilter feature is enabled.
     allow_auto_filter: Optional[bool] = None
-    # Represents the worksheet protection option of allowing deleting columns.
+    # Indicates whether the worksheet protection option to allow deleting columns is enabled.
     allow_delete_columns: Optional[bool] = None
-    # Represents the worksheet protection option of allowing deleting rows.
+    # Indicates whether the worksheet protection option to allow deleting rows is enabled.
     allow_delete_rows: Optional[bool] = None
-    # Represents the worksheet protection option of allowing formatting cells.
+    # Indicates whether the worksheet protection option to allow formatting cells is enabled.
     allow_format_cells: Optional[bool] = None
-    # Represents the worksheet protection option of allowing formatting columns.
+    # Indicates whether the worksheet protection option to allow formatting columns is enabled.
     allow_format_columns: Optional[bool] = None
-    # Represents the worksheet protection option of allowing formatting rows.
+    # Indicates whether the worksheet protection option to allow formatting rows is enabled.
     allow_format_rows: Optional[bool] = None
-    # Represents the worksheet protection option of allowing inserting columns.
+    # Indicates whether the worksheet protection option to allow inserting columns is enabled.
     allow_insert_columns: Optional[bool] = None
-    # Represents the worksheet protection option of allowing inserting hyperlinks.
+    # Indicates whether the worksheet protection option to allow inserting hyperlinks is enabled.
     allow_insert_hyperlinks: Optional[bool] = None
-    # Represents the worksheet protection option of allowing inserting rows.
+    # Indicates whether the worksheet protection option to allow inserting rows is enabled.
     allow_insert_rows: Optional[bool] = None
-    # Represents the worksheet protection option of allowing using pivot table feature.
+    # Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled.
     allow_pivot_tables: Optional[bool] = None
-    # Represents the worksheet protection option of allowing using sort feature.
+    # Indicates whether the worksheet protection option to allow the use of the sort feature is enabled.
     allow_sort: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -43,7 +43,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookWorksheetProtectionOptions
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookWorksheetProtectionOptions()
     
@@ -74,7 +74,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("allowAutoFilter", self.allow_auto_filter)
         writer.write_bool_value("allowDeleteColumns", self.allow_delete_columns)

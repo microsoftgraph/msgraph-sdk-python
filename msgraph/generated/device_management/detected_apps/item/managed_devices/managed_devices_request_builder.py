@@ -37,7 +37,7 @@ class ManagedDevicesRequestBuilder(BaseRequestBuilder):
         param managed_device_id: The unique identifier of managedDevice
         Returns: ManagedDeviceItemRequestBuilder
         """
-        if not managed_device_id:
+        if managed_device_id is None:
             raise TypeError("managed_device_id cannot be null.")
         from .item.managed_device_item_request_builder import ManagedDeviceItemRequestBuilder
 
@@ -82,7 +82,7 @@ class ManagedDevicesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ManagedDevicesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ManagedDevicesRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class ManagedDevicesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

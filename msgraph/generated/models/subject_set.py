@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .connected_organization_members import ConnectedOrganizationMembers
     from .external_sponsors import ExternalSponsors
     from .group_members import GroupMembers
+    from .identity_governance.group_based_subject_set import GroupBasedSubjectSet
     from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
     from .internal_sponsors import InternalSponsors
     from .requestor_manager import RequestorManager
@@ -35,7 +36,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SubjectSet
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
@@ -57,6 +58,10 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
             from .group_members import GroupMembers
 
             return GroupMembers()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.groupBasedSubjectSet".casefold():
+            from .identity_governance.group_based_subject_set import GroupBasedSubjectSet
+
+            return GroupBasedSubjectSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.ruleBasedSubjectSet".casefold():
             from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
 
@@ -100,6 +105,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         from .connected_organization_members import ConnectedOrganizationMembers
         from .external_sponsors import ExternalSponsors
         from .group_members import GroupMembers
+        from .identity_governance.group_based_subject_set import GroupBasedSubjectSet
         from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
         from .internal_sponsors import InternalSponsors
         from .requestor_manager import RequestorManager
@@ -113,6 +119,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         from .connected_organization_members import ConnectedOrganizationMembers
         from .external_sponsors import ExternalSponsors
         from .group_members import GroupMembers
+        from .identity_governance.group_based_subject_set import GroupBasedSubjectSet
         from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
         from .internal_sponsors import InternalSponsors
         from .requestor_manager import RequestorManager
@@ -133,7 +140,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

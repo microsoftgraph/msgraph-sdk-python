@@ -44,7 +44,7 @@ class Alert(Entity):
     detection_source: Optional[DetectionSource] = None
     # The ID of the detector that triggered the alert.
     detector_id: Optional[str] = None
-    # Specifies the result of the investigation, whether the alert represents a true attack and if so, the nature of the attack. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
+    # Specifies the result of the investigation, whether the alert represents a true attack and if so, the nature of the attack. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedAccount, phishing, maliciousUserActivity, notMalicious, notEnoughDataToValidate, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
     determination: Optional[AlertDetermination] = None
     # Collection of evidence related to the alert.
     evidence: Optional[List[AlertEvidence]] = None
@@ -94,7 +94,7 @@ class Alert(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Alert
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Alert()
     
@@ -169,7 +169,7 @@ class Alert(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("actorDisplayName", self.actor_display_name)

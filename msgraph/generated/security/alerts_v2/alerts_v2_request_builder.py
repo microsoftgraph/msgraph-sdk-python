@@ -38,7 +38,7 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
         param alert_id: The unique identifier of alert
         Returns: AlertItemRequestBuilder
         """
-        if not alert_id:
+        if alert_id is None:
             raise TypeError("alert_id cannot be null.")
         from .item.alert_item_request_builder import AlertItemRequestBuilder
 
@@ -74,7 +74,7 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Alert]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -108,7 +108,7 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -122,7 +122,7 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: Alerts_v2RequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return Alerts_v2RequestBuilder(self.request_adapter, raw_url)
     
@@ -146,7 +146,7 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

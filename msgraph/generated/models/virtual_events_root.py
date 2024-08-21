@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .virtual_event import VirtualEvent
+    from .virtual_event_townhall import VirtualEventTownhall
     from .virtual_event_webinar import VirtualEventWebinar
 
 from .entity import Entity
@@ -16,7 +17,9 @@ class VirtualEventsRoot(Entity):
     events: Optional[List[VirtualEvent]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The webinars property
+    # A collection of town halls. Nullable.
+    townhalls: Optional[List[VirtualEventTownhall]] = None
+    # A collection of webinars. Nullable.
     webinars: Optional[List[VirtualEventWebinar]] = None
     
     @staticmethod
@@ -26,7 +29,7 @@ class VirtualEventsRoot(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: VirtualEventsRoot
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return VirtualEventsRoot()
     
@@ -37,14 +40,17 @@ class VirtualEventsRoot(Entity):
         """
         from .entity import Entity
         from .virtual_event import VirtualEvent
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
 
         from .entity import Entity
         from .virtual_event import VirtualEvent
+        from .virtual_event_townhall import VirtualEventTownhall
         from .virtual_event_webinar import VirtualEventWebinar
 
         fields: Dict[str, Callable[[Any], None]] = {
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(VirtualEvent)),
+            "townhalls": lambda n : setattr(self, 'townhalls', n.get_collection_of_object_values(VirtualEventTownhall)),
             "webinars": lambda n : setattr(self, 'webinars', n.get_collection_of_object_values(VirtualEventWebinar)),
         }
         super_fields = super().get_field_deserializers()
@@ -57,10 +63,11 @@ class VirtualEventsRoot(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("events", self.events)
+        writer.write_collection_of_object_values("townhalls", self.townhalls)
         writer.write_collection_of_object_values("webinars", self.webinars)
     
 

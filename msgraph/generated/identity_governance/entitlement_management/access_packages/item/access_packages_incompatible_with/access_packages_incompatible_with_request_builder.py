@@ -37,7 +37,7 @@ class AccessPackagesIncompatibleWithRequestBuilder(BaseRequestBuilder):
         param access_package_id1: The unique identifier of accessPackage
         Returns: AccessPackageItemRequestBuilder
         """
-        if not access_package_id1:
+        if access_package_id1 is None:
             raise TypeError("access_package_id1 cannot be null.")
         from .item.access_package_item_request_builder import AccessPackageItemRequestBuilder
 
@@ -83,7 +83,7 @@ class AccessPackagesIncompatibleWithRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AccessPackagesIncompatibleWithRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AccessPackagesIncompatibleWithRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class AccessPackagesIncompatibleWithRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

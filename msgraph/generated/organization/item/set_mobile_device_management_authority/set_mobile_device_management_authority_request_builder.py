@@ -67,7 +67,7 @@ class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: SetMobileDeviceManagementAuthorityRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SetMobileDeviceManagementAuthorityRequestBuilder(self.request_adapter, raw_url)
     

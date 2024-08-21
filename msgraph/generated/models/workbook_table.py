@@ -14,19 +14,19 @@ from .entity import Entity
 
 @dataclass
 class WorkbookTable(Entity):
-    # Represents a collection of all the columns in the table. Read-only.
+    # The list of all the columns in the table. Read-only.
     columns: Optional[List[WorkbookTableColumn]] = None
     # Indicates whether the first column contains special formatting.
     highlight_first_column: Optional[bool] = None
     # Indicates whether the last column contains special formatting.
     highlight_last_column: Optional[bool] = None
-    # Legacy ID used in older Excel clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and shouldn't be parsed to any other type. Read-only.
+    # A legacy identifier used in older Excel clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and shouldn't be parsed to any other type. Read-only.
     legacy_id: Optional[str] = None
-    # Name of the table.
+    # The name of the table.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Represents a collection of all the rows in the table. Read-only.
+    # The list of all the rows in the table. Read-only.
     rows: Optional[List[WorkbookTableRow]] = None
     # Indicates whether the columns show banded formatting in which odd columns are highlighted differently from even ones to make reading the table easier.
     show_banded_columns: Optional[bool] = None
@@ -38,9 +38,9 @@ class WorkbookTable(Entity):
     show_headers: Optional[bool] = None
     # Indicates whether the total row is visible or not. This value can be set to show or remove the total row.
     show_totals: Optional[bool] = None
-    # Represents the sorting for the table. Read-only.
+    # The sorting for the table. Read-only.
     sort: Optional[WorkbookTableSort] = None
-    # Constant value that represents the Table style. The possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
+    # A constant value that represents the Table style. Possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
     style: Optional[str] = None
     # The worksheet containing the current table. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None
@@ -52,7 +52,7 @@ class WorkbookTable(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookTable
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookTable()
     
@@ -99,7 +99,7 @@ class WorkbookTable(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("columns", self.columns)

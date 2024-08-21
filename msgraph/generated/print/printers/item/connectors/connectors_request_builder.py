@@ -37,7 +37,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
         param print_connector_id: The unique identifier of printConnector
         Returns: PrintConnectorItemRequestBuilder
         """
-        if not print_connector_id:
+        if print_connector_id is None:
             raise TypeError("print_connector_id cannot be null.")
         from .item.print_connector_item_request_builder import PrintConnectorItemRequestBuilder
 
@@ -83,7 +83,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ConnectorsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ConnectorsRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

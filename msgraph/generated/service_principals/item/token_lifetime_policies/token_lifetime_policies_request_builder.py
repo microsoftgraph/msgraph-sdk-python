@@ -37,7 +37,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
         param token_lifetime_policy_id: The unique identifier of tokenLifetimePolicy
         Returns: TokenLifetimePolicyItemRequestBuilder
         """
-        if not token_lifetime_policy_id:
+        if token_lifetime_policy_id is None:
             raise TypeError("token_lifetime_policy_id cannot be null.")
         from .item.token_lifetime_policy_item_request_builder import TokenLifetimePolicyItemRequestBuilder
 
@@ -83,7 +83,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: TokenLifetimePoliciesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return TokenLifetimePoliciesRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

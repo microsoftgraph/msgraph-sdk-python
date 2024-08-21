@@ -166,7 +166,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetEmailActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_email_activity_counts_with_period.get_email_activity_counts_with_period_request_builder import GetEmailActivityCountsWithPeriodRequestBuilder
 
@@ -178,7 +178,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetEmailActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_email_activity_user_counts_with_period.get_email_activity_user_counts_with_period_request_builder import GetEmailActivityUserCountsWithPeriodRequestBuilder
 
@@ -190,7 +190,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetEmailActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_email_activity_user_detail_with_date.get_email_activity_user_detail_with_date_request_builder import GetEmailActivityUserDetailWithDateRequestBuilder
 
@@ -202,7 +202,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetEmailActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_email_activity_user_detail_with_period.get_email_activity_user_detail_with_period_request_builder import GetEmailActivityUserDetailWithPeriodRequestBuilder
 
@@ -214,7 +214,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_email_app_usage_apps_user_counts_with_period.get_email_app_usage_apps_user_counts_with_period_request_builder import GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder
 
@@ -226,7 +226,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetEmailAppUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_email_app_usage_user_counts_with_period.get_email_app_usage_user_counts_with_period_request_builder import GetEmailAppUsageUserCountsWithPeriodRequestBuilder
 
@@ -238,7 +238,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetEmailAppUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_email_app_usage_user_detail_with_date.get_email_app_usage_user_detail_with_date_request_builder import GetEmailAppUsageUserDetailWithDateRequestBuilder
 
@@ -250,7 +250,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetEmailAppUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_email_app_usage_user_detail_with_period.get_email_app_usage_user_detail_with_period_request_builder import GetEmailAppUsageUserDetailWithPeriodRequestBuilder
 
@@ -262,7 +262,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_email_app_usage_versions_user_counts_with_period.get_email_app_usage_versions_user_counts_with_period_request_builder import GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder
 
@@ -276,11 +276,11 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param start_date_time: Usage: startDateTime={startDateTime}
         Returns: GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
-        if not group_id:
+        if group_id is None:
             raise TypeError("group_id cannot be null.")
-        if not start_date_time:
+        if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
         from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time.get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
 
@@ -292,7 +292,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetM365AppPlatformUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_m365_app_platform_user_counts_with_period.get_m365_app_platform_user_counts_with_period_request_builder import GetM365AppPlatformUserCountsWithPeriodRequestBuilder
 
@@ -304,7 +304,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetM365AppUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_m365_app_user_counts_with_period.get_m365_app_user_counts_with_period_request_builder import GetM365AppUserCountsWithPeriodRequestBuilder
 
@@ -316,7 +316,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetM365AppUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_m365_app_user_detail_with_date.get_m365_app_user_detail_with_date_request_builder import GetM365AppUserDetailWithDateRequestBuilder
 
@@ -328,7 +328,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetM365AppUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_m365_app_user_detail_with_period.get_m365_app_user_detail_with_period_request_builder import GetM365AppUserDetailWithPeriodRequestBuilder
 
@@ -340,7 +340,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetMailboxUsageDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_mailbox_usage_detail_with_period.get_mailbox_usage_detail_with_period_request_builder import GetMailboxUsageDetailWithPeriodRequestBuilder
 
@@ -352,7 +352,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetMailboxUsageMailboxCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_mailbox_usage_mailbox_counts_with_period.get_mailbox_usage_mailbox_counts_with_period_request_builder import GetMailboxUsageMailboxCountsWithPeriodRequestBuilder
 
@@ -364,7 +364,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_mailbox_usage_quota_status_mailbox_counts_with_period.get_mailbox_usage_quota_status_mailbox_counts_with_period_request_builder import GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder
 
@@ -376,7 +376,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetMailboxUsageStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_mailbox_usage_storage_with_period.get_mailbox_usage_storage_with_period_request_builder import GetMailboxUsageStorageWithPeriodRequestBuilder
 
@@ -388,7 +388,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365ActiveUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_active_user_counts_with_period.get_office365_active_user_counts_with_period_request_builder import GetOffice365ActiveUserCountsWithPeriodRequestBuilder
 
@@ -400,7 +400,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetOffice365ActiveUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_office365_active_user_detail_with_date.get_office365_active_user_detail_with_date_request_builder import GetOffice365ActiveUserDetailWithDateRequestBuilder
 
@@ -412,7 +412,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365ActiveUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_active_user_detail_with_period.get_office365_active_user_detail_with_period_request_builder import GetOffice365ActiveUserDetailWithPeriodRequestBuilder
 
@@ -424,7 +424,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_counts_with_period.get_office365_groups_activity_counts_with_period_request_builder import GetOffice365GroupsActivityCountsWithPeriodRequestBuilder
 
@@ -436,7 +436,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetOffice365GroupsActivityDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_office365_groups_activity_detail_with_date.get_office365_groups_activity_detail_with_date_request_builder import GetOffice365GroupsActivityDetailWithDateRequestBuilder
 
@@ -448,7 +448,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_detail_with_period.get_office365_groups_activity_detail_with_period_request_builder import GetOffice365GroupsActivityDetailWithPeriodRequestBuilder
 
@@ -460,7 +460,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_file_counts_with_period.get_office365_groups_activity_file_counts_with_period_request_builder import GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder
 
@@ -472,7 +472,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_group_counts_with_period.get_office365_groups_activity_group_counts_with_period_request_builder import GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder
 
@@ -484,7 +484,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_storage_with_period.get_office365_groups_activity_storage_with_period_request_builder import GetOffice365GroupsActivityStorageWithPeriodRequestBuilder
 
@@ -496,7 +496,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOffice365ServicesUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_office365_services_user_counts_with_period.get_office365_services_user_counts_with_period_request_builder import GetOffice365ServicesUserCountsWithPeriodRequestBuilder
 
@@ -508,7 +508,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOneDriveActivityFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_one_drive_activity_file_counts_with_period.get_one_drive_activity_file_counts_with_period_request_builder import GetOneDriveActivityFileCountsWithPeriodRequestBuilder
 
@@ -520,7 +520,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOneDriveActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_one_drive_activity_user_counts_with_period.get_one_drive_activity_user_counts_with_period_request_builder import GetOneDriveActivityUserCountsWithPeriodRequestBuilder
 
@@ -532,7 +532,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetOneDriveActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_one_drive_activity_user_detail_with_date.get_one_drive_activity_user_detail_with_date_request_builder import GetOneDriveActivityUserDetailWithDateRequestBuilder
 
@@ -544,7 +544,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOneDriveActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_one_drive_activity_user_detail_with_period.get_one_drive_activity_user_detail_with_period_request_builder import GetOneDriveActivityUserDetailWithPeriodRequestBuilder
 
@@ -556,7 +556,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOneDriveUsageAccountCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_one_drive_usage_account_counts_with_period.get_one_drive_usage_account_counts_with_period_request_builder import GetOneDriveUsageAccountCountsWithPeriodRequestBuilder
 
@@ -568,7 +568,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetOneDriveUsageAccountDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_one_drive_usage_account_detail_with_date.get_one_drive_usage_account_detail_with_date_request_builder import GetOneDriveUsageAccountDetailWithDateRequestBuilder
 
@@ -580,7 +580,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOneDriveUsageAccountDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_one_drive_usage_account_detail_with_period.get_one_drive_usage_account_detail_with_period_request_builder import GetOneDriveUsageAccountDetailWithPeriodRequestBuilder
 
@@ -592,7 +592,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOneDriveUsageFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_one_drive_usage_file_counts_with_period.get_one_drive_usage_file_counts_with_period_request_builder import GetOneDriveUsageFileCountsWithPeriodRequestBuilder
 
@@ -604,7 +604,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetOneDriveUsageStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_one_drive_usage_storage_with_period.get_one_drive_usage_storage_with_period_request_builder import GetOneDriveUsageStorageWithPeriodRequestBuilder
 
@@ -618,11 +618,11 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param start_date_time: Usage: startDateTime={startDateTime}
         Returns: GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
-        if not printer_id:
+        if printer_id is None:
             raise TypeError("printer_id cannot be null.")
-        if not start_date_time:
+        if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
         from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time.get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
 
@@ -634,7 +634,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_relying_party_detailed_summary_with_period.get_relying_party_detailed_summary_with_period_request_builder import GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder
 
@@ -646,7 +646,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointActivityFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_activity_file_counts_with_period.get_share_point_activity_file_counts_with_period_request_builder import GetSharePointActivityFileCountsWithPeriodRequestBuilder
 
@@ -658,7 +658,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointActivityPagesWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_activity_pages_with_period.get_share_point_activity_pages_with_period_request_builder import GetSharePointActivityPagesWithPeriodRequestBuilder
 
@@ -670,7 +670,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_activity_user_counts_with_period.get_share_point_activity_user_counts_with_period_request_builder import GetSharePointActivityUserCountsWithPeriodRequestBuilder
 
@@ -682,7 +682,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetSharePointActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_share_point_activity_user_detail_with_date.get_share_point_activity_user_detail_with_date_request_builder import GetSharePointActivityUserDetailWithDateRequestBuilder
 
@@ -694,7 +694,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_activity_user_detail_with_period.get_share_point_activity_user_detail_with_period_request_builder import GetSharePointActivityUserDetailWithPeriodRequestBuilder
 
@@ -706,7 +706,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetSharePointSiteUsageDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_share_point_site_usage_detail_with_date.get_share_point_site_usage_detail_with_date_request_builder import GetSharePointSiteUsageDetailWithDateRequestBuilder
 
@@ -718,7 +718,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_detail_with_period.get_share_point_site_usage_detail_with_period_request_builder import GetSharePointSiteUsageDetailWithPeriodRequestBuilder
 
@@ -730,7 +730,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_file_counts_with_period.get_share_point_site_usage_file_counts_with_period_request_builder import GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder
 
@@ -742,7 +742,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsagePagesWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_pages_with_period.get_share_point_site_usage_pages_with_period_request_builder import GetSharePointSiteUsagePagesWithPeriodRequestBuilder
 
@@ -754,7 +754,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_site_counts_with_period.get_share_point_site_usage_site_counts_with_period_request_builder import GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder
 
@@ -766,7 +766,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_storage_with_period.get_share_point_site_usage_storage_with_period_request_builder import GetSharePointSiteUsageStorageWithPeriodRequestBuilder
 
@@ -778,7 +778,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_activity_counts_with_period.get_skype_for_business_activity_counts_with_period_request_builder import GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder
 
@@ -790,7 +790,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_activity_user_counts_with_period.get_skype_for_business_activity_user_counts_with_period_request_builder import GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder
 
@@ -802,7 +802,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_skype_for_business_activity_user_detail_with_date.get_skype_for_business_activity_user_detail_with_date_request_builder import GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder
 
@@ -814,7 +814,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_activity_user_detail_with_period.get_skype_for_business_activity_user_detail_with_period_request_builder import GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder
 
@@ -826,7 +826,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_device_usage_distribution_user_counts_with_period.get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder import GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
 
@@ -838,7 +838,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_device_usage_user_counts_with_period.get_skype_for_business_device_usage_user_counts_with_period_request_builder import GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder
 
@@ -850,7 +850,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_skype_for_business_device_usage_user_detail_with_date.get_skype_for_business_device_usage_user_detail_with_date_request_builder import GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder
 
@@ -862,7 +862,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_device_usage_user_detail_with_period.get_skype_for_business_device_usage_user_detail_with_period_request_builder import GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder
 
@@ -874,7 +874,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_organizer_activity_counts_with_period.get_skype_for_business_organizer_activity_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
 
@@ -886,7 +886,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_organizer_activity_minute_counts_with_period.get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
 
@@ -898,7 +898,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_organizer_activity_user_counts_with_period.get_skype_for_business_organizer_activity_user_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
 
@@ -910,7 +910,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_participant_activity_counts_with_period.get_skype_for_business_participant_activity_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
 
@@ -922,7 +922,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_participant_activity_minute_counts_with_period.get_skype_for_business_participant_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
 
@@ -934,7 +934,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_participant_activity_user_counts_with_period.get_skype_for_business_participant_activity_user_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
 
@@ -946,7 +946,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_peer_to_peer_activity_counts_with_period.get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
 
@@ -958,7 +958,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_peer_to_peer_activity_minute_counts_with_period.get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
 
@@ -970,7 +970,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_skype_for_business_peer_to_peer_activity_user_counts_with_period.get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
 
@@ -982,7 +982,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_device_usage_distribution_user_counts_with_period.get_teams_device_usage_distribution_user_counts_with_period_request_builder import GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
 
@@ -994,7 +994,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_device_usage_user_counts_with_period.get_teams_device_usage_user_counts_with_period_request_builder import GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder
 
@@ -1006,7 +1006,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetTeamsDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_teams_device_usage_user_detail_with_date.get_teams_device_usage_user_detail_with_date_request_builder import GetTeamsDeviceUsageUserDetailWithDateRequestBuilder
 
@@ -1018,7 +1018,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_device_usage_user_detail_with_period.get_teams_device_usage_user_detail_with_period_request_builder import GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder
 
@@ -1030,7 +1030,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsTeamActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_team_activity_counts_with_period.get_teams_team_activity_counts_with_period_request_builder import GetTeamsTeamActivityCountsWithPeriodRequestBuilder
 
@@ -1042,7 +1042,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetTeamsTeamActivityDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_teams_team_activity_detail_with_date.get_teams_team_activity_detail_with_date_request_builder import GetTeamsTeamActivityDetailWithDateRequestBuilder
 
@@ -1054,7 +1054,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsTeamActivityDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_team_activity_detail_with_period.get_teams_team_activity_detail_with_period_request_builder import GetTeamsTeamActivityDetailWithPeriodRequestBuilder
 
@@ -1066,7 +1066,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_team_activity_distribution_counts_with_period.get_teams_team_activity_distribution_counts_with_period_request_builder import GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder
 
@@ -1078,7 +1078,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsTeamCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_team_counts_with_period.get_teams_team_counts_with_period_request_builder import GetTeamsTeamCountsWithPeriodRequestBuilder
 
@@ -1090,7 +1090,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsUserActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_user_activity_counts_with_period.get_teams_user_activity_counts_with_period_request_builder import GetTeamsUserActivityCountsWithPeriodRequestBuilder
 
@@ -1102,7 +1102,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsUserActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_user_activity_user_counts_with_period.get_teams_user_activity_user_counts_with_period_request_builder import GetTeamsUserActivityUserCountsWithPeriodRequestBuilder
 
@@ -1114,7 +1114,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetTeamsUserActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_teams_user_activity_user_detail_with_date.get_teams_user_activity_user_detail_with_date_request_builder import GetTeamsUserActivityUserDetailWithDateRequestBuilder
 
@@ -1126,7 +1126,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetTeamsUserActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_teams_user_activity_user_detail_with_period.get_teams_user_activity_user_detail_with_period_request_builder import GetTeamsUserActivityUserDetailWithPeriodRequestBuilder
 
@@ -1140,11 +1140,11 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param user_id: Usage: userId='{userId}'
         Returns: GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
-        if not start_date_time:
+        if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        if not user_id:
+        if user_id is None:
             raise TypeError("user_id cannot be null.")
         from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time.get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
 
@@ -1156,7 +1156,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_activity_counts_with_period.get_yammer_activity_counts_with_period_request_builder import GetYammerActivityCountsWithPeriodRequestBuilder
 
@@ -1168,7 +1168,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_activity_user_counts_with_period.get_yammer_activity_user_counts_with_period_request_builder import GetYammerActivityUserCountsWithPeriodRequestBuilder
 
@@ -1180,7 +1180,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetYammerActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_yammer_activity_user_detail_with_date.get_yammer_activity_user_detail_with_date_request_builder import GetYammerActivityUserDetailWithDateRequestBuilder
 
@@ -1192,7 +1192,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_activity_user_detail_with_period.get_yammer_activity_user_detail_with_period_request_builder import GetYammerActivityUserDetailWithPeriodRequestBuilder
 
@@ -1204,7 +1204,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_device_usage_distribution_user_counts_with_period.get_yammer_device_usage_distribution_user_counts_with_period_request_builder import GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
 
@@ -1216,7 +1216,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_device_usage_user_counts_with_period.get_yammer_device_usage_user_counts_with_period_request_builder import GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder
 
@@ -1228,7 +1228,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetYammerDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_yammer_device_usage_user_detail_with_date.get_yammer_device_usage_user_detail_with_date_request_builder import GetYammerDeviceUsageUserDetailWithDateRequestBuilder
 
@@ -1240,7 +1240,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_device_usage_user_detail_with_period.get_yammer_device_usage_user_detail_with_period_request_builder import GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder
 
@@ -1252,7 +1252,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerGroupsActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_groups_activity_counts_with_period.get_yammer_groups_activity_counts_with_period_request_builder import GetYammerGroupsActivityCountsWithPeriodRequestBuilder
 
@@ -1264,7 +1264,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param date: Usage: date={date}
         Returns: GetYammerGroupsActivityDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise TypeError("date cannot be null.")
         from .get_yammer_groups_activity_detail_with_date.get_yammer_groups_activity_detail_with_date_request_builder import GetYammerGroupsActivityDetailWithDateRequestBuilder
 
@@ -1276,7 +1276,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerGroupsActivityDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_groups_activity_detail_with_period.get_yammer_groups_activity_detail_with_period_request_builder import GetYammerGroupsActivityDetailWithPeriodRequestBuilder
 
@@ -1288,7 +1288,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .get_yammer_groups_activity_group_counts_with_period.get_yammer_groups_activity_group_counts_with_period_request_builder import GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder
 
@@ -1303,13 +1303,13 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param top: Usage: top={top}
         Returns: ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
         """
-        if not filter:
+        if filter is None:
             raise TypeError("filter cannot be null.")
-        if not skip:
+        if skip is None:
             raise TypeError("skip cannot be null.")
-        if not skip_token:
+        if skip_token is None:
             raise TypeError("skip_token cannot be null.")
-        if not top:
+        if top is None:
             raise TypeError("top cannot be null.")
         from .managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token.managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder import ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
 
@@ -1321,7 +1321,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param period: Usage: period='{period}'
         Returns: ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise TypeError("period cannot be null.")
         from .managed_device_enrollment_top_failures_with_period.managed_device_enrollment_top_failures_with_period_request_builder import ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder
 
@@ -1335,7 +1335,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         Returns: Optional[ReportRoot]
         Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-reportroot-update?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -1369,7 +1369,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -1383,7 +1383,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ReportsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ReportsRequestBuilder(self.request_adapter, raw_url)
     
@@ -1524,7 +1524,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

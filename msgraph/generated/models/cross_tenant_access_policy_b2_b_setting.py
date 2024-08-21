@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
+    from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
 
 @dataclass
 class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsable):
@@ -28,8 +29,16 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CrossTenantAccessPolicyB2BSetting
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicyTenantRestrictions".casefold():
+            from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
+
+            return CrossTenantAccessPolicyTenantRestrictions()
         return CrossTenantAccessPolicyB2BSetting()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -38,8 +47,10 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
 
         from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(CrossTenantAccessPolicyTargetConfiguration)),
@@ -54,7 +65,7 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("applications", self.applications)
         writer.write_str_value("@odata.type", self.odata_type)

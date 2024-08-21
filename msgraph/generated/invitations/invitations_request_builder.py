@@ -17,7 +17,8 @@ if TYPE_CHECKING:
     from ..models.invitation_collection_response import InvitationCollectionResponse
     from ..models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
-    from .item.invitation_item_request_builder import InvitationItemRequestBuilder
+    from .invited_user.invited_user_request_builder import InvitedUserRequestBuilder
+    from .invited_user_sponsors.invited_user_sponsors_request_builder import InvitedUserSponsorsRequestBuilder
 
 class InvitationsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,20 +32,6 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/invitations{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
-    
-    def by_invitation_id(self,invitation_id: str) -> InvitationItemRequestBuilder:
-        """
-        Provides operations to manage the collection of invitation entities.
-        param invitation_id: The unique identifier of invitation
-        Returns: InvitationItemRequestBuilder
-        """
-        if not invitation_id:
-            raise TypeError("invitation_id cannot be null.")
-        from .item.invitation_item_request_builder import InvitationItemRequestBuilder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["invitation%2Did"] = invitation_id
-        return InvitationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[InvitationsRequestBuilderGetQueryParameters]] = None) -> Optional[InvitationCollectionResponse]:
         """
@@ -68,13 +55,13 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Invitation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Invitation]:
         """
-        Use this API to create a new invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
+        Use this API to create a new invitation or reset the redemption status for a guest user who already redeemed their invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Invitation]
         Find more info here: https://learn.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -103,12 +90,12 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Invitation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Use this API to create a new invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
+        Use this API to create a new invitation or reset the redemption status for a guest user who already redeemed their invitation. Invitation adds an external user to the organization. When creating a new invitation, you have several options available:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -122,7 +109,7 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: InvitationsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return InvitationsRequestBuilder(self.request_adapter, raw_url)
     
@@ -135,6 +122,24 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def invited_user(self) -> InvitedUserRequestBuilder:
+        """
+        Provides operations to manage the invitedUser property of the microsoft.graph.invitation entity.
+        """
+        from .invited_user.invited_user_request_builder import InvitedUserRequestBuilder
+
+        return InvitedUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def invited_user_sponsors(self) -> InvitedUserSponsorsRequestBuilder:
+        """
+        Provides operations to manage the invitedUserSponsors property of the microsoft.graph.invitation entity.
+        """
+        from .invited_user_sponsors.invited_user_sponsors_request_builder import InvitedUserSponsorsRequestBuilder
+
+        return InvitedUserSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class InvitationsRequestBuilderGetQueryParameters():
         """
@@ -146,7 +151,7 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

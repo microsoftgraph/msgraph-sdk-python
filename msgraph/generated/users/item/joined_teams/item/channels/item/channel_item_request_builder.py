@@ -15,6 +15,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .......models.channel import Channel
     from .......models.o_data_errors.o_data_error import ODataError
+    from .archive.archive_request_builder import ArchiveRequestBuilder
     from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
     from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder import DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder
     from .files_folder.files_folder_request_builder import FilesFolderRequestBuilder
@@ -24,6 +25,7 @@ if TYPE_CHECKING:
     from .remove_email.remove_email_request_builder import RemoveEmailRequestBuilder
     from .shared_with_teams.shared_with_teams_request_builder import SharedWithTeamsRequestBuilder
     from .tabs.tabs_request_builder import TabsRequestBuilder
+    from .unarchive.unarchive_request_builder import UnarchiveRequestBuilder
 
 class ChannelItemRequestBuilder(BaseRequestBuilder):
     """
@@ -83,7 +85,7 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Channel]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -128,7 +130,7 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -142,9 +144,18 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ChannelItemRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ChannelItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def archive(self) -> ArchiveRequestBuilder:
+        """
+        Provides operations to call the archive method.
+        """
+        from .archive.archive_request_builder import ArchiveRequestBuilder
+
+        return ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def complete_migration(self) -> CompleteMigrationRequestBuilder:
@@ -227,6 +238,15 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
 
         return TabsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def unarchive(self) -> UnarchiveRequestBuilder:
+        """
+        Provides operations to call the unarchive method.
+        """
+        from .unarchive.unarchive_request_builder import UnarchiveRequestBuilder
+
+        return UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class ChannelItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
@@ -245,7 +265,7 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

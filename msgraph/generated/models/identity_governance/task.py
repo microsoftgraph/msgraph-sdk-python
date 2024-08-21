@@ -17,7 +17,7 @@ class Task(Entity):
     arguments: Optional[List[KeyValuePair]] = None
     # The category property
     category: Optional[LifecycleTaskCategory] = None
-    # A boolean value that specifies whether, if this task fails, the workflow stops, and subsequent tasks aren't run. Optional.
+    # A Boolean value that specifies whether, if this task fails, the workflow stops, and subsequent tasks aren't run. Optional.
     continue_on_error: Optional[bool] = None
     # A string that describes the purpose of the task for administrative use. Optional.
     description: Optional[str] = None
@@ -25,7 +25,7 @@ class Task(Entity):
     display_name: Optional[str] = None
     # An integer that states in what order the task runs in a workflow.Supports $orderby.
     execution_sequence: Optional[int] = None
-    # A boolean value that denotes whether the task is set to run or not. Optional.Supports $filter(eq, ne) and orderBy.
+    # A Boolean value that denotes whether the task is set to run or not. Optional.Supports $filter(eq, ne) and orderBy.
     is_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -41,7 +41,7 @@ class Task(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Task
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Task()
     
@@ -81,7 +81,7 @@ class Task(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("arguments", self.arguments)

@@ -30,7 +30,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Win32LobAppRestartSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Win32LobAppRestartSettings()
     
@@ -53,7 +53,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("countdownDisplayBeforeRestartInMinutes", self.countdown_display_before_restart_in_minutes)
         writer.write_int_value("gracePeriodInMinutes", self.grace_period_in_minutes)

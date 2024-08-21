@@ -37,7 +37,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
         param intelligence_profile_indicator_id: The unique identifier of intelligenceProfileIndicator
         Returns: IntelligenceProfileIndicatorItemRequestBuilder
         """
-        if not intelligence_profile_indicator_id:
+        if intelligence_profile_indicator_id is None:
             raise TypeError("intelligence_profile_indicator_id cannot be null.")
         from .item.intelligence_profile_indicator_item_request_builder import IntelligenceProfileIndicatorItemRequestBuilder
 
@@ -83,7 +83,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: IndicatorsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return IndicatorsRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

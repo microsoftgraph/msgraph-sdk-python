@@ -66,7 +66,7 @@ class SignIn(Entity):
     user_display_name: Optional[str] = None
     # ID of the user that initiated the sign-in.  Supports $filter (eq).
     user_id: Optional[str] = None
-    # User principal name of the user that initiated the sign-in.  Supports $filter (eq, startsWith).
+    # User principal name of the user that initiated the sign-in. This value is always in lowercase. For guest users whose values in the user object typically contain #EXT# before the domain part, this property stores the value in both lowercase and the 'true' format. For example, while the user object stores AdeleVance_fabrikam.com#EXT#@contoso.com, the sign-in logs store adelevance@fabrikam.com. Supports $filter (eq, startsWith).
     user_principal_name: Optional[str] = None
     
     @staticmethod
@@ -76,7 +76,7 @@ class SignIn(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SignIn
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return SignIn()
     
@@ -142,7 +142,7 @@ class SignIn(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("appDisplayName", self.app_display_name)

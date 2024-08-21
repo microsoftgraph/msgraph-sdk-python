@@ -31,7 +31,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PrincipalRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObject]:
         """
-        Referencing the assigned principal. Read-only. Supports $expand.
+        Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
         """
@@ -51,7 +51,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PrincipalRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Referencing the assigned principal. Read-only. Supports $expand.
+        Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,14 +66,14 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PrincipalRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PrincipalRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class PrincipalRequestBuilderGetQueryParameters():
         """
-        Referencing the assigned principal. Read-only. Supports $expand.
+        Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -81,7 +81,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

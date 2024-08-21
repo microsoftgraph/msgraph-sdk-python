@@ -10,15 +10,15 @@ from .entity import Entity
 
 @dataclass
 class WorkbookRangeView(Entity):
-    # Returns the number of visible columns. Read-only.
+    # The number of visible columns. Read-only.
     column_count: Optional[int] = None
-    # Index of the range.
+    # The index of the range.
     index: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Returns the number of visible rows. Read-only.
+    # The number of visible rows. Read-only.
     row_count: Optional[int] = None
-    # Represents a collection of range views associated with the range. Read-only. Read-only.
+    # The collection of range views associated with the range. Read-only. Read-only.
     rows: Optional[List[WorkbookRangeView]] = None
     
     @staticmethod
@@ -28,7 +28,7 @@ class WorkbookRangeView(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRangeView
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookRangeView()
     
@@ -57,7 +57,7 @@ class WorkbookRangeView(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("columnCount", self.column_count)

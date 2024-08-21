@@ -37,7 +37,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param base_item_id: The unique identifier of baseItem
         Returns: BaseItemItemRequestBuilder
         """
-        if not base_item_id:
+        if base_item_id is None:
             raise TypeError("base_item_id cannot be null.")
         from .item.base_item_item_request_builder import BaseItemItemRequestBuilder
 
@@ -82,7 +82,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ItemsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ItemsRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

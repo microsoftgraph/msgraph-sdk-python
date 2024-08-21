@@ -37,7 +37,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         param app_management_policy_id: The unique identifier of appManagementPolicy
         Returns: AppManagementPolicyItemRequestBuilder
         """
-        if not app_management_policy_id:
+        if app_management_policy_id is None:
             raise TypeError("app_management_policy_id cannot be null.")
         from .item.app_management_policy_item_request_builder import AppManagementPolicyItemRequestBuilder
 
@@ -82,7 +82,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AppManagementPoliciesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AppManagementPoliciesRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

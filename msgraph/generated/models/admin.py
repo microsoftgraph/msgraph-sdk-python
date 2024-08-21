@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .admin_microsoft365_apps import AdminMicrosoft365Apps
+    from .admin_report_settings import AdminReportSettings
     from .edge import Edge
     from .people_admin_settings import PeopleAdminSettings
     from .service_announcement import ServiceAnnouncement
@@ -26,6 +27,8 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # Represents a setting to control people-related admin settings in the tenant.
     people: Optional[PeopleAdminSettings] = None
+    # A container for administrative resources to manage reports.
+    report_settings: Optional[AdminReportSettings] = None
     # A container for service communications resources. Read-only.
     service_announcement: Optional[ServiceAnnouncement] = None
     # The sharepoint property
@@ -38,7 +41,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Admin
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Admin()
     
@@ -48,12 +51,14 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
+        from .admin_report_settings import AdminReportSettings
         from .edge import Edge
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
 
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
+        from .admin_report_settings import AdminReportSettings
         from .edge import Edge
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
@@ -64,6 +69,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
             "microsoft365Apps": lambda n : setattr(self, 'microsoft365_apps', n.get_object_value(AdminMicrosoft365Apps)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "people": lambda n : setattr(self, 'people', n.get_object_value(PeopleAdminSettings)),
+            "reportSettings": lambda n : setattr(self, 'report_settings', n.get_object_value(AdminReportSettings)),
             "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(ServiceAnnouncement)),
             "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(Sharepoint)),
         }
@@ -75,12 +81,13 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("edge", self.edge)
         writer.write_object_value("microsoft365Apps", self.microsoft365_apps)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("people", self.people)
+        writer.write_object_value("reportSettings", self.report_settings)
         writer.write_object_value("serviceAnnouncement", self.service_announcement)
         writer.write_object_value("sharepoint", self.sharepoint)
         writer.write_additional_data_value(self.additional_data)

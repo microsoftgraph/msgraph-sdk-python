@@ -37,7 +37,7 @@ class PortsRequestBuilder(BaseRequestBuilder):
         param host_port_id: The unique identifier of hostPort
         Returns: HostPortItemRequestBuilder
         """
-        if not host_port_id:
+        if host_port_id is None:
             raise TypeError("host_port_id cannot be null.")
         from .item.host_port_item_request_builder import HostPortItemRequestBuilder
 
@@ -83,7 +83,7 @@ class PortsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PortsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PortsRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class PortsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

@@ -71,7 +71,7 @@ class ItemWithNameRequestBuilder(BaseRequestBuilder):
         param width: Usage: width={width}
         Returns: ImageWithWidthRequestBuilder
         """
-        if not width:
+        if width is None:
             raise TypeError("width cannot be null.")
         from .image_with_width.image_with_width_request_builder import ImageWithWidthRequestBuilder
 
@@ -84,9 +84,9 @@ class ItemWithNameRequestBuilder(BaseRequestBuilder):
         param width: Usage: width={width}
         Returns: ImageWithWidthWithHeightRequestBuilder
         """
-        if not height:
+        if height is None:
             raise TypeError("height cannot be null.")
-        if not width:
+        if width is None:
             raise TypeError("width cannot be null.")
         from .image_with_width_with_height.image_with_width_with_height_request_builder import ImageWithWidthWithHeightRequestBuilder
 
@@ -100,11 +100,11 @@ class ItemWithNameRequestBuilder(BaseRequestBuilder):
         param width: Usage: width={width}
         Returns: ImageWithWidthWithHeightWithFittingModeRequestBuilder
         """
-        if not fitting_mode:
+        if fitting_mode is None:
             raise TypeError("fitting_mode cannot be null.")
-        if not height:
+        if height is None:
             raise TypeError("height cannot be null.")
-        if not width:
+        if width is None:
             raise TypeError("width cannot be null.")
         from .image_with_width_with_height_with_fitting_mode.image_with_width_with_height_with_fitting_mode_request_builder import ImageWithWidthWithHeightWithFittingModeRequestBuilder
 
@@ -127,7 +127,7 @@ class ItemWithNameRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ItemWithNameRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ItemWithNameRequestBuilder(self.request_adapter, raw_url)
     

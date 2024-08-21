@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attack_simulation_operation import AttackSimulationOperation
+    from .engagement_async_operation import EngagementAsyncOperation
     from .entity import Entity
     from .long_running_operation_status import LongRunningOperationStatus
     from .rich_long_running_operation import RichLongRunningOperation
@@ -14,9 +15,9 @@ from .entity import Entity
 
 @dataclass
 class LongRunningOperation(Entity):
-    # The start time of the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # The start time of the operation. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The time of the last action in the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # The time of the last action in the operation. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_action_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -34,7 +35,7 @@ class LongRunningOperation(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: LongRunningOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
@@ -44,6 +45,10 @@ class LongRunningOperation(Entity):
             from .attack_simulation_operation import AttackSimulationOperation
 
             return AttackSimulationOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementAsyncOperation".casefold():
+            from .engagement_async_operation import EngagementAsyncOperation
+
+            return EngagementAsyncOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.richLongRunningOperation".casefold():
             from .rich_long_running_operation import RichLongRunningOperation
 
@@ -56,11 +61,13 @@ class LongRunningOperation(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .attack_simulation_operation import AttackSimulationOperation
+        from .engagement_async_operation import EngagementAsyncOperation
         from .entity import Entity
         from .long_running_operation_status import LongRunningOperationStatus
         from .rich_long_running_operation import RichLongRunningOperation
 
         from .attack_simulation_operation import AttackSimulationOperation
+        from .engagement_async_operation import EngagementAsyncOperation
         from .entity import Entity
         from .long_running_operation_status import LongRunningOperationStatus
         from .rich_long_running_operation import RichLongRunningOperation
@@ -82,7 +89,7 @@ class LongRunningOperation(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

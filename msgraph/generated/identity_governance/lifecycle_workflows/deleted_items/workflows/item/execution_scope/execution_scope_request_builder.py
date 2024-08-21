@@ -37,7 +37,7 @@ class ExecutionScopeRequestBuilder(BaseRequestBuilder):
         param user_processing_result_id: The unique identifier of userProcessingResult
         Returns: UserProcessingResultItemRequestBuilder
         """
-        if not user_processing_result_id:
+        if user_processing_result_id is None:
             raise TypeError("user_processing_result_id cannot be null.")
         from .item.user_processing_result_item_request_builder import UserProcessingResultItemRequestBuilder
 
@@ -82,7 +82,7 @@ class ExecutionScopeRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ExecutionScopeRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ExecutionScopeRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class ExecutionScopeRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

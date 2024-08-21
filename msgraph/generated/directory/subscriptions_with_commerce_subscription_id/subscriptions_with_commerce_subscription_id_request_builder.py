@@ -52,9 +52,10 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SubscriptionsWithCommerceSubscriptionIdRequestBuilderGetQueryParameters]] = None) -> Optional[CompanySubscription]:
         """
-        Get subscriptions from directory
+        Get a specific commercial subscription that an organization acquired.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CompanySubscription]
+        Find more info here: https://learn.microsoft.com/graph/api/companysubscription-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -77,7 +78,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CompanySubscription]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -106,7 +107,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SubscriptionsWithCommerceSubscriptionIdRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get subscriptions from directory
+        Get a specific commercial subscription that an organization acquired.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -122,7 +123,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -136,7 +137,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: SubscriptionsWithCommerceSubscriptionIdRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SubscriptionsWithCommerceSubscriptionIdRequestBuilder(self.request_adapter, raw_url)
     
@@ -150,7 +151,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubscriptionsWithCommerceSubscriptionIdRequestBuilderGetQueryParameters():
         """
-        Get subscriptions from directory
+        Get a specific commercial subscription that an organization acquired.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -158,7 +159,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

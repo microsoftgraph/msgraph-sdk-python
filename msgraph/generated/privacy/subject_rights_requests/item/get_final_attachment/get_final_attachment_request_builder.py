@@ -67,7 +67,7 @@ class GetFinalAttachmentRequestBuilder(BaseRequestBuilder):
         Returns: GetFinalAttachmentRequestBuilder
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return GetFinalAttachmentRequestBuilder(self.request_adapter, raw_url)
     

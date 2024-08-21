@@ -32,7 +32,7 @@ class ConditionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ConditionsRequestBuilderGetQueryParameters]] = None) -> Optional[AuthenticationConditions]:
         """
-        The conditions representing the context of the authentication request that's used to decide whether the events policy is invoked.
+        The conditions representing the context of the authentication request that's used to decide whether the events policy is invoked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationConditions]
         """
@@ -52,7 +52,7 @@ class ConditionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ConditionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The conditions representing the context of the authentication request that's used to decide whether the events policy is invoked.
+        The conditions representing the context of the authentication request that's used to decide whether the events policy is invoked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -67,7 +67,7 @@ class ConditionsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ConditionsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ConditionsRequestBuilder(self.request_adapter, raw_url)
     
@@ -83,7 +83,7 @@ class ConditionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConditionsRequestBuilderGetQueryParameters():
         """
-        The conditions representing the context of the authentication request that's used to decide whether the events policy is invoked.
+        The conditions representing the context of the authentication request that's used to decide whether the events policy is invoked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -91,7 +91,7 @@ class ConditionsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

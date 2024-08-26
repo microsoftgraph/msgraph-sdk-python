@@ -52,6 +52,10 @@ warn_unused_configs = true
 files = "msgraph"
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = "msgraph.generated"
+ignore_errors = true
+
 [tool.yapf]
 based_on_style = "pep8"
 dedent_closing_brackets = true

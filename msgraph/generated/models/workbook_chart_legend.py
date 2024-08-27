@@ -15,11 +15,11 @@ class WorkbookChartLegend(Entity):
     format: Optional[WorkbookChartLegendFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Boolean value for whether the chart legend should overlap with the main body of the chart.
+    # Indicates whether the chart legend should overlap with the main body of the chart.
     overlay: Optional[bool] = None
     # Represents the position of the legend on the chart. The possible values are: Top, Bottom, Left, Right, Corner, Custom.
     position: Optional[str] = None
-    # A boolean value the represents the visibility of a ChartLegend object.
+    # Indicates whether the chart legend is visible.
     visible: Optional[bool] = None
     
     @staticmethod
@@ -29,7 +29,7 @@ class WorkbookChartLegend(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartLegend
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookChartLegend()
     
@@ -60,7 +60,7 @@ class WorkbookChartLegend(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("format", self.format)

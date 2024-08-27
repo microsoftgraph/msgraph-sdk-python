@@ -38,7 +38,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         param delegated_admin_relationship_request_id: The unique identifier of delegatedAdminRelationshipRequest
         Returns: DelegatedAdminRelationshipRequestItemRequestBuilder
         """
-        if not delegated_admin_relationship_request_id:
+        if delegated_admin_relationship_request_id is None:
             raise TypeError("delegated_admin_relationship_request_id cannot be null.")
         from .item.delegated_admin_relationship_request_item_request_builder import DelegatedAdminRelationshipRequestItemRequestBuilder
 
@@ -75,7 +75,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         Returns: Optional[DelegatedAdminRelationshipRequest]
         Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-post-requests?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -109,7 +109,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +123,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: RequestsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RequestsRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,7 +147,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

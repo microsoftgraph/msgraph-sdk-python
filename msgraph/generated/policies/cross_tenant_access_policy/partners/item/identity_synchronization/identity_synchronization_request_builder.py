@@ -71,13 +71,13 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: CrossTenantIdentitySyncPolicyPartner, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CrossTenantIdentitySyncPolicyPartner]:
         """
-        Create a cross-tenant user synchronization policy for a partner-specific configuration.
+        Update the user synchronization policy of a partner-specific configuration.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantIdentitySyncPolicyPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationpartner-put-identitysynchronization?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-update?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
@@ -117,12 +117,12 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: CrossTenantIdentitySyncPolicyPartner, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a cross-tenant user synchronization policy for a partner-specific configuration.
+        Update the user synchronization policy of a partner-specific configuration.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PUT, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -136,7 +136,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: IdentitySynchronizationRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return IdentitySynchronizationRequestBuilder(self.request_adapter, raw_url)
     
@@ -158,7 +158,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

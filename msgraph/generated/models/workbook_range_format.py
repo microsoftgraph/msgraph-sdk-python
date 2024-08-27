@@ -16,23 +16,23 @@ from .entity import Entity
 class WorkbookRangeFormat(Entity):
     # Collection of border objects that apply to the overall range selected Read-only.
     borders: Optional[List[WorkbookRangeBorder]] = None
-    # Gets or sets the width of all columns within the range. If the column widths aren't uniform, null will be returned.
+    # The width of all columns within the range. If the column widths aren't uniform, null will be returned.
     column_width: Optional[float] = None
     # Returns the fill object defined on the overall range. Read-only.
     fill: Optional[WorkbookRangeFill] = None
     # Returns the font object defined on the overall range selected Read-only.
     font: Optional[WorkbookRangeFont] = None
-    # Represents the horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
+    # The horizontal alignment for the specified object. Possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
     horizontal_alignment: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Returns the format protection object for a range. Read-only.
     protection: Optional[WorkbookFormatProtection] = None
-    # Gets or sets the height of all rows in the range. If the row heights aren't uniform null will be returned.
+    # The height of all rows in the range. If the row heights aren't uniform null will be returned.
     row_height: Optional[float] = None
-    # Represents the vertical alignment for the specified object. The possible values are: Top, Center, Bottom, Justify, Distributed.
+    # The vertical alignment for the specified object. Possible values are: Top, Center, Bottom, Justify, Distributed.
     vertical_alignment: Optional[str] = None
-    # Indicates if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform wrap setting
+    # Indicates whether Excel wraps the text in the object. A null value indicates that the entire range doesn't have a uniform wrap setting.
     wrap_text: Optional[bool] = None
     
     @staticmethod
@@ -42,7 +42,7 @@ class WorkbookRangeFormat(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRangeFormat
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookRangeFormat()
     
@@ -84,7 +84,7 @@ class WorkbookRangeFormat(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("borders", self.borders)

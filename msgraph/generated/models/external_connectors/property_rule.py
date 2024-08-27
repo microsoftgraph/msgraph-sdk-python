@@ -21,7 +21,7 @@ class PropertyRule(AdditionalDataHolder, BackedModel, Parsable):
     operation: Optional[RuleOperation] = None
     # The property from the externalItem schema. Required.
     property_: Optional[str] = None
-    # A collection with one or many strings. The specified string(s) will be matched with the specified property using the specified operation. Required.
+    # A collection with one or many strings. One or more specified strings are matched with the specified property using the specified operation. Required.
     values: Optional[List[str]] = None
     # The valuesJoinedBy property
     values_joined_by: Optional[BinaryOperator] = None
@@ -33,7 +33,7 @@ class PropertyRule(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PropertyRule
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return PropertyRule()
     
@@ -63,7 +63,7 @@ class PropertyRule(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("operation", self.operation)

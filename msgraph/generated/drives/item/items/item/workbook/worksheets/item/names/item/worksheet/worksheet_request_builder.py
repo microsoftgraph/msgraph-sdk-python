@@ -31,7 +31,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorksheetRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookWorksheet]:
         """
-        Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+        Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
         """
@@ -51,7 +51,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorksheetRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+        Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,14 +66,14 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: WorksheetRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return WorksheetRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class WorksheetRequestBuilderGetQueryParameters():
         """
-        Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+        Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -81,7 +81,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

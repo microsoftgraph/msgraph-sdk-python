@@ -38,7 +38,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         param time_off_reason_id: The unique identifier of timeOffReason
         Returns: TimeOffReasonItemRequestBuilder
         """
-        if not time_off_reason_id:
+        if time_off_reason_id is None:
             raise TypeError("time_off_reason_id cannot be null.")
         from .item.time_off_reason_item_request_builder import TimeOffReasonItemRequestBuilder
 
@@ -75,7 +75,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         Returns: Optional[TimeOffReason]
         Find more info here: https://learn.microsoft.com/graph/api/schedule-post-timeoffreasons?view=graph-rest-1.0
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -109,7 +109,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -123,7 +123,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: TimeOffReasonsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return TimeOffReasonsRequestBuilder(self.request_adapter, raw_url)
     
@@ -147,7 +147,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

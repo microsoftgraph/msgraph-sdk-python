@@ -11,11 +11,11 @@ from .entity import Entity
 
 @dataclass
 class WorkbookTableColumn(Entity):
-    # Retrieve the filter applied to the column. Read-only.
+    # The filter applied to the column. Read-only.
     filter: Optional[WorkbookFilter] = None
-    # Returns the index number of the column within the columns collection of the table. Zero-indexed. Read-only.
+    # The index of the column within the columns collection of the table. Zero-indexed. Read-only.
     index: Optional[int] = None
-    # Returns the name of the table column.
+    # The name of the table column.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -27,7 +27,7 @@ class WorkbookTableColumn(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookTableColumn
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookTableColumn()
     
@@ -57,7 +57,7 @@ class WorkbookTableColumn(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("filter", self.filter)

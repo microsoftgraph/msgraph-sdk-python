@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .custom_task_extensions.custom_task_extensions_request_builder import CustomTaskExtensionsRequestBuilder
     from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
+    from .insights.insights_request_builder import InsightsRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
     from .task_definitions.task_definitions_request_builder import TaskDefinitionsRequestBuilder
     from .workflows.workflows_request_builder import WorkflowsRequestBuilder
@@ -80,7 +81,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LifecycleWorkflowsContainer]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -125,7 +126,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -139,7 +140,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: LifecycleWorkflowsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return LifecycleWorkflowsRequestBuilder(self.request_adapter, raw_url)
     
@@ -160,6 +161,15 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
 
         return DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def insights(self) -> InsightsRequestBuilder:
+        """
+        Provides operations to manage the insights property of the microsoft.graph.identityGovernance.lifecycleWorkflowsContainer entity.
+        """
+        from .insights.insights_request_builder import InsightsRequestBuilder
+
+        return InsightsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def settings(self) -> SettingsRequestBuilder:
@@ -215,7 +225,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

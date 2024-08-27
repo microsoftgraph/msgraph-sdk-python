@@ -5,6 +5,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .app_management_application_configuration import AppManagementApplicationConfiguration
+    from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
+    from .custom_app_management_configuration import CustomAppManagementConfiguration
     from .key_credential_configuration import KeyCredentialConfiguration
     from .password_credential_configuration import PasswordCredentialConfiguration
 
@@ -29,8 +32,24 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AppManagementConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementApplicationConfiguration".casefold():
+            from .app_management_application_configuration import AppManagementApplicationConfiguration
+
+            return AppManagementApplicationConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementServicePrincipalConfiguration".casefold():
+            from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
+
+            return AppManagementServicePrincipalConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customAppManagementConfiguration".casefold():
+            from .custom_app_management_configuration import CustomAppManagementConfiguration
+
+            return CustomAppManagementConfiguration()
         return AppManagementConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -38,9 +57,15 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .app_management_application_configuration import AppManagementApplicationConfiguration
+        from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
+        from .custom_app_management_configuration import CustomAppManagementConfiguration
         from .key_credential_configuration import KeyCredentialConfiguration
         from .password_credential_configuration import PasswordCredentialConfiguration
 
+        from .app_management_application_configuration import AppManagementApplicationConfiguration
+        from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
+        from .custom_app_management_configuration import CustomAppManagementConfiguration
         from .key_credential_configuration import KeyCredentialConfiguration
         from .password_credential_configuration import PasswordCredentialConfiguration
 
@@ -57,7 +82,7 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("keyCredentials", self.key_credentials)
         writer.write_str_value("@odata.type", self.odata_type)

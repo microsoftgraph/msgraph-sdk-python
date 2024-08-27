@@ -5,6 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .community import Community
+    from .engagement_async_operation import EngagementAsyncOperation
     from .learning_course_activity import LearningCourseActivity
     from .learning_provider import LearningProvider
 
@@ -15,6 +17,10 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+    # A collection of communities in Viva Engage.
+    communities: Optional[List[Community]] = None
+    # A collection of long-running, asynchronous operations related to Viva Engage.
+    engagement_async_operations: Optional[List[EngagementAsyncOperation]] = None
     # The learningCourseActivities property
     learning_course_activities: Optional[List[LearningCourseActivity]] = None
     # A collection of learning providers.
@@ -29,7 +35,7 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EmployeeExperience
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return EmployeeExperience()
     
@@ -38,13 +44,19 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .community import Community
+        from .engagement_async_operation import EngagementAsyncOperation
         from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
 
+        from .community import Community
+        from .engagement_async_operation import EngagementAsyncOperation
         from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "communities": lambda n : setattr(self, 'communities', n.get_collection_of_object_values(Community)),
+            "engagementAsyncOperations": lambda n : setattr(self, 'engagement_async_operations', n.get_collection_of_object_values(EngagementAsyncOperation)),
             "learningCourseActivities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
             "learningProviders": lambda n : setattr(self, 'learning_providers', n.get_collection_of_object_values(LearningProvider)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -57,8 +69,10 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_collection_of_object_values("communities", self.communities)
+        writer.write_collection_of_object_values("engagementAsyncOperations", self.engagement_async_operations)
         writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)
         writer.write_collection_of_object_values("learningProviders", self.learning_providers)
         writer.write_str_value("@odata.type", self.odata_type)

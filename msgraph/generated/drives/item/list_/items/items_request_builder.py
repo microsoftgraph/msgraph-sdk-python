@@ -40,7 +40,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param list_item_id: The unique identifier of listItem
         Returns: ListItemItemRequestBuilder
         """
-        if not list_item_id:
+        if list_item_id is None:
             raise TypeError("list_item_id cannot be null.")
         from .item.list_item_item_request_builder import ListItemItemRequestBuilder
 
@@ -54,7 +54,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param token: Usage: token='{token}'
         Returns: DeltaWithTokenRequestBuilder
         """
-        if not token:
+        if token is None:
             raise TypeError("token cannot be null.")
         from .delta_with_token.delta_with_token_request_builder import DeltaWithTokenRequestBuilder
 
@@ -87,7 +87,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItem]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -121,7 +121,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -135,7 +135,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ItemsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ItemsRequestBuilder(self.request_adapter, raw_url)
     
@@ -168,7 +168,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

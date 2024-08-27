@@ -82,7 +82,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentScheduleRequest]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -127,7 +127,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -141,7 +141,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
         param raw_url: The raw URL to use for the request builder.
         Returns: UnifiedRoleAssignmentScheduleRequestItemRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(self.request_adapter, raw_url)
     
@@ -226,7 +226,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

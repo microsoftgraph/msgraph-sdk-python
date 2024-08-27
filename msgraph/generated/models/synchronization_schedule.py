@@ -17,7 +17,7 @@ class SynchronizationSchedule(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Date and time when this job expires. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     expiration: Optional[datetime.datetime] = None
-    # The interval between synchronization iterations. The value is represented in ISO 8601 format for durations. For example, PT1M represents a period of one month.
+    # The interval between synchronization iterations. The value is represented in ISO 8601  format for durations. For example, P1M represents a period of one month and PT1M represents a period of one minute.
     interval: Optional[datetime.timedelta] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -31,7 +31,7 @@ class SynchronizationSchedule(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SynchronizationSchedule
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return SynchronizationSchedule()
     
@@ -58,7 +58,7 @@ class SynchronizationSchedule(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_datetime_value("expiration", self.expiration)
         writer.write_timedelta_value("interval", self.interval)

@@ -50,7 +50,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignmentItemRequestBuilderGetQueryParameters]] = None) -> Optional[AppRoleAssignment]:
         """
-        Represents the app roles a user has been granted for an application. Supports $expand.
+        Represents the app roles a user is granted for an application. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
         """
@@ -75,7 +75,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -104,7 +104,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignmentItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the app roles a user has been granted for an application. Supports $expand.
+        Represents the app roles a user is granted for an application. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -134,7 +134,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AppRoleAssignmentItemRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AppRoleAssignmentItemRequestBuilder(self.request_adapter, raw_url)
     
@@ -148,7 +148,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppRoleAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Represents the app roles a user has been granted for an application. Supports $expand.
+        Represents the app roles a user is granted for an application. Supports $expand.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -156,7 +156,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

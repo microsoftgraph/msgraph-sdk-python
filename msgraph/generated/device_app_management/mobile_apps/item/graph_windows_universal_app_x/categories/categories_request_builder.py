@@ -37,7 +37,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
         param mobile_app_category_id: The unique identifier of mobileAppCategory
         Returns: MobileAppCategoryItemRequestBuilder
         """
-        if not mobile_app_category_id:
+        if mobile_app_category_id is None:
             raise TypeError("mobile_app_category_id cannot be null.")
         from .item.mobile_app_category_item_request_builder import MobileAppCategoryItemRequestBuilder
 
@@ -82,7 +82,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: CategoriesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CategoriesRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

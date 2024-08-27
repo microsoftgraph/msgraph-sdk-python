@@ -19,17 +19,17 @@ class UnifiedRoleAssignment(Entity):
     app_scope_id: Optional[str] = None
     # The condition property
     condition: Optional[str] = None
-    # The directory object that is the scope of the assignment. Read-only. Supports $expand.
+    # The directory object that is the scope of the assignment. Read-only. Supports $expand for the directory provider.
     directory_scope: Optional[DirectoryObject] = None
     # Identifier of the directory object representing the scope of the assignment. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications, unlike app scopes that are defined and understood by a resource application only. Supports $filter (eq, in).
     directory_scope_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Referencing the assigned principal. Read-only. Supports $expand.
+    # Referencing the assigned principal. Read-only. Supports $expand except for the Exchange provider.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal to which the assignment is granted. Supported principals are users, role-assignable groups, and service principals. Supports $filter (eq, in).
     principal_id: Optional[str] = None
-    # The roleDefinition the assignment is for.  Supports $expand.
+    # The roleDefinition the assignment is for. Supports $expand.
     role_definition: Optional[UnifiedRoleDefinition] = None
     # Identifier of the unifiedRoleDefinition the assignment is for. Read-only. Supports $filter (eq, in).
     role_definition_id: Optional[str] = None
@@ -41,7 +41,7 @@ class UnifiedRoleAssignment(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleAssignment()
     
@@ -81,7 +81,7 @@ class UnifiedRoleAssignment(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("appScope", self.app_scope)

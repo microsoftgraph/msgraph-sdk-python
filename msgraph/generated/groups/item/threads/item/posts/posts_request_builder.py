@@ -37,7 +37,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
         param post_id: The unique identifier of post
         Returns: PostItemRequestBuilder
         """
-        if not post_id:
+        if post_id is None:
             raise TypeError("post_id cannot be null.")
         from .item.post_item_request_builder import PostItemRequestBuilder
 
@@ -47,10 +47,10 @@ class PostsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PostsRequestBuilderGetQueryParameters]] = None) -> Optional[PostCollectionResponse]:
         """
-        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or,you can specify the thread without referencing the parent conversation.
+        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the post resource supports extensions, you can also use the GET operation to get custom properties and extension data in a post instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PostCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/conversationthread-list-posts?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/post-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,7 +68,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PostsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or,you can specify the thread without referencing the parent conversation.
+        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the post resource supports extensions, you can also use the GET operation to get custom properties and extension data in a post instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -83,7 +83,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PostsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PostsRequestBuilder(self.request_adapter, raw_url)
     
@@ -99,7 +99,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PostsRequestBuilderGetQueryParameters():
         """
-        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or,you can specify the thread without referencing the parent conversation.
+        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the post resource supports extensions, you can also use the GET operation to get custom properties and extension data in a post instance.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -107,7 +107,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

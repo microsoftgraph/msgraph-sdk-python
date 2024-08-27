@@ -37,7 +37,7 @@ class CookiesRequestBuilder(BaseRequestBuilder):
         param host_cookie_id: The unique identifier of hostCookie
         Returns: HostCookieItemRequestBuilder
         """
-        if not host_cookie_id:
+        if host_cookie_id is None:
             raise TypeError("host_cookie_id cannot be null.")
         from .item.host_cookie_item_request_builder import HostCookieItemRequestBuilder
 
@@ -83,7 +83,7 @@ class CookiesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: CookiesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CookiesRequestBuilder(self.request_adapter, raw_url)
     
@@ -107,7 +107,7 @@ class CookiesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

@@ -31,7 +31,7 @@ class FileStorageContainer(Entity):
     drive: Optional[Drive] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The set of permissions for users in the fileStorageContainer. Permission for each user is set by the roles property. The possible values are 'reader', 'writer', 'manager', and 'owner'. Read-write.
+    # The set of permissions for users in the fileStorageContainer. Permission for each user is set by the roles property. The possible values are: reader, writer, manager, and owner. Read-write.
     permissions: Optional[List[Permission]] = None
     # Status of the fileStorageContainer. Containers are created as inactive and require activation. Inactive containers are subjected to automatic deletion in 24 hours. The possible values are: inactive,  active. Read-only.
     status: Optional[FileStorageContainerStatus] = None
@@ -45,7 +45,7 @@ class FileStorageContainer(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: FileStorageContainer
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return FileStorageContainer()
     
@@ -89,7 +89,7 @@ class FileStorageContainer(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_uuid_value("containerTypeId", self.container_type_id)

@@ -41,7 +41,7 @@ class MultiTenantOrganizationMember(DirectoryObject):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MultiTenantOrganizationMember
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return MultiTenantOrganizationMember()
     
@@ -80,7 +80,7 @@ class MultiTenantOrganizationMember(DirectoryObject):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_uuid_value("addedByTenantId", self.added_by_tenant_id)

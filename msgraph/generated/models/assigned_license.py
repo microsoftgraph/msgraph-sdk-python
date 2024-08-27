@@ -12,11 +12,11 @@ class AssignedLicense(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # A collection of the unique identifiers for plans that have been disabled.
+    # A collection of the unique identifiers for plans that have been disabled. IDs are available in servicePlans > servicePlanId in the tenant's subscribedSkus or serviceStatus > servicePlanId in the tenant's companySubscription.
     disabled_plans: Optional[List[UUID]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The unique identifier for the SKU.
+    # The unique identifier for the SKU. Corresponds to the skuId from subscribedSkus or companySubscription.
     sku_id: Optional[UUID] = None
     
     @staticmethod
@@ -26,7 +26,7 @@ class AssignedLicense(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AssignedLicense
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return AssignedLicense()
     
@@ -48,7 +48,7 @@ class AssignedLicense(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_primitive_values("disabledPlans", self.disabled_plans)
         writer.write_str_value("@odata.type", self.odata_type)

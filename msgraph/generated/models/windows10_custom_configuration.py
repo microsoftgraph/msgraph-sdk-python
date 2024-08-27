@@ -26,7 +26,7 @@ class Windows10CustomConfiguration(DeviceConfiguration):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Windows10CustomConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return Windows10CustomConfiguration()
     
@@ -54,7 +54,7 @@ class Windows10CustomConfiguration(DeviceConfiguration):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("omaSettings", self.oma_settings)

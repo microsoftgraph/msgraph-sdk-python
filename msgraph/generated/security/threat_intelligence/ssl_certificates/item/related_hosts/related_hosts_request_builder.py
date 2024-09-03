@@ -37,7 +37,7 @@ class RelatedHostsRequestBuilder(BaseRequestBuilder):
         param host_id: The unique identifier of host
         Returns: HostItemRequestBuilder
         """
-        if not host_id:
+        if host_id is None:
             raise TypeError("host_id cannot be null.")
         from .item.host_item_request_builder import HostItemRequestBuilder
 
@@ -47,9 +47,10 @@ class RelatedHostsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RelatedHostsRequestBuilderGetQueryParameters]] = None) -> Optional[HostCollectionResponse]:
         """
-        The hosts related with this sslCertificate.
+        Get a list of related host resources associated with an sslCertificate.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/security-sslcertificate-list-relatedhosts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +68,7 @@ class RelatedHostsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RelatedHostsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The hosts related with this sslCertificate.
+        Get a list of related host resources associated with an sslCertificate.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -82,7 +83,7 @@ class RelatedHostsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: RelatedHostsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RelatedHostsRequestBuilder(self.request_adapter, raw_url)
     
@@ -98,7 +99,7 @@ class RelatedHostsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RelatedHostsRequestBuilderGetQueryParameters():
         """
-        The hosts related with this sslCertificate.
+        Get a list of related host resources associated with an sslCertificate.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -106,7 +107,7 @@ class RelatedHostsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

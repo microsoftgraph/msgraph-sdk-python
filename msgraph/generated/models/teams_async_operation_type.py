@@ -9,4 +9,6 @@ class TeamsAsyncOperationType(str, Enum):
     UnknownFutureValue = "unknownFutureValue",
     TeamifyGroup = "teamifyGroup",
     CreateChannel = "createChannel",
+    ArchiveChannel = "archiveChannel",
+    UnarchiveChannel = "unarchiveChannel",
 

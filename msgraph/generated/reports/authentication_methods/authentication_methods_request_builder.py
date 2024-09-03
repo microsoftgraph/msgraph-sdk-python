@@ -79,7 +79,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodsRoot]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -124,7 +124,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -139,9 +139,9 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         param included_user_types: Usage: includedUserTypes='{includedUserTypes}'
         Returns: UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
         """
-        if not included_user_roles:
+        if included_user_roles is None:
             raise TypeError("included_user_roles cannot be null.")
-        if not included_user_types:
+        if included_user_types is None:
             raise TypeError("included_user_types cannot be null.")
         from .users_registered_by_feature_with_included_user_types_with_included_user_roles.users_registered_by_feature_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
 
@@ -154,9 +154,9 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         param included_user_types: Usage: includedUserTypes='{includedUserTypes}'
         Returns: UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
         """
-        if not included_user_roles:
+        if included_user_roles is None:
             raise TypeError("included_user_roles cannot be null.")
-        if not included_user_types:
+        if included_user_types is None:
             raise TypeError("included_user_types cannot be null.")
         from .users_registered_by_method_with_included_user_types_with_included_user_roles.users_registered_by_method_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
 
@@ -168,7 +168,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AuthenticationMethodsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AuthenticationMethodsRequestBuilder(self.request_adapter, raw_url)
     
@@ -217,7 +217,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

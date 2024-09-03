@@ -67,7 +67,7 @@ class GetOrderRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: GetOrderRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return GetOrderRequestBuilder(self.request_adapter, raw_url)
     

@@ -36,7 +36,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CreateOrGetPostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return CreateOrGetPostRequestBody()
     
@@ -67,7 +67,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("chatInfo", self.chat_info)
         writer.write_datetime_value("endDateTime", self.end_date_time)

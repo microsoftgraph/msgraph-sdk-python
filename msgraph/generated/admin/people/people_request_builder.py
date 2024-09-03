@@ -15,6 +15,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.people_admin_settings import PeopleAdminSettings
+    from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
     from .profile_card_properties.profile_card_properties_request_builder import ProfileCardPropertiesRequestBuilder
     from .pronouns.pronouns_request_builder import PronounsRequestBuilder
 
@@ -69,9 +70,18 @@ class PeopleRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PeopleRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PeopleRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def item_insights(self) -> ItemInsightsRequestBuilder:
+        """
+        Provides operations to manage the itemInsights property of the microsoft.graph.peopleAdminSettings entity.
+        """
+        from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
+
+        return ItemInsightsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def profile_card_properties(self) -> ProfileCardPropertiesRequestBuilder:
@@ -102,7 +112,7 @@ class PeopleRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

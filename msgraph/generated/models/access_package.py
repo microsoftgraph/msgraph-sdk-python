@@ -31,7 +31,7 @@ class AccessPackage(Entity):
     incompatible_access_packages: Optional[List[AccessPackage]] = None
     # The groups whose members are ineligible to be assigned this access package.
     incompatible_groups: Optional[List[Group]] = None
-    # Whether the access package is hidden from the requestor.
+    # Indicates whether the access package is hidden from the requestor.
     is_hidden: Optional[bool] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     modified_date_time: Optional[datetime.datetime] = None
@@ -47,7 +47,7 @@ class AccessPackage(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackage
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return AccessPackage()
     
@@ -91,7 +91,7 @@ class AccessPackage(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("accessPackagesIncompatibleWith", self.access_packages_incompatible_with)

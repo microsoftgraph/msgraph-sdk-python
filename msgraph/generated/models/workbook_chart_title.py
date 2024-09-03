@@ -11,15 +11,15 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartTitle(Entity):
-    # Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
+    # The formatting of a chart title, which includes fill and font formatting. Read-only.
     format: Optional[WorkbookChartTitleFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Boolean value representing if the chart title will overlay the chart or not.
+    # Indicates whether the chart title will overlay the chart or not.
     overlay: Optional[bool] = None
-    # Represents the title text of a chart.
+    # The title text of the chart.
     text: Optional[str] = None
-    # A boolean value that represents the visibility of a chart title object.
+    # Indicates whether the chart title is visible.
     visible: Optional[bool] = None
     
     @staticmethod
@@ -29,7 +29,7 @@ class WorkbookChartTitle(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartTitle
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return WorkbookChartTitle()
     
@@ -60,7 +60,7 @@ class WorkbookChartTitle(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("format", self.format)

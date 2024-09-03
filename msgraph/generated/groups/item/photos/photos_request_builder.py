@@ -36,7 +36,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         param profile_photo_id: The unique identifier of profilePhoto
         Returns: ProfilePhotoItemRequestBuilder
         """
-        if not profile_photo_id:
+        if profile_photo_id is None:
             raise TypeError("profile_photo_id cannot be null.")
         from .item.profile_photo_item_request_builder import ProfilePhotoItemRequestBuilder
 
@@ -82,7 +82,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: PhotosRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PhotosRequestBuilder(self.request_adapter, raw_url)
     
@@ -97,7 +97,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

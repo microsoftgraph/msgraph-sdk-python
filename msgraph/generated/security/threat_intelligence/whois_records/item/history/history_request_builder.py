@@ -37,7 +37,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
         param whois_history_record_id: The unique identifier of whoisHistoryRecord
         Returns: WhoisHistoryRecordItemRequestBuilder
         """
-        if not whois_history_record_id:
+        if whois_history_record_id is None:
             raise TypeError("whois_history_record_id cannot be null.")
         from .item.whois_history_record_item_request_builder import WhoisHistoryRecordItemRequestBuilder
 
@@ -82,7 +82,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: HistoryRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return HistoryRequestBuilder(self.request_adapter, raw_url)
     
@@ -106,7 +106,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

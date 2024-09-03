@@ -38,7 +38,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         param workbook_comment_reply_id: The unique identifier of workbookCommentReply
         Returns: WorkbookCommentReplyItemRequestBuilder
         """
-        if not workbook_comment_reply_id:
+        if workbook_comment_reply_id is None:
             raise TypeError("workbook_comment_reply_id cannot be null.")
         from .item.workbook_comment_reply_item_request_builder import WorkbookCommentReplyItemRequestBuilder
 
@@ -48,7 +48,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RepliesRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
         """
-        Get replies from drives
+        The list of replies to the comment. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReplyCollectionResponse]
         """
@@ -73,7 +73,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReply]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -91,7 +91,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RepliesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get replies from drives
+        The list of replies to the comment. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +107,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -121,7 +121,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: RepliesRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RepliesRequestBuilder(self.request_adapter, raw_url)
     
@@ -137,7 +137,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():
         """
-        Get replies from drives
+        The list of replies to the comment. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -145,7 +145,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

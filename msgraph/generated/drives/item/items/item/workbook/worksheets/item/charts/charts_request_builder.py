@@ -41,7 +41,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         param workbook_chart_id: The unique identifier of workbookChart
         Returns: WorkbookChartItemRequestBuilder
         """
-        if not workbook_chart_id:
+        if workbook_chart_id is None:
             raise TypeError("workbook_chart_id cannot be null.")
         from .item.workbook_chart_item_request_builder import WorkbookChartItemRequestBuilder
 
@@ -51,7 +51,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ChartsRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookChartCollectionResponse]:
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        The list of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartCollectionResponse]
         """
@@ -75,7 +75,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         param index: Usage: index={index}
         Returns: ItemAtWithIndexRequestBuilder
         """
-        if not index:
+        if index is None:
             raise TypeError("index cannot be null.")
         from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
@@ -87,7 +87,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         param name: Usage: name='{name}'
         Returns: ItemWithNameRequestBuilder
         """
-        if not name:
+        if name is None:
             raise TypeError("name cannot be null.")
         from .item_with_name.item_with_name_request_builder import ItemWithNameRequestBuilder
 
@@ -100,7 +100,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -118,7 +118,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ChartsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        The list of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -134,7 +134,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -148,7 +148,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: ChartsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ChartsRequestBuilder(self.request_adapter, raw_url)
     
@@ -173,7 +173,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChartsRequestBuilderGetQueryParameters():
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        The list of charts that are part of the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -181,7 +181,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

@@ -40,7 +40,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
         param notebook_id: The unique identifier of notebook
         Returns: NotebookItemRequestBuilder
         """
-        if not notebook_id:
+        if notebook_id is None:
             raise TypeError("notebook_id cannot be null.")
         from .item.notebook_item_request_builder import NotebookItemRequestBuilder
 
@@ -74,7 +74,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
         param include_personal_notebooks: Usage: includePersonalNotebooks={includePersonalNotebooks}
         Returns: GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder
         """
-        if not include_personal_notebooks:
+        if include_personal_notebooks is None:
             raise TypeError("include_personal_notebooks cannot be null.")
         from .get_recent_notebooks_with_include_personal_notebooks.get_recent_notebooks_with_include_personal_notebooks_request_builder import GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder
 
@@ -87,7 +87,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Notebook]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
@@ -121,7 +121,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -135,7 +135,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: NotebooksRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return NotebooksRequestBuilder(self.request_adapter, raw_url)
     
@@ -168,7 +168,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

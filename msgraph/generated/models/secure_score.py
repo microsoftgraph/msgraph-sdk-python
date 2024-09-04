@@ -22,7 +22,7 @@ class SecureScore(Entity):
     azure_tenant_id: Optional[str] = None
     # Contains tenant scores for a set of controls.
     control_scores: Optional[List[ControlScore]] = None
-    # The date when the entity is created.
+    # When the report was created.
     created_date_time: Optional[datetime.datetime] = None
     # Tenant current attained score on specified date.
     current_score: Optional[float] = None
@@ -44,7 +44,7 @@ class SecureScore(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SecureScore
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return SecureScore()
     
@@ -85,7 +85,7 @@ class SecureScore(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("activeUserCount", self.active_user_count)

@@ -54,7 +54,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WorkbookTableColumnItemRequestBuilderGetQueryParameters]] = None) -> Optional[WorkbookTableColumn]:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
         """
@@ -79,7 +79,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
@@ -108,7 +108,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WorkbookTableColumnItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,7 +124,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
@@ -138,7 +138,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: WorkbookTableColumnItemRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return WorkbookTableColumnItemRequestBuilder(self.request_adapter, raw_url)
     
@@ -197,7 +197,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookTableColumnItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all the columns in the table. Read-only.
+        The list of all the columns in the table. Read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -205,7 +205,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

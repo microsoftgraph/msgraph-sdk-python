@@ -17,25 +17,25 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The built-in or custom attribute for which a value is being collected.
     attribute: Optional[str] = None
-    # The default value of the attribute displayed to the end user.
+    # The default value of the attribute displayed to the end user. The capability to set the default value isn't available through the Microsoft Entra admin center.
     default_value: Optional[str] = None
-    # Whether the attribute is editable by the end user.
+    # Defines whether the attribute is editable by the end user.
     editable: Optional[bool] = None
-    # Whether the attribute is displayed to the end user.
+    # Defines whether the attribute is displayed to the end user. The capability to hide isn't available through the Microsoft Entra admin center.
     hidden: Optional[bool] = None
     # The inputType property
     input_type: Optional[AuthenticationAttributeCollectionInputType] = None
-    # The label of the attribute field that is displayed to end user, unless overridden.
+    # The label of the attribute field that's displayed to end user, unless overridden.
     label: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The option values for certain multiple-option input types.
     options: Optional[List[AuthenticationAttributeCollectionOptionConfiguration]] = None
-    # Whether the field is required.
+    # Defines whether the field is required.
     required: Optional[bool] = None
-    # The regex for the value of the field.
+    # The regex for the value of the field. For more information about the supported regexes, see validationRegEx values for inputType objects. To understand how to specify regexes, see the Regular expressions cheat sheet.
     validation_reg_ex: Optional[str] = None
-    # Whether the value collected is stored.
+    # Defines whether Microsoft Entra ID stores the value that it collects.
     write_to_directory: Optional[bool] = None
     
     @staticmethod
@@ -45,7 +45,7 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AuthenticationAttributeCollectionInputConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return AuthenticationAttributeCollectionInputConfiguration()
     
@@ -81,7 +81,7 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("attribute", self.attribute)
         writer.write_str_value("defaultValue", self.default_value)

@@ -29,7 +29,7 @@ class UserRegistrationDetails(Entity):
     is_sspr_registered: Optional[bool] = None
     # Indicates whether system preferred authentication method is enabled. If enabled, the system dynamically determines the most secure authentication method among the methods registered by the user. Supports $filter (eq).
     is_system_preferred_authentication_method_enabled: Optional[bool] = None
-    # The date and time (UTC) when the record was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # The date and time (UTC) when the report was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_updated_date_time: Optional[datetime.datetime] = None
     # Collection of authentication methods registered, such as mobilePhone, email, passKeyDeviceBound. Supports $filter (any with eq).
     methods_registered: Optional[List[str]] = None
@@ -53,7 +53,7 @@ class UserRegistrationDetails(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserRegistrationDetails
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return UserRegistrationDetails()
     
@@ -97,7 +97,7 @@ class UserRegistrationDetails(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("isAdmin", self.is_admin)

@@ -39,7 +39,7 @@ class TaskReportsRequestBuilder(BaseRequestBuilder):
         param task_report_id: The unique identifier of taskReport
         Returns: TaskReportItemRequestBuilder
         """
-        if not task_report_id:
+        if task_report_id is None:
             raise TypeError("task_report_id cannot be null.")
         from .item.task_report_item_request_builder import TaskReportItemRequestBuilder
 
@@ -74,9 +74,9 @@ class TaskReportsRequestBuilder(BaseRequestBuilder):
         param start_date_time: Usage: startDateTime={startDateTime}
         Returns: MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
-        if not start_date_time:
+        if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
         from .microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
 
@@ -99,7 +99,7 @@ class TaskReportsRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: TaskReportsRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return TaskReportsRequestBuilder(self.request_adapter, raw_url)
     
@@ -123,7 +123,7 @@ class TaskReportsRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"

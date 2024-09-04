@@ -107,7 +107,7 @@ class ServicePrincipal(DirectoryObject):
     owners: Optional[List[DirectoryObject]] = None
     # The collection of password credentials associated with the application. Not nullable.
     password_credentials: Optional[List[PasswordCredential]] = None
-    # Specifies the single sign-on mode configured for this application. Microsoft Entra ID uses the preferred single sign-on mode to launch the application from Microsoft 365 or the My Apps portal. The supported values are password, saml, notSupported, and oidc.
+    # Specifies the single sign-on mode configured for this application. Microsoft Entra ID uses the preferred single sign-on mode to launch the application from Microsoft 365 or the My Apps portal. The supported values are password, saml, notSupported, and oidc. Note: This field might be null for older SAML apps and for OIDC applications where it isn't set automatically.
     preferred_single_sign_on_mode: Optional[str] = None
     # This property can be used on SAML applications (apps that have preferredSingleSignOnMode set to saml) to control which certificate is used to sign the SAML responses. For applications that aren't SAML, don't write or otherwise rely on this property.
     preferred_token_signing_key_thumbprint: Optional[str] = None
@@ -147,7 +147,7 @@ class ServicePrincipal(DirectoryObject):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ServicePrincipal
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return ServicePrincipal()
     
@@ -268,7 +268,7 @@ class ServicePrincipal(DirectoryObject):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("accountEnabled", self.account_enabled)

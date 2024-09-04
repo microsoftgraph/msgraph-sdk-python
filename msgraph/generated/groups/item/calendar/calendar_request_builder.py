@@ -40,7 +40,7 @@ class CalendarRequestBuilder(BaseRequestBuilder):
         param user: Usage: User='{User}'
         Returns: AllowedCalendarSharingRolesWithUserRequestBuilder
         """
-        if not user:
+        if user is None:
             raise TypeError("user cannot be null.")
         from .allowed_calendar_sharing_roles_with_user.allowed_calendar_sharing_roles_with_user_request_builder import AllowedCalendarSharingRolesWithUserRequestBuilder
 
@@ -83,7 +83,7 @@ class CalendarRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: CalendarRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CalendarRequestBuilder(self.request_adapter, raw_url)
     
@@ -134,7 +134,7 @@ class CalendarRequestBuilder(BaseRequestBuilder):
             param original_name: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"

@@ -66,7 +66,7 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: CheckGrantedPermissionsForAppRequestBuilder
         """
-        if not raw_url:
+        if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CheckGrantedPermissionsForAppRequestBuilder(self.request_adapter, raw_url)
     

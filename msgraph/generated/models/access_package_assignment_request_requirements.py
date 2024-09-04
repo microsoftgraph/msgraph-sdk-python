@@ -41,7 +41,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentRequestRequirements
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return AccessPackageAssignmentRequestRequirements()
     
@@ -75,7 +75,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)

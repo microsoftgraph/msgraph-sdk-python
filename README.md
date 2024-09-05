@@ -1,13 +1,14 @@
+# Microsoft Graph SDK for Python
+
 [![PyPI version](https://badge.fury.io/py/msgraph-sdk.svg)](https://badge.fury.io/py/msgraph-sdk)
 [![Downloads](https://pepy.tech/badge/msgraph-sdk)](https://pepy.tech/project/msgraph-sdk)
 [![Supported Versions](https://img.shields.io/pypi/pyversions/msgraph-sdk.svg)](https://pypi.org/project/msgraph-sdk)
 [![Contributors](https://img.shields.io/github/contributors/microsoftgraph/msgraph-sdk-python.svg)](https://github.com/microsoftgraph/msgraph-sdk-python/graphs/contributors)
 
-# Microsoft Graph SDK for Python
-
 Get started with the Microsoft Graph SDK for Python by integrating the [Microsoft Graph API](https://docs.microsoft.com/graph/overview) into your Python application.
 
-> **Note:** 
+> **Note:**
+>
 > * This SDK allows you to build applications using the [v1.0](https://docs.microsoft.com/graph/use-the-api#version) of Microsoft Graph. If you want to try the latest Microsoft Graph APIs, try the [beta](https://github.com/microsoftgraph/msgraph-beta-sdk-python) SDK.  
 
 ## 1. Installation
@@ -15,7 +16,9 @@ Get started with the Microsoft Graph SDK for Python by integrating the [Microsof
 ```py
 pip install msgraph-sdk
 ```
-> **Note:** 
+
+> **Note:**
+>
 > * The Microsoft Graph SDK for Python is a fairly large package. It may take a few minutes for the initial installation to complete.
 > * Enable long paths in your environment if you receive a `Could not install packages due to an OSError`. For details, see [Enable Long Paths in Windows 10, Version 1607, and Later](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell#enable-long-paths-in-windows-10-version-1607-and-later).
 
@@ -32,10 +35,11 @@ To start writing code and making requests to the Microsoft Graph service, you ne
 > **Note**: For authentication we support both `sync` and `async` credential classes from `azure.identity`. Please see the azure identity [docs](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity?view=azure-python) for more information.
 
 The easiest way to filter this decision is by looking at the permissions set you'd use. Microsoft Graph supports 2 different types of permissions: delegated and application permissions:
-- Application permissions are used when you don’t need a user to login to your app, but the app will perform tasks on its own and run in the background. 
-- Delegated permissions, also called scopes, are used when your app requires a user to login and interact with data related to this user in a session.
 
-The following table lists common libraries by permissions set. 
+* Application permissions are used when you don’t need a user to login to your app, but the app will perform tasks on its own and run in the background.
+* Delegated permissions, also called scopes, are used when your app requires a user to login and interact with data related to this user in a session.
+
+The following table lists common libraries by permissions set.
 | MSAL library | Permissions set | Common use case |
 |---|---|---|
 | [ClientSecretCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.aio.clientsecretcredential?view=azure-python&preserve-view=true) | Application permissions | Daemon apps or applications running in the background without a signed-in user. |
@@ -46,6 +50,7 @@ The following table lists common libraries by permissions set.
 You can also use [EnvironmentCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python), [DefaultAzureCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python), [OnBehalfOfCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.onbehalfofcredential?view=azure-python), or any other [Azure Identity library](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python#credential-classes).
 
 Once you've picked an authentication library, we can initiate the authentication provider in your app. The following example uses ClientSecretCredential with application permissions.
+
 ```python
 import asyncio
 
@@ -58,6 +63,7 @@ scopes = ['https://graph.microsoft.com/.default']
 ```
 
 The following example uses DeviceCodeCredentials with delegated permissions.
+
 ```python
 import asyncio
 
@@ -157,6 +163,7 @@ asyncio.run(me())
 ### 3.1 Error Handling
 
 Failed requests raise `APIError` exceptions. You can handle these exceptions using `try` `catch` statements.
+
 ```py
 from kiota_abstractions.api_error import APIError
 async def get_user():
@@ -168,8 +175,10 @@ async def get_user():
 asyncio.run(get_user())
 ```
 
-### 3.2 Pagination 
+### 3.2 Pagination
+
 By default a maximum of 100 rows are returned but in the response if odata_next_link is present, it can be used to fetch the next batch of max 100 rows. Here's an example to fetch the initial rows of members in a group, then iterate over the pages of rows using the odata_next_link
+
 ```py
         # get group members
         members = await client.groups.by_group_id(id).members.get()
@@ -199,7 +208,6 @@ By default a maximum of 100 rows are returned but in the response if odata_next_
 
 For detailed information on breaking changes, bug fixes and new functionality introduced during major upgrades, check out our [Upgrade Guide](UPGRADING.md)
 
-
 ## Issues
 
 View or log issues on the [Issues](https://github.com/microsoftgraph/msgraph-sdk-python/issues) tab in the repo.
@@ -215,4 +223,5 @@ Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Third Party Notices
+
 [Third-party notices](THIRD%20PARTY%20NOTICES)

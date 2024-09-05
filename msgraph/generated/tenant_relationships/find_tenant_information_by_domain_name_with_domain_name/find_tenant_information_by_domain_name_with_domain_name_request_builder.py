@@ -29,7 +29,7 @@ class FindTenantInformationByDomainNameWithDomainNameRequestBuilder(BaseRequestB
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['domainName'] = str(domain_name)
+            path_parameters['domainName'] = domain_name
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/findTenantInformationByDomainName(domainName='{domainName}')", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TenantInformation]:

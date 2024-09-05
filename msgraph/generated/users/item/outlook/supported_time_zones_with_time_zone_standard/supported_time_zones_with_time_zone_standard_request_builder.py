@@ -29,7 +29,7 @@ class SupportedTimeZonesWithTimeZoneStandardRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['TimeZoneStandard'] = str(time_zone_standard)
+            path_parameters['TimeZoneStandard'] = time_zone_standard
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/outlook/supportedTimeZones(TimeZoneStandard='{TimeZoneStandard}'){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SupportedTimeZonesWithTimeZoneStandardRequestBuilderGetQueryParameters]] = None) -> Optional[SupportedTimeZonesWithTimeZoneStandardGetResponse]:

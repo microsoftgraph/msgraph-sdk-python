@@ -28,7 +28,7 @@ class GetOffice365GroupsActivityCountsWithPeriodRequestBuilder(BaseRequestBuilde
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['period'] = str(period)
+            path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getOffice365GroupsActivityCounts(period='{period}')", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:

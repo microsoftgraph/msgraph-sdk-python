@@ -6,9 +6,9 @@
       ".github",
       ".vscode"
     ],
-    "release-type": "python",
+    "release-type": "simple",
     "include-component-in-tag": false,
-    "include-v-in-tag": true,
+    "include-v-in-tag": false,
     "packages": {
       ".": {
         "package-name": "msgraph",

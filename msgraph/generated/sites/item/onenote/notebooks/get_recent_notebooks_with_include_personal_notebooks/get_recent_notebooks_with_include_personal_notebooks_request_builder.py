@@ -29,7 +29,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['includePersonalNotebooks'] = str(include_personal_notebooks)
+            path_parameters['includePersonalNotebooks'] = include_personal_notebooks
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/onenote/notebooks/getRecentNotebooks(includePersonalNotebooks={includePersonalNotebooks}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters]] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]:

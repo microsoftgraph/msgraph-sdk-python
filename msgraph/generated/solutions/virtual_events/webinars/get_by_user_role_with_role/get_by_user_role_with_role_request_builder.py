@@ -29,7 +29,7 @@ class GetByUserRoleWithRoleRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['role'] = str(role)
+            path_parameters['role'] = role
         super().__init__(request_adapter, "{+baseurl}/solutions/virtualEvents/webinars/getByUserRole(role='{role}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GetByUserRoleWithRoleRequestBuilderGetQueryParameters]] = None) -> Optional[GetByUserRoleWithRoleGetResponse]:

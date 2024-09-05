@@ -29,7 +29,7 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['listId'] = str(list_id)
+            path_parameters['listId'] = list_id
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/getByPath(path='{path}')/getApplicableContentTypesForList(listId='{listId}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters]] = None) -> Optional[GetApplicableContentTypesForListWithListIdGetResponse]:

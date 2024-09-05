@@ -29,7 +29,7 @@ class GetOneDriveActivityUserDetailWithDateRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['date'] = str(date)
+            path_parameters['date'] = date
         super().__init__(request_adapter, "{+baseurl}/reports/getOneDriveActivityUserDetail(date={date})", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:

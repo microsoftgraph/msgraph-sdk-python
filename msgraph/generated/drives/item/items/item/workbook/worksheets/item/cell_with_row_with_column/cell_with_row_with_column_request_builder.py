@@ -60,8 +60,8 @@ class CellWithRowWithColumnRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['column'] = str(column)
-            path_parameters['row'] = str(row)
+            path_parameters['column'] = column
+            path_parameters['row'] = row
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/cell(row={row},column={column})", path_parameters)
     
     def bounding_rect_with_another_range(self,another_range: str) -> BoundingRectWithAnotherRangeRequestBuilder:

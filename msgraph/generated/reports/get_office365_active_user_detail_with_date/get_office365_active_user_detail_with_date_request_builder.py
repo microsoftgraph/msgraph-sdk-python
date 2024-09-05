@@ -29,7 +29,7 @@ class GetOffice365ActiveUserDetailWithDateRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['date'] = str(date)
+            path_parameters['date'] = date
         super().__init__(request_adapter, "{+baseurl}/reports/getOffice365ActiveUserDetail(date={date})", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:

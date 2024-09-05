@@ -60,7 +60,7 @@ class RangeWithAddressRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['address'] = str(address)
+            path_parameters['address'] = address
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/range(address='{address}')", path_parameters)
     
     def bounding_rect_with_another_range(self,another_range: str) -> BoundingRectWithAnotherRangeRequestBuilder:

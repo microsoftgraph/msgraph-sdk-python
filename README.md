@@ -127,7 +127,7 @@ credential = ClientSecretCredential(
     'client_id',
     'client_secret'
 )
-scopes = ["User.Read"]
+scopes = ['https://graph.microsoft.com/.default']
 client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET /users/{id | userPrincipalName}

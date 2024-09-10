@@ -64,10 +64,10 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MobileAppsRequestBuilderGetQueryParameters]] = None) -> Optional[MobileAppCollectionResponse]:
         """
-        List properties and relationships of the windowsUniversalAppX objects.
+        List properties and relationships of the webApp objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-windowsuniversalappx-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-webapp-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -85,11 +85,11 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: MobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MobileApp]:
         """
-        Create a new microsoftStoreForBusinessApp object.
+        Create a new windowsMobileMSI object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-microsoftstoreforbusinessapp-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-windowsmobilemsi-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -109,7 +109,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MobileAppsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsUniversalAppX objects.
+        List properties and relationships of the webApp objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: MobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new microsoftStoreForBusinessApp object.
+        Create a new windowsMobileMSI object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -299,7 +299,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsUniversalAppX objects.
+        List properties and relationships of the webApp objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

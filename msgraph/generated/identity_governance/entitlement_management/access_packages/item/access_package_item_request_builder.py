@@ -57,10 +57,10 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AccessPackageItemRequestBuilderGetQueryParameters]] = None) -> Optional[AccessPackage]:
         """
-        Retrieve the properties and relationships of an accessPackage object.
+        Retrieve an access package with a list of accessPackageResourceRoleScope objects. These objects represent the resource roles that an access package assigns to each subject. Each object links to an accessPackageResourceRole and an accessPackageResourceScope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackage]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackage-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackage-list-resourcerolescopes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -113,7 +113,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AccessPackageItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an accessPackage object.
+        Retrieve an access package with a list of accessPackageResourceRoleScope objects. These objects represent the resource roles that an access package assigns to each subject. Each object links to an accessPackageResourceRole and an accessPackageResourceScope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -220,7 +220,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an accessPackage object.
+        Retrieve an access package with a list of accessPackageResourceRoleScope objects. These objects represent the resource roles that an access package assigns to each subject. Each object links to an accessPackageResourceRole and an accessPackageResourceScope.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

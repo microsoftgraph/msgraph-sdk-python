@@ -15,7 +15,6 @@ from warnings import warn
 if TYPE_CHECKING:
     from ..........models.item_activity import ItemActivity
     from ..........models.o_data_errors.o_data_error import ODataError
-    from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
 
 class ItemActivityItemRequestBuilder(BaseRequestBuilder):
     """
@@ -139,13 +138,11 @@ class ItemActivityItemRequestBuilder(BaseRequestBuilder):
         return ItemActivityItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
-    def drive_item(self) -> DriveItemRequestBuilder:
+    def drive_item(self) -> DriveItem_EscapedRequestBuilder:
         """
         Provides operations to manage the driveItem property of the microsoft.graph.itemActivity entity.
         """
-        from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
-
-        return DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
+        return DriveItem_EscapedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ItemActivityItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

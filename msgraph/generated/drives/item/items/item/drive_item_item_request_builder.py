@@ -33,7 +33,6 @@ if TYPE_CHECKING:
     from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
     from .invite.invite_request_builder import InviteRequestBuilder
     from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
-    from .list_item.list_item_request_builder import ListItemRequestBuilder
     from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
     from .preview.preview_request_builder import PreviewRequestBuilder
@@ -355,13 +354,11 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         return LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def list_item(self) -> ListItemRequestBuilder:
+    def list_item(self) -> ListItem_EscapedRequestBuilder:
         """
         Provides operations to manage the listItem property of the microsoft.graph.driveItem entity.
         """
-        from .list_item.list_item_request_builder import ListItemRequestBuilder
-
-        return ListItemRequestBuilder(self.request_adapter, self.path_parameters)
+        return ListItem_EscapedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def permanent_delete(self) -> PermanentDeleteRequestBuilder:

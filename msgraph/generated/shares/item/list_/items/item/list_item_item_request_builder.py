@@ -19,7 +19,6 @@ if TYPE_CHECKING:
     from .created_by_user.created_by_user_request_builder import CreatedByUserRequestBuilder
     from .create_link.create_link_request_builder import CreateLinkRequestBuilder
     from .document_set_versions.document_set_versions_request_builder import DocumentSetVersionsRequestBuilder
-    from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
     from .fields.fields_request_builder import FieldsRequestBuilder
     from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
     from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
@@ -202,13 +201,11 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
         return DocumentSetVersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def drive_item(self) -> DriveItemRequestBuilder:
+    def drive_item(self) -> DriveItem_EscapedRequestBuilder:
         """
         Provides operations to manage the driveItem property of the microsoft.graph.listItem entity.
         """
-        from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
-
-        return DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
+        return DriveItem_EscapedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def fields(self) -> FieldsRequestBuilder:

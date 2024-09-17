@@ -31,8 +31,8 @@ class MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeW
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['endDateTime'] = str(end_date_time)
-            path_parameters['startDateTime'] = str(start_date_time)
+            path_parameters['endDateTime'] = end_date_time
+            path_parameters['startDateTime'] = start_date_time
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/insights/microsoft.graph.identityGovernance.topTasksProcessedSummary(startDateTime={startDateTime},endDateTime={endDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[TopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse]:

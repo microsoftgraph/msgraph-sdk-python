@@ -33,7 +33,7 @@ class FileStorageContainer(Entity):
     odata_type: Optional[str] = None
     # The set of permissions for users in the fileStorageContainer. Permission for each user is set by the roles property. The possible values are: reader, writer, manager, and owner. Read-write.
     permissions: Optional[List[Permission]] = None
-    # Status of the fileStorageContainer. Containers are created as inactive and require activation. Inactive containers are subjected to automatic deletion in 24 hours. The possible values are: inactive,  active. Read-only.
+    # Status of the fileStorageContainer. Containers are created as inactive and require activation. Inactive containers are subjected to automatic deletion in 24 hours. The possible values are: inactive, active. Read-only.
     status: Optional[FileStorageContainerStatus] = None
     # Data specific to the current user. Read-only.
     viewpoint: Optional[FileStorageContainerViewpoint] = None

@@ -30,8 +30,8 @@ class ImageWithWidthWithHeightRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['height'] = str(height)
-            path_parameters['width'] = str(width)
+            path_parameters['height'] = height
+            path_parameters['width'] = width
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/itemAt(index={index})/image(width={width},height={height})", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ImageWithWidthWithHeightGetResponse]:

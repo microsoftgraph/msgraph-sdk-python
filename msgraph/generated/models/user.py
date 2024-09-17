@@ -300,7 +300,7 @@ class User(DirectoryObject):
     sign_in_sessions_valid_from_date_time: Optional[datetime.datetime] = None
     # A list for the user to enumerate their skills. Returned only on $select.
     skills: Optional[List[str]] = None
-    # The solutions property
+    # The identifier that relates the user to the working time schedule triggers. Read-Only. Nullable
     solutions: Optional[UserSolutionRoot] = None
     # The users and groups responsible for this guest's privileges in the tenant and keeping the guest's information and access updated. (HTTP Methods: GET, POST, DELETE.). Supports $expand.
     sponsors: Optional[List[DirectoryObject]] = None

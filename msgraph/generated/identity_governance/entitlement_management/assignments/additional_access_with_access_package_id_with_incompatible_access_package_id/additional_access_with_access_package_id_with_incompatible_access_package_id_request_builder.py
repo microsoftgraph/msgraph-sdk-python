@@ -30,8 +30,8 @@ class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestB
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['accessPackageId'] = str(access_package_id)
-            path_parameters['incompatibleAccessPackageId'] = str(incompatible_access_package_id)
+            path_parameters['accessPackageId'] = access_package_id
+            path_parameters['incompatibleAccessPackageId'] = incompatible_access_package_id
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/assignments/additionalAccess(accessPackageId='{accessPackageId}',incompatibleAccessPackageId='{incompatibleAccessPackageId}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilderGetQueryParameters]] = None) -> Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse]:

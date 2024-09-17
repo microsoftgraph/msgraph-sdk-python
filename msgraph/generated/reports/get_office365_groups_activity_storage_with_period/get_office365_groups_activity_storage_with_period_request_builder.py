@@ -28,7 +28,7 @@ class GetOffice365GroupsActivityStorageWithPeriodRequestBuilder(BaseRequestBuild
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['period'] = str(period)
+            path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getOffice365GroupsActivityStorage(period='{period}')", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:

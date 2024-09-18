@@ -29,7 +29,7 @@ class SubscriptionsWithCommerceSubscriptionIdRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['commerceSubscriptionId'] = str(commerce_subscription_id)
+            path_parameters['commerceSubscriptionId'] = commerce_subscription_id
         super().__init__(request_adapter, "{+baseurl}/directory/subscriptions(commerceSubscriptionId='{commerceSubscriptionId}'){?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:

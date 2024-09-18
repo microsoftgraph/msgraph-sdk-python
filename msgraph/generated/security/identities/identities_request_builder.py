@@ -50,7 +50,7 @@ class IdentitiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[IdentitiesRequestBuilderGetQueryParameters]] = None) -> Optional[IdentityContainer]:
         """
-        Get identities from security
+        A container for security identities APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityContainer]
         """
@@ -104,7 +104,7 @@ class IdentitiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[IdentitiesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get identities from security
+        A container for security identities APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -157,7 +157,7 @@ class IdentitiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentitiesRequestBuilderGetQueryParameters():
         """
-        Get identities from security
+        A container for security identities APIs.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -20,8 +20,16 @@ class AdministrativeUnit(DirectoryObject):
     display_name: Optional[str] = None
     # The collection of open extensions defined for this administrative unit. Nullable.
     extensions: Optional[List[Extension]] = None
+    # The isMemberManagementRestricted property
+    is_member_management_restricted: Optional[bool] = None
     # Users and groups that are members of this administrative unit. Supports $expand.
     members: Optional[List[DirectoryObject]] = None
+    # The membershipRule property
+    membership_rule: Optional[str] = None
+    # The membershipRuleProcessingState property
+    membership_rule_processing_state: Optional[str] = None
+    # The membershipType property
+    membership_type: Optional[str] = None
     # Scoped-role members of this administrative unit.
     scoped_role_members: Optional[List[ScopedRoleMembership]] = None
     # Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership. If not set (value is null), the default behavior is public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
@@ -55,7 +63,11 @@ class AdministrativeUnit(DirectoryObject):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
+            "isMemberManagementRestricted": lambda n : setattr(self, 'is_member_management_restricted', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(DirectoryObject)),
+            "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
+            "membershipRuleProcessingState": lambda n : setattr(self, 'membership_rule_processing_state', n.get_str_value()),
+            "membershipType": lambda n : setattr(self, 'membership_type', n.get_str_value()),
             "scopedRoleMembers": lambda n : setattr(self, 'scoped_role_members', n.get_collection_of_object_values(ScopedRoleMembership)),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
@@ -75,7 +87,11 @@ class AdministrativeUnit(DirectoryObject):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
+        writer.write_bool_value("isMemberManagementRestricted", self.is_member_management_restricted)
         writer.write_collection_of_object_values("members", self.members)
+        writer.write_str_value("membershipRule", self.membership_rule)
+        writer.write_str_value("membershipRuleProcessingState", self.membership_rule_processing_state)
+        writer.write_str_value("membershipType", self.membership_type)
         writer.write_collection_of_object_values("scopedRoleMembers", self.scoped_role_members)
         writer.write_str_value("visibility", self.visibility)
     

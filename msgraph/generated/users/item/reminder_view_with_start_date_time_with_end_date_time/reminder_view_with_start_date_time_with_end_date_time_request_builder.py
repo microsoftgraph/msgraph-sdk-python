@@ -30,8 +30,8 @@ class ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuil
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['EndDateTime'] = str(end_date_time)
-            path_parameters['StartDateTime'] = str(start_date_time)
+            path_parameters['EndDateTime'] = end_date_time
+            path_parameters['StartDateTime'] = start_date_time
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/reminderView(StartDateTime='{StartDateTime}',EndDateTime='{EndDateTime}'){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[ReminderViewWithStartDateTimeWithEndDateTimeGetResponse]:

@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .federation_configuration.federation_configuration_request_builder import FederationConfigurationRequestBuilder
     from .force_delete.force_delete_request_builder import ForceDeleteRequestBuilder
     from .promote.promote_request_builder import PromoteRequestBuilder
+    from .root_domain.root_domain_request_builder import RootDomainRequestBuilder
     from .service_configuration_records.service_configuration_records_request_builder import ServiceConfigurationRecordsRequestBuilder
     from .verification_dns_records.verification_dns_records_request_builder import VerificationDnsRecordsRequestBuilder
     from .verify.verify_request_builder import VerifyRequestBuilder
@@ -182,6 +183,15 @@ class DomainItemRequestBuilder(BaseRequestBuilder):
         from .promote.promote_request_builder import PromoteRequestBuilder
 
         return PromoteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def root_domain(self) -> RootDomainRequestBuilder:
+        """
+        Provides operations to manage the rootDomain property of the microsoft.graph.domain entity.
+        """
+        from .root_domain.root_domain_request_builder import RootDomainRequestBuilder
+
+        return RootDomainRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def service_configuration_records(self) -> ServiceConfigurationRecordsRequestBuilder:

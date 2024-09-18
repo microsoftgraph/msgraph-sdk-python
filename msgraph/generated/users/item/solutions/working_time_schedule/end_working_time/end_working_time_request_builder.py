@@ -30,9 +30,10 @@ class EndWorkingTimeRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Triggers the policies associated with the end of working hours for user.
+        Trigger the policies associated with the end of working hours for a specific user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/workingtimeschedule-endworkingtime?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class EndWorkingTimeRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Triggers the policies associated with the end of working hours for user.
+        Trigger the policies associated with the end of working hours for a specific user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

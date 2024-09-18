@@ -174,6 +174,8 @@ class User(DirectoryObject):
     insights: Optional[ItemInsights] = None
     # A list for the user to describe their interests. Returned only on $select.
     interests: Optional[List[str]] = None
+    # The isManagementRestricted property
+    is_management_restricted: Optional[bool] = None
     # Don't use – reserved for future use.
     is_resource_account: Optional[bool] = None
     # The user's job title. Maximum length is 128 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
@@ -300,7 +302,7 @@ class User(DirectoryObject):
     sign_in_sessions_valid_from_date_time: Optional[datetime.datetime] = None
     # A list for the user to enumerate their skills. Returned only on $select.
     skills: Optional[List[str]] = None
-    # The solutions property
+    # The identifier that relates the user to the working time schedule triggers. Read-Only. Nullable
     solutions: Optional[UserSolutionRoot] = None
     # The users and groups responsible for this guest's privileges in the tenant and keeping the guest's information and access updated. (HTTP Methods: GET, POST, DELETE.). Supports $expand.
     sponsors: Optional[List[DirectoryObject]] = None
@@ -504,6 +506,7 @@ class User(DirectoryObject):
             "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_object_value(InferenceClassification)),
             "insights": lambda n : setattr(self, 'insights', n.get_object_value(ItemInsights)),
             "interests": lambda n : setattr(self, 'interests', n.get_collection_of_primitive_values(str)),
+            "isManagementRestricted": lambda n : setattr(self, 'is_management_restricted', n.get_bool_value()),
             "isResourceAccount": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
             "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
             "joinedTeams": lambda n : setattr(self, 'joined_teams', n.get_collection_of_object_values(Team)),
@@ -646,6 +649,7 @@ class User(DirectoryObject):
         writer.write_object_value("inferenceClassification", self.inference_classification)
         writer.write_object_value("insights", self.insights)
         writer.write_collection_of_primitive_values("interests", self.interests)
+        writer.write_bool_value("isManagementRestricted", self.is_management_restricted)
         writer.write_bool_value("isResourceAccount", self.is_resource_account)
         writer.write_str_value("jobTitle", self.job_title)
         writer.write_collection_of_object_values("joinedTeams", self.joined_teams)

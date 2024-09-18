@@ -49,9 +49,10 @@ class HealthIssueItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[HealthIssueItemRequestBuilderGetQueryParameters]] = None) -> Optional[HealthIssue]:
         """
-        Get healthIssues from security
+        Read the properties and relationships of a healthIssue object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HealthIssue]
+        Find more info here: https://learn.microsoft.com/graph/api/security-healthissue-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class HealthIssueItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: HealthIssue, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[HealthIssue]:
         """
-        Update the navigation property healthIssues in security
+        Update the properties of a healthIssue object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HealthIssue]
+        Find more info here: https://learn.microsoft.com/graph/api/security-healthissue-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -103,7 +105,7 @@ class HealthIssueItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[HealthIssueItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get healthIssues from security
+        Read the properties and relationships of a healthIssue object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +116,7 @@ class HealthIssueItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: HealthIssue, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property healthIssues in security
+        Update the properties of a healthIssue object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +149,7 @@ class HealthIssueItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HealthIssueItemRequestBuilderGetQueryParameters():
         """
-        Get healthIssues from security
+        Read the properties and relationships of a healthIssue object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

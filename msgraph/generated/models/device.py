@@ -45,6 +45,8 @@ class Device(DirectoryObject):
     is_compliant: Optional[bool] = None
     # true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     is_managed: Optional[bool] = None
+    # The isManagementRestricted property
+    is_management_restricted: Optional[bool] = None
     # true if the device is rooted or jail-broken. This property can only be updated by Intune.
     is_rooted: Optional[bool] = None
     # The management channel of the device. This property is set by Intune. Possible values are: eas, mdm, easMdm, intuneClient, easIntuneClient, configurationManagerClient, configurationManagerClientMdm, configurationManagerClientMdmEas, unknown, jamf, googleCloudDevicePolicyController.
@@ -124,6 +126,7 @@ class Device(DirectoryObject):
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "isCompliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
             "isManaged": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
+            "isManagementRestricted": lambda n : setattr(self, 'is_management_restricted', n.get_bool_value()),
             "isRooted": lambda n : setattr(self, 'is_rooted', n.get_bool_value()),
             "managementType": lambda n : setattr(self, 'management_type', n.get_str_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
@@ -172,6 +175,7 @@ class Device(DirectoryObject):
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_bool_value("isCompliant", self.is_compliant)
         writer.write_bool_value("isManaged", self.is_managed)
+        writer.write_bool_value("isManagementRestricted", self.is_management_restricted)
         writer.write_bool_value("isRooted", self.is_rooted)
         writer.write_str_value("managementType", self.management_type)
         writer.write_str_value("manufacturer", self.manufacturer)

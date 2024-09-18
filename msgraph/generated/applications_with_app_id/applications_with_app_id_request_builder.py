@@ -29,7 +29,7 @@ class ApplicationsWithAppIdRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['appId'] = str(app_id)
+            path_parameters['appId'] = app_id
         super().__init__(request_adapter, "{+baseurl}/applications(appId='{appId}'){?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:

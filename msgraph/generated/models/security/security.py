@@ -31,7 +31,7 @@ class Security(Entity):
     attack_simulation: Optional[AttackSimulationRoot] = None
     # The cases property
     cases: Optional[CasesRoot] = None
-    # The identities property
+    # A container for security identities APIs.
     identities: Optional[IdentityContainer] = None
     # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
     incidents: Optional[List[Incident]] = None

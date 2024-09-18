@@ -13,7 +13,7 @@ from .entity import Entity
 class UserSolutionRoot(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The workingTimeSchedule property
+    # The working time schedule entity associated with the solution.
     working_time_schedule: Optional[WorkingTimeSchedule] = None
     
     @staticmethod

@@ -30,8 +30,8 @@ class ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder(BaseRequestB
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['skip'] = str(skip)
-            path_parameters['top'] = str(top)
+            path_parameters['skip'] = skip
+            path_parameters['top'] = top
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/exportDeviceAndAppManagementData(skip={skip},top={top})", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceAndAppManagementData]:

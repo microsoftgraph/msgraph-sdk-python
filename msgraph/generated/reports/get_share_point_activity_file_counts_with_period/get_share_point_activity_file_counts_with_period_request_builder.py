@@ -31,7 +31,7 @@ class GetSharePointActivityFileCountsWithPeriodRequestBuilder(BaseRequestBuilder
             path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getSharePointActivityFileCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get the number of unique, licensed users who interacted with files stored on SharePoint sites.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ class GetSharePointActivityFileCountsWithPeriodRequestBuilder(BaseRequestBuilder
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

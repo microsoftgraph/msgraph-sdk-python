@@ -32,7 +32,7 @@ class GetOffice365GroupsActivityDetailWithDateRequestBuilder(BaseRequestBuilder)
             path_parameters['date'] = date
         super().__init__(request_adapter, "{+baseurl}/reports/getOffice365GroupsActivityDetail(date={date})", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get details about Microsoft 365 groups activity by group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +44,7 @@ class GetOffice365GroupsActivityDetailWithDateRequestBuilder(BaseRequestBuilder)
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

@@ -46,7 +46,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -55,17 +55,17 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedEBookItemRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedEBook]:
         """
-        Read properties and relationships of the iosVppEBook object.
+        Read properties and relationships of the managedEBook object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBook]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebook-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebook-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -89,7 +89,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -111,7 +111,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedEBookItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosVppEBook object.
+        Read properties and relationships of the managedEBook object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -200,7 +200,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBookItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosVppEBook object.
+        Read properties and relationships of the managedEBook object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

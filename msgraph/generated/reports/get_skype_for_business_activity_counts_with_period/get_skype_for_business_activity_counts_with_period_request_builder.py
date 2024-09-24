@@ -31,7 +31,7 @@ class GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder(BaseRequestBuild
             path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getSkypeForBusinessActivityCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get the trends on how many users organized and participated in conference sessions held in your organization through Skype for Business. The report also includes the number of peer-to-peer sessions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ class GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder(BaseRequestBuild
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

@@ -41,7 +41,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -50,17 +50,17 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppPolicyItemRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppPolicy]:
         """
-        Read properties and relationships of the windowsInformationProtection object.
+        Read properties and relationships of the managedAppConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotection-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -83,7 +83,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -105,7 +105,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppPolicyItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the windowsInformationProtection object.
+        Read properties and relationships of the managedAppConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the windowsInformationProtection object.
+        Read properties and relationships of the managedAppConfiguration object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

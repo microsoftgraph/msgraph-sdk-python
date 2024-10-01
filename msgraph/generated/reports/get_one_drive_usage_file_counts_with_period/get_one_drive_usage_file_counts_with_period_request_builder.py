@@ -31,7 +31,7 @@ class GetOneDriveUsageFileCountsWithPeriodRequestBuilder(BaseRequestBuilder):
             path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getOneDriveUsageFileCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get the total number of files across all sites and how many are active files. A file is considered active if it has been saved, synced, modified, or shared within the specified time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ class GetOneDriveUsageFileCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

@@ -29,7 +29,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/analytics/itemActivityStats/{itemActivityStat%2Did}/activities/{itemActivity%2Did}/driveItem/content{?%24format*}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[ContentRequestBuilderGetQueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[ContentRequestBuilderGetQueryParameters]] = None) -> Optional[bytes]:
         """
         The content stream, if the item represents a file.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -40,7 +40,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         )
         from ..........models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -61,7 +61,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         )
         from ..........models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

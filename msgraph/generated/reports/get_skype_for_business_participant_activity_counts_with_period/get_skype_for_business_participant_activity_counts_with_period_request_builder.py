@@ -31,7 +31,7 @@ class GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder(BaseR
             path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getSkypeForBusinessParticipantActivityCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get usage trends on the number and type of conference sessions that users from your organization participated in. Types of conference sessions include IM, audio/video, application sharing, web, and dial-in/out - third party.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ class GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder(BaseR
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

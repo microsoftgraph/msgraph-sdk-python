@@ -25,10 +25,14 @@ class DeviceEvidence(AlertEvidence):
     defender_av_status: Optional[DefenderAvStatus] = None
     # The fully qualified domain name (FQDN) for the device.
     device_dns_name: Optional[str] = None
+    # The DNS domain that this computer belongs to. A sequence of labels separated by dots.
+    dns_domain: Optional[str] = None
     # The date and time when the device was first seen.
     first_seen_date_time: Optional[datetime.datetime] = None
     # The health state of the device. The possible values are: active, inactive, impairedCommunication, noSensorData, noSensorDataImpairedCommunication, unknown, unknownFutureValue.
     health_status: Optional[DeviceHealthStatus] = None
+    # The hostname without the domain suffix.
+    host_name: Optional[str] = None
     # Ip interfaces of the device during the time of the alert.
     ip_interfaces: Optional[List[str]] = None
     # The lastExternalIpAddress property
@@ -39,6 +43,8 @@ class DeviceEvidence(AlertEvidence):
     logged_on_users: Optional[List[LoggedOnUser]] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
+    # A logical grouping of computers within a Microsoft Windows network.
+    nt_domain: Optional[str] = None
     # The status of the machine onboarding to Microsoft Defender for Endpoint. The possible values are: insufficientInfo, onboarded, canBeOnboarded, unsupported, unknownFutureValue.
     onboarding_status: Optional[OnboardingStatus] = None
     # The build version for the operating system the device is running.
@@ -92,13 +98,16 @@ class DeviceEvidence(AlertEvidence):
             "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
             "defenderAvStatus": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(DefenderAvStatus)),
             "deviceDnsName": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
+            "dnsDomain": lambda n : setattr(self, 'dns_domain', n.get_str_value()),
             "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
             "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(DeviceHealthStatus)),
+            "hostName": lambda n : setattr(self, 'host_name', n.get_str_value()),
             "ipInterfaces": lambda n : setattr(self, 'ip_interfaces', n.get_collection_of_primitive_values(str)),
             "lastExternalIpAddress": lambda n : setattr(self, 'last_external_ip_address', n.get_str_value()),
             "lastIpAddress": lambda n : setattr(self, 'last_ip_address', n.get_str_value()),
             "loggedOnUsers": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(LoggedOnUser)),
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "ntDomain": lambda n : setattr(self, 'nt_domain', n.get_str_value()),
             "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(OnboardingStatus)),
             "osBuild": lambda n : setattr(self, 'os_build', n.get_int_value()),
             "osPlatform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
@@ -124,13 +133,16 @@ class DeviceEvidence(AlertEvidence):
         writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)
         writer.write_enum_value("defenderAvStatus", self.defender_av_status)
         writer.write_str_value("deviceDnsName", self.device_dns_name)
+        writer.write_str_value("dnsDomain", self.dns_domain)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_enum_value("healthStatus", self.health_status)
+        writer.write_str_value("hostName", self.host_name)
         writer.write_collection_of_primitive_values("ipInterfaces", self.ip_interfaces)
         writer.write_str_value("lastExternalIpAddress", self.last_external_ip_address)
         writer.write_str_value("lastIpAddress", self.last_ip_address)
         writer.write_collection_of_object_values("loggedOnUsers", self.logged_on_users)
         writer.write_str_value("mdeDeviceId", self.mde_device_id)
+        writer.write_str_value("ntDomain", self.nt_domain)
         writer.write_enum_value("onboardingStatus", self.onboarding_status)
         writer.write_int_value("osBuild", self.os_build)
         writer.write_str_value("osPlatform", self.os_platform)

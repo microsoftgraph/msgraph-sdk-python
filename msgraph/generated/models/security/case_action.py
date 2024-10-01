@@ -10,4 +10,6 @@ class CaseAction(str, Enum):
     HoldUpdate = "holdUpdate",
     UnknownFutureValue = "unknownFutureValue",
     PurgeData = "purgeData",
+    ExportReport = "exportReport",
+    ExportResult = "exportResult",
 

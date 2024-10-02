@@ -42,6 +42,8 @@ class Domain(Entity):
     password_notification_window_in_days: Optional[int] = None
     # Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.
     password_validity_period_in_days: Optional[int] = None
+    # The rootDomain property
+    root_domain: Optional[Domain] = None
     # DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
     service_configuration_records: Optional[List[DomainDnsRecord]] = None
     # Status of asynchronous operations scheduled for the domain.
@@ -93,6 +95,7 @@ class Domain(Entity):
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
             "passwordNotificationWindowInDays": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
             "passwordValidityPeriodInDays": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
+            "rootDomain": lambda n : setattr(self, 'root_domain', n.get_object_value(Domain)),
             "serviceConfigurationRecords": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(DomainDnsRecord)),
             "state": lambda n : setattr(self, 'state', n.get_object_value(DomainState)),
             "supportedServices": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
@@ -124,6 +127,7 @@ class Domain(Entity):
         writer.write_str_value("model", self.model)
         writer.write_int_value("passwordNotificationWindowInDays", self.password_notification_window_in_days)
         writer.write_int_value("passwordValidityPeriodInDays", self.password_validity_period_in_days)
+        writer.write_object_value("rootDomain", self.root_domain)
         writer.write_collection_of_object_values("serviceConfigurationRecords", self.service_configuration_records)
         writer.write_object_value("state", self.state)
         writer.write_collection_of_primitive_values("supportedServices", self.supported_services)

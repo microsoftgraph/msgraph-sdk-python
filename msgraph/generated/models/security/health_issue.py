@@ -14,33 +14,33 @@ from ..entity import Entity
 
 @dataclass
 class HealthIssue(Entity):
-    # The additionalInformation property
+    # Contains additional information about the issue, such as a list of items to fix.
     additional_information: Optional[List[str]] = None
-    # The createdDateTime property
+    # The date and time when the health issue was generated. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # Contains more detailed information about the health issue.
     description: Optional[str] = None
-    # The displayName property
+    # The display name of the health issue.
     display_name: Optional[str] = None
-    # The domainNames property
+    # A list of the fully qualified domain names of the domains or the sensors the health issue is related to.
     domain_names: Optional[List[str]] = None
-    # The healthIssueType property
+    # The type of the health issue. The possible values are: sensor, global, unknownFutureValue. For a list of all health issues and their identifiers, see Microsoft Defender for Identity health issues.
     health_issue_type: Optional[HealthIssueType] = None
-    # The issueTypeId property
+    # The type identifier of the health issue. For a list of all health issues and their identifiers, see Microsoft Defender for Identity health issues.
     issue_type_id: Optional[str] = None
-    # The lastModifiedDateTime property
+    # The date and time when the health issue was last updated. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The recommendations property
+    # A list of recommended actions that can be taken to resolve the issue effectively and efficiently. These actions might include instructions for further investigation and aren't limited to prewritten responses.
     recommendations: Optional[List[str]] = None
-    # The recommendedActionCommands property
+    # A list of commands from the PowerShell module for the product that can be used to resolve the issue, if available. If no commands can be used to solve the issue, this property is empty. The commands, if present, provide a quick and efficient way to address the issue. These commands run in sequence for the single recommended fix.
     recommended_action_commands: Optional[List[str]] = None
-    # The sensorDNSNames property
+    # A list of the DNS names of the sensors the health issue is related to.
     sensor_d_n_s_names: Optional[List[str]] = None
-    # The severity property
+    # The severity of the health issue. The possible values are: low, medium, high, unknownFutureValue.
     severity: Optional[HealthIssueSeverity] = None
-    # The status property
+    # The status of the health issue. The possible values are: open, closed, suppressed, unknownFutureValue.
     status: Optional[HealthIssueStatus] = None
     
     @staticmethod

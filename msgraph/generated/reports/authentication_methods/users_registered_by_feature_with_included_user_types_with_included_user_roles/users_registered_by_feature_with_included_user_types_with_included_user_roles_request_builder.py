@@ -30,8 +30,8 @@ class UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestB
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['includedUserRoles'] = str(included_user_roles)
-            path_parameters['includedUserTypes'] = str(included_user_types)
+            path_parameters['includedUserRoles'] = included_user_roles
+            path_parameters['includedUserTypes'] = included_user_types
         super().__init__(request_adapter, "{+baseurl}/reports/authenticationMethods/usersRegisteredByFeature(includedUserTypes='{includedUserTypes}',includedUserRoles='{includedUserRoles}')", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UserRegistrationFeatureSummary]:

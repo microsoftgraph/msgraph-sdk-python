@@ -50,7 +50,7 @@ class SolutionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SolutionsRequestBuilderGetQueryParameters]] = None) -> Optional[UserSolutionRoot]:
         """
-        Get solutions from users
+        The identifier that relates the user to the working time schedule triggers. Read-Only. Nullable
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserSolutionRoot]
         """
@@ -104,7 +104,7 @@ class SolutionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SolutionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get solutions from users
+        The identifier that relates the user to the working time schedule triggers. Read-Only. Nullable
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -157,7 +157,7 @@ class SolutionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SolutionsRequestBuilderGetQueryParameters():
         """
-        Get solutions from users
+        The identifier that relates the user to the working time schedule triggers. Read-Only. Nullable
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

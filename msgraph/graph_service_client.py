@@ -9,7 +9,6 @@ from typing import List, Optional, TYPE_CHECKING, Union
 from azure.core.credentials import TokenCredential
 from azure.core.credentials_async import AsyncTokenCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from httpx import AsyncClient
 
 from .generated.base_graph_service_client import BaseGraphServiceClient
 from .graph_request_adapter import GraphRequestAdapter
@@ -64,7 +63,7 @@ class GraphServiceClient(BaseGraphServiceClient):
         return UserItemRequestBuilder(self.request_adapter, url_tpl_parameters)
 
     @property
-    def batch(self) -> BatchRequestBuilder:
+    def batch(self) -> 'BatchRequestBuilder':
         """
         Returns a BatchRequestBuilder to enable batch requests.
         """

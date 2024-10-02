@@ -15,6 +15,7 @@ from .graph_request_adapter import GraphRequestAdapter
 
 if TYPE_CHECKING:
     from .generated.users.item.user_item_request_builder import UserItemRequestBuilder
+    from msgraph_core.requests.batch_request_builder import BatchRequestBuilder
 
 
 class GraphServiceClient(BaseGraphServiceClient):
@@ -63,7 +64,7 @@ class GraphServiceClient(BaseGraphServiceClient):
         return UserItemRequestBuilder(self.request_adapter, url_tpl_parameters)
 
     @property
-    def batch(self) -> 'BatchRequestBuilder':
+    def batch(self) -> BatchRequestBuilder:
         """
         Returns a BatchRequestBuilder to enable batch requests.
         """

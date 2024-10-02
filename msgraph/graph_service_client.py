@@ -9,15 +9,17 @@ from typing import List, Optional, TYPE_CHECKING, Union
 from azure.core.credentials import TokenCredential
 from azure.core.credentials_async import AsyncTokenCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from httpx import AsyncClient
 
 from .generated.base_graph_service_client import BaseGraphServiceClient
 from .graph_request_adapter import GraphRequestAdapter
 
 if TYPE_CHECKING:
     from .generated.users.item.user_item_request_builder import UserItemRequestBuilder
+    from msgraph_core.requests.batch_request_builder import BatchRequestBuilder
+
 
 class GraphServiceClient(BaseGraphServiceClient):
+
     def __init__(
         self,
         credentials: Optional[Union[TokenCredential, AsyncTokenCredential]] = None,
@@ -60,3 +62,12 @@ class GraphServiceClient(BaseGraphServiceClient):
         url_tpl_parameters["user%2Did"] = "me-token-to-replace"
 
         return UserItemRequestBuilder(self.request_adapter, url_tpl_parameters)
+
+    @property
+    def batch(self) -> BatchRequestBuilder:
+        """
+        Returns a BatchRequestBuilder to enable batch requests.
+        """
+        from msgraph_core.requests.batch_request_builder import BatchRequestBuilder
+
+        return BatchRequestBuilder(self.request_adapter)

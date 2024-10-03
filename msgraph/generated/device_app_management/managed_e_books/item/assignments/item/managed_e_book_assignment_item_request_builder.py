@@ -41,7 +41,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
         )
         from ......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -50,17 +50,17 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedEBookAssignmentItemRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Read properties and relationships of the iosVppEBookAssignment object.
+        Read properties and relationships of the managedEBookAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -84,7 +84,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
         )
         from ......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -106,7 +106,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedEBookAssignmentItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosVppEBookAssignment object.
+        Read properties and relationships of the managedEBookAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -150,7 +150,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBookAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosVppEBookAssignment object.
+        Read properties and relationships of the managedEBookAssignment object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -31,7 +31,7 @@ class GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder(BaseReque
             path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getSkypeForBusinessDeviceUsageUserCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get the usage trends on how many users in your organization have connected using the Skype for Business app. You'll also get a breakdown by the type of device (Windows, Windows phone, Android phone, iPhone, or iPad) on which the Skype for Business client app is installed and used across your organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ class GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder(BaseReque
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

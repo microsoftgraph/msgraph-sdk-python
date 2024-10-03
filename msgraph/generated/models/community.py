@@ -13,6 +13,9 @@ from .entity import Entity
 
 @dataclass
 class Community(Entity):
+    """
+    Represents a community in Viva Engage that is a central place for conversations,files, events, and updates for people sharing a common interest or goal.
+    """
     # The description of the community. The maximum length is 1,024 characters.
     description: Optional[str] = None
     # The name of the community. The maximum length is 255 characters.
@@ -25,7 +28,7 @@ class Community(Entity):
     odata_type: Optional[str] = None
     # The admins of the community. Limited to 100 users. If this property isn't specified when you create the community, the calling user is automatically assigned as the community owner.
     owners: Optional[List[User]] = None
-    # The privacy property
+    # Types of communityPrivacy.
     privacy: Optional[CommunityPrivacy] = None
     
     @staticmethod

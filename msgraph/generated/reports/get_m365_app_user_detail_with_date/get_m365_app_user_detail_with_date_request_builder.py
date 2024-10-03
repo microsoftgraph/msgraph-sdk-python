@@ -32,7 +32,7 @@ class GetM365AppUserDetailWithDateRequestBuilder(BaseRequestBuilder):
             path_parameters['date'] = date
         super().__init__(request_adapter, "{+baseurl}/reports/getM365AppUserDetail(date={date})", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get a report that provides the details about which apps and platforms users have used.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ class GetM365AppUserDetailWithDateRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

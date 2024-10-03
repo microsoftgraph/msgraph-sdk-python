@@ -11,6 +11,9 @@ from .long_running_operation import LongRunningOperation
 
 @dataclass
 class EngagementAsyncOperation(LongRunningOperation):
+    """
+    Represents the status of a Viva Engage async operation that is an operation that transcends thelifetime of a single API request. These operations are long-running or too expensive to completewithin the time frame of their original request.
+    """
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the long-running operation. The possible values are: createCommunity, unknownFutureValue.

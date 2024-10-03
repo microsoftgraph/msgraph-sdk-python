@@ -34,17 +34,17 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a deviceEnrollmentPlatformRestrictionsConfiguration.
+        Deletes a deviceEnrollmentWindowsHelloForBusinessConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentplatformrestrictionsconfiguration-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -53,17 +53,17 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Read properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration object.
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentplatformrestrictionsconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -87,7 +87,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -98,7 +98,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a deviceEnrollmentPlatformRestrictionsConfiguration.
+        Deletes a deviceEnrollmentWindowsHelloForBusinessConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration object.
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -180,7 +180,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration object.
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

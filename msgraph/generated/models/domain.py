@@ -18,19 +18,19 @@ class Domain(Entity):
     authentication_type: Optional[str] = None
     # This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
     availability_status: Optional[str] = None
-    # The objects such as users and groups that reference the domain ID. Read-only, Nullable. Supports $expand and $filter by the OData type of objects returned. For example, /domains/{domainId}/domainNameReferences/microsoft.graph.user and /domains/{domainId}/domainNameReferences/microsoft.graph.group.
+    # The objects such as users and groups that reference the domain ID. Read-only, Nullable. Doesn't support $expand. Supports $filter by the OData type of objects returned. For example, /domains/{domainId}/domainNameReferences/microsoft.graph.user and /domains/{domainId}/domainNameReferences/microsoft.graph.group.
     domain_name_references: Optional[List[DirectoryObject]] = None
-    # Domain settings configured by a customer when federated with Microsoft Entra ID. Supports $expand.
+    # Domain settings configured by a customer when federated with Microsoft Entra ID. Doesn't support $expand.
     federation_configuration: Optional[List[InternalDomainFederation]] = None
     # The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable
     is_admin_managed: Optional[bool] = None
-    # true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable
+    # true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable.
     is_default: Optional[bool] = None
     # true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable
     is_initial: Optional[bool] = None
-    # true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable
+    # true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable.
     is_root: Optional[bool] = None
-    # true if the domain has completed domain ownership verification. Not nullable
+    # true if the domain completed domain ownership verification. Not nullable.
     is_verified: Optional[bool] = None
     # The manufacturer property
     manufacturer: Optional[str] = None
@@ -38,19 +38,19 @@ class Domain(Entity):
     model: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Specifies the number of days before a user receives notification that their password will expire. If the property isn't set, a default value of 14 days is used.
+    # Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.
     password_notification_window_in_days: Optional[int] = None
     # Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.
     password_validity_period_in_days: Optional[int] = None
     # The rootDomain property
     root_domain: Optional[Domain] = None
-    # DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
+    # DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Doesn't support $expand.
     service_configuration_records: Optional[List[DomainDnsRecord]] = None
     # Status of asynchronous operations scheduled for the domain.
     state: Optional[DomainState] = None
     # The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable.
     supported_services: Optional[List[str]] = None
-    # DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Microsoft Entra ID. Read-only, Nullable. Supports $expand.
+    # DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Microsoft Entra ID. Read-only, Nullable. Doesn't support $expand.
     verification_dns_records: Optional[List[DomainDnsRecord]] = None
     
     @staticmethod

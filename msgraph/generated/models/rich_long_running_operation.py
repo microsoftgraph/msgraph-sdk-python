@@ -11,6 +11,9 @@ from .long_running_operation import LongRunningOperation
 
 @dataclass
 class RichLongRunningOperation(LongRunningOperation):
+    """
+    The status of a long-running operation.
+    """
     # Error that caused the operation to fail.
     error: Optional[PublicError] = None
     # The OdataType property

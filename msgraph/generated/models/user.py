@@ -64,6 +64,9 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class User(DirectoryObject):
+    """
+    Represents a Microsoft Entra user account.
+    """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.user"
     # A freeform text entry field for the user to describe themselves. Returned only on $select.
@@ -250,7 +253,7 @@ class User(DirectoryObject):
     owned_objects: Optional[List[DirectoryObject]] = None
     # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two might be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Microsoft Entra password policies. Supports $filter (ne, not, and eq on null values).
     password_policies: Optional[str] = None
-    # Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
+    # Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values). To update this property:  In delegated access, the calling app must be assigned the Directory.AccessAsUser.All delegated permission on behalf of the signed-in user.  In application-only access, the calling app must be assigned the User.ReadWrite.All (least privilege) or Directory.ReadWrite.All (higher privilege) application permission and at least the User Administrator Microsoft Entra role.
     password_profile: Optional[PasswordProfile] = None
     # A list for the user to enumerate their past projects. Returned only on $select.
     past_projects: Optional[List[str]] = None

@@ -12,6 +12,9 @@ if TYPE_CHECKING:
 
 @dataclass
 class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
+    """
+    Represents a container that exposes navigation properties for employee experience resources.
+    """
     # Stores model information.
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 

@@ -28,7 +28,7 @@ class GetOffice365ActivationsUserCountsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/reports/getOffice365ActivationsUserCounts()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get the count of users that are enabled and those that have activated the Office subscription on desktop or devices or shared computers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -40,7 +40,7 @@ class GetOffice365ActivationsUserCountsRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

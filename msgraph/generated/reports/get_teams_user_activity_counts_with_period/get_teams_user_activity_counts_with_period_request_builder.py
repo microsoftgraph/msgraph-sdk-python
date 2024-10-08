@@ -31,7 +31,7 @@ class GetTeamsUserActivityCountsWithPeriodRequestBuilder(BaseRequestBuilder):
             path_parameters['period'] = period
         super().__init__(request_adapter, "{+baseurl}/reports/getTeamsUserActivityCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get the number of Microsoft Teams activities by activity type. The activities are performed by Microsoft Teams licensed users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ class GetTeamsUserActivityCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

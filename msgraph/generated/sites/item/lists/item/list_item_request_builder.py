@@ -48,7 +48,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -57,17 +57,17 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ListItemRequestBuilderGetQueryParameters]] = None) -> Optional[List_]:
         """
-        Get a list of rich long-running operations associated with a list.
+        Returns the metadata for a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
-        Find more info here: https://learn.microsoft.com/graph/api/list-list-operations?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/list-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -90,7 +90,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -112,7 +112,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ListItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of rich long-running operations associated with a list.
+        Returns the metadata for a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -228,7 +228,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemRequestBuilderGetQueryParameters():
         """
-        Get a list of rich long-running operations associated with a list.
+        Returns the metadata for a list.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .user_experience_analytics_metric_value import UserExperienceAnalyticsMetric_value
 
 from .entity import Entity
 
@@ -18,7 +19,7 @@ class UserExperienceAnalyticsMetric(Entity):
     # The unit of the user experience analytics metric. Examples: none, percentage, count, seconds, score.
     unit: Optional[str] = None
     # The value of the user experience analytics metric.
-    value: Optional[float] = None
+    value: Optional[UserExperienceAnalyticsMetric_value] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsMetric:
@@ -37,12 +38,14 @@ class UserExperienceAnalyticsMetric(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .user_experience_analytics_metric_value import UserExperienceAnalyticsMetric_value
 
         from .entity import Entity
+        from .user_experience_analytics_metric_value import UserExperienceAnalyticsMetric_value
 
         fields: Dict[str, Callable[[Any], None]] = {
             "unit": lambda n : setattr(self, 'unit', n.get_str_value()),
-            "value": lambda n : setattr(self, 'value', n.get_float_value()),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(UserExperienceAnalyticsMetric_value)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +61,6 @@ class UserExperienceAnalyticsMetric(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("unit", self.unit)
-        writer.write_float_value("value", self.value)
+        writer.write_object_value("value", self.value)
     
 

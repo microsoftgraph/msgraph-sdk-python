@@ -6,6 +6,11 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+    from .user_experience_analytics_model_scores_app_reliability_score import UserExperienceAnalyticsModelScores_appReliabilityScore
+    from .user_experience_analytics_model_scores_battery_health_score import UserExperienceAnalyticsModelScores_batteryHealthScore
+    from .user_experience_analytics_model_scores_endpoint_analytics_score import UserExperienceAnalyticsModelScores_endpointAnalyticsScore
+    from .user_experience_analytics_model_scores_startup_performance_score import UserExperienceAnalyticsModelScores_startupPerformanceScore
+    from .user_experience_analytics_model_scores_work_from_anywhere_score import UserExperienceAnalyticsModelScores_workFromAnywhereScore
 
 from .entity import Entity
 
@@ -15,11 +20,11 @@ class UserExperienceAnalyticsModelScores(Entity):
     The user experience analytics model scores entity consolidates the various Endpoint Analytics scores.
     """
     # Indicates a score calculated from application health data to indicate when a device is having problems running one or more applications. Valid values range from 0-100. Value -1 means associated score is unavailable. A higher score indicates a healthier device. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    app_reliability_score: Optional[float] = None
+    app_reliability_score: Optional[UserExperienceAnalyticsModelScores_appReliabilityScore] = None
     # Indicates a calulated score indicating the health of the device's battery. Valid values range from 0-100. Value -1 means associated score is unavailable. A higher score indicates a healthier device. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    battery_health_score: Optional[float] = None
+    battery_health_score: Optional[UserExperienceAnalyticsModelScores_batteryHealthScore] = None
     # Indicates a weighted average of the various scores. Valid values range from 0-100. Value -1 means associated score is unavailable. A higher score indicates a healthier device. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    endpoint_analytics_score: Optional[float] = None
+    endpoint_analytics_score: Optional[UserExperienceAnalyticsModelScores_endpointAnalyticsScore] = None
     # The healthStatus property
     health_status: Optional[UserExperienceAnalyticsHealthState] = None
     # The manufacturer name of the device. Examples: Microsoft Corporation, HP, Lenovo. Supports: $select, $OrderBy. Read-only.
@@ -31,9 +36,9 @@ class UserExperienceAnalyticsModelScores(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates a weighted average of boot score and logon score used for measuring startup performance. Valid values range from 0-100. Value -1 means associated score is unavailable. A higher score indicates a healthier device. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    startup_performance_score: Optional[float] = None
+    startup_performance_score: Optional[UserExperienceAnalyticsModelScores_startupPerformanceScore] = None
     # Indicates a weighted score of the work from anywhere on a device level. Valid values range from 0-100. Value -1 means associated score is unavailable. A higher score indicates a healthier device. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    work_from_anywhere_score: Optional[float] = None
+    work_from_anywhere_score: Optional[UserExperienceAnalyticsModelScores_workFromAnywhereScore] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsModelScores:
@@ -53,20 +58,30 @@ class UserExperienceAnalyticsModelScores(Entity):
         """
         from .entity import Entity
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+        from .user_experience_analytics_model_scores_app_reliability_score import UserExperienceAnalyticsModelScores_appReliabilityScore
+        from .user_experience_analytics_model_scores_battery_health_score import UserExperienceAnalyticsModelScores_batteryHealthScore
+        from .user_experience_analytics_model_scores_endpoint_analytics_score import UserExperienceAnalyticsModelScores_endpointAnalyticsScore
+        from .user_experience_analytics_model_scores_startup_performance_score import UserExperienceAnalyticsModelScores_startupPerformanceScore
+        from .user_experience_analytics_model_scores_work_from_anywhere_score import UserExperienceAnalyticsModelScores_workFromAnywhereScore
 
         from .entity import Entity
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+        from .user_experience_analytics_model_scores_app_reliability_score import UserExperienceAnalyticsModelScores_appReliabilityScore
+        from .user_experience_analytics_model_scores_battery_health_score import UserExperienceAnalyticsModelScores_batteryHealthScore
+        from .user_experience_analytics_model_scores_endpoint_analytics_score import UserExperienceAnalyticsModelScores_endpointAnalyticsScore
+        from .user_experience_analytics_model_scores_startup_performance_score import UserExperienceAnalyticsModelScores_startupPerformanceScore
+        from .user_experience_analytics_model_scores_work_from_anywhere_score import UserExperienceAnalyticsModelScores_workFromAnywhereScore
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appReliabilityScore": lambda n : setattr(self, 'app_reliability_score', n.get_float_value()),
-            "batteryHealthScore": lambda n : setattr(self, 'battery_health_score', n.get_float_value()),
-            "endpointAnalyticsScore": lambda n : setattr(self, 'endpoint_analytics_score', n.get_float_value()),
+            "appReliabilityScore": lambda n : setattr(self, 'app_reliability_score', n.get_object_value(UserExperienceAnalyticsModelScores_appReliabilityScore)),
+            "batteryHealthScore": lambda n : setattr(self, 'battery_health_score', n.get_object_value(UserExperienceAnalyticsModelScores_batteryHealthScore)),
+            "endpointAnalyticsScore": lambda n : setattr(self, 'endpoint_analytics_score', n.get_object_value(UserExperienceAnalyticsModelScores_endpointAnalyticsScore)),
             "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
             "modelDeviceCount": lambda n : setattr(self, 'model_device_count', n.get_int_value()),
-            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
-            "workFromAnywhereScore": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
+            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_object_value(UserExperienceAnalyticsModelScores_startupPerformanceScore)),
+            "workFromAnywhereScore": lambda n : setattr(self, 'work_from_anywhere_score', n.get_object_value(UserExperienceAnalyticsModelScores_workFromAnywhereScore)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,14 +96,14 @@ class UserExperienceAnalyticsModelScores(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("appReliabilityScore", self.app_reliability_score)
-        writer.write_float_value("batteryHealthScore", self.battery_health_score)
-        writer.write_float_value("endpointAnalyticsScore", self.endpoint_analytics_score)
+        writer.write_object_value("appReliabilityScore", self.app_reliability_score)
+        writer.write_object_value("batteryHealthScore", self.battery_health_score)
+        writer.write_object_value("endpointAnalyticsScore", self.endpoint_analytics_score)
         writer.write_enum_value("healthStatus", self.health_status)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
         writer.write_int_value("modelDeviceCount", self.model_device_count)
-        writer.write_float_value("startupPerformanceScore", self.startup_performance_score)
-        writer.write_float_value("workFromAnywhereScore", self.work_from_anywhere_score)
+        writer.write_object_value("startupPerformanceScore", self.startup_performance_score)
+        writer.write_object_value("workFromAnywhereScore", self.work_from_anywhere_score)
     
 

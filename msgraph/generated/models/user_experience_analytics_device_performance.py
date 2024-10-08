@@ -6,6 +6,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .disk_type import DiskType
     from .entity import Entity
+    from .user_experience_analytics_device_performance_average_blue_screens import UserExperienceAnalyticsDevicePerformance_averageBlueScreens
+    from .user_experience_analytics_device_performance_average_restarts import UserExperienceAnalyticsDevicePerformance_averageRestarts
+    from .user_experience_analytics_device_performance_model_startup_performance_score import UserExperienceAnalyticsDevicePerformance_modelStartupPerformanceScore
+    from .user_experience_analytics_device_performance_startup_performance_score import UserExperienceAnalyticsDevicePerformance_startupPerformanceScore
     from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
 from .entity import Entity
@@ -16,9 +20,9 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
     The user experience analytics device performance entity contains device boot performance details.
     """
     # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
-    average_blue_screens: Optional[float] = None
+    average_blue_screens: Optional[UserExperienceAnalyticsDevicePerformance_averageBlueScreens] = None
     # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
-    average_restarts: Optional[float] = None
+    average_restarts: Optional[UserExperienceAnalyticsDevicePerformance_averageRestarts] = None
     # Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
     blue_screen_count: Optional[int] = None
     # The user experience analytics device boot score.
@@ -46,7 +50,7 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
     # The user experience analytics device model.
     model: Optional[str] = None
     # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    model_startup_performance_score: Optional[float] = None
+    model_startup_performance_score: Optional[UserExperienceAnalyticsDevicePerformance_modelStartupPerformanceScore] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The user experience analytics device Operating System version.
@@ -56,7 +60,7 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
     # Number of Restarts in the last 30 days. Valid values 0 to 9999999
     restart_count: Optional[int] = None
     # The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    startup_performance_score: Optional[float] = None
+    startup_performance_score: Optional[UserExperienceAnalyticsDevicePerformance_startupPerformanceScore] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsDevicePerformance:
@@ -76,15 +80,23 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
         """
         from .disk_type import DiskType
         from .entity import Entity
+        from .user_experience_analytics_device_performance_average_blue_screens import UserExperienceAnalyticsDevicePerformance_averageBlueScreens
+        from .user_experience_analytics_device_performance_average_restarts import UserExperienceAnalyticsDevicePerformance_averageRestarts
+        from .user_experience_analytics_device_performance_model_startup_performance_score import UserExperienceAnalyticsDevicePerformance_modelStartupPerformanceScore
+        from .user_experience_analytics_device_performance_startup_performance_score import UserExperienceAnalyticsDevicePerformance_startupPerformanceScore
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         from .disk_type import DiskType
         from .entity import Entity
+        from .user_experience_analytics_device_performance_average_blue_screens import UserExperienceAnalyticsDevicePerformance_averageBlueScreens
+        from .user_experience_analytics_device_performance_average_restarts import UserExperienceAnalyticsDevicePerformance_averageRestarts
+        from .user_experience_analytics_device_performance_model_startup_performance_score import UserExperienceAnalyticsDevicePerformance_modelStartupPerformanceScore
+        from .user_experience_analytics_device_performance_startup_performance_score import UserExperienceAnalyticsDevicePerformance_startupPerformanceScore
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
-            "averageRestarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
+            "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_object_value(UserExperienceAnalyticsDevicePerformance_averageBlueScreens)),
+            "averageRestarts": lambda n : setattr(self, 'average_restarts', n.get_object_value(UserExperienceAnalyticsDevicePerformance_averageRestarts)),
             "blueScreenCount": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
             "bootScore": lambda n : setattr(self, 'boot_score', n.get_int_value()),
             "coreBootTimeInMs": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
@@ -98,11 +110,11 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
             "loginScore": lambda n : setattr(self, 'login_score', n.get_int_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "modelStartupPerformanceScore": lambda n : setattr(self, 'model_startup_performance_score', n.get_float_value()),
+            "modelStartupPerformanceScore": lambda n : setattr(self, 'model_startup_performance_score', n.get_object_value(UserExperienceAnalyticsDevicePerformance_modelStartupPerformanceScore)),
             "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
             "responsiveDesktopTimeInMs": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
             "restartCount": lambda n : setattr(self, 'restart_count', n.get_int_value()),
-            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
+            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_object_value(UserExperienceAnalyticsDevicePerformance_startupPerformanceScore)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -117,8 +129,8 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("averageBlueScreens", self.average_blue_screens)
-        writer.write_float_value("averageRestarts", self.average_restarts)
+        writer.write_object_value("averageBlueScreens", self.average_blue_screens)
+        writer.write_object_value("averageRestarts", self.average_restarts)
         writer.write_int_value("blueScreenCount", self.blue_screen_count)
         writer.write_int_value("bootScore", self.boot_score)
         writer.write_int_value("coreBootTimeInMs", self.core_boot_time_in_ms)
@@ -132,10 +144,10 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
         writer.write_int_value("loginScore", self.login_score)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_float_value("modelStartupPerformanceScore", self.model_startup_performance_score)
+        writer.write_object_value("modelStartupPerformanceScore", self.model_startup_performance_score)
         writer.write_str_value("operatingSystemVersion", self.operating_system_version)
         writer.write_int_value("responsiveDesktopTimeInMs", self.responsive_desktop_time_in_ms)
         writer.write_int_value("restartCount", self.restart_count)
-        writer.write_float_value("startupPerformanceScore", self.startup_performance_score)
+        writer.write_object_value("startupPerformanceScore", self.startup_performance_score)
     
 

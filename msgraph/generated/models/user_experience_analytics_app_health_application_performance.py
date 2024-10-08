@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .user_experience_analytics_app_health_application_performance_app_health_score import UserExperienceAnalyticsAppHealthApplicationPerformance_appHealthScore
 
 from .entity import Entity
 
@@ -22,7 +23,7 @@ class UserExperienceAnalyticsAppHealthApplicationPerformance(Entity):
     # The number of hangs for the application. Supports: $select, $OrderBy. Read-only. Valid values -2147483648 to 2147483647
     app_hang_count: Optional[int] = None
     # The health score of the application. Valid values 0 to 100. Supports: $filter, $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    app_health_score: Optional[float] = None
+    app_health_score: Optional[UserExperienceAnalyticsAppHealthApplicationPerformance_appHealthScore] = None
     # The name of the application. Possible values are: outlook.exe, excel.exe. Supports: $select, $OrderBy. Read-only.
     app_name: Optional[str] = None
     # The publisher of the application. Supports: $select, $OrderBy. Read-only.
@@ -51,15 +52,17 @@ class UserExperienceAnalyticsAppHealthApplicationPerformance(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .user_experience_analytics_app_health_application_performance_app_health_score import UserExperienceAnalyticsAppHealthApplicationPerformance_appHealthScore
 
         from .entity import Entity
+        from .user_experience_analytics_app_health_application_performance_app_health_score import UserExperienceAnalyticsAppHealthApplicationPerformance_appHealthScore
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activeDeviceCount": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
             "appCrashCount": lambda n : setattr(self, 'app_crash_count', n.get_int_value()),
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appHangCount": lambda n : setattr(self, 'app_hang_count', n.get_int_value()),
-            "appHealthScore": lambda n : setattr(self, 'app_health_score', n.get_float_value()),
+            "appHealthScore": lambda n : setattr(self, 'app_health_score', n.get_object_value(UserExperienceAnalyticsAppHealthApplicationPerformance_appHealthScore)),
             "appName": lambda n : setattr(self, 'app_name', n.get_str_value()),
             "appPublisher": lambda n : setattr(self, 'app_publisher', n.get_str_value()),
             "appUsageDuration": lambda n : setattr(self, 'app_usage_duration', n.get_int_value()),
@@ -82,7 +85,7 @@ class UserExperienceAnalyticsAppHealthApplicationPerformance(Entity):
         writer.write_int_value("appCrashCount", self.app_crash_count)
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_int_value("appHangCount", self.app_hang_count)
-        writer.write_float_value("appHealthScore", self.app_health_score)
+        writer.write_object_value("appHealthScore", self.app_health_score)
         writer.write_str_value("appName", self.app_name)
         writer.write_str_value("appPublisher", self.app_publisher)
         writer.write_int_value("appUsageDuration", self.app_usage_duration)

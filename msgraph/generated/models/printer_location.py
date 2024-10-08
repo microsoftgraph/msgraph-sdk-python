@@ -4,6 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .printer_location_latitude import PrinterLocation_latitude
+    from .printer_location_longitude import PrinterLocation_longitude
+
 @dataclass
 class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -24,9 +28,9 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
     # The description of the floor that the printer is located on.
     floor_description: Optional[str] = None
     # The latitude that the printer is located at.
-    latitude: Optional[float] = None
+    latitude: Optional[PrinterLocation_latitude] = None
     # The longitude that the printer is located at.
-    longitude: Optional[float] = None
+    longitude: Optional[PrinterLocation_longitude] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The organizational hierarchy that the printer belongs to. The elements should be in hierarchical order.
@@ -64,6 +68,12 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .printer_location_latitude import PrinterLocation_latitude
+        from .printer_location_longitude import PrinterLocation_longitude
+
+        from .printer_location_latitude import PrinterLocation_latitude
+        from .printer_location_longitude import PrinterLocation_longitude
+
         fields: Dict[str, Callable[[Any], None]] = {
             "altitudeInMeters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
@@ -71,8 +81,8 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
             "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "floor": lambda n : setattr(self, 'floor', n.get_str_value()),
             "floorDescription": lambda n : setattr(self, 'floor_description', n.get_str_value()),
-            "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
-            "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
+            "latitude": lambda n : setattr(self, 'latitude', n.get_object_value(PrinterLocation_latitude)),
+            "longitude": lambda n : setattr(self, 'longitude', n.get_object_value(PrinterLocation_longitude)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organization": lambda n : setattr(self, 'organization', n.get_collection_of_primitive_values(str)),
             "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
@@ -100,8 +110,8 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("countryOrRegion", self.country_or_region)
         writer.write_str_value("floor", self.floor)
         writer.write_str_value("floorDescription", self.floor_description)
-        writer.write_float_value("latitude", self.latitude)
-        writer.write_float_value("longitude", self.longitude)
+        writer.write_object_value("latitude", self.latitude)
+        writer.write_object_value("longitude", self.longitude)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_primitive_values("organization", self.organization)
         writer.write_str_value("postalCode", self.postal_code)

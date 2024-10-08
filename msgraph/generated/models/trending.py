@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .resource_reference import ResourceReference
     from .resource_visualization import ResourceVisualization
+    from .trending_weight import Trending_weight
 
 from .entity import Entity
 
@@ -24,7 +25,7 @@ class Trending(Entity):
     # Properties that you can use to visualize the document in your experience.
     resource_visualization: Optional[ResourceVisualization] = None
     # Value indicating how much the document is currently trending. The larger the number, the more the document is currently trending around the user (the more relevant it is). Returned documents are sorted by this value.
-    weight: Optional[float] = None
+    weight: Optional[Trending_weight] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Trending:
@@ -45,17 +46,19 @@ class Trending(Entity):
         from .entity import Entity
         from .resource_reference import ResourceReference
         from .resource_visualization import ResourceVisualization
+        from .trending_weight import Trending_weight
 
         from .entity import Entity
         from .resource_reference import ResourceReference
         from .resource_visualization import ResourceVisualization
+        from .trending_weight import Trending_weight
 
         fields: Dict[str, Callable[[Any], None]] = {
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
             "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
             "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
-            "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
+            "weight": lambda n : setattr(self, 'weight', n.get_object_value(Trending_weight)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,6 +75,6 @@ class Trending(Entity):
         super().serialize(writer)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_object_value("resource", self.resource)
-        writer.write_float_value("weight", self.weight)
+        writer.write_object_value("weight", self.weight)
     
 

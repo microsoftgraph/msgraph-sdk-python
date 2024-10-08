@@ -7,6 +7,11 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .operating_system_upgrade_eligibility import OperatingSystemUpgradeEligibility
     from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+    from .user_experience_analytics_work_from_anywhere_device_cloud_identity_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudIdentityScore
+    from .user_experience_analytics_work_from_anywhere_device_cloud_management_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudManagementScore
+    from .user_experience_analytics_work_from_anywhere_device_cloud_provisioning_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudProvisioningScore
+    from .user_experience_analytics_work_from_anywhere_device_windows_score import UserExperienceAnalyticsWorkFromAnywhereDevice_windowsScore
+    from .user_experience_analytics_work_from_anywhere_device_work_from_anywhere_score import UserExperienceAnalyticsWorkFromAnywhereDevice_workFromAnywhereScore
 
 from .entity import Entity
 
@@ -26,11 +31,11 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
     # When TRUE, indicates the device's Azure Active Directory (Azure AD) is registered. When False, indicates it's not registered. Supports: $select, $OrderBy. Read-only.
     azure_ad_registered: Optional[bool] = None
     # Indicates per device cloud identity score. Valid values 0 to 100. Value -1 means associated score is unavailable. Supports: $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    cloud_identity_score: Optional[float] = None
+    cloud_identity_score: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice_cloudIdentityScore] = None
     # Indicates per device cloud management score. Valid values 0 to 100. Value -1 means associated score is unavailable. Supports: $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    cloud_management_score: Optional[float] = None
+    cloud_management_score: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice_cloudManagementScore] = None
     # Indicates per device cloud provisioning score. Valid values 0 to 100. Value -1 means associated score is unavailable. Supports: $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    cloud_provisioning_score: Optional[float] = None
+    cloud_provisioning_score: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice_cloudProvisioningScore] = None
     # When TRUE, indicates the device's compliance policy is set to intune. When FALSE, indicates it's not set to intune. Supports: $select, $OrderBy. Read-only.
     compliance_policy_set_to_intune: Optional[bool] = None
     # The Intune device id of the device. Supports: $select, $OrderBy. Read-only.
@@ -82,9 +87,9 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
     # Work From Anywhere windows device upgrade eligibility status.
     upgrade_eligibility: Optional[OperatingSystemUpgradeEligibility] = None
     # Indicates per device windows score. Valid values 0 to 100. Value -1 means associated score is unavailable. Supports: $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    windows_score: Optional[float] = None
+    windows_score: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice_windowsScore] = None
     # Indicates work from anywhere per device overall score. Valid values 0 to 100. Value -1 means associated score is unavailable. Supports: $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    work_from_anywhere_score: Optional[float] = None
+    work_from_anywhere_score: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice_workFromAnywhereScore] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsWorkFromAnywhereDevice:
@@ -105,10 +110,20 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
         from .entity import Entity
         from .operating_system_upgrade_eligibility import OperatingSystemUpgradeEligibility
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+        from .user_experience_analytics_work_from_anywhere_device_cloud_identity_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudIdentityScore
+        from .user_experience_analytics_work_from_anywhere_device_cloud_management_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudManagementScore
+        from .user_experience_analytics_work_from_anywhere_device_cloud_provisioning_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudProvisioningScore
+        from .user_experience_analytics_work_from_anywhere_device_windows_score import UserExperienceAnalyticsWorkFromAnywhereDevice_windowsScore
+        from .user_experience_analytics_work_from_anywhere_device_work_from_anywhere_score import UserExperienceAnalyticsWorkFromAnywhereDevice_workFromAnywhereScore
 
         from .entity import Entity
         from .operating_system_upgrade_eligibility import OperatingSystemUpgradeEligibility
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+        from .user_experience_analytics_work_from_anywhere_device_cloud_identity_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudIdentityScore
+        from .user_experience_analytics_work_from_anywhere_device_cloud_management_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudManagementScore
+        from .user_experience_analytics_work_from_anywhere_device_cloud_provisioning_score import UserExperienceAnalyticsWorkFromAnywhereDevice_cloudProvisioningScore
+        from .user_experience_analytics_work_from_anywhere_device_windows_score import UserExperienceAnalyticsWorkFromAnywhereDevice_windowsScore
+        from .user_experience_analytics_work_from_anywhere_device_work_from_anywhere_score import UserExperienceAnalyticsWorkFromAnywhereDevice_workFromAnywhereScore
 
         fields: Dict[str, Callable[[Any], None]] = {
             "autoPilotProfileAssigned": lambda n : setattr(self, 'auto_pilot_profile_assigned', n.get_bool_value()),
@@ -116,9 +131,9 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
             "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
             "azureAdJoinType": lambda n : setattr(self, 'azure_ad_join_type', n.get_str_value()),
             "azureAdRegistered": lambda n : setattr(self, 'azure_ad_registered', n.get_bool_value()),
-            "cloudIdentityScore": lambda n : setattr(self, 'cloud_identity_score', n.get_float_value()),
-            "cloudManagementScore": lambda n : setattr(self, 'cloud_management_score', n.get_float_value()),
-            "cloudProvisioningScore": lambda n : setattr(self, 'cloud_provisioning_score', n.get_float_value()),
+            "cloudIdentityScore": lambda n : setattr(self, 'cloud_identity_score', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereDevice_cloudIdentityScore)),
+            "cloudManagementScore": lambda n : setattr(self, 'cloud_management_score', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereDevice_cloudManagementScore)),
+            "cloudProvisioningScore": lambda n : setattr(self, 'cloud_provisioning_score', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereDevice_cloudProvisioningScore)),
             "compliancePolicySetToIntune": lambda n : setattr(self, 'compliance_policy_set_to_intune', n.get_bool_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
@@ -143,8 +158,8 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
             "tenantAttached": lambda n : setattr(self, 'tenant_attached', n.get_bool_value()),
             "tpmCheckFailed": lambda n : setattr(self, 'tpm_check_failed', n.get_bool_value()),
             "upgradeEligibility": lambda n : setattr(self, 'upgrade_eligibility', n.get_enum_value(OperatingSystemUpgradeEligibility)),
-            "windowsScore": lambda n : setattr(self, 'windows_score', n.get_float_value()),
-            "workFromAnywhereScore": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
+            "windowsScore": lambda n : setattr(self, 'windows_score', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereDevice_windowsScore)),
+            "workFromAnywhereScore": lambda n : setattr(self, 'work_from_anywhere_score', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereDevice_workFromAnywhereScore)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -164,9 +179,9 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
         writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)
         writer.write_str_value("azureAdJoinType", self.azure_ad_join_type)
         writer.write_bool_value("azureAdRegistered", self.azure_ad_registered)
-        writer.write_float_value("cloudIdentityScore", self.cloud_identity_score)
-        writer.write_float_value("cloudManagementScore", self.cloud_management_score)
-        writer.write_float_value("cloudProvisioningScore", self.cloud_provisioning_score)
+        writer.write_object_value("cloudIdentityScore", self.cloud_identity_score)
+        writer.write_object_value("cloudManagementScore", self.cloud_management_score)
+        writer.write_object_value("cloudProvisioningScore", self.cloud_provisioning_score)
         writer.write_bool_value("compliancePolicySetToIntune", self.compliance_policy_set_to_intune)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceName", self.device_name)
@@ -191,7 +206,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
         writer.write_bool_value("tenantAttached", self.tenant_attached)
         writer.write_bool_value("tpmCheckFailed", self.tpm_check_failed)
         writer.write_enum_value("upgradeEligibility", self.upgrade_eligibility)
-        writer.write_float_value("windowsScore", self.windows_score)
-        writer.write_float_value("workFromAnywhereScore", self.work_from_anywhere_score)
+        writer.write_object_value("windowsScore", self.windows_score)
+        writer.write_object_value("workFromAnywhereScore", self.work_from_anywhere_score)
     
 

@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .workbook_range_font_size import WorkbookRangeFont_size
 
 from .entity import Entity
 
@@ -21,7 +22,7 @@ class WorkbookRangeFont(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The font size.
-    size: Optional[float] = None
+    size: Optional[WorkbookRangeFont_size] = None
     # The type of underlining applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
     underline: Optional[str] = None
     
@@ -42,15 +43,17 @@ class WorkbookRangeFont(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .workbook_range_font_size import WorkbookRangeFont_size
 
         from .entity import Entity
+        from .workbook_range_font_size import WorkbookRangeFont_size
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bold": lambda n : setattr(self, 'bold', n.get_bool_value()),
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "italic": lambda n : setattr(self, 'italic', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "size": lambda n : setattr(self, 'size', n.get_float_value()),
+            "size": lambda n : setattr(self, 'size', n.get_object_value(WorkbookRangeFont_size)),
             "underline": lambda n : setattr(self, 'underline', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -70,7 +73,7 @@ class WorkbookRangeFont(Entity):
         writer.write_str_value("color", self.color)
         writer.write_bool_value("italic", self.italic)
         writer.write_str_value("name", self.name)
-        writer.write_float_value("size", self.size)
+        writer.write_object_value("size", self.size)
         writer.write_str_value("underline", self.underline)
     
 

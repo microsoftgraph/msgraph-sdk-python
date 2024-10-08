@@ -4,6 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .number_column_maximum import NumberColumn_maximum
+    from .number_column_minimum import NumberColumn_minimum
+
 @dataclass
 class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -16,9 +20,9 @@ class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
     # How the value should be presented in the UX. Must be one of number or percentage. If unspecified, treated as number.
     display_as: Optional[str] = None
     # The maximum permitted value.
-    maximum: Optional[float] = None
+    maximum: Optional[NumberColumn_maximum] = None
     # The minimum permitted value.
-    minimum: Optional[float] = None
+    minimum: Optional[NumberColumn_minimum] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -38,11 +42,17 @@ class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .number_column_maximum import NumberColumn_maximum
+        from .number_column_minimum import NumberColumn_minimum
+
+        from .number_column_maximum import NumberColumn_maximum
+        from .number_column_minimum import NumberColumn_minimum
+
         fields: Dict[str, Callable[[Any], None]] = {
             "decimalPlaces": lambda n : setattr(self, 'decimal_places', n.get_str_value()),
             "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
-            "maximum": lambda n : setattr(self, 'maximum', n.get_float_value()),
-            "minimum": lambda n : setattr(self, 'minimum', n.get_float_value()),
+            "maximum": lambda n : setattr(self, 'maximum', n.get_object_value(NumberColumn_maximum)),
+            "minimum": lambda n : setattr(self, 'minimum', n.get_object_value(NumberColumn_minimum)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -57,8 +67,8 @@ class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("decimalPlaces", self.decimal_places)
         writer.write_str_value("displayAs", self.display_as)
-        writer.write_float_value("maximum", self.maximum)
-        writer.write_float_value("minimum", self.minimum)
+        writer.write_object_value("maximum", self.maximum)
+        writer.write_object_value("minimum", self.minimum)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

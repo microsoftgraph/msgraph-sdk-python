@@ -9,6 +9,8 @@ if TYPE_CHECKING:
     from .workbook_range_border import WorkbookRangeBorder
     from .workbook_range_fill import WorkbookRangeFill
     from .workbook_range_font import WorkbookRangeFont
+    from .workbook_range_format_column_width import WorkbookRangeFormat_columnWidth
+    from .workbook_range_format_row_height import WorkbookRangeFormat_rowHeight
 
 from .entity import Entity
 
@@ -17,7 +19,7 @@ class WorkbookRangeFormat(Entity):
     # Collection of border objects that apply to the overall range selected Read-only.
     borders: Optional[List[WorkbookRangeBorder]] = None
     # The width of all columns within the range. If the column widths aren't uniform, null will be returned.
-    column_width: Optional[float] = None
+    column_width: Optional[WorkbookRangeFormat_columnWidth] = None
     # Returns the fill object defined on the overall range. Read-only.
     fill: Optional[WorkbookRangeFill] = None
     # Returns the font object defined on the overall range selected Read-only.
@@ -29,7 +31,7 @@ class WorkbookRangeFormat(Entity):
     # Returns the format protection object for a range. Read-only.
     protection: Optional[WorkbookFormatProtection] = None
     # The height of all rows in the range. If the row heights aren't uniform null will be returned.
-    row_height: Optional[float] = None
+    row_height: Optional[WorkbookRangeFormat_rowHeight] = None
     # The vertical alignment for the specified object. Possible values are: Top, Center, Bottom, Justify, Distributed.
     vertical_alignment: Optional[str] = None
     # Indicates whether Excel wraps the text in the object. A null value indicates that the entire range doesn't have a uniform wrap setting.
@@ -56,21 +58,25 @@ class WorkbookRangeFormat(Entity):
         from .workbook_range_border import WorkbookRangeBorder
         from .workbook_range_fill import WorkbookRangeFill
         from .workbook_range_font import WorkbookRangeFont
+        from .workbook_range_format_column_width import WorkbookRangeFormat_columnWidth
+        from .workbook_range_format_row_height import WorkbookRangeFormat_rowHeight
 
         from .entity import Entity
         from .workbook_format_protection import WorkbookFormatProtection
         from .workbook_range_border import WorkbookRangeBorder
         from .workbook_range_fill import WorkbookRangeFill
         from .workbook_range_font import WorkbookRangeFont
+        from .workbook_range_format_column_width import WorkbookRangeFormat_columnWidth
+        from .workbook_range_format_row_height import WorkbookRangeFormat_rowHeight
 
         fields: Dict[str, Callable[[Any], None]] = {
             "borders": lambda n : setattr(self, 'borders', n.get_collection_of_object_values(WorkbookRangeBorder)),
-            "columnWidth": lambda n : setattr(self, 'column_width', n.get_float_value()),
+            "columnWidth": lambda n : setattr(self, 'column_width', n.get_object_value(WorkbookRangeFormat_columnWidth)),
             "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookRangeFill)),
             "font": lambda n : setattr(self, 'font', n.get_object_value(WorkbookRangeFont)),
             "horizontalAlignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
             "protection": lambda n : setattr(self, 'protection', n.get_object_value(WorkbookFormatProtection)),
-            "rowHeight": lambda n : setattr(self, 'row_height', n.get_float_value()),
+            "rowHeight": lambda n : setattr(self, 'row_height', n.get_object_value(WorkbookRangeFormat_rowHeight)),
             "verticalAlignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
             "wrapText": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),
         }
@@ -88,12 +94,12 @@ class WorkbookRangeFormat(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("borders", self.borders)
-        writer.write_float_value("columnWidth", self.column_width)
+        writer.write_object_value("columnWidth", self.column_width)
         writer.write_object_value("fill", self.fill)
         writer.write_object_value("font", self.font)
         writer.write_str_value("horizontalAlignment", self.horizontal_alignment)
         writer.write_object_value("protection", self.protection)
-        writer.write_float_value("rowHeight", self.row_height)
+        writer.write_object_value("rowHeight", self.row_height)
         writer.write_str_value("verticalAlignment", self.vertical_alignment)
         writer.write_bool_value("wrapText", self.wrap_text)
     

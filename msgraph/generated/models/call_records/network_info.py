@@ -6,6 +6,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .network_connection_type import NetworkConnectionType
+    from .network_info_bandwidth_low_event_ratio import NetworkInfo_bandwidthLowEventRatio
+    from .network_info_delay_event_ratio import NetworkInfo_delayEventRatio
+    from .network_info_received_quality_event_ratio import NetworkInfo_receivedQualityEventRatio
+    from .network_info_sent_quality_event_ratio import NetworkInfo_sentQualityEventRatio
     from .network_transport_protocol import NetworkTransportProtocol
     from .trace_route_hop import TraceRouteHop
     from .wifi_band import WifiBand
@@ -19,13 +23,13 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Fraction of the call that the media endpoint detected the available bandwidth or bandwidth policy was low enough to cause poor quality of the audio sent.
-    bandwidth_low_event_ratio: Optional[float] = None
+    bandwidth_low_event_ratio: Optional[NetworkInfo_bandwidthLowEventRatio] = None
     # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
     basic_service_set_identifier: Optional[str] = None
     # The connectionType property
     connection_type: Optional[NetworkConnectionType] = None
     # Fraction of the call that the media endpoint detected the network delay was significant enough to impact the ability to have real-time two-way communication.
-    delay_event_ratio: Optional[float] = None
+    delay_event_ratio: Optional[NetworkInfo_delayEventRatio] = None
     # DNS suffix associated with the network adapter of the media endpoint.
     dns_suffix: Optional[str] = None
     # IP address of the media endpoint.
@@ -41,7 +45,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Network port number used by media endpoint.
     port: Optional[int] = None
     # Fraction of the call that the media endpoint detected the network was causing poor quality of the audio received.
-    received_quality_event_ratio: Optional[float] = None
+    received_quality_event_ratio: Optional[NetworkInfo_receivedQualityEventRatio] = None
     # IP address of the media endpoint as seen by the media relay server. This is typically the public internet IP address associated to the endpoint.
     reflexive_i_p_address: Optional[str] = None
     # IP address of the media relay server allocated by the media endpoint.
@@ -49,7 +53,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Network port number allocated on the media relay server by the media endpoint.
     relay_port: Optional[int] = None
     # Fraction of the call that the media endpoint detected the network was causing poor quality of the audio sent.
-    sent_quality_event_ratio: Optional[float] = None
+    sent_quality_event_ratio: Optional[NetworkInfo_sentQualityEventRatio] = None
     # Subnet used for media stream by the media endpoint.
     subnet: Optional[str] = None
     # List of network trace route hops collected for this media stream.*
@@ -90,22 +94,30 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .network_connection_type import NetworkConnectionType
+        from .network_info_bandwidth_low_event_ratio import NetworkInfo_bandwidthLowEventRatio
+        from .network_info_delay_event_ratio import NetworkInfo_delayEventRatio
+        from .network_info_received_quality_event_ratio import NetworkInfo_receivedQualityEventRatio
+        from .network_info_sent_quality_event_ratio import NetworkInfo_sentQualityEventRatio
         from .network_transport_protocol import NetworkTransportProtocol
         from .trace_route_hop import TraceRouteHop
         from .wifi_band import WifiBand
         from .wifi_radio_type import WifiRadioType
 
         from .network_connection_type import NetworkConnectionType
+        from .network_info_bandwidth_low_event_ratio import NetworkInfo_bandwidthLowEventRatio
+        from .network_info_delay_event_ratio import NetworkInfo_delayEventRatio
+        from .network_info_received_quality_event_ratio import NetworkInfo_receivedQualityEventRatio
+        from .network_info_sent_quality_event_ratio import NetworkInfo_sentQualityEventRatio
         from .network_transport_protocol import NetworkTransportProtocol
         from .trace_route_hop import TraceRouteHop
         from .wifi_band import WifiBand
         from .wifi_radio_type import WifiRadioType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
+            "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_object_value(NetworkInfo_bandwidthLowEventRatio)),
             "basicServiceSetIdentifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
             "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(NetworkConnectionType)),
-            "delayEventRatio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
+            "delayEventRatio": lambda n : setattr(self, 'delay_event_ratio', n.get_object_value(NetworkInfo_delayEventRatio)),
             "dnsSuffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "linkSpeed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
@@ -113,11 +125,11 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
             "networkTransportProtocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(NetworkTransportProtocol)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
-            "receivedQualityEventRatio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
+            "receivedQualityEventRatio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_object_value(NetworkInfo_receivedQualityEventRatio)),
             "reflexiveIPAddress": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
             "relayIPAddress": lambda n : setattr(self, 'relay_i_p_address', n.get_str_value()),
             "relayPort": lambda n : setattr(self, 'relay_port', n.get_int_value()),
-            "sentQualityEventRatio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
+            "sentQualityEventRatio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_object_value(NetworkInfo_sentQualityEventRatio)),
             "subnet": lambda n : setattr(self, 'subnet', n.get_str_value()),
             "traceRouteHops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(TraceRouteHop)),
             "wifiBand": lambda n : setattr(self, 'wifi_band', n.get_enum_value(WifiBand)),
@@ -140,10 +152,10 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        writer.write_float_value("bandwidthLowEventRatio", self.bandwidth_low_event_ratio)
+        writer.write_object_value("bandwidthLowEventRatio", self.bandwidth_low_event_ratio)
         writer.write_str_value("basicServiceSetIdentifier", self.basic_service_set_identifier)
         writer.write_enum_value("connectionType", self.connection_type)
-        writer.write_float_value("delayEventRatio", self.delay_event_ratio)
+        writer.write_object_value("delayEventRatio", self.delay_event_ratio)
         writer.write_str_value("dnsSuffix", self.dns_suffix)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_int_value("linkSpeed", self.link_speed)
@@ -151,11 +163,11 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("networkTransportProtocol", self.network_transport_protocol)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("port", self.port)
-        writer.write_float_value("receivedQualityEventRatio", self.received_quality_event_ratio)
+        writer.write_object_value("receivedQualityEventRatio", self.received_quality_event_ratio)
         writer.write_str_value("reflexiveIPAddress", self.reflexive_i_p_address)
         writer.write_str_value("relayIPAddress", self.relay_i_p_address)
         writer.write_int_value("relayPort", self.relay_port)
-        writer.write_float_value("sentQualityEventRatio", self.sent_quality_event_ratio)
+        writer.write_object_value("sentQualityEventRatio", self.sent_quality_event_ratio)
         writer.write_str_value("subnet", self.subnet)
         writer.write_collection_of_object_values("traceRouteHops", self.trace_route_hops)
         writer.write_enum_value("wifiBand", self.wifi_band)

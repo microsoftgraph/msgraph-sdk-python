@@ -4,6 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .recommended_action_potential_score_impact import RecommendedAction_potentialScoreImpact
+
 @dataclass
 class RecommendedAction(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -16,7 +19,7 @@ class RecommendedAction(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Potential improvement in the tenant security score from the recommended action.
-    potential_score_impact: Optional[float] = None
+    potential_score_impact: Optional[RecommendedAction_potentialScoreImpact] = None
     # Title of the recommended action.
     title: Optional[str] = None
     
@@ -36,10 +39,14 @@ class RecommendedAction(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .recommended_action_potential_score_impact import RecommendedAction_potentialScoreImpact
+
+        from .recommended_action_potential_score_impact import RecommendedAction_potentialScoreImpact
+
         fields: Dict[str, Callable[[Any], None]] = {
             "actionWebUrl": lambda n : setattr(self, 'action_web_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
+            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_object_value(RecommendedAction_potentialScoreImpact)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         return fields
@@ -54,7 +61,7 @@ class RecommendedAction(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("actionWebUrl", self.action_web_url)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_float_value("potentialScoreImpact", self.potential_score_impact)
+        writer.write_object_value("potentialScoreImpact", self.potential_score_impact)
         writer.write_str_value("title", self.title)
         writer.write_additional_data_value(self.additional_data)
     

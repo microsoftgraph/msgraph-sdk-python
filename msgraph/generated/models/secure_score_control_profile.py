@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .compliance_information import ComplianceInformation
     from .entity import Entity
+    from .secure_score_control_profile_max_score import SecureScoreControlProfile_maxScore
     from .secure_score_control_state_update import SecureScoreControlStateUpdate
     from .security_vendor_information import SecurityVendorInformation
 
@@ -33,7 +34,7 @@ class SecureScoreControlProfile(Entity):
     # Time at which the control profile entity was last modified. The Timestamp type represents date and time
     last_modified_date_time: Optional[datetime.datetime] = None
     # max attainable score for the control.
-    max_score: Optional[float] = None
+    max_score: Optional[SecureScoreControlProfile_maxScore] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Microsoft's stack ranking of control.
@@ -73,11 +74,13 @@ class SecureScoreControlProfile(Entity):
         """
         from .compliance_information import ComplianceInformation
         from .entity import Entity
+        from .secure_score_control_profile_max_score import SecureScoreControlProfile_maxScore
         from .secure_score_control_state_update import SecureScoreControlStateUpdate
         from .security_vendor_information import SecurityVendorInformation
 
         from .compliance_information import ComplianceInformation
         from .entity import Entity
+        from .secure_score_control_profile_max_score import SecureScoreControlProfile_maxScore
         from .secure_score_control_state_update import SecureScoreControlStateUpdate
         from .security_vendor_information import SecurityVendorInformation
 
@@ -91,7 +94,7 @@ class SecureScoreControlProfile(Entity):
             "deprecated": lambda n : setattr(self, 'deprecated', n.get_bool_value()),
             "implementationCost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "maxScore": lambda n : setattr(self, 'max_score', n.get_float_value()),
+            "maxScore": lambda n : setattr(self, 'max_score', n.get_object_value(SecureScoreControlProfile_maxScore)),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "remediation": lambda n : setattr(self, 'remediation', n.get_str_value()),
             "remediationImpact": lambda n : setattr(self, 'remediation_impact', n.get_str_value()),
@@ -124,7 +127,7 @@ class SecureScoreControlProfile(Entity):
         writer.write_bool_value("deprecated", self.deprecated)
         writer.write_str_value("implementationCost", self.implementation_cost)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_float_value("maxScore", self.max_score)
+        writer.write_object_value("maxScore", self.max_score)
         writer.write_int_value("rank", self.rank)
         writer.write_str_value("remediation", self.remediation)
         writer.write_str_value("remediationImpact", self.remediation_impact)

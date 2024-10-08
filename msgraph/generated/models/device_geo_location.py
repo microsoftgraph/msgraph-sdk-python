@@ -5,6 +5,15 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .device_geo_location_altitude import DeviceGeoLocation_altitude
+    from .device_geo_location_heading import DeviceGeoLocation_heading
+    from .device_geo_location_horizontal_accuracy import DeviceGeoLocation_horizontalAccuracy
+    from .device_geo_location_latitude import DeviceGeoLocation_latitude
+    from .device_geo_location_longitude import DeviceGeoLocation_longitude
+    from .device_geo_location_speed import DeviceGeoLocation_speed
+    from .device_geo_location_vertical_accuracy import DeviceGeoLocation_verticalAccuracy
+
 @dataclass
 class DeviceGeoLocation(AdditionalDataHolder, BackedModel, Parsable):
     """
@@ -16,23 +25,23 @@ class DeviceGeoLocation(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Altitude, given in meters above sea level
-    altitude: Optional[float] = None
+    altitude: Optional[DeviceGeoLocation_altitude] = None
     # Heading in degrees from true north
-    heading: Optional[float] = None
+    heading: Optional[DeviceGeoLocation_heading] = None
     # Accuracy of longitude and latitude in meters
-    horizontal_accuracy: Optional[float] = None
+    horizontal_accuracy: Optional[DeviceGeoLocation_horizontalAccuracy] = None
     # Time at which location was recorded, relative to UTC
     last_collected_date_time: Optional[datetime.datetime] = None
     # Latitude coordinate of the device's location
-    latitude: Optional[float] = None
+    latitude: Optional[DeviceGeoLocation_latitude] = None
     # Longitude coordinate of the device's location
-    longitude: Optional[float] = None
+    longitude: Optional[DeviceGeoLocation_longitude] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Speed the device is traveling in meters per second
-    speed: Optional[float] = None
+    speed: Optional[DeviceGeoLocation_speed] = None
     # Accuracy of altitude in meters
-    vertical_accuracy: Optional[float] = None
+    vertical_accuracy: Optional[DeviceGeoLocation_verticalAccuracy] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DeviceGeoLocation:
@@ -50,16 +59,32 @@ class DeviceGeoLocation(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .device_geo_location_altitude import DeviceGeoLocation_altitude
+        from .device_geo_location_heading import DeviceGeoLocation_heading
+        from .device_geo_location_horizontal_accuracy import DeviceGeoLocation_horizontalAccuracy
+        from .device_geo_location_latitude import DeviceGeoLocation_latitude
+        from .device_geo_location_longitude import DeviceGeoLocation_longitude
+        from .device_geo_location_speed import DeviceGeoLocation_speed
+        from .device_geo_location_vertical_accuracy import DeviceGeoLocation_verticalAccuracy
+
+        from .device_geo_location_altitude import DeviceGeoLocation_altitude
+        from .device_geo_location_heading import DeviceGeoLocation_heading
+        from .device_geo_location_horizontal_accuracy import DeviceGeoLocation_horizontalAccuracy
+        from .device_geo_location_latitude import DeviceGeoLocation_latitude
+        from .device_geo_location_longitude import DeviceGeoLocation_longitude
+        from .device_geo_location_speed import DeviceGeoLocation_speed
+        from .device_geo_location_vertical_accuracy import DeviceGeoLocation_verticalAccuracy
+
         fields: Dict[str, Callable[[Any], None]] = {
-            "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
-            "heading": lambda n : setattr(self, 'heading', n.get_float_value()),
-            "horizontalAccuracy": lambda n : setattr(self, 'horizontal_accuracy', n.get_float_value()),
+            "altitude": lambda n : setattr(self, 'altitude', n.get_object_value(DeviceGeoLocation_altitude)),
+            "heading": lambda n : setattr(self, 'heading', n.get_object_value(DeviceGeoLocation_heading)),
+            "horizontalAccuracy": lambda n : setattr(self, 'horizontal_accuracy', n.get_object_value(DeviceGeoLocation_horizontalAccuracy)),
             "lastCollectedDateTime": lambda n : setattr(self, 'last_collected_date_time', n.get_datetime_value()),
-            "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
-            "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
+            "latitude": lambda n : setattr(self, 'latitude', n.get_object_value(DeviceGeoLocation_latitude)),
+            "longitude": lambda n : setattr(self, 'longitude', n.get_object_value(DeviceGeoLocation_longitude)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "speed": lambda n : setattr(self, 'speed', n.get_float_value()),
-            "verticalAccuracy": lambda n : setattr(self, 'vertical_accuracy', n.get_float_value()),
+            "speed": lambda n : setattr(self, 'speed', n.get_object_value(DeviceGeoLocation_speed)),
+            "verticalAccuracy": lambda n : setattr(self, 'vertical_accuracy', n.get_object_value(DeviceGeoLocation_verticalAccuracy)),
         }
         return fields
     
@@ -71,15 +96,15 @@ class DeviceGeoLocation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        writer.write_float_value("altitude", self.altitude)
-        writer.write_float_value("heading", self.heading)
-        writer.write_float_value("horizontalAccuracy", self.horizontal_accuracy)
+        writer.write_object_value("altitude", self.altitude)
+        writer.write_object_value("heading", self.heading)
+        writer.write_object_value("horizontalAccuracy", self.horizontal_accuracy)
         writer.write_datetime_value("lastCollectedDateTime", self.last_collected_date_time)
-        writer.write_float_value("latitude", self.latitude)
-        writer.write_float_value("longitude", self.longitude)
+        writer.write_object_value("latitude", self.latitude)
+        writer.write_object_value("longitude", self.longitude)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_float_value("speed", self.speed)
-        writer.write_float_value("verticalAccuracy", self.vertical_accuracy)
+        writer.write_object_value("speed", self.speed)
+        writer.write_object_value("verticalAccuracy", self.vertical_accuracy)
         writer.write_additional_data_value(self.additional_data)
     
 

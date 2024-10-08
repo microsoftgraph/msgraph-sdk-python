@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .user_experience_analytics_app_health_o_s_version_performance_os_version_app_health_score import UserExperienceAnalyticsAppHealthOSVersionPerformance_osVersionAppHealthScore
 
 from .entity import Entity
 
@@ -24,7 +25,7 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformance(Entity):
     # The OS version installed on the device. Supports: $select, $OrderBy. Read-only.
     os_version: Optional[str] = None
     # The application health score of the OS version. Valid values 0 to 100. Supports: $filter, $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    os_version_app_health_score: Optional[float] = None
+    os_version_app_health_score: Optional[UserExperienceAnalyticsAppHealthOSVersionPerformance_osVersionAppHealthScore] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsAppHealthOSVersionPerformance:
@@ -43,15 +44,17 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformance(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .user_experience_analytics_app_health_o_s_version_performance_os_version_app_health_score import UserExperienceAnalyticsAppHealthOSVersionPerformance_osVersionAppHealthScore
 
         from .entity import Entity
+        from .user_experience_analytics_app_health_o_s_version_performance_os_version_app_health_score import UserExperienceAnalyticsAppHealthOSVersionPerformance_osVersionAppHealthScore
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activeDeviceCount": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
             "meanTimeToFailureInMinutes": lambda n : setattr(self, 'mean_time_to_failure_in_minutes', n.get_int_value()),
             "osBuildNumber": lambda n : setattr(self, 'os_build_number', n.get_str_value()),
             "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "osVersionAppHealthScore": lambda n : setattr(self, 'os_version_app_health_score', n.get_float_value()),
+            "osVersionAppHealthScore": lambda n : setattr(self, 'os_version_app_health_score', n.get_object_value(UserExperienceAnalyticsAppHealthOSVersionPerformance_osVersionAppHealthScore)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,6 +73,6 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformance(Entity):
         writer.write_int_value("meanTimeToFailureInMinutes", self.mean_time_to_failure_in_minutes)
         writer.write_str_value("osBuildNumber", self.os_build_number)
         writer.write_str_value("osVersion", self.os_version)
-        writer.write_float_value("osVersionAppHealthScore", self.os_version_app_health_score)
+        writer.write_object_value("osVersionAppHealthScore", self.os_version_app_health_score)
     
 

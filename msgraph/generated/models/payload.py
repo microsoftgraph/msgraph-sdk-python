@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .payload_delivery_platform import PayloadDeliveryPlatform
     from .payload_detail import PayloadDetail
     from .payload_industry import PayloadIndustry
+    from .payload_predicted_compromise_rate import Payload_predictedCompromiseRate
     from .payload_theme import PayloadTheme
     from .simulation_attack_technique import SimulationAttackTechnique
     from .simulation_attack_type import SimulationAttackType
@@ -57,7 +58,7 @@ class Payload(Entity):
     # The payload delivery platform for a simulation. Possible values are: unknown, sms, email, teams, unknownFutureValue.
     platform: Optional[PayloadDeliveryPlatform] = None
     # Predicted probability for a payload to phish a targeted user.
-    predicted_compromise_rate: Optional[float] = None
+    predicted_compromise_rate: Optional[Payload_predictedCompromiseRate] = None
     # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
     simulation_attack_type: Optional[SimulationAttackType] = None
     # The source property
@@ -92,6 +93,7 @@ class Payload(Entity):
         from .payload_delivery_platform import PayloadDeliveryPlatform
         from .payload_detail import PayloadDetail
         from .payload_industry import PayloadIndustry
+        from .payload_predicted_compromise_rate import Payload_predictedCompromiseRate
         from .payload_theme import PayloadTheme
         from .simulation_attack_technique import SimulationAttackTechnique
         from .simulation_attack_type import SimulationAttackType
@@ -105,6 +107,7 @@ class Payload(Entity):
         from .payload_delivery_platform import PayloadDeliveryPlatform
         from .payload_detail import PayloadDetail
         from .payload_industry import PayloadIndustry
+        from .payload_predicted_compromise_rate import Payload_predictedCompromiseRate
         from .payload_theme import PayloadTheme
         from .simulation_attack_technique import SimulationAttackTechnique
         from .simulation_attack_type import SimulationAttackType
@@ -128,7 +131,7 @@ class Payload(Entity):
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "payloadTags": lambda n : setattr(self, 'payload_tags', n.get_collection_of_primitive_values(str)),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(PayloadDeliveryPlatform)),
-            "predictedCompromiseRate": lambda n : setattr(self, 'predicted_compromise_rate', n.get_float_value()),
+            "predictedCompromiseRate": lambda n : setattr(self, 'predicted_compromise_rate', n.get_object_value(Payload_predictedCompromiseRate)),
             "simulationAttackType": lambda n : setattr(self, 'simulation_attack_type', n.get_enum_value(SimulationAttackType)),
             "source": lambda n : setattr(self, 'source', n.get_enum_value(SimulationContentSource)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationContentStatus)),
@@ -164,7 +167,7 @@ class Payload(Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_primitive_values("payloadTags", self.payload_tags)
         writer.write_enum_value("platform", self.platform)
-        writer.write_float_value("predictedCompromiseRate", self.predicted_compromise_rate)
+        writer.write_object_value("predictedCompromiseRate", self.predicted_compromise_rate)
         writer.write_enum_value("simulationAttackType", self.simulation_attack_type)
         writer.write_enum_value("source", self.source)
         writer.write_enum_value("status", self.status)

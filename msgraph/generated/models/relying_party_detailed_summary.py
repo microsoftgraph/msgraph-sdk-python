@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .key_value_pair import KeyValuePair
     from .migration_status import MigrationStatus
+    from .relying_party_detailed_summary_sign_in_success_rate import RelyingPartyDetailedSummary_signInSuccessRate
 
 from .entity import Entity
 
@@ -29,7 +30,7 @@ class RelyingPartyDetailedSummary(Entity):
     # Uniquely identifies the Active Directory forest. Supports $orderby, $filter (eq).
     service_id: Optional[str] = None
     # Calculated as Number of successful / (Number of successful + Number of failed sign ins) or successfulSignInCount / totalSignInCount on AD FS in the period specified. Supports $orderby, $filter (eq).
-    sign_in_success_rate: Optional[float] = None
+    sign_in_success_rate: Optional[RelyingPartyDetailedSummary_signInSuccessRate] = None
     # Number of successful sign ins on AD FS. Supports $orderby, $filter (eq).
     successful_sign_in_count: Optional[int] = None
     # Number of successful + failed sign ins on AD FS in the period specified. Supports $orderby, $filter (eq).
@@ -56,10 +57,12 @@ class RelyingPartyDetailedSummary(Entity):
         from .entity import Entity
         from .key_value_pair import KeyValuePair
         from .migration_status import MigrationStatus
+        from .relying_party_detailed_summary_sign_in_success_rate import RelyingPartyDetailedSummary_signInSuccessRate
 
         from .entity import Entity
         from .key_value_pair import KeyValuePair
         from .migration_status import MigrationStatus
+        from .relying_party_detailed_summary_sign_in_success_rate import RelyingPartyDetailedSummary_signInSuccessRate
 
         fields: Dict[str, Callable[[Any], None]] = {
             "failedSignInCount": lambda n : setattr(self, 'failed_sign_in_count', n.get_int_value()),
@@ -69,7 +72,7 @@ class RelyingPartyDetailedSummary(Entity):
             "relyingPartyName": lambda n : setattr(self, 'relying_party_name', n.get_str_value()),
             "replyUrls": lambda n : setattr(self, 'reply_urls', n.get_collection_of_primitive_values(str)),
             "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
-            "signInSuccessRate": lambda n : setattr(self, 'sign_in_success_rate', n.get_float_value()),
+            "signInSuccessRate": lambda n : setattr(self, 'sign_in_success_rate', n.get_object_value(RelyingPartyDetailedSummary_signInSuccessRate)),
             "successfulSignInCount": lambda n : setattr(self, 'successful_sign_in_count', n.get_int_value()),
             "totalSignInCount": lambda n : setattr(self, 'total_sign_in_count', n.get_int_value()),
             "uniqueUserCount": lambda n : setattr(self, 'unique_user_count', n.get_int_value()),
@@ -94,7 +97,7 @@ class RelyingPartyDetailedSummary(Entity):
         writer.write_str_value("relyingPartyName", self.relying_party_name)
         writer.write_collection_of_primitive_values("replyUrls", self.reply_urls)
         writer.write_str_value("serviceId", self.service_id)
-        writer.write_float_value("signInSuccessRate", self.sign_in_success_rate)
+        writer.write_object_value("signInSuccessRate", self.sign_in_success_rate)
         writer.write_int_value("successfulSignInCount", self.successful_sign_in_count)
         writer.write_int_value("totalSignInCount", self.total_sign_in_count)
         writer.write_int_value("uniqueUserCount", self.unique_user_count)

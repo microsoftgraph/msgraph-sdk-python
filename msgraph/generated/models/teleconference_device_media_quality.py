@@ -7,6 +7,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .teleconference_device_audio_quality import TeleconferenceDeviceAudioQuality
+    from .teleconference_device_media_quality_average_inbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_averageInboundPacketLossRateInPercentage
+    from .teleconference_device_media_quality_average_outbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_averageOutboundPacketLossRateInPercentage
+    from .teleconference_device_media_quality_maximum_inbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_maximumInboundPacketLossRateInPercentage
+    from .teleconference_device_media_quality_maximum_outbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_maximumOutboundPacketLossRateInPercentage
     from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
     from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
@@ -20,13 +24,13 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
     # The average inbound stream network jitter.
     average_inbound_jitter: Optional[datetime.timedelta] = None
     # The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-    average_inbound_packet_loss_rate_in_percentage: Optional[float] = None
+    average_inbound_packet_loss_rate_in_percentage: Optional[TeleconferenceDeviceMediaQuality_averageInboundPacketLossRateInPercentage] = None
     # The average inbound stream network round trip delay.
     average_inbound_round_trip_delay: Optional[datetime.timedelta] = None
     # The average outbound stream network jitter.
     average_outbound_jitter: Optional[datetime.timedelta] = None
     # The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-    average_outbound_packet_loss_rate_in_percentage: Optional[float] = None
+    average_outbound_packet_loss_rate_in_percentage: Optional[TeleconferenceDeviceMediaQuality_averageOutboundPacketLossRateInPercentage] = None
     # The average outbound stream network round trip delay.
     average_outbound_round_trip_delay: Optional[datetime.timedelta] = None
     # The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
@@ -40,13 +44,13 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
     # The maximum inbound stream network jitter.
     maximum_inbound_jitter: Optional[datetime.timedelta] = None
     # The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-    maximum_inbound_packet_loss_rate_in_percentage: Optional[float] = None
+    maximum_inbound_packet_loss_rate_in_percentage: Optional[TeleconferenceDeviceMediaQuality_maximumInboundPacketLossRateInPercentage] = None
     # The maximum inbound stream network round trip delay.
     maximum_inbound_round_trip_delay: Optional[datetime.timedelta] = None
     # The maximum outbound stream network jitter.
     maximum_outbound_jitter: Optional[datetime.timedelta] = None
     # The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-    maximum_outbound_packet_loss_rate_in_percentage: Optional[float] = None
+    maximum_outbound_packet_loss_rate_in_percentage: Optional[TeleconferenceDeviceMediaQuality_maximumOutboundPacketLossRateInPercentage] = None
     # The maximum outbound stream network round trip delay.
     maximum_outbound_round_trip_delay: Optional[datetime.timedelta] = None
     # The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
@@ -95,29 +99,37 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .teleconference_device_audio_quality import TeleconferenceDeviceAudioQuality
+        from .teleconference_device_media_quality_average_inbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_averageInboundPacketLossRateInPercentage
+        from .teleconference_device_media_quality_average_outbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_averageOutboundPacketLossRateInPercentage
+        from .teleconference_device_media_quality_maximum_inbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_maximumInboundPacketLossRateInPercentage
+        from .teleconference_device_media_quality_maximum_outbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_maximumOutboundPacketLossRateInPercentage
         from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
         from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
         from .teleconference_device_audio_quality import TeleconferenceDeviceAudioQuality
+        from .teleconference_device_media_quality_average_inbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_averageInboundPacketLossRateInPercentage
+        from .teleconference_device_media_quality_average_outbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_averageOutboundPacketLossRateInPercentage
+        from .teleconference_device_media_quality_maximum_inbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_maximumInboundPacketLossRateInPercentage
+        from .teleconference_device_media_quality_maximum_outbound_packet_loss_rate_in_percentage import TeleconferenceDeviceMediaQuality_maximumOutboundPacketLossRateInPercentage
         from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
         from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
             "averageInboundJitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_timedelta_value()),
-            "averageInboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "averageInboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_object_value(TeleconferenceDeviceMediaQuality_averageInboundPacketLossRateInPercentage)),
             "averageInboundRoundTripDelay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_timedelta_value()),
             "averageOutboundJitter": lambda n : setattr(self, 'average_outbound_jitter', n.get_timedelta_value()),
-            "averageOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "averageOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_object_value(TeleconferenceDeviceMediaQuality_averageOutboundPacketLossRateInPercentage)),
             "averageOutboundRoundTripDelay": lambda n : setattr(self, 'average_outbound_round_trip_delay', n.get_timedelta_value()),
             "channelIndex": lambda n : setattr(self, 'channel_index', n.get_int_value()),
             "inboundPackets": lambda n : setattr(self, 'inbound_packets', n.get_int_value()),
             "localIPAddress": lambda n : setattr(self, 'local_i_p_address', n.get_str_value()),
             "localPort": lambda n : setattr(self, 'local_port', n.get_int_value()),
             "maximumInboundJitter": lambda n : setattr(self, 'maximum_inbound_jitter', n.get_timedelta_value()),
-            "maximumInboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximumInboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_object_value(TeleconferenceDeviceMediaQuality_maximumInboundPacketLossRateInPercentage)),
             "maximumInboundRoundTripDelay": lambda n : setattr(self, 'maximum_inbound_round_trip_delay', n.get_timedelta_value()),
             "maximumOutboundJitter": lambda n : setattr(self, 'maximum_outbound_jitter', n.get_timedelta_value()),
-            "maximumOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximumOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_object_value(TeleconferenceDeviceMediaQuality_maximumOutboundPacketLossRateInPercentage)),
             "maximumOutboundRoundTripDelay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_timedelta_value()),
             "mediaDuration": lambda n : setattr(self, 'media_duration', n.get_timedelta_value()),
             "networkLinkSpeedInBytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
@@ -137,20 +149,20 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_timedelta_value("averageInboundJitter", self.average_inbound_jitter)
-        writer.write_float_value("averageInboundPacketLossRateInPercentage", self.average_inbound_packet_loss_rate_in_percentage)
+        writer.write_object_value("averageInboundPacketLossRateInPercentage", self.average_inbound_packet_loss_rate_in_percentage)
         writer.write_timedelta_value("averageInboundRoundTripDelay", self.average_inbound_round_trip_delay)
         writer.write_timedelta_value("averageOutboundJitter", self.average_outbound_jitter)
-        writer.write_float_value("averageOutboundPacketLossRateInPercentage", self.average_outbound_packet_loss_rate_in_percentage)
+        writer.write_object_value("averageOutboundPacketLossRateInPercentage", self.average_outbound_packet_loss_rate_in_percentage)
         writer.write_timedelta_value("averageOutboundRoundTripDelay", self.average_outbound_round_trip_delay)
         writer.write_int_value("channelIndex", self.channel_index)
         writer.write_int_value("inboundPackets", self.inbound_packets)
         writer.write_str_value("localIPAddress", self.local_i_p_address)
         writer.write_int_value("localPort", self.local_port)
         writer.write_timedelta_value("maximumInboundJitter", self.maximum_inbound_jitter)
-        writer.write_float_value("maximumInboundPacketLossRateInPercentage", self.maximum_inbound_packet_loss_rate_in_percentage)
+        writer.write_object_value("maximumInboundPacketLossRateInPercentage", self.maximum_inbound_packet_loss_rate_in_percentage)
         writer.write_timedelta_value("maximumInboundRoundTripDelay", self.maximum_inbound_round_trip_delay)
         writer.write_timedelta_value("maximumOutboundJitter", self.maximum_outbound_jitter)
-        writer.write_float_value("maximumOutboundPacketLossRateInPercentage", self.maximum_outbound_packet_loss_rate_in_percentage)
+        writer.write_object_value("maximumOutboundPacketLossRateInPercentage", self.maximum_outbound_packet_loss_rate_in_percentage)
         writer.write_timedelta_value("maximumOutboundRoundTripDelay", self.maximum_outbound_round_trip_delay)
         writer.write_timedelta_value("mediaDuration", self.media_duration)
         writer.write_int_value("networkLinkSpeedInBytes", self.network_link_speed_in_bytes)

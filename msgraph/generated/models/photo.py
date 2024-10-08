@@ -5,6 +5,12 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .photo_exposure_denominator import Photo_exposureDenominator
+    from .photo_exposure_numerator import Photo_exposureNumerator
+    from .photo_focal_length import Photo_focalLength
+    from .photo_f_number import Photo_fNumber
+
 @dataclass
 class Photo(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -17,13 +23,13 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
     # Camera model. Read-only.
     camera_model: Optional[str] = None
     # The denominator for the exposure time fraction from the camera. Read-only.
-    exposure_denominator: Optional[float] = None
+    exposure_denominator: Optional[Photo_exposureDenominator] = None
     # The numerator for the exposure time fraction from the camera. Read-only.
-    exposure_numerator: Optional[float] = None
+    exposure_numerator: Optional[Photo_exposureNumerator] = None
     # The F-stop value from the camera. Read-only.
-    f_number: Optional[float] = None
+    f_number: Optional[Photo_fNumber] = None
     # The focal length from the camera. Read-only.
-    focal_length: Optional[float] = None
+    focal_length: Optional[Photo_focalLength] = None
     # The ISO value from the camera. Read-only.
     iso: Optional[int] = None
     # The OdataType property
@@ -49,13 +55,23 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .photo_exposure_denominator import Photo_exposureDenominator
+        from .photo_exposure_numerator import Photo_exposureNumerator
+        from .photo_focal_length import Photo_focalLength
+        from .photo_f_number import Photo_fNumber
+
+        from .photo_exposure_denominator import Photo_exposureDenominator
+        from .photo_exposure_numerator import Photo_exposureNumerator
+        from .photo_focal_length import Photo_focalLength
+        from .photo_f_number import Photo_fNumber
+
         fields: Dict[str, Callable[[Any], None]] = {
             "cameraMake": lambda n : setattr(self, 'camera_make', n.get_str_value()),
             "cameraModel": lambda n : setattr(self, 'camera_model', n.get_str_value()),
-            "exposureDenominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),
-            "exposureNumerator": lambda n : setattr(self, 'exposure_numerator', n.get_float_value()),
-            "fNumber": lambda n : setattr(self, 'f_number', n.get_float_value()),
-            "focalLength": lambda n : setattr(self, 'focal_length', n.get_float_value()),
+            "exposureDenominator": lambda n : setattr(self, 'exposure_denominator', n.get_object_value(Photo_exposureDenominator)),
+            "exposureNumerator": lambda n : setattr(self, 'exposure_numerator', n.get_object_value(Photo_exposureNumerator)),
+            "fNumber": lambda n : setattr(self, 'f_number', n.get_object_value(Photo_fNumber)),
+            "focalLength": lambda n : setattr(self, 'focal_length', n.get_object_value(Photo_focalLength)),
             "iso": lambda n : setattr(self, 'iso', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_int_value()),
@@ -73,10 +89,10 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("cameraMake", self.camera_make)
         writer.write_str_value("cameraModel", self.camera_model)
-        writer.write_float_value("exposureDenominator", self.exposure_denominator)
-        writer.write_float_value("exposureNumerator", self.exposure_numerator)
-        writer.write_float_value("fNumber", self.f_number)
-        writer.write_float_value("focalLength", self.focal_length)
+        writer.write_object_value("exposureDenominator", self.exposure_denominator)
+        writer.write_object_value("exposureNumerator", self.exposure_numerator)
+        writer.write_object_value("fNumber", self.f_number)
+        writer.write_object_value("focalLength", self.focal_length)
         writer.write_int_value("iso", self.iso)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("orientation", self.orientation)

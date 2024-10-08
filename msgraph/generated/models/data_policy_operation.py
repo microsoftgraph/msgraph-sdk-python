@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .data_policy_operation_progress import DataPolicyOperation_progress
     from .data_policy_operation_status import DataPolicyOperationStatus
     from .entity import Entity
 
@@ -17,7 +18,7 @@ class DataPolicyOperation(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the progress of an operation.
-    progress: Optional[float] = None
+    progress: Optional[DataPolicyOperation_progress] = None
     # Possible values are: notStarted, running, complete, failed, unknownFutureValue.
     status: Optional[DataPolicyOperationStatus] = None
     # The URL location to where data is being exported for export requests.
@@ -43,15 +44,17 @@ class DataPolicyOperation(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .data_policy_operation_progress import DataPolicyOperation_progress
         from .data_policy_operation_status import DataPolicyOperationStatus
         from .entity import Entity
 
+        from .data_policy_operation_progress import DataPolicyOperation_progress
         from .data_policy_operation_status import DataPolicyOperationStatus
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "progress": lambda n : setattr(self, 'progress', n.get_float_value()),
+            "progress": lambda n : setattr(self, 'progress', n.get_object_value(DataPolicyOperation_progress)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(DataPolicyOperationStatus)),
             "storageLocation": lambda n : setattr(self, 'storage_location', n.get_str_value()),
             "submittedDateTime": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
@@ -71,7 +74,7 @@ class DataPolicyOperation(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_float_value("progress", self.progress)
+        writer.write_object_value("progress", self.progress)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("storageLocation", self.storage_location)
         writer.write_datetime_value("submittedDateTime", self.submitted_date_time)

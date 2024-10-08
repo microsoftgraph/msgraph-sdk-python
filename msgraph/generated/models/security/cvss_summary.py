@@ -5,6 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .cvss_summary_score import CvssSummary_score
     from .vulnerability_severity import VulnerabilitySeverity
 
 @dataclass
@@ -17,7 +18,7 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The CVSS score about this vulnerability.
-    score: Optional[float] = None
+    score: Optional[CvssSummary_score] = None
     # The CVSS severity rating for this vulnerability. The possible values are: none, low, medium, high, critical, unknownFutureValue.
     severity: Optional[VulnerabilitySeverity] = None
     # The CVSS vector string for this vulnerability.
@@ -39,13 +40,15 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .cvss_summary_score import CvssSummary_score
         from .vulnerability_severity import VulnerabilitySeverity
 
+        from .cvss_summary_score import CvssSummary_score
         from .vulnerability_severity import VulnerabilitySeverity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "score": lambda n : setattr(self, 'score', n.get_float_value()),
+            "score": lambda n : setattr(self, 'score', n.get_object_value(CvssSummary_score)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(VulnerabilitySeverity)),
             "vectorString": lambda n : setattr(self, 'vector_string', n.get_str_value()),
         }
@@ -60,7 +63,7 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_float_value("score", self.score)
+        writer.write_object_value("score", self.score)
         writer.write_enum_value("severity", self.severity)
         writer.write_str_value("vectorString", self.vector_string)
         writer.write_additional_data_value(self.additional_data)

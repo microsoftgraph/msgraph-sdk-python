@@ -6,6 +6,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
     from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
+    from .teleconference_device_video_quality_average_inbound_bit_rate import TeleconferenceDeviceVideoQuality_averageInboundBitRate
+    from .teleconference_device_video_quality_average_inbound_frame_rate import TeleconferenceDeviceVideoQuality_averageInboundFrameRate
+    from .teleconference_device_video_quality_average_outbound_bit_rate import TeleconferenceDeviceVideoQuality_averageOutboundBitRate
+    from .teleconference_device_video_quality_average_outbound_frame_rate import TeleconferenceDeviceVideoQuality_averageOutboundFrameRate
 
 from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
@@ -14,13 +18,13 @@ class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teleconferenceDeviceVideoQuality"
     # The average inbound stream video bit rate per second.
-    average_inbound_bit_rate: Optional[float] = None
+    average_inbound_bit_rate: Optional[TeleconferenceDeviceVideoQuality_averageInboundBitRate] = None
     # The average inbound stream video frame rate per second.
-    average_inbound_frame_rate: Optional[float] = None
+    average_inbound_frame_rate: Optional[TeleconferenceDeviceVideoQuality_averageInboundFrameRate] = None
     # The average outbound stream video bit rate per second.
-    average_outbound_bit_rate: Optional[float] = None
+    average_outbound_bit_rate: Optional[TeleconferenceDeviceVideoQuality_averageOutboundBitRate] = None
     # The average outbound stream video frame rate per second.
-    average_outbound_frame_rate: Optional[float] = None
+    average_outbound_frame_rate: Optional[TeleconferenceDeviceVideoQuality_averageOutboundFrameRate] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> TeleconferenceDeviceVideoQuality:
@@ -48,15 +52,23 @@ class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
         """
         from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
         from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
+        from .teleconference_device_video_quality_average_inbound_bit_rate import TeleconferenceDeviceVideoQuality_averageInboundBitRate
+        from .teleconference_device_video_quality_average_inbound_frame_rate import TeleconferenceDeviceVideoQuality_averageInboundFrameRate
+        from .teleconference_device_video_quality_average_outbound_bit_rate import TeleconferenceDeviceVideoQuality_averageOutboundBitRate
+        from .teleconference_device_video_quality_average_outbound_frame_rate import TeleconferenceDeviceVideoQuality_averageOutboundFrameRate
 
         from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
         from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
+        from .teleconference_device_video_quality_average_inbound_bit_rate import TeleconferenceDeviceVideoQuality_averageInboundBitRate
+        from .teleconference_device_video_quality_average_inbound_frame_rate import TeleconferenceDeviceVideoQuality_averageInboundFrameRate
+        from .teleconference_device_video_quality_average_outbound_bit_rate import TeleconferenceDeviceVideoQuality_averageOutboundBitRate
+        from .teleconference_device_video_quality_average_outbound_frame_rate import TeleconferenceDeviceVideoQuality_averageOutboundFrameRate
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "averageInboundBitRate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),
-            "averageInboundFrameRate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_float_value()),
-            "averageOutboundBitRate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_float_value()),
-            "averageOutboundFrameRate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_float_value()),
+            "averageInboundBitRate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_object_value(TeleconferenceDeviceVideoQuality_averageInboundBitRate)),
+            "averageInboundFrameRate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_object_value(TeleconferenceDeviceVideoQuality_averageInboundFrameRate)),
+            "averageOutboundBitRate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_object_value(TeleconferenceDeviceVideoQuality_averageOutboundBitRate)),
+            "averageOutboundFrameRate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_object_value(TeleconferenceDeviceVideoQuality_averageOutboundFrameRate)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -71,9 +83,9 @@ class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("averageInboundBitRate", self.average_inbound_bit_rate)
-        writer.write_float_value("averageInboundFrameRate", self.average_inbound_frame_rate)
-        writer.write_float_value("averageOutboundBitRate", self.average_outbound_bit_rate)
-        writer.write_float_value("averageOutboundFrameRate", self.average_outbound_frame_rate)
+        writer.write_object_value("averageInboundBitRate", self.average_inbound_bit_rate)
+        writer.write_object_value("averageInboundFrameRate", self.average_inbound_frame_rate)
+        writer.write_object_value("averageOutboundBitRate", self.average_outbound_bit_rate)
+        writer.write_object_value("averageOutboundFrameRate", self.average_outbound_frame_rate)
     
 

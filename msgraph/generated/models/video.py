@@ -4,6 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .video_frame_rate import Video_frameRate
+
 @dataclass
 class Video(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -26,7 +29,7 @@ class Video(AdditionalDataHolder, BackedModel, Parsable):
     # 'Four character code' name of the video format.
     four_c_c: Optional[str] = None
     # Frame rate of the video.
-    frame_rate: Optional[float] = None
+    frame_rate: Optional[Video_frameRate] = None
     # Height of the video, in pixels.
     height: Optional[int] = None
     # The OdataType property
@@ -50,6 +53,10 @@ class Video(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .video_frame_rate import Video_frameRate
+
+        from .video_frame_rate import Video_frameRate
+
         fields: Dict[str, Callable[[Any], None]] = {
             "audioBitsPerSample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
             "audioChannels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
@@ -58,7 +65,7 @@ class Video(AdditionalDataHolder, BackedModel, Parsable):
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
             "fourCC": lambda n : setattr(self, 'four_c_c', n.get_str_value()),
-            "frameRate": lambda n : setattr(self, 'frame_rate', n.get_float_value()),
+            "frameRate": lambda n : setattr(self, 'frame_rate', n.get_object_value(Video_frameRate)),
             "height": lambda n : setattr(self, 'height', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
@@ -80,7 +87,7 @@ class Video(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("bitrate", self.bitrate)
         writer.write_int_value("duration", self.duration)
         writer.write_str_value("fourCC", self.four_c_c)
-        writer.write_float_value("frameRate", self.frame_rate)
+        writer.write_object_value("frameRate", self.frame_rate)
         writer.write_int_value("height", self.height)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("width", self.width)

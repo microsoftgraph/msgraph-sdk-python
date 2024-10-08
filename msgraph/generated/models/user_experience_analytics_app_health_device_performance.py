@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .user_experience_analytics_app_health_device_performance_device_app_health_score import UserExperienceAnalyticsAppHealthDevicePerformance_deviceAppHealthScore
     from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
 from .entity import Entity
@@ -22,7 +23,7 @@ class UserExperienceAnalyticsAppHealthDevicePerformance(Entity):
     # The number of distinct application crashes for the device. Valid values 0 to 2147483647. Supports: $select, $OrderBy. Read-only. Valid values -2147483648 to 2147483647
     crashed_app_count: Optional[int] = None
     # The application health score of the device. Valid values 0 to 100. Supports: $filter, $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-    device_app_health_score: Optional[float] = None
+    device_app_health_score: Optional[UserExperienceAnalyticsAppHealthDevicePerformance_deviceAppHealthScore] = None
     # The name of the device. Supports: $select, $OrderBy. Read-only.
     device_display_name: Optional[str] = None
     # The Intune device id of the device. Supports: $select, $OrderBy. Read-only.
@@ -57,16 +58,18 @@ class UserExperienceAnalyticsAppHealthDevicePerformance(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .user_experience_analytics_app_health_device_performance_device_app_health_score import UserExperienceAnalyticsAppHealthDevicePerformance_deviceAppHealthScore
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         from .entity import Entity
+        from .user_experience_analytics_app_health_device_performance_device_app_health_score import UserExperienceAnalyticsAppHealthDevicePerformance_deviceAppHealthScore
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appCrashCount": lambda n : setattr(self, 'app_crash_count', n.get_int_value()),
             "appHangCount": lambda n : setattr(self, 'app_hang_count', n.get_int_value()),
             "crashedAppCount": lambda n : setattr(self, 'crashed_app_count', n.get_int_value()),
-            "deviceAppHealthScore": lambda n : setattr(self, 'device_app_health_score', n.get_float_value()),
+            "deviceAppHealthScore": lambda n : setattr(self, 'device_app_health_score', n.get_object_value(UserExperienceAnalyticsAppHealthDevicePerformance_deviceAppHealthScore)),
             "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "deviceManufacturer": lambda n : setattr(self, 'device_manufacturer', n.get_str_value()),
@@ -91,7 +94,7 @@ class UserExperienceAnalyticsAppHealthDevicePerformance(Entity):
         writer.write_int_value("appCrashCount", self.app_crash_count)
         writer.write_int_value("appHangCount", self.app_hang_count)
         writer.write_int_value("crashedAppCount", self.crashed_app_count)
-        writer.write_float_value("deviceAppHealthScore", self.device_app_health_score)
+        writer.write_object_value("deviceAppHealthScore", self.device_app_health_score)
         writer.write_str_value("deviceDisplayName", self.device_display_name)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceManufacturer", self.device_manufacturer)

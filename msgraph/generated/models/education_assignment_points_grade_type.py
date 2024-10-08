@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_assignment_grade_type import EducationAssignmentGradeType
+    from .education_assignment_points_grade_type_max_points import EducationAssignmentPointsGradeType_maxPoints
 
 from .education_assignment_grade_type import EducationAssignmentGradeType
 
@@ -13,7 +14,7 @@ class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationAssignmentPointsGradeType"
     # Max points possible for this assignment.
-    max_points: Optional[float] = None
+    max_points: Optional[EducationAssignmentPointsGradeType_maxPoints] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EducationAssignmentPointsGradeType:
@@ -32,11 +33,13 @@ class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_assignment_points_grade_type_max_points import EducationAssignmentPointsGradeType_maxPoints
 
         from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_assignment_points_grade_type_max_points import EducationAssignmentPointsGradeType_maxPoints
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "maxPoints": lambda n : setattr(self, 'max_points', n.get_float_value()),
+            "maxPoints": lambda n : setattr(self, 'max_points', n.get_object_value(EducationAssignmentPointsGradeType_maxPoints)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +54,6 @@ class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("maxPoints", self.max_points)
+        writer.write_object_value("maxPoints", self.max_points)
     
 

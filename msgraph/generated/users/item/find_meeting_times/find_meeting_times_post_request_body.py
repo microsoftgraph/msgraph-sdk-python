@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ....models.attendee_base import AttendeeBase
     from ....models.location_constraint import LocationConstraint
     from ....models.time_constraint import TimeConstraint
+    from .find_meeting_times_post_request_body_minimum_attendee_percentage import FindMeetingTimesPostRequestBody_minimumAttendeePercentage
 
 @dataclass
 class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -28,7 +29,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
     # The meetingDuration property
     meeting_duration: Optional[datetime.timedelta] = None
     # The minimumAttendeePercentage property
-    minimum_attendee_percentage: Optional[float] = None
+    minimum_attendee_percentage: Optional[FindMeetingTimesPostRequestBody_minimumAttendeePercentage] = None
     # The returnSuggestionReasons property
     return_suggestion_reasons: Optional[bool] = None
     # The timeConstraint property
@@ -53,10 +54,12 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         from ....models.attendee_base import AttendeeBase
         from ....models.location_constraint import LocationConstraint
         from ....models.time_constraint import TimeConstraint
+        from .find_meeting_times_post_request_body_minimum_attendee_percentage import FindMeetingTimesPostRequestBody_minimumAttendeePercentage
 
         from ....models.attendee_base import AttendeeBase
         from ....models.location_constraint import LocationConstraint
         from ....models.time_constraint import TimeConstraint
+        from .find_meeting_times_post_request_body_minimum_attendee_percentage import FindMeetingTimesPostRequestBody_minimumAttendeePercentage
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(AttendeeBase)),
@@ -64,7 +67,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
             "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(LocationConstraint)),
             "maxCandidates": lambda n : setattr(self, 'max_candidates', n.get_int_value()),
             "meetingDuration": lambda n : setattr(self, 'meeting_duration', n.get_timedelta_value()),
-            "minimumAttendeePercentage": lambda n : setattr(self, 'minimum_attendee_percentage', n.get_float_value()),
+            "minimumAttendeePercentage": lambda n : setattr(self, 'minimum_attendee_percentage', n.get_object_value(FindMeetingTimesPostRequestBody_minimumAttendeePercentage)),
             "returnSuggestionReasons": lambda n : setattr(self, 'return_suggestion_reasons', n.get_bool_value()),
             "timeConstraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(TimeConstraint)),
         }
@@ -83,7 +86,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         writer.write_object_value("locationConstraint", self.location_constraint)
         writer.write_int_value("maxCandidates", self.max_candidates)
         writer.write_timedelta_value("meetingDuration", self.meeting_duration)
-        writer.write_float_value("minimumAttendeePercentage", self.minimum_attendee_percentage)
+        writer.write_object_value("minimumAttendeePercentage", self.minimum_attendee_percentage)
         writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
         writer.write_object_value("timeConstraint", self.time_constraint)
         writer.write_additional_data_value(self.additional_data)

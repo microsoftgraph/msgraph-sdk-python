@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .oma_setting import OmaSetting
+    from .oma_setting_floating_point_value import OmaSettingFloatingPoint_value
 
 from .oma_setting import OmaSetting
 
@@ -16,7 +17,7 @@ class OmaSettingFloatingPoint(OmaSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.omaSettingFloatingPoint"
     # Value.
-    value: Optional[float] = None
+    value: Optional[OmaSettingFloatingPoint_value] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> OmaSettingFloatingPoint:
@@ -35,11 +36,13 @@ class OmaSettingFloatingPoint(OmaSetting):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .oma_setting import OmaSetting
+        from .oma_setting_floating_point_value import OmaSettingFloatingPoint_value
 
         from .oma_setting import OmaSetting
+        from .oma_setting_floating_point_value import OmaSettingFloatingPoint_value
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_float_value()),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(OmaSettingFloatingPoint_value)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +57,6 @@ class OmaSettingFloatingPoint(OmaSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("value", self.value)
+        writer.write_object_value("value", self.value)
     
 

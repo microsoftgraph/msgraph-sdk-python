@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_assignment_grade import EducationAssignmentGrade
+    from .education_assignment_points_grade_points import EducationAssignmentPointsGrade_points
 
 from .education_assignment_grade import EducationAssignmentGrade
 
@@ -13,7 +14,7 @@ class EducationAssignmentPointsGrade(EducationAssignmentGrade):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationAssignmentPointsGrade"
     # Number of points a teacher is giving this submission object.
-    points: Optional[float] = None
+    points: Optional[EducationAssignmentPointsGrade_points] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EducationAssignmentPointsGrade:
@@ -32,11 +33,13 @@ class EducationAssignmentPointsGrade(EducationAssignmentGrade):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .education_assignment_grade import EducationAssignmentGrade
+        from .education_assignment_points_grade_points import EducationAssignmentPointsGrade_points
 
         from .education_assignment_grade import EducationAssignmentGrade
+        from .education_assignment_points_grade_points import EducationAssignmentPointsGrade_points
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "points": lambda n : setattr(self, 'points', n.get_float_value()),
+            "points": lambda n : setattr(self, 'points', n.get_object_value(EducationAssignmentPointsGrade_points)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +54,6 @@ class EducationAssignmentPointsGrade(EducationAssignmentGrade):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("points", self.points)
+        writer.write_object_value("points", self.points)
     
 

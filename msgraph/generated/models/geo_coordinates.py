@@ -4,6 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .geo_coordinates_altitude import GeoCoordinates_altitude
+    from .geo_coordinates_latitude import GeoCoordinates_latitude
+    from .geo_coordinates_longitude import GeoCoordinates_longitude
+
 @dataclass
 class GeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -12,11 +17,11 @@ class GeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Optional. The altitude (height), in feet,  above sea level for the item. Read-only.
-    altitude: Optional[float] = None
+    altitude: Optional[GeoCoordinates_altitude] = None
     # Optional. The latitude, in decimal, for the item. Read-only.
-    latitude: Optional[float] = None
+    latitude: Optional[GeoCoordinates_latitude] = None
     # Optional. The longitude, in decimal, for the item. Read-only.
-    longitude: Optional[float] = None
+    longitude: Optional[GeoCoordinates_longitude] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -36,10 +41,18 @@ class GeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .geo_coordinates_altitude import GeoCoordinates_altitude
+        from .geo_coordinates_latitude import GeoCoordinates_latitude
+        from .geo_coordinates_longitude import GeoCoordinates_longitude
+
+        from .geo_coordinates_altitude import GeoCoordinates_altitude
+        from .geo_coordinates_latitude import GeoCoordinates_latitude
+        from .geo_coordinates_longitude import GeoCoordinates_longitude
+
         fields: Dict[str, Callable[[Any], None]] = {
-            "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
-            "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
-            "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
+            "altitude": lambda n : setattr(self, 'altitude', n.get_object_value(GeoCoordinates_altitude)),
+            "latitude": lambda n : setattr(self, 'latitude', n.get_object_value(GeoCoordinates_latitude)),
+            "longitude": lambda n : setattr(self, 'longitude', n.get_object_value(GeoCoordinates_longitude)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -52,9 +65,9 @@ class GeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        writer.write_float_value("altitude", self.altitude)
-        writer.write_float_value("latitude", self.latitude)
-        writer.write_float_value("longitude", self.longitude)
+        writer.write_object_value("altitude", self.altitude)
+        writer.write_object_value("latitude", self.latitude)
+        writer.write_object_value("longitude", self.longitude)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

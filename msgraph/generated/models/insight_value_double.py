@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .insight_value_double_value import InsightValueDouble_value
     from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
 
 from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
@@ -16,7 +17,7 @@ class InsightValueDouble(UserExperienceAnalyticsInsightValue):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.insightValueDouble"
     # The double value of the user experience analytics insight.
-    value: Optional[float] = None
+    value: Optional[InsightValueDouble_value] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> InsightValueDouble:
@@ -34,12 +35,14 @@ class InsightValueDouble(UserExperienceAnalyticsInsightValue):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .insight_value_double_value import InsightValueDouble_value
         from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
 
+        from .insight_value_double_value import InsightValueDouble_value
         from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_float_value()),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(InsightValueDouble_value)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +57,6 @@ class InsightValueDouble(UserExperienceAnalyticsInsightValue):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("value", self.value)
+        writer.write_object_value("value", self.value)
     
 

@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .booking_appointment_price import BookingAppointment_price
     from .booking_customer_information_base import BookingCustomerInformationBase
     from .booking_price_type import BookingPriceType
     from .booking_reminder import BookingReminder
@@ -64,7 +65,7 @@ class BookingAppointment(Entity):
     # The amount of time to reserve before the appointment begins, for preparation, as an example. The value is expressed in ISO8601 format.
     pre_buffer: Optional[datetime.timedelta] = None
     # The regular price for an appointment for the specified bookingService.
-    price: Optional[float] = None
+    price: Optional[BookingAppointment_price] = None
     # Represents the type of pricing of a booking service.
     price_type: Optional[BookingPriceType] = None
     # The collection of customer reminders sent for this appointment. The value of this property is available only when reading this bookingAppointment by its ID.
@@ -102,6 +103,7 @@ class BookingAppointment(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .booking_appointment_price import BookingAppointment_price
         from .booking_customer_information_base import BookingCustomerInformationBase
         from .booking_price_type import BookingPriceType
         from .booking_reminder import BookingReminder
@@ -109,6 +111,7 @@ class BookingAppointment(Entity):
         from .entity import Entity
         from .location import Location
 
+        from .booking_appointment_price import BookingAppointment_price
         from .booking_customer_information_base import BookingCustomerInformationBase
         from .booking_price_type import BookingPriceType
         from .booking_reminder import BookingReminder
@@ -138,7 +141,7 @@ class BookingAppointment(Entity):
             "optOutOfCustomerEmail": lambda n : setattr(self, 'opt_out_of_customer_email', n.get_bool_value()),
             "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
             "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
-            "price": lambda n : setattr(self, 'price', n.get_float_value()),
+            "price": lambda n : setattr(self, 'price', n.get_object_value(BookingAppointment_price)),
             "priceType": lambda n : setattr(self, 'price_type', n.get_enum_value(BookingPriceType)),
             "reminders": lambda n : setattr(self, 'reminders', n.get_collection_of_object_values(BookingReminder)),
             "selfServiceAppointmentId": lambda n : setattr(self, 'self_service_appointment_id', n.get_str_value()),
@@ -182,7 +185,7 @@ class BookingAppointment(Entity):
         writer.write_bool_value("optOutOfCustomerEmail", self.opt_out_of_customer_email)
         writer.write_timedelta_value("postBuffer", self.post_buffer)
         writer.write_timedelta_value("preBuffer", self.pre_buffer)
-        writer.write_float_value("price", self.price)
+        writer.write_object_value("price", self.price)
         writer.write_enum_value("priceType", self.price_type)
         writer.write_collection_of_object_values("reminders", self.reminders)
         writer.write_str_value("selfServiceAppointmentId", self.self_service_appointment_id)

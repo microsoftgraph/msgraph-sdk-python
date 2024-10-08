@@ -4,6 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .control_score_score import ControlScore_score
+
 @dataclass
 class ControlScore(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -20,7 +23,7 @@ class ControlScore(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Tenant achieved score for the control (it varies day by day depending on tenant operations on the control).
-    score: Optional[float] = None
+    score: Optional[ControlScore_score] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ControlScore:
@@ -38,12 +41,16 @@ class ControlScore(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .control_score_score import ControlScore_score
+
+        from .control_score_score import ControlScore_score
+
         fields: Dict[str, Callable[[Any], None]] = {
             "controlCategory": lambda n : setattr(self, 'control_category', n.get_str_value()),
             "controlName": lambda n : setattr(self, 'control_name', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "score": lambda n : setattr(self, 'score', n.get_float_value()),
+            "score": lambda n : setattr(self, 'score', n.get_object_value(ControlScore_score)),
         }
         return fields
     
@@ -59,7 +66,7 @@ class ControlScore(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("controlName", self.control_name)
         writer.write_str_value("description", self.description)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_float_value("score", self.score)
+        writer.write_object_value("score", self.score)
         writer.write_additional_data_value(self.additional_data)
     
 

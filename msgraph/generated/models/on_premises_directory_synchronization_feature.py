@@ -35,7 +35,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     odata_type: Optional[str] = None
     # Used to indicate on-premise password synchronization is enabled.
     password_sync_enabled: Optional[bool] = None
-    # Used to indicate that writeback of password resets from Microsoft Entra ID to on-premises AD is enabled.
+    # Used to indicate that writeback of password resets from Microsoft Entra ID to on-premises AD is enabled. This property isn't in use and updating it isn't supported.
     password_writeback_enabled: Optional[bool] = None
     # Used to indicate that we should quarantine objects with conflicting proxy address.
     quarantine_upon_proxy_addresses_conflict_enabled: Optional[bool] = None

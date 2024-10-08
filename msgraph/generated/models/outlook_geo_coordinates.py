@@ -4,6 +4,13 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .outlook_geo_coordinates_accuracy import OutlookGeoCoordinates_accuracy
+    from .outlook_geo_coordinates_altitude import OutlookGeoCoordinates_altitude
+    from .outlook_geo_coordinates_altitude_accuracy import OutlookGeoCoordinates_altitudeAccuracy
+    from .outlook_geo_coordinates_latitude import OutlookGeoCoordinates_latitude
+    from .outlook_geo_coordinates_longitude import OutlookGeoCoordinates_longitude
+
 @dataclass
 class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -12,15 +19,15 @@ class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The accuracy of the latitude and longitude. As an example, the accuracy can be measured in meters, such as the latitude and longitude are accurate to within 50 meters.
-    accuracy: Optional[float] = None
+    accuracy: Optional[OutlookGeoCoordinates_accuracy] = None
     # The altitude of the location.
-    altitude: Optional[float] = None
+    altitude: Optional[OutlookGeoCoordinates_altitude] = None
     # The accuracy of the altitude.
-    altitude_accuracy: Optional[float] = None
+    altitude_accuracy: Optional[OutlookGeoCoordinates_altitudeAccuracy] = None
     # The latitude of the location.
-    latitude: Optional[float] = None
+    latitude: Optional[OutlookGeoCoordinates_latitude] = None
     # The longitude of the location.
-    longitude: Optional[float] = None
+    longitude: Optional[OutlookGeoCoordinates_longitude] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -40,12 +47,24 @@ class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .outlook_geo_coordinates_accuracy import OutlookGeoCoordinates_accuracy
+        from .outlook_geo_coordinates_altitude import OutlookGeoCoordinates_altitude
+        from .outlook_geo_coordinates_altitude_accuracy import OutlookGeoCoordinates_altitudeAccuracy
+        from .outlook_geo_coordinates_latitude import OutlookGeoCoordinates_latitude
+        from .outlook_geo_coordinates_longitude import OutlookGeoCoordinates_longitude
+
+        from .outlook_geo_coordinates_accuracy import OutlookGeoCoordinates_accuracy
+        from .outlook_geo_coordinates_altitude import OutlookGeoCoordinates_altitude
+        from .outlook_geo_coordinates_altitude_accuracy import OutlookGeoCoordinates_altitudeAccuracy
+        from .outlook_geo_coordinates_latitude import OutlookGeoCoordinates_latitude
+        from .outlook_geo_coordinates_longitude import OutlookGeoCoordinates_longitude
+
         fields: Dict[str, Callable[[Any], None]] = {
-            "accuracy": lambda n : setattr(self, 'accuracy', n.get_float_value()),
-            "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
-            "altitudeAccuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_float_value()),
-            "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
-            "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
+            "accuracy": lambda n : setattr(self, 'accuracy', n.get_object_value(OutlookGeoCoordinates_accuracy)),
+            "altitude": lambda n : setattr(self, 'altitude', n.get_object_value(OutlookGeoCoordinates_altitude)),
+            "altitudeAccuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_object_value(OutlookGeoCoordinates_altitudeAccuracy)),
+            "latitude": lambda n : setattr(self, 'latitude', n.get_object_value(OutlookGeoCoordinates_latitude)),
+            "longitude": lambda n : setattr(self, 'longitude', n.get_object_value(OutlookGeoCoordinates_longitude)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -58,11 +77,11 @@ class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        writer.write_float_value("accuracy", self.accuracy)
-        writer.write_float_value("altitude", self.altitude)
-        writer.write_float_value("altitudeAccuracy", self.altitude_accuracy)
-        writer.write_float_value("latitude", self.latitude)
-        writer.write_float_value("longitude", self.longitude)
+        writer.write_object_value("accuracy", self.accuracy)
+        writer.write_object_value("altitude", self.altitude)
+        writer.write_object_value("altitudeAccuracy", self.altitude_accuracy)
+        writer.write_object_value("latitude", self.latitude)
+        writer.write_object_value("longitude", self.longitude)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

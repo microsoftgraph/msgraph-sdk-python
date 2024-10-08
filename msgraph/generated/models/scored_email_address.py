@@ -5,6 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .scored_email_address_relevance_score import ScoredEmailAddress_relevanceScore
     from .selection_likelihood_info import SelectionLikelihoodInfo
 
 @dataclass
@@ -21,7 +22,7 @@ class ScoredEmailAddress(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The relevance score of the email address. A relevance score is used as a sort key, in relation to the other returned results. A higher relevance score value corresponds to a more relevant result. Relevance is determined by the user’s communication and collaboration patterns and business relationships.
-    relevance_score: Optional[float] = None
+    relevance_score: Optional[ScoredEmailAddress_relevanceScore] = None
     # The selectionLikelihood property
     selection_likelihood: Optional[SelectionLikelihoodInfo] = None
     
@@ -41,15 +42,17 @@ class ScoredEmailAddress(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .scored_email_address_relevance_score import ScoredEmailAddress_relevanceScore
         from .selection_likelihood_info import SelectionLikelihoodInfo
 
+        from .scored_email_address_relevance_score import ScoredEmailAddress_relevanceScore
         from .selection_likelihood_info import SelectionLikelihoodInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "relevanceScore": lambda n : setattr(self, 'relevance_score', n.get_float_value()),
+            "relevanceScore": lambda n : setattr(self, 'relevance_score', n.get_object_value(ScoredEmailAddress_relevanceScore)),
             "selectionLikelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(SelectionLikelihoodInfo)),
         }
         return fields
@@ -65,7 +68,7 @@ class ScoredEmailAddress(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("address", self.address)
         writer.write_str_value("itemId", self.item_id)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_float_value("relevanceScore", self.relevance_score)
+        writer.write_object_value("relevanceScore", self.relevance_score)
         writer.write_enum_value("selectionLikelihood", self.selection_likelihood)
         writer.write_additional_data_value(self.additional_data)
     

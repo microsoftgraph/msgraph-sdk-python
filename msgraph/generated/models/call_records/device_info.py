@@ -4,6 +4,20 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .device_info_capture_not_functioning_event_ratio import DeviceInfo_captureNotFunctioningEventRatio
+    from .device_info_cpu_insufficent_event_ratio import DeviceInfo_cpuInsufficentEventRatio
+    from .device_info_device_clipping_event_ratio import DeviceInfo_deviceClippingEventRatio
+    from .device_info_device_glitch_event_ratio import DeviceInfo_deviceGlitchEventRatio
+    from .device_info_initial_signal_level_root_mean_square import DeviceInfo_initialSignalLevelRootMeanSquare
+    from .device_info_low_speech_level_event_ratio import DeviceInfo_lowSpeechLevelEventRatio
+    from .device_info_low_speech_to_noise_event_ratio import DeviceInfo_lowSpeechToNoiseEventRatio
+    from .device_info_mic_glitch_rate import DeviceInfo_micGlitchRate
+    from .device_info_render_mute_event_ratio import DeviceInfo_renderMuteEventRatio
+    from .device_info_render_not_functioning_event_ratio import DeviceInfo_renderNotFunctioningEventRatio
+    from .device_info_render_zero_volume_event_ratio import DeviceInfo_renderZeroVolumeEventRatio
+    from .device_info_speaker_glitch_rate import DeviceInfo_speakerGlitchRate
+
 @dataclass
 class DeviceInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -16,23 +30,23 @@ class DeviceInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Name of the capture device used by the media endpoint.
     capture_device_name: Optional[str] = None
     # Fraction of the call that the media endpoint detected the capture device was not working properly.
-    capture_not_functioning_event_ratio: Optional[float] = None
+    capture_not_functioning_event_ratio: Optional[DeviceInfo_captureNotFunctioningEventRatio] = None
     # Fraction of the call that the media endpoint detected the CPU resources available were insufficient and caused poor quality of the audio sent and received.
-    cpu_insufficent_event_ratio: Optional[float] = None
+    cpu_insufficent_event_ratio: Optional[DeviceInfo_cpuInsufficentEventRatio] = None
     # Fraction of the call that the media endpoint detected clipping in the captured audio that caused poor quality of the audio being sent.
-    device_clipping_event_ratio: Optional[float] = None
+    device_clipping_event_ratio: Optional[DeviceInfo_deviceClippingEventRatio] = None
     # Fraction of the call that the media endpoint detected glitches or gaps in the audio played or captured that caused poor quality of the audio being sent or received.
-    device_glitch_event_ratio: Optional[float] = None
+    device_glitch_event_ratio: Optional[DeviceInfo_deviceGlitchEventRatio] = None
     # Number of times during the call that the media endpoint detected howling or screeching audio.
     howling_event_count: Optional[int] = None
     # The root mean square (RMS) of the incoming signal of up to the first 30 seconds of the call.
-    initial_signal_level_root_mean_square: Optional[float] = None
+    initial_signal_level_root_mean_square: Optional[DeviceInfo_initialSignalLevelRootMeanSquare] = None
     # Fraction of the call that the media endpoint detected low speech level that caused poor quality of the audio being sent.
-    low_speech_level_event_ratio: Optional[float] = None
+    low_speech_level_event_ratio: Optional[DeviceInfo_lowSpeechLevelEventRatio] = None
     # Fraction of the call that the media endpoint detected low speech to noise level that caused poor quality of the audio being sent.
-    low_speech_to_noise_event_ratio: Optional[float] = None
+    low_speech_to_noise_event_ratio: Optional[DeviceInfo_lowSpeechToNoiseEventRatio] = None
     # Glitches per 5 minute interval for the media endpoint's microphone.
-    mic_glitch_rate: Optional[float] = None
+    mic_glitch_rate: Optional[DeviceInfo_micGlitchRate] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Average energy level of received audio for audio classified as mono noise or left channel of stereo noise by the media endpoint.
@@ -44,17 +58,17 @@ class DeviceInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Name of the render device used by the media endpoint.
     render_device_name: Optional[str] = None
     # Fraction of the call that media endpoint detected device render is muted.
-    render_mute_event_ratio: Optional[float] = None
+    render_mute_event_ratio: Optional[DeviceInfo_renderMuteEventRatio] = None
     # Fraction of the call that the media endpoint detected the render device was not working properly.
-    render_not_functioning_event_ratio: Optional[float] = None
+    render_not_functioning_event_ratio: Optional[DeviceInfo_renderNotFunctioningEventRatio] = None
     # Fraction of the call that media endpoint detected device render volume is set to 0.
-    render_zero_volume_event_ratio: Optional[float] = None
+    render_zero_volume_event_ratio: Optional[DeviceInfo_renderZeroVolumeEventRatio] = None
     # Average energy level of sent audio for audio classified as mono noise or left channel of stereo noise by the media endpoint.
     sent_noise_level: Optional[int] = None
     # Average energy level of sent audio for audio classified as mono speech, or left channel of stereo speech by the media endpoint.
     sent_signal_level: Optional[int] = None
     # Glitches per 5 minute internal for the media endpoint's loudspeaker.
-    speaker_glitch_rate: Optional[float] = None
+    speaker_glitch_rate: Optional[DeviceInfo_speakerGlitchRate] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DeviceInfo:
@@ -72,29 +86,55 @@ class DeviceInfo(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .device_info_capture_not_functioning_event_ratio import DeviceInfo_captureNotFunctioningEventRatio
+        from .device_info_cpu_insufficent_event_ratio import DeviceInfo_cpuInsufficentEventRatio
+        from .device_info_device_clipping_event_ratio import DeviceInfo_deviceClippingEventRatio
+        from .device_info_device_glitch_event_ratio import DeviceInfo_deviceGlitchEventRatio
+        from .device_info_initial_signal_level_root_mean_square import DeviceInfo_initialSignalLevelRootMeanSquare
+        from .device_info_low_speech_level_event_ratio import DeviceInfo_lowSpeechLevelEventRatio
+        from .device_info_low_speech_to_noise_event_ratio import DeviceInfo_lowSpeechToNoiseEventRatio
+        from .device_info_mic_glitch_rate import DeviceInfo_micGlitchRate
+        from .device_info_render_mute_event_ratio import DeviceInfo_renderMuteEventRatio
+        from .device_info_render_not_functioning_event_ratio import DeviceInfo_renderNotFunctioningEventRatio
+        from .device_info_render_zero_volume_event_ratio import DeviceInfo_renderZeroVolumeEventRatio
+        from .device_info_speaker_glitch_rate import DeviceInfo_speakerGlitchRate
+
+        from .device_info_capture_not_functioning_event_ratio import DeviceInfo_captureNotFunctioningEventRatio
+        from .device_info_cpu_insufficent_event_ratio import DeviceInfo_cpuInsufficentEventRatio
+        from .device_info_device_clipping_event_ratio import DeviceInfo_deviceClippingEventRatio
+        from .device_info_device_glitch_event_ratio import DeviceInfo_deviceGlitchEventRatio
+        from .device_info_initial_signal_level_root_mean_square import DeviceInfo_initialSignalLevelRootMeanSquare
+        from .device_info_low_speech_level_event_ratio import DeviceInfo_lowSpeechLevelEventRatio
+        from .device_info_low_speech_to_noise_event_ratio import DeviceInfo_lowSpeechToNoiseEventRatio
+        from .device_info_mic_glitch_rate import DeviceInfo_micGlitchRate
+        from .device_info_render_mute_event_ratio import DeviceInfo_renderMuteEventRatio
+        from .device_info_render_not_functioning_event_ratio import DeviceInfo_renderNotFunctioningEventRatio
+        from .device_info_render_zero_volume_event_ratio import DeviceInfo_renderZeroVolumeEventRatio
+        from .device_info_speaker_glitch_rate import DeviceInfo_speakerGlitchRate
+
         fields: Dict[str, Callable[[Any], None]] = {
             "captureDeviceDriver": lambda n : setattr(self, 'capture_device_driver', n.get_str_value()),
             "captureDeviceName": lambda n : setattr(self, 'capture_device_name', n.get_str_value()),
-            "captureNotFunctioningEventRatio": lambda n : setattr(self, 'capture_not_functioning_event_ratio', n.get_float_value()),
-            "cpuInsufficentEventRatio": lambda n : setattr(self, 'cpu_insufficent_event_ratio', n.get_float_value()),
-            "deviceClippingEventRatio": lambda n : setattr(self, 'device_clipping_event_ratio', n.get_float_value()),
-            "deviceGlitchEventRatio": lambda n : setattr(self, 'device_glitch_event_ratio', n.get_float_value()),
+            "captureNotFunctioningEventRatio": lambda n : setattr(self, 'capture_not_functioning_event_ratio', n.get_object_value(DeviceInfo_captureNotFunctioningEventRatio)),
+            "cpuInsufficentEventRatio": lambda n : setattr(self, 'cpu_insufficent_event_ratio', n.get_object_value(DeviceInfo_cpuInsufficentEventRatio)),
+            "deviceClippingEventRatio": lambda n : setattr(self, 'device_clipping_event_ratio', n.get_object_value(DeviceInfo_deviceClippingEventRatio)),
+            "deviceGlitchEventRatio": lambda n : setattr(self, 'device_glitch_event_ratio', n.get_object_value(DeviceInfo_deviceGlitchEventRatio)),
             "howlingEventCount": lambda n : setattr(self, 'howling_event_count', n.get_int_value()),
-            "initialSignalLevelRootMeanSquare": lambda n : setattr(self, 'initial_signal_level_root_mean_square', n.get_float_value()),
-            "lowSpeechLevelEventRatio": lambda n : setattr(self, 'low_speech_level_event_ratio', n.get_float_value()),
-            "lowSpeechToNoiseEventRatio": lambda n : setattr(self, 'low_speech_to_noise_event_ratio', n.get_float_value()),
-            "micGlitchRate": lambda n : setattr(self, 'mic_glitch_rate', n.get_float_value()),
+            "initialSignalLevelRootMeanSquare": lambda n : setattr(self, 'initial_signal_level_root_mean_square', n.get_object_value(DeviceInfo_initialSignalLevelRootMeanSquare)),
+            "lowSpeechLevelEventRatio": lambda n : setattr(self, 'low_speech_level_event_ratio', n.get_object_value(DeviceInfo_lowSpeechLevelEventRatio)),
+            "lowSpeechToNoiseEventRatio": lambda n : setattr(self, 'low_speech_to_noise_event_ratio', n.get_object_value(DeviceInfo_lowSpeechToNoiseEventRatio)),
+            "micGlitchRate": lambda n : setattr(self, 'mic_glitch_rate', n.get_object_value(DeviceInfo_micGlitchRate)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "receivedNoiseLevel": lambda n : setattr(self, 'received_noise_level', n.get_int_value()),
             "receivedSignalLevel": lambda n : setattr(self, 'received_signal_level', n.get_int_value()),
             "renderDeviceDriver": lambda n : setattr(self, 'render_device_driver', n.get_str_value()),
             "renderDeviceName": lambda n : setattr(self, 'render_device_name', n.get_str_value()),
-            "renderMuteEventRatio": lambda n : setattr(self, 'render_mute_event_ratio', n.get_float_value()),
-            "renderNotFunctioningEventRatio": lambda n : setattr(self, 'render_not_functioning_event_ratio', n.get_float_value()),
-            "renderZeroVolumeEventRatio": lambda n : setattr(self, 'render_zero_volume_event_ratio', n.get_float_value()),
+            "renderMuteEventRatio": lambda n : setattr(self, 'render_mute_event_ratio', n.get_object_value(DeviceInfo_renderMuteEventRatio)),
+            "renderNotFunctioningEventRatio": lambda n : setattr(self, 'render_not_functioning_event_ratio', n.get_object_value(DeviceInfo_renderNotFunctioningEventRatio)),
+            "renderZeroVolumeEventRatio": lambda n : setattr(self, 'render_zero_volume_event_ratio', n.get_object_value(DeviceInfo_renderZeroVolumeEventRatio)),
             "sentNoiseLevel": lambda n : setattr(self, 'sent_noise_level', n.get_int_value()),
             "sentSignalLevel": lambda n : setattr(self, 'sent_signal_level', n.get_int_value()),
-            "speakerGlitchRate": lambda n : setattr(self, 'speaker_glitch_rate', n.get_float_value()),
+            "speakerGlitchRate": lambda n : setattr(self, 'speaker_glitch_rate', n.get_object_value(DeviceInfo_speakerGlitchRate)),
         }
         return fields
     
@@ -108,26 +148,26 @@ class DeviceInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("captureDeviceDriver", self.capture_device_driver)
         writer.write_str_value("captureDeviceName", self.capture_device_name)
-        writer.write_float_value("captureNotFunctioningEventRatio", self.capture_not_functioning_event_ratio)
-        writer.write_float_value("cpuInsufficentEventRatio", self.cpu_insufficent_event_ratio)
-        writer.write_float_value("deviceClippingEventRatio", self.device_clipping_event_ratio)
-        writer.write_float_value("deviceGlitchEventRatio", self.device_glitch_event_ratio)
+        writer.write_object_value("captureNotFunctioningEventRatio", self.capture_not_functioning_event_ratio)
+        writer.write_object_value("cpuInsufficentEventRatio", self.cpu_insufficent_event_ratio)
+        writer.write_object_value("deviceClippingEventRatio", self.device_clipping_event_ratio)
+        writer.write_object_value("deviceGlitchEventRatio", self.device_glitch_event_ratio)
         writer.write_int_value("howlingEventCount", self.howling_event_count)
-        writer.write_float_value("initialSignalLevelRootMeanSquare", self.initial_signal_level_root_mean_square)
-        writer.write_float_value("lowSpeechLevelEventRatio", self.low_speech_level_event_ratio)
-        writer.write_float_value("lowSpeechToNoiseEventRatio", self.low_speech_to_noise_event_ratio)
-        writer.write_float_value("micGlitchRate", self.mic_glitch_rate)
+        writer.write_object_value("initialSignalLevelRootMeanSquare", self.initial_signal_level_root_mean_square)
+        writer.write_object_value("lowSpeechLevelEventRatio", self.low_speech_level_event_ratio)
+        writer.write_object_value("lowSpeechToNoiseEventRatio", self.low_speech_to_noise_event_ratio)
+        writer.write_object_value("micGlitchRate", self.mic_glitch_rate)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("receivedNoiseLevel", self.received_noise_level)
         writer.write_int_value("receivedSignalLevel", self.received_signal_level)
         writer.write_str_value("renderDeviceDriver", self.render_device_driver)
         writer.write_str_value("renderDeviceName", self.render_device_name)
-        writer.write_float_value("renderMuteEventRatio", self.render_mute_event_ratio)
-        writer.write_float_value("renderNotFunctioningEventRatio", self.render_not_functioning_event_ratio)
-        writer.write_float_value("renderZeroVolumeEventRatio", self.render_zero_volume_event_ratio)
+        writer.write_object_value("renderMuteEventRatio", self.render_mute_event_ratio)
+        writer.write_object_value("renderNotFunctioningEventRatio", self.render_not_functioning_event_ratio)
+        writer.write_object_value("renderZeroVolumeEventRatio", self.render_zero_volume_event_ratio)
         writer.write_int_value("sentNoiseLevel", self.sent_noise_level)
         writer.write_int_value("sentSignalLevel", self.sent_signal_level)
-        writer.write_float_value("speakerGlitchRate", self.speaker_glitch_rate)
+        writer.write_object_value("speakerGlitchRate", self.speaker_glitch_rate)
         writer.write_additional_data_value(self.additional_data)
     
 

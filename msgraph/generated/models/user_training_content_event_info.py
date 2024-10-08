@@ -5,6 +5,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .user_training_content_event_info_potential_score_impact import UserTrainingContentEventInfo_potentialScoreImpact
+
 @dataclass
 class UserTrainingContentEventInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -23,7 +26,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, BackedModel, Parsable):
     # The operating system, platform, and device details of the user for the training event.
     os_platform_device_details: Optional[str] = None
     # Potential improvement in the tenant security posture after completion of the training by the user.
-    potential_score_impact: Optional[float] = None
+    potential_score_impact: Optional[UserTrainingContentEventInfo_potentialScoreImpact] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserTrainingContentEventInfo:
@@ -41,13 +44,17 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .user_training_content_event_info_potential_score_impact import UserTrainingContentEventInfo_potentialScoreImpact
+
+        from .user_training_content_event_info_potential_score_impact import UserTrainingContentEventInfo_potentialScoreImpact
+
         fields: Dict[str, Callable[[Any], None]] = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
             "contentDateTime": lambda n : setattr(self, 'content_date_time', n.get_datetime_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
-            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
+            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_object_value(UserTrainingContentEventInfo_potentialScoreImpact)),
         }
         return fields
     
@@ -64,7 +71,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("osPlatformDeviceDetails", self.os_platform_device_details)
-        writer.write_float_value("potentialScoreImpact", self.potential_score_impact)
+        writer.write_object_value("potentialScoreImpact", self.potential_score_impact)
         writer.write_additional_data_value(self.additional_data)
     
 

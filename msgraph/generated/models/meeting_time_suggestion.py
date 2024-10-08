@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from .attendee_availability import AttendeeAvailability
     from .free_busy_status import FreeBusyStatus
     from .location import Location
+    from .meeting_time_suggestion_confidence import MeetingTimeSuggestion_confidence
     from .time_slot import TimeSlot
 
 @dataclass
@@ -20,7 +21,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
     # An array that shows the availability status of each attendee for this meeting suggestion.
     attendee_availability: Optional[List[AttendeeAvailability]] = None
     # A percentage that represents the likelhood of all the attendees attending.
-    confidence: Optional[float] = None
+    confidence: Optional[MeetingTimeSuggestion_confidence] = None
     # An array that specifies the name and geographic location of each meeting location for this meeting suggestion.
     locations: Optional[List[Location]] = None
     # A time period suggested for the meeting.
@@ -53,16 +54,18 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
         from .attendee_availability import AttendeeAvailability
         from .free_busy_status import FreeBusyStatus
         from .location import Location
+        from .meeting_time_suggestion_confidence import MeetingTimeSuggestion_confidence
         from .time_slot import TimeSlot
 
         from .attendee_availability import AttendeeAvailability
         from .free_busy_status import FreeBusyStatus
         from .location import Location
+        from .meeting_time_suggestion_confidence import MeetingTimeSuggestion_confidence
         from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attendeeAvailability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(AttendeeAvailability)),
-            "confidence": lambda n : setattr(self, 'confidence', n.get_float_value()),
+            "confidence": lambda n : setattr(self, 'confidence', n.get_object_value(MeetingTimeSuggestion_confidence)),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(Location)),
             "meetingTimeSlot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(TimeSlot)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -81,7 +84,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("attendeeAvailability", self.attendee_availability)
-        writer.write_float_value("confidence", self.confidence)
+        writer.write_object_value("confidence", self.confidence)
         writer.write_collection_of_object_values("locations", self.locations)
         writer.write_object_value("meetingTimeSlot", self.meeting_time_slot)
         writer.write_str_value("@odata.type", self.odata_type)

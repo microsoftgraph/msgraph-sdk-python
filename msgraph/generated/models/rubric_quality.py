@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .education_item_body import EducationItemBody
     from .rubric_criterion import RubricCriterion
+    from .rubric_quality_weight import RubricQuality_weight
 
 @dataclass
 class RubricQuality(AdditionalDataHolder, BackedModel, Parsable):
@@ -26,7 +27,7 @@ class RubricQuality(AdditionalDataHolder, BackedModel, Parsable):
     # The ID of this resource.
     quality_id: Optional[str] = None
     # If present, a numerical weight for this quality.  Weights must add up to 100.
-    weight: Optional[float] = None
+    weight: Optional[RubricQuality_weight] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RubricQuality:
@@ -46,9 +47,11 @@ class RubricQuality(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .education_item_body import EducationItemBody
         from .rubric_criterion import RubricCriterion
+        from .rubric_quality_weight import RubricQuality_weight
 
         from .education_item_body import EducationItemBody
         from .rubric_criterion import RubricCriterion
+        from .rubric_quality_weight import RubricQuality_weight
 
         fields: Dict[str, Callable[[Any], None]] = {
             "criteria": lambda n : setattr(self, 'criteria', n.get_collection_of_object_values(RubricCriterion)),
@@ -56,7 +59,7 @@ class RubricQuality(AdditionalDataHolder, BackedModel, Parsable):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),
-            "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
+            "weight": lambda n : setattr(self, 'weight', n.get_object_value(RubricQuality_weight)),
         }
         return fields
     
@@ -73,7 +76,7 @@ class RubricQuality(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("qualityId", self.quality_id)
-        writer.write_float_value("weight", self.weight)
+        writer.write_object_value("weight", self.weight)
         writer.write_additional_data_value(self.additional_data)
     
 

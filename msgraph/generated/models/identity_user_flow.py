@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .b2x_identity_user_flow import B2xIdentityUserFlow
     from .entity import Entity
+    from .identity_user_flow_user_flow_type_version import IdentityUserFlow_userFlowTypeVersion
     from .user_flow_type import UserFlowType
 
 from .entity import Entity
@@ -17,7 +18,7 @@ class IdentityUserFlow(Entity):
     # The userFlowType property
     user_flow_type: Optional[UserFlowType] = None
     # The userFlowTypeVersion property
-    user_flow_type_version: Optional[float] = None
+    user_flow_type_version: Optional[IdentityUserFlow_userFlowTypeVersion] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> IdentityUserFlow:
@@ -45,15 +46,17 @@ class IdentityUserFlow(Entity):
         """
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .entity import Entity
+        from .identity_user_flow_user_flow_type_version import IdentityUserFlow_userFlowTypeVersion
         from .user_flow_type import UserFlowType
 
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .entity import Entity
+        from .identity_user_flow_user_flow_type_version import IdentityUserFlow_userFlowTypeVersion
         from .user_flow_type import UserFlowType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "userFlowType": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(UserFlowType)),
-            "userFlowTypeVersion": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
+            "userFlowTypeVersion": lambda n : setattr(self, 'user_flow_type_version', n.get_object_value(IdentityUserFlow_userFlowTypeVersion)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,6 +72,6 @@ class IdentityUserFlow(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("userFlowType", self.user_flow_type)
-        writer.write_float_value("userFlowTypeVersion", self.user_flow_type_version)
+        writer.write_object_value("userFlowTypeVersion", self.user_flow_type_version)
     
 

@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .simulation_event import SimulationEvent
+    from .simulation_events_content_compromised_rate import SimulationEventsContent_compromisedRate
 
 @dataclass
 class SimulationEventsContent(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +16,7 @@ class SimulationEventsContent(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Actual percentage of users who fell for the simulated attack in an attack simulation and training campaign.
-    compromised_rate: Optional[float] = None
+    compromised_rate: Optional[SimulationEventsContent_compromisedRate] = None
     # List of simulation events in an attack simulation and training campaign.
     events: Optional[List[SimulationEvent]] = None
     # The OdataType property
@@ -38,11 +39,13 @@ class SimulationEventsContent(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .simulation_event import SimulationEvent
+        from .simulation_events_content_compromised_rate import SimulationEventsContent_compromisedRate
 
         from .simulation_event import SimulationEvent
+        from .simulation_events_content_compromised_rate import SimulationEventsContent_compromisedRate
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "compromisedRate": lambda n : setattr(self, 'compromised_rate', n.get_float_value()),
+            "compromisedRate": lambda n : setattr(self, 'compromised_rate', n.get_object_value(SimulationEventsContent_compromisedRate)),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(SimulationEvent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -56,7 +59,7 @@ class SimulationEventsContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        writer.write_float_value("compromisedRate", self.compromised_rate)
+        writer.write_object_value("compromisedRate", self.compromised_rate)
         writer.write_collection_of_object_values("events", self.events)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

@@ -15,6 +15,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ......models.device_category import DeviceCategory
     from ......models.o_data_errors.o_data_error import ODataError
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     """
@@ -136,6 +137,15 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return DeviceCategoryRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def ref(self) -> RefRequestBuilder:
+        """
+        Provides operations to manage the collection of user entities.
+        """
+        from .ref.ref_request_builder import RefRequestBuilder
+
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceCategoryRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

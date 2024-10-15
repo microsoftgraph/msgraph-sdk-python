@@ -34,10 +34,10 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a deviceEnrollmentWindowsHelloForBusinessConfiguration.
+        Deletes a deviceEnrollmentLimitConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,10 +53,10 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Read properties and relationships of the deviceEnrollmentLimitConfiguration object.
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,11 +74,11 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: DeviceEnrollmentConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Update the properties of a deviceEnrollmentWindowsHelloForBusinessConfiguration object.
+        Update the properties of a deviceEnrollmentLimitConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -98,7 +98,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a deviceEnrollmentWindowsHelloForBusinessConfiguration.
+        Deletes a deviceEnrollmentLimitConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceEnrollmentLimitConfiguration object.
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: DeviceEnrollmentConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a deviceEnrollmentWindowsHelloForBusinessConfiguration object.
+        Update the properties of a deviceEnrollmentLimitConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -180,7 +180,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceEnrollmentLimitConfiguration object.
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

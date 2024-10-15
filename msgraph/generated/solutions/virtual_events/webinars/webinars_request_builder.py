@@ -50,7 +50,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WebinarsRequestBuilderGetQueryParameters]] = None) -> Optional[VirtualEventWebinarCollectionResponse]:
         """
-        Get the list of all virtualEventWebinar objects created in the tenant.
+        Get the list of all virtualEventWebinar objects created in a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventWebinarCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/virtualeventsroot-list-webinars?view=graph-rest-1.0
@@ -122,7 +122,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WebinarsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the list of all virtualEventWebinar objects created in the tenant.
+        Get the list of all virtualEventWebinar objects created in a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +168,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WebinarsRequestBuilderGetQueryParameters():
         """
-        Get the list of all virtualEventWebinar objects created in the tenant.
+        Get the list of all virtualEventWebinar objects created in a tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

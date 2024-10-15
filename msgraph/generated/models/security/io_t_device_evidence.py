@@ -48,7 +48,7 @@ class IoTDeviceEvidence(AlertEvidence):
     # The model property
     model: Optional[str] = None
     # The nics property
-    nics: Optional[NicEvidence] = None
+    nics: Optional[List[NicEvidence]] = None
     # The operatingSystem property
     operating_system: Optional[str] = None
     # The owners property
@@ -116,7 +116,7 @@ class IoTDeviceEvidence(AlertEvidence):
             "macAddress": lambda n : setattr(self, 'mac_address', n.get_str_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "nics": lambda n : setattr(self, 'nics', n.get_object_value(NicEvidence)),
+            "nics": lambda n : setattr(self, 'nics', n.get_collection_of_object_values(NicEvidence)),
             "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_primitive_values(str)),
             "protocols": lambda n : setattr(self, 'protocols', n.get_collection_of_primitive_values(str)),
@@ -156,7 +156,7 @@ class IoTDeviceEvidence(AlertEvidence):
         writer.write_str_value("macAddress", self.mac_address)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_object_value("nics", self.nics)
+        writer.write_collection_of_object_values("nics", self.nics)
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_collection_of_primitive_values("owners", self.owners)
         writer.write_collection_of_primitive_values("protocols", self.protocols)

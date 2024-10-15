@@ -24,9 +24,9 @@ class Audio(AdditionalDataHolder, BackedModel, Parsable):
     # Copyright information for the audio file.
     copyright: Optional[str] = None
     # The number of the disc this audio file came from.
-    disc: Optional[int] = None
+    disc: Optional[float] = None
     # The total number of discs in this album.
-    disc_count: Optional[int] = None
+    disc_count: Optional[float] = None
     # Duration of the audio file, expressed in milliseconds
     duration: Optional[int] = None
     # The genre of this audio file.
@@ -69,8 +69,8 @@ class Audio(AdditionalDataHolder, BackedModel, Parsable):
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "composers": lambda n : setattr(self, 'composers', n.get_str_value()),
             "copyright": lambda n : setattr(self, 'copyright', n.get_str_value()),
-            "disc": lambda n : setattr(self, 'disc', n.get_int_value()),
-            "discCount": lambda n : setattr(self, 'disc_count', n.get_int_value()),
+            "disc": lambda n : setattr(self, 'disc', n.get_float_value()),
+            "discCount": lambda n : setattr(self, 'disc_count', n.get_float_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
             "genre": lambda n : setattr(self, 'genre', n.get_str_value()),
             "hasDrm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
@@ -97,8 +97,8 @@ class Audio(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("bitrate", self.bitrate)
         writer.write_str_value("composers", self.composers)
         writer.write_str_value("copyright", self.copyright)
-        writer.write_int_value("disc", self.disc)
-        writer.write_int_value("discCount", self.disc_count)
+        writer.write_float_value("disc", self.disc)
+        writer.write_float_value("discCount", self.disc_count)
         writer.write_int_value("duration", self.duration)
         writer.write_str_value("genre", self.genre)
         writer.write_bool_value("hasDrm", self.has_drm)

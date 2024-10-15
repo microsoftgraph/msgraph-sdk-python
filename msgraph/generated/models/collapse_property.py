@@ -14,7 +14,7 @@ class CollapseProperty(AdditionalDataHolder, BackedModel, Parsable):
     # Defines the collapse group to trim results. The properties in this collection must be sortable/refinable properties. Required.
     fields: Optional[List[str]] = None
     # Defines a maximum limit count for this field. This numeric value must be a positive integer. Required.
-    limit: Optional[int] = None
+    limit: Optional[float] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -36,7 +36,7 @@ class CollapseProperty(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_primitive_values(str)),
-            "limit": lambda n : setattr(self, 'limit', n.get_int_value()),
+            "limit": lambda n : setattr(self, 'limit', n.get_float_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -50,7 +50,7 @@ class CollapseProperty(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_primitive_values("fields", self.fields)
-        writer.write_int_value("limit", self.limit)
+        writer.write_float_value("limit", self.limit)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

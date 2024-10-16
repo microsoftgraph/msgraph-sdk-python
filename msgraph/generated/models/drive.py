@@ -20,7 +20,7 @@ class Drive(BaseItem):
     odata_type: Optional[str] = "#microsoft.graph.drive"
     # Collection of bundles (albums and multi-select-shared sets of items). Only in personal OneDrive.
     bundles: Optional[List[DriveItem]] = None
-    # Describes the type of drive represented by this resource. OneDrive personal drives will return personal. OneDrive for Business will return business. SharePoint document libraries will return documentLibrary. Read-only.
+    # Describes the type of drive represented by this resource. OneDrive personal drives return personal. OneDrive for Business returns business. SharePoint document libraries return documentLibrary. Read-only.
     drive_type: Optional[str] = None
     # The list of items the user is following. Only in OneDrive for Business.
     following: Optional[List[DriveItem]] = None
@@ -38,7 +38,7 @@ class Drive(BaseItem):
     share_point_ids: Optional[SharepointIds] = None
     # Collection of common folders available in OneDrive. Read-only. Nullable.
     special: Optional[List[DriveItem]] = None
-    # If present, indicates that this is a system-managed drive. Read-only.
+    # If present, indicates that it's a system-managed drive. Read-only.
     system: Optional[SystemFacet] = None
     
     @staticmethod

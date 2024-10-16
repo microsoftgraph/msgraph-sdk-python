@@ -42,7 +42,7 @@ class Domain(Entity):
     password_notification_window_in_days: Optional[int] = None
     # Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.
     password_validity_period_in_days: Optional[int] = None
-    # The rootDomain property
+    # Root domain of a subdomain. Read-only, Nullable. Supports $expand.
     root_domain: Optional[Domain] = None
     # DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Doesn't support $expand.
     service_configuration_records: Optional[List[DomainDnsRecord]] = None

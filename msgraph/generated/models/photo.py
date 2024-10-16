@@ -29,7 +29,7 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The orientation value from the camera. Writable on OneDrive Personal.
-    orientation: Optional[int] = None
+    orientation: Optional[float] = None
     # Represents the date and time the photo was taken. Read-only.
     taken_date_time: Optional[datetime.datetime] = None
     
@@ -58,7 +58,7 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
             "focalLength": lambda n : setattr(self, 'focal_length', n.get_float_value()),
             "iso": lambda n : setattr(self, 'iso', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "orientation": lambda n : setattr(self, 'orientation', n.get_int_value()),
+            "orientation": lambda n : setattr(self, 'orientation', n.get_float_value()),
             "takenDateTime": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
         }
         return fields
@@ -79,7 +79,7 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_float_value("focalLength", self.focal_length)
         writer.write_int_value("iso", self.iso)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_int_value("orientation", self.orientation)
+        writer.write_float_value("orientation", self.orientation)
         writer.write_datetime_value("takenDateTime", self.taken_date_time)
         writer.write_additional_data_value(self.additional_data)
     

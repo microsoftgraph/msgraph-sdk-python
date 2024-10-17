@@ -32,7 +32,7 @@ class CustomAuthenticationExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a customAuthenticationExtension object.
+        Delete a customAuthenticationExtension object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/customauthenticationextension-delete?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class CustomAuthenticationExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CustomAuthenticationExtensionItemRequestBuilderGetQueryParameters]] = None) -> Optional[CustomAuthenticationExtension]:
         """
-        Read the properties and relationships of a customAuthenticationExtension object.
+        Read the properties and relationships of a customAuthenticationExtension object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomAuthenticationExtension]
         Find more info here: https://learn.microsoft.com/graph/api/customauthenticationextension-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class CustomAuthenticationExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: CustomAuthenticationExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CustomAuthenticationExtension]:
         """
-        Update the properties of a customAuthenticationExtension object.
+        Update the properties of a customAuthenticationExtension object. The following derived types are currently supported.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomAuthenticationExtension]
@@ -96,7 +96,7 @@ class CustomAuthenticationExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a customAuthenticationExtension object.
+        Delete a customAuthenticationExtension object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +107,7 @@ class CustomAuthenticationExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CustomAuthenticationExtensionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a customAuthenticationExtension object.
+        Read the properties and relationships of a customAuthenticationExtension object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +118,7 @@ class CustomAuthenticationExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: CustomAuthenticationExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a customAuthenticationExtension object.
+        Update the properties of a customAuthenticationExtension object. The following derived types are currently supported.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +160,7 @@ class CustomAuthenticationExtensionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomAuthenticationExtensionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a customAuthenticationExtension object.
+        Read the properties and relationships of a customAuthenticationExtension object. The following derived types are currently supported.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

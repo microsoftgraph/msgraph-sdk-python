@@ -48,10 +48,9 @@ class MailboxProtectionUnitsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxProtectionUnitsRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxProtectionUnitCollectionResponse]:
         """
-        Get a list of mailboxProtectionUnit objects.
+        The list of mailbox protection units in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailboxProtectionUnitCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/backuprestoreroot-list-mailboxprotectionunits?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +91,7 @@ class MailboxProtectionUnitsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MailboxProtectionUnitsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of mailboxProtectionUnit objects.
+        The list of mailbox protection units in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +137,7 @@ class MailboxProtectionUnitsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MailboxProtectionUnitsRequestBuilderGetQueryParameters():
         """
-        Get a list of mailboxProtectionUnit objects.
+        The list of mailbox protection units in the tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

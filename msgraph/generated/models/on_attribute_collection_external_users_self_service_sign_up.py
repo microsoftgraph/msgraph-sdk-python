@@ -14,7 +14,7 @@ from .on_attribute_collection_handler import OnAttributeCollectionHandler
 class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionHandler):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onAttributeCollectionExternalUsersSelfServiceSignUp"
-    # Required. The configuration for how attributes are displayed in the sign up experience defined by a user flow, like the externalUsersSelfServiceSignupEventsFlow, specifically on the attribute collection page.
+    # Required. The configuration for how attributes are displayed in the sign-up experience defined by a user flow, like the externalUsersSelfServiceSignupEventsFlow, specifically on the attribute collection page.
     attribute_collection_page: Optional[AuthenticationAttributeCollectionPage] = None
     # The attributes property
     attributes: Optional[List[IdentityUserFlowAttribute]] = None

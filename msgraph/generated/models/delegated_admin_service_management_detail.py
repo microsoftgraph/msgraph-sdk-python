@@ -54,6 +54,8 @@ class DelegatedAdminServiceManagementDetail(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("serviceManagementUrl", self.service_management_url)
         writer.write_str_value("serviceName", self.service_name)
     

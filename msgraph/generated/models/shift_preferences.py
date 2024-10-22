@@ -54,6 +54,9 @@ class ShiftPreferences(ChangeTrackedEntity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .shift_availability import ShiftAvailability
+
         writer.write_collection_of_object_values("availability", self.availability)
     
 

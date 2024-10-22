@@ -60,6 +60,9 @@ class ItemAnalytics(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .item_activity_stat import ItemActivityStat
+
         writer.write_object_value("allTime", self.all_time)
         writer.write_collection_of_object_values("itemActivityStats", self.item_activity_stats)
         writer.write_object_value("lastSevenDays", self.last_seven_days)

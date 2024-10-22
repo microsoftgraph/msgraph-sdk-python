@@ -48,5 +48,7 @@ class AllDeviceRegistrationMembership(DeviceRegistrationMembership):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_registration_membership import DeviceRegistrationMembership
+
     
 

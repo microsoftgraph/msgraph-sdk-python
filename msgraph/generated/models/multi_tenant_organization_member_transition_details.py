@@ -68,6 +68,10 @@ class MultiTenantOrganizationMemberTransitionDetails(AdditionalDataHolder, Backe
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .multi_tenant_organization_member_processing_status import MultiTenantOrganizationMemberProcessingStatus
+        from .multi_tenant_organization_member_role import MultiTenantOrganizationMemberRole
+        from .multi_tenant_organization_member_state import MultiTenantOrganizationMemberState
+
         writer.write_enum_value("desiredRole", self.desired_role)
         writer.write_enum_value("desiredState", self.desired_state)
         writer.write_str_value("details", self.details)

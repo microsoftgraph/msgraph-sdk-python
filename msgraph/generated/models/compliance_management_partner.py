@@ -85,6 +85,10 @@ class ComplianceManagementPartner(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .compliance_management_partner_assignment import ComplianceManagementPartnerAssignment
+        from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
+        from .entity import Entity
+
         writer.write_collection_of_object_values("androidEnrollmentAssignments", self.android_enrollment_assignments)
         writer.write_bool_value("androidOnboarded", self.android_onboarded)
         writer.write_str_value("displayName", self.display_name)

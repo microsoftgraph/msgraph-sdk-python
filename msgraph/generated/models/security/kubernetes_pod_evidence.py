@@ -93,6 +93,14 @@ class KubernetesPodEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .container_evidence import ContainerEvidence
+        from .dictionary import Dictionary
+        from .ip_evidence import IpEvidence
+        from .kubernetes_controller_evidence import KubernetesControllerEvidence
+        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+        from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
+
         writer.write_collection_of_object_values("containers", self.containers)
         writer.write_object_value("controller", self.controller)
         writer.write_collection_of_object_values("ephemeralContainers", self.ephemeral_containers)

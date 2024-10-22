@@ -54,6 +54,9 @@ class CloudAppSecuritySessionControl(ConditionalAccessSessionControl):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cloud_app_security_session_control_type import CloudAppSecuritySessionControlType
+        from .conditional_access_session_control import ConditionalAccessSessionControl
+
         writer.write_enum_value("cloudAppSecurityType", self.cloud_app_security_type)
     
 

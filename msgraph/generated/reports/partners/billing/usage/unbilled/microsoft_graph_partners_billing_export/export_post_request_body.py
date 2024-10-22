@@ -59,6 +59,9 @@ class ExportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.partners.billing.attribute_set import AttributeSet
+        from .......models.partners.billing.billing_period import BillingPeriod
+
         writer.write_enum_value("attributeSet", self.attribute_set)
         writer.write_enum_value("billingPeriod", self.billing_period)
         writer.write_str_value("currencyCode", self.currency_code)

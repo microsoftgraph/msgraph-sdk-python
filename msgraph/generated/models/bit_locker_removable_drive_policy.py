@@ -62,6 +62,8 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .bit_locker_encryption_method import BitLockerEncryptionMethod
+
         writer.write_bool_value("blockCrossOrganizationWriteAccess", self.block_cross_organization_write_access)
         writer.write_enum_value("encryptionMethod", self.encryption_method)
         writer.write_str_value("@odata.type", self.odata_type)

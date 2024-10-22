@@ -65,6 +65,8 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
+
         writer.write_enum_value("accountDeletionPolicy", self.account_deletion_policy)
         writer.write_int_value("cacheAccountsAboveDiskFreePercentage", self.cache_accounts_above_disk_free_percentage)
         writer.write_int_value("inactiveThresholdDays", self.inactive_threshold_days)

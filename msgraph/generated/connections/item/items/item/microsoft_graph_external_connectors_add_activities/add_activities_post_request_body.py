@@ -50,6 +50,8 @@ class AddActivitiesPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.external_connectors.external_activity import ExternalActivity
+
         writer.write_collection_of_object_values("activities", self.activities)
         writer.write_additional_data_value(self.additional_data)
     

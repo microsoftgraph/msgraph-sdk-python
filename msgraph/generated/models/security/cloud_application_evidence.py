@@ -69,6 +69,9 @@ class CloudApplicationEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .stream import Stream
+
         writer.write_int_value("appId", self.app_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_int_value("instanceId", self.instance_id)

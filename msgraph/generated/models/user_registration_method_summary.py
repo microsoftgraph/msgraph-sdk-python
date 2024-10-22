@@ -68,6 +68,10 @@ class UserRegistrationMethodSummary(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .included_user_roles import IncludedUserRoles
+        from .included_user_types import IncludedUserTypes
+        from .user_registration_method_count import UserRegistrationMethodCount
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("totalUserCount", self.total_user_count)
         writer.write_collection_of_object_values("userRegistrationMethodCounts", self.user_registration_method_counts)

@@ -54,6 +54,9 @@ class IdentityContainer(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .health_issue import HealthIssue
+
         writer.write_collection_of_object_values("healthIssues", self.health_issues)
     
 

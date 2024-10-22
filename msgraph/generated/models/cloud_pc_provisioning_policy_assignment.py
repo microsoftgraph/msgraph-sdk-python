@@ -60,6 +60,10 @@ class CloudPcProvisioningPolicyAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cloud_pc_management_assignment_target import CloudPcManagementAssignmentTarget
+        from .entity import Entity
+        from .user import User
+
         writer.write_collection_of_object_values("assignedUsers", self.assigned_users)
         writer.write_object_value("target", self.target)
     

@@ -54,6 +54,9 @@ class SamlOrWsFedExternalDomainFederation(SamlOrWsFedProvider):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .external_domain_name import ExternalDomainName
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+
         writer.write_collection_of_object_values("domains", self.domains)
     
 

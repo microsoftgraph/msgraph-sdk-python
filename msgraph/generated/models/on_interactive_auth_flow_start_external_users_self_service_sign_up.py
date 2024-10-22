@@ -51,6 +51,8 @@ class OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp(OnInteractiveAuth
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .on_interactive_auth_flow_start_handler import OnInteractiveAuthFlowStartHandler
+
         writer.write_bool_value("isSignUpAllowed", self.is_sign_up_allowed)
     
 

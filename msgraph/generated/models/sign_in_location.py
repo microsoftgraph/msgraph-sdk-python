@@ -62,6 +62,8 @@ class SignInLocation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .geo_coordinates import GeoCoordinates
+
         writer.write_str_value("city", self.city)
         writer.write_str_value("countryOrRegion", self.country_or_region)
         writer.write_object_value("geoCoordinates", self.geo_coordinates)

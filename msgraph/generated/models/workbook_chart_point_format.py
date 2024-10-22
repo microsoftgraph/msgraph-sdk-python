@@ -54,6 +54,9 @@ class WorkbookChartPointFormat(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
+
         writer.write_object_value("fill", self.fill)
     
 

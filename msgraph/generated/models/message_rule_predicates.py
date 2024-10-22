@@ -152,6 +152,12 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .importance import Importance
+        from .message_action_flag import MessageActionFlag
+        from .recipient import Recipient
+        from .sensitivity import Sensitivity
+        from .size_range import SizeRange
+
         writer.write_collection_of_primitive_values("bodyContains", self.body_contains)
         writer.write_collection_of_primitive_values("bodyOrSubjectContains", self.body_or_subject_contains)
         writer.write_collection_of_primitive_values("categories", self.categories)

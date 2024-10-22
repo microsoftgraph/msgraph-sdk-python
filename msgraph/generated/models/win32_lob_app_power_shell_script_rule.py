@@ -84,6 +84,11 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .run_as_account_type import RunAsAccountType
+        from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
+
         writer.write_str_value("comparisonValue", self.comparison_value)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("enforceSignatureCheck", self.enforce_signature_check)

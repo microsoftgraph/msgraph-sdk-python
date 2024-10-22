@@ -48,5 +48,7 @@ class OnDemandExecutionOnly(WorkflowExecutionConditions):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .workflow_execution_conditions import WorkflowExecutionConditions
+
     
 

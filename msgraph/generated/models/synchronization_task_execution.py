@@ -96,6 +96,9 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .synchronization_error import SynchronizationError
+        from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
+
         writer.write_str_value("activityIdentifier", self.activity_identifier)
         writer.write_int_value("countEntitled", self.count_entitled)
         writer.write_int_value("countEntitledForProvisioning", self.count_entitled_for_provisioning)

@@ -54,6 +54,9 @@ class WorkbookChartAxisTitleFormat(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_font import WorkbookChartFont
+
         writer.write_object_value("font", self.font)
     
 

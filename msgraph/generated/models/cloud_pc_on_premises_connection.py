@@ -105,6 +105,11 @@ class CloudPcOnPremisesConnection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cloud_pc_on_premises_connection_status import CloudPcOnPremisesConnectionStatus
+        from .cloud_pc_on_premises_connection_status_detail import CloudPcOnPremisesConnectionStatusDetail
+        from .cloud_pc_on_premises_connection_type import CloudPcOnPremisesConnectionType
+        from .entity import Entity
+
         writer.write_str_value("adDomainName", self.ad_domain_name)
         writer.write_str_value("adDomainPassword", self.ad_domain_password)
         writer.write_str_value("adDomainUsername", self.ad_domain_username)

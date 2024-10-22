@@ -54,6 +54,9 @@ class WhoisRecord(WhoisBaseRecord):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .whois_base_record import WhoisBaseRecord
+        from .whois_history_record import WhoisHistoryRecord
+
         writer.write_collection_of_object_values("history", self.history)
     
 

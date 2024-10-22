@@ -84,6 +84,14 @@ class LabelsRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .authority_template import AuthorityTemplate
+        from .category_template import CategoryTemplate
+        from .citation_template import CitationTemplate
+        from .department_template import DepartmentTemplate
+        from .file_plan_reference_template import FilePlanReferenceTemplate
+        from .retention_label import RetentionLabel
+
         writer.write_collection_of_object_values("authorities", self.authorities)
         writer.write_collection_of_object_values("categories", self.categories)
         writer.write_collection_of_object_values("citations", self.citations)

@@ -65,6 +65,9 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .date_time_time_zone import DateTimeTimeZone
+        from .locale_info import LocaleInfo
+
         writer.write_str_value("message", self.message)
         writer.write_object_value("messageLanguage", self.message_language)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -75,6 +75,11 @@ class IosDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+        from .ios_home_screen_item import IosHomeScreenItem
+        from .ios_home_screen_page import IosHomeScreenPage
+        from .ios_notification_settings import IosNotificationSettings
+
         writer.write_str_value("assetTagTemplate", self.asset_tag_template)
         writer.write_collection_of_object_values("homeScreenDockIcons", self.home_screen_dock_icons)
         writer.write_collection_of_object_values("homeScreenPages", self.home_screen_pages)

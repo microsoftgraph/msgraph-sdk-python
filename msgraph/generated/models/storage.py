@@ -59,6 +59,9 @@ class Storage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .file_storage import FileStorage
+        from .storage_settings import StorageSettings
+
         writer.write_object_value("fileStorage", self.file_storage)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("settings", self.settings)

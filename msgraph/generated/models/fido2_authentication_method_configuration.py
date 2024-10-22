@@ -66,6 +66,10 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .fido2_key_restrictions import Fido2KeyRestrictions
+
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
         writer.write_bool_value("isAttestationEnforced", self.is_attestation_enforced)
         writer.write_bool_value("isSelfServiceRegistrationAllowed", self.is_self_service_registration_allowed)

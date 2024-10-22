@@ -28,7 +28,8 @@ class AuthenticationCombinationConfiguration(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2CombinationConfiguration".casefold():
@@ -72,6 +73,11 @@ class AuthenticationCombinationConfiguration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_modes import AuthenticationMethodModes
+        from .entity import Entity
+        from .fido2_combination_configuration import Fido2CombinationConfiguration
+        from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
+
         writer.write_collection_of_enum_values("appliesToCombinations", self.applies_to_combinations)
     
 

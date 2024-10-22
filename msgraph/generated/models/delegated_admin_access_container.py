@@ -56,6 +56,8 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .delegated_admin_access_container_type import DelegatedAdminAccessContainerType
+
         writer.write_str_value("accessContainerId", self.access_container_id)
         writer.write_enum_value("accessContainerType", self.access_container_type)
         writer.write_str_value("@odata.type", self.odata_type)

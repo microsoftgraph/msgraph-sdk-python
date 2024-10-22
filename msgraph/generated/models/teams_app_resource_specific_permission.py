@@ -56,6 +56,8 @@ class TeamsAppResourceSpecificPermission(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .teams_app_resource_specific_permission_type import TeamsAppResourceSpecificPermissionType
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("permissionType", self.permission_type)
         writer.write_str_value("permissionValue", self.permission_value)

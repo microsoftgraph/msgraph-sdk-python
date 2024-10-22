@@ -53,6 +53,8 @@ class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Back
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .on_premises_accidental_deletion_prevention import OnPremisesAccidentalDeletionPrevention
+
         writer.write_object_value("accidentalDeletionPrevention", self.accidental_deletion_prevention)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

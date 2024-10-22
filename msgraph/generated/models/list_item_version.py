@@ -27,7 +27,8 @@ class ListItemVersion(BaseItemVersion):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.documentSetVersion".casefold():
@@ -65,6 +66,10 @@ class ListItemVersion(BaseItemVersion):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_item_version import BaseItemVersion
+        from .document_set_version import DocumentSetVersion
+        from .field_value_set import FieldValueSet
+
         writer.write_object_value("fields", self.fields)
     
 

@@ -89,7 +89,8 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.amazonResourceEvidence".casefold():
@@ -397,6 +398,55 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .amazon_resource_evidence import AmazonResourceEvidence
+        from .analyzed_message_evidence import AnalyzedMessageEvidence
+        from .azure_resource_evidence import AzureResourceEvidence
+        from .blob_container_evidence import BlobContainerEvidence
+        from .blob_evidence import BlobEvidence
+        from .cloud_application_evidence import CloudApplicationEvidence
+        from .cloud_logon_request_evidence import CloudLogonRequestEvidence
+        from .cloud_logon_session_evidence import CloudLogonSessionEvidence
+        from .container_evidence import ContainerEvidence
+        from .container_image_evidence import ContainerImageEvidence
+        from .container_registry_evidence import ContainerRegistryEvidence
+        from .device_evidence import DeviceEvidence
+        from .dns_evidence import DnsEvidence
+        from .evidence_remediation_status import EvidenceRemediationStatus
+        from .evidence_role import EvidenceRole
+        from .evidence_verdict import EvidenceVerdict
+        from .file_evidence import FileEvidence
+        from .file_hash_evidence import FileHashEvidence
+        from .git_hub_organization_evidence import GitHubOrganizationEvidence
+        from .git_hub_repo_evidence import GitHubRepoEvidence
+        from .git_hub_user_evidence import GitHubUserEvidence
+        from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
+        from .host_logon_session_evidence import HostLogonSessionEvidence
+        from .io_t_device_evidence import IoTDeviceEvidence
+        from .ip_evidence import IpEvidence
+        from .kubernetes_cluster_evidence import KubernetesClusterEvidence
+        from .kubernetes_controller_evidence import KubernetesControllerEvidence
+        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+        from .kubernetes_pod_evidence import KubernetesPodEvidence
+        from .kubernetes_secret_evidence import KubernetesSecretEvidence
+        from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
+        from .kubernetes_service_evidence import KubernetesServiceEvidence
+        from .mailbox_configuration_evidence import MailboxConfigurationEvidence
+        from .mailbox_evidence import MailboxEvidence
+        from .mail_cluster_evidence import MailClusterEvidence
+        from .malware_evidence import MalwareEvidence
+        from .network_connection_evidence import NetworkConnectionEvidence
+        from .nic_evidence import NicEvidence
+        from .oauth_application_evidence import OauthApplicationEvidence
+        from .process_evidence import ProcessEvidence
+        from .registry_key_evidence import RegistryKeyEvidence
+        from .registry_value_evidence import RegistryValueEvidence
+        from .sas_token_evidence import SasTokenEvidence
+        from .security_group_evidence import SecurityGroupEvidence
+        from .service_principal_evidence import ServicePrincipalEvidence
+        from .submission_mail_evidence import SubmissionMailEvidence
+        from .url_evidence import UrlEvidence
+        from .user_evidence import UserEvidence
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_primitive_values("detailedRoles", self.detailed_roles)
         writer.write_str_value("@odata.type", self.odata_type)

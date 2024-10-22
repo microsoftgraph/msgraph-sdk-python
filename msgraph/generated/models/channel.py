@@ -115,6 +115,15 @@ class Channel(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .channel_membership_type import ChannelMembershipType
+        from .channel_summary import ChannelSummary
+        from .chat_message import ChatMessage
+        from .conversation_member import ConversationMember
+        from .drive_item import DriveItem
+        from .entity import Entity
+        from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .teams_tab import TeamsTab
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

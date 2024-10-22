@@ -84,6 +84,13 @@ class EdiscoveryExportOperation(CaseOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .case_operation import CaseOperation
+        from .ediscovery_review_set import EdiscoveryReviewSet
+        from .ediscovery_review_set_query import EdiscoveryReviewSetQuery
+        from .export_file_metadata import ExportFileMetadata
+        from .export_file_structure import ExportFileStructure
+        from .export_options import ExportOptions
+
         writer.write_str_value("description", self.description)
         writer.write_collection_of_object_values("exportFileMetadata", self.export_file_metadata)
         writer.write_enum_value("exportOptions", self.export_options)

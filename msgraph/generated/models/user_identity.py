@@ -54,6 +54,8 @@ class UserIdentity(Identity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity import Identity
+
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
     

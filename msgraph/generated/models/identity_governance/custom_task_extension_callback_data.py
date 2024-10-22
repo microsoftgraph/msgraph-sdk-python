@@ -54,6 +54,9 @@ class CustomTaskExtensionCallbackData(CustomExtensionData):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..custom_extension_data import CustomExtensionData
+        from .custom_task_extension_operation_status import CustomTaskExtensionOperationStatus
+
         writer.write_enum_value("operationStatus", self.operation_status)
     
 

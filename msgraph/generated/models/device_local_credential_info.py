@@ -64,6 +64,9 @@ class DeviceLocalCredentialInfo(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_local_credential import DeviceLocalCredential
+        from .entity import Entity
+
         writer.write_collection_of_object_values("credentials", self.credentials)
         writer.write_str_value("deviceName", self.device_name)
         writer.write_datetime_value("lastBackupDateTime", self.last_backup_date_time)

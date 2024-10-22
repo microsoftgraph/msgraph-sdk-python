@@ -40,7 +40,8 @@ class OutlookItem(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendarSharingMessage".casefold():
@@ -121,6 +122,16 @@ class OutlookItem(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .calendar_sharing_message import CalendarSharingMessage
+        from .contact import Contact
+        from .entity import Entity
+        from .event import Event
+        from .event_message import EventMessage
+        from .event_message_request import EventMessageRequest
+        from .event_message_response import EventMessageResponse
+        from .message import Message
+        from .post import Post
+
         writer.write_collection_of_primitive_values("categories", self.categories)
         writer.write_str_value("changeKey", self.change_key)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

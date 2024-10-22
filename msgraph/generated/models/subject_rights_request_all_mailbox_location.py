@@ -48,5 +48,7 @@ class SubjectRightsRequestAllMailboxLocation(SubjectRightsRequestMailboxLocation
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
+
     
 

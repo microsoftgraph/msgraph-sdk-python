@@ -50,6 +50,8 @@ class MarkChatReadForUserPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.teamwork_user_identity import TeamworkUserIdentity
+
         writer.write_object_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
     

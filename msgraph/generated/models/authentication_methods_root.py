@@ -54,6 +54,9 @@ class AuthenticationMethodsRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_registration_details import UserRegistrationDetails
+
         writer.write_collection_of_object_values("userRegistrationDetails", self.user_registration_details)
     
 

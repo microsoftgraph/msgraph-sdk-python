@@ -69,6 +69,11 @@ class MultiTenantOrganizationJoinRequestRecord(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .multi_tenant_organization_join_request_transition_details import MultiTenantOrganizationJoinRequestTransitionDetails
+        from .multi_tenant_organization_member_role import MultiTenantOrganizationMemberRole
+        from .multi_tenant_organization_member_state import MultiTenantOrganizationMemberState
+
         writer.write_str_value("addedByTenantId", self.added_by_tenant_id)
         writer.write_enum_value("memberState", self.member_state)
         writer.write_enum_value("role", self.role)

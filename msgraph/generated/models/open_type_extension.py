@@ -51,6 +51,8 @@ class OpenTypeExtension(Extension):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .extension import Extension
+
         writer.write_str_value("extensionName", self.extension_name)
     
 

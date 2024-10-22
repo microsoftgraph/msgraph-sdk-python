@@ -57,6 +57,9 @@ class SocialIdentitySource(IdentitySource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_source import IdentitySource
+        from .social_identity_source_type import SocialIdentitySourceType
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("socialIdentitySourceType", self.social_identity_source_type)
     

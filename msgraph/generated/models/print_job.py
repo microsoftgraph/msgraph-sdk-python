@@ -91,6 +91,13 @@ class PrintJob(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .print_document import PrintDocument
+        from .print_job_configuration import PrintJobConfiguration
+        from .print_job_status import PrintJobStatus
+        from .print_task import PrintTask
+        from .user_identity import UserIdentity
+
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

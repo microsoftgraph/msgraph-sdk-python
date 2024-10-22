@@ -72,6 +72,12 @@ class VirtualEventWebinar(VirtualEvent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .communications_user_identity import CommunicationsUserIdentity
+        from .meeting_audience import MeetingAudience
+        from .virtual_event import VirtualEvent
+        from .virtual_event_registration import VirtualEventRegistration
+        from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
+
         writer.write_enum_value("audience", self.audience)
         writer.write_collection_of_object_values("coOrganizers", self.co_organizers)
         writer.write_object_value("registrationConfiguration", self.registration_configuration)

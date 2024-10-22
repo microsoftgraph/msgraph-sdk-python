@@ -56,6 +56,8 @@ class ToneInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .tone import Tone
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("sequenceId", self.sequence_id)
         writer.write_enum_value("tone", self.tone)

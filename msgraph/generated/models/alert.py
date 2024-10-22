@@ -226,6 +226,28 @@ class Alert(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_detection import AlertDetection
+        from .alert_feedback import AlertFeedback
+        from .alert_history_state import AlertHistoryState
+        from .alert_severity import AlertSeverity
+        from .alert_status import AlertStatus
+        from .alert_trigger import AlertTrigger
+        from .cloud_app_security_state import CloudAppSecurityState
+        from .entity import Entity
+        from .file_security_state import FileSecurityState
+        from .host_security_state import HostSecurityState
+        from .investigation_security_state import InvestigationSecurityState
+        from .malware_state import MalwareState
+        from .message_security_state import MessageSecurityState
+        from .network_connection import NetworkConnection
+        from .process import Process
+        from .registry_key_state import RegistryKeyState
+        from .security_resource import SecurityResource
+        from .security_vendor_information import SecurityVendorInformation
+        from .uri_click_security_state import UriClickSecurityState
+        from .user_security_state import UserSecurityState
+        from .vulnerability_state import VulnerabilityState
+
         writer.write_str_value("activityGroupName", self.activity_group_name)
         writer.write_collection_of_object_values("alertDetections", self.alert_detections)
         writer.write_str_value("assignedTo", self.assigned_to)

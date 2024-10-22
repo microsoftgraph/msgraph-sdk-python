@@ -57,6 +57,9 @@ class ItemIdResolver(UrlToItemResolverBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .url_match_info import UrlMatchInfo
+        from .url_to_item_resolver_base import UrlToItemResolverBase
+
         writer.write_str_value("itemId", self.item_id)
         writer.write_object_value("urlMatchInfo", self.url_match_info)
     

@@ -56,6 +56,8 @@ class MicrosoftManagedDesktop(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .microsoft_managed_desktop_type import MicrosoftManagedDesktopType
+
         writer.write_enum_value("managedType", self.managed_type)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("profile", self.profile)

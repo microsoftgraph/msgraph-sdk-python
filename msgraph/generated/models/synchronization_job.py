@@ -81,6 +81,13 @@ class SynchronizationJob(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .bulk_upload import BulkUpload
+        from .entity import Entity
+        from .key_value_pair import KeyValuePair
+        from .synchronization_schedule import SynchronizationSchedule
+        from .synchronization_schema import SynchronizationSchema
+        from .synchronization_status import SynchronizationStatus
+
         writer.write_object_value("bulkUpload", self.bulk_upload)
         writer.write_object_value("schedule", self.schedule)
         writer.write_object_value("schema", self.schema)

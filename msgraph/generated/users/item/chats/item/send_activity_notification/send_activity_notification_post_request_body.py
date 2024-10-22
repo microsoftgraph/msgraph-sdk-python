@@ -77,6 +77,11 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, BackedModel,
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.item_body import ItemBody
+        from ......models.key_value_pair import KeyValuePair
+        from ......models.teamwork_activity_topic import TeamworkActivityTopic
+        from ......models.teamwork_notification_recipient import TeamworkNotificationRecipient
+
         writer.write_str_value("activityType", self.activity_type)
         writer.write_int_value("chainId", self.chain_id)
         writer.write_object_value("previewText", self.preview_text)

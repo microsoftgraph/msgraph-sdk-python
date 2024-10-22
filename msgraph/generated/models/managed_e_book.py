@@ -59,7 +59,8 @@ class ManagedEBook(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosVppEBook".casefold():
@@ -117,6 +118,14 @@ class ManagedEBook(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_install_state import DeviceInstallState
+        from .entity import Entity
+        from .e_book_install_summary import EBookInstallSummary
+        from .ios_vpp_e_book import IosVppEBook
+        from .managed_e_book_assignment import ManagedEBookAssignment
+        from .mime_content import MimeContent
+        from .user_install_state_summary import UserInstallStateSummary
+
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

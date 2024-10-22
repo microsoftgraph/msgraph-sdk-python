@@ -54,6 +54,9 @@ class OneDriveForBusinessRestoreSession(RestoreSessionBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .drive_restore_artifact import DriveRestoreArtifact
+        from .restore_session_base import RestoreSessionBase
+
         writer.write_collection_of_object_values("driveRestoreArtifacts", self.drive_restore_artifacts)
     
 

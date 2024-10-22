@@ -74,6 +74,9 @@ class OutOfBoxExperienceSetting(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .windows_device_usage_type import WindowsDeviceUsageType
+        from .windows_user_type import WindowsUserType
+
         writer.write_enum_value("deviceUsageType", self.device_usage_type)
         writer.write_bool_value("escapeLinkHidden", self.escape_link_hidden)
         writer.write_bool_value("eulaHidden", self.eula_hidden)

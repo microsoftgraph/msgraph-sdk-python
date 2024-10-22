@@ -59,6 +59,8 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_package_localized_text import AccessPackageLocalizedText
+
         writer.write_str_value("actualValue", self.actual_value)
         writer.write_collection_of_object_values("localizations", self.localizations)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -100,6 +100,10 @@ class UserRegistrationDetails(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .sign_in_user_type import SignInUserType
+        from .user_default_authentication_method import UserDefaultAuthenticationMethod
+
         writer.write_bool_value("isAdmin", self.is_admin)
         writer.write_bool_value("isMfaCapable", self.is_mfa_capable)
         writer.write_bool_value("isMfaRegistered", self.is_mfa_registered)

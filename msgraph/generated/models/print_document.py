@@ -57,6 +57,8 @@ class PrintDocument(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("contentType", self.content_type)
         writer.write_str_value("displayName", self.display_name)
         writer.write_int_value("size", self.size)

@@ -66,6 +66,10 @@ class WindowsSetting(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .windows_setting_instance import WindowsSettingInstance
+        from .windows_setting_type import WindowsSettingType
+
         writer.write_collection_of_object_values("instances", self.instances)
         writer.write_str_value("payloadType", self.payload_type)
         writer.write_enum_value("settingType", self.setting_type)

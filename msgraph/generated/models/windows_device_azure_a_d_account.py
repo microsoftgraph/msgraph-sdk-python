@@ -51,6 +51,8 @@ class WindowsDeviceAzureADAccount(WindowsDeviceAccount):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .windows_device_account import WindowsDeviceAccount
+
         writer.write_str_value("userPrincipalName", self.user_principal_name)
     
 

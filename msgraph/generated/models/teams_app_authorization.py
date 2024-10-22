@@ -53,6 +53,8 @@ class TeamsAppAuthorization(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .teams_app_permission_set import TeamsAppPermissionSet
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("requiredPermissionSet", self.required_permission_set)
         writer.write_additional_data_value(self.additional_data)

@@ -157,6 +157,20 @@ class ChatMessage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .channel_identity import ChannelIdentity
+        from .chat_message_attachment import ChatMessageAttachment
+        from .chat_message_from_identity_set import ChatMessageFromIdentitySet
+        from .chat_message_history_item import ChatMessageHistoryItem
+        from .chat_message_hosted_content import ChatMessageHostedContent
+        from .chat_message_importance import ChatMessageImportance
+        from .chat_message_mention import ChatMessageMention
+        from .chat_message_policy_violation import ChatMessagePolicyViolation
+        from .chat_message_reaction import ChatMessageReaction
+        from .chat_message_type import ChatMessageType
+        from .entity import Entity
+        from .event_message_detail import EventMessageDetail
+        from .item_body import ItemBody
+
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
         writer.write_object_value("channelIdentity", self.channel_identity)

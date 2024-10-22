@@ -59,6 +59,8 @@ class Fido2KeyRestrictions(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
+
         writer.write_collection_of_primitive_values("aaGuids", self.aa_guids)
         writer.write_enum_value("enforcementType", self.enforcement_type)
         writer.write_bool_value("isEnforced", self.is_enforced)

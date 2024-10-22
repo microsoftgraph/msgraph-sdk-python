@@ -147,6 +147,20 @@ class EducationClass(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_assignment import EducationAssignment
+        from .education_assignment_defaults import EducationAssignmentDefaults
+        from .education_assignment_settings import EducationAssignmentSettings
+        from .education_category import EducationCategory
+        from .education_course import EducationCourse
+        from .education_external_source import EducationExternalSource
+        from .education_module import EducationModule
+        from .education_school import EducationSchool
+        from .education_term import EducationTerm
+        from .education_user import EducationUser
+        from .entity import Entity
+        from .group import Group
+        from .identity_set import IdentitySet
+
         writer.write_collection_of_object_values("assignmentCategories", self.assignment_categories)
         writer.write_object_value("assignmentDefaults", self.assignment_defaults)
         writer.write_object_value("assignmentSettings", self.assignment_settings)

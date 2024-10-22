@@ -48,5 +48,7 @@ class IncomingCallOptions(CallOptions):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .call_options import CallOptions
+
     
 

@@ -74,6 +74,8 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
+
         writer.write_collection_of_primitive_values("excludeGroups", self.exclude_groups)
         writer.write_object_value("excludeGuestsOrExternalUsers", self.exclude_guests_or_external_users)
         writer.write_collection_of_primitive_values("excludeRoles", self.exclude_roles)

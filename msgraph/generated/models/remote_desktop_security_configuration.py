@@ -57,6 +57,9 @@ class RemoteDesktopSecurityConfiguration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .target_device_group import TargetDeviceGroup
+
         writer.write_bool_value("isRemoteDesktopProtocolEnabled", self.is_remote_desktop_protocol_enabled)
         writer.write_collection_of_object_values("targetDeviceGroups", self.target_device_groups)
     

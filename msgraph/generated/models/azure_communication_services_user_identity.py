@@ -51,6 +51,8 @@ class AzureCommunicationServicesUserIdentity(Identity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity import Identity
+
         writer.write_str_value("azureCommunicationServicesResourceId", self.azure_communication_services_resource_id)
     
 

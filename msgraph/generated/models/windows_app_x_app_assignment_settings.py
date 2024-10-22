@@ -54,6 +54,8 @@ class WindowsAppXAppAssignmentSettings(MobileAppAssignmentSettings):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+
         writer.write_bool_value("useDeviceContext", self.use_device_context)
     
 

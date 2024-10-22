@@ -51,6 +51,8 @@ class CloudLogonRequestEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+
         writer.write_str_value("requestId", self.request_id)
     
 

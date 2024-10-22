@@ -56,6 +56,8 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, BackedModel, Par
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .patterned_recurrence import PatternedRecurrence
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_str_value("reportRange", self.report_range)

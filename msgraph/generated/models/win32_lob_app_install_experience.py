@@ -62,6 +62,9 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .run_as_account_type import RunAsAccountType
+        from .win32_lob_app_restart_behavior import Win32LobAppRestartBehavior
+
         writer.write_enum_value("deviceRestartBehavior", self.device_restart_behavior)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("runAsAccount", self.run_as_account)

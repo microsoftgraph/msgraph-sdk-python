@@ -54,6 +54,9 @@ class ItemAttachment(Attachment):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attachment import Attachment
+        from .outlook_item import OutlookItem
+
         writer.write_object_value("item", self.item)
     
 

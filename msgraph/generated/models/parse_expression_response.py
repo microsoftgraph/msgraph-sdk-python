@@ -68,6 +68,9 @@ class ParseExpressionResponse(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_mapping_source import AttributeMappingSource
+        from .public_error import PublicError
+
         writer.write_object_value("error", self.error)
         writer.write_collection_of_primitive_values("evaluationResult", self.evaluation_result)
         writer.write_bool_value("evaluationSucceeded", self.evaluation_succeeded)

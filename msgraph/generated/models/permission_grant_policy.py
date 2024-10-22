@@ -57,6 +57,9 @@ class PermissionGrantPolicy(PolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .permission_grant_condition_set import PermissionGrantConditionSet
+        from .policy_base import PolicyBase
+
         writer.write_collection_of_object_values("excludes", self.excludes)
         writer.write_collection_of_object_values("includes", self.includes)
     

@@ -69,6 +69,9 @@ class AccessPackageResourceScope(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_resource import AccessPackageResource
+        from .entity import Entity
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isRootScope", self.is_root_scope)

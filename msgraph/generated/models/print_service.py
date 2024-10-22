@@ -54,6 +54,9 @@ class PrintService(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .print_service_endpoint import PrintServiceEndpoint
+
         writer.write_collection_of_object_values("endpoints", self.endpoints)
     
 

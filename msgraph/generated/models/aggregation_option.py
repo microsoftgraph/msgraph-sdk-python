@@ -59,6 +59,8 @@ class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .bucket_aggregation_definition import BucketAggregationDefinition
+
         writer.write_object_value("bucketDefinition", self.bucket_definition)
         writer.write_str_value("field", self.field)
         writer.write_str_value("@odata.type", self.odata_type)

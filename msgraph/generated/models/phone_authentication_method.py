@@ -63,6 +63,10 @@ class PhoneAuthenticationMethod(AuthenticationMethod):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method import AuthenticationMethod
+        from .authentication_method_sign_in_state import AuthenticationMethodSignInState
+        from .authentication_phone_type import AuthenticationPhoneType
+
         writer.write_str_value("phoneNumber", self.phone_number)
         writer.write_enum_value("phoneType", self.phone_type)
         writer.write_enum_value("smsSignInState", self.sms_sign_in_state)

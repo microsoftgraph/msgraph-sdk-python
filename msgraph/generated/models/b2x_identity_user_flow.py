@@ -78,6 +78,13 @@ class B2xIdentityUserFlow(IdentityUserFlow):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_provider import IdentityProvider
+        from .identity_provider_base import IdentityProviderBase
+        from .identity_user_flow import IdentityUserFlow
+        from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+        from .user_flow_api_connector_configuration import UserFlowApiConnectorConfiguration
+        from .user_flow_language_configuration import UserFlowLanguageConfiguration
+
         writer.write_object_value("apiConnectorConfiguration", self.api_connector_configuration)
         writer.write_collection_of_object_values("identityProviders", self.identity_providers)
         writer.write_collection_of_object_values("languages", self.languages)

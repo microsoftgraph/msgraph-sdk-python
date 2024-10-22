@@ -56,6 +56,8 @@ class AttributeDefinitionMetadataEntry(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_definition_metadata import AttributeDefinitionMetadata
+
         writer.write_enum_value("key", self.key)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("value", self.value)

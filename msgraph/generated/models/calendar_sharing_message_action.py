@@ -65,6 +65,10 @@ class CalendarSharingMessageAction(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .calendar_sharing_action import CalendarSharingAction
+        from .calendar_sharing_action_importance import CalendarSharingActionImportance
+        from .calendar_sharing_action_type import CalendarSharingActionType
+
         writer.write_enum_value("action", self.action)
         writer.write_enum_value("actionType", self.action_type)
         writer.write_enum_value("importance", self.importance)

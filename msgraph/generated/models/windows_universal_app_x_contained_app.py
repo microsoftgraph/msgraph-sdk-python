@@ -54,6 +54,8 @@ class WindowsUniversalAppXContainedApp(MobileContainedApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_contained_app import MobileContainedApp
+
         writer.write_str_value("appUserModelId", self.app_user_model_id)
     
 

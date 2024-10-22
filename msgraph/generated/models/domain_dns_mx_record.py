@@ -54,6 +54,8 @@ class DomainDnsMxRecord(DomainDnsRecord):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .domain_dns_record import DomainDnsRecord
+
         writer.write_str_value("mailExchange", self.mail_exchange)
         writer.write_int_value("preference", self.preference)
     

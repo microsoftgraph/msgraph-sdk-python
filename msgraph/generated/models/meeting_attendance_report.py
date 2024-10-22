@@ -64,6 +64,9 @@ class MeetingAttendanceReport(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attendance_record import AttendanceRecord
+        from .entity import Entity
+
         writer.write_collection_of_object_values("attendanceRecords", self.attendance_records)
         writer.write_datetime_value("meetingEndDateTime", self.meeting_end_date_time)
         writer.write_datetime_value("meetingStartDateTime", self.meeting_start_date_time)

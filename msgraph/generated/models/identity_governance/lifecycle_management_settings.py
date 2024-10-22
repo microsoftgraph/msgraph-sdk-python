@@ -57,6 +57,9 @@ class LifecycleManagementSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..email_settings import EmailSettings
+        from ..entity import Entity
+
         writer.write_object_value("emailSettings", self.email_settings)
         writer.write_int_value("workflowScheduleIntervalInHours", self.workflow_schedule_interval_in_hours)
     

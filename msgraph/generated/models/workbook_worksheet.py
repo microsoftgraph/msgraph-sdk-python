@@ -87,6 +87,13 @@ class WorkbookWorksheet(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart import WorkbookChart
+        from .workbook_named_item import WorkbookNamedItem
+        from .workbook_pivot_table import WorkbookPivotTable
+        from .workbook_table import WorkbookTable
+        from .workbook_worksheet_protection import WorkbookWorksheetProtection
+
         writer.write_collection_of_object_values("charts", self.charts)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("names", self.names)

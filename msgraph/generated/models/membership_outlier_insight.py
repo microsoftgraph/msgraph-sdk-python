@@ -81,6 +81,12 @@ class MembershipOutlierInsight(GovernanceInsight):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+        from .governance_insight import GovernanceInsight
+        from .outlier_container_type import OutlierContainerType
+        from .outlier_member_type import OutlierMemberType
+        from .user import User
+
         writer.write_object_value("container", self.container)
         writer.write_str_value("containerId", self.container_id)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)

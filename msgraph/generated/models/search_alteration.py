@@ -59,6 +59,8 @@ class SearchAlteration(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .altered_query_token import AlteredQueryToken
+
         writer.write_str_value("alteredHighlightedQueryString", self.altered_highlighted_query_string)
         writer.write_str_value("alteredQueryString", self.altered_query_string)
         writer.write_collection_of_object_values("alteredQueryTokens", self.altered_query_tokens)

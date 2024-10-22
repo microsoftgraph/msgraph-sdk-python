@@ -70,6 +70,9 @@ class TermsAndConditionsAcceptanceStatus(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .terms_and_conditions import TermsAndConditions
+
         writer.write_datetime_value("acceptedDateTime", self.accepted_date_time)
         writer.write_int_value("acceptedVersion", self.accepted_version)
         writer.write_object_value("termsAndConditions", self.terms_and_conditions)

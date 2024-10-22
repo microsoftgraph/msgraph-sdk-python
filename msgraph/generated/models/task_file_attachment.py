@@ -51,6 +51,8 @@ class TaskFileAttachment(AttachmentBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attachment_base import AttachmentBase
+
         writer.write_bytes_value("contentBytes", self.content_bytes)
     
 

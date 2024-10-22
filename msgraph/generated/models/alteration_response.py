@@ -62,6 +62,9 @@ class AlterationResponse(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .search_alteration import SearchAlteration
+        from .search_alteration_type import SearchAlterationType
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("originalQueryString", self.original_query_string)
         writer.write_object_value("queryAlteration", self.query_alteration)

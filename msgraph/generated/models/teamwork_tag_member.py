@@ -57,6 +57,8 @@ class TeamworkTagMember(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_str_value("userId", self.user_id)

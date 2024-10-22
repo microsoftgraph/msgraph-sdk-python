@@ -78,6 +78,10 @@ class DetectedApp(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .detected_app_platform_type import DetectedAppPlatformType
+        from .entity import Entity
+        from .managed_device import ManagedDevice
+
         writer.write_int_value("deviceCount", self.device_count)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("managedDevices", self.managed_devices)

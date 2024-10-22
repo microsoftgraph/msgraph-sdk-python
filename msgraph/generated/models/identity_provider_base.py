@@ -31,7 +31,8 @@ class IdentityProviderBase(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appleManagedIdentityProvider".casefold():
@@ -97,6 +98,14 @@ class IdentityProviderBase(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .apple_managed_identity_provider import AppleManagedIdentityProvider
+        from .built_in_identity_provider import BuiltInIdentityProvider
+        from .entity import Entity
+        from .internal_domain_federation import InternalDomainFederation
+        from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+        from .social_identity_provider import SocialIdentityProvider
+
         writer.write_str_value("displayName", self.display_name)
     
 

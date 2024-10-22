@@ -105,6 +105,16 @@ class ExternalConnection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .activity_settings import ActivitySettings
+        from .configuration import Configuration
+        from .connection_operation import ConnectionOperation
+        from .connection_state import ConnectionState
+        from .external_group import ExternalGroup
+        from .external_item import ExternalItem
+        from .schema import Schema
+        from .search_settings import SearchSettings
+
         writer.write_object_value("activitySettings", self.activity_settings)
         writer.write_object_value("configuration", self.configuration)
         writer.write_str_value("connectorId", self.connector_id)

@@ -68,6 +68,9 @@ class UserTrainingEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .training_status import TrainingStatus
+        from .user_training_content_event_info import UserTrainingContentEventInfo
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("latestTrainingStatus", self.latest_training_status)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -66,6 +66,8 @@ class UserExperienceAnalyticsDeviceStartupProcess(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("managedDeviceId", self.managed_device_id)
         writer.write_str_value("processName", self.process_name)
         writer.write_str_value("productName", self.product_name)

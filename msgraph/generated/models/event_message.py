@@ -51,7 +51,8 @@ class EventMessage(Message):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
@@ -114,6 +115,16 @@ class EventMessage(Message):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .date_time_time_zone import DateTimeTimeZone
+        from .event import Event
+        from .event_message_request import EventMessageRequest
+        from .event_message_response import EventMessageResponse
+        from .event_type import EventType
+        from .location import Location
+        from .meeting_message_type import MeetingMessageType
+        from .message import Message
+        from .patterned_recurrence import PatternedRecurrence
+
         writer.write_object_value("endDateTime", self.end_date_time)
         writer.write_object_value("event", self.event)
         writer.write_bool_value("isAllDay", self.is_all_day)

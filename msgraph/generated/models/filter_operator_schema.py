@@ -66,6 +66,11 @@ class FilterOperatorSchema(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attribute_type import AttributeType
+        from .entity import Entity
+        from .scope_operator_multi_valued_comparison_type import ScopeOperatorMultiValuedComparisonType
+        from .scope_operator_type import ScopeOperatorType
+
         writer.write_enum_value("arity", self.arity)
         writer.write_enum_value("multivaluedComparisonType", self.multivalued_comparison_type)
         writer.write_collection_of_enum_values("supportedAttributeTypes", self.supported_attribute_types)

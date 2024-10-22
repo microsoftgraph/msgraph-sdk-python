@@ -124,6 +124,14 @@ class Incident(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .alert import Alert
+        from .alert_classification import AlertClassification
+        from .alert_comment import AlertComment
+        from .alert_determination import AlertDetermination
+        from .alert_severity import AlertSeverity
+        from .incident_status import IncidentStatus
+
         writer.write_collection_of_object_values("alerts", self.alerts)
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_enum_value("classification", self.classification)

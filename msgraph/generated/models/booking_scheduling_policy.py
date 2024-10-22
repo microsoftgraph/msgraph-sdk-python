@@ -81,6 +81,9 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .bookings_availability import BookingsAvailability
+        from .bookings_availability_window import BookingsAvailabilityWindow
+
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
         writer.write_collection_of_object_values("customAvailabilities", self.custom_availabilities)
         writer.write_object_value("generalAvailability", self.general_availability)

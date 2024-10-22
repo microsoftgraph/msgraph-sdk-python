@@ -52,6 +52,9 @@ class B2xIdentityUserFlowCollectionResponse(BaseCollectionPaginationCountRespons
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+
         writer.write_collection_of_object_values("value", self.value)
     
 

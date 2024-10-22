@@ -73,6 +73,10 @@ class AccessReviewStage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
+        from .access_review_reviewer_scope import AccessReviewReviewerScope
+        from .entity import Entity
+
         writer.write_collection_of_object_values("decisions", self.decisions)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)

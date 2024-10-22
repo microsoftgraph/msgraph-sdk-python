@@ -70,6 +70,10 @@ class DocumentSetVersion(ListItemVersion):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .document_set_version_item import DocumentSetVersionItem
+        from .identity_set import IdentitySet
+        from .list_item_version import ListItemVersion
+
         writer.write_str_value("comment", self.comment)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

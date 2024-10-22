@@ -160,6 +160,10 @@ class Device(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alternative_security_id import AlternativeSecurityId
+        from .directory_object import DirectoryObject
+        from .extension import Extension
+
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("alternativeSecurityIds", self.alternative_security_ids)
         writer.write_datetime_value("approximateLastSignInDateTime", self.approximate_last_sign_in_date_time)

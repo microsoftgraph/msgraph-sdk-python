@@ -56,6 +56,8 @@ class DevicesFilter(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfigurationAccessType
+
         writer.write_enum_value("mode", self.mode)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("rule", self.rule)

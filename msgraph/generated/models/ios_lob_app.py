@@ -76,6 +76,10 @@ class IosLobApp(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .ios_device_type import IosDeviceType
+        from .ios_minimum_operating_system import IosMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
+
         writer.write_object_value("applicableDeviceType", self.applicable_device_type)
         writer.write_str_value("buildNumber", self.build_number)
         writer.write_str_value("bundleId", self.bundle_id)

@@ -78,6 +78,13 @@ class ConditionalAccessRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_strength_root import AuthenticationStrengthRoot
+        from .conditional_access_policy import ConditionalAccessPolicy
+        from .conditional_access_template import ConditionalAccessTemplate
+        from .entity import Entity
+        from .named_location import NamedLocation
+
         writer.write_collection_of_object_values("authenticationContextClassReferences", self.authentication_context_class_references)
         writer.write_object_value("authenticationStrength", self.authentication_strength)
         writer.write_collection_of_object_values("namedLocations", self.named_locations)

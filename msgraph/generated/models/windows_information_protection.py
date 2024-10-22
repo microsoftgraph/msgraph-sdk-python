@@ -87,7 +87,8 @@ class WindowsInformationProtection(ManagedAppPolicy):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mdmWindowsInformationProtectionPolicy".casefold():
@@ -169,6 +170,18 @@ class WindowsInformationProtection(ManagedAppPolicy):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .managed_app_policy import ManagedAppPolicy
+        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
+        from .windows_information_protection_app import WindowsInformationProtectionApp
+        from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
+        from .windows_information_protection_data_recovery_certificate import WindowsInformationProtectionDataRecoveryCertificate
+        from .windows_information_protection_enforcement_level import WindowsInformationProtectionEnforcementLevel
+        from .windows_information_protection_i_p_range_collection import WindowsInformationProtectionIPRangeCollection
+        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+        from .windows_information_protection_proxied_domain_collection import WindowsInformationProtectionProxiedDomainCollection
+        from .windows_information_protection_resource_collection import WindowsInformationProtectionResourceCollection
+
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_bool_value("azureRightsManagementServicesAllowed", self.azure_rights_management_services_allowed)
         writer.write_object_value("dataRecoveryCertificate", self.data_recovery_certificate)

@@ -69,6 +69,9 @@ class ServicePrincipalEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .service_principal_type import ServicePrincipalType
+
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("appOwnerTenantId", self.app_owner_tenant_id)
         writer.write_str_value("servicePrincipalName", self.service_principal_name)

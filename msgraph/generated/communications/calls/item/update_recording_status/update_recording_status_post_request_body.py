@@ -53,6 +53,8 @@ class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.recording_status import RecordingStatus
+
         writer.write_str_value("clientContext", self.client_context)
         writer.write_enum_value("status", self.status)
         writer.write_additional_data_value(self.additional_data)

@@ -69,6 +69,10 @@ class NetworkConnectionEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .ip_evidence import IpEvidence
+        from .protocol_type import ProtocolType
+
         writer.write_object_value("destinationAddress", self.destination_address)
         writer.write_int_value("destinationPort", self.destination_port)
         writer.write_enum_value("protocol", self.protocol)

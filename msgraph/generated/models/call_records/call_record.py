@@ -103,6 +103,14 @@ class CallRecord(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .call_type import CallType
+        from .modality import Modality
+        from .organizer import Organizer
+        from .participant import Participant
+        from .session import Session
+
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("joinWebUrl", self.join_web_url)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)

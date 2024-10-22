@@ -78,6 +78,9 @@ class WorkbookChartDataLabels(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
+
         writer.write_object_value("format", self.format)
         writer.write_str_value("position", self.position)
         writer.write_str_value("separator", self.separator)

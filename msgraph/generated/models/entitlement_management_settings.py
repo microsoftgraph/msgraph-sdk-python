@@ -58,6 +58,9 @@ class EntitlementManagementSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
+        from .entity import Entity
+
         writer.write_timedelta_value("durationUntilExternalUserDeletedAfterBlocked", self.duration_until_external_user_deleted_after_blocked)
         writer.write_enum_value("externalUserLifecycleAction", self.external_user_lifecycle_action)
     

@@ -64,6 +64,9 @@ class CalendarGroup(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .calendar import Calendar
+        from .entity import Entity
+
         writer.write_collection_of_object_values("calendars", self.calendars)
         writer.write_str_value("changeKey", self.change_key)
         writer.write_uuid_value("classId", self.class_id)

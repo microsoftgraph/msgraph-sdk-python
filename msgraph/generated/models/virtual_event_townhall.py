@@ -69,6 +69,11 @@ class VirtualEventTownhall(VirtualEvent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .communications_user_identity import CommunicationsUserIdentity
+        from .identity import Identity
+        from .meeting_audience import MeetingAudience
+        from .virtual_event import VirtualEvent
+
         writer.write_enum_value("audience", self.audience)
         writer.write_collection_of_object_values("coOrganizers", self.co_organizers)
         writer.write_collection_of_object_values("invitedAttendees", self.invited_attendees)

@@ -70,6 +70,9 @@ class DataPolicyOperation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .data_policy_operation_status import DataPolicyOperationStatus
+        from .entity import Entity
+
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_float_value("progress", self.progress)
         writer.write_enum_value("status", self.status)

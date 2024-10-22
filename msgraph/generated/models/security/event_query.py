@@ -56,6 +56,8 @@ class EventQuery(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .query_type import QueryType
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("query", self.query)
         writer.write_enum_value("queryType", self.query_type)

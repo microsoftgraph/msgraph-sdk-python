@@ -53,6 +53,8 @@ class RedirectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.print_job_configuration import PrintJobConfiguration
+
         writer.write_object_value("configuration", self.configuration)
         writer.write_str_value("destinationPrinterId", self.destination_printer_id)
         writer.write_additional_data_value(self.additional_data)

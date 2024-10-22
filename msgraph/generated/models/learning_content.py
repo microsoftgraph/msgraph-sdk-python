@@ -109,6 +109,9 @@ class LearningContent(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .level import Level
+
         writer.write_collection_of_primitive_values("additionalTags", self.additional_tags)
         writer.write_str_value("contentWebUrl", self.content_web_url)
         writer.write_collection_of_primitive_values("contributors", self.contributors)

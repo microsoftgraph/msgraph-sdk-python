@@ -54,6 +54,9 @@ class InternetExplorerMode(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .browser_site_list import BrowserSiteList
+        from .entity import Entity
+
         writer.write_collection_of_object_values("siteLists", self.site_lists)
     
 

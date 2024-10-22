@@ -39,10 +39,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a windows10GeneralConfiguration.
+        Deletes a windows10CustomConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10generalconfiguration-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10customconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -58,10 +58,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceConfigurationItemRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceConfiguration]:
         """
-        Read properties and relationships of the iosUpdateConfiguration object.
+        Read properties and relationships of the androidCustomConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-iosupdateconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidcustomconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -115,7 +115,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a windows10GeneralConfiguration.
+        Deletes a windows10CustomConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,7 +126,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceConfigurationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosUpdateConfiguration object.
+        Read properties and relationships of the androidCustomConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -233,7 +233,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosUpdateConfiguration object.
+        Read properties and relationships of the androidCustomConfiguration object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

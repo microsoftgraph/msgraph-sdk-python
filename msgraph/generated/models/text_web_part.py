@@ -51,6 +51,8 @@ class TextWebPart(WebPart):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .web_part import WebPart
+
         writer.write_str_value("innerHtml", self.inner_html)
     
 

@@ -80,6 +80,10 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_review_expiration_behavior import AccessReviewExpirationBehavior
+        from .entitlement_management_schedule import EntitlementManagementSchedule
+        from .subject_set import SubjectSet
+
         writer.write_enum_value("expirationBehavior", self.expiration_behavior)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
         writer.write_bool_value("isEnabled", self.is_enabled)

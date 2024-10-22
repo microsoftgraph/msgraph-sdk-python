@@ -60,6 +60,9 @@ class BlobContainerEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .azure_resource_evidence import AzureResourceEvidence
+
         writer.write_str_value("name", self.name)
         writer.write_object_value("storageResource", self.storage_resource)
         writer.write_str_value("url", self.url)

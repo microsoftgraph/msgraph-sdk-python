@@ -84,6 +84,8 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_float_value("osCheckFailedPercentage", self.os_check_failed_percentage)
         writer.write_float_value("processorCoreCountCheckFailedPercentage", self.processor_core_count_check_failed_percentage)
         writer.write_float_value("processorFamilyCheckFailedPercentage", self.processor_family_check_failed_percentage)

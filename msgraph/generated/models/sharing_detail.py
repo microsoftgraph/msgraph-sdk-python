@@ -69,6 +69,9 @@ class SharingDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .insight_identity import InsightIdentity
+        from .resource_reference import ResourceReference
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("sharedBy", self.shared_by)
         writer.write_datetime_value("sharedDateTime", self.shared_date_time)

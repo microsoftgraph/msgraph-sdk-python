@@ -163,6 +163,13 @@ class BookingAppointment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .booking_customer_information_base import BookingCustomerInformationBase
+        from .booking_price_type import BookingPriceType
+        from .booking_reminder import BookingReminder
+        from .date_time_time_zone import DateTimeTimeZone
+        from .entity import Entity
+        from .location import Location
+
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_str_value("anonymousJoinWebUrl", self.anonymous_join_web_url)
         writer.write_str_value("appointmentLabel", self.appointment_label)

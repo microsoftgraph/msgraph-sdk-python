@@ -85,6 +85,10 @@ class SslCertificate(Artifact):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .artifact import Artifact
+        from .host import Host
+        from .ssl_certificate_entity import SslCertificateEntity
+
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("fingerprint", self.fingerprint)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)

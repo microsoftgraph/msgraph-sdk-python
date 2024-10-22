@@ -51,7 +51,8 @@ class ThreatAssessmentRequest(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailFileAssessmentRequest".casefold():
@@ -126,6 +127,19 @@ class ThreatAssessmentRequest(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .entity import Entity
+        from .file_assessment_request import FileAssessmentRequest
+        from .identity_set import IdentitySet
+        from .mail_assessment_request import MailAssessmentRequest
+        from .threat_assessment_content_type import ThreatAssessmentContentType
+        from .threat_assessment_request_source import ThreatAssessmentRequestSource
+        from .threat_assessment_result import ThreatAssessmentResult
+        from .threat_assessment_status import ThreatAssessmentStatus
+        from .threat_category import ThreatCategory
+        from .threat_expected_assessment import ThreatExpectedAssessment
+        from .url_assessment_request import UrlAssessmentRequest
+
         writer.write_enum_value("category", self.category)
         writer.write_enum_value("contentType", self.content_type)
         writer.write_object_value("createdBy", self.created_by)

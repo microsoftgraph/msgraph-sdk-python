@@ -66,6 +66,9 @@ class CustomTrainingSetting(TrainingSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .training_assigned_to import TrainingAssignedTo
+        from .training_setting import TrainingSetting
+
         writer.write_collection_of_enum_values("assignedTo", self.assigned_to)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

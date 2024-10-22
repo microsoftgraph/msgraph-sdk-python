@@ -73,7 +73,8 @@ class OnlineMeetingBase(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onlineMeeting".casefold():
@@ -153,6 +154,20 @@ class OnlineMeetingBase(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .audio_conferencing import AudioConferencing
+        from .chat_info import ChatInfo
+        from .entity import Entity
+        from .item_body import ItemBody
+        from .join_meeting_id_settings import JoinMeetingIdSettings
+        from .lobby_bypass_settings import LobbyBypassSettings
+        from .meeting_attendance_report import MeetingAttendanceReport
+        from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
+        from .meeting_chat_mode import MeetingChatMode
+        from .online_meeting import OnlineMeeting
+        from .online_meeting_presenters import OnlineMeetingPresenters
+        from .virtual_event_session import VirtualEventSession
+        from .watermark_protection_values import WatermarkProtectionValues
+
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)

@@ -60,6 +60,10 @@ class PrintTaskTrigger(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .print_event import PrintEvent
+        from .print_task_definition import PrintTaskDefinition
+
         writer.write_object_value("definition", self.definition)
         writer.write_enum_value("event", self.event)
     

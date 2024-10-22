@@ -57,6 +57,8 @@ class MailboxProtectionUnit(ProtectionUnitBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .protection_unit_base import ProtectionUnitBase
+
         writer.write_str_value("directoryObjectId", self.directory_object_id)
     
 

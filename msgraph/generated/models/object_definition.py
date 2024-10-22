@@ -65,6 +65,9 @@ class ObjectDefinition(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_definition import AttributeDefinition
+        from .object_definition_metadata_entry import ObjectDefinitionMetadataEntry
+
         writer.write_collection_of_object_values("attributes", self.attributes)
         writer.write_collection_of_object_values("metadata", self.metadata)
         writer.write_str_value("name", self.name)

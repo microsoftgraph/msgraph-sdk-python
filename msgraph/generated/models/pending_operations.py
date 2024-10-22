@@ -53,6 +53,8 @@ class PendingOperations(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .pending_content_update import PendingContentUpdate
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("pendingContentUpdate", self.pending_content_update)
         writer.write_additional_data_value(self.additional_data)

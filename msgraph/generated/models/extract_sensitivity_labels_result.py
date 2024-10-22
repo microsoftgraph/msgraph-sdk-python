@@ -53,6 +53,8 @@ class ExtractSensitivityLabelsResult(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .sensitivity_label_assignment import SensitivityLabelAssignment
+
         writer.write_collection_of_object_values("labels", self.labels)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

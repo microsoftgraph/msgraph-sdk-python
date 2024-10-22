@@ -88,6 +88,11 @@ class LoginPage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_identity import EmailIdentity
+        from .entity import Entity
+        from .simulation_content_source import SimulationContentSource
+        from .simulation_content_status import SimulationContentStatus
+
         writer.write_str_value("content", self.content)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

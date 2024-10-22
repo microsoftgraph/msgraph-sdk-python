@@ -51,6 +51,8 @@ class PrintUsageByUser(PrintUsage):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .print_usage import PrintUsage
+
         writer.write_str_value("userPrincipalName", self.user_principal_name)
     
 

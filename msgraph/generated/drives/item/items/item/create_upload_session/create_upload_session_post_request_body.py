@@ -50,6 +50,8 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.drive_item_uploadable_properties import DriveItemUploadableProperties
+
         writer.write_object_value("item", self.item)
         writer.write_additional_data_value(self.additional_data)
     

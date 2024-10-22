@@ -56,6 +56,8 @@ class GetStaffAvailabilityPostRequestBody(AdditionalDataHolder, BackedModel, Par
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.date_time_time_zone import DateTimeTimeZone
+
         writer.write_object_value("endDateTime", self.end_date_time)
         writer.write_collection_of_primitive_values("staffIds", self.staff_ids)
         writer.write_object_value("startDateTime", self.start_date_time)

@@ -61,6 +61,8 @@ class WindowsSettingInstance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)

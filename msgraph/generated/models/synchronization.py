@@ -66,6 +66,11 @@ class Synchronization(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .synchronization_job import SynchronizationJob
+        from .synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
+        from .synchronization_template import SynchronizationTemplate
+
         writer.write_collection_of_object_values("jobs", self.jobs)
         writer.write_collection_of_object_values("secrets", self.secrets)
         writer.write_collection_of_object_values("templates", self.templates)

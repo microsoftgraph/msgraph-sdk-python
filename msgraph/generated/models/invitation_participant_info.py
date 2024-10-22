@@ -65,6 +65,8 @@ class InvitationParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .identity_set import IdentitySet
+
         writer.write_bool_value("hidden", self.hidden)
         writer.write_object_value("identity", self.identity)
         writer.write_str_value("@odata.type", self.odata_type)

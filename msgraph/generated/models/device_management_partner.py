@@ -88,6 +88,11 @@ class DeviceManagementPartner(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_management_partner_app_type import DeviceManagementPartnerAppType
+        from .device_management_partner_assignment import DeviceManagementPartnerAssignment
+        from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
+        from .entity import Entity
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("groupsRequiringPartnerEnrollment", self.groups_requiring_partner_enrollment)
         writer.write_bool_value("isConfigured", self.is_configured)

@@ -56,6 +56,8 @@ class ExternalItemContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .external_item_content_type import ExternalItemContentType
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_str_value("value", self.value)

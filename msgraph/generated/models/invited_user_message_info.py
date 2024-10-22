@@ -59,6 +59,8 @@ class InvitedUserMessageInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .recipient import Recipient
+
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
         writer.write_str_value("customizedMessageBody", self.customized_message_body)
         writer.write_str_value("messageLanguage", self.message_language)

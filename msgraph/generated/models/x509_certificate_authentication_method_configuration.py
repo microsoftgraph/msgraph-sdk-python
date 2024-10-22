@@ -66,6 +66,11 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+        from .x509_certificate_user_binding import X509CertificateUserBinding
+
         writer.write_object_value("authenticationModeConfiguration", self.authentication_mode_configuration)
         writer.write_collection_of_object_values("certificateUserBindings", self.certificate_user_bindings)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)

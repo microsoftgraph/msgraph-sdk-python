@@ -69,6 +69,11 @@ class PlannerTaskDetails(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .planner_checklist_items import PlannerChecklistItems
+        from .planner_external_references import PlannerExternalReferences
+        from .planner_preview_type import PlannerPreviewType
+
         writer.write_object_value("checklist", self.checklist)
         writer.write_str_value("description", self.description)
         writer.write_enum_value("previewType", self.preview_type)

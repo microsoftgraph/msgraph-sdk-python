@@ -48,5 +48,7 @@ class FileStorageContainerCustomPropertyDictionary(Dictionary):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .dictionary import Dictionary
+
     
 

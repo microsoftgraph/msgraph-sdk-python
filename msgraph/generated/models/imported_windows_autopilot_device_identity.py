@@ -75,6 +75,9 @@ class ImportedWindowsAutopilotDeviceIdentity(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .imported_windows_autopilot_device_identity_state import ImportedWindowsAutopilotDeviceIdentityState
+
         writer.write_str_value("assignedUserPrincipalName", self.assigned_user_principal_name)
         writer.write_str_value("groupTag", self.group_tag)
         writer.write_bytes_value("hardwareIdentifier", self.hardware_identifier)

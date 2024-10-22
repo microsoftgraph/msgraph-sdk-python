@@ -54,6 +54,8 @@ class VirtualEventWebinarRegistrationConfiguration(VirtualEventRegistrationConfi
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .virtual_event_registration_configuration import VirtualEventRegistrationConfiguration
+
         writer.write_bool_value("isManualApprovalEnabled", self.is_manual_approval_enabled)
         writer.write_bool_value("isWaitlistEnabled", self.is_waitlist_enabled)
     

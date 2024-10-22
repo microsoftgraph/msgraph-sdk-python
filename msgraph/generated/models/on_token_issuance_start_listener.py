@@ -54,6 +54,9 @@ class OnTokenIssuanceStartListener(AuthenticationEventListener):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_event_listener import AuthenticationEventListener
+        from .on_token_issuance_start_handler import OnTokenIssuanceStartHandler
+
         writer.write_object_value("handler", self.handler)
     
 

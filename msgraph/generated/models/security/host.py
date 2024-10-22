@@ -66,7 +66,8 @@ class Host(Artifact):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostname".casefold():
@@ -142,6 +143,20 @@ class Host(Artifact):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .artifact import Artifact
+        from .hostname import Hostname
+        from .host_component import HostComponent
+        from .host_cookie import HostCookie
+        from .host_pair import HostPair
+        from .host_port import HostPort
+        from .host_reputation import HostReputation
+        from .host_ssl_certificate import HostSslCertificate
+        from .host_tracker import HostTracker
+        from .ip_address import IpAddress
+        from .passive_dns_record import PassiveDnsRecord
+        from .subdomain import Subdomain
+        from .whois_record import WhoisRecord
+
         writer.write_collection_of_object_values("childHostPairs", self.child_host_pairs)
         writer.write_collection_of_object_values("components", self.components)
         writer.write_collection_of_object_values("cookies", self.cookies)

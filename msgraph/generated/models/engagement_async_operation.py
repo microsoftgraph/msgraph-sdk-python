@@ -60,6 +60,9 @@ class EngagementAsyncOperation(LongRunningOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .engagement_async_operation_type import EngagementAsyncOperationType
+        from .long_running_operation import LongRunningOperation
+
         writer.write_enum_value("operationType", self.operation_type)
         writer.write_str_value("resourceId", self.resource_id)
     

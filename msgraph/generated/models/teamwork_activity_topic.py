@@ -59,6 +59,8 @@ class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .teamwork_activity_topic_source import TeamworkActivityTopicSource
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("source", self.source)
         writer.write_str_value("value", self.value)

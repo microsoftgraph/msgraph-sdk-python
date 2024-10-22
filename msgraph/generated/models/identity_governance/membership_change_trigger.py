@@ -54,6 +54,9 @@ class MembershipChangeTrigger(WorkflowExecutionTrigger):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .membership_change_type import MembershipChangeType
+        from .workflow_execution_trigger import WorkflowExecutionTrigger
+
         writer.write_enum_value("changeType", self.change_type)
     
 

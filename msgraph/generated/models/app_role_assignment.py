@@ -71,6 +71,8 @@ class AppRoleAssignment(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+
         writer.write_uuid_value("appRoleId", self.app_role_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("principalDisplayName", self.principal_display_name)

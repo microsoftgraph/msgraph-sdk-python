@@ -54,6 +54,8 @@ class IosHomeScreenApp(IosHomeScreenItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .ios_home_screen_item import IosHomeScreenItem
+
         writer.write_str_value("bundleID", self.bundle_i_d)
     
 

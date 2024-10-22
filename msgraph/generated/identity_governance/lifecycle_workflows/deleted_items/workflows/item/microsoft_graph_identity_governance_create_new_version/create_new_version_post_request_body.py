@@ -50,6 +50,8 @@ class CreateNewVersionPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.identity_governance.workflow import Workflow
+
         writer.write_object_value("workflow", self.workflow)
         writer.write_additional_data_value(self.additional_data)
     

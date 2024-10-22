@@ -98,6 +98,9 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .mime_content import MimeContent
+        from .rgb_color import RgbColor
+
         writer.write_str_value("contactITEmailAddress", self.contact_i_t_email_address)
         writer.write_str_value("contactITName", self.contact_i_t_name)
         writer.write_str_value("contactITNotes", self.contact_i_t_notes)

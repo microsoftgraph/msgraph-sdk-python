@@ -51,5 +51,7 @@ class IosCertificateProfile(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+
     
 

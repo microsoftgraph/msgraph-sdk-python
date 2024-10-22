@@ -51,6 +51,8 @@ class OpenShiftChangeRequest(ScheduleChangeRequest):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .schedule_change_request import ScheduleChangeRequest
+
         writer.write_str_value("openShiftId", self.open_shift_id)
     
 

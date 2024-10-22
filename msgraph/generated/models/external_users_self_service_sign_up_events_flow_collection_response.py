@@ -52,6 +52,9 @@ class ExternalUsersSelfServiceSignUpEventsFlowCollectionResponse(BaseCollectionP
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .external_users_self_service_sign_up_events_flow import ExternalUsersSelfServiceSignUpEventsFlow
+
         writer.write_collection_of_object_values("value", self.value)
     
 

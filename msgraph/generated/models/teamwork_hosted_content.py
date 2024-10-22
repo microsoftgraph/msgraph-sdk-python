@@ -28,7 +28,8 @@ class TeamworkHostedContent(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageHostedContent".casefold():
@@ -65,6 +66,9 @@ class TeamworkHostedContent(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .chat_message_hosted_content import ChatMessageHostedContent
+        from .entity import Entity
+
         writer.write_bytes_value("contentBytes", self.content_bytes)
         writer.write_str_value("contentType", self.content_type)
     

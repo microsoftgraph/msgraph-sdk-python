@@ -148,6 +148,22 @@ class DeviceAppManagement(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .default_managed_app_protection import DefaultManagedAppProtection
+        from .entity import Entity
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .managed_app_policy import ManagedAppPolicy
+        from .managed_app_registration import ManagedAppRegistration
+        from .managed_app_status import ManagedAppStatus
+        from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
+        from .managed_e_book import ManagedEBook
+        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+        from .mobile_app import MobileApp
+        from .mobile_app_category import MobileAppCategory
+        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
+        from .vpp_token import VppToken
+        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+
         writer.write_collection_of_object_values("androidManagedAppProtections", self.android_managed_app_protections)
         writer.write_collection_of_object_values("defaultManagedAppProtections", self.default_managed_app_protections)
         writer.write_collection_of_object_values("iosManagedAppProtections", self.ios_managed_app_protections)

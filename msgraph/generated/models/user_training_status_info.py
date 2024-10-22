@@ -63,6 +63,8 @@ class UserTrainingStatusInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .training_status import TrainingStatus
+
         writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
         writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_str_value("displayName", self.display_name)

@@ -59,6 +59,8 @@ class OptionalClaims(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .optional_claim import OptionalClaim
+
         writer.write_collection_of_object_values("accessToken", self.access_token)
         writer.write_collection_of_object_values("idToken", self.id_token)
         writer.write_str_value("@odata.type", self.odata_type)

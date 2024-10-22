@@ -68,6 +68,9 @@ class ClonePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.clonable_team_parts import ClonableTeamParts
+        from ....models.team_visibility_type import TeamVisibilityType
+
         writer.write_str_value("classification", self.classification)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

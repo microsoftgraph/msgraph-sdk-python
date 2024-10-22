@@ -54,6 +54,8 @@ class EdgeSearchEngineCustom(EdgeSearchEngineBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .edge_search_engine_base import EdgeSearchEngineBase
+
         writer.write_str_value("edgeSearchEngineOpenSearchXmlUrl", self.edge_search_engine_open_search_xml_url)
     
 

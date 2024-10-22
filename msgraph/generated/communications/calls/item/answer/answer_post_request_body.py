@@ -68,6 +68,10 @@ class AnswerPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.incoming_call_options import IncomingCallOptions
+        from .....models.media_config import MediaConfig
+        from .....models.modality import Modality
+
         writer.write_collection_of_enum_values("acceptedModalities", self.accepted_modalities)
         writer.write_object_value("callOptions", self.call_options)
         writer.write_str_value("callbackUri", self.callback_uri)

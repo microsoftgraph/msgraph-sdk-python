@@ -29,7 +29,8 @@ class IdentityUserFlow(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2xIdentityUserFlow".casefold():
@@ -68,6 +69,10 @@ class IdentityUserFlow(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .entity import Entity
+        from .user_flow_type import UserFlowType
+
         writer.write_enum_value("userFlowType", self.user_flow_type)
         writer.write_float_value("userFlowTypeVersion", self.user_flow_type_version)
     

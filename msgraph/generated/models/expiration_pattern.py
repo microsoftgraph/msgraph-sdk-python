@@ -60,6 +60,8 @@ class ExpirationPattern(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .expiration_pattern_type import ExpirationPatternType
+
         writer.write_timedelta_value("duration", self.duration)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("@odata.type", self.odata_type)

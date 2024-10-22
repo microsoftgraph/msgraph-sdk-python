@@ -51,6 +51,8 @@ class MailboxProtectionRule(ProtectionRuleBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .protection_rule_base import ProtectionRuleBase
+
         writer.write_str_value("mailboxExpression", self.mailbox_expression)
     
 

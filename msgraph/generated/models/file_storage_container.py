@@ -92,6 +92,13 @@ class FileStorageContainer(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .drive import Drive
+        from .entity import Entity
+        from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+        from .file_storage_container_status import FileStorageContainerStatus
+        from .file_storage_container_viewpoint import FileStorageContainerViewpoint
+        from .permission import Permission
+
         writer.write_uuid_value("containerTypeId", self.container_type_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("customProperties", self.custom_properties)

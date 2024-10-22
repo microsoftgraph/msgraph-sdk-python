@@ -61,6 +61,9 @@ class LicenseDetails(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .service_plan_info import ServicePlanInfo
+
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)

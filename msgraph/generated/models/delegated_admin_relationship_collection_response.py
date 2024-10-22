@@ -52,6 +52,9 @@ class DelegatedAdminRelationshipCollectionResponse(BaseCollectionPaginationCount
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .delegated_admin_relationship import DelegatedAdminRelationship
+
         writer.write_collection_of_object_values("value", self.value)
     
 

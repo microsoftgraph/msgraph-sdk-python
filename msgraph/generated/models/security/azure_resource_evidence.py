@@ -57,6 +57,8 @@ class AzureResourceEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+
         writer.write_str_value("resourceId", self.resource_id)
         writer.write_str_value("resourceName", self.resource_name)
         writer.write_str_value("resourceType", self.resource_type)

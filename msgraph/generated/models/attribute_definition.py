@@ -98,6 +98,12 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_definition_metadata_entry import AttributeDefinitionMetadataEntry
+        from .attribute_type import AttributeType
+        from .mutability import Mutability
+        from .referenced_object import ReferencedObject
+        from .string_key_string_value_pair import StringKeyStringValuePair
+
         writer.write_bool_value("anchor", self.anchor)
         writer.write_collection_of_object_values("apiExpressions", self.api_expressions)
         writer.write_bool_value("caseExact", self.case_exact)

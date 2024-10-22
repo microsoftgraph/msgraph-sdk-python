@@ -69,6 +69,8 @@ class UserExperienceAnalyticsDeviceStartupProcessPerformance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_int_value("deviceCount", self.device_count)
         writer.write_int_value("medianImpactInMs", self.median_impact_in_ms)
         writer.write_str_value("processName", self.process_name)

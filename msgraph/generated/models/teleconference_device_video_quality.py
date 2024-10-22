@@ -32,7 +32,8 @@ class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teleconferenceDeviceScreenSharingQuality".casefold():
@@ -71,6 +72,9 @@ class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
+        from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
+
         writer.write_float_value("averageInboundBitRate", self.average_inbound_bit_rate)
         writer.write_float_value("averageInboundFrameRate", self.average_inbound_frame_rate)
         writer.write_float_value("averageOutboundBitRate", self.average_outbound_bit_rate)

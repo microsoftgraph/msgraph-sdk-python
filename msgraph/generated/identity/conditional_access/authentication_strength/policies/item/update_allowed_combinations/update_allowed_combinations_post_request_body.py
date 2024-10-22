@@ -50,6 +50,8 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.authentication_method_modes import AuthenticationMethodModes
+
         writer.write_collection_of_enum_values("allowedCombinations", self.allowed_combinations)
         writer.write_additional_data_value(self.additional_data)
     

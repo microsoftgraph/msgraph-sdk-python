@@ -48,5 +48,7 @@ class ItemInsights(OfficeGraphInsights):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .office_graph_insights import OfficeGraphInsights
+
     
 

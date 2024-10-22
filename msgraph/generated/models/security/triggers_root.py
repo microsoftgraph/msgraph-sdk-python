@@ -54,6 +54,9 @@ class TriggersRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .retention_event import RetentionEvent
+
         writer.write_collection_of_object_values("retentionEvents", self.retention_events)
     
 

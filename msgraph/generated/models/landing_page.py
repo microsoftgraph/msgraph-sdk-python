@@ -94,6 +94,12 @@ class LandingPage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_identity import EmailIdentity
+        from .entity import Entity
+        from .landing_page_detail import LandingPageDetail
+        from .simulation_content_source import SimulationContentSource
+        from .simulation_content_status import SimulationContentStatus
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

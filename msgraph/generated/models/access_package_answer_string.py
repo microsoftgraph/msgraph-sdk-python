@@ -51,6 +51,8 @@ class AccessPackageAnswerString(AccessPackageAnswer):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_answer import AccessPackageAnswer
+
         writer.write_str_value("value", self.value)
     
 

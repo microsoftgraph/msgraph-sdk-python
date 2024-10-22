@@ -60,6 +60,9 @@ class MailboxEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .user_account import UserAccount
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("primaryAddress", self.primary_address)
         writer.write_object_value("userAccount", self.user_account)

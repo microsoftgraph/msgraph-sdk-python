@@ -52,6 +52,9 @@ class DocumentSetVersionCollectionResponse(BaseCollectionPaginationCountResponse
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .document_set_version import DocumentSetVersion
+
         writer.write_collection_of_object_values("value", self.value)
     
 

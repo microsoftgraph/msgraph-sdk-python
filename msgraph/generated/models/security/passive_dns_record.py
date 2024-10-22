@@ -70,6 +70,9 @@ class PassiveDnsRecord(Artifact):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .artifact import Artifact
+        from .host import Host
+
         writer.write_object_value("artifact", self.artifact)
         writer.write_datetime_value("collectedDateTime", self.collected_date_time)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)

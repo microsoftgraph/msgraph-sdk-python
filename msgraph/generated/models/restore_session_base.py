@@ -44,7 +44,8 @@ class RestoreSessionBase(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeRestoreSession".casefold():
@@ -104,6 +105,14 @@ class RestoreSessionBase(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .exchange_restore_session import ExchangeRestoreSession
+        from .identity_set import IdentitySet
+        from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
+        from .public_error import PublicError
+        from .restore_session_status import RestoreSessionStatus
+        from .share_point_restore_session import SharePointRestoreSession
+
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

@@ -72,6 +72,12 @@ class Billing(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ...entity import Entity
+        from .azure_usage import AzureUsage
+        from .billing_reconciliation import BillingReconciliation
+        from .manifest import Manifest
+        from .operation import Operation
+
         writer.write_collection_of_object_values("manifests", self.manifests)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_object_value("reconciliation", self.reconciliation)

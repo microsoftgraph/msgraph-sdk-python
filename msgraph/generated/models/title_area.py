@@ -86,6 +86,10 @@ class TitleArea(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .server_processed_content import ServerProcessedContent
+        from .title_area_layout_type import TitleAreaLayoutType
+        from .title_area_text_alignment_type import TitleAreaTextAlignmentType
+
         writer.write_str_value("alternativeText", self.alternative_text)
         writer.write_bool_value("enableGradientEffect", self.enable_gradient_effect)
         writer.write_str_value("imageWebUrl", self.image_web_url)

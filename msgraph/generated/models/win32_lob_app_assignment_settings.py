@@ -75,6 +75,12 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+        from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+        from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
+        from .win32_lob_app_notification import Win32LobAppNotification
+        from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
+
         writer.write_enum_value("deliveryOptimizationPriority", self.delivery_optimization_priority)
         writer.write_object_value("installTimeSettings", self.install_time_settings)
         writer.write_enum_value("notifications", self.notifications)

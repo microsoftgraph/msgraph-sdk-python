@@ -59,6 +59,9 @@ class OnlineMeetingRestricted(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .online_meeting_content_sharing_disabled_reason import OnlineMeetingContentSharingDisabledReason
+        from .online_meeting_video_disabled_reason import OnlineMeetingVideoDisabledReason
+
         writer.write_enum_value("contentSharingDisabled", self.content_sharing_disabled)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("videoDisabled", self.video_disabled)

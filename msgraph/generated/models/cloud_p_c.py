@@ -94,6 +94,9 @@ class CloudPC(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cloud_pc_provisioning_type import CloudPcProvisioningType
+        from .entity import Entity
+
         writer.write_str_value("aadDeviceId", self.aad_device_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("gracePeriodEndDateTime", self.grace_period_end_date_time)

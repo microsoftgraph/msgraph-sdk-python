@@ -66,6 +66,10 @@ class TeamsApp(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_distribution_method import TeamsAppDistributionMethod
+
         writer.write_collection_of_object_values("appDefinitions", self.app_definitions)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("distributionMethod", self.distribution_method)

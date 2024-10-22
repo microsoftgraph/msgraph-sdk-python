@@ -214,6 +214,25 @@ class EducationUser(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .assigned_license import AssignedLicense
+        from .assigned_plan import AssignedPlan
+        from .education_assignment import EducationAssignment
+        from .education_class import EducationClass
+        from .education_external_source import EducationExternalSource
+        from .education_on_premises_info import EducationOnPremisesInfo
+        from .education_rubric import EducationRubric
+        from .education_school import EducationSchool
+        from .education_student import EducationStudent
+        from .education_teacher import EducationTeacher
+        from .education_user_role import EducationUserRole
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .password_profile import PasswordProfile
+        from .physical_address import PhysicalAddress
+        from .provisioned_plan import ProvisionedPlan
+        from .related_contact import RelatedContact
+        from .user import User
+
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("assignedLicenses", self.assigned_licenses)
         writer.write_collection_of_object_values("assignedPlans", self.assigned_plans)

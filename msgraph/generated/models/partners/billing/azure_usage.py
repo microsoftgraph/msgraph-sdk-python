@@ -60,6 +60,10 @@ class AzureUsage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ...entity import Entity
+        from .billed_usage import BilledUsage
+        from .unbilled_usage import UnbilledUsage
+
         writer.write_object_value("billed", self.billed)
         writer.write_object_value("unbilled", self.unbilled)
     

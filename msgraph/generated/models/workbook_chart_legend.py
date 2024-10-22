@@ -63,6 +63,9 @@ class WorkbookChartLegend(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_legend_format import WorkbookChartLegendFormat
+
         writer.write_object_value("format", self.format)
         writer.write_bool_value("overlay", self.overlay)
         writer.write_str_value("position", self.position)

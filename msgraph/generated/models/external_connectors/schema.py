@@ -57,6 +57,9 @@ class Schema(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .property_ import Property_
+
         writer.write_str_value("baseType", self.base_type)
         writer.write_collection_of_object_values("properties", self.properties)
     

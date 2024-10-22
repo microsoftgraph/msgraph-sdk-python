@@ -69,6 +69,11 @@ class WorkbookChartAxis(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_axis_format import WorkbookChartAxisFormat
+        from .workbook_chart_axis_title import WorkbookChartAxisTitle
+        from .workbook_chart_gridlines import WorkbookChartGridlines
+
         writer.write_object_value("format", self.format)
         writer.write_object_value("majorGridlines", self.major_gridlines)
         writer.write_object_value("minorGridlines", self.minor_gridlines)

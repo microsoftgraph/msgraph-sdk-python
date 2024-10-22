@@ -69,6 +69,11 @@ class UsedInsight(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
+        from .usage_details import UsageDetails
+
         writer.write_object_value("lastUsed", self.last_used)
         writer.write_object_value("resource", self.resource)
     

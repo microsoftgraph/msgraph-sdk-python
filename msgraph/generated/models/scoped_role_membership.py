@@ -60,6 +60,9 @@ class ScopedRoleMembership(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity import Identity
+
         writer.write_str_value("administrativeUnitId", self.administrative_unit_id)
         writer.write_str_value("roleId", self.role_id)
         writer.write_object_value("roleMemberInfo", self.role_member_info)

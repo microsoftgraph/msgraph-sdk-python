@@ -54,6 +54,9 @@ class StorageSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .unified_storage_quota import UnifiedStorageQuota
+
         writer.write_object_value("quota", self.quota)
     
 

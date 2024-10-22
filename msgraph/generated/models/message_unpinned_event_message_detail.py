@@ -58,6 +58,9 @@ class MessageUnpinnedEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+
         writer.write_datetime_value("eventDateTime", self.event_date_time)
         writer.write_object_value("initiator", self.initiator)
     

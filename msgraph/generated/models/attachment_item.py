@@ -68,6 +68,8 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attachment_type import AttachmentType
+
         writer.write_enum_value("attachmentType", self.attachment_type)
         writer.write_str_value("contentId", self.content_id)
         writer.write_str_value("contentType", self.content_type)

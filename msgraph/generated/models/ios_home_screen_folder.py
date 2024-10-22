@@ -57,6 +57,9 @@ class IosHomeScreenFolder(IosHomeScreenItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .ios_home_screen_folder_page import IosHomeScreenFolderPage
+        from .ios_home_screen_item import IosHomeScreenItem
+
         writer.write_collection_of_object_values("pages", self.pages)
     
 

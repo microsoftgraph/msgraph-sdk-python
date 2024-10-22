@@ -74,6 +74,11 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
+        from .cloud_app_security_session_control import CloudAppSecuritySessionControl
+        from .persistent_browser_session_control import PersistentBrowserSessionControl
+        from .sign_in_frequency_session_control import SignInFrequencySessionControl
+
         writer.write_object_value("applicationEnforcedRestrictions", self.application_enforced_restrictions)
         writer.write_object_value("cloudAppSecurity", self.cloud_app_security)
         writer.write_bool_value("disableResilienceDefaults", self.disable_resilience_defaults)

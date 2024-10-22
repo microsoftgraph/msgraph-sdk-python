@@ -66,6 +66,10 @@ class IpEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .geo_location import GeoLocation
+        from .stream import Stream
+
         writer.write_str_value("countryLetterCode", self.country_letter_code)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_object_value("location", self.location)

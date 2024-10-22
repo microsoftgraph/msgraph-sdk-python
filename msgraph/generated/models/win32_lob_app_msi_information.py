@@ -74,6 +74,8 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .win32_lob_app_msi_package_type import Win32LobAppMsiPackageType
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("packageType", self.package_type)
         writer.write_str_value("productCode", self.product_code)

@@ -53,6 +53,8 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.mail_tips_type import MailTipsType
+
         writer.write_collection_of_primitive_values("EmailAddresses", self.email_addresses)
         writer.write_enum_value("MailTipsOptions", self.mail_tips_options)
         writer.write_additional_data_value(self.additional_data)

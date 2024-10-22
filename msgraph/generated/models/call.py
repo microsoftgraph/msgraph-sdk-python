@@ -177,6 +177,27 @@ class Call(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .audio_routing_group import AudioRoutingGroup
+        from .call_direction import CallDirection
+        from .call_media_state import CallMediaState
+        from .call_options import CallOptions
+        from .call_route import CallRoute
+        from .call_state import CallState
+        from .call_transcription_info import CallTranscriptionInfo
+        from .chat_info import ChatInfo
+        from .comms_operation import CommsOperation
+        from .content_sharing_session import ContentSharingSession
+        from .entity import Entity
+        from .incoming_context import IncomingContext
+        from .invitation_participant_info import InvitationParticipantInfo
+        from .media_config import MediaConfig
+        from .meeting_info import MeetingInfo
+        from .modality import Modality
+        from .participant import Participant
+        from .participant_info import ParticipantInfo
+        from .result_info import ResultInfo
+        from .tone_info import ToneInfo
+
         writer.write_collection_of_object_values("audioRoutingGroups", self.audio_routing_groups)
         writer.write_str_value("callChainId", self.call_chain_id)
         writer.write_object_value("callOptions", self.call_options)

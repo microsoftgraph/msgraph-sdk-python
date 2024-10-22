@@ -59,6 +59,9 @@ class ApplicationServicePrincipal(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .application import Application
+        from .service_principal import ServicePrincipal
+
         writer.write_object_value("application", self.application)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("servicePrincipal", self.service_principal)

@@ -81,6 +81,10 @@ class LearningProvider(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .learning_content import LearningContent
+        from .learning_course_activity import LearningCourseActivity
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isCourseActivitySyncEnabled", self.is_course_activity_sync_enabled)
         writer.write_collection_of_object_values("learningContents", self.learning_contents)

@@ -55,6 +55,8 @@ class UserExperienceAnalyticsScoreHistory(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_datetime_value("startupDateTime", self.startup_date_time)
     
 

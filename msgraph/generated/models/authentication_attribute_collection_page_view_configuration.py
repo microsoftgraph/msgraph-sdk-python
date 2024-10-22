@@ -59,6 +59,8 @@ class AuthenticationAttributeCollectionPageViewConfiguration(AdditionalDataHolde
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_attribute_collection_input_configuration import AuthenticationAttributeCollectionInputConfiguration
+
         writer.write_str_value("description", self.description)
         writer.write_collection_of_object_values("inputs", self.inputs)
         writer.write_str_value("@odata.type", self.odata_type)

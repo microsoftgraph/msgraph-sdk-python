@@ -72,6 +72,10 @@ class SectionGroup(OnenoteEntityHierarchyModel):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .notebook import Notebook
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_section import OnenoteSection
+
         writer.write_object_value("parentNotebook", self.parent_notebook)
         writer.write_object_value("parentSectionGroup", self.parent_section_group)
         writer.write_collection_of_object_values("sectionGroups", self.section_groups)

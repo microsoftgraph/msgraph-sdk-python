@@ -52,6 +52,9 @@ class MdmWindowsInformationProtectionPolicyCollectionResponse(BaseCollectionPagi
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+
         writer.write_collection_of_object_values("value", self.value)
     
 

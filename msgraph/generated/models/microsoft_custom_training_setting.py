@@ -64,6 +64,10 @@ class MicrosoftCustomTrainingSetting(TrainingSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
+        from .training_completion_duration import TrainingCompletionDuration
+        from .training_setting import TrainingSetting
+
         writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_collection_of_object_values("trainingAssignmentMappings", self.training_assignment_mappings)
         writer.write_enum_value("trainingCompletionDuration", self.training_completion_duration)

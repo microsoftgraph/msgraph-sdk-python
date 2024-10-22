@@ -59,6 +59,9 @@ class ExpressionInputObject(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .object_definition import ObjectDefinition
+        from .string_key_object_value_pair import StringKeyObjectValuePair
+
         writer.write_object_value("definition", self.definition)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("properties", self.properties)

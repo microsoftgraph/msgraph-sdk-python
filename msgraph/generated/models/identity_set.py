@@ -38,7 +38,8 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageFromIdentitySet".casefold():
@@ -98,6 +99,13 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .chat_message_from_identity_set import ChatMessageFromIdentitySet
+        from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
+        from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
+        from .communications_identity_set import CommunicationsIdentitySet
+        from .identity import Identity
+        from .share_point_identity_set import SharePointIdentitySet
+
         writer.write_object_value("application", self.application)
         writer.write_object_value("device", self.device)
         writer.write_str_value("@odata.type", self.odata_type)

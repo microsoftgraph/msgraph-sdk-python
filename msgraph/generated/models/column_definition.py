@@ -198,6 +198,26 @@ class ColumnDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .boolean_column import BooleanColumn
+        from .calculated_column import CalculatedColumn
+        from .choice_column import ChoiceColumn
+        from .column_types import ColumnTypes
+        from .column_validation import ColumnValidation
+        from .content_approval_status_column import ContentApprovalStatusColumn
+        from .content_type_info import ContentTypeInfo
+        from .currency_column import CurrencyColumn
+        from .date_time_column import DateTimeColumn
+        from .default_column_value import DefaultColumnValue
+        from .entity import Entity
+        from .geolocation_column import GeolocationColumn
+        from .hyperlink_or_picture_column import HyperlinkOrPictureColumn
+        from .lookup_column import LookupColumn
+        from .number_column import NumberColumn
+        from .person_or_group_column import PersonOrGroupColumn
+        from .term_column import TermColumn
+        from .text_column import TextColumn
+        from .thumbnail_column import ThumbnailColumn
+
         writer.write_object_value("boolean", self.boolean)
         writer.write_object_value("calculated", self.calculated)
         writer.write_object_value("choice", self.choice)

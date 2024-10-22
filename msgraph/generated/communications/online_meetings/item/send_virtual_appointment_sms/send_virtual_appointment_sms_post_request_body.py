@@ -56,6 +56,9 @@ class SendVirtualAppointmentSmsPostRequestBody(AdditionalDataHolder, BackedModel
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.attendee_notification_info import AttendeeNotificationInfo
+        from .....models.virtual_appointment_message_type import VirtualAppointmentMessageType
+
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_enum_value("messageType", self.message_type)
         writer.write_additional_data_value(self.additional_data)

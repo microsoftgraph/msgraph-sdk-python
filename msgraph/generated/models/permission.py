@@ -97,6 +97,13 @@ class Permission(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .item_reference import ItemReference
+        from .share_point_identity_set import SharePointIdentitySet
+        from .sharing_invitation import SharingInvitation
+        from .sharing_link import SharingLink
+
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_object_value("grantedTo", self.granted_to)
         writer.write_collection_of_object_values("grantedToIdentities", self.granted_to_identities)

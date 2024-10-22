@@ -90,6 +90,9 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .file_hash import FileHash
+        from .process_integrity_level import ProcessIntegrityLevel
+
         writer.write_str_value("accountName", self.account_name)
         writer.write_str_value("commandLine", self.command_line)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

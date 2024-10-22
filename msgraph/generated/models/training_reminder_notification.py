@@ -54,6 +54,9 @@ class TrainingReminderNotification(BaseEndUserNotification):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_end_user_notification import BaseEndUserNotification
+        from .notification_delivery_frequency import NotificationDeliveryFrequency
+
         writer.write_enum_value("deliveryFrequency", self.delivery_frequency)
     
 

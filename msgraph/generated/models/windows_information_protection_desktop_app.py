@@ -60,6 +60,8 @@ class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .windows_information_protection_app import WindowsInformationProtectionApp
+
         writer.write_str_value("binaryName", self.binary_name)
         writer.write_str_value("binaryVersionHigh", self.binary_version_high)
         writer.write_str_value("binaryVersionLow", self.binary_version_low)

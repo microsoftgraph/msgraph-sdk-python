@@ -67,6 +67,9 @@ class IosUpdateConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .day_of_week import DayOfWeek
+        from .device_configuration import DeviceConfiguration
+
         writer.write_time_value("activeHoursEnd", self.active_hours_end)
         writer.write_time_value("activeHoursStart", self.active_hours_start)
         writer.write_collection_of_enum_values("scheduledInstallDays", self.scheduled_install_days)

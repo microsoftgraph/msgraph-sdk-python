@@ -127,6 +127,15 @@ class RiskDetection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .activity_type import ActivityType
+        from .entity import Entity
+        from .risk_detail import RiskDetail
+        from .risk_detection_timing_type import RiskDetectionTimingType
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+        from .sign_in_location import SignInLocation
+        from .token_issuer_type import TokenIssuerType
+
         writer.write_enum_value("activity", self.activity)
         writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("additionalInfo", self.additional_info)

@@ -60,6 +60,8 @@ class EmailPayloadDetail(PayloadDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .payload_detail import PayloadDetail
+
         writer.write_str_value("fromEmail", self.from_email)
         writer.write_str_value("fromName", self.from_name)
         writer.write_bool_value("isExternalSender", self.is_external_sender)

@@ -76,6 +76,8 @@ class IosVppEBook(ManagedEBook):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .managed_e_book import ManagedEBook
+
         writer.write_str_value("appleId", self.apple_id)
         writer.write_collection_of_primitive_values("genres", self.genres)
         writer.write_str_value("language", self.language)

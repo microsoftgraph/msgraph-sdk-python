@@ -52,6 +52,9 @@ class AndroidLobAppCollectionResponse(BaseCollectionPaginationCountResponse):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_lob_app import AndroidLobApp
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+
         writer.write_collection_of_object_values("value", self.value)
     
 

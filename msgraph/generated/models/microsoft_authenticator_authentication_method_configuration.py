@@ -63,6 +63,10 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(AuthenticationMeth
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .microsoft_authenticator_feature_settings import MicrosoftAuthenticatorFeatureSettings
+
         writer.write_object_value("featureSettings", self.feature_settings)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
         writer.write_bool_value("isSoftwareOathEnabled", self.is_software_oath_enabled)

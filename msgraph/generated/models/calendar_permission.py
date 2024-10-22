@@ -69,6 +69,10 @@ class CalendarPermission(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .calendar_role_type import CalendarRoleType
+        from .email_address import EmailAddress
+        from .entity import Entity
+
         writer.write_collection_of_enum_values("allowedRoles", self.allowed_roles)
         writer.write_object_value("emailAddress", self.email_address)
         writer.write_bool_value("isInsideOrganization", self.is_inside_organization)

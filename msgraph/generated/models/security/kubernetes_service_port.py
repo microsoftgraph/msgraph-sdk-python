@@ -68,6 +68,8 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .container_port_protocol import ContainerPortProtocol
+
         writer.write_str_value("appProtocol", self.app_protocol)
         writer.write_str_value("name", self.name)
         writer.write_int_value("nodePort", self.node_port)

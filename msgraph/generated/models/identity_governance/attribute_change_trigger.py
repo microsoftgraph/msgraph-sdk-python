@@ -54,6 +54,9 @@ class AttributeChangeTrigger(WorkflowExecutionTrigger):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .trigger_attribute import TriggerAttribute
+        from .workflow_execution_trigger import WorkflowExecutionTrigger
+
         writer.write_collection_of_object_values("triggerAttributes", self.trigger_attributes)
     
 

@@ -59,6 +59,9 @@ class MediaContentRatingGermany(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .rating_germany_movies_type import RatingGermanyMoviesType
+        from .rating_germany_television_type import RatingGermanyTelevisionType
+
         writer.write_enum_value("movieRating", self.movie_rating)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("tvRating", self.tv_rating)

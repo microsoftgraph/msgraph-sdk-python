@@ -60,6 +60,9 @@ class DeviceComplianceScheduledActionForRule(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_compliance_action_item import DeviceComplianceActionItem
+        from .entity import Entity
+
         writer.write_str_value("ruleName", self.rule_name)
         writer.write_collection_of_object_values("scheduledActionConfigurations", self.scheduled_action_configurations)
     

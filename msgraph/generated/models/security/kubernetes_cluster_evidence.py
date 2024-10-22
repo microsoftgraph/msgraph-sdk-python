@@ -66,6 +66,9 @@ class KubernetesClusterEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .kubernetes_platform import KubernetesPlatform
+
         writer.write_object_value("cloudResource", self.cloud_resource)
         writer.write_str_value("distribution", self.distribution)
         writer.write_str_value("name", self.name)

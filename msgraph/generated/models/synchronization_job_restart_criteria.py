@@ -53,6 +53,8 @@ class SynchronizationJobRestartCriteria(AdditionalDataHolder, BackedModel, Parsa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .synchronization_job_restart_scope import SynchronizationJobRestartScope
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("resetScope", self.reset_scope)
         writer.write_additional_data_value(self.additional_data)

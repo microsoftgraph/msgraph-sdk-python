@@ -127,6 +127,19 @@ class AccessPackageAssignmentPolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package import AccessPackage
+        from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
+        from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
+        from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
+        from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_question import AccessPackageQuestion
+        from .allowed_target_scope import AllowedTargetScope
+        from .custom_extension_stage_setting import CustomExtensionStageSetting
+        from .entity import Entity
+        from .expiration_pattern import ExpirationPattern
+        from .subject_set import SubjectSet
+
         writer.write_object_value("accessPackage", self.access_package)
         writer.write_enum_value("allowedTargetScope", self.allowed_target_scope)
         writer.write_object_value("automaticRequestSettings", self.automatic_request_settings)

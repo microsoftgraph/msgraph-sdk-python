@@ -54,6 +54,9 @@ class WorkbookFilter(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_filter_criteria import WorkbookFilterCriteria
+
         writer.write_object_value("criteria", self.criteria)
     
 

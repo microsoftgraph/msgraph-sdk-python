@@ -75,6 +75,9 @@ class PermissionGrantConditionSet(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .permission_type import PermissionType
+
         writer.write_collection_of_primitive_values("clientApplicationIds", self.client_application_ids)
         writer.write_collection_of_primitive_values("clientApplicationPublisherIds", self.client_application_publisher_ids)
         writer.write_collection_of_primitive_values("clientApplicationTenantIds", self.client_application_tenant_ids)

@@ -73,6 +73,9 @@ class UnifiedRoleAssignmentScheduleInstance(UnifiedRoleScheduleInstanceBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+        from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
+
         writer.write_object_value("activatedUsing", self.activated_using)
         writer.write_str_value("assignmentType", self.assignment_type)
         writer.write_datetime_value("endDateTime", self.end_date_time)

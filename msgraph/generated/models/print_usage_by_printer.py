@@ -54,6 +54,8 @@ class PrintUsageByPrinter(PrintUsage):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .print_usage import PrintUsage
+
         writer.write_str_value("printerId", self.printer_id)
         writer.write_str_value("printerName", self.printer_name)
     

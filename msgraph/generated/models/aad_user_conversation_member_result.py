@@ -51,6 +51,8 @@ class AadUserConversationMemberResult(ActionResultPart):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .action_result_part import ActionResultPart
+
         writer.write_str_value("userId", self.user_id)
     
 

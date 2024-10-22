@@ -60,6 +60,9 @@ class CountryNamedLocation(NamedLocation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .country_lookup_method_type import CountryLookupMethodType
+        from .named_location import NamedLocation
+
         writer.write_collection_of_primitive_values("countriesAndRegions", self.countries_and_regions)
         writer.write_enum_value("countryLookupMethod", self.country_lookup_method)
         writer.write_bool_value("includeUnknownCountriesAndRegions", self.include_unknown_countries_and_regions)

@@ -87,6 +87,10 @@ class RelyingPartyDetailedSummary(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .key_value_pair import KeyValuePair
+        from .migration_status import MigrationStatus
+
         writer.write_int_value("failedSignInCount", self.failed_sign_in_count)
         writer.write_enum_value("migrationStatus", self.migration_status)
         writer.write_collection_of_object_values("migrationValidationDetails", self.migration_validation_details)

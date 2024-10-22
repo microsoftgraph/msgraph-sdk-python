@@ -69,6 +69,9 @@ class EndUserNotificationDetail(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_identity import EmailIdentity
+        from .entity import Entity
+
         writer.write_str_value("emailContent", self.email_content)
         writer.write_bool_value("isDefaultLangauge", self.is_default_langauge)
         writer.write_str_value("language", self.language)

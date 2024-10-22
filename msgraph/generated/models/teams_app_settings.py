@@ -54,6 +54,8 @@ class TeamsAppSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_bool_value("allowUserRequestsForAppAccess", self.allow_user_requests_for_app_access)
         writer.write_bool_value("isUserPersonalScopeResourceSpecificConsentEnabled", self.is_user_personal_scope_resource_specific_consent_enabled)
     

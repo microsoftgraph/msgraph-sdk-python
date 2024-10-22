@@ -57,6 +57,9 @@ class WorkbookChartGridlines(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
+
         writer.write_object_value("format", self.format)
         writer.write_bool_value("visible", self.visible)
     

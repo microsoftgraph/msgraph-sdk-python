@@ -56,6 +56,8 @@ class ArtifactQuery(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .restorable_artifact import RestorableArtifact
+
         writer.write_enum_value("artifactType", self.artifact_type)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("queryExpression", self.query_expression)

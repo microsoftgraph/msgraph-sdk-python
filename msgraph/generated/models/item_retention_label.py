@@ -70,6 +70,10 @@ class ItemRetentionLabel(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .retention_label_settings import RetentionLabelSettings
+
         writer.write_bool_value("isLabelAppliedExplicitly", self.is_label_applied_explicitly)
         writer.write_object_value("labelAppliedBy", self.label_applied_by)
         writer.write_datetime_value("labelAppliedDateTime", self.label_applied_date_time)

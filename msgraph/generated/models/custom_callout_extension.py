@@ -41,7 +41,8 @@ class CustomCalloutExtension(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestWorkflowExtension".casefold():
@@ -111,6 +112,16 @@ class CustomCalloutExtension(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+        from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
+        from .custom_authentication_extension import CustomAuthenticationExtension
+        from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
+        from .custom_extension_client_configuration import CustomExtensionClientConfiguration
+        from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
+        from .entity import Entity
+        from .identity_governance.custom_task_extension import CustomTaskExtension
+        from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+
         writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
         writer.write_object_value("clientConfiguration", self.client_configuration)
         writer.write_str_value("description", self.description)

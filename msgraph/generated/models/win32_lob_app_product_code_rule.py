@@ -63,6 +63,9 @@ class Win32LobAppProductCodeRule(Win32LobAppRule):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
+
         writer.write_str_value("productCode", self.product_code)
         writer.write_str_value("productVersion", self.product_version)
         writer.write_enum_value("productVersionOperator", self.product_version_operator)

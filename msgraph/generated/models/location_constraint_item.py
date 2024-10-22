@@ -51,6 +51,8 @@ class LocationConstraintItem(Location):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .location import Location
+
         writer.write_bool_value("resolveAvailability", self.resolve_availability)
     
 

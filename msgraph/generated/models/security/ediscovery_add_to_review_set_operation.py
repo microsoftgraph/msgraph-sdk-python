@@ -60,6 +60,10 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .case_operation import CaseOperation
+        from .ediscovery_review_set import EdiscoveryReviewSet
+        from .ediscovery_search import EdiscoverySearch
+
         writer.write_object_value("reviewSet", self.review_set)
         writer.write_object_value("search", self.search)
     

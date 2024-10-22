@@ -67,6 +67,9 @@ class AppLogCollectionRequest(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_log_upload_state import AppLogUploadState
+        from .entity import Entity
+
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_collection_of_primitive_values("customLogFolders", self.custom_log_folders)
         writer.write_str_value("errorMessage", self.error_message)

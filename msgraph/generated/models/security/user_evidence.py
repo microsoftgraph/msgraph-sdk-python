@@ -60,6 +60,10 @@ class UserEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .stream import Stream
+        from .user_account import UserAccount
+
         writer.write_object_value("stream", self.stream)
         writer.write_object_value("userAccount", self.user_account)
     

@@ -62,6 +62,8 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .giphy_rating_type import GiphyRatingType
+
         writer.write_bool_value("allowCustomMemes", self.allow_custom_memes)
         writer.write_bool_value("allowGiphy", self.allow_giphy)
         writer.write_bool_value("allowStickersAndMemes", self.allow_stickers_and_memes)

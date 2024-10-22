@@ -71,6 +71,8 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .key_value_pair import KeyValuePair
+
         writer.write_int_value("excludedItemCount", self.excluded_item_count)
         writer.write_collection_of_object_values("insightCounts", self.insight_counts)
         writer.write_int_value("itemCount", self.item_count)

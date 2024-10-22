@@ -63,6 +63,8 @@ class GitHubRepoEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+
         writer.write_str_value("baseUrl", self.base_url)
         writer.write_str_value("login", self.login)
         writer.write_str_value("owner", self.owner)

@@ -50,6 +50,8 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .........models.print_document_upload_properties import PrintDocumentUploadProperties
+
         writer.write_object_value("properties", self.properties)
         writer.write_additional_data_value(self.additional_data)
     

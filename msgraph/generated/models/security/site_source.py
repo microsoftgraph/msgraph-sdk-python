@@ -54,6 +54,9 @@ class SiteSource(DataSource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..site import Site
+        from .data_source import DataSource
+
         writer.write_object_value("site", self.site)
     
 

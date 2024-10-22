@@ -68,6 +68,9 @@ class RubricQuality(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .education_item_body import EducationItemBody
+        from .rubric_criterion import RubricCriterion
+
         writer.write_collection_of_object_values("criteria", self.criteria)
         writer.write_object_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

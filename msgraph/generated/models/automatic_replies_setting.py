@@ -74,6 +74,10 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .automatic_replies_status import AutomaticRepliesStatus
+        from .date_time_time_zone import DateTimeTimeZone
+        from .external_audience_scope import ExternalAudienceScope
+
         writer.write_enum_value("externalAudience", self.external_audience)
         writer.write_str_value("externalReplyMessage", self.external_reply_message)
         writer.write_str_value("internalReplyMessage", self.internal_reply_message)

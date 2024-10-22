@@ -59,6 +59,8 @@ class ChatMessageMention(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
+
         writer.write_int_value("id", self.id)
         writer.write_str_value("mentionText", self.mention_text)
         writer.write_object_value("mentioned", self.mentioned)

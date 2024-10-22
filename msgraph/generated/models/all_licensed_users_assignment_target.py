@@ -51,5 +51,7 @@ class AllLicensedUsersAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+
     
 

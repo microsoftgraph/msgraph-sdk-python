@@ -159,6 +159,10 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .operating_system_upgrade_eligibility import OperatingSystemUpgradeEligibility
+        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+
         writer.write_bool_value("autoPilotProfileAssigned", self.auto_pilot_profile_assigned)
         writer.write_bool_value("autoPilotRegistered", self.auto_pilot_registered)
         writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)

@@ -89,6 +89,14 @@ class Print(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .printer import Printer
+        from .printer_share import PrinterShare
+        from .print_connector import PrintConnector
+        from .print_operation import PrintOperation
+        from .print_service import PrintService
+        from .print_settings import PrintSettings
+        from .print_task_definition import PrintTaskDefinition
+
         writer.write_collection_of_object_values("connectors", self.connectors)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("operations", self.operations)

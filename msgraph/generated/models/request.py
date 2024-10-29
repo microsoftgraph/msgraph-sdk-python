@@ -43,7 +43,8 @@ class Request(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest".casefold():
@@ -116,6 +117,15 @@ class Request(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
+        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
+        from .user_consent_request import UserConsentRequest
+
         writer.write_str_value("approvalId", self.approval_id)
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("createdBy", self.created_by)

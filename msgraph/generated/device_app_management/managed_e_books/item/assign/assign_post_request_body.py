@@ -50,6 +50,8 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.managed_e_book_assignment import ManagedEBookAssignment
+
         writer.write_collection_of_object_values("managedEBookAssignments", self.managed_e_book_assignments)
         writer.write_additional_data_value(self.additional_data)
     

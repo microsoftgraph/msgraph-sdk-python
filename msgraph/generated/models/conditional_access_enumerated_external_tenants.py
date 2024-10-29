@@ -51,6 +51,8 @@ class ConditionalAccessEnumeratedExternalTenants(ConditionalAccessExternalTenant
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conditional_access_external_tenants import ConditionalAccessExternalTenants
+
         writer.write_collection_of_primitive_values("members", self.members)
     
 

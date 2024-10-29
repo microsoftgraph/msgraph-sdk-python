@@ -63,6 +63,10 @@ class ServiceHealth(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .service_health_issue import ServiceHealthIssue
+        from .service_health_status import ServiceHealthStatus
+
         writer.write_collection_of_object_values("issues", self.issues)
         writer.write_str_value("service", self.service)
         writer.write_enum_value("status", self.status)

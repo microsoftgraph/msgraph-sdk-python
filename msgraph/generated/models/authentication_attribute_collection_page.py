@@ -53,6 +53,8 @@ class AuthenticationAttributeCollectionPage(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_attribute_collection_page_view_configuration import AuthenticationAttributeCollectionPageViewConfiguration
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("views", self.views)
         writer.write_additional_data_value(self.additional_data)

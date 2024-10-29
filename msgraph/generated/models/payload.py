@@ -148,6 +148,19 @@ class Payload(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_identity import EmailIdentity
+        from .entity import Entity
+        from .payload_brand import PayloadBrand
+        from .payload_complexity import PayloadComplexity
+        from .payload_delivery_platform import PayloadDeliveryPlatform
+        from .payload_detail import PayloadDetail
+        from .payload_industry import PayloadIndustry
+        from .payload_theme import PayloadTheme
+        from .simulation_attack_technique import SimulationAttackTechnique
+        from .simulation_attack_type import SimulationAttackType
+        from .simulation_content_source import SimulationContentSource
+        from .simulation_content_status import SimulationContentStatus
+
         writer.write_enum_value("brand", self.brand)
         writer.write_enum_value("complexity", self.complexity)
         writer.write_object_value("createdBy", self.created_by)

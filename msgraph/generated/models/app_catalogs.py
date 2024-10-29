@@ -54,6 +54,9 @@ class AppCatalogs(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .teams_app import TeamsApp
+
         writer.write_collection_of_object_values("teamsApps", self.teams_apps)
     
 

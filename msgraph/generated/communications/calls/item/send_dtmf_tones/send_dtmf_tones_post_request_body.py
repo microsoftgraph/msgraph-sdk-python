@@ -56,6 +56,8 @@ class SendDtmfTonesPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.tone import Tone
+
         writer.write_str_value("clientContext", self.client_context)
         writer.write_int_value("delayBetweenTonesMs", self.delay_between_tones_ms)
         writer.write_collection_of_enum_values("tones", self.tones)

@@ -54,6 +54,8 @@ class DriveItemVersion(BaseItemVersion):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_item_version import BaseItemVersion
+
         writer.write_bytes_value("content", self.content)
         writer.write_int_value("size", self.size)
     

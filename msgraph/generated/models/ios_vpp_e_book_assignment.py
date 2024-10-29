@@ -51,5 +51,7 @@ class IosVppEBookAssignment(ManagedEBookAssignment):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .managed_e_book_assignment import ManagedEBookAssignment
+
     
 

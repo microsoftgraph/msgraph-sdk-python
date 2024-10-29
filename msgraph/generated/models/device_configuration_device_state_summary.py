@@ -69,6 +69,8 @@ class DeviceConfigurationDeviceStateSummary(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_int_value("compliantDeviceCount", self.compliant_device_count)
         writer.write_int_value("conflictDeviceCount", self.conflict_device_count)
         writer.write_int_value("errorDeviceCount", self.error_device_count)

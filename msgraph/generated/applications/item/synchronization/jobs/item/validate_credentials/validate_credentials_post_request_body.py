@@ -59,6 +59,8 @@ class ValidateCredentialsPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
+
         writer.write_str_value("applicationIdentifier", self.application_identifier)
         writer.write_collection_of_object_values("credentials", self.credentials)
         writer.write_str_value("templateId", self.template_id)

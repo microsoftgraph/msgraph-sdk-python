@@ -65,6 +65,10 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .public_error import PublicError
+        from .subject_rights_request_stage import SubjectRightsRequestStage
+        from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
+
         writer.write_object_value("error", self.error)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("stage", self.stage)

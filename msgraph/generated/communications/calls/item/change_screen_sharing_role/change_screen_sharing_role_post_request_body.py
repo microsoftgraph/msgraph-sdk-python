@@ -50,6 +50,8 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, BackedModel, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.screen_sharing_role import ScreenSharingRole
+
         writer.write_enum_value("role", self.role)
         writer.write_additional_data_value(self.additional_data)
     

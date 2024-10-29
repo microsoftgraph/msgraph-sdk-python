@@ -54,6 +54,9 @@ class MobileAppTroubleshootingEvent(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_log_collection_request import AppLogCollectionRequest
+        from .entity import Entity
+
         writer.write_collection_of_object_values("appLogCollectionRequests", self.app_log_collection_requests)
     
 

@@ -74,6 +74,10 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .device_info import DeviceInfo
+        from .media_stream import MediaStream
+        from .network_info import NetworkInfo
+
         writer.write_object_value("calleeDevice", self.callee_device)
         writer.write_object_value("calleeNetwork", self.callee_network)
         writer.write_object_value("callerDevice", self.caller_device)

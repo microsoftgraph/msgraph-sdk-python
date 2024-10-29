@@ -56,6 +56,9 @@ class SendVirtualAppointmentReminderSmsPostRequestBody(AdditionalDataHolder, Bac
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.attendee_notification_info import AttendeeNotificationInfo
+        from .....models.remind_before_time_in_minutes_type import RemindBeforeTimeInMinutesType
+
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_enum_value("remindBeforeTimeInMinutesType", self.remind_before_time_in_minutes_type)
         writer.write_additional_data_value(self.additional_data)

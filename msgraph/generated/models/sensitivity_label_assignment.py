@@ -59,6 +59,8 @@ class SensitivityLabelAssignment(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
+
         writer.write_enum_value("assignmentMethod", self.assignment_method)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sensitivityLabelId", self.sensitivity_label_id)

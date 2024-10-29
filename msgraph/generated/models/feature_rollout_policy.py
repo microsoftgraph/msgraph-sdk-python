@@ -72,6 +72,10 @@ class FeatureRolloutPolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .staged_feature_name import StagedFeatureName
+
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

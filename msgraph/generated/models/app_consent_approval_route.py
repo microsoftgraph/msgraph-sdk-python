@@ -54,6 +54,9 @@ class AppConsentApprovalRoute(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_consent_request import AppConsentRequest
+        from .entity import Entity
+
         writer.write_collection_of_object_values("appConsentRequests", self.app_consent_requests)
     
 

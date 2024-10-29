@@ -66,6 +66,10 @@ class KubernetesControllerEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .dictionary import Dictionary
+        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+
         writer.write_object_value("labels", self.labels)
         writer.write_str_value("name", self.name)
         writer.write_object_value("namespace", self.namespace)

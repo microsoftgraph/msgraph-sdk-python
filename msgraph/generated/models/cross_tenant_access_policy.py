@@ -69,6 +69,11 @@ class CrossTenantAccessPolicy(PolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
+        from .cross_tenant_access_policy_configuration_partner import CrossTenantAccessPolicyConfigurationPartner
+        from .policy_base import PolicyBase
+        from .policy_template import PolicyTemplate
+
         writer.write_collection_of_primitive_values("allowedCloudEndpoints", self.allowed_cloud_endpoints)
         writer.write_object_value("default", self.default)
         writer.write_collection_of_object_values("partners", self.partners)

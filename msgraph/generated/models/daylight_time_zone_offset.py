@@ -51,6 +51,8 @@ class DaylightTimeZoneOffset(StandardTimeZoneOffset):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .standard_time_zone_offset import StandardTimeZoneOffset
+
         writer.write_int_value("daylightBias", self.daylight_bias)
     
 

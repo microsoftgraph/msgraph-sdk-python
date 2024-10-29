@@ -43,7 +43,8 @@ class CommsOperation(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.addLargeGalleryViewOperation".casefold():
@@ -151,6 +152,22 @@ class CommsOperation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+        from .cancel_media_processing_operation import CancelMediaProcessingOperation
+        from .entity import Entity
+        from .invite_participants_operation import InviteParticipantsOperation
+        from .mute_participant_operation import MuteParticipantOperation
+        from .operation_status import OperationStatus
+        from .play_prompt_operation import PlayPromptOperation
+        from .record_operation import RecordOperation
+        from .result_info import ResultInfo
+        from .send_dtmf_tones_operation import SendDtmfTonesOperation
+        from .start_hold_music_operation import StartHoldMusicOperation
+        from .stop_hold_music_operation import StopHoldMusicOperation
+        from .subscribe_to_tone_operation import SubscribeToToneOperation
+        from .unmute_participant_operation import UnmuteParticipantOperation
+        from .update_recording_status_operation import UpdateRecordingStatusOperation
+
         writer.write_str_value("clientContext", self.client_context)
         writer.write_object_value("resultInfo", self.result_info)
         writer.write_enum_value("status", self.status)

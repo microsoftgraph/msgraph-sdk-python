@@ -51,6 +51,8 @@ class ServiceProvisioningXmlError(ServiceProvisioningError):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .service_provisioning_error import ServiceProvisioningError
+
         writer.write_str_value("errorDetail", self.error_detail)
     
 

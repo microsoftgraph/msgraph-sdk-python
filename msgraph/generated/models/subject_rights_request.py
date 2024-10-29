@@ -175,6 +175,22 @@ class SubjectRightsRequest(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authored_note import AuthoredNote
+        from .data_subject import DataSubject
+        from .data_subject_type import DataSubjectType
+        from .entity import Entity
+        from .identity import Identity
+        from .identity_set import IdentitySet
+        from .subject_rights_request_detail import SubjectRightsRequestDetail
+        from .subject_rights_request_history import SubjectRightsRequestHistory
+        from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
+        from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
+        from .subject_rights_request_stage_detail import SubjectRightsRequestStageDetail
+        from .subject_rights_request_status import SubjectRightsRequestStatus
+        from .subject_rights_request_type import SubjectRightsRequestType
+        from .team import Team
+        from .user import User
+
         writer.write_collection_of_object_values("approvers", self.approvers)
         writer.write_object_value("assignedTo", self.assigned_to)
         writer.write_datetime_value("closedDateTime", self.closed_date_time)

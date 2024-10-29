@@ -83,6 +83,13 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .admin_microsoft365_apps import AdminMicrosoft365Apps
+        from .admin_report_settings import AdminReportSettings
+        from .edge import Edge
+        from .people_admin_settings import PeopleAdminSettings
+        from .service_announcement import ServiceAnnouncement
+        from .sharepoint import Sharepoint
+
         writer.write_object_value("edge", self.edge)
         writer.write_object_value("microsoft365Apps", self.microsoft365_apps)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -71,6 +71,10 @@ class ProvisioningStep(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .details_info import DetailsInfo
+        from .provisioning_result import ProvisioningResult
+        from .provisioning_step_type import ProvisioningStepType
+
         writer.write_str_value("description", self.description)
         writer.write_object_value("details", self.details)
         writer.write_str_value("name", self.name)

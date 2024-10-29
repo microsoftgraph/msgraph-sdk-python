@@ -60,6 +60,10 @@ class EmailAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .external_email_otp_state import ExternalEmailOtpState
+
         writer.write_enum_value("allowExternalIdToUseEmailOtp", self.allow_external_id_to_use_email_otp)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
     

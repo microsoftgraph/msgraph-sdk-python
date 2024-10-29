@@ -57,6 +57,8 @@ class GroupLifecyclePolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("alternateNotificationEmails", self.alternate_notification_emails)
         writer.write_int_value("groupLifetimeInDays", self.group_lifetime_in_days)
         writer.write_str_value("managedGroupTypes", self.managed_group_types)

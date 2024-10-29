@@ -90,6 +90,10 @@ class DeviceCompliancePolicySettingStateSummary(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_compliance_setting_state import DeviceComplianceSettingState
+        from .entity import Entity
+        from .policy_platform_type import PolicyPlatformType
+
         writer.write_int_value("compliantDeviceCount", self.compliant_device_count)
         writer.write_int_value("conflictDeviceCount", self.conflict_device_count)
         writer.write_collection_of_object_values("deviceComplianceSettingStates", self.device_compliance_setting_states)

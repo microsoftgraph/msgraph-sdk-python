@@ -89,6 +89,8 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .state_management_setting import StateManagementSetting
+
         writer.write_bool_value("authorizedApplicationRulesFromGroupPolicyMerged", self.authorized_application_rules_from_group_policy_merged)
         writer.write_bool_value("connectionSecurityRulesFromGroupPolicyMerged", self.connection_security_rules_from_group_policy_merged)
         writer.write_enum_value("firewallEnabled", self.firewall_enabled)

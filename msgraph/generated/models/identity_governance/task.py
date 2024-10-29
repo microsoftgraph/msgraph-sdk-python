@@ -84,6 +84,11 @@ class Task(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..key_value_pair import KeyValuePair
+        from .lifecycle_task_category import LifecycleTaskCategory
+        from .task_processing_result import TaskProcessingResult
+
         writer.write_collection_of_object_values("arguments", self.arguments)
         writer.write_enum_value("category", self.category)
         writer.write_bool_value("continueOnError", self.continue_on_error)

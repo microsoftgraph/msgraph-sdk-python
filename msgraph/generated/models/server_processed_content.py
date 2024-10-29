@@ -62,6 +62,8 @@ class ServerProcessedContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .meta_data_key_string_pair import MetaDataKeyStringPair
+
         writer.write_collection_of_object_values("htmlStrings", self.html_strings)
         writer.write_collection_of_object_values("imageSources", self.image_sources)
         writer.write_collection_of_object_values("links", self.links)

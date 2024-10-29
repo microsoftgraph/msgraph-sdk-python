@@ -48,7 +48,7 @@ class SiteSourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SiteSourcesRequestBuilderGetQueryParameters]] = None) -> Optional[SiteSourceCollectionResponse]:
         """
-        Get a list of the siteSource objects associated with an ediscoveryCustodian.
+        Get a list of the siteSource objects associated with an ediscoveryCustodian or ediscoveryHoldPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteSourceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycustodian-list-sitesources?view=graph-rest-1.0
@@ -93,7 +93,7 @@ class SiteSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SiteSourcesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of the siteSource objects associated with an ediscoveryCustodian.
+        Get a list of the siteSource objects associated with an ediscoveryCustodian or ediscoveryHoldPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +139,7 @@ class SiteSourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SiteSourcesRequestBuilderGetQueryParameters():
         """
-        Get a list of the siteSource objects associated with an ediscoveryCustodian.
+        Get a list of the siteSource objects associated with an ediscoveryCustodian or ediscoveryHoldPolicy.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

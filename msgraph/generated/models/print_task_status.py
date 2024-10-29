@@ -56,6 +56,8 @@ class PrintTaskStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .print_task_processing_state import PrintTaskProcessingState
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)

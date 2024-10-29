@@ -91,6 +91,11 @@ class VirtualEventRegistration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .virtual_event_attendee_registration_status import VirtualEventAttendeeRegistrationStatus
+        from .virtual_event_registration_question_answer import VirtualEventRegistrationQuestionAnswer
+        from .virtual_event_session import VirtualEventSession
+
         writer.write_datetime_value("cancelationDateTime", self.cancelation_date_time)
         writer.write_str_value("email", self.email)
         writer.write_str_value("firstName", self.first_name)

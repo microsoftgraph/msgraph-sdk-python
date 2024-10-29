@@ -60,6 +60,9 @@ class ManagedMobileApp(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .mobile_app_identifier import MobileAppIdentifier
+
         writer.write_object_value("mobileAppIdentifier", self.mobile_app_identifier)
         writer.write_str_value("version", self.version)
     

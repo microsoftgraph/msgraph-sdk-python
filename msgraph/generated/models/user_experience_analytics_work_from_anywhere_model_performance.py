@@ -81,6 +81,9 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+
         writer.write_float_value("cloudIdentityScore", self.cloud_identity_score)
         writer.write_float_value("cloudManagementScore", self.cloud_management_score)
         writer.write_float_value("cloudProvisioningScore", self.cloud_provisioning_score)

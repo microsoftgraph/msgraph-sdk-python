@@ -88,6 +88,11 @@ class ItemActivityStat(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .incomplete_data import IncompleteData
+        from .item_action_stat import ItemActionStat
+        from .item_activity import ItemActivity
+
         writer.write_object_value("access", self.access)
         writer.write_collection_of_object_values("activities", self.activities)
         writer.write_object_value("create", self.create)

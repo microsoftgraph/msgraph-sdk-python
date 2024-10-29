@@ -39,7 +39,8 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attributeRuleMembers".casefold():
@@ -142,6 +143,20 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_rule_members import AttributeRuleMembers
+        from .connected_organization_members import ConnectedOrganizationMembers
+        from .external_sponsors import ExternalSponsors
+        from .group_members import GroupMembers
+        from .identity_governance.group_based_subject_set import GroupBasedSubjectSet
+        from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
+        from .internal_sponsors import InternalSponsors
+        from .requestor_manager import RequestorManager
+        from .single_service_principal import SingleServicePrincipal
+        from .single_user import SingleUser
+        from .target_application_owners import TargetApplicationOwners
+        from .target_manager import TargetManager
+        from .target_user_sponsors import TargetUserSponsors
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

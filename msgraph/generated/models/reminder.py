@@ -77,6 +77,9 @@ class Reminder(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .date_time_time_zone import DateTimeTimeZone
+        from .location import Location
+
         writer.write_str_value("changeKey", self.change_key)
         writer.write_object_value("eventEndTime", self.event_end_time)
         writer.write_str_value("eventId", self.event_id)

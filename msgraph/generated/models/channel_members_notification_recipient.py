@@ -54,6 +54,8 @@ class ChannelMembersNotificationRecipient(TeamworkNotificationRecipient):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .teamwork_notification_recipient import TeamworkNotificationRecipient
+
         writer.write_str_value("channelId", self.channel_id)
         writer.write_str_value("teamId", self.team_id)
     

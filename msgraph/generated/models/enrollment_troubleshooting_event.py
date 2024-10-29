@@ -81,6 +81,10 @@ class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_enrollment_failure_reason import DeviceEnrollmentFailureReason
+        from .device_enrollment_type import DeviceEnrollmentType
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+
         writer.write_str_value("deviceId", self.device_id)
         writer.write_enum_value("enrollmentType", self.enrollment_type)
         writer.write_enum_value("failureCategory", self.failure_category)

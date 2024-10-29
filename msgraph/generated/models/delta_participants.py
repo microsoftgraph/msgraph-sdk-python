@@ -57,6 +57,9 @@ class DeltaParticipants(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .participant import Participant
+
         writer.write_collection_of_object_values("participants", self.participants)
         writer.write_int_value("sequenceNumber", self.sequence_number)
     

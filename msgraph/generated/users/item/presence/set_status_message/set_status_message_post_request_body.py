@@ -50,6 +50,8 @@ class SetStatusMessagePostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.presence_status_message import PresenceStatusMessage
+
         writer.write_object_value("statusMessage", self.status_message)
         writer.write_additional_data_value(self.additional_data)
     

@@ -59,6 +59,9 @@ class InformationProtection(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .bitlocker import Bitlocker
+        from .threat_assessment_request import ThreatAssessmentRequest
+
         writer.write_object_value("bitlocker", self.bitlocker)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("threatAssessmentRequests", self.threat_assessment_requests)

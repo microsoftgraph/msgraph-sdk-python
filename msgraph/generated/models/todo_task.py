@@ -139,6 +139,18 @@ class TodoTask(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attachment_base import AttachmentBase
+        from .attachment_session import AttachmentSession
+        from .checklist_item import ChecklistItem
+        from .date_time_time_zone import DateTimeTimeZone
+        from .entity import Entity
+        from .extension import Extension
+        from .importance import Importance
+        from .item_body import ItemBody
+        from .linked_resource import LinkedResource
+        from .patterned_recurrence import PatternedRecurrence
+        from .task_status import TaskStatus
+
         writer.write_collection_of_object_values("attachmentSessions", self.attachment_sessions)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)

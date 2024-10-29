@@ -94,6 +94,11 @@ class VppToken(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .vpp_token_account_type import VppTokenAccountType
+        from .vpp_token_state import VppTokenState
+        from .vpp_token_sync_status import VppTokenSyncStatus
+
         writer.write_str_value("appleId", self.apple_id)
         writer.write_bool_value("automaticallyUpdateApps", self.automatically_update_apps)
         writer.write_str_value("countryOrRegion", self.country_or_region)

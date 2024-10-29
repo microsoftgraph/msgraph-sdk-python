@@ -90,6 +90,14 @@ class SharedDriveItem(BaseItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_item import BaseItem
+        from .drive_item import DriveItem
+        from .identity_set import IdentitySet
+        from .list_ import List_
+        from .list_item import ListItem
+        from .permission import Permission
+        from .site import Site
+
         writer.write_object_value("driveItem", self.drive_item)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_object_value("list", self.list_)

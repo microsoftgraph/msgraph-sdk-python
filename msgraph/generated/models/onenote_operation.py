@@ -63,6 +63,9 @@ class OnenoteOperation(Operation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .onenote_operation_error import OnenoteOperationError
+        from .operation import Operation
+
         writer.write_object_value("error", self.error)
         writer.write_str_value("percentComplete", self.percent_complete)
         writer.write_str_value("resourceId", self.resource_id)

@@ -75,6 +75,10 @@ class Win32LobAppFileSystemRule(Win32LobAppRule):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .win32_lob_app_file_system_operation_type import Win32LobAppFileSystemOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
+
         writer.write_bool_value("check32BitOn64System", self.check32_bit_on64_system)
         writer.write_str_value("comparisonValue", self.comparison_value)
         writer.write_str_value("fileOrFolderName", self.file_or_folder_name)

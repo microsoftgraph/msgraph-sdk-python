@@ -51,5 +51,7 @@ class ManagedAppStatusRaw(ManagedAppStatus):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .managed_app_status import ManagedAppStatus
+
     
 

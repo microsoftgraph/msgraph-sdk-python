@@ -53,6 +53,8 @@ class ApplyTagsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..........models.security.ediscovery_review_tag import EdiscoveryReviewTag
+
         writer.write_collection_of_object_values("tagsToAdd", self.tags_to_add)
         writer.write_collection_of_object_values("tagsToRemove", self.tags_to_remove)
         writer.write_additional_data_value(self.additional_data)

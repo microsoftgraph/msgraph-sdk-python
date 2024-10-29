@@ -76,6 +76,10 @@ class SynchronizationTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .synchronization_metadata_entry import SynchronizationMetadataEntry
+        from .synchronization_schema import SynchronizationSchema
+
         writer.write_uuid_value("applicationId", self.application_id)
         writer.write_bool_value("default", self.default)
         writer.write_str_value("description", self.description)

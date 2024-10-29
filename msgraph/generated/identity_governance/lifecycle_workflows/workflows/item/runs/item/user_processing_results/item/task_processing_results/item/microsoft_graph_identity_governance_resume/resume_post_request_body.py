@@ -56,6 +56,8 @@ class ResumePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ............models.identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
+
         writer.write_object_value("data", self.data)
         writer.write_str_value("source", self.source)
         writer.write_str_value("type", self.type)

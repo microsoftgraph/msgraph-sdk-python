@@ -60,6 +60,9 @@ class TimeOffReason(ChangeTrackedEntity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .time_off_reason_icon_type import TimeOffReasonIconType
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("iconType", self.icon_type)
         writer.write_bool_value("isActive", self.is_active)

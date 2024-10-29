@@ -88,6 +88,9 @@ class CompanySubscription(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .service_plan_info import ServicePlanInfo
+
         writer.write_str_value("commerceSubscriptionId", self.commerce_subscription_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_bool_value("isTrial", self.is_trial)

@@ -54,6 +54,9 @@ class Bitlocker(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .bitlocker_recovery_key import BitlockerRecoveryKey
+        from .entity import Entity
+
         writer.write_collection_of_object_values("recoveryKeys", self.recovery_keys)
     
 

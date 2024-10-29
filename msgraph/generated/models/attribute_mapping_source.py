@@ -65,6 +65,9 @@ class AttributeMappingSource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_mapping_source_type import AttributeMappingSourceType
+        from .string_key_attribute_mapping_source_value_pair import StringKeyAttributeMappingSourceValuePair
+
         writer.write_str_value("expression", self.expression)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)

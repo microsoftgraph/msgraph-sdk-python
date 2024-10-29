@@ -56,6 +56,8 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cross_tenant_access_policy_target_type import CrossTenantAccessPolicyTargetType
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("target", self.target)
         writer.write_enum_value("targetType", self.target_type)

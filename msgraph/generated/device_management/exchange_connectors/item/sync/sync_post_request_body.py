@@ -50,6 +50,8 @@ class SyncPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.device_management_exchange_connector_sync_type import DeviceManagementExchangeConnectorSyncType
+
         writer.write_enum_value("syncType", self.sync_type)
         writer.write_additional_data_value(self.additional_data)
     

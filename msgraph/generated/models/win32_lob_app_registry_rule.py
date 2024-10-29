@@ -75,6 +75,10 @@ class Win32LobAppRegistryRule(Win32LobAppRule):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .win32_lob_app_registry_rule_operation_type import Win32LobAppRegistryRuleOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
+
         writer.write_bool_value("check32BitOn64System", self.check32_bit_on64_system)
         writer.write_str_value("comparisonValue", self.comparison_value)
         writer.write_str_value("keyPath", self.key_path)

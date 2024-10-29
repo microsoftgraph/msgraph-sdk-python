@@ -44,7 +44,8 @@ class RestoreArtifactBase(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveRestoreArtifact".casefold():
@@ -111,6 +112,16 @@ class RestoreArtifactBase(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .artifact_restore_status import ArtifactRestoreStatus
+        from .destination_type import DestinationType
+        from .drive_restore_artifact import DriveRestoreArtifact
+        from .entity import Entity
+        from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
+        from .mailbox_restore_artifact import MailboxRestoreArtifact
+        from .public_error import PublicError
+        from .restore_point import RestorePoint
+        from .site_restore_artifact import SiteRestoreArtifact
+
         writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_enum_value("destinationType", self.destination_type)
         writer.write_object_value("error", self.error)

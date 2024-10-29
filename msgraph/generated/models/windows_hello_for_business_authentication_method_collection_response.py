@@ -52,6 +52,9 @@ class WindowsHelloForBusinessAuthenticationMethodCollectionResponse(BaseCollecti
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
+
         writer.write_collection_of_object_values("value", self.value)
     
 

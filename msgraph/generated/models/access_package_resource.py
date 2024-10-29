@@ -91,6 +91,12 @@ class AccessPackageResource(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_resource_attribute import AccessPackageResourceAttribute
+        from .access_package_resource_environment import AccessPackageResourceEnvironment
+        from .access_package_resource_role import AccessPackageResourceRole
+        from .access_package_resource_scope import AccessPackageResourceScope
+        from .entity import Entity
+
         writer.write_collection_of_object_values("attributes", self.attributes)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

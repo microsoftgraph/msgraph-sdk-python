@@ -126,6 +126,21 @@ class Security(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..alert import Alert
+        from ..attack_simulation_root import AttackSimulationRoot
+        from ..entity import Entity
+        from ..secure_score import SecureScore
+        from ..secure_score_control_profile import SecureScoreControlProfile
+        from ..subject_rights_request import SubjectRightsRequest
+        from .alert import Alert
+        from .cases_root import CasesRoot
+        from .identity_container import IdentityContainer
+        from .incident import Incident
+        from .labels_root import LabelsRoot
+        from .threat_intelligence import ThreatIntelligence
+        from .triggers_root import TriggersRoot
+        from .trigger_types_root import TriggerTypesRoot
+
         writer.write_collection_of_object_values("alerts", self.alerts)
         writer.write_collection_of_object_values("alerts_v2", self.alerts_v2)
         writer.write_object_value("attackSimulation", self.attack_simulation)

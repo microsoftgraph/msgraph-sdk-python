@@ -57,7 +57,8 @@ class BaseItem(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.baseSitePage".casefold():
@@ -151,6 +152,19 @@ class BaseItem(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_site_page import BaseSitePage
+        from .drive import Drive
+        from .drive_item import DriveItem
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .item_reference import ItemReference
+        from .list_ import List_
+        from .list_item import ListItem
+        from .shared_drive_item import SharedDriveItem
+        from .site import Site
+        from .site_page import SitePage
+        from .user import User
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_object_value("createdByUser", self.created_by_user)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

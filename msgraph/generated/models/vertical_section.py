@@ -60,6 +60,10 @@ class VerticalSection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .section_emphasis_type import SectionEmphasisType
+        from .web_part import WebPart
+
         writer.write_enum_value("emphasis", self.emphasis)
         writer.write_collection_of_object_values("webparts", self.webparts)
     

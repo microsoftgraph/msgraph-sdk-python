@@ -56,6 +56,8 @@ class SearchAggregation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .search_bucket import SearchBucket
+
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_str_value("field", self.field)
         writer.write_str_value("@odata.type", self.odata_type)

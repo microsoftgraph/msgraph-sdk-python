@@ -63,6 +63,8 @@ class Shared(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .identity_set import IdentitySet
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("owner", self.owner)
         writer.write_str_value("scope", self.scope)

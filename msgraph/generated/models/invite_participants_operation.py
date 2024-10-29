@@ -54,6 +54,9 @@ class InviteParticipantsOperation(CommsOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .comms_operation import CommsOperation
+        from .invitation_participant_info import InvitationParticipantInfo
+
         writer.write_collection_of_object_values("participants", self.participants)
     
 

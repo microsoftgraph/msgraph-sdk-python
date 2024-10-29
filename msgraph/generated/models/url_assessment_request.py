@@ -51,6 +51,8 @@ class UrlAssessmentRequest(ThreatAssessmentRequest):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .threat_assessment_request import ThreatAssessmentRequest
+
         writer.write_str_value("url", self.url)
     
 

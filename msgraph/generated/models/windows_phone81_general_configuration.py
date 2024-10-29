@@ -147,6 +147,11 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .required_password_type import RequiredPasswordType
+
         writer.write_bool_value("appsBlockCopyPaste", self.apps_block_copy_paste)
         writer.write_bool_value("bluetoothBlocked", self.bluetooth_blocked)
         writer.write_bool_value("cameraBlocked", self.camera_blocked)

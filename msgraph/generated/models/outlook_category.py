@@ -57,6 +57,9 @@ class OutlookCategory(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .category_color import CategoryColor
+        from .entity import Entity
+
         writer.write_enum_value("color", self.color)
         writer.write_str_value("displayName", self.display_name)
     

@@ -54,6 +54,9 @@ class Initiator(Identity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity import Identity
+        from .initiator_type import InitiatorType
+
         writer.write_enum_value("initiatorType", self.initiator_type)
     
 

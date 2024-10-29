@@ -56,6 +56,8 @@ class AuthenticationStrengthUsage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_policy import ConditionalAccessPolicy
+
         writer.write_collection_of_object_values("mfa", self.mfa)
         writer.write_collection_of_object_values("none", self.none_)
         writer.write_str_value("@odata.type", self.odata_type)

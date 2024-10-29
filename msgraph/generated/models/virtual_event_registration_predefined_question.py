@@ -54,6 +54,9 @@ class VirtualEventRegistrationPredefinedQuestion(VirtualEventRegistrationQuestio
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .virtual_event_registration_predefined_question_label import VirtualEventRegistrationPredefinedQuestionLabel
+        from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
+
         writer.write_enum_value("label", self.label)
     
 

@@ -54,6 +54,8 @@ class UnclassifiedArtifact(Artifact):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .artifact import Artifact
+
         writer.write_str_value("kind", self.kind)
         writer.write_str_value("value", self.value)
     

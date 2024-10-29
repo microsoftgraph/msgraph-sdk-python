@@ -52,6 +52,9 @@ class DeviceAndAppManagementRoleAssignmentCollectionResponse(BaseCollectionPagin
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+
         writer.write_collection_of_object_values("value", self.value)
     
 

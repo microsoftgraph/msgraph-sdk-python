@@ -57,6 +57,9 @@ class EducationFeedbackOutcome(EducationOutcome):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_feedback import EducationFeedback
+        from .education_outcome import EducationOutcome
+
         writer.write_object_value("feedback", self.feedback)
         writer.write_object_value("publishedFeedback", self.published_feedback)
     

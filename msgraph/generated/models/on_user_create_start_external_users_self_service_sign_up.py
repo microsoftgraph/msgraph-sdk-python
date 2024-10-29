@@ -54,6 +54,9 @@ class OnUserCreateStartExternalUsersSelfServiceSignUp(OnUserCreateStartHandler):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .on_user_create_start_handler import OnUserCreateStartHandler
+        from .user_type import UserType
+
         writer.write_enum_value("userTypeToCreate", self.user_type_to_create)
     
 

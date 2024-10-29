@@ -77,6 +77,9 @@ class AccessReviewStageSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
+        from .access_review_reviewer_scope import AccessReviewReviewerScope
+
         writer.write_collection_of_primitive_values("decisionsThatWillMoveToNextStage", self.decisions_that_will_move_to_next_stage)
         writer.write_collection_of_primitive_values("dependsOn", self.depends_on)
         writer.write_int_value("durationInDays", self.duration_in_days)

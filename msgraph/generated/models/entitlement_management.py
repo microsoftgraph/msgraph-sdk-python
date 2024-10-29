@@ -120,6 +120,20 @@ class EntitlementManagement(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package import AccessPackage
+        from .access_package_assignment import AccessPackageAssignment
+        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+        from .access_package_assignment_request import AccessPackageAssignmentRequest
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_resource import AccessPackageResource
+        from .access_package_resource_environment import AccessPackageResourceEnvironment
+        from .access_package_resource_request import AccessPackageResourceRequest
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .approval import Approval
+        from .connected_organization import ConnectedOrganization
+        from .entitlement_management_settings import EntitlementManagementSettings
+        from .entity import Entity
+
         writer.write_collection_of_object_values("accessPackageAssignmentApprovals", self.access_package_assignment_approvals)
         writer.write_collection_of_object_values("accessPackages", self.access_packages)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)

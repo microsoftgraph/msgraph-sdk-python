@@ -95,6 +95,12 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
+        from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
+        from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
+        from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+
         writer.write_object_value("automaticUserConsentSettings", self.automatic_user_consent_settings)
         writer.write_object_value("b2bCollaborationInbound", self.b2b_collaboration_inbound)
         writer.write_object_value("b2bCollaborationOutbound", self.b2b_collaboration_outbound)

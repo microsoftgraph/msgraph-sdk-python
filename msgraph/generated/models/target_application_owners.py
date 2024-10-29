@@ -48,5 +48,7 @@ class TargetApplicationOwners(SubjectSet):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .subject_set import SubjectSet
+
     
 

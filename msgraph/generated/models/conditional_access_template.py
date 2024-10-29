@@ -66,6 +66,10 @@ class ConditionalAccessTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conditional_access_policy_detail import ConditionalAccessPolicyDetail
+        from .entity import Entity
+        from .template_scenarios import TemplateScenarios
+
         writer.write_str_value("description", self.description)
         writer.write_object_value("details", self.details)
         writer.write_str_value("name", self.name)

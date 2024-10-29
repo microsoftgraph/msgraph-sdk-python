@@ -63,6 +63,8 @@ class WindowsMobileMSI(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_lob_app import MobileLobApp
+
         writer.write_str_value("commandLine", self.command_line)
         writer.write_bool_value("ignoreVersionDetection", self.ignore_version_detection)
         writer.write_str_value("productCode", self.product_code)

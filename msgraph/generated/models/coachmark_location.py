@@ -59,6 +59,8 @@ class CoachmarkLocation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .coachmark_location_type import CoachmarkLocationType
+
         writer.write_int_value("length", self.length)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("offset", self.offset)

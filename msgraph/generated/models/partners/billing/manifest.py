@@ -82,6 +82,9 @@ class Manifest(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ...entity import Entity
+        from .blob import Blob
+
         writer.write_int_value("blobCount", self.blob_count)
         writer.write_collection_of_object_values("blobs", self.blobs)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

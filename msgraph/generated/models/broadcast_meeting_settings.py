@@ -71,6 +71,9 @@ class BroadcastMeetingSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .broadcast_meeting_audience import BroadcastMeetingAudience
+        from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
+
         writer.write_enum_value("allowedAudience", self.allowed_audience)
         writer.write_object_value("captions", self.captions)
         writer.write_bool_value("isAttendeeReportEnabled", self.is_attendee_report_enabled)

@@ -76,6 +76,12 @@ class AccessPackageResourceRequest(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_request_state import AccessPackageRequestState
+        from .access_package_request_type import AccessPackageRequestType
+        from .access_package_resource import AccessPackageResource
+        from .entity import Entity
+
         writer.write_object_value("catalog", self.catalog)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_enum_value("requestType", self.request_type)

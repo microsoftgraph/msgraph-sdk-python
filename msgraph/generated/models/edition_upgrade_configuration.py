@@ -69,6 +69,10 @@ class EditionUpgradeConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+        from .edition_upgrade_license_type import EditionUpgradeLicenseType
+        from .windows10_edition_type import Windows10EditionType
+
         writer.write_str_value("license", self.license)
         writer.write_enum_value("licenseType", self.license_type)
         writer.write_str_value("productKey", self.product_key)

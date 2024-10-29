@@ -51,6 +51,8 @@ class IPv6CidrRange(IpRange):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .ip_range import IpRange
+
         writer.write_str_value("cidrAddress", self.cidr_address)
     
 

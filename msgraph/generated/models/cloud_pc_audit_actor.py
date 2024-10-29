@@ -80,6 +80,8 @@ class CloudPcAuditActor(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cloud_pc_user_role_scope_tag_info import CloudPcUserRoleScopeTagInfo
+
         writer.write_str_value("applicationDisplayName", self.application_display_name)
         writer.write_str_value("applicationId", self.application_id)
         writer.write_str_value("ipAddress", self.ip_address)

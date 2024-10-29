@@ -63,6 +63,9 @@ class PlannerBucket(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .planner_task import PlannerTask
+
         writer.write_str_value("name", self.name)
         writer.write_str_value("orderHint", self.order_hint)
         writer.write_str_value("planId", self.plan_id)

@@ -57,6 +57,9 @@ class UnifiedRoleEligibilitySchedule(UnifiedRoleScheduleBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .request_schedule import RequestSchedule
+        from .unified_role_schedule_base import UnifiedRoleScheduleBase
+
         writer.write_str_value("memberType", self.member_type)
         writer.write_object_value("scheduleInfo", self.schedule_info)
     

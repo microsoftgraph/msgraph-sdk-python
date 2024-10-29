@@ -56,6 +56,8 @@ class Folder(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .folder_view import FolderView
+
         writer.write_int_value("childCount", self.child_count)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("view", self.view)

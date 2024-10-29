@@ -60,6 +60,9 @@ class GroupSetting(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .setting_value import SettingValue
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("templateId", self.template_id)
         writer.write_collection_of_object_values("values", self.values)

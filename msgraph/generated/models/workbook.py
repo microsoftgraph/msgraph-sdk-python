@@ -90,6 +90,15 @@ class Workbook(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_application import WorkbookApplication
+        from .workbook_comment import WorkbookComment
+        from .workbook_functions import WorkbookFunctions
+        from .workbook_named_item import WorkbookNamedItem
+        from .workbook_operation import WorkbookOperation
+        from .workbook_table import WorkbookTable
+        from .workbook_worksheet import WorkbookWorksheet
+
         writer.write_object_value("application", self.application)
         writer.write_collection_of_object_values("comments", self.comments)
         writer.write_object_value("functions", self.functions)

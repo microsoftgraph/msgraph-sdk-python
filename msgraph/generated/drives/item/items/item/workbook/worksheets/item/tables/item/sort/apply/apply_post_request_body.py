@@ -56,6 +56,8 @@ class ApplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ............models.workbook_sort_field import WorkbookSortField
+
         writer.write_collection_of_object_values("fields", self.fields)
         writer.write_bool_value("matchCase", self.match_case)
         writer.write_str_value("method", self.method)

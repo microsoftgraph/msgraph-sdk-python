@@ -48,5 +48,7 @@ class AgreementFileVersion(AgreementFileProperties):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .agreement_file_properties import AgreementFileProperties
+
     
 

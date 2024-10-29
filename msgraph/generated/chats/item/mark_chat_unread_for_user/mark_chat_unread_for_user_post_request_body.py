@@ -54,6 +54,8 @@ class MarkChatUnreadForUserPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.teamwork_user_identity import TeamworkUserIdentity
+
         writer.write_datetime_value("lastMessageReadDateTime", self.last_message_read_date_time)
         writer.write_object_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)

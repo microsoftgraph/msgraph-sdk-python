@@ -54,6 +54,9 @@ class EmployeeExperienceUser(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .learning_course_activity import LearningCourseActivity
+
         writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)
     
 

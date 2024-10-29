@@ -82,6 +82,11 @@ class AuthenticationMethodsPolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_methods_policy_migration_state import AuthenticationMethodsPolicyMigrationState
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .entity import Entity
+        from .registration_enforcement import RegistrationEnforcement
+
         writer.write_collection_of_object_values("authenticationMethodConfigurations", self.authentication_method_configurations)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

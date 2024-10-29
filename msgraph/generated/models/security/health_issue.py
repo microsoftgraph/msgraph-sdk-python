@@ -97,6 +97,11 @@ class HealthIssue(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .health_issue_severity import HealthIssueSeverity
+        from .health_issue_status import HealthIssueStatus
+        from .health_issue_type import HealthIssueType
+
         writer.write_collection_of_primitive_values("additionalInformation", self.additional_information)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

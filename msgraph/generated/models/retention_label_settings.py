@@ -68,6 +68,8 @@ class RetentionLabelSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .security.behavior_during_retention_period import BehaviorDuringRetentionPeriod
+
         writer.write_enum_value("behaviorDuringRetentionPeriod", self.behavior_during_retention_period)
         writer.write_bool_value("isContentUpdateAllowed", self.is_content_update_allowed)
         writer.write_bool_value("isDeleteAllowed", self.is_delete_allowed)

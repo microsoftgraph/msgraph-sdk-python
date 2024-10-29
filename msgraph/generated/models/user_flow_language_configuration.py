@@ -63,6 +63,9 @@ class UserFlowLanguageConfiguration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_flow_language_page import UserFlowLanguagePage
+
         writer.write_collection_of_object_values("defaultPages", self.default_pages)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isEnabled", self.is_enabled)

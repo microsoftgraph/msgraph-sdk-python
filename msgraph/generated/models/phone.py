@@ -62,6 +62,8 @@ class Phone(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .phone_type import PhoneType
+
         writer.write_str_value("language", self.language)
         writer.write_str_value("number", self.number)
         writer.write_str_value("@odata.type", self.odata_type)

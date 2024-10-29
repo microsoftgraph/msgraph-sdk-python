@@ -57,6 +57,9 @@ class Acronym(SearchAnswer):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .answer_state import AnswerState
+        from .search_answer import SearchAnswer
+
         writer.write_str_value("standsFor", self.stands_for)
         writer.write_enum_value("state", self.state)
     

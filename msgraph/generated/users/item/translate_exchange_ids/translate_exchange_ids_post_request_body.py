@@ -56,6 +56,8 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, BackedModel, Par
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.exchange_id_format import ExchangeIdFormat
+
         writer.write_collection_of_primitive_values("InputIds", self.input_ids)
         writer.write_enum_value("SourceIdType", self.source_id_type)
         writer.write_enum_value("TargetIdType", self.target_id_type)

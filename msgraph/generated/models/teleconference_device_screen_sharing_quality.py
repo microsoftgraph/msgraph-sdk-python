@@ -48,5 +48,7 @@ class TeleconferenceDeviceScreenSharingQuality(TeleconferenceDeviceVideoQuality)
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
+
     
 

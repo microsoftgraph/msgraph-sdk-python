@@ -55,6 +55,8 @@ class WindowsUpdateActiveHoursInstall(WindowsUpdateInstallScheduleType):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
+
         writer.write_time_value("activeHoursEnd", self.active_hours_end)
         writer.write_time_value("activeHoursStart", self.active_hours_start)
     

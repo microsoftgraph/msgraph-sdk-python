@@ -60,6 +60,10 @@ class UnifiedGroupSource(DataSource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..group import Group
+        from .data_source import DataSource
+        from .source_type import SourceType
+
         writer.write_object_value("group", self.group)
         writer.write_enum_value("includedSources", self.included_sources)
     

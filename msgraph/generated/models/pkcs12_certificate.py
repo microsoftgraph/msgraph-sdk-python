@@ -54,6 +54,8 @@ class Pkcs12Certificate(ApiAuthenticationConfigurationBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+
         writer.write_str_value("password", self.password)
         writer.write_str_value("pkcs12Value", self.pkcs12_value)
     

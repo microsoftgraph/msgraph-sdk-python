@@ -63,6 +63,10 @@ class WorkbookOperation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_operation_error import WorkbookOperationError
+        from .workbook_operation_status import WorkbookOperationStatus
+
         writer.write_object_value("error", self.error)
         writer.write_str_value("resourceLocation", self.resource_location)
         writer.write_enum_value("status", self.status)

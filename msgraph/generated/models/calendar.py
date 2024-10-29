@@ -123,6 +123,15 @@ class Calendar(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .calendar_color import CalendarColor
+        from .calendar_permission import CalendarPermission
+        from .email_address import EmailAddress
+        from .entity import Entity
+        from .event import Event
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .online_meeting_provider_type import OnlineMeetingProviderType
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+
         writer.write_collection_of_enum_values("allowedOnlineMeetingProviders", self.allowed_online_meeting_providers)
         writer.write_collection_of_object_values("calendarPermissions", self.calendar_permissions)
         writer.write_collection_of_object_values("calendarView", self.calendar_view)

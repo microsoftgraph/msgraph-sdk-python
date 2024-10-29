@@ -68,6 +68,8 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, BackedMode
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .windows_device_account import WindowsDeviceAccount
+
         writer.write_bool_value("calendarSyncEnabled", self.calendar_sync_enabled)
         writer.write_object_value("deviceAccount", self.device_account)
         writer.write_str_value("deviceAccountEmail", self.device_account_email)

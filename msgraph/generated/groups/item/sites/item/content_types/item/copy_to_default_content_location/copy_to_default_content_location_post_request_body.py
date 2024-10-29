@@ -53,6 +53,8 @@ class CopyToDefaultContentLocationPostRequestBody(AdditionalDataHolder, BackedMo
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ........models.item_reference import ItemReference
+
         writer.write_str_value("destinationFileName", self.destination_file_name)
         writer.write_object_value("sourceFile", self.source_file)
         writer.write_additional_data_value(self.additional_data)

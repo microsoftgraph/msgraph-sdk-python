@@ -67,6 +67,10 @@ class RestorePoint(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .protection_unit_base import ProtectionUnitBase
+        from .restore_point_tags import RestorePointTags
+
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_datetime_value("protectionDateTime", self.protection_date_time)
         writer.write_object_value("protectionUnit", self.protection_unit)

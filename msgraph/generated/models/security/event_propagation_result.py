@@ -62,6 +62,8 @@ class EventPropagationResult(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .event_propagation_status import EventPropagationStatus
+
         writer.write_str_value("location", self.location)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("serviceName", self.service_name)

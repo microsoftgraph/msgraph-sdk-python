@@ -56,6 +56,8 @@ class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, BackedModel, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .on_premises_directory_synchronization_deletion_prevention_type import OnPremisesDirectorySynchronizationDeletionPreventionType
+
         writer.write_int_value("alertThreshold", self.alert_threshold)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("synchronizationPreventionType", self.synchronization_prevention_type)

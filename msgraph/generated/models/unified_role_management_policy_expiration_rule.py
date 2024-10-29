@@ -55,6 +55,8 @@ class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule)
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+
         writer.write_bool_value("isExpirationRequired", self.is_expiration_required)
         writer.write_timedelta_value("maximumDuration", self.maximum_duration)
     

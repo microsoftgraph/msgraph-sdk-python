@@ -57,6 +57,9 @@ class TimeBasedAttributeTrigger(WorkflowExecutionTrigger):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .workflow_execution_trigger import WorkflowExecutionTrigger
+        from .workflow_trigger_time_based_attribute import WorkflowTriggerTimeBasedAttribute
+
         writer.write_int_value("offsetInDays", self.offset_in_days)
         writer.write_enum_value("timeBasedAttribute", self.time_based_attribute)
     

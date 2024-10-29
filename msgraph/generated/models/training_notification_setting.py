@@ -60,6 +60,10 @@ class TrainingNotificationSetting(EndUserNotificationSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_end_user_notification import BaseEndUserNotification
+        from .end_user_notification_setting import EndUserNotificationSetting
+        from .training_reminder_notification import TrainingReminderNotification
+
         writer.write_object_value("trainingAssignment", self.training_assignment)
         writer.write_object_value("trainingReminder", self.training_reminder)
     

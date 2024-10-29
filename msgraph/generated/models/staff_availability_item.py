@@ -56,6 +56,8 @@ class StaffAvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .availability_item import AvailabilityItem
+
         writer.write_collection_of_object_values("availabilityItems", self.availability_items)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("staffId", self.staff_id)

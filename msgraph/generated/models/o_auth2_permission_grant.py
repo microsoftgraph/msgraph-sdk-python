@@ -63,6 +63,8 @@ class OAuth2PermissionGrant(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("clientId", self.client_id)
         writer.write_str_value("consentType", self.consent_type)
         writer.write_str_value("principalId", self.principal_id)

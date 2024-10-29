@@ -70,6 +70,9 @@ class Conversation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conversation_thread import ConversationThread
+        from .entity import Entity
+
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_datetime_value("lastDeliveredDateTime", self.last_delivered_date_time)
         writer.write_str_value("preview", self.preview)

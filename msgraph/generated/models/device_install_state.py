@@ -79,6 +79,9 @@ class DeviceInstallState(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .install_state import InstallState
+
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceName", self.device_name)
         writer.write_str_value("errorCode", self.error_code)

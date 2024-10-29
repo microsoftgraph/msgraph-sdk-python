@@ -64,6 +64,9 @@ class BitlockerRecoveryKey(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .volume_type import VolumeType
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("key", self.key)

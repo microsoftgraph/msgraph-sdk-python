@@ -34,7 +34,8 @@ class ServiceProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceProvisioningXmlError".casefold():
@@ -68,6 +69,8 @@ class ServiceProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .service_provisioning_xml_error import ServiceProvisioningXmlError
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_bool_value("isResolved", self.is_resolved)
         writer.write_str_value("@odata.type", self.odata_type)

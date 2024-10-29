@@ -63,6 +63,9 @@ class AndroidStoreApp(MobileApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+        from .mobile_app import MobileApp
+
         writer.write_str_value("appStoreUrl", self.app_store_url)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
     

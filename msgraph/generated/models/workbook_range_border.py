@@ -60,6 +60,8 @@ class WorkbookRangeBorder(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("color", self.color)
         writer.write_str_value("sideIndex", self.side_index)
         writer.write_str_value("style", self.style)

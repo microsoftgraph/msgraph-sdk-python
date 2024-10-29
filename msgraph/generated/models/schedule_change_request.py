@@ -46,7 +46,8 @@ class ScheduleChangeRequest(ChangeTrackedEntity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
@@ -111,6 +112,14 @@ class ScheduleChangeRequest(ChangeTrackedEntity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .offer_shift_request import OfferShiftRequest
+        from .open_shift_change_request import OpenShiftChangeRequest
+        from .schedule_change_request_actor import ScheduleChangeRequestActor
+        from .schedule_change_state import ScheduleChangeState
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_off_request import TimeOffRequest
+
         writer.write_enum_value("assignedTo", self.assigned_to)
         writer.write_str_value("managerActionMessage", self.manager_action_message)
         writer.write_str_value("senderMessage", self.sender_message)

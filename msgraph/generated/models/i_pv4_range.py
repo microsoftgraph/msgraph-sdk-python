@@ -57,6 +57,8 @@ class IPv4Range(IpRange):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .ip_range import IpRange
+
         writer.write_str_value("lowerAddress", self.lower_address)
         writer.write_str_value("upperAddress", self.upper_address)
     

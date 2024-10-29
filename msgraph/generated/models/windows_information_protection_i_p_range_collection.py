@@ -59,6 +59,8 @@ class WindowsInformationProtectionIPRangeCollection(AdditionalDataHolder, Backed
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .ip_range import IpRange
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("ranges", self.ranges)

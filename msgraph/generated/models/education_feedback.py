@@ -63,6 +63,9 @@ class EducationFeedback(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .education_item_body import EducationItemBody
+        from .identity_set import IdentitySet
+
         writer.write_object_value("feedbackBy", self.feedback_by)
         writer.write_datetime_value("feedbackDateTime", self.feedback_date_time)
         writer.write_str_value("@odata.type", self.odata_type)

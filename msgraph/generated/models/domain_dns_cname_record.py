@@ -51,6 +51,8 @@ class DomainDnsCnameRecord(DomainDnsRecord):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .domain_dns_record import DomainDnsRecord
+
         writer.write_str_value("canonicalName", self.canonical_name)
     
 

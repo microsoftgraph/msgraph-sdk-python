@@ -66,6 +66,10 @@ class Store(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .group import Group
+        from .set import Set
+
         writer.write_str_value("defaultLanguageTag", self.default_language_tag)
         writer.write_collection_of_object_values("groups", self.groups)
         writer.write_collection_of_primitive_values("languageTags", self.language_tags)

@@ -60,6 +60,10 @@ class Attendee(AttendeeBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attendee_base import AttendeeBase
+        from .response_status import ResponseStatus
+        from .time_slot import TimeSlot
+
         writer.write_object_value("proposedNewTime", self.proposed_new_time)
         writer.write_object_value("status", self.status)
     

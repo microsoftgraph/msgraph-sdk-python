@@ -73,6 +73,9 @@ class AccessReviewHistoryInstance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_history_status import AccessReviewHistoryStatus
+        from .entity import Entity
+
         writer.write_str_value("downloadUri", self.download_uri)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_datetime_value("fulfilledDateTime", self.fulfilled_date_time)

@@ -53,6 +53,8 @@ class GrantPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.drive_recipient import DriveRecipient
+
         writer.write_collection_of_object_values("recipients", self.recipients)
         writer.write_collection_of_primitive_values("roles", self.roles)
         writer.write_additional_data_value(self.additional_data)

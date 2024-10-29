@@ -54,6 +54,8 @@ class OnenoteResource(OnenoteEntityBaseModel):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .onenote_entity_base_model import OnenoteEntityBaseModel
+
         writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentUrl", self.content_url)
     

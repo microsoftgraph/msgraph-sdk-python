@@ -63,6 +63,9 @@ class ThumbnailSet(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .thumbnail import Thumbnail
+
         writer.write_object_value("large", self.large)
         writer.write_object_value("medium", self.medium)
         writer.write_object_value("small", self.small)

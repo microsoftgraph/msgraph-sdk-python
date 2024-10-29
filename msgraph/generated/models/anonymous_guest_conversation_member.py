@@ -51,6 +51,8 @@ class AnonymousGuestConversationMember(ConversationMember):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conversation_member import ConversationMember
+
         writer.write_str_value("anonymousGuestId", self.anonymous_guest_id)
     
 

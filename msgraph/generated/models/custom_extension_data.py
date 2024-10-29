@@ -29,7 +29,8 @@ class CustomExtensionData(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestCallbackData".casefold():
@@ -72,6 +73,10 @@ class CustomExtensionData(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_package_assignment_request_callback_data import AccessPackageAssignmentRequestCallbackData
+        from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
+        from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

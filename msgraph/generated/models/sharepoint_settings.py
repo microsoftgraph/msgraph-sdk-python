@@ -148,6 +148,12 @@ class SharepointSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .idle_session_sign_out import IdleSessionSignOut
+        from .image_tagging_choice import ImageTaggingChoice
+        from .sharing_capabilities import SharingCapabilities
+        from .sharing_domain_restriction_mode import SharingDomainRestrictionMode
+
         writer.write_collection_of_primitive_values("allowedDomainGuidsForSyncApp", self.allowed_domain_guids_for_sync_app)
         writer.write_collection_of_primitive_values("availableManagedPathsForSiteCreation", self.available_managed_paths_for_site_creation)
         writer.write_int_value("deletedUserPersonalSiteRetentionPeriodInDays", self.deleted_user_personal_site_retention_period_in_days)

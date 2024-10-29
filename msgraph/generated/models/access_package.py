@@ -94,6 +94,12 @@ class AccessPackage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .entity import Entity
+        from .group import Group
+
         writer.write_collection_of_object_values("accessPackagesIncompatibleWith", self.access_packages_incompatible_with)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
         writer.write_object_value("catalog", self.catalog)

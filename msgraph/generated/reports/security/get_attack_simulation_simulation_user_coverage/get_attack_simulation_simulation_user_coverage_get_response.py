@@ -52,6 +52,9 @@ class GetAttackSimulationSimulationUserCoverageGetResponse(BaseCollectionPaginat
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ....models.attack_simulation_simulation_user_coverage import AttackSimulationSimulationUserCoverage
+        from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+
         writer.write_collection_of_object_values("value", self.value)
     
 

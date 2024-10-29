@@ -62,6 +62,8 @@ class ContentCustomization(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .key_value import KeyValue
+
         writer.write_collection_of_object_values("attributeCollection", self.attribute_collection)
         writer.write_str_value("attributeCollectionRelativeUrl", self.attribute_collection_relative_url)
         writer.write_str_value("@odata.type", self.odata_type)

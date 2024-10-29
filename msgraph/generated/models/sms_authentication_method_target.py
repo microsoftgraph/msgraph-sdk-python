@@ -51,6 +51,8 @@ class SmsAuthenticationMethodTarget(AuthenticationMethodTarget):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_target import AuthenticationMethodTarget
+
         writer.write_bool_value("isUsableForSignIn", self.is_usable_for_sign_in)
     
 

@@ -50,6 +50,8 @@ class TargetAppsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.managed_mobile_app import ManagedMobileApp
+
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_additional_data_value(self.additional_data)
     

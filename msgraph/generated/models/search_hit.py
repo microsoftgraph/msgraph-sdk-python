@@ -71,6 +71,8 @@ class SearchHit(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .entity import Entity
+
         writer.write_str_value("contentSource", self.content_source)
         writer.write_str_value("hitId", self.hit_id)
         writer.write_bool_value("isCollapsed", self.is_collapsed)

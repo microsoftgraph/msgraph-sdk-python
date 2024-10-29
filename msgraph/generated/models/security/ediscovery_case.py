@@ -103,6 +103,16 @@ class EdiscoveryCase(Case):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..identity_set import IdentitySet
+        from .case import Case
+        from .case_operation import CaseOperation
+        from .ediscovery_case_settings import EdiscoveryCaseSettings
+        from .ediscovery_custodian import EdiscoveryCustodian
+        from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+        from .ediscovery_review_set import EdiscoveryReviewSet
+        from .ediscovery_review_tag import EdiscoveryReviewTag
+        from .ediscovery_search import EdiscoverySearch
+
         writer.write_object_value("closedBy", self.closed_by)
         writer.write_datetime_value("closedDateTime", self.closed_date_time)
         writer.write_collection_of_object_values("custodians", self.custodians)

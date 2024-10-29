@@ -102,6 +102,9 @@ class Windows10MobileCompliancePolicy(DeviceCompliancePolicy):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .required_password_type import RequiredPasswordType
+
         writer.write_bool_value("bitLockerEnabled", self.bit_locker_enabled)
         writer.write_bool_value("codeIntegrityEnabled", self.code_integrity_enabled)
         writer.write_bool_value("earlyLaunchAntiMalwareDriverEnabled", self.early_launch_anti_malware_driver_enabled)

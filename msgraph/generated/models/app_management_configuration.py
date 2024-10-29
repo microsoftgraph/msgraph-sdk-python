@@ -35,7 +35,8 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementApplicationConfiguration".casefold():
@@ -84,6 +85,12 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .app_management_application_configuration import AppManagementApplicationConfiguration
+        from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
+        from .custom_app_management_configuration import CustomAppManagementConfiguration
+        from .key_credential_configuration import KeyCredentialConfiguration
+        from .password_credential_configuration import PasswordCredentialConfiguration
+
         writer.write_collection_of_object_values("keyCredentials", self.key_credentials)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("passwordCredentials", self.password_credentials)

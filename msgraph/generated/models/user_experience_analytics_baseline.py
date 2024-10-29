@@ -85,6 +85,9 @@ class UserExperienceAnalyticsBaseline(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_experience_analytics_category import UserExperienceAnalyticsCategory
+
         writer.write_object_value("appHealthMetrics", self.app_health_metrics)
         writer.write_object_value("batteryHealthMetrics", self.battery_health_metrics)
         writer.write_object_value("bestPracticesMetrics", self.best_practices_metrics)

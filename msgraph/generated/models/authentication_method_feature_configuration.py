@@ -62,6 +62,9 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .advanced_config_state import AdvancedConfigState
+        from .feature_target import FeatureTarget
+
         writer.write_object_value("excludeTarget", self.exclude_target)
         writer.write_object_value("includeTarget", self.include_target)
         writer.write_str_value("@odata.type", self.odata_type)

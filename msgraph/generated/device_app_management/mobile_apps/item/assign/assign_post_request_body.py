@@ -50,6 +50,8 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.mobile_app_assignment import MobileAppAssignment
+
         writer.write_collection_of_object_values("mobileAppAssignments", self.mobile_app_assignments)
         writer.write_additional_data_value(self.additional_data)
     

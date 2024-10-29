@@ -116,6 +116,15 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .aggregation_option import AggregationOption
+        from .collapse_property import CollapseProperty
+        from .entity_type import EntityType
+        from .result_template_option import ResultTemplateOption
+        from .search_alteration_options import SearchAlterationOptions
+        from .search_query import SearchQuery
+        from .share_point_one_drive_options import SharePointOneDriveOptions
+        from .sort_property import SortProperty
+
         writer.write_collection_of_primitive_values("aggregationFilters", self.aggregation_filters)
         writer.write_collection_of_object_values("aggregations", self.aggregations)
         writer.write_collection_of_object_values("collapseProperties", self.collapse_properties)

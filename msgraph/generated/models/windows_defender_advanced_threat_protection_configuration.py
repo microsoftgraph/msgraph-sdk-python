@@ -57,6 +57,8 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+
         writer.write_bool_value("allowSampleSharing", self.allow_sample_sharing)
         writer.write_bool_value("enableExpeditedTelemetryReporting", self.enable_expedited_telemetry_reporting)
     

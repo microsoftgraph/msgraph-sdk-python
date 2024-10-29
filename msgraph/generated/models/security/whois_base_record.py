@@ -65,7 +65,8 @@ class WhoisBaseRecord(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.whoisHistoryRecord".casefold():
@@ -130,6 +131,13 @@ class WhoisBaseRecord(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .host import Host
+        from .whois_contact import WhoisContact
+        from .whois_history_record import WhoisHistoryRecord
+        from .whois_nameserver import WhoisNameserver
+        from .whois_record import WhoisRecord
+
         writer.write_object_value("abuse", self.abuse)
         writer.write_object_value("admin", self.admin)
         writer.write_object_value("billing", self.billing)

@@ -87,6 +87,9 @@ class Windows81CompliancePolicy(DeviceCompliancePolicy):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .required_password_type import RequiredPasswordType
+
         writer.write_str_value("osMaximumVersion", self.os_maximum_version)
         writer.write_str_value("osMinimumVersion", self.os_minimum_version)
         writer.write_bool_value("passwordBlockSimple", self.password_block_simple)

@@ -63,6 +63,9 @@ class IpAddress(Host):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .autonomous_system import AutonomousSystem
+        from .host import Host
+
         writer.write_object_value("autonomousSystem", self.autonomous_system)
         writer.write_str_value("countryOrRegion", self.country_or_region)
         writer.write_str_value("hostingProvider", self.hosting_provider)

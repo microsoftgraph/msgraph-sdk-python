@@ -91,6 +91,9 @@ class AgreementAcceptance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .agreement_acceptance_state import AgreementAcceptanceState
+        from .entity import Entity
+
         writer.write_str_value("agreementFileId", self.agreement_file_id)
         writer.write_str_value("agreementId", self.agreement_id)
         writer.write_str_value("deviceDisplayName", self.device_display_name)

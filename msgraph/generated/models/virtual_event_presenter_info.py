@@ -54,6 +54,9 @@ class VirtualEventPresenterInfo(MeetingParticipantInfo):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .meeting_participant_info import MeetingParticipantInfo
+        from .virtual_event_presenter_details import VirtualEventPresenterDetails
+
         writer.write_object_value("presenterDetails", self.presenter_details)
     
 

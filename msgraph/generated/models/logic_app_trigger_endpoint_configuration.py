@@ -60,6 +60,8 @@ class LogicAppTriggerEndpointConfiguration(CustomExtensionEndpointConfiguration)
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
+
         writer.write_str_value("logicAppWorkflowName", self.logic_app_workflow_name)
         writer.write_str_value("resourceGroupName", self.resource_group_name)
         writer.write_str_value("subscriptionId", self.subscription_id)

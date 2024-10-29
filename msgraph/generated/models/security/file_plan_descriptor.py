@@ -108,6 +108,18 @@ class FilePlanDescriptor(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .authority_template import AuthorityTemplate
+        from .category_template import CategoryTemplate
+        from .citation_template import CitationTemplate
+        from .department_template import DepartmentTemplate
+        from .file_plan_applied_category import FilePlanAppliedCategory
+        from .file_plan_authority import FilePlanAuthority
+        from .file_plan_citation import FilePlanCitation
+        from .file_plan_department import FilePlanDepartment
+        from .file_plan_reference import FilePlanReference
+        from .file_plan_reference_template import FilePlanReferenceTemplate
+
         writer.write_object_value("authority", self.authority)
         writer.write_object_value("authorityTemplate", self.authority_template)
         writer.write_object_value("category", self.category)

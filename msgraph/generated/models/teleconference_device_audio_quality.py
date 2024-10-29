@@ -48,5 +48,7 @@ class TeleconferenceDeviceAudioQuality(TeleconferenceDeviceMediaQuality):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
+
     
 

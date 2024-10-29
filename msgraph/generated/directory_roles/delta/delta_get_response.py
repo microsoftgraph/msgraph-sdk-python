@@ -52,6 +52,9 @@ class DeltaGetResponse(BaseDeltaFunctionResponse):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ...models.base_delta_function_response import BaseDeltaFunctionResponse
+        from ...models.directory_role import DirectoryRole
+
         writer.write_collection_of_object_values("value", self.value)
     
 

@@ -57,6 +57,9 @@ class EducationAssignmentSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_grading_category import EducationGradingCategory
+        from .entity import Entity
+
         writer.write_collection_of_object_values("gradingCategories", self.grading_categories)
         writer.write_bool_value("submissionAnimationDisabled", self.submission_animation_disabled)
     

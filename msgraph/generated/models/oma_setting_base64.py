@@ -57,6 +57,8 @@ class OmaSettingBase64(OmaSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .oma_setting import OmaSetting
+
         writer.write_str_value("fileName", self.file_name)
         writer.write_str_value("value", self.value)
     

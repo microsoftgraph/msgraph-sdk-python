@@ -66,6 +66,11 @@ class SearchEntity(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .search.acronym import Acronym
+        from .search.bookmark import Bookmark
+        from .search.qna import Qna
+
         writer.write_collection_of_object_values("acronyms", self.acronyms)
         writer.write_collection_of_object_values("bookmarks", self.bookmarks)
         writer.write_collection_of_object_values("qnas", self.qnas)

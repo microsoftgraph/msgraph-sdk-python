@@ -66,6 +66,10 @@ class EducationRubricOutcome(EducationOutcome):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_outcome import EducationOutcome
+        from .rubric_quality_feedback_model import RubricQualityFeedbackModel
+        from .rubric_quality_selected_column_model import RubricQualitySelectedColumnModel
+
         writer.write_collection_of_object_values("publishedRubricQualityFeedback", self.published_rubric_quality_feedback)
         writer.write_collection_of_object_values("publishedRubricQualitySelectedLevels", self.published_rubric_quality_selected_levels)
         writer.write_collection_of_object_values("rubricQualityFeedback", self.rubric_quality_feedback)

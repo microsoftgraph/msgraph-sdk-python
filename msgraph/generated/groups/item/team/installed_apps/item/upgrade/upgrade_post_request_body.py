@@ -50,6 +50,8 @@ class UpgradePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.teams_app_permission_set import TeamsAppPermissionSet
+
         writer.write_object_value("consentedPermissionSet", self.consented_permission_set)
         writer.write_additional_data_value(self.additional_data)
     

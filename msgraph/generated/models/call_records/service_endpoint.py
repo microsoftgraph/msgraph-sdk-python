@@ -48,5 +48,7 @@ class ServiceEndpoint(Endpoint):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .endpoint import Endpoint
+
     
 

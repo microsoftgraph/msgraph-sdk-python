@@ -62,6 +62,9 @@ class MultiTenantOrganizationJoinRequestTransitionDetails(AdditionalDataHolder, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .multi_tenant_organization_member_processing_status import MultiTenantOrganizationMemberProcessingStatus
+        from .multi_tenant_organization_member_state import MultiTenantOrganizationMemberState
+
         writer.write_enum_value("desiredMemberState", self.desired_member_state)
         writer.write_str_value("details", self.details)
         writer.write_str_value("@odata.type", self.odata_type)

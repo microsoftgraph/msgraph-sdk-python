@@ -84,6 +84,10 @@ class MacOSLobApp(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mac_o_s_lob_child_app import MacOSLobChildApp
+        from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
+
         writer.write_str_value("buildNumber", self.build_number)
         writer.write_str_value("bundleId", self.bundle_id)
         writer.write_collection_of_object_values("childApps", self.child_apps)

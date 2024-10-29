@@ -11,13 +11,13 @@ class ProvisionedPlan(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # For example, 'Enabled'.
+    # Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.
     capability_status: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # For example, 'Success'.
+    # The possible values are:Success - Service is fully provisioned.Disabled - Service is disabled.Error - The service plan isn't provisioned and is in an error state.PendingInput - The service isn't provisioned and is awaiting service confirmation.PendingActivation - The service is provisioned but requires explicit activation by an administrator (for example, Intune_O365 service plan)PendingProvisioning - Microsoft has added a new service to the product SKU and it isn't activated in the tenant.
     provisioning_status: Optional[str] = None
-    # The name of the service; for example, 'AccessControlS2S'
+    # The name of the service; for example, 'AccessControlS2S'.
     service: Optional[str] = None
     
     @staticmethod

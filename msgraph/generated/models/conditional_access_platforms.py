@@ -56,6 +56,8 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_device_platform import ConditionalAccessDevicePlatform
+
         writer.write_collection_of_enum_values("excludePlatforms", self.exclude_platforms)
         writer.write_collection_of_enum_values("includePlatforms", self.include_platforms)
         writer.write_str_value("@odata.type", self.odata_type)

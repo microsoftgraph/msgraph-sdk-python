@@ -84,6 +84,14 @@ class Onenote(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .notebook import Notebook
+        from .onenote_operation import OnenoteOperation
+        from .onenote_page import OnenotePage
+        from .onenote_resource import OnenoteResource
+        from .onenote_section import OnenoteSection
+        from .section_group import SectionGroup
+
         writer.write_collection_of_object_values("notebooks", self.notebooks)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("pages", self.pages)

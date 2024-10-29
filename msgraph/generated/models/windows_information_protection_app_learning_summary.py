@@ -63,6 +63,9 @@ class WindowsInformationProtectionAppLearningSummary(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .application_type import ApplicationType
+        from .entity import Entity
+
         writer.write_str_value("applicationName", self.application_name)
         writer.write_enum_value("applicationType", self.application_type)
         writer.write_int_value("deviceCount", self.device_count)

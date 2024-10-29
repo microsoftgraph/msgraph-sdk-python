@@ -59,6 +59,8 @@ class Website(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .website_type import WebsiteType
+
         writer.write_str_value("address", self.address)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)

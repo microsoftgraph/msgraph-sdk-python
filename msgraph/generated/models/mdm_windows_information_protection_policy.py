@@ -51,5 +51,7 @@ class MdmWindowsInformationProtectionPolicy(WindowsInformationProtection):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .windows_information_protection import WindowsInformationProtection
+
     
 

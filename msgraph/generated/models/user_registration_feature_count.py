@@ -56,6 +56,8 @@ class UserRegistrationFeatureCount(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_method_feature import AuthenticationMethodFeature
+
         writer.write_enum_value("feature", self.feature)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("userCount", self.user_count)

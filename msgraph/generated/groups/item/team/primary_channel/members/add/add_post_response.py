@@ -52,6 +52,9 @@ class AddPostResponse(BaseCollectionPaginationCountResponse):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .......models.action_result_part import ActionResultPart
+        from .......models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+
         writer.write_collection_of_object_values("value", self.value)
     
 

@@ -54,6 +54,8 @@ class EnumeratedDeviceRegistrationMembership(DeviceRegistrationMembership):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_registration_membership import DeviceRegistrationMembership
+
         writer.write_collection_of_primitive_values("groups", self.groups)
         writer.write_collection_of_primitive_values("users", self.users)
     

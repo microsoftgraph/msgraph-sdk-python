@@ -61,6 +61,8 @@ class Contract(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+
         writer.write_str_value("contractType", self.contract_type)
         writer.write_uuid_value("customerId", self.customer_id)
         writer.write_str_value("defaultDomainName", self.default_domain_name)

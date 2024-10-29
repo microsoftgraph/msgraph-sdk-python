@@ -54,6 +54,8 @@ class PrincipalResourceMembershipsScope(AccessReviewScope):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_scope import AccessReviewScope
+
         writer.write_collection_of_object_values("principalScopes", self.principal_scopes)
         writer.write_collection_of_object_values("resourceScopes", self.resource_scopes)
     

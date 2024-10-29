@@ -45,7 +45,8 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deleteUserFromSharedAppleDeviceActionResult".casefold():
@@ -112,6 +113,14 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .action_state import ActionState
+        from .delete_user_from_shared_apple_device_action_result import DeleteUserFromSharedAppleDeviceActionResult
+        from .locate_device_action_result import LocateDeviceActionResult
+        from .remote_lock_action_result import RemoteLockActionResult
+        from .reset_passcode_action_result import ResetPasscodeActionResult
+        from .rotate_bit_locker_keys_device_action_result import RotateBitLockerKeysDeviceActionResult
+        from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
+
         writer.write_str_value("actionName", self.action_name)
         writer.write_enum_value("actionState", self.action_state)
         writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)

@@ -79,6 +79,12 @@ class EdiscoveryCustodian(DataSourceContainer):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .data_source_container import DataSourceContainer
+        from .ediscovery_index_operation import EdiscoveryIndexOperation
+        from .site_source import SiteSource
+        from .unified_group_source import UnifiedGroupSource
+        from .user_source import UserSource
+
         writer.write_datetime_value("acknowledgedDateTime", self.acknowledged_date_time)
         writer.write_str_value("email", self.email)
         writer.write_object_value("lastIndexOperation", self.last_index_operation)

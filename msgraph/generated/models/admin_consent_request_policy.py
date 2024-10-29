@@ -69,6 +69,9 @@ class AdminConsentRequestPolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_reviewer_scope import AccessReviewReviewerScope
+        from .entity import Entity
+
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_bool_value("notifyReviewers", self.notify_reviewers)
         writer.write_bool_value("remindersEnabled", self.reminders_enabled)

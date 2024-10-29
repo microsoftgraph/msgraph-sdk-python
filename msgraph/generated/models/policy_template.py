@@ -60,6 +60,10 @@ class PolicyTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
+        from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
+
         writer.write_object_value("multiTenantOrganizationIdentitySynchronization", self.multi_tenant_organization_identity_synchronization)
         writer.write_object_value("multiTenantOrganizationPartnerConfiguration", self.multi_tenant_organization_partner_configuration)
     

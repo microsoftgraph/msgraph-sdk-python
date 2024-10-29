@@ -115,6 +115,13 @@ class EducationSubmission(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_outcome import EducationOutcome
+        from .education_submission_recipient import EducationSubmissionRecipient
+        from .education_submission_resource import EducationSubmissionResource
+        from .education_submission_status import EducationSubmissionStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
+
         writer.write_collection_of_object_values("outcomes", self.outcomes)
         writer.write_object_value("recipient", self.recipient)
         writer.write_collection_of_object_values("resources", self.resources)

@@ -73,6 +73,11 @@ class CallEndedEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .call_participant_info import CallParticipantInfo
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_call_event_type import TeamworkCallEventType
+
         writer.write_timedelta_value("callDuration", self.call_duration)
         writer.write_enum_value("callEventType", self.call_event_type)
         writer.write_str_value("callId", self.call_id)

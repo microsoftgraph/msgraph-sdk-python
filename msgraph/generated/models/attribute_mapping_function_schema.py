@@ -54,6 +54,9 @@ class AttributeMappingFunctionSchema(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attribute_mapping_parameter_schema import AttributeMappingParameterSchema
+        from .entity import Entity
+
         writer.write_collection_of_object_values("parameters", self.parameters)
     
 

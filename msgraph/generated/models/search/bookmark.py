@@ -94,6 +94,12 @@ class Bookmark(SearchAnswer):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..device_platform_type import DevicePlatformType
+        from .answer_keyword import AnswerKeyword
+        from .answer_state import AnswerState
+        from .answer_variant import AnswerVariant
+        from .search_answer import SearchAnswer
+
         writer.write_datetime_value("availabilityEndDateTime", self.availability_end_date_time)
         writer.write_datetime_value("availabilityStartDateTime", self.availability_start_date_time)
         writer.write_collection_of_primitive_values("categories", self.categories)

@@ -79,6 +79,12 @@ class ChatMessageInfo(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .chat_message_from_identity_set import ChatMessageFromIdentitySet
+        from .chat_message_type import ChatMessageType
+        from .entity import Entity
+        from .event_message_detail import EventMessageDetail
+        from .item_body import ItemBody
+
         writer.write_object_value("body", self.body)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("eventDetail", self.event_detail)

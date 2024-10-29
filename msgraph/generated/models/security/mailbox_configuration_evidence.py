@@ -70,6 +70,9 @@ class MailboxConfigurationEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .mailbox_configuration_type import MailboxConfigurationType
+
         writer.write_str_value("configurationId", self.configuration_id)
         writer.write_enum_value("configurationType", self.configuration_type)
         writer.write_str_value("displayName", self.display_name)

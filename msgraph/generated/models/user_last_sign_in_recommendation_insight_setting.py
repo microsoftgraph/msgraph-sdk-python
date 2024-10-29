@@ -58,6 +58,9 @@ class UserLastSignInRecommendationInsightSetting(AccessReviewRecommendationInsig
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
+        from .user_sign_in_recommendation_scope import UserSignInRecommendationScope
+
         writer.write_timedelta_value("recommendationLookBackDuration", self.recommendation_look_back_duration)
         writer.write_enum_value("signInScope", self.sign_in_scope)
     

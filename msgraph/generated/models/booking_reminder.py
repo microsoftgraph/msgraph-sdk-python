@@ -63,6 +63,8 @@ class BookingReminder(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .booking_reminder_recipients import BookingReminderRecipients
+
         writer.write_str_value("message", self.message)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_timedelta_value("offset", self.offset)

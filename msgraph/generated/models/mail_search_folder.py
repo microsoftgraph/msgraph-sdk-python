@@ -60,6 +60,8 @@ class MailSearchFolder(MailFolder):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mail_folder import MailFolder
+
         writer.write_str_value("filterQuery", self.filter_query)
         writer.write_bool_value("includeNestedFolders", self.include_nested_folders)
         writer.write_bool_value("isSupported", self.is_supported)

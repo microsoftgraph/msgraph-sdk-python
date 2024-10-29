@@ -231,6 +231,36 @@ class DriveItem(BaseItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .audio import Audio
+        from .base_item import BaseItem
+        from .bundle import Bundle
+        from .deleted import Deleted
+        from .drive_item_version import DriveItemVersion
+        from .file import File
+        from .file_system_info import FileSystemInfo
+        from .folder import Folder
+        from .geo_coordinates import GeoCoordinates
+        from .image import Image
+        from .item_analytics import ItemAnalytics
+        from .item_retention_label import ItemRetentionLabel
+        from .list_item import ListItem
+        from .malware import Malware
+        from .package import Package
+        from .pending_operations import PendingOperations
+        from .permission import Permission
+        from .photo import Photo
+        from .publication_facet import PublicationFacet
+        from .remote_item import RemoteItem
+        from .root import Root
+        from .search_result import SearchResult
+        from .shared import Shared
+        from .sharepoint_ids import SharepointIds
+        from .special_folder import SpecialFolder
+        from .subscription import Subscription
+        from .thumbnail_set import ThumbnailSet
+        from .video import Video
+        from .workbook import Workbook
+
         writer.write_object_value("analytics", self.analytics)
         writer.write_object_value("audio", self.audio)
         writer.write_object_value("bundle", self.bundle)

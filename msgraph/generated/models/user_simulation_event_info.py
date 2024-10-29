@@ -69,6 +69,8 @@ class UserSimulationEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .click_source import ClickSource
+
         writer.write_str_value("browser", self.browser)
         writer.write_enum_value("clickSource", self.click_source)
         writer.write_datetime_value("eventDateTime", self.event_date_time)

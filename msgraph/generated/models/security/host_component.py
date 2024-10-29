@@ -70,6 +70,9 @@ class HostComponent(Artifact):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .artifact import Artifact
+        from .host import Host
+
         writer.write_str_value("category", self.category)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_object_value("host", self.host)

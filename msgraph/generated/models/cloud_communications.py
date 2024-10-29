@@ -71,6 +71,11 @@ class CloudCommunications(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .call import Call
+        from .call_records.call_record import CallRecord
+        from .online_meeting import OnlineMeeting
+        from .presence import Presence
+
         writer.write_collection_of_object_values("callRecords", self.call_records)
         writer.write_collection_of_object_values("calls", self.calls)
         writer.write_str_value("@odata.type", self.odata_type)

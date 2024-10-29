@@ -60,6 +60,9 @@ class AudioRoutingGroup(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .routing_mode import RoutingMode
+
         writer.write_collection_of_primitive_values("receivers", self.receivers)
         writer.write_enum_value("routingMode", self.routing_mode)
         writer.write_collection_of_primitive_values("sources", self.sources)

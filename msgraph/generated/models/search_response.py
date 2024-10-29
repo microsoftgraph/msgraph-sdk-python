@@ -68,6 +68,10 @@ class SearchResponse(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .alteration_response import AlterationResponse
+        from .result_template_dictionary import ResultTemplateDictionary
+        from .search_hits_container import SearchHitsContainer
+
         writer.write_collection_of_object_values("hitsContainers", self.hits_containers)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("queryAlterationResponse", self.query_alteration_response)

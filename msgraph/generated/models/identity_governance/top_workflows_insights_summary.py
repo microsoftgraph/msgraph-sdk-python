@@ -80,6 +80,8 @@ class TopWorkflowsInsightsSummary(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .lifecycle_workflow_category import LifecycleWorkflowCategory
+
         writer.write_int_value("failedRuns", self.failed_runs)
         writer.write_int_value("failedUsers", self.failed_users)
         writer.write_str_value("@odata.type", self.odata_type)

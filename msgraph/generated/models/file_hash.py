@@ -56,6 +56,8 @@ class FileHash(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .file_hash_type import FileHashType
+
         writer.write_enum_value("hashType", self.hash_type)
         writer.write_str_value("hashValue", self.hash_value)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -59,6 +59,8 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_method_target_type import AuthenticationMethodTargetType
+
         writer.write_str_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("targetType", self.target_type)

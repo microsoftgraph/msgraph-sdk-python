@@ -91,6 +91,13 @@ class EducationRubric(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_item_body import EducationItemBody
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .rubric_level import RubricLevel
+        from .rubric_quality import RubricQuality
+
         writer.write_object_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("grading", self.grading)

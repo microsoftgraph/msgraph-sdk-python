@@ -65,6 +65,8 @@ class CustomExtensionCalloutInstance(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .custom_extension_callout_instance_status import CustomExtensionCalloutInstanceStatus
+
         writer.write_str_value("customExtensionId", self.custom_extension_id)
         writer.write_str_value("detail", self.detail)
         writer.write_str_value("externalCorrelationId", self.external_correlation_id)

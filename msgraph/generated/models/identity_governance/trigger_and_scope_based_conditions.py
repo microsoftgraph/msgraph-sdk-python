@@ -60,6 +60,10 @@ class TriggerAndScopeBasedConditions(WorkflowExecutionConditions):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..subject_set import SubjectSet
+        from .workflow_execution_conditions import WorkflowExecutionConditions
+        from .workflow_execution_trigger import WorkflowExecutionTrigger
+
         writer.write_object_value("scope", self.scope)
         writer.write_object_value("trigger", self.trigger)
     

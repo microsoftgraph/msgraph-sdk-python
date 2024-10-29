@@ -60,6 +60,8 @@ class SynchronizationSchedule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .synchronization_schedule_state import SynchronizationScheduleState
+
         writer.write_datetime_value("expiration", self.expiration)
         writer.write_timedelta_value("interval", self.interval)
         writer.write_str_value("@odata.type", self.odata_type)

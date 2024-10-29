@@ -13,6 +13,8 @@ class InstantiatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The displayName property
     display_name: Optional[str] = None
+    # The serviceManagementReference property
+    service_management_reference: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> InstantiatePostRequestBody:
@@ -32,6 +34,7 @@ class InstantiatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "serviceManagementReference": lambda n : setattr(self, 'service_management_reference', n.get_str_value()),
         }
         return fields
     
@@ -44,6 +47,7 @@ class InstantiatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("serviceManagementReference", self.service_management_reference)
         writer.write_additional_data_value(self.additional_data)
     
 

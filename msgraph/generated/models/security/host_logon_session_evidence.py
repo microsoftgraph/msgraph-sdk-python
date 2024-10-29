@@ -70,6 +70,10 @@ class HostLogonSessionEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .device_evidence import DeviceEvidence
+        from .user_evidence import UserEvidence
+
         writer.write_object_value("account", self.account)
         writer.write_datetime_value("endUtcDateTime", self.end_utc_date_time)
         writer.write_object_value("host", self.host)

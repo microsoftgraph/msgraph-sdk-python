@@ -156,6 +156,26 @@ class BackupRestoreRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .drive_protection_rule import DriveProtectionRule
+        from .drive_protection_unit import DriveProtectionUnit
+        from .entity import Entity
+        from .exchange_protection_policy import ExchangeProtectionPolicy
+        from .exchange_restore_session import ExchangeRestoreSession
+        from .mailbox_protection_rule import MailboxProtectionRule
+        from .mailbox_protection_unit import MailboxProtectionUnit
+        from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
+        from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
+        from .protection_policy_base import ProtectionPolicyBase
+        from .protection_unit_base import ProtectionUnitBase
+        from .restore_point import RestorePoint
+        from .restore_session_base import RestoreSessionBase
+        from .service_app import ServiceApp
+        from .service_status import ServiceStatus
+        from .share_point_protection_policy import SharePointProtectionPolicy
+        from .share_point_restore_session import SharePointRestoreSession
+        from .site_protection_rule import SiteProtectionRule
+        from .site_protection_unit import SiteProtectionUnit
+
         writer.write_collection_of_object_values("driveInclusionRules", self.drive_inclusion_rules)
         writer.write_collection_of_object_values("driveProtectionUnits", self.drive_protection_units)
         writer.write_collection_of_object_values("exchangeProtectionPolicies", self.exchange_protection_policies)

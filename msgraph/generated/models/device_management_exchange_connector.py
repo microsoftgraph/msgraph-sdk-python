@@ -85,6 +85,10 @@ class DeviceManagementExchangeConnector(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_management_exchange_connector_status import DeviceManagementExchangeConnectorStatus
+        from .device_management_exchange_connector_type import DeviceManagementExchangeConnectorType
+        from .entity import Entity
+
         writer.write_str_value("connectorServerName", self.connector_server_name)
         writer.write_str_value("exchangeAlias", self.exchange_alias)
         writer.write_enum_value("exchangeConnectorType", self.exchange_connector_type)

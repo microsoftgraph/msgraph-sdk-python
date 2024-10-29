@@ -56,6 +56,8 @@ class MeetingParticipants(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .meeting_participant_info import MeetingParticipantInfo
+
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("organizer", self.organizer)

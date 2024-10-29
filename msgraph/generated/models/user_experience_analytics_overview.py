@@ -57,6 +57,9 @@ class UserExperienceAnalyticsOverview(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_experience_analytics_insight import UserExperienceAnalyticsInsight
+
         writer.write_collection_of_object_values("insights", self.insights)
     
 

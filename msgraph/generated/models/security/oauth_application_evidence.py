@@ -60,6 +60,8 @@ class OauthApplicationEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("objectId", self.object_id)

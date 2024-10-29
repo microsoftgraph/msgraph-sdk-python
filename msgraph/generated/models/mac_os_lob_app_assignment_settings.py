@@ -54,6 +54,8 @@ class MacOsLobAppAssignmentSettings(MobileAppAssignmentSettings):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+
         writer.write_bool_value("uninstallOnDeviceRemoval", self.uninstall_on_device_removal)
     
 

@@ -51,6 +51,8 @@ class EducationAssignmentIndividualRecipient(EducationAssignmentRecipient):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_assignment_recipient import EducationAssignmentRecipient
+
         writer.write_collection_of_primitive_values("recipients", self.recipients)
     
 

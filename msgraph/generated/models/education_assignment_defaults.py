@@ -67,6 +67,10 @@ class EducationAssignmentDefaults(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_added_student_action import EducationAddedStudentAction
+        from .education_add_to_calendar_options import EducationAddToCalendarOptions
+        from .entity import Entity
+
         writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)
         writer.write_enum_value("addedStudentAction", self.added_student_action)
         writer.write_time_value("dueTime", self.due_time)

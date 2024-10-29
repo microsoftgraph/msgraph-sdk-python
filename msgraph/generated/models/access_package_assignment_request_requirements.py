@@ -77,6 +77,9 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_package_question import AccessPackageQuestion
+        from .entitlement_management_schedule import EntitlementManagementSchedule
+
         writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)
         writer.write_bool_value("isApprovalRequiredForUpdate", self.is_approval_required_for_update)

@@ -57,6 +57,9 @@ class PrinterCreateOperation(PrintOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .printer import Printer
+        from .print_operation import PrintOperation
+
         writer.write_str_value("certificate", self.certificate)
         writer.write_object_value("printer", self.printer)
     

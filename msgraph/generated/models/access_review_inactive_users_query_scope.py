@@ -52,6 +52,8 @@ class AccessReviewInactiveUsersQueryScope(AccessReviewQueryScope):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_query_scope import AccessReviewQueryScope
+
         writer.write_timedelta_value("inactiveDuration", self.inactive_duration)
     
 

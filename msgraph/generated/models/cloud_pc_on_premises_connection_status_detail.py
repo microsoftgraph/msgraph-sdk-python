@@ -60,6 +60,8 @@ class CloudPcOnPremisesConnectionStatusDetail(AdditionalDataHolder, BackedModel,
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cloud_pc_on_premises_connection_health_check import CloudPcOnPremisesConnectionHealthCheck
+
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_collection_of_object_values("healthChecks", self.health_checks)
         writer.write_str_value("@odata.type", self.odata_type)

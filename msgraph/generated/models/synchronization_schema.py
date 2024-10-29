@@ -63,6 +63,10 @@ class SynchronizationSchema(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_definition import DirectoryDefinition
+        from .entity import Entity
+        from .synchronization_rule import SynchronizationRule
+
         writer.write_collection_of_object_values("directories", self.directories)
         writer.write_collection_of_object_values("synchronizationRules", self.synchronization_rules)
         writer.write_str_value("version", self.version)

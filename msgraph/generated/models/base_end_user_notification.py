@@ -34,7 +34,8 @@ class BaseEndUserNotification(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.positiveReinforcementNotification".casefold():
@@ -81,6 +82,11 @@ class BaseEndUserNotification(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .end_user_notification import EndUserNotification
+        from .positive_reinforcement_notification import PositiveReinforcementNotification
+        from .simulation_notification import SimulationNotification
+        from .training_reminder_notification import TrainingReminderNotification
+
         writer.write_str_value("defaultLanguage", self.default_language)
         writer.write_object_value("endUserNotification", self.end_user_notification)
         writer.write_str_value("@odata.type", self.odata_type)

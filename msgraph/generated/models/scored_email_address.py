@@ -62,6 +62,8 @@ class ScoredEmailAddress(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .selection_likelihood_info import SelectionLikelihoodInfo
+
         writer.write_str_value("address", self.address)
         writer.write_str_value("itemId", self.item_id)
         writer.write_str_value("@odata.type", self.odata_type)

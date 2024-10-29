@@ -62,6 +62,8 @@ class FileSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .file_hash import FileHash
+
         writer.write_object_value("fileHash", self.file_hash)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)

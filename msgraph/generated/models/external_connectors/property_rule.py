@@ -65,6 +65,9 @@ class PropertyRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..binary_operator import BinaryOperator
+        from .rule_operation import RuleOperation
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("operation", self.operation)
         writer.write_str_value("property", self.property_)

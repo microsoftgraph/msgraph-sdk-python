@@ -48,5 +48,7 @@ class DisableAndDeleteUserApplyAction(AccessReviewApplyAction):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_apply_action import AccessReviewApplyAction
+
     
 

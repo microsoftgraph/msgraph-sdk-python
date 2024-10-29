@@ -56,6 +56,9 @@ class TransferPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.invitation_participant_info import InvitationParticipantInfo
+        from .....models.participant_info import ParticipantInfo
+
         writer.write_object_value("transferTarget", self.transfer_target)
         writer.write_object_value("transferee", self.transferee)
         writer.write_additional_data_value(self.additional_data)

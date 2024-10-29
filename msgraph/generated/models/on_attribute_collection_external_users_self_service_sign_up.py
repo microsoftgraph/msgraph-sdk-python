@@ -60,6 +60,10 @@ class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionH
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_attribute_collection_page import AuthenticationAttributeCollectionPage
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .on_attribute_collection_handler import OnAttributeCollectionHandler
+
         writer.write_object_value("attributeCollectionPage", self.attribute_collection_page)
         writer.write_collection_of_object_values("attributes", self.attributes)
     

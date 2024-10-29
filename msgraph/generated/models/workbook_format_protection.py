@@ -54,6 +54,8 @@ class WorkbookFormatProtection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_bool_value("formulaHidden", self.formula_hidden)
         writer.write_bool_value("locked", self.locked)
     

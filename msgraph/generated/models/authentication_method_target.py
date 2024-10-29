@@ -30,7 +30,8 @@ class AuthenticationMethodTarget(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodTarget".casefold():
@@ -75,6 +76,11 @@ class AuthenticationMethodTarget(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_target_type import AuthenticationMethodTargetType
+        from .entity import Entity
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
+
         writer.write_bool_value("isRegistrationRequired", self.is_registration_required)
         writer.write_enum_value("targetType", self.target_type)
     

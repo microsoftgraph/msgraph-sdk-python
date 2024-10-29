@@ -64,6 +64,9 @@ class SimulationAutomationRun(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .simulation_automation_run_status import SimulationAutomationRunStatus
+
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("simulationId", self.simulation_id)
         writer.write_datetime_value("startDateTime", self.start_date_time)

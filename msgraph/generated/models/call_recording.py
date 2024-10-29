@@ -76,6 +76,9 @@ class CallRecording(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_set import IdentitySet
+
         writer.write_str_value("callId", self.call_id)
         writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentCorrelationId", self.content_correlation_id)

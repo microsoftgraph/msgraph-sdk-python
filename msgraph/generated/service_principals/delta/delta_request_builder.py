@@ -31,7 +31,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltaGetResponse]:
         """
-        Get newly created, updated, or deleted service principals without having to perform a full read of the entire resource collection.
+        Get newly created, updated, or deleted service principals without having to perform a full read of the entire resource collection. For more information, see Use delta query to track changes in Microsoft Graph data for details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-delta?view=graph-rest-1.0
@@ -52,7 +52,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get newly created, updated, or deleted service principals without having to perform a full read of the entire resource collection.
+        Get newly created, updated, or deleted service principals without having to perform a full read of the entire resource collection. For more information, see Use delta query to track changes in Microsoft Graph data for details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeltaRequestBuilderGetQueryParameters():
         """
-        Get newly created, updated, or deleted service principals without having to perform a full read of the entire resource collection.
+        Get newly created, updated, or deleted service principals without having to perform a full read of the entire resource collection. For more information, see Use delta query to track changes in Microsoft Graph data for details.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

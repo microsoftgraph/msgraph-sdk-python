@@ -77,6 +77,10 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .column_definition import ColumnDefinition
+        from .content_type_info import ContentTypeInfo
+        from .document_set_content import DocumentSetContent
+
         writer.write_collection_of_object_values("allowedContentTypes", self.allowed_content_types)
         writer.write_collection_of_object_values("defaultContents", self.default_contents)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -66,6 +66,8 @@ class ExtensionProperty(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("dataType", self.data_type)
         writer.write_bool_value("isMultiValued", self.is_multi_valued)

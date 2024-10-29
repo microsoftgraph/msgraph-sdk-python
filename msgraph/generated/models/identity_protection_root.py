@@ -71,6 +71,11 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .risky_service_principal import RiskyServicePrincipal
+        from .risky_user import RiskyUser
+        from .risk_detection import RiskDetection
+        from .service_principal_risk_detection import ServicePrincipalRiskDetection
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("riskDetections", self.risk_detections)
         writer.write_collection_of_object_values("riskyServicePrincipals", self.risky_service_principals)

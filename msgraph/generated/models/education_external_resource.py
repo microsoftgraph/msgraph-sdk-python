@@ -51,6 +51,8 @@ class EducationExternalResource(EducationResource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_resource import EducationResource
+
         writer.write_str_value("webUrl", self.web_url)
     
 

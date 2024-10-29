@@ -56,6 +56,8 @@ class FilterGroup(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .filter_clause import FilterClause
+
         writer.write_collection_of_object_values("clauses", self.clauses)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)

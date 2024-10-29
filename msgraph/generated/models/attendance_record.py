@@ -69,6 +69,10 @@ class AttendanceRecord(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attendance_interval import AttendanceInterval
+        from .entity import Entity
+        from .identity import Identity
+
         writer.write_collection_of_object_values("attendanceIntervals", self.attendance_intervals)
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_object_value("identity", self.identity)

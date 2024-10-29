@@ -56,6 +56,8 @@ class RequiredResourceAccess(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .resource_access import ResourceAccess
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("resourceAccess", self.resource_access)
         writer.write_str_value("resourceAppId", self.resource_app_id)

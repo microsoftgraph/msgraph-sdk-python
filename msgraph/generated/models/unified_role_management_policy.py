@@ -82,6 +82,10 @@ class UnifiedRoleManagementPolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity import Identity
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("effectiveRules", self.effective_rules)

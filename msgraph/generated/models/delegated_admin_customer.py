@@ -60,6 +60,9 @@ class DelegatedAdminCustomer(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+        from .entity import Entity
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("serviceManagementDetails", self.service_management_details)
         writer.write_str_value("tenantId", self.tenant_id)

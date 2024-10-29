@@ -68,6 +68,10 @@ class EducationRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .education_class import EducationClass
+        from .education_school import EducationSchool
+        from .education_user import EducationUser
+
         writer.write_collection_of_object_values("classes", self.classes)
         writer.write_object_value("me", self.me)
         writer.write_str_value("@odata.type", self.odata_type)

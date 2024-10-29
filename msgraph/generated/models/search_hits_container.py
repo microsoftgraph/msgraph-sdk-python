@@ -65,6 +65,9 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .search_aggregation import SearchAggregation
+        from .search_hit import SearchHit
+
         writer.write_collection_of_object_values("aggregations", self.aggregations)
         writer.write_collection_of_object_values("hits", self.hits)
         writer.write_bool_value("moreResultsAvailable", self.more_results_available)

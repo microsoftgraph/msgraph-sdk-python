@@ -54,6 +54,8 @@ class ResellerDelegatedAdminRelationship(DelegatedAdminRelationship):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .delegated_admin_relationship import DelegatedAdminRelationship
+
         writer.write_str_value("indirectProviderTenantId", self.indirect_provider_tenant_id)
         writer.write_bool_value("isPartnerConsentPending", self.is_partner_consent_pending)
     

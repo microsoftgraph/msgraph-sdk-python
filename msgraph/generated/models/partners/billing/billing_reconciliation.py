@@ -54,6 +54,9 @@ class BillingReconciliation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ...entity import Entity
+        from .billed_reconciliation import BilledReconciliation
+
         writer.write_object_value("billed", self.billed)
     
 

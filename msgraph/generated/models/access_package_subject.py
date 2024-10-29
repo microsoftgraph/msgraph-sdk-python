@@ -75,6 +75,10 @@ class AccessPackageSubject(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_subject_type import AccessPackageSubjectType
+        from .connected_organization import ConnectedOrganization
+        from .entity import Entity
+
         writer.write_object_value("connectedOrganization", self.connected_organization)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("email", self.email)

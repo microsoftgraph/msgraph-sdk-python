@@ -52,6 +52,9 @@ class IdentityUserFlowAttributeCollectionResponse(BaseCollectionPaginationCountR
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
+
         writer.write_collection_of_object_values("value", self.value)
     
 

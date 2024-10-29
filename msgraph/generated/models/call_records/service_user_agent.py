@@ -54,6 +54,9 @@ class ServiceUserAgent(UserAgent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .service_role import ServiceRole
+        from .user_agent import UserAgent
+
         writer.write_enum_value("role", self.role)
     
 

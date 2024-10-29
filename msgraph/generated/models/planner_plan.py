@@ -88,6 +88,13 @@ class PlannerPlan(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .planner_bucket import PlannerBucket
+        from .planner_plan_container import PlannerPlanContainer
+        from .planner_plan_details import PlannerPlanDetails
+        from .planner_task import PlannerTask
+
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_object_value("container", self.container)
         writer.write_object_value("createdBy", self.created_by)

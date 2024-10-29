@@ -63,6 +63,10 @@ class UserExperienceAnalyticsCategory(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_experience_analytics_insight import UserExperienceAnalyticsInsight
+        from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
+
         writer.write_collection_of_object_values("insights", self.insights)
         writer.write_collection_of_object_values("metricValues", self.metric_values)
     

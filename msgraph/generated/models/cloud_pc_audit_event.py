@@ -97,6 +97,13 @@ class CloudPcAuditEvent(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cloud_pc_audit_activity_operation_type import CloudPcAuditActivityOperationType
+        from .cloud_pc_audit_activity_result import CloudPcAuditActivityResult
+        from .cloud_pc_audit_actor import CloudPcAuditActor
+        from .cloud_pc_audit_category import CloudPcAuditCategory
+        from .cloud_pc_audit_resource import CloudPcAuditResource
+        from .entity import Entity
+
         writer.write_str_value("activity", self.activity)
         writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_enum_value("activityOperationType", self.activity_operation_type)

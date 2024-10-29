@@ -56,6 +56,8 @@ class ResumePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.custom_extension_data import CustomExtensionData
+
         writer.write_object_value("data", self.data)
         writer.write_str_value("source", self.source)
         writer.write_str_value("type", self.type)

@@ -63,6 +63,10 @@ class TenantAppManagementPolicy(PolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_management_application_configuration import AppManagementApplicationConfiguration
+        from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
+        from .policy_base import PolicyBase
+
         writer.write_object_value("applicationRestrictions", self.application_restrictions)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_object_value("servicePrincipalRestrictions", self.service_principal_restrictions)

@@ -73,6 +73,10 @@ class DirectoryDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_definition_discoverabilities import DirectoryDefinitionDiscoverabilities
+        from .entity import Entity
+        from .object_definition import ObjectDefinition
+
         writer.write_enum_value("discoverabilities", self.discoverabilities)
         writer.write_datetime_value("discoveryDateTime", self.discovery_date_time)
         writer.write_str_value("name", self.name)

@@ -81,6 +81,12 @@ class DeviceRegistrationPolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .azure_a_d_join_policy import AzureADJoinPolicy
+        from .azure_a_d_registration_policy import AzureADRegistrationPolicy
+        from .entity import Entity
+        from .local_admin_password_settings import LocalAdminPasswordSettings
+        from .multi_factor_auth_configuration import MultiFactorAuthConfiguration
+
         writer.write_object_value("azureADJoin", self.azure_a_d_join)
         writer.write_object_value("azureADRegistration", self.azure_a_d_registration)
         writer.write_str_value("description", self.description)

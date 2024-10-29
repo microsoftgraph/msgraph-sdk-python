@@ -54,6 +54,8 @@ class FileAssessmentRequest(ThreatAssessmentRequest):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .threat_assessment_request import ThreatAssessmentRequest
+
         writer.write_str_value("contentData", self.content_data)
         writer.write_str_value("fileName", self.file_name)
     

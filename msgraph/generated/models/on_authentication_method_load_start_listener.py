@@ -54,6 +54,9 @@ class OnAuthenticationMethodLoadStartListener(AuthenticationEventListener):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_event_listener import AuthenticationEventListener
+        from .on_authentication_method_load_start_handler import OnAuthenticationMethodLoadStartHandler
+
         writer.write_object_value("handler", self.handler)
     
 

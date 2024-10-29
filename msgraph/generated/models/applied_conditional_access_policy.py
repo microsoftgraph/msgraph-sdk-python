@@ -65,6 +65,8 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .applied_conditional_access_policy_result import AppliedConditionalAccessPolicyResult
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("enforcedGrantControls", self.enforced_grant_controls)
         writer.write_collection_of_primitive_values("enforcedSessionControls", self.enforced_session_controls)

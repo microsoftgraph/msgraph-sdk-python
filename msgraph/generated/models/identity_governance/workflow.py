@@ -88,6 +88,12 @@ class Workflow(WorkflowBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .run import Run
+        from .task_report import TaskReport
+        from .user_processing_result import UserProcessingResult
+        from .workflow_base import WorkflowBase
+        from .workflow_version import WorkflowVersion
+
         writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
         writer.write_collection_of_object_values("executionScope", self.execution_scope)
         writer.write_str_value("id", self.id)

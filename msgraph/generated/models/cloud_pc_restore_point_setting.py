@@ -56,6 +56,8 @@ class CloudPcRestorePointSetting(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cloud_pc_restore_point_frequency_type import CloudPcRestorePointFrequencyType
+
         writer.write_enum_value("frequencyType", self.frequency_type)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("userRestoreEnabled", self.user_restore_enabled)

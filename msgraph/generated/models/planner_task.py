@@ -148,6 +148,16 @@ class PlannerTask(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .planner_applied_categories import PlannerAppliedCategories
+        from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
+        from .planner_assignments import PlannerAssignments
+        from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
+        from .planner_preview_type import PlannerPreviewType
+        from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
+        from .planner_task_details import PlannerTaskDetails
+
         writer.write_int_value("activeChecklistItemCount", self.active_checklist_item_count)
         writer.write_object_value("appliedCategories", self.applied_categories)
         writer.write_object_value("assignedToTaskBoardFormat", self.assigned_to_task_board_format)

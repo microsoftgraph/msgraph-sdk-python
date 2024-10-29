@@ -58,6 +58,9 @@ class CloudPcUserSettingAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cloud_pc_management_assignment_target import CloudPcManagementAssignmentTarget
+        from .entity import Entity
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("target", self.target)
     

@@ -68,6 +68,9 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .conditional_access_grant_control import ConditionalAccessGrantControl
+
         writer.write_object_value("authenticationStrength", self.authentication_strength)
         writer.write_collection_of_enum_values("builtInControls", self.built_in_controls)
         writer.write_collection_of_primitive_values("customAuthenticationFactors", self.custom_authentication_factors)

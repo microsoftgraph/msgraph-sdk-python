@@ -65,6 +65,8 @@ class AnswerVariant(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..device_platform_type import DevicePlatformType
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("languageTag", self.language_tag)

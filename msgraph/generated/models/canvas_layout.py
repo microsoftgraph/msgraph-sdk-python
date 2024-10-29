@@ -60,6 +60,10 @@ class CanvasLayout(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .horizontal_section import HorizontalSection
+        from .vertical_section import VerticalSection
+
         writer.write_collection_of_object_values("horizontalSections", self.horizontal_sections)
         writer.write_object_value("verticalSection", self.vertical_section)
     

@@ -54,6 +54,9 @@ class PrivilegedAccessRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .privileged_access_group import PrivilegedAccessGroup
+
         writer.write_object_value("group", self.group)
     
 

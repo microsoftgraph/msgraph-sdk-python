@@ -84,6 +84,12 @@ class PrivilegedAccessGroupAssignmentScheduleRequest(PrivilegedAccessScheduleReq
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+        from .group import Group
+        from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
+        from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
+        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
+
         writer.write_enum_value("accessId", self.access_id)
         writer.write_object_value("activatedUsing", self.activated_using)
         writer.write_object_value("group", self.group)

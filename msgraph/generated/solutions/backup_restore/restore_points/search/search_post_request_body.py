@@ -71,6 +71,11 @@ class SearchPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.artifact_query import ArtifactQuery
+        from .....models.restore_point_preference import RestorePointPreference
+        from .....models.restore_point_tags import RestorePointTags
+        from .....models.time_period import TimePeriod
+
         writer.write_object_value("artifactQuery", self.artifact_query)
         writer.write_object_value("protectionTimePeriod", self.protection_time_period)
         writer.write_collection_of_primitive_values("protectionUnitIds", self.protection_unit_ids)

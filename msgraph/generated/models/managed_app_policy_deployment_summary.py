@@ -70,6 +70,9 @@ class ManagedAppPolicyDeploymentSummary(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .managed_app_policy_deployment_summary_per_app import ManagedAppPolicyDeploymentSummaryPerApp
+
         writer.write_int_value("configurationDeployedUserCount", self.configuration_deployed_user_count)
         writer.write_collection_of_object_values("configurationDeploymentSummaryPerApp", self.configuration_deployment_summary_per_app)
         writer.write_str_value("displayName", self.display_name)

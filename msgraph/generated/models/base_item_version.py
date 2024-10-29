@@ -35,7 +35,8 @@ class BaseItemVersion(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.documentSetVersion".casefold():
@@ -89,6 +90,13 @@ class BaseItemVersion(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .document_set_version import DocumentSetVersion
+        from .drive_item_version import DriveItemVersion
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .list_item_version import ListItemVersion
+        from .publication_facet import PublicationFacet
+
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_object_value("publication", self.publication)

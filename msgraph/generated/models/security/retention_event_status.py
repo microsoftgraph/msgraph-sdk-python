@@ -59,6 +59,9 @@ class RetentionEventStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..public_error import PublicError
+        from .event_status_type import EventStatusType
+
         writer.write_object_value("error", self.error)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("status", self.status)

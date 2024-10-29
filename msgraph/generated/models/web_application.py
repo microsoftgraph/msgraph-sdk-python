@@ -68,6 +68,9 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .implicit_grant_settings import ImplicitGrantSettings
+        from .redirect_uri_settings import RedirectUriSettings
+
         writer.write_str_value("homePageUrl", self.home_page_url)
         writer.write_object_value("implicitGrantSettings", self.implicit_grant_settings)
         writer.write_str_value("logoutUrl", self.logout_url)

@@ -145,6 +145,17 @@ class SignIn(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .applied_conditional_access_policy import AppliedConditionalAccessPolicy
+        from .conditional_access_status import ConditionalAccessStatus
+        from .device_detail import DeviceDetail
+        from .entity import Entity
+        from .risk_detail import RiskDetail
+        from .risk_event_type import RiskEventType
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+        from .sign_in_location import SignInLocation
+        from .sign_in_status import SignInStatus
+
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("appId", self.app_id)
         writer.write_collection_of_object_values("appliedConditionalAccessPolicies", self.applied_conditional_access_policies)

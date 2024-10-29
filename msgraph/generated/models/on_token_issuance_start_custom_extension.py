@@ -54,6 +54,9 @@ class OnTokenIssuanceStartCustomExtension(CustomAuthenticationExtension):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .custom_authentication_extension import CustomAuthenticationExtension
+        from .on_token_issuance_start_return_claim import OnTokenIssuanceStartReturnClaim
+
         writer.write_collection_of_object_values("claimsForTokenConfiguration", self.claims_for_token_configuration)
     
 

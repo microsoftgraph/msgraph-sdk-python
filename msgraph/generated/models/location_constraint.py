@@ -59,6 +59,8 @@ class LocationConstraint(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .location_constraint_item import LocationConstraintItem
+
         writer.write_bool_value("isRequired", self.is_required)
         writer.write_collection_of_object_values("locations", self.locations)
         writer.write_str_value("@odata.type", self.odata_type)

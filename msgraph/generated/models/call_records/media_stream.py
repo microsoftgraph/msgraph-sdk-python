@@ -147,6 +147,10 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .audio_codec import AudioCodec
+        from .media_stream_direction import MediaStreamDirection
+        from .video_codec import VideoCodec
+
         writer.write_enum_value("audioCodec", self.audio_codec)
         writer.write_float_value("averageAudioDegradation", self.average_audio_degradation)
         writer.write_timedelta_value("averageAudioNetworkJitter", self.average_audio_network_jitter)

@@ -118,6 +118,10 @@ class Windows10TeamGeneralConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+        from .miracast_channel import MiracastChannel
+        from .welcome_screen_meeting_information import WelcomeScreenMeetingInformation
+
         writer.write_bool_value("azureOperationalInsightsBlockTelemetry", self.azure_operational_insights_block_telemetry)
         writer.write_str_value("azureOperationalInsightsWorkspaceId", self.azure_operational_insights_workspace_id)
         writer.write_str_value("azureOperationalInsightsWorkspaceKey", self.azure_operational_insights_workspace_key)

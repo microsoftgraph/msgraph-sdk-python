@@ -58,7 +58,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -69,11 +69,11 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: RoleDefinition, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RoleDefinition]:
         """
-        Create a new deviceAndAppManagementRoleDefinition object.
+        Create a new roleDefinition object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroledefinition-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -82,7 +82,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -104,7 +104,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: RoleDefinition, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new deviceAndAppManagementRoleDefinition object.
+        Create a new roleDefinition object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

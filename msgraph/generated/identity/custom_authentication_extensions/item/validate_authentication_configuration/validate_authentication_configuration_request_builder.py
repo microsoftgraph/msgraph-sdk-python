@@ -31,7 +31,7 @@ class ValidateAuthenticationConfigurationRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AuthenticationConfigurationValidation]:
         """
-        An API to check validity of the endpoint and and authentication configuration for a customAuthenticationExtension.
+        An API to check validity of the endpoint and and authentication configuration for a customAuthenticationExtension object, which can represent one of the following derived types:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationConfigurationValidation]
         Find more info here: https://learn.microsoft.com/graph/api/customauthenticationextension-validateauthenticationconfiguration?view=graph-rest-1.0
@@ -41,7 +41,7 @@ class ValidateAuthenticationConfigurationRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -52,7 +52,7 @@ class ValidateAuthenticationConfigurationRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        An API to check validity of the endpoint and and authentication configuration for a customAuthenticationExtension.
+        An API to check validity of the endpoint and and authentication configuration for a customAuthenticationExtension object, which can represent one of the following derived types:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

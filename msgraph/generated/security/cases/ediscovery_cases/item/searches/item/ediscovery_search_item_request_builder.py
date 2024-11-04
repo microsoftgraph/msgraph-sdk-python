@@ -20,6 +20,8 @@ if TYPE_CHECKING:
     from .custodian_sources.custodian_sources_request_builder import CustodianSourcesRequestBuilder
     from .last_estimate_statistics_operation.last_estimate_statistics_operation_request_builder import LastEstimateStatisticsOperationRequestBuilder
     from .microsoft_graph_security_estimate_statistics.microsoft_graph_security_estimate_statistics_request_builder import MicrosoftGraphSecurityEstimateStatisticsRequestBuilder
+    from .microsoft_graph_security_export_report.microsoft_graph_security_export_report_request_builder import MicrosoftGraphSecurityExportReportRequestBuilder
+    from .microsoft_graph_security_export_result.microsoft_graph_security_export_result_request_builder import MicrosoftGraphSecurityExportResultRequestBuilder
     from .microsoft_graph_security_purge_data.microsoft_graph_security_purge_data_request_builder import MicrosoftGraphSecurityPurgeDataRequestBuilder
     from .noncustodial_sources.noncustodial_sources_request_builder import NoncustodialSourcesRequestBuilder
 
@@ -48,7 +50,7 @@ class EdiscoverySearchItemRequestBuilder(BaseRequestBuilder):
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -67,7 +69,7 @@ class EdiscoverySearchItemRequestBuilder(BaseRequestBuilder):
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -91,7 +93,7 @@ class EdiscoverySearchItemRequestBuilder(BaseRequestBuilder):
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -191,6 +193,24 @@ class EdiscoverySearchItemRequestBuilder(BaseRequestBuilder):
         from .microsoft_graph_security_estimate_statistics.microsoft_graph_security_estimate_statistics_request_builder import MicrosoftGraphSecurityEstimateStatisticsRequestBuilder
 
         return MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_export_report(self) -> MicrosoftGraphSecurityExportReportRequestBuilder:
+        """
+        Provides operations to call the exportReport method.
+        """
+        from .microsoft_graph_security_export_report.microsoft_graph_security_export_report_request_builder import MicrosoftGraphSecurityExportReportRequestBuilder
+
+        return MicrosoftGraphSecurityExportReportRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_export_result(self) -> MicrosoftGraphSecurityExportResultRequestBuilder:
+        """
+        Provides operations to call the exportResult method.
+        """
+        from .microsoft_graph_security_export_result.microsoft_graph_security_export_result_request_builder import MicrosoftGraphSecurityExportResultRequestBuilder
+
+        return MicrosoftGraphSecurityExportResultRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def microsoft_graph_security_purge_data(self) -> MicrosoftGraphSecurityPurgeDataRequestBuilder:

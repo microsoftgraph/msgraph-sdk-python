@@ -31,17 +31,17 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a conversationMember from a channel. This operation is allowed only for channels with a membershipType value of private or shared.
+        Delete a conversationMember from a channel.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/channel-delete-members?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/conversationmember-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -60,7 +60,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -84,7 +84,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -95,7 +95,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a conversationMember from a channel. This operation is allowed only for channels with a membershipType value of private or shared.
+        Delete a conversationMember from a channel.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

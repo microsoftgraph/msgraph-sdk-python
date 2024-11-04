@@ -11,6 +11,9 @@ from .long_running_operation import LongRunningOperation
 
 @dataclass
 class AttackSimulationOperation(LongRunningOperation):
+    """
+    The status of a long-running operation.
+    """
     # The OdataType property
     odata_type: Optional[str] = None
     # Percentage of completion of the respective operation.

@@ -32,7 +32,7 @@ class GetYammerDeviceUsageUserDetailWithDateRequestBuilder(BaseRequestBuilder):
             path_parameters['date'] = date
         super().__init__(request_adapter, "{+baseurl}/reports/getYammerDeviceUsageUserDetail(date={date})", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get details about Yammer device usage by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +44,7 @@ class GetYammerDeviceUsageUserDetailWithDateRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

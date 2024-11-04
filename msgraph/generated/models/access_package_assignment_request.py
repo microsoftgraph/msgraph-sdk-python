@@ -37,7 +37,7 @@ class AccessPackageAssignmentRequest(Entity):
     request_type: Optional[AccessPackageRequestType] = None
     # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
     requestor: Optional[AccessPackageSubject] = None
-    # The range of dates that access is to be assigned to the requestor. This property can't be changed once set.
+    # The range of dates that access is to be assigned to the requestor. This property can't be changed once set, but a new schedule for an assignment can be included in another userUpdate or UserExtend or adminUpdate assignment request.
     schedule: Optional[EntitlementManagementSchedule] = None
     # The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only. Supports $filter (eq).
     state: Optional[AccessPackageRequestState] = None

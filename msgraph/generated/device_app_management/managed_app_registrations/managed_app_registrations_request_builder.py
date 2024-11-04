@@ -49,17 +49,17 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppRegistrationsRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppRegistrationCollectionResponse]:
         """
-        List properties and relationships of the managedAppRegistration objects.
+        List properties and relationships of the iosManagedAppRegistration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppRegistrationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappregistration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappregistration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -83,7 +83,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -94,7 +94,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppRegistrationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppRegistration objects.
+        List properties and relationships of the iosManagedAppRegistration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +149,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppRegistrationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppRegistration objects.
+        List properties and relationships of the iosManagedAppRegistration objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

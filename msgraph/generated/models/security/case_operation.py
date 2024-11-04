@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .ediscovery_hold_operation import EdiscoveryHoldOperation
     from .ediscovery_index_operation import EdiscoveryIndexOperation
     from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+    from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
     from .ediscovery_tag_operation import EdiscoveryTagOperation
 
 from ..entity import Entity
@@ -76,6 +77,10 @@ class CaseOperation(Entity):
             from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
 
             return EdiscoveryPurgeDataOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoverySearchExportOperation".casefold():
+            from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
+
+            return EdiscoverySearchExportOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryTagOperation".casefold():
             from .ediscovery_tag_operation import EdiscoveryTagOperation
 
@@ -98,6 +103,7 @@ class CaseOperation(Entity):
         from .ediscovery_hold_operation import EdiscoveryHoldOperation
         from .ediscovery_index_operation import EdiscoveryIndexOperation
         from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+        from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
         from .ediscovery_tag_operation import EdiscoveryTagOperation
 
         from ..entity import Entity
@@ -111,6 +117,7 @@ class CaseOperation(Entity):
         from .ediscovery_hold_operation import EdiscoveryHoldOperation
         from .ediscovery_index_operation import EdiscoveryIndexOperation
         from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+        from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
         from .ediscovery_tag_operation import EdiscoveryTagOperation
 
         fields: Dict[str, Callable[[Any], None]] = {

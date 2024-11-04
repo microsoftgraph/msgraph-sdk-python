@@ -31,16 +31,17 @@ class RootDomainRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RootDomainRequestBuilderGetQueryParameters]] = None) -> Optional[Domain]:
         """
-        Get rootDomain from domains
+        Get the root domain of a subdomain. This API returns a single object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Domain]
+        Find more info here: https://learn.microsoft.com/graph/api/domain-get-rootdomain?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -51,7 +52,7 @@ class RootDomainRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RootDomainRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get rootDomain from domains
+        Get the root domain of a subdomain. This API returns a single object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -73,7 +74,7 @@ class RootDomainRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RootDomainRequestBuilderGetQueryParameters():
         """
-        Get rootDomain from domains
+        Get the root domain of a subdomain. This API returns a single object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

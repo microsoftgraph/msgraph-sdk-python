@@ -648,6 +648,7 @@ if TYPE_CHECKING:
     from .security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
     from .security.ediscovery_review_tag import EdiscoveryReviewTag
     from .security.ediscovery_search import EdiscoverySearch
+    from .security.ediscovery_search_export_operation import EdiscoverySearchExportOperation
     from .security.ediscovery_tag_operation import EdiscoveryTagOperation
     from .security.file_plan_descriptor import FilePlanDescriptor
     from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
@@ -3572,6 +3573,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.ediscovery_search import EdiscoverySearch
 
             return EdiscoverySearch()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoverySearchExportOperation".casefold():
+            from .security.ediscovery_search_export_operation import EdiscoverySearchExportOperation
+
+            return EdiscoverySearchExportOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryTagOperation".casefold():
             from .security.ediscovery_tag_operation import EdiscoveryTagOperation
 
@@ -5476,6 +5481,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
         from .security.ediscovery_review_tag import EdiscoveryReviewTag
         from .security.ediscovery_search import EdiscoverySearch
+        from .security.ediscovery_search_export_operation import EdiscoverySearchExportOperation
         from .security.ediscovery_tag_operation import EdiscoveryTagOperation
         from .security.file_plan_descriptor import FilePlanDescriptor
         from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
@@ -6434,6 +6440,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
         from .security.ediscovery_review_tag import EdiscoveryReviewTag
         from .security.ediscovery_search import EdiscoverySearch
+        from .security.ediscovery_search_export_operation import EdiscoverySearchExportOperation
         from .security.ediscovery_tag_operation import EdiscoveryTagOperation
         from .security.file_plan_descriptor import FilePlanDescriptor
         from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate

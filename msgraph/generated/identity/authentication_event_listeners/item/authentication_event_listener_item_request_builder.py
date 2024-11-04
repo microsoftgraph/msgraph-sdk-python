@@ -31,7 +31,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete an authenticationEventListener object.
+        Delete an authenticationEventListener object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/authenticationeventlistener-delete?view=graph-rest-1.0
@@ -41,7 +41,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -50,7 +50,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AuthenticationEventListenerItemRequestBuilderGetQueryParameters]] = None) -> Optional[AuthenticationEventListener]:
         """
-        Read the properties and relationships of an authenticationEventListener object. The @odata.type property in the response object indicates the type of the authenticationEventListener object.
+        Read the properties and relationships of an authenticationEventListener object. The @odata.type property in the response object indicates the type of the authenticationEventListener object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationEventListener]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationeventlistener-get?view=graph-rest-1.0
@@ -60,7 +60,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -71,7 +71,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: AuthenticationEventListener, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AuthenticationEventListener]:
         """
-        Update the properties of an authenticationEventListener object. You must specify the @odata.type property and the value of the authenticationEventListener object type to update.
+        Update the properties of an authenticationEventListener object. You must specify the @odata.type property and the value of the authenticationEventListener object type to update. The following derived types are currently supported.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationEventListener]
@@ -84,7 +84,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -95,7 +95,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete an authenticationEventListener object.
+        Delete an authenticationEventListener object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +106,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AuthenticationEventListenerItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an authenticationEventListener object. The @odata.type property in the response object indicates the type of the authenticationEventListener object.
+        Read the properties and relationships of an authenticationEventListener object. The @odata.type property in the response object indicates the type of the authenticationEventListener object. The following derived types are currently supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +117,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: AuthenticationEventListener, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of an authenticationEventListener object. You must specify the @odata.type property and the value of the authenticationEventListener object type to update.
+        Update the properties of an authenticationEventListener object. You must specify the @odata.type property and the value of the authenticationEventListener object type to update. The following derived types are currently supported.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AuthenticationEventListenerItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationEventListenerItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an authenticationEventListener object. The @odata.type property in the response object indicates the type of the authenticationEventListener object.
+        Read the properties and relationships of an authenticationEventListener object. The @odata.type property in the response object indicates the type of the authenticationEventListener object. The following derived types are currently supported.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

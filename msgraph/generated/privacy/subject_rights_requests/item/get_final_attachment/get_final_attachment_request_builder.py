@@ -28,7 +28,7 @@ class GetFinalAttachmentRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}/getFinalAttachment()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Get the final attachment for a subject rights request. The attachment is a zip file that contains all the files that were included by the privacy administrator.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -41,7 +41,7 @@ class GetFinalAttachmentRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:

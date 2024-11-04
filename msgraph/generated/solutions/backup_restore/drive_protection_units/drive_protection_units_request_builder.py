@@ -48,17 +48,16 @@ class DriveProtectionUnitsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DriveProtectionUnitsRequestBuilderGetQueryParameters]] = None) -> Optional[DriveProtectionUnitCollectionResponse]:
         """
-        Get a list of the driveProtectionUnit objects that are associated with a oneDriveForBusinessProtectionPolicy.
+        The list of drive protection units in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveProtectionUnitCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/backuprestoreroot-list-driveprotectionunits?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -81,7 +80,7 @@ class DriveProtectionUnitsRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -92,7 +91,7 @@ class DriveProtectionUnitsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DriveProtectionUnitsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of the driveProtectionUnit objects that are associated with a oneDriveForBusinessProtectionPolicy.
+        The list of drive protection units in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +137,7 @@ class DriveProtectionUnitsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DriveProtectionUnitsRequestBuilderGetQueryParameters():
         """
-        Get a list of the driveProtectionUnit objects that are associated with a oneDriveForBusinessProtectionPolicy.
+        The list of drive protection units in the tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

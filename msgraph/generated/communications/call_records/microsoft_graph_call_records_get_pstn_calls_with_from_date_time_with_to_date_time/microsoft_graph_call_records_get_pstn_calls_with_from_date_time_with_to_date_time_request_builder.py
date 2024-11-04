@@ -37,7 +37,7 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse]:
         """
-        Get log of PSTN calls as a collection of pstnCallLogRow entries.
+        Get a log of PSTN calls as a collection of pstnCallLogRow entries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse]
         """
@@ -46,7 +46,7 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, ParsableFactory] = {
+        error_mapping: Dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -57,7 +57,7 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get log of PSTN calls as a collection of pstnCallLogRow entries.
+        Get a log of PSTN calls as a collection of pstnCallLogRow entries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
     @dataclass
     class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters():
         """
-        Get log of PSTN calls as a collection of pstnCallLogRow entries.
+        Get a log of PSTN calls as a collection of pstnCallLogRow entries.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -73,6 +73,11 @@ class HostSslCertificate(Artifact):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .artifact import Artifact
+        from .host import Host
+        from .host_ssl_certificate_port import HostSslCertificatePort
+        from .ssl_certificate import SslCertificate
+
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_object_value("host", self.host)
         writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)

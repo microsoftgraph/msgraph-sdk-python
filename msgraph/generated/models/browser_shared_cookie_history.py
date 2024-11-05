@@ -78,6 +78,9 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+        from .identity_set import IdentitySet
+
         writer.write_str_value("comment", self.comment)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("hostOnly", self.host_only)

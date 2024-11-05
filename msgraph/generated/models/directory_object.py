@@ -57,7 +57,8 @@ class DirectoryObject(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
@@ -273,6 +274,39 @@ class DirectoryObject(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .administrative_unit import AdministrativeUnit
+        from .application import Application
+        from .app_management_policy import AppManagementPolicy
+        from .app_role_assignment import AppRoleAssignment
+        from .authorization_policy import AuthorizationPolicy
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .contract import Contract
+        from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .device import Device
+        from .directory_object_partner_reference import DirectoryObjectPartnerReference
+        from .directory_role import DirectoryRole
+        from .directory_role_template import DirectoryRoleTemplate
+        from .endpoint import Endpoint
+        from .entity import Entity
+        from .extension_property import ExtensionProperty
+        from .group import Group
+        from .group_setting_template import GroupSettingTemplate
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .multi_tenant_organization_member import MultiTenantOrganizationMember
+        from .organization import Organization
+        from .org_contact import OrgContact
+        from .permission_grant_policy import PermissionGrantPolicy
+        from .policy_base import PolicyBase
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .service_principal import ServicePrincipal
+        from .sts_policy import StsPolicy
+        from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .user import User
+
         writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
     
 

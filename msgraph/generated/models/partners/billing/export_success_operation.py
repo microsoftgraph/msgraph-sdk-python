@@ -54,6 +54,9 @@ class ExportSuccessOperation(Operation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .manifest import Manifest
+        from .operation import Operation
+
         writer.write_object_value("resourceLocation", self.resource_location)
     
 

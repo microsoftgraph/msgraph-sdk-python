@@ -48,5 +48,7 @@ class ChatMessageHostedContent(TeamworkHostedContent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .teamwork_hosted_content import TeamworkHostedContent
+
     
 

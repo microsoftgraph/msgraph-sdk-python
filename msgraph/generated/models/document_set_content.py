@@ -59,6 +59,8 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .content_type_info import ContentTypeInfo
+
         writer.write_object_value("contentType", self.content_type)
         writer.write_str_value("fileName", self.file_name)
         writer.write_str_value("folderName", self.folder_name)

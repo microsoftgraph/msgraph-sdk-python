@@ -68,6 +68,8 @@ class WorkbookSortField(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .workbook_icon import WorkbookIcon
+
         writer.write_bool_value("ascending", self.ascending)
         writer.write_str_value("color", self.color)
         writer.write_str_value("dataOption", self.data_option)

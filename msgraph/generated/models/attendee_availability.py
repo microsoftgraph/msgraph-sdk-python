@@ -59,6 +59,9 @@ class AttendeeAvailability(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attendee_base import AttendeeBase
+        from .free_busy_status import FreeBusyStatus
+
         writer.write_object_value("attendee", self.attendee)
         writer.write_enum_value("availability", self.availability)
         writer.write_str_value("@odata.type", self.odata_type)

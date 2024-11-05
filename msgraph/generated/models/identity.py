@@ -50,7 +50,8 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserIdentity".casefold():
@@ -199,6 +200,27 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+        from .call_records.user_identity import UserIdentity
+        from .communications_application_identity import CommunicationsApplicationIdentity
+        from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
+        from .communications_encrypted_identity import CommunicationsEncryptedIdentity
+        from .communications_guest_identity import CommunicationsGuestIdentity
+        from .communications_phone_identity import CommunicationsPhoneIdentity
+        from .communications_user_identity import CommunicationsUserIdentity
+        from .email_identity import EmailIdentity
+        from .initiator import Initiator
+        from .provisioned_identity import ProvisionedIdentity
+        from .provisioning_service_principal import ProvisioningServicePrincipal
+        from .provisioning_system import ProvisioningSystem
+        from .service_principal_identity import ServicePrincipalIdentity
+        from .share_point_identity import SharePointIdentity
+        from .teamwork_application_identity import TeamworkApplicationIdentity
+        from .teamwork_conversation_identity import TeamworkConversationIdentity
+        from .teamwork_tag_identity import TeamworkTagIdentity
+        from .teamwork_user_identity import TeamworkUserIdentity
+        from .user_identity import UserIdentity
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)

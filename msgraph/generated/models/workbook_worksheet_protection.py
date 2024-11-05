@@ -57,6 +57,9 @@ class WorkbookWorksheetProtection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
+
         writer.write_object_value("options", self.options)
         writer.write_bool_value("protected", self.protected)
     

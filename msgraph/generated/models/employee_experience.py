@@ -74,6 +74,11 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .community import Community
+        from .engagement_async_operation import EngagementAsyncOperation
+        from .learning_course_activity import LearningCourseActivity
+        from .learning_provider import LearningProvider
+
         writer.write_collection_of_object_values("communities", self.communities)
         writer.write_collection_of_object_values("engagementAsyncOperations", self.engagement_async_operations)
         writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)

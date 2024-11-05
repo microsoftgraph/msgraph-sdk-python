@@ -64,6 +64,10 @@ class AuthoredNote(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity import Identity
+        from .item_body import ItemBody
+
         writer.write_object_value("author", self.author)
         writer.write_object_value("content", self.content)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

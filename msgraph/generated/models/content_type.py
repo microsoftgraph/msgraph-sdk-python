@@ -123,6 +123,14 @@ class ContentType(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .column_definition import ColumnDefinition
+        from .column_link import ColumnLink
+        from .content_type_order import ContentTypeOrder
+        from .document_set import DocumentSet
+        from .document_set_content import DocumentSetContent
+        from .entity import Entity
+        from .item_reference import ItemReference
+
         writer.write_collection_of_primitive_values("associatedHubsUrls", self.associated_hubs_urls)
         writer.write_object_value("base", self.base)
         writer.write_collection_of_object_values("baseTypes", self.base_types)

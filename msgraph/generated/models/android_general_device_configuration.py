@@ -207,6 +207,12 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_required_password_type import AndroidRequiredPasswordType
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .web_browser_cookie_settings import WebBrowserCookieSettings
+
         writer.write_bool_value("appsBlockClipboardSharing", self.apps_block_clipboard_sharing)
         writer.write_bool_value("appsBlockCopyPaste", self.apps_block_copy_paste)
         writer.write_bool_value("appsBlockYouTube", self.apps_block_you_tube)

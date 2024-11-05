@@ -36,7 +36,8 @@ class SamlOrWsFedProvider(IdentityProviderBase):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
@@ -84,6 +85,11 @@ class SamlOrWsFedProvider(IdentityProviderBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_protocol import AuthenticationProtocol
+        from .identity_provider_base import IdentityProviderBase
+        from .internal_domain_federation import InternalDomainFederation
+        from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+
         writer.write_str_value("issuerUri", self.issuer_uri)
         writer.write_str_value("metadataExchangeUri", self.metadata_exchange_uri)
         writer.write_str_value("passiveSignInUri", self.passive_sign_in_uri)

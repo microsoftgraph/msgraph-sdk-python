@@ -69,6 +69,11 @@ class Relation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .relation_type import RelationType
+        from .set import Set
+        from .term import Term
+
         writer.write_object_value("fromTerm", self.from_term)
         writer.write_enum_value("relationship", self.relationship)
         writer.write_object_value("set", self.set)

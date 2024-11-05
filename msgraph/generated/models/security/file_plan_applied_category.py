@@ -54,6 +54,9 @@ class FilePlanAppliedCategory(FilePlanDescriptorBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .file_plan_descriptor_base import FilePlanDescriptorBase
+        from .file_plan_subcategory import FilePlanSubcategory
+
         writer.write_object_value("subcategory", self.subcategory)
     
 

@@ -57,6 +57,9 @@ class ProfileCardProperty(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .profile_card_annotation import ProfileCardAnnotation
+
         writer.write_collection_of_object_values("annotations", self.annotations)
         writer.write_str_value("directoryPropertyName", self.directory_property_name)
     

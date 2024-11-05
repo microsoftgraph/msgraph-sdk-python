@@ -60,6 +60,10 @@ class EducationFeedbackResourceOutcome(EducationOutcome):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_feedback_resource_outcome_status import EducationFeedbackResourceOutcomeStatus
+        from .education_outcome import EducationOutcome
+        from .education_resource import EducationResource
+
         writer.write_object_value("feedbackResource", self.feedback_resource)
         writer.write_enum_value("resourceStatus", self.resource_status)
     

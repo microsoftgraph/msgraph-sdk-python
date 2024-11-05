@@ -81,6 +81,8 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
+
         writer.write_uuid_value("callChainId", self.call_chain_id)
         writer.write_str_value("cloudServiceDeploymentEnvironment", self.cloud_service_deployment_environment)
         writer.write_str_value("cloudServiceDeploymentId", self.cloud_service_deployment_id)

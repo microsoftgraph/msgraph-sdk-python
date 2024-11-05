@@ -63,6 +63,9 @@ class CalendarSharingMessage(Message):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .calendar_sharing_message_action import CalendarSharingMessageAction
+        from .message import Message
+
         writer.write_bool_value("canAccept", self.can_accept)
         writer.write_object_value("sharingMessageAction", self.sharing_message_action)
         writer.write_collection_of_object_values("sharingMessageActions", self.sharing_message_actions)

@@ -59,6 +59,9 @@ class RecordingInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .identity_set import IdentitySet
+        from .recording_status import RecordingStatus
+
         writer.write_object_value("initiator", self.initiator)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("recordingStatus", self.recording_status)

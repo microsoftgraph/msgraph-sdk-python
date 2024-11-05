@@ -66,6 +66,11 @@ class HorizontalSection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .horizontal_section_column import HorizontalSectionColumn
+        from .horizontal_section_layout_type import HorizontalSectionLayoutType
+        from .section_emphasis_type import SectionEmphasisType
+
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_enum_value("emphasis", self.emphasis)
         writer.write_enum_value("layout", self.layout)

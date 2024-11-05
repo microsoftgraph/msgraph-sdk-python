@@ -66,6 +66,9 @@ class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .onenote_source_service import OnenoteSourceService
+        from .recent_notebook_links import RecentNotebookLinks
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastAccessedTime", self.last_accessed_time)
         writer.write_object_value("links", self.links)

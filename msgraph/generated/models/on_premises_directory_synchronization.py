@@ -60,6 +60,10 @@ class OnPremisesDirectorySynchronization(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .on_premises_directory_synchronization_configuration import OnPremisesDirectorySynchronizationConfiguration
+        from .on_premises_directory_synchronization_feature import OnPremisesDirectorySynchronizationFeature
+
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("features", self.features)
     

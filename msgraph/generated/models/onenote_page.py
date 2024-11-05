@@ -91,6 +91,11 @@ class OnenotePage(OnenoteEntitySchemaObjectModel):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .notebook import Notebook
+        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+        from .onenote_section import OnenoteSection
+        from .page_links import PageLinks
+
         writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentUrl", self.content_url)
         writer.write_str_value("createdByAppId", self.created_by_app_id)

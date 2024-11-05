@@ -48,5 +48,7 @@ class AppManagementServicePrincipalConfiguration(AppManagementConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_management_configuration import AppManagementConfiguration
+
     
 

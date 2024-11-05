@@ -54,6 +54,8 @@ class Windows10EnrollmentCompletionPageConfiguration(DeviceEnrollmentConfigurati
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+
         writer.write_bool_value("allowNonBlockingAppInstallation", self.allow_non_blocking_app_installation)
     
 

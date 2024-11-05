@@ -60,6 +60,9 @@ class ChannelAddedEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+
         writer.write_str_value("channelDisplayName", self.channel_display_name)
         writer.write_str_value("channelId", self.channel_id)
         writer.write_object_value("initiator", self.initiator)

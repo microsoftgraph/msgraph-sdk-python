@@ -54,6 +54,9 @@ class OnInteractiveAuthFlowStartListener(AuthenticationEventListener):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_event_listener import AuthenticationEventListener
+        from .on_interactive_auth_flow_start_handler import OnInteractiveAuthFlowStartHandler
+
         writer.write_object_value("handler", self.handler)
     
 

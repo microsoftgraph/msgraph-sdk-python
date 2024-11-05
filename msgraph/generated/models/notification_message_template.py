@@ -76,6 +76,10 @@ class NotificationMessageTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .localized_notification_message import LocalizedNotificationMessage
+        from .notification_template_branding_options import NotificationTemplateBrandingOptions
+
         writer.write_enum_value("brandingOptions", self.branding_options)
         writer.write_str_value("defaultLocale", self.default_locale)
         writer.write_str_value("displayName", self.display_name)

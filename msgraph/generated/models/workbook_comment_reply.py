@@ -54,6 +54,8 @@ class WorkbookCommentReply(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("content", self.content)
         writer.write_str_value("contentType", self.content_type)
     

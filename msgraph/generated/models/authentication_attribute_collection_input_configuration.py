@@ -83,6 +83,9 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_attribute_collection_input_type import AuthenticationAttributeCollectionInputType
+        from .authentication_attribute_collection_option_configuration import AuthenticationAttributeCollectionOptionConfiguration
+
         writer.write_str_value("attribute", self.attribute)
         writer.write_str_value("defaultValue", self.default_value)
         writer.write_bool_value("editable", self.editable)

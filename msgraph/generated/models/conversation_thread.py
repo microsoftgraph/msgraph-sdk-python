@@ -82,6 +82,10 @@ class ConversationThread(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .post import Post
+        from .recipient import Recipient
+
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_bool_value("isLocked", self.is_locked)

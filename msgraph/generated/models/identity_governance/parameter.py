@@ -59,6 +59,8 @@ class Parameter(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .value_type import ValueType
+
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("valueType", self.value_type)

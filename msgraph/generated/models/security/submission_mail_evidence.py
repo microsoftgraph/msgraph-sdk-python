@@ -76,6 +76,8 @@ class SubmissionMailEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+
         writer.write_str_value("networkMessageId", self.network_message_id)
         writer.write_str_value("recipient", self.recipient)
         writer.write_str_value("reportType", self.report_type)

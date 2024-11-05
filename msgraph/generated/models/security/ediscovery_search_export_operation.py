@@ -16,25 +16,25 @@ from .case_operation import CaseOperation
 
 @dataclass
 class EdiscoverySearchExportOperation(CaseOperation):
-    # The additionalOptions property
+    # The additional items to include in the export. The possible values are: none, teamsAndYammerConversations, cloudAttachments, allDocumentVersions, subfolderContents, listAttachments, unknownFutureValue.
     additional_options: Optional[AdditionalOptions] = None
-    # The description property
+    # The description of the export by the user.
     description: Optional[str] = None
-    # The displayName property
+    # The name of export provided by the user.
     display_name: Optional[str] = None
-    # The exportCriteria property
+    # Items to be included in the export. The possible values are: searchHits, partiallyIndexed, unknownFutureValue.
     export_criteria: Optional[ExportCriteria] = None
-    # The exportFileMetadata property
+    # Contains the properties for an export file metadata, including downloadUrl, fileName, and size.
     export_file_metadata: Optional[List[ExportFileMetadata]] = None
-    # The exportFormat property
+    # Format of the emails of the export. The possible values are: pst, msg, eml, unknownFutureValue.
     export_format: Optional[ExportFormat] = None
-    # The exportLocation property
+    # Location scope for partially indexed items. You can choose to include partially indexed items only in responsive locations with search hits or in all targeted locations. The possible values are: responsiveLocations, nonresponsiveLocations, unknownFutureValue.
     export_location: Optional[ExportLocation] = None
-    # The exportSingleItems property
+    # Indicates whether to export single items.
     export_single_items: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The search property
+    # The eDiscovery searches under each case.
     search: Optional[EdiscoverySearch] = None
     
     @staticmethod
@@ -93,6 +93,14 @@ class EdiscoverySearchExportOperation(CaseOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .additional_options import AdditionalOptions
+        from .case_operation import CaseOperation
+        from .ediscovery_search import EdiscoverySearch
+        from .export_criteria import ExportCriteria
+        from .export_file_metadata import ExportFileMetadata
+        from .export_format import ExportFormat
+        from .export_location import ExportLocation
+
         writer.write_enum_value("additionalOptions", self.additional_options)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

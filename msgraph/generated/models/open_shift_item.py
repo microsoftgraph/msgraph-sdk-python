@@ -51,6 +51,8 @@ class OpenShiftItem(ShiftItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .shift_item import ShiftItem
+
         writer.write_int_value("openSlotCount", self.open_slot_count)
     
 

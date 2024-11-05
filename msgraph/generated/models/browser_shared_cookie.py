@@ -97,6 +97,12 @@ class BrowserSharedCookie(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .browser_shared_cookie_history import BrowserSharedCookieHistory
+        from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+        from .browser_shared_cookie_status import BrowserSharedCookieStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
+
         writer.write_str_value("comment", self.comment)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("deletedDateTime", self.deleted_date_time)

@@ -60,6 +60,9 @@ class ContainerImageEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .container_registry_evidence import ContainerRegistryEvidence
+
         writer.write_object_value("digestImage", self.digest_image)
         writer.write_str_value("imageId", self.image_id)
         writer.write_object_value("registry", self.registry)

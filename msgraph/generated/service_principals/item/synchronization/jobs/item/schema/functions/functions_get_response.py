@@ -52,6 +52,9 @@ class FunctionsGetResponse(BaseCollectionPaginationCountResponse):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ........models.attribute_mapping_function_schema import AttributeMappingFunctionSchema
+        from ........models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+
         writer.write_collection_of_object_values("value", self.value)
     
 

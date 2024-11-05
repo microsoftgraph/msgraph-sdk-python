@@ -24,15 +24,15 @@ class AdministrativeUnit(DirectoryObject):
     is_member_management_restricted: Optional[bool] = None
     # Users and groups that are members of this administrative unit. Supports $expand.
     members: Optional[List[DirectoryObject]] = None
-    # The membershipRule property
+    # The dynamic membership rule for the administrative unit. For more information about the rules you can use for dynamic administrative units and dynamic groups, see Manage rules for dynamic membership groups in Microsoft Entra ID.
     membership_rule: Optional[str] = None
-    # The membershipRuleProcessingState property
+    # Controls whether the dynamic membership rule is actively processed. Set to On to activate the dynamic membership rule, or Paused to stop updating membership dynamically.
     membership_rule_processing_state: Optional[str] = None
-    # The membershipType property
+    # Indicates the membership type for the administrative unit. The possible values are: dynamic, assigned. If not set, the default value is null and the default behavior is assigned.
     membership_type: Optional[str] = None
     # Scoped-role members of this administrative unit.
     scoped_role_members: Optional[List[ScopedRoleMembership]] = None
-    # Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership. If not set (value is null), the default behavior is public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
+    # Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership. If not set, the default value is null and the default behavior is public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
     visibility: Optional[str] = None
     
     @staticmethod
@@ -84,6 +84,10 @@ class AdministrativeUnit(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+        from .extension import Extension
+        from .scoped_role_membership import ScopedRoleMembership
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)

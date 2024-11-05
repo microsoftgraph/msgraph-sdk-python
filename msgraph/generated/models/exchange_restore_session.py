@@ -60,6 +60,10 @@ class ExchangeRestoreSession(RestoreSessionBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
+        from .mailbox_restore_artifact import MailboxRestoreArtifact
+        from .restore_session_base import RestoreSessionBase
+
         writer.write_collection_of_object_values("granularMailboxRestoreArtifacts", self.granular_mailbox_restore_artifacts)
         writer.write_collection_of_object_values("mailboxRestoreArtifacts", self.mailbox_restore_artifacts)
     

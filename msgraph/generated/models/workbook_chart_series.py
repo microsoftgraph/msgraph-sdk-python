@@ -63,6 +63,10 @@ class WorkbookChartSeries(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_point import WorkbookChartPoint
+        from .workbook_chart_series_format import WorkbookChartSeriesFormat
+
         writer.write_object_value("format", self.format)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("points", self.points)

@@ -79,6 +79,11 @@ class Printer(PrinterBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .printer_base import PrinterBase
+        from .printer_share import PrinterShare
+        from .print_connector import PrintConnector
+        from .print_task_trigger import PrintTaskTrigger
+
         writer.write_collection_of_object_values("connectors", self.connectors)
         writer.write_bool_value("hasPhysicalDevice", self.has_physical_device)
         writer.write_bool_value("isShared", self.is_shared)

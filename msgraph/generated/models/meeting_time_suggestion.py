@@ -80,6 +80,11 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attendee_availability import AttendeeAvailability
+        from .free_busy_status import FreeBusyStatus
+        from .location import Location
+        from .time_slot import TimeSlot
+
         writer.write_collection_of_object_values("attendeeAvailability", self.attendee_availability)
         writer.write_float_value("confidence", self.confidence)
         writer.write_collection_of_object_values("locations", self.locations)

@@ -33,7 +33,8 @@ class TeamsAppInstallation(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userScopeTeamsAppInstallation".casefold():
@@ -77,6 +78,12 @@ class TeamsAppInstallation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .teams_app import TeamsApp
+        from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_permission_set import TeamsAppPermissionSet
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
+
         writer.write_object_value("consentedPermissionSet", self.consented_permission_set)
         writer.write_object_value("teamsApp", self.teams_app)
         writer.write_object_value("teamsAppDefinition", self.teams_app_definition)

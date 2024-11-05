@@ -56,6 +56,8 @@ class DeviceManagementPartnerAssignment(AdditionalDataHolder, BackedModel, Parsa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("target", self.target)
         writer.write_additional_data_value(self.additional_data)

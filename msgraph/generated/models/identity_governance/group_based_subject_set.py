@@ -54,6 +54,9 @@ class GroupBasedSubjectSet(SubjectSet):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..group import Group
+        from ..subject_set import SubjectSet
+
         writer.write_collection_of_object_values("groups", self.groups)
     
 

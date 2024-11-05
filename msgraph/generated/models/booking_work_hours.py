@@ -62,6 +62,9 @@ class BookingWorkHours(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .booking_work_time_slot import BookingWorkTimeSlot
+        from .day_of_week import DayOfWeek
+
         writer.write_enum_value("day", self.day)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("timeSlots", self.time_slots)

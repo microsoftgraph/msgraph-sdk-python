@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .drive import Drive
     from .entity import Entity
     from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+    from .file_storage_container_settings import FileStorageContainerSettings
     from .file_storage_container_status import FileStorageContainerStatus
     from .file_storage_container_viewpoint import FileStorageContainerViewpoint
     from .permission import Permission
@@ -33,6 +34,8 @@ class FileStorageContainer(Entity):
     odata_type: Optional[str] = None
     # The set of permissions for users in the fileStorageContainer. Permission for each user is set by the roles property. The possible values are: reader, writer, manager, and owner. Read-write.
     permissions: Optional[List[Permission]] = None
+    # The settings property
+    settings: Optional[FileStorageContainerSettings] = None
     # Status of the fileStorageContainer. Containers are created as inactive and require activation. Inactive containers are subjected to automatic deletion in 24 hours. The possible values are: inactive, active. Read-only.
     status: Optional[FileStorageContainerStatus] = None
     # Data specific to the current user. Read-only.
@@ -57,6 +60,7 @@ class FileStorageContainer(Entity):
         from .drive import Drive
         from .entity import Entity
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+        from .file_storage_container_settings import FileStorageContainerSettings
         from .file_storage_container_status import FileStorageContainerStatus
         from .file_storage_container_viewpoint import FileStorageContainerViewpoint
         from .permission import Permission
@@ -64,6 +68,7 @@ class FileStorageContainer(Entity):
         from .drive import Drive
         from .entity import Entity
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+        from .file_storage_container_settings import FileStorageContainerSettings
         from .file_storage_container_status import FileStorageContainerStatus
         from .file_storage_container_viewpoint import FileStorageContainerViewpoint
         from .permission import Permission
@@ -76,6 +81,7 @@ class FileStorageContainer(Entity):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(FileStorageContainerSettings)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(FileStorageContainerStatus)),
             "viewpoint": lambda n : setattr(self, 'viewpoint', n.get_object_value(FileStorageContainerViewpoint)),
         }
@@ -92,6 +98,14 @@ class FileStorageContainer(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .drive import Drive
+        from .entity import Entity
+        from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+        from .file_storage_container_settings import FileStorageContainerSettings
+        from .file_storage_container_status import FileStorageContainerStatus
+        from .file_storage_container_viewpoint import FileStorageContainerViewpoint
+        from .permission import Permission
+
         writer.write_uuid_value("containerTypeId", self.container_type_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("customProperties", self.custom_properties)
@@ -99,6 +113,7 @@ class FileStorageContainer(Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("permissions", self.permissions)
+        writer.write_object_value("settings", self.settings)
         writer.write_enum_value("status", self.status)
         writer.write_object_value("viewpoint", self.viewpoint)
     

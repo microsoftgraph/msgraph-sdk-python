@@ -61,6 +61,8 @@ class UserExperienceAnalyticsMetricHistory(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("deviceId", self.device_id)
         writer.write_datetime_value("metricDateTime", self.metric_date_time)
         writer.write_str_value("metricType", self.metric_type)

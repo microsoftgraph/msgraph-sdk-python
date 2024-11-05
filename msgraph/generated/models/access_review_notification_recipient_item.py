@@ -56,6 +56,8 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
+
         writer.write_object_value("notificationRecipientScope", self.notification_recipient_scope)
         writer.write_str_value("notificationTemplateType", self.notification_template_type)
         writer.write_str_value("@odata.type", self.odata_type)

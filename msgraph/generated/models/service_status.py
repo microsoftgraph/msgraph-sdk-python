@@ -81,6 +81,11 @@ class ServiceStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .backup_service_consumer import BackupServiceConsumer
+        from .backup_service_status import BackupServiceStatus
+        from .disable_reason import DisableReason
+        from .identity_set import IdentitySet
+
         writer.write_enum_value("backupServiceConsumer", self.backup_service_consumer)
         writer.write_enum_value("disableReason", self.disable_reason)
         writer.write_datetime_value("gracePeriodDateTime", self.grace_period_date_time)

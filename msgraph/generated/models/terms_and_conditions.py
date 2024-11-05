@@ -88,6 +88,10 @@ class TermsAndConditions(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
+        from .terms_and_conditions_assignment import TermsAndConditionsAssignment
+
         writer.write_str_value("acceptanceStatement", self.acceptance_statement)
         writer.write_collection_of_object_values("acceptanceStatuses", self.acceptance_statuses)
         writer.write_collection_of_object_values("assignments", self.assignments)

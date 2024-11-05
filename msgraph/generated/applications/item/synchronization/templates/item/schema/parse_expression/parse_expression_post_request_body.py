@@ -59,6 +59,9 @@ class ParseExpressionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ........models.attribute_definition import AttributeDefinition
+        from ........models.expression_input_object import ExpressionInputObject
+
         writer.write_str_value("expression", self.expression)
         writer.write_object_value("targetAttributeDefinition", self.target_attribute_definition)
         writer.write_object_value("testInputObject", self.test_input_object)

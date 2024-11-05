@@ -58,6 +58,9 @@ class MicrosoftManagedTrainingSetting(TrainingSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .training_completion_duration import TrainingCompletionDuration
+        from .training_setting import TrainingSetting
+
         writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_enum_value("trainingCompletionDuration", self.training_completion_duration)
     

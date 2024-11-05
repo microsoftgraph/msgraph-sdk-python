@@ -54,6 +54,9 @@ class OnUserCreateStartListener(AuthenticationEventListener):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_event_listener import AuthenticationEventListener
+        from .on_user_create_start_handler import OnUserCreateStartHandler
+
         writer.write_object_value("handler", self.handler)
     
 

@@ -60,6 +60,8 @@ class IosStoreAppAssignmentSettings(MobileAppAssignmentSettings):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+
         writer.write_bool_value("isRemovable", self.is_removable)
         writer.write_bool_value("uninstallOnDeviceRemoval", self.uninstall_on_device_removal)
         writer.write_str_value("vpnConfigurationId", self.vpn_configuration_id)

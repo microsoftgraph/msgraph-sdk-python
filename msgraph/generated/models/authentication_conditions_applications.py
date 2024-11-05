@@ -53,6 +53,8 @@ class AuthenticationConditionsApplications(AdditionalDataHolder, BackedModel, Pa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_condition_application import AuthenticationConditionApplication
+
         writer.write_collection_of_object_values("includeApplications", self.include_applications)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

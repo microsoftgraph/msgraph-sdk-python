@@ -57,6 +57,9 @@ class HorizontalSectionColumn(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .web_part import WebPart
+
         writer.write_collection_of_object_values("webparts", self.webparts)
         writer.write_int_value("width", self.width)
     

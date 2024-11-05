@@ -51,6 +51,8 @@ class SiteProtectionRule(ProtectionRuleBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .protection_rule_base import ProtectionRuleBase
+
         writer.write_str_value("siteExpression", self.site_expression)
     
 

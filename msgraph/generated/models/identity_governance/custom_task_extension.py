@@ -70,6 +70,10 @@ class CustomTaskExtension(CustomCalloutExtension):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..custom_callout_extension import CustomCalloutExtension
+        from ..custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
+        from ..user import User
+
         writer.write_object_value("callbackConfiguration", self.callback_configuration)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

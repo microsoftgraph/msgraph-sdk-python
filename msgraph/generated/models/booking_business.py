@@ -142,6 +142,17 @@ class BookingBusiness(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .booking_appointment import BookingAppointment
+        from .booking_customer_base import BookingCustomerBase
+        from .booking_custom_question import BookingCustomQuestion
+        from .booking_page_settings import BookingPageSettings
+        from .booking_scheduling_policy import BookingSchedulingPolicy
+        from .booking_service import BookingService
+        from .booking_staff_member_base import BookingStaffMemberBase
+        from .booking_work_hours import BookingWorkHours
+        from .entity import Entity
+        from .physical_address import PhysicalAddress
+
         writer.write_object_value("address", self.address)
         writer.write_collection_of_object_values("appointments", self.appointments)
         writer.write_object_value("bookingPageSettings", self.booking_page_settings)

@@ -89,6 +89,7 @@ if TYPE_CHECKING:
     from .teamwork.teamwork_request_builder import TeamworkRequestBuilder
     from .tenant_relationships.tenant_relationships_request_builder import TenantRelationshipsRequestBuilder
     from .users.users_request_builder import UsersRequestBuilder
+    from .users_with_user_principal_name.users_with_user_principal_name_request_builder import UsersWithUserPrincipalNameRequestBuilder
 
 class BaseGraphServiceClient(BaseRequestBuilder):
     """
@@ -187,6 +188,18 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         from .service_principals_with_app_id.service_principals_with_app_id_request_builder import ServicePrincipalsWithAppIdRequestBuilder
 
         return ServicePrincipalsWithAppIdRequestBuilder(self.request_adapter, self.path_parameters, app_id)
+    
+    def users_with_user_principal_name(self,user_principal_name: str) -> UsersWithUserPrincipalNameRequestBuilder:
+        """
+        Provides operations to manage the collection of user entities.
+        param user_principal_name: Alternate key of user
+        Returns: UsersWithUserPrincipalNameRequestBuilder
+        """
+        if user_principal_name is None:
+            raise TypeError("user_principal_name cannot be null.")
+        from .users_with_user_principal_name.users_with_user_principal_name_request_builder import UsersWithUserPrincipalNameRequestBuilder
+
+        return UsersWithUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters, user_principal_name)
     
     @property
     def admin(self) -> AdminRequestBuilder:

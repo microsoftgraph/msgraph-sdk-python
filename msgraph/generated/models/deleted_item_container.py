@@ -54,6 +54,9 @@ class DeletedItemContainer(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_governance.workflow import Workflow
+
         writer.write_collection_of_object_values("workflows", self.workflows)
     
 

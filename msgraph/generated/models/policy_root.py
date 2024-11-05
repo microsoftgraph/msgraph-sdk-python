@@ -168,6 +168,28 @@ class PolicyRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .admin_consent_request_policy import AdminConsentRequestPolicy
+        from .app_management_policy import AppManagementPolicy
+        from .authentication_flows_policy import AuthenticationFlowsPolicy
+        from .authentication_methods_policy import AuthenticationMethodsPolicy
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .authorization_policy import AuthorizationPolicy
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .conditional_access_policy import ConditionalAccessPolicy
+        from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .device_registration_policy import DeviceRegistrationPolicy
+        from .entity import Entity
+        from .feature_rollout_policy import FeatureRolloutPolicy
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .permission_grant_policy import PermissionGrantPolicy
+        from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .unified_role_management_policy import UnifiedRoleManagementPolicy
+        from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
+
         writer.write_collection_of_object_values("activityBasedTimeoutPolicies", self.activity_based_timeout_policies)
         writer.write_object_value("adminConsentRequestPolicy", self.admin_consent_request_policy)
         writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)

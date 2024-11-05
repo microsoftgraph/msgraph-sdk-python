@@ -60,6 +60,9 @@ class UserSource(DataSource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .data_source import DataSource
+        from .source_type import SourceType
+
         writer.write_str_value("email", self.email)
         writer.write_enum_value("includedSources", self.included_sources)
         writer.write_str_value("siteWebUrl", self.site_web_url)

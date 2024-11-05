@@ -66,6 +66,8 @@ class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .recurrence_range_type import RecurrenceRangeType
+
         writer.write_date_value("endDate", self.end_date)
         writer.write_int_value("numberOfOccurrences", self.number_of_occurrences)
         writer.write_str_value("@odata.type", self.odata_type)

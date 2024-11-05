@@ -82,6 +82,9 @@ class SasTokenEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .azure_resource_evidence import AzureResourceEvidence
+
         writer.write_str_value("allowedIpAddresses", self.allowed_ip_addresses)
         writer.write_collection_of_primitive_values("allowedResourceTypes", self.allowed_resource_types)
         writer.write_collection_of_primitive_values("allowedServices", self.allowed_services)

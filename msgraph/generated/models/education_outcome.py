@@ -33,7 +33,8 @@ class EducationOutcome(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFeedbackOutcome".casefold():
@@ -90,6 +91,13 @@ class EducationOutcome(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_feedback_outcome import EducationFeedbackOutcome
+        from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
+        from .education_points_outcome import EducationPointsOutcome
+        from .education_rubric_outcome import EducationRubricOutcome
+        from .entity import Entity
+        from .identity_set import IdentitySet
+
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
     

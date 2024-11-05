@@ -56,6 +56,8 @@ class RoleManagement(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .rbac_application import RbacApplication
+
         writer.write_object_value("directory", self.directory)
         writer.write_object_value("entitlementManagement", self.entitlement_management)
         writer.write_str_value("@odata.type", self.odata_type)

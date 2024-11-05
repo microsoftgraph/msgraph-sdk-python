@@ -66,6 +66,11 @@ class VirtualEventsRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .virtual_event import VirtualEvent
+        from .virtual_event_townhall import VirtualEventTownhall
+        from .virtual_event_webinar import VirtualEventWebinar
+
         writer.write_collection_of_object_values("events", self.events)
         writer.write_collection_of_object_values("townhalls", self.townhalls)
         writer.write_collection_of_object_values("webinars", self.webinars)

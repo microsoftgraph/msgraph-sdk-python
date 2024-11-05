@@ -48,5 +48,7 @@ class OrganizationalBrandingLocalization(OrganizationalBrandingProperties):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .organizational_branding_properties import OrganizationalBrandingProperties
+
     
 

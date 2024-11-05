@@ -57,6 +57,9 @@ class UserConsentRequest(Request):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .approval import Approval
+        from .request import Request
+
         writer.write_object_value("approval", self.approval)
         writer.write_str_value("reason", self.reason)
     

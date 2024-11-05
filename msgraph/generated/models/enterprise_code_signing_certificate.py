@@ -76,6 +76,9 @@ class EnterpriseCodeSigningCertificate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .certificate_status import CertificateStatus
+        from .entity import Entity
+
         writer.write_bytes_value("content", self.content)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("issuer", self.issuer)

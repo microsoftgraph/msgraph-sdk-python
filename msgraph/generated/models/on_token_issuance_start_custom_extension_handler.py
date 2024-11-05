@@ -60,6 +60,10 @@ class OnTokenIssuanceStartCustomExtensionHandler(OnTokenIssuanceStartHandler):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .custom_extension_overwrite_configuration import CustomExtensionOverwriteConfiguration
+        from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+        from .on_token_issuance_start_handler import OnTokenIssuanceStartHandler
+
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("customExtension", self.custom_extension)
     

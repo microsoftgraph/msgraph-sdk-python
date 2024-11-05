@@ -54,6 +54,9 @@ class AccessPackageResourceAttributeQuestion(AccessPackageResourceAttributeSourc
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_question import AccessPackageQuestion
+        from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
+
         writer.write_object_value("question", self.question)
     
 

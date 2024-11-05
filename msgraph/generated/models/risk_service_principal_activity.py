@@ -56,6 +56,8 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .risk_detail import RiskDetail
+
         writer.write_enum_value("detail", self.detail)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_primitive_values("riskEventTypes", self.risk_event_types)

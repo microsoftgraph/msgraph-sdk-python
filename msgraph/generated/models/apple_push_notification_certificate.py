@@ -76,6 +76,8 @@ class ApplePushNotificationCertificate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("appleIdentifier", self.apple_identifier)
         writer.write_str_value("certificate", self.certificate)
         writer.write_str_value("certificateUploadFailureReason", self.certificate_upload_failure_reason)

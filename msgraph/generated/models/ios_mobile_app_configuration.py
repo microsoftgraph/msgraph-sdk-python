@@ -60,6 +60,9 @@ class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_configuration_setting_item import AppConfigurationSettingItem
+        from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
+
         writer.write_bytes_value("encodedSettingXml", self.encoded_setting_xml)
         writer.write_collection_of_object_values("settings", self.settings)
     

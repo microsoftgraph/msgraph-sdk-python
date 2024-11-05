@@ -54,6 +54,9 @@ class PositiveReinforcementNotification(BaseEndUserNotification):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_end_user_notification import BaseEndUserNotification
+        from .notification_delivery_preference import NotificationDeliveryPreference
+
         writer.write_enum_value("deliveryPreference", self.delivery_preference)
     
 

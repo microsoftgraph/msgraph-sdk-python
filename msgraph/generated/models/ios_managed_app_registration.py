@@ -51,5 +51,7 @@ class IosManagedAppRegistration(ManagedAppRegistration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .managed_app_registration import ManagedAppRegistration
+
     
 

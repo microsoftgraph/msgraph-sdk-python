@@ -162,6 +162,11 @@ class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_work_profile_cross_profile_data_sharing_type import AndroidWorkProfileCrossProfileDataSharingType
+        from .android_work_profile_default_app_permission_policy_type import AndroidWorkProfileDefaultAppPermissionPolicyType
+        from .android_work_profile_required_password_type import AndroidWorkProfileRequiredPasswordType
+        from .device_configuration import DeviceConfiguration
+
         writer.write_bool_value("passwordBlockFingerprintUnlock", self.password_block_fingerprint_unlock)
         writer.write_bool_value("passwordBlockTrustAgents", self.password_block_trust_agents)
         writer.write_int_value("passwordExpirationDays", self.password_expiration_days)

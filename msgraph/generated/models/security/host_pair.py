@@ -67,6 +67,9 @@ class HostPair(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .host import Host
+
         writer.write_object_value("childHost", self.child_host)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)

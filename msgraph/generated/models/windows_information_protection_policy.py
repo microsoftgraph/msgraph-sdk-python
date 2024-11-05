@@ -90,6 +90,9 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .windows_information_protection import WindowsInformationProtection
+        from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
+
         writer.write_int_value("daysWithoutContactBeforeUnenroll", self.days_without_contact_before_unenroll)
         writer.write_str_value("mdmEnrollmentUrl", self.mdm_enrollment_url)
         writer.write_int_value("minutesOfInactivityBeforeDeviceLock", self.minutes_of_inactivity_before_device_lock)

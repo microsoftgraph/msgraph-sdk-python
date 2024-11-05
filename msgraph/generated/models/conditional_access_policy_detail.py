@@ -65,6 +65,10 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_condition_set import ConditionalAccessConditionSet
+        from .conditional_access_grant_controls import ConditionalAccessGrantControls
+        from .conditional_access_session_controls import ConditionalAccessSessionControls
+
         writer.write_object_value("conditions", self.conditions)
         writer.write_object_value("grantControls", self.grant_controls)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -59,6 +59,8 @@ class SynchronizationJobSubject(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .synchronization_linked_objects import SynchronizationLinkedObjects
+
         writer.write_object_value("links", self.links)
         writer.write_str_value("objectId", self.object_id)
         writer.write_str_value("objectTypeName", self.object_type_name)

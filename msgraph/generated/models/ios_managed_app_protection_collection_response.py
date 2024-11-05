@@ -52,6 +52,9 @@ class IosManagedAppProtectionCollectionResponse(BaseCollectionPaginationCountRes
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .ios_managed_app_protection import IosManagedAppProtection
+
         writer.write_collection_of_object_values("value", self.value)
     
 

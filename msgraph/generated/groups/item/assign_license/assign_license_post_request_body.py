@@ -54,6 +54,8 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.assigned_license import AssignedLicense
+
         writer.write_collection_of_object_values("addLicenses", self.add_licenses)
         writer.write_collection_of_primitive_values("removeLicenses", self.remove_licenses)
         writer.write_additional_data_value(self.additional_data)

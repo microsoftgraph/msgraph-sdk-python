@@ -54,6 +54,9 @@ class DeletedTeam(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .channel import Channel
+        from .entity import Entity
+
         writer.write_collection_of_object_values("channels", self.channels)
     
 

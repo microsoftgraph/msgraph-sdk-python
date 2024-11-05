@@ -56,6 +56,8 @@ class TrainingEventsContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .assigned_training_info import AssignedTrainingInfo
+
         writer.write_collection_of_object_values("assignedTrainingsInfos", self.assigned_trainings_infos)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("trainingsAssignedUserCount", self.trainings_assigned_user_count)

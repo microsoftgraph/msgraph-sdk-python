@@ -117,6 +117,10 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .disk_type import DiskType
+        from .entity import Entity
+        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+
         writer.write_float_value("averageBlueScreens", self.average_blue_screens)
         writer.write_float_value("averageRestarts", self.average_restarts)
         writer.write_int_value("blueScreenCount", self.blue_screen_count)

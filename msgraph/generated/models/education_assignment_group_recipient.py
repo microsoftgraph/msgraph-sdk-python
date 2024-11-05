@@ -48,5 +48,7 @@ class EducationAssignmentGroupRecipient(EducationAssignmentRecipient):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_assignment_recipient import EducationAssignmentRecipient
+
     
 

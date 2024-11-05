@@ -51,6 +51,8 @@ class SubjectRightsRequestEnumeratedSiteLocation(SubjectRightsRequestSiteLocatio
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
+
         writer.write_collection_of_primitive_values("urls", self.urls)
     
 

@@ -78,6 +78,12 @@ class Teamwork(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .deleted_chat import DeletedChat
+        from .deleted_team import DeletedTeam
+        from .entity import Entity
+        from .teams_app_settings import TeamsAppSettings
+        from .workforce_integration import WorkforceIntegration
+
         writer.write_collection_of_object_values("deletedChats", self.deleted_chats)
         writer.write_collection_of_object_values("deletedTeams", self.deleted_teams)
         writer.write_bool_value("isTeamsEnabled", self.is_teams_enabled)

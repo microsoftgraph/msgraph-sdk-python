@@ -96,6 +96,11 @@ class WorkbookRange(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_range_format import WorkbookRangeFormat
+        from .workbook_range_sort import WorkbookRangeSort
+        from .workbook_worksheet import WorkbookWorksheet
+
         writer.write_str_value("address", self.address)
         writer.write_str_value("addressLocal", self.address_local)
         writer.write_int_value("cellCount", self.cell_count)

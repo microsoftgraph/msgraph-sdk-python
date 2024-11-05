@@ -57,6 +57,9 @@ class TeamUnarchivedEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+
         writer.write_object_value("initiator", self.initiator)
         writer.write_str_value("teamId", self.team_id)
     

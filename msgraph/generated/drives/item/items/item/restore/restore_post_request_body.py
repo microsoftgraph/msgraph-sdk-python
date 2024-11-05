@@ -53,6 +53,8 @@ class RestorePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.item_reference import ItemReference
+
         writer.write_str_value("name", self.name)
         writer.write_object_value("parentReference", self.parent_reference)
         writer.write_additional_data_value(self.additional_data)

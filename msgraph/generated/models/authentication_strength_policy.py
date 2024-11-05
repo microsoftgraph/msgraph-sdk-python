@@ -85,6 +85,12 @@ class AuthenticationStrengthPolicy(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
+        from .authentication_method_modes import AuthenticationMethodModes
+        from .authentication_strength_policy_type import AuthenticationStrengthPolicyType
+        from .authentication_strength_requirements import AuthenticationStrengthRequirements
+        from .entity import Entity
+
         writer.write_collection_of_enum_values("allowedCombinations", self.allowed_combinations)
         writer.write_collection_of_object_values("combinationConfigurations", self.combination_configurations)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

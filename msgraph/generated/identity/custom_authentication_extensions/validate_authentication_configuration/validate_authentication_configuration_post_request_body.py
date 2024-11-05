@@ -56,6 +56,9 @@ class ValidateAuthenticationConfigurationPostRequestBody(AdditionalDataHolder, B
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
+        from ....models.custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
+
         writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
         writer.write_object_value("endpointConfiguration", self.endpoint_configuration)
         writer.write_additional_data_value(self.additional_data)

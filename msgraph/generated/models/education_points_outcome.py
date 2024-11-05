@@ -57,6 +57,9 @@ class EducationPointsOutcome(EducationOutcome):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_assignment_points_grade import EducationAssignmentPointsGrade
+        from .education_outcome import EducationOutcome
+
         writer.write_object_value("points", self.points)
         writer.write_object_value("publishedPoints", self.published_points)
     

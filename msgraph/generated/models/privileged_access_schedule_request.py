@@ -38,7 +38,8 @@ class PrivilegedAccessScheduleRequest(Request):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest".casefold():
@@ -90,6 +91,13 @@ class PrivilegedAccessScheduleRequest(Request):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .request import Request
+        from .request_schedule import RequestSchedule
+        from .schedule_request_actions import ScheduleRequestActions
+        from .ticket_info import TicketInfo
+
         writer.write_enum_value("action", self.action)
         writer.write_bool_value("isValidationOnly", self.is_validation_only)
         writer.write_str_value("justification", self.justification)

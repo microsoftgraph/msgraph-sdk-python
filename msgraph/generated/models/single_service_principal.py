@@ -54,6 +54,8 @@ class SingleServicePrincipal(SubjectSet):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .subject_set import SubjectSet
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("servicePrincipalId", self.service_principal_id)
     

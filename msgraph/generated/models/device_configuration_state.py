@@ -78,6 +78,11 @@ class DeviceConfigurationState(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .compliance_status import ComplianceStatus
+        from .device_configuration_setting_state import DeviceConfigurationSettingState
+        from .entity import Entity
+        from .policy_platform_type import PolicyPlatformType
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("platformType", self.platform_type)
         writer.write_int_value("settingCount", self.setting_count)

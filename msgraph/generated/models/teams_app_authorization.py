@@ -14,6 +14,8 @@ class TeamsAppAuthorization(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+    # The registration ID of the Microsoft Entra app ID associated with the teamsApp.
+    client_app_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Set of permissions required by the teamsApp.
@@ -40,6 +42,7 @@ class TeamsAppAuthorization(AdditionalDataHolder, BackedModel, Parsable):
         from .teams_app_permission_set import TeamsAppPermissionSet
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "clientAppId": lambda n : setattr(self, 'client_app_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "requiredPermissionSet": lambda n : setattr(self, 'required_permission_set', n.get_object_value(TeamsAppPermissionSet)),
         }
@@ -53,6 +56,9 @@ class TeamsAppAuthorization(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .teams_app_permission_set import TeamsAppPermissionSet
+
+        writer.write_str_value("clientAppId", self.client_app_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("requiredPermissionSet", self.required_permission_set)
         writer.write_additional_data_value(self.additional_data)

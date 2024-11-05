@@ -78,6 +78,10 @@ class BookingCustomerInformation(BookingCustomerInformationBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .booking_customer_information_base import BookingCustomerInformationBase
+        from .booking_question_answer import BookingQuestionAnswer
+        from .location import Location
+
         writer.write_collection_of_object_values("customQuestionAnswers", self.custom_question_answers)
         writer.write_str_value("customerId", self.customer_id)
         writer.write_str_value("emailAddress", self.email_address)

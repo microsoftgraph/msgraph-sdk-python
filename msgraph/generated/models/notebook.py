@@ -84,6 +84,12 @@ class Notebook(OnenoteEntityHierarchyModel):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .notebook_links import NotebookLinks
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_section import OnenoteSection
+        from .onenote_user_role import OnenoteUserRole
+        from .section_group import SectionGroup
+
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_bool_value("isShared", self.is_shared)
         writer.write_object_value("links", self.links)

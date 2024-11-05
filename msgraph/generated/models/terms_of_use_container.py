@@ -60,6 +60,10 @@ class TermsOfUseContainer(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .agreement import Agreement
+        from .agreement_acceptance import AgreementAcceptance
+        from .entity import Entity
+
         writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
         writer.write_collection_of_object_values("agreements", self.agreements)
     

@@ -90,6 +90,9 @@ class Room(Place):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .booking_type import BookingType
+        from .place import Place
+
         writer.write_str_value("audioDeviceName", self.audio_device_name)
         writer.write_enum_value("bookingType", self.booking_type)
         writer.write_str_value("building", self.building)

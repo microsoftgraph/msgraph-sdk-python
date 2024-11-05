@@ -63,6 +63,9 @@ class AadUserConversationMember(ConversationMember):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conversation_member import ConversationMember
+        from .user import User
+
         writer.write_str_value("email", self.email)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_object_value("user", self.user)

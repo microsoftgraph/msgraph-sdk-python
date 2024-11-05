@@ -51,6 +51,8 @@ class TimeOffItem(ScheduleEntity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .schedule_entity import ScheduleEntity
+
         writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
     
 

@@ -120,6 +120,13 @@ class Person(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .location import Location
+        from .person_type import PersonType
+        from .phone import Phone
+        from .scored_email_address import ScoredEmailAddress
+        from .website import Website
+
         writer.write_str_value("birthday", self.birthday)
         writer.write_str_value("companyName", self.company_name)
         writer.write_str_value("department", self.department)

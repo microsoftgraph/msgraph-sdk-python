@@ -71,6 +71,8 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.prompt import Prompt
+
         writer.write_bool_value("bargeInAllowed", self.barge_in_allowed)
         writer.write_str_value("clientContext", self.client_context)
         writer.write_int_value("initialSilenceTimeoutInSeconds", self.initial_silence_timeout_in_seconds)

@@ -86,6 +86,9 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .importance import Importance
+        from .recipient import Recipient
+
         writer.write_collection_of_primitive_values("assignCategories", self.assign_categories)
         writer.write_str_value("copyToFolder", self.copy_to_folder)
         writer.write_bool_value("delete", self.delete)

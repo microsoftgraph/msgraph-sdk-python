@@ -66,6 +66,10 @@ class UserTeamwork(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .associated_team_info import AssociatedTeamInfo
+        from .entity import Entity
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
+
         writer.write_collection_of_object_values("associatedTeams", self.associated_teams)
         writer.write_collection_of_object_values("installedApps", self.installed_apps)
         writer.write_str_value("locale", self.locale)

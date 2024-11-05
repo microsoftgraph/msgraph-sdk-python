@@ -59,6 +59,8 @@ class IosHomeScreenFolderPage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .ios_home_screen_app import IosHomeScreenApp
+
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)

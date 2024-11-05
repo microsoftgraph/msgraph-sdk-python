@@ -16,7 +16,9 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.subject_rights_request import SubjectRightsRequest
     from .approvers.approvers_request_builder import ApproversRequestBuilder
+    from .approvers_with_user_principal_name.approvers_with_user_principal_name_request_builder import ApproversWithUserPrincipalNameRequestBuilder
     from .collaborators.collaborators_request_builder import CollaboratorsRequestBuilder
+    from .collaborators_with_user_principal_name.collaborators_with_user_principal_name_request_builder import CollaboratorsWithUserPrincipalNameRequestBuilder
     from .get_final_attachment.get_final_attachment_request_builder import GetFinalAttachmentRequestBuilder
     from .get_final_report.get_final_report_request_builder import GetFinalReportRequestBuilder
     from .notes.notes_request_builder import NotesRequestBuilder
@@ -34,6 +36,32 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}{?%24expand,%24select}", path_parameters)
+    
+    def approvers_with_user_principal_name(self,user_principal_name: str) -> ApproversWithUserPrincipalNameRequestBuilder:
+        """
+        Provides operations to manage the approvers property of the microsoft.graph.subjectRightsRequest entity.
+        param user_principal_name: Alternate key of user
+        Returns: ApproversWithUserPrincipalNameRequestBuilder
+        """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
+        if user_principal_name is None:
+            raise TypeError("user_principal_name cannot be null.")
+        from .approvers_with_user_principal_name.approvers_with_user_principal_name_request_builder import ApproversWithUserPrincipalNameRequestBuilder
+
+        return ApproversWithUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters, user_principal_name)
+    
+    def collaborators_with_user_principal_name(self,user_principal_name: str) -> CollaboratorsWithUserPrincipalNameRequestBuilder:
+        """
+        Provides operations to manage the collaborators property of the microsoft.graph.subjectRightsRequest entity.
+        param user_principal_name: Alternate key of user
+        Returns: CollaboratorsWithUserPrincipalNameRequestBuilder
+        """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
+        if user_principal_name is None:
+            raise TypeError("user_principal_name cannot be null.")
+        from .collaborators_with_user_principal_name.collaborators_with_user_principal_name_request_builder import CollaboratorsWithUserPrincipalNameRequestBuilder
+
+        return CollaboratorsWithUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters, user_principal_name)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

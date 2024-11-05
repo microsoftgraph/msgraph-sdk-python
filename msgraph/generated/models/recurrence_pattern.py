@@ -77,6 +77,10 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .day_of_week import DayOfWeek
+        from .recurrence_pattern_type import RecurrencePatternType
+        from .week_index import WeekIndex
+
         writer.write_int_value("dayOfMonth", self.day_of_month)
         writer.write_collection_of_enum_values("daysOfWeek", self.days_of_week)
         writer.write_enum_value("firstDayOfWeek", self.first_day_of_week)

@@ -50,6 +50,8 @@ class QueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ...models.search_request import SearchRequest
+
         writer.write_collection_of_object_values("requests", self.requests)
         writer.write_additional_data_value(self.additional_data)
     

@@ -54,6 +54,9 @@ class FailedOperation(Operation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ...public_error import PublicError
+        from .operation import Operation
+
         writer.write_object_value("error", self.error)
     
 

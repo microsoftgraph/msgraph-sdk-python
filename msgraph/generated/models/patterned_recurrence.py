@@ -59,6 +59,9 @@ class PatternedRecurrence(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .recurrence_pattern import RecurrencePattern
+        from .recurrence_range import RecurrenceRange
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("pattern", self.pattern)
         writer.write_object_value("range", self.range)

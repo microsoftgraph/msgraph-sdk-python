@@ -149,6 +149,16 @@ class PrinterCapabilities(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .integer_range import IntegerRange
+        from .printer_feed_orientation import PrinterFeedOrientation
+        from .print_color_mode import PrintColorMode
+        from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
+        from .print_multipage_layout import PrintMultipageLayout
+        from .print_orientation import PrintOrientation
+        from .print_quality import PrintQuality
+        from .print_scaling import PrintScaling
+
         writer.write_collection_of_primitive_values("bottomMargins", self.bottom_margins)
         writer.write_bool_value("collation", self.collation)
         writer.write_collection_of_enum_values("colorModes", self.color_modes)

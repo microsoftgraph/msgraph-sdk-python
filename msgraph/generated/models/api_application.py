@@ -69,6 +69,9 @@ class ApiApplication(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .permission_scope import PermissionScope
+        from .pre_authorized_application import PreAuthorizedApplication
+
         writer.write_bool_value("acceptMappedClaims", self.accept_mapped_claims)
         writer.write_collection_of_primitive_values("knownClientApplications", self.known_client_applications)
         writer.write_collection_of_object_values("oauth2PermissionScopes", self.oauth2_permission_scopes)

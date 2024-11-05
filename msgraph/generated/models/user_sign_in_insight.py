@@ -52,6 +52,8 @@ class UserSignInInsight(GovernanceInsight):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .governance_insight import GovernanceInsight
+
         writer.write_datetime_value("lastSignInDateTime", self.last_sign_in_date_time)
     
 

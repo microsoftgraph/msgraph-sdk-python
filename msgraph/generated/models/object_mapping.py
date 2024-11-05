@@ -83,6 +83,11 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_mapping import AttributeMapping
+        from .filter import Filter
+        from .object_flow_types import ObjectFlowTypes
+        from .object_mapping_metadata_entry import ObjectMappingMetadataEntry
+
         writer.write_collection_of_object_values("attributeMappings", self.attribute_mappings)
         writer.write_bool_value("enabled", self.enabled)
         writer.write_enum_value("flowTypes", self.flow_types)

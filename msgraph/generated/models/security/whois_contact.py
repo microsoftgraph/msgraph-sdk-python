@@ -68,6 +68,8 @@ class WhoisContact(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..physical_address import PhysicalAddress
+
         writer.write_object_value("address", self.address)
         writer.write_str_value("email", self.email)
         writer.write_str_value("fax", self.fax)

@@ -75,6 +75,8 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .subject_set import SubjectSet
+
         writer.write_timedelta_value("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
         writer.write_timedelta_value("durationBeforeEscalation", self.duration_before_escalation)
         writer.write_collection_of_object_values("escalationApprovers", self.escalation_approvers)

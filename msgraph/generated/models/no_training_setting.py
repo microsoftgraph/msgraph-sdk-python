@@ -48,5 +48,7 @@ class NoTrainingSetting(TrainingSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .training_setting import TrainingSetting
+
     
 

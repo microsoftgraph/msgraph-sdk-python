@@ -60,6 +60,9 @@ class EdiscoveryReviewTag(Tag):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .child_selectability import ChildSelectability
+        from .tag import Tag
+
         writer.write_enum_value("childSelectability", self.child_selectability)
         writer.write_collection_of_object_values("childTags", self.child_tags)
         writer.write_object_value("parent", self.parent)

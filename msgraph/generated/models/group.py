@@ -316,6 +316,28 @@ class Group(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_role_assignment import AppRoleAssignment
+        from .assigned_label import AssignedLabel
+        from .assigned_license import AssignedLicense
+        from .calendar import Calendar
+        from .conversation import Conversation
+        from .conversation_thread import ConversationThread
+        from .directory_object import DirectoryObject
+        from .drive import Drive
+        from .event import Event
+        from .extension import Extension
+        from .group_lifecycle_policy import GroupLifecyclePolicy
+        from .group_setting import GroupSetting
+        from .license_processing_state import LicenseProcessingState
+        from .onenote import Onenote
+        from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .planner_group import PlannerGroup
+        from .profile_photo import ProfilePhoto
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .service_provisioning_error import ServiceProvisioningError
+        from .site import Site
+        from .team import Team
+
         writer.write_collection_of_object_values("acceptedSenders", self.accepted_senders)
         writer.write_bool_value("allowExternalSenders", self.allow_external_senders)
         writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)

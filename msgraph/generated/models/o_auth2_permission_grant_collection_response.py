@@ -52,6 +52,9 @@ class OAuth2PermissionGrantCollectionResponse(BaseCollectionPaginationCountRespo
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
+
         writer.write_collection_of_object_values("value", self.value)
     
 

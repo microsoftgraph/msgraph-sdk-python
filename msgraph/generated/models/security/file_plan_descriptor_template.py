@@ -37,7 +37,8 @@ class FilePlanDescriptorTemplate(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.authorityTemplate".casefold():
@@ -107,6 +108,15 @@ class FilePlanDescriptorTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .authority_template import AuthorityTemplate
+        from .category_template import CategoryTemplate
+        from .citation_template import CitationTemplate
+        from .department_template import DepartmentTemplate
+        from .file_plan_reference_template import FilePlanReferenceTemplate
+        from .subcategory_template import SubcategoryTemplate
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)

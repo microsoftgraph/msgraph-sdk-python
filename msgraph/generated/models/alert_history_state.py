@@ -75,6 +75,9 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .alert_feedback import AlertFeedback
+        from .alert_status import AlertStatus
+
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_collection_of_primitive_values("comments", self.comments)

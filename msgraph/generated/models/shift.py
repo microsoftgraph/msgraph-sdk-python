@@ -63,6 +63,9 @@ class Shift(ChangeTrackedEntity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .shift_item import ShiftItem
+
         writer.write_object_value("draftShift", self.draft_shift)
         writer.write_str_value("schedulingGroupId", self.scheduling_group_id)
         writer.write_object_value("sharedShift", self.shared_shift)

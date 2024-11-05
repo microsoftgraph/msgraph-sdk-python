@@ -56,6 +56,8 @@ class SecurityResource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .security_resource_type import SecurityResourceType
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("resource", self.resource)
         writer.write_enum_value("resourceType", self.resource_type)

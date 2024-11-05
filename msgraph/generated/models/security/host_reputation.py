@@ -63,6 +63,10 @@ class HostReputation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .host_reputation_classification import HostReputationClassification
+        from .host_reputation_rule import HostReputationRule
+
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("rules", self.rules)
         writer.write_int_value("score", self.score)

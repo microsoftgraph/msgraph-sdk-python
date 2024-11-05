@@ -157,6 +157,17 @@ class Organization(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .assigned_plan import AssignedPlan
+        from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+        from .directory_object import DirectoryObject
+        from .extension import Extension
+        from .mdm_authority import MdmAuthority
+        from .organizational_branding import OrganizationalBranding
+        from .partner_tenant_type import PartnerTenantType
+        from .privacy_profile import PrivacyProfile
+        from .provisioned_plan import ProvisionedPlan
+        from .verified_domain import VerifiedDomain
+
         writer.write_collection_of_object_values("assignedPlans", self.assigned_plans)
         writer.write_object_value("branding", self.branding)
         writer.write_collection_of_primitive_values("businessPhones", self.business_phones)

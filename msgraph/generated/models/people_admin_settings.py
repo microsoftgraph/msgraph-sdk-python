@@ -66,6 +66,11 @@ class PeopleAdminSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .insights_settings import InsightsSettings
+        from .profile_card_property import ProfileCardProperty
+        from .pronouns_settings import PronounsSettings
+
         writer.write_object_value("itemInsights", self.item_insights)
         writer.write_collection_of_object_values("profileCardProperties", self.profile_card_properties)
         writer.write_object_value("pronouns", self.pronouns)

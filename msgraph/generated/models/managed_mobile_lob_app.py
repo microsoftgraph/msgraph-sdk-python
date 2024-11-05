@@ -37,7 +37,8 @@ class ManagedMobileLobApp(ManagedApp):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
@@ -84,6 +85,11 @@ class ManagedMobileLobApp(ManagedApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_app import ManagedApp
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .mobile_app_content import MobileAppContent
+
         writer.write_str_value("committedContentVersion", self.committed_content_version)
         writer.write_collection_of_object_values("contentVersions", self.content_versions)
         writer.write_str_value("fileName", self.file_name)

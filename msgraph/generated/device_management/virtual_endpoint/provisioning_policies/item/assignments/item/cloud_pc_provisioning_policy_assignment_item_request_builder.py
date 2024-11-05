@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .......models.cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
     from .......models.o_data_errors.o_data_error import ODataError
     from .assigned_users.assigned_users_request_builder import AssignedUsersRequestBuilder
+    from .assigned_users_with_user_principal_name.assigned_users_with_user_principal_name_request_builder import AssignedUsersWithUserPrincipalNameRequestBuilder
 
 class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     """
@@ -29,6 +30,18 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy%2Did}/assignments/{cloudPcProvisioningPolicyAssignment%2Did}{?%24expand,%24select}", path_parameters)
+    
+    def assigned_users_with_user_principal_name(self,user_principal_name: str) -> AssignedUsersWithUserPrincipalNameRequestBuilder:
+        """
+        Provides operations to manage the assignedUsers property of the microsoft.graph.cloudPcProvisioningPolicyAssignment entity.
+        param user_principal_name: Alternate key of user
+        Returns: AssignedUsersWithUserPrincipalNameRequestBuilder
+        """
+        if user_principal_name is None:
+            raise TypeError("user_principal_name cannot be null.")
+        from .assigned_users_with_user_principal_name.assigned_users_with_user_principal_name_request_builder import AssignedUsersWithUserPrincipalNameRequestBuilder
+
+        return AssignedUsersWithUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters, user_principal_name)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

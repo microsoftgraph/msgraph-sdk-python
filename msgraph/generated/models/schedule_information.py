@@ -71,6 +71,10 @@ class ScheduleInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .free_busy_error import FreeBusyError
+        from .schedule_item import ScheduleItem
+        from .working_hours import WorkingHours
+
         writer.write_str_value("availabilityView", self.availability_view)
         writer.write_object_value("error", self.error)
         writer.write_str_value("@odata.type", self.odata_type)

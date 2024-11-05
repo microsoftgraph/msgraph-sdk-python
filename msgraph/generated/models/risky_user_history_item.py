@@ -60,6 +60,9 @@ class RiskyUserHistoryItem(RiskyUser):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .risky_user import RiskyUser
+        from .risk_user_activity import RiskUserActivity
+
         writer.write_object_value("activity", self.activity)
         writer.write_str_value("initiatedBy", self.initiated_by)
         writer.write_str_value("userId", self.user_id)

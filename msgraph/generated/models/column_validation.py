@@ -59,6 +59,8 @@ class ColumnValidation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .display_name_localization import DisplayNameLocalization
+
         writer.write_str_value("defaultLanguage", self.default_language)
         writer.write_collection_of_object_values("descriptions", self.descriptions)
         writer.write_str_value("formula", self.formula)

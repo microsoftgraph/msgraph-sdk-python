@@ -52,6 +52,9 @@ class BookingCustomerBaseCollectionResponse(BaseCollectionPaginationCountRespons
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .booking_customer_base import BookingCustomerBase
+
         writer.write_collection_of_object_values("value", self.value)
     
 

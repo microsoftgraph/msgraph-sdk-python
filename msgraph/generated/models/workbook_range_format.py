@@ -87,6 +87,12 @@ class WorkbookRangeFormat(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_format_protection import WorkbookFormatProtection
+        from .workbook_range_border import WorkbookRangeBorder
+        from .workbook_range_fill import WorkbookRangeFill
+        from .workbook_range_font import WorkbookRangeFont
+
         writer.write_collection_of_object_values("borders", self.borders)
         writer.write_float_value("columnWidth", self.column_width)
         writer.write_object_value("fill", self.fill)

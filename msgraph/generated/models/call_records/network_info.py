@@ -140,6 +140,12 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .network_connection_type import NetworkConnectionType
+        from .network_transport_protocol import NetworkTransportProtocol
+        from .trace_route_hop import TraceRouteHop
+        from .wifi_band import WifiBand
+        from .wifi_radio_type import WifiRadioType
+
         writer.write_float_value("bandwidthLowEventRatio", self.bandwidth_low_event_ratio)
         writer.write_str_value("basicServiceSetIdentifier", self.basic_service_set_identifier)
         writer.write_enum_value("connectionType", self.connection_type)

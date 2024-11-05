@@ -54,6 +54,9 @@ class Sharepoint(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .sharepoint_settings import SharepointSettings
+
         writer.write_object_value("settings", self.settings)
     
 

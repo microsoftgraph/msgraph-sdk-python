@@ -106,6 +106,9 @@ class AnalyzedMessageEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .email_sender import EmailSender
+
         writer.write_str_value("antiSpamDirection", self.anti_spam_direction)
         writer.write_int_value("attachmentsCount", self.attachments_count)
         writer.write_str_value("deliveryAction", self.delivery_action)

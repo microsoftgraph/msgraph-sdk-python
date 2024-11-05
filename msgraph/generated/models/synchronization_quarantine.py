@@ -72,6 +72,9 @@ class SynchronizationQuarantine(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .quarantine_reason import QuarantineReason
+        from .synchronization_error import SynchronizationError
+
         writer.write_datetime_value("currentBegan", self.current_began)
         writer.write_object_value("error", self.error)
         writer.write_datetime_value("nextAttempt", self.next_attempt)

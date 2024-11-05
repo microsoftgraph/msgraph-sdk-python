@@ -53,6 +53,8 @@ class PlayPromptPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.prompt import Prompt
+
         writer.write_str_value("clientContext", self.client_context)
         writer.write_collection_of_object_values("prompts", self.prompts)
         writer.write_additional_data_value(self.additional_data)

@@ -52,6 +52,9 @@ class ImportedWindowsAutopilotDeviceIdentityCollectionResponse(BaseCollectionPag
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+
         writer.write_collection_of_object_values("value", self.value)
     
 

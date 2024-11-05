@@ -50,6 +50,8 @@ class OnenotePatchContentPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ...........models.onenote_patch_content_command import OnenotePatchContentCommand
+
         writer.write_collection_of_object_values("commands", self.commands)
         writer.write_additional_data_value(self.additional_data)
     

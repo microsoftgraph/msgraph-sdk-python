@@ -53,6 +53,8 @@ class SendMailPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.message import Message
+
         writer.write_object_value("Message", self.message)
         writer.write_bool_value("SaveToSentItems", self.save_to_sent_items)
         writer.write_additional_data_value(self.additional_data)

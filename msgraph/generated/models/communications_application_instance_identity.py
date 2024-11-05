@@ -54,6 +54,8 @@ class CommunicationsApplicationInstanceIdentity(Identity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity import Identity
+
         writer.write_bool_value("hidden", self.hidden)
         writer.write_str_value("tenantId", self.tenant_id)
     

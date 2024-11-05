@@ -54,6 +54,9 @@ class UnifiedRoleManagementPolicyApprovalRule(UnifiedRoleManagementPolicyRule):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .approval_settings import ApprovalSettings
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+
         writer.write_object_value("setting", self.setting)
     
 

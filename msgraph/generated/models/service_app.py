@@ -76,6 +76,11 @@ class ServiceApp(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity import Identity
+        from .identity_set import IdentitySet
+        from .service_app_status import ServiceAppStatus
+
         writer.write_object_value("application", self.application)
         writer.write_datetime_value("effectiveDateTime", self.effective_date_time)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)

@@ -50,6 +50,8 @@ class ProtectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..........models.workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
+
         writer.write_object_value("options", self.options)
         writer.write_additional_data_value(self.additional_data)
     

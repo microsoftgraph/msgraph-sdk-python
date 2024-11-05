@@ -57,6 +57,9 @@ class FileHashEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .file_hash_algorithm import FileHashAlgorithm
+
         writer.write_enum_value("algorithm", self.algorithm)
         writer.write_str_value("value", self.value)
     

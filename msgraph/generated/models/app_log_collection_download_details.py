@@ -59,6 +59,8 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .app_log_decryption_algorithm import AppLogDecryptionAlgorithm
+
         writer.write_enum_value("appLogDecryptionAlgorithm", self.app_log_decryption_algorithm)
         writer.write_str_value("decryptionKey", self.decryption_key)
         writer.write_str_value("downloadUrl", self.download_url)

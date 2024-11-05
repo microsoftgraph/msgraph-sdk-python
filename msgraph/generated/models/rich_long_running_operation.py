@@ -66,6 +66,9 @@ class RichLongRunningOperation(LongRunningOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .long_running_operation import LongRunningOperation
+        from .public_error import PublicError
+
         writer.write_object_value("error", self.error)
         writer.write_int_value("percentageComplete", self.percentage_complete)
         writer.write_str_value("resourceId", self.resource_id)

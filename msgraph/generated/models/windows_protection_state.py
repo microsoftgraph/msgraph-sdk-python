@@ -124,6 +124,11 @@ class WindowsProtectionState(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .windows_defender_product_status import WindowsDefenderProductStatus
+        from .windows_device_health_state import WindowsDeviceHealthState
+        from .windows_device_malware_state import WindowsDeviceMalwareState
+
         writer.write_str_value("antiMalwareVersion", self.anti_malware_version)
         writer.write_collection_of_object_values("detectedMalwareState", self.detected_malware_state)
         writer.write_enum_value("deviceState", self.device_state)

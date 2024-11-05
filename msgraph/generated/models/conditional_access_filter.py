@@ -56,6 +56,8 @@ class ConditionalAccessFilter(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .filter_mode import FilterMode
+
         writer.write_enum_value("mode", self.mode)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("rule", self.rule)

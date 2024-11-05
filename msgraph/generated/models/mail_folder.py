@@ -50,7 +50,8 @@ class MailFolder(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailSearchFolder".casefold():
@@ -104,6 +105,13 @@ class MailFolder(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .mail_search_folder import MailSearchFolder
+        from .message import Message
+        from .message_rule import MessageRule
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+
         writer.write_int_value("childFolderCount", self.child_folder_count)
         writer.write_collection_of_object_values("childFolders", self.child_folders)
         writer.write_str_value("displayName", self.display_name)

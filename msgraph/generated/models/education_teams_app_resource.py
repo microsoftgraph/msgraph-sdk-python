@@ -60,6 +60,8 @@ class EducationTeamsAppResource(EducationResource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_resource import EducationResource
+
         writer.write_str_value("appIconWebUrl", self.app_icon_web_url)
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("teamsEmbeddedContentUrl", self.teams_embedded_content_url)

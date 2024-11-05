@@ -51,6 +51,8 @@ class SkypeUserConversationMember(ConversationMember):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conversation_member import ConversationMember
+
         writer.write_str_value("skypeId", self.skype_id)
     
 

@@ -31,7 +31,8 @@ class AuthenticationMethod(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethod".casefold():
@@ -108,5 +109,15 @@ class AuthenticationMethod(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_authentication_method import EmailAuthenticationMethod
+        from .entity import Entity
+        from .fido2_authentication_method import Fido2AuthenticationMethod
+        from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+        from .password_authentication_method import PasswordAuthenticationMethod
+        from .phone_authentication_method import PhoneAuthenticationMethod
+        from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
+        from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+        from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
+
     
 

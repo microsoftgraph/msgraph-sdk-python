@@ -115,6 +115,11 @@ class SecureScoreControlProfile(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .compliance_information import ComplianceInformation
+        from .entity import Entity
+        from .secure_score_control_state_update import SecureScoreControlStateUpdate
+        from .security_vendor_information import SecurityVendorInformation
+
         writer.write_str_value("actionType", self.action_type)
         writer.write_str_value("actionUrl", self.action_url)
         writer.write_str_value("azureTenantId", self.azure_tenant_id)

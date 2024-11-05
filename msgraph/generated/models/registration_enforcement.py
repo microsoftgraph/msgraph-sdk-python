@@ -53,6 +53,8 @@ class RegistrationEnforcement(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_methods_registration_campaign import AuthenticationMethodsRegistrationCampaign
+
         writer.write_object_value("authenticationMethodsRegistrationCampaign", self.authentication_methods_registration_campaign)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

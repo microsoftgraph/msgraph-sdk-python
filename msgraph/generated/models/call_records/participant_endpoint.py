@@ -78,6 +78,11 @@ class ParticipantEndpoint(Endpoint):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..identity import Identity
+        from ..identity_set import IdentitySet
+        from .endpoint import Endpoint
+        from .user_feedback import UserFeedback
+
         writer.write_object_value("associatedIdentity", self.associated_identity)
         writer.write_int_value("cpuCoresCount", self.cpu_cores_count)
         writer.write_str_value("cpuName", self.cpu_name)

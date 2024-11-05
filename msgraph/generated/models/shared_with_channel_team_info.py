@@ -57,6 +57,9 @@ class SharedWithChannelTeamInfo(TeamInfo):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conversation_member import ConversationMember
+        from .team_info import TeamInfo
+
         writer.write_collection_of_object_values("allowedMembers", self.allowed_members)
         writer.write_bool_value("isHostTeam", self.is_host_team)
     

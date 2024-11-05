@@ -90,6 +90,15 @@ class PrivilegedAccessGroup(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .approval import Approval
+        from .entity import Entity
+        from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
+        from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
+        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+        from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
+        from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
+        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+
         writer.write_collection_of_object_values("assignmentApprovals", self.assignment_approvals)
         writer.write_collection_of_object_values("assignmentScheduleInstances", self.assignment_schedule_instances)
         writer.write_collection_of_object_values("assignmentScheduleRequests", self.assignment_schedule_requests)

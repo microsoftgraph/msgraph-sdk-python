@@ -79,6 +79,9 @@ class CloudLogonSessionEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .user_evidence import UserEvidence
+
         writer.write_object_value("account", self.account)
         writer.write_str_value("browser", self.browser)
         writer.write_str_value("deviceName", self.device_name)

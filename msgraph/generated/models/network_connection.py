@@ -117,6 +117,10 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .connection_direction import ConnectionDirection
+        from .connection_status import ConnectionStatus
+        from .security_network_protocol import SecurityNetworkProtocol
+
         writer.write_str_value("applicationName", self.application_name)
         writer.write_str_value("destinationAddress", self.destination_address)
         writer.write_str_value("destinationDomain", self.destination_domain)

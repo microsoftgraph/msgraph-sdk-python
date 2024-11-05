@@ -72,6 +72,12 @@ class CustomTaskExtensionCalloutData(CustomExtensionData):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..custom_extension_data import CustomExtensionData
+        from ..user import User
+        from .task import Task
+        from .task_processing_result import TaskProcessingResult
+        from .workflow import Workflow
+
         writer.write_object_value("subject", self.subject)
         writer.write_object_value("task", self.task)
         writer.write_object_value("taskProcessingresult", self.task_processingresult)

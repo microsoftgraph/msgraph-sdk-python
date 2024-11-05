@@ -94,6 +94,12 @@ class BrowserSiteList(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .browser_shared_cookie import BrowserSharedCookie
+        from .browser_site import BrowserSite
+        from .browser_site_list_status import BrowserSiteListStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)

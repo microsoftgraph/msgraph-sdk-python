@@ -89,6 +89,12 @@ class MailboxSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .automatic_replies_setting import AutomaticRepliesSetting
+        from .delegate_meeting_message_delivery_options import DelegateMeetingMessageDeliveryOptions
+        from .locale_info import LocaleInfo
+        from .user_purpose import UserPurpose
+        from .working_hours import WorkingHours
+
         writer.write_str_value("archiveFolder", self.archive_folder)
         writer.write_object_value("automaticRepliesSetting", self.automatic_replies_setting)
         writer.write_str_value("dateFormat", self.date_format)

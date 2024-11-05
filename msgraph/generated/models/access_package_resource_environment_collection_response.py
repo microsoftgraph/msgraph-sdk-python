@@ -52,6 +52,9 @@ class AccessPackageResourceEnvironmentCollectionResponse(BaseCollectionPaginatio
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_resource_environment import AccessPackageResourceEnvironment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+
         writer.write_collection_of_object_values("value", self.value)
     
 

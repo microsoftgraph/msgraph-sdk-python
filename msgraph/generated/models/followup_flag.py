@@ -65,6 +65,9 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .date_time_time_zone import DateTimeTimeZone
+        from .followup_flag_status import FollowupFlagStatus
+
         writer.write_object_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("dueDateTime", self.due_date_time)
         writer.write_enum_value("flagStatus", self.flag_status)

@@ -73,6 +73,11 @@ class LearningAssignment(LearningCourseActivity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .assignment_type import AssignmentType
+        from .date_time_time_zone import DateTimeTimeZone
+        from .item_body import ItemBody
+        from .learning_course_activity import LearningCourseActivity
+
         writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
         writer.write_str_value("assignerUserId", self.assigner_user_id)
         writer.write_enum_value("assignmentType", self.assignment_type)

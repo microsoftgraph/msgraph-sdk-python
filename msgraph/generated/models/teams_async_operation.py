@@ -82,6 +82,11 @@ class TeamsAsyncOperation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .operation_error import OperationError
+        from .teams_async_operation_status import TeamsAsyncOperationStatus
+        from .teams_async_operation_type import TeamsAsyncOperationType
+
         writer.write_int_value("attemptsCount", self.attempts_count)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("error", self.error)

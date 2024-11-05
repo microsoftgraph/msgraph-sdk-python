@@ -69,6 +69,8 @@ class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .education_gender import EducationGender
+
         writer.write_date_value("birthDate", self.birth_date)
         writer.write_str_value("externalId", self.external_id)
         writer.write_enum_value("gender", self.gender)

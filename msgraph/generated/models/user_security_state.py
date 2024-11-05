@@ -99,6 +99,10 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .email_role import EmailRole
+        from .logon_type import LogonType
+        from .user_account_security_type import UserAccountSecurityType
+
         writer.write_str_value("aadUserId", self.aad_user_id)
         writer.write_str_value("accountName", self.account_name)
         writer.write_str_value("domainName", self.domain_name)

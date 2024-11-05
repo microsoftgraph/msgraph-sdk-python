@@ -74,6 +74,10 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .drive_item_source import DriveItemSource
+        from .file_system_info import FileSystemInfo
+        from .media_source import MediaSource
+
         writer.write_str_value("description", self.description)
         writer.write_object_value("driveItemSource", self.drive_item_source)
         writer.write_int_value("fileSize", self.file_size)

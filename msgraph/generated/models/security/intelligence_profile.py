@@ -91,6 +91,12 @@ class IntelligenceProfile(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .formatted_content import FormattedContent
+        from .intelligence_profile_country_or_region_of_origin import IntelligenceProfileCountryOrRegionOfOrigin
+        from .intelligence_profile_indicator import IntelligenceProfileIndicator
+        from .intelligence_profile_kind import IntelligenceProfileKind
+
         writer.write_collection_of_primitive_values("aliases", self.aliases)
         writer.write_collection_of_object_values("countriesOrRegionsOfOrigin", self.countries_or_regions_of_origin)
         writer.write_object_value("description", self.description)

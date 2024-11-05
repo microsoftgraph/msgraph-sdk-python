@@ -60,6 +60,10 @@ class MembersLeftEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
+
         writer.write_object_value("initiator", self.initiator)
         writer.write_collection_of_object_values("members", self.members)
     

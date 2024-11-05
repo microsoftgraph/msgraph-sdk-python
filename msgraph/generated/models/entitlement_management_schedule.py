@@ -63,6 +63,9 @@ class EntitlementManagementSchedule(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .expiration_pattern import ExpirationPattern
+        from .patterned_recurrence import PatternedRecurrence
+
         writer.write_object_value("expiration", self.expiration)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("recurrence", self.recurrence)

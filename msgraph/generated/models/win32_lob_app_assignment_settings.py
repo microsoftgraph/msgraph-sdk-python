@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .mobile_app_assignment_settings import MobileAppAssignmentSettings
     from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+    from .win32_lob_app_auto_update_settings import Win32LobAppAutoUpdateSettings
     from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
     from .win32_lob_app_notification import Win32LobAppNotification
     from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
@@ -19,6 +20,8 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.win32LobAppAssignmentSettings"
+    # The auto-update settings to apply for this app assignment.
+    auto_update_settings: Optional[Win32LobAppAutoUpdateSettings] = None
     # Contains value for delivery optimization priority.
     delivery_optimization_priority: Optional[Win32LobAppDeliveryOptimizationPriority] = None
     # The install time settings to apply for this app assignment.
@@ -46,17 +49,20 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
         """
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
         from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+        from .win32_lob_app_auto_update_settings import Win32LobAppAutoUpdateSettings
         from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
         from .win32_lob_app_notification import Win32LobAppNotification
         from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
 
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
         from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+        from .win32_lob_app_auto_update_settings import Win32LobAppAutoUpdateSettings
         from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
         from .win32_lob_app_notification import Win32LobAppNotification
         from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "autoUpdateSettings": lambda n : setattr(self, 'auto_update_settings', n.get_object_value(Win32LobAppAutoUpdateSettings)),
             "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(Win32LobAppDeliveryOptimizationPriority)),
             "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(MobileAppInstallTimeSettings)),
             "notifications": lambda n : setattr(self, 'notifications', n.get_enum_value(Win32LobAppNotification)),
@@ -75,6 +81,14 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+        from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+        from .win32_lob_app_auto_update_settings import Win32LobAppAutoUpdateSettings
+        from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
+        from .win32_lob_app_notification import Win32LobAppNotification
+        from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
+
+        writer.write_object_value("autoUpdateSettings", self.auto_update_settings)
         writer.write_enum_value("deliveryOptimizationPriority", self.delivery_optimization_priority)
         writer.write_object_value("installTimeSettings", self.install_time_settings)
         writer.write_enum_value("notifications", self.notifications)

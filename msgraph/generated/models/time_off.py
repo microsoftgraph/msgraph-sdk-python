@@ -60,6 +60,9 @@ class TimeOff(ChangeTrackedEntity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .time_off_item import TimeOffItem
+
         writer.write_object_value("draftTimeOff", self.draft_time_off)
         writer.write_object_value("sharedTimeOff", self.shared_time_off)
         writer.write_str_value("userId", self.user_id)

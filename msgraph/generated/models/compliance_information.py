@@ -56,6 +56,8 @@ class ComplianceInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .certification_control import CertificationControl
+
         writer.write_collection_of_object_values("certificationControls", self.certification_controls)
         writer.write_str_value("certificationName", self.certification_name)
         writer.write_str_value("@odata.type", self.odata_type)

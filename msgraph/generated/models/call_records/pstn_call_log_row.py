@@ -120,6 +120,8 @@ class PstnCallLogRow(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .pstn_call_duration_source import PstnCallDurationSource
+
         writer.write_enum_value("callDurationSource", self.call_duration_source)
         writer.write_str_value("callId", self.call_id)
         writer.write_str_value("callType", self.call_type)

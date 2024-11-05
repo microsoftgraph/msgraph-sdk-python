@@ -102,6 +102,12 @@ class WorkbookTable(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_table_column import WorkbookTableColumn
+        from .workbook_table_row import WorkbookTableRow
+        from .workbook_table_sort import WorkbookTableSort
+        from .workbook_worksheet import WorkbookWorksheet
+
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_bool_value("highlightFirstColumn", self.highlight_first_column)
         writer.write_bool_value("highlightLastColumn", self.highlight_last_column)

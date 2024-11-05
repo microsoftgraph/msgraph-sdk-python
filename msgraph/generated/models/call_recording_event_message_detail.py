@@ -76,6 +76,10 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .call_recording_status import CallRecordingStatus
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+
         writer.write_str_value("callId", self.call_id)
         writer.write_str_value("callRecordingDisplayName", self.call_recording_display_name)
         writer.write_timedelta_value("callRecordingDuration", self.call_recording_duration)

@@ -63,6 +63,9 @@ class ChatMessageHistoryItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .chat_message_actions import ChatMessageActions
+        from .chat_message_reaction import ChatMessageReaction
+
         writer.write_enum_value("actions", self.actions)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_str_value("@odata.type", self.odata_type)

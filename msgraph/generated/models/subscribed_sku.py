@@ -85,6 +85,10 @@ class SubscribedSku(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .license_units_detail import LicenseUnitsDetail
+        from .service_plan_info import ServicePlanInfo
+
         writer.write_str_value("accountId", self.account_id)
         writer.write_str_value("accountName", self.account_name)
         writer.write_str_value("appliesTo", self.applies_to)

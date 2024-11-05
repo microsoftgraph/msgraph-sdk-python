@@ -54,6 +54,9 @@ class SimulationNotification(BaseEndUserNotification):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_end_user_notification import BaseEndUserNotification
+        from .targetted_user_type import TargettedUserType
+
         writer.write_enum_value("targettedUserType", self.targetted_user_type)
     
 

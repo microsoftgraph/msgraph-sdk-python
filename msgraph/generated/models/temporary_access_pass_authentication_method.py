@@ -70,6 +70,8 @@ class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method import AuthenticationMethod
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_bool_value("isUsable", self.is_usable)
         writer.write_bool_value("isUsableOnce", self.is_usable_once)

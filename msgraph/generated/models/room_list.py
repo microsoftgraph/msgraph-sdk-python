@@ -57,6 +57,9 @@ class RoomList(Place):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .place import Place
+        from .room import Room
+
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_collection_of_object_values("rooms", self.rooms)
     

@@ -76,6 +76,9 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .compliance_status import ComplianceStatus
+        from .entity import Entity
+
         writer.write_datetime_value("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)
         writer.write_str_value("deviceDisplayName", self.device_display_name)
         writer.write_str_value("deviceModel", self.device_model)

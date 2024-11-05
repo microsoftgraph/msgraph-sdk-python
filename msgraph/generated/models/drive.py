@@ -99,6 +99,14 @@ class Drive(BaseItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_item import BaseItem
+        from .drive_item import DriveItem
+        from .identity_set import IdentitySet
+        from .list_ import List_
+        from .quota import Quota
+        from .sharepoint_ids import SharepointIds
+        from .system_facet import SystemFacet
+
         writer.write_collection_of_object_values("bundles", self.bundles)
         writer.write_str_value("driveType", self.drive_type)
         writer.write_collection_of_object_values("following", self.following)

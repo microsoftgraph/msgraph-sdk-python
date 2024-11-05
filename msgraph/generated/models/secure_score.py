@@ -88,6 +88,11 @@ class SecureScore(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .average_comparative_score import AverageComparativeScore
+        from .control_score import ControlScore
+        from .entity import Entity
+        from .security_vendor_information import SecurityVendorInformation
+
         writer.write_int_value("activeUserCount", self.active_user_count)
         writer.write_collection_of_object_values("averageComparativeScores", self.average_comparative_scores)
         writer.write_str_value("azureTenantId", self.azure_tenant_id)

@@ -72,6 +72,10 @@ class TaskDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .lifecycle_task_category import LifecycleTaskCategory
+        from .parameter import Parameter
+
         writer.write_enum_value("category", self.category)
         writer.write_bool_value("continueOnError", self.continue_on_error)
         writer.write_str_value("description", self.description)

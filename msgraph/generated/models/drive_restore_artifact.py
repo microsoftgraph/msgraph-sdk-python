@@ -57,6 +57,8 @@ class DriveRestoreArtifact(RestoreArtifactBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .restore_artifact_base import RestoreArtifactBase
+
         writer.write_str_value("restoredSiteId", self.restored_site_id)
     
 

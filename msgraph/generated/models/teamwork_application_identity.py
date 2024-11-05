@@ -54,6 +54,9 @@ class TeamworkApplicationIdentity(Identity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity import Identity
+        from .teamwork_application_identity_type import TeamworkApplicationIdentityType
+
         writer.write_enum_value("applicationIdentityType", self.application_identity_type)
     
 

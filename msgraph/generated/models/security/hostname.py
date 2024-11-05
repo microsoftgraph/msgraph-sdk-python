@@ -54,6 +54,8 @@ class Hostname(Host):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .host import Host
+
         writer.write_str_value("registrant", self.registrant)
         writer.write_str_value("registrar", self.registrar)
     

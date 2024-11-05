@@ -57,6 +57,9 @@ class AuthenticationMethodModeDetail(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_authentication_method import BaseAuthenticationMethod
+        from .entity import Entity
+
         writer.write_enum_value("authenticationMethod", self.authentication_method)
         writer.write_str_value("displayName", self.display_name)
     

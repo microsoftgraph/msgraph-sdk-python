@@ -31,7 +31,8 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessAllExternalTenants".casefold():
@@ -71,6 +72,10 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
+        from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
+        from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
+
         writer.write_enum_value("membershipKind", self.membership_kind)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

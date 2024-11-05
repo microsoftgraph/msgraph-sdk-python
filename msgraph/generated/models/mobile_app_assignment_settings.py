@@ -37,7 +37,8 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobAppAssignmentSettings".casefold():
@@ -110,6 +111,15 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
+        from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
+        from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
+        from .mac_os_lob_app_assignment_settings import MacOsLobAppAssignmentSettings
+        from .microsoft_store_for_business_app_assignment_settings import MicrosoftStoreForBusinessAppAssignmentSettings
+        from .win32_lob_app_assignment_settings import Win32LobAppAssignmentSettings
+        from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
+        from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

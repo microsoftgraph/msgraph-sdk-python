@@ -54,6 +54,9 @@ class OutlookUser(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .outlook_category import OutlookCategory
+
         writer.write_collection_of_object_values("masterCategories", self.master_categories)
     
 

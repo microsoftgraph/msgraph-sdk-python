@@ -60,6 +60,8 @@ class WorkbookRangeView(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_int_value("columnCount", self.column_count)
         writer.write_int_value("index", self.index)
         writer.write_int_value("rowCount", self.row_count)

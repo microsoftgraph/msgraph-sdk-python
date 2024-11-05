@@ -56,6 +56,8 @@ class FormattedContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .content_format import ContentFormat
+
         writer.write_str_value("content", self.content)
         writer.write_enum_value("format", self.format)
         writer.write_str_value("@odata.type", self.odata_type)

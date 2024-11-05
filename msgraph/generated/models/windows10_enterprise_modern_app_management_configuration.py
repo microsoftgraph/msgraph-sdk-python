@@ -54,6 +54,8 @@ class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+
         writer.write_bool_value("uninstallBuiltInApps", self.uninstall_built_in_apps)
     
 

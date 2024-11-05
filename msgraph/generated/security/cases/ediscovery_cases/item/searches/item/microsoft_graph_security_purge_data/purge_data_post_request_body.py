@@ -56,6 +56,9 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ........models.security.purge_areas import PurgeAreas
+        from ........models.security.purge_type import PurgeType
+
         writer.write_enum_value("purgeAreas", self.purge_areas)
         writer.write_enum_value("purgeType", self.purge_type)
         writer.write_additional_data_value(self.additional_data)

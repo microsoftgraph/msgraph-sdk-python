@@ -62,6 +62,9 @@ class PrinterStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .printer_processing_state import PrinterProcessingState
+        from .printer_processing_state_detail import PrinterProcessingStateDetail
+
         writer.write_str_value("description", self.description)
         writer.write_collection_of_enum_values("details", self.details)
         writer.write_str_value("@odata.type", self.odata_type)

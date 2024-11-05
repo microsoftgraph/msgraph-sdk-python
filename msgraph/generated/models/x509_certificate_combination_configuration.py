@@ -54,6 +54,8 @@ class X509CertificateCombinationConfiguration(AuthenticationCombinationConfigura
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
+
         writer.write_collection_of_primitive_values("allowedIssuerSkis", self.allowed_issuer_skis)
         writer.write_collection_of_primitive_values("allowedPolicyOIDs", self.allowed_policy_o_i_ds)
     

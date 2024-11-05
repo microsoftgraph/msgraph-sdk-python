@@ -78,6 +78,10 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.attendee_base import AttendeeBase
+        from ....models.location_constraint import LocationConstraint
+        from ....models.time_constraint import TimeConstraint
+
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
         writer.write_object_value("locationConstraint", self.location_constraint)

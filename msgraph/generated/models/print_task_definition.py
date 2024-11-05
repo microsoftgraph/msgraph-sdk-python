@@ -63,6 +63,10 @@ class PrintTaskDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_identity import AppIdentity
+        from .entity import Entity
+        from .print_task import PrintTask
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("tasks", self.tasks)

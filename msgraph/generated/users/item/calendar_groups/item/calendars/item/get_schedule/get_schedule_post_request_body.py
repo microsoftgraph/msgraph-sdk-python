@@ -59,6 +59,8 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ........models.date_time_time_zone import DateTimeTimeZone
+
         writer.write_int_value("AvailabilityViewInterval", self.availability_view_interval)
         writer.write_object_value("EndTime", self.end_time)
         writer.write_collection_of_primitive_values("Schedules", self.schedules)

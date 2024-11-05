@@ -71,6 +71,8 @@ class VirtualEventPresenterDetails(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .item_body import ItemBody
+
         writer.write_object_value("bio", self.bio)
         writer.write_str_value("company", self.company)
         writer.write_str_value("jobTitle", self.job_title)

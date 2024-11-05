@@ -38,7 +38,8 @@ class DomainDnsRecord(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsCnameRecord".casefold():
@@ -102,6 +103,13 @@ class DomainDnsRecord(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .domain_dns_cname_record import DomainDnsCnameRecord
+        from .domain_dns_mx_record import DomainDnsMxRecord
+        from .domain_dns_srv_record import DomainDnsSrvRecord
+        from .domain_dns_txt_record import DomainDnsTxtRecord
+        from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
+        from .entity import Entity
+
         writer.write_bool_value("isOptional", self.is_optional)
         writer.write_str_value("label", self.label)
         writer.write_str_value("recordType", self.record_type)

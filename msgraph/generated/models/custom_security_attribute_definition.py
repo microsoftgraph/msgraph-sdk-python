@@ -78,6 +78,9 @@ class CustomSecurityAttributeDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .allowed_value import AllowedValue
+        from .entity import Entity
+
         writer.write_collection_of_object_values("allowedValues", self.allowed_values)
         writer.write_str_value("attributeSet", self.attribute_set)
         writer.write_str_value("description", self.description)

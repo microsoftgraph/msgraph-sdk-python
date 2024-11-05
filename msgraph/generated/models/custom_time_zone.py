@@ -63,6 +63,10 @@ class CustomTimeZone(TimeZoneBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .daylight_time_zone_offset import DaylightTimeZoneOffset
+        from .standard_time_zone_offset import StandardTimeZoneOffset
+        from .time_zone_base import TimeZoneBase
+
         writer.write_int_value("bias", self.bias)
         writer.write_object_value("daylightOffset", self.daylight_offset)
         writer.write_object_value("standardOffset", self.standard_offset)

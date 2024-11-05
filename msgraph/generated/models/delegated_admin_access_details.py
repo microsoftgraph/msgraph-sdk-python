@@ -53,6 +53,8 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .unified_role import UnifiedRole
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("unifiedRoles", self.unified_roles)
         writer.write_additional_data_value(self.additional_data)

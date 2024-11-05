@@ -79,6 +79,11 @@ class TaskProcessingResult(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..user import User
+        from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
+        from .task import Task
+
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("failureReason", self.failure_reason)

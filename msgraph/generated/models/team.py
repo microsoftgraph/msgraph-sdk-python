@@ -184,6 +184,25 @@ class Team(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .channel import Channel
+        from .conversation_member import ConversationMember
+        from .entity import Entity
+        from .group import Group
+        from .profile_photo import ProfilePhoto
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .schedule import Schedule
+        from .teams_app_installation import TeamsAppInstallation
+        from .teams_async_operation import TeamsAsyncOperation
+        from .teams_template import TeamsTemplate
+        from .teamwork_tag import TeamworkTag
+        from .team_fun_settings import TeamFunSettings
+        from .team_guest_settings import TeamGuestSettings
+        from .team_member_settings import TeamMemberSettings
+        from .team_messaging_settings import TeamMessagingSettings
+        from .team_specialization import TeamSpecialization
+        from .team_summary import TeamSummary
+        from .team_visibility_type import TeamVisibilityType
+
         writer.write_collection_of_object_values("allChannels", self.all_channels)
         writer.write_collection_of_object_values("channels", self.channels)
         writer.write_str_value("classification", self.classification)

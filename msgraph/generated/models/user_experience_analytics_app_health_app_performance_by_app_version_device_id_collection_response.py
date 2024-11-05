@@ -52,6 +52,9 @@ class UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceIdCollecti
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+
         writer.write_collection_of_object_values("value", self.value)
     
 

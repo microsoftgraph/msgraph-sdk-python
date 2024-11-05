@@ -57,7 +57,8 @@ class DelegatedAdminRelationship(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resellerDelegatedAdminRelationship".casefold():
@@ -117,6 +118,15 @@ class DelegatedAdminRelationship(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
+        from .delegated_admin_access_details import DelegatedAdminAccessDetails
+        from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
+        from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
+        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+        from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
+        from .entity import Entity
+        from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
+
         writer.write_collection_of_object_values("accessAssignments", self.access_assignments)
         writer.write_object_value("accessDetails", self.access_details)
         writer.write_datetime_value("activatedDateTime", self.activated_date_time)

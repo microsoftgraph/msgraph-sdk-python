@@ -60,6 +60,9 @@ class CallTranscriptEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+
         writer.write_str_value("callId", self.call_id)
         writer.write_str_value("callTranscriptICalUid", self.call_transcript_i_cal_uid)
         writer.write_object_value("meetingOrganizer", self.meeting_organizer)

@@ -55,7 +55,8 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.workflow".casefold():
@@ -111,6 +112,13 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..user import User
+        from .lifecycle_workflow_category import LifecycleWorkflowCategory
+        from .task import Task
+        from .workflow import Workflow
+        from .workflow_execution_conditions import WorkflowExecutionConditions
+        from .workflow_version import WorkflowVersion
+
         writer.write_enum_value("category", self.category)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

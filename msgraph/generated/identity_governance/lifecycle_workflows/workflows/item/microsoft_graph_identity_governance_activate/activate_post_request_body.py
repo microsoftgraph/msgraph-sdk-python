@@ -50,6 +50,8 @@ class ActivatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.user import User
+
         writer.write_collection_of_object_values("subjects", self.subjects)
         writer.write_additional_data_value(self.additional_data)
     

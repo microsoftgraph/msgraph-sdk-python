@@ -48,5 +48,7 @@ class RetentionDurationForever(RetentionDuration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .retention_duration import RetentionDuration
+
     
 

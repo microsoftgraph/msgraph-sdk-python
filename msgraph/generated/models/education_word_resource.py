@@ -51,6 +51,8 @@ class EducationWordResource(EducationResource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_resource import EducationResource
+
         writer.write_str_value("fileUrl", self.file_url)
     
 

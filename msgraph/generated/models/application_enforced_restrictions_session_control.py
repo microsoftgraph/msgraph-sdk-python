@@ -48,5 +48,7 @@ class ApplicationEnforcedRestrictionsSessionControl(ConditionalAccessSessionCont
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conditional_access_session_control import ConditionalAccessSessionControl
+
     
 

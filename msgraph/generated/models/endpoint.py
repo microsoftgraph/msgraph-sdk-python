@@ -63,6 +63,8 @@ class Endpoint(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+
         writer.write_str_value("capability", self.capability)
         writer.write_str_value("providerId", self.provider_id)
         writer.write_str_value("providerName", self.provider_name)

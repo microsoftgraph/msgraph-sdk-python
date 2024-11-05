@@ -51,6 +51,8 @@ class SwapShiftsChangeRequest(OfferShiftRequest):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .offer_shift_request import OfferShiftRequest
+
         writer.write_str_value("recipientShiftId", self.recipient_shift_id)
     
 

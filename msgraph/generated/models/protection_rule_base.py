@@ -31,7 +31,7 @@ class ProtectionRuleBase(Entity):
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The status of the protection rule. The possible values are: draft, active, completed, completedWithErrors, unknownFutureValue.
+    # The status of the protection rule. The possible values are: draft, active, completed, completedWithErrors, unknownFutureValue. The draft member is currently unsupported.
     status: Optional[ProtectionRuleStatus] = None
     
     @staticmethod
@@ -44,7 +44,8 @@ class ProtectionRuleBase(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveProtectionRule".casefold():
@@ -104,6 +105,14 @@ class ProtectionRuleBase(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .drive_protection_rule import DriveProtectionRule
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .mailbox_protection_rule import MailboxProtectionRule
+        from .protection_rule_status import ProtectionRuleStatus
+        from .public_error import PublicError
+        from .site_protection_rule import SiteProtectionRule
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("error", self.error)

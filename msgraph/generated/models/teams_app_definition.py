@@ -91,6 +91,12 @@ class TeamsAppDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .teams_app_authorization import TeamsAppAuthorization
+        from .teams_app_publishing_state import TeamsAppPublishingState
+        from .teamwork_bot import TeamworkBot
+
         writer.write_object_value("authorization", self.authorization)
         writer.write_object_value("bot", self.bot)
         writer.write_object_value("createdBy", self.created_by)

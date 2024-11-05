@@ -60,6 +60,9 @@ class StandardWebPart(WebPart):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .web_part import WebPart
+        from .web_part_data import WebPartData
+
         writer.write_str_value("containerTextWebPartId", self.container_text_web_part_id)
         writer.write_object_value("data", self.data)
         writer.write_str_value("webPartType", self.web_part_type)

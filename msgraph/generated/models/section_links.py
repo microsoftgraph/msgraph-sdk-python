@@ -56,6 +56,8 @@ class SectionLinks(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .external_link import ExternalLink
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("oneNoteClientUrl", self.one_note_client_url)
         writer.write_object_value("oneNoteWebUrl", self.one_note_web_url)

@@ -706,6 +706,25 @@ class Windows10GeneralConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .defender_cloud_block_level_type import DefenderCloudBlockLevelType
+        from .defender_detected_malware_actions import DefenderDetectedMalwareActions
+        from .defender_monitor_file_activity import DefenderMonitorFileActivity
+        from .defender_prompt_for_sample_submission import DefenderPromptForSampleSubmission
+        from .defender_scan_type import DefenderScanType
+        from .device_configuration import DeviceConfiguration
+        from .diagnostic_data_submission_mode import DiagnosticDataSubmissionMode
+        from .edge_cookie_policy import EdgeCookiePolicy
+        from .edge_search_engine_base import EdgeSearchEngineBase
+        from .required_password_type import RequiredPasswordType
+        from .safe_search_filter_type import SafeSearchFilterType
+        from .state_management_setting import StateManagementSetting
+        from .visibility_setting import VisibilitySetting
+        from .weekly_schedule import WeeklySchedule
+        from .windows10_network_proxy_server import Windows10NetworkProxyServer
+        from .windows_spotlight_enablement_settings import WindowsSpotlightEnablementSettings
+        from .windows_start_menu_app_list_visibility_type import WindowsStartMenuAppListVisibilityType
+        from .windows_start_menu_mode_type import WindowsStartMenuModeType
+
         writer.write_bool_value("accountsBlockAddingNonMicrosoftAccountEmail", self.accounts_block_adding_non_microsoft_account_email)
         writer.write_bool_value("antiTheftModeBlocked", self.anti_theft_mode_blocked)
         writer.write_enum_value("appsAllowTrustedAppsSideloading", self.apps_allow_trusted_apps_sideloading)

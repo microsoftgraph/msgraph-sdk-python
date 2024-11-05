@@ -87,6 +87,12 @@ class ServiceHealthIssue(ServiceAnnouncementBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .service_announcement_base import ServiceAnnouncementBase
+        from .service_health_classification_type import ServiceHealthClassificationType
+        from .service_health_issue_post import ServiceHealthIssuePost
+        from .service_health_origin import ServiceHealthOrigin
+        from .service_health_status import ServiceHealthStatus
+
         writer.write_enum_value("classification", self.classification)
         writer.write_str_value("feature", self.feature)
         writer.write_str_value("featureGroup", self.feature_group)

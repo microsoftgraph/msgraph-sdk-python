@@ -75,6 +75,11 @@ class SharedInsight(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
+        from .sharing_detail import SharingDetail
+
         writer.write_object_value("lastShared", self.last_shared)
         writer.write_object_value("lastSharedMethod", self.last_shared_method)
         writer.write_object_value("resource", self.resource)

@@ -50,6 +50,8 @@ class SetOrderPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.assignment_order import AssignmentOrder
+
         writer.write_object_value("newAssignmentOrder", self.new_assignment_order)
         writer.write_additional_data_value(self.additional_data)
     

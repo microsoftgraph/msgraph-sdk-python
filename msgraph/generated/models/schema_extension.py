@@ -66,6 +66,9 @@ class SchemaExtension(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .extension_schema_property import ExtensionSchemaProperty
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("owner", self.owner)
         writer.write_collection_of_object_values("properties", self.properties)

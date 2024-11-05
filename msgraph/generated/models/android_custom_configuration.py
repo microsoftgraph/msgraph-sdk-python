@@ -57,6 +57,9 @@ class AndroidCustomConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+        from .oma_setting import OmaSetting
+
         writer.write_collection_of_object_values("omaSettings", self.oma_settings)
     
 

@@ -85,6 +85,12 @@ class Session(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .endpoint import Endpoint
+        from .failure_info import FailureInfo
+        from .modality import Modality
+        from .segment import Segment
+
         writer.write_object_value("callee", self.callee)
         writer.write_object_value("caller", self.caller)
         writer.write_datetime_value("endDateTime", self.end_date_time)

@@ -103,6 +103,12 @@ class Run(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
+        from .task_processing_result import TaskProcessingResult
+        from .user_processing_result import UserProcessingResult
+        from .workflow_execution_type import WorkflowExecutionType
+
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("failedTasksCount", self.failed_tasks_count)
         writer.write_int_value("failedUsersCount", self.failed_users_count)

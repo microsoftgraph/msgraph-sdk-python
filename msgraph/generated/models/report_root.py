@@ -83,6 +83,12 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_methods_root import AuthenticationMethodsRoot
+        from .partners.partners import Partners
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
+        from .security_reports_root import SecurityReportsRoot
+
         writer.write_object_value("authenticationMethods", self.authentication_methods)
         writer.write_collection_of_object_values("dailyPrintUsageByPrinter", self.daily_print_usage_by_printer)
         writer.write_collection_of_object_values("dailyPrintUsageByUser", self.daily_print_usage_by_user)

@@ -183,6 +183,16 @@ class Windows10EndpointProtectionConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .application_guard_block_clipboard_sharing_type import ApplicationGuardBlockClipboardSharingType
+        from .application_guard_block_file_transfer_type import ApplicationGuardBlockFileTransferType
+        from .app_locker_application_control_type import AppLockerApplicationControlType
+        from .bit_locker_removable_drive_policy import BitLockerRemovableDrivePolicy
+        from .device_configuration import DeviceConfiguration
+        from .firewall_certificate_revocation_list_check_method_type import FirewallCertificateRevocationListCheckMethodType
+        from .firewall_packet_queueing_method_type import FirewallPacketQueueingMethodType
+        from .firewall_pre_shared_key_encoding_method_type import FirewallPreSharedKeyEncodingMethodType
+        from .windows_firewall_network_profile import WindowsFirewallNetworkProfile
+
         writer.write_enum_value("appLockerApplicationControl", self.app_locker_application_control)
         writer.write_bool_value("applicationGuardAllowPersistence", self.application_guard_allow_persistence)
         writer.write_bool_value("applicationGuardAllowPrintToLocalPrinters", self.application_guard_allow_print_to_local_printers)

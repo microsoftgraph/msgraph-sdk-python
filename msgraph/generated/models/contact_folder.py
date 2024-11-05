@@ -75,6 +75,11 @@ class ContactFolder(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .contact import Contact
+        from .entity import Entity
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+
         writer.write_collection_of_object_values("childFolders", self.child_folders)
         writer.write_collection_of_object_values("contacts", self.contacts)
         writer.write_str_value("displayName", self.display_name)

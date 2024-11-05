@@ -64,6 +64,8 @@ class OnPremisesConditionalAccessSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_bool_value("enabled", self.enabled)
         writer.write_collection_of_primitive_values("excludedGroups", self.excluded_groups)
         writer.write_collection_of_primitive_values("includedGroups", self.included_groups)

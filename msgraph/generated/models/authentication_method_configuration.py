@@ -37,7 +37,8 @@ class AuthenticationMethodConfiguration(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethodConfiguration".casefold():
@@ -120,6 +121,18 @@ class AuthenticationMethodConfiguration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_state import AuthenticationMethodState
+        from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
+        from .entity import Entity
+        from .exclude_target import ExcludeTarget
+        from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
+        from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
+        from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
+        from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
+        from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
+        from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
+        from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
+
         writer.write_collection_of_object_values("excludeTargets", self.exclude_targets)
         writer.write_enum_value("state", self.state)
     

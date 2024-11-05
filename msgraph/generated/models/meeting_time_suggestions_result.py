@@ -56,6 +56,8 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .meeting_time_suggestion import MeetingTimeSuggestion
+
         writer.write_str_value("emptySuggestionsReason", self.empty_suggestions_reason)
         writer.write_collection_of_object_values("meetingTimeSuggestions", self.meeting_time_suggestions)
         writer.write_str_value("@odata.type", self.odata_type)

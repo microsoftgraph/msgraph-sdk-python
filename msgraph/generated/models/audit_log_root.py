@@ -66,6 +66,11 @@ class AuditLogRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_audit import DirectoryAudit
+        from .entity import Entity
+        from .provisioning_object_summary import ProvisioningObjectSummary
+        from .sign_in import SignIn
+
         writer.write_collection_of_object_values("directoryAudits", self.directory_audits)
         writer.write_collection_of_object_values("provisioning", self.provisioning)
         writer.write_collection_of_object_values("signIns", self.sign_ins)

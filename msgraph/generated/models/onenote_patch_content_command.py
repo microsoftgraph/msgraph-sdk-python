@@ -65,6 +65,9 @@ class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .onenote_patch_action_type import OnenotePatchActionType
+        from .onenote_patch_insert_position import OnenotePatchInsertPosition
+
         writer.write_enum_value("action", self.action)
         writer.write_str_value("content", self.content)
         writer.write_str_value("@odata.type", self.odata_type)

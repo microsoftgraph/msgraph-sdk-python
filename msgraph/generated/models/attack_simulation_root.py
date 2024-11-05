@@ -96,6 +96,16 @@ class AttackSimulationRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attack_simulation_operation import AttackSimulationOperation
+        from .end_user_notification import EndUserNotification
+        from .entity import Entity
+        from .landing_page import LandingPage
+        from .login_page import LoginPage
+        from .payload import Payload
+        from .simulation import Simulation
+        from .simulation_automation import SimulationAutomation
+        from .training import Training
+
         writer.write_collection_of_object_values("endUserNotifications", self.end_user_notifications)
         writer.write_collection_of_object_values("landingPages", self.landing_pages)
         writer.write_collection_of_object_values("loginPages", self.login_pages)

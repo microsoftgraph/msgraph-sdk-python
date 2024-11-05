@@ -54,6 +54,9 @@ class AgreementFileLocalization(AgreementFileProperties):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .agreement_file_properties import AgreementFileProperties
+        from .agreement_file_version import AgreementFileVersion
+
         writer.write_collection_of_object_values("versions", self.versions)
     
 

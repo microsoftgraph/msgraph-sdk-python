@@ -50,6 +50,8 @@ class CommitPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..........models.file_encryption_info import FileEncryptionInfo
+
         writer.write_object_value("fileEncryptionInfo", self.file_encryption_info)
         writer.write_additional_data_value(self.additional_data)
     

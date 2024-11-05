@@ -48,5 +48,7 @@ class Organizer(ParticipantBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .participant_base import ParticipantBase
+
     
 

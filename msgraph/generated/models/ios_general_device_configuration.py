@@ -489,6 +489,23 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .ios_network_usage_rule import IosNetworkUsageRule
+        from .media_content_rating_australia import MediaContentRatingAustralia
+        from .media_content_rating_canada import MediaContentRatingCanada
+        from .media_content_rating_france import MediaContentRatingFrance
+        from .media_content_rating_germany import MediaContentRatingGermany
+        from .media_content_rating_ireland import MediaContentRatingIreland
+        from .media_content_rating_japan import MediaContentRatingJapan
+        from .media_content_rating_new_zealand import MediaContentRatingNewZealand
+        from .media_content_rating_united_kingdom import MediaContentRatingUnitedKingdom
+        from .media_content_rating_united_states import MediaContentRatingUnitedStates
+        from .rating_apps_type import RatingAppsType
+        from .required_password_type import RequiredPasswordType
+        from .web_browser_cookie_settings import WebBrowserCookieSettings
+
         writer.write_bool_value("accountBlockModification", self.account_block_modification)
         writer.write_bool_value("activationLockAllowWhenSupervised", self.activation_lock_allow_when_supervised)
         writer.write_bool_value("airDropBlocked", self.air_drop_blocked)

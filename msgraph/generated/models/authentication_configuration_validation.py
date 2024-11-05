@@ -56,6 +56,8 @@ class AuthenticationConfigurationValidation(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .generic_error import GenericError
+
         writer.write_collection_of_object_values("errors", self.errors)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("warnings", self.warnings)

@@ -56,6 +56,8 @@ class ProfileCardAnnotation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .display_name_localization import DisplayNameLocalization
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("localizations", self.localizations)
         writer.write_str_value("@odata.type", self.odata_type)

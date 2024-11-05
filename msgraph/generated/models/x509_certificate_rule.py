@@ -74,6 +74,10 @@ class X509CertificateRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .x509_certificate_affinity_level import X509CertificateAffinityLevel
+        from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
+        from .x509_certificate_rule_type import X509CertificateRuleType
+
         writer.write_str_value("identifier", self.identifier)
         writer.write_str_value("issuerSubjectIdentifier", self.issuer_subject_identifier)
         writer.write_str_value("@odata.type", self.odata_type)

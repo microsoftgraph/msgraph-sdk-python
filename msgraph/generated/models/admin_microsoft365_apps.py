@@ -54,6 +54,9 @@ class AdminMicrosoft365Apps(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .m365_apps_installation_options import M365AppsInstallationOptions
+
         writer.write_object_value("installationOptions", self.installation_options)
     
 

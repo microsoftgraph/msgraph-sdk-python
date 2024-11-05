@@ -51,6 +51,8 @@ class Fido2CombinationConfiguration(AuthenticationCombinationConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
+
         writer.write_collection_of_primitive_values("allowedAAGUIDs", self.allowed_a_a_g_u_i_ds)
     
 

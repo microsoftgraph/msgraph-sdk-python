@@ -57,6 +57,8 @@ class LandingPageDetail(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("content", self.content)
         writer.write_bool_value("isDefaultLangauge", self.is_default_langauge)
         writer.write_str_value("language", self.language)

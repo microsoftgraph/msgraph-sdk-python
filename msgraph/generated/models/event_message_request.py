@@ -75,6 +75,11 @@ class EventMessageRequest(EventMessage):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .date_time_time_zone import DateTimeTimeZone
+        from .event_message import EventMessage
+        from .location import Location
+        from .meeting_request_type import MeetingRequestType
+
         writer.write_bool_value("allowNewTimeProposals", self.allow_new_time_proposals)
         writer.write_enum_value("meetingRequestType", self.meeting_request_type)
         writer.write_object_value("previousEndDateTime", self.previous_end_date_time)

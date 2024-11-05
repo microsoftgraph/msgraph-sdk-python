@@ -130,6 +130,14 @@ class DeviceEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .defender_av_status import DefenderAvStatus
+        from .device_health_status import DeviceHealthStatus
+        from .device_risk_score import DeviceRiskScore
+        from .logged_on_user import LoggedOnUser
+        from .onboarding_status import OnboardingStatus
+        from .vm_metadata import VmMetadata
+
         writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)
         writer.write_enum_value("defenderAvStatus", self.defender_av_status)
         writer.write_str_value("deviceDnsName", self.device_dns_name)

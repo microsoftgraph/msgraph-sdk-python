@@ -57,6 +57,9 @@ class ParticipantLeftNotification(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .call import Call
+        from .entity import Entity
+
         writer.write_object_value("call", self.call)
         writer.write_str_value("participantId", self.participant_id)
     

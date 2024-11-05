@@ -178,6 +178,14 @@ class Contact(OutlookItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_address import EmailAddress
+        from .extension import Extension
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .outlook_item import OutlookItem
+        from .physical_address import PhysicalAddress
+        from .profile_photo import ProfilePhoto
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+
         writer.write_str_value("assistantName", self.assistant_name)
         writer.write_datetime_value("birthday", self.birthday)
         writer.write_object_value("businessAddress", self.business_address)

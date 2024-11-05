@@ -54,6 +54,9 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(AuthenticationMethodTarge
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .microsoft_authenticator_authentication_mode import MicrosoftAuthenticatorAuthenticationMode
+
         writer.write_enum_value("authenticationMode", self.authentication_mode)
     
 

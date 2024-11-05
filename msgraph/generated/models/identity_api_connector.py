@@ -60,6 +60,9 @@ class IdentityApiConnector(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+        from .entity import Entity
+
         writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("targetUrl", self.target_url)

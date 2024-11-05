@@ -56,6 +56,8 @@ class TentativelyAcceptPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ........models.time_slot import TimeSlot
+
         writer.write_str_value("Comment", self.comment)
         writer.write_object_value("ProposedNewTime", self.proposed_new_time)
         writer.write_bool_value("SendResponse", self.send_response)

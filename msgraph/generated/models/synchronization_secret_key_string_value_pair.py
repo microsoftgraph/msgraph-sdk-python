@@ -56,6 +56,8 @@ class SynchronizationSecretKeyStringValuePair(AdditionalDataHolder, BackedModel,
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .synchronization_secret import SynchronizationSecret
+
         writer.write_enum_value("key", self.key)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("value", self.value)

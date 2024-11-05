@@ -63,6 +63,8 @@ class HostPortComponent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .host_component import HostComponent
+
         writer.write_object_value("component", self.component)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_bool_value("isRecent", self.is_recent)

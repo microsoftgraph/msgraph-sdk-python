@@ -48,5 +48,7 @@ class IncludeAllAccountTargetContent(AccountTargetContent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .account_target_content import AccountTargetContent
+
     
 

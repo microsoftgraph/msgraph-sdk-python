@@ -53,6 +53,8 @@ class UserPrint(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .printer_share import PrinterShare
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("recentPrinterShares", self.recent_printer_shares)
         writer.write_additional_data_value(self.additional_data)

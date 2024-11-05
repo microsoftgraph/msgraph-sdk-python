@@ -54,6 +54,8 @@ class AccessPackageTextInputQuestion(AccessPackageQuestion):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_question import AccessPackageQuestion
+
         writer.write_bool_value("isSingleLineQuestion", self.is_single_line_question)
         writer.write_str_value("regexPattern", self.regex_pattern)
     

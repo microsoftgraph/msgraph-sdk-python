@@ -65,6 +65,8 @@ class AuditResource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .audit_property import AuditProperty
+
         writer.write_str_value("auditResourceType", self.audit_resource_type)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("modifiedProperties", self.modified_properties)

@@ -72,6 +72,9 @@ class UnifiedStorageQuota(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
+
         writer.write_int_value("deleted", self.deleted)
         writer.write_str_value("manageWebUrl", self.manage_web_url)
         writer.write_int_value("remaining", self.remaining)

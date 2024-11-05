@@ -94,6 +94,12 @@ class DirectoryAudit(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .audit_activity_initiator import AuditActivityInitiator
+        from .entity import Entity
+        from .key_value import KeyValue
+        from .operation_result import OperationResult
+        from .target_resource import TargetResource
+
         writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("activityDisplayName", self.activity_display_name)
         writer.write_collection_of_object_values("additionalDetails", self.additional_details)

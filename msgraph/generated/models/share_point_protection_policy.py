@@ -60,6 +60,10 @@ class SharePointProtectionPolicy(ProtectionPolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .protection_policy_base import ProtectionPolicyBase
+        from .site_protection_rule import SiteProtectionRule
+        from .site_protection_unit import SiteProtectionUnit
+
         writer.write_collection_of_object_values("siteInclusionRules", self.site_inclusion_rules)
         writer.write_collection_of_object_values("siteProtectionUnits", self.site_protection_units)
     

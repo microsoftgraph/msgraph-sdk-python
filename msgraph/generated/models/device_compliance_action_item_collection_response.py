@@ -52,6 +52,9 @@ class DeviceComplianceActionItemCollectionResponse(BaseCollectionPaginationCount
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_compliance_action_item import DeviceComplianceActionItem
+
         writer.write_collection_of_object_values("value", self.value)
     
 

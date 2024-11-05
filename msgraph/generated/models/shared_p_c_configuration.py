@@ -94,6 +94,10 @@ class SharedPCConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+        from .shared_p_c_account_manager_policy import SharedPCAccountManagerPolicy
+        from .shared_p_c_allowed_account_type import SharedPCAllowedAccountType
+
         writer.write_object_value("accountManagerPolicy", self.account_manager_policy)
         writer.write_bool_value("allowLocalStorage", self.allow_local_storage)
         writer.write_enum_value("allowedAccounts", self.allowed_accounts)

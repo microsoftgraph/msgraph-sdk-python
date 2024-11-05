@@ -51,6 +51,8 @@ class RetentionDurationInDays(RetentionDuration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .retention_duration import RetentionDuration
+
         writer.write_int_value("days", self.days)
     
 

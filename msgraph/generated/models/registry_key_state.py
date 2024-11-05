@@ -86,6 +86,10 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .registry_hive import RegistryHive
+        from .registry_operation import RegistryOperation
+        from .registry_value_type import RegistryValueType
+
         writer.write_enum_value("hive", self.hive)
         writer.write_str_value("key", self.key)
         writer.write_str_value("@odata.type", self.odata_type)

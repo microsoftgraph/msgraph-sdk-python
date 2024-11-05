@@ -65,6 +65,9 @@ class MainError(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .error_details import ErrorDetails
+        from .inner_error import InnerError
+
         writer.write_str_value("code", self.code)
         writer.write_collection_of_object_values("details", self.details)
         writer.write_object_value("innerError", self.inner_error)

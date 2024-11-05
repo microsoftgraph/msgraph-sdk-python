@@ -59,6 +59,9 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, BackedModel, Pa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attack_simulation_user import AttackSimulationUser
+        from .user_training_status_info import UserTrainingStatusInfo
+
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("userTrainings", self.user_trainings)

@@ -74,6 +74,11 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .chat_message_policy_violation_dlp_action_types import ChatMessagePolicyViolationDlpActionTypes
+        from .chat_message_policy_violation_policy_tip import ChatMessagePolicyViolationPolicyTip
+        from .chat_message_policy_violation_user_action_types import ChatMessagePolicyViolationUserActionTypes
+        from .chat_message_policy_violation_verdict_details_types import ChatMessagePolicyViolationVerdictDetailsTypes
+
         writer.write_enum_value("dlpAction", self.dlp_action)
         writer.write_str_value("justificationText", self.justification_text)
         writer.write_str_value("@odata.type", self.odata_type)

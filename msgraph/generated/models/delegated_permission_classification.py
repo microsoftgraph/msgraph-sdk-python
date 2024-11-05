@@ -60,6 +60,9 @@ class DelegatedPermissionClassification(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .permission_classification_type import PermissionClassificationType
+
         writer.write_enum_value("classification", self.classification)
         writer.write_str_value("permissionId", self.permission_id)
         writer.write_str_value("permissionName", self.permission_name)

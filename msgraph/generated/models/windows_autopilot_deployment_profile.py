@@ -100,6 +100,11 @@ class WindowsAutopilotDeploymentProfile(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .out_of_box_experience_setting import OutOfBoxExperienceSetting
+        from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+        from .windows_autopilot_device_type import WindowsAutopilotDeviceType
+
         writer.write_collection_of_object_values("assignedDevices", self.assigned_devices)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

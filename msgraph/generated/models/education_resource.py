@@ -48,7 +48,8 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationChannelResource".casefold():
@@ -140,6 +141,18 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .education_channel_resource import EducationChannelResource
+        from .education_excel_resource import EducationExcelResource
+        from .education_external_resource import EducationExternalResource
+        from .education_file_resource import EducationFileResource
+        from .education_linked_assignment_resource import EducationLinkedAssignmentResource
+        from .education_link_resource import EducationLinkResource
+        from .education_media_resource import EducationMediaResource
+        from .education_power_point_resource import EducationPowerPointResource
+        from .education_teams_app_resource import EducationTeamsAppResource
+        from .education_word_resource import EducationWordResource
+        from .identity_set import IdentitySet
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

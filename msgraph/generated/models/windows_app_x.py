@@ -78,6 +78,10 @@ class WindowsAppX(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_lob_app import MobileLobApp
+        from .windows_architecture import WindowsArchitecture
+        from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
+
         writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
         writer.write_str_value("identityName", self.identity_name)
         writer.write_str_value("identityPublisherHash", self.identity_publisher_hash)

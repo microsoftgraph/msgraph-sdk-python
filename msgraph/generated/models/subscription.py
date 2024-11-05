@@ -91,6 +91,8 @@ class Subscription(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("applicationId", self.application_id)
         writer.write_str_value("changeType", self.change_type)
         writer.write_str_value("clientState", self.client_state)

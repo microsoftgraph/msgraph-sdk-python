@@ -57,6 +57,9 @@ class UnifiedRbacResourceNamespace(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .unified_rbac_resource_action import UnifiedRbacResourceAction
+
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("resourceActions", self.resource_actions)
     

@@ -97,6 +97,13 @@ class ServiceUpdateMessage(ServiceAnnouncementBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .item_body import ItemBody
+        from .service_announcement_attachment import ServiceAnnouncementAttachment
+        from .service_announcement_base import ServiceAnnouncementBase
+        from .service_update_category import ServiceUpdateCategory
+        from .service_update_message_viewpoint import ServiceUpdateMessageViewpoint
+        from .service_update_severity import ServiceUpdateSeverity
+
         writer.write_datetime_value("actionRequiredByDateTime", self.action_required_by_date_time)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_bytes_value("attachmentsArchive", self.attachments_archive)

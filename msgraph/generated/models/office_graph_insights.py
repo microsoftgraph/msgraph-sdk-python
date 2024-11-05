@@ -33,7 +33,8 @@ class OfficeGraphInsights(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemInsights".casefold():
@@ -77,6 +78,12 @@ class OfficeGraphInsights(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .item_insights import ItemInsights
+        from .shared_insight import SharedInsight
+        from .trending import Trending
+        from .used_insight import UsedInsight
+
         writer.write_collection_of_object_values("shared", self.shared)
         writer.write_collection_of_object_values("trending", self.trending)
         writer.write_collection_of_object_values("used", self.used)

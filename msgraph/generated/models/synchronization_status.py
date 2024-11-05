@@ -99,6 +99,12 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .string_key_long_value_pair import StringKeyLongValuePair
+        from .synchronization_progress import SynchronizationProgress
+        from .synchronization_quarantine import SynchronizationQuarantine
+        from .synchronization_status_code import SynchronizationStatusCode
+        from .synchronization_task_execution import SynchronizationTaskExecution
+
         writer.write_enum_value("code", self.code)
         writer.write_int_value("countSuccessiveCompleteFailures", self.count_successive_complete_failures)
         writer.write_bool_value("escrowsPruned", self.escrows_pruned)

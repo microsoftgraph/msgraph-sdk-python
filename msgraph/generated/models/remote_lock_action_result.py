@@ -54,6 +54,8 @@ class RemoteLockActionResult(DeviceActionResult):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_action_result import DeviceActionResult
+
         writer.write_str_value("unlockPin", self.unlock_pin)
     
 

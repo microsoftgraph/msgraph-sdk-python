@@ -59,6 +59,8 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, BackedModel, Pa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cross_tenant_user_sync_inbound import CrossTenantUserSyncInbound
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("tenantId", self.tenant_id)

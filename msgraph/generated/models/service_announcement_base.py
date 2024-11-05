@@ -37,7 +37,8 @@ class ServiceAnnouncementBase(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceHealthIssue".casefold():
@@ -85,6 +86,11 @@ class ServiceAnnouncementBase(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .key_value_pair import KeyValuePair
+        from .service_health_issue import ServiceHealthIssue
+        from .service_update_message import ServiceUpdateMessage
+
         writer.write_collection_of_object_values("details", self.details)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)

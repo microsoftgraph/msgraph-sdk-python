@@ -115,6 +115,15 @@ class AccessReviewScheduleDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_instance import AccessReviewInstance
+        from .access_review_notification_recipient_item import AccessReviewNotificationRecipientItem
+        from .access_review_reviewer_scope import AccessReviewReviewerScope
+        from .access_review_schedule_settings import AccessReviewScheduleSettings
+        from .access_review_scope import AccessReviewScope
+        from .access_review_stage_settings import AccessReviewStageSettings
+        from .entity import Entity
+        from .user_identity import UserIdentity
+
         writer.write_collection_of_object_values("additionalNotificationRecipients", self.additional_notification_recipients)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

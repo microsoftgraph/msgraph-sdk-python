@@ -127,6 +127,17 @@ class RetentionLabel(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .action_after_retention_period import ActionAfterRetentionPeriod
+        from .behavior_during_retention_period import BehaviorDuringRetentionPeriod
+        from .default_record_behavior import DefaultRecordBehavior
+        from .disposition_review_stage import DispositionReviewStage
+        from .file_plan_descriptor import FilePlanDescriptor
+        from .retention_duration import RetentionDuration
+        from .retention_event_type import RetentionEventType
+        from .retention_trigger import RetentionTrigger
+
         writer.write_enum_value("actionAfterRetentionPeriod", self.action_after_retention_period)
         writer.write_enum_value("behaviorDuringRetentionPeriod", self.behavior_during_retention_period)
         writer.write_object_value("createdBy", self.created_by)

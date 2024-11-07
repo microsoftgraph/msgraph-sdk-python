@@ -69,6 +69,9 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.chat_info import ChatInfo
+        from .....models.meeting_participants import MeetingParticipants
+
         writer.write_object_value("chatInfo", self.chat_info)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("externalId", self.external_id)

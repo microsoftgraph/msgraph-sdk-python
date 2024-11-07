@@ -60,6 +60,9 @@ class NicEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .ip_evidence import IpEvidence
+
         writer.write_object_value("ipAddress", self.ip_address)
         writer.write_str_value("macAddress", self.mac_address)
         writer.write_collection_of_primitive_values("vlans", self.vlans)

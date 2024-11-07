@@ -59,6 +59,8 @@ class DisplayTemplate(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .property_rule import PropertyRule
+
         writer.write_str_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("priority", self.priority)

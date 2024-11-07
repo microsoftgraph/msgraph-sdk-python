@@ -63,6 +63,9 @@ class PresenceStatusMessage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .date_time_time_zone import DateTimeTimeZone
+        from .item_body import ItemBody
+
         writer.write_object_value("expiryDateTime", self.expiry_date_time)
         writer.write_object_value("message", self.message)
         writer.write_str_value("@odata.type", self.odata_type)

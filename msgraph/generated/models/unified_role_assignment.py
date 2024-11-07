@@ -84,6 +84,11 @@ class UnifiedRoleAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_scope import AppScope
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .unified_role_definition import UnifiedRoleDefinition
+
         writer.write_object_value("appScope", self.app_scope)
         writer.write_str_value("appScopeId", self.app_scope_id)
         writer.write_str_value("condition", self.condition)

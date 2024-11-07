@@ -62,6 +62,8 @@ class AppConfigurationSettingItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .mdm_app_config_key_type import MdmAppConfigKeyType
+
         writer.write_str_value("appConfigKey", self.app_config_key)
         writer.write_enum_value("appConfigKeyType", self.app_config_key_type)
         writer.write_str_value("appConfigKeyValue", self.app_config_key_value)

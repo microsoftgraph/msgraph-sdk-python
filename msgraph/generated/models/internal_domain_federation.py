@@ -78,6 +78,11 @@ class InternalDomainFederation(SamlOrWsFedProvider):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .federated_idp_mfa_behavior import FederatedIdpMfaBehavior
+        from .prompt_login_behavior import PromptLoginBehavior
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+        from .signing_certificate_update_status import SigningCertificateUpdateStatus
+
         writer.write_str_value("activeSignInUri", self.active_sign_in_uri)
         writer.write_enum_value("federatedIdpMfaBehavior", self.federated_idp_mfa_behavior)
         writer.write_bool_value("isSignedAuthenticationRequestRequired", self.is_signed_authentication_request_required)

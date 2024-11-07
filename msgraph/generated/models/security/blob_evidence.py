@@ -69,6 +69,10 @@ class BlobEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .blob_container_evidence import BlobContainerEvidence
+        from .file_hash import FileHash
+
         writer.write_object_value("blobContainer", self.blob_container)
         writer.write_str_value("etag", self.etag)
         writer.write_collection_of_object_values("fileHashes", self.file_hashes)

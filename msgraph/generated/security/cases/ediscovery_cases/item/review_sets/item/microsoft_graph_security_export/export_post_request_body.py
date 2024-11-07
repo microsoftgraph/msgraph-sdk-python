@@ -62,6 +62,9 @@ class ExportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ........models.security.export_file_structure import ExportFileStructure
+        from ........models.security.export_options import ExportOptions
+
         writer.write_str_value("description", self.description)
         writer.write_enum_value("exportOptions", self.export_options)
         writer.write_enum_value("exportStructure", self.export_structure)

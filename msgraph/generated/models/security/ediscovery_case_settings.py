@@ -66,6 +66,11 @@ class EdiscoveryCaseSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .ocr_settings import OcrSettings
+        from .redundancy_detection_settings import RedundancyDetectionSettings
+        from .topic_modeling_settings import TopicModelingSettings
+
         writer.write_object_value("ocr", self.ocr)
         writer.write_object_value("redundancyDetection", self.redundancy_detection)
         writer.write_object_value("topicModeling", self.topic_modeling)

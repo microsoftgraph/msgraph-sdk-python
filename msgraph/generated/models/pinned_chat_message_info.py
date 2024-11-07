@@ -54,6 +54,9 @@ class PinnedChatMessageInfo(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .chat_message import ChatMessage
+        from .entity import Entity
+
         writer.write_object_value("message", self.message)
     
 

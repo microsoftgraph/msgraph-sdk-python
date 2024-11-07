@@ -60,6 +60,10 @@ class InferenceClassificationOverride(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_address import EmailAddress
+        from .entity import Entity
+        from .inference_classification_type import InferenceClassificationType
+
         writer.write_enum_value("classifyAs", self.classify_as)
         writer.write_object_value("senderEmailAddress", self.sender_email_address)
     

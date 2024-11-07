@@ -66,6 +66,11 @@ class ServiceAnnouncement(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .service_health import ServiceHealth
+        from .service_health_issue import ServiceHealthIssue
+        from .service_update_message import ServiceUpdateMessage
+
         writer.write_collection_of_object_values("healthOverviews", self.health_overviews)
         writer.write_collection_of_object_values("issues", self.issues)
         writer.write_collection_of_object_values("messages", self.messages)

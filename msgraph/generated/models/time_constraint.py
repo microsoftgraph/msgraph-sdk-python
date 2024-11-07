@@ -59,6 +59,9 @@ class TimeConstraint(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .activity_domain import ActivityDomain
+        from .time_slot import TimeSlot
+
         writer.write_enum_value("activityDomain", self.activity_domain)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("timeSlots", self.time_slots)

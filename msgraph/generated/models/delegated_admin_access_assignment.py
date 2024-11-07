@@ -73,6 +73,11 @@ class DelegatedAdminAccessAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignmentStatus
+        from .delegated_admin_access_container import DelegatedAdminAccessContainer
+        from .delegated_admin_access_details import DelegatedAdminAccessDetails
+        from .entity import Entity
+
         writer.write_object_value("accessContainer", self.access_container)
         writer.write_object_value("accessDetails", self.access_details)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

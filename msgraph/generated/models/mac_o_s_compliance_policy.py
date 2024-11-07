@@ -108,6 +108,10 @@ class MacOSCompliancePolicy(DeviceCompliancePolicy):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_threat_protection_level import DeviceThreatProtectionLevel
+        from .required_password_type import RequiredPasswordType
+
         writer.write_bool_value("deviceThreatProtectionEnabled", self.device_threat_protection_enabled)
         writer.write_enum_value("deviceThreatProtectionRequiredSecurityLevel", self.device_threat_protection_required_security_level)
         writer.write_bool_value("firewallBlockAllIncoming", self.firewall_block_all_incoming)

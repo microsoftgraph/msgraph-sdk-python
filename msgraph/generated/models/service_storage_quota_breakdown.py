@@ -48,5 +48,7 @@ class ServiceStorageQuotaBreakdown(StorageQuotaBreakdown):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .storage_quota_breakdown import StorageQuotaBreakdown
+
     
 

@@ -90,6 +90,15 @@ class LifecycleWorkflowsContainer(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..deleted_item_container import DeletedItemContainer
+        from ..entity import Entity
+        from .custom_task_extension import CustomTaskExtension
+        from .insights import Insights
+        from .lifecycle_management_settings import LifecycleManagementSettings
+        from .task_definition import TaskDefinition
+        from .workflow import Workflow
+        from .workflow_template import WorkflowTemplate
+
         writer.write_collection_of_object_values("customTaskExtensions", self.custom_task_extensions)
         writer.write_object_value("deletedItems", self.deleted_items)
         writer.write_object_value("insights", self.insights)

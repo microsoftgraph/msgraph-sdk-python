@@ -66,6 +66,10 @@ class ClientUserAgent(UserAgent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .client_platform import ClientPlatform
+        from .product_family import ProductFamily
+        from .user_agent import UserAgent
+
         writer.write_str_value("azureADAppId", self.azure_a_d_app_id)
         writer.write_str_value("communicationServiceId", self.communication_service_id)
         writer.write_enum_value("platform", self.platform)

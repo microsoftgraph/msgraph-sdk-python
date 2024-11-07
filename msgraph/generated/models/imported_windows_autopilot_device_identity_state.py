@@ -62,6 +62,8 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, BackedMo
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .imported_windows_autopilot_device_identity_import_status import ImportedWindowsAutopilotDeviceIdentityImportStatus
+
         writer.write_int_value("deviceErrorCode", self.device_error_code)
         writer.write_str_value("deviceErrorName", self.device_error_name)
         writer.write_enum_value("deviceImportStatus", self.device_import_status)

@@ -69,6 +69,11 @@ class MobileAppAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .entity import Entity
+        from .install_intent import InstallIntent
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+
         writer.write_enum_value("intent", self.intent)
         writer.write_object_value("settings", self.settings)
         writer.write_object_value("target", self.target)

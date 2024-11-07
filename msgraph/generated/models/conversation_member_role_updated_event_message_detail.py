@@ -63,6 +63,10 @@ class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
+
         writer.write_collection_of_primitive_values("conversationMemberRoles", self.conversation_member_roles)
         writer.write_object_value("conversationMemberUser", self.conversation_member_user)
         writer.write_object_value("initiator", self.initiator)

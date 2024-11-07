@@ -97,6 +97,11 @@ class UserActivity(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .activity_history_item import ActivityHistoryItem
+        from .entity import Entity
+        from .status import Status
+        from .visual_info import VisualInfo
+
         writer.write_str_value("activationUrl", self.activation_url)
         writer.write_str_value("activitySourceHost", self.activity_source_host)
         writer.write_str_value("appActivityId", self.app_activity_id)

@@ -54,6 +54,9 @@ class ProvisioningSystem(Identity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .details_info import DetailsInfo
+        from .identity import Identity
+
         writer.write_object_value("details", self.details)
     
 

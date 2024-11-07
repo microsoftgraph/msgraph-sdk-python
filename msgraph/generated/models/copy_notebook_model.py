@@ -102,6 +102,10 @@ class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .identity_set import IdentitySet
+        from .notebook_links import NotebookLinks
+        from .onenote_user_role import OnenoteUserRole
+
         writer.write_str_value("createdBy", self.created_by)
         writer.write_object_value("createdByIdentity", self.created_by_identity)
         writer.write_datetime_value("createdTime", self.created_time)

@@ -78,6 +78,10 @@ class MessageRule(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .message_rule_actions import MessageRuleActions
+        from .message_rule_predicates import MessageRulePredicates
+
         writer.write_object_value("actions", self.actions)
         writer.write_object_value("conditions", self.conditions)
         writer.write_str_value("displayName", self.display_name)

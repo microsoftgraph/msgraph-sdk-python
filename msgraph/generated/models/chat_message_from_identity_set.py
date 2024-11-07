@@ -48,5 +48,7 @@ class ChatMessageFromIdentitySet(IdentitySet):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_set import IdentitySet
+
     
 

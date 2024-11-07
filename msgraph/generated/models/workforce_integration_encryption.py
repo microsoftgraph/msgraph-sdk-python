@@ -56,6 +56,8 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("protocol", self.protocol)
         writer.write_str_value("secret", self.secret)

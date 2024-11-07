@@ -59,6 +59,8 @@ class RestorePointSearchResponse(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .restore_point_search_result import RestorePointSearchResult
+
         writer.write_collection_of_primitive_values("noResultProtectionUnitIds", self.no_result_protection_unit_ids)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("searchResponseId", self.search_response_id)

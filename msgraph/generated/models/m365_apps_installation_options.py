@@ -66,6 +66,11 @@ class M365AppsInstallationOptions(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .apps_installation_options_for_mac import AppsInstallationOptionsForMac
+        from .apps_installation_options_for_windows import AppsInstallationOptionsForWindows
+        from .apps_update_channel_type import AppsUpdateChannelType
+        from .entity import Entity
+
         writer.write_object_value("appsForMac", self.apps_for_mac)
         writer.write_object_value("appsForWindows", self.apps_for_windows)
         writer.write_enum_value("updateChannel", self.update_channel)

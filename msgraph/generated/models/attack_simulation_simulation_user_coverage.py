@@ -66,6 +66,8 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, BackedModel, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attack_simulation_user import AttackSimulationUser
+
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_int_value("clickCount", self.click_count)
         writer.write_int_value("compromisedCount", self.compromised_count)

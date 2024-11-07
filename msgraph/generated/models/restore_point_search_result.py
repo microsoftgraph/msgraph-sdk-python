@@ -56,6 +56,8 @@ class RestorePointSearchResult(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .restore_point import RestorePoint
+
         writer.write_int_value("artifactHitCount", self.artifact_hit_count)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("restorePoint", self.restore_point)

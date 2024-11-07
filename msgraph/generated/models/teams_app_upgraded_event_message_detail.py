@@ -60,6 +60,9 @@ class TeamsAppUpgradedEventMessageDetail(EventMessageDetail):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+
         writer.write_object_value("initiator", self.initiator)
         writer.write_str_value("teamsAppDisplayName", self.teams_app_display_name)
         writer.write_str_value("teamsAppId", self.teams_app_id)

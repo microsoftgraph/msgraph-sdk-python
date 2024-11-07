@@ -63,6 +63,9 @@ class AccessPackageAssignmentRequestCallbackData(CustomExtensionData):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
+        from .custom_extension_data import CustomExtensionData
+
         writer.write_str_value("customExtensionStageInstanceDetail", self.custom_extension_stage_instance_detail)
         writer.write_str_value("customExtensionStageInstanceId", self.custom_extension_stage_instance_id)
         writer.write_enum_value("stage", self.stage)

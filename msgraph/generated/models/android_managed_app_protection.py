@@ -87,6 +87,10 @@ class AndroidManagedAppProtection(TargetedManagedAppProtection):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_mobile_app import ManagedMobileApp
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
+
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_str_value("customBrowserDisplayName", self.custom_browser_display_name)
         writer.write_str_value("customBrowserPackageId", self.custom_browser_package_id)

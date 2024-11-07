@@ -65,6 +65,8 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .provisioning_status_error_category import ProvisioningStatusErrorCategory
+
         writer.write_str_value("additionalDetails", self.additional_details)
         writer.write_enum_value("errorCategory", self.error_category)
         writer.write_str_value("errorCode", self.error_code)

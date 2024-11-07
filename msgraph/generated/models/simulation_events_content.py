@@ -56,6 +56,8 @@ class SimulationEventsContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .simulation_event import SimulationEvent
+
         writer.write_float_value("compromisedRate", self.compromised_rate)
         writer.write_collection_of_object_values("events", self.events)
         writer.write_str_value("@odata.type", self.odata_type)

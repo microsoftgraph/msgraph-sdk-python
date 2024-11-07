@@ -66,6 +66,11 @@ class AuthenticationStrengthRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_modes import AuthenticationMethodModes
+        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .entity import Entity
+
         writer.write_collection_of_object_values("authenticationMethodModes", self.authentication_method_modes)
         writer.write_collection_of_enum_values("combinations", self.combinations)
         writer.write_collection_of_object_values("policies", self.policies)

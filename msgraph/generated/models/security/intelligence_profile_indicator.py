@@ -55,6 +55,8 @@ class IntelligenceProfileIndicator(Indicator):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .indicator import Indicator
+
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
     

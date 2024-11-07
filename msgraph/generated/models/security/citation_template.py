@@ -54,6 +54,8 @@ class CitationTemplate(FilePlanDescriptorTemplate):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .file_plan_descriptor_template import FilePlanDescriptorTemplate
+
         writer.write_str_value("citationJurisdiction", self.citation_jurisdiction)
         writer.write_str_value("citationUrl", self.citation_url)
     

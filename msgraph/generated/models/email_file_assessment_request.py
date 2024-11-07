@@ -60,6 +60,9 @@ class EmailFileAssessmentRequest(ThreatAssessmentRequest):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mail_destination_routing_reason import MailDestinationRoutingReason
+        from .threat_assessment_request import ThreatAssessmentRequest
+
         writer.write_str_value("contentData", self.content_data)
         writer.write_enum_value("destinationRoutingReason", self.destination_routing_reason)
         writer.write_str_value("recipientEmail", self.recipient_email)

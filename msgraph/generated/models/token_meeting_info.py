@@ -51,6 +51,8 @@ class TokenMeetingInfo(MeetingInfo):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .meeting_info import MeetingInfo
+
         writer.write_str_value("token", self.token)
     
 

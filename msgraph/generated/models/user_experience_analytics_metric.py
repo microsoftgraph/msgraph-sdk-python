@@ -57,6 +57,8 @@ class UserExperienceAnalyticsMetric(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("unit", self.unit)
         writer.write_float_value("value", self.value)
     

@@ -50,6 +50,8 @@ class ProvisionOnDemandPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.synchronization_job_application_parameters import SynchronizationJobApplicationParameters
+
         writer.write_collection_of_object_values("parameters", self.parameters)
         writer.write_additional_data_value(self.additional_data)
     

@@ -51,5 +51,7 @@ class MacOSMicrosoftDefenderApp(MobileApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_app import MobileApp
+
     
 

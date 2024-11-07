@@ -85,6 +85,9 @@ class MobileAppContentFile(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .mobile_app_content_file_upload_state import MobileAppContentFileUploadState
+
         writer.write_bool_value("isDependency", self.is_dependency)
         writer.write_bytes_value("manifest", self.manifest)
         writer.write_str_value("name", self.name)

@@ -59,6 +59,9 @@ class SimulationReport(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .simulation_report_overview import SimulationReportOverview
+        from .user_simulation_details import UserSimulationDetails
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("overview", self.overview)
         writer.write_collection_of_object_values("simulationUsers", self.simulation_users)

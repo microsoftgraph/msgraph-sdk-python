@@ -71,6 +71,8 @@ class BookingQuestionAnswer(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .answer_input_type import AnswerInputType
+
         writer.write_str_value("answer", self.answer)
         writer.write_enum_value("answerInputType", self.answer_input_type)
         writer.write_collection_of_primitive_values("answerOptions", self.answer_options)

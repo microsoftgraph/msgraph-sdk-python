@@ -54,6 +54,8 @@ class WindowsDeviceADAccount(WindowsDeviceAccount):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .windows_device_account import WindowsDeviceAccount
+
         writer.write_str_value("domainName", self.domain_name)
         writer.write_str_value("userName", self.user_name)
     

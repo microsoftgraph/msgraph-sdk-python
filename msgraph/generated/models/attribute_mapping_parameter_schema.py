@@ -62,6 +62,8 @@ class AttributeMappingParameterSchema(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_type import AttributeType
+
         writer.write_bool_value("allowMultipleOccurrences", self.allow_multiple_occurrences)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -78,6 +78,12 @@ class UserSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .shift_preferences import ShiftPreferences
+        from .user_insights_settings import UserInsightsSettings
+        from .user_storage import UserStorage
+        from .windows_setting import WindowsSetting
+
         writer.write_bool_value("contributionToContentDiscoveryAsOrganizationDisabled", self.contribution_to_content_discovery_as_organization_disabled)
         writer.write_bool_value("contributionToContentDiscoveryDisabled", self.contribution_to_content_discovery_disabled)
         writer.write_object_value("itemInsights", self.item_insights)

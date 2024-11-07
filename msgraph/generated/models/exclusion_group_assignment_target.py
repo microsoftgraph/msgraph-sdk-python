@@ -51,5 +51,7 @@ class ExclusionGroupAssignmentTarget(GroupAssignmentTarget):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .group_assignment_target import GroupAssignmentTarget
+
     
 

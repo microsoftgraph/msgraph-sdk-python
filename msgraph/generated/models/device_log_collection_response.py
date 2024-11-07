@@ -80,6 +80,9 @@ class DeviceLogCollectionResponse(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_log_upload_state import AppLogUploadState
+        from .entity import Entity
+
         writer.write_str_value("enrolledByUser", self.enrolled_by_user)
         writer.write_datetime_value("expirationDateTimeUTC", self.expiration_date_time_u_t_c)
         writer.write_str_value("initiatedByUserPrincipalName", self.initiated_by_user_principal_name)

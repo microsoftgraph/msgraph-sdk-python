@@ -65,6 +65,9 @@ class TermColumn(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .term_store.set import Set
+        from .term_store.term import Term
+
         writer.write_bool_value("allowMultipleValues", self.allow_multiple_values)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("parentTerm", self.parent_term)

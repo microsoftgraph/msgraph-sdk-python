@@ -60,6 +60,9 @@ class WorkbookChartAxes(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_chart_axis import WorkbookChartAxis
+
         writer.write_object_value("categoryAxis", self.category_axis)
         writer.write_object_value("seriesAxis", self.series_axis)
         writer.write_object_value("valueAxis", self.value_axis)

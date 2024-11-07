@@ -72,7 +72,8 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teleconferenceDeviceAudioQuality".casefold():
@@ -136,6 +137,10 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .teleconference_device_audio_quality import TeleconferenceDeviceAudioQuality
+        from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
+        from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
+
         writer.write_timedelta_value("averageInboundJitter", self.average_inbound_jitter)
         writer.write_float_value("averageInboundPacketLossRateInPercentage", self.average_inbound_packet_loss_rate_in_percentage)
         writer.write_timedelta_value("averageInboundRoundTripDelay", self.average_inbound_round_trip_delay)

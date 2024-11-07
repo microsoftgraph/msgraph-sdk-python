@@ -74,6 +74,8 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, BackedModel
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .subject_set import SubjectSet
+
         writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
         writer.write_bool_value("enableOnBehalfRequestorsToAddAccess", self.enable_on_behalf_requestors_to_add_access)
         writer.write_bool_value("enableOnBehalfRequestorsToRemoveAccess", self.enable_on_behalf_requestors_to_remove_access)

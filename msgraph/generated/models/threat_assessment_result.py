@@ -61,6 +61,9 @@ class ThreatAssessmentResult(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .threat_assessment_result_type import ThreatAssessmentResultType
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("message", self.message)
         writer.write_enum_value("resultType", self.result_type)

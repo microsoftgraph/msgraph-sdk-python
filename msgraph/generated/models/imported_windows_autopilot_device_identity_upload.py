@@ -67,6 +67,10 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+        from .imported_windows_autopilot_device_identity_upload_status import ImportedWindowsAutopilotDeviceIdentityUploadStatus
+
         writer.write_datetime_value("createdDateTimeUtc", self.created_date_time_utc)
         writer.write_collection_of_object_values("deviceIdentities", self.device_identities)
         writer.write_enum_value("status", self.status)

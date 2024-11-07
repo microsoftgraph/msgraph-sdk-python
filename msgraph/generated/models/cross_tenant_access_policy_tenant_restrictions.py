@@ -54,6 +54,9 @@ class CrossTenantAccessPolicyTenantRestrictions(CrossTenantAccessPolicyB2BSettin
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
+        from .devices_filter import DevicesFilter
+
         writer.write_object_value("devices", self.devices)
     
 

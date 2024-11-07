@@ -63,7 +63,8 @@ class ManagedAppRegistration(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppRegistration".casefold():
@@ -127,6 +128,14 @@ class ManagedAppRegistration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_managed_app_registration import AndroidManagedAppRegistration
+        from .entity import Entity
+        from .ios_managed_app_registration import IosManagedAppRegistration
+        from .managed_app_flagged_reason import ManagedAppFlaggedReason
+        from .managed_app_operation import ManagedAppOperation
+        from .managed_app_policy import ManagedAppPolicy
+        from .mobile_app_identifier import MobileAppIdentifier
+
         writer.write_object_value("appIdentifier", self.app_identifier)
         writer.write_str_value("applicationVersion", self.application_version)
         writer.write_collection_of_object_values("appliedPolicies", self.applied_policies)

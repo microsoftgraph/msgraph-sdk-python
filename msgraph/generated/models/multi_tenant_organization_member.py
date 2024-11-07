@@ -83,6 +83,11 @@ class MultiTenantOrganizationMember(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+        from .multi_tenant_organization_member_role import MultiTenantOrganizationMemberRole
+        from .multi_tenant_organization_member_state import MultiTenantOrganizationMemberState
+        from .multi_tenant_organization_member_transition_details import MultiTenantOrganizationMemberTransitionDetails
+
         writer.write_uuid_value("addedByTenantId", self.added_by_tenant_id)
         writer.write_datetime_value("addedDateTime", self.added_date_time)
         writer.write_str_value("displayName", self.display_name)

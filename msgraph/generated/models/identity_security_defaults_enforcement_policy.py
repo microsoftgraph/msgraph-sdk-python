@@ -51,6 +51,8 @@ class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .policy_base import PolicyBase
+
         writer.write_bool_value("isEnabled", self.is_enabled)
     
 

@@ -54,6 +54,9 @@ class SoftwareOathAuthenticationMethodConfiguration(AuthenticationMethodConfigur
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
     
 

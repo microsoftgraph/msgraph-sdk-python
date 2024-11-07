@@ -71,6 +71,9 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .group_type import GroupType
+        from .modified_property import ModifiedProperty
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("groupType", self.group_type)
         writer.write_str_value("id", self.id)

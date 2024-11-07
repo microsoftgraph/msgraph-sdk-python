@@ -41,7 +41,8 @@ class LearningCourseActivity(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningAssignment".casefold():
@@ -91,6 +92,11 @@ class LearningCourseActivity(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .course_status import CourseStatus
+        from .entity import Entity
+        from .learning_assignment import LearningAssignment
+        from .learning_self_initiated_course import LearningSelfInitiatedCourse
+
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("completionPercentage", self.completion_percentage)
         writer.write_str_value("externalcourseActivityId", self.externalcourse_activity_id)

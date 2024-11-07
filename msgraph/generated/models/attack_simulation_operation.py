@@ -63,6 +63,9 @@ class AttackSimulationOperation(LongRunningOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attack_simulation_operation_type import AttackSimulationOperationType
+        from .long_running_operation import LongRunningOperation
+
         writer.write_int_value("percentageCompleted", self.percentage_completed)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_enum_value("type", self.type)

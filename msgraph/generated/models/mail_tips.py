@@ -98,6 +98,12 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .automatic_replies_mail_tips import AutomaticRepliesMailTips
+        from .email_address import EmailAddress
+        from .mail_tips_error import MailTipsError
+        from .recipient import Recipient
+        from .recipient_scope_type import RecipientScopeType
+
         writer.write_object_value("automaticReplies", self.automatic_replies)
         writer.write_str_value("customMailTip", self.custom_mail_tip)
         writer.write_bool_value("deliveryRestricted", self.delivery_restricted)

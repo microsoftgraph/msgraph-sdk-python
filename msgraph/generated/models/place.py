@@ -35,7 +35,8 @@ class Place(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.room".casefold():
@@ -84,6 +85,12 @@ class Place(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .outlook_geo_coordinates import OutlookGeoCoordinates
+        from .physical_address import PhysicalAddress
+        from .room import Room
+        from .room_list import RoomList
+
         writer.write_object_value("address", self.address)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("geoCoordinates", self.geo_coordinates)

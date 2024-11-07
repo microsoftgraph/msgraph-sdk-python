@@ -59,6 +59,8 @@ class File(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .hashes import Hashes
+
         writer.write_object_value("hashes", self.hashes)
         writer.write_str_value("mimeType", self.mime_type)
         writer.write_str_value("@odata.type", self.odata_type)

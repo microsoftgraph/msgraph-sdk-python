@@ -59,6 +59,8 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, BackedModel,
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .mobile_app_identifier import MobileAppIdentifier
+
         writer.write_int_value("configurationAppliedUserCount", self.configuration_applied_user_count)
         writer.write_object_value("mobileAppIdentifier", self.mobile_app_identifier)
         writer.write_str_value("@odata.type", self.odata_type)

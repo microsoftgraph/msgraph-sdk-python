@@ -40,7 +40,7 @@ class RiskDetection(Entity):
     odata_type: Optional[str] = None
     # Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
     request_id: Optional[str] = None
-    # Details of the detected risk. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, m365DAdminDismissedDetection. Note that you must use the Prefer: include - unknown -enum-members request header to get the following value(s) in this evolvable enum: m365DAdminDismissedDetection.
+    # Details of the detected risk. The possible values are: none, adminGeneratedTemporaryPassword, userChangedPasswordOnPremises, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, m365DAdminDismissedDetection. Note that you must use the Prefer: include - unknown -enum-members request header to get the following value(s) in this evolvable enum: m365DAdminDismissedDetection.
     risk_detail: Optional[RiskDetail] = None
     # The type of risk event detected. The possible values are adminConfirmedUserCompromised, anomalousToken, anomalousUserActivity, anonymizedIPAddress, generic, impossibleTravel, investigationsThreatIntelligence, suspiciousSendingPatterns, leakedCredentials, maliciousIPAddress,malwareInfectedIPAddress, mcasSuspiciousInboxManipulationRules, newCountry, passwordSpray,riskyIPAddress, suspiciousAPITraffic, suspiciousBrowser,suspiciousInboxForwarding, suspiciousIPAddress, tokenIssuerAnomaly, unfamiliarFeatures, unlikelyTravel. If the risk detection is a premium detection, will show generic. For more information about each value, see Risk types and detection.
     risk_event_type: Optional[str] = None
@@ -127,6 +127,15 @@ class RiskDetection(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .activity_type import ActivityType
+        from .entity import Entity
+        from .risk_detail import RiskDetail
+        from .risk_detection_timing_type import RiskDetectionTimingType
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+        from .sign_in_location import SignInLocation
+        from .token_issuer_type import TokenIssuerType
+
         writer.write_enum_value("activity", self.activity)
         writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("additionalInfo", self.additional_info)

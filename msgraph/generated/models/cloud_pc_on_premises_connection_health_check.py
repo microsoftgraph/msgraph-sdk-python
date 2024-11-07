@@ -78,6 +78,9 @@ class CloudPcOnPremisesConnectionHealthCheck(AdditionalDataHolder, BackedModel, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cloud_pc_on_premises_connection_health_check_error_type import CloudPcOnPremisesConnectionHealthCheckErrorType
+        from .cloud_pc_on_premises_connection_status import CloudPcOnPremisesConnectionStatus
+
         writer.write_str_value("additionalDetail", self.additional_detail)
         writer.write_str_value("correlationId", self.correlation_id)
         writer.write_str_value("displayName", self.display_name)

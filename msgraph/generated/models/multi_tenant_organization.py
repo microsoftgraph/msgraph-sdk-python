@@ -76,6 +76,11 @@ class MultiTenantOrganization(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
+        from .multi_tenant_organization_member import MultiTenantOrganizationMember
+        from .multi_tenant_organization_state import MultiTenantOrganizationState
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

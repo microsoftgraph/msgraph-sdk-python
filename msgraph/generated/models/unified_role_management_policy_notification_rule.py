@@ -63,6 +63,8 @@ class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRul
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+
         writer.write_bool_value("isDefaultRecipientsEnabled", self.is_default_recipients_enabled)
         writer.write_str_value("notificationLevel", self.notification_level)
         writer.write_collection_of_primitive_values("notificationRecipients", self.notification_recipients)

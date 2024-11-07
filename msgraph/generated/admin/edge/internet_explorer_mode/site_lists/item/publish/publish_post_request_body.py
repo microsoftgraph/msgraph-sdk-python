@@ -59,6 +59,9 @@ class PublishPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.browser_shared_cookie import BrowserSharedCookie
+        from .......models.browser_site import BrowserSite
+
         writer.write_str_value("revision", self.revision)
         writer.write_collection_of_object_values("sharedCookies", self.shared_cookies)
         writer.write_collection_of_object_values("sites", self.sites)

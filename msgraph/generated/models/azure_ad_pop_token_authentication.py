@@ -48,5 +48,7 @@ class AzureAdPopTokenAuthentication(CustomExtensionAuthenticationConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
+
     
 

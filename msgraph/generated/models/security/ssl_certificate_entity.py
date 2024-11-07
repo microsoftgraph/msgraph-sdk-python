@@ -77,6 +77,8 @@ class SslCertificateEntity(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..physical_address import PhysicalAddress
+
         writer.write_object_value("address", self.address)
         writer.write_collection_of_primitive_values("alternateNames", self.alternate_names)
         writer.write_str_value("commonName", self.common_name)

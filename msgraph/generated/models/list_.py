@@ -105,6 +105,17 @@ class List_(BaseItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_item import BaseItem
+        from .column_definition import ColumnDefinition
+        from .content_type import ContentType
+        from .drive import Drive
+        from .list_info import ListInfo
+        from .list_item import ListItem
+        from .rich_long_running_operation import RichLongRunningOperation
+        from .sharepoint_ids import SharepointIds
+        from .subscription import Subscription
+        from .system_facet import SystemFacet
+
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_collection_of_object_values("contentTypes", self.content_types)
         writer.write_str_value("displayName", self.display_name)

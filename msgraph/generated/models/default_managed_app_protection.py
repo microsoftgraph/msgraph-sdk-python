@@ -99,6 +99,12 @@ class DefaultManagedAppProtection(ManagedAppProtection):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .key_value_pair import KeyValuePair
+        from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_app_protection import ManagedAppProtection
+        from .managed_mobile_app import ManagedMobileApp
+
         writer.write_enum_value("appDataEncryptionType", self.app_data_encryption_type)
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_collection_of_object_values("customSettings", self.custom_settings)

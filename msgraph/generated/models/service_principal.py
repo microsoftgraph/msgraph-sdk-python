@@ -271,6 +271,30 @@ class ServicePrincipal(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .add_in import AddIn
+        from .app_management_policy import AppManagementPolicy
+        from .app_role import AppRole
+        from .app_role_assignment import AppRoleAssignment
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .custom_security_attribute_value import CustomSecurityAttributeValue
+        from .delegated_permission_classification import DelegatedPermissionClassification
+        from .directory_object import DirectoryObject
+        from .endpoint import Endpoint
+        from .federated_identity_credential import FederatedIdentityCredential
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .informational_url import InformationalUrl
+        from .key_credential import KeyCredential
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
+        from .password_credential import PasswordCredential
+        from .permission_scope import PermissionScope
+        from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+        from .resource_specific_permission import ResourceSpecificPermission
+        from .saml_single_sign_on_settings import SamlSingleSignOnSettings
+        from .synchronization import Synchronization
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .verified_publisher import VerifiedPublisher
+
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("addIns", self.add_ins)
         writer.write_collection_of_primitive_values("alternativeNames", self.alternative_names)

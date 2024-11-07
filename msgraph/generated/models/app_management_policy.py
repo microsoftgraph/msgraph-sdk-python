@@ -63,6 +63,10 @@ class AppManagementPolicy(PolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .custom_app_management_configuration import CustomAppManagementConfiguration
+        from .directory_object import DirectoryObject
+        from .policy_base import PolicyBase
+
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_object_value("restrictions", self.restrictions)

@@ -19,6 +19,8 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
     hide_bot_after_escalation: Optional[bool] = None
     # Indicates whether content sharing notifications should be enabled for the call.
     is_content_sharing_notification_enabled: Optional[bool] = None
+    # Indicates whether delta roster is enabled for the call.
+    is_delta_roster_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,7 +34,8 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.incomingCallOptions".casefold():
@@ -59,6 +62,7 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "hideBotAfterEscalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
             "isContentSharingNotificationEnabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
+            "isDeltaRosterEnabled": lambda n : setattr(self, 'is_delta_roster_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -71,8 +75,12 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .incoming_call_options import IncomingCallOptions
+        from .outgoing_call_options import OutgoingCallOptions
+
         writer.write_bool_value("hideBotAfterEscalation", self.hide_bot_after_escalation)
         writer.write_bool_value("isContentSharingNotificationEnabled", self.is_content_sharing_notification_enabled)
+        writer.write_bool_value("isDeltaRosterEnabled", self.is_delta_roster_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

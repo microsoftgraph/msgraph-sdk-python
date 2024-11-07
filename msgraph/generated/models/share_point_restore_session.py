@@ -54,6 +54,9 @@ class SharePointRestoreSession(RestoreSessionBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .restore_session_base import RestoreSessionBase
+        from .site_restore_artifact import SiteRestoreArtifact
+
         writer.write_collection_of_object_values("siteRestoreArtifacts", self.site_restore_artifacts)
     
 

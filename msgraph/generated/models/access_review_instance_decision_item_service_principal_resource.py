@@ -51,6 +51,8 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(AccessReviewInsta
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
+
         writer.write_str_value("appId", self.app_id)
     
 

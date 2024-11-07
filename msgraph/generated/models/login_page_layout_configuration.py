@@ -59,6 +59,8 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .layout_template_type import LayoutTemplateType
+
         writer.write_bool_value("isFooterShown", self.is_footer_shown)
         writer.write_bool_value("isHeaderShown", self.is_header_shown)
         writer.write_enum_value("layoutTemplateType", self.layout_template_type)

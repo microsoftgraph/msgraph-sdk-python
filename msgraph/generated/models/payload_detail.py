@@ -34,7 +34,8 @@ class PayloadDetail(AdditionalDataHolder, BackedModel, Parsable):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailPayloadDetail".casefold():
@@ -70,6 +71,9 @@ class PayloadDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .email_payload_detail import EmailPayloadDetail
+        from .payload_coachmark import PayloadCoachmark
+
         writer.write_collection_of_object_values("coachmarks", self.coachmarks)
         writer.write_str_value("content", self.content)
         writer.write_str_value("@odata.type", self.odata_type)

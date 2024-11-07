@@ -78,6 +78,12 @@ class OnenoteSection(OnenoteEntityHierarchyModel):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .notebook import Notebook
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_page import OnenotePage
+        from .section_group import SectionGroup
+        from .section_links import SectionLinks
+
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_object_value("links", self.links)
         writer.write_collection_of_object_values("pages", self.pages)

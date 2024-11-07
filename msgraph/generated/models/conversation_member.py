@@ -36,7 +36,8 @@ class ConversationMember(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.aadUserConversationMember".casefold():
@@ -104,6 +105,14 @@ class ConversationMember(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .aad_user_conversation_member import AadUserConversationMember
+        from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
+        from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+        from .entity import Entity
+        from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+        from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
+        from .skype_user_conversation_member import SkypeUserConversationMember
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("roles", self.roles)
         writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)

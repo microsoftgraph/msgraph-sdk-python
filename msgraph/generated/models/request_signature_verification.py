@@ -56,6 +56,8 @@ class RequestSignatureVerification(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .weak_algorithms import WeakAlgorithms
+
         writer.write_enum_value("allowedWeakAlgorithms", self.allowed_weak_algorithms)
         writer.write_bool_value("isSignedRequestRequired", self.is_signed_request_required)
         writer.write_str_value("@odata.type", self.odata_type)

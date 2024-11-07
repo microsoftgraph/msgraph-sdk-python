@@ -62,6 +62,8 @@ class VmMetadata(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .vm_cloud_provider import VmCloudProvider
+
         writer.write_enum_value("cloudProvider", self.cloud_provider)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("resourceId", self.resource_id)

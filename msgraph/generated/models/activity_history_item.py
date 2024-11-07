@@ -82,6 +82,10 @@ class ActivityHistoryItem(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .status import Status
+        from .user_activity import UserActivity
+
         writer.write_int_value("activeDurationSeconds", self.active_duration_seconds)
         writer.write_object_value("activity", self.activity)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

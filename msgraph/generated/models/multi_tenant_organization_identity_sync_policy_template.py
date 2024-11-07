@@ -60,6 +60,10 @@ class MultiTenantOrganizationIdentitySyncPolicyTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cross_tenant_user_sync_inbound import CrossTenantUserSyncInbound
+        from .entity import Entity
+        from .template_application_level import TemplateApplicationLevel
+
         writer.write_enum_value("templateApplicationLevel", self.template_application_level)
         writer.write_object_value("userSyncInbound", self.user_sync_inbound)
     

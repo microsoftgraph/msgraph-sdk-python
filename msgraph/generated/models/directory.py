@@ -96,6 +96,16 @@ class Directory(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .administrative_unit import AdministrativeUnit
+        from .attribute_set import AttributeSet
+        from .company_subscription import CompanySubscription
+        from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+        from .device_local_credential_info import DeviceLocalCredentialInfo
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .identity_provider_base import IdentityProviderBase
+        from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+
         writer.write_collection_of_object_values("administrativeUnits", self.administrative_units)
         writer.write_collection_of_object_values("attributeSets", self.attribute_sets)
         writer.write_collection_of_object_values("customSecurityAttributeDefinitions", self.custom_security_attribute_definitions)

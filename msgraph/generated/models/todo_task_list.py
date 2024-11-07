@@ -75,6 +75,11 @@ class TodoTaskList(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .extension import Extension
+        from .todo_task import TodoTask
+        from .wellknown_list_name import WellknownListName
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_bool_value("isOwner", self.is_owner)

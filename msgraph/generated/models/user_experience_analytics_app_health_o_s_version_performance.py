@@ -66,6 +66,8 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_int_value("activeDeviceCount", self.active_device_count)
         writer.write_int_value("meanTimeToFailureInMinutes", self.mean_time_to_failure_in_minutes)
         writer.write_str_value("osBuildNumber", self.os_build_number)

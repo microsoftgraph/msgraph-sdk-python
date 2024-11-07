@@ -48,5 +48,7 @@ class AccessPackageUserDirectoryAttributeStore(AccessPackageResourceAttributeDes
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_resource_attribute_destination import AccessPackageResourceAttributeDestination
+
     
 

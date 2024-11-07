@@ -48,5 +48,7 @@ class ConditionalAccessAllExternalTenants(ConditionalAccessExternalTenants):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conditional_access_external_tenants import ConditionalAccessExternalTenants
+
     
 

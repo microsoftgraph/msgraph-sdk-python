@@ -87,6 +87,13 @@ class KubernetesServiceEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .dictionary import Dictionary
+        from .ip_evidence import IpEvidence
+        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+        from .kubernetes_service_port import KubernetesServicePort
+        from .kubernetes_service_type import KubernetesServiceType
+
         writer.write_object_value("clusterIP", self.cluster_i_p)
         writer.write_collection_of_object_values("externalIPs", self.external_i_ps)
         writer.write_object_value("labels", self.labels)

@@ -65,6 +65,9 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_item_body import EducationItemBody
+
         writer.write_object_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("grading", self.grading)

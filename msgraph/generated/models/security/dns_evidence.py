@@ -63,6 +63,9 @@ class DnsEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .ip_evidence import IpEvidence
+
         writer.write_object_value("dnsServerIp", self.dns_server_ip)
         writer.write_str_value("domainName", self.domain_name)
         writer.write_object_value("hostIpAddress", self.host_ip_address)

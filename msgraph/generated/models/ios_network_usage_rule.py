@@ -62,6 +62,8 @@ class IosNetworkUsageRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .app_list_item import AppListItem
+
         writer.write_bool_value("cellularDataBlockWhenRoaming", self.cellular_data_block_when_roaming)
         writer.write_bool_value("cellularDataBlocked", self.cellular_data_blocked)
         writer.write_collection_of_object_values("managedApps", self.managed_apps)

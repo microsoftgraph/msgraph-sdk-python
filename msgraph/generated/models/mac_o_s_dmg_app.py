@@ -72,6 +72,10 @@ class MacOSDmgApp(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mac_o_s_included_app import MacOSIncludedApp
+        from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
+
         writer.write_bool_value("ignoreVersionDetection", self.ignore_version_detection)
         writer.write_collection_of_object_values("includedApps", self.included_apps)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)

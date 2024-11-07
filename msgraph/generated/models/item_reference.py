@@ -74,6 +74,8 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .sharepoint_ids import SharepointIds
+
         writer.write_str_value("driveId", self.drive_id)
         writer.write_str_value("driveType", self.drive_type)
         writer.write_str_value("id", self.id)

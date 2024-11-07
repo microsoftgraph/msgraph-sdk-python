@@ -54,6 +54,9 @@ class ExternalActivityResult(ExternalActivity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..public_error import PublicError
+        from .external_activity import ExternalActivity
+
         writer.write_object_value("error", self.error)
     
 

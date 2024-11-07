@@ -51,6 +51,8 @@ class BuiltInIdentityProvider(IdentityProviderBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_provider_base import IdentityProviderBase
+
         writer.write_str_value("identityProviderType", self.identity_provider_type)
     
 

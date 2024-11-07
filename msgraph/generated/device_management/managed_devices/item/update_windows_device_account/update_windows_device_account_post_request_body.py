@@ -50,6 +50,8 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, BackedMode
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.update_windows_device_account_action_parameter import UpdateWindowsDeviceAccountActionParameter
+
         writer.write_object_value("updateWindowsDeviceAccountActionParameter", self.update_windows_device_account_action_parameter)
         writer.write_additional_data_value(self.additional_data)
     

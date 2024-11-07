@@ -57,6 +57,8 @@ class CrossCloudAzureActiveDirectoryTenant(IdentitySource):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_source import IdentitySource
+
         writer.write_str_value("cloudInstance", self.cloud_instance)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("tenantId", self.tenant_id)

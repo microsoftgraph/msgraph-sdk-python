@@ -57,6 +57,9 @@ class WorkbookPivotTable(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .workbook_worksheet import WorkbookWorksheet
+
         writer.write_str_value("name", self.name)
         writer.write_object_value("worksheet", self.worksheet)
     

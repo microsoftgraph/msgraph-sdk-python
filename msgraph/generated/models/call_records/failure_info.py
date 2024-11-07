@@ -56,6 +56,8 @@ class FailureInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .failure_stage import FailureStage
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("reason", self.reason)
         writer.write_enum_value("stage", self.stage)

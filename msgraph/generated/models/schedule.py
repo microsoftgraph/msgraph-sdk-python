@@ -135,6 +135,18 @@ class Schedule(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .offer_shift_request import OfferShiftRequest
+        from .open_shift import OpenShift
+        from .open_shift_change_request import OpenShiftChangeRequest
+        from .operation_status import OperationStatus
+        from .scheduling_group import SchedulingGroup
+        from .shift import Shift
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_off import TimeOff
+        from .time_off_reason import TimeOffReason
+        from .time_off_request import TimeOffRequest
+
         writer.write_bool_value("enabled", self.enabled)
         writer.write_collection_of_object_values("offerShiftRequests", self.offer_shift_requests)
         writer.write_bool_value("offerShiftRequestsEnabled", self.offer_shift_requests_enabled)

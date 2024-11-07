@@ -54,6 +54,9 @@ class OrganizerMeetingInfo(MeetingInfo):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_set import IdentitySet
+        from .meeting_info import MeetingInfo
+
         writer.write_object_value("organizer", self.organizer)
     
 

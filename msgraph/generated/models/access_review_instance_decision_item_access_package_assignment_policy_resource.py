@@ -54,6 +54,8 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(Acce
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
+
         writer.write_str_value("accessPackageDisplayName", self.access_package_display_name)
         writer.write_str_value("accessPackageId", self.access_package_id)
     

@@ -53,6 +53,8 @@ class RejectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .....models.reject_reason import RejectReason
+
         writer.write_str_value("callbackUri", self.callback_uri)
         writer.write_enum_value("reason", self.reason)
         writer.write_additional_data_value(self.additional_data)

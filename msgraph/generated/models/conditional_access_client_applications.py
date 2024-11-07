@@ -59,6 +59,8 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, BackedModel, Par
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_filter import ConditionalAccessFilter
+
         writer.write_collection_of_primitive_values("excludeServicePrincipals", self.exclude_service_principals)
         writer.write_collection_of_primitive_values("includeServicePrincipals", self.include_service_principals)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -51,6 +51,8 @@ class EmailAuthenticationMethod(AuthenticationMethod):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .authentication_method import AuthenticationMethod
+
         writer.write_str_value("emailAddress", self.email_address)
     
 

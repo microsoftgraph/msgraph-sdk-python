@@ -59,6 +59,9 @@ class AddKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.key_credential import KeyCredential
+        from ....models.password_credential import PasswordCredential
+
         writer.write_object_value("keyCredential", self.key_credential)
         writer.write_object_value("passwordCredential", self.password_credential)
         writer.write_str_value("proof", self.proof)

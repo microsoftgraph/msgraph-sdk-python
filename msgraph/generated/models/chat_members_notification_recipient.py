@@ -51,6 +51,8 @@ class ChatMembersNotificationRecipient(TeamworkNotificationRecipient):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .teamwork_notification_recipient import TeamworkNotificationRecipient
+
         writer.write_str_value("chatId", self.chat_id)
     
 

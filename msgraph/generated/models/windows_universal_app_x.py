@@ -90,6 +90,12 @@ class WindowsUniversalAppX(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_contained_app import MobileContainedApp
+        from .mobile_lob_app import MobileLobApp
+        from .windows_architecture import WindowsArchitecture
+        from .windows_device_type import WindowsDeviceType
+        from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
+
         writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
         writer.write_enum_value("applicableDeviceTypes", self.applicable_device_types)
         writer.write_collection_of_object_values("committedContainedApps", self.committed_contained_apps)

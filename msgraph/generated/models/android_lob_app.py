@@ -66,6 +66,9 @@ class AndroidLobApp(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
+
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
         writer.write_str_value("packageId", self.package_id)
         writer.write_str_value("versionCode", self.version_code)

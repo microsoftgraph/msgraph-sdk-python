@@ -51,6 +51,8 @@ class AppHostedMediaConfig(MediaConfig):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .media_config import MediaConfig
+
         writer.write_str_value("blob", self.blob)
     
 

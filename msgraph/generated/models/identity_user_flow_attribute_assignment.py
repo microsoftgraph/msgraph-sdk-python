@@ -75,6 +75,11 @@ class IdentityUserFlowAttributeAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .identity_user_flow_attribute_input_type import IdentityUserFlowAttributeInputType
+        from .user_attribute_values_item import UserAttributeValuesItem
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isOptional", self.is_optional)
         writer.write_bool_value("requiresVerification", self.requires_verification)

@@ -54,6 +54,9 @@ class OrganizationalBranding(OrganizationalBrandingProperties):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
+        from .organizational_branding_properties import OrganizationalBrandingProperties
+
         writer.write_collection_of_object_values("localizations", self.localizations)
     
 

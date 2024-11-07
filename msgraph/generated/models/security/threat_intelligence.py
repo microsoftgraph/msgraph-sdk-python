@@ -150,6 +150,25 @@ class ThreatIntelligence(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .article import Article
+        from .article_indicator import ArticleIndicator
+        from .host import Host
+        from .host_component import HostComponent
+        from .host_cookie import HostCookie
+        from .host_pair import HostPair
+        from .host_port import HostPort
+        from .host_ssl_certificate import HostSslCertificate
+        from .host_tracker import HostTracker
+        from .intelligence_profile import IntelligenceProfile
+        from .intelligence_profile_indicator import IntelligenceProfileIndicator
+        from .passive_dns_record import PassiveDnsRecord
+        from .ssl_certificate import SslCertificate
+        from .subdomain import Subdomain
+        from .vulnerability import Vulnerability
+        from .whois_history_record import WhoisHistoryRecord
+        from .whois_record import WhoisRecord
+
         writer.write_collection_of_object_values("articleIndicators", self.article_indicators)
         writer.write_collection_of_object_values("articles", self.articles)
         writer.write_collection_of_object_values("hostComponents", self.host_components)

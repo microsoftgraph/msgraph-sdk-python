@@ -105,6 +105,13 @@ class Win32LobApp(MobileLobApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_lob_app import MobileLobApp
+        from .win32_lob_app_install_experience import Win32LobAppInstallExperience
+        from .win32_lob_app_msi_information import Win32LobAppMsiInformation
+        from .win32_lob_app_return_code import Win32LobAppReturnCode
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .windows_architecture import WindowsArchitecture
+
         writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
         writer.write_str_value("installCommandLine", self.install_command_line)
         writer.write_object_value("installExperience", self.install_experience)

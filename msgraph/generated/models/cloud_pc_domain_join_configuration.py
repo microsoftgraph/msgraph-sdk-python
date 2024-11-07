@@ -65,6 +65,9 @@ class CloudPcDomainJoinConfiguration(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cloud_pc_domain_join_type import CloudPcDomainJoinType
+        from .cloud_pc_region_group import CloudPcRegionGroup
+
         writer.write_enum_value("domainJoinType", self.domain_join_type)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("onPremisesConnectionId", self.on_premises_connection_id)

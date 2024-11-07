@@ -87,7 +87,8 @@ class MobileApp(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidLobApp".casefold():
@@ -295,6 +296,38 @@ class MobileApp(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_lob_app import AndroidLobApp
+        from .android_store_app import AndroidStoreApp
+        from .entity import Entity
+        from .iosi_pad_o_s_web_clip import IosiPadOSWebClip
+        from .ios_lob_app import IosLobApp
+        from .ios_store_app import IosStoreApp
+        from .ios_vpp_app import IosVppApp
+        from .mac_o_s_dmg_app import MacOSDmgApp
+        from .mac_o_s_lob_app import MacOSLobApp
+        from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
+        from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
+        from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_android_store_app import ManagedAndroidStoreApp
+        from .managed_app import ManagedApp
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .managed_i_o_s_store_app import ManagedIOSStoreApp
+        from .managed_mobile_lob_app import ManagedMobileLobApp
+        from .microsoft_store_for_business_app import MicrosoftStoreForBusinessApp
+        from .mime_content import MimeContent
+        from .mobile_app_assignment import MobileAppAssignment
+        from .mobile_app_category import MobileAppCategory
+        from .mobile_app_publishing_state import MobileAppPublishingState
+        from .mobile_lob_app import MobileLobApp
+        from .web_app import WebApp
+        from .win32_lob_app import Win32LobApp
+        from .windows_app_x import WindowsAppX
+        from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
+        from .windows_mobile_m_s_i import WindowsMobileMSI
+        from .windows_universal_app_x import WindowsUniversalAppX
+        from .windows_web_app import WindowsWebApp
+
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("categories", self.categories)
         writer.write_str_value("description", self.description)

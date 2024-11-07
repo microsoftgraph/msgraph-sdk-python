@@ -33,7 +33,8 @@ class ExternalActivity(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalActivityResult".casefold():
@@ -75,6 +76,11 @@ class ExternalActivity(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .external_activity_result import ExternalActivityResult
+        from .external_activity_type import ExternalActivityType
+        from .identity import Identity
+
         writer.write_object_value("performedBy", self.performed_by)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("type", self.type)

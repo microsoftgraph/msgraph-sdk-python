@@ -68,6 +68,9 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .media_direction import MediaDirection
+        from .modality import Modality
+
         writer.write_enum_value("direction", self.direction)
         writer.write_str_value("label", self.label)
         writer.write_enum_value("mediaType", self.media_type)

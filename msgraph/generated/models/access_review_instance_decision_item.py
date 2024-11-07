@@ -103,6 +103,12 @@ class AccessReviewInstanceDecisionItem(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
+        from .entity import Entity
+        from .governance_insight import GovernanceInsight
+        from .identity import Identity
+        from .user_identity import UserIdentity
+
         writer.write_str_value("accessReviewId", self.access_review_id)
         writer.write_object_value("appliedBy", self.applied_by)
         writer.write_datetime_value("appliedDateTime", self.applied_date_time)

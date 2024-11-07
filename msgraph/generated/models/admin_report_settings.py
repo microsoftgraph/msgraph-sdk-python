@@ -51,6 +51,8 @@ class AdminReportSettings(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_bool_value("displayConcealedNames", self.display_concealed_names)
     
 

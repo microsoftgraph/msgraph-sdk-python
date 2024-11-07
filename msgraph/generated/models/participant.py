@@ -90,6 +90,13 @@ class Participant(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .media_stream import MediaStream
+        from .online_meeting_restricted import OnlineMeetingRestricted
+        from .participant_info import ParticipantInfo
+        from .recording_info import RecordingInfo
+        from .removed_state import RemovedState
+
         writer.write_object_value("info", self.info)
         writer.write_bool_value("isInLobby", self.is_in_lobby)
         writer.write_bool_value("isMuted", self.is_muted)

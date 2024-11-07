@@ -104,6 +104,11 @@ class UserExperienceAnalyticsWorkFromAnywhereDevicesSummary(AdditionalDataHolder
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .user_experience_analytics_autopilot_devices_summary import UserExperienceAnalyticsAutopilotDevicesSummary
+        from .user_experience_analytics_cloud_identity_devices_summary import UserExperienceAnalyticsCloudIdentityDevicesSummary
+        from .user_experience_analytics_cloud_management_devices_summary import UserExperienceAnalyticsCloudManagementDevicesSummary
+        from .user_experience_analytics_windows10_devices_summary import UserExperienceAnalyticsWindows10DevicesSummary
+
         writer.write_object_value("autopilotDevicesSummary", self.autopilot_devices_summary)
         writer.write_object_value("cloudIdentityDevicesSummary", self.cloud_identity_devices_summary)
         writer.write_object_value("cloudManagementDevicesSummary", self.cloud_management_devices_summary)

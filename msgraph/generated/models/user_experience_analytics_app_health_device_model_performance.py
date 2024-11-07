@@ -72,6 +72,9 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformance(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+
         writer.write_int_value("activeDeviceCount", self.active_device_count)
         writer.write_str_value("deviceManufacturer", self.device_manufacturer)
         writer.write_str_value("deviceModel", self.device_model)

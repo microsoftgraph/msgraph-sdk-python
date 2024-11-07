@@ -84,6 +84,10 @@ class UserSimulationDetails(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attack_simulation_user import AttackSimulationUser
+        from .user_simulation_event_info import UserSimulationEventInfo
+        from .user_training_event_info import UserTrainingEventInfo
+
         writer.write_int_value("assignedTrainingsCount", self.assigned_trainings_count)
         writer.write_int_value("completedTrainingsCount", self.completed_trainings_count)
         writer.write_datetime_value("compromisedDateTime", self.compromised_date_time)

@@ -70,7 +70,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: AdministrativeUnit, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AdministrativeUnit]:
         """
-        Use this API to create a new administrativeUnit.
+        Create a new administrativeUnit.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
@@ -105,7 +105,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: AdministrativeUnit, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Use this API to create a new administrativeUnit.
+        Create a new administrativeUnit.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

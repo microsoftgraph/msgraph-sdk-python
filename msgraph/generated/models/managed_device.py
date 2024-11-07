@@ -283,6 +283,25 @@ class ManagedDevice(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .compliance_state import ComplianceState
+        from .configuration_manager_client_enabled_features import ConfigurationManagerClientEnabledFeatures
+        from .device_action_result import DeviceActionResult
+        from .device_category import DeviceCategory
+        from .device_compliance_policy_state import DeviceCompliancePolicyState
+        from .device_configuration_state import DeviceConfigurationState
+        from .device_enrollment_type import DeviceEnrollmentType
+        from .device_health_attestation_state import DeviceHealthAttestationState
+        from .device_log_collection_response import DeviceLogCollectionResponse
+        from .device_management_exchange_access_state import DeviceManagementExchangeAccessState
+        from .device_management_exchange_access_state_reason import DeviceManagementExchangeAccessStateReason
+        from .device_registration_state import DeviceRegistrationState
+        from .entity import Entity
+        from .managed_device_owner_type import ManagedDeviceOwnerType
+        from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
+        from .management_agent_type import ManagementAgentType
+        from .user import User
+        from .windows_protection_state import WindowsProtectionState
+
         writer.write_enum_value("complianceState", self.compliance_state)
         writer.write_object_value("deviceCategory", self.device_category)
         writer.write_collection_of_object_values("deviceCompliancePolicyStates", self.device_compliance_policy_states)

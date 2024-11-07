@@ -68,6 +68,9 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .bucket_aggregation_range import BucketAggregationRange
+        from .bucket_aggregation_sort_property import BucketAggregationSortProperty
+
         writer.write_bool_value("isDescending", self.is_descending)
         writer.write_int_value("minimumCount", self.minimum_count)
         writer.write_str_value("@odata.type", self.odata_type)

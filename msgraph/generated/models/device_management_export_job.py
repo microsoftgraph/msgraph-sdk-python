@@ -21,7 +21,7 @@ class DeviceManagementExportJob(Entity):
     expiration_date_time: Optional[datetime.datetime] = None
     # Filters applied on the report
     filter: Optional[str] = None
-    # Possible values for the file format of a report.
+    # Possible values for the file format of a report to be exported.
     format: Optional[DeviceManagementReportFileFormat] = None
     # Configures how the requested export job is localized.
     localization_type: Optional[DeviceManagementExportJobLocalizationType] = None
@@ -91,6 +91,11 @@ class DeviceManagementExportJob(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_management_export_job_localization_type import DeviceManagementExportJobLocalizationType
+        from .device_management_report_file_format import DeviceManagementReportFileFormat
+        from .device_management_report_status import DeviceManagementReportStatus
+        from .entity import Entity
+
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("filter", self.filter)
         writer.write_enum_value("format", self.format)

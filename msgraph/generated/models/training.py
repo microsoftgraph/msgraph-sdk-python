@@ -106,6 +106,13 @@ class Training(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_identity import EmailIdentity
+        from .entity import Entity
+        from .simulation_content_source import SimulationContentSource
+        from .training_availability_status import TrainingAvailabilityStatus
+        from .training_language_detail import TrainingLanguageDetail
+        from .training_type import TrainingType
+
         writer.write_enum_value("availabilityStatus", self.availability_status)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

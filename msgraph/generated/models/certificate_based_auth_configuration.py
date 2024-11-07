@@ -54,6 +54,9 @@ class CertificateBasedAuthConfiguration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .certificate_authority import CertificateAuthority
+        from .entity import Entity
+
         writer.write_collection_of_object_values("certificateAuthorities", self.certificate_authorities)
     
 

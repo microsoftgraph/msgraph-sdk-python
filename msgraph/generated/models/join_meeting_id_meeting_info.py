@@ -54,6 +54,8 @@ class JoinMeetingIdMeetingInfo(MeetingInfo):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .meeting_info import MeetingInfo
+
         writer.write_str_value("joinMeetingId", self.join_meeting_id)
         writer.write_str_value("passcode", self.passcode)
     

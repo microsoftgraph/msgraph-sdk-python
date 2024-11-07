@@ -57,6 +57,8 @@ class SchedulingGroup(ChangeTrackedEntity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .change_tracked_entity import ChangeTrackedEntity
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("userIds", self.user_ids)
     

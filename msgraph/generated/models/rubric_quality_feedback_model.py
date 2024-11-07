@@ -56,6 +56,8 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .education_item_body import EducationItemBody
+
         writer.write_object_value("feedback", self.feedback)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("qualityId", self.quality_id)

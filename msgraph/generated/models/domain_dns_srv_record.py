@@ -66,6 +66,8 @@ class DomainDnsSrvRecord(DomainDnsRecord):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .domain_dns_record import DomainDnsRecord
+
         writer.write_str_value("nameTarget", self.name_target)
         writer.write_int_value("port", self.port)
         writer.write_int_value("priority", self.priority)

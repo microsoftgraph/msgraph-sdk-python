@@ -141,6 +141,13 @@ class IoTDeviceEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .azure_resource_evidence import AzureResourceEvidence
+        from .io_t_device_importance_type import IoTDeviceImportanceType
+        from .ip_evidence import IpEvidence
+        from .nic_evidence import NicEvidence
+        from .url_evidence import UrlEvidence
+
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceName", self.device_name)
         writer.write_str_value("devicePageLink", self.device_page_link)

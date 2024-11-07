@@ -54,6 +54,8 @@ class InsightValueDouble(UserExperienceAnalyticsInsightValue):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
+
         writer.write_float_value("value", self.value)
     
 

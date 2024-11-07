@@ -69,6 +69,11 @@ class SignInFrequencySessionControl(ConditionalAccessSessionControl):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .conditional_access_session_control import ConditionalAccessSessionControl
+        from .signin_frequency_type import SigninFrequencyType
+        from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
+        from .sign_in_frequency_interval import SignInFrequencyInterval
+
         writer.write_enum_value("authenticationType", self.authentication_type)
         writer.write_enum_value("frequencyInterval", self.frequency_interval)
         writer.write_enum_value("type", self.type)

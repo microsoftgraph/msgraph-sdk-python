@@ -68,6 +68,8 @@ class Quota(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .storage_plan_information import StoragePlanInformation
+
         writer.write_int_value("deleted", self.deleted)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("remaining", self.remaining)

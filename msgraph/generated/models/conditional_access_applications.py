@@ -65,6 +65,8 @@ class ConditionalAccessApplications(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_filter import ConditionalAccessFilter
+
         writer.write_object_value("applicationFilter", self.application_filter)
         writer.write_collection_of_primitive_values("excludeApplications", self.exclude_applications)
         writer.write_collection_of_primitive_values("includeApplications", self.include_applications)

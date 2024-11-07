@@ -70,6 +70,10 @@ class DelegatedAdminRelationshipOperation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .delegated_admin_relationship_operation_type import DelegatedAdminRelationshipOperationType
+        from .entity import Entity
+        from .long_running_operation_status import LongRunningOperationStatus
+
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("data", self.data)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)

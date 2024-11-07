@@ -103,6 +103,9 @@ class UserExperienceAnalyticsDeviceStartupHistory(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_experience_analytics_operating_system_restart_category import UserExperienceAnalyticsOperatingSystemRestartCategory
+
         writer.write_int_value("coreBootTimeInMs", self.core_boot_time_in_ms)
         writer.write_int_value("coreLoginTimeInMs", self.core_login_time_in_ms)
         writer.write_str_value("deviceId", self.device_id)

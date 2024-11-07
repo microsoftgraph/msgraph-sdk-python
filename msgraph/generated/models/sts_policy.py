@@ -35,7 +35,8 @@ class StsPolicy(PolicyBase):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
@@ -99,6 +100,14 @@ class StsPolicy(PolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .directory_object import DirectoryObject
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .policy_base import PolicyBase
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_collection_of_primitive_values("definition", self.definition)
         writer.write_bool_value("isOrganizationDefault", self.is_organization_default)

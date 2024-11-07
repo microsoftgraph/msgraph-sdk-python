@@ -81,6 +81,12 @@ class MultiTenantOrganizationPartnerConfigurationTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
+        from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .entity import Entity
+        from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+        from .template_application_level import TemplateApplicationLevel
+
         writer.write_object_value("automaticUserConsentSettings", self.automatic_user_consent_settings)
         writer.write_object_value("b2bCollaborationInbound", self.b2b_collaboration_inbound)
         writer.write_object_value("b2bCollaborationOutbound", self.b2b_collaboration_outbound)

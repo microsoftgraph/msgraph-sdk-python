@@ -68,6 +68,9 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .user_experience_analytics_insight_severity import UserExperienceAnalyticsInsightSeverity
+        from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
+
         writer.write_str_value("insightId", self.insight_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("severity", self.severity)

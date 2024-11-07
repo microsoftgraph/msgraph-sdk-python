@@ -54,6 +54,8 @@ class DeviceAndAppManagementRoleAssignment(RoleAssignment):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .role_assignment import RoleAssignment
+
         writer.write_collection_of_primitive_values("members", self.members)
     
 

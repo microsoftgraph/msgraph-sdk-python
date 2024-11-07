@@ -54,6 +54,9 @@ class UserSolutionRoot(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .working_time_schedule import WorkingTimeSchedule
+
         writer.write_object_value("workingTimeSchedule", self.working_time_schedule)
     
 

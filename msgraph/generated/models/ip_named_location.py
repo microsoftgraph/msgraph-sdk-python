@@ -57,6 +57,9 @@ class IpNamedLocation(NamedLocation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .ip_range import IpRange
+        from .named_location import NamedLocation
+
         writer.write_collection_of_object_values("ipRanges", self.ip_ranges)
         writer.write_bool_value("isTrusted", self.is_trusted)
     

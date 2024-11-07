@@ -66,6 +66,8 @@ class Windows10SecureAssessmentConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+
         writer.write_bool_value("allowPrinting", self.allow_printing)
         writer.write_bool_value("allowScreenCapture", self.allow_screen_capture)
         writer.write_bool_value("allowTextSuggestion", self.allow_text_suggestion)

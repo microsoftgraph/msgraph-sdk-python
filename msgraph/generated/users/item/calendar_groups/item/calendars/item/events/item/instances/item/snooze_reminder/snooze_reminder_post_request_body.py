@@ -50,6 +50,8 @@ class SnoozeReminderPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ............models.date_time_time_zone import DateTimeTimeZone
+
         writer.write_object_value("NewReminderTime", self.new_reminder_time)
         writer.write_additional_data_value(self.additional_data)
     

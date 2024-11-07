@@ -75,6 +75,10 @@ class ContainerEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .container_image_evidence import ContainerImageEvidence
+        from .kubernetes_pod_evidence import KubernetesPodEvidence
+
         writer.write_collection_of_primitive_values("args", self.args)
         writer.write_collection_of_primitive_values("command", self.command)
         writer.write_str_value("containerId", self.container_id)

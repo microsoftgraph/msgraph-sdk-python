@@ -54,6 +54,8 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(UnifiedRoleManagement
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+
         writer.write_str_value("claimValue", self.claim_value)
         writer.write_bool_value("isEnabled", self.is_enabled)
     

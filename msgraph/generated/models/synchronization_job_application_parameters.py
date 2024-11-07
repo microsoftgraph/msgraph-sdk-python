@@ -56,6 +56,8 @@ class SynchronizationJobApplicationParameters(AdditionalDataHolder, BackedModel,
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .synchronization_job_subject import SynchronizationJobSubject
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("ruleId", self.rule_id)
         writer.write_collection_of_object_values("subjects", self.subjects)

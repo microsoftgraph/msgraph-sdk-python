@@ -60,6 +60,8 @@ class AppleManagedIdentityProvider(IdentityProviderBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_provider_base import IdentityProviderBase
+
         writer.write_str_value("certificateData", self.certificate_data)
         writer.write_str_value("developerId", self.developer_id)
         writer.write_str_value("keyId", self.key_id)

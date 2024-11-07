@@ -60,6 +60,10 @@ class ExchangeProtectionPolicy(ProtectionPolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mailbox_protection_rule import MailboxProtectionRule
+        from .mailbox_protection_unit import MailboxProtectionUnit
+        from .protection_policy_base import ProtectionPolicyBase
+
         writer.write_collection_of_object_values("mailboxInclusionRules", self.mailbox_inclusion_rules)
         writer.write_collection_of_object_values("mailboxProtectionUnits", self.mailbox_protection_units)
     

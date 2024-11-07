@@ -92,6 +92,9 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .compliance_status import ComplianceStatus
+        from .setting_source import SettingSource
+
         writer.write_str_value("currentValue", self.current_value)
         writer.write_int_value("errorCode", self.error_code)
         writer.write_str_value("errorDescription", self.error_description)

@@ -66,6 +66,9 @@ class DeviceComplianceActionItem(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_compliance_action_type import DeviceComplianceActionType
+        from .entity import Entity
+
         writer.write_enum_value("actionType", self.action_type)
         writer.write_int_value("gracePeriodHours", self.grace_period_hours)
         writer.write_collection_of_primitive_values("notificationMessageCCList", self.notification_message_c_c_list)

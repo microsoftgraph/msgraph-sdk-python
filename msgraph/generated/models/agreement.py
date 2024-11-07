@@ -85,6 +85,12 @@ class Agreement(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .agreement_acceptance import AgreementAcceptance
+        from .agreement_file import AgreementFile
+        from .agreement_file_localization import AgreementFileLocalization
+        from .entity import Entity
+        from .terms_expiration import TermsExpiration
+
         writer.write_collection_of_object_values("acceptances", self.acceptances)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("file", self.file)

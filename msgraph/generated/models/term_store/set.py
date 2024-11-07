@@ -88,6 +88,13 @@ class Set(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..key_value import KeyValue
+        from .group import Group
+        from .localized_name import LocalizedName
+        from .relation import Relation
+        from .term import Term
+
         writer.write_collection_of_object_values("children", self.children)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

@@ -79,6 +79,10 @@ class AuthorizationPolicy(PolicyBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .allow_invites_from import AllowInvitesFrom
+        from .default_user_role_permissions import DefaultUserRolePermissions
+        from .policy_base import PolicyBase
+
         writer.write_bool_value("allowEmailVerifiedUsersToJoinOrganization", self.allow_email_verified_users_to_join_organization)
         writer.write_enum_value("allowInvitesFrom", self.allow_invites_from)
         writer.write_bool_value("allowUserConsentForRiskyApps", self.allow_user_consent_for_risky_apps)

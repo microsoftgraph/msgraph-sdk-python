@@ -68,6 +68,8 @@ class PayloadCoachmark(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .coachmark_location import CoachmarkLocation
+
         writer.write_object_value("coachmarkLocation", self.coachmark_location)
         writer.write_str_value("description", self.description)
         writer.write_str_value("indicator", self.indicator)

@@ -96,6 +96,10 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_review_apply_action import AccessReviewApplyAction
+        from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
+        from .patterned_recurrence import PatternedRecurrence
+
         writer.write_collection_of_object_values("applyActions", self.apply_actions)
         writer.write_bool_value("autoApplyDecisionsEnabled", self.auto_apply_decisions_enabled)
         writer.write_bool_value("decisionHistoriesForReviewersEnabled", self.decision_histories_for_reviewers_enabled)

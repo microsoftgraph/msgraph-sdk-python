@@ -55,6 +55,8 @@ class BookingsAvailabilityWindow(BookingsAvailability):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .bookings_availability import BookingsAvailability
+
         writer.write_date_value("endDate", self.end_date)
         writer.write_date_value("startDate", self.start_date)
     

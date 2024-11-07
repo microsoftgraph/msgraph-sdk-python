@@ -34,6 +34,7 @@ if TYPE_CHECKING:
     from .get_policy_non_compliance_summary_report.get_policy_non_compliance_summary_report_request_builder import GetPolicyNonComplianceSummaryReportRequestBuilder
     from .get_report_filters.get_report_filters_request_builder import GetReportFiltersRequestBuilder
     from .get_setting_non_compliance_report.get_setting_non_compliance_report_request_builder import GetSettingNonComplianceReportRequestBuilder
+    from .retrieve_device_app_installation_status_report.retrieve_device_app_installation_status_report_request_builder import RetrieveDeviceAppInstallationStatusReportRequestBuilder
 
 class ReportsRequestBuilder(BaseRequestBuilder):
     """
@@ -328,6 +329,15 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         from .get_setting_non_compliance_report.get_setting_non_compliance_report_request_builder import GetSettingNonComplianceReportRequestBuilder
 
         return GetSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def retrieve_device_app_installation_status_report(self) -> RetrieveDeviceAppInstallationStatusReportRequestBuilder:
+        """
+        Provides operations to call the retrieveDeviceAppInstallationStatusReport method.
+        """
+        from .retrieve_device_app_installation_status_report.retrieve_device_app_installation_status_report_request_builder import RetrieveDeviceAppInstallationStatusReportRequestBuilder
+
+        return RetrieveDeviceAppInstallationStatusReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ReportsRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

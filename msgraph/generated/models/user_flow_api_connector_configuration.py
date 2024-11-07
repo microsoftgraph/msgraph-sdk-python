@@ -56,6 +56,8 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, BackedModel, Parsa
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .identity_api_connector import IdentityApiConnector
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("postAttributeCollection", self.post_attribute_collection)
         writer.write_object_value("postFederationSignup", self.post_federation_signup)

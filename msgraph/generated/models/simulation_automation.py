@@ -88,6 +88,11 @@ class SimulationAutomation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .email_identity import EmailIdentity
+        from .entity import Entity
+        from .simulation_automation_run import SimulationAutomationRun
+        from .simulation_automation_status import SimulationAutomationStatus
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

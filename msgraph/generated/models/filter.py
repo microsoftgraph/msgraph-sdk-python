@@ -59,6 +59,8 @@ class Filter(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .filter_group import FilterGroup
+
         writer.write_collection_of_object_values("categoryFilterGroups", self.category_filter_groups)
         writer.write_collection_of_object_values("groups", self.groups)
         writer.write_collection_of_object_values("inputFilterGroups", self.input_filter_groups)

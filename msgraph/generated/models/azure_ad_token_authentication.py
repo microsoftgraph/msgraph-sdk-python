@@ -51,6 +51,8 @@ class AzureAdTokenAuthentication(CustomExtensionAuthenticationConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
+
         writer.write_str_value("resourceId", self.resource_id)
     
 

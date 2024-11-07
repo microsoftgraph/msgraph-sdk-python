@@ -90,7 +90,8 @@ class OrganizationalBrandingProperties(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBranding".casefold():
@@ -168,6 +169,13 @@ class OrganizationalBrandingProperties(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .content_customization import ContentCustomization
+        from .entity import Entity
+        from .login_page_layout_configuration import LoginPageLayoutConfiguration
+        from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
+        from .organizational_branding import OrganizationalBranding
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
+
         writer.write_str_value("backgroundColor", self.background_color)
         writer.write_bytes_value("backgroundImage", self.background_image)
         writer.write_str_value("backgroundImageRelativeUrl", self.background_image_relative_url)

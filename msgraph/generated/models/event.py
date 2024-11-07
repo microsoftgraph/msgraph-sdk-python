@@ -229,6 +229,26 @@ class Event(OutlookItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attachment import Attachment
+        from .attendee import Attendee
+        from .calendar import Calendar
+        from .date_time_time_zone import DateTimeTimeZone
+        from .event_type import EventType
+        from .extension import Extension
+        from .free_busy_status import FreeBusyStatus
+        from .importance import Importance
+        from .item_body import ItemBody
+        from .location import Location
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .online_meeting_info import OnlineMeetingInfo
+        from .online_meeting_provider_type import OnlineMeetingProviderType
+        from .outlook_item import OutlookItem
+        from .patterned_recurrence import PatternedRecurrence
+        from .recipient import Recipient
+        from .response_status import ResponseStatus
+        from .sensitivity import Sensitivity
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+
         writer.write_bool_value("allowNewTimeProposals", self.allow_new_time_proposals)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_collection_of_object_values("attendees", self.attendees)

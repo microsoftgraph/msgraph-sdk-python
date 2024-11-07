@@ -52,6 +52,9 @@ class HomeRealmDiscoveryPolicyCollectionResponse(BaseCollectionPaginationCountRe
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+
         writer.write_collection_of_object_values("value", self.value)
     
 

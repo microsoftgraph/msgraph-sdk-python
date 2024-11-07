@@ -51,6 +51,8 @@ class EducationSubmissionIndividualRecipient(EducationSubmissionRecipient):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_submission_recipient import EducationSubmissionRecipient
+
         writer.write_str_value("userId", self.user_id)
     
 

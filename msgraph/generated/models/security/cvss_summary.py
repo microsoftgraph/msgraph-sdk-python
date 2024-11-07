@@ -59,6 +59,8 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .vulnerability_severity import VulnerabilitySeverity
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_float_value("score", self.score)
         writer.write_enum_value("severity", self.severity)

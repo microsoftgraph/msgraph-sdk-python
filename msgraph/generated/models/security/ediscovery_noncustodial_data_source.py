@@ -60,6 +60,10 @@ class EdiscoveryNoncustodialDataSource(DataSourceContainer):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .data_source import DataSource
+        from .data_source_container import DataSourceContainer
+        from .ediscovery_index_operation import EdiscoveryIndexOperation
+
         writer.write_object_value("dataSource", self.data_source)
         writer.write_object_value("lastIndexOperation", self.last_index_operation)
     

@@ -54,6 +54,8 @@ class ConnectedOrganizationMembers(SubjectSet):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .subject_set import SubjectSet
+
         writer.write_str_value("connectedOrganizationId", self.connected_organization_id)
         writer.write_str_value("description", self.description)
     

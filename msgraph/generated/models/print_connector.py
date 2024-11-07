@@ -70,6 +70,9 @@ class PrintConnector(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .printer_location import PrinterLocation
+
         writer.write_str_value("appVersion", self.app_version)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("fullyQualifiedDomainName", self.fully_qualified_domain_name)

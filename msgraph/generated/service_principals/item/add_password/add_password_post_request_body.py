@@ -50,6 +50,8 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.password_credential import PasswordCredential
+
         writer.write_object_value("passwordCredential", self.password_credential)
         writer.write_additional_data_value(self.additional_data)
     

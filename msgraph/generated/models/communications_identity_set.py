@@ -78,6 +78,10 @@ class CommunicationsIdentitySet(IdentitySet):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .endpoint_type import EndpointType
+        from .identity import Identity
+        from .identity_set import IdentitySet
+
         writer.write_object_value("applicationInstance", self.application_instance)
         writer.write_object_value("assertedIdentity", self.asserted_identity)
         writer.write_object_value("azureCommunicationServicesUser", self.azure_communication_services_user)

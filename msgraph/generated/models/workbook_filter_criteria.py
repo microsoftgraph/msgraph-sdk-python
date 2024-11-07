@@ -71,6 +71,8 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .workbook_icon import WorkbookIcon
+
         writer.write_str_value("color", self.color)
         writer.write_str_value("criterion1", self.criterion1)
         writer.write_str_value("criterion2", self.criterion2)

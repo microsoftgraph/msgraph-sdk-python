@@ -62,6 +62,8 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .authentication_method_modes import AuthenticationMethodModes
+
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_collection_of_primitive_values("conditionalAccessReferences", self.conditional_access_references)
         writer.write_collection_of_enum_values("currentCombinations", self.current_combinations)

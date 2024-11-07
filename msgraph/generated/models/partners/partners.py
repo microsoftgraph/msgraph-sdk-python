@@ -54,6 +54,9 @@ class Partners(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .billing.billing import Billing
+
         writer.write_object_value("billing", self.billing)
     
 

@@ -100,6 +100,13 @@ class RetentionEvent(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .event_propagation_result import EventPropagationResult
+        from .event_query import EventQuery
+        from .retention_event_status import RetentionEventStatus
+        from .retention_event_type import RetentionEventType
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

@@ -59,6 +59,9 @@ class CreateForwardPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.message import Message
+        from ......models.recipient import Recipient
+
         writer.write_str_value("Comment", self.comment)
         writer.write_object_value("Message", self.message)
         writer.write_collection_of_object_values("ToRecipients", self.to_recipients)

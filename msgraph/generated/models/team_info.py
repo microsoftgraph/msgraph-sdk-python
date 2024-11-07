@@ -32,7 +32,8 @@ class TeamInfo(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.associatedTeamInfo".casefold():
@@ -78,6 +79,11 @@ class TeamInfo(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .associated_team_info import AssociatedTeamInfo
+        from .entity import Entity
+        from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .team import Team
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("team", self.team)
         writer.write_str_value("tenantId", self.tenant_id)

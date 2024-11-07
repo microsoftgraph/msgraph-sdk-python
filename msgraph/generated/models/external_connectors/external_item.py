@@ -72,6 +72,12 @@ class ExternalItem(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .acl import Acl
+        from .external_activity import ExternalActivity
+        from .external_item_content import ExternalItemContent
+        from .properties import Properties
+
         writer.write_collection_of_object_values("acl", self.acl)
         writer.write_collection_of_object_values("activities", self.activities)
         writer.write_object_value("content", self.content)

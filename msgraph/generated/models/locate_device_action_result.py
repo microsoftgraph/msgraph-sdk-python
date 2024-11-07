@@ -57,6 +57,9 @@ class LocateDeviceActionResult(DeviceActionResult):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_action_result import DeviceActionResult
+        from .device_geo_location import DeviceGeoLocation
+
         writer.write_object_value("deviceLocation", self.device_location)
     
 

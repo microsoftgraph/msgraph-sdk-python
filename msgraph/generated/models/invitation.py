@@ -90,6 +90,11 @@ class Invitation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .invited_user_message_info import InvitedUserMessageInfo
+        from .user import User
+
         writer.write_str_value("inviteRedeemUrl", self.invite_redeem_url)
         writer.write_str_value("inviteRedirectUrl", self.invite_redirect_url)
         writer.write_object_value("invitedUser", self.invited_user)

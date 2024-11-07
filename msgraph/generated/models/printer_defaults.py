@@ -119,6 +119,14 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .print_color_mode import PrintColorMode
+        from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
+        from .print_multipage_layout import PrintMultipageLayout
+        from .print_orientation import PrintOrientation
+        from .print_quality import PrintQuality
+        from .print_scaling import PrintScaling
+
         writer.write_enum_value("colorMode", self.color_mode)
         writer.write_str_value("contentType", self.content_type)
         writer.write_int_value("copiesPerJob", self.copies_per_job)

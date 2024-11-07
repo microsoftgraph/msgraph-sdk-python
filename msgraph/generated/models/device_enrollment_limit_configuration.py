@@ -54,6 +54,8 @@ class DeviceEnrollmentLimitConfiguration(DeviceEnrollmentConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+
         writer.write_int_value("limit", self.limit)
     
 

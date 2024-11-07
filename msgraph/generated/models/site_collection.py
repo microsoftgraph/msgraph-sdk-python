@@ -65,6 +65,9 @@ class SiteCollection(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .root import Root
+        from .site_archival_details import SiteArchivalDetails
+
         writer.write_object_value("archivalDetails", self.archival_details)
         writer.write_str_value("dataLocationCode", self.data_location_code)
         writer.write_str_value("hostname", self.hostname)

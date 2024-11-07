@@ -66,6 +66,8 @@ class MailClusterEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+
         writer.write_str_value("clusterBy", self.cluster_by)
         writer.write_str_value("clusterByValue", self.cluster_by_value)
         writer.write_int_value("emailCount", self.email_count)

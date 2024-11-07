@@ -54,6 +54,9 @@ class Identity(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .identity_type import IdentityType
+
         writer.write_enum_value("type", self.type)
     
 

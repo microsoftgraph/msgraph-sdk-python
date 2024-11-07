@@ -88,6 +88,11 @@ class EducationModule(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_module_resource import EducationModuleResource
+        from .education_module_status import EducationModuleStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isPinned", self.is_pinned)

@@ -65,6 +65,9 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .bookings_availability_status import BookingsAvailabilityStatus
+        from .date_time_time_zone import DateTimeTimeZone
+
         writer.write_object_value("endDateTime", self.end_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("serviceId", self.service_id)

@@ -72,6 +72,11 @@ class WorkflowTemplate(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .lifecycle_workflow_category import LifecycleWorkflowCategory
+        from .task import Task
+        from .workflow_execution_conditions import WorkflowExecutionConditions
+
         writer.write_enum_value("category", self.category)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

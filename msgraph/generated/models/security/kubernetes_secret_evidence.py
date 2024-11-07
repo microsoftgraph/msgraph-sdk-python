@@ -60,6 +60,9 @@ class KubernetesSecretEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+
         writer.write_str_value("name", self.name)
         writer.write_object_value("namespace", self.namespace)
         writer.write_str_value("secretType", self.secret_type)

@@ -63,6 +63,10 @@ class MobileAppContent(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_contained_app import MobileContainedApp
+
         writer.write_collection_of_object_values("containedApps", self.contained_apps)
         writer.write_collection_of_object_values("files", self.files)
     

@@ -59,6 +59,8 @@ class PublicationFacet(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .identity_set import IdentitySet
+
         writer.write_object_value("checkedOutBy", self.checked_out_by)
         writer.write_str_value("level", self.level)
         writer.write_str_value("@odata.type", self.odata_type)

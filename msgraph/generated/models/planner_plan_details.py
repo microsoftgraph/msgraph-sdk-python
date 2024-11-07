@@ -60,6 +60,10 @@ class PlannerPlanDetails(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .planner_category_descriptions import PlannerCategoryDescriptions
+        from .planner_user_ids import PlannerUserIds
+
         writer.write_object_value("categoryDescriptions", self.category_descriptions)
         writer.write_object_value("sharedWith", self.shared_with)
     

@@ -51,5 +51,7 @@ class MacOSDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+
     
 

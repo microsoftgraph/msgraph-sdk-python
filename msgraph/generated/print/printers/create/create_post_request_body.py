@@ -68,6 +68,8 @@ class CreatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.print_certificate_signing_request import PrintCertificateSigningRequest
+
         writer.write_object_value("certificateSigningRequest", self.certificate_signing_request)
         writer.write_str_value("connectorId", self.connector_id)
         writer.write_str_value("displayName", self.display_name)

@@ -65,6 +65,10 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Backe
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .x509_certificate_affinity_level import X509CertificateAffinityLevel
+        from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
+        from .x509_certificate_rule import X509CertificateRule
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("rules", self.rules)
         writer.write_enum_value("x509CertificateAuthenticationDefaultMode", self.x509_certificate_authentication_default_mode)

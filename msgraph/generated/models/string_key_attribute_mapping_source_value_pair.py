@@ -56,6 +56,8 @@ class StringKeyAttributeMappingSourceValuePair(AdditionalDataHolder, BackedModel
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_mapping_source import AttributeMappingSource
+
         writer.write_str_value("key", self.key)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("value", self.value)

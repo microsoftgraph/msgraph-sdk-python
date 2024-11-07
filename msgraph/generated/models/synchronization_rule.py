@@ -89,6 +89,11 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .container_filter import ContainerFilter
+        from .group_filter import GroupFilter
+        from .object_mapping import ObjectMapping
+        from .string_key_string_value_pair import StringKeyStringValuePair
+
         writer.write_object_value("containerFilter", self.container_filter)
         writer.write_bool_value("editable", self.editable)
         writer.write_object_value("groupFilter", self.group_filter)

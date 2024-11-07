@@ -71,6 +71,9 @@ class ScheduleItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .date_time_time_zone import DateTimeTimeZone
+        from .free_busy_status import FreeBusyStatus
+
         writer.write_object_value("end", self.end)
         writer.write_bool_value("isPrivate", self.is_private)
         writer.write_str_value("location", self.location)

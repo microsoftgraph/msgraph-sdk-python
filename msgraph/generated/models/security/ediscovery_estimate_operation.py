@@ -72,6 +72,9 @@ class EdiscoveryEstimateOperation(CaseOperation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .case_operation import CaseOperation
+        from .ediscovery_search import EdiscoverySearch
+
         writer.write_int_value("indexedItemCount", self.indexed_item_count)
         writer.write_int_value("indexedItemsSize", self.indexed_items_size)
         writer.write_int_value("mailboxCount", self.mailbox_count)

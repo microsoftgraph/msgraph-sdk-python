@@ -54,6 +54,9 @@ class ServiceHostedMediaConfig(MediaConfig):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .media_config import MediaConfig
+        from .media_info import MediaInfo
+
         writer.write_collection_of_object_values("preFetchMedia", self.pre_fetch_media)
     
 

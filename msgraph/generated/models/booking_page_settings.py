@@ -83,6 +83,8 @@ class BookingPageSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .booking_page_access_control import BookingPageAccessControl
+
         writer.write_enum_value("accessControl", self.access_control)
         writer.write_str_value("bookingPageColorCode", self.booking_page_color_code)
         writer.write_str_value("businessTimeZone", self.business_time_zone)

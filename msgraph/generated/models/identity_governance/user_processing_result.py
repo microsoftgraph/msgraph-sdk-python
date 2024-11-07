@@ -94,6 +94,12 @@ class UserProcessingResult(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..user import User
+        from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
+        from .task_processing_result import TaskProcessingResult
+        from .workflow_execution_type import WorkflowExecutionType
+
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("failedTasksCount", self.failed_tasks_count)
         writer.write_enum_value("processingStatus", self.processing_status)

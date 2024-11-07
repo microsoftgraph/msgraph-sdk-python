@@ -71,6 +71,9 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .endpoint_type import EndpointType
+        from .identity_set import IdentitySet
+
         writer.write_str_value("countryCode", self.country_code)
         writer.write_enum_value("endpointType", self.endpoint_type)
         writer.write_object_value("identity", self.identity)

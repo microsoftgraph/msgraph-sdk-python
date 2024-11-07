@@ -91,6 +91,14 @@ class AccessPackageAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package import AccessPackage
+        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+        from .access_package_assignment_state import AccessPackageAssignmentState
+        from .access_package_subject import AccessPackageSubject
+        from .custom_extension_callout_instance import CustomExtensionCalloutInstance
+        from .entitlement_management_schedule import EntitlementManagementSchedule
+        from .entity import Entity
+
         writer.write_object_value("accessPackage", self.access_package)
         writer.write_object_value("assignmentPolicy", self.assignment_policy)
         writer.write_collection_of_object_values("customExtensionCalloutInstances", self.custom_extension_callout_instances)

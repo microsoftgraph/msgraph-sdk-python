@@ -50,6 +50,8 @@ class RestartPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.synchronization_job_restart_criteria import SynchronizationJobRestartCriteria
+
         writer.write_object_value("criteria", self.criteria)
         writer.write_additional_data_value(self.additional_data)
     

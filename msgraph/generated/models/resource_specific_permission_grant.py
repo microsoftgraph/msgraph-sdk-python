@@ -63,6 +63,8 @@ class ResourceSpecificPermissionGrant(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+
         writer.write_str_value("clientAppId", self.client_app_id)
         writer.write_str_value("clientId", self.client_id)
         writer.write_str_value("permission", self.permission)

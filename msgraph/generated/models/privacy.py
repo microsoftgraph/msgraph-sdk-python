@@ -53,6 +53,8 @@ class Privacy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .subject_rights_request import SubjectRightsRequest
+
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("subjectRightsRequests", self.subject_rights_requests)
         writer.write_additional_data_value(self.additional_data)

@@ -66,6 +66,10 @@ class TeamsTab(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .teams_app import TeamsApp
+        from .teams_tab_configuration import TeamsTabConfiguration
+
         writer.write_object_value("configuration", self.configuration)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("teamsApp", self.teams_app)

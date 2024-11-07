@@ -58,6 +58,9 @@ class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .weekly_schedule import WeeklySchedule
+        from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
+
         writer.write_enum_value("scheduledInstallDay", self.scheduled_install_day)
         writer.write_time_value("scheduledInstallTime", self.scheduled_install_time)
     

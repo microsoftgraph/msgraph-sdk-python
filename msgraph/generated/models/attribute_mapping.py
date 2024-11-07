@@ -77,6 +77,10 @@ class AttributeMapping(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .attribute_flow_behavior import AttributeFlowBehavior
+        from .attribute_flow_type import AttributeFlowType
+        from .attribute_mapping_source import AttributeMappingSource
+
         writer.write_str_value("defaultValue", self.default_value)
         writer.write_bool_value("exportMissingReferences", self.export_missing_references)
         writer.write_enum_value("flowBehavior", self.flow_behavior)

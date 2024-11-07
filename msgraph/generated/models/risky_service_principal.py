@@ -48,7 +48,8 @@ class RiskyServicePrincipal(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyServicePrincipalHistoryItem".casefold():
@@ -99,6 +100,12 @@ class RiskyServicePrincipal(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
+        from .risk_detail import RiskDetail
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("history", self.history)

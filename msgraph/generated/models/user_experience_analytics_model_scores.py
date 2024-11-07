@@ -81,6 +81,9 @@ class UserExperienceAnalyticsModelScores(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
+
         writer.write_float_value("appReliabilityScore", self.app_reliability_score)
         writer.write_float_value("batteryHealthScore", self.battery_health_score)
         writer.write_float_value("endpointAnalyticsScore", self.endpoint_analytics_score)

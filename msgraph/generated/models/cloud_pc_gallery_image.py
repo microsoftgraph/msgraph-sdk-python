@@ -79,6 +79,9 @@ class CloudPcGalleryImage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .cloud_pc_gallery_image_status import CloudPcGalleryImageStatus
+        from .entity import Entity
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_date_value("endDate", self.end_date)
         writer.write_date_value("expirationDate", self.expiration_date)

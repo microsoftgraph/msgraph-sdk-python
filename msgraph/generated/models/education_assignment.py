@@ -169,6 +169,20 @@ class EducationAssignment(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .education_added_student_action import EducationAddedStudentAction
+        from .education_add_to_calendar_options import EducationAddToCalendarOptions
+        from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_assignment_recipient import EducationAssignmentRecipient
+        from .education_assignment_resource import EducationAssignmentResource
+        from .education_assignment_status import EducationAssignmentStatus
+        from .education_category import EducationCategory
+        from .education_grading_category import EducationGradingCategory
+        from .education_item_body import EducationItemBody
+        from .education_rubric import EducationRubric
+        from .education_submission import EducationSubmission
+        from .entity import Entity
+        from .identity_set import IdentitySet
+
         writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)
         writer.write_enum_value("addedStudentAction", self.added_student_action)
         writer.write_bool_value("allowLateSubmissions", self.allow_late_submissions)

@@ -172,6 +172,17 @@ class Alert(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .alert_classification import AlertClassification
+        from .alert_comment import AlertComment
+        from .alert_determination import AlertDetermination
+        from .alert_evidence import AlertEvidence
+        from .alert_severity import AlertSeverity
+        from .alert_status import AlertStatus
+        from .detection_source import DetectionSource
+        from .dictionary import Dictionary
+        from .service_source import ServiceSource
+
         writer.write_str_value("actorDisplayName", self.actor_display_name)
         writer.write_object_value("additionalData", self.additional_data_property)
         writer.write_str_value("alertPolicyId", self.alert_policy_id)

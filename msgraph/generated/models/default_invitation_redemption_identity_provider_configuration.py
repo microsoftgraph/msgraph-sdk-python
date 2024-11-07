@@ -48,5 +48,7 @@ class DefaultInvitationRedemptionIdentityProviderConfiguration(InvitationRedempt
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .invitation_redemption_identity_provider_configuration import InvitationRedemptionIdentityProviderConfiguration
+
     
 

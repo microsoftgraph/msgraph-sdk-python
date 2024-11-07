@@ -63,6 +63,10 @@ class SharePointIdentitySet(IdentitySet):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity import Identity
+        from .identity_set import IdentitySet
+        from .share_point_identity import SharePointIdentity
+
         writer.write_object_value("group", self.group)
         writer.write_object_value("siteGroup", self.site_group)
         writer.write_object_value("siteUser", self.site_user)

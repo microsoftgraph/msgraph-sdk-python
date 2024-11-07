@@ -57,6 +57,9 @@ class MacOSMicrosoftEdgeApp(MobileApp):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .microsoft_edge_channel import MicrosoftEdgeChannel
+        from .mobile_app import MobileApp
+
         writer.write_enum_value("channel", self.channel)
     
 

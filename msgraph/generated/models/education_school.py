@@ -105,6 +105,13 @@ class EducationSchool(EducationOrganization):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .administrative_unit import AdministrativeUnit
+        from .education_class import EducationClass
+        from .education_organization import EducationOrganization
+        from .education_user import EducationUser
+        from .identity_set import IdentitySet
+        from .physical_address import PhysicalAddress
+
         writer.write_object_value("address", self.address)
         writer.write_object_value("administrativeUnit", self.administrative_unit)
         writer.write_collection_of_object_values("classes", self.classes)

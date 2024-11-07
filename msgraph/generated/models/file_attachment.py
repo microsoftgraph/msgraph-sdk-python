@@ -57,6 +57,8 @@ class FileAttachment(Attachment):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .attachment import Attachment
+
         writer.write_bytes_value("contentBytes", self.content_bytes)
         writer.write_str_value("contentId", self.content_id)
         writer.write_str_value("contentLocation", self.content_location)

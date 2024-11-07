@@ -50,6 +50,8 @@ class ReplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ..........models.post import Post
+
         writer.write_object_value("Post", self.post)
         writer.write_additional_data_value(self.additional_data)
     

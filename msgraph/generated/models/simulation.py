@@ -160,6 +160,21 @@ class Simulation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .account_target_content import AccountTargetContent
+        from .email_identity import EmailIdentity
+        from .end_user_notification_setting import EndUserNotificationSetting
+        from .entity import Entity
+        from .landing_page import LandingPage
+        from .login_page import LoginPage
+        from .o_auth_consent_app_detail import OAuthConsentAppDetail
+        from .payload import Payload
+        from .payload_delivery_platform import PayloadDeliveryPlatform
+        from .simulation_attack_technique import SimulationAttackTechnique
+        from .simulation_attack_type import SimulationAttackType
+        from .simulation_report import SimulationReport
+        from .simulation_status import SimulationStatus
+        from .training_setting import TrainingSetting
+
         writer.write_enum_value("attackTechnique", self.attack_technique)
         writer.write_enum_value("attackType", self.attack_type)
         writer.write_str_value("automationId", self.automation_id)

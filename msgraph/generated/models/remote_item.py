@@ -138,6 +138,18 @@ class RemoteItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .file import File
+        from .file_system_info import FileSystemInfo
+        from .folder import Folder
+        from .identity_set import IdentitySet
+        from .image import Image
+        from .item_reference import ItemReference
+        from .package import Package
+        from .shared import Shared
+        from .sharepoint_ids import SharepointIds
+        from .special_folder import SpecialFolder
+        from .video import Video
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("file", self.file)

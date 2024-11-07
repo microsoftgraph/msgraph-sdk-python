@@ -59,6 +59,9 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .conditional_access_external_tenants import ConditionalAccessExternalTenants
+        from .conditional_access_guest_or_external_user_types import ConditionalAccessGuestOrExternalUserTypes
+
         writer.write_object_value("externalTenants", self.external_tenants)
         writer.write_enum_value("guestOrExternalUserTypes", self.guest_or_external_user_types)
         writer.write_str_value("@odata.type", self.odata_type)

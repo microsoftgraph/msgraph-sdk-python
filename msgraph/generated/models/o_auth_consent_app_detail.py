@@ -59,6 +59,8 @@ class OAuthConsentAppDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .o_auth_app_scope import OAuthAppScope
+
         writer.write_enum_value("appScope", self.app_scope)
         writer.write_str_value("displayLogo", self.display_logo)
         writer.write_str_value("displayName", self.display_name)

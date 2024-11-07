@@ -82,6 +82,10 @@ class Article(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from .article_indicator import ArticleIndicator
+        from .formatted_content import FormattedContent
+
         writer.write_object_value("body", self.body)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("imageUrl", self.image_url)

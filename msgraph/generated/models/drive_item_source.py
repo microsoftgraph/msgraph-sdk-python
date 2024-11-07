@@ -56,6 +56,8 @@ class DriveItemSource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .drive_item_source_application import DriveItemSourceApplication
+
         writer.write_enum_value("application", self.application)
         writer.write_str_value("externalId", self.external_id)
         writer.write_str_value("@odata.type", self.odata_type)

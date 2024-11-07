@@ -48,7 +48,8 @@ class PrintUsage(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsageByPrinter".casefold():
@@ -100,6 +101,10 @@ class PrintUsage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
+
         writer.write_int_value("blackAndWhitePageCount", self.black_and_white_page_count)
         writer.write_int_value("colorPageCount", self.color_page_count)
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)

@@ -153,6 +153,22 @@ class Site(BaseItem):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .base_item import BaseItem
+        from .base_site_page import BaseSitePage
+        from .column_definition import ColumnDefinition
+        from .content_type import ContentType
+        from .drive import Drive
+        from .item_analytics import ItemAnalytics
+        from .list_ import List_
+        from .onenote import Onenote
+        from .permission import Permission
+        from .public_error import PublicError
+        from .rich_long_running_operation import RichLongRunningOperation
+        from .root import Root
+        from .sharepoint_ids import SharepointIds
+        from .site_collection import SiteCollection
+        from .term_store.store import Store
+
         writer.write_object_value("analytics", self.analytics)
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_collection_of_object_values("contentTypes", self.content_types)

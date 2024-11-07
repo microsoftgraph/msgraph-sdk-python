@@ -57,6 +57,9 @@ class EdgeSearchEngine(EdgeSearchEngineBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .edge_search_engine_base import EdgeSearchEngineBase
+        from .edge_search_engine_type import EdgeSearchEngineType
+
         writer.write_enum_value("edgeSearchEngineType", self.edge_search_engine_type)
     
 

@@ -48,5 +48,7 @@ class EdiscoveryReviewSetQuery(Search):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .search import Search
+
     
 

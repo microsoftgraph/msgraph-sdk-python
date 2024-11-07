@@ -68,6 +68,10 @@ class ExportReportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ........models.security.additional_options import AdditionalOptions
+        from ........models.security.export_criteria import ExportCriteria
+        from ........models.security.export_location import ExportLocation
+
         writer.write_enum_value("additionalOptions", self.additional_options)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

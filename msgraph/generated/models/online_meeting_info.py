@@ -68,6 +68,8 @@ class OnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .phone import Phone
+
         writer.write_str_value("conferenceId", self.conference_id)
         writer.write_str_value("joinUrl", self.join_url)
         writer.write_str_value("@odata.type", self.odata_type)

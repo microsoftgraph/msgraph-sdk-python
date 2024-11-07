@@ -96,6 +96,11 @@ class MacOSGeneralDeviceConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .required_password_type import RequiredPasswordType
+
         writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
         writer.write_collection_of_object_values("compliantAppsList", self.compliant_apps_list)
         writer.write_collection_of_primitive_values("emailInDomainSuffixes", self.email_in_domain_suffixes)

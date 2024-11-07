@@ -51,6 +51,8 @@ class AddressBookAccountTargetContent(AccountTargetContent):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .account_target_content import AccountTargetContent
+
         writer.write_collection_of_primitive_values("accountTargetEmails", self.account_target_emails)
     
 

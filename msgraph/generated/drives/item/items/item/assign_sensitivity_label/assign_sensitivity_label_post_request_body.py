@@ -56,6 +56,8 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
+
         writer.write_enum_value("assignmentMethod", self.assignment_method)
         writer.write_str_value("justificationText", self.justification_text)
         writer.write_str_value("sensitivityLabelId", self.sensitivity_label_id)

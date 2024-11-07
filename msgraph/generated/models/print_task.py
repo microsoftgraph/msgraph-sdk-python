@@ -69,6 +69,11 @@ class PrintTask(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .print_task_definition import PrintTaskDefinition
+        from .print_task_status import PrintTaskStatus
+        from .print_task_trigger import PrintTaskTrigger
+
         writer.write_object_value("definition", self.definition)
         writer.write_str_value("parentUrl", self.parent_url)
         writer.write_object_value("status", self.status)

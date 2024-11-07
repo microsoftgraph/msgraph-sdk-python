@@ -50,6 +50,8 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Backed
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from ....models.teleconference_device_quality import TeleconferenceDeviceQuality
+
         writer.write_object_value("quality", self.quality)
         writer.write_additional_data_value(self.additional_data)
     

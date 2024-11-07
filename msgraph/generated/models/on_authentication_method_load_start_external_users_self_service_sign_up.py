@@ -54,6 +54,9 @@ class OnAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp(OnAuthentica
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .identity_provider_base import IdentityProviderBase
+        from .on_authentication_method_load_start_handler import OnAuthenticationMethodLoadStartHandler
+
         writer.write_collection_of_object_values("identityProviders", self.identity_providers)
     
 

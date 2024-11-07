@@ -79,6 +79,12 @@ class PrinterShare(PrinterBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .group import Group
+        from .printer import Printer
+        from .printer_base import PrinterBase
+        from .printer_share_viewpoint import PrinterShareViewpoint
+        from .user import User
+
         writer.write_bool_value("allowAllUsers", self.allow_all_users)
         writer.write_collection_of_object_values("allowedGroups", self.allowed_groups)
         writer.write_collection_of_object_values("allowedUsers", self.allowed_users)

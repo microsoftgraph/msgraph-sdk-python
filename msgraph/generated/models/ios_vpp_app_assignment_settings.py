@@ -57,6 +57,8 @@ class IosVppAppAssignmentSettings(MobileAppAssignmentSettings):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+
         writer.write_bool_value("useDeviceLicensing", self.use_device_licensing)
         writer.write_str_value("vpnConfigurationId", self.vpn_configuration_id)
     

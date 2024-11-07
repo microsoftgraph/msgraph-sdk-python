@@ -54,6 +54,8 @@ class GranularMailboxRestoreArtifact(MailboxRestoreArtifact):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .mailbox_restore_artifact import MailboxRestoreArtifact
+
         writer.write_int_value("artifactCount", self.artifact_count)
         writer.write_str_value("searchResponseId", self.search_response_id)
     

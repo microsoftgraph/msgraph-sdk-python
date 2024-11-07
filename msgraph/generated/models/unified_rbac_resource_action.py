@@ -66,6 +66,8 @@ class UnifiedRbacResourceAction(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+
         writer.write_str_value("actionVerb", self.action_verb)
         writer.write_str_value("authenticationContextId", self.authentication_context_id)
         writer.write_str_value("description", self.description)

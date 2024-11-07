@@ -67,6 +67,9 @@ class DeviceConfigurationUserStatus(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .compliance_status import ComplianceStatus
+        from .entity import Entity
+
         writer.write_int_value("devicesCount", self.devices_count)
         writer.write_datetime_value("lastReportedDateTime", self.last_reported_date_time)
         writer.write_enum_value("status", self.status)

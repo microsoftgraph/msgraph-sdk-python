@@ -118,6 +118,12 @@ class OrgContact(DirectoryObject):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .directory_object import DirectoryObject
+        from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .phone import Phone
+        from .physical_office_address import PhysicalOfficeAddress
+        from .service_provisioning_error import ServiceProvisioningError
+
         writer.write_collection_of_object_values("addresses", self.addresses)
         writer.write_str_value("companyName", self.company_name)
         writer.write_str_value("department", self.department)

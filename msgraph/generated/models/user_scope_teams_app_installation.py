@@ -54,6 +54,9 @@ class UserScopeTeamsAppInstallation(TeamsAppInstallation):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .chat import Chat
+        from .teams_app_installation import TeamsAppInstallation
+
         writer.write_object_value("chat", self.chat)
     
 

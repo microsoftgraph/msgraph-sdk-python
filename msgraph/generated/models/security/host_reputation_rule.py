@@ -62,6 +62,8 @@ class HostReputationRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .host_reputation_rule_severity import HostReputationRuleSeverity
+
         writer.write_str_value("description", self.description)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)

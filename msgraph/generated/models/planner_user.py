@@ -60,6 +60,10 @@ class PlannerUser(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .planner_plan import PlannerPlan
+        from .planner_task import PlannerTask
+
         writer.write_collection_of_object_values("plans", self.plans)
         writer.write_collection_of_object_values("tasks", self.tasks)
     

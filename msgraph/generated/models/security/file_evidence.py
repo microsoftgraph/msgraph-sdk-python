@@ -63,6 +63,10 @@ class FileEvidence(AlertEvidence):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .alert_evidence import AlertEvidence
+        from .detection_status import DetectionStatus
+        from .file_details import FileDetails
+
         writer.write_enum_value("detectionStatus", self.detection_status)
         writer.write_object_value("fileDetails", self.file_details)
         writer.write_str_value("mdeDeviceId", self.mde_device_id)

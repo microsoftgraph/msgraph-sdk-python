@@ -162,6 +162,12 @@ class Windows81GeneralConfiguration(DeviceConfiguration):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_configuration import DeviceConfiguration
+        from .internet_site_security_level import InternetSiteSecurityLevel
+        from .required_password_type import RequiredPasswordType
+        from .site_security_level import SiteSecurityLevel
+        from .windows_user_account_control_settings import WindowsUserAccountControlSettings
+
         writer.write_bool_value("accountsBlockAddingNonMicrosoftAccountEmail", self.accounts_block_adding_non_microsoft_account_email)
         writer.write_bool_value("browserBlockAutofill", self.browser_block_autofill)
         writer.write_bool_value("browserBlockAutomaticDetectionOfIntranetSites", self.browser_block_automatic_detection_of_intranet_sites)

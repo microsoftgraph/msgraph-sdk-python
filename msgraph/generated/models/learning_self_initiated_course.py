@@ -52,6 +52,8 @@ class LearningSelfInitiatedCourse(LearningCourseActivity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .learning_course_activity import LearningCourseActivity
+
         writer.write_datetime_value("startedDateTime", self.started_date_time)
     
 

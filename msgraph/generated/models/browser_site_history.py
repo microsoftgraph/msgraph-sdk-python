@@ -84,6 +84,11 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
+        from .browser_site_merge_type import BrowserSiteMergeType
+        from .browser_site_target_environment import BrowserSiteTargetEnvironment
+        from .identity_set import IdentitySet
+
         writer.write_bool_value("allowRedirect", self.allow_redirect)
         writer.write_str_value("comment", self.comment)
         writer.write_enum_value("compatibilityMode", self.compatibility_mode)

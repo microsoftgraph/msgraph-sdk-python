@@ -97,6 +97,14 @@ class AccessReviewHistoryDefinition(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_review_history_decision_filter import AccessReviewHistoryDecisionFilter
+        from .access_review_history_instance import AccessReviewHistoryInstance
+        from .access_review_history_schedule_settings import AccessReviewHistoryScheduleSettings
+        from .access_review_history_status import AccessReviewHistoryStatus
+        from .access_review_scope import AccessReviewScope
+        from .entity import Entity
+        from .user_identity import UserIdentity
+
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_enum_values("decisions", self.decisions)

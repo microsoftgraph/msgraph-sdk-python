@@ -50,6 +50,8 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .......models.attachment_item import AttachmentItem
+
         writer.write_object_value("AttachmentItem", self.attachment_item)
         writer.write_additional_data_value(self.additional_data)
     

@@ -54,6 +54,9 @@ class FileStorage(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .entity import Entity
+        from .file_storage_container import FileStorageContainer
+
         writer.write_collection_of_object_values("containers", self.containers)
     
 

@@ -59,6 +59,8 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .access_package_approval_stage import AccessPackageApprovalStage
+
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)
         writer.write_bool_value("isApprovalRequiredForUpdate", self.is_approval_required_for_update)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -54,6 +54,8 @@ class OmaSettingFloatingPoint(OmaSetting):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .oma_setting import OmaSetting
+
         writer.write_float_value("value", self.value)
     
 

@@ -54,6 +54,9 @@ class CategoryTemplate(FilePlanDescriptorTemplate):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .file_plan_descriptor_template import FilePlanDescriptorTemplate
+        from .subcategory_template import SubcategoryTemplate
+
         writer.write_collection_of_object_values("subcategories", self.subcategories)
     
 

@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .group.group_request_builder import GroupRequestBuilder
     from .owners.owners_request_builder import OwnersRequestBuilder
+    from .owners_with_user_principal_name.owners_with_user_principal_name_request_builder import OwnersWithUserPrincipalNameRequestBuilder
 
 class CommunityItemRequestBuilder(BaseRequestBuilder):
     """
@@ -70,6 +71,18 @@ class CommunityItemRequestBuilder(BaseRequestBuilder):
         from ....models.community import Community
 
         return await self.request_adapter.send_async(request_info, Community, error_mapping)
+    
+    def owners_with_user_principal_name(self,user_principal_name: str) -> OwnersWithUserPrincipalNameRequestBuilder:
+        """
+        Provides operations to manage the owners property of the microsoft.graph.community entity.
+        param user_principal_name: Alternate key of user
+        Returns: OwnersWithUserPrincipalNameRequestBuilder
+        """
+        if user_principal_name is None:
+            raise TypeError("user_principal_name cannot be null.")
+        from .owners_with_user_principal_name.owners_with_user_principal_name_request_builder import OwnersWithUserPrincipalNameRequestBuilder
+
+        return OwnersWithUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters, user_principal_name)
     
     async def patch(self,body: Community, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Community]:
         """

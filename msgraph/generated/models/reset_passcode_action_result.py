@@ -57,6 +57,8 @@ class ResetPasscodeActionResult(DeviceActionResult):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .device_action_result import DeviceActionResult
+
         writer.write_int_value("errorCode", self.error_code)
         writer.write_str_value("passcode", self.passcode)
     

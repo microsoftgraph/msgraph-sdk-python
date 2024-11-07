@@ -54,6 +54,9 @@ class CustomTaskExtensionCallbackConfiguration(CustomExtensionCallbackConfigurat
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..application import Application
+        from ..custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
+
         writer.write_collection_of_object_values("authorizedApps", self.authorized_apps)
     
 

@@ -59,6 +59,8 @@ class CloudPcAuditResource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .cloud_pc_audit_property import CloudPcAuditProperty
+
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("modifiedProperties", self.modified_properties)
         writer.write_str_value("@odata.type", self.odata_type)

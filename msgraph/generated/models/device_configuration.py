@@ -81,7 +81,8 @@ class DeviceConfiguration(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidCustomConfiguration".casefold():
@@ -289,6 +290,40 @@ class DeviceConfiguration(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .android_custom_configuration import AndroidCustomConfiguration
+        from .android_general_device_configuration import AndroidGeneralDeviceConfiguration
+        from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
+        from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+        from .device_configuration_assignment import DeviceConfigurationAssignment
+        from .device_configuration_device_overview import DeviceConfigurationDeviceOverview
+        from .device_configuration_device_status import DeviceConfigurationDeviceStatus
+        from .device_configuration_user_overview import DeviceConfigurationUserOverview
+        from .device_configuration_user_status import DeviceConfigurationUserStatus
+        from .edition_upgrade_configuration import EditionUpgradeConfiguration
+        from .entity import Entity
+        from .ios_certificate_profile import IosCertificateProfile
+        from .ios_custom_configuration import IosCustomConfiguration
+        from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
+        from .ios_general_device_configuration import IosGeneralDeviceConfiguration
+        from .ios_update_configuration import IosUpdateConfiguration
+        from .mac_o_s_custom_configuration import MacOSCustomConfiguration
+        from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
+        from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
+        from .setting_state_device_summary import SettingStateDeviceSummary
+        from .shared_p_c_configuration import SharedPCConfiguration
+        from .windows10_custom_configuration import Windows10CustomConfiguration
+        from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
+        from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
+        from .windows10_general_configuration import Windows10GeneralConfiguration
+        from .windows10_secure_assessment_configuration import Windows10SecureAssessmentConfiguration
+        from .windows10_team_general_configuration import Windows10TeamGeneralConfiguration
+        from .windows81_general_configuration import Windows81GeneralConfiguration
+        from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
+        from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
+        from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
+        from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
+
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

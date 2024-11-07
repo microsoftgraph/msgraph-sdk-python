@@ -23,7 +23,7 @@ from ..entity import Entity
 
 @dataclass
 class CaseOperation(Entity):
-    # The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics, purgeData
+    # The type of action the operation represents. Possible values are: contentExport,  applyTags, convertToPdf, index, estimateStatistics, addToReviewSet, holdUpdate, unknownFutureValue, purgeData, exportReport, exportResult. You must use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: purgeData, exportReport, exportResult.
     action: Optional[CaseAction] = None
     # The date and time the operation was completed.
     completed_date_time: Optional[datetime.datetime] = None
@@ -50,7 +50,8 @@ class CaseOperation(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryAddToReviewSetOperation".casefold():
@@ -142,6 +143,20 @@ class CaseOperation(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from ..result_info import ResultInfo
+        from .case_action import CaseAction
+        from .case_operation_status import CaseOperationStatus
+        from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+        from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .ediscovery_export_operation import EdiscoveryExportOperation
+        from .ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .ediscovery_index_operation import EdiscoveryIndexOperation
+        from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+        from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
+        from .ediscovery_tag_operation import EdiscoveryTagOperation
+
         writer.write_enum_value("action", self.action)
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("createdBy", self.created_by)

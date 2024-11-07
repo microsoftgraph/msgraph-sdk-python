@@ -36,7 +36,8 @@ class AccessPackageQuestion(Entity):
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         try:
-            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageMultipleChoiceQuestion".casefold():
@@ -84,6 +85,11 @@ class AccessPackageQuestion(Entity):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .access_package_localized_text import AccessPackageLocalizedText
+        from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
+        from .access_package_text_input_question import AccessPackageTextInputQuestion
+        from .entity import Entity
+
         writer.write_bool_value("isAnswerEditable", self.is_answer_editable)
         writer.write_bool_value("isRequired", self.is_required)
         writer.write_collection_of_object_values("localizations", self.localizations)

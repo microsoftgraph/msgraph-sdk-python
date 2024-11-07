@@ -68,6 +68,10 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, BackedMode
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .advanced_config_state import AdvancedConfigState
+        from .authentication_methods_registration_campaign_include_target import AuthenticationMethodsRegistrationCampaignIncludeTarget
+        from .exclude_target import ExcludeTarget
+
         writer.write_collection_of_object_values("excludeTargets", self.exclude_targets)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
         writer.write_str_value("@odata.type", self.odata_type)

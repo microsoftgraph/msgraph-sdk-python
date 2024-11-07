@@ -51,6 +51,8 @@ class WorkflowVersion(WorkflowBase):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        from .workflow_base import WorkflowBase
+
         writer.write_int_value("versionNumber", self.version_number)
     
 

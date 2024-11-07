@@ -53,6 +53,8 @@ class MediaSource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .media_source_content_category import MediaSourceContentCategory
+
         writer.write_enum_value("contentCategory", self.content_category)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

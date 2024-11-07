@@ -53,6 +53,8 @@ class CustomExtensionOverwriteConfiguration(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        from .custom_extension_client_configuration import CustomExtensionClientConfiguration
+
         writer.write_object_value("clientConfiguration", self.client_configuration)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

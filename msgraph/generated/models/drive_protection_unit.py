@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .protection_unit_base import ProtectionUnitBase
 
 @dataclass
-class DriveProtectionUnit(ProtectionUnitBase):
+class DriveProtectionUnit(ProtectionUnitBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.driveProtectionUnit"
     # ID of the directory object.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Attachment(Entity):
+class Attachment(Entity, Parsable):
     # The MIME type.
     content_type: Optional[str] = None
     # true if the attachment is an inline attachment; otherwise, false.

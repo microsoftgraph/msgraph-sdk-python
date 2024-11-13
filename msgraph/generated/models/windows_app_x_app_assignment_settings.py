@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class WindowsAppXAppAssignmentSettings(MobileAppAssignmentSettings):
+class WindowsAppXAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
     """
     Contains properties used when assigning a Windows AppX mobile app to a group.
     """

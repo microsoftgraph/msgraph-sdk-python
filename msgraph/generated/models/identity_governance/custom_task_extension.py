@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from ..custom_callout_extension import CustomCalloutExtension
 
 @dataclass
-class CustomTaskExtension(CustomCalloutExtension):
+class CustomTaskExtension(CustomCalloutExtension, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtension"
     # The callback configuration for a custom task extension.

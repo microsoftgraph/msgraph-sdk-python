@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .end_user_notification_setting import EndUserNotificationSetting
 
 @dataclass
-class NoTrainingNotificationSetting(EndUserNotificationSetting):
+class NoTrainingNotificationSetting(EndUserNotificationSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.noTrainingNotificationSetting"
     # The notification for the user who is part of the simulation.

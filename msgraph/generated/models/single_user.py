@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_set import SubjectSet
 
 @dataclass
-class SingleUser(SubjectSet):
+class SingleUser(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.singleUser"
     # The name of the user in Microsoft Entra ID. Read only.

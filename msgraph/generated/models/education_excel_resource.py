@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_resource import EducationResource
 
 @dataclass
-class EducationExcelResource(EducationResource):
+class EducationExcelResource(EducationResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationExcelResource"
     # Pointer to the Excel file object.

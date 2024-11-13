@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mail_folder import MailFolder
 
 @dataclass
-class MailSearchFolder(MailFolder):
+class MailSearchFolder(MailFolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mailSearchFolder"
     # The OData query to filter the messages.

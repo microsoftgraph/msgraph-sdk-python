@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .base_item_version import BaseItemVersion
 
 @dataclass
-class ListItemVersion(BaseItemVersion):
+class ListItemVersion(BaseItemVersion, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.listItemVersion"
     # A collection of the fields and values for this version of the list item.

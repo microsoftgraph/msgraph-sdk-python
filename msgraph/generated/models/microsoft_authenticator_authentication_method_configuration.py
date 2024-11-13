@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class MicrosoftAuthenticatorAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
+class MicrosoftAuthenticatorAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration"
     # A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.

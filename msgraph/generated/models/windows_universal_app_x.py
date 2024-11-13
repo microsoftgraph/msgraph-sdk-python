@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class WindowsUniversalAppX(MobileLobApp):
+class WindowsUniversalAppX(MobileLobApp, Parsable):
     """
     Contains properties and inherited properties for Windows Universal AppX Line Of Business apps. Inherits from `mobileLobApp`.
     """

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PinnedChatMessageInfo(Entity):
+class PinnedChatMessageInfo(Entity, Parsable):
     # Represents details about the chat message that is pinned.
     message: Optional[ChatMessage] = None
     # The OdataType property

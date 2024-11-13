@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageResourceRole(Entity):
+class AccessPackageResourceRole(Entity, Parsable):
     # A description for the resource role.
     description: Optional[str] = None
     # The display name of the resource role such as the role defined by the application.

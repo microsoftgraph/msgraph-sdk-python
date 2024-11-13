@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 from .base_item import BaseItem
 
 @dataclass
-class Site(BaseItem):
+class Site(BaseItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.site"
     # Analytics about the view activities that took place on this site.

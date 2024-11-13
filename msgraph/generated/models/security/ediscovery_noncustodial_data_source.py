@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .data_source_container import DataSourceContainer
 
 @dataclass
-class EdiscoveryNoncustodialDataSource(DataSourceContainer):
+class EdiscoveryNoncustodialDataSource(DataSourceContainer, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryNoncustodialDataSource"
     # User source or SharePoint site data source as noncustodial data source.

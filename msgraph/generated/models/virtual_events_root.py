@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VirtualEventsRoot(Entity):
+class VirtualEventsRoot(Entity, Parsable):
     # The events property
     events: Optional[List[VirtualEvent]] = None
     # The OdataType property

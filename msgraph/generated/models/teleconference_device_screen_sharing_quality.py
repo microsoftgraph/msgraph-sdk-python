@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
 @dataclass
-class TeleconferenceDeviceScreenSharingQuality(TeleconferenceDeviceVideoQuality):
+class TeleconferenceDeviceScreenSharingQuality(TeleconferenceDeviceVideoQuality, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

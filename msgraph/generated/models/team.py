@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Team(Entity):
+class Team(Entity, Parsable):
     # List of channels either hosted in or shared with the team (incoming channels).
     all_channels: Optional[List[Channel]] = None
     # The collection of channels and messages associated with the team.

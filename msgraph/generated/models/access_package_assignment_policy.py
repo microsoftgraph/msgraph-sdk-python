@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageAssignmentPolicy(Entity):
+class AccessPackageAssignmentPolicy(Entity, Parsable):
     # Access package containing this policy. Read-only.  Supports $expand.
     access_package: Optional[AccessPackage] = None
     # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.

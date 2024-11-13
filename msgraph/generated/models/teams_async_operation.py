@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsAsyncOperation(Entity):
+class TeamsAsyncOperation(Entity, Parsable):
     # Number of times the operation was attempted before being marked successful or failed.
     attempts_count: Optional[int] = None
     # Time when the operation was created.

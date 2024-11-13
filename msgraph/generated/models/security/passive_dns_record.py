@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .artifact import Artifact
 
 @dataclass
-class PassiveDnsRecord(Artifact):
+class PassiveDnsRecord(Artifact, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.passiveDnsRecord"
     # The artifact property

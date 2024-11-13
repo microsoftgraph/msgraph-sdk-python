@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class ServicePrincipalIdentity(Identity):
+class ServicePrincipalIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.servicePrincipalIdentity"
     # The application identifier of the service principal.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .learning_course_activity import LearningCourseActivity
 
 @dataclass
-class LearningAssignment(LearningCourseActivity):
+class LearningAssignment(LearningCourseActivity, Parsable):
     # Assigned date for the course activity. Optional.
     assigned_date_time: Optional[datetime.datetime] = None
     # The user ID of the assigner. Optional.

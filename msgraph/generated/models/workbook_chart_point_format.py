@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartPointFormat(Entity):
+class WorkbookChartPointFormat(Entity, Parsable):
     # Represents the fill format of a chart, which includes background formatting information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # The OdataType property

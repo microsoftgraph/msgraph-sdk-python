@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class IpEvidence(AlertEvidence):
+class IpEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ipEvidence"
     # The two-letter country code according to ISO 3166 format, for example: US, UK, CA, etc.

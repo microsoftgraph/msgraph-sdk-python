@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .custom_authentication_extension import CustomAuthenticationExtension
 
 @dataclass
-class OnTokenIssuanceStartCustomExtension(CustomAuthenticationExtension):
+class OnTokenIssuanceStartCustomExtension(CustomAuthenticationExtension, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onTokenIssuanceStartCustomExtension"
     # Collection of claims to be returned by the API called by this custom authentication extension. Used to populate claims mapping experience in Microsoft Entra admin center. Optional.

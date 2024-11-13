@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookRangeView(Entity):
+class WorkbookRangeView(Entity, Parsable):
     # The number of visible columns. Read-only.
     column_count: Optional[int] = None
     # The index of the range.

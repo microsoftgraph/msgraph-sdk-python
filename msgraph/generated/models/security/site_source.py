@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .data_source import DataSource
 
 @dataclass
-class SiteSource(DataSource):
+class SiteSource(DataSource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.siteSource"
     # The site property

@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedAppPolicy(Entity):
+class ManagedAppPolicy(Entity, Parsable):
     """
     The ManagedAppPolicy resource represents a base type for platform specific policies.
     """

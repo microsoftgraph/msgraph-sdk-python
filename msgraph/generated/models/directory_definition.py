@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DirectoryDefinition(Entity):
+class DirectoryDefinition(Entity, Parsable):
     # The discoverabilities property
     discoverabilities: Optional[DirectoryDefinitionDiscoverabilities] = None
     # Represents the discovery date and time using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

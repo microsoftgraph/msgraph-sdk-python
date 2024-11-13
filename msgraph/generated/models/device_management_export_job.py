@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceManagementExportJob(Entity):
+class DeviceManagementExportJob(Entity, Parsable):
     """
     Entity representing a job to export a report.
     """

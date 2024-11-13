@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .end_user_notification_setting import EndUserNotificationSetting
 
 @dataclass
-class TrainingNotificationSetting(EndUserNotificationSetting):
+class TrainingNotificationSetting(EndUserNotificationSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.trainingNotificationSetting"
     # Training assignment details.

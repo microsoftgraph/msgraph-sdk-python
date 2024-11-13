@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class RetentionEvent(Entity):
+class RetentionEvent(Entity, Parsable):
     # The user who created the retentionEvent.
     created_by: Optional[IdentitySet] = None
     # The date time when the retentionEvent was created.

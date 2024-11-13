@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class CallRecordingEventMessageDetail(EventMessageDetail):
+class CallRecordingEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecordingEventMessageDetail"
     # Unique identifier of the call.

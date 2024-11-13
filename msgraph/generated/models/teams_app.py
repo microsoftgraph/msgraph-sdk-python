@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsApp(Entity):
+class TeamsApp(Entity, Parsable):
     # The details for each version of the app.
     app_definitions: Optional[List[TeamsAppDefinition]] = None
     # The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.

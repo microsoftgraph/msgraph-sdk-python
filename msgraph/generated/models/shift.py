@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class Shift(ChangeTrackedEntity):
+class Shift(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.shift"
     # Draft changes in the shift. Draft changes are only visible to managers. The changes are visible to employees when they are shared, which copies the changes from the draftShift to the sharedShift property.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .agreement_file_properties import AgreementFileProperties
 
 @dataclass
-class AgreementFile(AgreementFileProperties):
+class AgreementFile(AgreementFileProperties, Parsable):
     # The localized version of the terms of use agreement files attached to the agreement.
     localizations: Optional[List[AgreementFileLocalization]] = None
     # The OdataType property

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AgreementAcceptance(Entity):
+class AgreementAcceptance(Entity, Parsable):
     # The identifier of the agreement file accepted by the user.
     agreement_file_id: Optional[str] = None
     # The identifier of the agreement.

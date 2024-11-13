@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_package_question import AccessPackageQuestion
 
 @dataclass
-class AccessPackageTextInputQuestion(AccessPackageQuestion):
+class AccessPackageTextInputQuestion(AccessPackageQuestion, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessPackageTextInputQuestion"
     # Indicates whether the answer is in single or multiple line format.

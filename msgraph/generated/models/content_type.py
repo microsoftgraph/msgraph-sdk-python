@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ContentType(Entity):
+class ContentType(Entity, Parsable):
     # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type is applied to the lists in the enforced sites.
     associated_hubs_urls: Optional[List[str]] = None
     # Parent contentType from which this content type is derived.

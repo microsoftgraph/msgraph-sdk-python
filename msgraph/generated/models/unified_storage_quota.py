@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UnifiedStorageQuota(Entity):
+class UnifiedStorageQuota(Entity, Parsable):
     # The deleted property
     deleted: Optional[int] = None
     # The manageWebUrl property

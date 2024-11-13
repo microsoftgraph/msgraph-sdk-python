@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookTableSort(Entity):
+class WorkbookTableSort(Entity, Parsable):
     # The list of the current conditions last used to sort the table. Read-only.
     fields: Optional[List[WorkbookSortField]] = None
     # Indicates whether the casing impacted the last sort of the table. Read-only.

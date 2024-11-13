@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class MacOSLobApp(MobileLobApp):
+class MacOSLobApp(MobileLobApp, Parsable):
     """
     Contains properties and inherited properties for the macOS LOB App.
     """

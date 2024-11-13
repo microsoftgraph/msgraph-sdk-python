@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class MailboxConfigurationEvidence(AlertEvidence):
+class MailboxConfigurationEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.mailboxConfigurationEvidence"
     # The configurationId property

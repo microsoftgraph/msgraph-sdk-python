@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .schedule_entity import ScheduleEntity
 
 @dataclass
-class ShiftItem(ScheduleEntity):
+class ShiftItem(ScheduleEntity, Parsable):
     # An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
     activities: Optional[List[ShiftActivity]] = None
     # The shift label of the shiftItem.

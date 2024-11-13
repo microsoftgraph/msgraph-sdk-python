@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookRangeFormat(Entity):
+class WorkbookRangeFormat(Entity, Parsable):
     # Collection of border objects that apply to the overall range selected Read-only.
     borders: Optional[List[WorkbookRangeBorder]] = None
     # The width of all columns within the range. If the column widths aren't uniform, null will be returned.

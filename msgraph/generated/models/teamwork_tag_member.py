@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamworkTagMember(Entity):
+class TeamworkTagMember(Entity, Parsable):
     # The member's display name.
     display_name: Optional[str] = None
     # The OdataType property

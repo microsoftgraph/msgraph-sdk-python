@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ChecklistItem(Entity):
+class ChecklistItem(Entity, Parsable):
     # The date and time when the checklistItem was finished.
     checked_date_time: Optional[datetime.datetime] = None
     # The date and time when the checklistItem was created.

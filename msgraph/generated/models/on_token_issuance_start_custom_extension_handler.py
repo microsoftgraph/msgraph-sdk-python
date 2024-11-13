@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .on_token_issuance_start_handler import OnTokenIssuanceStartHandler
 
 @dataclass
-class OnTokenIssuanceStartCustomExtensionHandler(OnTokenIssuanceStartHandler):
+class OnTokenIssuanceStartCustomExtensionHandler(OnTokenIssuanceStartHandler, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onTokenIssuanceStartCustomExtensionHandler"
     # The configuration property

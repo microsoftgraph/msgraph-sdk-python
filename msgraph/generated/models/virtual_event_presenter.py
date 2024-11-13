@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VirtualEventPresenter(Entity):
+class VirtualEventPresenter(Entity, Parsable):
     # Email address of the presenter.
     email: Optional[str] = None
     # Identity information of the presenter. The supported identities are: communicationsGuestIdentity and communicationsUserIdentity.

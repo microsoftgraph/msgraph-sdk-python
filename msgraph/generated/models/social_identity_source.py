@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .identity_source import IdentitySource
 
 @dataclass
-class SocialIdentitySource(IdentitySource):
+class SocialIdentitySource(IdentitySource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.socialIdentitySource"
     # The displayName property

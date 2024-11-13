@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
 
 @dataclass
-class VirtualEventRegistrationCustomQuestion(VirtualEventRegistrationQuestionBase):
+class VirtualEventRegistrationCustomQuestion(VirtualEventRegistrationQuestionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventRegistrationCustomQuestion"
     # Answer choices when answerInputType is singleChoice or multiChoice.

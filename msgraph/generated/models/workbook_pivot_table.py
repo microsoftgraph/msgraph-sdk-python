@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookPivotTable(Entity):
+class WorkbookPivotTable(Entity, Parsable):
     # The name of the pivot table.
     name: Optional[str] = None
     # The OdataType property

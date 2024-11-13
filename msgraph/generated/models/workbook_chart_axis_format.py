@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartAxisFormat(Entity):
+class WorkbookChartAxisFormat(Entity, Parsable):
     # Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
     font: Optional[WorkbookChartFont] = None
     # Represents chart line formatting. Read-only.

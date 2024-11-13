@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Security(Entity):
+class Security(Entity, Parsable):
     # The alerts property
     alerts: Optional[List[Alert]] = None
     # A collection of alerts in Microsoft 365 Defender.

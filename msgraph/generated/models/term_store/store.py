@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Store(Entity):
+class Store(Entity, Parsable):
     # Default language of the term store.
     default_language_tag: Optional[str] = None
     # Collection of all groups available in the term store.

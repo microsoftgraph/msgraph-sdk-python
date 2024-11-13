@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .search import Search
 
 @dataclass
-class EdiscoverySearch(Search):
+class EdiscoverySearch(Search, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ediscoverySearch"
     # Adds the results of the eDiscovery search to the specified reviewSet.

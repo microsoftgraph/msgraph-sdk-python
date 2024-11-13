@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EmployeeExperienceUser(Entity):
+class EmployeeExperienceUser(Entity, Parsable):
     # The learningCourseActivities property
     learning_course_activities: Optional[List[LearningCourseActivity]] = None
     # The OdataType property

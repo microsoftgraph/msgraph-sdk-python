@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class MacOSDmgApp(MobileLobApp):
+class MacOSDmgApp(MobileLobApp, Parsable):
     """
     Contains properties and inherited properties for the MacOS DMG (Apple Disk Image) App.
     """

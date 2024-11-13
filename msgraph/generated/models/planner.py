@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Planner(Entity):
+class Planner(Entity, Parsable):
     # Read-only. Nullable. Returns a collection of the specified buckets
     buckets: Optional[List[PlannerBucket]] = None
     # The OdataType property

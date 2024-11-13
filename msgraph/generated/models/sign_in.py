@@ -19,12 +19,12 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SignIn(Entity):
+class SignIn(Entity, Parsable):
     # App name displayed in the Microsoft Entra admin center.  Supports $filter (eq, startsWith).
     app_display_name: Optional[str] = None
     # Unique GUID that represents the app ID in the Microsoft Entra ID.  Supports $filter (eq).
     app_id: Optional[str] = None
-    # Provides a list of conditional access policies that the corresponding sign-in activity triggers. Apps need more Conditional Access-related privileges to read the details of this property. For more information, see Viewing applied conditional access (CA) policies in sign-ins.
+    # Provides a list of conditional access policies that the corresponding sign-in activity triggers. Apps need more Conditional Access-related privileges to read the details of this property. For more information, see Permissions for viewing applied conditional access (CA) policies in sign-ins.
     applied_conditional_access_policies: Optional[List[AppliedConditionalAccessPolicy]] = None
     # Identifies the client used for the sign-in activity. Modern authentication clients include Browser, modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients.  Supports $filter (eq).
     client_app_used: Optional[str] = None

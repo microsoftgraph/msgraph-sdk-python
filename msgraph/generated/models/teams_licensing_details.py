@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsLicensingDetails(Entity):
+class TeamsLicensingDetails(Entity, Parsable):
     # Indicates whether the user has a valid license to use Microsoft Teams.
     has_teams_license: Optional[bool] = None
     # The OdataType property

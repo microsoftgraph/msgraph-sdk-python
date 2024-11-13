@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartAxisTitleFormat(Entity):
+class WorkbookChartAxisTitleFormat(Entity, Parsable):
     # Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
     font: Optional[WorkbookChartFont] = None
     # The OdataType property

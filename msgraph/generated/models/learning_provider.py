@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LearningProvider(Entity):
+class LearningProvider(Entity, Parsable):
     # The display name that appears in Viva Learning. Required.
     display_name: Optional[str] = None
     # Indicates whether a provider can ingest learning course activity records. The default value is false. Set to true to make learningCourseActivities available for this provider.

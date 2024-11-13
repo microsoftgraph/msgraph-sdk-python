@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_resource import EducationResource
 
 @dataclass
-class EducationLinkedAssignmentResource(EducationResource):
+class EducationLinkedAssignmentResource(EducationResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationLinkedAssignmentResource"
     # URL of the actual assignment.

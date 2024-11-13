@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .identity_set import IdentitySet
 
 @dataclass
-class ChatMessageMentionedIdentitySet(IdentitySet):
+class ChatMessageMentionedIdentitySet(IdentitySet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.chatMessageMentionedIdentitySet"
     # If present, represents a conversation (for example, team or channel) @mentioned in a message.

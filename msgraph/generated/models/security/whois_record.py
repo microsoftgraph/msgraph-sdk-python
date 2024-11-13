@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .whois_base_record import WhoisBaseRecord
 
 @dataclass
-class WhoisRecord(WhoisBaseRecord):
+class WhoisRecord(WhoisBaseRecord, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.whoisRecord"
     # The collection of historical records associated to this WHOIS object.

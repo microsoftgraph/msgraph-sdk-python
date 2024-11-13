@@ -35,7 +35,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class Application(DirectoryObject):
+class Application(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.application"
     # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams can set the addIns property for its 'FileHandler' functionality. This lets services like Microsoft 365 call the application in the context of a document the user is working on.

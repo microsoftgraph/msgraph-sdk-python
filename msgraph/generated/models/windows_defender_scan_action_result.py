@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_action_result import DeviceActionResult
 
 @dataclass
-class WindowsDefenderScanActionResult(DeviceActionResult):
+class WindowsDefenderScanActionResult(DeviceActionResult, Parsable):
     """
     Windows Defender last scan result
     """

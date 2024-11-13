@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationMethod(Entity):
+class AuthenticationMethod(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

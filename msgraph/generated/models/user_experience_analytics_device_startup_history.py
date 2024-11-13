@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsDeviceStartupHistory(Entity):
+class UserExperienceAnalyticsDeviceStartupHistory(Entity, Parsable):
     """
     The user experience analytics device startup history entity contains device boot performance history details.
     """

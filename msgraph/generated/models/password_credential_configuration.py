@@ -15,13 +15,13 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsabl
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Value that can be used as the maximum number for setting password expiration time in days, hours, minutes or seconds. Defined in ISO 8601 format for Durations. For example, 'P4DT12H30M5S' represents a duration of four days, twelve hours, thirty minutes, and five seconds. This property is required when restriction type is set to passwordLifetime.
+    # String value that indicates the maximum lifetime for password expiration, defined as an ISO 8601 duration. For example, P4DT12H30M5S represents four days, 12 hours, 30 minutes, and five seconds. This property is required when restrictionType is set to passwordLifetime.
     max_lifetime: Optional[datetime.timedelta] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Enforces the policy for an app created on or after the enforcement date. For existing applications, the enforcement date would be back dated. To apply to all applications, enforcement datetime would be null.
+    # Specifies the date from which the policy restriction applies to newly created applications. For existing applications, the enforcement date can be retroactively applied.
     restrict_for_apps_created_after_date_time: Optional[datetime.datetime] = None
-    # The type of restriction being applied. The possible values are: passwordAddition, passwordLifetime, symmetricKeyAddition, symmetricKeyLifetime,customPasswordAddition, unknownFutureValue. Each value of restrictionType can be used only once per policy.
+    # The type of restriction being applied. The possible values are: passwordAddition, passwordLifetime, symmetricKeyAddition, symmetricKeyLifetime, customPasswordAddition, and unknownFutureValue. Each value of restrictionType can be used only once per policy.
     restriction_type: Optional[AppCredentialRestrictionType] = None
     
     @staticmethod

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_end_user_notification import BaseEndUserNotification
 
 @dataclass
-class TrainingReminderNotification(BaseEndUserNotification):
+class TrainingReminderNotification(BaseEndUserNotification, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.trainingReminderNotification"
     # Configurable frequency for the reminder email introduced during simulation creation. Possible values are: unknown, weekly, biWeekly, unknownFutureValue.

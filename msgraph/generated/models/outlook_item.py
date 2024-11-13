@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class OutlookItem(Entity):
+class OutlookItem(Entity, Parsable):
     # The categories associated with the item
     categories: Optional[List[str]] = None
     # Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.

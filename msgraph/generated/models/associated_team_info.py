@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .team_info import TeamInfo
 
 @dataclass
-class AssociatedTeamInfo(TeamInfo):
+class AssociatedTeamInfo(TeamInfo, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

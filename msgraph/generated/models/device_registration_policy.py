@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceRegistrationPolicy(Entity):
+class DeviceRegistrationPolicy(Entity, Parsable):
     # The azureADJoin property
     azure_a_d_join: Optional[AzureADJoinPolicy] = None
     # The azureADRegistration property

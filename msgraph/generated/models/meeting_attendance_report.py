@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MeetingAttendanceReport(Entity):
+class MeetingAttendanceReport(Entity, Parsable):
     # List of attendance records of an attendance report. Read-only.
     attendance_records: Optional[List[AttendanceRecord]] = None
     # UTC time when the meeting ended. Read-only.

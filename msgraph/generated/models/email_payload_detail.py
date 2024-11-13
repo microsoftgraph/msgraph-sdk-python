@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .payload_detail import PayloadDetail
 
 @dataclass
-class EmailPayloadDetail(PayloadDetail):
+class EmailPayloadDetail(PayloadDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.emailPayloadDetail"
     # Email address of the user.

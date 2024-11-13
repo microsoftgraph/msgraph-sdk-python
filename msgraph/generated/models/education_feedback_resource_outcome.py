@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .education_outcome import EducationOutcome
 
 @dataclass
-class EducationFeedbackResourceOutcome(EducationOutcome):
+class EducationFeedbackResourceOutcome(EducationOutcome, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationFeedbackResourceOutcome"
     # The actual feedback resource.

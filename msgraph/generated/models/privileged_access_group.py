@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrivilegedAccessGroup(Entity):
+class PrivilegedAccessGroup(Entity, Parsable):
     # The assignmentApprovals property
     assignment_approvals: Optional[List[Approval]] = None
     # The instances of assignment schedules to activate a just-in-time access.

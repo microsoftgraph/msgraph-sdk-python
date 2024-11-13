@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WindowsInformationProtectionNetworkLearningSummary(Entity):
+class WindowsInformationProtectionNetworkLearningSummary(Entity, Parsable):
     """
     Windows Information Protection Network learning Summary entity.
     """

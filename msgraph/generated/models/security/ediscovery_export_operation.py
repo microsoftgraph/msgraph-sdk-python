@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .case_operation import CaseOperation
 
 @dataclass
-class EdiscoveryExportOperation(CaseOperation):
+class EdiscoveryExportOperation(CaseOperation, Parsable):
     # The description provided for the export.
     description: Optional[str] = None
     # Contains the properties for an export file metadata, including downloadUrl, fileName, and size.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .request import Request
 
 @dataclass
-class UserConsentRequest(Request):
+class UserConsentRequest(Request, Parsable):
     # Approval decisions associated with a request.
     approval: Optional[Approval] = None
     # The OdataType property

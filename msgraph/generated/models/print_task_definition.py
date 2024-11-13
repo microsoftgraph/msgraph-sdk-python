@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintTaskDefinition(Entity):
+class PrintTaskDefinition(Entity, Parsable):
     # The createdBy property
     created_by: Optional[AppIdentity] = None
     # The name of the printTaskDefinition.

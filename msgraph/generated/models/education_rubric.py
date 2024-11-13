@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationRubric(Entity):
+class EducationRubric(Entity, Parsable):
     # The user who created this resource.
     created_by: Optional[IdentitySet] = None
     # The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

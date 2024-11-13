@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
+class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration, Parsable):
     """
     Windows Defender AdvancedThreatProtection Configuration.
     """

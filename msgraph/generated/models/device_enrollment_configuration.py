@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceEnrollmentConfiguration(Entity):
+class DeviceEnrollmentConfiguration(Entity, Parsable):
     """
     The Base Class of Device Enrollment Configuration
     """

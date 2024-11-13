@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .indicator import Indicator
 
 @dataclass
-class ArticleIndicator(Indicator):
+class ArticleIndicator(Indicator, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.articleIndicator"
     

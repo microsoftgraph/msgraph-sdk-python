@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .....models.base_delta_function_response import BaseDeltaFunctionResponse
 
 @dataclass
-class DeltaGetResponse(BaseDeltaFunctionResponse):
+class DeltaGetResponse(BaseDeltaFunctionResponse, Parsable):
     # The value property
     value: Optional[List[Contact]] = None
     

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .attendee_base import AttendeeBase
 
 @dataclass
-class Attendee(AttendeeBase):
+class Attendee(AttendeeBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.attendee"
     # An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property isn't included in a response of a GET event.

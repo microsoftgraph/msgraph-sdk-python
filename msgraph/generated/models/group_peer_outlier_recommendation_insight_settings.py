@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
 
 @dataclass
-class GroupPeerOutlierRecommendationInsightSettings(AccessReviewRecommendationInsightSetting):
+class GroupPeerOutlierRecommendationInsightSettings(AccessReviewRecommendationInsightSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.groupPeerOutlierRecommendationInsightSettings"
     

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .search import Search
 
 @dataclass
-class EdiscoveryReviewSetQuery(Search):
+class EdiscoveryReviewSetQuery(Search, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryReviewSetQuery"
     

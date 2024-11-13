@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsWorkFromAnywhereMetric(Entity):
+class UserExperienceAnalyticsWorkFromAnywhereMetric(Entity, Parsable):
     """
     The user experience analytics metric for work from anywhere report.
     """

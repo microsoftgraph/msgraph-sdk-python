@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RemoteDesktopSecurityConfiguration(Entity):
+class RemoteDesktopSecurityConfiguration(Entity, Parsable):
     # Determines if Microsoft Entra ID RDS authentication protocol for RDP is enabled.
     is_remote_desktop_protocol_enabled: Optional[bool] = None
     # The OdataType property

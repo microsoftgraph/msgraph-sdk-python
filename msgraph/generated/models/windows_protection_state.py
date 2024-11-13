@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WindowsProtectionState(Entity):
+class WindowsProtectionState(Entity, Parsable):
     """
     Device protection status entity.
     """

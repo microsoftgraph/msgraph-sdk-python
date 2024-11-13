@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .case_operation import CaseOperation
 
 @dataclass
-class EdiscoverySearchExportOperation(CaseOperation):
+class EdiscoverySearchExportOperation(CaseOperation, Parsable):
     # The additional items to include in the export. The possible values are: none, teamsAndYammerConversations, cloudAttachments, allDocumentVersions, subfolderContents, listAttachments, unknownFutureValue.
     additional_options: Optional[AdditionalOptions] = None
     # The description of the export by the user.

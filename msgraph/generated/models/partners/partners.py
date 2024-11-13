@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Partners(Entity):
+class Partners(Entity, Parsable):
     # Represents billing details for billed and unbilled data.
     billing: Optional[Billing] = None
     # The OdataType property

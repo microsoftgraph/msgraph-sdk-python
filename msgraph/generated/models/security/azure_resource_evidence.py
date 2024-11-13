@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class AzureResourceEvidence(AlertEvidence):
+class AzureResourceEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.azureResourceEvidence"
     # The unique identifier for the Azure resource.

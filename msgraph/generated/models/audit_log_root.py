@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuditLogRoot(Entity):
+class AuditLogRoot(Entity, Parsable):
     # The directoryAudits property
     directory_audits: Optional[List[DirectoryAudit]] = None
     # The OdataType property

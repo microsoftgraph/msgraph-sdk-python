@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .managed_app_policy import ManagedAppPolicy
 
 @dataclass
-class ManagedAppConfiguration(ManagedAppPolicy):
+class ManagedAppConfiguration(ManagedAppPolicy, Parsable):
     """
     Configuration used to deliver a set of custom settings as-is to apps for users to whom the configuration is scoped
     """

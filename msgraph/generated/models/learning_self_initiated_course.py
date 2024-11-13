@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .learning_course_activity import LearningCourseActivity
 
 @dataclass
-class LearningSelfInitiatedCourse(LearningCourseActivity):
+class LearningSelfInitiatedCourse(LearningCourseActivity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The date and time on which the learner started the self-initiated course. Optional.

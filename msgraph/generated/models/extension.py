@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Extension(Entity):
+class Extension(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

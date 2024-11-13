@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationStrengthRoot(Entity):
+class AuthenticationStrengthRoot(Entity, Parsable):
     # Names and descriptions of all valid authentication method modes in the system.
     authentication_method_modes: Optional[List[AuthenticationMethodModeDetail]] = None
     # The combinations property

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AppLogCollectionRequest(Entity):
+class AppLogCollectionRequest(Entity, Parsable):
     """
     Entity for AppLogCollectionRequest contains all logs values.
     """

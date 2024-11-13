@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .attachment_base import AttachmentBase
 
 @dataclass
-class TaskFileAttachment(AttachmentBase):
+class TaskFileAttachment(AttachmentBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.taskFileAttachment"
     # The base64-encoded contents of the file.

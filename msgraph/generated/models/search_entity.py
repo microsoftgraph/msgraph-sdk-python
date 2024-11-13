@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SearchEntity(Entity):
+class SearchEntity(Entity, Parsable):
     # Administrative answer in Microsoft Search results to define common acronyms in an organization.
     acronyms: Optional[List[Acronym]] = None
     # Administrative answer in Microsoft Search results for common search queries in an organization.

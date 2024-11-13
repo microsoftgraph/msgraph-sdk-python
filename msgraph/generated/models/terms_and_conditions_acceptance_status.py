@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TermsAndConditionsAcceptanceStatus(Entity):
+class TermsAndConditionsAcceptanceStatus(Entity, Parsable):
     """
     A termsAndConditionsAcceptanceStatus entity represents the acceptance status of a given Terms and Conditions (T&C) policy by a given user. Users must accept the most up-to-date version of the terms in order to retain access to the Company Portal.
     """

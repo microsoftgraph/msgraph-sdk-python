@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
 @dataclass
-class BasicAuthentication(ApiAuthenticationConfigurationBase):
+class BasicAuthentication(ApiAuthenticationConfigurationBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.basicAuthentication"
     # The password. It isn't returned in the responses.

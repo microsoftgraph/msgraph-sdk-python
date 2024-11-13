@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceCompliancePolicyDeviceStateSummary(Entity):
+class DeviceCompliancePolicyDeviceStateSummary(Entity, Parsable):
     # Number of compliant devices
     compliant_device_count: Optional[int] = None
     # Number of devices that have compliance managed by System Center Configuration Manager

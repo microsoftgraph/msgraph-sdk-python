@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuditEvent(Entity):
+class AuditEvent(Entity, Parsable):
     """
     A class containing the properties for Audit Event.
     """

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UsedInsight(Entity):
+class UsedInsight(Entity, Parsable):
     # Information about when the item was last viewed or modified by the user. Read only.
     last_used: Optional[UsageDetails] = None
     # The OdataType property

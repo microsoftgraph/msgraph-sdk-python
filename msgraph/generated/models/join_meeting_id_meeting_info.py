@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .meeting_info import MeetingInfo
 
 @dataclass
-class JoinMeetingIdMeetingInfo(MeetingInfo):
+class JoinMeetingIdMeetingInfo(MeetingInfo, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.joinMeetingIdMeetingInfo"
     # The ID used to join the meeting.

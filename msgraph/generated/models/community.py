@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Community(Entity):
+class Community(Entity, Parsable):
     """
     Represents a community in Viva Engage that is a central place for conversations,files, events, and updates for people sharing a common interest or goal.
     """

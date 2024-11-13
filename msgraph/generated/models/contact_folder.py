@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ContactFolder(Entity):
+class ContactFolder(Entity, Parsable):
     # The collection of child folders in the folder. Navigation property. Read-only. Nullable.
     child_folders: Optional[List[ContactFolder]] = None
     # The contacts in the folder. Navigation property. Read-only. Nullable.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .event_message import EventMessage
 
 @dataclass
-class EventMessageResponse(EventMessage):
+class EventMessageResponse(EventMessage, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.eventMessageResponse"
     # An alternate date/time proposed by an invitee for a meeting request to start and end. Read-only. Not filterable.

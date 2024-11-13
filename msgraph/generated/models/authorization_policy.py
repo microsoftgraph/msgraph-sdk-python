@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .policy_base import PolicyBase
 
 @dataclass
-class AuthorizationPolicy(PolicyBase):
+class AuthorizationPolicy(PolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.authorizationPolicy"
     # Indicates whether a user can join the tenant by email validation.

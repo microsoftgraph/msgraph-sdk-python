@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class NicEvidence(AlertEvidence):
+class NicEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.nicEvidence"
     # The ipAddress property

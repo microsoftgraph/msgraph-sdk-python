@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .education_organization import EducationOrganization
 
 @dataclass
-class EducationSchool(EducationOrganization):
+class EducationSchool(EducationOrganization, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationSchool"
     # Address of the school.

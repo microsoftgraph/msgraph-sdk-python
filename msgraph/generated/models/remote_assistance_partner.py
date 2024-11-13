@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RemoteAssistancePartner(Entity):
+class RemoteAssistancePartner(Entity, Parsable):
     """
     RemoteAssistPartner resources represent the metadata and status of a given Remote Assistance partner service.
     """

@@ -32,7 +32,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class ServicePrincipal(DirectoryObject):
+class ServicePrincipal(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.servicePrincipal"
     # true if the service principal account is enabled; otherwise, false. If set to false, then no users are able to sign in to this app, even if they're assigned to it. Supports $filter (eq, ne, not, in).

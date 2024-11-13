@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationGradingCategory(Entity):
+class EducationGradingCategory(Entity, Parsable):
     # The name of the grading category.
     display_name: Optional[str] = None
     # The OdataType property

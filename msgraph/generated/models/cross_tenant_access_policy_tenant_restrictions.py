@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
 
 @dataclass
-class CrossTenantAccessPolicyTenantRestrictions(CrossTenantAccessPolicyB2BSetting):
+class CrossTenantAccessPolicyTenantRestrictions(CrossTenantAccessPolicyB2BSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.crossTenantAccessPolicyTenantRestrictions"
     # Defines the rule for filtering devices and whether devices that satisfy the rule should be allowed or blocked. This property isn't supported on the server side yet.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DelegatedAdminAccessAssignment(Entity):
+class DelegatedAdminAccessAssignment(Entity, Parsable):
     # The accessContainer property
     access_container: Optional[DelegatedAdminAccessContainer] = None
     # The accessDetails property

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_set import SubjectSet
 
 @dataclass
-class TargetManager(SubjectSet):
+class TargetManager(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.targetManager"
     # Manager level, between 1 and 4. The direct manager is 1.

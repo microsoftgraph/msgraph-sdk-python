@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class StorageSettings(Entity):
+class StorageSettings(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The quota property

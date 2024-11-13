@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .print_usage import PrintUsage
 
 @dataclass
-class PrintUsageByPrinter(PrintUsage):
+class PrintUsageByPrinter(PrintUsage, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.printUsageByPrinter"
     # The ID of the printer represented by these statistics.

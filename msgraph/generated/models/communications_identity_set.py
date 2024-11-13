@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .identity_set import IdentitySet
 
 @dataclass
-class CommunicationsIdentitySet(IdentitySet):
+class CommunicationsIdentitySet(IdentitySet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsIdentitySet"
     # The application instance associated with this action.

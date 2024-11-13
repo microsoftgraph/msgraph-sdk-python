@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_set import SubjectSet
 
 @dataclass
-class InternalSponsors(SubjectSet):
+class InternalSponsors(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.internalSponsors"
     

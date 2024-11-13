@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class MembersDeletedEventMessageDetail(EventMessageDetail):
+class MembersDeletedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.membersDeletedEventMessageDetail"
     # Initiator of the event.

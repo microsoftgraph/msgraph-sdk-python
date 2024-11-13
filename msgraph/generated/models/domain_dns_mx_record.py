@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsMxRecord(DomainDnsRecord):
+class DomainDnsMxRecord(DomainDnsRecord, Parsable):
     # Value used when configuring the answer/destination/value of the MX record at the DNS host.
     mail_exchange: Optional[str] = None
     # The OdataType property

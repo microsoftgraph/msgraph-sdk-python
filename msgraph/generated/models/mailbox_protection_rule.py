@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .protection_rule_base import ProtectionRuleBase
 
 @dataclass
-class MailboxProtectionRule(ProtectionRuleBase):
+class MailboxProtectionRule(ProtectionRuleBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mailboxProtectionRule"
     # Contains a mailbox expression. For examples, see mailboxExpression examples.

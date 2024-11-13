@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .attachment import Attachment
 
 @dataclass
-class ReferenceAttachment(Attachment):
+class ReferenceAttachment(Attachment, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.referenceAttachment"
     

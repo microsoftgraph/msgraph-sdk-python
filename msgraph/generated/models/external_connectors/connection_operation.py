@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class ConnectionOperation(Entity):
+class ConnectionOperation(Entity, Parsable):
     # If status is failed, provides more information about the error that caused the failure.
     error: Optional[PublicError] = None
     # The OdataType property

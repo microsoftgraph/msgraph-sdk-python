@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedDeviceMobileAppConfigurationDeviceSummary(Entity):
+class ManagedDeviceMobileAppConfigurationDeviceSummary(Entity, Parsable):
     """
     Contains properties, inherited properties and actions for an MDM mobile app configuration device status summary.
     """

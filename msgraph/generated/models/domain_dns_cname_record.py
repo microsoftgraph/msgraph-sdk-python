@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsCnameRecord(DomainDnsRecord):
+class DomainDnsCnameRecord(DomainDnsRecord, Parsable):
     # The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
     canonical_name: Optional[str] = None
     # The OdataType property

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RiskyUser(Entity):
+class RiskyUser(Entity, Parsable):
     # The activity related to user risk level change
     history: Optional[List[RiskyUserHistoryItem]] = None
     # Indicates whether the user is deleted. Possible values are: true, false.

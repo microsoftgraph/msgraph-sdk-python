@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceLocalCredentialInfo(Entity):
+class DeviceLocalCredentialInfo(Entity, Parsable):
     # The credentials of the device's local administrator account backed up to Azure Active Directory.
     credentials: Optional[List[DeviceLocalCredential]] = None
     # Display name of the device that the local credentials are associated with.

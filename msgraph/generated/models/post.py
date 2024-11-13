@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .outlook_item import OutlookItem
 
 @dataclass
-class Post(OutlookItem):
+class Post(OutlookItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.post"
     # Read-only. Nullable. Supports $expand.

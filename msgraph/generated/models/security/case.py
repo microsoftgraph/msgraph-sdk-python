@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Case(Entity):
+class Case(Entity, Parsable):
     # The createdDateTime property
     created_date_time: Optional[datetime.datetime] = None
     # The description property

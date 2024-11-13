@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationEventListener(Entity):
+class AuthenticationEventListener(Entity, Parsable):
     # Indicates the authenticationEventListener is associated with an authenticationEventsFlow. Read-only.
     authentication_events_flow_id: Optional[str] = None
     # The conditions on which this authenticationEventListener should trigger.

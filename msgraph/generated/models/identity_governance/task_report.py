@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class TaskReport(Entity):
+class TaskReport(Entity, Parsable):
     # The date time that the associated run completed. Value is null if the run has not completed.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     completed_date_time: Optional[datetime.datetime] = None
     # The number of users in the run execution for which the associated task failed.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.

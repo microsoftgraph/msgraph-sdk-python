@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class RegistryValueEvidence(AlertEvidence):
+class RegistryValueEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.registryValueEvidence"
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class WindowsWebApp(MobileApp):
+class WindowsWebApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for Windows web apps.
     """

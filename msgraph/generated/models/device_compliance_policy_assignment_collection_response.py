@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class DeviceCompliancePolicyAssignmentCollectionResponse(BaseCollectionPaginationCountResponse):
+class DeviceCompliancePolicyAssignmentCollectionResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[DeviceCompliancePolicyAssignment]] = None
     

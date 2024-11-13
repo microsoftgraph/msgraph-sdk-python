@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .custom_extension_data import CustomExtensionData
 
 @dataclass
-class AccessPackageAssignmentRequestCallbackData(CustomExtensionData):
+class AccessPackageAssignmentRequestCallbackData(CustomExtensionData, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessPackageAssignmentRequestCallbackData"
     # Details for the callback.

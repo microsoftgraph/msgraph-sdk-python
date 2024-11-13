@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceInstallState(Entity):
+class DeviceInstallState(Entity, Parsable):
     """
     Contains properties for the installation state for a device.
     """

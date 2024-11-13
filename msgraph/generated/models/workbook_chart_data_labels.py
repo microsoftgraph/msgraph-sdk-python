@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartDataLabels(Entity):
+class WorkbookChartDataLabels(Entity, Parsable):
     # Represents the format of chart data labels, which includes fill and font formatting. Read-only.
     format: Optional[WorkbookChartDataLabelFormat] = None
     # The OdataType property

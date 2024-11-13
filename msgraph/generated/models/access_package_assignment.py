@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageAssignment(Entity):
+class AccessPackageAssignment(Entity, Parsable):
     # Read-only. Nullable. Supports $filter (eq) on the id property and $expand query parameters.
     access_package: Optional[AccessPackage] = None
     # Read-only. Supports $filter (eq) on the id property and $expand query parameters.

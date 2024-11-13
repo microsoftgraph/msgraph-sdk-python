@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class WhoisBaseRecord(Entity):
+class WhoisBaseRecord(Entity, Parsable):
     # The contact information for the abuse contact.
     abuse: Optional[WhoisContact] = None
     # The contact information for the admin contact.

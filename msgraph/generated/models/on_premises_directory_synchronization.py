@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class OnPremisesDirectorySynchronization(Entity):
+class OnPremisesDirectorySynchronization(Entity, Parsable):
     # Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant. Nullable.
     configuration: Optional[OnPremisesDirectorySynchronizationConfiguration] = None
     # The features property

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class FederatedIdentityCredential(Entity):
+class FederatedIdentityCredential(Entity, Parsable):
     # The audience that can appear in the external token. This field is mandatory and should be set to api://AzureADTokenExchange for Microsoft Entra ID. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Microsoft Entra ID in your external identity provider and has no fixed value across identity providers - you might need to create a new application registration in your identity provider to serve as the audience of this token. This field can only accept a single value and has a limit of 600 characters. Required.
     audiences: Optional[List[str]] = None
     # The unvalidated description of the federated identity credential, provided by the user. It has a limit of 600 characters. Optional.

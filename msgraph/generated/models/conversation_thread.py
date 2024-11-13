@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ConversationThread(Entity):
+class ConversationThread(Entity, Parsable):
     # The Cc: recipients for the thread. Returned only on $select.
     cc_recipients: Optional[List[Recipient]] = None
     # Indicates whether any of the posts within this thread has at least one attachment. Returned by default.

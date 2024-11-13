@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .endpoint import Endpoint
 
 @dataclass
-class ServiceEndpoint(Endpoint):
+class ServiceEndpoint(Endpoint, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecords.serviceEndpoint"
     

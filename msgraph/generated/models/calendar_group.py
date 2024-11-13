@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CalendarGroup(Entity):
+class CalendarGroup(Entity, Parsable):
     # The calendars in the calendar group. Navigation property. Read-only. Nullable.
     calendars: Optional[List[Calendar]] = None
     # Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.

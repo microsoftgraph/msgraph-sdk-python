@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .storage_quota_breakdown import StorageQuotaBreakdown
 
 @dataclass
-class ServiceStorageQuotaBreakdown(StorageQuotaBreakdown):
+class ServiceStorageQuotaBreakdown(StorageQuotaBreakdown, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

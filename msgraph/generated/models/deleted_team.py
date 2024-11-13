@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeletedTeam(Entity):
+class DeletedTeam(Entity, Parsable):
     # The channels that are either shared with this deleted team or created in this deleted team.
     channels: Optional[List[Channel]] = None
     # The OdataType property

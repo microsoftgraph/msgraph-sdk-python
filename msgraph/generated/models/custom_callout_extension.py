@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CustomCalloutExtension(Entity):
+class CustomCalloutExtension(Entity, Parsable):
     # Configuration for securing the API call to the logic app. For example, using OAuth client credentials flow.
     authentication_configuration: Optional[CustomExtensionAuthenticationConfiguration] = None
     # HTTP connection settings that define how long Microsoft Entra ID can wait for a connection to a logic app, how many times you can retry a timed-out connection and the exception scenarios when retries are allowed.

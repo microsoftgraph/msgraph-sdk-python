@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Search(Entity):
+class Search(Entity, Parsable):
     # The contentQuery property
     content_query: Optional[str] = None
     # The createdBy property

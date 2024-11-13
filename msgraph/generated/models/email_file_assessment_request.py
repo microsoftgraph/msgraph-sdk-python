@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
-class EmailFileAssessmentRequest(ThreatAssessmentRequest):
+class EmailFileAssessmentRequest(ThreatAssessmentRequest, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.emailFileAssessmentRequest"
     # Base64 encoded .eml email file content. The file content can't fetch back because it isn't stored.

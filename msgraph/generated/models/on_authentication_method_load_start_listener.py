@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .authentication_event_listener import AuthenticationEventListener
 
 @dataclass
-class OnAuthenticationMethodLoadStartListener(AuthenticationEventListener):
+class OnAuthenticationMethodLoadStartListener(AuthenticationEventListener, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onAuthenticationMethodLoadStartListener"
     # Required. Configuration for what to invoke if the event resolves to this listener. This property lets us define potential handler configurations per-event.

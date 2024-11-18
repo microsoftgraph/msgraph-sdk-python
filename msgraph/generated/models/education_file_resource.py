@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_resource import EducationResource
 
 @dataclass
-class EducationFileResource(EducationResource):
+class EducationFileResource(EducationResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationFileResource"
     # Location on disk of the file resource.

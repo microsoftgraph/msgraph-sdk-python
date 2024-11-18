@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_review_apply_action import AccessReviewApplyAction
 
 @dataclass
-class DisableAndDeleteUserApplyAction(AccessReviewApplyAction):
+class DisableAndDeleteUserApplyAction(AccessReviewApplyAction, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.disableAndDeleteUserApplyAction"
     

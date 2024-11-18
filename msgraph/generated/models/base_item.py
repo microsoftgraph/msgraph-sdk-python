@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BaseItem(Entity):
+class BaseItem(Entity, Parsable):
     # Identity of the user, device, or application that created the item. Read-only.
     created_by: Optional[IdentitySet] = None
     # Identity of the user who created the item. Read-only.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ...entity import Entity
 
 @dataclass
-class Billing(Entity):
+class Billing(Entity, Parsable):
     # Represents metadata for the exported data.
     manifests: Optional[List[Manifest]] = None
     # The OdataType property

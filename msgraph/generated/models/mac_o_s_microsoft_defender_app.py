@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class MacOSMicrosoftDefenderApp(MobileApp):
+class MacOSMicrosoftDefenderApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for the macOS Microsoft Defender App.
     """

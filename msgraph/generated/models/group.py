@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class Group(DirectoryObject):
+class Group(DirectoryObject, Parsable):
     """
     Represents a Microsoft Entra group.
     """

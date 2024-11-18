@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookApplication(Entity):
+class WorkbookApplication(Entity, Parsable):
     # Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
     calculation_mode: Optional[str] = None
     # The OdataType property

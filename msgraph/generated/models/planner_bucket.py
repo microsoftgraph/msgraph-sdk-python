@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerBucket(Entity):
+class PlannerBucket(Entity, Parsable):
     # Name of the bucket.
     name: Optional[str] = None
     # The OdataType property

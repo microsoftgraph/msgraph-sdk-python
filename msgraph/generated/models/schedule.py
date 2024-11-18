@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Schedule(Entity):
+class Schedule(Entity, Parsable):
     # Indicates whether the schedule is enabled for the team. Required.
     enabled: Optional[bool] = None
     # The OdataType property

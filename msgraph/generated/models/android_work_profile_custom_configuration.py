@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class AndroidWorkProfileCustomConfiguration(DeviceConfiguration):
+class AndroidWorkProfileCustomConfiguration(DeviceConfiguration, Parsable):
     """
     Android Work Profile custom configuration
     """

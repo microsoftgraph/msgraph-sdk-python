@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class TeamUnarchivedEventMessageDetail(EventMessageDetail):
+class TeamUnarchivedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamUnarchivedEventMessageDetail"
     # Initiator of the event.

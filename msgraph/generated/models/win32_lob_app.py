@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class Win32LobApp(MobileLobApp):
+class Win32LobApp(MobileLobApp, Parsable):
     """
     Contains properties and inherited properties for Win32 apps.
     """

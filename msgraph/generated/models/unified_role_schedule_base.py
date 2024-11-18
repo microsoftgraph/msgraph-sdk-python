@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UnifiedRoleScheduleBase(Entity):
+class UnifiedRoleScheduleBase(Entity, Parsable):
     # Read-only property with details of the app-specific scope when the role eligibility or assignment is scoped to an app. Nullable.
     app_scope: Optional[AppScope] = None
     # Identifier of the app-specific scope when the assignment or eligibility is scoped to an app. The scope of an assignment or eligibility determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units.

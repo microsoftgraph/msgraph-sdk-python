@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SimulationAutomationRun(Entity):
+class SimulationAutomationRun(Entity, Parsable):
     # Date and time when the run ends in an attack simulation automation.
     end_date_time: Optional[datetime.datetime] = None
     # The OdataType property

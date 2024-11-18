@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Calendar(Entity):
+class Calendar(Entity, Parsable):
     # Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
     allowed_online_meeting_providers: Optional[List[OnlineMeetingProviderType]] = None
     # The permissions of the users with whom the calendar is shared.

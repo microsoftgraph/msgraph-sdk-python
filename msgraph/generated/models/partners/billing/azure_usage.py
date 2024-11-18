@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from ...entity import Entity
 
 @dataclass
-class AzureUsage(Entity):
+class AzureUsage(Entity, Parsable):
     # The billed property
     billed: Optional[BilledUsage] = None
     # The OdataType property

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class WindowsAppX(MobileLobApp):
+class WindowsAppX(MobileLobApp, Parsable):
     """
     Contains properties and inherited properties for Windows AppX Line Of Business apps.
     """

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class WindowsMobileMSI(MobileLobApp):
+class WindowsMobileMSI(MobileLobApp, Parsable):
     """
     Contains properties and inherited properties for Windows Mobile MSI Line Of Business apps.
     """

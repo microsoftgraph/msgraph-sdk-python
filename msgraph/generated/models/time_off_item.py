@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .schedule_entity import ScheduleEntity
 
 @dataclass
-class TimeOffItem(ScheduleEntity):
+class TimeOffItem(ScheduleEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # ID of the timeOffReason for this timeOffItem. Required.

@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintJob(Entity):
+class PrintJob(Entity, Parsable):
     # The configuration property
     configuration: Optional[PrintJobConfiguration] = None
     # The createdBy property

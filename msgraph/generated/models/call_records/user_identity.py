@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from ..identity import Identity
 
 @dataclass
-class UserIdentity(Identity):
+class UserIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecords.userIdentity"
     # The userPrincipalName property

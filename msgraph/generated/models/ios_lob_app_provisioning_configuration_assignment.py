@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class IosLobAppProvisioningConfigurationAssignment(Entity):
+class IosLobAppProvisioningConfigurationAssignment(Entity, Parsable):
     """
     A class containing the properties used for Group Assignment of an iOS LOB App Provisioning and Configuration.
     """

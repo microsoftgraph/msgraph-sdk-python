@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_end_user_notification import BaseEndUserNotification
 
 @dataclass
-class PositiveReinforcementNotification(BaseEndUserNotification):
+class PositiveReinforcementNotification(BaseEndUserNotification, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.positiveReinforcementNotification"
     # Delivery preference. Possible values are: unknown, deliverImmedietly, deliverAfterCampaignEnd, unknownFutureValue.

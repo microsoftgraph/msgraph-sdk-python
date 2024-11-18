@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .endpoint import Endpoint
 
 @dataclass
-class ParticipantEndpoint(Endpoint):
+class ParticipantEndpoint(Endpoint, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecords.participantEndpoint"
     # Identity associated with the endpoint.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_registration_membership import DeviceRegistrationMembership
 
 @dataclass
-class AllDeviceRegistrationMembership(DeviceRegistrationMembership):
+class AllDeviceRegistrationMembership(DeviceRegistrationMembership, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.allDeviceRegistrationMembership"
     

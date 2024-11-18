@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AttackSimulationRoot(Entity):
+class AttackSimulationRoot(Entity, Parsable):
     # Represents an end user's notification for an attack simulation training.
     end_user_notifications: Optional[List[EndUserNotification]] = None
     # Represents an attack simulation training landing page.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .authentication_method import AuthenticationMethod
 
 @dataclass
-class EmailAuthenticationMethod(AuthenticationMethod):
+class EmailAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.emailAuthenticationMethod"
     # The email address registered to this user.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class TimeOffReason(ChangeTrackedEntity):
+class TimeOffReason(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.timeOffReason"
     # The name of the timeOffReason. Required.

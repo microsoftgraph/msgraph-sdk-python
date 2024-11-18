@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .bookings_availability import BookingsAvailability
 
 @dataclass
-class BookingsAvailabilityWindow(BookingsAvailability):
+class BookingsAvailabilityWindow(BookingsAvailability, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.bookingsAvailabilityWindow"
     # End date of the availability window.

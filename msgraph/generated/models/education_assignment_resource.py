@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationAssignmentResource(Entity):
+class EducationAssignmentResource(Entity, Parsable):
     # Indicates whether this resource should be copied to each student submission for modification and submission. Required
     distribute_for_student_work: Optional[bool] = None
     # The OdataType property

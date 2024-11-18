@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .online_meeting_base import OnlineMeetingBase
 
 @dataclass
-class VirtualEventSession(OnlineMeetingBase):
+class VirtualEventSession(OnlineMeetingBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventSession"
     # The virtual event session end time.

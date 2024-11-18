@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RestorePoint(Entity):
+class RestorePoint(Entity, Parsable):
     # Expiration date time of the restore point.
     expiration_date_time: Optional[datetime.datetime] = None
     # The OdataType property

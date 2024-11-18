@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class DirectoryRoleTemplate(DirectoryObject):
+class DirectoryRoleTemplate(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.directoryRoleTemplate"
     # The description to set for the directory role. Read-only.

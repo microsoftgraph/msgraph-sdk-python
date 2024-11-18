@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .base_item import BaseItem
 
 @dataclass
-class Drive(BaseItem):
+class Drive(BaseItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.drive"
     # Collection of bundles (albums and multi-select-shared sets of items). Only in personal OneDrive.

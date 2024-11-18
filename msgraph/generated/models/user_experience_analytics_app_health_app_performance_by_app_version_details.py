@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails(Entity):
+class UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails(Entity, Parsable):
     """
     The user experience analytics application performance entity contains application performance by application version details.
     """

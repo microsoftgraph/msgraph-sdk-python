@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .service_announcement_base import ServiceAnnouncementBase
 
 @dataclass
-class ServiceUpdateMessage(ServiceAnnouncementBase):
+class ServiceUpdateMessage(ServiceAnnouncementBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.serviceUpdateMessage"
     # The expected deadline of the action for the message.

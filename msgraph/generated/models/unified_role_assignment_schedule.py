@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
 @dataclass
-class UnifiedRoleAssignmentSchedule(UnifiedRoleScheduleBase):
+class UnifiedRoleAssignmentSchedule(UnifiedRoleScheduleBase, Parsable):
     # If the request is from an eligible administrator to activate a role, this parameter shows the related eligible assignment for that activation. Otherwise, it's null. Supports $expand.
     activated_using: Optional[UnifiedRoleEligibilitySchedule] = None
     # The type of the assignment that can either be Assigned or Activated. Supports $filter (eq, ne).

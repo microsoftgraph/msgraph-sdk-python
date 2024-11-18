@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .protection_policy_base import ProtectionPolicyBase
 
 @dataclass
-class SharePointProtectionPolicy(ProtectionPolicyBase):
+class SharePointProtectionPolicy(ProtectionPolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharePointProtectionPolicy"
     # The rules associated with the SharePoint Protection policy.

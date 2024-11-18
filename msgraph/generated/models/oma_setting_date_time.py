@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingDateTime(OmaSetting):
+class OmaSettingDateTime(OmaSetting, Parsable):
     """
     OMA Settings DateTime definition.
     """

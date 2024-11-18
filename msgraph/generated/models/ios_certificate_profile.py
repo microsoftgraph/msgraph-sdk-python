@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class IosCertificateProfile(DeviceConfiguration):
+class IosCertificateProfile(DeviceConfiguration, Parsable):
     """
     Device Configuration.
     """

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingBoolean(OmaSetting):
+class OmaSettingBoolean(OmaSetting, Parsable):
     """
     OMA Settings Boolean definition.
     """

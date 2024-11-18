@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .sts_policy import StsPolicy
 
 @dataclass
-class HomeRealmDiscoveryPolicy(StsPolicy):
+class HomeRealmDiscoveryPolicy(StsPolicy, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.homeRealmDiscoveryPolicy"
     

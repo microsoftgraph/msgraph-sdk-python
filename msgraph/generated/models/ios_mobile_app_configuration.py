@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
 @dataclass
-class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration):
+class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration, Parsable):
     """
     Contains properties, inherited properties and actions for iOS mobile app configurations.
     """

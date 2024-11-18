@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class MobileAppCategoryCollectionResponse(BaseCollectionPaginationCountResponse):
+class MobileAppCategoryCollectionResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[MobileAppCategory]] = None
     

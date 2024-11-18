@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class CaseOperation(Entity):
+class CaseOperation(Entity, Parsable):
     # The type of action the operation represents. Possible values are: contentExport,  applyTags, convertToPdf, index, estimateStatistics, addToReviewSet, holdUpdate, unknownFutureValue, purgeData, exportReport, exportResult. You must use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: purgeData, exportReport, exportResult.
     action: Optional[CaseAction] = None
     # The date and time the operation was completed.

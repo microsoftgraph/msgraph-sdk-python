@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .printer_base import PrinterBase
 
 @dataclass
-class Printer(PrinterBase):
+class Printer(PrinterBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.printer"
     # The connectors that are associated with the printer.

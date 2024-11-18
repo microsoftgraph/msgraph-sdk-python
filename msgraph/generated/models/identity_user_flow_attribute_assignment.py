@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class IdentityUserFlowAttributeAssignment(Entity):
+class IdentityUserFlowAttributeAssignment(Entity, Parsable):
     # The display name of the identityUserFlowAttribute within a user flow.
     display_name: Optional[str] = None
     # Determines whether the identityUserFlowAttribute is optional. true means the user doesn't have to provide a value. false means the user can't complete sign-up without providing a value.

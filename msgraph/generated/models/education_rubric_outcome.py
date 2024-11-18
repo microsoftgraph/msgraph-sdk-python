@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .education_outcome import EducationOutcome
 
 @dataclass
-class EducationRubricOutcome(EducationOutcome):
+class EducationRubricOutcome(EducationOutcome, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationRubricOutcome"
     # A copy of the rubricQualityFeedback property that is made when the grade is released to the student.

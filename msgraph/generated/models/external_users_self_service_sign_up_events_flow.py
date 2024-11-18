@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .authentication_events_flow import AuthenticationEventsFlow
 
 @dataclass
-class ExternalUsersSelfServiceSignUpEventsFlow(AuthenticationEventsFlow):
+class ExternalUsersSelfServiceSignUpEventsFlow(AuthenticationEventsFlow, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.externalUsersSelfServiceSignUpEventsFlow"
     # The configuration for what to invoke when attributes are ready to be collected from the user.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class KubernetesControllerEvidence(AlertEvidence):
+class KubernetesControllerEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.kubernetesControllerEvidence"
     # The labels for the Kubernetes pod.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ServiceApp(Entity):
+class ServiceApp(Entity, Parsable):
     # The Entra ID application ID.
     application: Optional[Identity] = None
     # Timestamp of the effective activation of the service app.

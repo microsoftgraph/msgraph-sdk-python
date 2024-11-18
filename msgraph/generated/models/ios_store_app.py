@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class IosStoreApp(MobileApp):
+class IosStoreApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for iOS store apps.
     """

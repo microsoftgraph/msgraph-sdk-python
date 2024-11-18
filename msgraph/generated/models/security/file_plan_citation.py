@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .file_plan_descriptor_base import FilePlanDescriptorBase
 
 @dataclass
-class FilePlanCitation(FilePlanDescriptorBase):
+class FilePlanCitation(FilePlanDescriptorBase, Parsable):
     # Represents the jurisdiction or agency that published the filePlanCitation.
     citation_jurisdiction: Optional[str] = None
     # Represents the URL to the published filePlanCitation.

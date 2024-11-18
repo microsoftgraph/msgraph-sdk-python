@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
 @dataclass
-class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase):
+class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.clientCertificateAuthentication"
     # The list of certificates uploaded for this API connector.

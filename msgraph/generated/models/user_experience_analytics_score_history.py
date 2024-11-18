@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsScoreHistory(Entity):
+class UserExperienceAnalyticsScoreHistory(Entity, Parsable):
     """
     The user experience analytics device startup score history.
     """

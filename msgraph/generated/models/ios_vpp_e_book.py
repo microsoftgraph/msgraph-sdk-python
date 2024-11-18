@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .managed_e_book import ManagedEBook
 
 @dataclass
-class IosVppEBook(ManagedEBook):
+class IosVppEBook(ManagedEBook, Parsable):
     """
     A class containing the properties for iOS Vpp eBook.
     """

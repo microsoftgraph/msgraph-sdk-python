@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartFont(Entity):
+class WorkbookChartFont(Entity, Parsable):
     # Indicates whether the fond is bold.
     bold: Optional[bool] = None
     # The HTML color code representation of the text color. For example #FF0000 represents Red.

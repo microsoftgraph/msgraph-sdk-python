@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class IdentityContainer(Entity):
+class IdentityContainer(Entity, Parsable):
     # Represents entry point for API connectors.
     api_connectors: Optional[List[IdentityApiConnector]] = None
     # Represents listeners for custom authentication extension events in Azure AD for workforce and customers.

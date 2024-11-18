@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedAppStatus(Entity):
+class ManagedAppStatus(Entity, Parsable):
     """
     Represents app protection and configuration status for the organization.
     """

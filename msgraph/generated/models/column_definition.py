@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ColumnDefinition(Entity):
+class ColumnDefinition(Entity, Parsable):
     # This column stores Boolean values.
     boolean: Optional[BooleanColumn] = None
     # This column's data is calculated based on other columns.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationOrganization(Entity):
+class EducationOrganization(Entity, Parsable):
     # Organization description.
     description: Optional[str] = None
     # Organization display name.

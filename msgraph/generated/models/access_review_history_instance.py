@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewHistoryInstance(Entity):
+class AccessReviewHistoryInstance(Entity, Parsable):
     # Uri that can be used to retrieve review history data. This URI will be active for 24 hours after being generated. Required.
     download_uri: Optional[str] = None
     # Timestamp when this instance and associated data expires and the history is deleted. Required.

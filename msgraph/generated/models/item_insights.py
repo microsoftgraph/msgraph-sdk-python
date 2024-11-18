@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .office_graph_insights import OfficeGraphInsights
 
 @dataclass
-class ItemInsights(OfficeGraphInsights):
+class ItemInsights(OfficeGraphInsights, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .on_user_create_start_handler import OnUserCreateStartHandler
 
 @dataclass
-class OnUserCreateStartExternalUsersSelfServiceSignUp(OnUserCreateStartHandler):
+class OnUserCreateStartExternalUsersSelfServiceSignUp(OnUserCreateStartHandler, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onUserCreateStartExternalUsersSelfServiceSignUp"
     # The type of user to create. Maps to userType property of user object. The possible values are: member, guest, unknownFutureValue.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserInsightsSettings(Entity):
+class UserInsightsSettings(Entity, Parsable):
     # True if the user's itemInsights and meeting hours insights are enabled; false if the user's itemInsights and meeting hours insights are disabled. The default value is true. Optional.
     is_enabled: Optional[bool] = None
     # The OdataType property

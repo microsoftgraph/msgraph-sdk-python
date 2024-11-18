@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Onenote(Entity):
+class Onenote(Entity, Parsable):
     # The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
     notebooks: Optional[List[Notebook]] = None
     # The OdataType property

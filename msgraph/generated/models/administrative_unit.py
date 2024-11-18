@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class AdministrativeUnit(DirectoryObject):
+class AdministrativeUnit(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.administrativeUnit"
     # An optional description for the administrative unit. Supports $filter (eq, ne, in, startsWith), $search.

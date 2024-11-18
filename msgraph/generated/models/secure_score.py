@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SecureScore(Entity):
+class SecureScore(Entity, Parsable):
     # Active user count of the given tenant.
     active_user_count: Optional[int] = None
     # Average score by different scopes (for example, average by industry, average by seating) and control category (Identity, Data, Device, Apps, Infrastructure) within the scope.

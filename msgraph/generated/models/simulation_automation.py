@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SimulationAutomation(Entity):
+class SimulationAutomation(Entity, Parsable):
     # Identity of the user who created the attack simulation automation.
     created_by: Optional[EmailIdentity] = None
     # Date and time when the attack simulation automation was created.

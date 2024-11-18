@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintTask(Entity):
+class PrintTask(Entity, Parsable):
     # The definition property
     definition: Optional[PrintTaskDefinition] = None
     # The OdataType property

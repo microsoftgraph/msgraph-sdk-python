@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookFormatProtection(Entity):
+class WorkbookFormatProtection(Entity, Parsable):
     # Indicates whether Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
     formula_hidden: Optional[bool] = None
     # Indicates whether Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .identity_provider_base import IdentityProviderBase
 
 @dataclass
-class SamlOrWsFedProvider(IdentityProviderBase):
+class SamlOrWsFedProvider(IdentityProviderBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.samlOrWsFedProvider"
     # Issuer URI of the federation server.

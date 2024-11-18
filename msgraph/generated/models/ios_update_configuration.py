@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class IosUpdateConfiguration(DeviceConfiguration):
+class IosUpdateConfiguration(DeviceConfiguration, Parsable):
     """
     IOS Update Configuration, allows you to configure time window within week to install iOS updates
     """

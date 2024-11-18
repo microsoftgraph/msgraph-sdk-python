@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .delegated_admin_relationship import DelegatedAdminRelationship
 
 @dataclass
-class ResellerDelegatedAdminRelationship(DelegatedAdminRelationship):
+class ResellerDelegatedAdminRelationship(DelegatedAdminRelationship, Parsable):
     # The tenant ID of the indirect provider partner who created the relationship for the indirect reseller partner.
     indirect_provider_tenant_id: Optional[str] = None
     # Indicates the indirect reseller partner consent status. true indicates that the partner has yet to review the relationship; false indicates that the partner has already provided consent by approving or rejecting the relationship.

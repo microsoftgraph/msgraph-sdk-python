@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .authentication_method import AuthenticationMethod
 
 @dataclass
-class MicrosoftAuthenticatorAuthenticationMethod(AuthenticationMethod):
+class MicrosoftAuthenticatorAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
     # The date and time that this app was registered. This property is null if the device isn't registered for passwordless Phone Sign-In.

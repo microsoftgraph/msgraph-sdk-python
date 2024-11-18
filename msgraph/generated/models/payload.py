@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Payload(Entity):
+class Payload(Entity, Parsable):
     # The branch of a payload. Possible values are: unknown, other, americanExpress, capitalOne, dhl, docuSign, dropbox, facebook, firstAmerican, microsoft, netflix, scotiabank, sendGrid, stewartTitle, tesco, wellsFargo, syrinxCloud, adobe, teams, zoom, unknownFutureValue.
     brand: Optional[PayloadBrand] = None
     # The complexity of a payload. Possible values are: unknown, low, medium, high, unknownFutureValue.

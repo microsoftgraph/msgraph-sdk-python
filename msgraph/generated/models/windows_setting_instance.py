@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WindowsSettingInstance(Entity):
+class WindowsSettingInstance(Entity, Parsable):
     # Set by the server. Represents the dateTime in UTC when the object was created on the server.
     created_date_time: Optional[datetime.datetime] = None
     # Set by the server. The object expires at the specified dateTime in UTC, making it unavailable after that time.

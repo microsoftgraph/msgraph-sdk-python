@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .place import Place
 
 @dataclass
-class RoomList(Place):
+class RoomList(Place, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.roomList"
     # The email address of the room list.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .service_provisioning_error import ServiceProvisioningError
 
 @dataclass
-class ServiceProvisioningXmlError(ServiceProvisioningError):
+class ServiceProvisioningXmlError(ServiceProvisioningError, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.serviceProvisioningXmlError"
     # Error Information published by the Federated Service as an xml string.

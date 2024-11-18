@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookCommentReply(Entity):
+class WorkbookCommentReply(Entity, Parsable):
     # The content of the reply.
     content: Optional[str] = None
     # The content type for the reply.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .workflow_execution_trigger import WorkflowExecutionTrigger
 
 @dataclass
-class AttributeChangeTrigger(WorkflowExecutionTrigger):
+class AttributeChangeTrigger(WorkflowExecutionTrigger, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.attributeChangeTrigger"
     # The trigger attribute being changed that triggers the workflowexecutiontrigger of a workflow.)

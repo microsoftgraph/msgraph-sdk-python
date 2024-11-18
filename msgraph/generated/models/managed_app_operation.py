@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedAppOperation(Entity):
+class ManagedAppOperation(Entity, Parsable):
     """
     Represents an operation applied against an app registration.
     """

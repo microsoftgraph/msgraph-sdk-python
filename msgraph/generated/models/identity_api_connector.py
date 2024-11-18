@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class IdentityApiConnector(Entity):
+class IdentityApiConnector(Entity, Parsable):
     # The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.
     authentication_configuration: Optional[ApiAuthenticationConfigurationBase] = None
     # The name of the API connector.

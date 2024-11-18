@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
-class Win32LobAppProductCodeRule(Win32LobAppRule):
+class Win32LobAppProductCodeRule(Win32LobAppRule, Parsable):
     """
     A complex type to store the product code and version rule data for a Win32 LOB app. This rule is not supported as a requirement rule.
     """

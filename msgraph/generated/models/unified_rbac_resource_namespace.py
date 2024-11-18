@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UnifiedRbacResourceNamespace(Entity):
+class UnifiedRbacResourceNamespace(Entity, Parsable):
     # The name property
     name: Optional[str] = None
     # The OdataType property

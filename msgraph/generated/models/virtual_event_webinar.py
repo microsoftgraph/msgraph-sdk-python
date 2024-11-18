@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .virtual_event import VirtualEvent
 
 @dataclass
-class VirtualEventWebinar(VirtualEvent):
+class VirtualEventWebinar(VirtualEvent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventWebinar"
     # To whom the webinar is visible. Possible values are: everyone, organization, and unknownFutureValue.

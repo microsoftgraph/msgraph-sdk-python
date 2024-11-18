@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AudioRoutingGroup(Entity):
+class AudioRoutingGroup(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # List of receiving participant ids.

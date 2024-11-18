@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
 @dataclass
-class OnenoteSection(OnenoteEntityHierarchyModel):
+class OnenoteSection(OnenoteEntityHierarchyModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onenoteSection"
     # Indicates whether this is the user's default section. Read-only.

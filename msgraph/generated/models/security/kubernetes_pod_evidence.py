@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class KubernetesPodEvidence(AlertEvidence):
+class KubernetesPodEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.kubernetesPodEvidence"
     # The list of pod containers which are not init or ephemeral containers.

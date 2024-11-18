@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedMobileApp(Entity):
+class ManagedMobileApp(Entity, Parsable):
     """
     The identifier for the deployment an app.
     """

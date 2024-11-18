@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class ProvisioningSystem(Identity):
+class ProvisioningSystem(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.provisioningSystem"
     # Details of the system.

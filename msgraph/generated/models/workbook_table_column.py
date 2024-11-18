@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookTableColumn(Entity):
+class WorkbookTableColumn(Entity, Parsable):
     # The filter applied to the column. Read-only.
     filter: Optional[WorkbookFilter] = None
     # The index of the column within the columns collection of the table. Zero-indexed. Read-only.

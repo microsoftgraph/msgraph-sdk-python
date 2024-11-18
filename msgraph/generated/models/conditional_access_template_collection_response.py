@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class ConditionalAccessTemplateCollectionResponse(BaseCollectionPaginationCountResponse):
+class ConditionalAccessTemplateCollectionResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[ConditionalAccessTemplate]] = None
     

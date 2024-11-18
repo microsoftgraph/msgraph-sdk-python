@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Tag(Entity):
+class Tag(Entity, Parsable):
     # The createdBy property
     created_by: Optional[IdentitySet] = None
     # The description property

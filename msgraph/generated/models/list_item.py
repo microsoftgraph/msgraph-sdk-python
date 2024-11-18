@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .base_item import BaseItem
 
 @dataclass
-class ListItem(BaseItem):
+class ListItem(BaseItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.listItem"
     # Analytics about the view activities that took place on this item.

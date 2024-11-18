@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
 @dataclass
-class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent):
+class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent, Parsable):
     """
     Event representing an enrollment failure.
     """

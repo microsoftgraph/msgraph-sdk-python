@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .artifact import Artifact
 
 @dataclass
-class UnclassifiedArtifact(Artifact):
+class UnclassifiedArtifact(Artifact, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.unclassifiedArtifact"
     # The kind for this unclassifiedArtifact resource, describing what this value means.

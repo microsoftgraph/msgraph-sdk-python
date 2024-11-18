@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class SoftwareOathAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
+class SoftwareOathAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.softwareOathAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method. Expanded by default.

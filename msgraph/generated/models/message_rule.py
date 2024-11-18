@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MessageRule(Entity):
+class MessageRule(Entity, Parsable):
     # Actions to be taken on a message when the corresponding conditions are fulfilled.
     actions: Optional[MessageRuleActions] = None
     # Conditions that when fulfilled trigger the corresponding actions for that rule.

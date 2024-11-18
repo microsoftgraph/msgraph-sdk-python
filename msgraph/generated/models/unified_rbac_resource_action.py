@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UnifiedRbacResourceAction(Entity):
+class UnifiedRbacResourceAction(Entity, Parsable):
     # The actionVerb property
     action_verb: Optional[str] = None
     # The authenticationContextId property

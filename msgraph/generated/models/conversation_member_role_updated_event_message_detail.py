@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail):
+class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail"
     # Roles for the coversation member user.

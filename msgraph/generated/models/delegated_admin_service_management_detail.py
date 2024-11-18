@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DelegatedAdminServiceManagementDetail(Entity):
+class DelegatedAdminServiceManagementDetail(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The URL of the management portal for the managed service. Read-only.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintTaskTrigger(Entity):
+class PrintTaskTrigger(Entity, Parsable):
     # The definition property
     definition: Optional[PrintTaskDefinition] = None
     # The event property

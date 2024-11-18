@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
 @dataclass
-class SamlOrWsFedExternalDomainFederation(SamlOrWsFedProvider):
+class SamlOrWsFedExternalDomainFederation(SamlOrWsFedProvider, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.samlOrWsFedExternalDomainFederation"
     # Collection of domain names of the external organizations that the tenant is federating with. Supports $filter (eq).

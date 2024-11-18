@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CallTranscript(Entity):
+class CallTranscript(Entity, Parsable):
     # The unique identifier for the call that is related to this transcript. Read-only.
     call_id: Optional[str] = None
     # The content of the transcript. Read-only.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookRangeBorder(Entity):
+class WorkbookRangeBorder(Entity, Parsable):
     # The HTML color code that represents the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or a named HTML color, for example 'orange'.
     color: Optional[str] = None
     # The OdataType property

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .role_assignment import RoleAssignment
 
 @dataclass
-class DeviceAndAppManagementRoleAssignment(RoleAssignment):
+class DeviceAndAppManagementRoleAssignment(RoleAssignment, Parsable):
     """
     The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
     """

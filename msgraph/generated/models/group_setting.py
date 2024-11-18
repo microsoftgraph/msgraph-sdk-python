@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class GroupSetting(Entity):
+class GroupSetting(Entity, Parsable):
     # Display name of this group of settings, which comes from the associated template.
     display_name: Optional[str] = None
     # The OdataType property

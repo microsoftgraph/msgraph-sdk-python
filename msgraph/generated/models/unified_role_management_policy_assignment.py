@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UnifiedRoleManagementPolicyAssignment(Entity):
+class UnifiedRoleManagementPolicyAssignment(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The policy that's associated with a policy assignment. Supports $expand and a nested $expand of the rules and effectiveRules relationships for the policy.

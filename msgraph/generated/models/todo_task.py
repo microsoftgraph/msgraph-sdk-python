@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TodoTask(Entity):
+class TodoTask(Entity, Parsable):
     # The attachmentSessions property
     attachment_sessions: Optional[List[AttachmentSession]] = None
     # A collection of file attachments for the task.

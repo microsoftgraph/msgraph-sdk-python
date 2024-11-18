@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BookingCurrency(Entity):
+class BookingCurrency(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.

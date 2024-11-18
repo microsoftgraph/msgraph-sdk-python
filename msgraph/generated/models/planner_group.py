@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerGroup(Entity):
+class PlannerGroup(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Read-only. Nullable. Returns the plannerPlans owned by the group.

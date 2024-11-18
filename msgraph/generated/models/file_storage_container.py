@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class FileStorageContainer(Entity):
+class FileStorageContainer(Entity, Parsable):
     # Container type ID of the fileStorageContainer. For details about container types, see Container Types. Each container must have only one container type. Read-only.
     container_type_id: Optional[UUID] = None
     # Date and time of the fileStorageContainer creation. Read-only.

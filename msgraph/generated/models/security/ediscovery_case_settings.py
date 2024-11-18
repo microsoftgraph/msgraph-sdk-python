@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class EdiscoveryCaseSettings(Entity):
+class EdiscoveryCaseSettings(Entity, Parsable):
     # The OCR (Optical Character Recognition) settings for the case.
     ocr: Optional[OcrSettings] = None
     # The OdataType property

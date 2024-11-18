@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class MacOsLobAppAssignmentSettings(MobileAppAssignmentSettings):
+class MacOsLobAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
     """
     Contains properties used to assign a macOS LOB app to a group.
     """

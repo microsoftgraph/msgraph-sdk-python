@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .restore_session_base import RestoreSessionBase
 
 @dataclass
-class OneDriveForBusinessRestoreSession(RestoreSessionBase):
+class OneDriveForBusinessRestoreSession(RestoreSessionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.oneDriveForBusinessRestoreSession"
     # A collection of restore points and destination details that can be used to restore a OneDrive for Business drive.

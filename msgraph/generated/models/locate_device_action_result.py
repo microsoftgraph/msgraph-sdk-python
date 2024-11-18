@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .device_action_result import DeviceActionResult
 
 @dataclass
-class LocateDeviceActionResult(DeviceActionResult):
+class LocateDeviceActionResult(DeviceActionResult, Parsable):
     """
     Locate device action result
     """

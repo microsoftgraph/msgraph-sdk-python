@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class SearchAnswer(Entity):
+class SearchAnswer(Entity, Parsable):
     # The search answer description that is shown on the search results page.
     description: Optional[str] = None
     # The search answer name that is displayed in search results.

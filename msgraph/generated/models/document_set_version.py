@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .list_item_version import ListItemVersion
 
 @dataclass
-class DocumentSetVersion(ListItemVersion):
+class DocumentSetVersion(ListItemVersion, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.documentSetVersion"
     # Comment about the captured version.

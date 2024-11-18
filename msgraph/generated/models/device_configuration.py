@@ -42,7 +42,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceConfiguration(Entity):
+class DeviceConfiguration(Entity, Parsable):
     """
     Device Configuration.
     """

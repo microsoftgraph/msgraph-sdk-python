@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Todo(Entity):
+class Todo(Entity, Parsable):
     # The task lists in the users mailbox.
     lists: Optional[List[TodoTaskList]] = None
     # The OdataType property

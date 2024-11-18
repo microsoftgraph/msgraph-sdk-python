@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .outlook_item import OutlookItem
 
 @dataclass
-class Contact(OutlookItem):
+class Contact(OutlookItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.contact"
     # The name of the contact's assistant.

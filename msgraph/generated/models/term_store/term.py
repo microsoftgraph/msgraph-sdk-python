@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Term(Entity):
+class Term(Entity, Parsable):
     # Children of current term.
     children: Optional[List[Term]] = None
     # Date and time of term creation. Read-only.

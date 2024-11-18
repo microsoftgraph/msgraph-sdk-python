@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..custom_extension_data import CustomExtensionData
 
 @dataclass
-class CustomTaskExtensionCalloutData(CustomExtensionData):
+class CustomTaskExtensionCalloutData(CustomExtensionData, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCalloutData"
     # The subject property

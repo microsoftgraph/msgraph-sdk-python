@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_set import SubjectSet
 
 @dataclass
-class TargetApplicationOwners(SubjectSet):
+class TargetApplicationOwners(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.targetApplicationOwners"
     

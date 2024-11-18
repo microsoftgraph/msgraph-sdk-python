@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TargetedManagedAppPolicyAssignment(Entity):
+class TargetedManagedAppPolicyAssignment(Entity, Parsable):
     """
     The type for deployment of groups or apps.
     """

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
 @dataclass
-class Windows10EnrollmentCompletionPageConfiguration(DeviceEnrollmentConfiguration):
+class Windows10EnrollmentCompletionPageConfiguration(DeviceEnrollmentConfiguration, Parsable):
     """
     Windows 10 Enrollment Status Page Configuration
     """

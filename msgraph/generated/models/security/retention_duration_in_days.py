@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .retention_duration import RetentionDuration
 
 @dataclass
-class RetentionDurationInDays(RetentionDuration):
+class RetentionDurationInDays(RetentionDuration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.retentionDurationInDays"
     # Specifies the time period in days for which an item with the applied retention label will be retained for.

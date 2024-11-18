@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Person(Entity):
+class Person(Entity, Parsable):
     # The person's birthday.
     birthday: Optional[str] = None
     # The name of the person's company.

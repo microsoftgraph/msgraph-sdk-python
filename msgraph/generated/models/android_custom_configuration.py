@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class AndroidCustomConfiguration(DeviceConfiguration):
+class AndroidCustomConfiguration(DeviceConfiguration, Parsable):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the androidCustomConfiguration resource.
     """

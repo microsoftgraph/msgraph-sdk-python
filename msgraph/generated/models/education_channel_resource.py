@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_resource import EducationResource
 
 @dataclass
-class EducationChannelResource(EducationResource):
+class EducationChannelResource(EducationResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationChannelResource"
     # URL of the channel resource.

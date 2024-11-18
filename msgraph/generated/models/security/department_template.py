@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .file_plan_descriptor_template import FilePlanDescriptorTemplate
 
 @dataclass
-class DepartmentTemplate(FilePlanDescriptorTemplate):
+class DepartmentTemplate(FilePlanDescriptorTemplate, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

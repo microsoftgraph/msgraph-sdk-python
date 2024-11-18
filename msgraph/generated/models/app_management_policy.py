@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .policy_base import PolicyBase
 
 @dataclass
-class AppManagementPolicy(PolicyBase):
+class AppManagementPolicy(PolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.appManagementPolicy"
     # Collection of applications and service principals to which the policy is applied.

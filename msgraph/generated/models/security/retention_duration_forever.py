@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .retention_duration import RetentionDuration
 
 @dataclass
-class RetentionDurationForever(RetentionDuration):
+class RetentionDurationForever(RetentionDuration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.retentionDurationForever"
     

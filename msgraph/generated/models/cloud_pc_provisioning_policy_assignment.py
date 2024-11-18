@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CloudPcProvisioningPolicyAssignment(Entity):
+class CloudPcProvisioningPolicyAssignment(Entity, Parsable):
     # The assignment targeted users for the provisioning policy. This list of users is computed based on assignments, licenses, group memberships, and policies. Read-only. Supports$expand.
     assigned_users: Optional[List[User]] = None
     # The OdataType property

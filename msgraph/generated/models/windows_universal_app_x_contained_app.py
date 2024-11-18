@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_contained_app import MobileContainedApp
 
 @dataclass
-class WindowsUniversalAppXContainedApp(MobileContainedApp):
+class WindowsUniversalAppXContainedApp(MobileContainedApp, Parsable):
     """
     A class that represents a contained app of a WindowsUniversalAppX app.
     """

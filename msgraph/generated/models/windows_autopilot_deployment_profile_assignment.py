@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WindowsAutopilotDeploymentProfileAssignment(Entity):
+class WindowsAutopilotDeploymentProfileAssignment(Entity, Parsable):
     """
     An assignment of a Windows Autopilot deployment profile to an AAD group.
     """

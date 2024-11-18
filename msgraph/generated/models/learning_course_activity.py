@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LearningCourseActivity(Entity):
+class LearningCourseActivity(Entity, Parsable):
     # Date and time when the assignment was completed. Optional.
     completed_date_time: Optional[datetime.datetime] = None
     # The percentage completion value of the course activity. Optional.

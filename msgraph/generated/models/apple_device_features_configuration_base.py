@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class AppleDeviceFeaturesConfigurationBase(DeviceConfiguration):
+class AppleDeviceFeaturesConfigurationBase(DeviceConfiguration, Parsable):
     """
     Apple device features configuration profile.
     """

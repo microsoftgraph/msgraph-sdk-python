@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .named_location import NamedLocation
 
 @dataclass
-class IpNamedLocation(NamedLocation):
+class IpNamedLocation(NamedLocation, Parsable):
     # List of IP address ranges in IPv4 CIDR format (for example, 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
     ip_ranges: Optional[List[IpRange]] = None
     # true if this location is explicitly trusted. Optional. Default value is false.

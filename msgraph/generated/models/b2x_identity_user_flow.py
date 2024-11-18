@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .identity_user_flow import IdentityUserFlow
 
 @dataclass
-class B2xIdentityUserFlow(IdentityUserFlow):
+class B2xIdentityUserFlow(IdentityUserFlow, Parsable):
     # Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
     api_connector_configuration: Optional[UserFlowApiConnectorConfiguration] = None
     # The identity providers included in the user flow.

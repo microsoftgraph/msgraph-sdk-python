@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LinkedResource(Entity):
+class LinkedResource(Entity, Parsable):
     # The app name of the source that sends the linkedResource.
     application_name: Optional[str] = None
     # The title of the linkedResource.

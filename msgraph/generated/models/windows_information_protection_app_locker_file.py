@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WindowsInformationProtectionAppLockerFile(Entity):
+class WindowsInformationProtectionAppLockerFile(Entity, Parsable):
     """
     Windows Information Protection AppLocker File
     """

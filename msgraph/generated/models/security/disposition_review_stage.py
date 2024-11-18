@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class DispositionReviewStage(Entity):
+class DispositionReviewStage(Entity, Parsable):
     # Name representing each stage within a collection.
     name: Optional[str] = None
     # The OdataType property

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse(BaseCollectionPaginationCountResponse):
+class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[AccessPackageAssignment]] = None
     

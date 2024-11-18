@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Participant(Entity):
+class Participant(Entity, Parsable):
     # The info property
     info: Optional[ParticipantInfo] = None
     # true if the participant is in lobby.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .group_assignment_target import GroupAssignmentTarget
 
 @dataclass
-class ExclusionGroupAssignmentTarget(GroupAssignmentTarget):
+class ExclusionGroupAssignmentTarget(GroupAssignmentTarget, Parsable):
     """
     Represents a group that should be excluded from an assignment.
     """

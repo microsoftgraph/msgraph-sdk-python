@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .ios_home_screen_item import IosHomeScreenItem
 
 @dataclass
-class IosHomeScreenFolder(IosHomeScreenItem):
+class IosHomeScreenFolder(IosHomeScreenItem, Parsable):
     """
     A folder containing pages of apps and web clips on the Home Screen.
     """

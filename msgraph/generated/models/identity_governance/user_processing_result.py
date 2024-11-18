@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class UserProcessingResult(Entity):
+class UserProcessingResult(Entity, Parsable):
     # The date time that the workflow execution for a user completed. Value is null if the workflow hasn't completed.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     completed_date_time: Optional[datetime.datetime] = None
     # The number of tasks that failed in the workflow execution.

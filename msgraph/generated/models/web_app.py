@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class WebApp(MobileApp):
+class WebApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for web apps.
     """

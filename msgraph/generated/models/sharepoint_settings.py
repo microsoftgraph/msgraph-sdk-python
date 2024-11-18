@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SharepointSettings(Entity):
+class SharepointSettings(Entity, Parsable):
     # Collection of trusted domain GUIDs for the OneDrive sync app.
     allowed_domain_guids_for_sync_app: Optional[List[UUID]] = None
     # Collection of managed paths available for site creation. Read-only.

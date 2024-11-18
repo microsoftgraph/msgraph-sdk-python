@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .case_operation import CaseOperation
 
 @dataclass
-class EdiscoveryAddToReviewSetOperation(CaseOperation):
+class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # eDiscovery review set to which items matching source collection query gets added.

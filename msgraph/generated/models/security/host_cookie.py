@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .artifact import Artifact
 
 @dataclass
-class HostCookie(Artifact):
+class HostCookie(Artifact, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.hostCookie"
     # The URI for which the cookie is valid.

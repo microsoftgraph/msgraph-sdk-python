@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class IosiPadOSWebClip(MobileApp):
+class IosiPadOSWebClip(MobileApp, Parsable):
     """
     Contains properties and inherited properties for iOS web apps.
     """

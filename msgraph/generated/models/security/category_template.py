@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .file_plan_descriptor_template import FilePlanDescriptorTemplate
 
 @dataclass
-class CategoryTemplate(FilePlanDescriptorTemplate):
+class CategoryTemplate(FilePlanDescriptorTemplate, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents all subcategories under a particular category.

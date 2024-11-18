@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
 @dataclass
-class IdentityCustomUserFlowAttribute(IdentityUserFlowAttribute):
+class IdentityCustomUserFlowAttribute(IdentityUserFlowAttribute, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityCustomUserFlowAttribute"
     

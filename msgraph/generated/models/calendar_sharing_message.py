@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .message import Message
 
 @dataclass
-class CalendarSharingMessage(Message):
+class CalendarSharingMessage(Message, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.calendarSharingMessage"
     # The canAccept property

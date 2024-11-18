@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookNamedItem(Entity):
+class WorkbookNamedItem(Entity, Parsable):
     # The comment associated with this name.
     comment: Optional[str] = None
     # The name of the object. Read-only.

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewInstanceDecisionItem(Entity):
+class AccessReviewInstanceDecisionItem(Entity, Parsable):
     # The identifier of the accessReviewInstance parent. Supports $select. Read-only.
     access_review_id: Optional[str] = None
     # The identifier of the user who applied the decision. Read-only.

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookRange(Entity):
+class WorkbookRange(Entity, Parsable):
     # Represents the range reference in A1-style. Address value contains the Sheet reference (for example, Sheet1!A1:B4). Read-only.
     address: Optional[str] = None
     # Represents range reference for the specified range in the language of the user. Read-only.

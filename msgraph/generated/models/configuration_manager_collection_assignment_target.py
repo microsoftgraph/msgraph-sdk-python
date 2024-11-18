@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
 @dataclass
-class ConfigurationManagerCollectionAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+class ConfigurationManagerCollectionAssignmentTarget(DeviceAndAppManagementAssignmentTarget, Parsable):
     """
     Represents an assignment to a Configuration Manager Collection.
     """

@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageCatalog(Entity):
+class AccessPackageCatalog(Entity, Parsable):
     # The access packages in this catalog. Read-only. Nullable.
     access_packages: Optional[List[AccessPackage]] = None
     # Whether the catalog is created by a user or entitlement management. The possible values are: userManaged, serviceDefault, serviceManaged, unknownFutureValue.

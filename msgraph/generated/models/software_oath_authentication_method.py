@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .authentication_method import AuthenticationMethod
 
 @dataclass
-class SoftwareOathAuthenticationMethod(AuthenticationMethod):
+class SoftwareOathAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.softwareOathAuthenticationMethod"
     # The secret key of the method. Always returns null.

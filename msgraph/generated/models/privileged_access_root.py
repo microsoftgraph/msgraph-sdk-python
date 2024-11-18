@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrivilegedAccessRoot(Entity):
+class PrivilegedAccessRoot(Entity, Parsable):
     # A group that's governed through Privileged Identity Management (PIM).
     group: Optional[PrivilegedAccessGroup] = None
     # The OdataType property

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrivilegedAccessScheduleInstance(Entity):
+class PrivilegedAccessScheduleInstance(Entity, Parsable):
     # When the schedule instance ends. Required.
     end_date_time: Optional[datetime.datetime] = None
     # The OdataType property

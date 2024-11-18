@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartAxisTitle(Entity):
+class WorkbookChartAxisTitle(Entity, Parsable):
     # Represents the formatting of chart axis title. Read-only.
     format: Optional[WorkbookChartAxisTitleFormat] = None
     # The OdataType property

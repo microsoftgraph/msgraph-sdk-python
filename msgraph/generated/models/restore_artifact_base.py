@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RestoreArtifactBase(Entity):
+class RestoreArtifactBase(Entity, Parsable):
     # The time when restoration of restore artifact is completed.
     completion_date_time: Optional[datetime.datetime] = None
     # Indicates the restoration destination. The possible values are: new, inPlace, unknownFutureValue.

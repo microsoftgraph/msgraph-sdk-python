@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ..subject_set import SubjectSet
 
 @dataclass
-class GroupBasedSubjectSet(SubjectSet):
+class GroupBasedSubjectSet(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.groupBasedSubjectSet"
     # The groups property

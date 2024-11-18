@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamworkHostedContent(Entity):
+class TeamworkHostedContent(Entity, Parsable):
     # Write only. Bytes for the hosted content (such as images).
     content_bytes: Optional[bytes] = None
     # Write only. Content type. such as image/png, image/jpg.

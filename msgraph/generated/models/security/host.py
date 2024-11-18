@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 from .artifact import Artifact
 
 @dataclass
-class Host(Artifact):
+class Host(Artifact, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.host"
     # The hostPairs that are resources associated with a host, where that host is the parentHost and has an outgoing pairing to a childHost.

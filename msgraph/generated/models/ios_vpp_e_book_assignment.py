@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .managed_e_book_assignment import ManagedEBookAssignment
 
 @dataclass
-class IosVppEBookAssignment(ManagedEBookAssignment):
+class IosVppEBookAssignment(ManagedEBookAssignment, Parsable):
     """
     Contains properties used to assign an iOS VPP EBook to a group.
     """

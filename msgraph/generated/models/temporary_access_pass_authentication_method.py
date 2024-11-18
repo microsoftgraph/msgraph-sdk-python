@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .authentication_method import AuthenticationMethod
 
 @dataclass
-class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod):
+class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.temporaryAccessPassAuthenticationMethod"
     # The date and time when the Temporary Access Pass was created.

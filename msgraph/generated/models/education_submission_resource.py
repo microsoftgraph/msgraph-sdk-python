@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationSubmissionResource(Entity):
+class EducationSubmissionResource(Entity, Parsable):
     # Pointer to the assignment from which the resource was copied, and if null, the student uploaded the resource.
     assignment_resource_url: Optional[str] = None
     # The OdataType property

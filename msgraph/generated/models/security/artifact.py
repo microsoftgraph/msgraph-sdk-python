@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Artifact(Entity):
+class Artifact(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

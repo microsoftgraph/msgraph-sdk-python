@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_set import SubjectSet
 
 @dataclass
-class ConnectedOrganizationMembers(SubjectSet):
+class ConnectedOrganizationMembers(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.connectedOrganizationMembers"
     # The ID of the connected organization in entitlement management.

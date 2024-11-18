@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
-class PersistentBrowserSessionControl(ConditionalAccessSessionControl):
+class PersistentBrowserSessionControl(ConditionalAccessSessionControl, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.persistentBrowserSessionControl"
     # Possible values are: always, never.

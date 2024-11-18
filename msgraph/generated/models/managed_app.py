@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class ManagedApp(MobileApp):
+class ManagedApp(MobileApp, Parsable):
     """
     Abstract class that contains properties and inherited properties for apps that you can manage with an Intune app protection policy.
     """

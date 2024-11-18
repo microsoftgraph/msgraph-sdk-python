@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartTitleFormat(Entity):
+class WorkbookChartTitleFormat(Entity, Parsable):
     # Represents the fill format of an object, which includes background formatting information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.

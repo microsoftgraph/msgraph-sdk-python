@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .standard_time_zone_offset import StandardTimeZoneOffset
 
 @dataclass
-class DaylightTimeZoneOffset(StandardTimeZoneOffset):
+class DaylightTimeZoneOffset(StandardTimeZoneOffset, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.daylightTimeZoneOffset"
     # The time offset from Coordinated Universal Time (UTC) for daylight saving time. This value is in minutes.

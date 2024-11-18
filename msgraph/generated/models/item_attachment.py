@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .attachment import Attachment
 
 @dataclass
-class ItemAttachment(Attachment):
+class ItemAttachment(Attachment, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.itemAttachment"
     # The attached message or event. Navigation property.

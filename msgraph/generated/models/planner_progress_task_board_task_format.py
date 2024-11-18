@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerProgressTaskBoardTaskFormat(Entity):
+class PlannerProgressTaskBoardTaskFormat(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.

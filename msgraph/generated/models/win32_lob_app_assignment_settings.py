@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
+class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
     """
     Contains properties used to assign an Win32 LOB mobile app to a group.
     """

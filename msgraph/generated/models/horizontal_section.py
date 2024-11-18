@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class HorizontalSection(Entity):
+class HorizontalSection(Entity, Parsable):
     # The set of vertical columns in this section.
     columns: Optional[List[HorizontalSectionColumn]] = None
     # Enumeration value that indicates the emphasis of the section background. The possible values are: none, netural, soft, strong, unknownFutureValue.

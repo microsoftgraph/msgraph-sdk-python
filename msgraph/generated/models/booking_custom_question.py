@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BookingCustomQuestion(Entity):
+class BookingCustomQuestion(Entity, Parsable):
     """
     Represents a custom question of the business.
     """

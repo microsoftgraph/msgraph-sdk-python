@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserFlowLanguageConfiguration(Entity):
+class UserFlowLanguageConfiguration(Entity, Parsable):
     # Collection of pages with the default content to display in a user flow for a specified language. This collection doesn't allow any kind of modification.
     default_pages: Optional[List[UserFlowLanguagePage]] = None
     # The language name to display. This property is read-only.

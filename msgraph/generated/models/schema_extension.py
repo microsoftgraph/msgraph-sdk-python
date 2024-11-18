@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SchemaExtension(Entity):
+class SchemaExtension(Entity, Parsable):
     # Description for the schema extension. Supports $filter (eq).
     description: Optional[str] = None
     # The OdataType property

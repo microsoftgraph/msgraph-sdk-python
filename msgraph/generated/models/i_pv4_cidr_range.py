@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .ip_range import IpRange
 
 @dataclass
-class IPv4CidrRange(IpRange):
+class IPv4CidrRange(IpRange, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.iPv4CidrRange"
     # IPv4 address in CIDR notation. Not nullable.

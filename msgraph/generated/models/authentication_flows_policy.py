@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationFlowsPolicy(Entity):
+class AuthenticationFlowsPolicy(Entity, Parsable):
     # Inherited property. A description of the policy. Optional. Read-only.
     description: Optional[str] = None
     # Inherited property. The human-readable name of the policy. Optional. Read-only.

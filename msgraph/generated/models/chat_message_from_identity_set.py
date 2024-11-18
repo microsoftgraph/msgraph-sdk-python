@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_set import IdentitySet
 
 @dataclass
-class ChatMessageFromIdentitySet(IdentitySet):
+class ChatMessageFromIdentitySet(IdentitySet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.chatMessageFromIdentitySet"
     

@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageAssignmentRequest(Entity):
+class AccessPackageAssignmentRequest(Entity, Parsable):
     # The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
     access_package: Optional[AccessPackage] = None
     # Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.

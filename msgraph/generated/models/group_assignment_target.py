@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
 @dataclass
-class GroupAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+class GroupAssignmentTarget(DeviceAndAppManagementAssignmentTarget, Parsable):
     """
     Represents an assignment to a group.
     """

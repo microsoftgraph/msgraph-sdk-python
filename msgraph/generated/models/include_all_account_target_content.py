@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .account_target_content import AccountTargetContent
 
 @dataclass
-class IncludeAllAccountTargetContent(AccountTargetContent):
+class IncludeAllAccountTargetContent(AccountTargetContent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.includeAllAccountTargetContent"
     

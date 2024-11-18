@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LandingPageDetail(Entity):
+class LandingPageDetail(Entity, Parsable):
     # Landing page detail content.
     content: Optional[str] = None
     # Indicates whether this language detail is default for the landing page.

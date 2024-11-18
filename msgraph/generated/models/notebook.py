@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
 @dataclass
-class Notebook(OnenoteEntityHierarchyModel):
+class Notebook(OnenoteEntityHierarchyModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.notebook"
     # Indicates whether this is the user's default notebook. Read-only.

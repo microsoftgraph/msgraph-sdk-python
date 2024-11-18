@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .virtual_event import VirtualEvent
 
 @dataclass
-class VirtualEventTownhall(VirtualEvent):
+class VirtualEventTownhall(VirtualEvent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventTownhall"
     # The audience to whom the town hall is visible. Possible values are: everyone, organization, and unknownFutureValue.

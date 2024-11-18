@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class FilePlanDescriptorTemplate(Entity):
+class FilePlanDescriptorTemplate(Entity, Parsable):
     # Represents the user who created the filePlanDescriptorTemplate column.
     created_by: Optional[IdentitySet] = None
     # Represents the date and time in which the filePlanDescriptorTemplate is created.

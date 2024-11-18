@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Teamwork(Entity):
+class Teamwork(Entity, Parsable):
     # A collection of deleted chats.
     deleted_chats: Optional[List[DeletedChat]] = None
     # The deleted team.

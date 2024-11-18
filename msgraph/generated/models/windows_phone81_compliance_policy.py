@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class WindowsPhone81CompliancePolicy(DeviceCompliancePolicy):
+class WindowsPhone81CompliancePolicy(DeviceCompliancePolicy, Parsable):
     """
     This class contains compliance settings for Windows 8.1 Mobile.
     """

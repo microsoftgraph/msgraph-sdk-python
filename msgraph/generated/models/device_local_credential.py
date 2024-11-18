@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceLocalCredential(Entity):
+class DeviceLocalCredential(Entity, Parsable):
     # The name of the local admin account for which LAPS is enabled.
     account_name: Optional[str] = None
     # The SID of the local admin account for which LAPS is enabled.

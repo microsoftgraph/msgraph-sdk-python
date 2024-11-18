@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .user_agent import UserAgent
 
 @dataclass
-class ServiceUserAgent(UserAgent):
+class ServiceUserAgent(UserAgent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecords.serviceUserAgent"
     # The role property

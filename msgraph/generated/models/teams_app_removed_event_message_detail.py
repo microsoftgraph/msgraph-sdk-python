@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class TeamsAppRemovedEventMessageDetail(EventMessageDetail):
+class TeamsAppRemovedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamsAppRemovedEventMessageDetail"
     # Initiator of the event.

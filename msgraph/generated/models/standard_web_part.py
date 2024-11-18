@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .web_part import WebPart
 
 @dataclass
-class StandardWebPart(WebPart):
+class StandardWebPart(WebPart, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.standardWebPart"
     # The instance identifier of the container text webPart. It only works for inline standard webPart in rich text webParts.

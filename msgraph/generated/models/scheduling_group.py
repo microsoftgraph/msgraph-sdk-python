@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class SchedulingGroup(ChangeTrackedEntity):
+class SchedulingGroup(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.schedulingGroup"
     # The display name for the schedulingGroup. Required.

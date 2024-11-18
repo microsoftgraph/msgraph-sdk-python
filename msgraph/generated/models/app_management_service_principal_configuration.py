@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .app_management_configuration import AppManagementConfiguration
 
 @dataclass
-class AppManagementServicePrincipalConfiguration(AppManagementConfiguration):
+class AppManagementServicePrincipalConfiguration(AppManagementConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.appManagementServicePrincipalConfiguration"
     

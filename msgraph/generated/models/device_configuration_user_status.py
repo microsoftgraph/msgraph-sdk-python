@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceConfigurationUserStatus(Entity):
+class DeviceConfigurationUserStatus(Entity, Parsable):
     # Devices count for that user.
     devices_count: Optional[int] = None
     # Last modified date time of the policy report.

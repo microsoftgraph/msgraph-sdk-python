@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class MessageUnpinnedEventMessageDetail(EventMessageDetail):
+class MessageUnpinnedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.messageUnpinnedEventMessageDetail"
     # Date and time when the event occurred.

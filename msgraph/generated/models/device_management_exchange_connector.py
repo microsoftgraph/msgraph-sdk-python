@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceManagementExchangeConnector(Entity):
+class DeviceManagementExchangeConnector(Entity, Parsable):
     """
     Entity which represents a connection to an Exchange environment.
     """

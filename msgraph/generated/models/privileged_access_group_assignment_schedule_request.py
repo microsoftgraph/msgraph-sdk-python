@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
 
 @dataclass
-class PrivilegedAccessGroupAssignmentScheduleRequest(PrivilegedAccessScheduleRequest):
+class PrivilegedAccessGroupAssignmentScheduleRequest(PrivilegedAccessScheduleRequest, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest"
     # The identifier of a membership or ownership assignment relationship to the group. Required. The possible values are: owner, member, unknownFutureValue.

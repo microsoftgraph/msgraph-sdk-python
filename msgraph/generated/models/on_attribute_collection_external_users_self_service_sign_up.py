@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .on_attribute_collection_handler import OnAttributeCollectionHandler
 
 @dataclass
-class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionHandler):
+class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionHandler, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onAttributeCollectionExternalUsersSelfServiceSignUp"
     # Required. The configuration for how attributes are displayed in the sign-up experience defined by a user flow, like the externalUsersSelfServiceSignupEventsFlow, specifically on the attribute collection page.

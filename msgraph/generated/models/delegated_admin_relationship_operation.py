@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DelegatedAdminRelationshipOperation(Entity):
+class DelegatedAdminRelationshipOperation(Entity, Parsable):
     # The time in ISO 8601 format and in UTC time when the long-running operation was created. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The data (payload) for the operation. Read-only.

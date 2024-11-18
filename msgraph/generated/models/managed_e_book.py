@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedEBook(Entity):
+class ManagedEBook(Entity, Parsable):
     """
     An abstract class containing the base properties for Managed eBook.
     """

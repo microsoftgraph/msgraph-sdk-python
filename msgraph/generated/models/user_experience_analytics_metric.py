@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsMetric(Entity):
+class UserExperienceAnalyticsMetric(Entity, Parsable):
     """
     The user experience analytics metric contains the score and units of a metric of a user experience anlaytics category.
     """

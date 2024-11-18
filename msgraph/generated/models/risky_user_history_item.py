@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .risky_user import RiskyUser
 
 @dataclass
-class RiskyUserHistoryItem(RiskyUser):
+class RiskyUserHistoryItem(RiskyUser, Parsable):
     # The activity related to user risk level change.
     activity: Optional[RiskUserActivity] = None
     # The ID of actor that does the operation.

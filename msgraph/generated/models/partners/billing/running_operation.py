@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .operation import Operation
 
 @dataclass
-class RunningOperation(Operation):
+class RunningOperation(Operation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

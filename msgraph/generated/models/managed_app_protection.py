@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from .managed_app_policy import ManagedAppPolicy
 
 @dataclass
-class ManagedAppProtection(ManagedAppPolicy):
+class ManagedAppProtection(ManagedAppPolicy, Parsable):
     """
     Policy used to configure detailed management settings for a specified set of apps
     """

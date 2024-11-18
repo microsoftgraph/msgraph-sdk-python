@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Request(Entity):
+class Request(Entity, Parsable):
     # The identifier of the approval of the request.
     approval_id: Optional[str] = None
     # The request completion date time.

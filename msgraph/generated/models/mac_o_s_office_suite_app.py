@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class MacOSOfficeSuiteApp(MobileApp):
+class MacOSOfficeSuiteApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for the MacOS Office Suite App.
     """

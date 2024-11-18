@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .teams_app_installation import TeamsAppInstallation
 
 @dataclass
-class UserScopeTeamsAppInstallation(TeamsAppInstallation):
+class UserScopeTeamsAppInstallation(TeamsAppInstallation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.userScopeTeamsAppInstallation"
     # The chat between the user and Teams app.

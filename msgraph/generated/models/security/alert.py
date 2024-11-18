@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Alert(Entity):
+class Alert(Entity, Parsable):
     # The adversary or activity group that is associated with this alert.
     actor_display_name: Optional[str] = None
     # A collection of other alert properties, including user-defined properties. Any custom details defined in the alert, and any dynamic content in the alert details, are stored here.

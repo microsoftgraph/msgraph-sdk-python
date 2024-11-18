@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PeopleAdminSettings(Entity):
+class PeopleAdminSettings(Entity, Parsable):
     # Represents administrator settings that manage the support for item insights in an organization.
     item_insights: Optional[InsightsSettings] = None
     # The OdataType property

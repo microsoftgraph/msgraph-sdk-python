@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .data_source import DataSource
 
 @dataclass
-class UnifiedGroupSource(DataSource):
+class UnifiedGroupSource(DataSource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.unifiedGroupSource"
     # The group property

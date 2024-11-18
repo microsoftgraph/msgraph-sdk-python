@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_set import SubjectSet
 
 @dataclass
-class SingleServicePrincipal(SubjectSet):
+class SingleServicePrincipal(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.singleServicePrincipal"
     # Description of this service principal.

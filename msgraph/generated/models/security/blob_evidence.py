@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class BlobEvidence(AlertEvidence):
+class BlobEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.blobEvidence"
     # The container which the blob belongs to.

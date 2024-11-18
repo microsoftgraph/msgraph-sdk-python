@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VirtualEventRegistrationQuestionBase(Entity):
+class VirtualEventRegistrationQuestionBase(Entity, Parsable):
     # Display name of the registration question.
     display_name: Optional[str] = None
     # Indicates whether an answer to the question is required. The default value is false.

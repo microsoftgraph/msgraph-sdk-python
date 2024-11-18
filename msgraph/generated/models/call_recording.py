@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CallRecording(Entity):
+class CallRecording(Entity, Parsable):
     # The unique identifier for the call that is related to this recording. Read-only.
     call_id: Optional[str] = None
     # The content of the recording. Read-only.

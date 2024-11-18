@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .shift_item import ShiftItem
 
 @dataclass
-class OpenShiftItem(ShiftItem):
+class OpenShiftItem(ShiftItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.openShiftItem"
     # Count of the number of slots for the given open shift.

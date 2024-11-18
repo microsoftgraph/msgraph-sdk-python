@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .privileged_access_schedule import PrivilegedAccessSchedule
 
 @dataclass
-class PrivilegedAccessGroupEligibilitySchedule(PrivilegedAccessSchedule):
+class PrivilegedAccessGroupEligibilitySchedule(PrivilegedAccessSchedule, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupEligibilitySchedule"
     # The identifier of the membership or ownership eligibility to the group that is governed by PIM. Required. The possible values are: owner, member. Supports $filter (eq).

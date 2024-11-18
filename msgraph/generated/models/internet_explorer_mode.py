@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class InternetExplorerMode(Entity):
+class InternetExplorerMode(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of site lists to support Internet Explorer mode.

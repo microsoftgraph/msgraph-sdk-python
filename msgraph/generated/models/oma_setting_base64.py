@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingBase64(OmaSetting):
+class OmaSettingBase64(OmaSetting, Parsable):
     """
     OMA Settings Base64 definition.
     """

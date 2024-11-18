@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
-class SignInFrequencySessionControl(ConditionalAccessSessionControl):
+class SignInFrequencySessionControl(ConditionalAccessSessionControl, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.signInFrequencySessionControl"
     # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue. This property isn't required when using frequencyInterval with the value of timeBased.

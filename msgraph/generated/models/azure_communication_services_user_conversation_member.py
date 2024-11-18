@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .conversation_member import ConversationMember
 
 @dataclass
-class AzureCommunicationServicesUserConversationMember(ConversationMember):
+class AzureCommunicationServicesUserConversationMember(ConversationMember, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.azureCommunicationServicesUserConversationMember"
     # Azure Communication Services ID of the user.

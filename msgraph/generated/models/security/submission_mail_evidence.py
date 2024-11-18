@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class SubmissionMailEvidence(AlertEvidence):
+class SubmissionMailEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.submissionMailEvidence"
     # The networkMessageId property

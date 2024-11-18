@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class Contract(DirectoryObject):
+class Contract(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.contract"
     # Type of contract. Possible values are:  SyndicationPartner, BreadthPartner, ResellerPartner. See more in the table below.

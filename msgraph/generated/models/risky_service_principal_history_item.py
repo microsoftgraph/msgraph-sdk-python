@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .risky_service_principal import RiskyServicePrincipal
 
 @dataclass
-class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal):
+class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal, Parsable):
     # The activity related to service principal risk level change.
     activity: Optional[RiskServicePrincipalActivity] = None
     # The identifier of the actor of the operation.

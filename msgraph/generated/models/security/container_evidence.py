@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class ContainerEvidence(AlertEvidence):
+class ContainerEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.containerEvidence"
     # The list of arguments.

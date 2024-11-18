@@ -28,7 +28,7 @@ if TYPE_CHECKING:
 from .outlook_item import OutlookItem
 
 @dataclass
-class Event(OutlookItem):
+class Event(OutlookItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.event"
     # true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedDeviceMobileAppConfigurationAssignment(Entity):
+class ManagedDeviceMobileAppConfigurationAssignment(Entity, Parsable):
     """
     Contains the properties used to assign an MDM app configuration to a group.
     """

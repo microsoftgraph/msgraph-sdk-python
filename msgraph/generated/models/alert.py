@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Alert(Entity):
+class Alert(Entity, Parsable):
     # Name or alias of the activity group (attacker) this alert is attributed to.
     activity_group_name: Optional[str] = None
     # The alertDetections property

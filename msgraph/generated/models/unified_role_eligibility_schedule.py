@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
 @dataclass
-class UnifiedRoleEligibilitySchedule(UnifiedRoleScheduleBase):
+class UnifiedRoleEligibilitySchedule(UnifiedRoleScheduleBase, Parsable):
     # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
     member_type: Optional[str] = None
     # The OdataType property

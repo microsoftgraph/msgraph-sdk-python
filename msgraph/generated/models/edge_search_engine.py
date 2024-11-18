@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .edge_search_engine_base import EdgeSearchEngineBase
 
 @dataclass
-class EdgeSearchEngine(EdgeSearchEngineBase):
+class EdgeSearchEngine(EdgeSearchEngineBase, Parsable):
     """
     Allows IT admins to set a predefined default search engine for MDM-Controlled devices.
     """

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsBaseline(Entity):
+class UserExperienceAnalyticsBaseline(Entity, Parsable):
     """
     The user experience analytics baseline entity contains baseline values against which to compare the user experience analytics scores.
     """

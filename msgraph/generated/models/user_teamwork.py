@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserTeamwork(Entity):
+class UserTeamwork(Entity, Parsable):
     # The list of associatedTeamInfo objects that a user is associated with.
     associated_teams: Optional[List[AssociatedTeamInfo]] = None
     # The apps installed in the personal scope of this user.

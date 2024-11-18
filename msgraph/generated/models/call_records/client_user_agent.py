@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .user_agent import UserAgent
 
 @dataclass
-class ClientUserAgent(UserAgent):
+class ClientUserAgent(UserAgent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecords.clientUserAgent"
     # The unique identifier of the Microsoft Entra application used by this endpoint.

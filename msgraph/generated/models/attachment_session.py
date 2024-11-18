@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AttachmentSession(Entity):
+class AttachmentSession(Entity, Parsable):
     # The content streams that are uploaded.
     content: Optional[bytes] = None
     # The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached.

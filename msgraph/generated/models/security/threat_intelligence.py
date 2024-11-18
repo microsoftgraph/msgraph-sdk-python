@@ -26,7 +26,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class ThreatIntelligence(Entity):
+class ThreatIntelligence(Entity, Parsable):
     # Refers to indicators of threat or compromise highlighted in an article.Note: List retrieval is not yet supported.
     article_indicators: Optional[List[ArticleIndicator]] = None
     # A list of article objects.

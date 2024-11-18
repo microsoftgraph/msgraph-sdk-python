@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_assignment_grade_type import EducationAssignmentGradeType
 
 @dataclass
-class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
+class EducationAssignmentPointsGradeType(EducationAssignmentGradeType, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationAssignmentPointsGradeType"
     # Max points possible for this assignment.

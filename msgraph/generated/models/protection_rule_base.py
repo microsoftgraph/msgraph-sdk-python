@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ProtectionRuleBase(Entity):
+class ProtectionRuleBase(Entity, Parsable):
     # The identity of person who created the rule.
     created_by: Optional[IdentitySet] = None
     # The time of creation of the rule.

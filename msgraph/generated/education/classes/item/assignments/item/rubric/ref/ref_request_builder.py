@@ -65,7 +65,7 @@ class RefRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, str, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "str", error_mapping)
     
     async def put(self,body: ReferenceUpdate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

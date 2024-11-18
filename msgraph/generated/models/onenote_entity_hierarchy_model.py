@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 
 @dataclass
-class OnenoteEntityHierarchyModel(OnenoteEntitySchemaObjectModel):
+class OnenoteEntityHierarchyModel(OnenoteEntitySchemaObjectModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onenoteEntityHierarchyModel"
     # Identity of the user, device, and application that created the item. Read-only.

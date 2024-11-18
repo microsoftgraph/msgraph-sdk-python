@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class CloudLogonRequestEvidence(AlertEvidence):
+class CloudLogonRequestEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.cloudLogonRequestEvidence"
     # The unique identifier for the sign-in request.

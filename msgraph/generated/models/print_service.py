@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintService(Entity):
+class PrintService(Entity, Parsable):
     # Endpoints that can be used to access the service. Read-only. Nullable.
     endpoints: Optional[List[PrintServiceEndpoint]] = None
     # The OdataType property

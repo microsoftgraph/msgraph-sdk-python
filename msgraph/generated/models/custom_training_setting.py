@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .training_setting import TrainingSetting
 
 @dataclass
-class CustomTrainingSetting(TrainingSetting):
+class CustomTrainingSetting(TrainingSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.customTrainingSetting"
     # A user collection that specifies to whom the training should be assigned. Possible values are: none, allUsers, clickedPayload, compromised, reportedPhish, readButNotClicked, didNothing, unknownFutureValue.

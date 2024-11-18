@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 from .managed_app_policy import ManagedAppPolicy
 
 @dataclass
-class WindowsInformationProtection(ManagedAppPolicy):
+class WindowsInformationProtection(ManagedAppPolicy, Parsable):
     """
     Policy for Windows information protection to configure detailed management settings
     """

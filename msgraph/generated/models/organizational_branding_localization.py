@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .organizational_branding_properties import OrganizationalBrandingProperties
 
 @dataclass
-class OrganizationalBrandingLocalization(OrganizationalBrandingProperties):
+class OrganizationalBrandingLocalization(OrganizationalBrandingProperties, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.organizationalBrandingLocalization"
     

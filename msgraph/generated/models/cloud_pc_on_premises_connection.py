@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CloudPcOnPremisesConnection(Entity):
+class CloudPcOnPremisesConnection(Entity, Parsable):
     # The fully qualified domain name (FQDN) of the Active Directory domain you want to join. Maximum length is 255. Optional.
     ad_domain_name: Optional[str] = None
     # The password associated with the username of an Active Directory account (adDomainUsername).

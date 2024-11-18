@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_source import IdentitySource
 
 @dataclass
-class DomainIdentitySource(IdentitySource):
+class DomainIdentitySource(IdentitySource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.domainIdentitySource"
     # The name of the identity source, typically also the domain name. Read only.

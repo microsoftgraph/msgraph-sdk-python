@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .artifact import Artifact
 
 @dataclass
-class HostComponent(Artifact):
+class HostComponent(Artifact, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.hostComponent"
     # The type of component that was detected (for example, Operating System, Framework, Remote Access, or Server).

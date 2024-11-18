@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .extension import Extension
 
 @dataclass
-class OpenTypeExtension(Extension):
+class OpenTypeExtension(Extension, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.openTypeExtension"
     # A unique text identifier for an open type data extension. Optional.

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SharedInsight(Entity):
+class SharedInsight(Entity, Parsable):
     # Details about the shared item. Read only.
     last_shared: Optional[SharingDetail] = None
     # The lastSharedMethod property

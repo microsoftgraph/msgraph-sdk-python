@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceCompliancePolicySettingStateSummary(Entity):
+class DeviceCompliancePolicySettingStateSummary(Entity, Parsable):
     """
     Device Compilance Policy Setting State summary across the account.
     """

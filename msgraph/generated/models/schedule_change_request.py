@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class ScheduleChangeRequest(ChangeTrackedEntity):
+class ScheduleChangeRequest(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.scheduleChangeRequest"
     # The assignedTo property

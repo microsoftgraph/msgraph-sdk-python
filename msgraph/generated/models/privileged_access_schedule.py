@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrivilegedAccessSchedule(Entity):
+class PrivilegedAccessSchedule(Entity, Parsable):
     # When the schedule was created. Optional.
     created_date_time: Optional[datetime.datetime] = None
     # The identifier of the access assignment or eligibility request that created this schedule. Optional.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class TeamworkApplicationIdentity(Identity):
+class TeamworkApplicationIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamworkApplicationIdentity"
     # Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.

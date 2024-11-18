@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ThreatAssessmentRequest(Entity):
+class ThreatAssessmentRequest(Entity, Parsable):
     # The category property
     category: Optional[ThreatCategory] = None
     # The content type of threat assessment. Possible values are: mail, url, file.

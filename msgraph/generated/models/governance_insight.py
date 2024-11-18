@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class GovernanceInsight(Entity):
+class GovernanceInsight(Entity, Parsable):
     # Indicates when the insight was created.
     insight_created_date_time: Optional[datetime.datetime] = None
     # The OdataType property

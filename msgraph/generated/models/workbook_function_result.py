@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookFunctionResult(Entity):
+class WorkbookFunctionResult(Entity, Parsable):
     # The error property
     error: Optional[str] = None
     # The OdataType property

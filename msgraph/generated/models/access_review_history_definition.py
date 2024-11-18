@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewHistoryDefinition(Entity):
+class AccessReviewHistoryDefinition(Entity, Parsable):
     # The createdBy property
     created_by: Optional[UserIdentity] = None
     # Timestamp when the access review definition was created.

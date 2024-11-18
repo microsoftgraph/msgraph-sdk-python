@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_source import IdentitySource
 
 @dataclass
-class AzureActiveDirectoryTenant(IdentitySource):
+class AzureActiveDirectoryTenant(IdentitySource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.azureActiveDirectoryTenant"
     # The name of the Microsoft Entra tenant. Read only.

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DirectoryAudit(Entity):
+class DirectoryAudit(Entity, Parsable):
     # Indicates the date and time the activity was performed. The Timestamp type is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and $orderby.
     activity_date_time: Optional[datetime.datetime] = None
     # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For a list of activities logged, refer to Microsoft Entra audit log categories and activities. Supports $filter (eq, startswith).

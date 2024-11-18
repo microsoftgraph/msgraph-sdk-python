@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Segment(Entity):
+class Segment(Entity, Parsable):
     # Endpoint that answered this segment.
     callee: Optional[Endpoint] = None
     # Endpoint that initiated this segment.

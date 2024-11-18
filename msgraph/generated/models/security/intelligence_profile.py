@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class IntelligenceProfile(Entity):
+class IntelligenceProfile(Entity, Parsable):
     # A list of commonly-known aliases for the threat intelligence included in the intelligenceProfile.
     aliases: Optional[List[str]] = None
     # The country/region of origin for the given actor or threat associated with this intelligenceProfile.

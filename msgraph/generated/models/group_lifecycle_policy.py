@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class GroupLifecyclePolicy(Entity):
+class GroupLifecyclePolicy(Entity, Parsable):
     # List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
     alternate_notification_emails: Optional[str] = None
     # Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.

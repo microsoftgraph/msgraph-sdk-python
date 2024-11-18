@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BackupRestoreRoot(Entity):
+class BackupRestoreRoot(Entity, Parsable):
     # The list of drive inclusion rules applied to the tenant.
     drive_inclusion_rules: Optional[List[DriveProtectionRule]] = None
     # The list of drive protection units in the tenant.

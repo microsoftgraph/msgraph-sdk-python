@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Invitation(Entity):
+class Invitation(Entity, Parsable):
     # The URL the user can use to redeem their invitation. Read-only.
     invite_redeem_url: Optional[str] = None
     # The URL the user should be redirected to after the invitation is redeemed. Required.

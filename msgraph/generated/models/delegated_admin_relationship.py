@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DelegatedAdminRelationship(Entity):
+class DelegatedAdminRelationship(Entity, Parsable):
     # The access assignments associated with the delegated admin relationship.
     access_assignments: Optional[List[DelegatedAdminAccessAssignment]] = None
     # The accessDetails property

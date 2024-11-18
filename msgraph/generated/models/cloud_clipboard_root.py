@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CloudClipboardRoot(Entity):
+class CloudClipboardRoot(Entity, Parsable):
     # Represents a collection of Cloud Clipboard items.
     items: Optional[List[CloudClipboardItem]] = None
     # The OdataType property

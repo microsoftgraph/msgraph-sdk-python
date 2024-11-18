@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsTxtRecord(DomainDnsRecord):
+class DomainDnsTxtRecord(DomainDnsRecord, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Value used when configuring the text property at the DNS host.

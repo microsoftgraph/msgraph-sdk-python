@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SubscribedSku(Entity):
+class SubscribedSku(Entity, Parsable):
     # The unique ID of the account this SKU belongs to.
     account_id: Optional[str] = None
     # The name of the account this SKU belongs to.

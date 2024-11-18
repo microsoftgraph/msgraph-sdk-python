@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
 @dataclass
-class DeviceEnrollmentLimitConfiguration(DeviceEnrollmentConfiguration):
+class DeviceEnrollmentLimitConfiguration(DeviceEnrollmentConfiguration, Parsable):
     """
     Device Enrollment Configuration that restricts the number of devices a user can enroll
     """

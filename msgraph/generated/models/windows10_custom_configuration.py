@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10CustomConfiguration(DeviceConfiguration):
+class Windows10CustomConfiguration(DeviceConfiguration, Parsable):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windows10CustomConfiguration resource.
     """

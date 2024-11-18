@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackage(Entity):
+class AccessPackage(Entity, Parsable):
     # The access packages that are incompatible with this package. Read-only.
     access_packages_incompatible_with: Optional[List[AccessPackage]] = None
     # Read-only. Nullable. Supports $expand.

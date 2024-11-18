@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .meeting_info import MeetingInfo
 
 @dataclass
-class OrganizerMeetingInfo(MeetingInfo):
+class OrganizerMeetingInfo(MeetingInfo, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.organizerMeetingInfo"
     # The organizer property

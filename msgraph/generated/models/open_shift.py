@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class OpenShift(ChangeTrackedEntity):
+class OpenShift(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.openShift"
     # An unpublished open shift.

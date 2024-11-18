@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
+class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity, Parsable):
     """
     The user experience analytics device for work from anywhere report.
     """

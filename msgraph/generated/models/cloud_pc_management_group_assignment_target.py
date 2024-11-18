@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .cloud_pc_management_assignment_target import CloudPcManagementAssignmentTarget
 
 @dataclass
-class CloudPcManagementGroupAssignmentTarget(CloudPcManagementAssignmentTarget):
+class CloudPcManagementGroupAssignmentTarget(CloudPcManagementAssignmentTarget, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.cloudPcManagementGroupAssignmentTarget"
     # The ID of the target group for the assignment.

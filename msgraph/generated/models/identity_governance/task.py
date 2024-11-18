@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Task(Entity):
+class Task(Entity, Parsable):
     # Arguments included within the task.  For guidance to configure this property, see Configure the arguments for built-in Lifecycle Workflow tasks. Required.
     arguments: Optional[List[KeyValuePair]] = None
     # The category property

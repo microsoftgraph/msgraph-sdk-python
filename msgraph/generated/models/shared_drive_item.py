@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .base_item import BaseItem
 
 @dataclass
-class SharedDriveItem(BaseItem):
+class SharedDriveItem(BaseItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharedDriveItem"
     # Used to access the underlying driveItem

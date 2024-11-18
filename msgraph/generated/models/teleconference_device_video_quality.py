@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
 @dataclass
-class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
+class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teleconferenceDeviceVideoQuality"
     # The average inbound stream video bit rate per second.

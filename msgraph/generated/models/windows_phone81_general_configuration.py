@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class WindowsPhone81GeneralConfiguration(DeviceConfiguration):
+class WindowsPhone81GeneralConfiguration(DeviceConfiguration, Parsable):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windowsPhone81GeneralConfiguration resource.
     """

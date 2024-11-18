@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookOperation(Entity):
+class WorkbookOperation(Entity, Parsable):
     # The error returned by the operation.
     error: Optional[WorkbookOperationError] = None
     # The OdataType property

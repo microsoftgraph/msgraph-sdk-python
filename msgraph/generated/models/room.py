@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .place import Place
 
 @dataclass
-class Room(Place):
+class Room(Place, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.room"
     # Specifies the name of the audio device in the room.

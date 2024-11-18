@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PronounsSettings(Entity):
+class PronounsSettings(Entity, Parsable):
     # true to enable pronouns in the organization; otherwise, false. The default value is false, and pronouns are disabled.
     is_enabled_in_organization: Optional[bool] = None
     # The OdataType property

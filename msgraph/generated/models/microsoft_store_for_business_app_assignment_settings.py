@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class MicrosoftStoreForBusinessAppAssignmentSettings(MobileAppAssignmentSettings):
+class MicrosoftStoreForBusinessAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
     """
     Contains properties used to assign an Microsoft Store for Business mobile app to a group.
     """

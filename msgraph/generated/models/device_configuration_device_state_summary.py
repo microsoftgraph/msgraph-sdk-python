@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceConfigurationDeviceStateSummary(Entity):
+class DeviceConfigurationDeviceStateSummary(Entity, Parsable):
     # Number of compliant devices
     compliant_device_count: Optional[int] = None
     # Number of conflict devices

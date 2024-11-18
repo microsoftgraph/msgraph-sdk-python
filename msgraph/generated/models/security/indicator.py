@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Indicator(Entity):
+class Indicator(Entity, Parsable):
     # The artifact property
     artifact: Optional[Artifact] = None
     # The OdataType property

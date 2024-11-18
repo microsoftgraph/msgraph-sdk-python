@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .web_part import WebPart
 
 @dataclass
-class TextWebPart(WebPart):
+class TextWebPart(WebPart, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.textWebPart"
     # The HTML string in text web part.

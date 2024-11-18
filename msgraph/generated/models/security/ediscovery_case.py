@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .case import Case
 
 @dataclass
-class EdiscoveryCase(Case):
+class EdiscoveryCase(Case, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryCase"
     # The user who closed the case.

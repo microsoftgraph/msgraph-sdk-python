@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .file_plan_descriptor_base import FilePlanDescriptorBase
 
 @dataclass
-class FilePlanAppliedCategory(FilePlanDescriptorBase):
+class FilePlanAppliedCategory(FilePlanDescriptorBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents the file plan descriptor for a subcategory under a specific category, which has been assigned to a particular retention label.

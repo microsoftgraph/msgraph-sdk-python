@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class EditionUpgradeConfiguration(DeviceConfiguration):
+class EditionUpgradeConfiguration(DeviceConfiguration, Parsable):
     """
     Windows 10 Edition Upgrade configuration.
     """

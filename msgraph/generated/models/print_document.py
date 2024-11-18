@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintDocument(Entity):
+class PrintDocument(Entity, Parsable):
     # The document's content (MIME) type. Read-only.
     content_type: Optional[str] = None
     # The document's name. Read-only.

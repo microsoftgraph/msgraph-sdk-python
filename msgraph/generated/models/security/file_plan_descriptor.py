@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class FilePlanDescriptor(Entity):
+class FilePlanDescriptor(Entity, Parsable):
     # Represents the file plan descriptor of type authority applied to a particular retention label.
     authority: Optional[FilePlanAuthority] = None
     # Specifies the underlying authority that describes the type of content to be retained and its retention schedule.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PolicyTemplate(Entity):
+class PolicyTemplate(Entity, Parsable):
     # Defines an optional cross-tenant access policy template with user synchronization settings for a multitenant organization.
     multi_tenant_organization_identity_synchronization: Optional[MultiTenantOrganizationIdentitySyncPolicyTemplate] = None
     # Defines an optional cross-tenant access policy template with inbound and outbound partner configuration settings for a multitenant organization.

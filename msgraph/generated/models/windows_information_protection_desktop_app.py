@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .windows_information_protection_app import WindowsInformationProtectionApp
 
 @dataclass
-class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp):
+class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp, Parsable):
     """
     Desktop App for Windows information protection
     """

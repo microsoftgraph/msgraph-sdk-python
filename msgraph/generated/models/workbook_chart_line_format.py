@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartLineFormat(Entity):
+class WorkbookChartLineFormat(Entity, Parsable):
     # The HTML color code that represents the color of lines in the chart.
     color: Optional[str] = None
     # The OdataType property

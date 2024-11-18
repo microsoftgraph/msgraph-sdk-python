@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LearningContent(Entity):
+class LearningContent(Entity, Parsable):
     # Keywords, topics, and other tags associated with the learning content. Optional.
     additional_tags: Optional[List[str]] = None
     # The content web URL for the learning content. Required.

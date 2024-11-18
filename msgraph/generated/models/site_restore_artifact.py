@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .restore_artifact_base import RestoreArtifactBase
 
 @dataclass
-class SiteRestoreArtifact(RestoreArtifactBase):
+class SiteRestoreArtifact(RestoreArtifactBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The new site identifier if the value of the destinationType property is new, and the existing site ID if the value is inPlace.

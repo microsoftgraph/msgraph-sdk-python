@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_action_result import DeviceActionResult
 
 @dataclass
-class RemoteLockActionResult(DeviceActionResult):
+class RemoteLockActionResult(DeviceActionResult, Parsable):
     """
     Lock action result with a pin to unlock
     """

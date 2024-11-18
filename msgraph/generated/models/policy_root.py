@@ -29,7 +29,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PolicyRoot(Entity):
+class PolicyRoot(Entity, Parsable):
     # The policy that controls the idle time out for web sessions for applications.
     activity_based_timeout_policies: Optional[List[ActivityBasedTimeoutPolicy]] = None
     # The policy by which consent requests are created and managed for the entire tenant.

@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Set(Entity):
+class Set(Entity, Parsable):
     # Children terms of set in term [store].
     children: Optional[List[Term]] = None
     # Date and time of set creation. Read-only.

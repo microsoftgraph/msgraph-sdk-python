@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class MailClusterEvidence(AlertEvidence):
+class MailClusterEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.mailClusterEvidence"
     # The clustering logic of the emails inside the cluster.

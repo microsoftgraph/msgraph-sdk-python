@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PermissionGrantConditionSet(Entity):
+class PermissionGrantConditionSet(Entity, Parsable):
     # A list of appId values for the client applications to match with, or a list with the single value all to match any client application. Default is the single value all.
     client_application_ids: Optional[List[str]] = None
     # A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.

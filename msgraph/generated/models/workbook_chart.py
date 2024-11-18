@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChart(Entity):
+class WorkbookChart(Entity, Parsable):
     # Represents chart axes. Read-only.
     axes: Optional[WorkbookChartAxes] = None
     # Represents the data labels on the chart. Read-only.

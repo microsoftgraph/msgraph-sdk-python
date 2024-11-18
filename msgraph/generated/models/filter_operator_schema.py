@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class FilterOperatorSchema(Entity):
+class FilterOperatorSchema(Entity, Parsable):
     # The arity property
     arity: Optional[ScopeOperatorType] = None
     # The multivaluedComparisonType property

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ServiceAnnouncement(Entity):
+class ServiceAnnouncement(Entity, Parsable):
     # A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
     health_overviews: Optional[List[ServiceHealth]] = None
     # A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.

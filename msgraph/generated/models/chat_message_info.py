@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ChatMessageInfo(Entity):
+class ChatMessageInfo(Entity, Parsable):
     # Body of the chatMessage. This will still contain markers for @mentions and attachments even though the object doesn't return @mentions and attachments.
     body: Optional[ItemBody] = None
     # Date time object representing the time at which message was created.

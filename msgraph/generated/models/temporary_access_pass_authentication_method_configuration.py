@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
+class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration"
     # Default length in characters of a Temporary Access Pass object. Must be between 8 and 48 characters.

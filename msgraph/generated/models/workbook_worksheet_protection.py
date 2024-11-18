@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookWorksheetProtection(Entity):
+class WorkbookWorksheetProtection(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Worksheet protection options. Read-only.

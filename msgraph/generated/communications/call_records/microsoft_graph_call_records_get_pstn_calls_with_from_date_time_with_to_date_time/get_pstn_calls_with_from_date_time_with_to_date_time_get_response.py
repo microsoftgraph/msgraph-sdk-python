@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse(BaseCollectionPaginationCountResponse):
+class GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[PstnCallLogRow]] = None
     

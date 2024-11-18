@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .policy_base import PolicyBase
 
 @dataclass
-class TenantAppManagementPolicy(PolicyBase):
+class TenantAppManagementPolicy(PolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.tenantAppManagementPolicy"
     # Restrictions that apply as default to all application objects in the tenant.

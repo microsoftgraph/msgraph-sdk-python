@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BrowserSharedCookie(Entity):
+class BrowserSharedCookie(Entity, Parsable):
     # The comment for the shared cookie.
     comment: Optional[str] = None
     # The date and time when the shared cookie was created.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_package_resource_attribute_destination import AccessPackageResourceAttributeDestination
 
 @dataclass
-class AccessPackageUserDirectoryAttributeStore(AccessPackageResourceAttributeDestination):
+class AccessPackageUserDirectoryAttributeStore(AccessPackageResourceAttributeDestination, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessPackageUserDirectoryAttributeStore"
     

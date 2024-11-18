@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_provider_base import IdentityProviderBase
 
 @dataclass
-class SocialIdentityProvider(IdentityProviderBase):
+class SocialIdentityProvider(IdentityProviderBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.socialIdentityProvider"
     # The identifier for the client application obtained when registering the application with the identity provider. Required.

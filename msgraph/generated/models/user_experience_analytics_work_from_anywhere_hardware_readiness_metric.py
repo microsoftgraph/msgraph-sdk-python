@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric(Entity):
+class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric(Entity, Parsable):
     """
     The user experience analytics hardware readiness entity contains account level information about hardware blockers for windows upgrade.
     """

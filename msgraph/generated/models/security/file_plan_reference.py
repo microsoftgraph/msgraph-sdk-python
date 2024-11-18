@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .file_plan_descriptor_base import FilePlanDescriptorBase
 
 @dataclass
-class FilePlanReference(FilePlanDescriptorBase):
+class FilePlanReference(FilePlanDescriptorBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

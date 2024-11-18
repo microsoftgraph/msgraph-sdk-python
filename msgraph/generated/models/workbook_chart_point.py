@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartPoint(Entity):
+class WorkbookChartPoint(Entity, Parsable):
     # The format properties of the chart point. Read-only.
     format: Optional[WorkbookChartPointFormat] = None
     # The OdataType property

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VirtualEventRegistrationConfiguration(Entity):
+class VirtualEventRegistrationConfiguration(Entity, Parsable):
     # Total capacity of the virtual event.
     capacity: Optional[int] = None
     # The OdataType property

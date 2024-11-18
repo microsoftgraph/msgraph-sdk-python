@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .team_info import TeamInfo
 
 @dataclass
-class SharedWithChannelTeamInfo(TeamInfo):
+class SharedWithChannelTeamInfo(TeamInfo, Parsable):
     # A collection of team members who have access to the shared channel.
     allowed_members: Optional[List[ConversationMember]] = None
     # Indicates whether the team is the host of the channel.

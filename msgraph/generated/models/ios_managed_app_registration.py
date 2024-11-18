@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .managed_app_registration import ManagedAppRegistration
 
 @dataclass
-class IosManagedAppRegistration(ManagedAppRegistration):
+class IosManagedAppRegistration(ManagedAppRegistration, Parsable):
     """
     Represents the synchronization details of an ios app, with management capabilities, for a specific user.
     """

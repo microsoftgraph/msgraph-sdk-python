@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class AzureCommunicationServicesUserIdentity(Identity):
+class AzureCommunicationServicesUserIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.azureCommunicationServicesUserIdentity"
     # The Azure Communication Services resource ID associated with the user.

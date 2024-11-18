@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsAppDefinition(Entity):
+class TeamsAppDefinition(Entity, Parsable):
     # Authorization requirements specified in the Teams app manifest.
     authorization: Optional[TeamsAppAuthorization] = None
     # The details of the bot specified in the Teams app manifest.

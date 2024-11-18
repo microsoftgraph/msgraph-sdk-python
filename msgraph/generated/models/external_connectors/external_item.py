@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class ExternalItem(Entity):
+class ExternalItem(Entity, Parsable):
     # An array of access control entries. Each entry specifies the access granted to a user or group. Required.
     acl: Optional[List[Acl]] = None
     # Returns a list of activities performed on the item. Write-only.

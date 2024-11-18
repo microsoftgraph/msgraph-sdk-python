@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .artifact import Artifact
 
 @dataclass
-class HostSslCertificate(Artifact):
+class HostSslCertificate(Artifact, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.hostSslCertificate"
     # The first date and time when this hostSslCertificate was observed. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

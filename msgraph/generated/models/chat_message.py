@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ChatMessage(Entity):
+class ChatMessage(Entity, Parsable):
     # References to attached objects like files, tabs, meetings etc.
     attachments: Optional[List[ChatMessageAttachment]] = None
     # The body property

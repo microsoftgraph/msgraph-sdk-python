@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VirtualEndpoint(Entity):
+class VirtualEndpoint(Entity, Parsable):
     # A collection of Cloud PC audit events.
     audit_events: Optional[List[CloudPcAuditEvent]] = None
     # A collection of cloud-managed virtual desktops.

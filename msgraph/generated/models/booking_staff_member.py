@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .booking_staff_member_base import BookingStaffMemberBase
 
 @dataclass
-class BookingStaffMember(BookingStaffMemberBase):
+class BookingStaffMember(BookingStaffMemberBase, Parsable):
     """
     Represents a staff member who provides services in a business.
     """

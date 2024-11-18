@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TargetDeviceGroup(Entity):
+class TargetDeviceGroup(Entity, Parsable):
     # Display name for the target device group.
     display_name: Optional[str] = None
     # The OdataType property

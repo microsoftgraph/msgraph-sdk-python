@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .identity_set import IdentitySet
 
 @dataclass
-class SharePointIdentitySet(IdentitySet):
+class SharePointIdentitySet(IdentitySet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharePointIdentitySet"
     # The group associated with this action. Optional.

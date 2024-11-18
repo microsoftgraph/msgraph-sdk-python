@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class GoogleCloudResourceEvidence(AlertEvidence):
+class GoogleCloudResourceEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.googleCloudResourceEvidence"
     # The fullResourceName property

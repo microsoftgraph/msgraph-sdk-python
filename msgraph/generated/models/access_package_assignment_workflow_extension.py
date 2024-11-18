@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .custom_callout_extension import CustomCalloutExtension
 
 @dataclass
-class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension):
+class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessPackageAssignmentWorkflowExtension"
     # The callback configuration for a custom extension.

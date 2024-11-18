@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintOperation(Entity):
+class PrintOperation(Entity, Parsable):
     # The DateTimeOffset when the operation was created. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The OdataType property

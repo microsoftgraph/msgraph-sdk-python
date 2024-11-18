@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedDeviceOverview(Entity):
+class ManagedDeviceOverview(Entity, Parsable):
     """
     Summary data for managed devices
     """

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EndUserNotificationDetail(Entity):
+class EndUserNotificationDetail(Entity, Parsable):
     # Email HTML content.
     email_content: Optional[str] = None
     # Indicates whether this language is default.

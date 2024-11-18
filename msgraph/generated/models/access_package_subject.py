@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageSubject(Entity):
+class AccessPackageSubject(Entity, Parsable):
     # The connected organization of the subject. Read-only. Nullable.
     connected_organization: Optional[ConnectedOrganization] = None
     # The display name of the subject.

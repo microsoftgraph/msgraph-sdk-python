@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class IosCompliancePolicy(DeviceCompliancePolicy):
+class IosCompliancePolicy(DeviceCompliancePolicy, Parsable):
     """
     This class contains compliance settings for IOS.
     """

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .managed_app_status import ManagedAppStatus
 
 @dataclass
-class ManagedAppStatusRaw(ManagedAppStatus):
+class ManagedAppStatusRaw(ManagedAppStatus, Parsable):
     """
     Represents an un-typed status report about organizations app protection and configuration.
     """

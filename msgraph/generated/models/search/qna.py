@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .search_answer import SearchAnswer
 
 @dataclass
-class Qna(SearchAnswer):
+class Qna(SearchAnswer, Parsable):
     # Date and time when the QnA stops appearing as a search result. Set as null for always available. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     availability_end_date_time: Optional[datetime.datetime] = None
     # Date and time when the QnA starts to appear as a search result. Set as null for always available. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

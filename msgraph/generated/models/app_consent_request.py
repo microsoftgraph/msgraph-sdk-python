@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AppConsentRequest(Entity):
+class AppConsentRequest(Entity, Parsable):
     # The display name of the app for which consent is requested. Required. Supports $filter (eq only) and $orderby.
     app_display_name: Optional[str] = None
     # The identifier of the application. Required. Supports $filter (eq only) and $orderby.

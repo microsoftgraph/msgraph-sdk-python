@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DelegatedAdminCustomer(Entity):
+class DelegatedAdminCustomer(Entity, Parsable):
     # The Microsoft Entra ID display name of the customer tenant. Read-only. Supports $orderby.
     display_name: Optional[str] = None
     # The OdataType property

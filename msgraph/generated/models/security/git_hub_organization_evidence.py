@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class GitHubOrganizationEvidence(AlertEvidence):
+class GitHubOrganizationEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.gitHubOrganizationEvidence"
     # The company property

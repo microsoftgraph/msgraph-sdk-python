@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MobileThreatDefenseConnector(Entity):
+class MobileThreatDefenseConnector(Entity, Parsable):
     """
     Entity which represents a connection to Mobile Threat Defense partner.
     """

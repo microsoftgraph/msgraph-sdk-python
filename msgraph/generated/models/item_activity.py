@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ItemActivity(Entity):
+class ItemActivity(Entity, Parsable):
     # An item was accessed.
     access: Optional[AccessAction] = None
     # Details about when the activity took place. Read-only.

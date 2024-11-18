@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LandingPage(Entity):
+class LandingPage(Entity, Parsable):
     # Identity of the user who created the landing page.
     created_by: Optional[EmailIdentity] = None
     # Date and time when the landing page was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

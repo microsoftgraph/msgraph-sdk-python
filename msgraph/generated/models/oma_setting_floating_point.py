@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingFloatingPoint(OmaSetting):
+class OmaSettingFloatingPoint(OmaSetting, Parsable):
     """
     OMA Settings Floating Point definition.
     """

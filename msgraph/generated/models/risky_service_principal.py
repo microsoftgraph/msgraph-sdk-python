@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RiskyServicePrincipal(Entity):
+class RiskyServicePrincipal(Entity, Parsable):
     # The globally unique identifier for the associated application (its appId property), if any.
     app_id: Optional[str] = None
     # The display name for the service principal.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
 @dataclass
-class AllDevicesAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+class AllDevicesAssignmentTarget(DeviceAndAppManagementAssignmentTarget, Parsable):
     """
     Represents an assignment to all managed devices in the tenant.
     """

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
 
 @dataclass
-class InsightValueInt(UserExperienceAnalyticsInsightValue):
+class InsightValueInt(UserExperienceAnalyticsInsightValue, Parsable):
     """
     The value in an user experience analytics insight.
     """

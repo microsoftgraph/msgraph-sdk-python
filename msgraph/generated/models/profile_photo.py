@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ProfilePhoto(Entity):
+class ProfilePhoto(Entity, Parsable):
     # The height of the photo. Read-only.
     height: Optional[int] = None
     # The OdataType property

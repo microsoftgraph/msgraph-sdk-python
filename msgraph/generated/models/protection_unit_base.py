@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ProtectionUnitBase(Entity):
+class ProtectionUnitBase(Entity, Parsable):
     # The identity of person who created the protection unit.
     created_by: Optional[IdentitySet] = None
     # The time of creation of the protection unit.

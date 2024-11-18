@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Agreement(Entity):
+class Agreement(Entity, Parsable):
     # Read-only. Information about acceptances of this agreement.
     acceptances: Optional[List[AgreementAcceptance]] = None
     # Display name of the agreement. The display name is used for internal tracking of the agreement but isn't shown to end users who view the agreement. Supports $filter (eq).

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UnifiedRoleDefinition(Entity):
+class UnifiedRoleDefinition(Entity, Parsable):
     # The description for the unifiedRoleDefinition. Read-only when isBuiltIn is true.
     description: Optional[str] = None
     # The display name for the unifiedRoleDefinition. Read-only when isBuiltIn is true. Required.  Supports $filter (eq, in).

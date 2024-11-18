@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class UserExperienceAnalyticsCategoryCollectionResponse(BaseCollectionPaginationCountResponse):
+class UserExperienceAnalyticsCategoryCollectionResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[UserExperienceAnalyticsCategory]] = None
     

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
 @dataclass
-class WindowsUpdateActiveHoursInstall(WindowsUpdateInstallScheduleType):
+class WindowsUpdateActiveHoursInstall(WindowsUpdateInstallScheduleType, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsUpdateActiveHoursInstall"
     # Active Hours End

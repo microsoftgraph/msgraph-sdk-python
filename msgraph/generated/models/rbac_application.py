@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RbacApplication(Entity):
+class RbacApplication(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The resourceNamespaces property

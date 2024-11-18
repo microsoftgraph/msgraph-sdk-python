@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VirtualEvent(Entity):
+class VirtualEvent(Entity, Parsable):
     # The identity information for the creator of the virtual event. Inherited from virtualEvent.
     created_by: Optional[CommunicationsIdentitySet] = None
     # A description of the virtual event.

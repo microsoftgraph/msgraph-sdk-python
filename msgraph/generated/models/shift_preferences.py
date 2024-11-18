@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class ShiftPreferences(ChangeTrackedEntity):
+class ShiftPreferences(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.shiftPreferences"
     # Availability of the user to be scheduled for work and its recurrence pattern.

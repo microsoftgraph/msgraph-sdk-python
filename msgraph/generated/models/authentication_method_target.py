@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationMethodTarget(Entity):
+class AuthenticationMethodTarget(Entity, Parsable):
     # Determines if the user is enforced to register the authentication method.
     is_registration_required: Optional[bool] = None
     # The OdataType property

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewReviewer(Entity):
+class AccessReviewReviewer(Entity, Parsable):
     # The date when the reviewer was added for the access review.
     created_date_time: Optional[datetime.datetime] = None
     # Name of reviewer.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class AnalyzedMessageEvidence(AlertEvidence):
+class AnalyzedMessageEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.analyzedMessageEvidence"
     # Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.

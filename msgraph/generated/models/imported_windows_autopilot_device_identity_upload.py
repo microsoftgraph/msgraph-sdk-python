@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
+class ImportedWindowsAutopilotDeviceIdentityUpload(Entity, Parsable):
     """
     Import windows autopilot devices using upload.
     """

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class TaskDefinition(Entity):
+class TaskDefinition(Entity, Parsable):
     # The category property
     category: Optional[LifecycleTaskCategory] = None
     # Defines if the workflow will continue if the task has an error.

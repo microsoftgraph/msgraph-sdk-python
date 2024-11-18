@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BrowserSiteList(Entity):
+class BrowserSiteList(Entity, Parsable):
     """
     A singleton entity which is used to specify IE mode site list metadata
     """

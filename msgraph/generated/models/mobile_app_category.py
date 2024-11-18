@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MobileAppCategory(Entity):
+class MobileAppCategory(Entity, Parsable):
     """
     Contains properties for a single Intune app category.
     """

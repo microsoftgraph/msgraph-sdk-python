@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceCompliancePolicyState(Entity):
+class DeviceCompliancePolicyState(Entity, Parsable):
     """
     Device Compliance Policy State for a given device.
     """

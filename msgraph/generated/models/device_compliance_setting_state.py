@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceComplianceSettingState(Entity):
+class DeviceComplianceSettingState(Entity, Parsable):
     """
     Device compliance setting State for a given device.
     """

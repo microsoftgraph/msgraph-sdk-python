@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .print_operation import PrintOperation
 
 @dataclass
-class PrinterCreateOperation(PrintOperation):
+class PrinterCreateOperation(PrintOperation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.printerCreateOperation"
     # The signed certificate created during the registration process. Read-only.

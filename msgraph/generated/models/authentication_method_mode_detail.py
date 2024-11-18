@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationMethodModeDetail(Entity):
+class AuthenticationMethodModeDetail(Entity, Parsable):
     # The authenticationMethod property
     authentication_method: Optional[BaseAuthenticationMethod] = None
     # The display name of this mode

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class ChannelRenamedEventMessageDetail(EventMessageDetail):
+class ChannelRenamedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.channelRenamedEventMessageDetail"
     # The updated name of the channel.

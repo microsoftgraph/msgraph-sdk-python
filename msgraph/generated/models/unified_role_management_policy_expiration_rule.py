@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyExpirationRule"
     # Indicates whether expiration is required or if it's a permanently active assignment or eligibility.

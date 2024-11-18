@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .booking_customer_information_base import BookingCustomerInformationBase
 
 @dataclass
-class BookingCustomerInformation(BookingCustomerInformationBase):
+class BookingCustomerInformation(BookingCustomerInformationBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.bookingCustomerInformation"
     # It consists of the list of custom questions and answers given by the customer as part of the appointment

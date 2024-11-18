@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ComplianceManagementPartner(Entity):
+class ComplianceManagementPartner(Entity, Parsable):
     """
     Compliance management partner for all platforms
     """

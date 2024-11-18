@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class RegistryKeyEvidence(AlertEvidence):
+class RegistryKeyEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.registryKeyEvidence"
     # Registry hive of the key that the recorded action was applied to.

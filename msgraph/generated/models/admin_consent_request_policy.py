@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AdminConsentRequestPolicy(Entity):
+class AdminConsentRequestPolicy(Entity, Parsable):
     # Specifies whether the admin consent request feature is enabled or disabled. Required.
     is_enabled: Optional[bool] = None
     # Specifies whether reviewers will receive notifications. Required.

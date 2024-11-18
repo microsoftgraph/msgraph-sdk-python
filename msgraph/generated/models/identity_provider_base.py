@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class IdentityProviderBase(Entity):
+class IdentityProviderBase(Entity, Parsable):
     # The display name of the identity provider.
     display_name: Optional[str] = None
     # The OdataType property

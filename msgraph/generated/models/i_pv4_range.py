@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .ip_range import IpRange
 
 @dataclass
-class IPv4Range(IpRange):
+class IPv4Range(IpRange, Parsable):
     """
     IPv4 Range definition.
     """

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class MacOSMicrosoftEdgeApp(MobileApp):
+class MacOSMicrosoftEdgeApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for the macOS Microsoft Edge App.
     """

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
 
 @dataclass
-class VirtualEventRegistrationPredefinedQuestion(VirtualEventRegistrationQuestionBase):
+class VirtualEventRegistrationPredefinedQuestion(VirtualEventRegistrationQuestionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventRegistrationPredefinedQuestion"
     # Label of the predefined registration question. It accepts a single line of text: street, city, state, postalCode, countryOrRegion, industry, jobTitle, organization, and unknownFutureValue.

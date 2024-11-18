@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class TimeOff(ChangeTrackedEntity):
+class TimeOff(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.timeOff"
     # The draft version of this timeOff item that is viewable by managers. It must be shared before it is visible to team members. Required.

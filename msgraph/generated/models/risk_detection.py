@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RiskDetection(Entity):
+class RiskDetection(Entity, Parsable):
     # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.
     activity: Optional[ActivityType] = None
     # Date and time that the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z

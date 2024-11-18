@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SynchronizationSchema(Entity):
+class SynchronizationSchema(Entity, Parsable):
     # Contains the collection of directories and all of their objects.
     directories: Optional[List[DirectoryDefinition]] = None
     # The OdataType property

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MailFolder(Entity):
+class MailFolder(Entity, Parsable):
     # The number of immediate child mailFolders in the current mailFolder.
     child_folder_count: Optional[int] = None
     # The collection of child folders in the mailFolder.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MultiTenantOrganization(Entity):
+class MultiTenantOrganization(Entity, Parsable):
     # Date when multitenant organization was created. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # Description of the multitenant organization.

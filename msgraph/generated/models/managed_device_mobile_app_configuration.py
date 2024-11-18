@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedDeviceMobileAppConfiguration(Entity):
+class ManagedDeviceMobileAppConfiguration(Entity, Parsable):
     """
     An abstract class for Mobile app configuration for enrolled devices.
     """

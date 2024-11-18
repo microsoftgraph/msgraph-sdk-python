@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MobileAppContent(Entity):
+class MobileAppContent(Entity, Parsable):
     """
     Contains content properties for a specific app version. Each mobileAppContent can have multiple mobileAppContentFile.
     """

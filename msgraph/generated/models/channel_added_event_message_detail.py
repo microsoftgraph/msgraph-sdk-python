@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class ChannelAddedEventMessageDetail(EventMessageDetail):
+class ChannelAddedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.channelAddedEventMessageDetail"
     # Display name of the channel.

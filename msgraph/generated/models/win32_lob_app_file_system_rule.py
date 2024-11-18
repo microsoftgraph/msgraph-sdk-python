@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
-class Win32LobAppFileSystemRule(Win32LobAppRule):
+class Win32LobAppFileSystemRule(Win32LobAppRule, Parsable):
     """
     A complex type to store file or folder rule data for a Win32 LOB app.
     """

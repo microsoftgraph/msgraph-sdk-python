@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookTableRow(Entity):
+class WorkbookTableRow(Entity, Parsable):
     # The index of the row within the rows collection of the table. Zero-based. Read-only.
     index: Optional[int] = None
     # The OdataType property

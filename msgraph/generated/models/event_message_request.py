@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .event_message import EventMessage
 
 @dataclass
-class EventMessageRequest(EventMessage):
+class EventMessageRequest(EventMessage, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.eventMessageRequest"
     # True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.

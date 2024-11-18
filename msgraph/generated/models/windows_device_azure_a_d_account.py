@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .windows_device_account import WindowsDeviceAccount
 
 @dataclass
-class WindowsDeviceAzureADAccount(WindowsDeviceAccount):
+class WindowsDeviceAzureADAccount(WindowsDeviceAccount, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsDeviceAzureADAccount"
     # Not yet documented

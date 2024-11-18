@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Conversation(Entity):
+class Conversation(Entity, Parsable):
     # Indicates whether any of the posts within this Conversation has at least one attachment. Supports $filter (eq, ne) and $search.
     has_attachments: Optional[bool] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z

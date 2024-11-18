@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .comms_operation import CommsOperation
 
 @dataclass
-class AddLargeGalleryViewOperation(CommsOperation):
+class AddLargeGalleryViewOperation(CommsOperation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

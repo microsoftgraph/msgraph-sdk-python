@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ItemActivityStat(Entity):
+class ItemActivityStat(Entity, Parsable):
     # Statistics about the access actions in this interval. Read-only.
     access: Optional[ItemActionStat] = None
     # Exposes the itemActivities represented in this itemActivityStat resource.

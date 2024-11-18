@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerUser(Entity):
+class PlannerUser(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Read-only. Nullable. Returns the plannerTasks assigned to the user.

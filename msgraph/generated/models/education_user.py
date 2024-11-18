@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationUser(Entity):
+class EducationUser(Entity, Parsable):
     # True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
     account_enabled: Optional[bool] = None
     # The licenses that are assigned to the user. Not nullable.

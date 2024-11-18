@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .governance_insight import GovernanceInsight
 
 @dataclass
-class UserSignInInsight(GovernanceInsight):
+class UserSignInInsight(GovernanceInsight, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.userSignInInsight"
     # Indicates when the user last signed in.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .file_plan_descriptor_template import FilePlanDescriptorTemplate
 
 @dataclass
-class CitationTemplate(FilePlanDescriptorTemplate):
+class CitationTemplate(FilePlanDescriptorTemplate, Parsable):
     # Represents the jurisdiction or agency that published the citation.
     citation_jurisdiction: Optional[str] = None
     # Represents the URL to the published citation.

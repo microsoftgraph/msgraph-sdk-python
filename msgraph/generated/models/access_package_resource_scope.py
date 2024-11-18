@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageResourceScope(Entity):
+class AccessPackageResourceScope(Entity, Parsable):
     # The description of the scope.
     description: Optional[str] = None
     # The display name of the scope.

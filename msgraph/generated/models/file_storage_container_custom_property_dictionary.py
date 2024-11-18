@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .dictionary import Dictionary
 
 @dataclass
-class FileStorageContainerCustomPropertyDictionary(Dictionary):
+class FileStorageContainerCustomPropertyDictionary(Dictionary, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

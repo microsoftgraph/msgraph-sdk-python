@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceLogCollectionResponse(Entity):
+class DeviceLogCollectionResponse(Entity, Parsable):
     """
     Windows Log Collection request entity.
     """

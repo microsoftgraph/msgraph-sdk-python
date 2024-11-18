@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationClass(Entity):
+class EducationClass(Entity, Parsable):
     # All categories associated with this class. Nullable.
     assignment_categories: Optional[List[EducationCategory]] = None
     # Specifies class-level defaults respected by new assignments created in the class.

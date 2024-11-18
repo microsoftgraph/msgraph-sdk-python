@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .teamwork_hosted_content import TeamworkHostedContent
 
 @dataclass
-class ChatMessageHostedContent(TeamworkHostedContent):
+class ChatMessageHostedContent(TeamworkHostedContent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

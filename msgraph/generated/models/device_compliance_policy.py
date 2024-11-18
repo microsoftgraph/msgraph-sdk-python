@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceCompliancePolicy(Entity):
+class DeviceCompliancePolicy(Entity, Parsable):
     """
     This is the base class for Compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here. 
     """

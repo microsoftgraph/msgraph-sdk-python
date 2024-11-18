@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .protection_rule_base import ProtectionRuleBase
 
 @dataclass
-class DriveProtectionRule(ProtectionRuleBase):
+class DriveProtectionRule(ProtectionRuleBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.driveProtectionRule"
     # Contains a drive expression. For examples, see driveExpression examples.

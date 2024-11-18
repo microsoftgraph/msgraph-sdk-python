@@ -63,7 +63,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class User(DirectoryObject):
+class User(DirectoryObject, Parsable):
     """
     Represents a Microsoft Entra user account.
     """

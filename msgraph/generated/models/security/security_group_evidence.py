@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class SecurityGroupEvidence(AlertEvidence):
+class SecurityGroupEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.securityGroupEvidence"
     # The name of the security group.

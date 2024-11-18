@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerTask(Entity):
+class PlannerTask(Entity, Parsable):
     # Number of checklist items with value set to false, representing incomplete items.
     active_checklist_item_count: Optional[int] = None
     # The categories to which the task has been applied. See applied Categories for possible values.

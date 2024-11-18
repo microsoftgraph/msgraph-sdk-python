@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .agreement_file_properties import AgreementFileProperties
 
 @dataclass
-class AgreementFileVersion(AgreementFileProperties):
+class AgreementFileVersion(AgreementFileProperties, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

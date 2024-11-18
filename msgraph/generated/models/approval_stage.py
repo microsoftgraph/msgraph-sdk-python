@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ApprovalStage(Entity):
+class ApprovalStage(Entity, Parsable):
     # Indicates whether the stage is assigned to the calling user to review. Read-only.
     assigned_to_me: Optional[bool] = None
     # The label provided by the policy creator to identify an approval stage. Read-only.

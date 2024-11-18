@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Approval(Entity):
+class Approval(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of stages in the approval decision.

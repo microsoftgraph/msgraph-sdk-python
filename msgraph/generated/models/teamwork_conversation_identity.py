@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class TeamworkConversationIdentity(Identity):
+class TeamworkConversationIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamworkConversationIdentity"
     # Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.

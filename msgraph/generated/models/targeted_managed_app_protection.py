@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .managed_app_protection import ManagedAppProtection
 
 @dataclass
-class TargetedManagedAppProtection(ManagedAppProtection):
+class TargetedManagedAppProtection(ManagedAppProtection, Parsable):
     """
     Policy used to configure detailed management settings targeted to specific security groups
     """

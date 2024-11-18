@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .protection_unit_base import ProtectionUnitBase
 
 @dataclass
-class SiteProtectionUnit(ProtectionUnitBase):
+class SiteProtectionUnit(ProtectionUnitBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.siteProtectionUnit"
     # Unique identifier of the SharePoint site.

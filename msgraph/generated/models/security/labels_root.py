@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class LabelsRoot(Entity):
+class LabelsRoot(Entity, Parsable):
     # Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
     authorities: Optional[List[AuthorityTemplate]] = None
     # Specifies a group of similar types of content in a particular department.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AllowedValue(Entity):
+class AllowedValue(Entity, Parsable):
     # Indicates whether the predefined value is active or deactivated. If set to false, this predefined value can't be assigned to any other supported directory objects.
     is_active: Optional[bool] = None
     # The OdataType property

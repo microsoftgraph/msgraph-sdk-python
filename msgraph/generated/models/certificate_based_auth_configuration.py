@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CertificateBasedAuthConfiguration(Entity):
+class CertificateBasedAuthConfiguration(Entity, Parsable):
     # Collection of certificate authorities which creates a trusted certificate chain.
     certificate_authorities: Optional[List[CertificateAuthority]] = None
     # The OdataType property

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .......models.base_delta_function_response import BaseDeltaFunctionResponse
 
 @dataclass
-class DeltaWithTokenGetResponse(BaseDeltaFunctionResponse):
+class DeltaWithTokenGetResponse(BaseDeltaFunctionResponse, Parsable):
     # The value property
     value: Optional[List[ListItem]] = None
     

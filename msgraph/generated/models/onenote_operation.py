@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .operation import Operation
 
 @dataclass
-class OnenoteOperation(Operation):
+class OnenoteOperation(Operation, Parsable):
     # The error returned by the operation.
     error: Optional[OnenoteOperationError] = None
     # The OdataType property

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Edge(Entity):
+class Edge(Entity, Parsable):
     # A container for Internet Explorer mode resources.
     internet_explorer_mode: Optional[InternetExplorerMode] = None
     # The OdataType property

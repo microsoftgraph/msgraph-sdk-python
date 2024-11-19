@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .on_interactive_auth_flow_start_handler import OnInteractiveAuthFlowStartHandler
 
 @dataclass
-class OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp(OnInteractiveAuthFlowStartHandler):
+class OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp(OnInteractiveAuthFlowStartHandler, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onInteractiveAuthFlowStartExternalUsersSelfServiceSignUp"
     # Optional. Specifies whether the authentication flow includes an option to sign up (create account) and sign in. Default value is false meaning only sign in is enabled.

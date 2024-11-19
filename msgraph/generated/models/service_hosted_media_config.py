@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .media_config import MediaConfig
 
 @dataclass
-class ServiceHostedMediaConfig(MediaConfig):
+class ServiceHostedMediaConfig(MediaConfig, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.serviceHostedMediaConfig"
     # The list of media to pre-fetch.

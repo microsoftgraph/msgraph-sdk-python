@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class CloudLogonSessionEvidence(AlertEvidence):
+class CloudLogonSessionEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.cloudLogonSessionEvidence"
     # The account associated with the sign-in session.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class AndroidStoreApp(MobileApp):
+class AndroidStoreApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for Android store apps.
     """

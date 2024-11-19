@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .managed_app import ManagedApp
 
 @dataclass
-class ManagedIOSStoreApp(ManagedApp):
+class ManagedIOSStoreApp(ManagedApp, Parsable):
     """
     Contains properties and inherited properties for an iOS store app that you can manage with an Intune app protection policy.
     """

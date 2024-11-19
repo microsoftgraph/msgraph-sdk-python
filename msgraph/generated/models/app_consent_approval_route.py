@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AppConsentApprovalRoute(Entity):
+class AppConsentApprovalRoute(Entity, Parsable):
     # A collection of appConsentRequest objects representing apps for which admin consent has been requested by one or more users.
     app_consent_requests: Optional[List[AppConsentRequest]] = None
     # The OdataType property

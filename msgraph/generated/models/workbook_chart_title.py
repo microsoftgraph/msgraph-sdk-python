@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartTitle(Entity):
+class WorkbookChartTitle(Entity, Parsable):
     # The formatting of a chart title, which includes fill and font formatting. Read-only.
     format: Optional[WorkbookChartTitleFormat] = None
     # The OdataType property

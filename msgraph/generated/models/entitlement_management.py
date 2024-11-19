@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EntitlementManagement(Entity):
+class EntitlementManagement(Entity, Parsable):
     # Approval stages for decisions associated with access package assignment requests.
     access_package_assignment_approvals: Optional[List[Approval]] = None
     # Access packages define the collection of resource roles and the policies for which subjects can request or be assigned access to those resources.

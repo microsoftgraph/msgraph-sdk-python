@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceComplianceDeviceStatus(Entity):
+class DeviceComplianceDeviceStatus(Entity, Parsable):
     # The DateTime when device compliance grace period expires
     compliance_grace_period_expiration_date_time: Optional[datetime.datetime] = None
     # Device name of the DevicePolicyStatus.

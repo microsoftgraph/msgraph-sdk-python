@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CrossTenantAccessPolicyConfigurationDefault(Entity):
+class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
     # Determines the default configuration for automatic user consent settings. The inboundAllowed and outboundAllowed properties are always false and can't be updated in the default configuration. Read-only.
     automatic_user_consent_settings: Optional[InboundOutboundPolicyConfiguration] = None
     # Defines your default configuration for users from other organizations accessing your resources via Microsoft Entra B2B collaboration.

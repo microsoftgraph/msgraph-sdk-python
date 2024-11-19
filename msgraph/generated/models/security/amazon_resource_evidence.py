@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class AmazonResourceEvidence(AlertEvidence):
+class AmazonResourceEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.amazonResourceEvidence"
     # The unique identifier for the Amazon account.

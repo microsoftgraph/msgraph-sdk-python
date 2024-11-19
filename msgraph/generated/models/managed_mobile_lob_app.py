@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .managed_app import ManagedApp
 
 @dataclass
-class ManagedMobileLobApp(ManagedApp):
+class ManagedMobileLobApp(ManagedApp, Parsable):
     """
     An abstract base class containing properties for all managed mobile line of business apps.
     """

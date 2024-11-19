@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .onenote_entity_base_model import OnenoteEntityBaseModel
 
 @dataclass
-class OnenoteResource(OnenoteEntityBaseModel):
+class OnenoteResource(OnenoteEntityBaseModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onenoteResource"
     # The content stream

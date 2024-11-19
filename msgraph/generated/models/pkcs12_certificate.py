@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
 @dataclass
-class Pkcs12Certificate(ApiAuthenticationConfigurationBase):
+class Pkcs12Certificate(ApiAuthenticationConfigurationBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.pkcs12Certificate"
     # The password for the pfx file. Required. If no password is used, you must still provide a value of ''.

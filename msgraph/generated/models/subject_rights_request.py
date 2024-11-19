@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SubjectRightsRequest(Entity):
+class SubjectRightsRequest(Entity, Parsable):
     # Collection of users who can approve the request. Currently only supported for requests of type delete.
     approvers: Optional[List[User]] = None
     # Identity that the request is assigned to.

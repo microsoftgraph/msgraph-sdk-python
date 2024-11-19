@@ -28,7 +28,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Call(Entity):
+class Call(Entity, Parsable):
     # The audioRoutingGroups property
     audio_routing_groups: Optional[List[AudioRoutingGroup]] = None
     # A unique identifier for all the participant calls in a conference or a unique identifier for two participant calls in a P2P call.  This identifier must be copied over from Microsoft.Graph.Call.CallChainId.

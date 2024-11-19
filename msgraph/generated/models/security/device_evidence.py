@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class DeviceEvidence(AlertEvidence):
+class DeviceEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.deviceEvidence"
     # A unique identifier assigned to a device by Microsoft Entra ID when device is Microsoft Entra joined.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceComplianceActionItem(Entity):
+class DeviceComplianceActionItem(Entity, Parsable):
     """
     Scheduled Action Configuration
     """

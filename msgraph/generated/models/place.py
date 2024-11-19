@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Place(Entity):
+class Place(Entity, Parsable):
     # The street address of the place.
     address: Optional[PhysicalAddress] = None
     # The name associated with the place.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AdminReportSettings(Entity):
+class AdminReportSettings(Entity, Parsable):
     # If set to true, all reports conceal user information such as usernames, groups, and sites. If false, all reports show identifiable information. This property represents a setting in the Microsoft 365 admin center. Required.
     display_concealed_names: Optional[bool] = None
     # The OdataType property

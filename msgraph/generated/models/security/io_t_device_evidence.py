@@ -14,60 +14,60 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class IoTDeviceEvidence(AlertEvidence):
+class IoTDeviceEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ioTDeviceEvidence"
-    # The deviceId property
+    # The device ID.
     device_id: Optional[str] = None
-    # The deviceName property
+    # The friendly name of the device.
     device_name: Optional[str] = None
-    # The devicePageLink property
+    # The URL to the device page in the IoT Defender portal.
     device_page_link: Optional[str] = None
-    # The deviceSubType property
+    # The device subtype.
     device_sub_type: Optional[str] = None
-    # The deviceType property
+    # The type of the device. For example, 'temperature sensor,' 'freezer,' 'wind turbine,' and so on.
     device_type: Optional[str] = None
-    # The importance property
+    # The importance level for the IoT device. Possible values are low, normal, high, and unknownFutureValue.
     importance: Optional[IoTDeviceImportanceType] = None
-    # The ioTHub property
+    # The azureResourceEvidence entity that represents the IoT Hub that the device belongs to.
     io_t_hub: Optional[AzureResourceEvidence] = None
-    # The ioTSecurityAgentId property
+    # The ID of the Azure Security Center for the IoT agent that is running on the device.
     io_t_security_agent_id: Optional[str] = None
-    # The ipAddress property
+    # The current IP address of the device.
     ip_address: Optional[IpEvidence] = None
-    # The isAuthorized property
+    # Indicates whether the device classified as an authorized device.
     is_authorized: Optional[bool] = None
-    # The isProgramming property
+    # Indicates whether the device classified as a programming device.
     is_programming: Optional[bool] = None
-    # The isScanner property
+    # Indicates whether the device classified as a scanner.
     is_scanner: Optional[bool] = None
-    # The macAddress property
+    # The MAC address of the device.
     mac_address: Optional[str] = None
-    # The manufacturer property
+    # The manufacturer of the device.
     manufacturer: Optional[str] = None
-    # The model property
+    # The model of the device.
     model: Optional[str] = None
-    # The nics property
+    # The current network interface controllers on the device.
     nics: Optional[List[NicEvidence]] = None
-    # The operatingSystem property
+    # The operating system the device is running.
     operating_system: Optional[str] = None
-    # The owners property
+    # The owners for the device.
     owners: Optional[List[str]] = None
-    # The protocols property
+    # The list of protocols that the device supports.
     protocols: Optional[List[str]] = None
-    # The purdueLayer property
+    # The Purdue Layer of the device.
     purdue_layer: Optional[str] = None
-    # The sensor property
+    # The sensor that monitors the device.
     sensor: Optional[str] = None
-    # The serialNumber property
+    # The serial number of the device.
     serial_number: Optional[str] = None
-    # The site property
+    # The site location of the device.
     site: Optional[str] = None
-    # The source property
+    # The source (microsoft/vendor) of the device entity.
     source: Optional[str] = None
-    # The sourceRef property
+    # A URL reference to the source item where the device is managed.
     source_ref: Optional[UrlEvidence] = None
-    # The zone property
+    # The zone location of the device within a site.
     zone: Optional[str] = None
     
     @staticmethod

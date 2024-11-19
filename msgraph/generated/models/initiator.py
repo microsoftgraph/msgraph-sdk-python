@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class Initiator(Identity):
+class Initiator(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.initiator"
     # Type of initiator. Possible values are: user, application, system, unknownFutureValue.

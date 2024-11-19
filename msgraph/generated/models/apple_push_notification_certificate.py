@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ApplePushNotificationCertificate(Entity):
+class ApplePushNotificationCertificate(Entity, Parsable):
     """
     Apple push notification certificate.
     """

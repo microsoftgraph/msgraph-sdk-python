@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 
 @dataclass
-class OnenotePage(OnenoteEntitySchemaObjectModel):
+class OnenotePage(OnenoteEntitySchemaObjectModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onenotePage"
     # The page's HTML content.

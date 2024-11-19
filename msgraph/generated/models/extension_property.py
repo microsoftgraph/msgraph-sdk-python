@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class ExtensionProperty(DirectoryObject):
+class ExtensionProperty(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.extensionProperty"
     # Display name of the application object on which this extension property is defined. Read-only.

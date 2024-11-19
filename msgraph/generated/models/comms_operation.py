@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CommsOperation(Entity):
+class CommsOperation(Entity, Parsable):
     # Unique Client Context string. Max limit is 256 chars.
     client_context: Optional[str] = None
     # The OdataType property

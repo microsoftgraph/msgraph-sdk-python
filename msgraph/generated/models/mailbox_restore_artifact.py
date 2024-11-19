@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .restore_artifact_base import RestoreArtifactBase
 
 @dataclass
-class MailboxRestoreArtifact(RestoreArtifactBase):
+class MailboxRestoreArtifact(RestoreArtifactBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The new restored folder identifier for the user.

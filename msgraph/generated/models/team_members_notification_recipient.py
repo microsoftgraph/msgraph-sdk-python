@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
 @dataclass
-class TeamMembersNotificationRecipient(TeamworkNotificationRecipient):
+class TeamMembersNotificationRecipient(TeamworkNotificationRecipient, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamMembersNotificationRecipient"
     # The unique identifier for the team whose members should receive the notification.

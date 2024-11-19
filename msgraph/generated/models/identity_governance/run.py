@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Run(Entity):
+class Run(Entity, Parsable):
     # The date time that the run completed. Value is null if the workflow hasn't completed.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     completed_date_time: Optional[datetime.datetime] = None
     # The number of tasks that failed in the run execution.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ServiceAnnouncementBase(Entity):
+class ServiceAnnouncementBase(Entity, Parsable):
     # More details about service event. This property doesn't support filters.
     details: Optional[List[KeyValuePair]] = None
     # The end time of the service event.

@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 from .outlook_item import OutlookItem
 
 @dataclass
-class Message(OutlookItem):
+class Message(OutlookItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.message"
     # The fileAttachment and itemAttachment attachments for the message.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ServiceAnnouncementAttachment(Entity):
+class ServiceAnnouncementAttachment(Entity, Parsable):
     # The attachment content.
     content: Optional[bytes] = None
     # The contentType property

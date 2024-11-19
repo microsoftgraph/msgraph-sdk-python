@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LongRunningOperation(Entity):
+class LongRunningOperation(Entity, Parsable):
     """
     The status of a long-running operation.
     """

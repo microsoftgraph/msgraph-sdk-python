@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_source import IdentitySource
 
 @dataclass
-class CrossCloudAzureActiveDirectoryTenant(IdentitySource):
+class CrossCloudAzureActiveDirectoryTenant(IdentitySource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.crossCloudAzureActiveDirectoryTenant"
     # The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class GetAuditActivityTypesWithCategoryGetResponse(BaseCollectionPaginationCountResponse):
+class GetAuditActivityTypesWithCategoryGetResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[str]] = None
     

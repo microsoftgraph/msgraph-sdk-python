@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewScheduleDefinition(Entity):
+class AccessReviewScheduleDefinition(Entity, Parsable):
     # Defines the list of additional users or group members to be notified of the access review progress.
     additional_notification_recipients: Optional[List[AccessReviewNotificationRecipientItem]] = None
     # User who created this review. Read-only.

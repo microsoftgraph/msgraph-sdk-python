@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserInstallStateSummary(Entity):
+class UserInstallStateSummary(Entity, Parsable):
     """
     Contains properties for the installation state summary for a user.
     """

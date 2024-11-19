@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyApprovalRule(UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyApprovalRule(UnifiedRoleManagementPolicyRule, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyApprovalRule"
     # The settings for approval of the role assignment.

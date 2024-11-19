@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity):
+class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity, Parsable):
     """
     The user experience analytics work from anywhere model performance.
     """

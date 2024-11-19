@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AdminMicrosoft365Apps(Entity):
+class AdminMicrosoft365Apps(Entity, Parsable):
     # A container for tenant-level settings for Microsoft 365 applications.
     installation_options: Optional[M365AppsInstallationOptions] = None
     # The OdataType property

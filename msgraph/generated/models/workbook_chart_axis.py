@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartAxis(Entity):
+class WorkbookChartAxis(Entity, Parsable):
     # Represents the formatting of a chart object, which includes line and font formatting. Read-only.
     format: Optional[WorkbookChartAxisFormat] = None
     # Returns a gridlines object that represents the major gridlines for the specified axis. Read-only.

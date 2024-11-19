@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
 
 @dataclass
-class PrivilegedAccessGroupAssignmentScheduleInstance(PrivilegedAccessScheduleInstance):
+class PrivilegedAccessGroupAssignmentScheduleInstance(PrivilegedAccessScheduleInstance, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupAssignmentScheduleInstance"
     # The identifier of the membership or ownership assignment relationship to the group. Required. The possible values are: owner, member,  unknownFutureValue. Supports $filter (eq).

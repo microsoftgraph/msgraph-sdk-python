@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .managed_app import ManagedApp
 
 @dataclass
-class ManagedAndroidStoreApp(ManagedApp):
+class ManagedAndroidStoreApp(ManagedApp, Parsable):
     """
     Contains properties and inherited properties for Android store apps that you can manage with an Intune app protection policy.
     """

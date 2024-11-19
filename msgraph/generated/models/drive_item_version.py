@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .base_item_version import BaseItemVersion
 
 @dataclass
-class DriveItemVersion(BaseItemVersion):
+class DriveItemVersion(BaseItemVersion, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.driveItemVersion"
     # The content stream for this version of the item.

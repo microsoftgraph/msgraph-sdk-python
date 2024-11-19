@@ -10,14 +10,14 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class NicEvidence(AlertEvidence):
+class NicEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.nicEvidence"
-    # The ipAddress property
+    # The current IP address of the NIC.
     ip_address: Optional[IpEvidence] = None
-    # The macAddress property
+    # The MAC address of the NIC.
     mac_address: Optional[str] = None
-    # The vlans property
+    # The current virtual local area networks of the NIC.
     vlans: Optional[List[str]] = None
     
     @staticmethod

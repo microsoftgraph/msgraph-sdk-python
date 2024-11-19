@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BrowserSite(Entity):
+class BrowserSite(Entity, Parsable):
     """
     Singleton entity which is used to specify IE mode site metadata
     """

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .managed_mobile_lob_app import ManagedMobileLobApp
 
 @dataclass
-class ManagedIOSLobApp(ManagedMobileLobApp):
+class ManagedIOSLobApp(ManagedMobileLobApp, Parsable):
     """
     Contains properties and inherited properties for Managed iOS Line Of Business apps.
     """

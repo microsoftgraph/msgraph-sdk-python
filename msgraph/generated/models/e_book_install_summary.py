@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EBookInstallSummary(Entity):
+class EBookInstallSummary(Entity, Parsable):
     """
     Contains properties for the installation summary of a book for a device.
     """

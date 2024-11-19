@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_assignment_recipient import EducationAssignmentRecipient
 
 @dataclass
-class EducationAssignmentGroupRecipient(EducationAssignmentRecipient):
+class EducationAssignmentGroupRecipient(EducationAssignmentRecipient, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationAssignmentGroupRecipient"
     

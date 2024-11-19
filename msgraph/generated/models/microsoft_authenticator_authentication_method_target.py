@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .authentication_method_target import AuthenticationMethodTarget
 
 @dataclass
-class MicrosoftAuthenticatorAuthenticationMethodTarget(AuthenticationMethodTarget):
+class MicrosoftAuthenticatorAuthenticationMethodTarget(AuthenticationMethodTarget, Parsable):
     # The authenticationMode property
     authentication_mode: Optional[MicrosoftAuthenticatorAuthenticationMode] = None
     # The OdataType property

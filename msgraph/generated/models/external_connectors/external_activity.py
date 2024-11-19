@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class ExternalActivity(Entity):
+class ExternalActivity(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents an identity used to identify who is responsible for the activity.

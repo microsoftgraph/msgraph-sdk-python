@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_end_user_notification import BaseEndUserNotification
 
 @dataclass
-class SimulationNotification(BaseEndUserNotification):
+class SimulationNotification(BaseEndUserNotification, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.simulationNotification"
     # Target user type. Possible values are: unknown, clicked, compromised, allUsers, unknownFutureValue.

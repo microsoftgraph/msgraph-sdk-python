@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .search_answer import SearchAnswer
 
 @dataclass
-class Acronym(SearchAnswer):
+class Acronym(SearchAnswer, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # What the acronym stands for.

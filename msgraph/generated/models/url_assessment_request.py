@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
-class UrlAssessmentRequest(ThreatAssessmentRequest):
+class UrlAssessmentRequest(ThreatAssessmentRequest, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.urlAssessmentRequest"
     # The URL string.

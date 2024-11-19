@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class TeamsAppInstalledEventMessageDetail(EventMessageDetail):
+class TeamsAppInstalledEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamsAppInstalledEventMessageDetail"
     # Initiator of the event.

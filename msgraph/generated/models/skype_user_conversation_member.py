@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .conversation_member import ConversationMember
 
 @dataclass
-class SkypeUserConversationMember(ConversationMember):
+class SkypeUserConversationMember(ConversationMember, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.skypeUserConversationMember"
     # Skype ID of the user.

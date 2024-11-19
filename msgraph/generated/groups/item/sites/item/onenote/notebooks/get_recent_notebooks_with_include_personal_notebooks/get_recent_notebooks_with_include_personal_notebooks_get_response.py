@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ........models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class GetRecentNotebooksWithIncludePersonalNotebooksGetResponse(BaseCollectionPaginationCountResponse):
+class GetRecentNotebooksWithIncludePersonalNotebooksGetResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[RecentNotebook]] = None
     

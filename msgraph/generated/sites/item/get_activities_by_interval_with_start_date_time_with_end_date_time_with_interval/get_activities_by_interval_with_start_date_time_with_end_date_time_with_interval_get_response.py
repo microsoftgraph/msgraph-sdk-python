@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalGetResponse(BaseCollectionPaginationCountResponse):
+class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalGetResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[ItemActivityStat]] = None
     

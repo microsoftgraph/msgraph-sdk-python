@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerPlanDetails(Entity):
+class PlannerPlanDetails(Entity, Parsable):
     # An object that specifies the descriptions of the 25 categories that can be associated with tasks in the plan.
     category_descriptions: Optional[PlannerCategoryDescriptions] = None
     # The OdataType property

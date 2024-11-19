@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class MicrosoftStoreForBusinessApp(MobileApp):
+class MicrosoftStoreForBusinessApp(MobileApp, Parsable):
     """
     Microsoft Store for Business Apps. This class does not support Create, Delete, or Update.
     """

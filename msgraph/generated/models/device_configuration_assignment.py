@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceConfigurationAssignment(Entity):
+class DeviceConfigurationAssignment(Entity, Parsable):
     """
     The device configuration assignment entity assigns an AAD group to a specific device configuration.
     """

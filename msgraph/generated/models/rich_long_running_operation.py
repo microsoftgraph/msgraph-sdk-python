@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .long_running_operation import LongRunningOperation
 
 @dataclass
-class RichLongRunningOperation(LongRunningOperation):
+class RichLongRunningOperation(LongRunningOperation, Parsable):
     """
     The status of a long-running operation.
     """

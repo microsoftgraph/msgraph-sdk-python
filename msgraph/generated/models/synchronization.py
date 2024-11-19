@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Synchronization(Entity):
+class Synchronization(Entity, Parsable):
     # Performs synchronization by periodically running in the background, polling for changes in one directory, and pushing them to another directory.
     jobs: Optional[List[SynchronizationJob]] = None
     # The OdataType property

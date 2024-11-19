@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .mobile_app import MobileApp
 
 @dataclass
-class IosVppApp(MobileApp):
+class IosVppApp(MobileApp, Parsable):
     """
     Contains properties and inherited properties for iOS Volume-Purchased Program (VPP) Apps.
     """

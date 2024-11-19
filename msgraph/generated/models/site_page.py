@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .base_site_page import BaseSitePage
 
 @dataclass
-class SitePage(BaseSitePage):
+class SitePage(BaseSitePage, Parsable):
     # Indicates the layout of the content in a given SharePoint page, including horizontal sections and vertical sections.
     canvas_layout: Optional[CanvasLayout] = None
     # The OdataType property

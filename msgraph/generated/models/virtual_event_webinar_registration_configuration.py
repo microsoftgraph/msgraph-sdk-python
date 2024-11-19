@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .virtual_event_registration_configuration import VirtualEventRegistrationConfiguration
 
 @dataclass
-class VirtualEventWebinarRegistrationConfiguration(VirtualEventRegistrationConfiguration):
+class VirtualEventWebinarRegistrationConfiguration(VirtualEventRegistrationConfiguration, Parsable):
     # The isManualApprovalEnabled property
     is_manual_approval_enabled: Optional[bool] = None
     # The isWaitlistEnabled property

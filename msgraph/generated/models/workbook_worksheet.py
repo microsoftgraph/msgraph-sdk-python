@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookWorksheet(Entity):
+class WorkbookWorksheet(Entity, Parsable):
     # The list of charts that are part of the worksheet. Read-only.
     charts: Optional[List[WorkbookChart]] = None
     # The display name of the worksheet.

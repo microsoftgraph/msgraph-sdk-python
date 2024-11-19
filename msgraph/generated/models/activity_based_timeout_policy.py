@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .sts_policy import StsPolicy
 
 @dataclass
-class ActivityBasedTimeoutPolicy(StsPolicy):
+class ActivityBasedTimeoutPolicy(StsPolicy, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.activityBasedTimeoutPolicy"
     

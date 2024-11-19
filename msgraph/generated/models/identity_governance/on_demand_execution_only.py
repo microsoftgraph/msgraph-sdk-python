@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .workflow_execution_conditions import WorkflowExecutionConditions
 
 @dataclass
-class OnDemandExecutionOnly(WorkflowExecutionConditions):
+class OnDemandExecutionOnly(WorkflowExecutionConditions, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.onDemandExecutionOnly"
     

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
 
 @dataclass
-class AzureAdTokenAuthentication(CustomExtensionAuthenticationConfiguration):
+class AzureAdTokenAuthentication(CustomExtensionAuthenticationConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.azureAdTokenAuthentication"
     # The appID of the Microsoft Entra application to use to authenticate an app with a custom extension.

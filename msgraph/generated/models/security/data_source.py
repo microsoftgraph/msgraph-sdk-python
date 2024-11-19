@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class DataSource(Entity):
+class DataSource(Entity, Parsable):
     # The user who created the dataSource.
     created_by: Optional[IdentitySet] = None
     # The date and time the dataSource was created.

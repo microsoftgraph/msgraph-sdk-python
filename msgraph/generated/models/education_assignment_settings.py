@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationAssignmentSettings(Entity):
+class EducationAssignmentSettings(Entity, Parsable):
     # When set, enables users to weight assignments differently when computing a class average grade.
     grading_categories: Optional[List[EducationGradingCategory]] = None
     # The OdataType property

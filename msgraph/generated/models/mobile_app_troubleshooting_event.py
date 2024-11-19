@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MobileAppTroubleshootingEvent(Entity):
+class MobileAppTroubleshootingEvent(Entity, Parsable):
     # Indicates collection of App Log Upload Request.
     app_log_collection_requests: Optional[List[AppLogCollectionRequest]] = None
     # The OdataType property

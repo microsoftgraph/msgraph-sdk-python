@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
 
 @dataclass
-class SubjectRightsRequestAllMailboxLocation(SubjectRightsRequestMailboxLocation):
+class SubjectRightsRequestAllMailboxLocation(SubjectRightsRequestMailboxLocation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.subjectRightsRequestAllMailboxLocation"
     

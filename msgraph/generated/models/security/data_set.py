@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class DataSet(Entity):
+class DataSet(Entity, Parsable):
     # The createdBy property
     created_by: Optional[IdentitySet] = None
     # The createdDateTime property

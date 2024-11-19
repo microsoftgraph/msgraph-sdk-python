@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingStringXml(OmaSetting):
+class OmaSettingStringXml(OmaSetting, Parsable):
     """
     OMA Settings StringXML definition.
     """

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class HorizontalSectionColumn(Entity):
+class HorizontalSectionColumn(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The collection of WebParts in this column.

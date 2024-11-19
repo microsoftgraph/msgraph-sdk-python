@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DelegatedAdminRelationshipRequest(Entity):
+class DelegatedAdminRelationshipRequest(Entity, Parsable):
     # The action property
     action: Optional[DelegatedAdminRelationshipRequestAction] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship request was created. Read-only.

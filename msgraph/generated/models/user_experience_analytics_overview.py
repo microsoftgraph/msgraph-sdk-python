@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsOverview(Entity):
+class UserExperienceAnalyticsOverview(Entity, Parsable):
     """
     The user experience analytics overview entity contains the overall score and the scores and insights of every metric of all categories.
     """

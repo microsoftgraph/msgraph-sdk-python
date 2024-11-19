@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Training(Entity):
+class Training(Entity, Parsable):
     # Training availability status. Possible values are: unknown, notAvailable, available, archive, delete, unknownFutureValue.
     availability_status: Optional[TrainingAvailabilityStatus] = None
     # Identity of the user who created the training.

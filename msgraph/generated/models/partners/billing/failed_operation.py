@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .operation import Operation
 
 @dataclass
-class FailedOperation(Operation):
+class FailedOperation(Operation, Parsable):
     # The error property
     error: Optional[PublicError] = None
     # The OdataType property

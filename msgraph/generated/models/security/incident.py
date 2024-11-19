@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Incident(Entity):
+class Incident(Entity, Parsable):
     # The list of related alerts. Supports $expand.
     alerts: Optional[List[Alert]] = None
     # Owner of the incident, or null if no owner is assigned. Free editable text.

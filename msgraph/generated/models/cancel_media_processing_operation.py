@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .comms_operation import CommsOperation
 
 @dataclass
-class CancelMediaProcessingOperation(CommsOperation):
+class CancelMediaProcessingOperation(CommsOperation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

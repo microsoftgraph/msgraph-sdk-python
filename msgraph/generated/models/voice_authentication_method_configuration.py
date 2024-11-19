@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
+class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.voiceAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method. Expanded by default.

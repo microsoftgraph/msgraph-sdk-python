@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartAxes(Entity):
+class WorkbookChartAxes(Entity, Parsable):
     # Represents the category axis in a chart. Read-only.
     category_axis: Optional[WorkbookChartAxis] = None
     # The OdataType property

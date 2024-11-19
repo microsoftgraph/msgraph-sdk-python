@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
 
 @dataclass
-class LogicAppTriggerEndpointConfiguration(CustomExtensionEndpointConfiguration):
+class LogicAppTriggerEndpointConfiguration(CustomExtensionEndpointConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.logicAppTriggerEndpointConfiguration"
     # The name of the logic app.

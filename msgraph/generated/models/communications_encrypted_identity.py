@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class CommunicationsEncryptedIdentity(Identity):
+class CommunicationsEncryptedIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsEncryptedIdentity"
     

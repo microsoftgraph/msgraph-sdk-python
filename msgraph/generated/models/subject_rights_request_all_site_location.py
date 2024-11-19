@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
 
 @dataclass
-class SubjectRightsRequestAllSiteLocation(SubjectRightsRequestSiteLocation):
+class SubjectRightsRequestAllSiteLocation(SubjectRightsRequestSiteLocation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.subjectRightsRequestAllSiteLocation"
     

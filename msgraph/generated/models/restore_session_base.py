@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RestoreSessionBase(Entity):
+class RestoreSessionBase(Entity, Parsable):
     # The time of completion of the restore session.
     completed_date_time: Optional[datetime.datetime] = None
     # The identity of person who created the restore session.

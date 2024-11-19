@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SecureScoreControlProfile(Entity):
+class SecureScoreControlProfile(Entity, Parsable):
     # Control action type (Config, Review, Behavior).
     action_type: Optional[str] = None
     # URL to where the control can be actioned.

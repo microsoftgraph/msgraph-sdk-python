@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CanvasLayout(Entity):
+class CanvasLayout(Entity, Parsable):
     # Collection of horizontal sections on the SharePoint page.
     horizontal_sections: Optional[List[HorizontalSection]] = None
     # The OdataType property

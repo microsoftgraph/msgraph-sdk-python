@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .training_setting import TrainingSetting
 
 @dataclass
-class NoTrainingSetting(TrainingSetting):
+class NoTrainingSetting(TrainingSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.noTrainingSetting"
     

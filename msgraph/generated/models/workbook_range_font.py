@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookRangeFont(Entity):
+class WorkbookRangeFont(Entity, Parsable):
     # Inidicates whether the font is bold.
     bold: Optional[bool] = None
     # The HTML color code representation of the text color. For example, #FF0000 represents the color red.

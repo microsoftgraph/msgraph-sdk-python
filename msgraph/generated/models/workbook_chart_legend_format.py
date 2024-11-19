@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartLegendFormat(Entity):
+class WorkbookChartLegendFormat(Entity, Parsable):
     # Represents the fill format of an object, which includes background formating information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # Represents the font attributes such as font name, font size, color, etc. of a chart legend. Read-only.

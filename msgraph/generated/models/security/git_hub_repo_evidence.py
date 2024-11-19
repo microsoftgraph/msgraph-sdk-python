@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class GitHubRepoEvidence(AlertEvidence):
+class GitHubRepoEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.gitHubRepoEvidence"
     # The baseUrl property

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LicenseDetails(Entity):
+class LicenseDetails(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Information about the service plans assigned with the license. Read-only. Not nullable.

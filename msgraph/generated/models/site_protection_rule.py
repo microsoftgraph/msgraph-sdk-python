@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .protection_rule_base import ProtectionRuleBase
 
 @dataclass
-class SiteProtectionRule(ProtectionRuleBase):
+class SiteProtectionRule(ProtectionRuleBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.siteProtectionRule"
     # Contains a site expression. For examples, see siteExpression example.

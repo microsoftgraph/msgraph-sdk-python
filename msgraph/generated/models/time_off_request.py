@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .schedule_change_request import ScheduleChangeRequest
 
 @dataclass
-class TimeOffRequest(ScheduleChangeRequest):
+class TimeOffRequest(ScheduleChangeRequest, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.timeOffRequest"
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z

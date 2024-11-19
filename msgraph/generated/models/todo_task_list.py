@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TodoTaskList(Entity):
+class TodoTaskList(Entity, Parsable):
     # The name of the task list.
     display_name: Optional[str] = None
     # The collection of open extensions defined for the task list. Nullable.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Bitlocker(Entity):
+class Bitlocker(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The recovery keys associated with the bitlocker entity.

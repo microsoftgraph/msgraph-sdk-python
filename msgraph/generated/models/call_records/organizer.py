@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .participant_base import ParticipantBase
 
 @dataclass
-class Organizer(ParticipantBase):
+class Organizer(ParticipantBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecords.organizer"
     

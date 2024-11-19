@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsDeviceScores(Entity):
+class UserExperienceAnalyticsDeviceScores(Entity, Parsable):
     """
     The user experience analytics device scores entity consolidates the various Endpoint Analytics scores.
     """

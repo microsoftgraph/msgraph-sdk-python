@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class OauthApplicationEvidence(AlertEvidence):
+class OauthApplicationEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.oauthApplicationEvidence"
     # Unique identifier of the application.

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Operation(Entity):
+class Operation(Entity, Parsable):
     # The start time of the operation.
     created_date_time: Optional[datetime.datetime] = None
     # The time of the last action of the operation.

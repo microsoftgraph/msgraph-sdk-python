@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationEventsFlow(Entity):
+class AuthenticationEventsFlow(Entity, Parsable):
     # The conditions representing the context of the authentication request that's used to decide whether the events policy is invoked.  Supports $filter (eq). See support for filtering on user flows for syntax information.
     conditions: Optional[AuthenticationConditions] = None
     # The description of the events policy.

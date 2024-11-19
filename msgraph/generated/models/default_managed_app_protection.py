@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .managed_app_protection import ManagedAppProtection
 
 @dataclass
-class DefaultManagedAppProtection(ManagedAppProtection):
+class DefaultManagedAppProtection(ManagedAppProtection, Parsable):
     """
     Policy used to configure detailed management settings for a specified set of apps for all users not targeted by a TargetedManagedAppProtection Policy
     """

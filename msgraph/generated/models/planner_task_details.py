@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerTaskDetails(Entity):
+class PlannerTaskDetails(Entity, Parsable):
     # The collection of checklist items on the task.
     checklist: Optional[PlannerChecklistItems] = None
     # Description of the task.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
 @dataclass
-class ConditionalAccessAllExternalTenants(ConditionalAccessExternalTenants):
+class ConditionalAccessAllExternalTenants(ConditionalAccessExternalTenants, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.conditionalAccessAllExternalTenants"
     

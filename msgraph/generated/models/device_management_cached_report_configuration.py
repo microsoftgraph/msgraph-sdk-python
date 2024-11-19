@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceManagementCachedReportConfiguration(Entity):
+class DeviceManagementCachedReportConfiguration(Entity, Parsable):
     """
     Entity representing the configuration of a cached report.
     """

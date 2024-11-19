@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .schedule_change_request import ScheduleChangeRequest
 
 @dataclass
-class OpenShiftChangeRequest(ScheduleChangeRequest):
+class OpenShiftChangeRequest(ScheduleChangeRequest, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.openShiftChangeRequest"
     # ID for the open shift.

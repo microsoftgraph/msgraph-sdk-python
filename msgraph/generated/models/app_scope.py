@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AppScope(Entity):
+class AppScope(Entity, Parsable):
     # Provides the display name of the app-specific resource represented by the app scope. Provided for display purposes since appScopeId is often an immutable, non-human-readable id. Read-only.
     display_name: Optional[str] = None
     # The OdataType property

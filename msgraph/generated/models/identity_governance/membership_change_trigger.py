@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .workflow_execution_trigger import WorkflowExecutionTrigger
 
 @dataclass
-class MembershipChangeTrigger(WorkflowExecutionTrigger):
+class MembershipChangeTrigger(WorkflowExecutionTrigger, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.membershipChangeTrigger"
     # The changeType property

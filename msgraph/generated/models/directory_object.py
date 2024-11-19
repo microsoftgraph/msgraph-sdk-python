@@ -41,7 +41,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DirectoryObject(Entity):
+class DirectoryObject(Entity, Parsable):
     # Date and time when this object was deleted. Always null when the object hasn't been deleted.
     deleted_date_time: Optional[datetime.datetime] = None
     # The OdataType property

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .authentication_method import AuthenticationMethod
 
 @dataclass
-class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod):
+class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod"
     # The date and time that this Windows Hello for Business key was registered.

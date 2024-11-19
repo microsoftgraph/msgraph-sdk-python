@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ScopedRoleMembership(Entity):
+class ScopedRoleMembership(Entity, Parsable):
     # Unique identifier for the administrative unit that the directory role is scoped to
     administrative_unit_id: Optional[str] = None
     # The OdataType property

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .education_outcome import EducationOutcome
 
 @dataclass
-class EducationFeedbackOutcome(EducationOutcome):
+class EducationFeedbackOutcome(EducationOutcome, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationFeedbackOutcome"
     # Teacher's written feedback to the student.

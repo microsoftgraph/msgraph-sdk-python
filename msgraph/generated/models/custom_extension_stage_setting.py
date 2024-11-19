@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CustomExtensionStageSetting(Entity):
+class CustomExtensionStageSetting(Entity, Parsable):
     # Indicates the custom workflow extension that will be executed at this stage. Nullable. Supports $expand.
     custom_extension: Optional[CustomCalloutExtension] = None
     # The OdataType property

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .managed_app_configuration import ManagedAppConfiguration
 
 @dataclass
-class TargetedManagedAppConfiguration(ManagedAppConfiguration):
+class TargetedManagedAppConfiguration(ManagedAppConfiguration, Parsable):
     """
     Configuration used to deliver a set of custom settings as-is to all users in the targeted security group
     """

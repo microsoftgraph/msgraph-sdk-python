@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceConfigurationState(Entity):
+class DeviceConfigurationState(Entity, Parsable):
     """
     Device Configuration State for a given device.
     """

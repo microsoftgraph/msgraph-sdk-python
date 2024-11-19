@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationCategory(Entity):
+class EducationCategory(Entity, Parsable):
     # Unique identifier for the category.
     display_name: Optional[str] = None
     # The OdataType property

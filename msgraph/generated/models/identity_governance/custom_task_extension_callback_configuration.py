@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ..custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
 
 @dataclass
-class CustomTaskExtensionCallbackConfiguration(CustomExtensionCallbackConfiguration):
+class CustomTaskExtensionCallbackConfiguration(CustomExtensionCallbackConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCallbackConfiguration"
     # The authorizedApps property

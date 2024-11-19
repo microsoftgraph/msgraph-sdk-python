@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class HealthIssue(Entity):
+class HealthIssue(Entity, Parsable):
     # Contains additional information about the issue, such as a list of items to fix.
     additional_information: Optional[List[str]] = None
     # The date and time when the health issue was generated. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

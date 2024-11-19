@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
 @dataclass
-class ChatMembersNotificationRecipient(TeamworkNotificationRecipient):
+class ChatMembersNotificationRecipient(TeamworkNotificationRecipient, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.chatMembersNotificationRecipient"
     # The unique identifier for the chat whose members should receive the notifications.

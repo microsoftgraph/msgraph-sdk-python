@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeletedItemContainer(Entity):
+class DeletedItemContainer(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Deleted workflows that end up in the deletedItemsContainer.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .policy_base import PolicyBase
 
 @dataclass
-class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase):
+class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"
     # If set to true, Microsoft Entra security defaults are enabled for the tenant.

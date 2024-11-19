@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MobileAppAssignment(Entity):
+class MobileAppAssignment(Entity, Parsable):
     """
     A class containing the properties used for Group Assignment of a Mobile App.
     """

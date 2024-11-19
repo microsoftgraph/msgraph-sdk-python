@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .printer_base import PrinterBase
 
 @dataclass
-class PrinterShare(PrinterBase):
+class PrinterShare(PrinterBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.printerShare"
     # If true, all users and groups will be granted access to this printer share. This supersedes the allow lists defined by the allowedUsers and allowedGroups navigation properties.

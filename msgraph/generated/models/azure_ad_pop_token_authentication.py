@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
 
 @dataclass
-class AzureAdPopTokenAuthentication(CustomExtensionAuthenticationConfiguration):
+class AzureAdPopTokenAuthentication(CustomExtensionAuthenticationConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.azureAdPopTokenAuthentication"
     

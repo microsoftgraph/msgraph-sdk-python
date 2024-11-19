@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(EventMessageDetail):
+class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail"
     # Unique identifier of the channel.

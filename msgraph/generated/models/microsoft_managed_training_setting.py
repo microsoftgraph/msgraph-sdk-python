@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .training_setting import TrainingSetting
 
 @dataclass
-class MicrosoftManagedTrainingSetting(TrainingSetting):
+class MicrosoftManagedTrainingSetting(TrainingSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftManagedTrainingSetting"
     # The completion date for the training. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

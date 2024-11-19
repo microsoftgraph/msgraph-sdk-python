@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class OnlineMeetingBase(Entity):
+class OnlineMeetingBase(Entity, Parsable):
     # Indicates whether attendees can turn on their camera.
     allow_attendee_to_enable_camera: Optional[bool] = None
     # Indicates whether attendees can turn on their microphone.

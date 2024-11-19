@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10EndpointProtectionConfiguration(DeviceConfiguration):
+class Windows10EndpointProtectionConfiguration(DeviceConfiguration, Parsable):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the Windows10EndpointProtectionConfiguration resource.
     """

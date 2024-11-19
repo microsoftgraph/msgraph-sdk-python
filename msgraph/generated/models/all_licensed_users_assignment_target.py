@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
 @dataclass
-class AllLicensedUsersAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+class AllLicensedUsersAssignmentTarget(DeviceAndAppManagementAssignmentTarget, Parsable):
     """
     Represents an assignment to all licensed users in the tenant.
     """

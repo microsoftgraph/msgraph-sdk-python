@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .message import Message
 
 @dataclass
-class EventMessage(Message):
+class EventMessage(Message, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.eventMessage"
     # The endDateTime property

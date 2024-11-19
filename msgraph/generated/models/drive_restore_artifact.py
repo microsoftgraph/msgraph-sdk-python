@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .restore_artifact_base import RestoreArtifactBase
 
 @dataclass
-class DriveRestoreArtifact(RestoreArtifactBase):
+class DriveRestoreArtifact(RestoreArtifactBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The new site identifier if destinationType is new, and the input site ID if the destinationType is inPlace.

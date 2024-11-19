@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .workflow_execution_conditions import WorkflowExecutionConditions
 
 @dataclass
-class TriggerAndScopeBasedConditions(WorkflowExecutionConditions):
+class TriggerAndScopeBasedConditions(WorkflowExecutionConditions, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions"
     # Defines who the workflow runs for.

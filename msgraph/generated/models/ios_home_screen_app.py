@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .ios_home_screen_item import IosHomeScreenItem
 
 @dataclass
-class IosHomeScreenApp(IosHomeScreenItem):
+class IosHomeScreenApp(IosHomeScreenItem, Parsable):
     """
     Represents an icon for an app on the Home Screen
     """

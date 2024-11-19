@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MobileAppContentFile(Entity):
+class MobileAppContentFile(Entity, Parsable):
     """
     Contains properties for a single installer file that is associated with a given mobileAppContent version.
     """

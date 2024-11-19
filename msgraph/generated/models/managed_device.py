@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedDevice(Entity):
+class ManagedDevice(Entity, Parsable):
     """
     Devices that are managed or pre-enrolled through Intune
     """

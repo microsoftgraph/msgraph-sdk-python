@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ParticipantJoiningNotification(Entity):
+class ParticipantJoiningNotification(Entity, Parsable):
     # The call property
     call: Optional[Call] = None
     # The OdataType property

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .governance_insight import GovernanceInsight
 
 @dataclass
-class MembershipOutlierInsight(GovernanceInsight):
+class MembershipOutlierInsight(GovernanceInsight, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.membershipOutlierInsight"
     # Navigation link to the container directory object. For example, to a group.

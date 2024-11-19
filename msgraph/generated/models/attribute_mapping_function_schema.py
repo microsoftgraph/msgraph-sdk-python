@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AttributeMappingFunctionSchema(Entity):
+class AttributeMappingFunctionSchema(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of function parameters.

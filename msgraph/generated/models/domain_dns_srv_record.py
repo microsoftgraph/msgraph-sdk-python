@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsSrvRecord(DomainDnsRecord):
+class DomainDnsSrvRecord(DomainDnsRecord, Parsable):
     # Value to use when configuring the Target property of the SRV record at the DNS host.
     name_target: Optional[str] = None
     # The OdataType property

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsDeviceStartupProcessPerformance(Entity):
+class UserExperienceAnalyticsDeviceStartupProcessPerformance(Entity, Parsable):
     """
     The user experience analytics device startup process performance.
     """

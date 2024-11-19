@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Directory(Entity):
+class Directory(Entity, Parsable):
     # Conceptual container for user and group directory objects.
     administrative_units: Optional[List[AdministrativeUnit]] = None
     # Group of related custom security attribute definitions.

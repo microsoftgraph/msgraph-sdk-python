@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class Organization(DirectoryObject):
+class Organization(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.organization"
     # The collection of service plans associated with the tenant. Not nullable.

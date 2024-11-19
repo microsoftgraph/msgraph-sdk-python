@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
 @dataclass
-class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(AccessReviewInstanceDecisionItemResource):
+class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(AccessReviewInstanceDecisionItemResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
     # Display name of the access package to which access has been granted.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .organizational_branding_properties import OrganizationalBrandingProperties
 
 @dataclass
-class OrganizationalBranding(OrganizationalBrandingProperties):
+class OrganizationalBranding(OrganizationalBrandingProperties, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.organizationalBranding"
     # Add different branding based on a locale.

@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EducationAssignment(Entity):
+class EducationAssignment(Entity, Parsable):
     # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. You must use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: studentsOnly. The default value is none.
     add_to_calendar_action: Optional[EducationAddToCalendarOptions] = None
     # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment shouldn't be assigned to new students.

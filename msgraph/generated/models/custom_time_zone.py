@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .time_zone_base import TimeZoneBase
 
 @dataclass
-class CustomTimeZone(TimeZoneBase):
+class CustomTimeZone(TimeZoneBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.customTimeZone"
     # The time offset of the time zone from Coordinated Universal Time (UTC). This value is in minutes. Time zones that are ahead of UTC have a positive offset; time zones that are behind UTC have a negative offset.

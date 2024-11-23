@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class LifecycleManagementSettings(Entity):
+class LifecycleManagementSettings(Entity, Parsable):
     # The emailSettings property
     email_settings: Optional[EmailSettings] = None
     # The OdataType property

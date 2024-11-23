@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartLegend(Entity):
+class WorkbookChartLegend(Entity, Parsable):
     # Represents the formatting of a chart legend, which includes fill and font formatting. Read-only.
     format: Optional[WorkbookChartLegendFormat] = None
     # The OdataType property

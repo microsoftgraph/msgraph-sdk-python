@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WebPart(Entity):
+class WebPart(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

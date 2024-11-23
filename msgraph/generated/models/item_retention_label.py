@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ItemRetentionLabel(Entity):
+class ItemRetentionLabel(Entity, Parsable):
     # Specifies whether the label is applied explicitly on the item. True indicates that the label is applied explicitly; otherwise, the label is inherited from its parent. Read-only.
     is_label_applied_explicitly: Optional[bool] = None
     # Identity of the user who applied the label. Read-only.

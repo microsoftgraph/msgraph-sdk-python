@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class DataSourceContainer(Entity):
+class DataSourceContainer(Entity, Parsable):
     # Created date and time of the dataSourceContainer entity.
     created_date_time: Optional[datetime.datetime] = None
     # Display name of the dataSourceContainer entity.

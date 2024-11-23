@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TrainingLanguageDetail(Entity):
+class TrainingLanguageDetail(Entity, Parsable):
     # Language specific content for the training.
     content: Optional[str] = None
     # Identity of the user who created the language details.

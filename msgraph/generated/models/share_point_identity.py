@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class SharePointIdentity(Identity):
+class SharePointIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharePointIdentity"
     # The sign in name of the SharePoint identity.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .long_running_operation import LongRunningOperation
 
 @dataclass
-class EngagementAsyncOperation(LongRunningOperation):
+class EngagementAsyncOperation(LongRunningOperation, Parsable):
     """
     Represents the status of a Viva Engage async operation that is an operation that transcends thelifetime of a single API request. These operations are long-running or too expensive to completewithin the time frame of their original request.
     """

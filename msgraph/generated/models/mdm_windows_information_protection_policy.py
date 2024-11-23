@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .windows_information_protection import WindowsInformationProtection
 
 @dataclass
-class MdmWindowsInformationProtectionPolicy(WindowsInformationProtection):
+class MdmWindowsInformationProtectionPolicy(WindowsInformationProtection, Parsable):
     """
     Policy for Windows information protection with MDM
     """

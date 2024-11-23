@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .base_item import BaseItem
 
 @dataclass
-class BaseSitePage(BaseItem):
+class BaseSitePage(BaseItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.baseSitePage"
     # The name of the page layout of the page. The possible values are: microsoftReserved, article, home, unknownFutureValue.

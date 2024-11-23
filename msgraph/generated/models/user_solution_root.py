@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserSolutionRoot(Entity):
+class UserSolutionRoot(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The working time schedule entity associated with the solution.

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeltaParticipants(Entity):
+class DeltaParticipants(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The collection of participants that were updated since the last roster update.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
 @dataclass
-class TeleconferenceDeviceAudioQuality(TeleconferenceDeviceMediaQuality):
+class TeleconferenceDeviceAudioQuality(TeleconferenceDeviceMediaQuality, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teleconferenceDeviceAudioQuality"
     

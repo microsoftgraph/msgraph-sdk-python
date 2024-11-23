@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ActivityHistoryItem(Entity):
+class ActivityHistoryItem(Entity, Parsable):
     # Optional. The duration of active user engagement. if not supplied, this is calculated from the startedDateTime and lastActiveDateTime.
     active_duration_seconds: Optional[int] = None
     # The activity property

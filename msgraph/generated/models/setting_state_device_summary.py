@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SettingStateDeviceSummary(Entity):
+class SettingStateDeviceSummary(Entity, Parsable):
     """
     Device Compilance Policy and Configuration for a Setting State summary
     """

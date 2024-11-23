@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class M365AppsInstallationOptions(Entity):
+class M365AppsInstallationOptions(Entity, Parsable):
     # The appsForMac property
     apps_for_mac: Optional[AppsInstallationOptionsForMac] = None
     # The appsForWindows property

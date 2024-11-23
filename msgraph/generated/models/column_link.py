@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ColumnLink(Entity):
+class ColumnLink(Entity, Parsable):
     # The name of the column  in this content type.
     name: Optional[str] = None
     # The OdataType property

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartSeriesFormat(Entity):
+class WorkbookChartSeriesFormat(Entity, Parsable):
     # Represents the fill format of a chart series, which includes background formatting information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # Represents line formatting. Read-only.

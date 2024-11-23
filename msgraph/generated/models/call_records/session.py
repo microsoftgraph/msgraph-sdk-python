@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Session(Entity):
+class Session(Entity, Parsable):
     # Endpoint that answered the session.
     callee: Optional[Endpoint] = None
     # Endpoint that initiated the session.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
 
 @dataclass
-class SubjectRightsRequestEnumeratedSiteLocation(SubjectRightsRequestSiteLocation):
+class SubjectRightsRequestEnumeratedSiteLocation(SubjectRightsRequestSiteLocation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.subjectRightsRequestEnumeratedSiteLocation"
     # Collection of site URLs that should be included. Includes the URL of each site, for example, https://www.contoso.com/site1.

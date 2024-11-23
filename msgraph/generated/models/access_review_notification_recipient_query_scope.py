@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
 @dataclass
-class AccessReviewNotificationRecipientQueryScope(AccessReviewNotificationRecipientScope):
+class AccessReviewNotificationRecipientQueryScope(AccessReviewNotificationRecipientScope, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessReviewNotificationRecipientQueryScope"
     # Represents the query for who the recipients are. For example, /groups/{group id}/members for group members and /users/{user id} for a specific user.

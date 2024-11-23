@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CustomSecurityAttributeDefinition(Entity):
+class CustomSecurityAttributeDefinition(Entity, Parsable):
     # Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
     allowed_values: Optional[List[AllowedValue]] = None
     # Name of the attribute set. Case insensitive.

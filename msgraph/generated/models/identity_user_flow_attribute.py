@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class IdentityUserFlowAttribute(Entity):
+class IdentityUserFlowAttribute(Entity, Parsable):
     # The dataType property
     data_type: Optional[IdentityUserFlowAttributeDataType] = None
     # The description of the user flow attribute that's shown to the user at the time of sign up.

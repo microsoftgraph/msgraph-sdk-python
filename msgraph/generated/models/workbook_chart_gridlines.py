@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartGridlines(Entity):
+class WorkbookChartGridlines(Entity, Parsable):
     # Represents the formatting of chart gridlines. Read-only.
     format: Optional[WorkbookChartGridlinesFormat] = None
     # The OdataType property

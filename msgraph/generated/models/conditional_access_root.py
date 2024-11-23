@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ConditionalAccessRoot(Entity):
+class ConditionalAccessRoot(Entity, Parsable):
     # Read-only. Nullable. Returns a collection of the specified authentication context class references.
     authentication_context_class_references: Optional[List[AuthenticationContextClassReference]] = None
     # The authenticationStrength property

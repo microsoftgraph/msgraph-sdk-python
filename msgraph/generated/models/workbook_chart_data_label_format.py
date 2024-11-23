@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookChartDataLabelFormat(Entity):
+class WorkbookChartDataLabelFormat(Entity, Parsable):
     # Represents the fill format of the current chart data label. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # Represents the font attributes (font name, font size, color, etc.) for a chart data label. Read-only.

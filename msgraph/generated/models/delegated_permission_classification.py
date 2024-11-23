@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DelegatedPermissionClassification(Entity):
+class DelegatedPermissionClassification(Entity, Parsable):
     # The classification value. Possible values: low, medium (preview), high (preview). Doesn't support $filter.
     classification: Optional[PermissionClassificationType] = None
     # The OdataType property

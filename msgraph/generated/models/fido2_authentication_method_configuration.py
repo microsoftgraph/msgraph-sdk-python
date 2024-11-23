@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
+class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method.

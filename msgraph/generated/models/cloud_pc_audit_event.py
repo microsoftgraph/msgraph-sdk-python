@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CloudPcAuditEvent(Entity):
+class CloudPcAuditEvent(Entity, Parsable):
     # The friendly name of the audit activity.
     activity: Optional[str] = None
     # The date time in UTC when the activity was performed. Read-only.

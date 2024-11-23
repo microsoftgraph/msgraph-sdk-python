@@ -44,7 +44,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, int, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "int", error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CountRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

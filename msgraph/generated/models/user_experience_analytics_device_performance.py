@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsDevicePerformance(Entity):
+class UserExperienceAnalyticsDevicePerformance(Entity, Parsable):
     """
     The user experience analytics device performance entity contains device boot performance details.
     """

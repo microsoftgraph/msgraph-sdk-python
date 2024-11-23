@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
 @dataclass
-class AccessReviewInstanceDecisionItemServicePrincipalResource(AccessReviewInstanceDecisionItemResource):
+class AccessReviewInstanceDecisionItemServicePrincipalResource(AccessReviewInstanceDecisionItemResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
     # The globally unique identifier of the application to which access has been granted.

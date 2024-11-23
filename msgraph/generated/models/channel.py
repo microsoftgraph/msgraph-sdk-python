@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Channel(Entity):
+class Channel(Entity, Parsable):
     # Read only. Timestamp at which the channel was created.
     created_date_time: Optional[datetime.datetime] = None
     # Optional textual description for the channel.

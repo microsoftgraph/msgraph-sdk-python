@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintUsage(Entity):
+class PrintUsage(Entity, Parsable):
     # The blackAndWhitePageCount property
     black_and_white_page_count: Optional[int] = None
     # The colorPageCount property

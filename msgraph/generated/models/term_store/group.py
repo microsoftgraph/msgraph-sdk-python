@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Group(Entity):
+class Group(Entity, Parsable):
     # Date and time of the group creation. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # Description that gives details on the term usage.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class FeatureRolloutPolicy(Entity):
+class FeatureRolloutPolicy(Entity, Parsable):
     # Nullable. Specifies a list of directoryObject resources that feature is enabled for.
     applies_to: Optional[List[DirectoryObject]] = None
     # A description for this feature rollout policy.

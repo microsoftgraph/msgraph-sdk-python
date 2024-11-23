@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
 @dataclass
-class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType):
+class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsUpdateScheduledInstall"
     # Possible values for a weekly schedule.

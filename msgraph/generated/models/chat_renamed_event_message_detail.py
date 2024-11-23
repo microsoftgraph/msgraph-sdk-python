@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class ChatRenamedEventMessageDetail(EventMessageDetail):
+class ChatRenamedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.chatRenamedEventMessageDetail"
     # The updated name of the chat.

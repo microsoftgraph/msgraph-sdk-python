@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .managed_app_registration import ManagedAppRegistration
 
 @dataclass
-class AndroidManagedAppRegistration(ManagedAppRegistration):
+class AndroidManagedAppRegistration(ManagedAppRegistration, Parsable):
     """
     Represents the synchronization details of an android app, with management capabilities, for a specific user.
     """

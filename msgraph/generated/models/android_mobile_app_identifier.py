@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app_identifier import MobileAppIdentifier
 
 @dataclass
-class AndroidMobileAppIdentifier(MobileAppIdentifier):
+class AndroidMobileAppIdentifier(MobileAppIdentifier, Parsable):
     """
     The identifier for an Android app.
     """

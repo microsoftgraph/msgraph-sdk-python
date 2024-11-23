@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .custom_callout_extension import CustomCalloutExtension
 
 @dataclass
-class CustomAuthenticationExtension(CustomCalloutExtension):
+class CustomAuthenticationExtension(CustomCalloutExtension, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.customAuthenticationExtension"
     

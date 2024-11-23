@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class FileEvidence(AlertEvidence):
+class FileEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.fileEvidence"
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.

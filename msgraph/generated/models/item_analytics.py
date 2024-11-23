@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ItemAnalytics(Entity):
+class ItemAnalytics(Entity, Parsable):
     # The allTime property
     all_time: Optional[ItemActivityStat] = None
     # The itemActivityStats property

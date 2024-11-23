@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .meeting_participant_info import MeetingParticipantInfo
 
 @dataclass
-class VirtualEventPresenterInfo(MeetingParticipantInfo):
+class VirtualEventPresenterInfo(MeetingParticipantInfo, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventPresenterInfo"
     # The presenterDetails property

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
 
 @dataclass
-class HttpRequestEndpoint(CustomExtensionEndpointConfiguration):
+class HttpRequestEndpoint(CustomExtensionEndpointConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.httpRequestEndpoint"
     # The HTTP endpoint that a custom extension calls.

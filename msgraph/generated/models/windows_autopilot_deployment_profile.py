@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WindowsAutopilotDeploymentProfile(Entity):
+class WindowsAutopilotDeploymentProfile(Entity, Parsable):
     """
     Windows Autopilot Deployment Profile
     """

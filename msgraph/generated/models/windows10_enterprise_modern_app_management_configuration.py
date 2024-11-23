@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration):
+class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration, Parsable):
     """
     Windows10 Enterprise Modern App Management Configuration.
     """

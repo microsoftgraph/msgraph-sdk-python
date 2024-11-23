@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .restore_session_base import RestoreSessionBase
 
 @dataclass
-class ExchangeRestoreSession(RestoreSessionBase):
+class ExchangeRestoreSession(RestoreSessionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.exchangeRestoreSession"
     # The granularMailboxRestoreArtifacts property

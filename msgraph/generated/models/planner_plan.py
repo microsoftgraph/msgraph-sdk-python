@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerPlan(Entity):
+class PlannerPlan(Entity, Parsable):
     # Read-only. Nullable. Collection of buckets in the plan.
     buckets: Optional[List[PlannerBucket]] = None
     # Identifies the container of the plan. Specify only the url, the containerId and type, or all properties. After it's set, this property can’t be updated. Required.

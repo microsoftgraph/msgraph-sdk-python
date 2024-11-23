@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .base_item import BaseItem
 
 @dataclass
-class List_(BaseItem):
+class List_(BaseItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.list"
     # The collection of field definitions for this list.

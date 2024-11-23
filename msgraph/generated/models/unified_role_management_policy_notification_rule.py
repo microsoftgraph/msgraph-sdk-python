@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRule, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule"
     # Indicates whether a default recipient will receive the notification email.

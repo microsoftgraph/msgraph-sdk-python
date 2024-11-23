@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class BaseItemVersion(Entity):
+class BaseItemVersion(Entity, Parsable):
     # Identity of the user which last modified the version. Read-only.
     last_modified_by: Optional[IdentitySet] = None
     # Date and time the version was last modified. Read-only.

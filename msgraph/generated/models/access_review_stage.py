@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewStage(Entity):
+class AccessReviewStage(Entity, Parsable):
     # Each user reviewed in an accessReviewStage has a decision item representing if they were approved, denied, or not yet reviewed.
     decisions: Optional[List[AccessReviewInstanceDecisionItem]] = None
     # The date and time in ISO 8601 format and UTC time when the review stage is scheduled to end. This property is the cumulative total of the durationInDays for all stages. Read-only.

@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class LifecycleWorkflowsContainer(Entity):
+class LifecycleWorkflowsContainer(Entity, Parsable):
     # The customTaskExtension instance.
     custom_task_extensions: Optional[List[CustomTaskExtension]] = None
     # Deleted workflows in your lifecycle workflows instance.

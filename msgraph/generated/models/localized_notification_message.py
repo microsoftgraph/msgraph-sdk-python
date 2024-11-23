@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LocalizedNotificationMessage(Entity):
+class LocalizedNotificationMessage(Entity, Parsable):
     """
     The text content of a Notification Message Template for the specified locale.
     """

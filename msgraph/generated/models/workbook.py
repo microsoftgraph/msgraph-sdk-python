@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Workbook(Entity):
+class Workbook(Entity, Parsable):
     # The application property
     application: Optional[WorkbookApplication] = None
     # Represents a collection of comments in a workbook.

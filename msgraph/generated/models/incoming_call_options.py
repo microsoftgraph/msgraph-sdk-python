@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .call_options import CallOptions
 
 @dataclass
-class IncomingCallOptions(CallOptions):
+class IncomingCallOptions(CallOptions, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.incomingCallOptions"
     

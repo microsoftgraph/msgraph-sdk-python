@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessPackageQuestion(Entity):
+class AccessPackageQuestion(Entity, Parsable):
     # Specifies whether the requestor is allowed to edit answers to questions for an assignment by posting an update to accessPackageAssignmentRequest.
     is_answer_editable: Optional[bool] = None
     # Whether the requestor is required to supply an answer or not.

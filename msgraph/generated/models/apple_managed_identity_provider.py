@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_provider_base import IdentityProviderBase
 
 @dataclass
-class AppleManagedIdentityProvider(IdentityProviderBase):
+class AppleManagedIdentityProvider(IdentityProviderBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.appleManagedIdentityProvider"
     # The certificate data, which is a long string of text from the certificate. Can be null.

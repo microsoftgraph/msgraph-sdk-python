@@ -50,10 +50,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a microsoftStoreForBusinessApp.
+        Deletes a windowsUniversalAppX.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-microsoftstoreforbusinessapp-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-windowsuniversalappx-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -69,10 +69,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MobileAppItemRequestBuilderGetQueryParameters]] = None) -> Optional[MobileApp]:
         """
-        Read properties and relationships of the macOSLobApp object.
+        Read properties and relationships of the managedAndroidLobApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-macoslobapp-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managedandroidlobapp-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,11 +90,11 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: MobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MobileApp]:
         """
-        Update the properties of a microsoftStoreForBusinessApp object.
+        Update the properties of a windowsMicrosoftEdgeApp object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-microsoftstoreforbusinessapp-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-windowsmicrosoftedgeapp-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -114,7 +114,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a microsoftStoreForBusinessApp.
+        Deletes a windowsUniversalAppX.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,7 +125,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MobileAppItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the macOSLobApp object.
+        Read properties and relationships of the managedAndroidLobApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +136,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: MobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a microsoftStoreForBusinessApp object.
+        Update the properties of a windowsMicrosoftEdgeApp object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -340,7 +340,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the macOSLobApp object.
+        Read properties and relationships of the managedAndroidLobApp object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

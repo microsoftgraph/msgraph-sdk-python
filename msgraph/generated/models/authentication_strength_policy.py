@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationStrengthPolicy(Entity):
+class AuthenticationStrengthPolicy(Entity, Parsable):
     # A collection of authentication method modes that are required be used to satify this authentication strength.
     allowed_combinations: Optional[List[AuthenticationMethodModes]] = None
     # Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.

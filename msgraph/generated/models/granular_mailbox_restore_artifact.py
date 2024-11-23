@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mailbox_restore_artifact import MailboxRestoreArtifact
 
 @dataclass
-class GranularMailboxRestoreArtifact(MailboxRestoreArtifact):
+class GranularMailboxRestoreArtifact(MailboxRestoreArtifact, Parsable):
     # .
     artifact_count: Optional[int] = None
     # The OdataType property

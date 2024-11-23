@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsUnavailableRecord(DomainDnsRecord):
+class DomainDnsUnavailableRecord(DomainDnsRecord, Parsable):
     # Provides the reason why the DomainDnsUnavailableRecord entity is returned.
     description: Optional[str] = None
     # The OdataType property

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MultiTenantOrganizationPartnerConfigurationTemplate(Entity):
+class MultiTenantOrganizationPartnerConfigurationTemplate(Entity, Parsable):
     # Determines the partner-specific configuration for automatic user consent settings. Unless configured, the inboundAllowed and outboundAllowed properties are null and inherit from the default settings, which is always false.
     automatic_user_consent_settings: Optional[InboundOutboundPolicyConfiguration] = None
     # Defines your partner-specific configuration for users from other organizations accessing your resources via Microsoft Entra B2B collaboration.

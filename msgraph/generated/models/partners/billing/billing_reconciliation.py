@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ...entity import Entity
 
 @dataclass
-class BillingReconciliation(Entity):
+class BillingReconciliation(Entity, Parsable):
     # The billed property
     billed: Optional[BilledReconciliation] = None
     # The OdataType property

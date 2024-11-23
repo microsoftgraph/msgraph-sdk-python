@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class ExternalGroup(Entity):
+class ExternalGroup(Entity, Parsable):
     # The description of the external group. Optional.
     description: Optional[str] = None
     # The friendly name of the external group. Optional.

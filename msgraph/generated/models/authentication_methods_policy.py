@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationMethodsPolicy(Entity):
+class AuthenticationMethodsPolicy(Entity, Parsable):
     # Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
     authentication_method_configurations: Optional[List[AuthenticationMethodConfiguration]] = None
     # A description of the policy. Read-only.

@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Chat(Entity):
+class Chat(Entity, Parsable):
     # The chatType property
     chat_type: Optional[ChatType] = None
     # Date and time at which the chat was created. Read-only.

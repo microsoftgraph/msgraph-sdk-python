@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class RelyingPartyDetailedSummary(Entity):
+class RelyingPartyDetailedSummary(Entity, Parsable):
     # Number of failed sign ins on AD FS in the period specified. Supports $orderby, $filter (eq).
     failed_sign_in_count: Optional[int] = None
     # The migrationStatus property

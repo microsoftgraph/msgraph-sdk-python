@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class StorageQuotaBreakdown(Entity):
+class StorageQuotaBreakdown(Entity, Parsable):
     # The displayName property
     display_name: Optional[str] = None
     # The manageWebUrl property

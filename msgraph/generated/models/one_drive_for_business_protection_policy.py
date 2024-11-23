@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .protection_policy_base import ProtectionPolicyBase
 
 @dataclass
-class OneDriveForBusinessProtectionPolicy(ProtectionPolicyBase):
+class OneDriveForBusinessProtectionPolicy(ProtectionPolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.oneDriveForBusinessProtectionPolicy"
     # Contains the details of the Onedrive for Business protection rule.

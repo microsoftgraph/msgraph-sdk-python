@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
+class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.x509CertificateAuthenticationMethodConfiguration"
     # Defines strong authentication configurations. This configuration includes the default authentication mode and the different rules for strong authentication bindings.

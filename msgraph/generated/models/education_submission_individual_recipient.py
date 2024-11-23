@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_submission_recipient import EducationSubmissionRecipient
 
 @dataclass
-class EducationSubmissionIndividualRecipient(EducationSubmissionRecipient):
+class EducationSubmissionIndividualRecipient(EducationSubmissionRecipient, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationSubmissionIndividualRecipient"
     # User ID of the user to whom the submission is assigned.

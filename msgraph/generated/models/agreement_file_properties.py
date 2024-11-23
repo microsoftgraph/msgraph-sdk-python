@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AgreementFileProperties(Entity):
+class AgreementFileProperties(Entity, Parsable):
     # The date time representing when the file was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # Localized display name of the policy file of an agreement. The localized display name is shown to end users who view the agreement.

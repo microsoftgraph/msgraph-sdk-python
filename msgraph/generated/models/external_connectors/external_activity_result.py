@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .external_activity import ExternalActivity
 
 @dataclass
-class ExternalActivityResult(ExternalActivity):
+class ExternalActivityResult(ExternalActivity, Parsable):
     # Error information that explains the failure to process an external activity.
     error: Optional[PublicError] = None
     # The OdataType property

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EnrollmentConfigurationAssignment(Entity):
+class EnrollmentConfigurationAssignment(Entity, Parsable):
     """
     Enrollment Configuration Assignment
     """

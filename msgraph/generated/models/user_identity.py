@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class UserIdentity(Identity):
+class UserIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.userIdentity"
     # Indicates the client IP address associated with the user performing the activity (audit log only).

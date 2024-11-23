@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsTemplate(Entity):
+class TeamsTemplate(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

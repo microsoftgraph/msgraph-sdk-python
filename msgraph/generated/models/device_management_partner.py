@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceManagementPartner(Entity):
+class DeviceManagementPartner(Entity, Parsable):
     """
     Entity which represents a connection to device management partner.
     """

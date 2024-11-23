@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from ...entity import Entity
 
 @dataclass
-class Manifest(Entity):
+class Manifest(Entity, Parsable):
     # The total file count for this partner tenant ID.
     blob_count: Optional[int] = None
     # A collection of blob objects that contain details of all the files for the partner tenant ID.

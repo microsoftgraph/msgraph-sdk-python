@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
 @dataclass
-class UnifiedRoleEligibilityScheduleInstance(UnifiedRoleScheduleInstanceBase):
+class UnifiedRoleEligibilityScheduleInstance(UnifiedRoleScheduleInstanceBase, Parsable):
     # The end date of the schedule instance.
     end_date_time: Optional[datetime.datetime] = None
     # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).

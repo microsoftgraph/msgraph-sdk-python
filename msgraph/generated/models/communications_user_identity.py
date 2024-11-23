@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class CommunicationsUserIdentity(Identity):
+class CommunicationsUserIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsUserIdentity"
     # The user's tenant ID.

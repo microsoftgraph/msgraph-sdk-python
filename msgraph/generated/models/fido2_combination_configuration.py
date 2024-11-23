@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
 @dataclass
-class Fido2CombinationConfiguration(AuthenticationCombinationConfiguration):
+class Fido2CombinationConfiguration(AuthenticationCombinationConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.fido2CombinationConfiguration"
     # A list of AAGUIDs allowed to be used as part of the specified authentication method combinations.

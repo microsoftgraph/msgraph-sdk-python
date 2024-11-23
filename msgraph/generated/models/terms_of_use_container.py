@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TermsOfUseContainer(Entity):
+class TermsOfUseContainer(Entity, Parsable):
     # Represents the current status of a user's response to a company's customizable terms of use agreement.
     agreement_acceptances: Optional[List[AgreementAcceptance]] = None
     # Represents a tenant's customizable terms of use agreement that's created and managed with Microsoft Entra ID Governance.

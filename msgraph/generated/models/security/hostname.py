@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .host import Host
 
 @dataclass
-class Hostname(Host):
+class Hostname(Host, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.hostname"
     # The company or individual who registered this hostname, from WHOIS data.

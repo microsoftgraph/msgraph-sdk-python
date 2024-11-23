@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SynchronizationJob(Entity):
+class SynchronizationJob(Entity, Parsable):
     # The bulk upload operation for the job.
     bulk_upload: Optional[BulkUpload] = None
     # The OdataType property

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .comms_operation import CommsOperation
 
 @dataclass
-class RecordOperation(CommsOperation):
+class RecordOperation(CommsOperation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The access token required to retrieve the recording.

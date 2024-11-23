@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class CallEndedEventMessageDetail(EventMessageDetail):
+class CallEndedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callEndedEventMessageDetail"
     # Duration of the call.

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .ip_range import IpRange
 
 @dataclass
-class IPv6Range(IpRange):
+class IPv6Range(IpRange, Parsable):
     """
     IPv6 Range definition.
     """

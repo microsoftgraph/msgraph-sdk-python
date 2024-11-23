@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookComment(Entity):
+class WorkbookComment(Entity, Parsable):
     # The content of the comment.
     content: Optional[str] = None
     # The content type of the comment.

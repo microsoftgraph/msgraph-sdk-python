@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .on_authentication_method_load_start_handler import OnAuthenticationMethodLoadStartHandler
 
 @dataclass
-class OnAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp(OnAuthenticationMethodLoadStartHandler):
+class OnAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp(OnAuthenticationMethodLoadStartHandler, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp"
     # The identityProviders property

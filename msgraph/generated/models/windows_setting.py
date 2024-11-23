@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WindowsSetting(Entity):
+class WindowsSetting(Entity, Parsable):
     # A collection of setting values for a given windowsSetting.
     instances: Optional[List[WindowsSettingInstance]] = None
     # The OdataType property

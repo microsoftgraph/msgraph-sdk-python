@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationMethodsRoot(Entity):
+class AuthenticationMethodsRoot(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents the state of a user's authentication methods, including which methods are registered and which features the user is registered and capable of (such as multifactor authentication, self-service password reset, and passwordless authentication).

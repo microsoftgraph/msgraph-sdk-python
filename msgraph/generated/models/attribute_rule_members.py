@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .subject_set import SubjectSet
 
 @dataclass
-class AttributeRuleMembers(SubjectSet):
+class AttributeRuleMembers(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.attributeRuleMembers"
     # A description of the membership rule.

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class OrgContact(DirectoryObject):
+class OrgContact(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.orgContact"
     # Postal addresses for this organizational contact. For now a contact can only have one physical address.

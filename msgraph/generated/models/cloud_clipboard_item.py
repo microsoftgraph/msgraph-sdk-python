@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class CloudClipboardItem(Entity):
+class CloudClipboardItem(Entity, Parsable):
     # Set by the server. DateTime in UTC when the object was created on the server.
     created_date_time: Optional[datetime.datetime] = None
     # Set by the server. DateTime in UTC when the object expires and after that the object is no longer available. The default and also maximum TTL is 12 hours after the creation, but it might change for performance optimization.

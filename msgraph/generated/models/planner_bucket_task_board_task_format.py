@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PlannerBucketTaskBoardTaskFormat(Entity):
+class PlannerBucketTaskBoardTaskFormat(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Hint used to order tasks in the bucket view of the task board. For details about the supported format, see Using order hints in Planner.

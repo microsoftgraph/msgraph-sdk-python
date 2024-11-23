@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .conversation_member import ConversationMember
 
 @dataclass
-class SkypeForBusinessUserConversationMember(ConversationMember):
+class SkypeForBusinessUserConversationMember(ConversationMember, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.skypeForBusinessUserConversationMember"
     # ID of the tenant that the user belongs to.

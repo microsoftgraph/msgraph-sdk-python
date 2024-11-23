@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class SynchronizationTemplate(Entity):
+class SynchronizationTemplate(Entity, Parsable):
     # Identifier of the application this template belongs to.
     application_id: Optional[UUID] = None
     # true if this template is recommended to be the default for the application.

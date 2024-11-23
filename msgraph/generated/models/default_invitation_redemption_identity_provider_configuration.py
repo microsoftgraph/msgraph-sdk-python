@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .invitation_redemption_identity_provider_configuration import InvitationRedemptionIdentityProviderConfiguration
 
 @dataclass
-class DefaultInvitationRedemptionIdentityProviderConfiguration(InvitationRedemptionIdentityProviderConfiguration):
+class DefaultInvitationRedemptionIdentityProviderConfiguration(InvitationRedemptionIdentityProviderConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     

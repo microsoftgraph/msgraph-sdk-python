@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class UnifiedRoleManagementPolicy(Entity):
+class UnifiedRoleManagementPolicy(Entity, Parsable):
     # Description for the policy.
     description: Optional[str] = None
     # Display name for the policy.

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamInfo(Entity):
+class TeamInfo(Entity, Parsable):
     # The name of the team.
     display_name: Optional[str] = None
     # The OdataType property

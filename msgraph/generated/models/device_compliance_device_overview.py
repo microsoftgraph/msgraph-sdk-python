@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class DeviceComplianceDeviceOverview(Entity):
+class DeviceComplianceDeviceOverview(Entity, Parsable):
     # Version of the policy for that overview
     configuration_version: Optional[int] = None
     # Number of error devices

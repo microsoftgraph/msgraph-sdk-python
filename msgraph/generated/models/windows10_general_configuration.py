@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10GeneralConfiguration(DeviceConfiguration):
+class Windows10GeneralConfiguration(DeviceConfiguration, Parsable):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windows10GeneralConfiguration resource.
     """

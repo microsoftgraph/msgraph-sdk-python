@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .service_announcement_base import ServiceAnnouncementBase
 
 @dataclass
-class ServiceHealthIssue(ServiceAnnouncementBase):
+class ServiceHealthIssue(ServiceAnnouncementBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.serviceHealthIssue"
     # The classification property

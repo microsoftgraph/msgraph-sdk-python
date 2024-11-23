@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .account_target_content import AccountTargetContent
 
 @dataclass
-class AddressBookAccountTargetContent(AccountTargetContent):
+class AddressBookAccountTargetContent(AccountTargetContent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.addressBookAccountTargetContent"
     # List of user emails targeted for an attack simulation training campaign.

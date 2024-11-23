@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthenticationMethodConfiguration(Entity):
+class AuthenticationMethodConfiguration(Entity, Parsable):
     # Groups of users that are excluded from a policy.
     exclude_targets: Optional[List[ExcludeTarget]] = None
     # The OdataType property

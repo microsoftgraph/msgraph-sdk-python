@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .education_resource import EducationResource
 
 @dataclass
-class EducationTeamsAppResource(EducationResource):
+class EducationTeamsAppResource(EducationResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationTeamsAppResource"
     # URL that points to the icon of the app.

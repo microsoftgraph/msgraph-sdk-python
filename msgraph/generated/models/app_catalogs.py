@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AppCatalogs(Entity):
+class AppCatalogs(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The teamsApps property

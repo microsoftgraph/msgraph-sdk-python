@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class PrintServiceEndpoint(Entity):
+class PrintServiceEndpoint(Entity, Parsable):
     # A human-readable display name for the endpoint.
     display_name: Optional[str] = None
     # The OdataType property

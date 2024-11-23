@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .workflow_base import WorkflowBase
 
 @dataclass
-class Workflow(WorkflowBase):
+class Workflow(WorkflowBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.workflow"
     # When the workflow was deleted.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.

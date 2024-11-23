@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .access_review_scope import AccessReviewScope
 
 @dataclass
-class PrincipalResourceMembershipsScope(AccessReviewScope):
+class PrincipalResourceMembershipsScope(AccessReviewScope, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.principalResourceMembershipsScope"
     # Defines the scopes of the principals whose access to resources are reviewed in the access review.

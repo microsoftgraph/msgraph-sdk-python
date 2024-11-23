@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AttendanceRecord(Entity):
+class AttendanceRecord(Entity, Parsable):
     # List of time periods between joining and leaving a meeting.
     attendance_intervals: Optional[List[AttendanceInterval]] = None
     # Email address of the user associated with this attendance record.

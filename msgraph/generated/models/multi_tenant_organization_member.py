@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class MultiTenantOrganizationMember(DirectoryObject):
+class MultiTenantOrganizationMember(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.multiTenantOrganizationMember"
     # Tenant ID of the tenant that added the tenant to the multitenant organization. Read-only.

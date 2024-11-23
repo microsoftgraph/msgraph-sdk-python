@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .operation import Operation
 
 @dataclass
-class ExportSuccessOperation(Operation):
+class ExportSuccessOperation(Operation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The resourceLocation property

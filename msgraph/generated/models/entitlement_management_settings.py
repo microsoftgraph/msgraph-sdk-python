@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class EntitlementManagementSettings(Entity):
+class EntitlementManagementSettings(Entity, Parsable):
     # If externalUserLifecycleAction is blockSignInAndDelete, the duration, typically many days, after an external user is blocked from sign in before their account is deleted.
     duration_until_external_user_deleted_after_blocked: Optional[datetime.timedelta] = None
     # Automatic action that the service should take when an external user's last access package assignment is removed. The possible values are: none, blockSignIn, blockSignInAndDelete, unknownFutureValue.

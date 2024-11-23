@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
 @dataclass
-class X509CertificateCombinationConfiguration(AuthenticationCombinationConfiguration):
+class X509CertificateCombinationConfiguration(AuthenticationCombinationConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.x509CertificateCombinationConfiguration"
     # A list of allowed subject key identifier values.

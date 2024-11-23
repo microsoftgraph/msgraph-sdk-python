@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .device_configuration import DeviceConfiguration
 
 @dataclass
-class SharedPCConfiguration(DeviceConfiguration):
+class SharedPCConfiguration(DeviceConfiguration, Parsable):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the sharedPCConfiguration resource.
     """

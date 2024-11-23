@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class AndroidLobApp(MobileLobApp):
+class AndroidLobApp(MobileLobApp, Parsable):
     """
     Contains properties and inherited properties for Android Line Of Business apps.
     """

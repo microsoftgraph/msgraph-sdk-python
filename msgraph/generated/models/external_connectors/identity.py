@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class Identity(Entity):
+class Identity(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of identity. Possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.

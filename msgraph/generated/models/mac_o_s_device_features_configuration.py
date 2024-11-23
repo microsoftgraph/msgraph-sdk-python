@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
 
 @dataclass
-class MacOSDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
+class MacOSDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase, Parsable):
     """
     MacOS device features configuration profile.
     """

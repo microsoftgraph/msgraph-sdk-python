@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 from .alert_evidence import AlertEvidence
 
 @dataclass
-class KubernetesServiceEvidence(AlertEvidence):
+class KubernetesServiceEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.kubernetesServiceEvidence"
     # The service cluster IP.

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsAppInstallation(Entity):
+class TeamsAppInstallation(Entity, Parsable):
     # The set of resource-specific permissions consented to while installing or upgrading the teamsApp.
     consented_permission_set: Optional[TeamsAppPermissionSet] = None
     # The OdataType property

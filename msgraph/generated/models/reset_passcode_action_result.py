@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_action_result import DeviceActionResult
 
 @dataclass
-class ResetPasscodeActionResult(DeviceActionResult):
+class ResetPasscodeActionResult(DeviceActionResult, Parsable):
     """
     Reset passcode action result
     """

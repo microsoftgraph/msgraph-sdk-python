@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
 
 @dataclass
-class AccessPackageResourceAttributeQuestion(AccessPackageResourceAttributeSource):
+class AccessPackageResourceAttributeQuestion(AccessPackageResourceAttributeSource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessPackageResourceAttributeQuestion"
     # The question property

@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ManagedAppRegistration(Entity):
+class ManagedAppRegistration(Entity, Parsable):
     """
     The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
     """

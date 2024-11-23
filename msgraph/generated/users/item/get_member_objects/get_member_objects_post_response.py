@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class GetMemberObjectsPostResponse(BaseCollectionPaginationCountResponse):
+class GetMemberObjectsPostResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[str]] = None
     

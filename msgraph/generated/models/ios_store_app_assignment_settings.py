@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class IosStoreAppAssignmentSettings(MobileAppAssignmentSettings):
+class IosStoreAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
     """
     Contains properties used to assign an iOS Store mobile app to a group.
     """

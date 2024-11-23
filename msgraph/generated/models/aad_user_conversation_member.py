@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .conversation_member import ConversationMember
 
 @dataclass
-class AadUserConversationMember(ConversationMember):
+class AadUserConversationMember(ConversationMember, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.aadUserConversationMember"
     # The email address of the user.

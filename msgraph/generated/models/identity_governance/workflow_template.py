@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class WorkflowTemplate(Entity):
+class WorkflowTemplate(Entity, Parsable):
     # The category property
     category: Optional[LifecycleWorkflowCategory] = None
     # The description of the workflowTemplate.

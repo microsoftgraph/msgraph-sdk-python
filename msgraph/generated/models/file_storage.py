@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class FileStorage(Entity):
+class FileStorage(Entity, Parsable):
     # The containers property
     containers: Optional[List[FileStorageContainer]] = None
     # The OdataType property

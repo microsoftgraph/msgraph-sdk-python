@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .protection_unit_base import ProtectionUnitBase
 
 @dataclass
-class MailboxProtectionUnit(ProtectionUnitBase):
+class MailboxProtectionUnit(ProtectionUnitBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mailboxProtectionUnit"
     # The ID of the directory object.

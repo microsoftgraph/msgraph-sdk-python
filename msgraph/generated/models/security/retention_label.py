@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class RetentionLabel(Entity):
+class RetentionLabel(Entity, Parsable):
     # Specifies the action to take on the labeled document after the period specified by the retentionDuration property expires. The possible values are: none, delete, startDispositionReview, unknownFutureValue.
     action_after_retention_period: Optional[ActionAfterRetentionPeriod] = None
     # Specifies how the behavior of a document with this label should be during the retention period. The possible values are: doNotRetain, retain, retainAsRecord, retainAsRegulatoryRecord, unknownFutureValue.

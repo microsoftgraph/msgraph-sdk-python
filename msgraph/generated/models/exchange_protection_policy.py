@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .protection_policy_base import ProtectionPolicyBase
 
 @dataclass
-class ExchangeProtectionPolicy(ProtectionPolicyBase):
+class ExchangeProtectionPolicy(ProtectionPolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.exchangeProtectionPolicy"
     # The rules associated with the Exchange protection policy.

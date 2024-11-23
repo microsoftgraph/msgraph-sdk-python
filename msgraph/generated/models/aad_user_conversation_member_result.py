@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .action_result_part import ActionResultPart
 
 @dataclass
-class AadUserConversationMemberResult(ActionResultPart):
+class AadUserConversationMemberResult(ActionResultPart, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.aadUserConversationMemberResult"
     # The userId property

@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VirtualEventRegistration(Entity):
+class VirtualEventRegistration(Entity, Parsable):
     # Date and time when the registrant cancels their registration for the virtual event. Only appears when applicable. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     cancelation_date_time: Optional[datetime.datetime] = None
     # Email address of the registrant.

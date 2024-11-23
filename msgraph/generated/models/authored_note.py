@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AuthoredNote(Entity):
+class AuthoredNote(Entity, Parsable):
     # Identity information about the note's author.
     author: Optional[Identity] = None
     # The content of the note.

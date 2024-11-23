@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .agreement_file_properties import AgreementFileProperties
 
 @dataclass
-class AgreementFileLocalization(AgreementFileProperties):
+class AgreementFileLocalization(AgreementFileProperties, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Read-only. Customized versions of the terms of use agreement in the Microsoft Entra tenant.

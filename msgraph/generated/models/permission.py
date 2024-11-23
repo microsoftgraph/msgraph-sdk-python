@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class Permission(Entity):
+class Permission(Entity, Parsable):
     # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there's no expiration set for this permission. Optional.
     expiration_date_time: Optional[datetime.datetime] = None
     # For user type permissions, the details of the users and applications for this permission. Read-only.

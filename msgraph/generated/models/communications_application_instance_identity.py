@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class CommunicationsApplicationInstanceIdentity(Identity):
+class CommunicationsApplicationInstanceIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsApplicationInstanceIdentity"
     # True if the participant shouldn't be shown in other participants' rosters.

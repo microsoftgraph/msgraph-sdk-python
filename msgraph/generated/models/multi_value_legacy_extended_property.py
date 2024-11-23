@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MultiValueLegacyExtendedProperty(Entity):
+class MultiValueLegacyExtendedProperty(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of property values.

@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
 @dataclass
-class SectionGroup(OnenoteEntityHierarchyModel):
+class SectionGroup(OnenoteEntityHierarchyModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sectionGroup"
     # The notebook that contains the section group. Read-only.

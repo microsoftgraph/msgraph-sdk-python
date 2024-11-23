@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .conversation_member import ConversationMember
 
 @dataclass
-class MicrosoftAccountUserConversationMember(ConversationMember):
+class MicrosoftAccountUserConversationMember(ConversationMember, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftAccountUserConversationMember"
     # Microsoft Account ID of the user.

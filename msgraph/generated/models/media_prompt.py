@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .prompt import Prompt
 
 @dataclass
-class MediaPrompt(Prompt):
+class MediaPrompt(Prompt, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mediaPrompt"
     # The mediaInfo property

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsAppSettings(Entity):
+class TeamsAppSettings(Entity, Parsable):
     # Indicates whether users are allowed to request access to the unavailable Teams apps.
     allow_user_requests_for_app_access: Optional[bool] = None
     # Indicates whether resource-specific consent for personal scope in Teams apps is enabled for the tenant. True indicates that Teams apps that are allowed in the tenant and require resource-specific permissions can be installed in the personal scope. False blocks the installation of any Teams app that requires resource-specific permissions in the personal scope.

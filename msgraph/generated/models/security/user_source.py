@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .data_source import DataSource
 
 @dataclass
-class UserSource(DataSource):
+class UserSource(DataSource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.userSource"
     # Email address of the user's mailbox.

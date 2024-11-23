@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyEnablementRule(UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyEnablementRule(UnifiedRoleManagementPolicyRule, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule"
     # The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.

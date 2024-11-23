@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ServiceHealth(Entity):
+class ServiceHealth(Entity, Parsable):
     # A collection of issues that happened on the service, with detailed information for each issue.
     issues: Optional[List[ServiceHealthIssue]] = None
     # The OdataType property

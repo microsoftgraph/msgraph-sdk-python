@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class Windows10MobileCompliancePolicy(DeviceCompliancePolicy):
+class Windows10MobileCompliancePolicy(DeviceCompliancePolicy, Parsable):
     """
     This class contains compliance settings for Windows 10 Mobile.
     """

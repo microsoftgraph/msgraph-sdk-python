@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ConditionalAccessTemplate(Entity):
+class ConditionalAccessTemplate(Entity, Parsable):
     # The user-friendly name of the template.
     description: Optional[str] = None
     # The details property

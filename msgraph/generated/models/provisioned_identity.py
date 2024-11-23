@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .identity import Identity
 
 @dataclass
-class ProvisionedIdentity(Identity):
+class ProvisionedIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.provisionedIdentity"
     # Details of the identity.

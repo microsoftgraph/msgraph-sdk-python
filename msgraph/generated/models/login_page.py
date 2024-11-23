@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class LoginPage(Entity):
+class LoginPage(Entity, Parsable):
     # The HTML content of the login page.
     content: Optional[str] = None
     # Identity of the user who created the login page.

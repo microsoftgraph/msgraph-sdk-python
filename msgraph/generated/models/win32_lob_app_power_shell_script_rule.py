@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
-class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
+class Win32LobAppPowerShellScriptRule(Win32LobAppRule, Parsable):
     """
     A complex type to store the PowerShell script rule data for a Win32 LOB app.
     """

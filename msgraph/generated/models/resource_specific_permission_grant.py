@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .directory_object import DirectoryObject
 
 @dataclass
-class ResourceSpecificPermissionGrant(DirectoryObject):
+class ResourceSpecificPermissionGrant(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.resourceSpecificPermissionGrant"
     # ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.

@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewInstance(Entity):
+class AccessReviewInstance(Entity, Parsable):
     # Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.
     contacted_reviewers: Optional[List[AccessReviewReviewer]] = None
     # Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.

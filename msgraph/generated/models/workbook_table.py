@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class WorkbookTable(Entity):
+class WorkbookTable(Entity, Parsable):
     # The list of all the columns in the table. Read-only.
     columns: Optional[List[WorkbookTableColumn]] = None
     # Indicates whether the first column contains special formatting.

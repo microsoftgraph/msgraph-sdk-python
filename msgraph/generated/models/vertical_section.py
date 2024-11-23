@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class VerticalSection(Entity):
+class VerticalSection(Entity, Parsable):
     # Enumeration value that indicates the emphasis of the section background. The possible values are: none, netural, soft, strong, unknownFutureValue.
     emphasis: Optional[SectionEmphasisType] = None
     # The OdataType property

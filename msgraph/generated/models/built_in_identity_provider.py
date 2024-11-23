@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .identity_provider_base import IdentityProviderBase
 
 @dataclass
-class BuiltInIdentityProvider(IdentityProviderBase):
+class BuiltInIdentityProvider(IdentityProviderBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.builtInIdentityProvider"
     # The identity provider type. For a B2B scenario, possible values: AADSignup, MicrosoftAccount, EmailOTP. Required.

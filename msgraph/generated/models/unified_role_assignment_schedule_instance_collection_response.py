@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class UnifiedRoleAssignmentScheduleInstanceCollectionResponse(BaseCollectionPaginationCountResponse):
+class UnifiedRoleAssignmentScheduleInstanceCollectionResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[UnifiedRoleAssignmentScheduleInstance]] = None
     

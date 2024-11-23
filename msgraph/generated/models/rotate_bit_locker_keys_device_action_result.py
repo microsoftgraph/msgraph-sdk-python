@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 from .device_action_result import DeviceActionResult
 
 @dataclass
-class RotateBitLockerKeysDeviceActionResult(DeviceActionResult):
+class RotateBitLockerKeysDeviceActionResult(DeviceActionResult, Parsable):
     """
     RotateBitLockerKeys device action result
     """

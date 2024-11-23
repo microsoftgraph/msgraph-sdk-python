@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class TeamsTab(Entity):
+class TeamsTab(Entity, Parsable):
     # Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
     configuration: Optional[TeamsTabConfiguration] = None
     # Name of the tab.

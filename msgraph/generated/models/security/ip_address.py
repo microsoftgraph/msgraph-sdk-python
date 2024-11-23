@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .host import Host
 
 @dataclass
-class IpAddress(Host):
+class IpAddress(Host, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ipAddress"
     # The details about the autonomous system to which this IP address belongs.

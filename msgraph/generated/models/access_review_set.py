@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class AccessReviewSet(Entity):
+class AccessReviewSet(Entity, Parsable):
     # Represents the template and scheduling for an access review.
     definitions: Optional[List[AccessReviewScheduleDefinition]] = None
     # Represents a collection of access review history data and the scopes used to collect that data.

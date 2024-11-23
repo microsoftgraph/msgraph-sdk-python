@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class ConversationMember(Entity):
+class ConversationMember(Entity, Parsable):
     # The display name of the user.
     display_name: Optional[str] = None
     # The OdataType property

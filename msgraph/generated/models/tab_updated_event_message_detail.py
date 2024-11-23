@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from .event_message_detail import EventMessageDetail
 
 @dataclass
-class TabUpdatedEventMessageDetail(EventMessageDetail):
+class TabUpdatedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.tabUpdatedEventMessageDetail"
     # Initiator of the event.

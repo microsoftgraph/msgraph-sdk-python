@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class ImportPostResponse(BaseCollectionPaginationCountResponse):
+class ImportPostResponse(BaseCollectionPaginationCountResponse, Parsable):
     # The value property
     value: Optional[List[ImportedWindowsAutopilotDeviceIdentity]] = None
     

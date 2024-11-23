@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 from ..entity import Entity
 
 @dataclass
-class HostReputation(Entity):
+class HostReputation(Entity, Parsable):
     # The classification property
     classification: Optional[HostReputationClassification] = None
     # The OdataType property

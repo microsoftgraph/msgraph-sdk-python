@@ -51,7 +51,7 @@ class VirtualEventTownhallItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[VirtualEventTownhallItemRequestBuilderGetQueryParameters]] = None) -> Optional[VirtualEventTownhall]:
         """
-        Read the properties and relationships of a virtualEventTownhall object.
+        Read the properties and relationships of a virtualEventTownhall object. All roles can get the details of a townhall event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventTownhall]
         Find more info here: https://learn.microsoft.com/graph/api/virtualeventtownhall-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class VirtualEventTownhallItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: VirtualEventTownhall, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VirtualEventTownhall]:
         """
-        Update the properties of a virtualEventTownhall object.
+        Update the properties of a virtualEventTownhall object. Only the Organizer and Co-organizer can make changes to a townhall event.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventTownhall]
@@ -107,7 +107,7 @@ class VirtualEventTownhallItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[VirtualEventTownhallItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a virtualEventTownhall object.
+        Read the properties and relationships of a virtualEventTownhall object. All roles can get the details of a townhall event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +118,7 @@ class VirtualEventTownhallItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: VirtualEventTownhall, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a virtualEventTownhall object.
+        Update the properties of a virtualEventTownhall object. Only the Organizer and Co-organizer can make changes to a townhall event.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -169,7 +169,7 @@ class VirtualEventTownhallItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class VirtualEventTownhallItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a virtualEventTownhall object.
+        Read the properties and relationships of a virtualEventTownhall object. All roles can get the details of a townhall event.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

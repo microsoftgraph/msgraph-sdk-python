@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.security.identity_container import IdentityContainer
     from .health_issues.health_issues_request_builder import HealthIssuesRequestBuilder
+    from .sensors.sensors_request_builder import SensorsRequestBuilder
 
 class IdentitiesRequestBuilder(BaseRequestBuilder):
     """
@@ -146,6 +147,15 @@ class IdentitiesRequestBuilder(BaseRequestBuilder):
         from .health_issues.health_issues_request_builder import HealthIssuesRequestBuilder
 
         return HealthIssuesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sensors(self) -> SensorsRequestBuilder:
+        """
+        Provides operations to manage the sensors property of the microsoft.graph.security.identityContainer entity.
+        """
+        from .sensors.sensors_request_builder import SensorsRequestBuilder
+
+        return SensorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IdentitiesRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

@@ -670,12 +670,14 @@ if TYPE_CHECKING:
     from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
     from .security.ip_address import IpAddress
     from .security.labels_root import LabelsRoot
+    from .security.network_adapter import NetworkAdapter
     from .security.passive_dns_record import PassiveDnsRecord
     from .security.retention_event import RetentionEvent
     from .security.retention_event_type import RetentionEventType
     from .security.retention_label import RetentionLabel
     from .security.search import Search
     from .security.security import Security
+    from .security.sensor import Sensor
     from .security.site_source import SiteSource
     from .security.ssl_certificate import SslCertificate
     from .security.subcategory_template import SubcategoryTemplate
@@ -3663,6 +3665,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.labels_root import LabelsRoot
 
             return LabelsRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.networkAdapter".casefold():
+            from .security.network_adapter import NetworkAdapter
+
+            return NetworkAdapter()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.passiveDnsRecord".casefold():
             from .security.passive_dns_record import PassiveDnsRecord
 
@@ -3683,6 +3689,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.search import Search
 
             return Search()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.sensor".casefold():
+            from .security.sensor import Sensor
+
+            return Sensor()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.siteSource".casefold():
             from .security.site_source import SiteSource
 
@@ -5504,12 +5514,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
         from .security.ip_address import IpAddress
         from .security.labels_root import LabelsRoot
+        from .security.network_adapter import NetworkAdapter
         from .security.passive_dns_record import PassiveDnsRecord
         from .security.retention_event import RetentionEvent
         from .security.retention_event_type import RetentionEventType
         from .security.retention_label import RetentionLabel
         from .security.search import Search
         from .security.security import Security
+        from .security.sensor import Sensor
         from .security.site_source import SiteSource
         from .security.ssl_certificate import SslCertificate
         from .security.subcategory_template import SubcategoryTemplate
@@ -6463,12 +6475,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
         from .security.ip_address import IpAddress
         from .security.labels_root import LabelsRoot
+        from .security.network_adapter import NetworkAdapter
         from .security.passive_dns_record import PassiveDnsRecord
         from .security.retention_event import RetentionEvent
         from .security.retention_event_type import RetentionEventType
         from .security.retention_label import RetentionLabel
         from .security.search import Search
         from .security.security import Security
+        from .security.sensor import Sensor
         from .security.site_source import SiteSource
         from .security.ssl_certificate import SslCertificate
         from .security.subcategory_template import SubcategoryTemplate
@@ -7436,12 +7450,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
         from .security.ip_address import IpAddress
         from .security.labels_root import LabelsRoot
+        from .security.network_adapter import NetworkAdapter
         from .security.passive_dns_record import PassiveDnsRecord
         from .security.retention_event import RetentionEvent
         from .security.retention_event_type import RetentionEventType
         from .security.retention_label import RetentionLabel
         from .security.search import Search
         from .security.security import Security
+        from .security.sensor import Sensor
         from .security.site_source import SiteSource
         from .security.ssl_certificate import SslCertificate
         from .security.subcategory_template import SubcategoryTemplate

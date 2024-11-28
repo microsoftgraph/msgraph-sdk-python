@@ -70,7 +70,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: EmailAuthenticationMethod, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EmailAuthenticationMethod]:
         """
-        Update a user's email address represented by an emailAuthenticationMethod object.
+        Update a user's email address represented by an emailAuthenticationMethod object. Self-service operations aren't supported.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EmailAuthenticationMethod]
@@ -116,7 +116,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: EmailAuthenticationMethod, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update a user's email address represented by an emailAuthenticationMethod object.
+        Update a user's email address represented by an emailAuthenticationMethod object. Self-service operations aren't supported.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

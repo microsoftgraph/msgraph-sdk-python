@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_key_credential_restriction_type import AppKeyCredentialRestrictionType
+    from .app_management_restriction_state import AppManagementRestrictionState
 
 @dataclass
 class KeyCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsable):
@@ -23,6 +24,8 @@ class KeyCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     restrict_for_apps_created_after_date_time: Optional[datetime.datetime] = None
     # The type of restriction being applied. Possible values are asymmetricKeyLifetime, and unknownFutureValue. Each value of restrictionType can be used only once per policy.
     restriction_type: Optional[AppKeyCredentialRestrictionType] = None
+    # The state property
+    state: Optional[AppManagementRestrictionState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> KeyCredentialConfiguration:
@@ -41,14 +44,17 @@ class KeyCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .app_key_credential_restriction_type import AppKeyCredentialRestrictionType
+        from .app_management_restriction_state import AppManagementRestrictionState
 
         from .app_key_credential_restriction_type import AppKeyCredentialRestrictionType
+        from .app_management_restriction_state import AppManagementRestrictionState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "maxLifetime": lambda n : setattr(self, 'max_lifetime', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "restrictForAppsCreatedAfterDateTime": lambda n : setattr(self, 'restrict_for_apps_created_after_date_time', n.get_datetime_value()),
             "restrictionType": lambda n : setattr(self, 'restriction_type', n.get_enum_value(AppKeyCredentialRestrictionType)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AppManagementRestrictionState)),
         }
         return fields
     
@@ -61,11 +67,13 @@ class KeyCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         from .app_key_credential_restriction_type import AppKeyCredentialRestrictionType
+        from .app_management_restriction_state import AppManagementRestrictionState
 
         writer.write_timedelta_value("maxLifetime", self.max_lifetime)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("restrictForAppsCreatedAfterDateTime", self.restrict_for_apps_created_after_date_time)
         writer.write_enum_value("restrictionType", self.restriction_type)
+        writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
     
 

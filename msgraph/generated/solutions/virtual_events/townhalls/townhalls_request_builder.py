@@ -48,7 +48,7 @@ class TownhallsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TownhallsRequestBuilderGetQueryParameters]] = None) -> Optional[VirtualEventTownhallCollectionResponse]:
         """
-        Read the properties and relationships of a virtualEventTownhall object.
+        Read the properties and relationships of a virtualEventTownhall object. All roles can get the details of a townhall event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventTownhallCollectionResponse]
         """
@@ -92,7 +92,7 @@ class TownhallsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TownhallsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a virtualEventTownhall object.
+        Read the properties and relationships of a virtualEventTownhall object. All roles can get the details of a townhall event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class TownhallsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TownhallsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a virtualEventTownhall object.
+        Read the properties and relationships of a virtualEventTownhall object. All roles can get the details of a townhall event.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

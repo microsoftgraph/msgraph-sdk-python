@@ -55,7 +55,7 @@ class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[VirtualEventWebinarItemRequestBuilderGetQueryParameters]] = None) -> Optional[VirtualEventWebinar]:
         """
-        Read the properties and relationships of a virtualEventWebinar object.
+        Read the properties and relationships of a virtualEventWebinar object. All roles can get the details of a webinar event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventWebinar]
         Find more info here: https://learn.microsoft.com/graph/api/virtualeventwebinar-get?view=graph-rest-1.0
@@ -76,7 +76,7 @@ class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: VirtualEventWebinar, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VirtualEventWebinar]:
         """
-        Update the properties of a virtualEventWebinar object.
+        Update the properties of a virtualEventWebinar object. Only the Organizer and Co-organizer can make changes to a webinar event.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventWebinar]
@@ -135,7 +135,7 @@ class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[VirtualEventWebinarItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a virtualEventWebinar object.
+        Read the properties and relationships of a virtualEventWebinar object. All roles can get the details of a webinar event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -146,7 +146,7 @@ class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: VirtualEventWebinar, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a virtualEventWebinar object.
+        Update the properties of a virtualEventWebinar object. Only the Organizer and Co-organizer can make changes to a webinar event.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -215,7 +215,7 @@ class VirtualEventWebinarItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class VirtualEventWebinarItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a virtualEventWebinar object.
+        Read the properties and relationships of a virtualEventWebinar object. All roles can get the details of a webinar event.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

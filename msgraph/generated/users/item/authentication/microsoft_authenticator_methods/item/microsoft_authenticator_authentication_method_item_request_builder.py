@@ -32,7 +32,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a microsoftAuthenticatorAuthenticationMethod object.
+        Delete a microsoftAuthenticatorAuthenticationMethod object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/microsoftauthenticatorauthenticationmethod-delete?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a microsoftAuthenticatorAuthenticationMethod object.
+        Delete a microsoftAuthenticatorAuthenticationMethod object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

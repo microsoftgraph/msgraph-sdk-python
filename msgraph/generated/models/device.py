@@ -33,7 +33,7 @@ class Device(DirectoryObject, Parsable):
     device_ownership: Optional[str] = None
     # For internal use only.
     device_version: Optional[int] = None
-    # The display name for the device. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
+    # The display name for the device. Maximum length is 256 characters. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
     # Enrollment profile applied to the device. For example, Apple Device Enrollment Profile, Device enrollment - Corporate device identifiers, or Windows Autopilot profile name. This property is set by Intune.
     enrollment_profile_name: Optional[str] = None

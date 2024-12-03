@@ -62,7 +62,7 @@ class Application(DirectoryObject, Parsable):
     description: Optional[str] = None
     # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
     disabled_by_microsoft_status: Optional[str] = None
-    # The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
+    # The display name for the application. Maximum length is 256 characters. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
     # Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
     extension_properties: Optional[List[ExtensionProperty]] = None

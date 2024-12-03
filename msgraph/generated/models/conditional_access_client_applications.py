@@ -20,7 +20,7 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, BackedModel, Par
     include_service_principals: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The servicePrincipalFilter property
+    # Filter that defines the dynamic-servicePrincipal-syntax rule to include/exclude service principals. A filter can use custom security attributes to include/exclude service principals.
     service_principal_filter: Optional[ConditionalAccessFilter] = None
     
     @staticmethod

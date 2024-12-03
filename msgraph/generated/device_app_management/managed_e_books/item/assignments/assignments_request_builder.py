@@ -48,10 +48,10 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AssignmentsRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedEBookAssignmentCollectionResponse]:
         """
-        List properties and relationships of the managedEBookAssignment objects.
+        List properties and relationships of the iosVppEBookAssignment objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,7 +93,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AssignmentsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedEBookAssignment objects.
+        List properties and relationships of the iosVppEBookAssignment objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +139,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedEBookAssignment objects.
+        List properties and relationships of the iosVppEBookAssignment objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

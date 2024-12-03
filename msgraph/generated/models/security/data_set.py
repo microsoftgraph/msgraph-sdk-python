@@ -17,6 +17,8 @@ class DataSet(Entity, Parsable):
     created_by: Optional[IdentitySet] = None
     # The createdDateTime property
     created_date_time: Optional[datetime.datetime] = None
+    # The description property
+    description: Optional[str] = None
     # The displayName property
     display_name: Optional[str] = None
     # The OdataType property
@@ -58,6 +60,7 @@ class DataSet(Entity, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -79,6 +82,7 @@ class DataSet(Entity, Parsable):
 
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
     
 

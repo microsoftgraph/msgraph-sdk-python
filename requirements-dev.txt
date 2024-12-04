@@ -17,8 +17,8 @@ cryptography==43.0.1
 Deprecated==1.2.15
 dill==0.3.8
 docutils==0.20.1
-flit==3.9.0
-flit_core==3.9.0
+flit==3.10.1
+flit_core==3.10.1
 frozenlist==1.4.1
 h11==0.14.0
 h2==4.1.0

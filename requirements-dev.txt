@@ -16,7 +16,7 @@ colorama==0.4.6
 cryptography==43.0.1
 Deprecated==1.2.15
 dill==0.3.8
-docutils==0.21.2
+docutils==0.20.1
 flit==3.9.0
 flit_core==3.9.0
 frozenlist==1.4.1

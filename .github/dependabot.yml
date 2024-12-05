@@ -1,23 +1,29 @@
 version: 2
 updates:
-- package-ecosystem: pip
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  groups:
-    open-telemetry:
-      patterns:
-        - "*opentelemetry*"
-    kiota:
-      patterns:
-        - "*kiota*"
-    pylint:
-      patterns:
-        - "*pylint*"
-        - "*astroid*"
-- package-ecosystem: github-actions
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    groups:
+      open-telemetry:
+        patterns:
+          - "*opentelemetry*"
+      kiota:
+        patterns:
+          - "*kiota*"
+      pylint:
+        patterns:
+          - "*pylint*"
+          - "*astroid*"
+      azure-identity:
+        patterns:
+          - "*azure-*"
+      flit:
+        patterns:
+          - "*flit*"
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10

@@ -10,7 +10,7 @@ build==1.2.2.post1
 bumpver==2023.1129
 certifi==2024.8.30
 cffi==1.17.0
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
 click==8.1.7
 colorama==0.4.6
 cryptography==43.0.1
@@ -43,7 +43,7 @@ microsoft-kiota-serialization-text==1.6.3
 msal==1.30.0
 msal-extensions==1.2.0
 msgraph-core==1.1.7
-multidict==6.0.5
+multidict==6.1.0
 mypy==1.11.2
 mypy-extensions==1.0.0
 opentelemetry-api==1.28.2

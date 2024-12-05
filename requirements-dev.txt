@@ -52,7 +52,7 @@ opentelemetry-semantic-conventions==0.49b2
 packaging==24.1
 pathlib2==2.3.7.post1
 pendulum==3.0.0
-platformdirs==4.2.2
+platformdirs==4.3.6
 portalocker==2.10.1
 pycparser==2.22
 PyJWT==2.9.0

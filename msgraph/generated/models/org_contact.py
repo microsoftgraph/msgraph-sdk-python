@@ -25,7 +25,7 @@ class OrgContact(DirectoryObject, Parsable):
     department: Optional[str] = None
     # The contact's direct reports. (The users and contacts that have their manager property set to this contact.)  Read-only. Nullable. Supports $expand.
     direct_reports: Optional[List[DirectoryObject]] = None
-    # Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderby.
+    # Display name for this organizational contact. Maximum length is 256 characters. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderby.
     display_name: Optional[str] = None
     # First name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     given_name: Optional[str] = None

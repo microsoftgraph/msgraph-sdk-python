@@ -30,7 +30,7 @@ class RenewRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
+        Renew a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-renew?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class RenewRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
+        Renew a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

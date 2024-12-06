@@ -11,8 +11,12 @@ class FileStorageContainerSettings(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+    # The isItemVersioningEnabled property
+    is_item_versioning_enabled: Optional[bool] = None
     # Indicates whether Optical Character Recognition (OCR) is enabled for the container. The default value is false. When set to true, OCR extraction is performed for new and updated documents of supported document types, and the extracted fields in the metadata of the document enable end-user search and search-driven solutions. When set to false, existing OCR metadata is not impacted. Optional. Read-write.
     is_ocr_enabled: Optional[bool] = None
+    # The itemMajorVersionLimit property
+    item_major_version_limit: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,7 +37,9 @@ class FileStorageContainerSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
+            "isItemVersioningEnabled": lambda n : setattr(self, 'is_item_versioning_enabled', n.get_bool_value()),
             "isOcrEnabled": lambda n : setattr(self, 'is_ocr_enabled', n.get_bool_value()),
+            "itemMajorVersionLimit": lambda n : setattr(self, 'item_major_version_limit', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -46,7 +52,9 @@ class FileStorageContainerSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_bool_value("isItemVersioningEnabled", self.is_item_versioning_enabled)
         writer.write_bool_value("isOcrEnabled", self.is_ocr_enabled)
+        writer.write_int_value("itemMajorVersionLimit", self.item_major_version_limit)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

@@ -43,7 +43,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
     alternative_names: Optional[List[str]] = None
     # The description exposed by the associated application.
     app_description: Optional[str] = None
-    # The display name exposed by the associated application.
+    # The display name exposed by the associated application. Maximum length is 256 characters.
     app_display_name: Optional[str] = None
     # The unique identifier for the associated application (its appId property). Alternate key. Supports $filter (eq, ne, not, in, startsWith).
     app_id: Optional[str] = None

@@ -15,7 +15,7 @@ click==8.1.7
 colorama==0.4.6
 cryptography==44.0.0
 Deprecated==1.2.15
-dill==0.3.8
+dill==0.3.9
 docutils==0.20.1
 flit==3.10.1
 flit_core==3.10.1

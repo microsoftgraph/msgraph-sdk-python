@@ -13,11 +13,11 @@ from .change_tracked_entity import ChangeTrackedEntity
 class OpenShift(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.openShift"
-    # An unpublished open shift.
+    # Draft changes in the openShift are only visible to managers until they're shared.
     draft_open_shift: Optional[OpenShiftItem] = None
-    # ID for the scheduling group that the open shift belongs to.
+    # The ID of the schedulingGroup that contains the openShift.
     scheduling_group_id: Optional[str] = None
-    # A published open shift.
+    # The shared version of this openShift that is viewable by both employees and managers.
     shared_open_shift: Optional[OpenShiftItem] = None
     
     @staticmethod

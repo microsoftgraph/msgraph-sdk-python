@@ -25,9 +25,9 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Applications and user actions included in and excluded from the policy. Required.
     applications: Optional[ConditionalAccessApplications] = None
-    # The authenticationFlows property
+    # Authentication flows included in the policy scope.
     authentication_flows: Optional[ConditionalAccessAuthenticationFlows] = None
-    # Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.  The easUnsupported enumeration member will be deprecated in favor of exchangeActiveSync which includes EAS supported and unsupported platforms.
+    # Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.  The easUnsupported enumeration member will be deprecated in favor of exchangeActiveSync, which includes EAS supported and unsupported platforms.
     client_app_types: Optional[List[ConditionalAccessClientApp]] = None
     # Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
     client_applications: Optional[ConditionalAccessClientApplications] = None

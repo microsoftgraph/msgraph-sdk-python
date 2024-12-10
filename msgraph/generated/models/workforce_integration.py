@@ -22,7 +22,7 @@ class WorkforceIntegration(ChangeTrackedEntity, Parsable):
     encryption: Optional[WorkforceIntegrationEncryption] = None
     # Indicates whether this workforce integration is currently active and available.
     is_active: Optional[bool] = None
-    # The Shifts entities supported for synchronous change notifications. Shifts will make a call back to the url provided on client changes on those entities added here. By default, no entities are supported for change notifications. Possible values are: none, shift, swapRequest, userShiftPreferences, openshift, openShiftRequest, offerShiftRequest, unknownFutureValue.
+    # The Shifts entities supported for synchronous change notifications. Shifts call back to the provided URL when client changes occur to the entities specified in this property. By default, no entities are supported for change notifications. Possible values are: none, shift, swapRequest, userShiftPreferences, openShift, openShiftRequest, offerShiftRequest, unknownFutureValue, timeOffReason, timeOff, timeOffRequest. You must use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: timeOffReason, timeOff, timeOffRequest.
     supported_entities: Optional[WorkforceIntegrationSupportedEntities] = None
     # Workforce Integration URL for callbacks from the Shifts service.
     url: Optional[str] = None

@@ -46,9 +46,9 @@ msgraph-core==1.1.7
 multidict==6.1.0
 mypy==1.13.0
 mypy-extensions==1.0.0
-opentelemetry-api==1.28.2
-opentelemetry-sdk==1.28.2
-opentelemetry-semantic-conventions==0.49b2
+opentelemetry-api==1.29.0
+opentelemetry-sdk==1.29.0
+opentelemetry-semantic-conventions==0.50b0
 packaging==24.2
 pathlib2==2.3.7.post1
 pendulum==3.0.0

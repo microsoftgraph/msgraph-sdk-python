@@ -15,6 +15,8 @@ class TimeOff(ChangeTrackedEntity, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.timeOff"
     # The draft version of this timeOff item that is viewable by managers. It must be shared before it's visible to team members. Required.
     draft_time_off: Optional[TimeOffItem] = None
+    # The timeOff is marked for deletion, a process that is finalized when the schedule is shared.
+    is_staged_for_deletion: Optional[bool] = None
     # The shared version of this timeOff that is viewable by both employees and managers. Updates to the sharedTimeOff property send notifications to users in the Teams client. Required.
     shared_time_off: Optional[TimeOffItem] = None
     # ID of the user assigned to the timeOff. Required.
@@ -44,6 +46,7 @@ class TimeOff(ChangeTrackedEntity, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "draftTimeOff": lambda n : setattr(self, 'draft_time_off', n.get_object_value(TimeOffItem)),
+            "isStagedForDeletion": lambda n : setattr(self, 'is_staged_for_deletion', n.get_bool_value()),
             "sharedTimeOff": lambda n : setattr(self, 'shared_time_off', n.get_object_value(TimeOffItem)),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
@@ -64,6 +67,7 @@ class TimeOff(ChangeTrackedEntity, Parsable):
         from .time_off_item import TimeOffItem
 
         writer.write_object_value("draftTimeOff", self.draft_time_off)
+        writer.write_bool_value("isStagedForDeletion", self.is_staged_for_deletion)
         writer.write_object_value("sharedTimeOff", self.shared_time_off)
         writer.write_str_value("userId", self.user_id)
     

@@ -15,6 +15,8 @@ class Shift(ChangeTrackedEntity, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.shift"
     # Draft changes in the shift. Draft changes are only visible to managers. The changes are visible to employees when they are shared, which copies the changes from the draftShift to the sharedShift property.
     draft_shift: Optional[ShiftItem] = None
+    # The shift is marked for deletion, a process that is finalized when the schedule is shared.
+    is_staged_for_deletion: Optional[bool] = None
     # ID of the scheduling group the shift is part of. Required.
     scheduling_group_id: Optional[str] = None
     # The shared version of this shift that is viewable by both employees and managers. Updates to the sharedShift property send notifications to users in the Teams client.
@@ -46,6 +48,7 @@ class Shift(ChangeTrackedEntity, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "draftShift": lambda n : setattr(self, 'draft_shift', n.get_object_value(ShiftItem)),
+            "isStagedForDeletion": lambda n : setattr(self, 'is_staged_for_deletion', n.get_bool_value()),
             "schedulingGroupId": lambda n : setattr(self, 'scheduling_group_id', n.get_str_value()),
             "sharedShift": lambda n : setattr(self, 'shared_shift', n.get_object_value(ShiftItem)),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
@@ -67,6 +70,7 @@ class Shift(ChangeTrackedEntity, Parsable):
         from .shift_item import ShiftItem
 
         writer.write_object_value("draftShift", self.draft_shift)
+        writer.write_bool_value("isStagedForDeletion", self.is_staged_for_deletion)
         writer.write_str_value("schedulingGroupId", self.scheduling_group_id)
         writer.write_object_value("sharedShift", self.shared_shift)
         writer.write_str_value("userId", self.user_id)

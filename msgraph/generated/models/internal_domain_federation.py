@@ -23,6 +23,8 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
     is_signed_authentication_request_required: Optional[bool] = None
     # Fallback token signing certificate that can also be used to sign tokens, for example when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.
     next_signing_certificate: Optional[str] = None
+    # The passwordResetUri property
+    password_reset_uri: Optional[str] = None
     # Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.
     prompt_login_behavior: Optional[PromptLoginBehavior] = None
     # URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
@@ -61,6 +63,7 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
             "federatedIdpMfaBehavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(FederatedIdpMfaBehavior)),
             "isSignedAuthenticationRequestRequired": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
             "nextSigningCertificate": lambda n : setattr(self, 'next_signing_certificate', n.get_str_value()),
+            "passwordResetUri": lambda n : setattr(self, 'password_reset_uri', n.get_str_value()),
             "promptLoginBehavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(PromptLoginBehavior)),
             "signOutUri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
             "signingCertificateUpdateStatus": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(SigningCertificateUpdateStatus)),
@@ -87,6 +90,7 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
         writer.write_enum_value("federatedIdpMfaBehavior", self.federated_idp_mfa_behavior)
         writer.write_bool_value("isSignedAuthenticationRequestRequired", self.is_signed_authentication_request_required)
         writer.write_str_value("nextSigningCertificate", self.next_signing_certificate)
+        writer.write_str_value("passwordResetUri", self.password_reset_uri)
         writer.write_enum_value("promptLoginBehavior", self.prompt_login_behavior)
         writer.write_str_value("signOutUri", self.sign_out_uri)
         writer.write_object_value("signingCertificateUpdateStatus", self.signing_certificate_update_status)

@@ -583,6 +583,8 @@ if TYPE_CHECKING:
     from .provisioning_object_summary import ProvisioningObjectSummary
     from .rbac_application import RbacApplication
     from .record_operation import RecordOperation
+    from .recycle_bin import RecycleBin
+    from .recycle_bin_item import RecycleBinItem
     from .reference_attachment import ReferenceAttachment
     from .relying_party_detailed_summary import RelyingPartyDetailedSummary
     from .remote_assistance_partner import RemoteAssistancePartner
@@ -3311,6 +3313,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .record_operation import RecordOperation
 
             return RecordOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.recycleBin".casefold():
+            from .recycle_bin import RecycleBin
+
+            return RecycleBin()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.recycleBinItem".casefold():
+            from .recycle_bin_item import RecycleBinItem
+
+            return RecycleBinItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.referenceAttachment".casefold():
             from .reference_attachment import ReferenceAttachment
 
@@ -5427,6 +5437,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
+        from .recycle_bin import RecycleBin
+        from .recycle_bin_item import RecycleBinItem
         from .reference_attachment import ReferenceAttachment
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
@@ -6388,6 +6400,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
+        from .recycle_bin import RecycleBin
+        from .recycle_bin_item import RecycleBinItem
         from .reference_attachment import ReferenceAttachment
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
@@ -7363,6 +7377,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
+        from .recycle_bin import RecycleBin
+        from .recycle_bin_item import RecycleBinItem
         from .reference_attachment import ReferenceAttachment
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner

@@ -13,6 +13,8 @@ from .entity import Entity
 class FileStorage(Entity, Parsable):
     # The containers property
     containers: Optional[List[FileStorageContainer]] = None
+    # The deletedContainers property
+    deleted_containers: Optional[List[FileStorageContainer]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -40,6 +42,7 @@ class FileStorage(Entity, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "containers": lambda n : setattr(self, 'containers', n.get_collection_of_object_values(FileStorageContainer)),
+            "deletedContainers": lambda n : setattr(self, 'deleted_containers', n.get_collection_of_object_values(FileStorageContainer)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,5 +61,6 @@ class FileStorage(Entity, Parsable):
         from .file_storage_container import FileStorageContainer
 
         writer.write_collection_of_object_values("containers", self.containers)
+        writer.write_collection_of_object_values("deletedContainers", self.deleted_containers)
     
 

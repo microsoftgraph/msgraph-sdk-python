@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .change_tracked_entity import ChangeTrackedEntity
+    from .eligibility_filtering_enabled_entities import EligibilityFilteringEnabledEntities
     from .workforce_integration_encryption import WorkforceIntegrationEncryption
     from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
 
@@ -18,6 +19,8 @@ class WorkforceIntegration(ChangeTrackedEntity, Parsable):
     api_version: Optional[int] = None
     # Name of the workforce integration.
     display_name: Optional[str] = None
+    # Support to view eligibility-filtered results. Possible values are: none, swapRequest, offerShiftRequest, unknownFutureValue, timeOffReason. You must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: timeOffReason.
+    eligibility_filtering_enabled_entities: Optional[EligibilityFilteringEnabledEntities] = None
     # The workforce integration encryption resource.
     encryption: Optional[WorkforceIntegrationEncryption] = None
     # Indicates whether this workforce integration is currently active and available.
@@ -44,16 +47,19 @@ class WorkforceIntegration(ChangeTrackedEntity, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .change_tracked_entity import ChangeTrackedEntity
+        from .eligibility_filtering_enabled_entities import EligibilityFilteringEnabledEntities
         from .workforce_integration_encryption import WorkforceIntegrationEncryption
         from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
 
         from .change_tracked_entity import ChangeTrackedEntity
+        from .eligibility_filtering_enabled_entities import EligibilityFilteringEnabledEntities
         from .workforce_integration_encryption import WorkforceIntegrationEncryption
         from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
 
         fields: Dict[str, Callable[[Any], None]] = {
             "apiVersion": lambda n : setattr(self, 'api_version', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "eligibilityFilteringEnabledEntities": lambda n : setattr(self, 'eligibility_filtering_enabled_entities', n.get_collection_of_enum_values(EligibilityFilteringEnabledEntities)),
             "encryption": lambda n : setattr(self, 'encryption', n.get_object_value(WorkforceIntegrationEncryption)),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
             "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_collection_of_enum_values(WorkforceIntegrationSupportedEntities)),
@@ -73,11 +79,13 @@ class WorkforceIntegration(ChangeTrackedEntity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         from .change_tracked_entity import ChangeTrackedEntity
+        from .eligibility_filtering_enabled_entities import EligibilityFilteringEnabledEntities
         from .workforce_integration_encryption import WorkforceIntegrationEncryption
         from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
 
         writer.write_int_value("apiVersion", self.api_version)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_enum_value("eligibilityFilteringEnabledEntities", self.eligibility_filtering_enabled_entities)
         writer.write_object_value("encryption", self.encryption)
         writer.write_bool_value("isActive", self.is_active)
         writer.write_enum_value("supportedEntities", self.supported_entities)

@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ...models.file_storage import FileStorage
     from ...models.o_data_errors.o_data_error import ODataError
     from .containers.containers_request_builder import ContainersRequestBuilder
+    from .deleted_containers.deleted_containers_request_builder import DeletedContainersRequestBuilder
 
 class FileStorageRequestBuilder(BaseRequestBuilder):
     """
@@ -146,6 +147,15 @@ class FileStorageRequestBuilder(BaseRequestBuilder):
         from .containers.containers_request_builder import ContainersRequestBuilder
 
         return ContainersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def deleted_containers(self) -> DeletedContainersRequestBuilder:
+        """
+        Provides operations to manage the deletedContainers property of the microsoft.graph.fileStorage entity.
+        """
+        from .deleted_containers.deleted_containers_request_builder import DeletedContainersRequestBuilder
+
+        return DeletedContainersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FileStorageRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

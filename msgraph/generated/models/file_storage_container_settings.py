@@ -11,11 +11,11 @@ class FileStorageContainerSettings(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The isItemVersioningEnabled property
+    # Indicates whether versioning is enabled for items in the container. Optional. Read-write.
     is_item_versioning_enabled: Optional[bool] = None
     # Indicates whether Optical Character Recognition (OCR) is enabled for the container. The default value is false. When set to true, OCR extraction is performed for new and updated documents of supported document types, and the extracted fields in the metadata of the document enable end-user search and search-driven solutions. When set to false, existing OCR metadata is not impacted. Optional. Read-write.
     is_ocr_enabled: Optional[bool] = None
-    # The itemMajorVersionLimit property
+    # The maximum major versions allowed for items in the container. Optional. Read-write.
     item_major_version_limit: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None

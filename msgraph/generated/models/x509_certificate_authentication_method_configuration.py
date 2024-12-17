@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
     from .authentication_method_target import AuthenticationMethodTarget
     from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+    from .x509_certificate_c_r_l_validation_configuration import X509CertificateCRLValidationConfiguration
     from .x509_certificate_user_binding import X509CertificateUserBinding
 
 from .authentication_method_configuration import AuthenticationMethodConfiguration
@@ -19,6 +20,8 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
     authentication_mode_configuration: Optional[X509CertificateAuthenticationModeConfiguration] = None
     # Defines fields in the X.509 certificate that map to attributes of the Microsoft Entra user object in order to bind the certificate to the user. The priority of the object determines the order in which the binding is carried out. The first binding that matches will be used and the rest ignored.
     certificate_user_bindings: Optional[List[X509CertificateUserBinding]] = None
+    # The crlValidationConfiguration property
+    crl_validation_configuration: Optional[X509CertificateCRLValidationConfiguration] = None
     # A collection of groups that are enabled to use the authentication method.
     include_targets: Optional[List[AuthenticationMethodTarget]] = None
     
@@ -41,16 +44,19 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
         from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+        from .x509_certificate_c_r_l_validation_configuration import X509CertificateCRLValidationConfiguration
         from .x509_certificate_user_binding import X509CertificateUserBinding
 
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
         from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+        from .x509_certificate_c_r_l_validation_configuration import X509CertificateCRLValidationConfiguration
         from .x509_certificate_user_binding import X509CertificateUserBinding
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authenticationModeConfiguration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(X509CertificateAuthenticationModeConfiguration)),
             "certificateUserBindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(X509CertificateUserBinding)),
+            "crlValidationConfiguration": lambda n : setattr(self, 'crl_validation_configuration', n.get_object_value(X509CertificateCRLValidationConfiguration)),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
@@ -69,10 +75,12 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
         from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+        from .x509_certificate_c_r_l_validation_configuration import X509CertificateCRLValidationConfiguration
         from .x509_certificate_user_binding import X509CertificateUserBinding
 
         writer.write_object_value("authenticationModeConfiguration", self.authentication_mode_configuration)
         writer.write_collection_of_object_values("certificateUserBindings", self.certificate_user_bindings)
+        writer.write_object_value("crlValidationConfiguration", self.crl_validation_configuration)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
     
 

@@ -15,6 +15,8 @@ class OpenShift(ChangeTrackedEntity, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.openShift"
     # Draft changes in the openShift are only visible to managers until they're shared.
     draft_open_shift: Optional[OpenShiftItem] = None
+    # The openShift is marked for deletion, a process that is finalized when the schedule is shared.
+    is_staged_for_deletion: Optional[bool] = None
     # The ID of the schedulingGroup that contains the openShift.
     scheduling_group_id: Optional[str] = None
     # The shared version of this openShift that is viewable by both employees and managers.
@@ -44,6 +46,7 @@ class OpenShift(ChangeTrackedEntity, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "draftOpenShift": lambda n : setattr(self, 'draft_open_shift', n.get_object_value(OpenShiftItem)),
+            "isStagedForDeletion": lambda n : setattr(self, 'is_staged_for_deletion', n.get_bool_value()),
             "schedulingGroupId": lambda n : setattr(self, 'scheduling_group_id', n.get_str_value()),
             "sharedOpenShift": lambda n : setattr(self, 'shared_open_shift', n.get_object_value(OpenShiftItem)),
         }
@@ -64,6 +67,7 @@ class OpenShift(ChangeTrackedEntity, Parsable):
         from .open_shift_item import OpenShiftItem
 
         writer.write_object_value("draftOpenShift", self.draft_open_shift)
+        writer.write_bool_value("isStagedForDeletion", self.is_staged_for_deletion)
         writer.write_str_value("schedulingGroupId", self.scheduling_group_id)
         writer.write_object_value("sharedOpenShift", self.shared_open_shift)
     

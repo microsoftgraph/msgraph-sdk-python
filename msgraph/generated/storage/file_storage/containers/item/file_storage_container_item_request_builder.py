@@ -17,8 +17,12 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .activate.activate_request_builder import ActivateRequestBuilder
     from .drive.drive_request_builder import DriveRequestBuilder
+    from .lock.lock_request_builder import LockRequestBuilder
     from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
+    from .recycle_bin.recycle_bin_request_builder import RecycleBinRequestBuilder
+    from .restore.restore_request_builder import RestoreRequestBuilder
+    from .unlock.unlock_request_builder import UnlockRequestBuilder
 
 class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
     """
@@ -160,6 +164,15 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
         return DriveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def lock(self) -> LockRequestBuilder:
+        """
+        Provides operations to call the lock method.
+        """
+        from .lock.lock_request_builder import LockRequestBuilder
+
+        return LockRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def permanent_delete(self) -> PermanentDeleteRequestBuilder:
         """
         Provides operations to call the permanentDelete method.
@@ -176,6 +189,33 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
         from .permissions.permissions_request_builder import PermissionsRequestBuilder
 
         return PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def recycle_bin(self) -> RecycleBinRequestBuilder:
+        """
+        Provides operations to manage the recycleBin property of the microsoft.graph.fileStorageContainer entity.
+        """
+        from .recycle_bin.recycle_bin_request_builder import RecycleBinRequestBuilder
+
+        return RecycleBinRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def restore(self) -> RestoreRequestBuilder:
+        """
+        Provides operations to call the restore method.
+        """
+        from .restore.restore_request_builder import RestoreRequestBuilder
+
+        return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unlock(self) -> UnlockRequestBuilder:
+        """
+        Provides operations to call the unlock method.
+        """
+        from .unlock.unlock_request_builder import UnlockRequestBuilder
+
+        return UnlockRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FileStorageContainerItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

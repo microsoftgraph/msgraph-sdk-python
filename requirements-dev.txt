@@ -11,7 +11,7 @@ bumpver==2024.1130
 certifi==2024.12.14
 cffi==1.17.1
 charset-normalizer==3.4.0
-click==8.1.7
+click==8.1.8
 colorama==0.4.6
 cryptography==44.0.0
 Deprecated==1.2.15

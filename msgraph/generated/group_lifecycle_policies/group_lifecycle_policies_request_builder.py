@@ -69,7 +69,7 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: GroupLifecyclePolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GroupLifecyclePolicy]:
         """
-        Creates a new groupLifecyclePolicy.
+        Creates a new groupLifecyclePolicy. Only one policy exists in the tenant.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupLifecyclePolicy]
@@ -104,7 +104,7 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: GroupLifecyclePolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Creates a new groupLifecyclePolicy.
+        Creates a new groupLifecyclePolicy. Only one policy exists in the tenant.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

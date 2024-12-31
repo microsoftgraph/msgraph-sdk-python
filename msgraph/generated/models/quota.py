@@ -18,7 +18,7 @@ class Quota(AdditionalDataHolder, BackedModel, Parsable):
     deleted: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Total space remaining before reaching the quota limit, in bytes. Read-only.
+    # Total space remaining before reaching the capacity limit, in bytes. Read-only.
     remaining: Optional[int] = None
     # Enumeration value that indicates the state of the storage space. Read-only.
     state: Optional[str] = None

@@ -32,11 +32,11 @@ class Team(Entity, Parsable):
     all_channels: Optional[List[Channel]] = None
     # The collection of channels and messages associated with the team.
     channels: Optional[List[Channel]] = None
-    # An optional label. Typically describes the data or business sensitivity of the team. Must match one of a pre-configured set in the tenant's directory.
+    # An optional label. Typically describes the data or business sensitivity of the team. Must match one of a preconfigured set in the tenant's directory.
     classification: Optional[str] = None
     # Timestamp at which the team was created.
     created_date_time: Optional[datetime.datetime] = None
-    # An optional description for the team. Maximum length: 1024 characters.
+    # An optional description for the team. Maximum length: 1,024 characters.
     description: Optional[str] = None
     # The name of the team.
     display_name: Optional[str] = None
@@ -50,7 +50,7 @@ class Team(Entity, Parsable):
     incoming_channels: Optional[List[Channel]] = None
     # The apps installed in this team.
     installed_apps: Optional[List[TeamsAppInstallation]] = None
-    # A unique ID for the team that has been used in a few places such as the audit log/Office 365 Management Activity API.
+    # A unique ID for the team that was used in a few places such as the audit log/Office 365 Management Activity API.
     internal_id: Optional[str] = None
     # Whether this team is in read-only mode.
     is_archived: Optional[bool] = None
@@ -72,7 +72,7 @@ class Team(Entity, Parsable):
     primary_channel: Optional[Channel] = None
     # The schedule of shifts for this team.
     schedule: Optional[Schedule] = None
-    # Optional. Indicates whether the team is intended for a particular use case.  Each team specialization has access to unique behaviors and experiences targeted to its use case.
+    # Optional. Indicates whether the team is intended for a particular use case. Each team specialization has access to unique behaviors and experiences targeted to its use case.
     specialization: Optional[TeamSpecialization] = None
     # Contains summary information about the team, including number of owners, members, and guests.
     summary: Optional[TeamSummary] = None
@@ -84,7 +84,7 @@ class Team(Entity, Parsable):
     tenant_id: Optional[str] = None
     # The visibility of the group and team. Defaults to Public.
     visibility: Optional[TeamVisibilityType] = None
-    # A hyperlink that will go to the team in the Microsoft Teams client. This is the URL that you get when you right-click a team in the Microsoft Teams client and select Get link to team. This URL should be treated as an opaque blob, and not parsed.
+    # A hyperlink that goes to the team in the Microsoft Teams client. You get this URL when you right-click a team in the Microsoft Teams client and select Get link to team. This URL should be treated as an opaque blob, and not parsed.
     web_url: Optional[str] = None
     
     @staticmethod

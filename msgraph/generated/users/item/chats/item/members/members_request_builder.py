@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .add.add_request_builder import AddRequestBuilder
     from .count.count_request_builder import CountRequestBuilder
     from .item.conversation_member_item_request_builder import ConversationMemberItemRequestBuilder
+    from .remove.remove_request_builder import RemoveRequestBuilder
 
 class MembersRequestBuilder(BaseRequestBuilder):
     """
@@ -143,6 +144,15 @@ class MembersRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def remove(self) -> RemoveRequestBuilder:
+        """
+        Provides operations to call the remove method.
+        """
+        from .remove.remove_request_builder import RemoveRequestBuilder
+
+        return RemoveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MembersRequestBuilderGetQueryParameters():

@@ -30,7 +30,7 @@ class GetOffice365ActivationsUserCountsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
-        Get the count of users that are enabled and those that have activated the Office subscription on desktop or devices or shared computers.
+        Get the count of users that are enabled and the ones that activated the Office subscription on desktop or devices or shared computers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         Find more info here: https://learn.microsoft.com/graph/api/reportroot-getoffice365activationsusercounts?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class GetOffice365ActivationsUserCountsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Get the count of users that are enabled and those that have activated the Office subscription on desktop or devices or shared computers.
+        Get the count of users that are enabled and the ones that activated the Office subscription on desktop or devices or shared computers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

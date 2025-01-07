@@ -18,7 +18,7 @@ class WorkbookRangeView(Entity, Parsable):
     odata_type: Optional[str] = None
     # The number of visible rows. Read-only.
     row_count: Optional[int] = None
-    # The collection of range views associated with the range. Read-only.Read-only.
+    # The collection of range views associated with the range. Read-only. Read-only.
     rows: Optional[List[WorkbookRangeView]] = None
     
     @staticmethod

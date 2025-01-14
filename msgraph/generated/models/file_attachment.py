@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attachment import Attachment
@@ -30,16 +31,16 @@ class FileAttachment(Attachment, Parsable):
             raise TypeError("parse_node cannot be null.")
         return FileAttachment()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attachment import Attachment
 
         from .attachment import Attachment
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
             "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
             "contentLocation": lambda n : setattr(self, 'content_location', n.get_str_value()),
@@ -57,8 +58,6 @@ class FileAttachment(Attachment, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .attachment import Attachment
-
         writer.write_bytes_value("contentBytes", self.content_bytes)
         writer.write_str_value("contentId", self.content_id)
         writer.write_str_value("contentLocation", self.content_location)

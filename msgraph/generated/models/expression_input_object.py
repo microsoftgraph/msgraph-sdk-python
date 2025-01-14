@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .object_definition import ObjectDefinition
@@ -14,13 +15,13 @@ class ExpressionInputObject(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Definition of the test object.
     definition: Optional[ObjectDefinition] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Property values of the test object.
-    properties: Optional[List[StringKeyObjectValuePair]] = None
+    properties: Optional[list[StringKeyObjectValuePair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ExpressionInputObject:
@@ -33,10 +34,10 @@ class ExpressionInputObject(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ExpressionInputObject()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .object_definition import ObjectDefinition
         from .string_key_object_value_pair import StringKeyObjectValuePair
@@ -44,7 +45,7 @@ class ExpressionInputObject(AdditionalDataHolder, BackedModel, Parsable):
         from .object_definition import ObjectDefinition
         from .string_key_object_value_pair import StringKeyObjectValuePair
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "definition": lambda n : setattr(self, 'definition', n.get_object_value(ObjectDefinition)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(StringKeyObjectValuePair)),
@@ -59,9 +60,6 @@ class ExpressionInputObject(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .object_definition import ObjectDefinition
-        from .string_key_object_value_pair import StringKeyObjectValuePair
-
         writer.write_object_value("definition", self.definition)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("properties", self.properties)

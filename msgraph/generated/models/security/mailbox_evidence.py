@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -31,10 +32,10 @@ class MailboxEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MailboxEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .user_account import UserAccount
@@ -42,7 +43,7 @@ class MailboxEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
         from .user_account import UserAccount
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "primaryAddress": lambda n : setattr(self, 'primary_address', n.get_str_value()),
             "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
@@ -60,9 +61,6 @@ class MailboxEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .user_account import UserAccount
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("primaryAddress", self.primary_address)
         writer.write_object_value("userAccount", self.user_account)

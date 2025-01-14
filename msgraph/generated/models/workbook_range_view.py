@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -18,8 +19,8 @@ class WorkbookRangeView(Entity, Parsable):
     odata_type: Optional[str] = None
     # The number of visible rows. Read-only.
     row_count: Optional[int] = None
-    # The collection of range views associated with the range. Read-only.Read-only.
-    rows: Optional[List[WorkbookRangeView]] = None
+    # The collection of range views associated with the range. Read-only. Read-only.
+    rows: Optional[list[WorkbookRangeView]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookRangeView:
@@ -32,16 +33,16 @@ class WorkbookRangeView(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkbookRangeView()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
 
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "columnCount": lambda n : setattr(self, 'column_count', n.get_int_value()),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
@@ -60,8 +61,6 @@ class WorkbookRangeView(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-
         writer.write_int_value("columnCount", self.column_count)
         writer.write_int_value("index", self.index)
         writer.write_int_value("rowCount", self.row_count)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models.attachment_info import AttachmentInfo
@@ -13,7 +14,7 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The attachmentInfo property
     attachment_info: Optional[AttachmentInfo] = None
     
@@ -28,16 +29,16 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
             raise TypeError("parse_node cannot be null.")
         return CreateUploadSessionPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..........models.attachment_info import AttachmentInfo
 
         from ..........models.attachment_info import AttachmentInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attachmentInfo": lambda n : setattr(self, 'attachment_info', n.get_object_value(AttachmentInfo)),
         }
         return fields
@@ -50,8 +51,6 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ..........models.attachment_info import AttachmentInfo
-
         writer.write_object_value("attachmentInfo", self.attachment_info)
         writer.write_additional_data_value(self.additional_data)
     

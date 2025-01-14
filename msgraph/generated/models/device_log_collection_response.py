@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -46,10 +47,10 @@ class DeviceLogCollectionResponse(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeviceLogCollectionResponse()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_log_upload_state import AppLogUploadState
         from .entity import Entity
@@ -57,7 +58,7 @@ class DeviceLogCollectionResponse(Entity, Parsable):
         from .app_log_upload_state import AppLogUploadState
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "enrolledByUser": lambda n : setattr(self, 'enrolled_by_user', n.get_str_value()),
             "expirationDateTimeUTC": lambda n : setattr(self, 'expiration_date_time_u_t_c', n.get_datetime_value()),
             "initiatedByUserPrincipalName": lambda n : setattr(self, 'initiated_by_user_principal_name', n.get_str_value()),
@@ -80,9 +81,6 @@ class DeviceLogCollectionResponse(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_log_upload_state import AppLogUploadState
-        from .entity import Entity
-
         writer.write_str_value("enrolledByUser", self.enrolled_by_user)
         writer.write_datetime_value("expirationDateTimeUTC", self.expiration_date_time_u_t_c)
         writer.write_str_value("initiatedByUserPrincipalName", self.initiated_by_user_principal_name)

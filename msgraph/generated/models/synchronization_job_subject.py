@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .synchronization_linked_objects import SynchronizationLinkedObjects
@@ -13,7 +14,7 @@ class SynchronizationJobSubject(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Principals that you would like to provision.
     links: Optional[SynchronizationLinkedObjects] = None
     # The identifier of an object to which a synchronizationJob is to be applied. Can be one of the following: An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD.The user ID for synchronization from Microsoft Entra ID to a third-party.The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Microsoft Entra ID.
@@ -34,16 +35,16 @@ class SynchronizationJobSubject(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SynchronizationJobSubject()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .synchronization_linked_objects import SynchronizationLinkedObjects
 
         from .synchronization_linked_objects import SynchronizationLinkedObjects
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "links": lambda n : setattr(self, 'links', n.get_object_value(SynchronizationLinkedObjects)),
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "objectTypeName": lambda n : setattr(self, 'object_type_name', n.get_str_value()),
@@ -59,8 +60,6 @@ class SynchronizationJobSubject(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .synchronization_linked_objects import SynchronizationLinkedObjects
-
         writer.write_object_value("links", self.links)
         writer.write_str_value("objectId", self.object_id)
         writer.write_str_value("objectTypeName", self.object_type_name)

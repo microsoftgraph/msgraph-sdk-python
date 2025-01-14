@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method_modes import AuthenticationMethodModes
@@ -13,17 +14,17 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Information about why the updateAllowedCombinations action was successful or failed.
     additional_information: Optional[str] = None
     # References to existing Conditional Access policies that use this authentication strength.
-    conditional_access_references: Optional[List[str]] = None
+    conditional_access_references: Optional[list[str]] = None
     # The list of current authentication method combinations allowed by the authentication strength.
-    current_combinations: Optional[List[AuthenticationMethodModes]] = None
+    current_combinations: Optional[list[AuthenticationMethodModes]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of former authentication method combinations allowed by the authentication strength before they were updated through the updateAllowedCombinations action.
-    previous_combinations: Optional[List[AuthenticationMethodModes]] = None
+    previous_combinations: Optional[list[AuthenticationMethodModes]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UpdateAllowedCombinationsResult:
@@ -36,16 +37,16 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
             raise TypeError("parse_node cannot be null.")
         return UpdateAllowedCombinationsResult()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method_modes import AuthenticationMethodModes
 
         from .authentication_method_modes import AuthenticationMethodModes
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "conditionalAccessReferences": lambda n : setattr(self, 'conditional_access_references', n.get_collection_of_primitive_values(str)),
             "currentCombinations": lambda n : setattr(self, 'current_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
@@ -62,8 +63,6 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .authentication_method_modes import AuthenticationMethodModes
-
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_collection_of_primitive_values("conditionalAccessReferences", self.conditional_access_references)
         writer.write_collection_of_enum_values("currentCombinations", self.current_combinations)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..alert import Alert
@@ -24,9 +25,9 @@ from ..entity import Entity
 @dataclass
 class Security(Entity, Parsable):
     # The alerts property
-    alerts: Optional[List[Alert]] = None
+    alerts: Optional[list[Alert]] = None
     # A collection of alerts in Microsoft 365 Defender.
-    alerts_v2: Optional[List[Alert]] = None
+    alerts_v2: Optional[list[Alert]] = None
     # The attackSimulation property
     attack_simulation: Optional[AttackSimulationRoot] = None
     # The cases property
@@ -34,17 +35,17 @@ class Security(Entity, Parsable):
     # A container for security identities APIs.
     identities: Optional[IdentityContainer] = None
     # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
-    incidents: Optional[List[Incident]] = None
+    incidents: Optional[list[Incident]] = None
     # The labels property
     labels: Optional[LabelsRoot] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The secureScoreControlProfiles property
-    secure_score_control_profiles: Optional[List[SecureScoreControlProfile]] = None
+    secure_score_control_profiles: Optional[list[SecureScoreControlProfile]] = None
     # The secureScores property
-    secure_scores: Optional[List[SecureScore]] = None
+    secure_scores: Optional[list[SecureScore]] = None
     # The subjectRightsRequests property
-    subject_rights_requests: Optional[List[SubjectRightsRequest]] = None
+    subject_rights_requests: Optional[list[SubjectRightsRequest]] = None
     # The threatIntelligence property
     threat_intelligence: Optional[ThreatIntelligence] = None
     # The triggerTypes property
@@ -63,10 +64,10 @@ class Security(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Security()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..alert import Alert
         from ..attack_simulation_root import AttackSimulationRoot
@@ -98,7 +99,7 @@ class Security(Entity, Parsable):
         from .triggers_root import TriggersRoot
         from .trigger_types_root import TriggerTypesRoot
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(Alert)),
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(Alert)),
             "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(AttackSimulationRoot)),
@@ -126,21 +127,6 @@ class Security(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..alert import Alert
-        from ..attack_simulation_root import AttackSimulationRoot
-        from ..entity import Entity
-        from ..secure_score import SecureScore
-        from ..secure_score_control_profile import SecureScoreControlProfile
-        from ..subject_rights_request import SubjectRightsRequest
-        from .alert import Alert
-        from .cases_root import CasesRoot
-        from .identity_container import IdentityContainer
-        from .incident import Incident
-        from .labels_root import LabelsRoot
-        from .threat_intelligence import ThreatIntelligence
-        from .triggers_root import TriggersRoot
-        from .trigger_types_root import TriggerTypesRoot
-
         writer.write_collection_of_object_values("alerts", self.alerts)
         writer.write_collection_of_object_values("alerts_v2", self.alerts_v2)
         writer.write_object_value("attackSimulation", self.attack_simulation)

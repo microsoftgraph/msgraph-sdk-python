@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .ip_range import IpRange
@@ -12,7 +13,7 @@ from .named_location import NamedLocation
 @dataclass
 class IpNamedLocation(NamedLocation, Parsable):
     # List of IP address ranges in IPv4 CIDR format (for example, 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
-    ip_ranges: Optional[List[IpRange]] = None
+    ip_ranges: Optional[list[IpRange]] = None
     # true if this location is explicitly trusted. Optional. Default value is false.
     is_trusted: Optional[bool] = None
     # The OdataType property
@@ -29,10 +30,10 @@ class IpNamedLocation(NamedLocation, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IpNamedLocation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .ip_range import IpRange
         from .named_location import NamedLocation
@@ -40,7 +41,7 @@ class IpNamedLocation(NamedLocation, Parsable):
         from .ip_range import IpRange
         from .named_location import NamedLocation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "ipRanges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(IpRange)),
             "isTrusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
         }
@@ -57,9 +58,6 @@ class IpNamedLocation(NamedLocation, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .ip_range import IpRange
-        from .named_location import NamedLocation
-
         writer.write_collection_of_object_values("ipRanges", self.ip_ranges)
         writer.write_bool_value("isTrusted", self.is_trusted)
     

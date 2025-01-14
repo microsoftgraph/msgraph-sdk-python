@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity_source import IdentitySource
@@ -29,10 +30,10 @@ class SocialIdentitySource(IdentitySource, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SocialIdentitySource()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .identity_source import IdentitySource
         from .social_identity_source_type import SocialIdentitySourceType
@@ -40,7 +41,7 @@ class SocialIdentitySource(IdentitySource, Parsable):
         from .identity_source import IdentitySource
         from .social_identity_source_type import SocialIdentitySourceType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "socialIdentitySourceType": lambda n : setattr(self, 'social_identity_source_type', n.get_enum_value(SocialIdentitySourceType)),
         }
@@ -57,9 +58,6 @@ class SocialIdentitySource(IdentitySource, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .identity_source import IdentitySource
-        from .social_identity_source_type import SocialIdentitySourceType
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("socialIdentitySourceType", self.social_identity_source_type)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .communications_user_identity import CommunicationsUserIdentity
@@ -19,11 +20,11 @@ class VirtualEventWebinar(VirtualEvent, Parsable):
     # To whom the webinar is visible. Possible values are: everyone, organization, and unknownFutureValue.
     audience: Optional[MeetingAudience] = None
     # Identity information of coorganizers of the webinar.
-    co_organizers: Optional[List[CommunicationsUserIdentity]] = None
+    co_organizers: Optional[list[CommunicationsUserIdentity]] = None
     # Registration configuration of the webinar.
     registration_configuration: Optional[VirtualEventWebinarRegistrationConfiguration] = None
     # Registration records of the webinar.
-    registrations: Optional[List[VirtualEventRegistration]] = None
+    registrations: Optional[list[VirtualEventRegistration]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> VirtualEventWebinar:
@@ -36,10 +37,10 @@ class VirtualEventWebinar(VirtualEvent, Parsable):
             raise TypeError("parse_node cannot be null.")
         return VirtualEventWebinar()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .communications_user_identity import CommunicationsUserIdentity
         from .meeting_audience import MeetingAudience
@@ -53,7 +54,7 @@ class VirtualEventWebinar(VirtualEvent, Parsable):
         from .virtual_event_registration import VirtualEventRegistration
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "audience": lambda n : setattr(self, 'audience', n.get_enum_value(MeetingAudience)),
             "coOrganizers": lambda n : setattr(self, 'co_organizers', n.get_collection_of_object_values(CommunicationsUserIdentity)),
             "registrationConfiguration": lambda n : setattr(self, 'registration_configuration', n.get_object_value(VirtualEventWebinarRegistrationConfiguration)),
@@ -72,12 +73,6 @@ class VirtualEventWebinar(VirtualEvent, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .communications_user_identity import CommunicationsUserIdentity
-        from .meeting_audience import MeetingAudience
-        from .virtual_event import VirtualEvent
-        from .virtual_event_registration import VirtualEventRegistration
-        from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
-
         writer.write_enum_value("audience", self.audience)
         writer.write_collection_of_object_values("coOrganizers", self.co_organizers)
         writer.write_object_value("registrationConfiguration", self.registration_configuration)

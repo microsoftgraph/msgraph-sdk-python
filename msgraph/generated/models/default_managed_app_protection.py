@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .key_value_pair import KeyValuePair
@@ -22,9 +23,9 @@ class DefaultManagedAppProtection(ManagedAppProtection, Parsable):
     # Represents the level to which app data is encrypted for managed apps
     app_data_encryption_type: Optional[ManagedAppDataEncryptionType] = None
     # List of apps to which the policy is deployed.
-    apps: Optional[List[ManagedMobileApp]] = None
+    apps: Optional[list[ManagedMobileApp]] = None
     # A set of string key and string value pairs to be sent to the affected users, unalterned by this service
-    custom_settings: Optional[List[KeyValuePair]] = None
+    custom_settings: Optional[list[KeyValuePair]] = None
     # Count of apps to which the current policy is deployed.
     deployed_app_count: Optional[int] = None
     # Navigation property to deployment summary of the configuration.
@@ -55,10 +56,10 @@ class DefaultManagedAppProtection(ManagedAppProtection, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DefaultManagedAppProtection()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .key_value_pair import KeyValuePair
         from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
@@ -72,7 +73,7 @@ class DefaultManagedAppProtection(ManagedAppProtection, Parsable):
         from .managed_app_protection import ManagedAppProtection
         from .managed_mobile_app import ManagedMobileApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(ManagedAppDataEncryptionType)),
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
             "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(KeyValuePair)),
@@ -99,12 +100,6 @@ class DefaultManagedAppProtection(ManagedAppProtection, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .key_value_pair import KeyValuePair
-        from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
-        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
-        from .managed_app_protection import ManagedAppProtection
-        from .managed_mobile_app import ManagedMobileApp
-
         writer.write_enum_value("appDataEncryptionType", self.app_data_encryption_type)
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_collection_of_object_values("customSettings", self.custom_settings)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .importance import Importance
@@ -14,17 +15,17 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # A list of categories to be assigned to a message.
-    assign_categories: Optional[List[str]] = None
+    assign_categories: Optional[list[str]] = None
     # The ID of a folder that a message is to be copied to.
     copy_to_folder: Optional[str] = None
     # Indicates whether a message should be moved to the Deleted Items folder.
     delete: Optional[bool] = None
     # The email addresses of the recipients to which a message should be forwarded as an attachment.
-    forward_as_attachment_to: Optional[List[Recipient]] = None
+    forward_as_attachment_to: Optional[list[Recipient]] = None
     # The email addresses of the recipients to which a message should be forwarded.
-    forward_to: Optional[List[Recipient]] = None
+    forward_to: Optional[list[Recipient]] = None
     # Indicates whether a message should be marked as read.
     mark_as_read: Optional[bool] = None
     # Sets the importance of the message, which can be: low, normal, high.
@@ -36,7 +37,7 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
     # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
     permanent_delete: Optional[bool] = None
     # The email addresses to which a message should be redirected.
-    redirect_to: Optional[List[Recipient]] = None
+    redirect_to: Optional[list[Recipient]] = None
     # Indicates whether subsequent rules should be evaluated.
     stop_processing_rules: Optional[bool] = None
     
@@ -51,10 +52,10 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MessageRuleActions()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .importance import Importance
         from .recipient import Recipient
@@ -62,7 +63,7 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
         from .importance import Importance
         from .recipient import Recipient
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignCategories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
             "copyToFolder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
             "delete": lambda n : setattr(self, 'delete', n.get_bool_value()),
@@ -86,9 +87,6 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .importance import Importance
-        from .recipient import Recipient
-
         writer.write_collection_of_primitive_values("assignCategories", self.assign_categories)
         writer.write_str_value("copyToFolder", self.copy_to_folder)
         writer.write_bool_value("delete", self.delete)

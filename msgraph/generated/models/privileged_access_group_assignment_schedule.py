@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -46,10 +47,10 @@ class PrivilegedAccessGroupAssignmentSchedule(PrivilegedAccessSchedule, Parsable
             raise TypeError("parse_node cannot be null.")
         return PrivilegedAccessGroupAssignmentSchedule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .group import Group
@@ -67,7 +68,7 @@ class PrivilegedAccessGroupAssignmentSchedule(PrivilegedAccessSchedule, Parsable
         from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
         from .privileged_access_schedule import PrivilegedAccessSchedule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
             "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(PrivilegedAccessGroupEligibilitySchedule)),
             "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_enum_value(PrivilegedAccessGroupAssignmentType)),
@@ -90,14 +91,6 @@ class PrivilegedAccessGroupAssignmentSchedule(PrivilegedAccessSchedule, Parsable
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-        from .group import Group
-        from .privileged_access_group_assignment_type import PrivilegedAccessGroupAssignmentType
-        from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
-        from .privileged_access_group_member_type import PrivilegedAccessGroupMemberType
-        from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
-        from .privileged_access_schedule import PrivilegedAccessSchedule
-
         writer.write_enum_value("accessId", self.access_id)
         writer.write_object_value("activatedUsing", self.activated_using)
         writer.write_enum_value("assignmentType", self.assignment_type)

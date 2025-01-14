@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity_provider import IdentityProvider
@@ -18,15 +19,15 @@ class B2xIdentityUserFlow(IdentityUserFlow, Parsable):
     # Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
     api_connector_configuration: Optional[UserFlowApiConnectorConfiguration] = None
     # The identity providers included in the user flow.
-    identity_providers: Optional[List[IdentityProvider]] = None
+    identity_providers: Optional[list[IdentityProvider]] = None
     # The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
-    languages: Optional[List[UserFlowLanguageConfiguration]] = None
+    languages: Optional[list[UserFlowLanguageConfiguration]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The user attribute assignments included in the user flow.
-    user_attribute_assignments: Optional[List[IdentityUserFlowAttributeAssignment]] = None
+    user_attribute_assignments: Optional[list[IdentityUserFlowAttributeAssignment]] = None
     # The userFlowIdentityProviders property
-    user_flow_identity_providers: Optional[List[IdentityProviderBase]] = None
+    user_flow_identity_providers: Optional[list[IdentityProviderBase]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> B2xIdentityUserFlow:
@@ -39,10 +40,10 @@ class B2xIdentityUserFlow(IdentityUserFlow, Parsable):
             raise TypeError("parse_node cannot be null.")
         return B2xIdentityUserFlow()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .identity_provider import IdentityProvider
         from .identity_provider_base import IdentityProviderBase
@@ -58,7 +59,7 @@ class B2xIdentityUserFlow(IdentityUserFlow, Parsable):
         from .user_flow_api_connector_configuration import UserFlowApiConnectorConfiguration
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "apiConnectorConfiguration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(UserFlowApiConnectorConfiguration)),
             "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProvider)),
             "languages": lambda n : setattr(self, 'languages', n.get_collection_of_object_values(UserFlowLanguageConfiguration)),
@@ -78,13 +79,6 @@ class B2xIdentityUserFlow(IdentityUserFlow, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .identity_provider import IdentityProvider
-        from .identity_provider_base import IdentityProviderBase
-        from .identity_user_flow import IdentityUserFlow
-        from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
-        from .user_flow_api_connector_configuration import UserFlowApiConnectorConfiguration
-        from .user_flow_language_configuration import UserFlowLanguageConfiguration
-
         writer.write_object_value("apiConnectorConfiguration", self.api_connector_configuration)
         writer.write_collection_of_object_values("identityProviders", self.identity_providers)
         writer.write_collection_of_object_values("languages", self.languages)

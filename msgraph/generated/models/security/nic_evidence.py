@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -18,7 +19,7 @@ class NicEvidence(AlertEvidence, Parsable):
     # The MAC address of the NIC.
     mac_address: Optional[str] = None
     # The current virtual local area networks of the NIC.
-    vlans: Optional[List[str]] = None
+    vlans: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> NicEvidence:
@@ -31,10 +32,10 @@ class NicEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return NicEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .ip_evidence import IpEvidence
@@ -42,7 +43,7 @@ class NicEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
         from .ip_evidence import IpEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_object_value(IpEvidence)),
             "macAddress": lambda n : setattr(self, 'mac_address', n.get_str_value()),
             "vlans": lambda n : setattr(self, 'vlans', n.get_collection_of_primitive_values(str)),
@@ -60,9 +61,6 @@ class NicEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .ip_evidence import IpEvidence
-
         writer.write_object_value("ipAddress", self.ip_address)
         writer.write_str_value("macAddress", self.mac_address)
         writer.write_collection_of_primitive_values("vlans", self.vlans)

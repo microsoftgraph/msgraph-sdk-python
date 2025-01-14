@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .workflow_execution_trigger import WorkflowExecutionTrigger
@@ -29,10 +30,10 @@ class TimeBasedAttributeTrigger(WorkflowExecutionTrigger, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TimeBasedAttributeTrigger()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .workflow_execution_trigger import WorkflowExecutionTrigger
         from .workflow_trigger_time_based_attribute import WorkflowTriggerTimeBasedAttribute
@@ -40,7 +41,7 @@ class TimeBasedAttributeTrigger(WorkflowExecutionTrigger, Parsable):
         from .workflow_execution_trigger import WorkflowExecutionTrigger
         from .workflow_trigger_time_based_attribute import WorkflowTriggerTimeBasedAttribute
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "offsetInDays": lambda n : setattr(self, 'offset_in_days', n.get_int_value()),
             "timeBasedAttribute": lambda n : setattr(self, 'time_based_attribute', n.get_enum_value(WorkflowTriggerTimeBasedAttribute)),
         }
@@ -57,9 +58,6 @@ class TimeBasedAttributeTrigger(WorkflowExecutionTrigger, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .workflow_execution_trigger import WorkflowExecutionTrigger
-        from .workflow_trigger_time_based_attribute import WorkflowTriggerTimeBasedAttribute
-
         writer.write_int_value("offsetInDays", self.offset_in_days)
         writer.write_enum_value("timeBasedAttribute", self.time_based_attribute)
     

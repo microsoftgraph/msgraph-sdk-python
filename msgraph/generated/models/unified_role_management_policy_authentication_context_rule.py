@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
@@ -28,16 +29,16 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(UnifiedRoleManagement
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleManagementPolicyAuthenticationContextRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "claimValue": lambda n : setattr(self, 'claim_value', n.get_str_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
@@ -54,8 +55,6 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(UnifiedRoleManagement
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
-
         writer.write_str_value("claimValue", self.claim_value)
         writer.write_bool_value("isEnabled", self.is_enabled)
     

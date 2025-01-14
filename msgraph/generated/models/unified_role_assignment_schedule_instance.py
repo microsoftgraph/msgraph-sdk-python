@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
@@ -40,10 +41,10 @@ class UnifiedRoleAssignmentScheduleInstance(UnifiedRoleScheduleInstanceBase, Par
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleAssignmentScheduleInstance()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
         from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
@@ -51,7 +52,7 @@ class UnifiedRoleAssignmentScheduleInstance(UnifiedRoleScheduleInstanceBase, Par
         from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
         from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(UnifiedRoleEligibilityScheduleInstance)),
             "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
@@ -73,9 +74,6 @@ class UnifiedRoleAssignmentScheduleInstance(UnifiedRoleScheduleInstanceBase, Par
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
-        from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
-
         writer.write_object_value("activatedUsing", self.activated_using)
         writer.write_str_value("assignmentType", self.assignment_type)
         writer.write_datetime_value("endDateTime", self.end_date_time)

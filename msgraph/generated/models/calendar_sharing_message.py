@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .calendar_sharing_message_action import CalendarSharingMessageAction
@@ -18,7 +19,7 @@ class CalendarSharingMessage(Message, Parsable):
     # The sharingMessageAction property
     sharing_message_action: Optional[CalendarSharingMessageAction] = None
     # The sharingMessageActions property
-    sharing_message_actions: Optional[List[CalendarSharingMessageAction]] = None
+    sharing_message_actions: Optional[list[CalendarSharingMessageAction]] = None
     # The suggestedCalendarName property
     suggested_calendar_name: Optional[str] = None
     
@@ -33,10 +34,10 @@ class CalendarSharingMessage(Message, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CalendarSharingMessage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .calendar_sharing_message_action import CalendarSharingMessageAction
         from .message import Message
@@ -44,7 +45,7 @@ class CalendarSharingMessage(Message, Parsable):
         from .calendar_sharing_message_action import CalendarSharingMessageAction
         from .message import Message
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "canAccept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
             "sharingMessageAction": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(CalendarSharingMessageAction)),
             "sharingMessageActions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(CalendarSharingMessageAction)),
@@ -63,9 +64,6 @@ class CalendarSharingMessage(Message, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .calendar_sharing_message_action import CalendarSharingMessageAction
-        from .message import Message
-
         writer.write_bool_value("canAccept", self.can_accept)
         writer.write_object_value("sharingMessageAction", self.sharing_message_action)
         writer.write_collection_of_object_values("sharingMessageActions", self.sharing_message_actions)

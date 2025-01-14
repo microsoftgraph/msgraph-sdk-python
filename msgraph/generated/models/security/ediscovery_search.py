@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .data_source import DataSource
@@ -20,15 +21,15 @@ class EdiscoverySearch(Search, Parsable):
     # Adds the results of the eDiscovery search to the specified reviewSet.
     add_to_review_set_operation: Optional[EdiscoveryAddToReviewSetOperation] = None
     # Adds an additional source to the eDiscovery search.
-    additional_sources: Optional[List[DataSource]] = None
+    additional_sources: Optional[list[DataSource]] = None
     # Custodian sources that are included in the eDiscovery search.
-    custodian_sources: Optional[List[DataSource]] = None
+    custodian_sources: Optional[list[DataSource]] = None
     # When specified, the collection spans across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
     data_source_scopes: Optional[DataSourceScopes] = None
     # The last estimate operation associated with the eDiscovery search.
     last_estimate_statistics_operation: Optional[EdiscoveryEstimateOperation] = None
     # noncustodialDataSource sources that are included in the eDiscovery search
-    noncustodial_sources: Optional[List[EdiscoveryNoncustodialDataSource]] = None
+    noncustodial_sources: Optional[list[EdiscoveryNoncustodialDataSource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EdiscoverySearch:
@@ -41,10 +42,10 @@ class EdiscoverySearch(Search, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EdiscoverySearch()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .data_source import DataSource
         from .data_source_scopes import DataSourceScopes
@@ -60,7 +61,7 @@ class EdiscoverySearch(Search, Parsable):
         from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
         from .search import Search
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(EdiscoveryAddToReviewSetOperation)),
             "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(DataSource)),
             "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(DataSource)),
@@ -81,13 +82,6 @@ class EdiscoverySearch(Search, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .data_source import DataSource
-        from .data_source_scopes import DataSourceScopes
-        from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
-        from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
-        from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
-        from .search import Search
-
         writer.write_object_value("addToReviewSetOperation", self.add_to_review_set_operation)
         writer.write_collection_of_object_values("additionalSources", self.additional_sources)
         writer.write_collection_of_object_values("custodianSources", self.custodian_sources)

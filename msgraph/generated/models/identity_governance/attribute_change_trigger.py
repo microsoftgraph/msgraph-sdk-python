@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .trigger_attribute import TriggerAttribute
@@ -14,7 +15,7 @@ class AttributeChangeTrigger(WorkflowExecutionTrigger, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.attributeChangeTrigger"
     # The trigger attribute being changed that triggers the workflowexecutiontrigger of a workflow.)
-    trigger_attributes: Optional[List[TriggerAttribute]] = None
+    trigger_attributes: Optional[list[TriggerAttribute]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AttributeChangeTrigger:
@@ -27,10 +28,10 @@ class AttributeChangeTrigger(WorkflowExecutionTrigger, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AttributeChangeTrigger()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .trigger_attribute import TriggerAttribute
         from .workflow_execution_trigger import WorkflowExecutionTrigger
@@ -38,7 +39,7 @@ class AttributeChangeTrigger(WorkflowExecutionTrigger, Parsable):
         from .trigger_attribute import TriggerAttribute
         from .workflow_execution_trigger import WorkflowExecutionTrigger
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "triggerAttributes": lambda n : setattr(self, 'trigger_attributes', n.get_collection_of_object_values(TriggerAttribute)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class AttributeChangeTrigger(WorkflowExecutionTrigger, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .trigger_attribute import TriggerAttribute
-        from .workflow_execution_trigger import WorkflowExecutionTrigger
-
         writer.write_collection_of_object_values("triggerAttributes", self.trigger_attributes)
     
 

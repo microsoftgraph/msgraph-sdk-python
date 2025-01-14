@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .synchronization_error import SynchronizationError
@@ -15,7 +16,7 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Identifier of the job run.
     activity_identifier: Optional[str] = None
     # Count of processed entries that were assigned for this application.
@@ -58,10 +59,10 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SynchronizationTaskExecution()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .synchronization_error import SynchronizationError
         from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
@@ -69,7 +70,7 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_error import SynchronizationError
         from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activityIdentifier": lambda n : setattr(self, 'activity_identifier', n.get_str_value()),
             "countEntitled": lambda n : setattr(self, 'count_entitled', n.get_int_value()),
             "countEntitledForProvisioning": lambda n : setattr(self, 'count_entitled_for_provisioning', n.get_int_value()),
@@ -96,9 +97,6 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .synchronization_error import SynchronizationError
-        from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
-
         writer.write_str_value("activityIdentifier", self.activity_identifier)
         writer.write_int_value("countEntitled", self.count_entitled)
         writer.write_int_value("countEntitledForProvisioning", self.count_entitled_for_provisioning)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .conditional_access_policy import ConditionalAccessPolicy
@@ -13,11 +14,11 @@ class AuthenticationStrengthUsage(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The mfa property
-    mfa: Optional[List[ConditionalAccessPolicy]] = None
+    mfa: Optional[list[ConditionalAccessPolicy]] = None
     # The none property
-    none_: Optional[List[ConditionalAccessPolicy]] = None
+    none_: Optional[list[ConditionalAccessPolicy]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,16 +33,16 @@ class AuthenticationStrengthUsage(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AuthenticationStrengthUsage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .conditional_access_policy import ConditionalAccessPolicy
 
         from .conditional_access_policy import ConditionalAccessPolicy
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "mfa": lambda n : setattr(self, 'mfa', n.get_collection_of_object_values(ConditionalAccessPolicy)),
             "none": lambda n : setattr(self, 'none_', n.get_collection_of_object_values(ConditionalAccessPolicy)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -56,8 +57,6 @@ class AuthenticationStrengthUsage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .conditional_access_policy import ConditionalAccessPolicy
-
         writer.write_collection_of_object_values("mfa", self.mfa)
         writer.write_collection_of_object_values("none", self.none_)
         writer.write_str_value("@odata.type", self.odata_type)

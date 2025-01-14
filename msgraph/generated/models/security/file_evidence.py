@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -32,10 +33,10 @@ class FileEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return FileEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .detection_status import DetectionStatus
@@ -45,7 +46,7 @@ class FileEvidence(AlertEvidence, Parsable):
         from .detection_status import DetectionStatus
         from .file_details import FileDetails
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
             "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(FileDetails)),
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
@@ -63,10 +64,6 @@ class FileEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .detection_status import DetectionStatus
-        from .file_details import FileDetails
-
         writer.write_enum_value("detectionStatus", self.detection_status)
         writer.write_object_value("fileDetails", self.file_details)
         writer.write_str_value("mdeDeviceId", self.mde_device_id)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -37,10 +38,10 @@ class ServicePrincipalEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ServicePrincipalEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .service_principal_type import ServicePrincipalType
@@ -48,7 +49,7 @@ class ServicePrincipalEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
         from .service_principal_type import ServicePrincipalType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "appOwnerTenantId": lambda n : setattr(self, 'app_owner_tenant_id', n.get_str_value()),
             "servicePrincipalName": lambda n : setattr(self, 'service_principal_name', n.get_str_value()),
@@ -69,9 +70,6 @@ class ServicePrincipalEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .service_principal_type import ServicePrincipalType
-
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("appOwnerTenantId", self.app_owner_tenant_id)
         writer.write_str_value("servicePrincipalName", self.service_principal_name)

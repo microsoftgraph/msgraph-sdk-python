@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_install_state import DeviceInstallState
@@ -21,13 +22,13 @@ class ManagedEBook(Entity, Parsable):
     An abstract class containing the base properties for Managed eBook.
     """
     # The list of assignments for this eBook.
-    assignments: Optional[List[ManagedEBookAssignment]] = None
+    assignments: Optional[list[ManagedEBookAssignment]] = None
     # The date and time when the eBook file was created.
     created_date_time: Optional[datetime.datetime] = None
     # Description.
     description: Optional[str] = None
     # The list of installation states for this eBook.
-    device_states: Optional[List[DeviceInstallState]] = None
+    device_states: Optional[list[DeviceInstallState]] = None
     # Name of the eBook.
     display_name: Optional[str] = None
     # The more information Url.
@@ -47,7 +48,7 @@ class ManagedEBook(Entity, Parsable):
     # Publisher.
     publisher: Optional[str] = None
     # The list of installation states for this eBook.
-    user_state_summary: Optional[List[UserInstallStateSummary]] = None
+    user_state_summary: Optional[list[UserInstallStateSummary]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ManagedEBook:
@@ -69,10 +70,10 @@ class ManagedEBook(Entity, Parsable):
             return IosVppEBook()
         return ManagedEBook()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_install_state import DeviceInstallState
         from .entity import Entity
@@ -90,7 +91,7 @@ class ManagedEBook(Entity, Parsable):
         from .mime_content import MimeContent
         from .user_install_state_summary import UserInstallStateSummary
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(ManagedEBookAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -118,14 +119,6 @@ class ManagedEBook(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_install_state import DeviceInstallState
-        from .entity import Entity
-        from .e_book_install_summary import EBookInstallSummary
-        from .ios_vpp_e_book import IosVppEBook
-        from .managed_e_book_assignment import ManagedEBookAssignment
-        from .mime_content import MimeContent
-        from .user_install_state_summary import UserInstallStateSummary
-
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

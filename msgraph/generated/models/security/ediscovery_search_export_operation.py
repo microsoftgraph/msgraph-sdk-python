@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .additional_options import AdditionalOptions
@@ -25,7 +26,7 @@ class EdiscoverySearchExportOperation(CaseOperation, Parsable):
     # Items to be included in the export. The possible values are: searchHits, partiallyIndexed, unknownFutureValue.
     export_criteria: Optional[ExportCriteria] = None
     # Contains the properties for an export file metadata, including downloadUrl, fileName, and size.
-    export_file_metadata: Optional[List[ExportFileMetadata]] = None
+    export_file_metadata: Optional[list[ExportFileMetadata]] = None
     # Format of the emails of the export. The possible values are: pst, msg, eml, unknownFutureValue.
     export_format: Optional[ExportFormat] = None
     # Location scope for partially indexed items. You can choose to include partially indexed items only in responsive locations with search hits or in all targeted locations. The possible values are: responsiveLocations, nonresponsiveLocations, unknownFutureValue.
@@ -48,10 +49,10 @@ class EdiscoverySearchExportOperation(CaseOperation, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EdiscoverySearchExportOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .additional_options import AdditionalOptions
         from .case_operation import CaseOperation
@@ -69,7 +70,7 @@ class EdiscoverySearchExportOperation(CaseOperation, Parsable):
         from .export_format import ExportFormat
         from .export_location import ExportLocation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "additionalOptions": lambda n : setattr(self, 'additional_options', n.get_collection_of_enum_values(AdditionalOptions)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -93,14 +94,6 @@ class EdiscoverySearchExportOperation(CaseOperation, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .additional_options import AdditionalOptions
-        from .case_operation import CaseOperation
-        from .ediscovery_search import EdiscoverySearch
-        from .export_criteria import ExportCriteria
-        from .export_file_metadata import ExportFileMetadata
-        from .export_format import ExportFormat
-        from .export_location import ExportLocation
-
         writer.write_enum_value("additionalOptions", self.additional_options)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

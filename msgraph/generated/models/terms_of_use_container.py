@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .agreement import Agreement
@@ -13,9 +14,9 @@ from .entity import Entity
 @dataclass
 class TermsOfUseContainer(Entity, Parsable):
     # Represents the current status of a user's response to a company's customizable terms of use agreement.
-    agreement_acceptances: Optional[List[AgreementAcceptance]] = None
+    agreement_acceptances: Optional[list[AgreementAcceptance]] = None
     # Represents a tenant's customizable terms of use agreement that's created and managed with Microsoft Entra ID Governance.
-    agreements: Optional[List[Agreement]] = None
+    agreements: Optional[list[Agreement]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,10 +31,10 @@ class TermsOfUseContainer(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TermsOfUseContainer()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .agreement import Agreement
         from .agreement_acceptance import AgreementAcceptance
@@ -43,7 +44,7 @@ class TermsOfUseContainer(Entity, Parsable):
         from .agreement_acceptance import AgreementAcceptance
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
             "agreements": lambda n : setattr(self, 'agreements', n.get_collection_of_object_values(Agreement)),
         }
@@ -60,10 +61,6 @@ class TermsOfUseContainer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .agreement import Agreement
-        from .agreement_acceptance import AgreementAcceptance
-        from .entity import Entity
-
         writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
         writer.write_collection_of_object_values("agreements", self.agreements)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -20,7 +21,7 @@ class DnsEvidence(AlertEvidence, Parsable):
     # The hostIpAddress property
     host_ip_address: Optional[IpEvidence] = None
     # The ipAddresses property
-    ip_addresses: Optional[List[IpEvidence]] = None
+    ip_addresses: Optional[list[IpEvidence]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DnsEvidence:
@@ -33,10 +34,10 @@ class DnsEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DnsEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .ip_evidence import IpEvidence
@@ -44,7 +45,7 @@ class DnsEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
         from .ip_evidence import IpEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "dnsServerIp": lambda n : setattr(self, 'dns_server_ip', n.get_object_value(IpEvidence)),
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
             "hostIpAddress": lambda n : setattr(self, 'host_ip_address', n.get_object_value(IpEvidence)),
@@ -63,9 +64,6 @@ class DnsEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .ip_evidence import IpEvidence
-
         writer.write_object_value("dnsServerIp", self.dns_server_ip)
         writer.write_str_value("domainName", self.domain_name)
         writer.write_object_value("hostIpAddress", self.host_ip_address)

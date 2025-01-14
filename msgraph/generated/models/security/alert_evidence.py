@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .amazon_resource_evidence import AmazonResourceEvidence
@@ -61,11 +62,11 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The date and time when the evidence was created and added to the alert. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # Detailed description of the entity role/s in an alert. Values are free-form.
-    detailed_roles: Optional[List[str]] = None
+    detailed_roles: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The remediationStatus property
@@ -73,9 +74,9 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
     # Details about the remediation status.
     remediation_status_details: Optional[str] = None
     # The role/s that an evidence entity represents in an alert, for example, an IP address that is associated with an attacker has the evidence role Attacker.
-    roles: Optional[List[EvidenceRole]] = None
+    roles: Optional[list[EvidenceRole]] = None
     # Array of custom tags associated with an evidence instance, for example, to denote a group of devices, high-value assets, etc.
-    tags: Optional[List[str]] = None
+    tags: Optional[list[str]] = None
     # The verdict property
     verdict: Optional[EvidenceVerdict] = None
     
@@ -275,10 +276,10 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             return UserEvidence()
         return AlertEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .amazon_resource_evidence import AmazonResourceEvidence
         from .analyzed_message_evidence import AnalyzedMessageEvidence
@@ -378,7 +379,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .url_evidence import UrlEvidence
         from .user_evidence import UserEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "detailedRoles": lambda n : setattr(self, 'detailed_roles', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -398,55 +399,6 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .amazon_resource_evidence import AmazonResourceEvidence
-        from .analyzed_message_evidence import AnalyzedMessageEvidence
-        from .azure_resource_evidence import AzureResourceEvidence
-        from .blob_container_evidence import BlobContainerEvidence
-        from .blob_evidence import BlobEvidence
-        from .cloud_application_evidence import CloudApplicationEvidence
-        from .cloud_logon_request_evidence import CloudLogonRequestEvidence
-        from .cloud_logon_session_evidence import CloudLogonSessionEvidence
-        from .container_evidence import ContainerEvidence
-        from .container_image_evidence import ContainerImageEvidence
-        from .container_registry_evidence import ContainerRegistryEvidence
-        from .device_evidence import DeviceEvidence
-        from .dns_evidence import DnsEvidence
-        from .evidence_remediation_status import EvidenceRemediationStatus
-        from .evidence_role import EvidenceRole
-        from .evidence_verdict import EvidenceVerdict
-        from .file_evidence import FileEvidence
-        from .file_hash_evidence import FileHashEvidence
-        from .git_hub_organization_evidence import GitHubOrganizationEvidence
-        from .git_hub_repo_evidence import GitHubRepoEvidence
-        from .git_hub_user_evidence import GitHubUserEvidence
-        from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
-        from .host_logon_session_evidence import HostLogonSessionEvidence
-        from .io_t_device_evidence import IoTDeviceEvidence
-        from .ip_evidence import IpEvidence
-        from .kubernetes_cluster_evidence import KubernetesClusterEvidence
-        from .kubernetes_controller_evidence import KubernetesControllerEvidence
-        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
-        from .kubernetes_pod_evidence import KubernetesPodEvidence
-        from .kubernetes_secret_evidence import KubernetesSecretEvidence
-        from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
-        from .kubernetes_service_evidence import KubernetesServiceEvidence
-        from .mailbox_configuration_evidence import MailboxConfigurationEvidence
-        from .mailbox_evidence import MailboxEvidence
-        from .mail_cluster_evidence import MailClusterEvidence
-        from .malware_evidence import MalwareEvidence
-        from .network_connection_evidence import NetworkConnectionEvidence
-        from .nic_evidence import NicEvidence
-        from .oauth_application_evidence import OauthApplicationEvidence
-        from .process_evidence import ProcessEvidence
-        from .registry_key_evidence import RegistryKeyEvidence
-        from .registry_value_evidence import RegistryValueEvidence
-        from .sas_token_evidence import SasTokenEvidence
-        from .security_group_evidence import SecurityGroupEvidence
-        from .service_principal_evidence import ServicePrincipalEvidence
-        from .submission_mail_evidence import SubmissionMailEvidence
-        from .url_evidence import UrlEvidence
-        from .user_evidence import UserEvidence
-
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_primitive_values("detailedRoles", self.detailed_roles)
         writer.write_str_value("@odata.type", self.odata_type)

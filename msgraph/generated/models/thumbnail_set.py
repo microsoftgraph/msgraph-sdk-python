@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -33,10 +34,10 @@ class ThumbnailSet(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ThumbnailSet()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .thumbnail import Thumbnail
@@ -44,7 +45,7 @@ class ThumbnailSet(Entity, Parsable):
         from .entity import Entity
         from .thumbnail import Thumbnail
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "large": lambda n : setattr(self, 'large', n.get_object_value(Thumbnail)),
             "medium": lambda n : setattr(self, 'medium', n.get_object_value(Thumbnail)),
             "small": lambda n : setattr(self, 'small', n.get_object_value(Thumbnail)),
@@ -63,9 +64,6 @@ class ThumbnailSet(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .thumbnail import Thumbnail
-
         writer.write_object_value("large", self.large)
         writer.write_object_value("medium", self.medium)
         writer.write_object_value("small", self.small)

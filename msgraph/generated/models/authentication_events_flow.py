@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_conditions import AuthenticationConditions
@@ -41,10 +42,10 @@ class AuthenticationEventsFlow(Entity, Parsable):
             return ExternalUsersSelfServiceSignUpEventsFlow()
         return AuthenticationEventsFlow()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_conditions import AuthenticationConditions
         from .entity import Entity
@@ -54,7 +55,7 @@ class AuthenticationEventsFlow(Entity, Parsable):
         from .entity import Entity
         from .external_users_self_service_sign_up_events_flow import ExternalUsersSelfServiceSignUpEventsFlow
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(AuthenticationConditions)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -72,10 +73,6 @@ class AuthenticationEventsFlow(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_conditions import AuthenticationConditions
-        from .entity import Entity
-        from .external_users_self_service_sign_up_events_flow import ExternalUsersSelfServiceSignUpEventsFlow
-
         writer.write_object_value("conditions", self.conditions)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

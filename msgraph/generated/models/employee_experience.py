@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .community import Community
@@ -19,15 +20,15 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # A collection of communities in Viva Engage.
-    communities: Optional[List[Community]] = None
+    communities: Optional[list[Community]] = None
     # A collection of long-running, asynchronous operations related to Viva Engage.
-    engagement_async_operations: Optional[List[EngagementAsyncOperation]] = None
+    engagement_async_operations: Optional[list[EngagementAsyncOperation]] = None
     # The learningCourseActivities property
-    learning_course_activities: Optional[List[LearningCourseActivity]] = None
+    learning_course_activities: Optional[list[LearningCourseActivity]] = None
     # A collection of learning providers.
-    learning_providers: Optional[List[LearningProvider]] = None
+    learning_providers: Optional[list[LearningProvider]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -42,10 +43,10 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EmployeeExperience()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .community import Community
         from .engagement_async_operation import EngagementAsyncOperation
@@ -57,7 +58,7 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "communities": lambda n : setattr(self, 'communities', n.get_collection_of_object_values(Community)),
             "engagementAsyncOperations": lambda n : setattr(self, 'engagement_async_operations', n.get_collection_of_object_values(EngagementAsyncOperation)),
             "learningCourseActivities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
@@ -74,11 +75,6 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .community import Community
-        from .engagement_async_operation import EngagementAsyncOperation
-        from .learning_course_activity import LearningCourseActivity
-        from .learning_provider import LearningProvider
-
         writer.write_collection_of_object_values("communities", self.communities)
         writer.write_collection_of_object_values("engagementAsyncOperations", self.engagement_async_operations)
         writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)

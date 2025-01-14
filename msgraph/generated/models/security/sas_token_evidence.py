@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -17,13 +18,13 @@ class SasTokenEvidence(AlertEvidence, Parsable):
     # The allowedIpAddresses property
     allowed_ip_addresses: Optional[str] = None
     # The allowedResourceTypes property
-    allowed_resource_types: Optional[List[str]] = None
+    allowed_resource_types: Optional[list[str]] = None
     # The allowedServices property
-    allowed_services: Optional[List[str]] = None
+    allowed_services: Optional[list[str]] = None
     # The expiryDateTime property
     expiry_date_time: Optional[datetime.datetime] = None
     # The permissions property
-    permissions: Optional[List[str]] = None
+    permissions: Optional[list[str]] = None
     # The protocol property
     protocol: Optional[str] = None
     # The signatureHash property
@@ -46,10 +47,10 @@ class SasTokenEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SasTokenEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .azure_resource_evidence import AzureResourceEvidence
@@ -57,7 +58,7 @@ class SasTokenEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
         from .azure_resource_evidence import AzureResourceEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowedIpAddresses": lambda n : setattr(self, 'allowed_ip_addresses', n.get_str_value()),
             "allowedResourceTypes": lambda n : setattr(self, 'allowed_resource_types', n.get_collection_of_primitive_values(str)),
             "allowedServices": lambda n : setattr(self, 'allowed_services', n.get_collection_of_primitive_values(str)),
@@ -82,9 +83,6 @@ class SasTokenEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .azure_resource_evidence import AzureResourceEvidence
-
         writer.write_str_value("allowedIpAddresses", self.allowed_ip_addresses)
         writer.write_collection_of_primitive_values("allowedResourceTypes", self.allowed_resource_types)
         writer.write_collection_of_primitive_values("allowedServices", self.allowed_services)

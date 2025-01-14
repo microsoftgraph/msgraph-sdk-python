@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -97,10 +98,10 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserExperienceAnalyticsWorkFromAnywhereDevice()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .operating_system_upgrade_eligibility import OperatingSystemUpgradeEligibility
@@ -110,7 +111,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity, Parsable):
         from .operating_system_upgrade_eligibility import OperatingSystemUpgradeEligibility
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "autoPilotProfileAssigned": lambda n : setattr(self, 'auto_pilot_profile_assigned', n.get_bool_value()),
             "autoPilotRegistered": lambda n : setattr(self, 'auto_pilot_registered', n.get_bool_value()),
             "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
@@ -159,10 +160,6 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .operating_system_upgrade_eligibility import OperatingSystemUpgradeEligibility
-        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
-
         writer.write_bool_value("autoPilotProfileAssigned", self.auto_pilot_profile_assigned)
         writer.write_bool_value("autoPilotRegistered", self.auto_pilot_registered)
         writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)

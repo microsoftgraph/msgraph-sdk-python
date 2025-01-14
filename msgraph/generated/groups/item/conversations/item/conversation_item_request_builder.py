@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
@@ -9,7 +10,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
@@ -21,7 +22,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the conversations property of the microsoft.graph.group entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
         Instantiates a new ConversationItemRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
@@ -42,7 +43,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -51,17 +52,17 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ConversationItemRequestBuilderGetQueryParameters]] = None) -> Optional[Conversation]:
         """
-        Retrieve the properties and relationships of conversation object.
+        The group's conversations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Conversation]
-        Find more info here: https://learn.microsoft.com/graph/api/conversation-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-get-conversation?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -83,7 +84,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ConversationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of conversation object.
+        The group's conversations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +122,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of conversation object.
+        The group's conversations.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -138,10 +139,10 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
             return original_name
         
         # Expand related entities
-        expand: Optional[List[str]] = None
+        expand: Optional[list[str]] = None
 
         # Select properties to be returned
-        select: Optional[List[str]] = None
+        select: Optional[list[str]] = None
 
     
     @dataclass

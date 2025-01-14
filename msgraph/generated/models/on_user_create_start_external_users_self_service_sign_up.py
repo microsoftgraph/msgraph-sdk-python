@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .on_user_create_start_handler import OnUserCreateStartHandler
@@ -27,10 +28,10 @@ class OnUserCreateStartExternalUsersSelfServiceSignUp(OnUserCreateStartHandler, 
             raise TypeError("parse_node cannot be null.")
         return OnUserCreateStartExternalUsersSelfServiceSignUp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .on_user_create_start_handler import OnUserCreateStartHandler
         from .user_type import UserType
@@ -38,7 +39,7 @@ class OnUserCreateStartExternalUsersSelfServiceSignUp(OnUserCreateStartHandler, 
         from .on_user_create_start_handler import OnUserCreateStartHandler
         from .user_type import UserType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "userTypeToCreate": lambda n : setattr(self, 'user_type_to_create', n.get_enum_value(UserType)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class OnUserCreateStartExternalUsersSelfServiceSignUp(OnUserCreateStartHandler, 
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .on_user_create_start_handler import OnUserCreateStartHandler
-        from .user_type import UserType
-
         writer.write_enum_value("userTypeToCreate", self.user_type_to_create)
     
 

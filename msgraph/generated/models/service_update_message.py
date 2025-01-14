@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .item_body import ItemBody
@@ -21,7 +22,7 @@ class ServiceUpdateMessage(ServiceAnnouncementBase, Parsable):
     # The expected deadline of the action for the message.
     action_required_by_date_time: Optional[datetime.datetime] = None
     # A collection of serviceAnnouncementAttachments.
-    attachments: Optional[List[ServiceAnnouncementAttachment]] = None
+    attachments: Optional[list[ServiceAnnouncementAttachment]] = None
     # The zip file that contains all attachments for a message.
     attachments_archive: Optional[bytes] = None
     # The body property
@@ -33,11 +34,11 @@ class ServiceUpdateMessage(ServiceAnnouncementBase, Parsable):
     # Indicates whether the message describes a major update for the service.
     is_major_change: Optional[bool] = None
     # The affected services by the service message.
-    services: Optional[List[str]] = None
+    services: Optional[list[str]] = None
     # The severity property
     severity: Optional[ServiceUpdateSeverity] = None
     # A collection of tags for the service message. Tags are provided by the service team/support team who post the message to tell whether this message contains privacy data, or whether this message is for a service new feature update, and so on.
-    tags: Optional[List[str]] = None
+    tags: Optional[list[str]] = None
     # Represents user viewpoints data of the service message. This data includes message status such as whether the user has archived, read, or marked the message as favorite. This property is null when accessed with application permissions.
     view_point: Optional[ServiceUpdateMessageViewpoint] = None
     
@@ -52,10 +53,10 @@ class ServiceUpdateMessage(ServiceAnnouncementBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ServiceUpdateMessage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .item_body import ItemBody
         from .service_announcement_attachment import ServiceAnnouncementAttachment
@@ -71,7 +72,7 @@ class ServiceUpdateMessage(ServiceAnnouncementBase, Parsable):
         from .service_update_message_viewpoint import ServiceUpdateMessageViewpoint
         from .service_update_severity import ServiceUpdateSeverity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "actionRequiredByDateTime": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(ServiceAnnouncementAttachment)),
             "attachmentsArchive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),
@@ -97,13 +98,6 @@ class ServiceUpdateMessage(ServiceAnnouncementBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .item_body import ItemBody
-        from .service_announcement_attachment import ServiceAnnouncementAttachment
-        from .service_announcement_base import ServiceAnnouncementBase
-        from .service_update_category import ServiceUpdateCategory
-        from .service_update_message_viewpoint import ServiceUpdateMessageViewpoint
-        from .service_update_severity import ServiceUpdateSeverity
-
         writer.write_datetime_value("actionRequiredByDateTime", self.action_required_by_date_time)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_bytes_value("attachmentsArchive", self.attachments_archive)

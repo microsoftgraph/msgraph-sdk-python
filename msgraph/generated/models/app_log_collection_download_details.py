@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_log_decryption_algorithm import AppLogDecryptionAlgorithm
@@ -13,7 +14,7 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The appLogDecryptionAlgorithm property
     app_log_decryption_algorithm: Optional[AppLogDecryptionAlgorithm] = None
     # Decryption key that used to decrypt the log.
@@ -34,16 +35,16 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
             raise TypeError("parse_node cannot be null.")
         return AppLogCollectionDownloadDetails()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_log_decryption_algorithm import AppLogDecryptionAlgorithm
 
         from .app_log_decryption_algorithm import AppLogDecryptionAlgorithm
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appLogDecryptionAlgorithm": lambda n : setattr(self, 'app_log_decryption_algorithm', n.get_enum_value(AppLogDecryptionAlgorithm)),
             "decryptionKey": lambda n : setattr(self, 'decryption_key', n.get_str_value()),
             "downloadUrl": lambda n : setattr(self, 'download_url', n.get_str_value()),
@@ -59,8 +60,6 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .app_log_decryption_algorithm import AppLogDecryptionAlgorithm
-
         writer.write_enum_value("appLogDecryptionAlgorithm", self.app_log_decryption_algorithm)
         writer.write_str_value("decryptionKey", self.decryption_key)
         writer.write_str_value("downloadUrl", self.download_url)

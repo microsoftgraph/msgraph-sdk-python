@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .event_message import EventMessage
@@ -30,10 +31,10 @@ class EventMessageResponse(EventMessage, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EventMessageResponse()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .event_message import EventMessage
         from .response_type import ResponseType
@@ -43,7 +44,7 @@ class EventMessageResponse(EventMessage, Parsable):
         from .response_type import ResponseType
         from .time_slot import TimeSlot
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
             "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(ResponseType)),
         }
@@ -60,10 +61,6 @@ class EventMessageResponse(EventMessage, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .event_message import EventMessage
-        from .response_type import ResponseType
-        from .time_slot import TimeSlot
-
         writer.write_object_value("proposedNewTime", self.proposed_new_time)
         writer.write_enum_value("responseType", self.response_type)
     

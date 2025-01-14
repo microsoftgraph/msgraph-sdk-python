@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -53,10 +54,10 @@ class VppToken(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return VppToken()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .vpp_token_account_type import VppTokenAccountType
@@ -68,7 +69,7 @@ class VppToken(Entity, Parsable):
         from .vpp_token_state import VppTokenState
         from .vpp_token_sync_status import VppTokenSyncStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
             "automaticallyUpdateApps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
             "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
@@ -94,11 +95,6 @@ class VppToken(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .vpp_token_account_type import VppTokenAccountType
-        from .vpp_token_state import VppTokenState
-        from .vpp_token_sync_status import VppTokenSyncStatus
-
         writer.write_str_value("appleId", self.apple_id)
         writer.write_bool_value("automaticallyUpdateApps", self.automatically_update_apps)
         writer.write_str_value("countryOrRegion", self.country_or_region)

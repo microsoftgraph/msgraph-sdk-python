@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -39,7 +40,7 @@ class RetentionLabel(Entity, Parsable):
     # Unique string that defines a label name.
     display_name: Optional[str] = None
     # When action at the end of retention is chosen as 'dispositionReview', dispositionReviewStages specifies a sequential set of stages with at least one reviewer in each stage.
-    disposition_review_stages: Optional[List[DispositionReviewStage]] = None
+    disposition_review_stages: Optional[list[DispositionReviewStage]] = None
     # Specifies whether the label is currently being used.
     is_in_use: Optional[bool] = None
     # Specifies the replacement label to be applied automatically after the retention period of the current label ends.
@@ -68,10 +69,10 @@ class RetentionLabel(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RetentionLabel()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..identity_set import IdentitySet
@@ -95,7 +96,7 @@ class RetentionLabel(Entity, Parsable):
         from .retention_event_type import RetentionEventType
         from .retention_trigger import RetentionTrigger
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "actionAfterRetentionPeriod": lambda n : setattr(self, 'action_after_retention_period', n.get_enum_value(ActionAfterRetentionPeriod)),
             "behaviorDuringRetentionPeriod": lambda n : setattr(self, 'behavior_during_retention_period', n.get_enum_value(BehaviorDuringRetentionPeriod)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
@@ -127,17 +128,6 @@ class RetentionLabel(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..identity_set import IdentitySet
-        from .action_after_retention_period import ActionAfterRetentionPeriod
-        from .behavior_during_retention_period import BehaviorDuringRetentionPeriod
-        from .default_record_behavior import DefaultRecordBehavior
-        from .disposition_review_stage import DispositionReviewStage
-        from .file_plan_descriptor import FilePlanDescriptor
-        from .retention_duration import RetentionDuration
-        from .retention_event_type import RetentionEventType
-        from .retention_trigger import RetentionTrigger
-
         writer.write_enum_value("actionAfterRetentionPeriod", self.action_after_retention_period)
         writer.write_enum_value("behaviorDuringRetentionPeriod", self.behavior_during_retention_period)
         writer.write_object_value("createdBy", self.created_by)

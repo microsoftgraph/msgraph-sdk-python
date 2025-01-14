@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .disk_type import DiskType
@@ -69,10 +70,10 @@ class UserExperienceAnalyticsDevicePerformance(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserExperienceAnalyticsDevicePerformance()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .disk_type import DiskType
         from .entity import Entity
@@ -82,7 +83,7 @@ class UserExperienceAnalyticsDevicePerformance(Entity, Parsable):
         from .entity import Entity
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
             "averageRestarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
             "blueScreenCount": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
@@ -117,10 +118,6 @@ class UserExperienceAnalyticsDevicePerformance(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .disk_type import DiskType
-        from .entity import Entity
-        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
-
         writer.write_float_value("averageBlueScreens", self.average_blue_screens)
         writer.write_float_value("averageRestarts", self.average_restarts)
         writer.write_int_value("blueScreenCount", self.blue_screen_count)

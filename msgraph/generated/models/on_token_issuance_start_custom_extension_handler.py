@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .custom_extension_overwrite_configuration import CustomExtensionOverwriteConfiguration
@@ -30,10 +31,10 @@ class OnTokenIssuanceStartCustomExtensionHandler(OnTokenIssuanceStartHandler, Pa
             raise TypeError("parse_node cannot be null.")
         return OnTokenIssuanceStartCustomExtensionHandler()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .custom_extension_overwrite_configuration import CustomExtensionOverwriteConfiguration
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
@@ -43,7 +44,7 @@ class OnTokenIssuanceStartCustomExtensionHandler(OnTokenIssuanceStartHandler, Pa
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
         from .on_token_issuance_start_handler import OnTokenIssuanceStartHandler
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(CustomExtensionOverwriteConfiguration)),
             "customExtension": lambda n : setattr(self, 'custom_extension', n.get_object_value(OnTokenIssuanceStartCustomExtension)),
         }
@@ -60,10 +61,6 @@ class OnTokenIssuanceStartCustomExtensionHandler(OnTokenIssuanceStartHandler, Pa
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .custom_extension_overwrite_configuration import CustomExtensionOverwriteConfiguration
-        from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
-        from .on_token_issuance_start_handler import OnTokenIssuanceStartHandler
-
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("customExtension", self.custom_extension)
     

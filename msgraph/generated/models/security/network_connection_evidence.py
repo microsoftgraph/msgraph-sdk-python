@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -36,10 +37,10 @@ class NetworkConnectionEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return NetworkConnectionEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .ip_evidence import IpEvidence
@@ -49,7 +50,7 @@ class NetworkConnectionEvidence(AlertEvidence, Parsable):
         from .ip_evidence import IpEvidence
         from .protocol_type import ProtocolType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "destinationAddress": lambda n : setattr(self, 'destination_address', n.get_object_value(IpEvidence)),
             "destinationPort": lambda n : setattr(self, 'destination_port', n.get_int_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(ProtocolType)),
@@ -69,10 +70,6 @@ class NetworkConnectionEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .ip_evidence import IpEvidence
-        from .protocol_type import ProtocolType
-
         writer.write_object_value("destinationAddress", self.destination_address)
         writer.write_int_value("destinationPort", self.destination_port)
         writer.write_enum_value("protocol", self.protocol)

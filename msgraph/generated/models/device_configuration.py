@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_custom_configuration import AndroidCustomConfiguration
@@ -47,17 +48,17 @@ class DeviceConfiguration(Entity, Parsable):
     Device Configuration.
     """
     # The list of assignments for the device configuration profile.
-    assignments: Optional[List[DeviceConfigurationAssignment]] = None
+    assignments: Optional[list[DeviceConfigurationAssignment]] = None
     # DateTime the object was created.
     created_date_time: Optional[datetime.datetime] = None
     # Admin provided description of the Device Configuration.
     description: Optional[str] = None
     # Device Configuration Setting State Device Summary
-    device_setting_state_summaries: Optional[List[SettingStateDeviceSummary]] = None
+    device_setting_state_summaries: Optional[list[SettingStateDeviceSummary]] = None
     # Device Configuration devices status overview
     device_status_overview: Optional[DeviceConfigurationDeviceOverview] = None
     # Device configuration installation status by device.
-    device_statuses: Optional[List[DeviceConfigurationDeviceStatus]] = None
+    device_statuses: Optional[list[DeviceConfigurationDeviceStatus]] = None
     # Admin provided name of the device configuration.
     display_name: Optional[str] = None
     # DateTime the object was last modified.
@@ -67,7 +68,7 @@ class DeviceConfiguration(Entity, Parsable):
     # Device Configuration users status overview
     user_status_overview: Optional[DeviceConfigurationUserOverview] = None
     # Device configuration installation status by user.
-    user_statuses: Optional[List[DeviceConfigurationUserStatus]] = None
+    user_statuses: Optional[list[DeviceConfigurationUserStatus]] = None
     # Version of the device configuration.
     version: Optional[int] = None
     
@@ -191,10 +192,10 @@ class DeviceConfiguration(Entity, Parsable):
             return WindowsUpdateForBusinessConfiguration()
         return DeviceConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .android_custom_configuration import AndroidCustomConfiguration
         from .android_general_device_configuration import AndroidGeneralDeviceConfiguration
@@ -264,7 +265,7 @@ class DeviceConfiguration(Entity, Parsable):
         from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
         from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(DeviceConfigurationAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -290,40 +291,6 @@ class DeviceConfiguration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .android_custom_configuration import AndroidCustomConfiguration
-        from .android_general_device_configuration import AndroidGeneralDeviceConfiguration
-        from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
-        from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
-        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
-        from .device_configuration_assignment import DeviceConfigurationAssignment
-        from .device_configuration_device_overview import DeviceConfigurationDeviceOverview
-        from .device_configuration_device_status import DeviceConfigurationDeviceStatus
-        from .device_configuration_user_overview import DeviceConfigurationUserOverview
-        from .device_configuration_user_status import DeviceConfigurationUserStatus
-        from .edition_upgrade_configuration import EditionUpgradeConfiguration
-        from .entity import Entity
-        from .ios_certificate_profile import IosCertificateProfile
-        from .ios_custom_configuration import IosCustomConfiguration
-        from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
-        from .ios_general_device_configuration import IosGeneralDeviceConfiguration
-        from .ios_update_configuration import IosUpdateConfiguration
-        from .mac_o_s_custom_configuration import MacOSCustomConfiguration
-        from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
-        from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
-        from .setting_state_device_summary import SettingStateDeviceSummary
-        from .shared_p_c_configuration import SharedPCConfiguration
-        from .windows10_custom_configuration import Windows10CustomConfiguration
-        from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
-        from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
-        from .windows10_general_configuration import Windows10GeneralConfiguration
-        from .windows10_secure_assessment_configuration import Windows10SecureAssessmentConfiguration
-        from .windows10_team_general_configuration import Windows10TeamGeneralConfiguration
-        from .windows81_general_configuration import Windows81GeneralConfiguration
-        from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
-        from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
-        from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
-        from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
-
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

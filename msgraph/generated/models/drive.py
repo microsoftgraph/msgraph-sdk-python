@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_item import BaseItem
@@ -19,13 +20,13 @@ class Drive(BaseItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.drive"
     # Collection of bundles (albums and multi-select-shared sets of items). Only in personal OneDrive.
-    bundles: Optional[List[DriveItem]] = None
+    bundles: Optional[list[DriveItem]] = None
     # Describes the type of drive represented by this resource. OneDrive personal drives return personal. OneDrive for Business returns business. SharePoint document libraries return documentLibrary. Read-only.
     drive_type: Optional[str] = None
     # The list of items the user is following. Only in OneDrive for Business.
-    following: Optional[List[DriveItem]] = None
+    following: Optional[list[DriveItem]] = None
     # All items contained in the drive. Read-only. Nullable.
-    items: Optional[List[DriveItem]] = None
+    items: Optional[list[DriveItem]] = None
     # For drives in SharePoint, the underlying document library list. Read-only. Nullable.
     list_: Optional[List_] = None
     # Optional. The user account that owns the drive. Read-only.
@@ -37,7 +38,7 @@ class Drive(BaseItem, Parsable):
     # The sharePointIds property
     share_point_ids: Optional[SharepointIds] = None
     # Collection of common folders available in OneDrive. Read-only. Nullable.
-    special: Optional[List[DriveItem]] = None
+    special: Optional[list[DriveItem]] = None
     # If present, indicates that it's a system-managed drive. Read-only.
     system: Optional[SystemFacet] = None
     
@@ -52,10 +53,10 @@ class Drive(BaseItem, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Drive()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .base_item import BaseItem
         from .drive_item import DriveItem
@@ -73,7 +74,7 @@ class Drive(BaseItem, Parsable):
         from .sharepoint_ids import SharepointIds
         from .system_facet import SystemFacet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "bundles": lambda n : setattr(self, 'bundles', n.get_collection_of_object_values(DriveItem)),
             "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(DriveItem)),
@@ -99,14 +100,6 @@ class Drive(BaseItem, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .base_item import BaseItem
-        from .drive_item import DriveItem
-        from .identity_set import IdentitySet
-        from .list_ import List_
-        from .quota import Quota
-        from .sharepoint_ids import SharepointIds
-        from .system_facet import SystemFacet
-
         writer.write_collection_of_object_values("bundles", self.bundles)
         writer.write_str_value("driveType", self.drive_type)
         writer.write_collection_of_object_values("following", self.following)

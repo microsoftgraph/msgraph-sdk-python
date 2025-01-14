@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .request_schedule import RequestSchedule
@@ -29,10 +30,10 @@ class UnifiedRoleEligibilitySchedule(UnifiedRoleScheduleBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleEligibilitySchedule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .request_schedule import RequestSchedule
         from .unified_role_schedule_base import UnifiedRoleScheduleBase
@@ -40,7 +41,7 @@ class UnifiedRoleEligibilitySchedule(UnifiedRoleScheduleBase, Parsable):
         from .request_schedule import RequestSchedule
         from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
             "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
         }
@@ -57,9 +58,6 @@ class UnifiedRoleEligibilitySchedule(UnifiedRoleScheduleBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .request_schedule import RequestSchedule
-        from .unified_role_schedule_base import UnifiedRoleScheduleBase
-
         writer.write_str_value("memberType", self.member_type)
         writer.write_object_value("scheduleInfo", self.schedule_info)
     

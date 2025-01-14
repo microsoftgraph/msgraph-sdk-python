@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .print_job_processing_state import PrintJobProcessingState
@@ -15,7 +16,7 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # True if the job was acquired by a printer; false otherwise. Read-only.
     acquired_by_printer: Optional[bool] = None
     # The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
@@ -50,10 +51,10 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ArchivedPrintJob()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .print_job_processing_state import PrintJobProcessingState
         from .user_identity import UserIdentity
@@ -61,7 +62,7 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
         from .print_job_processing_state import PrintJobProcessingState
         from .user_identity import UserIdentity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "acquiredByPrinter": lambda n : setattr(self, 'acquired_by_printer', n.get_bool_value()),
             "acquiredDateTime": lambda n : setattr(self, 'acquired_date_time', n.get_datetime_value()),
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
@@ -84,9 +85,6 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .print_job_processing_state import PrintJobProcessingState
-        from .user_identity import UserIdentity
-
         writer.write_bool_value("acquiredByPrinter", self.acquired_by_printer)
         writer.write_datetime_value("acquiredDateTime", self.acquired_date_time)
         writer.write_datetime_value("completionDateTime", self.completion_date_time)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -18,7 +19,7 @@ class UnifiedRoleManagementPolicy(Entity, Parsable):
     # Display name for the policy.
     display_name: Optional[str] = None
     # The list of effective rules like approval rules and expiration rules evaluated based on inherited referenced rules. For example, if there is a tenant-wide policy to enforce enabling an approval rule, the effective rule will be to enable approval even if the policy has a rule to disable approval. Supports $expand.
-    effective_rules: Optional[List[UnifiedRoleManagementPolicyRule]] = None
+    effective_rules: Optional[list[UnifiedRoleManagementPolicyRule]] = None
     # This can only be set to true for a single tenant-wide policy which will apply to all scopes and roles. Set the scopeId to / and scopeType to Directory. Supports $filter (eq, ne).
     is_organization_default: Optional[bool] = None
     # The identity who last modified the role setting.
@@ -28,7 +29,7 @@ class UnifiedRoleManagementPolicy(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The collection of rules like approval rules and expiration rules. Supports $expand.
-    rules: Optional[List[UnifiedRoleManagementPolicyRule]] = None
+    rules: Optional[list[UnifiedRoleManagementPolicyRule]] = None
     # The identifier of the scope where the policy is created. Can be / for the tenant or a group ID. Required.
     scope_id: Optional[str] = None
     # The type of the scope where the policy is created. One of Directory, DirectoryRole, Group. Required.
@@ -45,10 +46,10 @@ class UnifiedRoleManagementPolicy(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleManagementPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .identity import Identity
@@ -58,7 +59,7 @@ class UnifiedRoleManagementPolicy(Entity, Parsable):
         from .identity import Identity
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "effectiveRules": lambda n : setattr(self, 'effective_rules', n.get_collection_of_object_values(UnifiedRoleManagementPolicyRule)),
@@ -82,10 +83,6 @@ class UnifiedRoleManagementPolicy(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .identity import Identity
-        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("effectiveRules", self.effective_rules)

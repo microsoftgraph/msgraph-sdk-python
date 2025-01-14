@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..device_platform_type import DevicePlatformType
@@ -20,21 +21,21 @@ class Qna(SearchAnswer, Parsable):
     # Date and time when the QnA starts to appear as a search result. Set as null for always available. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     availability_start_date_time: Optional[datetime.datetime] = None
     # The list of security groups that are able to view this QnA.
-    group_ids: Optional[List[str]] = None
+    group_ids: Optional[list[str]] = None
     # True if a user or Microsoft suggested this QnA to the admin. Read-only.
     is_suggested: Optional[bool] = None
     # Keywords that trigger this QnA to appear in search results.
     keywords: Optional[AnswerKeyword] = None
     # A list of geographically specific language names in which this QnA can be viewed. Each language tag value follows the pattern {language}-{region}. For example, en-us is English as used in the United States. For the list of possible values, see Supported language tags.
-    language_tags: Optional[List[str]] = None
+    language_tags: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # List of devices and operating systems that are able to view this QnA. Possible values are: android, androidForWork, ios, macOS, windowsPhone81, windowsPhone81AndLater, windows10AndLater, androidWorkProfile, unknown, androidASOP, androidMobileApplicationManagement, iOSMobileApplicationManagement, unknownFutureValue.
-    platforms: Optional[List[DevicePlatformType]] = None
+    platforms: Optional[list[DevicePlatformType]] = None
     # The state property
     state: Optional[AnswerState] = None
     # Variations of a QnA for different countries or devices. Use when you need to show different content to users based on their device, country/region, or both. The date and group settings apply to all variations.
-    targeted_variations: Optional[List[AnswerVariant]] = None
+    targeted_variations: Optional[list[AnswerVariant]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Qna:
@@ -47,10 +48,10 @@ class Qna(SearchAnswer, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Qna()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..device_platform_type import DevicePlatformType
         from .answer_keyword import AnswerKeyword
@@ -64,7 +65,7 @@ class Qna(SearchAnswer, Parsable):
         from .answer_variant import AnswerVariant
         from .search_answer import SearchAnswer
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "availabilityEndDateTime": lambda n : setattr(self, 'availability_end_date_time', n.get_datetime_value()),
             "availabilityStartDateTime": lambda n : setattr(self, 'availability_start_date_time', n.get_datetime_value()),
             "groupIds": lambda n : setattr(self, 'group_ids', n.get_collection_of_primitive_values(str)),
@@ -88,12 +89,6 @@ class Qna(SearchAnswer, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..device_platform_type import DevicePlatformType
-        from .answer_keyword import AnswerKeyword
-        from .answer_state import AnswerState
-        from .answer_variant import AnswerVariant
-        from .search_answer import SearchAnswer
-
         writer.write_datetime_value("availabilityEndDateTime", self.availability_end_date_time)
         writer.write_datetime_value("availabilityStartDateTime", self.availability_start_date_time)
         writer.write_collection_of_primitive_values("groupIds", self.group_ids)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -39,10 +40,10 @@ class GoogleCloudResourceEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return GoogleCloudResourceEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .google_cloud_location_type import GoogleCloudLocationType
@@ -50,7 +51,7 @@ class GoogleCloudResourceEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
         from .google_cloud_location_type import GoogleCloudLocationType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "fullResourceName": lambda n : setattr(self, 'full_resource_name', n.get_str_value()),
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
             "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(GoogleCloudLocationType)),
@@ -72,9 +73,6 @@ class GoogleCloudResourceEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .google_cloud_location_type import GoogleCloudLocationType
-
         writer.write_str_value("fullResourceName", self.full_resource_name)
         writer.write_str_value("location", self.location)
         writer.write_enum_value("locationType", self.location_type)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -15,7 +16,7 @@ class LicenseDetails(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Information about the service plans assigned with the license. Read-only. Not nullable.
-    service_plans: Optional[List[ServicePlanInfo]] = None
+    service_plans: Optional[list[ServicePlanInfo]] = None
     # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related subscribedSku object. Read-only.
     sku_id: Optional[UUID] = None
     # Unique SKU display name. Equal to the skuPartNumber on the related subscribedSku object; for example, AAD_Premium. Read-only.
@@ -32,10 +33,10 @@ class LicenseDetails(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return LicenseDetails()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .service_plan_info import ServicePlanInfo
@@ -43,7 +44,7 @@ class LicenseDetails(Entity, Parsable):
         from .entity import Entity
         from .service_plan_info import ServicePlanInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(ServicePlanInfo)),
             "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
@@ -61,9 +62,6 @@ class LicenseDetails(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .service_plan_info import ServicePlanInfo
-
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)

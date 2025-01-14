@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -17,7 +18,7 @@ class HostReputation(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of rules that have been used to calculate the classification and score.
-    rules: Optional[List[HostReputationRule]] = None
+    rules: Optional[list[HostReputationRule]] = None
     # The calculated score (0-100) of the requested host. A higher value indicates that this host is more likely to be suspicious or malicious.
     score: Optional[int] = None
     
@@ -32,10 +33,10 @@ class HostReputation(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return HostReputation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .host_reputation_classification import HostReputationClassification
@@ -45,7 +46,7 @@ class HostReputation(Entity, Parsable):
         from .host_reputation_classification import HostReputationClassification
         from .host_reputation_rule import HostReputationRule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(HostReputationClassification)),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(HostReputationRule)),
             "score": lambda n : setattr(self, 'score', n.get_int_value()),
@@ -63,10 +64,6 @@ class HostReputation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .host_reputation_classification import HostReputationClassification
-        from .host_reputation_rule import HostReputationRule
-
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("rules", self.rules)
         writer.write_int_value("score", self.score)

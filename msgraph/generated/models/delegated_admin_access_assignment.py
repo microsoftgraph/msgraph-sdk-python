@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignmentStatus
@@ -38,10 +39,10 @@ class DelegatedAdminAccessAssignment(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DelegatedAdminAccessAssignment()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignmentStatus
         from .delegated_admin_access_container import DelegatedAdminAccessContainer
@@ -53,7 +54,7 @@ class DelegatedAdminAccessAssignment(Entity, Parsable):
         from .delegated_admin_access_details import DelegatedAdminAccessDetails
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessContainer": lambda n : setattr(self, 'access_container', n.get_object_value(DelegatedAdminAccessContainer)),
             "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -73,11 +74,6 @@ class DelegatedAdminAccessAssignment(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignmentStatus
-        from .delegated_admin_access_container import DelegatedAdminAccessContainer
-        from .delegated_admin_access_details import DelegatedAdminAccessDetails
-        from .entity import Entity
-
         writer.write_object_value("accessContainer", self.access_container)
         writer.write_object_value("accessDetails", self.access_details)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

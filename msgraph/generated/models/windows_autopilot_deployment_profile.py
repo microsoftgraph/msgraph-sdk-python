@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -18,7 +19,7 @@ class WindowsAutopilotDeploymentProfile(Entity, Parsable):
     Windows Autopilot Deployment Profile
     """
     # The list of assigned devices for the profile.
-    assigned_devices: Optional[List[WindowsAutopilotDeviceIdentity]] = None
+    assigned_devices: Optional[list[WindowsAutopilotDeviceIdentity]] = None
     # The date and time of when the deployment profile was created. The value cannot be modified and is automatically populated when the profile was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'. Supports: $select, $top, $skip. $Search, $orderBy and $filter are not supported. Read-Only.
     created_date_time: Optional[datetime.datetime] = None
     # A description of the deployment profile. Max allowed length is 1500 chars. Supports: $select, $top, $skip, $orderBy. $Search and $filter are not supported.
@@ -44,7 +45,7 @@ class WindowsAutopilotDeploymentProfile(Entity, Parsable):
     # Indicates whether the user is allowed to use Windows Autopilot for pre-provisioned deployment mode during Out of Box experience (OOBE). When TRUE, indicates that Windows Autopilot for pre-provisioned deployment mode for OOBE is allowed to be used. When false, Windows Autopilot for pre-provisioned deployment mode for OOBE is not allowed. The default is FALSE.
     preprovisioning_allowed: Optional[bool] = None
     # List of role scope tags for the deployment profile. 
-    role_scope_tag_ids: Optional[List[str]] = None
+    role_scope_tag_ids: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WindowsAutopilotDeploymentProfile:
@@ -57,10 +58,10 @@ class WindowsAutopilotDeploymentProfile(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WindowsAutopilotDeploymentProfile()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .out_of_box_experience_setting import OutOfBoxExperienceSetting
@@ -72,7 +73,7 @@ class WindowsAutopilotDeploymentProfile(Entity, Parsable):
         from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
         from .windows_autopilot_device_type import WindowsAutopilotDeviceType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignedDevices": lambda n : setattr(self, 'assigned_devices', n.get_collection_of_object_values(WindowsAutopilotDeviceIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -100,11 +101,6 @@ class WindowsAutopilotDeploymentProfile(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .out_of_box_experience_setting import OutOfBoxExperienceSetting
-        from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
-        from .windows_autopilot_device_type import WindowsAutopilotDeviceType
-
         writer.write_collection_of_object_values("assignedDevices", self.assigned_devices)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

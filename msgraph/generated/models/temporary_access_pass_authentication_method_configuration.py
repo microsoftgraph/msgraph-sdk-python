@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
@@ -18,7 +19,7 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodC
     # Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.
     default_lifetime_in_minutes: Optional[int] = None
     # A collection of groups that are enabled to use the authentication method.
-    include_targets: Optional[List[AuthenticationMethodTarget]] = None
+    include_targets: Optional[list[AuthenticationMethodTarget]] = None
     # If true, all the passes in the tenant will be restricted to one-time use. If false, passes in the tenant can be created to be either one-time use or reusable.
     is_usable_once: Optional[bool] = None
     # Maximum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
@@ -37,10 +38,10 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodC
             raise TypeError("parse_node cannot be null.")
         return TemporaryAccessPassAuthenticationMethodConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
@@ -48,7 +49,7 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodC
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "defaultLength": lambda n : setattr(self, 'default_length', n.get_int_value()),
             "defaultLifetimeInMinutes": lambda n : setattr(self, 'default_lifetime_in_minutes', n.get_int_value()),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
@@ -69,9 +70,6 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodC
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_method_configuration import AuthenticationMethodConfiguration
-        from .authentication_method_target import AuthenticationMethodTarget
-
         writer.write_int_value("defaultLength", self.default_length)
         writer.write_int_value("defaultLifetimeInMinutes", self.default_lifetime_in_minutes)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)

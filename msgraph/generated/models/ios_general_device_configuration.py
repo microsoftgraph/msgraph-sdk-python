@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_list_item import AppListItem
@@ -57,9 +58,9 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Indicates whether or not to force a paired Apple Watch to use Wrist Detection (iOS 8.2 and later).
     apple_watch_force_wrist_detection: Optional[bool] = None
     # Gets or sets the list of iOS apps allowed to autonomously enter Single App Mode. Supervised only. iOS 7.0 and later. This collection can contain a maximum of 500 elements.
-    apps_single_app_mode_list: Optional[List[AppListItem]] = None
+    apps_single_app_mode_list: Optional[list[AppListItem]] = None
     # List of apps in the visibility list (either visible/launchable apps list or hidden/unlaunchable apps list, controlled by AppsVisibilityListType) (iOS 9.3 and later). This collection can contain a maximum of 10000 elements.
-    apps_visibility_list: Optional[List[AppListItem]] = None
+    apps_visibility_list: Optional[list[AppListItem]] = None
     # Possible values of the compliance app list.
     apps_visibility_list_type: Optional[AppListType] = None
     # Indicates whether or not to allow modification of Bluetooth settings when the device is in supervised mode (iOS 10.0 and later).
@@ -85,7 +86,7 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Possible values of the compliance app list.
     compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-    compliant_apps_list: Optional[List[AppListItem]] = None
+    compliant_apps_list: Optional[list[AppListItem]] = None
     # Indicates whether or not to block the user from installing configuration profiles and certificates interactively when the device is in supervised mode.
     configuration_profile_block_changes: Optional[bool] = None
     # Indicates whether or not to block definition lookup when the device is in supervised mode (iOS 8.1.3 and later ).
@@ -105,7 +106,7 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Indicates whether or not to block the user from viewing unmanaged documents in managed apps.
     documents_block_unmanaged_documents_in_managed_apps: Optional[bool] = None
     # An email address lacking a suffix that matches any of these strings will be considered out-of-domain.
-    email_in_domain_suffixes: Optional[List[str]] = None
+    email_in_domain_suffixes: Optional[list[str]] = None
     # Indicates whether or not to block the user from trusting an enterprise app.
     enterprise_app_block_trust: Optional[bool] = None
     # [Deprecated] Configuring this setting and setting the value to 'true' has no effect on the device.
@@ -227,7 +228,7 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Indicates whether or not to block the user from using the Messages app on the supervised device.
     messages_blocked: Optional[bool] = None
     # List of managed apps and the network rules that applies to them. This collection can contain a maximum of 1000 elements.
-    network_usage_rules: Optional[List[IosNetworkUsageRule]] = None
+    network_usage_rules: Optional[list[IosNetworkUsageRule]] = None
     # Indicates whether or not to allow notifications settings modification (iOS 9.3 and later).
     notifications_block_settings_modification: Optional[bool] = None
     # Block modification of registered Touch ID fingerprints when in supervised mode.
@@ -269,9 +270,9 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Web Browser Cookie Settings.
     safari_cookie_settings: Optional[WebBrowserCookieSettings] = None
     # URLs matching the patterns listed here will be considered managed.
-    safari_managed_domains: Optional[List[str]] = None
+    safari_managed_domains: Optional[list[str]] = None
     # Users can save passwords in Safari only from URLs matching the patterns listed here. Applies to devices in supervised mode (iOS 9.3 and later).
-    safari_password_auto_fill_domains: Optional[List[str]] = None
+    safari_password_auto_fill_domains: Optional[list[str]] = None
     # Indicates whether or not to require fraud warning in Safari.
     safari_require_fraud_warning: Optional[bool] = None
     # Indicates whether or not to block the user from taking Screenshots.
@@ -304,10 +305,10 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IosGeneralDeviceConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_list_item import AppListItem
         from .app_list_type import AppListType
@@ -343,7 +344,7 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
         from .required_password_type import RequiredPasswordType
         from .web_browser_cookie_settings import WebBrowserCookieSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountBlockModification": lambda n : setattr(self, 'account_block_modification', n.get_bool_value()),
             "activationLockAllowWhenSupervised": lambda n : setattr(self, 'activation_lock_allow_when_supervised', n.get_bool_value()),
             "airDropBlocked": lambda n : setattr(self, 'air_drop_blocked', n.get_bool_value()),
@@ -489,23 +490,6 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_list_item import AppListItem
-        from .app_list_type import AppListType
-        from .device_configuration import DeviceConfiguration
-        from .ios_network_usage_rule import IosNetworkUsageRule
-        from .media_content_rating_australia import MediaContentRatingAustralia
-        from .media_content_rating_canada import MediaContentRatingCanada
-        from .media_content_rating_france import MediaContentRatingFrance
-        from .media_content_rating_germany import MediaContentRatingGermany
-        from .media_content_rating_ireland import MediaContentRatingIreland
-        from .media_content_rating_japan import MediaContentRatingJapan
-        from .media_content_rating_new_zealand import MediaContentRatingNewZealand
-        from .media_content_rating_united_kingdom import MediaContentRatingUnitedKingdom
-        from .media_content_rating_united_states import MediaContentRatingUnitedStates
-        from .rating_apps_type import RatingAppsType
-        from .required_password_type import RequiredPasswordType
-        from .web_browser_cookie_settings import WebBrowserCookieSettings
-
         writer.write_bool_value("accountBlockModification", self.account_block_modification)
         writer.write_bool_value("activationLockAllowWhenSupervised", self.activation_lock_allow_when_supervised)
         writer.write_bool_value("airDropBlocked", self.air_drop_blocked)

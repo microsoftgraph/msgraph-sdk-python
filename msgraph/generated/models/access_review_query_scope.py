@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
@@ -40,10 +41,10 @@ class AccessReviewQueryScope(AccessReviewScope, Parsable):
             return AccessReviewInactiveUsersQueryScope()
         return AccessReviewQueryScope()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
         from .access_review_scope import AccessReviewScope
@@ -51,7 +52,7 @@ class AccessReviewQueryScope(AccessReviewScope, Parsable):
         from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
         from .access_review_scope import AccessReviewScope
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
             "queryRoot": lambda n : setattr(self, 'query_root', n.get_str_value()),
             "queryType": lambda n : setattr(self, 'query_type', n.get_str_value()),
@@ -69,9 +70,6 @@ class AccessReviewQueryScope(AccessReviewScope, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
-        from .access_review_scope import AccessReviewScope
-
         writer.write_str_value("query", self.query)
         writer.write_str_value("queryRoot", self.query_root)
         writer.write_str_value("queryType", self.query_type)

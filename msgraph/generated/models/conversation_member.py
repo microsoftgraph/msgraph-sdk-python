@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .aad_user_conversation_member import AadUserConversationMember
@@ -22,7 +23,7 @@ class ConversationMember(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The roles for that user. This property contains more qualifiers only when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is an in-tenant guest, the roles property contains guest as one of the values. A basic member shouldn't have any values specified in the roles property. An Out-of-tenant external member is assigned the owner role.
-    roles: Optional[List[str]] = None
+    roles: Optional[list[str]] = None
     # The timestamp denoting how far back a conversation's history is shared with the conversation member. This property is settable only for members of a chat.
     visible_history_start_date_time: Optional[datetime.datetime] = None
     
@@ -66,10 +67,10 @@ class ConversationMember(Entity, Parsable):
             return SkypeUserConversationMember()
         return ConversationMember()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .aad_user_conversation_member import AadUserConversationMember
         from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
@@ -87,7 +88,7 @@ class ConversationMember(Entity, Parsable):
         from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
         from .skype_user_conversation_member import SkypeUserConversationMember
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
             "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
@@ -105,14 +106,6 @@ class ConversationMember(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .aad_user_conversation_member import AadUserConversationMember
-        from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
-        from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
-        from .entity import Entity
-        from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
-        from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
-        from .skype_user_conversation_member import SkypeUserConversationMember
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("roles", self.roles)
         writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .browser_shared_cookie import BrowserSharedCookie
@@ -35,9 +36,9 @@ class BrowserSiteList(Entity, Parsable):
     # The current revision of the site list.
     revision: Optional[str] = None
     # A collection of shared cookies defined for the site list.
-    shared_cookies: Optional[List[BrowserSharedCookie]] = None
+    shared_cookies: Optional[list[BrowserSharedCookie]] = None
     # A collection of sites defined for the site list.
-    sites: Optional[List[BrowserSite]] = None
+    sites: Optional[list[BrowserSite]] = None
     # The status property
     status: Optional[BrowserSiteListStatus] = None
     
@@ -52,10 +53,10 @@ class BrowserSiteList(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BrowserSiteList()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .browser_shared_cookie import BrowserSharedCookie
         from .browser_site import BrowserSite
@@ -69,7 +70,7 @@ class BrowserSiteList(Entity, Parsable):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
@@ -94,12 +95,6 @@ class BrowserSiteList(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .browser_shared_cookie import BrowserSharedCookie
-        from .browser_site import BrowserSite
-        from .browser_site_list_status import BrowserSiteListStatus
-        from .entity import Entity
-        from .identity_set import IdentitySet
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)

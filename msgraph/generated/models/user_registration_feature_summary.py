@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .included_user_roles import IncludedUserRoles
@@ -15,13 +16,13 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, BackedModel, Parsable
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
     # Total number of users accounts, excluding those that are blocked.
     total_user_count: Optional[int] = None
     # Number of users registered or capable for multi-factor authentication, self-service password reset, and passwordless authentication.
-    user_registration_feature_counts: Optional[List[UserRegistrationFeatureCount]] = None
+    user_registration_feature_counts: Optional[list[UserRegistrationFeatureCount]] = None
     # The role type of the user. Possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
     user_roles: Optional[IncludedUserRoles] = None
     # User type. Possible values are: all, member, guest, unknownFutureValue.
@@ -38,10 +39,10 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, BackedModel, Parsable
             raise TypeError("parse_node cannot be null.")
         return UserRegistrationFeatureSummary()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .included_user_roles import IncludedUserRoles
         from .included_user_types import IncludedUserTypes
@@ -51,7 +52,7 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, BackedModel, Parsable
         from .included_user_types import IncludedUserTypes
         from .user_registration_feature_count import UserRegistrationFeatureCount
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "totalUserCount": lambda n : setattr(self, 'total_user_count', n.get_int_value()),
             "userRegistrationFeatureCounts": lambda n : setattr(self, 'user_registration_feature_counts', n.get_collection_of_object_values(UserRegistrationFeatureCount)),
@@ -68,10 +69,6 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .included_user_roles import IncludedUserRoles
-        from .included_user_types import IncludedUserTypes
-        from .user_registration_feature_count import UserRegistrationFeatureCount
-
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("totalUserCount", self.total_user_count)
         writer.write_collection_of_object_values("userRegistrationFeatureCounts", self.user_registration_feature_counts)

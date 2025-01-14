@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_compliance_policy import AndroidCompliancePolicy
@@ -30,17 +31,17 @@ class DeviceCompliancePolicy(Entity, Parsable):
     This is the base class for Compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here. 
     """
     # The collection of assignments for this compliance policy.
-    assignments: Optional[List[DeviceCompliancePolicyAssignment]] = None
+    assignments: Optional[list[DeviceCompliancePolicyAssignment]] = None
     # DateTime the object was created.
     created_date_time: Optional[datetime.datetime] = None
     # Admin provided description of the Device Configuration.
     description: Optional[str] = None
     # Compliance Setting State Device Summary
-    device_setting_state_summaries: Optional[List[SettingStateDeviceSummary]] = None
+    device_setting_state_summaries: Optional[list[SettingStateDeviceSummary]] = None
     # Device compliance devices status overview
     device_status_overview: Optional[DeviceComplianceDeviceOverview] = None
     # List of DeviceComplianceDeviceStatus.
-    device_statuses: Optional[List[DeviceComplianceDeviceStatus]] = None
+    device_statuses: Optional[list[DeviceComplianceDeviceStatus]] = None
     # Admin provided name of the device configuration.
     display_name: Optional[str] = None
     # DateTime the object was last modified.
@@ -48,11 +49,11 @@ class DeviceCompliancePolicy(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
-    scheduled_actions_for_rule: Optional[List[DeviceComplianceScheduledActionForRule]] = None
+    scheduled_actions_for_rule: Optional[list[DeviceComplianceScheduledActionForRule]] = None
     # Device compliance users status overview
     user_status_overview: Optional[DeviceComplianceUserOverview] = None
     # List of DeviceComplianceUserStatus.
-    user_statuses: Optional[List[DeviceComplianceUserStatus]] = None
+    user_statuses: Optional[list[DeviceComplianceUserStatus]] = None
     # Version of the device configuration.
     version: Optional[int] = None
     
@@ -104,10 +105,10 @@ class DeviceCompliancePolicy(Entity, Parsable):
             return WindowsPhone81CompliancePolicy()
         return DeviceCompliancePolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .android_compliance_policy import AndroidCompliancePolicy
         from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
@@ -143,7 +144,7 @@ class DeviceCompliancePolicy(Entity, Parsable):
         from .windows81_compliance_policy import Windows81CompliancePolicy
         from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(DeviceCompliancePolicyAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -170,23 +171,6 @@ class DeviceCompliancePolicy(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .android_compliance_policy import AndroidCompliancePolicy
-        from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
-        from .device_compliance_device_overview import DeviceComplianceDeviceOverview
-        from .device_compliance_device_status import DeviceComplianceDeviceStatus
-        from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
-        from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
-        from .device_compliance_user_overview import DeviceComplianceUserOverview
-        from .device_compliance_user_status import DeviceComplianceUserStatus
-        from .entity import Entity
-        from .ios_compliance_policy import IosCompliancePolicy
-        from .mac_o_s_compliance_policy import MacOSCompliancePolicy
-        from .setting_state_device_summary import SettingStateDeviceSummary
-        from .windows10_compliance_policy import Windows10CompliancePolicy
-        from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
-        from .windows81_compliance_policy import Windows81CompliancePolicy
-        from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
-
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

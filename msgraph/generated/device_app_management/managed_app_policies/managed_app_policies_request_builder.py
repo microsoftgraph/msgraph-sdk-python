@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
@@ -9,7 +10,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
@@ -23,7 +24,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
         Instantiates a new ManagedAppPoliciesRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
@@ -48,17 +49,17 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        List properties and relationships of the managedAppProtection objects.
+        List properties and relationships of the managedAppPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappprotection-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedapppolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -81,7 +82,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         )
         from ...models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -92,7 +93,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppProtection objects.
+        List properties and relationships of the managedAppPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppProtection objects.
+        List properties and relationships of the managedAppPolicy objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -170,19 +171,19 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         count: Optional[bool] = None
 
         # Expand related entities
-        expand: Optional[List[str]] = None
+        expand: Optional[list[str]] = None
 
         # Filter items by property values
         filter: Optional[str] = None
 
         # Order items by property values
-        orderby: Optional[List[str]] = None
+        orderby: Optional[list[str]] = None
 
         # Search items by search phrases
         search: Optional[str] = None
 
         # Select properties to be returned
-        select: Optional[List[str]] = None
+        select: Optional[list[str]] = None
 
         # Skip the first n items
         skip: Optional[int] = None

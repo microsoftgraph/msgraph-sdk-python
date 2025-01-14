@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .web_part import WebPart
@@ -31,10 +32,10 @@ class StandardWebPart(WebPart, Parsable):
             raise TypeError("parse_node cannot be null.")
         return StandardWebPart()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .web_part import WebPart
         from .web_part_data import WebPartData
@@ -42,7 +43,7 @@ class StandardWebPart(WebPart, Parsable):
         from .web_part import WebPart
         from .web_part_data import WebPartData
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "containerTextWebPartId": lambda n : setattr(self, 'container_text_web_part_id', n.get_str_value()),
             "data": lambda n : setattr(self, 'data', n.get_object_value(WebPartData)),
             "webPartType": lambda n : setattr(self, 'web_part_type', n.get_str_value()),
@@ -60,9 +61,6 @@ class StandardWebPart(WebPart, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .web_part import WebPart
-        from .web_part_data import WebPartData
-
         writer.write_str_value("containerTextWebPartId", self.container_text_web_part_id)
         writer.write_object_value("data", self.data)
         writer.write_str_value("webPartType", self.web_part_type)

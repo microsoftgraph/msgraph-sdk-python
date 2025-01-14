@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mobile_contained_app import MobileContainedApp
@@ -24,7 +25,7 @@ class WindowsUniversalAppX(MobileLobApp, Parsable):
     # Contains properties for Windows device type. Multiple values can be selected. Default value is `none`.
     applicable_device_types: Optional[WindowsDeviceType] = None
     # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
-    committed_contained_apps: Optional[List[MobileContainedApp]] = None
+    committed_contained_apps: Optional[list[MobileContainedApp]] = None
     # The Identity Name.
     identity_name: Optional[str] = None
     # The Identity Publisher Hash.
@@ -49,10 +50,10 @@ class WindowsUniversalAppX(MobileLobApp, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WindowsUniversalAppX()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
@@ -66,7 +67,7 @@ class WindowsUniversalAppX(MobileLobApp, Parsable):
         from .windows_device_type import WindowsDeviceType
         from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
             "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_collection_of_enum_values(WindowsDeviceType)),
             "committedContainedApps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
@@ -90,12 +91,6 @@ class WindowsUniversalAppX(MobileLobApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mobile_contained_app import MobileContainedApp
-        from .mobile_lob_app import MobileLobApp
-        from .windows_architecture import WindowsArchitecture
-        from .windows_device_type import WindowsDeviceType
-        from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
-
         writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
         writer.write_enum_value("applicableDeviceTypes", self.applicable_device_types)
         writer.write_collection_of_object_values("committedContainedApps", self.committed_contained_apps)

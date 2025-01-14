@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .bookings_availability import BookingsAvailability
@@ -18,11 +19,11 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # True to allow customers to choose a specific person for the booking.
     allow_staff_selection: Optional[bool] = None
     # Custom availability of the service in a given time frame.
-    custom_availabilities: Optional[List[BookingsAvailabilityWindow]] = None
+    custom_availabilities: Optional[list[BookingsAvailabilityWindow]] = None
     # General availability of the service defined by the scheduling policy.
     general_availability: Optional[BookingsAvailability] = None
     # Indicates whether the meeting invite is sent to the customers. The default value is false.
@@ -49,10 +50,10 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BookingSchedulingPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .bookings_availability import BookingsAvailability
         from .bookings_availability_window import BookingsAvailabilityWindow
@@ -60,7 +61,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         from .bookings_availability import BookingsAvailability
         from .bookings_availability_window import BookingsAvailabilityWindow
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowStaffSelection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
             "customAvailabilities": lambda n : setattr(self, 'custom_availabilities', n.get_collection_of_object_values(BookingsAvailabilityWindow)),
             "generalAvailability": lambda n : setattr(self, 'general_availability', n.get_object_value(BookingsAvailability)),
@@ -81,9 +82,6 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .bookings_availability import BookingsAvailability
-        from .bookings_availability_window import BookingsAvailabilityWindow
-
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
         writer.write_collection_of_object_values("customAvailabilities", self.custom_availabilities)
         writer.write_object_value("generalAvailability", self.general_availability)

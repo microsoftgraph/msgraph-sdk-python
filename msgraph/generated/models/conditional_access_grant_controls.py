@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_strength_policy import AuthenticationStrengthPolicy
@@ -14,19 +15,19 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The authenticationStrength property
     authentication_strength: Optional[AuthenticationStrengthPolicy] = None
     # List of values of built-in controls required by the policy. Possible values: block, mfa, compliantDevice, domainJoinedDevice, approvedApplication, compliantApplication, passwordChange, unknownFutureValue.
-    built_in_controls: Optional[List[ConditionalAccessGrantControl]] = None
+    built_in_controls: Optional[list[ConditionalAccessGrantControl]] = None
     # List of custom controls IDs required by the policy. For more information, see Custom controls.
-    custom_authentication_factors: Optional[List[str]] = None
+    custom_authentication_factors: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Defines the relationship of the grant controls. Possible values: AND, OR.
     operator: Optional[str] = None
     # List of terms of use IDs required by the policy.
-    terms_of_use: Optional[List[str]] = None
+    terms_of_use: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ConditionalAccessGrantControls:
@@ -39,10 +40,10 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
             raise TypeError("parse_node cannot be null.")
         return ConditionalAccessGrantControls()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_strength_policy import AuthenticationStrengthPolicy
         from .conditional_access_grant_control import ConditionalAccessGrantControl
@@ -50,7 +51,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
         from .authentication_strength_policy import AuthenticationStrengthPolicy
         from .conditional_access_grant_control import ConditionalAccessGrantControl
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthPolicy)),
             "builtInControls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(ConditionalAccessGrantControl)),
             "customAuthenticationFactors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
@@ -68,9 +69,6 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .authentication_strength_policy import AuthenticationStrengthPolicy
-        from .conditional_access_grant_control import ConditionalAccessGrantControl
-
         writer.write_object_value("authenticationStrength", self.authentication_strength)
         writer.write_collection_of_enum_values("builtInControls", self.built_in_controls)
         writer.write_collection_of_primitive_values("customAuthenticationFactors", self.custom_authentication_factors)

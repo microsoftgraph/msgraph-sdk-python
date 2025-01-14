@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .network_connection_type import NetworkConnectionType
@@ -17,7 +18,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Fraction of the call that the media endpoint detected the available bandwidth or bandwidth policy was low enough to cause poor quality of the audio sent.
     bandwidth_low_event_ratio: Optional[float] = None
     # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
@@ -53,7 +54,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Subnet used for media stream by the media endpoint.
     subnet: Optional[str] = None
     # List of network trace route hops collected for this media stream.*
-    trace_route_hops: Optional[List[TraceRouteHop]] = None
+    trace_route_hops: Optional[list[TraceRouteHop]] = None
     # The wifiBand property
     wifi_band: Optional[WifiBand] = None
     # Estimated remaining battery charge in percentage reported by the media endpoint.
@@ -84,10 +85,10 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return NetworkInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .network_connection_type import NetworkConnectionType
         from .network_transport_protocol import NetworkTransportProtocol
@@ -101,7 +102,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .wifi_band import WifiBand
         from .wifi_radio_type import WifiRadioType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
             "basicServiceSetIdentifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
             "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(NetworkConnectionType)),
@@ -140,12 +141,6 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .network_connection_type import NetworkConnectionType
-        from .network_transport_protocol import NetworkTransportProtocol
-        from .trace_route_hop import TraceRouteHop
-        from .wifi_band import WifiBand
-        from .wifi_radio_type import WifiRadioType
-
         writer.write_float_value("bandwidthLowEventRatio", self.bandwidth_low_event_ratio)
         writer.write_str_value("basicServiceSetIdentifier", self.basic_service_set_identifier)
         writer.write_enum_value("connectionType", self.connection_type)

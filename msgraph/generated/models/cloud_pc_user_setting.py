@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .cloud_pc_restore_point_setting import CloudPcRestorePointSetting
@@ -14,7 +15,7 @@ from .entity import Entity
 @dataclass
 class CloudPcUserSetting(Entity, Parsable):
     # Represents the set of Microsoft 365 groups and security groups in Microsoft Entra ID that have cloudPCUserSetting assigned. Returned only on $expand. For an example, see Get cloudPcUserSetting.
-    assignments: Optional[List[CloudPcUserSettingAssignment]] = None
+    assignments: Optional[list[CloudPcUserSettingAssignment]] = None
     # The date and time when the setting was created. The timestamp type represents the date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # The setting name displayed in the user interface.
@@ -41,10 +42,10 @@ class CloudPcUserSetting(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CloudPcUserSetting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .cloud_pc_restore_point_setting import CloudPcRestorePointSetting
         from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
@@ -54,7 +55,7 @@ class CloudPcUserSetting(Entity, Parsable):
         from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(CloudPcUserSettingAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -76,10 +77,6 @@ class CloudPcUserSetting(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .cloud_pc_restore_point_setting import CloudPcRestorePointSetting
-        from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
-        from .entity import Entity
-
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)

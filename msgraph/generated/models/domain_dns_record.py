@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .domain_dns_cname_record import DomainDnsCnameRecord
@@ -64,10 +65,10 @@ class DomainDnsRecord(Entity, Parsable):
             return DomainDnsUnavailableRecord()
         return DomainDnsRecord()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .domain_dns_cname_record import DomainDnsCnameRecord
         from .domain_dns_mx_record import DomainDnsMxRecord
@@ -83,7 +84,7 @@ class DomainDnsRecord(Entity, Parsable):
         from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "recordType": lambda n : setattr(self, 'record_type', n.get_str_value()),
@@ -103,13 +104,6 @@ class DomainDnsRecord(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .domain_dns_cname_record import DomainDnsCnameRecord
-        from .domain_dns_mx_record import DomainDnsMxRecord
-        from .domain_dns_srv_record import DomainDnsSrvRecord
-        from .domain_dns_txt_record import DomainDnsTxtRecord
-        from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
-        from .entity import Entity
-
         writer.write_bool_value("isOptional", self.is_optional)
         writer.write_str_value("label", self.label)
         writer.write_str_value("recordType", self.record_type)

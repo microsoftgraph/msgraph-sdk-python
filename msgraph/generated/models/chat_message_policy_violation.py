@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .chat_message_policy_violation_dlp_action_types import ChatMessagePolicyViolationDlpActionTypes
@@ -16,7 +17,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The action taken by the DLP provider on the message with sensitive content. Supported values are: NoneNotifySender -- Inform the sender of the violation but allow readers to read the message.BlockAccess -- Block readers from reading the message.BlockAccessExternal -- Block users outside the organization from reading the message, while allowing users within the organization to read the message.
     dlp_action: Optional[ChatMessagePolicyViolationDlpActionTypes] = None
     # Justification text provided by the sender of the message when overriding a policy violation.
@@ -41,10 +42,10 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ChatMessagePolicyViolation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .chat_message_policy_violation_dlp_action_types import ChatMessagePolicyViolationDlpActionTypes
         from .chat_message_policy_violation_policy_tip import ChatMessagePolicyViolationPolicyTip
@@ -56,7 +57,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_policy_violation_user_action_types import ChatMessagePolicyViolationUserActionTypes
         from .chat_message_policy_violation_verdict_details_types import ChatMessagePolicyViolationVerdictDetailsTypes
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationDlpActionTypes)),
             "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -74,11 +75,6 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .chat_message_policy_violation_dlp_action_types import ChatMessagePolicyViolationDlpActionTypes
-        from .chat_message_policy_violation_policy_tip import ChatMessagePolicyViolationPolicyTip
-        from .chat_message_policy_violation_user_action_types import ChatMessagePolicyViolationUserActionTypes
-        from .chat_message_policy_violation_verdict_details_types import ChatMessagePolicyViolationVerdictDetailsTypes
-
         writer.write_enum_value("dlpAction", self.dlp_action)
         writer.write_str_value("justificationText", self.justification_text)
         writer.write_str_value("@odata.type", self.odata_type)

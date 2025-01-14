@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -17,7 +18,7 @@ from .entity import Entity
 @dataclass
 class PlannerPlan(Entity, Parsable):
     # Read-only. Nullable. Collection of buckets in the plan.
-    buckets: Optional[List[PlannerBucket]] = None
+    buckets: Optional[list[PlannerBucket]] = None
     # Identifies the container of the plan. Specify only the url, the containerId and type, or all properties. After it's set, this property can’t be updated. Required.
     container: Optional[PlannerPlanContainer] = None
     # Read-only. The user who created the plan.
@@ -31,7 +32,7 @@ class PlannerPlan(Entity, Parsable):
     # Use the container property instead. ID of the group that owns the plan. After it's set, this property can’t be updated. This property won't return a valid group ID if the container of the plan isn't a group.
     owner: Optional[str] = None
     # Read-only. Nullable. Collection of tasks in the plan.
-    tasks: Optional[List[PlannerTask]] = None
+    tasks: Optional[list[PlannerTask]] = None
     # Required. Title of the plan.
     title: Optional[str] = None
     
@@ -46,10 +47,10 @@ class PlannerPlan(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PlannerPlan()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .identity_set import IdentitySet
@@ -65,7 +66,7 @@ class PlannerPlan(Entity, Parsable):
         from .planner_plan_details import PlannerPlanDetails
         from .planner_task import PlannerTask
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(PlannerBucket)),
             "container": lambda n : setattr(self, 'container', n.get_object_value(PlannerPlanContainer)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
@@ -88,13 +89,6 @@ class PlannerPlan(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .identity_set import IdentitySet
-        from .planner_bucket import PlannerBucket
-        from .planner_plan_container import PlannerPlanContainer
-        from .planner_plan_details import PlannerPlanDetails
-        from .planner_task import PlannerTask
-
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_object_value("container", self.container)
         writer.write_object_value("createdBy", self.created_by)

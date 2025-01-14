@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .administrative_unit import AdministrativeUnit
@@ -19,23 +20,23 @@ from .entity import Entity
 @dataclass
 class Directory(Entity, Parsable):
     # Conceptual container for user and group directory objects.
-    administrative_units: Optional[List[AdministrativeUnit]] = None
+    administrative_units: Optional[list[AdministrativeUnit]] = None
     # Group of related custom security attribute definitions.
-    attribute_sets: Optional[List[AttributeSet]] = None
+    attribute_sets: Optional[list[AttributeSet]] = None
     # Schema of a custom security attributes (key-value pairs).
-    custom_security_attribute_definitions: Optional[List[CustomSecurityAttributeDefinition]] = None
+    custom_security_attribute_definitions: Optional[list[CustomSecurityAttributeDefinition]] = None
     # Recently deleted items. Read-only. Nullable.
-    deleted_items: Optional[List[DirectoryObject]] = None
+    deleted_items: Optional[list[DirectoryObject]] = None
     # The credentials of the device's local administrator account backed up to Microsoft Entra ID.
-    device_local_credentials: Optional[List[DeviceLocalCredentialInfo]] = None
+    device_local_credentials: Optional[list[DeviceLocalCredentialInfo]] = None
     # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
-    federation_configurations: Optional[List[IdentityProviderBase]] = None
+    federation_configurations: Optional[list[IdentityProviderBase]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A container for on-premises directory synchronization functionalities that are available for the organization.
-    on_premises_synchronization: Optional[List[OnPremisesDirectorySynchronization]] = None
+    on_premises_synchronization: Optional[list[OnPremisesDirectorySynchronization]] = None
     # List of commercial subscriptions that an organization acquired.
-    subscriptions: Optional[List[CompanySubscription]] = None
+    subscriptions: Optional[list[CompanySubscription]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Directory:
@@ -48,10 +49,10 @@ class Directory(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Directory()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
@@ -73,7 +74,7 @@ class Directory(Entity, Parsable):
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(AdministrativeUnit)),
             "attributeSets": lambda n : setattr(self, 'attribute_sets', n.get_collection_of_object_values(AttributeSet)),
             "customSecurityAttributeDefinitions": lambda n : setattr(self, 'custom_security_attribute_definitions', n.get_collection_of_object_values(CustomSecurityAttributeDefinition)),
@@ -96,16 +97,6 @@ class Directory(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .administrative_unit import AdministrativeUnit
-        from .attribute_set import AttributeSet
-        from .company_subscription import CompanySubscription
-        from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
-        from .device_local_credential_info import DeviceLocalCredentialInfo
-        from .directory_object import DirectoryObject
-        from .entity import Entity
-        from .identity_provider_base import IdentityProviderBase
-        from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
-
         writer.write_collection_of_object_values("administrativeUnits", self.administrative_units)
         writer.write_collection_of_object_values("attributeSets", self.attribute_sets)
         writer.write_collection_of_object_values("customSecurityAttributeDefinitions", self.custom_security_attribute_definitions)

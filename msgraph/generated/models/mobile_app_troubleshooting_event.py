@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_log_collection_request import AppLogCollectionRequest
@@ -12,7 +13,7 @@ from .entity import Entity
 @dataclass
 class MobileAppTroubleshootingEvent(Entity, Parsable):
     # Indicates collection of App Log Upload Request.
-    app_log_collection_requests: Optional[List[AppLogCollectionRequest]] = None
+    app_log_collection_requests: Optional[list[AppLogCollectionRequest]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -27,10 +28,10 @@ class MobileAppTroubleshootingEvent(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MobileAppTroubleshootingEvent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_log_collection_request import AppLogCollectionRequest
         from .entity import Entity
@@ -38,7 +39,7 @@ class MobileAppTroubleshootingEvent(Entity, Parsable):
         from .app_log_collection_request import AppLogCollectionRequest
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appLogCollectionRequests": lambda n : setattr(self, 'app_log_collection_requests', n.get_collection_of_object_values(AppLogCollectionRequest)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class MobileAppTroubleshootingEvent(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_log_collection_request import AppLogCollectionRequest
-        from .entity import Entity
-
         writer.write_collection_of_object_values("appLogCollectionRequests", self.app_log_collection_requests)
     
 

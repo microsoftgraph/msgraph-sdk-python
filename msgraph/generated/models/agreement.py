@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .agreement_acceptance import AgreementAcceptance
@@ -16,13 +17,13 @@ from .entity import Entity
 @dataclass
 class Agreement(Entity, Parsable):
     # Read-only. Information about acceptances of this agreement.
-    acceptances: Optional[List[AgreementAcceptance]] = None
+    acceptances: Optional[list[AgreementAcceptance]] = None
     # Display name of the agreement. The display name is used for internal tracking of the agreement but isn't shown to end users who view the agreement. Supports $filter (eq).
     display_name: Optional[str] = None
     # Default PDF linked to this agreement.
     file: Optional[AgreementFile] = None
     # PDFs linked to this agreement. This property is in the process of being deprecated. Use the  file property instead. Supports $expand.
-    files: Optional[List[AgreementFileLocalization]] = None
+    files: Optional[list[AgreementFileLocalization]] = None
     # Indicates whether end users are required to accept this agreement on every device that they access it from. The end user is required to register their device in Microsoft Entra ID, if they haven't already done so. Supports $filter (eq).
     is_per_device_acceptance_required: Optional[bool] = None
     # Indicates whether the user has to expand the agreement before accepting. Supports $filter (eq).
@@ -45,10 +46,10 @@ class Agreement(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Agreement()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .agreement_acceptance import AgreementAcceptance
         from .agreement_file import AgreementFile
@@ -62,7 +63,7 @@ class Agreement(Entity, Parsable):
         from .entity import Entity
         from .terms_expiration import TermsExpiration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "acceptances": lambda n : setattr(self, 'acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(AgreementFile)),
@@ -85,12 +86,6 @@ class Agreement(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .agreement_acceptance import AgreementAcceptance
-        from .agreement_file import AgreementFile
-        from .agreement_file_localization import AgreementFileLocalization
-        from .entity import Entity
-        from .terms_expiration import TermsExpiration
-
         writer.write_collection_of_object_values("acceptances", self.acceptances)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("file", self.file)

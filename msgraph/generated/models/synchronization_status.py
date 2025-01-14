@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .string_key_long_value_pair import StringKeyLongValuePair
@@ -18,7 +19,7 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The code property
     code: Optional[SynchronizationStatusCode] = None
     # Number of consecutive times this job failed.
@@ -34,7 +35,7 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Details of the progress of a job toward completion.
-    progress: Optional[List[SynchronizationProgress]] = None
+    progress: Optional[list[SynchronizationProgress]] = None
     # If job is in quarantine, quarantine details.
     quarantine: Optional[SynchronizationQuarantine] = None
     # The time when steady state (no more changes to the process) was first achieved. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -42,7 +43,7 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
     # The time when steady state (no more changes to the process) was last achieved. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     steady_state_last_achieved_time: Optional[datetime.datetime] = None
     # Count of synchronized objects, listed by object type.
-    synchronized_entry_count_by_type: Optional[List[StringKeyLongValuePair]] = None
+    synchronized_entry_count_by_type: Optional[list[StringKeyLongValuePair]] = None
     # In the event of an error, the URL with the troubleshooting steps for the issue.
     troubleshooting_url: Optional[str] = None
     
@@ -57,10 +58,10 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SynchronizationStatus()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .string_key_long_value_pair import StringKeyLongValuePair
         from .synchronization_progress import SynchronizationProgress
@@ -74,7 +75,7 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_status_code import SynchronizationStatusCode
         from .synchronization_task_execution import SynchronizationTaskExecution
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_enum_value(SynchronizationStatusCode)),
             "countSuccessiveCompleteFailures": lambda n : setattr(self, 'count_successive_complete_failures', n.get_int_value()),
             "escrowsPruned": lambda n : setattr(self, 'escrows_pruned', n.get_bool_value()),
@@ -99,12 +100,6 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .string_key_long_value_pair import StringKeyLongValuePair
-        from .synchronization_progress import SynchronizationProgress
-        from .synchronization_quarantine import SynchronizationQuarantine
-        from .synchronization_status_code import SynchronizationStatusCode
-        from .synchronization_task_execution import SynchronizationTaskExecution
-
         writer.write_enum_value("code", self.code)
         writer.write_int_value("countSuccessiveCompleteFailures", self.count_successive_complete_failures)
         writer.write_bool_value("escrowsPruned", self.escrows_pruned)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .case_operation import CaseOperation
@@ -30,10 +31,10 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EdiscoveryAddToReviewSetOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .case_operation import CaseOperation
         from .ediscovery_review_set import EdiscoveryReviewSet
@@ -43,7 +44,7 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
         from .ediscovery_review_set import EdiscoveryReviewSet
         from .ediscovery_search import EdiscoverySearch
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(EdiscoveryReviewSet)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
@@ -60,10 +61,6 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .case_operation import CaseOperation
-        from .ediscovery_review_set import EdiscoveryReviewSet
-        from .ediscovery_search import EdiscoverySearch
-
         writer.write_object_value("reviewSet", self.review_set)
         writer.write_object_value("search", self.search)
     

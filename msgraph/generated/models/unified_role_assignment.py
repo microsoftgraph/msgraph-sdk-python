@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_scope import AppScope
@@ -45,10 +46,10 @@ class UnifiedRoleAssignment(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleAssignment()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_scope import AppScope
         from .directory_object import DirectoryObject
@@ -60,7 +61,7 @@ class UnifiedRoleAssignment(Entity, Parsable):
         from .entity import Entity
         from .unified_role_definition import UnifiedRoleDefinition
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
             "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
             "condition": lambda n : setattr(self, 'condition', n.get_str_value()),
@@ -84,11 +85,6 @@ class UnifiedRoleAssignment(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_scope import AppScope
-        from .directory_object import DirectoryObject
-        from .entity import Entity
-        from .unified_role_definition import UnifiedRoleDefinition
-
         writer.write_object_value("appScope", self.app_scope)
         writer.write_str_value("appScopeId", self.app_scope_id)
         writer.write_str_value("condition", self.condition)

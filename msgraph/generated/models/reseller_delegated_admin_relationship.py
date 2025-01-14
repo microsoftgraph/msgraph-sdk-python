@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .delegated_admin_relationship import DelegatedAdminRelationship
@@ -28,16 +29,16 @@ class ResellerDelegatedAdminRelationship(DelegatedAdminRelationship, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ResellerDelegatedAdminRelationship()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .delegated_admin_relationship import DelegatedAdminRelationship
 
         from .delegated_admin_relationship import DelegatedAdminRelationship
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "indirectProviderTenantId": lambda n : setattr(self, 'indirect_provider_tenant_id', n.get_str_value()),
             "isPartnerConsentPending": lambda n : setattr(self, 'is_partner_consent_pending', n.get_bool_value()),
         }
@@ -54,8 +55,6 @@ class ResellerDelegatedAdminRelationship(DelegatedAdminRelationship, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .delegated_admin_relationship import DelegatedAdminRelationship
-
         writer.write_str_value("indirectProviderTenantId", self.indirect_provider_tenant_id)
         writer.write_bool_value("isPartnerConsentPending", self.is_partner_consent_pending)
     

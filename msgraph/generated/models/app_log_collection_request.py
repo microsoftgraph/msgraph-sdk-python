@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_log_upload_state import AppLogUploadState
@@ -18,7 +19,7 @@ class AppLogCollectionRequest(Entity, Parsable):
     # Time at which the upload log request reached a completed state if not completed yet NULL will be returned.
     completed_date_time: Optional[datetime.datetime] = None
     # List of log folders.
-    custom_log_folders: Optional[List[str]] = None
+    custom_log_folders: Optional[list[str]] = None
     # Indicates error message if any during the upload process.
     error_message: Optional[str] = None
     # The OdataType property
@@ -37,10 +38,10 @@ class AppLogCollectionRequest(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AppLogCollectionRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_log_upload_state import AppLogUploadState
         from .entity import Entity
@@ -48,7 +49,7 @@ class AppLogCollectionRequest(Entity, Parsable):
         from .app_log_upload_state import AppLogUploadState
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "customLogFolders": lambda n : setattr(self, 'custom_log_folders', n.get_collection_of_primitive_values(str)),
             "errorMessage": lambda n : setattr(self, 'error_message', n.get_str_value()),
@@ -67,9 +68,6 @@ class AppLogCollectionRequest(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_log_upload_state import AppLogUploadState
-        from .entity import Entity
-
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_collection_of_primitive_values("customLogFolders", self.custom_log_folders)
         writer.write_str_value("errorMessage", self.error_message)

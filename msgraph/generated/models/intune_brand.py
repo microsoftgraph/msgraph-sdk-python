@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mime_content import MimeContent
@@ -17,7 +18,7 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Email address of the person/organization responsible for IT support.
     contact_i_t_email_address: Optional[str] = None
     # Name of the person/organization responsible for IT support.
@@ -60,10 +61,10 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IntuneBrand()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mime_content import MimeContent
         from .rgb_color import RgbColor
@@ -71,7 +72,7 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
         from .mime_content import MimeContent
         from .rgb_color import RgbColor
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "contactITEmailAddress": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
             "contactITName": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
             "contactITNotes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
@@ -98,9 +99,6 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .mime_content import MimeContent
-        from .rgb_color import RgbColor
-
         writer.write_str_value("contactITEmailAddress", self.contact_i_t_email_address)
         writer.write_str_value("contactITName", self.contact_i_t_name)
         writer.write_str_value("contactITNotes", self.contact_i_t_notes)

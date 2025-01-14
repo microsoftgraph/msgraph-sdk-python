@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity import Identity
@@ -27,10 +28,10 @@ class Initiator(Identity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Initiator()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .identity import Identity
         from .initiator_type import InitiatorType
@@ -38,7 +39,7 @@ class Initiator(Identity, Parsable):
         from .identity import Identity
         from .initiator_type import InitiatorType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(InitiatorType)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class Initiator(Identity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .identity import Identity
-        from .initiator_type import InitiatorType
-
         writer.write_enum_value("initiatorType", self.initiator_type)
     
 

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_end_user_notification import BaseEndUserNotification
@@ -30,10 +31,10 @@ class TrainingNotificationSetting(EndUserNotificationSetting, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TrainingNotificationSetting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .base_end_user_notification import BaseEndUserNotification
         from .end_user_notification_setting import EndUserNotificationSetting
@@ -43,7 +44,7 @@ class TrainingNotificationSetting(EndUserNotificationSetting, Parsable):
         from .end_user_notification_setting import EndUserNotificationSetting
         from .training_reminder_notification import TrainingReminderNotification
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "trainingAssignment": lambda n : setattr(self, 'training_assignment', n.get_object_value(BaseEndUserNotification)),
             "trainingReminder": lambda n : setattr(self, 'training_reminder', n.get_object_value(TrainingReminderNotification)),
         }
@@ -60,10 +61,6 @@ class TrainingNotificationSetting(EndUserNotificationSetting, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .base_end_user_notification import BaseEndUserNotification
-        from .end_user_notification_setting import EndUserNotificationSetting
-        from .training_reminder_notification import TrainingReminderNotification
-
         writer.write_object_value("trainingAssignment", self.training_assignment)
         writer.write_object_value("trainingReminder", self.training_reminder)
     

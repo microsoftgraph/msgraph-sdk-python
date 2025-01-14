@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -29,10 +30,10 @@ class PlannerAssignedToTaskBoardTaskFormat(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PlannerAssignedToTaskBoardTaskFormat()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .planner_order_hints_by_assignee import PlannerOrderHintsByAssignee
@@ -40,7 +41,7 @@ class PlannerAssignedToTaskBoardTaskFormat(Entity, Parsable):
         from .entity import Entity
         from .planner_order_hints_by_assignee import PlannerOrderHintsByAssignee
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "orderHintsByAssignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(PlannerOrderHintsByAssignee)),
             "unassignedOrderHint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
         }
@@ -57,9 +58,6 @@ class PlannerAssignedToTaskBoardTaskFormat(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .planner_order_hints_by_assignee import PlannerOrderHintsByAssignee
-
         writer.write_object_value("orderHintsByAssignee", self.order_hints_by_assignee)
         writer.write_str_value("unassignedOrderHint", self.unassigned_order_hint)
     

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Parsable):
@@ -10,28 +11,28 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Indicates whether the worksheet protection option to allow the use of the autofilter feature is enabled.
+    additional_data: dict[str, Any] = field(default_factory=dict)
+    # Represents the worksheet protection option of allowing using auto filter feature.
     allow_auto_filter: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow deleting columns is enabled.
+    # Represents the worksheet protection option of allowing deleting columns.
     allow_delete_columns: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow deleting rows is enabled.
+    # Represents the worksheet protection option of allowing deleting rows.
     allow_delete_rows: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow formatting cells is enabled.
+    # Represents the worksheet protection option of allowing formatting cells.
     allow_format_cells: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow formatting columns is enabled.
+    # Represents the worksheet protection option of allowing formatting columns.
     allow_format_columns: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow formatting rows is enabled.
+    # Represents the worksheet protection option of allowing formatting rows.
     allow_format_rows: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow inserting columns is enabled.
+    # Represents the worksheet protection option of allowing inserting columns.
     allow_insert_columns: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow inserting hyperlinks is enabled.
+    # Represents the worksheet protection option of allowing inserting hyperlinks.
     allow_insert_hyperlinks: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow inserting rows is enabled.
+    # Represents the worksheet protection option of allowing inserting rows.
     allow_insert_rows: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled.
+    # Represents the worksheet protection option of allowing using pivot table feature.
     allow_pivot_tables: Optional[bool] = None
-    # Indicates whether the worksheet protection option to allow the use of the sort feature is enabled.
+    # Represents the worksheet protection option of allowing using sort feature.
     allow_sort: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -47,12 +48,12 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
             raise TypeError("parse_node cannot be null.")
         return WorkbookWorksheetProtectionOptions()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowAutoFilter": lambda n : setattr(self, 'allow_auto_filter', n.get_bool_value()),
             "allowDeleteColumns": lambda n : setattr(self, 'allow_delete_columns', n.get_bool_value()),
             "allowDeleteRows": lambda n : setattr(self, 'allow_delete_rows', n.get_bool_value()),

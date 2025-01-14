@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .schedule_change_request import ScheduleChangeRequest
@@ -43,10 +44,10 @@ class OfferShiftRequest(ScheduleChangeRequest, Parsable):
             return SwapShiftsChangeRequest()
         return OfferShiftRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .schedule_change_request import ScheduleChangeRequest
         from .swap_shifts_change_request import SwapShiftsChangeRequest
@@ -54,7 +55,7 @@ class OfferShiftRequest(ScheduleChangeRequest, Parsable):
         from .schedule_change_request import ScheduleChangeRequest
         from .swap_shifts_change_request import SwapShiftsChangeRequest
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "recipientActionDateTime": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
             "recipientActionMessage": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
             "recipientUserId": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),
@@ -73,9 +74,6 @@ class OfferShiftRequest(ScheduleChangeRequest, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .schedule_change_request import ScheduleChangeRequest
-        from .swap_shifts_change_request import SwapShiftsChangeRequest
-
         writer.write_str_value("recipientActionMessage", self.recipient_action_message)
         writer.write_str_value("recipientUserId", self.recipient_user_id)
         writer.write_str_value("senderShiftId", self.sender_shift_id)

@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .click_source import ClickSource
@@ -14,7 +15,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
     browser: Optional[str] = None
     # The clickSource property
@@ -41,16 +42,16 @@ class UserSimulationEventInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserSimulationEventInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .click_source import ClickSource
 
         from .click_source import ClickSource
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
             "clickSource": lambda n : setattr(self, 'click_source', n.get_enum_value(ClickSource)),
             "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
@@ -69,8 +70,6 @@ class UserSimulationEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .click_source import ClickSource
-
         writer.write_str_value("browser", self.browser)
         writer.write_enum_value("clickSource", self.click_source)
         writer.write_datetime_value("eventDateTime", self.event_date_time)

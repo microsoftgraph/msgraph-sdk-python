@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -54,10 +55,10 @@ class DataSourceContainer(Entity, Parsable):
             return EdiscoveryNoncustodialDataSource()
         return DataSourceContainer()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .data_source_container_status import DataSourceContainerStatus
@@ -71,7 +72,7 @@ class DataSourceContainer(Entity, Parsable):
         from .ediscovery_custodian import EdiscoveryCustodian
         from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(DataSourceHoldStatus)),
@@ -92,12 +93,6 @@ class DataSourceContainer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .data_source_container_status import DataSourceContainerStatus
-        from .data_source_hold_status import DataSourceHoldStatus
-        from .ediscovery_custodian import EdiscoveryCustodian
-        from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
-
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("holdStatus", self.hold_status)

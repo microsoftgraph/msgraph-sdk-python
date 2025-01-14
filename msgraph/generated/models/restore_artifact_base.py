@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .artifact_restore_status import ArtifactRestoreStatus
@@ -66,10 +67,10 @@ class RestoreArtifactBase(Entity, Parsable):
             return SiteRestoreArtifact()
         return RestoreArtifactBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .artifact_restore_status import ArtifactRestoreStatus
         from .destination_type import DestinationType
@@ -91,7 +92,7 @@ class RestoreArtifactBase(Entity, Parsable):
         from .restore_point import RestorePoint
         from .site_restore_artifact import SiteRestoreArtifact
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
             "destinationType": lambda n : setattr(self, 'destination_type', n.get_enum_value(DestinationType)),
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
@@ -112,16 +113,6 @@ class RestoreArtifactBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .artifact_restore_status import ArtifactRestoreStatus
-        from .destination_type import DestinationType
-        from .drive_restore_artifact import DriveRestoreArtifact
-        from .entity import Entity
-        from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
-        from .mailbox_restore_artifact import MailboxRestoreArtifact
-        from .public_error import PublicError
-        from .restore_point import RestorePoint
-        from .site_restore_artifact import SiteRestoreArtifact
-
         writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_enum_value("destinationType", self.destination_type)
         writer.write_object_value("error", self.error)

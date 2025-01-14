@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .course_status import CourseStatus
@@ -55,10 +56,10 @@ class LearningCourseActivity(Entity, Parsable):
             return LearningSelfInitiatedCourse()
         return LearningCourseActivity()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .course_status import CourseStatus
         from .entity import Entity
@@ -70,7 +71,7 @@ class LearningCourseActivity(Entity, Parsable):
         from .learning_assignment import LearningAssignment
         from .learning_self_initiated_course import LearningSelfInitiatedCourse
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "completionPercentage": lambda n : setattr(self, 'completion_percentage', n.get_int_value()),
             "externalcourseActivityId": lambda n : setattr(self, 'externalcourse_activity_id', n.get_str_value()),
@@ -92,11 +93,6 @@ class LearningCourseActivity(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .course_status import CourseStatus
-        from .entity import Entity
-        from .learning_assignment import LearningAssignment
-        from .learning_self_initiated_course import LearningSelfInitiatedCourse
-
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("completionPercentage", self.completion_percentage)
         writer.write_str_value("externalcourseActivityId", self.externalcourse_activity_id)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
@@ -13,7 +14,7 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The assignmentMethod property
     assignment_method: Optional[SensitivityLabelAssignmentMethod] = None
     # The justificationText property
@@ -32,16 +33,16 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
             raise TypeError("parse_node cannot be null.")
         return AssignSensitivityLabelPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
 
         from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignmentMethod": lambda n : setattr(self, 'assignment_method', n.get_enum_value(SensitivityLabelAssignmentMethod)),
             "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
             "sensitivityLabelId": lambda n : setattr(self, 'sensitivity_label_id', n.get_str_value()),
@@ -56,8 +57,6 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
-
         writer.write_enum_value("assignmentMethod", self.assignment_method)
         writer.write_str_value("justificationText", self.justification_text)
         writer.write_str_value("sensitivityLabelId", self.sensitivity_label_id)

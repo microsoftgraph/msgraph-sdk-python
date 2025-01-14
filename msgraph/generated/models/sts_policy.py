@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
@@ -19,9 +20,9 @@ class StsPolicy(PolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.stsPolicy"
     # The appliesTo property
-    applies_to: Optional[List[DirectoryObject]] = None
+    applies_to: Optional[list[DirectoryObject]] = None
     # A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
-    definition: Optional[List[str]] = None
+    definition: Optional[list[str]] = None
     # If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     is_organization_default: Optional[bool] = None
     
@@ -61,10 +62,10 @@ class StsPolicy(PolicyBase, Parsable):
             return TokenLifetimePolicy()
         return StsPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .claims_mapping_policy import ClaimsMappingPolicy
@@ -82,7 +83,7 @@ class StsPolicy(PolicyBase, Parsable):
         from .token_issuance_policy import TokenIssuancePolicy
         from .token_lifetime_policy import TokenLifetimePolicy
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
             "definition": lambda n : setattr(self, 'definition', n.get_collection_of_primitive_values(str)),
             "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
@@ -100,14 +101,6 @@ class StsPolicy(PolicyBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
-        from .claims_mapping_policy import ClaimsMappingPolicy
-        from .directory_object import DirectoryObject
-        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
-        from .policy_base import PolicyBase
-        from .token_issuance_policy import TokenIssuancePolicy
-        from .token_lifetime_policy import TokenLifetimePolicy
-
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_collection_of_primitive_values("definition", self.definition)
         writer.write_bool_value("isOrganizationDefault", self.is_organization_default)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .detected_app_platform_type import DetectedAppPlatformType
@@ -20,7 +21,7 @@ class DetectedApp(Entity, Parsable):
     # Name of the discovered application. Read-only
     display_name: Optional[str] = None
     # The devices that have the discovered application installed
-    managed_devices: Optional[List[ManagedDevice]] = None
+    managed_devices: Optional[list[ManagedDevice]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
@@ -43,10 +44,10 @@ class DetectedApp(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DetectedApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .detected_app_platform_type import DetectedAppPlatformType
         from .entity import Entity
@@ -56,7 +57,7 @@ class DetectedApp(Entity, Parsable):
         from .entity import Entity
         from .managed_device import ManagedDevice
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
@@ -78,10 +79,6 @@ class DetectedApp(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .detected_app_platform_type import DetectedAppPlatformType
-        from .entity import Entity
-        from .managed_device import ManagedDevice
-
         writer.write_int_value("deviceCount", self.device_count)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("managedDevices", self.managed_devices)

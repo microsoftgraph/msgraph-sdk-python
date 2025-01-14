@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .channel_identity import ChannelIdentity
@@ -24,7 +25,7 @@ from .entity import Entity
 @dataclass
 class ChatMessage(Entity, Parsable):
     # References to attached objects like files, tabs, meetings etc.
-    attachments: Optional[List[ChatMessageAttachment]] = None
+    attachments: Optional[list[ChatMessageAttachment]] = None
     # The body property
     body: Optional[ItemBody] = None
     # If the message was sent in a channel, represents identity of the channel.
@@ -42,7 +43,7 @@ class ChatMessage(Entity, Parsable):
     # Details of the sender of the chat message. Can only be set during migration.
     from_: Optional[ChatMessageFromIdentitySet] = None
     # Content in a message hosted by Microsoft Teams - for example, images or code snippets.
-    hosted_contents: Optional[List[ChatMessageHostedContent]] = None
+    hosted_contents: Optional[list[ChatMessageHostedContent]] = None
     # The importance property
     importance: Optional[ChatMessageImportance] = None
     # Read only. Timestamp when edits to the chat message were made. Triggers an 'Edited' flag in the Teams UI. If no edits are made the value is null.
@@ -52,9 +53,9 @@ class ChatMessage(Entity, Parsable):
     # Locale of the chat message set by the client. Always set to en-us.
     locale: Optional[str] = None
     # List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
-    mentions: Optional[List[ChatMessageMention]] = None
+    mentions: Optional[list[ChatMessageMention]] = None
     # List of activity history of a message item, including modification time and actions, such as reactionAdded, reactionRemoved, or reaction changes, on the message.
-    message_history: Optional[List[ChatMessageHistoryItem]] = None
+    message_history: Optional[list[ChatMessageHistoryItem]] = None
     # The messageType property
     message_type: Optional[ChatMessageType] = None
     # The OdataType property
@@ -62,9 +63,9 @@ class ChatMessage(Entity, Parsable):
     # Defines the properties of a policy violation set by a data loss prevention (DLP) application.
     policy_violation: Optional[ChatMessagePolicyViolation] = None
     # Reactions for this chat message (for example, Like).
-    reactions: Optional[List[ChatMessageReaction]] = None
+    reactions: Optional[list[ChatMessageReaction]] = None
     # Replies for a specified message. Supports $expand for channel messages.
-    replies: Optional[List[ChatMessage]] = None
+    replies: Optional[list[ChatMessage]] = None
     # Read-only. ID of the parent chat message or root chat message of the thread. (Only applies to chat messages in channels, not chats.)
     reply_to_id: Optional[str] = None
     # The subject of the chat message, in plaintext.
@@ -85,10 +86,10 @@ class ChatMessage(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ChatMessage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .channel_identity import ChannelIdentity
         from .chat_message_attachment import ChatMessageAttachment
@@ -118,7 +119,7 @@ class ChatMessage(Entity, Parsable):
         from .event_message_detail import EventMessageDetail
         from .item_body import ItemBody
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(ChatMessageAttachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
             "channelIdentity": lambda n : setattr(self, 'channel_identity', n.get_object_value(ChannelIdentity)),
@@ -157,20 +158,6 @@ class ChatMessage(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .channel_identity import ChannelIdentity
-        from .chat_message_attachment import ChatMessageAttachment
-        from .chat_message_from_identity_set import ChatMessageFromIdentitySet
-        from .chat_message_history_item import ChatMessageHistoryItem
-        from .chat_message_hosted_content import ChatMessageHostedContent
-        from .chat_message_importance import ChatMessageImportance
-        from .chat_message_mention import ChatMessageMention
-        from .chat_message_policy_violation import ChatMessagePolicyViolation
-        from .chat_message_reaction import ChatMessageReaction
-        from .chat_message_type import ChatMessageType
-        from .entity import Entity
-        from .event_message_detail import EventMessageDetail
-        from .item_body import ItemBody
-
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
         writer.write_object_value("channelIdentity", self.channel_identity)

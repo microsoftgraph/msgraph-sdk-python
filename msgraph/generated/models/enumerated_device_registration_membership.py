@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_registration_membership import DeviceRegistrationMembership
@@ -13,9 +14,9 @@ class EnumeratedDeviceRegistrationMembership(DeviceRegistrationMembership, Parsa
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.enumeratedDeviceRegistrationMembership"
     # The groups property
-    groups: Optional[List[str]] = None
+    groups: Optional[list[str]] = None
     # The users property
-    users: Optional[List[str]] = None
+    users: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EnumeratedDeviceRegistrationMembership:
@@ -28,16 +29,16 @@ class EnumeratedDeviceRegistrationMembership(DeviceRegistrationMembership, Parsa
             raise TypeError("parse_node cannot be null.")
         return EnumeratedDeviceRegistrationMembership()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_registration_membership import DeviceRegistrationMembership
 
         from .device_registration_membership import DeviceRegistrationMembership
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_primitive_values(str)),
             "users": lambda n : setattr(self, 'users', n.get_collection_of_primitive_values(str)),
         }
@@ -54,8 +55,6 @@ class EnumeratedDeviceRegistrationMembership(DeviceRegistrationMembership, Parsa
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_registration_membership import DeviceRegistrationMembership
-
         writer.write_collection_of_primitive_values("groups", self.groups)
         writer.write_collection_of_primitive_values("users", self.users)
     

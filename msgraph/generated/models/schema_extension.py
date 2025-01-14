@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -18,11 +19,11 @@ class SchemaExtension(Entity, Parsable):
     # The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Microsoft Entra ID as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
     owner: Optional[str] = None
     # The collection of property names and types that make up the schema extension definition.
-    properties: Optional[List[ExtensionSchemaProperty]] = None
+    properties: Optional[list[ExtensionSchemaProperty]] = None
     # The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq).
     status: Optional[str] = None
     # Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user.
-    target_types: Optional[List[str]] = None
+    target_types: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SchemaExtension:
@@ -35,10 +36,10 @@ class SchemaExtension(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SchemaExtension()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .extension_schema_property import ExtensionSchemaProperty
@@ -46,7 +47,7 @@ class SchemaExtension(Entity, Parsable):
         from .entity import Entity
         from .extension_schema_property import ExtensionSchemaProperty
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(ExtensionSchemaProperty)),
@@ -66,9 +67,6 @@ class SchemaExtension(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .extension_schema_property import ExtensionSchemaProperty
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("owner", self.owner)
         writer.write_collection_of_object_values("properties", self.properties)

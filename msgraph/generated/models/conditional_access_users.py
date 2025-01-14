@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
@@ -13,23 +14,23 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Group IDs excluded from scope of policy.
-    exclude_groups: Optional[List[str]] = None
+    exclude_groups: Optional[list[str]] = None
     # Internal guests or external users excluded from the policy scope. Optionally populated.
     exclude_guests_or_external_users: Optional[ConditionalAccessGuestsOrExternalUsers] = None
     # Role IDs excluded from scope of policy.
-    exclude_roles: Optional[List[str]] = None
+    exclude_roles: Optional[list[str]] = None
     # User IDs excluded from scope of policy and/or GuestsOrExternalUsers.
-    exclude_users: Optional[List[str]] = None
+    exclude_users: Optional[list[str]] = None
     # Group IDs in scope of policy unless explicitly excluded.
-    include_groups: Optional[List[str]] = None
+    include_groups: Optional[list[str]] = None
     # Internal guests or external users included in the policy scope. Optionally populated.
     include_guests_or_external_users: Optional[ConditionalAccessGuestsOrExternalUsers] = None
     # Role IDs in scope of policy unless explicitly excluded.
-    include_roles: Optional[List[str]] = None
+    include_roles: Optional[list[str]] = None
     # User IDs in scope of policy unless explicitly excluded, None, All, or GuestsOrExternalUsers.
-    include_users: Optional[List[str]] = None
+    include_users: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -44,16 +45,16 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ConditionalAccessUsers()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
 
         from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "excludeGroups": lambda n : setattr(self, 'exclude_groups', n.get_collection_of_primitive_values(str)),
             "excludeGuestsOrExternalUsers": lambda n : setattr(self, 'exclude_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
             "excludeRoles": lambda n : setattr(self, 'exclude_roles', n.get_collection_of_primitive_values(str)),
@@ -74,8 +75,6 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
-
         writer.write_collection_of_primitive_values("excludeGroups", self.exclude_groups)
         writer.write_object_value("excludeGuestsOrExternalUsers", self.exclude_guests_or_external_users)
         writer.write_collection_of_primitive_values("excludeRoles", self.exclude_roles)

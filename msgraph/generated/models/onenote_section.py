@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .notebook import Notebook
@@ -21,7 +22,7 @@ class OnenoteSection(OnenoteEntityHierarchyModel, Parsable):
     # Links for opening the section. The oneNoteClientURL link opens the section in the OneNote native client if it's installed. The oneNoteWebURL link opens the section in OneNote on the web.
     links: Optional[SectionLinks] = None
     # The collection of pages in the section.  Read-only. Nullable.
-    pages: Optional[List[OnenotePage]] = None
+    pages: Optional[list[OnenotePage]] = None
     # The pages endpoint where you can get details for all the pages in the section. Read-only.
     pages_url: Optional[str] = None
     # The notebook that contains the section.  Read-only.
@@ -40,10 +41,10 @@ class OnenoteSection(OnenoteEntityHierarchyModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OnenoteSection()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .notebook import Notebook
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -57,7 +58,7 @@ class OnenoteSection(OnenoteEntityHierarchyModel, Parsable):
         from .section_group import SectionGroup
         from .section_links import SectionLinks
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(SectionLinks)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(OnenotePage)),
@@ -78,12 +79,6 @@ class OnenoteSection(OnenoteEntityHierarchyModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .notebook import Notebook
-        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
-        from .onenote_page import OnenotePage
-        from .section_group import SectionGroup
-        from .section_links import SectionLinks
-
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_object_value("links", self.links)
         writer.write_collection_of_object_values("pages", self.pages)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..subject_set import SubjectSet
@@ -30,10 +31,10 @@ class TriggerAndScopeBasedConditions(WorkflowExecutionConditions, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TriggerAndScopeBasedConditions()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..subject_set import SubjectSet
         from .workflow_execution_conditions import WorkflowExecutionConditions
@@ -43,7 +44,7 @@ class TriggerAndScopeBasedConditions(WorkflowExecutionConditions, Parsable):
         from .workflow_execution_conditions import WorkflowExecutionConditions
         from .workflow_execution_trigger import WorkflowExecutionTrigger
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "scope": lambda n : setattr(self, 'scope', n.get_object_value(SubjectSet)),
             "trigger": lambda n : setattr(self, 'trigger', n.get_object_value(WorkflowExecutionTrigger)),
         }
@@ -60,10 +61,6 @@ class TriggerAndScopeBasedConditions(WorkflowExecutionConditions, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..subject_set import SubjectSet
-        from .workflow_execution_conditions import WorkflowExecutionConditions
-        from .workflow_execution_trigger import WorkflowExecutionTrigger
-
         writer.write_object_value("scope", self.scope)
         writer.write_object_value("trigger", self.trigger)
     

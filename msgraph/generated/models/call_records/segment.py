@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -23,7 +24,7 @@ class Segment(Entity, Parsable):
     # Failure information associated with the segment if it failed.
     failure_info: Optional[FailureInfo] = None
     # Media associated with this segment.
-    media: Optional[List[Media]] = None
+    media: Optional[list[Media]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -40,10 +41,10 @@ class Segment(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Segment()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .endpoint import Endpoint
@@ -55,7 +56,7 @@ class Segment(Entity, Parsable):
         from .failure_info import FailureInfo
         from .media import Media
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(Endpoint)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
@@ -76,11 +77,6 @@ class Segment(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .endpoint import Endpoint
-        from .failure_info import FailureInfo
-        from .media import Media
-
         writer.write_object_value("callee", self.callee)
         writer.write_object_value("caller", self.caller)
         writer.write_datetime_value("endDateTime", self.end_date_time)

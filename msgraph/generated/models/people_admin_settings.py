@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -18,7 +19,7 @@ class PeopleAdminSettings(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
-    profile_card_properties: Optional[List[ProfileCardProperty]] = None
+    profile_card_properties: Optional[list[ProfileCardProperty]] = None
     # Represents administrator settings that manage the support of pronouns in an organization.
     pronouns: Optional[PronounsSettings] = None
     
@@ -33,10 +34,10 @@ class PeopleAdminSettings(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PeopleAdminSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .insights_settings import InsightsSettings
@@ -48,7 +49,7 @@ class PeopleAdminSettings(Entity, Parsable):
         from .profile_card_property import ProfileCardProperty
         from .pronouns_settings import PronounsSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "itemInsights": lambda n : setattr(self, 'item_insights', n.get_object_value(InsightsSettings)),
             "profileCardProperties": lambda n : setattr(self, 'profile_card_properties', n.get_collection_of_object_values(ProfileCardProperty)),
             "pronouns": lambda n : setattr(self, 'pronouns', n.get_object_value(PronounsSettings)),
@@ -66,11 +67,6 @@ class PeopleAdminSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .insights_settings import InsightsSettings
-        from .profile_card_property import ProfileCardProperty
-        from .pronouns_settings import PronounsSettings
-
         writer.write_object_value("itemInsights", self.item_insights)
         writer.write_collection_of_object_values("profileCardProperties", self.profile_card_properties)
         writer.write_object_value("pronouns", self.pronouns)

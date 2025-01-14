@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_info import DeviceInfo
@@ -15,7 +16,7 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Device information associated with the callee endpoint of this media.
     callee_device: Optional[DeviceInfo] = None
     # Network information associated with the callee endpoint of this media.
@@ -29,7 +30,7 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Network streams associated with this media.
-    streams: Optional[List[MediaStream]] = None
+    streams: Optional[list[MediaStream]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Media:
@@ -42,10 +43,10 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Media()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_info import DeviceInfo
         from .media_stream import MediaStream
@@ -55,7 +56,7 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
         from .media_stream import MediaStream
         from .network_info import NetworkInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "calleeDevice": lambda n : setattr(self, 'callee_device', n.get_object_value(DeviceInfo)),
             "calleeNetwork": lambda n : setattr(self, 'callee_network', n.get_object_value(NetworkInfo)),
             "callerDevice": lambda n : setattr(self, 'caller_device', n.get_object_value(DeviceInfo)),
@@ -74,10 +75,6 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .device_info import DeviceInfo
-        from .media_stream import MediaStream
-        from .network_info import NetworkInfo
-
         writer.write_object_value("calleeDevice", self.callee_device)
         writer.write_object_value("calleeNetwork", self.callee_network)
         writer.write_object_value("callerDevice", self.caller_device)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .notebook import Notebook
@@ -37,7 +38,7 @@ class OnenotePage(OnenoteEntitySchemaObjectModel, Parsable):
     # The title of the page.
     title: Optional[str] = None
     # The userTags property
-    user_tags: Optional[List[str]] = None
+    user_tags: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> OnenotePage:
@@ -50,10 +51,10 @@ class OnenotePage(OnenoteEntitySchemaObjectModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OnenotePage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .notebook import Notebook
         from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
@@ -65,7 +66,7 @@ class OnenotePage(OnenoteEntitySchemaObjectModel, Parsable):
         from .onenote_section import OnenoteSection
         from .page_links import PageLinks
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
             "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
             "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
@@ -91,11 +92,6 @@ class OnenotePage(OnenoteEntitySchemaObjectModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .notebook import Notebook
-        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
-        from .onenote_section import OnenoteSection
-        from .page_links import PageLinks
-
         writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentUrl", self.content_url)
         writer.write_str_value("createdByAppId", self.created_by_app_id)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -19,9 +20,9 @@ class TermsAndConditions(Entity, Parsable):
     # Administrator-supplied explanation of the terms and conditions, typically describing what it means to accept the terms and conditions set out in the T&C policy. This is shown to the user on prompts to accept the T&C policy.
     acceptance_statement: Optional[str] = None
     # The list of acceptance statuses for this T&C policy.
-    acceptance_statuses: Optional[List[TermsAndConditionsAcceptanceStatus]] = None
+    acceptance_statuses: Optional[list[TermsAndConditionsAcceptanceStatus]] = None
     # The list of assignments for this T&C policy.
-    assignments: Optional[List[TermsAndConditionsAssignment]] = None
+    assignments: Optional[list[TermsAndConditionsAssignment]] = None
     # Administrator-supplied body text of the terms and conditions, typically the terms themselves. This is shown to the user on prompts to accept the T&C policy.
     body_text: Optional[str] = None
     # DateTime the object was created.
@@ -50,10 +51,10 @@ class TermsAndConditions(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TermsAndConditions()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
@@ -63,7 +64,7 @@ class TermsAndConditions(Entity, Parsable):
         from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
         from .terms_and_conditions_assignment import TermsAndConditionsAssignment
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "acceptanceStatement": lambda n : setattr(self, 'acceptance_statement', n.get_str_value()),
             "acceptanceStatuses": lambda n : setattr(self, 'acceptance_statuses', n.get_collection_of_object_values(TermsAndConditionsAcceptanceStatus)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TermsAndConditionsAssignment)),
@@ -88,10 +89,6 @@ class TermsAndConditions(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
-        from .terms_and_conditions_assignment import TermsAndConditionsAssignment
-
         writer.write_str_value("acceptanceStatement", self.acceptance_statement)
         writer.write_collection_of_object_values("acceptanceStatuses", self.acceptance_statuses)
         writer.write_collection_of_object_values("assignments", self.assignments)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .audio_conferencing import AudioConferencing
@@ -35,7 +36,7 @@ class OnlineMeetingBase(Entity, Parsable):
     # Specifies who can be a presenter in a meeting.
     allowed_presenters: Optional[OnlineMeetingPresenters] = None
     # The attendance reports of an online meeting. Read-only.
-    attendance_reports: Optional[List[MeetingAttendanceReport]] = None
+    attendance_reports: Optional[list[MeetingAttendanceReport]] = None
     # The phone access (dial-in) information for an online meeting. Read-only.
     audio_conferencing: Optional[AudioConferencing] = None
     # The chat information associated with this online meeting.
@@ -87,10 +88,10 @@ class OnlineMeetingBase(Entity, Parsable):
             return VirtualEventSession()
         return OnlineMeetingBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .audio_conferencing import AudioConferencing
         from .chat_info import ChatInfo
@@ -120,7 +121,7 @@ class OnlineMeetingBase(Entity, Parsable):
         from .virtual_event_session import VirtualEventSession
         from .watermark_protection_values import WatermarkProtectionValues
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
             "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
             "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(MeetingChatMode)),
@@ -154,20 +155,6 @@ class OnlineMeetingBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .audio_conferencing import AudioConferencing
-        from .chat_info import ChatInfo
-        from .entity import Entity
-        from .item_body import ItemBody
-        from .join_meeting_id_settings import JoinMeetingIdSettings
-        from .lobby_bypass_settings import LobbyBypassSettings
-        from .meeting_attendance_report import MeetingAttendanceReport
-        from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
-        from .meeting_chat_mode import MeetingChatMode
-        from .online_meeting import OnlineMeeting
-        from .online_meeting_presenters import OnlineMeetingPresenters
-        from .virtual_event_session import VirtualEventSession
-        from .watermark_protection_values import WatermarkProtectionValues
-
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)

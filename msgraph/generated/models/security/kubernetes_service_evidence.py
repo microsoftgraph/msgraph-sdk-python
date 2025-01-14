@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -20,7 +21,7 @@ class KubernetesServiceEvidence(AlertEvidence, Parsable):
     # The service cluster IP.
     cluster_i_p: Optional[IpEvidence] = None
     # The service external IPs.
-    external_i_ps: Optional[List[IpEvidence]] = None
+    external_i_ps: Optional[list[IpEvidence]] = None
     # The service labels.
     labels: Optional[Dictionary] = None
     # The service name.
@@ -30,7 +31,7 @@ class KubernetesServiceEvidence(AlertEvidence, Parsable):
     # The service selector.
     selector: Optional[Dictionary] = None
     # The list of service ports.
-    service_ports: Optional[List[KubernetesServicePort]] = None
+    service_ports: Optional[list[KubernetesServicePort]] = None
     # The serviceType property
     service_type: Optional[KubernetesServiceType] = None
     
@@ -45,10 +46,10 @@ class KubernetesServiceEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return KubernetesServiceEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .dictionary import Dictionary
@@ -64,7 +65,7 @@ class KubernetesServiceEvidence(AlertEvidence, Parsable):
         from .kubernetes_service_port import KubernetesServicePort
         from .kubernetes_service_type import KubernetesServiceType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "clusterIP": lambda n : setattr(self, 'cluster_i_p', n.get_object_value(IpEvidence)),
             "externalIPs": lambda n : setattr(self, 'external_i_ps', n.get_collection_of_object_values(IpEvidence)),
             "labels": lambda n : setattr(self, 'labels', n.get_object_value(Dictionary)),
@@ -87,13 +88,6 @@ class KubernetesServiceEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .dictionary import Dictionary
-        from .ip_evidence import IpEvidence
-        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
-        from .kubernetes_service_port import KubernetesServicePort
-        from .kubernetes_service_type import KubernetesServiceType
-
         writer.write_object_value("clusterIP", self.cluster_i_p)
         writer.write_collection_of_object_values("externalIPs", self.external_i_ps)
         writer.write_object_value("labels", self.labels)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -16,15 +17,15 @@ from ..entity import Entity
 @dataclass
 class IntelligenceProfile(Entity, Parsable):
     # A list of commonly-known aliases for the threat intelligence included in the intelligenceProfile.
-    aliases: Optional[List[str]] = None
+    aliases: Optional[list[str]] = None
     # The country/region of origin for the given actor or threat associated with this intelligenceProfile.
-    countries_or_regions_of_origin: Optional[List[IntelligenceProfileCountryOrRegionOfOrigin]] = None
+    countries_or_regions_of_origin: Optional[list[IntelligenceProfileCountryOrRegionOfOrigin]] = None
     # The description property
     description: Optional[FormattedContent] = None
     # The date and time when this intelligenceProfile was first active. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     first_active_date_time: Optional[datetime.datetime] = None
     # Includes an assemblage of high-fidelity network indicators of compromise.
-    indicators: Optional[List[IntelligenceProfileIndicator]] = None
+    indicators: Optional[list[IntelligenceProfileIndicator]] = None
     # The kind property
     kind: Optional[IntelligenceProfileKind] = None
     # The OdataType property
@@ -32,7 +33,7 @@ class IntelligenceProfile(Entity, Parsable):
     # The summary property
     summary: Optional[FormattedContent] = None
     # Known targets related to this intelligenceProfile.
-    targets: Optional[List[str]] = None
+    targets: Optional[list[str]] = None
     # The title of this intelligenceProfile.
     title: Optional[str] = None
     # Formatted information featuring a description of the distinctive tactics, techniques, and procedures (TTP) of the group, followed by a list of all known custom, commodity, and publicly available implants used by the group.
@@ -49,10 +50,10 @@ class IntelligenceProfile(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IntelligenceProfile()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .formatted_content import FormattedContent
@@ -66,7 +67,7 @@ class IntelligenceProfile(Entity, Parsable):
         from .intelligence_profile_indicator import IntelligenceProfileIndicator
         from .intelligence_profile_kind import IntelligenceProfileKind
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "aliases": lambda n : setattr(self, 'aliases', n.get_collection_of_primitive_values(str)),
             "countriesOrRegionsOfOrigin": lambda n : setattr(self, 'countries_or_regions_of_origin', n.get_collection_of_object_values(IntelligenceProfileCountryOrRegionOfOrigin)),
             "description": lambda n : setattr(self, 'description', n.get_object_value(FormattedContent)),
@@ -91,12 +92,6 @@ class IntelligenceProfile(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .formatted_content import FormattedContent
-        from .intelligence_profile_country_or_region_of_origin import IntelligenceProfileCountryOrRegionOfOrigin
-        from .intelligence_profile_indicator import IntelligenceProfileIndicator
-        from .intelligence_profile_kind import IntelligenceProfileKind
-
         writer.write_collection_of_primitive_values("aliases", self.aliases)
         writer.write_collection_of_object_values("countriesOrRegionsOfOrigin", self.countries_or_regions_of_origin)
         writer.write_object_value("description", self.description)

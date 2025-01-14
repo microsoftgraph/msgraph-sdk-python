@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attribute_mapping import AttributeMapping
@@ -16,15 +17,15 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Attribute mappings define which attributes to map from the source object into the target object and how they should flow. A number of functions are available to support the transformation of the original source values.
-    attribute_mappings: Optional[List[AttributeMapping]] = None
+    attribute_mappings: Optional[list[AttributeMapping]] = None
     # When true, this object mapping will be processed during synchronization. When false, this object mapping will be skipped.
     enabled: Optional[bool] = None
     # The flowTypes property
     flow_types: Optional[ObjectFlowTypes] = None
     # Additional extension properties. Unless mentioned explicitly, metadata values should not be changed.
-    metadata: Optional[List[ObjectMappingMetadataEntry]] = None
+    metadata: Optional[list[ObjectMappingMetadataEntry]] = None
     # Human-friendly name of the object mapping.
     name: Optional[str] = None
     # The OdataType property
@@ -47,10 +48,10 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ObjectMapping()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attribute_mapping import AttributeMapping
         from .filter import Filter
@@ -62,7 +63,7 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
         from .object_flow_types import ObjectFlowTypes
         from .object_mapping_metadata_entry import ObjectMappingMetadataEntry
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attributeMappings": lambda n : setattr(self, 'attribute_mappings', n.get_collection_of_object_values(AttributeMapping)),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
             "flowTypes": lambda n : setattr(self, 'flow_types', n.get_collection_of_enum_values(ObjectFlowTypes)),
@@ -83,11 +84,6 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .attribute_mapping import AttributeMapping
-        from .filter import Filter
-        from .object_flow_types import ObjectFlowTypes
-        from .object_mapping_metadata_entry import ObjectMappingMetadataEntry
-
         writer.write_collection_of_object_values("attributeMappings", self.attribute_mappings)
         writer.write_bool_value("enabled", self.enabled)
         writer.write_enum_value("flowTypes", self.flow_types)

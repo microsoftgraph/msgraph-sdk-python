@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -36,7 +37,7 @@ class TaskReport(Entity, Parsable):
     # The taskDefinition property
     task_definition: Optional[TaskDefinition] = None
     # The related lifecycle workflow taskProcessingResults.
-    task_processing_results: Optional[List[TaskProcessingResult]] = None
+    task_processing_results: Optional[list[TaskProcessingResult]] = None
     # The total number of users in the run execution for which the associated task was scheduled to execute.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     total_users_count: Optional[int] = None
     # The number of users in the run execution for which the associated task is queued, in progress, or canceled.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
@@ -53,10 +54,10 @@ class TaskReport(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TaskReport()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
@@ -70,7 +71,7 @@ class TaskReport(Entity, Parsable):
         from .task_definition import TaskDefinition
         from .task_processing_result import TaskProcessingResult
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "failedUsersCount": lambda n : setattr(self, 'failed_users_count', n.get_int_value()),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
@@ -97,12 +98,6 @@ class TaskReport(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
-        from .task import Task
-        from .task_definition import TaskDefinition
-        from .task_processing_result import TaskProcessingResult
-
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("failedUsersCount", self.failed_users_count)
         writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)

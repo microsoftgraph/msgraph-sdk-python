@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.drive_recipient import DriveRecipient
@@ -13,7 +14,7 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The expirationDateTime property
     expiration_date_time: Optional[str] = None
     # The message property
@@ -21,13 +22,13 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # The password property
     password: Optional[str] = None
     # The recipients property
-    recipients: Optional[List[DriveRecipient]] = None
+    recipients: Optional[list[DriveRecipient]] = None
     # The requireSignIn property
     require_sign_in: Optional[bool] = None
     # The retainInheritedPermissions property
     retain_inherited_permissions: Optional[bool] = None
     # The roles property
-    roles: Optional[List[str]] = None
+    roles: Optional[list[str]] = None
     # The sendInvitation property
     send_invitation: Optional[bool] = None
     
@@ -42,16 +43,16 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return InvitePostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ......models.drive_recipient import DriveRecipient
 
         from ......models.drive_recipient import DriveRecipient
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_str_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
@@ -71,8 +72,6 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ......models.drive_recipient import DriveRecipient
-
         writer.write_str_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("message", self.message)
         writer.write_str_value("password", self.password)

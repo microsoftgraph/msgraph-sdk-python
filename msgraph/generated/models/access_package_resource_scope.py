@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_resource import AccessPackageResource
@@ -37,10 +38,10 @@ class AccessPackageResourceScope(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackageResourceScope()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_resource import AccessPackageResource
         from .entity import Entity
@@ -48,7 +49,7 @@ class AccessPackageResourceScope(Entity, Parsable):
         from .access_package_resource import AccessPackageResource
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isRootScope": lambda n : setattr(self, 'is_root_scope', n.get_bool_value()),
@@ -69,9 +70,6 @@ class AccessPackageResourceScope(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_resource import AccessPackageResource
-        from .entity import Entity
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isRootScope", self.is_root_scope)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_attribute_collection_input_type import AuthenticationAttributeCollectionInputType
@@ -14,7 +15,7 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The built-in or custom attribute for which a value is being collected.
     attribute: Optional[str] = None
     # The default value of the attribute displayed to the end user. The capability to set the default value isn't available through the Microsoft Entra admin center.
@@ -30,7 +31,7 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
     # The OdataType property
     odata_type: Optional[str] = None
     # The option values for certain multiple-option input types.
-    options: Optional[List[AuthenticationAttributeCollectionOptionConfiguration]] = None
+    options: Optional[list[AuthenticationAttributeCollectionOptionConfiguration]] = None
     # Defines whether the field is required.
     required: Optional[bool] = None
     # The regex for the value of the field. For more information about the supported regexes, see validationRegEx values for inputType objects. To understand how to specify regexes, see the Regular expressions cheat sheet.
@@ -49,10 +50,10 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
             raise TypeError("parse_node cannot be null.")
         return AuthenticationAttributeCollectionInputConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_attribute_collection_input_type import AuthenticationAttributeCollectionInputType
         from .authentication_attribute_collection_option_configuration import AuthenticationAttributeCollectionOptionConfiguration
@@ -60,7 +61,7 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
         from .authentication_attribute_collection_input_type import AuthenticationAttributeCollectionInputType
         from .authentication_attribute_collection_option_configuration import AuthenticationAttributeCollectionOptionConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attribute": lambda n : setattr(self, 'attribute', n.get_str_value()),
             "defaultValue": lambda n : setattr(self, 'default_value', n.get_str_value()),
             "editable": lambda n : setattr(self, 'editable', n.get_bool_value()),
@@ -83,9 +84,6 @@ class AuthenticationAttributeCollectionInputConfiguration(AdditionalDataHolder, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .authentication_attribute_collection_input_type import AuthenticationAttributeCollectionInputType
-        from .authentication_attribute_collection_option_configuration import AuthenticationAttributeCollectionOptionConfiguration
-
         writer.write_str_value("attribute", self.attribute)
         writer.write_str_value("defaultValue", self.default_value)
         writer.write_bool_value("editable", self.editable)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -28,41 +29,41 @@ from ..entity import Entity
 @dataclass
 class ThreatIntelligence(Entity, Parsable):
     # Refers to indicators of threat or compromise highlighted in an article.Note: List retrieval is not yet supported.
-    article_indicators: Optional[List[ArticleIndicator]] = None
+    article_indicators: Optional[list[ArticleIndicator]] = None
     # A list of article objects.
-    articles: Optional[List[Article]] = None
+    articles: Optional[list[Article]] = None
     # Retrieve details about hostComponent objects.Note: List retrieval is not yet supported.
-    host_components: Optional[List[HostComponent]] = None
+    host_components: Optional[list[HostComponent]] = None
     # Retrieve details about hostCookie objects.Note: List retrieval is not yet supported.
-    host_cookies: Optional[List[HostCookie]] = None
+    host_cookies: Optional[list[HostCookie]] = None
     # Retrieve details about hostTracker objects.Note: List retrieval is not yet supported.
-    host_pairs: Optional[List[HostPair]] = None
+    host_pairs: Optional[list[HostPair]] = None
     # Retrieve details about hostPort objects.Note: List retrieval is not yet supported.
-    host_ports: Optional[List[HostPort]] = None
+    host_ports: Optional[list[HostPort]] = None
     # Retrieve details about hostSslCertificate objects.Note: List retrieval is not yet supported.
-    host_ssl_certificates: Optional[List[HostSslCertificate]] = None
+    host_ssl_certificates: Optional[list[HostSslCertificate]] = None
     # Retrieve details about hostTracker objects.Note: List retrieval is not yet supported.
-    host_trackers: Optional[List[HostTracker]] = None
+    host_trackers: Optional[list[HostTracker]] = None
     # Refers to host objects that Microsoft Threat Intelligence has observed.Note: List retrieval is not yet supported.
-    hosts: Optional[List[Host]] = None
+    hosts: Optional[list[Host]] = None
     # A list of intelligenceProfile objects.
-    intel_profiles: Optional[List[IntelligenceProfile]] = None
+    intel_profiles: Optional[list[IntelligenceProfile]] = None
     # The intelligenceProfileIndicators property
-    intelligence_profile_indicators: Optional[List[IntelligenceProfileIndicator]] = None
+    intelligence_profile_indicators: Optional[list[IntelligenceProfileIndicator]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Retrieve details about passiveDnsRecord objects.Note: List retrieval is not yet supported.
-    passive_dns_records: Optional[List[PassiveDnsRecord]] = None
+    passive_dns_records: Optional[list[PassiveDnsRecord]] = None
     # Retrieve details about sslCertificate objects.Note: List retrieval is not yet supported.
-    ssl_certificates: Optional[List[SslCertificate]] = None
+    ssl_certificates: Optional[list[SslCertificate]] = None
     # Retrieve details about the subdomain.Note: List retrieval is not yet supported.
-    subdomains: Optional[List[Subdomain]] = None
+    subdomains: Optional[list[Subdomain]] = None
     # Retrieve details about vulnerabilities.Note: List retrieval is not yet supported.
-    vulnerabilities: Optional[List[Vulnerability]] = None
+    vulnerabilities: Optional[list[Vulnerability]] = None
     # Retrieve details about whoisHistoryRecord objects.Note: List retrieval is not yet supported.
-    whois_history_records: Optional[List[WhoisHistoryRecord]] = None
+    whois_history_records: Optional[list[WhoisHistoryRecord]] = None
     # A list of whoisRecord objects.
-    whois_records: Optional[List[WhoisRecord]] = None
+    whois_records: Optional[list[WhoisRecord]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ThreatIntelligence:
@@ -75,10 +76,10 @@ class ThreatIntelligence(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ThreatIntelligence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .article import Article
@@ -118,7 +119,7 @@ class ThreatIntelligence(Entity, Parsable):
         from .whois_history_record import WhoisHistoryRecord
         from .whois_record import WhoisRecord
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "articleIndicators": lambda n : setattr(self, 'article_indicators', n.get_collection_of_object_values(ArticleIndicator)),
             "articles": lambda n : setattr(self, 'articles', n.get_collection_of_object_values(Article)),
             "hostComponents": lambda n : setattr(self, 'host_components', n.get_collection_of_object_values(HostComponent)),
@@ -150,25 +151,6 @@ class ThreatIntelligence(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .article import Article
-        from .article_indicator import ArticleIndicator
-        from .host import Host
-        from .host_component import HostComponent
-        from .host_cookie import HostCookie
-        from .host_pair import HostPair
-        from .host_port import HostPort
-        from .host_ssl_certificate import HostSslCertificate
-        from .host_tracker import HostTracker
-        from .intelligence_profile import IntelligenceProfile
-        from .intelligence_profile_indicator import IntelligenceProfileIndicator
-        from .passive_dns_record import PassiveDnsRecord
-        from .ssl_certificate import SslCertificate
-        from .subdomain import Subdomain
-        from .vulnerability import Vulnerability
-        from .whois_history_record import WhoisHistoryRecord
-        from .whois_record import WhoisRecord
-
         writer.write_collection_of_object_values("articleIndicators", self.article_indicators)
         writer.write_collection_of_object_values("articles", self.articles)
         writer.write_collection_of_object_values("hostComponents", self.host_components)

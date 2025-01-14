@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class AuditActor(AdditionalDataHolder, BackedModel, Parsable):
@@ -13,7 +14,7 @@ class AuditActor(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Name of the Application.
     application_display_name: Optional[str] = None
     # AAD Application Id.
@@ -29,7 +30,7 @@ class AuditActor(AdditionalDataHolder, BackedModel, Parsable):
     # User Id.
     user_id: Optional[str] = None
     # List of user permissions when the audit was performed.
-    user_permissions: Optional[List[str]] = None
+    user_permissions: Optional[list[str]] = None
     # User Principal Name (UPN).
     user_principal_name: Optional[str] = None
     
@@ -44,12 +45,12 @@ class AuditActor(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AuditActor()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applicationDisplayName": lambda n : setattr(self, 'application_display_name', n.get_str_value()),
             "applicationId": lambda n : setattr(self, 'application_id', n.get_str_value()),
             "auditActorType": lambda n : setattr(self, 'audit_actor_type', n.get_str_value()),

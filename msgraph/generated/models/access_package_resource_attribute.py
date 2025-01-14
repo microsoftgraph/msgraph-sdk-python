@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_resource_attribute_destination import AccessPackageResourceAttributeDestination
@@ -14,7 +15,7 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Information about how to set the attribute, currently a accessPackageUserDirectoryAttributeStore type.
     destination: Optional[AccessPackageResourceAttributeDestination] = None
     # The isEditable property
@@ -39,10 +40,10 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
             raise TypeError("parse_node cannot be null.")
         return AccessPackageResourceAttribute()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_resource_attribute_destination import AccessPackageResourceAttributeDestination
         from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
@@ -50,7 +51,7 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
         from .access_package_resource_attribute_destination import AccessPackageResourceAttributeDestination
         from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "destination": lambda n : setattr(self, 'destination', n.get_object_value(AccessPackageResourceAttributeDestination)),
             "isEditable": lambda n : setattr(self, 'is_editable', n.get_bool_value()),
             "isPersistedOnAssignmentRemoval": lambda n : setattr(self, 'is_persisted_on_assignment_removal', n.get_bool_value()),
@@ -68,9 +69,6 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .access_package_resource_attribute_destination import AccessPackageResourceAttributeDestination
-        from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
-
         writer.write_object_value("destination", self.destination)
         writer.write_bool_value("isEditable", self.is_editable)
         writer.write_bool_value("isPersistedOnAssignmentRemoval", self.is_persisted_on_assignment_removal)

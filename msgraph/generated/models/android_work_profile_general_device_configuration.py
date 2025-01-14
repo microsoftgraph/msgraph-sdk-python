@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_work_profile_cross_profile_data_sharing_type import AndroidWorkProfileCrossProfileDataSharingType
@@ -98,10 +99,10 @@ class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration, Parsable
             raise TypeError("parse_node cannot be null.")
         return AndroidWorkProfileGeneralDeviceConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .android_work_profile_cross_profile_data_sharing_type import AndroidWorkProfileCrossProfileDataSharingType
         from .android_work_profile_default_app_permission_policy_type import AndroidWorkProfileDefaultAppPermissionPolicyType
@@ -113,7 +114,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration, Parsable
         from .android_work_profile_required_password_type import AndroidWorkProfileRequiredPasswordType
         from .device_configuration import DeviceConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "passwordBlockFingerprintUnlock": lambda n : setattr(self, 'password_block_fingerprint_unlock', n.get_bool_value()),
             "passwordBlockTrustAgents": lambda n : setattr(self, 'password_block_trust_agents', n.get_bool_value()),
             "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
@@ -162,11 +163,6 @@ class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration, Parsable
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .android_work_profile_cross_profile_data_sharing_type import AndroidWorkProfileCrossProfileDataSharingType
-        from .android_work_profile_default_app_permission_policy_type import AndroidWorkProfileDefaultAppPermissionPolicyType
-        from .android_work_profile_required_password_type import AndroidWorkProfileRequiredPasswordType
-        from .device_configuration import DeviceConfiguration
-
         writer.write_bool_value("passwordBlockFingerprintUnlock", self.password_block_fingerprint_unlock)
         writer.write_bool_value("passwordBlockTrustAgents", self.password_block_trust_agents)
         writer.write_int_value("passwordExpirationDays", self.password_expiration_days)

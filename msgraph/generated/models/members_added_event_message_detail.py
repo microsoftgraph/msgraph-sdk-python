@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .event_message_detail import EventMessageDetail
@@ -18,7 +19,7 @@ class MembersAddedEventMessageDetail(EventMessageDetail, Parsable):
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # List of members added.
-    members: Optional[List[TeamworkUserIdentity]] = None
+    members: Optional[list[TeamworkUserIdentity]] = None
     # The timestamp that denotes how far back a conversation's history is shared with the conversation members.
     visible_history_start_date_time: Optional[datetime.datetime] = None
     
@@ -33,10 +34,10 @@ class MembersAddedEventMessageDetail(EventMessageDetail, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MembersAddedEventMessageDetail()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
@@ -46,7 +47,7 @@ class MembersAddedEventMessageDetail(EventMessageDetail, Parsable):
         from .identity_set import IdentitySet
         from .teamwork_user_identity import TeamworkUserIdentity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(TeamworkUserIdentity)),
             "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
@@ -64,10 +65,6 @@ class MembersAddedEventMessageDetail(EventMessageDetail, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .event_message_detail import EventMessageDetail
-        from .identity_set import IdentitySet
-        from .teamwork_user_identity import TeamworkUserIdentity
-
         writer.write_object_value("initiator", self.initiator)
         writer.write_collection_of_object_values("members", self.members)
         writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)

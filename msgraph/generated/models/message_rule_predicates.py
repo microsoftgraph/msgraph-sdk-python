@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .importance import Importance
@@ -17,19 +18,19 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-    body_contains: Optional[List[str]] = None
+    body_contains: Optional[list[str]] = None
     # Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-    body_or_subject_contains: Optional[List[str]] = None
+    body_or_subject_contains: Optional[list[str]] = None
     # Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-    categories: Optional[List[str]] = None
+    categories: Optional[list[str]] = None
     # Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-    from_addresses: Optional[List[Recipient]] = None
+    from_addresses: Optional[list[Recipient]] = None
     # Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
     has_attachments: Optional[bool] = None
     # Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-    header_contains: Optional[List[str]] = None
+    header_contains: Optional[list[str]] = None
     # The importance that is stamped on an incoming message in order for the condition or exception to apply: low, normal, high.
     importance: Optional[Importance] = None
     # Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
@@ -61,9 +62,9 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-    recipient_contains: Optional[List[str]] = None
+    recipient_contains: Optional[list[str]] = None
     # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-    sender_contains: Optional[List[str]] = None
+    sender_contains: Optional[list[str]] = None
     # Represents the sensitivity level that must be stamped on an incoming message in order for the condition or exception to apply. The possible values are: normal, personal, private, confidential.
     sensitivity: Optional[Sensitivity] = None
     # Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
@@ -71,13 +72,13 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
     # Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
     sent_only_to_me: Optional[bool] = None
     # Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-    sent_to_addresses: Optional[List[Recipient]] = None
+    sent_to_addresses: Optional[list[Recipient]] = None
     # Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
     sent_to_me: Optional[bool] = None
     # Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
     sent_to_or_cc_me: Optional[bool] = None
     # Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-    subject_contains: Optional[List[str]] = None
+    subject_contains: Optional[list[str]] = None
     # Represents the minimum and maximum sizes (in kilobytes) that an incoming message must fall in between in order for the condition or exception to apply.
     within_size_range: Optional[SizeRange] = None
     
@@ -92,10 +93,10 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MessageRulePredicates()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .importance import Importance
         from .message_action_flag import MessageActionFlag
@@ -109,7 +110,7 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
         from .sensitivity import Sensitivity
         from .size_range import SizeRange
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "bodyContains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
             "bodyOrSubjectContains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
@@ -152,12 +153,6 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .importance import Importance
-        from .message_action_flag import MessageActionFlag
-        from .recipient import Recipient
-        from .sensitivity import Sensitivity
-        from .size_range import SizeRange
-
         writer.write_collection_of_primitive_values("bodyContains", self.body_contains)
         writer.write_collection_of_primitive_values("bodyOrSubjectContains", self.body_or_subject_contains)
         writer.write_collection_of_primitive_values("categories", self.categories)

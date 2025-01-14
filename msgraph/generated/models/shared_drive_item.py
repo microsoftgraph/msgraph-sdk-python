@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_item import BaseItem
@@ -21,7 +22,7 @@ class SharedDriveItem(BaseItem, Parsable):
     # Used to access the underlying driveItem
     drive_item: Optional[DriveItem] = None
     # All driveItems contained in the sharing root. This collection cannot be enumerated.
-    items: Optional[List[DriveItem]] = None
+    items: Optional[list[DriveItem]] = None
     # Used to access the underlying list
     list_: Optional[List_] = None
     # Used to access the underlying listItem
@@ -46,10 +47,10 @@ class SharedDriveItem(BaseItem, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SharedDriveItem()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .base_item import BaseItem
         from .drive_item import DriveItem
@@ -67,7 +68,7 @@ class SharedDriveItem(BaseItem, Parsable):
         from .permission import Permission
         from .site import Site
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DriveItem)),
             "list": lambda n : setattr(self, 'list_', n.get_object_value(List_)),
@@ -90,14 +91,6 @@ class SharedDriveItem(BaseItem, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .base_item import BaseItem
-        from .drive_item import DriveItem
-        from .identity_set import IdentitySet
-        from .list_ import List_
-        from .list_item import ListItem
-        from .permission import Permission
-        from .site import Site
-
         writer.write_object_value("driveItem", self.drive_item)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_object_value("list", self.list_)

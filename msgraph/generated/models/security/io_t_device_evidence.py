@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -48,13 +49,13 @@ class IoTDeviceEvidence(AlertEvidence, Parsable):
     # The model of the device.
     model: Optional[str] = None
     # The current network interface controllers on the device.
-    nics: Optional[List[NicEvidence]] = None
+    nics: Optional[list[NicEvidence]] = None
     # The operating system the device is running.
     operating_system: Optional[str] = None
     # The owners for the device.
-    owners: Optional[List[str]] = None
+    owners: Optional[list[str]] = None
     # The list of protocols that the device supports.
-    protocols: Optional[List[str]] = None
+    protocols: Optional[list[str]] = None
     # The Purdue Layer of the device.
     purdue_layer: Optional[str] = None
     # The sensor that monitors the device.
@@ -81,10 +82,10 @@ class IoTDeviceEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IoTDeviceEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .azure_resource_evidence import AzureResourceEvidence
@@ -100,7 +101,7 @@ class IoTDeviceEvidence(AlertEvidence, Parsable):
         from .nic_evidence import NicEvidence
         from .url_evidence import UrlEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
             "devicePageLink": lambda n : setattr(self, 'device_page_link', n.get_str_value()),
@@ -141,13 +142,6 @@ class IoTDeviceEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .azure_resource_evidence import AzureResourceEvidence
-        from .io_t_device_importance_type import IoTDeviceImportanceType
-        from .ip_evidence import IpEvidence
-        from .nic_evidence import NicEvidence
-        from .url_evidence import UrlEvidence
-
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceName", self.device_name)
         writer.write_str_value("devicePageLink", self.device_page_link)

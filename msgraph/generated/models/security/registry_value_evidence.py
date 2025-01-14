@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -36,16 +37,16 @@ class RegistryValueEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RegistryValueEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
 
         from .alert_evidence import AlertEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
             "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
             "registryKey": lambda n : setattr(self, 'registry_key', n.get_str_value()),
@@ -66,8 +67,6 @@ class RegistryValueEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-
         writer.write_str_value("mdeDeviceId", self.mde_device_id)
         writer.write_str_value("registryHive", self.registry_hive)
         writer.write_str_value("registryKey", self.registry_key)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .integer_range import IntegerRange
@@ -22,7 +23,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Whether the printer should collate pages wehen printing multiple copies of a multi-page document.
     collate: Optional[bool] = None
     # The color mode the printer should use to print the job. Valid values are described in the table below. Read-only.
@@ -36,7 +37,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # The orientation to use when feeding media into the printer. Valid values are described in the following table. Read-only.
     feed_orientation: Optional[PrinterFeedOrientation] = None
     # Finishing processes to use when printing.
-    finishings: Optional[List[PrintFinishing]] = None
+    finishings: Optional[list[PrintFinishing]] = None
     # True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
     fit_pdf_to_page: Optional[bool] = None
     # The input bin (tray) to use when printing. See the printer's capabilities for a list of supported input bins.
@@ -56,7 +57,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # The output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
     output_bin: Optional[str] = None
     # The page ranges to print. Read-only.
-    page_ranges: Optional[List[IntegerRange]] = None
+    page_ranges: Optional[list[IntegerRange]] = None
     # The number of document pages to print on each sheet.
     pages_per_sheet: Optional[int] = None
     # The print quality to use when printing the job. Valid values are described in the table below. Read-only.
@@ -75,10 +76,10 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PrintJobConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .integer_range import IntegerRange
         from .printer_feed_orientation import PrinterFeedOrientation
@@ -102,7 +103,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         from .print_quality import PrintQuality
         from .print_scaling import PrintScaling
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "collate": lambda n : setattr(self, 'collate', n.get_bool_value()),
             "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(PrintColorMode)),
             "copies": lambda n : setattr(self, 'copies', n.get_int_value()),
@@ -134,17 +135,6 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .integer_range import IntegerRange
-        from .printer_feed_orientation import PrinterFeedOrientation
-        from .print_color_mode import PrintColorMode
-        from .print_duplex_mode import PrintDuplexMode
-        from .print_finishing import PrintFinishing
-        from .print_margin import PrintMargin
-        from .print_multipage_layout import PrintMultipageLayout
-        from .print_orientation import PrintOrientation
-        from .print_quality import PrintQuality
-        from .print_scaling import PrintScaling
-
         writer.write_bool_value("collate", self.collate)
         writer.write_enum_value("colorMode", self.color_mode)
         writer.write_int_value("copies", self.copies)

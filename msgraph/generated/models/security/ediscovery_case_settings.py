@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -33,10 +34,10 @@ class EdiscoveryCaseSettings(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EdiscoveryCaseSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .ocr_settings import OcrSettings
@@ -48,7 +49,7 @@ class EdiscoveryCaseSettings(Entity, Parsable):
         from .redundancy_detection_settings import RedundancyDetectionSettings
         from .topic_modeling_settings import TopicModelingSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "ocr": lambda n : setattr(self, 'ocr', n.get_object_value(OcrSettings)),
             "redundancyDetection": lambda n : setattr(self, 'redundancy_detection', n.get_object_value(RedundancyDetectionSettings)),
             "topicModeling": lambda n : setattr(self, 'topic_modeling', n.get_object_value(TopicModelingSettings)),
@@ -66,11 +67,6 @@ class EdiscoveryCaseSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .ocr_settings import OcrSettings
-        from .redundancy_detection_settings import RedundancyDetectionSettings
-        from .topic_modeling_settings import TopicModelingSettings
-
         writer.write_object_value("ocr", self.ocr)
         writer.write_object_value("redundancyDetection", self.redundancy_detection)
         writer.write_object_value("topicModeling", self.topic_modeling)

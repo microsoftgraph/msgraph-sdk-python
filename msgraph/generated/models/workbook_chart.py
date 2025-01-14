@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -34,7 +35,7 @@ class WorkbookChart(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents either a single series or collection of series in the chart. Read-only.
-    series: Optional[List[WorkbookChartSeries]] = None
+    series: Optional[list[WorkbookChartSeries]] = None
     # Represents the title of the specified chart, including the text, visibility, position and formatting of the title. Read-only.
     title: Optional[WorkbookChartTitle] = None
     # Represents the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the top of the chart area (on a chart).
@@ -55,10 +56,10 @@ class WorkbookChart(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkbookChart()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .workbook_chart_area_format import WorkbookChartAreaFormat
@@ -78,7 +79,7 @@ class WorkbookChart(Entity, Parsable):
         from .workbook_chart_title import WorkbookChartTitle
         from .workbook_worksheet import WorkbookWorksheet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "axes": lambda n : setattr(self, 'axes', n.get_object_value(WorkbookChartAxes)),
             "dataLabels": lambda n : setattr(self, 'data_labels', n.get_object_value(WorkbookChartDataLabels)),
             "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartAreaFormat)),
@@ -105,15 +106,6 @@ class WorkbookChart(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .workbook_chart_area_format import WorkbookChartAreaFormat
-        from .workbook_chart_axes import WorkbookChartAxes
-        from .workbook_chart_data_labels import WorkbookChartDataLabels
-        from .workbook_chart_legend import WorkbookChartLegend
-        from .workbook_chart_series import WorkbookChartSeries
-        from .workbook_chart_title import WorkbookChartTitle
-        from .workbook_worksheet import WorkbookWorksheet
-
         writer.write_object_value("axes", self.axes)
         writer.write_object_value("dataLabels", self.data_labels)
         writer.write_object_value("format", self.format)

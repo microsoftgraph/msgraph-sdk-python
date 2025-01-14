@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .email_authentication_method import EmailAuthenticationMethod
@@ -69,10 +70,10 @@ class AuthenticationMethod(Entity, Parsable):
             return WindowsHelloForBusinessAuthenticationMethod()
         return AuthenticationMethod()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .email_authentication_method import EmailAuthenticationMethod
         from .entity import Entity
@@ -94,7 +95,7 @@ class AuthenticationMethod(Entity, Parsable):
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -109,15 +110,5 @@ class AuthenticationMethod(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .email_authentication_method import EmailAuthenticationMethod
-        from .entity import Entity
-        from .fido2_authentication_method import Fido2AuthenticationMethod
-        from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
-        from .password_authentication_method import PasswordAuthenticationMethod
-        from .phone_authentication_method import PhoneAuthenticationMethod
-        from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
-        from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
-        from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
-
     
 

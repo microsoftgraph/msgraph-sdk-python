@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -17,9 +18,9 @@ class OnPremisesConditionalAccessSettings(Entity, Parsable):
     # Indicates if on premises conditional access is enabled for this organization
     enabled: Optional[bool] = None
     # User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
-    excluded_groups: Optional[List[UUID]] = None
+    excluded_groups: Optional[list[UUID]] = None
     # User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
-    included_groups: Optional[List[UUID]] = None
+    included_groups: Optional[list[UUID]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Override the default access rule when allowing a device to ensure access is granted.
@@ -36,16 +37,16 @@ class OnPremisesConditionalAccessSettings(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OnPremisesConditionalAccessSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
 
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
             "excludedGroups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(UUID)),
             "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(UUID)),
@@ -64,8 +65,6 @@ class OnPremisesConditionalAccessSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-
         writer.write_bool_value("enabled", self.enabled)
         writer.write_collection_of_primitive_values("excludedGroups", self.excluded_groups)
         writer.write_collection_of_primitive_values("includedGroups", self.included_groups)

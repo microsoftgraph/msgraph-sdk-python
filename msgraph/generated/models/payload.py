@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .email_identity import EmailIdentity
@@ -53,7 +54,7 @@ class Payload(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Free text tags for a payload.
-    payload_tags: Optional[List[str]] = None
+    payload_tags: Optional[list[str]] = None
     # The payload delivery platform for a simulation. Possible values are: unknown, sms, email, teams, unknownFutureValue.
     platform: Optional[PayloadDeliveryPlatform] = None
     # Predicted probability for a payload to phish a targeted user.
@@ -80,10 +81,10 @@ class Payload(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Payload()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .email_identity import EmailIdentity
         from .entity import Entity
@@ -111,7 +112,7 @@ class Payload(Entity, Parsable):
         from .simulation_content_source import SimulationContentSource
         from .simulation_content_status import SimulationContentStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "brand": lambda n : setattr(self, 'brand', n.get_enum_value(PayloadBrand)),
             "complexity": lambda n : setattr(self, 'complexity', n.get_enum_value(PayloadComplexity)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
@@ -148,19 +149,6 @@ class Payload(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .email_identity import EmailIdentity
-        from .entity import Entity
-        from .payload_brand import PayloadBrand
-        from .payload_complexity import PayloadComplexity
-        from .payload_delivery_platform import PayloadDeliveryPlatform
-        from .payload_detail import PayloadDetail
-        from .payload_industry import PayloadIndustry
-        from .payload_theme import PayloadTheme
-        from .simulation_attack_technique import SimulationAttackTechnique
-        from .simulation_attack_type import SimulationAttackType
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
-
         writer.write_enum_value("brand", self.brand)
         writer.write_enum_value("complexity", self.complexity)
         writer.write_object_value("createdBy", self.created_by)

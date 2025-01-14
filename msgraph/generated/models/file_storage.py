@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -12,9 +13,9 @@ from .entity import Entity
 @dataclass
 class FileStorage(Entity, Parsable):
     # The containers property
-    containers: Optional[List[FileStorageContainer]] = None
+    containers: Optional[list[FileStorageContainer]] = None
     # The deletedContainers property
-    deleted_containers: Optional[List[FileStorageContainer]] = None
+    deleted_containers: Optional[list[FileStorageContainer]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -29,10 +30,10 @@ class FileStorage(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return FileStorage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .file_storage_container import FileStorageContainer
@@ -40,7 +41,7 @@ class FileStorage(Entity, Parsable):
         from .entity import Entity
         from .file_storage_container import FileStorageContainer
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "containers": lambda n : setattr(self, 'containers', n.get_collection_of_object_values(FileStorageContainer)),
             "deletedContainers": lambda n : setattr(self, 'deleted_containers', n.get_collection_of_object_values(FileStorageContainer)),
         }
@@ -57,9 +58,6 @@ class FileStorage(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .file_storage_container import FileStorageContainer
-
         writer.write_collection_of_object_values("containers", self.containers)
         writer.write_collection_of_object_values("deletedContainers", self.deleted_containers)
     

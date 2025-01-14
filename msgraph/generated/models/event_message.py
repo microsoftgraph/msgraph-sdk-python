@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
@@ -22,7 +23,7 @@ class EventMessage(Message, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.eventMessage"
     # The endDateTime property
     end_date_time: Optional[DateTimeTimeZone] = None
-    # The event associated with the event message. The assumption for attendees or room resources is that the Calendar Attendant is set to automatically update the calendar with an event when meeting request event messages arrive. Navigation property.  Read-only.
+    # The event associated with the event message. The assumption for attendees or room resources is that the Calendar Attendant is set to automatically update the calendar with an event when meeting request event messages arrive. Navigation property. Read-only.
     event: Optional[Event] = None
     # The isAllDay property
     is_all_day: Optional[bool] = None
@@ -65,10 +66,10 @@ class EventMessage(Message, Parsable):
             return EventMessageResponse()
         return EventMessage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .date_time_time_zone import DateTimeTimeZone
         from .event import Event
@@ -90,7 +91,7 @@ class EventMessage(Message, Parsable):
         from .message import Message
         from .patterned_recurrence import PatternedRecurrence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
             "event": lambda n : setattr(self, 'event', n.get_object_value(Event)),
             "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
@@ -115,16 +116,6 @@ class EventMessage(Message, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .date_time_time_zone import DateTimeTimeZone
-        from .event import Event
-        from .event_message_request import EventMessageRequest
-        from .event_message_response import EventMessageResponse
-        from .event_type import EventType
-        from .location import Location
-        from .meeting_message_type import MeetingMessageType
-        from .message import Message
-        from .patterned_recurrence import PatternedRecurrence
-
         writer.write_object_value("endDateTime", self.end_date_time)
         writer.write_object_value("event", self.event)
         writer.write_bool_value("isAllDay", self.is_all_day)

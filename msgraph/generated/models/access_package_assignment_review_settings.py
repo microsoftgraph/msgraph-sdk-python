@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_review_expiration_behavior import AccessReviewExpirationBehavior
@@ -15,11 +16,11 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The default decision to apply if the access is not reviewed. The possible values are: keepAccess, removeAccess, acceptAccessRecommendation, unknownFutureValue.
     expiration_behavior: Optional[AccessReviewExpirationBehavior] = None
     # This collection specifies the users who will be the fallback reviewers when the primary reviewers don't respond.
-    fallback_reviewers: Optional[List[SubjectSet]] = None
+    fallback_reviewers: Optional[list[SubjectSet]] = None
     # If true, access reviews are required for assignments through this policy.
     is_enabled: Optional[bool] = None
     # Specifies whether to display recommendations to the reviewer. The default value is true.
@@ -31,7 +32,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
     # The OdataType property
     odata_type: Optional[str] = None
     # This collection specifies the users or group of users who will review the access package assignments.
-    primary_reviewers: Optional[List[SubjectSet]] = None
+    primary_reviewers: Optional[list[SubjectSet]] = None
     # When the first review should start and how often it should recur.
     schedule: Optional[EntitlementManagementSchedule] = None
     
@@ -46,10 +47,10 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
             raise TypeError("parse_node cannot be null.")
         return AccessPackageAssignmentReviewSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_review_expiration_behavior import AccessReviewExpirationBehavior
         from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -59,7 +60,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .subject_set import SubjectSet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(AccessReviewExpirationBehavior)),
             "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(SubjectSet)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
@@ -80,10 +81,6 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .access_review_expiration_behavior import AccessReviewExpirationBehavior
-        from .entitlement_management_schedule import EntitlementManagementSchedule
-        from .subject_set import SubjectSet
-
         writer.write_enum_value("expirationBehavior", self.expiration_behavior)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
         writer.write_bool_value("isEnabled", self.is_enabled)

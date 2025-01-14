@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -14,7 +15,7 @@ class DeltaParticipants(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The collection of participants that were updated since the last roster update.
-    participants: Optional[List[Participant]] = None
+    participants: Optional[list[Participant]] = None
     # The sequence number for the roster update that is used to identify the notification order.
     sequence_number: Optional[int] = None
     
@@ -29,10 +30,10 @@ class DeltaParticipants(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeltaParticipants()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .participant import Participant
@@ -40,7 +41,7 @@ class DeltaParticipants(Entity, Parsable):
         from .entity import Entity
         from .participant import Participant
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(Participant)),
             "sequenceNumber": lambda n : setattr(self, 'sequence_number', n.get_int_value()),
         }
@@ -57,9 +58,6 @@ class DeltaParticipants(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .participant import Participant
-
         writer.write_collection_of_object_values("participants", self.participants)
         writer.write_int_value("sequenceNumber", self.sequence_number)
     

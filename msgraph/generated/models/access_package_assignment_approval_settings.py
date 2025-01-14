@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_approval_stage import AccessPackageApprovalStage
@@ -13,7 +14,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # If false, then approval isn't required for new requests in this policy.
     is_approval_required_for_add: Optional[bool] = None
     # If false, then approval isn't required for updates to requests in this policy.
@@ -21,7 +22,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
     # The OdataType property
     odata_type: Optional[str] = None
     # If approval is required, the one, two or three elements of this collection define each of the stages of approval. An empty array is present if no approval is required.
-    stages: Optional[List[AccessPackageApprovalStage]] = None
+    stages: Optional[list[AccessPackageApprovalStage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AccessPackageAssignmentApprovalSettings:
@@ -34,16 +35,16 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
             raise TypeError("parse_node cannot be null.")
         return AccessPackageAssignmentApprovalSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_approval_stage import AccessPackageApprovalStage
 
         from .access_package_approval_stage import AccessPackageApprovalStage
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
             "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -59,8 +60,6 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .access_package_approval_stage import AccessPackageApprovalStage
-
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)
         writer.write_bool_value("isApprovalRequiredForUpdate", self.is_approval_required_for_update)
         writer.write_str_value("@odata.type", self.odata_type)

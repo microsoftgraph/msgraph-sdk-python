@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .meta_data_key_string_pair import MetaDataKeyStringPair
@@ -13,17 +14,17 @@ class ServerProcessedContent(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # A key-value map where keys are string identifiers and values are rich text with HTML format. SharePoint servers treat the values as HTML content and run services like safety checks, search index and link fixup on them.
-    html_strings: Optional[List[MetaDataKeyStringPair]] = None
+    html_strings: Optional[list[MetaDataKeyStringPair]] = None
     # A key-value map where keys are string identifiers and values are image sources. SharePoint servers treat the values as image sources and run services like search index and link fixup on them.
-    image_sources: Optional[List[MetaDataKeyStringPair]] = None
+    image_sources: Optional[list[MetaDataKeyStringPair]] = None
     # A key-value map where keys are string identifiers and values are links. SharePoint servers treat the values as links and run services like link fixup on them.
-    links: Optional[List[MetaDataKeyStringPair]] = None
+    links: Optional[list[MetaDataKeyStringPair]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A key-value map where keys are string identifiers and values are strings that should be search indexed.
-    searchable_plain_texts: Optional[List[MetaDataKeyStringPair]] = None
+    searchable_plain_texts: Optional[list[MetaDataKeyStringPair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ServerProcessedContent:
@@ -36,16 +37,16 @@ class ServerProcessedContent(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ServerProcessedContent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .meta_data_key_string_pair import MetaDataKeyStringPair
 
         from .meta_data_key_string_pair import MetaDataKeyStringPair
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "htmlStrings": lambda n : setattr(self, 'html_strings', n.get_collection_of_object_values(MetaDataKeyStringPair)),
             "imageSources": lambda n : setattr(self, 'image_sources', n.get_collection_of_object_values(MetaDataKeyStringPair)),
             "links": lambda n : setattr(self, 'links', n.get_collection_of_object_values(MetaDataKeyStringPair)),
@@ -62,8 +63,6 @@ class ServerProcessedContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .meta_data_key_string_pair import MetaDataKeyStringPair
-
         writer.write_collection_of_object_values("htmlStrings", self.html_strings)
         writer.write_collection_of_object_values("imageSources", self.image_sources)
         writer.write_collection_of_object_values("links", self.links)

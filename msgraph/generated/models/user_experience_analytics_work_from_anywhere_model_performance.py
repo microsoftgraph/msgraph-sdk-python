@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -46,10 +47,10 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserExperienceAnalyticsWorkFromAnywhereModelPerformance()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
@@ -57,7 +58,7 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity, Parsable):
         from .entity import Entity
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "cloudIdentityScore": lambda n : setattr(self, 'cloud_identity_score', n.get_float_value()),
             "cloudManagementScore": lambda n : setattr(self, 'cloud_management_score', n.get_float_value()),
             "cloudProvisioningScore": lambda n : setattr(self, 'cloud_provisioning_score', n.get_float_value()),
@@ -81,9 +82,6 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
-
         writer.write_float_value("cloudIdentityScore", self.cloud_identity_score)
         writer.write_float_value("cloudManagementScore", self.cloud_management_score)
         writer.write_float_value("cloudProvisioningScore", self.cloud_provisioning_score)

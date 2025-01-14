@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -37,10 +38,10 @@ class RemoteAssistancePartner(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RemoteAssistancePartner()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .remote_assistance_onboarding_status import RemoteAssistanceOnboardingStatus
@@ -48,7 +49,7 @@ class RemoteAssistancePartner(Entity, Parsable):
         from .entity import Entity
         from .remote_assistance_onboarding_status import RemoteAssistanceOnboardingStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
             "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(RemoteAssistanceOnboardingStatus)),
@@ -67,9 +68,6 @@ class RemoteAssistancePartner(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .remote_assistance_onboarding_status import RemoteAssistanceOnboardingStatus
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
         writer.write_enum_value("onboardingStatus", self.onboarding_status)

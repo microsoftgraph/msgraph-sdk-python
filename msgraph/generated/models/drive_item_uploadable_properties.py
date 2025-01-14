@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .drive_item_source import DriveItemSource
@@ -15,7 +16,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Provides a user-visible description of the item. Read-write. Only on OneDrive Personal.
     description: Optional[str] = None
     # Information about the drive item source. Read-write. Only on OneDrive for Business and SharePoint.
@@ -42,10 +43,10 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
             raise TypeError("parse_node cannot be null.")
         return DriveItemUploadableProperties()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .drive_item_source import DriveItemSource
         from .file_system_info import FileSystemInfo
@@ -55,7 +56,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
         from .file_system_info import FileSystemInfo
         from .media_source import MediaSource
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "driveItemSource": lambda n : setattr(self, 'drive_item_source', n.get_object_value(DriveItemSource)),
             "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
@@ -74,10 +75,6 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .drive_item_source import DriveItemSource
-        from .file_system_info import FileSystemInfo
-        from .media_source import MediaSource
-
         writer.write_str_value("description", self.description)
         writer.write_object_value("driveItemSource", self.drive_item_source)
         writer.write_int_value("fileSize", self.file_size)

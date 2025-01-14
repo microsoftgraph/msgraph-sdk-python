@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .cloud_pc_audit_event import CloudPcAuditEvent
@@ -18,21 +19,21 @@ from .entity import Entity
 @dataclass
 class VirtualEndpoint(Entity, Parsable):
     # A collection of Cloud PC audit events.
-    audit_events: Optional[List[CloudPcAuditEvent]] = None
+    audit_events: Optional[list[CloudPcAuditEvent]] = None
     # A collection of cloud-managed virtual desktops.
-    cloud_p_cs: Optional[List[CloudPC]] = None
+    cloud_p_cs: Optional[list[CloudPC]] = None
     # A collection of device image resources on Cloud PC.
-    device_images: Optional[List[CloudPcDeviceImage]] = None
+    device_images: Optional[list[CloudPcDeviceImage]] = None
     # A collection of gallery image resources on Cloud PC.
-    gallery_images: Optional[List[CloudPcGalleryImage]] = None
+    gallery_images: Optional[list[CloudPcGalleryImage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A defined collection of Azure resource information that can be used to establish Azure network connections for Cloud PCs.
-    on_premises_connections: Optional[List[CloudPcOnPremisesConnection]] = None
+    on_premises_connections: Optional[list[CloudPcOnPremisesConnection]] = None
     # A collection of Cloud PC provisioning policies.
-    provisioning_policies: Optional[List[CloudPcProvisioningPolicy]] = None
+    provisioning_policies: Optional[list[CloudPcProvisioningPolicy]] = None
     # A collection of Cloud PC user settings.
-    user_settings: Optional[List[CloudPcUserSetting]] = None
+    user_settings: Optional[list[CloudPcUserSetting]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> VirtualEndpoint:
@@ -45,10 +46,10 @@ class VirtualEndpoint(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return VirtualEndpoint()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .cloud_pc_audit_event import CloudPcAuditEvent
         from .cloud_pc_device_image import CloudPcDeviceImage
@@ -68,7 +69,7 @@ class VirtualEndpoint(Entity, Parsable):
         from .cloud_p_c import CloudPC
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "auditEvents": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(CloudPcAuditEvent)),
             "cloudPCs": lambda n : setattr(self, 'cloud_p_cs', n.get_collection_of_object_values(CloudPC)),
             "deviceImages": lambda n : setattr(self, 'device_images', n.get_collection_of_object_values(CloudPcDeviceImage)),
@@ -90,15 +91,6 @@ class VirtualEndpoint(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .cloud_pc_audit_event import CloudPcAuditEvent
-        from .cloud_pc_device_image import CloudPcDeviceImage
-        from .cloud_pc_gallery_image import CloudPcGalleryImage
-        from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
-        from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
-        from .cloud_pc_user_setting import CloudPcUserSetting
-        from .cloud_p_c import CloudPC
-        from .entity import Entity
-
         writer.write_collection_of_object_values("auditEvents", self.audit_events)
         writer.write_collection_of_object_values("cloudPCs", self.cloud_p_cs)
         writer.write_collection_of_object_values("deviceImages", self.device_images)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .advanced_config_state import AdvancedConfigState
@@ -14,7 +15,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # A single entity that is excluded from this feature.
     exclude_target: Optional[FeatureTarget] = None
     # A single entity that is included in this feature.
@@ -35,10 +36,10 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
             raise TypeError("parse_node cannot be null.")
         return AuthenticationMethodFeatureConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .advanced_config_state import AdvancedConfigState
         from .feature_target import FeatureTarget
@@ -46,7 +47,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
         from .advanced_config_state import AdvancedConfigState
         from .feature_target import FeatureTarget
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(FeatureTarget)),
             "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(FeatureTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -62,9 +63,6 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .advanced_config_state import AdvancedConfigState
-        from .feature_target import FeatureTarget
-
         writer.write_object_value("excludeTarget", self.exclude_target)
         writer.write_object_value("includeTarget", self.include_target)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attendee_availability import AttendeeAvailability
@@ -16,13 +17,13 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # An array that shows the availability status of each attendee for this meeting suggestion.
-    attendee_availability: Optional[List[AttendeeAvailability]] = None
+    attendee_availability: Optional[list[AttendeeAvailability]] = None
     # A percentage that represents the likelhood of all the attendees attending.
     confidence: Optional[float] = None
     # An array that specifies the name and geographic location of each meeting location for this meeting suggestion.
-    locations: Optional[List[Location]] = None
+    locations: Optional[list[Location]] = None
     # A time period suggested for the meeting.
     meeting_time_slot: Optional[TimeSlot] = None
     # The OdataType property
@@ -45,10 +46,10 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MeetingTimeSuggestion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attendee_availability import AttendeeAvailability
         from .free_busy_status import FreeBusyStatus
@@ -60,7 +61,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
         from .location import Location
         from .time_slot import TimeSlot
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attendeeAvailability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(AttendeeAvailability)),
             "confidence": lambda n : setattr(self, 'confidence', n.get_float_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(Location)),
@@ -80,11 +81,6 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .attendee_availability import AttendeeAvailability
-        from .free_busy_status import FreeBusyStatus
-        from .location import Location
-        from .time_slot import TimeSlot
-
         writer.write_collection_of_object_values("attendeeAvailability", self.attendee_availability)
         writer.write_float_value("confidence", self.confidence)
         writer.write_collection_of_object_values("locations", self.locations)

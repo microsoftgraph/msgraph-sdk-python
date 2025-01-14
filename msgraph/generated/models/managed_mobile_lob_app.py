@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .managed_android_lob_app import ManagedAndroidLobApp
@@ -21,7 +22,7 @@ class ManagedMobileLobApp(ManagedApp, Parsable):
     # The internal committed content version.
     committed_content_version: Optional[str] = None
     # The list of content versions for this app.
-    content_versions: Optional[List[MobileAppContent]] = None
+    content_versions: Optional[list[MobileAppContent]] = None
     # The name of the main Lob application file.
     file_name: Optional[str] = None
     # The total size, including all uploaded files.
@@ -51,10 +52,10 @@ class ManagedMobileLobApp(ManagedApp, Parsable):
             return ManagedIOSLobApp()
         return ManagedMobileLobApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .managed_android_lob_app import ManagedAndroidLobApp
         from .managed_app import ManagedApp
@@ -66,7 +67,7 @@ class ManagedMobileLobApp(ManagedApp, Parsable):
         from .managed_i_o_s_lob_app import ManagedIOSLobApp
         from .mobile_app_content import MobileAppContent
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
             "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(MobileAppContent)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
@@ -85,11 +86,6 @@ class ManagedMobileLobApp(ManagedApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .managed_android_lob_app import ManagedAndroidLobApp
-        from .managed_app import ManagedApp
-        from .managed_i_o_s_lob_app import ManagedIOSLobApp
-        from .mobile_app_content import MobileAppContent
-
         writer.write_str_value("committedContentVersion", self.committed_content_version)
         writer.write_collection_of_object_values("contentVersions", self.content_versions)
         writer.write_str_value("fileName", self.file_name)

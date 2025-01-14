@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -42,10 +43,10 @@ class GovernanceInsight(Entity, Parsable):
             return UserSignInInsight()
         return GovernanceInsight()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .membership_outlier_insight import MembershipOutlierInsight
@@ -55,7 +56,7 @@ class GovernanceInsight(Entity, Parsable):
         from .membership_outlier_insight import MembershipOutlierInsight
         from .user_sign_in_insight import UserSignInInsight
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "insightCreatedDateTime": lambda n : setattr(self, 'insight_created_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -71,10 +72,6 @@ class GovernanceInsight(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .membership_outlier_insight import MembershipOutlierInsight
-        from .user_sign_in_insight import UserSignInInsight
-
         writer.write_datetime_value("insightCreatedDateTime", self.insight_created_date_time)
     
 

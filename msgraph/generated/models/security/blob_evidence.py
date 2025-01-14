@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -19,7 +20,7 @@ class BlobEvidence(AlertEvidence, Parsable):
     # The Etag associated with this blob.
     etag: Optional[str] = None
     # The file hashes associated with this blob.
-    file_hashes: Optional[List[FileHash]] = None
+    file_hashes: Optional[list[FileHash]] = None
     # The name of the blob.
     name: Optional[str] = None
     # The full URL representation of the blob.
@@ -36,10 +37,10 @@ class BlobEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BlobEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .blob_container_evidence import BlobContainerEvidence
@@ -49,7 +50,7 @@ class BlobEvidence(AlertEvidence, Parsable):
         from .blob_container_evidence import BlobContainerEvidence
         from .file_hash import FileHash
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "blobContainer": lambda n : setattr(self, 'blob_container', n.get_object_value(BlobContainerEvidence)),
             "etag": lambda n : setattr(self, 'etag', n.get_str_value()),
             "fileHashes": lambda n : setattr(self, 'file_hashes', n.get_collection_of_object_values(FileHash)),
@@ -69,10 +70,6 @@ class BlobEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .blob_container_evidence import BlobContainerEvidence
-        from .file_hash import FileHash
-
         writer.write_object_value("blobContainer", self.blob_container)
         writer.write_str_value("etag", self.etag)
         writer.write_collection_of_object_values("fileHashes", self.file_hashes)

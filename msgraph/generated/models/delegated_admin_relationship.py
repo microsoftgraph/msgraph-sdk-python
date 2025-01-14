@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
@@ -19,7 +20,7 @@ from .entity import Entity
 @dataclass
 class DelegatedAdminRelationship(Entity, Parsable):
     # The access assignments associated with the delegated admin relationship.
-    access_assignments: Optional[List[DelegatedAdminAccessAssignment]] = None
+    access_assignments: Optional[list[DelegatedAdminAccessAssignment]] = None
     # The accessDetails property
     access_details: Optional[DelegatedAdminAccessDetails] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship became active. Read-only.
@@ -41,9 +42,9 @@ class DelegatedAdminRelationship(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The long running operations associated with the delegated admin relationship.
-    operations: Optional[List[DelegatedAdminRelationshipOperation]] = None
+    operations: Optional[list[DelegatedAdminRelationshipOperation]] = None
     # The requests associated with the delegated admin relationship.
-    requests: Optional[List[DelegatedAdminRelationshipRequest]] = None
+    requests: Optional[list[DelegatedAdminRelationshipRequest]] = None
     # The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderby.
     status: Optional[DelegatedAdminRelationshipStatus] = None
     
@@ -67,10 +68,10 @@ class DelegatedAdminRelationship(Entity, Parsable):
             return ResellerDelegatedAdminRelationship()
         return DelegatedAdminRelationship()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
         from .delegated_admin_access_details import DelegatedAdminAccessDetails
@@ -90,7 +91,7 @@ class DelegatedAdminRelationship(Entity, Parsable):
         from .entity import Entity
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessAssignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(DelegatedAdminAccessAssignment)),
             "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
             "activatedDateTime": lambda n : setattr(self, 'activated_date_time', n.get_datetime_value()),
@@ -118,15 +119,6 @@ class DelegatedAdminRelationship(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
-        from .delegated_admin_access_details import DelegatedAdminAccessDetails
-        from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
-        from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
-        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
-        from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
-        from .entity import Entity
-        from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
-
         writer.write_collection_of_object_values("accessAssignments", self.access_assignments)
         writer.write_object_value("accessDetails", self.access_details)
         writer.write_datetime_value("activatedDateTime", self.activated_date_time)

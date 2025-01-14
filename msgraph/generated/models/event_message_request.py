@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
@@ -39,10 +40,10 @@ class EventMessageRequest(EventMessage, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EventMessageRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .date_time_time_zone import DateTimeTimeZone
         from .event_message import EventMessage
@@ -54,7 +55,7 @@ class EventMessageRequest(EventMessage, Parsable):
         from .location import Location
         from .meeting_request_type import MeetingRequestType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
             "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(MeetingRequestType)),
             "previousEndDateTime": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(DateTimeTimeZone)),
@@ -75,11 +76,6 @@ class EventMessageRequest(EventMessage, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .date_time_time_zone import DateTimeTimeZone
-        from .event_message import EventMessage
-        from .location import Location
-        from .meeting_request_type import MeetingRequestType
-
         writer.write_bool_value("allowNewTimeProposals", self.allow_new_time_proposals)
         writer.write_enum_value("meetingRequestType", self.meeting_request_type)
         writer.write_object_value("previousEndDateTime", self.previous_end_date_time)

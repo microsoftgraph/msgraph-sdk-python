@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_review_history_status import AccessReviewHistoryStatus
@@ -40,10 +41,10 @@ class AccessReviewHistoryInstance(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessReviewHistoryInstance()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_review_history_status import AccessReviewHistoryStatus
         from .entity import Entity
@@ -51,7 +52,7 @@ class AccessReviewHistoryInstance(Entity, Parsable):
         from .access_review_history_status import AccessReviewHistoryStatus
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "downloadUri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "fulfilledDateTime": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),
@@ -73,9 +74,6 @@ class AccessReviewHistoryInstance(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_review_history_status import AccessReviewHistoryStatus
-        from .entity import Entity
-
         writer.write_str_value("downloadUri", self.download_uri)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_datetime_value("fulfilledDateTime", self.fulfilled_date_time)

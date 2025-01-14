@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .bucket_aggregation_range import BucketAggregationRange
@@ -14,7 +15,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # True to specify the sort order as descending. The default is false, with the sort order as ascending. Optional.
     is_descending: Optional[bool] = None
     # The minimum number of items that should be present in the aggregation to be returned in a bucket. Optional.
@@ -24,7 +25,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
     # A filter to define a matching criteria. The key should start with the specified prefix to be returned in the response. Optional.
     prefix_filter: Optional[str] = None
     # Specifies the manual ranges to compute the aggregations. This is only valid for nonstring refiners of date or numeric type. Optional.
-    ranges: Optional[List[BucketAggregationRange]] = None
+    ranges: Optional[list[BucketAggregationRange]] = None
     # The sortBy property
     sort_by: Optional[BucketAggregationSortProperty] = None
     
@@ -39,10 +40,10 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BucketAggregationDefinition()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .bucket_aggregation_range import BucketAggregationRange
         from .bucket_aggregation_sort_property import BucketAggregationSortProperty
@@ -50,7 +51,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
         from .bucket_aggregation_range import BucketAggregationRange
         from .bucket_aggregation_sort_property import BucketAggregationSortProperty
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isDescending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
             "minimumCount": lambda n : setattr(self, 'minimum_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -68,9 +69,6 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .bucket_aggregation_range import BucketAggregationRange
-        from .bucket_aggregation_sort_property import BucketAggregationSortProperty
-
         writer.write_bool_value("isDescending", self.is_descending)
         writer.write_int_value("minimumCount", self.minimum_count)
         writer.write_str_value("@odata.type", self.odata_type)

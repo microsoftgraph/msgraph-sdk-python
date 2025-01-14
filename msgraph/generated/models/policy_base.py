@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
@@ -93,10 +94,10 @@ class PolicyBase(DirectoryObject, Parsable):
             return TokenLifetimePolicy()
         return PolicyBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .app_management_policy import AppManagementPolicy
@@ -126,7 +127,7 @@ class PolicyBase(DirectoryObject, Parsable):
         from .token_issuance_policy import TokenIssuancePolicy
         from .token_lifetime_policy import TokenLifetimePolicy
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
@@ -143,20 +144,6 @@ class PolicyBase(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
-        from .app_management_policy import AppManagementPolicy
-        from .authorization_policy import AuthorizationPolicy
-        from .claims_mapping_policy import ClaimsMappingPolicy
-        from .cross_tenant_access_policy import CrossTenantAccessPolicy
-        from .directory_object import DirectoryObject
-        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
-        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
-        from .permission_grant_policy import PermissionGrantPolicy
-        from .sts_policy import StsPolicy
-        from .tenant_app_management_policy import TenantAppManagementPolicy
-        from .token_issuance_policy import TokenIssuancePolicy
-        from .token_lifetime_policy import TokenLifetimePolicy
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
     

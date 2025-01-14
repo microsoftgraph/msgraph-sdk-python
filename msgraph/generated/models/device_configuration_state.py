@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .compliance_status import ComplianceStatus
@@ -25,7 +26,7 @@ class DeviceConfigurationState(Entity, Parsable):
     # Count of how many setting a policy holds
     setting_count: Optional[int] = None
     # The settingStates property
-    setting_states: Optional[List[DeviceConfigurationSettingState]] = None
+    setting_states: Optional[list[DeviceConfigurationSettingState]] = None
     # The state property
     state: Optional[ComplianceStatus] = None
     # The version of the policy
@@ -42,10 +43,10 @@ class DeviceConfigurationState(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeviceConfigurationState()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .compliance_status import ComplianceStatus
         from .device_configuration_setting_state import DeviceConfigurationSettingState
@@ -57,7 +58,7 @@ class DeviceConfigurationState(Entity, Parsable):
         from .entity import Entity
         from .policy_platform_type import PolicyPlatformType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(PolicyPlatformType)),
             "settingCount": lambda n : setattr(self, 'setting_count', n.get_int_value()),
@@ -78,11 +79,6 @@ class DeviceConfigurationState(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .compliance_status import ComplianceStatus
-        from .device_configuration_setting_state import DeviceConfigurationSettingState
-        from .entity import Entity
-        from .policy_platform_type import PolicyPlatformType
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("platformType", self.platform_type)
         writer.write_int_value("settingCount", self.setting_count)

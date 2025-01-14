@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -44,10 +45,10 @@ class TeamsAsyncOperation(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TeamsAsyncOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .operation_error import OperationError
@@ -59,7 +60,7 @@ class TeamsAsyncOperation(Entity, Parsable):
         from .teams_async_operation_status import TeamsAsyncOperationStatus
         from .teams_async_operation_type import TeamsAsyncOperationType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attemptsCount": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(OperationError)),
@@ -82,11 +83,6 @@ class TeamsAsyncOperation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .operation_error import OperationError
-        from .teams_async_operation_status import TeamsAsyncOperationStatus
-        from .teams_async_operation_type import TeamsAsyncOperationType
-
         writer.write_int_value("attemptsCount", self.attempts_count)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("error", self.error)

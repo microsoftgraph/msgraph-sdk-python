@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .allowed_value import AllowedValue
@@ -12,7 +13,7 @@ from .entity import Entity
 @dataclass
 class CustomSecurityAttributeDefinition(Entity, Parsable):
     # Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
-    allowed_values: Optional[List[AllowedValue]] = None
+    allowed_values: Optional[list[AllowedValue]] = None
     # Name of the attribute set. Case insensitive.
     attribute_set: Optional[str] = None
     # Description of the custom security attribute. Can be up to 128 characters long and include Unicode characters. Can be changed later.
@@ -43,10 +44,10 @@ class CustomSecurityAttributeDefinition(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CustomSecurityAttributeDefinition()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .allowed_value import AllowedValue
         from .entity import Entity
@@ -54,7 +55,7 @@ class CustomSecurityAttributeDefinition(Entity, Parsable):
         from .allowed_value import AllowedValue
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowedValues": lambda n : setattr(self, 'allowed_values', n.get_collection_of_object_values(AllowedValue)),
             "attributeSet": lambda n : setattr(self, 'attribute_set', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -78,9 +79,6 @@ class CustomSecurityAttributeDefinition(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .allowed_value import AllowedValue
-        from .entity import Entity
-
         writer.write_collection_of_object_values("allowedValues", self.allowed_values)
         writer.write_str_value("attributeSet", self.attribute_set)
         writer.write_str_value("description", self.description)

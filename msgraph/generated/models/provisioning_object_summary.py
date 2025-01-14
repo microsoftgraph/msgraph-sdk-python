@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -32,7 +33,7 @@ class ProvisioningObjectSummary(Entity, Parsable):
     # The unique ID for the whole provisioning job. Supports $filter (eq, contains).
     job_id: Optional[str] = None
     # Details of each property that was modified in this provisioning action on this object.
-    modified_properties: Optional[List[ModifiedProperty]] = None
+    modified_properties: Optional[list[ModifiedProperty]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Microsoft Entra activity list. Supports $filter (eq, contains).
@@ -40,7 +41,7 @@ class ProvisioningObjectSummary(Entity, Parsable):
     # Details of provisioning status.
     provisioning_status_info: Optional[ProvisioningStatusInfo] = None
     # Details of each step in provisioning.
-    provisioning_steps: Optional[List[ProvisioningStep]] = None
+    provisioning_steps: Optional[list[ProvisioningStep]] = None
     # Represents the service principal used for provisioning. Supports $filter (eq) for id and name.
     service_principal: Optional[ProvisioningServicePrincipal] = None
     # Details of source object being provisioned. Supports $filter (eq, contains) for identityType, id, and displayName.
@@ -65,10 +66,10 @@ class ProvisioningObjectSummary(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ProvisioningObjectSummary()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .initiator import Initiator
@@ -90,7 +91,7 @@ class ProvisioningObjectSummary(Entity, Parsable):
         from .provisioning_step import ProvisioningStep
         from .provisioning_system import ProvisioningSystem
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "changeId": lambda n : setattr(self, 'change_id', n.get_str_value()),
             "cycleId": lambda n : setattr(self, 'cycle_id', n.get_str_value()),
@@ -121,16 +122,6 @@ class ProvisioningObjectSummary(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .initiator import Initiator
-        from .modified_property import ModifiedProperty
-        from .provisioned_identity import ProvisionedIdentity
-        from .provisioning_action import ProvisioningAction
-        from .provisioning_service_principal import ProvisioningServicePrincipal
-        from .provisioning_status_info import ProvisioningStatusInfo
-        from .provisioning_step import ProvisioningStep
-        from .provisioning_system import ProvisioningSystem
-
         writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("changeId", self.change_id)
         writer.write_str_value("cycleId", self.cycle_id)

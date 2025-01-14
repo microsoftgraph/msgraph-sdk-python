@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
@@ -23,7 +24,7 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -75,10 +76,10 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
             return WindowsUniversalAppXAppAssignmentSettings()
         return MobileAppAssignmentSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
         from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
@@ -98,7 +99,7 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
         from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -111,15 +112,6 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
-        from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
-        from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
-        from .mac_os_lob_app_assignment_settings import MacOsLobAppAssignmentSettings
-        from .microsoft_store_for_business_app_assignment_settings import MicrosoftStoreForBusinessAppAssignmentSettings
-        from .win32_lob_app_assignment_settings import Win32LobAppAssignmentSettings
-        from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
-        from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
-
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

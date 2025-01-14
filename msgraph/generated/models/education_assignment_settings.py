@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_grading_category import EducationGradingCategory
@@ -12,7 +13,7 @@ from .entity import Entity
 @dataclass
 class EducationAssignmentSettings(Entity, Parsable):
     # When set, enables users to weight assignments differently when computing a class average grade.
-    grading_categories: Optional[List[EducationGradingCategory]] = None
+    grading_categories: Optional[list[EducationGradingCategory]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates whether to show the turn-in celebration animation. If true, indicates to skip the animation. The default value is false.
@@ -29,10 +30,10 @@ class EducationAssignmentSettings(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EducationAssignmentSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .education_grading_category import EducationGradingCategory
         from .entity import Entity
@@ -40,7 +41,7 @@ class EducationAssignmentSettings(Entity, Parsable):
         from .education_grading_category import EducationGradingCategory
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "gradingCategories": lambda n : setattr(self, 'grading_categories', n.get_collection_of_object_values(EducationGradingCategory)),
             "submissionAnimationDisabled": lambda n : setattr(self, 'submission_animation_disabled', n.get_bool_value()),
         }
@@ -57,9 +58,6 @@ class EducationAssignmentSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .education_grading_category import EducationGradingCategory
-        from .entity import Entity
-
         writer.write_collection_of_object_values("gradingCategories", self.grading_categories)
         writer.write_bool_value("submissionAnimationDisabled", self.submission_animation_disabled)
     

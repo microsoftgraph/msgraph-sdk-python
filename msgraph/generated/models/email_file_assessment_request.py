@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mail_destination_routing_reason import MailDestinationRoutingReason
@@ -31,10 +32,10 @@ class EmailFileAssessmentRequest(ThreatAssessmentRequest, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EmailFileAssessmentRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mail_destination_routing_reason import MailDestinationRoutingReason
         from .threat_assessment_request import ThreatAssessmentRequest
@@ -42,7 +43,7 @@ class EmailFileAssessmentRequest(ThreatAssessmentRequest, Parsable):
         from .mail_destination_routing_reason import MailDestinationRoutingReason
         from .threat_assessment_request import ThreatAssessmentRequest
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "contentData": lambda n : setattr(self, 'content_data', n.get_str_value()),
             "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(MailDestinationRoutingReason)),
             "recipientEmail": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
@@ -60,9 +61,6 @@ class EmailFileAssessmentRequest(ThreatAssessmentRequest, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mail_destination_routing_reason import MailDestinationRoutingReason
-        from .threat_assessment_request import ThreatAssessmentRequest
-
         writer.write_str_value("contentData", self.content_data)
         writer.write_enum_value("destinationRoutingReason", self.destination_routing_reason)
         writer.write_str_value("recipientEmail", self.recipient_email)

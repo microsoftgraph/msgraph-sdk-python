@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mac_o_s_included_app import MacOSIncludedApp
@@ -20,7 +21,7 @@ class MacOSDmgApp(MobileLobApp, Parsable):
     # When TRUE, indicates that the app's version will NOT be used to detect if the app is installed on a device. When FALSE, indicates that the app's version will be used to detect if the app is installed on a device. Set this to true for apps that use a self update feature. The default value is FALSE.
     ignore_version_detection: Optional[bool] = None
     # The list of .apps expected to be installed by the DMG (Apple Disk Image). This collection can contain a maximum of 500 elements.
-    included_apps: Optional[List[MacOSIncludedApp]] = None
+    included_apps: Optional[list[MacOSIncludedApp]] = None
     # ComplexType macOSMinimumOperatingSystem that indicates the minimum operating system applicable for the application.
     minimum_supported_operating_system: Optional[MacOSMinimumOperatingSystem] = None
     # The bundleId of the primary .app in the DMG (Apple Disk Image). This maps to the CFBundleIdentifier in the app's bundle configuration.
@@ -39,10 +40,10 @@ class MacOSDmgApp(MobileLobApp, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MacOSDmgApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mac_o_s_included_app import MacOSIncludedApp
         from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
@@ -52,7 +53,7 @@ class MacOSDmgApp(MobileLobApp, Parsable):
         from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
         from .mobile_lob_app import MobileLobApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
             "includedApps": lambda n : setattr(self, 'included_apps', n.get_collection_of_object_values(MacOSIncludedApp)),
             "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(MacOSMinimumOperatingSystem)),
@@ -72,10 +73,6 @@ class MacOSDmgApp(MobileLobApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mac_o_s_included_app import MacOSIncludedApp
-        from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
-        from .mobile_lob_app import MobileLobApp
-
         writer.write_bool_value("ignoreVersionDetection", self.ignore_version_detection)
         writer.write_collection_of_object_values("includedApps", self.included_apps)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
@@ -17,7 +18,7 @@ class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRul
     # The level of notification. The possible values are None, Critical, All.
     notification_level: Optional[str] = None
     # The list of recipients of the email notifications.
-    notification_recipients: Optional[List[str]] = None
+    notification_recipients: Optional[list[str]] = None
     # The type of notification. Only Email is supported.
     notification_type: Optional[str] = None
     # The type of recipient of the notification. The possible values are Requestor, Approver, Admin.
@@ -34,16 +35,16 @@ class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRul
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleManagementPolicyNotificationRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isDefaultRecipientsEnabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),
             "notificationLevel": lambda n : setattr(self, 'notification_level', n.get_str_value()),
             "notificationRecipients": lambda n : setattr(self, 'notification_recipients', n.get_collection_of_primitive_values(str)),
@@ -63,8 +64,6 @@ class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRul
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
-
         writer.write_bool_value("isDefaultRecipientsEnabled", self.is_default_recipients_enabled)
         writer.write_str_value("notificationLevel", self.notification_level)
         writer.write_collection_of_primitive_values("notificationRecipients", self.notification_recipients)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .giphy_rating_type import GiphyRatingType
@@ -13,7 +14,7 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # If set to true, enables users to include custom memes.
     allow_custom_memes: Optional[bool] = None
     # If set to true, enables Giphy use.
@@ -36,16 +37,16 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TeamFunSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .giphy_rating_type import GiphyRatingType
 
         from .giphy_rating_type import GiphyRatingType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowCustomMemes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
             "allowGiphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
             "allowStickersAndMemes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
@@ -62,8 +63,6 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .giphy_rating_type import GiphyRatingType
-
         writer.write_bool_value("allowCustomMemes", self.allow_custom_memes)
         writer.write_bool_value("allowGiphy", self.allow_giphy)
         writer.write_bool_value("allowStickersAndMemes", self.allow_stickers_and_memes)

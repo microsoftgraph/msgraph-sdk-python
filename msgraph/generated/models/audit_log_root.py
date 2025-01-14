@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_audit import DirectoryAudit
@@ -14,13 +15,13 @@ from .entity import Entity
 @dataclass
 class AuditLogRoot(Entity, Parsable):
     # The directoryAudits property
-    directory_audits: Optional[List[DirectoryAudit]] = None
+    directory_audits: Optional[list[DirectoryAudit]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The provisioning property
-    provisioning: Optional[List[ProvisioningObjectSummary]] = None
+    provisioning: Optional[list[ProvisioningObjectSummary]] = None
     # The signIns property
-    sign_ins: Optional[List[SignIn]] = None
+    sign_ins: Optional[list[SignIn]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AuditLogRoot:
@@ -33,10 +34,10 @@ class AuditLogRoot(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AuditLogRoot()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_audit import DirectoryAudit
         from .entity import Entity
@@ -48,7 +49,7 @@ class AuditLogRoot(Entity, Parsable):
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .sign_in import SignIn
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "directoryAudits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(DirectoryAudit)),
             "provisioning": lambda n : setattr(self, 'provisioning', n.get_collection_of_object_values(ProvisioningObjectSummary)),
             "signIns": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(SignIn)),
@@ -66,11 +67,6 @@ class AuditLogRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_audit import DirectoryAudit
-        from .entity import Entity
-        from .provisioning_object_summary import ProvisioningObjectSummary
-        from .sign_in import SignIn
-
         writer.write_collection_of_object_values("directoryAudits", self.directory_audits)
         writer.write_collection_of_object_values("provisioning", self.provisioning)
         writer.write_collection_of_object_values("signIns", self.sign_ins)

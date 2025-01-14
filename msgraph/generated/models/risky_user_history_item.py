@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .risky_user import RiskyUser
@@ -31,10 +32,10 @@ class RiskyUserHistoryItem(RiskyUser, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RiskyUserHistoryItem()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .risky_user import RiskyUser
         from .risk_user_activity import RiskUserActivity
@@ -42,7 +43,7 @@ class RiskyUserHistoryItem(RiskyUser, Parsable):
         from .risky_user import RiskyUser
         from .risk_user_activity import RiskUserActivity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskUserActivity)),
             "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
@@ -60,9 +61,6 @@ class RiskyUserHistoryItem(RiskyUser, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .risky_user import RiskyUser
-        from .risk_user_activity import RiskUserActivity
-
         writer.write_object_value("activity", self.activity)
         writer.write_str_value("initiatedBy", self.initiated_by)
         writer.write_str_value("userId", self.user_id)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -13,7 +14,7 @@ from .entity import Entity
 @dataclass
 class FeatureRolloutPolicy(Entity, Parsable):
     # Nullable. Specifies a list of directoryObject resources that feature is enabled for.
-    applies_to: Optional[List[DirectoryObject]] = None
+    applies_to: Optional[list[DirectoryObject]] = None
     # A description for this feature rollout policy.
     description: Optional[str] = None
     # The display name for this  feature rollout policy.
@@ -38,10 +39,10 @@ class FeatureRolloutPolicy(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return FeatureRolloutPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .entity import Entity
@@ -51,7 +52,7 @@ class FeatureRolloutPolicy(Entity, Parsable):
         from .entity import Entity
         from .staged_feature_name import StagedFeatureName
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -72,10 +73,6 @@ class FeatureRolloutPolicy(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-        from .entity import Entity
-        from .staged_feature_name import StagedFeatureName
-
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

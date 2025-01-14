@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .boolean_column import BooleanColumn
@@ -106,10 +107,10 @@ class ColumnDefinition(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ColumnDefinition()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .boolean_column import BooleanColumn
         from .calculated_column import CalculatedColumn
@@ -151,7 +152,7 @@ class ColumnDefinition(Entity, Parsable):
         from .text_column import TextColumn
         from .thumbnail_column import ThumbnailColumn
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "boolean": lambda n : setattr(self, 'boolean', n.get_object_value(BooleanColumn)),
             "calculated": lambda n : setattr(self, 'calculated', n.get_object_value(CalculatedColumn)),
             "choice": lambda n : setattr(self, 'choice', n.get_object_value(ChoiceColumn)),
@@ -198,26 +199,6 @@ class ColumnDefinition(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .boolean_column import BooleanColumn
-        from .calculated_column import CalculatedColumn
-        from .choice_column import ChoiceColumn
-        from .column_types import ColumnTypes
-        from .column_validation import ColumnValidation
-        from .content_approval_status_column import ContentApprovalStatusColumn
-        from .content_type_info import ContentTypeInfo
-        from .currency_column import CurrencyColumn
-        from .date_time_column import DateTimeColumn
-        from .default_column_value import DefaultColumnValue
-        from .entity import Entity
-        from .geolocation_column import GeolocationColumn
-        from .hyperlink_or_picture_column import HyperlinkOrPictureColumn
-        from .lookup_column import LookupColumn
-        from .number_column import NumberColumn
-        from .person_or_group_column import PersonOrGroupColumn
-        from .term_column import TermColumn
-        from .text_column import TextColumn
-        from .thumbnail_column import ThumbnailColumn
-
         writer.write_object_value("boolean", self.boolean)
         writer.write_object_value("calculated", self.calculated)
         writer.write_object_value("choice", self.choice)

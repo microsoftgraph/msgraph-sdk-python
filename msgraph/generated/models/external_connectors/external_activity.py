@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -43,10 +44,10 @@ class ExternalActivity(Entity, Parsable):
             return ExternalActivityResult()
         return ExternalActivity()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .external_activity_result import ExternalActivityResult
@@ -58,7 +59,7 @@ class ExternalActivity(Entity, Parsable):
         from .external_activity_type import ExternalActivityType
         from .identity import Identity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "performedBy": lambda n : setattr(self, 'performed_by', n.get_object_value(Identity)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(ExternalActivityType)),
@@ -76,11 +77,6 @@ class ExternalActivity(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .external_activity_result import ExternalActivityResult
-        from .external_activity_type import ExternalActivityType
-        from .identity import Identity
-
         writer.write_object_value("performedBy", self.performed_by)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("type", self.type)

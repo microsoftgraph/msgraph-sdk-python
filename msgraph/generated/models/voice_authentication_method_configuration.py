@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
@@ -14,7 +15,7 @@ class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.voiceAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method. Expanded by default.
-    include_targets: Optional[List[AuthenticationMethodTarget]] = None
+    include_targets: Optional[list[AuthenticationMethodTarget]] = None
     # true if users can register office phones, otherwise, false.
     is_office_phone_allowed: Optional[bool] = None
     
@@ -29,10 +30,10 @@ class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
             raise TypeError("parse_node cannot be null.")
         return VoiceAuthenticationMethodConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
@@ -40,7 +41,7 @@ class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
             "isOfficePhoneAllowed": lambda n : setattr(self, 'is_office_phone_allowed', n.get_bool_value()),
         }
@@ -57,9 +58,6 @@ class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_method_configuration import AuthenticationMethodConfiguration
-        from .authentication_method_target import AuthenticationMethodTarget
-
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
         writer.write_bool_value("isOfficePhoneAllowed", self.is_office_phone_allowed)
     

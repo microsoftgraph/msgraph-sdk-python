@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -14,7 +15,7 @@ from ..entity import Entity
 @dataclass
 class Task(Entity, Parsable):
     # Arguments included within the task.  For guidance to configure this property, see Configure the arguments for built-in Lifecycle Workflow tasks. Required.
-    arguments: Optional[List[KeyValuePair]] = None
+    arguments: Optional[list[KeyValuePair]] = None
     # The category property
     category: Optional[LifecycleTaskCategory] = None
     # A Boolean value that specifies whether, if this task fails, the workflow stops, and subsequent tasks aren't run. Optional.
@@ -32,7 +33,7 @@ class Task(Entity, Parsable):
     # A unique template identifier for the task. For more information about the tasks that Lifecycle Workflows currently supports and their unique identifiers, see Configure the arguments for built-in Lifecycle Workflow tasks. Required.Supports $filter(eq, ne).
     task_definition_id: Optional[str] = None
     # The result of processing the task.
-    task_processing_results: Optional[List[TaskProcessingResult]] = None
+    task_processing_results: Optional[list[TaskProcessingResult]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Task:
@@ -45,10 +46,10 @@ class Task(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Task()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..key_value_pair import KeyValuePair
@@ -60,7 +61,7 @@ class Task(Entity, Parsable):
         from .lifecycle_task_category import LifecycleTaskCategory
         from .task_processing_result import TaskProcessingResult
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "arguments": lambda n : setattr(self, 'arguments', n.get_collection_of_object_values(KeyValuePair)),
             "category": lambda n : setattr(self, 'category', n.get_collection_of_enum_values(LifecycleTaskCategory)),
             "continueOnError": lambda n : setattr(self, 'continue_on_error', n.get_bool_value()),
@@ -84,11 +85,6 @@ class Task(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..key_value_pair import KeyValuePair
-        from .lifecycle_task_category import LifecycleTaskCategory
-        from .task_processing_result import TaskProcessingResult
-
         writer.write_collection_of_object_values("arguments", self.arguments)
         writer.write_enum_value("category", self.category)
         writer.write_bool_value("continueOnError", self.continue_on_error)

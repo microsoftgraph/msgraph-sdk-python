@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .content_customization import ContentCustomization
@@ -26,7 +27,7 @@ class OrganizationalBrandingProperties(Entity, Parsable):
     # A relative URL for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
     banner_logo_relative_url: Optional[str] = None
     # A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
-    cdn_list: Optional[List[str]] = None
+    cdn_list: Optional[list[str]] = None
     # Represents the content options to be customized throughout the authentication flow for a tenant. NOTE: Supported by Microsoft Entra External ID in external tenants only.
     content_customization: Optional[ContentCustomization] = None
     # A custom URL for resetting account credentials. This URL must be in ASCII format or non-ASCII characters must be URL encoded, and not exceed 128 characters.
@@ -104,10 +105,10 @@ class OrganizationalBrandingProperties(Entity, Parsable):
             return OrganizationalBrandingLocalization()
         return OrganizationalBrandingProperties()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .content_customization import ContentCustomization
         from .entity import Entity
@@ -123,7 +124,7 @@ class OrganizationalBrandingProperties(Entity, Parsable):
         from .organizational_branding import OrganizationalBranding
         from .organizational_branding_localization import OrganizationalBrandingLocalization
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
             "backgroundImage": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
             "backgroundImageRelativeUrl": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),
@@ -169,13 +170,6 @@ class OrganizationalBrandingProperties(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .content_customization import ContentCustomization
-        from .entity import Entity
-        from .login_page_layout_configuration import LoginPageLayoutConfiguration
-        from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
-        from .organizational_branding import OrganizationalBranding
-        from .organizational_branding_localization import OrganizationalBrandingLocalization
-
         writer.write_str_value("backgroundColor", self.background_color)
         writer.write_bytes_value("backgroundImage", self.background_image)
         writer.write_str_value("backgroundImageRelativeUrl", self.background_image_relative_url)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_compliance_setting_state import DeviceComplianceSettingState
@@ -20,7 +21,7 @@ class DeviceCompliancePolicySettingStateSummary(Entity, Parsable):
     # Number of conflict devices
     conflict_device_count: Optional[int] = None
     # Not yet documented
-    device_compliance_setting_states: Optional[List[DeviceComplianceSettingState]] = None
+    device_compliance_setting_states: Optional[list[DeviceComplianceSettingState]] = None
     # Number of error devices
     error_device_count: Optional[int] = None
     # Number of NonCompliant devices
@@ -51,10 +52,10 @@ class DeviceCompliancePolicySettingStateSummary(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeviceCompliancePolicySettingStateSummary()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_compliance_setting_state import DeviceComplianceSettingState
         from .entity import Entity
@@ -64,7 +65,7 @@ class DeviceCompliancePolicySettingStateSummary(Entity, Parsable):
         from .entity import Entity
         from .policy_platform_type import PolicyPlatformType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
             "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
             "deviceComplianceSettingStates": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(DeviceComplianceSettingState)),
@@ -90,10 +91,6 @@ class DeviceCompliancePolicySettingStateSummary(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_compliance_setting_state import DeviceComplianceSettingState
-        from .entity import Entity
-        from .policy_platform_type import PolicyPlatformType
-
         writer.write_int_value("compliantDeviceCount", self.compliant_device_count)
         writer.write_int_value("conflictDeviceCount", self.conflict_device_count)
         writer.write_collection_of_object_values("deviceComplianceSettingStates", self.device_compliance_setting_states)

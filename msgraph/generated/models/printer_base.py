@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -26,7 +27,7 @@ class PrinterBase(Entity, Parsable):
     # Specifies whether the printer/printerShare is currently accepting new print jobs.
     is_accepting_jobs: Optional[bool] = None
     # The list of jobs that are queued for printing by the printer/printerShare.
-    jobs: Optional[List[PrintJob]] = None
+    jobs: Optional[list[PrintJob]] = None
     # The physical and/or organizational location of the printer/printerShare.
     location: Optional[PrinterLocation] = None
     # The manufacturer of the printer/printerShare.
@@ -62,10 +63,10 @@ class PrinterBase(Entity, Parsable):
             return PrinterShare()
         return PrinterBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .printer import Printer
@@ -85,7 +86,7 @@ class PrinterBase(Entity, Parsable):
         from .printer_status import PrinterStatus
         from .print_job import PrintJob
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_object_value(PrinterCapabilities)),
             "defaults": lambda n : setattr(self, 'defaults', n.get_object_value(PrinterDefaults)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -109,15 +110,6 @@ class PrinterBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .printer import Printer
-        from .printer_capabilities import PrinterCapabilities
-        from .printer_defaults import PrinterDefaults
-        from .printer_location import PrinterLocation
-        from .printer_share import PrinterShare
-        from .printer_status import PrinterStatus
-        from .print_job import PrintJob
-
         writer.write_object_value("capabilities", self.capabilities)
         writer.write_object_value("defaults", self.defaults)
         writer.write_str_value("displayName", self.display_name)

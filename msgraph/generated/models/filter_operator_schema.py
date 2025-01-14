@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attribute_type import AttributeType
@@ -20,7 +21,7 @@ class FilterOperatorSchema(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Attribute types supported by the operator. Possible values are: Boolean, Binary, Reference, Integer, String.
-    supported_attribute_types: Optional[List[AttributeType]] = None
+    supported_attribute_types: Optional[list[AttributeType]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> FilterOperatorSchema:
@@ -33,10 +34,10 @@ class FilterOperatorSchema(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return FilterOperatorSchema()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attribute_type import AttributeType
         from .entity import Entity
@@ -48,7 +49,7 @@ class FilterOperatorSchema(Entity, Parsable):
         from .scope_operator_multi_valued_comparison_type import ScopeOperatorMultiValuedComparisonType
         from .scope_operator_type import ScopeOperatorType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "arity": lambda n : setattr(self, 'arity', n.get_enum_value(ScopeOperatorType)),
             "multivaluedComparisonType": lambda n : setattr(self, 'multivalued_comparison_type', n.get_enum_value(ScopeOperatorMultiValuedComparisonType)),
             "supportedAttributeTypes": lambda n : setattr(self, 'supported_attribute_types', n.get_collection_of_enum_values(AttributeType)),
@@ -66,11 +67,6 @@ class FilterOperatorSchema(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .attribute_type import AttributeType
-        from .entity import Entity
-        from .scope_operator_multi_valued_comparison_type import ScopeOperatorMultiValuedComparisonType
-        from .scope_operator_type import ScopeOperatorType
-
         writer.write_enum_value("arity", self.arity)
         writer.write_enum_value("multivaluedComparisonType", self.multivalued_comparison_type)
         writer.write_collection_of_enum_values("supportedAttributeTypes", self.supported_attribute_types)

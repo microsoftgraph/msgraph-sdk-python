@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_question import AccessPackageQuestion
@@ -27,10 +28,10 @@ class AccessPackageResourceAttributeQuestion(AccessPackageResourceAttributeSourc
             raise TypeError("parse_node cannot be null.")
         return AccessPackageResourceAttributeQuestion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_question import AccessPackageQuestion
         from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
@@ -38,7 +39,7 @@ class AccessPackageResourceAttributeQuestion(AccessPackageResourceAttributeSourc
         from .access_package_question import AccessPackageQuestion
         from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "question": lambda n : setattr(self, 'question', n.get_object_value(AccessPackageQuestion)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class AccessPackageResourceAttributeQuestion(AccessPackageResourceAttributeSourc
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_question import AccessPackageQuestion
-        from .access_package_resource_attribute_source import AccessPackageResourceAttributeSource
-
         writer.write_object_value("question", self.question)
     
 

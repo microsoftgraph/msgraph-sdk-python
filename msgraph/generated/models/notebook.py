@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .notebook_links import NotebookLinks
@@ -23,11 +24,11 @@ class Notebook(OnenoteEntityHierarchyModel, Parsable):
     # Links for opening the notebook. The oneNoteClientURL link opens the notebook in the OneNote native client if it's installed. The oneNoteWebURL link opens the notebook in OneNote on the web.
     links: Optional[NotebookLinks] = None
     # The section groups in the notebook. Read-only. Nullable.
-    section_groups: Optional[List[SectionGroup]] = None
+    section_groups: Optional[list[SectionGroup]] = None
     # The URL for the sectionGroups navigation property, which returns all the section groups in the notebook. Read-only.
     section_groups_url: Optional[str] = None
     # The sections in the notebook. Read-only. Nullable.
-    sections: Optional[List[OnenoteSection]] = None
+    sections: Optional[list[OnenoteSection]] = None
     # The URL for the sections navigation property, which returns all the sections in the notebook. Read-only.
     sections_url: Optional[str] = None
     # Possible values are: Owner, Contributor, Reader, None. Owner represents owner-level access to the notebook. Contributor represents read/write access to the notebook. Reader represents read-only access to the notebook. Read-only.
@@ -44,10 +45,10 @@ class Notebook(OnenoteEntityHierarchyModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Notebook()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .notebook_links import NotebookLinks
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -61,7 +62,7 @@ class Notebook(OnenoteEntityHierarchyModel, Parsable):
         from .onenote_user_role import OnenoteUserRole
         from .section_group import SectionGroup
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(NotebookLinks)),
@@ -84,12 +85,6 @@ class Notebook(OnenoteEntityHierarchyModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .notebook_links import NotebookLinks
-        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
-        from .onenote_section import OnenoteSection
-        from .onenote_user_role import OnenoteUserRole
-        from .section_group import SectionGroup
-
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_bool_value("isShared", self.is_shared)
         writer.write_object_value("links", self.links)

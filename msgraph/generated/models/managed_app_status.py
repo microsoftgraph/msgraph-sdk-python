@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -41,10 +42,10 @@ class ManagedAppStatus(Entity, Parsable):
             return ManagedAppStatusRaw()
         return ManagedAppStatus()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .managed_app_status_raw import ManagedAppStatusRaw
@@ -52,7 +53,7 @@ class ManagedAppStatus(Entity, Parsable):
         from .entity import Entity
         from .managed_app_status_raw import ManagedAppStatusRaw
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
@@ -69,9 +70,6 @@ class ManagedAppStatus(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .managed_app_status_raw import ManagedAppStatusRaw
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("version", self.version)
     

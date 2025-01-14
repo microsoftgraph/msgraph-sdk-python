@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attribute_definition_metadata_entry import AttributeDefinitionMetadataEntry
@@ -17,11 +18,11 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # true if the attribute should be used as the anchor for the object. Anchor attributes must have a unique value identifying an object, and must be immutable. Default is false. One, and only one, of the object's attributes must be designated as the anchor to support synchronization.
     anchor: Optional[bool] = None
     # The apiExpressions property
-    api_expressions: Optional[List[StringKeyStringValuePair]] = None
+    api_expressions: Optional[list[StringKeyStringValuePair]] = None
     # true if value of this attribute should be treated as case-sensitive. This setting affects how the synchronization engine detects changes for the attribute.
     case_exact: Optional[bool] = None
     # The default value of the attribute.
@@ -29,7 +30,7 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
     # 'true' to allow null values for attributes.
     flow_null_values: Optional[bool] = None
     # Metadata for the given object.
-    metadata: Optional[List[AttributeDefinitionMetadataEntry]] = None
+    metadata: Optional[list[AttributeDefinitionMetadataEntry]] = None
     # true if an attribute can have multiple values. Default is false.
     multivalued: Optional[bool] = None
     # The mutability property
@@ -39,7 +40,7 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # For attributes with reference type, lists referenced objects (for example, the manager attribute would list User as the referenced object).
-    referenced_objects: Optional[List[ReferencedObject]] = None
+    referenced_objects: Optional[list[ReferencedObject]] = None
     # true if attribute is required. Object can not be created if any of the required attributes are missing. If during synchronization, the required attribute has no value, the default value will be used. If default the value was not set, synchronization will record an error.
     required: Optional[bool] = None
     # The type property
@@ -56,10 +57,10 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AttributeDefinition()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attribute_definition_metadata_entry import AttributeDefinitionMetadataEntry
         from .attribute_type import AttributeType
@@ -73,7 +74,7 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
         from .referenced_object import ReferencedObject
         from .string_key_string_value_pair import StringKeyStringValuePair
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "anchor": lambda n : setattr(self, 'anchor', n.get_bool_value()),
             "apiExpressions": lambda n : setattr(self, 'api_expressions', n.get_collection_of_object_values(StringKeyStringValuePair)),
             "caseExact": lambda n : setattr(self, 'case_exact', n.get_bool_value()),
@@ -98,12 +99,6 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .attribute_definition_metadata_entry import AttributeDefinitionMetadataEntry
-        from .attribute_type import AttributeType
-        from .mutability import Mutability
-        from .referenced_object import ReferencedObject
-        from .string_key_string_value_pair import StringKeyStringValuePair
-
         writer.write_bool_value("anchor", self.anchor)
         writer.write_collection_of_object_values("apiExpressions", self.api_expressions)
         writer.write_bool_value("caseExact", self.case_exact)

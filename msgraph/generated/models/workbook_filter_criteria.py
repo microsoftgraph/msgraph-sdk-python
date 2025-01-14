@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .workbook_icon import WorkbookIcon
@@ -13,7 +14,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The color applied to the cell.
     color: Optional[str] = None
     # A custom criterion.
@@ -42,16 +43,16 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkbookFilterCriteria()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .workbook_icon import WorkbookIcon
 
         from .workbook_icon import WorkbookIcon
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "criterion1": lambda n : setattr(self, 'criterion1', n.get_str_value()),
             "criterion2": lambda n : setattr(self, 'criterion2', n.get_str_value()),
@@ -71,8 +72,6 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .workbook_icon import WorkbookIcon
-
         writer.write_str_value("color", self.color)
         writer.write_str_value("criterion1", self.criterion1)
         writer.write_str_value("criterion2", self.criterion2)

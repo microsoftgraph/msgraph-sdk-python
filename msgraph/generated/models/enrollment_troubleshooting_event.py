@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_enrollment_failure_reason import DeviceEnrollmentFailureReason
@@ -45,10 +46,10 @@ class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent, Parsa
             raise TypeError("parse_node cannot be null.")
         return EnrollmentTroubleshootingEvent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_enrollment_failure_reason import DeviceEnrollmentFailureReason
         from .device_enrollment_type import DeviceEnrollmentType
@@ -58,7 +59,7 @@ class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent, Parsa
         from .device_enrollment_type import DeviceEnrollmentType
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "enrollmentType": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(DeviceEnrollmentType)),
             "failureCategory": lambda n : setattr(self, 'failure_category', n.get_enum_value(DeviceEnrollmentFailureReason)),
@@ -81,10 +82,6 @@ class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent, Parsa
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_enrollment_failure_reason import DeviceEnrollmentFailureReason
-        from .device_enrollment_type import DeviceEnrollmentType
-        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
-
         writer.write_str_value("deviceId", self.device_id)
         writer.write_enum_value("enrollmentType", self.enrollment_type)
         writer.write_enum_value("failureCategory", self.failure_category)

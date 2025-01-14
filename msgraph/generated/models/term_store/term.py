@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -17,21 +18,21 @@ from ..entity import Entity
 @dataclass
 class Term(Entity, Parsable):
     # Children of current term.
-    children: Optional[List[Term]] = None
+    children: Optional[list[Term]] = None
     # Date and time of term creation. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # Description about term that is dependent on the languageTag.
-    descriptions: Optional[List[LocalizedDescription]] = None
+    descriptions: Optional[list[LocalizedDescription]] = None
     # Label metadata for a term.
-    labels: Optional[List[LocalizedLabel]] = None
+    labels: Optional[list[LocalizedLabel]] = None
     # Last date and time of term modification. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of properties on the term.
-    properties: Optional[List[KeyValue]] = None
+    properties: Optional[list[KeyValue]] = None
     # To indicate which terms are related to the current term as either pinned or reused.
-    relations: Optional[List[Relation]] = None
+    relations: Optional[list[Relation]] = None
     # The [set] in which the term is created.
     set: Optional[Set] = None
     
@@ -46,10 +47,10 @@ class Term(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Term()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..key_value import KeyValue
@@ -65,7 +66,7 @@ class Term(Entity, Parsable):
         from .relation import Relation
         from .set import Set
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(Term)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(LocalizedDescription)),
@@ -88,13 +89,6 @@ class Term(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..key_value import KeyValue
-        from .localized_description import LocalizedDescription
-        from .localized_label import LocalizedLabel
-        from .relation import Relation
-        from .set import Set
-
         writer.write_collection_of_object_values("children", self.children)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("descriptions", self.descriptions)

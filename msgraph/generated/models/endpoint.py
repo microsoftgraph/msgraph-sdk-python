@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -34,16 +35,16 @@ class Endpoint(DirectoryObject, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Endpoint()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
 
         from .directory_object import DirectoryObject
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "capability": lambda n : setattr(self, 'capability', n.get_str_value()),
             "providerId": lambda n : setattr(self, 'provider_id', n.get_str_value()),
             "providerName": lambda n : setattr(self, 'provider_name', n.get_str_value()),
@@ -63,8 +64,6 @@ class Endpoint(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-
         writer.write_str_value("capability", self.capability)
         writer.write_str_value("providerId", self.provider_id)
         writer.write_str_value("providerName", self.provider_name)

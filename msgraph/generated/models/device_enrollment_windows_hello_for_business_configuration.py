@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_enrollment_configuration import DeviceEnrollmentConfiguration
@@ -53,10 +54,10 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfi
             raise TypeError("parse_node cannot be null.")
         return DeviceEnrollmentWindowsHelloForBusinessConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_enrollment_configuration import DeviceEnrollmentConfiguration
         from .enablement import Enablement
@@ -66,7 +67,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfi
         from .enablement import Enablement
         from .windows_hello_for_business_pin_usage import WindowsHelloForBusinessPinUsage
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "enhancedBiometricsState": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(Enablement)),
             "pinExpirationInDays": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
             "pinLowercaseCharactersUsage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
@@ -93,10 +94,6 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfi
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
-        from .enablement import Enablement
-        from .windows_hello_for_business_pin_usage import WindowsHelloForBusinessPinUsage
-
         writer.write_enum_value("enhancedBiometricsState", self.enhanced_biometrics_state)
         writer.write_int_value("pinExpirationInDays", self.pin_expiration_in_days)
         writer.write_enum_value("pinLowercaseCharactersUsage", self.pin_lowercase_characters_usage)

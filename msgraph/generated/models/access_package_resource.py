@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_resource_attribute import AccessPackageResourceAttribute
@@ -16,7 +17,7 @@ from .entity import Entity
 @dataclass
 class AccessPackageResource(Entity, Parsable):
     # Contains information about the attributes to be collected from the requestor and sent to the resource application.
-    attributes: Optional[List[AccessPackageResourceAttribute]] = None
+    attributes: Optional[list[AccessPackageResourceAttribute]] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # A description for the resource.
@@ -34,9 +35,9 @@ class AccessPackageResource(Entity, Parsable):
     # The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup.
     origin_system: Optional[str] = None
     # Read-only. Nullable. Supports $expand.
-    roles: Optional[List[AccessPackageResourceRole]] = None
+    roles: Optional[list[AccessPackageResourceRole]] = None
     # Read-only. Nullable. Supports $expand.
-    scopes: Optional[List[AccessPackageResourceScope]] = None
+    scopes: Optional[list[AccessPackageResourceScope]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AccessPackageResource:
@@ -49,10 +50,10 @@ class AccessPackageResource(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackageResource()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_resource_attribute import AccessPackageResourceAttribute
         from .access_package_resource_environment import AccessPackageResourceEnvironment
@@ -66,7 +67,7 @@ class AccessPackageResource(Entity, Parsable):
         from .access_package_resource_scope import AccessPackageResourceScope
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attributes": lambda n : setattr(self, 'attributes', n.get_collection_of_object_values(AccessPackageResourceAttribute)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -91,12 +92,6 @@ class AccessPackageResource(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_resource_attribute import AccessPackageResourceAttribute
-        from .access_package_resource_environment import AccessPackageResourceEnvironment
-        from .access_package_resource_role import AccessPackageResourceRole
-        from .access_package_resource_scope import AccessPackageResourceScope
-        from .entity import Entity
-
         writer.write_collection_of_object_values("attributes", self.attributes)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

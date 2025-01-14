@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .booking_staff_membership_status import BookingStaffMembershipStatus
@@ -40,7 +41,7 @@ class BookingStaffMember(BookingStaffMemberBase, Parsable):
     # True means the staff member's availability is as specified in the businessHours property of the business. False means the availability is determined by the staff member's workingHours property setting.
     use_business_hours: Optional[bool] = None
     # The range of hours each day of the week that the staff member is available for booking. By default, they're initialized to be the same as the businessHours property of the business.
-    working_hours: Optional[List[BookingWorkHours]] = None
+    working_hours: Optional[list[BookingWorkHours]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> BookingStaffMember:
@@ -53,10 +54,10 @@ class BookingStaffMember(BookingStaffMemberBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BookingStaffMember()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .booking_staff_membership_status import BookingStaffMembershipStatus
         from .booking_staff_member_base import BookingStaffMemberBase
@@ -68,7 +69,7 @@ class BookingStaffMember(BookingStaffMemberBase, Parsable):
         from .booking_staff_role import BookingStaffRole
         from .booking_work_hours import BookingWorkHours
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "availabilityIsAffectedByPersonalCalendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -94,11 +95,6 @@ class BookingStaffMember(BookingStaffMemberBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .booking_staff_membership_status import BookingStaffMembershipStatus
-        from .booking_staff_member_base import BookingStaffMemberBase
-        from .booking_staff_role import BookingStaffRole
-        from .booking_work_hours import BookingWorkHours
-
         writer.write_bool_value("availabilityIsAffectedByPersonalCalendar", self.availability_is_affected_by_personal_calendar)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)

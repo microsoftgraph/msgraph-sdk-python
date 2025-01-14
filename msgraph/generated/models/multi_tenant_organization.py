@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -27,7 +28,7 @@ class MultiTenantOrganization(Entity, Parsable):
     # State of the multitenant organization. The possible values are: active, inactive, unknownFutureValue. active indicates the multitenant organization is created. inactive indicates the multitenant organization isn't created. Read-only.
     state: Optional[MultiTenantOrganizationState] = None
     # Defines tenants added to a multitenant organization.
-    tenants: Optional[List[MultiTenantOrganizationMember]] = None
+    tenants: Optional[list[MultiTenantOrganizationMember]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> MultiTenantOrganization:
@@ -40,10 +41,10 @@ class MultiTenantOrganization(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MultiTenantOrganization()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
@@ -55,7 +56,7 @@ class MultiTenantOrganization(Entity, Parsable):
         from .multi_tenant_organization_member import MultiTenantOrganizationMember
         from .multi_tenant_organization_state import MultiTenantOrganizationState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -76,11 +77,6 @@ class MultiTenantOrganization(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
-        from .multi_tenant_organization_member import MultiTenantOrganizationMember
-        from .multi_tenant_organization_state import MultiTenantOrganizationState
-
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

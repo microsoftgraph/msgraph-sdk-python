@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .activity_history_item import ActivityHistoryItem
@@ -31,7 +32,7 @@ class UserActivity(Entity, Parsable):
     # Optional. URL used to launch the activity in a web-based app, if available.
     fallback_url: Optional[str] = None
     # Optional. NavigationProperty/Containment; navigation property to the activity's historyItems.
-    history_items: Optional[List[ActivityHistoryItem]] = None
+    history_items: Optional[list[ActivityHistoryItem]] = None
     # Set by the server. DateTime in UTC when the object was modified on the server.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
@@ -54,10 +55,10 @@ class UserActivity(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserActivity()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .activity_history_item import ActivityHistoryItem
         from .entity import Entity
@@ -69,7 +70,7 @@ class UserActivity(Entity, Parsable):
         from .status import Status
         from .visual_info import VisualInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activationUrl": lambda n : setattr(self, 'activation_url', n.get_str_value()),
             "activitySourceHost": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
             "appActivityId": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),
@@ -97,11 +98,6 @@ class UserActivity(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .activity_history_item import ActivityHistoryItem
-        from .entity import Entity
-        from .status import Status
-        from .visual_info import VisualInfo
-
         writer.write_str_value("activationUrl", self.activation_url)
         writer.write_str_value("activitySourceHost", self.activity_source_host)
         writer.write_str_value("appActivityId", self.app_activity_id)

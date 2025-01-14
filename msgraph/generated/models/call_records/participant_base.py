@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..communications_identity_set import CommunicationsIdentitySet
@@ -15,7 +16,7 @@ from ..entity import Entity
 @dataclass
 class ParticipantBase(Entity, Parsable):
     # List of administrativeUnitInfo objects for the call participant.
-    administrative_unit_infos: Optional[List[AdministrativeUnitInfo]] = None
+    administrative_unit_infos: Optional[list[AdministrativeUnitInfo]] = None
     # The identity of the call participant.
     identity: Optional[CommunicationsIdentitySet] = None
     # The OdataType property
@@ -45,10 +46,10 @@ class ParticipantBase(Entity, Parsable):
             return Participant()
         return ParticipantBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..communications_identity_set import CommunicationsIdentitySet
         from ..entity import Entity
@@ -62,7 +63,7 @@ class ParticipantBase(Entity, Parsable):
         from .organizer import Organizer
         from .participant import Participant
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "administrativeUnitInfos": lambda n : setattr(self, 'administrative_unit_infos', n.get_collection_of_object_values(AdministrativeUnitInfo)),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(CommunicationsIdentitySet)),
         }
@@ -79,12 +80,6 @@ class ParticipantBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..communications_identity_set import CommunicationsIdentitySet
-        from ..entity import Entity
-        from .administrative_unit_info import AdministrativeUnitInfo
-        from .organizer import Organizer
-        from .participant import Participant
-
         writer.write_collection_of_object_values("administrativeUnitInfos", self.administrative_unit_infos)
         writer.write_object_value("identity", self.identity)
     

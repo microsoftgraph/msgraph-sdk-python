@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -19,7 +20,7 @@ class WorkbookChartSeries(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of all points in the series. Read-only.
-    points: Optional[List[WorkbookChartPoint]] = None
+    points: Optional[list[WorkbookChartPoint]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartSeries:
@@ -32,10 +33,10 @@ class WorkbookChartSeries(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkbookChartSeries()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .workbook_chart_point import WorkbookChartPoint
@@ -45,7 +46,7 @@ class WorkbookChartSeries(Entity, Parsable):
         from .workbook_chart_point import WorkbookChartPoint
         from .workbook_chart_series_format import WorkbookChartSeriesFormat
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartSeriesFormat)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "points": lambda n : setattr(self, 'points', n.get_collection_of_object_values(WorkbookChartPoint)),
@@ -63,10 +64,6 @@ class WorkbookChartSeries(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .workbook_chart_point import WorkbookChartPoint
-        from .workbook_chart_series_format import WorkbookChartSeriesFormat
-
         writer.write_object_value("format", self.format)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("points", self.points)

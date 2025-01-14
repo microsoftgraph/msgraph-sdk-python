@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -67,10 +68,10 @@ class FilePlanDescriptorTemplate(Entity, Parsable):
             return SubcategoryTemplate()
         return FilePlanDescriptorTemplate()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..identity_set import IdentitySet
@@ -90,7 +91,7 @@ class FilePlanDescriptorTemplate(Entity, Parsable):
         from .file_plan_reference_template import FilePlanReferenceTemplate
         from .subcategory_template import SubcategoryTemplate
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -108,15 +109,6 @@ class FilePlanDescriptorTemplate(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..identity_set import IdentitySet
-        from .authority_template import AuthorityTemplate
-        from .category_template import CategoryTemplate
-        from .citation_template import CitationTemplate
-        from .department_template import DepartmentTemplate
-        from .file_plan_reference_template import FilePlanReferenceTemplate
-        from .subcategory_template import SubcategoryTemplate
-
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)

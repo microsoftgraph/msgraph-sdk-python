@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -62,10 +63,10 @@ class PrintUsage(Entity, Parsable):
             return PrintUsageByUser()
         return PrintUsage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .print_usage_by_printer import PrintUsageByPrinter
@@ -75,7 +76,7 @@ class PrintUsage(Entity, Parsable):
         from .print_usage_by_printer import PrintUsageByPrinter
         from .print_usage_by_user import PrintUsageByUser
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "blackAndWhitePageCount": lambda n : setattr(self, 'black_and_white_page_count', n.get_int_value()),
             "colorPageCount": lambda n : setattr(self, 'color_page_count', n.get_int_value()),
             "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
@@ -101,10 +102,6 @@ class PrintUsage(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .print_usage_by_printer import PrintUsageByPrinter
-        from .print_usage_by_user import PrintUsageByUser
-
         writer.write_int_value("blackAndWhitePageCount", self.black_and_white_page_count)
         writer.write_int_value("colorPageCount", self.color_page_count)
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)

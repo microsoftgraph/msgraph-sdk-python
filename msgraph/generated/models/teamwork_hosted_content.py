@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .chat_message_hosted_content import ChatMessageHostedContent
@@ -38,10 +39,10 @@ class TeamworkHostedContent(Entity, Parsable):
             return ChatMessageHostedContent()
         return TeamworkHostedContent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .chat_message_hosted_content import ChatMessageHostedContent
         from .entity import Entity
@@ -49,7 +50,7 @@ class TeamworkHostedContent(Entity, Parsable):
         from .chat_message_hosted_content import ChatMessageHostedContent
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
         }
@@ -66,9 +67,6 @@ class TeamworkHostedContent(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .chat_message_hosted_content import ChatMessageHostedContent
-        from .entity import Entity
-
         writer.write_bytes_value("contentBytes", self.content_bytes)
         writer.write_str_value("contentType", self.content_type)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .azure_a_d_join_policy import AzureADJoinPolicy
@@ -42,10 +43,10 @@ class DeviceRegistrationPolicy(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeviceRegistrationPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .azure_a_d_join_policy import AzureADJoinPolicy
         from .azure_a_d_registration_policy import AzureADRegistrationPolicy
@@ -59,7 +60,7 @@ class DeviceRegistrationPolicy(Entity, Parsable):
         from .local_admin_password_settings import LocalAdminPasswordSettings
         from .multi_factor_auth_configuration import MultiFactorAuthConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "azureADJoin": lambda n : setattr(self, 'azure_a_d_join', n.get_object_value(AzureADJoinPolicy)),
             "azureADRegistration": lambda n : setattr(self, 'azure_a_d_registration', n.get_object_value(AzureADRegistrationPolicy)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -81,12 +82,6 @@ class DeviceRegistrationPolicy(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .azure_a_d_join_policy import AzureADJoinPolicy
-        from .azure_a_d_registration_policy import AzureADRegistrationPolicy
-        from .entity import Entity
-        from .local_admin_password_settings import LocalAdminPasswordSettings
-        from .multi_factor_auth_configuration import MultiFactorAuthConfiguration
-
         writer.write_object_value("azureADJoin", self.azure_a_d_join)
         writer.write_object_value("azureADRegistration", self.azure_a_d_registration)
         writer.write_str_value("description", self.description)

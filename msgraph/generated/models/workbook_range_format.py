@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -15,7 +16,7 @@ from .entity import Entity
 @dataclass
 class WorkbookRangeFormat(Entity, Parsable):
     # Collection of border objects that apply to the overall range selected Read-only.
-    borders: Optional[List[WorkbookRangeBorder]] = None
+    borders: Optional[list[WorkbookRangeBorder]] = None
     # The width of all columns within the range. If the column widths aren't uniform, null will be returned.
     column_width: Optional[float] = None
     # Returns the fill object defined on the overall range. Read-only.
@@ -46,10 +47,10 @@ class WorkbookRangeFormat(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkbookRangeFormat()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .workbook_format_protection import WorkbookFormatProtection
@@ -63,7 +64,7 @@ class WorkbookRangeFormat(Entity, Parsable):
         from .workbook_range_fill import WorkbookRangeFill
         from .workbook_range_font import WorkbookRangeFont
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "borders": lambda n : setattr(self, 'borders', n.get_collection_of_object_values(WorkbookRangeBorder)),
             "columnWidth": lambda n : setattr(self, 'column_width', n.get_float_value()),
             "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookRangeFill)),
@@ -87,12 +88,6 @@ class WorkbookRangeFormat(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .workbook_format_protection import WorkbookFormatProtection
-        from .workbook_range_border import WorkbookRangeBorder
-        from .workbook_range_fill import WorkbookRangeFill
-        from .workbook_range_font import WorkbookRangeFont
-
         writer.write_collection_of_object_values("borders", self.borders)
         writer.write_float_value("columnWidth", self.column_width)
         writer.write_object_value("fill", self.fill)

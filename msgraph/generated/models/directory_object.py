@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
@@ -187,10 +188,10 @@ class DirectoryObject(Entity, Parsable):
             return User()
         return DirectoryObject()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .administrative_unit import AdministrativeUnit
@@ -258,7 +259,7 @@ class DirectoryObject(Entity, Parsable):
         from .token_lifetime_policy import TokenLifetimePolicy
         from .user import User
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -274,39 +275,6 @@ class DirectoryObject(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
-        from .administrative_unit import AdministrativeUnit
-        from .application import Application
-        from .app_management_policy import AppManagementPolicy
-        from .app_role_assignment import AppRoleAssignment
-        from .authorization_policy import AuthorizationPolicy
-        from .claims_mapping_policy import ClaimsMappingPolicy
-        from .contract import Contract
-        from .cross_tenant_access_policy import CrossTenantAccessPolicy
-        from .device import Device
-        from .directory_object_partner_reference import DirectoryObjectPartnerReference
-        from .directory_role import DirectoryRole
-        from .directory_role_template import DirectoryRoleTemplate
-        from .endpoint import Endpoint
-        from .entity import Entity
-        from .extension_property import ExtensionProperty
-        from .group import Group
-        from .group_setting_template import GroupSettingTemplate
-        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
-        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
-        from .multi_tenant_organization_member import MultiTenantOrganizationMember
-        from .organization import Organization
-        from .org_contact import OrgContact
-        from .permission_grant_policy import PermissionGrantPolicy
-        from .policy_base import PolicyBase
-        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
-        from .service_principal import ServicePrincipal
-        from .sts_policy import StsPolicy
-        from .tenant_app_management_policy import TenantAppManagementPolicy
-        from .token_issuance_policy import TokenIssuancePolicy
-        from .token_lifetime_policy import TokenLifetimePolicy
-        from .user import User
-
         writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
     
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -24,7 +25,7 @@ class CallRecord(Entity, Parsable):
     # UTC time when the call record was created. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     last_modified_date_time: Optional[datetime.datetime] = None
     # List of all the modalities used in the call. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
-    modalities: Optional[List[Modality]] = None
+    modalities: Optional[list[Modality]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The organizing party's identity. The organizer property is deprecated and will stop returning data on June 30, 2026. Going forward, use the organizer_v2 relationship.
@@ -32,11 +33,11 @@ class CallRecord(Entity, Parsable):
     # Identity of the organizer of the call. This relationship is expanded by default in callRecord methods.
     organizer_v2: Optional[Organizer] = None
     # List of distinct identities involved in the call. Limited to 130 entries. The participants property is deprecated and will stop returning data on June 30, 2026. Going forward, use the participants_v2 relationship.
-    participants: Optional[List[IdentitySet]] = None
+    participants: Optional[list[IdentitySet]] = None
     # List of distinct participants in the call.
-    participants_v2: Optional[List[Participant]] = None
+    participants_v2: Optional[list[Participant]] = None
     # List of sessions involved in the call. Peer-to-peer calls typically only have one session, whereas group calls typically have at least one session per participant. Read-only. Nullable.
-    sessions: Optional[List[Session]] = None
+    sessions: Optional[list[Session]] = None
     # UTC time when the first user joined the call. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     start_date_time: Optional[datetime.datetime] = None
     # The type property
@@ -55,10 +56,10 @@ class CallRecord(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CallRecord()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..identity_set import IdentitySet
@@ -76,7 +77,7 @@ class CallRecord(Entity, Parsable):
         from .participant import Participant
         from .session import Session
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
@@ -103,14 +104,6 @@ class CallRecord(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..identity_set import IdentitySet
-        from .call_type import CallType
-        from .modality import Modality
-        from .organizer import Organizer
-        from .participant import Participant
-        from .session import Session
-
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("joinWebUrl", self.join_web_url)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)

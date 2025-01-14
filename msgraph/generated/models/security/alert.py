@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -35,7 +36,7 @@ class Alert(Entity, Parsable):
     # Specifies whether the alert represents a true threat. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
     classification: Optional[AlertClassification] = None
     # Array of comments created by the Security Operations (SecOps) team during the alert management process.
-    comments: Optional[List[AlertComment]] = None
+    comments: Optional[list[AlertComment]] = None
     # Time when Microsoft 365 Defender created the alert.
     created_date_time: Optional[datetime.datetime] = None
     # String value describing each alert.
@@ -47,7 +48,7 @@ class Alert(Entity, Parsable):
     # Specifies the result of the investigation, whether the alert represents a true attack and if so, the nature of the attack. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedAccount, phishing, maliciousUserActivity, notMalicious, notEnoughDataToValidate, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
     determination: Optional[AlertDetermination] = None
     # Collection of evidence related to the alert.
-    evidence: Optional[List[AlertEvidence]] = None
+    evidence: Optional[list[AlertEvidence]] = None
     # The earliest activity associated with the alert.
     first_activity_date_time: Optional[datetime.datetime] = None
     # Unique identifier to represent the incident this alert resource is associated with.
@@ -59,7 +60,7 @@ class Alert(Entity, Parsable):
     # Time when the alert was last updated at Microsoft 365 Defender.
     last_update_date_time: Optional[datetime.datetime] = None
     # The attack techniques, as aligned with the MITRE ATT&CK framework.
-    mitre_techniques: Optional[List[str]] = None
+    mitre_techniques: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The name of the product which published this alert.
@@ -77,7 +78,7 @@ class Alert(Entity, Parsable):
     # The status property
     status: Optional[AlertStatus] = None
     # The system tags associated with the alert.
-    system_tags: Optional[List[str]] = None
+    system_tags: Optional[list[str]] = None
     # The Microsoft Entra tenant the alert was created in.
     tenant_id: Optional[str] = None
     # The threat associated with this alert.
@@ -98,10 +99,10 @@ class Alert(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Alert()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .alert_classification import AlertClassification
@@ -125,7 +126,7 @@ class Alert(Entity, Parsable):
         from .dictionary import Dictionary
         from .service_source import ServiceSource
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "actorDisplayName": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
             "additionalData": lambda n : setattr(self, 'additional_data_property', n.get_object_value(Dictionary)),
             "alertPolicyId": lambda n : setattr(self, 'alert_policy_id', n.get_str_value()),
@@ -172,17 +173,6 @@ class Alert(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .alert_classification import AlertClassification
-        from .alert_comment import AlertComment
-        from .alert_determination import AlertDetermination
-        from .alert_evidence import AlertEvidence
-        from .alert_severity import AlertSeverity
-        from .alert_status import AlertStatus
-        from .detection_source import DetectionSource
-        from .dictionary import Dictionary
-        from .service_source import ServiceSource
-
         writer.write_str_value("actorDisplayName", self.actor_display_name)
         writer.write_object_value("additionalData", self.additional_data_property)
         writer.write_str_value("alertPolicyId", self.alert_policy_id)

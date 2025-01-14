@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attendance_interval import AttendanceInterval
@@ -13,7 +14,7 @@ from .entity import Entity
 @dataclass
 class AttendanceRecord(Entity, Parsable):
     # List of time periods between joining and leaving a meeting.
-    attendance_intervals: Optional[List[AttendanceInterval]] = None
+    attendance_intervals: Optional[list[AttendanceInterval]] = None
     # Email address of the user associated with this attendance record.
     email_address: Optional[str] = None
     # Identity of the user associated with this attendance record.
@@ -36,10 +37,10 @@ class AttendanceRecord(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AttendanceRecord()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attendance_interval import AttendanceInterval
         from .entity import Entity
@@ -49,7 +50,7 @@ class AttendanceRecord(Entity, Parsable):
         from .entity import Entity
         from .identity import Identity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attendanceIntervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(AttendanceInterval)),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(Identity)),
@@ -69,10 +70,6 @@ class AttendanceRecord(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .attendance_interval import AttendanceInterval
-        from .entity import Entity
-        from .identity import Identity
-
         writer.write_collection_of_object_values("attendanceIntervals", self.attendance_intervals)
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_object_value("identity", self.identity)

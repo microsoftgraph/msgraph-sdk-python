@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
@@ -9,7 +10,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
@@ -23,7 +24,7 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the conversations property of the microsoft.graph.group entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
         Instantiates a new ConversationsRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
@@ -58,7 +59,7 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -69,11 +70,11 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Conversation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Conversation]:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+        Use reply thread or reply post to further post to that conversation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Conversation]
-        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-post-conversations?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -82,7 +83,7 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
         )
         from ....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -104,7 +105,7 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Conversation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+        Use reply thread or reply post to further post to that conversation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,19 +172,19 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
         count: Optional[bool] = None
 
         # Expand related entities
-        expand: Optional[List[str]] = None
+        expand: Optional[list[str]] = None
 
         # Filter items by property values
         filter: Optional[str] = None
 
         # Order items by property values
-        orderby: Optional[List[str]] = None
+        orderby: Optional[list[str]] = None
 
         # Search items by search phrases
         search: Optional[str] = None
 
         # Select properties to be returned
-        select: Optional[List[str]] = None
+        select: Optional[list[str]] = None
 
         # Skip the first n items
         skip: Optional[int] = None

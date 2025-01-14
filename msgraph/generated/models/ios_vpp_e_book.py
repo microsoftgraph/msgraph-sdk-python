@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -19,7 +20,7 @@ class IosVppEBook(ManagedEBook, Parsable):
     # The Apple ID associated with Vpp token.
     apple_id: Optional[str] = None
     # Genres.
-    genres: Optional[List[str]] = None
+    genres: Optional[list[str]] = None
     # Language.
     language: Optional[str] = None
     # Seller.
@@ -44,16 +45,16 @@ class IosVppEBook(ManagedEBook, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IosVppEBook()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .managed_e_book import ManagedEBook
 
         from .managed_e_book import ManagedEBook
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
             "genres": lambda n : setattr(self, 'genres', n.get_collection_of_primitive_values(str)),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
@@ -76,8 +77,6 @@ class IosVppEBook(ManagedEBook, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .managed_e_book import ManagedEBook
-
         writer.write_str_value("appleId", self.apple_id)
         writer.write_collection_of_primitive_values("genres", self.genres)
         writer.write_str_value("language", self.language)

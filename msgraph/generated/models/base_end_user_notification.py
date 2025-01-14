@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .end_user_notification import EndUserNotification
@@ -16,7 +17,7 @@ class BaseEndUserNotification(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The default language for the end user notification.
     default_language: Optional[str] = None
     # The endUserNotification property
@@ -52,10 +53,10 @@ class BaseEndUserNotification(AdditionalDataHolder, BackedModel, Parsable):
             return TrainingReminderNotification()
         return BaseEndUserNotification()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .end_user_notification import EndUserNotification
         from .positive_reinforcement_notification import PositiveReinforcementNotification
@@ -67,7 +68,7 @@ class BaseEndUserNotification(AdditionalDataHolder, BackedModel, Parsable):
         from .simulation_notification import SimulationNotification
         from .training_reminder_notification import TrainingReminderNotification
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "defaultLanguage": lambda n : setattr(self, 'default_language', n.get_str_value()),
             "endUserNotification": lambda n : setattr(self, 'end_user_notification', n.get_object_value(EndUserNotification)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -82,11 +83,6 @@ class BaseEndUserNotification(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .end_user_notification import EndUserNotification
-        from .positive_reinforcement_notification import PositiveReinforcementNotification
-        from .simulation_notification import SimulationNotification
-        from .training_reminder_notification import TrainingReminderNotification
-
         writer.write_str_value("defaultLanguage", self.default_language)
         writer.write_object_value("endUserNotification", self.end_user_notification)
         writer.write_str_value("@odata.type", self.odata_type)

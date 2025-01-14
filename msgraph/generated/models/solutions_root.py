@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .backup_restore_root import BackupRestoreRoot
@@ -16,13 +17,13 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The backupRestore property
     backup_restore: Optional[BackupRestoreRoot] = None
     # The bookingBusinesses property
-    booking_businesses: Optional[List[BookingBusiness]] = None
+    booking_businesses: Optional[list[BookingBusiness]] = None
     # The bookingCurrencies property
-    booking_currencies: Optional[List[BookingCurrency]] = None
+    booking_currencies: Optional[list[BookingCurrency]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The virtualEvents property
@@ -39,10 +40,10 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SolutionsRoot()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .backup_restore_root import BackupRestoreRoot
         from .booking_business import BookingBusiness
@@ -54,7 +55,7 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
         from .booking_currency import BookingCurrency
         from .virtual_events_root import VirtualEventsRoot
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "backupRestore": lambda n : setattr(self, 'backup_restore', n.get_object_value(BackupRestoreRoot)),
             "bookingBusinesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(BookingBusiness)),
             "bookingCurrencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(BookingCurrency)),
@@ -71,11 +72,6 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .backup_restore_root import BackupRestoreRoot
-        from .booking_business import BookingBusiness
-        from .booking_currency import BookingCurrency
-        from .virtual_events_root import VirtualEventsRoot
-
         writer.write_object_value("backupRestore", self.backup_restore)
         writer.write_collection_of_object_values("bookingBusinesses", self.booking_businesses)
         writer.write_collection_of_object_values("bookingCurrencies", self.booking_currencies)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .key_value_pair import KeyValuePair
@@ -13,11 +14,11 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Count of items that are excluded from the request.
     excluded_item_count: Optional[int] = None
     # Count of items per insight.
-    insight_counts: Optional[List[KeyValuePair]] = None
+    insight_counts: Optional[list[KeyValuePair]] = None
     # Count of items found.
     item_count: Optional[int] = None
     # Count of item that need review.
@@ -25,7 +26,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Count of items per product, such as Exchange, SharePoint, OneDrive, and Teams.
-    product_item_counts: Optional[List[KeyValuePair]] = None
+    product_item_counts: Optional[list[KeyValuePair]] = None
     # Count of items signed off by the administrator.
     signed_off_item_count: Optional[int] = None
     # Total item size in bytes.
@@ -42,16 +43,16 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SubjectRightsRequestDetail()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .key_value_pair import KeyValuePair
 
         from .key_value_pair import KeyValuePair
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "excludedItemCount": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
             "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(KeyValuePair)),
             "itemCount": lambda n : setattr(self, 'item_count', n.get_int_value()),
@@ -71,8 +72,6 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .key_value_pair import KeyValuePair
-
         writer.write_int_value("excludedItemCount", self.excluded_item_count)
         writer.write_collection_of_object_values("insightCounts", self.insight_counts)
         writer.write_int_value("itemCount", self.item_count)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
@@ -14,7 +15,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The automatic reply message.
     message: Optional[str] = None
     # The language that the automatic reply message is in.
@@ -37,10 +38,10 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AutomaticRepliesMailTips()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .date_time_time_zone import DateTimeTimeZone
         from .locale_info import LocaleInfo
@@ -48,7 +49,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, BackedModel, Parsable):
         from .date_time_time_zone import DateTimeTimeZone
         from .locale_info import LocaleInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "messageLanguage": lambda n : setattr(self, 'message_language', n.get_object_value(LocaleInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -65,9 +66,6 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .date_time_time_zone import DateTimeTimeZone
-        from .locale_info import LocaleInfo
-
         writer.write_str_value("message", self.message)
         writer.write_object_value("messageLanguage", self.message_language)
         writer.write_str_value("@odata.type", self.odata_type)

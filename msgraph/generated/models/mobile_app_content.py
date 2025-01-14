@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -16,9 +17,9 @@ class MobileAppContent(Entity, Parsable):
     Contains content properties for a specific app version. Each mobileAppContent can have multiple mobileAppContentFile.
     """
     # The collection of contained apps in a MobileLobApp acting as a package.
-    contained_apps: Optional[List[MobileContainedApp]] = None
+    contained_apps: Optional[list[MobileContainedApp]] = None
     # The list of files for this app content version.
-    files: Optional[List[MobileAppContentFile]] = None
+    files: Optional[list[MobileAppContentFile]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,10 +34,10 @@ class MobileAppContent(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MobileAppContent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .mobile_app_content_file import MobileAppContentFile
@@ -46,7 +47,7 @@ class MobileAppContent(Entity, Parsable):
         from .mobile_app_content_file import MobileAppContentFile
         from .mobile_contained_app import MobileContainedApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(MobileAppContentFile)),
         }
@@ -63,10 +64,6 @@ class MobileAppContent(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .mobile_app_content_file import MobileAppContentFile
-        from .mobile_contained_app import MobileContainedApp
-
         writer.write_collection_of_object_values("containedApps", self.contained_apps)
         writer.write_collection_of_object_values("files", self.files)
     

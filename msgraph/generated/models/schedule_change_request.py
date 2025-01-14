@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .change_tracked_entity import ChangeTrackedEntity
@@ -68,10 +69,10 @@ class ScheduleChangeRequest(ChangeTrackedEntity, Parsable):
             return TimeOffRequest()
         return ScheduleChangeRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .change_tracked_entity import ChangeTrackedEntity
         from .offer_shift_request import OfferShiftRequest
@@ -89,7 +90,7 @@ class ScheduleChangeRequest(ChangeTrackedEntity, Parsable):
         from .swap_shifts_change_request import SwapShiftsChangeRequest
         from .time_off_request import TimeOffRequest
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_enum_value(ScheduleChangeRequestActor)),
             "managerActionDateTime": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
             "managerActionMessage": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
@@ -112,14 +113,6 @@ class ScheduleChangeRequest(ChangeTrackedEntity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .change_tracked_entity import ChangeTrackedEntity
-        from .offer_shift_request import OfferShiftRequest
-        from .open_shift_change_request import OpenShiftChangeRequest
-        from .schedule_change_request_actor import ScheduleChangeRequestActor
-        from .schedule_change_state import ScheduleChangeState
-        from .swap_shifts_change_request import SwapShiftsChangeRequest
-        from .time_off_request import TimeOffRequest
-
         writer.write_enum_value("assignedTo", self.assigned_to)
         writer.write_str_value("managerActionMessage", self.manager_action_message)
         writer.write_str_value("senderMessage", self.sender_message)

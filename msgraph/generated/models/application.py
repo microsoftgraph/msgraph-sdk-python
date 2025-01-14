@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -39,15 +40,15 @@ class Application(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.application"
     # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams can set the addIns property for its 'FileHandler' functionality. This lets services like Microsoft 365 call the application in the context of a document the user is working on.
-    add_ins: Optional[List[AddIn]] = None
+    add_ins: Optional[list[AddIn]] = None
     # Specifies settings for an application that implements a web API.
     api: Optional[ApiApplication] = None
     # The unique identifier for the application that is assigned to an application by Microsoft Entra ID. Not nullable. Read-only. Alternate key. Supports $filter (eq).
     app_id: Optional[str] = None
     # The appManagementPolicy applied to this application.
-    app_management_policies: Optional[List[AppManagementPolicy]] = None
+    app_management_policies: Optional[list[AppManagementPolicy]] = None
     # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
-    app_roles: Optional[List[AppRole]] = None
+    app_roles: Optional[list[AppRole]] = None
     # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne). Read-only. null if the app wasn't created from an application template.
     application_template_id: Optional[str] = None
     # Specifies the certification status of the application.
@@ -65,15 +66,15 @@ class Application(DirectoryObject, Parsable):
     # The display name for the application. Maximum length is 256 characters. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
     # Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
-    extension_properties: Optional[List[ExtensionProperty]] = None
+    extension_properties: Optional[list[ExtensionProperty]] = None
     # Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
-    federated_identity_credentials: Optional[List[FederatedIdentityCredential]] = None
+    federated_identity_credentials: Optional[list[FederatedIdentityCredential]] = None
     # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Microsoft Entra roles), All (this gets all of the security groups, distribution groups, and Microsoft Entra directory roles that the signed-in user is a member of).
     group_membership_claims: Optional[str] = None
     # The homeRealmDiscoveryPolicies property
-    home_realm_discovery_policies: Optional[List[HomeRealmDiscoveryPolicy]] = None
+    home_realm_discovery_policies: Optional[list[HomeRealmDiscoveryPolicy]] = None
     # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<appId>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Microsoft Entra application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
-    identifier_uris: Optional[List[str]] = None
+    identifier_uris: Optional[list[str]] = None
     # Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Microsoft Entra apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
     info: Optional[InformationalUrl] = None
     # Specifies whether this application supports device authentication without a user. The default is false.
@@ -81,7 +82,7 @@ class Application(DirectoryObject, Parsable):
     # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false, which means the fallback application type is confidential client such as a web app. There are certain scenarios where Microsoft Entra ID can't determine the client application type. For example, the ROPC flow where it's configured without specifying a redirect URI. In those cases, Microsoft Entra ID interprets the application type based on the value of this property.
     is_fallback_public_client: Optional[bool] = None
     # The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
-    key_credentials: Optional[List[KeyCredential]] = None
+    key_credentials: Optional[list[KeyCredential]] = None
     # The main logo for the application. Not nullable.
     logo: Optional[bytes] = None
     # Specifies whether the Native Authentication APIs are enabled for the application. The possible values are: none and all. Default is none. For more information, see Native Authentication.
@@ -93,11 +94,11 @@ class Application(DirectoryObject, Parsable):
     # Application developers can configure optional claims in their Microsoft Entra applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
     optional_claims: Optional[OptionalClaims] = None
     # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
-    owners: Optional[List[DirectoryObject]] = None
+    owners: Optional[list[DirectoryObject]] = None
     # Specifies parental control settings for an application.
     parental_control_settings: Optional[ParentalControlSettings] = None
     # The collection of password credentials associated with the application. Not nullable.
-    password_credentials: Optional[List[PasswordCredential]] = None
+    password_credentials: Optional[list[PasswordCredential]] = None
     # Specifies settings for installed clients such as desktop or mobile devices.
     public_client: Optional[PublicClientApplication] = None
     # The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
@@ -105,7 +106,7 @@ class Application(DirectoryObject, Parsable):
     # Specifies whether this application requires Microsoft Entra ID to verify the signed authentication requests.
     request_signature_verification: Optional[RequestSignatureVerification] = None
     # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
-    required_resource_access: Optional[List[RequiredResourceAccess]] = None
+    required_resource_access: Optional[list[RequiredResourceAccess]] = None
     # The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
     saml_metadata_url: Optional[str] = None
     # References application or service contact information from a Service or Asset Management database. Nullable.
@@ -119,13 +120,13 @@ class Application(DirectoryObject, Parsable):
     # Represents the capability for Microsoft Entra identity synchronization through the Microsoft Graph API.
     synchronization: Optional[Synchronization] = None
     # Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith) and $search.
-    tags: Optional[List[str]] = None
+    tags: Optional[list[str]] = None
     # Specifies the keyId of a public key from the keyCredentials collection. When configured, Microsoft Entra ID encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     token_encryption_key_id: Optional[UUID] = None
     # The tokenIssuancePolicies property
-    token_issuance_policies: Optional[List[TokenIssuancePolicy]] = None
+    token_issuance_policies: Optional[list[TokenIssuancePolicy]] = None
     # The tokenLifetimePolicies property
-    token_lifetime_policies: Optional[List[TokenLifetimePolicy]] = None
+    token_lifetime_policies: Optional[list[TokenLifetimePolicy]] = None
     # The unique identifier that can be assigned to an application and used as an alternate key. Immutable. Read-only.
     unique_name: Optional[str] = None
     # Specifies the verified publisher of the application. For more information about how publisher verification helps support application security, trustworthiness, and compliance, see Publisher verification.
@@ -144,10 +145,10 @@ class Application(DirectoryObject, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Application()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .add_in import AddIn
         from .api_application import ApiApplication
@@ -201,7 +202,7 @@ class Application(DirectoryObject, Parsable):
         from .verified_publisher import VerifiedPublisher
         from .web_application import WebApplication
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(AddIn)),
             "api": lambda n : setattr(self, 'api', n.get_object_value(ApiApplication)),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
@@ -263,32 +264,6 @@ class Application(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .add_in import AddIn
-        from .api_application import ApiApplication
-        from .app_management_policy import AppManagementPolicy
-        from .app_role import AppRole
-        from .certification import Certification
-        from .directory_object import DirectoryObject
-        from .extension_property import ExtensionProperty
-        from .federated_identity_credential import FederatedIdentityCredential
-        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
-        from .informational_url import InformationalUrl
-        from .key_credential import KeyCredential
-        from .native_authentication_apis_enabled import NativeAuthenticationApisEnabled
-        from .optional_claims import OptionalClaims
-        from .parental_control_settings import ParentalControlSettings
-        from .password_credential import PasswordCredential
-        from .public_client_application import PublicClientApplication
-        from .request_signature_verification import RequestSignatureVerification
-        from .required_resource_access import RequiredResourceAccess
-        from .service_principal_lock_configuration import ServicePrincipalLockConfiguration
-        from .spa_application import SpaApplication
-        from .synchronization import Synchronization
-        from .token_issuance_policy import TokenIssuancePolicy
-        from .token_lifetime_policy import TokenLifetimePolicy
-        from .verified_publisher import VerifiedPublisher
-        from .web_application import WebApplication
-
         writer.write_collection_of_object_values("addIns", self.add_ins)
         writer.write_object_value("api", self.api)
         writer.write_str_value("appId", self.app_id)

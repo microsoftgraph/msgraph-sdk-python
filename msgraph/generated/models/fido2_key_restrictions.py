@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
@@ -13,9 +14,9 @@ class Fido2KeyRestrictions(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # A collection of Authenticator Attestation GUIDs. AADGUIDs define key types and manufacturers.
-    aa_guids: Optional[List[str]] = None
+    aa_guids: Optional[list[str]] = None
     # Enforcement type. Possible values are: allow, block.
     enforcement_type: Optional[Fido2RestrictionEnforcementType] = None
     # Determines if the configured key enforcement is enabled.
@@ -34,16 +35,16 @@ class Fido2KeyRestrictions(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Fido2KeyRestrictions()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
 
         from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "aaGuids": lambda n : setattr(self, 'aa_guids', n.get_collection_of_primitive_values(str)),
             "enforcementType": lambda n : setattr(self, 'enforcement_type', n.get_enum_value(Fido2RestrictionEnforcementType)),
             "isEnforced": lambda n : setattr(self, 'is_enforced', n.get_bool_value()),
@@ -59,8 +60,6 @@ class Fido2KeyRestrictions(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
-
         writer.write_collection_of_primitive_values("aaGuids", self.aa_guids)
         writer.write_enum_value("enforcementType", self.enforcement_type)
         writer.write_bool_value("isEnforced", self.is_enforced)

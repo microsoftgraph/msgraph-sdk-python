@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedModel, Parsable):
@@ -10,7 +11,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Used to block cloud object takeover via source anchor hard match if enabled.
     block_cloud_object_takeover_through_hard_match_enabled: Optional[bool] = None
     # Use to block soft match for all objects if enabled for the  tenant. Customers are encouraged to enable this feature and keep it enabled until soft matching is required again for their tenancy. This flag should be enabled again after any soft matching has been completed and is no longer needed.
@@ -63,12 +64,12 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
             raise TypeError("parse_node cannot be null.")
         return OnPremisesDirectorySynchronizationFeature()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "blockCloudObjectTakeoverThroughHardMatchEnabled": lambda n : setattr(self, 'block_cloud_object_takeover_through_hard_match_enabled', n.get_bool_value()),
             "blockSoftMatchEnabled": lambda n : setattr(self, 'block_soft_match_enabled', n.get_bool_value()),
             "bypassDirSyncOverridesEnabled": lambda n : setattr(self, 'bypass_dir_sync_overrides_enabled', n.get_bool_value()),

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .account_target_content import AccountTargetContent
@@ -86,10 +87,10 @@ class Simulation(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Simulation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .account_target_content import AccountTargetContent
         from .email_identity import EmailIdentity
@@ -121,7 +122,7 @@ class Simulation(Entity, Parsable):
         from .simulation_status import SimulationStatus
         from .training_setting import TrainingSetting
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attackTechnique": lambda n : setattr(self, 'attack_technique', n.get_enum_value(SimulationAttackTechnique)),
             "attackType": lambda n : setattr(self, 'attack_type', n.get_enum_value(SimulationAttackType)),
             "automationId": lambda n : setattr(self, 'automation_id', n.get_str_value()),
@@ -160,21 +161,6 @@ class Simulation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .account_target_content import AccountTargetContent
-        from .email_identity import EmailIdentity
-        from .end_user_notification_setting import EndUserNotificationSetting
-        from .entity import Entity
-        from .landing_page import LandingPage
-        from .login_page import LoginPage
-        from .o_auth_consent_app_detail import OAuthConsentAppDetail
-        from .payload import Payload
-        from .payload_delivery_platform import PayloadDeliveryPlatform
-        from .simulation_attack_technique import SimulationAttackTechnique
-        from .simulation_attack_type import SimulationAttackType
-        from .simulation_report import SimulationReport
-        from .simulation_status import SimulationStatus
-        from .training_setting import TrainingSetting
-
         writer.write_enum_value("attackTechnique", self.attack_technique)
         writer.write_enum_value("attackType", self.attack_type)
         writer.write_str_value("automationId", self.automation_id)

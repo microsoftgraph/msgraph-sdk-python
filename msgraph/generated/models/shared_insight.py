@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -26,7 +27,7 @@ class SharedInsight(Entity, Parsable):
     # Properties that you can use to visualize the document in your experience. Read-only
     resource_visualization: Optional[ResourceVisualization] = None
     # The sharingHistory property
-    sharing_history: Optional[List[SharingDetail]] = None
+    sharing_history: Optional[list[SharingDetail]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SharedInsight:
@@ -39,10 +40,10 @@ class SharedInsight(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SharedInsight()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .resource_reference import ResourceReference
@@ -54,7 +55,7 @@ class SharedInsight(Entity, Parsable):
         from .resource_visualization import ResourceVisualization
         from .sharing_detail import SharingDetail
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "lastShared": lambda n : setattr(self, 'last_shared', n.get_object_value(SharingDetail)),
             "lastSharedMethod": lambda n : setattr(self, 'last_shared_method', n.get_object_value(Entity)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
@@ -75,11 +76,6 @@ class SharedInsight(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .resource_reference import ResourceReference
-        from .resource_visualization import ResourceVisualization
-        from .sharing_detail import SharingDetail
-
         writer.write_object_value("lastShared", self.last_shared)
         writer.write_object_value("lastSharedMethod", self.last_shared_method)
         writer.write_object_value("resource", self.resource)

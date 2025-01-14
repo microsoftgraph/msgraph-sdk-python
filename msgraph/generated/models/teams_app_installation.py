@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -43,10 +44,10 @@ class TeamsAppInstallation(Entity, Parsable):
             return UserScopeTeamsAppInstallation()
         return TeamsAppInstallation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .teams_app import TeamsApp
@@ -60,7 +61,7 @@ class TeamsAppInstallation(Entity, Parsable):
         from .teams_app_permission_set import TeamsAppPermissionSet
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "consentedPermissionSet": lambda n : setattr(self, 'consented_permission_set', n.get_object_value(TeamsAppPermissionSet)),
             "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
             "teamsAppDefinition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(TeamsAppDefinition)),
@@ -78,12 +79,6 @@ class TeamsAppInstallation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .teams_app import TeamsApp
-        from .teams_app_definition import TeamsAppDefinition
-        from .teams_app_permission_set import TeamsAppPermissionSet
-        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
-
         writer.write_object_value("consentedPermissionSet", self.consented_permission_set)
         writer.write_object_value("teamsApp", self.teams_app)
         writer.write_object_value("teamsAppDefinition", self.teams_app_definition)

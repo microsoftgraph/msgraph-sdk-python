@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ............models.workbook_sort_field import WorkbookSortField
@@ -13,9 +14,9 @@ class ApplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The fields property
-    fields: Optional[List[WorkbookSortField]] = None
+    fields: Optional[list[WorkbookSortField]] = None
     # The matchCase property
     match_case: Optional[bool] = None
     # The method property
@@ -32,16 +33,16 @@ class ApplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ApplyPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ............models.workbook_sort_field import WorkbookSortField
 
         from ............models.workbook_sort_field import WorkbookSortField
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(WorkbookSortField)),
             "matchCase": lambda n : setattr(self, 'match_case', n.get_bool_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
@@ -56,8 +57,6 @@ class ApplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ............models.workbook_sort_field import WorkbookSortField
-
         writer.write_collection_of_object_values("fields", self.fields)
         writer.write_bool_value("matchCase", self.match_case)
         writer.write_str_value("method", self.method)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .error_details import ErrorDetails
@@ -14,11 +15,11 @@ class MainError(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The code property
     code: Optional[str] = None
     # The details property
-    details: Optional[List[ErrorDetails]] = None
+    details: Optional[list[ErrorDetails]] = None
     # The innerError property
     inner_error: Optional[InnerError] = None
     # The message property
@@ -37,10 +38,10 @@ class MainError(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MainError()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .error_details import ErrorDetails
         from .inner_error import InnerError
@@ -48,7 +49,7 @@ class MainError(AdditionalDataHolder, BackedModel, Parsable):
         from .error_details import ErrorDetails
         from .inner_error import InnerError
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(ErrorDetails)),
             "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(InnerError)),
@@ -65,9 +66,6 @@ class MainError(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .error_details import ErrorDetails
-        from .inner_error import InnerError
-
         writer.write_str_value("code", self.code)
         writer.write_collection_of_object_values("details", self.details)
         writer.write_object_value("innerError", self.inner_error)

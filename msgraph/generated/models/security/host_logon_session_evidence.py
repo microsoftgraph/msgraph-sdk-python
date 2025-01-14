@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -37,10 +38,10 @@ class HostLogonSessionEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return HostLogonSessionEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .device_evidence import DeviceEvidence
@@ -50,7 +51,7 @@ class HostLogonSessionEvidence(AlertEvidence, Parsable):
         from .device_evidence import DeviceEvidence
         from .user_evidence import UserEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "account": lambda n : setattr(self, 'account', n.get_object_value(UserEvidence)),
             "endUtcDateTime": lambda n : setattr(self, 'end_utc_date_time', n.get_datetime_value()),
             "host": lambda n : setattr(self, 'host', n.get_object_value(DeviceEvidence)),
@@ -70,10 +71,6 @@ class HostLogonSessionEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .device_evidence import DeviceEvidence
-        from .user_evidence import UserEvidence
-
         writer.write_object_value("account", self.account)
         writer.write_datetime_value("endUtcDateTime", self.end_utc_date_time)
         writer.write_object_value("host", self.host)

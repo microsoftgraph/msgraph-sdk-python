@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .recipient import Recipient
@@ -13,9 +14,9 @@ class InvitedUserMessageInfo(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Additional recipients the invitation message should be sent to. Currently only one additional recipient is supported.
-    cc_recipients: Optional[List[Recipient]] = None
+    cc_recipients: Optional[list[Recipient]] = None
     # Customized message body you want to send if you don't want the default message.
     customized_message_body: Optional[str] = None
     # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
@@ -34,16 +35,16 @@ class InvitedUserMessageInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return InvitedUserMessageInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .recipient import Recipient
 
         from .recipient import Recipient
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
             "customizedMessageBody": lambda n : setattr(self, 'customized_message_body', n.get_str_value()),
             "messageLanguage": lambda n : setattr(self, 'message_language', n.get_str_value()),
@@ -59,8 +60,6 @@ class InvitedUserMessageInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .recipient import Recipient
-
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
         writer.write_str_value("customizedMessageBody", self.customized_message_body)
         writer.write_str_value("messageLanguage", self.message_language)

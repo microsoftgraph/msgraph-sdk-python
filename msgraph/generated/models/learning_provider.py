@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -17,9 +18,9 @@ class LearningProvider(Entity, Parsable):
     # Indicates whether a provider can ingest learning course activity records. The default value is false. Set to true to make learningCourseActivities available for this provider.
     is_course_activity_sync_enabled: Optional[bool] = None
     # Learning catalog items for the provider.
-    learning_contents: Optional[List[LearningContent]] = None
+    learning_contents: Optional[list[LearningContent]] = None
     # The learningCourseActivities property
-    learning_course_activities: Optional[List[LearningCourseActivity]] = None
+    learning_course_activities: Optional[list[LearningCourseActivity]] = None
     # Authentication URL to access the courses for the provider. Optional.
     login_web_url: Optional[str] = None
     # The long logo URL for the dark mode that needs to be a publicly accessible image. This image would be saved to the blob storage of Viva Learning for rendering within the Viva Learning app. Required.
@@ -44,10 +45,10 @@ class LearningProvider(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return LearningProvider()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .learning_content import LearningContent
@@ -57,7 +58,7 @@ class LearningProvider(Entity, Parsable):
         from .learning_content import LearningContent
         from .learning_course_activity import LearningCourseActivity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isCourseActivitySyncEnabled": lambda n : setattr(self, 'is_course_activity_sync_enabled', n.get_bool_value()),
             "learningContents": lambda n : setattr(self, 'learning_contents', n.get_collection_of_object_values(LearningContent)),
@@ -81,10 +82,6 @@ class LearningProvider(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .learning_content import LearningContent
-        from .learning_course_activity import LearningCourseActivity
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isCourseActivitySyncEnabled", self.is_course_activity_sync_enabled)
         writer.write_collection_of_object_values("learningContents", self.learning_contents)

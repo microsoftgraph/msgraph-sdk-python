@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_feedback import AlertFeedback
@@ -15,13 +16,13 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The appId property
     app_id: Optional[str] = None
     # The assignedTo property
     assigned_to: Optional[str] = None
     # The comments property
-    comments: Optional[List[str]] = None
+    comments: Optional[list[str]] = None
     # The feedback property
     feedback: Optional[AlertFeedback] = None
     # The OdataType property
@@ -44,10 +45,10 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AlertHistoryState()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_feedback import AlertFeedback
         from .alert_status import AlertStatus
@@ -55,7 +56,7 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
         from .alert_feedback import AlertFeedback
         from .alert_status import AlertStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),
@@ -75,9 +76,6 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .alert_feedback import AlertFeedback
-        from .alert_status import AlertStatus
-
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_collection_of_primitive_values("comments", self.comments)

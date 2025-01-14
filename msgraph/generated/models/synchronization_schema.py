@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_definition import DirectoryDefinition
@@ -13,11 +14,11 @@ from .entity import Entity
 @dataclass
 class SynchronizationSchema(Entity, Parsable):
     # Contains the collection of directories and all of their objects.
-    directories: Optional[List[DirectoryDefinition]] = None
+    directories: Optional[list[DirectoryDefinition]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of synchronization rules configured for the synchronizationJob or synchronizationTemplate.
-    synchronization_rules: Optional[List[SynchronizationRule]] = None
+    synchronization_rules: Optional[list[SynchronizationRule]] = None
     # The version of the schema, updated automatically with every schema change.
     version: Optional[str] = None
     
@@ -32,10 +33,10 @@ class SynchronizationSchema(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SynchronizationSchema()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_definition import DirectoryDefinition
         from .entity import Entity
@@ -45,7 +46,7 @@ class SynchronizationSchema(Entity, Parsable):
         from .entity import Entity
         from .synchronization_rule import SynchronizationRule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "directories": lambda n : setattr(self, 'directories', n.get_collection_of_object_values(DirectoryDefinition)),
             "synchronizationRules": lambda n : setattr(self, 'synchronization_rules', n.get_collection_of_object_values(SynchronizationRule)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
@@ -63,10 +64,6 @@ class SynchronizationSchema(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_definition import DirectoryDefinition
-        from .entity import Entity
-        from .synchronization_rule import SynchronizationRule
-
         writer.write_collection_of_object_values("directories", self.directories)
         writer.write_collection_of_object_values("synchronizationRules", self.synchronization_rules)
         writer.write_str_value("version", self.version)

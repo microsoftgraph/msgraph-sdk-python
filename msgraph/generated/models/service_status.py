@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .backup_service_consumer import BackupServiceConsumer
@@ -17,7 +18,7 @@ class ServiceStatus(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The type of consumer. The possible values are: unknown, firstparty, thirdparty, unknownFutureValue.
     backup_service_consumer: Optional[BackupServiceConsumer] = None
     # The reason the service is disabled. The possible values are: none, controllerServiceAppDeleted, invalidBillingProfile, userRequested, unknownFutureValue.
@@ -46,10 +47,10 @@ class ServiceStatus(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ServiceStatus()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .backup_service_consumer import BackupServiceConsumer
         from .backup_service_status import BackupServiceStatus
@@ -61,7 +62,7 @@ class ServiceStatus(AdditionalDataHolder, BackedModel, Parsable):
         from .disable_reason import DisableReason
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "backupServiceConsumer": lambda n : setattr(self, 'backup_service_consumer', n.get_enum_value(BackupServiceConsumer)),
             "disableReason": lambda n : setattr(self, 'disable_reason', n.get_enum_value(DisableReason)),
             "gracePeriodDateTime": lambda n : setattr(self, 'grace_period_date_time', n.get_datetime_value()),
@@ -81,11 +82,6 @@ class ServiceStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .backup_service_consumer import BackupServiceConsumer
-        from .backup_service_status import BackupServiceStatus
-        from .disable_reason import DisableReason
-        from .identity_set import IdentitySet
-
         writer.write_enum_value("backupServiceConsumer", self.backup_service_consumer)
         writer.write_enum_value("disableReason", self.disable_reason)
         writer.write_datetime_value("gracePeriodDateTime", self.grace_period_date_time)

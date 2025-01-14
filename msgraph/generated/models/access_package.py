@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_assignment_policy import AccessPackageAssignmentPolicy
@@ -16,9 +17,9 @@ from .entity import Entity
 @dataclass
 class AccessPackage(Entity, Parsable):
     # The access packages that are incompatible with this package. Read-only.
-    access_packages_incompatible_with: Optional[List[AccessPackage]] = None
+    access_packages_incompatible_with: Optional[list[AccessPackage]] = None
     # Read-only. Nullable. Supports $expand.
-    assignment_policies: Optional[List[AccessPackageAssignmentPolicy]] = None
+    assignment_policies: Optional[list[AccessPackageAssignmentPolicy]] = None
     # Required when creating the access package. Read-only. Nullable.
     catalog: Optional[AccessPackageCatalog] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -28,9 +29,9 @@ class AccessPackage(Entity, Parsable):
     # Required. The display name of the access package. Supports $filter (eq, contains).
     display_name: Optional[str] = None
     # The access packages whose assigned users are ineligible to be assigned this access package.
-    incompatible_access_packages: Optional[List[AccessPackage]] = None
+    incompatible_access_packages: Optional[list[AccessPackage]] = None
     # The groups whose members are ineligible to be assigned this access package.
-    incompatible_groups: Optional[List[Group]] = None
+    incompatible_groups: Optional[list[Group]] = None
     # Indicates whether the access package is hidden from the requestor.
     is_hidden: Optional[bool] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -38,7 +39,7 @@ class AccessPackage(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The resource roles and scopes in this access package.
-    resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
+    resource_role_scopes: Optional[list[AccessPackageResourceRoleScope]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AccessPackage:
@@ -51,10 +52,10 @@ class AccessPackage(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_catalog import AccessPackageCatalog
@@ -68,7 +69,7 @@ class AccessPackage(Entity, Parsable):
         from .entity import Entity
         from .group import Group
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessPackagesIncompatibleWith": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
             "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
@@ -94,12 +95,6 @@ class AccessPackage(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
-        from .access_package_catalog import AccessPackageCatalog
-        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
-        from .entity import Entity
-        from .group import Group
-
         writer.write_collection_of_object_values("accessPackagesIncompatibleWith", self.access_packages_incompatible_with)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
         writer.write_object_value("catalog", self.catalog)

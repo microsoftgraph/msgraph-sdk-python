@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .windows_information_protection import WindowsInformationProtection
@@ -52,10 +53,10 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection, Parsable)
             raise TypeError("parse_node cannot be null.")
         return WindowsInformationProtectionPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .windows_information_protection import WindowsInformationProtection
         from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
@@ -63,7 +64,7 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection, Parsable)
         from .windows_information_protection import WindowsInformationProtection
         from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "daysWithoutContactBeforeUnenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
             "mdmEnrollmentUrl": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
             "minutesOfInactivityBeforeDeviceLock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),
@@ -90,9 +91,6 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection, Parsable)
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .windows_information_protection import WindowsInformationProtection
-        from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
-
         writer.write_int_value("daysWithoutContactBeforeUnenroll", self.days_without_contact_before_unenroll)
         writer.write_str_value("mdmEnrollmentUrl", self.mdm_enrollment_url)
         writer.write_int_value("minutesOfInactivityBeforeDeviceLock", self.minutes_of_inactivity_before_device_lock)

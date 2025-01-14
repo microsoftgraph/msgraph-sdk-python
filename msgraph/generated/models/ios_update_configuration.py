@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .day_of_week import DayOfWeek
@@ -22,7 +23,7 @@ class IosUpdateConfiguration(DeviceConfiguration, Parsable):
     # Active Hours Start (active hours mean the time window when updates install should not happen)
     active_hours_start: Optional[datetime.time] = None
     # Days in week for which active hours are configured. This collection can contain a maximum of 7 elements.
-    scheduled_install_days: Optional[List[DayOfWeek]] = None
+    scheduled_install_days: Optional[list[DayOfWeek]] = None
     # UTC Time Offset indicated in minutes
     utc_time_offset_in_minutes: Optional[int] = None
     
@@ -37,10 +38,10 @@ class IosUpdateConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IosUpdateConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .day_of_week import DayOfWeek
         from .device_configuration import DeviceConfiguration
@@ -48,7 +49,7 @@ class IosUpdateConfiguration(DeviceConfiguration, Parsable):
         from .day_of_week import DayOfWeek
         from .device_configuration import DeviceConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
             "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_time_value()),
             "scheduledInstallDays": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(DayOfWeek)),
@@ -67,9 +68,6 @@ class IosUpdateConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .day_of_week import DayOfWeek
-        from .device_configuration import DeviceConfiguration
-
         writer.write_time_value("activeHoursEnd", self.active_hours_end)
         writer.write_time_value("activeHoursStart", self.active_hours_start)
         writer.write_collection_of_enum_values("scheduledInstallDays", self.scheduled_install_days)

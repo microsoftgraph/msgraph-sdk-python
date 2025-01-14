@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .risky_service_principal import RiskyServicePrincipal
@@ -16,17 +17,17 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
     # Risk detection in Microsoft Entra ID Protection and the associated information about the detection.
-    risk_detections: Optional[List[RiskDetection]] = None
+    risk_detections: Optional[list[RiskDetection]] = None
     # Microsoft Entra service principals that are at risk.
-    risky_service_principals: Optional[List[RiskyServicePrincipal]] = None
+    risky_service_principals: Optional[list[RiskyServicePrincipal]] = None
     # Users that are flagged as at-risk by Microsoft Entra ID Protection.
-    risky_users: Optional[List[RiskyUser]] = None
+    risky_users: Optional[list[RiskyUser]] = None
     # Represents information about detected at-risk service principals in a Microsoft Entra tenant.
-    service_principal_risk_detections: Optional[List[ServicePrincipalRiskDetection]] = None
+    service_principal_risk_detections: Optional[list[ServicePrincipalRiskDetection]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> IdentityProtectionRoot:
@@ -39,10 +40,10 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IdentityProtectionRoot()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .risky_service_principal import RiskyServicePrincipal
         from .risky_user import RiskyUser
@@ -54,7 +55,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         from .risk_detection import RiskDetection
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "riskDetections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(RiskDetection)),
             "riskyServicePrincipals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(RiskyServicePrincipal)),
@@ -71,11 +72,6 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .risky_service_principal import RiskyServicePrincipal
-        from .risky_user import RiskyUser
-        from .risk_detection import RiskDetection
-        from .service_principal_risk_detection import ServicePrincipalRiskDetection
-
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("riskDetections", self.risk_detections)
         writer.write_collection_of_object_values("riskyServicePrincipals", self.risky_service_principals)

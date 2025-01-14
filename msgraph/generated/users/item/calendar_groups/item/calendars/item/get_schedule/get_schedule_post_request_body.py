@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models.date_time_time_zone import DateTimeTimeZone
@@ -13,13 +14,13 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The AvailabilityViewInterval property
     availability_view_interval: Optional[int] = None
     # The EndTime property
     end_time: Optional[DateTimeTimeZone] = None
     # The Schedules property
-    schedules: Optional[List[str]] = None
+    schedules: Optional[list[str]] = None
     # The StartTime property
     start_time: Optional[DateTimeTimeZone] = None
     
@@ -34,16 +35,16 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return GetSchedulePostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ........models.date_time_time_zone import DateTimeTimeZone
 
         from ........models.date_time_time_zone import DateTimeTimeZone
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "AvailabilityViewInterval": lambda n : setattr(self, 'availability_view_interval', n.get_int_value()),
             "EndTime": lambda n : setattr(self, 'end_time', n.get_object_value(DateTimeTimeZone)),
             "Schedules": lambda n : setattr(self, 'schedules', n.get_collection_of_primitive_values(str)),
@@ -59,8 +60,6 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ........models.date_time_time_zone import DateTimeTimeZone
-
         writer.write_int_value("AvailabilityViewInterval", self.availability_view_interval)
         writer.write_object_value("EndTime", self.end_time)
         writer.write_collection_of_primitive_values("Schedules", self.schedules)

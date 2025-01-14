@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -39,10 +40,10 @@ class TermsAndConditionsAcceptanceStatus(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TermsAndConditionsAcceptanceStatus()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .terms_and_conditions import TermsAndConditions
@@ -50,7 +51,7 @@ class TermsAndConditionsAcceptanceStatus(Entity, Parsable):
         from .entity import Entity
         from .terms_and_conditions import TermsAndConditions
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "acceptedDateTime": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
             "acceptedVersion": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
             "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(TermsAndConditions)),
@@ -70,9 +71,6 @@ class TermsAndConditionsAcceptanceStatus(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .terms_and_conditions import TermsAndConditions
-
         writer.write_datetime_value("acceptedDateTime", self.accepted_date_time)
         writer.write_int_value("acceptedVersion", self.accepted_version)
         writer.write_object_value("termsAndConditions", self.terms_and_conditions)

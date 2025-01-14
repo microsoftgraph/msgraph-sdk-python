@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attachment import Attachment
@@ -34,9 +35,9 @@ class Event(OutlookItem, Parsable):
     # true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.
     allow_new_time_proposals: Optional[bool] = None
     # The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.
-    attachments: Optional[List[Attachment]] = None
+    attachments: Optional[list[Attachment]] = None
     # The collection of attendees for the event.
-    attendees: Optional[List[Attendee]] = None
+    attendees: Optional[list[Attendee]] = None
     # The body of the message associated with the event. It can be in HTML or text format.
     body: Optional[ItemBody] = None
     # The preview of the message associated with the event. It is in text format.
@@ -46,7 +47,7 @@ class Event(OutlookItem, Parsable):
     # The date, time, and time zone that the event ends. By default, the end time is in UTC.
     end: Optional[DateTimeTimeZone] = None
     # The collection of open extensions defined for the event. Nullable.
-    extensions: Optional[List[Extension]] = None
+    extensions: Optional[list[Extension]] = None
     # Set to true if the event has attachments.
     has_attachments: Optional[bool] = None
     # When set to true, each attendee only sees themselves in the meeting request and meeting Tracking list. Default is false.
@@ -56,7 +57,7 @@ class Event(OutlookItem, Parsable):
     # The importance of the event. The possible values are: low, normal, high.
     importance: Optional[Importance] = None
     # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
-    instances: Optional[List[Event]] = None
+    instances: Optional[list[Event]] = None
     # Set to true if the event lasts all day. If true, regardless of whether it's a single-day or multi-day event, start and end time must be set to midnight and be in the same time zone.
     is_all_day: Optional[bool] = None
     # Set to true if the event has been canceled.
@@ -72,9 +73,9 @@ class Event(OutlookItem, Parsable):
     # The location of the event.
     location: Optional[Location] = None
     # The locations where the event is held or attended from. The location and locations properties always correspond with each other. If you update the location property, any prior locations in the locations collection would be removed and replaced by the new location value.
-    locations: Optional[List[Location]] = None
+    locations: Optional[list[Location]] = None
     # The collection of multi-value extended properties defined for the event. Read-only. Nullable.
-    multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
+    multi_value_extended_properties: Optional[list[MultiValueLegacyExtendedProperty]] = None
     # Details for an attendee to join the meeting online. Default is null. Read-only. After you set the isOnlineMeeting and onlineMeetingProvider properties to enable a meeting online, Microsoft Graph initializes onlineMeeting. When set, the meeting remains available online, and you cannot change the isOnlineMeeting, onlineMeetingProvider, and onlneMeeting properties again.
     online_meeting: Optional[OnlineMeetingInfo] = None
     # Represents the online meeting service provider. By default, onlineMeetingProvider is unknown. The possible values are unknown, teamsForBusiness, skypeForBusiness, and skypeForConsumer. Optional.  After you set onlineMeetingProvider, Microsoft Graph initializes onlineMeeting. Subsequently you cannot change onlineMeetingProvider again, and the meeting remains available online.
@@ -104,7 +105,7 @@ class Event(OutlookItem, Parsable):
     # The status to show. Possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
     show_as: Optional[FreeBusyStatus] = None
     # The collection of single-value extended properties defined for the event. Read-only. Nullable.
-    single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
+    single_value_extended_properties: Optional[list[SingleValueLegacyExtendedProperty]] = None
     # The start date, time, and time zone of the event. By default, the start time is in UTC.
     start: Optional[DateTimeTimeZone] = None
     # The text of the event's subject line.
@@ -127,10 +128,10 @@ class Event(OutlookItem, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Event()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attachment import Attachment
         from .attendee import Attendee
@@ -172,7 +173,7 @@ class Event(OutlookItem, Parsable):
         from .sensitivity import Sensitivity
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(Attachment)),
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(Attendee)),
@@ -229,26 +230,6 @@ class Event(OutlookItem, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .attachment import Attachment
-        from .attendee import Attendee
-        from .calendar import Calendar
-        from .date_time_time_zone import DateTimeTimeZone
-        from .event_type import EventType
-        from .extension import Extension
-        from .free_busy_status import FreeBusyStatus
-        from .importance import Importance
-        from .item_body import ItemBody
-        from .location import Location
-        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
-        from .online_meeting_info import OnlineMeetingInfo
-        from .online_meeting_provider_type import OnlineMeetingProviderType
-        from .outlook_item import OutlookItem
-        from .patterned_recurrence import PatternedRecurrence
-        from .recipient import Recipient
-        from .response_status import ResponseStatus
-        from .sensitivity import Sensitivity
-        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
-
         writer.write_bool_value("allowNewTimeProposals", self.allow_new_time_proposals)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_collection_of_object_values("attendees", self.attendees)

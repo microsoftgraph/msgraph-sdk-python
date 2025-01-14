@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -34,7 +35,7 @@ class Run(Entity, Parsable):
     # The number of successfully completed users in the run.
     successful_users_count: Optional[int] = None
     # The related taskProcessingResults.
-    task_processing_results: Optional[List[TaskProcessingResult]] = None
+    task_processing_results: Optional[list[TaskProcessingResult]] = None
     # The totalTasksCount property
     total_tasks_count: Optional[int] = None
     # The total number of unprocessed tasks in the run execution.
@@ -42,7 +43,7 @@ class Run(Entity, Parsable):
     # The total number of users in the workflow execution.
     total_users_count: Optional[int] = None
     # The associated individual user execution.
-    user_processing_results: Optional[List[UserProcessingResult]] = None
+    user_processing_results: Optional[list[UserProcessingResult]] = None
     # The workflowExecutionType property
     workflow_execution_type: Optional[WorkflowExecutionType] = None
     
@@ -57,10 +58,10 @@ class Run(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Run()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
@@ -74,7 +75,7 @@ class Run(Entity, Parsable):
         from .user_processing_result import UserProcessingResult
         from .workflow_execution_type import WorkflowExecutionType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "failedTasksCount": lambda n : setattr(self, 'failed_tasks_count', n.get_int_value()),
             "failedUsersCount": lambda n : setattr(self, 'failed_users_count', n.get_int_value()),
@@ -103,12 +104,6 @@ class Run(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
-        from .task_processing_result import TaskProcessingResult
-        from .user_processing_result import UserProcessingResult
-        from .workflow_execution_type import WorkflowExecutionType
-
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("failedTasksCount", self.failed_tasks_count)
         writer.write_int_value("failedUsersCount", self.failed_users_count)

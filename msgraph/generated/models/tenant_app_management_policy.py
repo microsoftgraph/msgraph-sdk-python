@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_management_application_configuration import AppManagementApplicationConfiguration
@@ -32,10 +33,10 @@ class TenantAppManagementPolicy(PolicyBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TenantAppManagementPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_management_application_configuration import AppManagementApplicationConfiguration
         from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
@@ -45,7 +46,7 @@ class TenantAppManagementPolicy(PolicyBase, Parsable):
         from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
         from .policy_base import PolicyBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applicationRestrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(AppManagementApplicationConfiguration)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "servicePrincipalRestrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(AppManagementServicePrincipalConfiguration)),
@@ -63,10 +64,6 @@ class TenantAppManagementPolicy(PolicyBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_management_application_configuration import AppManagementApplicationConfiguration
-        from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
-        from .policy_base import PolicyBase
-
         writer.write_object_value("applicationRestrictions", self.application_restrictions)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_object_value("servicePrincipalRestrictions", self.service_principal_restrictions)

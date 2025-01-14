@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attachment_type import AttachmentType
@@ -13,7 +14,7 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The type of the attachment. The possible values are: file, item, reference. Required.
     attachment_type: Optional[AttachmentType] = None
     # The nature of the data in the attachment. Optional.
@@ -36,16 +37,16 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AttachmentInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attachment_type import AttachmentType
 
         from .attachment_type import AttachmentType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentType)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
@@ -62,8 +63,6 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .attachment_type import AttachmentType
-
         writer.write_enum_value("attachmentType", self.attachment_type)
         writer.write_str_value("contentType", self.content_type)
         writer.write_str_value("name", self.name)

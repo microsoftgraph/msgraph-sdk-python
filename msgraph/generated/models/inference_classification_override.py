@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .email_address import EmailAddress
@@ -30,10 +31,10 @@ class InferenceClassificationOverride(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return InferenceClassificationOverride()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .email_address import EmailAddress
         from .entity import Entity
@@ -43,7 +44,7 @@ class InferenceClassificationOverride(Entity, Parsable):
         from .entity import Entity
         from .inference_classification_type import InferenceClassificationType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(InferenceClassificationType)),
             "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(EmailAddress)),
         }
@@ -60,10 +61,6 @@ class InferenceClassificationOverride(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .email_address import EmailAddress
-        from .entity import Entity
-        from .inference_classification_type import InferenceClassificationType
-
         writer.write_enum_value("classifyAs", self.classify_as)
         writer.write_object_value("senderEmailAddress", self.sender_email_address)
     

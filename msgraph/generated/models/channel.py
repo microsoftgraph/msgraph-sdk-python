@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .channel_membership_type import ChannelMembershipType
@@ -33,19 +34,19 @@ class Channel(Entity, Parsable):
     # Indicates whether the channel should be marked as recommended for all members of the team to show in their channel list. Note: All recommended channels automatically show in the channels list for education and frontline worker users. The property can only be set programmatically via the Create team method. The default value is false.
     is_favorite_by_default: Optional[bool] = None
     # A collection of membership records associated with the channel.
-    members: Optional[List[ConversationMember]] = None
+    members: Optional[list[ConversationMember]] = None
     # The type of the channel. Can be set during creation and can't be changed. The possible values are: standard, private, unknownFutureValue, shared. The default value is standard. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: shared.
     membership_type: Optional[ChannelMembershipType] = None
     # A collection of all the messages in the channel. A navigation property. Nullable.
-    messages: Optional[List[ChatMessage]] = None
+    messages: Optional[list[ChatMessage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of teams with which a channel is shared.
-    shared_with_teams: Optional[List[SharedWithChannelTeamInfo]] = None
+    shared_with_teams: Optional[list[SharedWithChannelTeamInfo]] = None
     # Contains summary information about the channel, including number of owners, members, guests, and an indicator for members from other tenants. The summary property will only be returned if it is specified in the $select clause of the Get channel method.
     summary: Optional[ChannelSummary] = None
     # A collection of all the tabs in the channel. A navigation property.
-    tabs: Optional[List[TeamsTab]] = None
+    tabs: Optional[list[TeamsTab]] = None
     # The ID of the Microsoft Entra tenant.
     tenant_id: Optional[str] = None
     # A hyperlink that will go to the channel in Microsoft Teams. This is the URL that you get when you right-click a channel in Microsoft Teams and select Get link to channel. This URL should be treated as an opaque blob, and not parsed. Read-only.
@@ -62,10 +63,10 @@ class Channel(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Channel()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .channel_membership_type import ChannelMembershipType
         from .channel_summary import ChannelSummary
@@ -85,7 +86,7 @@ class Channel(Entity, Parsable):
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
         from .teams_tab import TeamsTab
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -115,15 +116,6 @@ class Channel(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .channel_membership_type import ChannelMembershipType
-        from .channel_summary import ChannelSummary
-        from .chat_message import ChatMessage
-        from .conversation_member import ConversationMember
-        from .drive_item import DriveItem
-        from .entity import Entity
-        from .shared_with_channel_team_info import SharedWithChannelTeamInfo
-        from .teams_tab import TeamsTab
-
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

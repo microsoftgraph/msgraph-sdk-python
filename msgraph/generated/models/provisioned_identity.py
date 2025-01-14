@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .details_info import DetailsInfo
@@ -29,10 +30,10 @@ class ProvisionedIdentity(Identity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ProvisionedIdentity()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .details_info import DetailsInfo
         from .identity import Identity
@@ -40,7 +41,7 @@ class ProvisionedIdentity(Identity, Parsable):
         from .details_info import DetailsInfo
         from .identity import Identity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "details": lambda n : setattr(self, 'details', n.get_object_value(DetailsInfo)),
             "identityType": lambda n : setattr(self, 'identity_type', n.get_str_value()),
         }
@@ -57,9 +58,6 @@ class ProvisionedIdentity(Identity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .details_info import DetailsInfo
-        from .identity import Identity
-
         writer.write_object_value("details", self.details)
         writer.write_str_value("identityType", self.identity_type)
     

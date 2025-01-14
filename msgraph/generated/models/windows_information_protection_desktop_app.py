@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .windows_information_protection_app import WindowsInformationProtectionApp
@@ -33,16 +34,16 @@ class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp, Pa
             raise TypeError("parse_node cannot be null.")
         return WindowsInformationProtectionDesktopApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .windows_information_protection_app import WindowsInformationProtectionApp
 
         from .windows_information_protection_app import WindowsInformationProtectionApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "binaryName": lambda n : setattr(self, 'binary_name', n.get_str_value()),
             "binaryVersionHigh": lambda n : setattr(self, 'binary_version_high', n.get_str_value()),
             "binaryVersionLow": lambda n : setattr(self, 'binary_version_low', n.get_str_value()),
@@ -60,8 +61,6 @@ class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp, Pa
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .windows_information_protection_app import WindowsInformationProtectionApp
-
         writer.write_str_value("binaryName", self.binary_name)
         writer.write_str_value("binaryVersionHigh", self.binary_version_high)
         writer.write_str_value("binaryVersionLow", self.binary_version_low)

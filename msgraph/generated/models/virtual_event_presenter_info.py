@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .meeting_participant_info import MeetingParticipantInfo
@@ -27,10 +28,10 @@ class VirtualEventPresenterInfo(MeetingParticipantInfo, Parsable):
             raise TypeError("parse_node cannot be null.")
         return VirtualEventPresenterInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .meeting_participant_info import MeetingParticipantInfo
         from .virtual_event_presenter_details import VirtualEventPresenterDetails
@@ -38,7 +39,7 @@ class VirtualEventPresenterInfo(MeetingParticipantInfo, Parsable):
         from .meeting_participant_info import MeetingParticipantInfo
         from .virtual_event_presenter_details import VirtualEventPresenterDetails
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "presenterDetails": lambda n : setattr(self, 'presenter_details', n.get_object_value(VirtualEventPresenterDetails)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class VirtualEventPresenterInfo(MeetingParticipantInfo, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .meeting_participant_info import MeetingParticipantInfo
-        from .virtual_event_presenter_details import VirtualEventPresenterDetails
-
         writer.write_object_value("presenterDetails", self.presenter_details)
     
 

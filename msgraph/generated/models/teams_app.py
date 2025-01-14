@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -13,7 +14,7 @@ from .entity import Entity
 @dataclass
 class TeamsApp(Entity, Parsable):
     # The details for each version of the app.
-    app_definitions: Optional[List[TeamsAppDefinition]] = None
+    app_definitions: Optional[list[TeamsAppDefinition]] = None
     # The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.
     display_name: Optional[str] = None
     # The method of distribution for the app. Read-only.
@@ -34,10 +35,10 @@ class TeamsApp(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TeamsApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .teams_app_definition import TeamsAppDefinition
@@ -47,7 +48,7 @@ class TeamsApp(Entity, Parsable):
         from .teams_app_definition import TeamsAppDefinition
         from .teams_app_distribution_method import TeamsAppDistributionMethod
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(TeamsAppDefinition)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(TeamsAppDistributionMethod)),
@@ -66,10 +67,6 @@ class TeamsApp(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .teams_app_definition import TeamsAppDefinition
-        from .teams_app_distribution_method import TeamsAppDistributionMethod
-
         writer.write_collection_of_object_values("appDefinitions", self.app_definitions)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("distributionMethod", self.distribution_method)

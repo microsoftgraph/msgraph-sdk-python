@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .custom_app_management_configuration import CustomAppManagementConfiguration
@@ -15,7 +16,7 @@ class AppManagementPolicy(PolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.appManagementPolicy"
     # Collection of applications and service principals to which the policy is applied.
-    applies_to: Optional[List[DirectoryObject]] = None
+    applies_to: Optional[list[DirectoryObject]] = None
     # Denotes whether the policy is enabled.
     is_enabled: Optional[bool] = None
     # Restrictions that apply to an application or service principal object.
@@ -32,10 +33,10 @@ class AppManagementPolicy(PolicyBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AppManagementPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .custom_app_management_configuration import CustomAppManagementConfiguration
         from .directory_object import DirectoryObject
@@ -45,7 +46,7 @@ class AppManagementPolicy(PolicyBase, Parsable):
         from .directory_object import DirectoryObject
         from .policy_base import PolicyBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "restrictions": lambda n : setattr(self, 'restrictions', n.get_object_value(CustomAppManagementConfiguration)),
@@ -63,10 +64,6 @@ class AppManagementPolicy(PolicyBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .custom_app_management_configuration import CustomAppManagementConfiguration
-        from .directory_object import DirectoryObject
-        from .policy_base import PolicyBase
-
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_object_value("restrictions", self.restrictions)

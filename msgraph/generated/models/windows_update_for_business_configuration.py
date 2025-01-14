@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .automatic_update_mode import AutomaticUpdateMode
@@ -109,10 +110,10 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WindowsUpdateForBusinessConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .automatic_update_mode import AutomaticUpdateMode
         from .auto_restart_notification_dismissal_method import AutoRestartNotificationDismissalMethod
@@ -136,7 +137,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration, Parsable):
         from .windows_update_notification_display_option import WindowsUpdateNotificationDisplayOption
         from .windows_update_type import WindowsUpdateType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowWindows11Upgrade": lambda n : setattr(self, 'allow_windows11_upgrade', n.get_bool_value()),
             "autoRestartNotificationDismissal": lambda n : setattr(self, 'auto_restart_notification_dismissal', n.get_enum_value(AutoRestartNotificationDismissalMethod)),
             "automaticUpdateMode": lambda n : setattr(self, 'automatic_update_mode', n.get_enum_value(AutomaticUpdateMode)),
@@ -187,17 +188,6 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .automatic_update_mode import AutomaticUpdateMode
-        from .auto_restart_notification_dismissal_method import AutoRestartNotificationDismissalMethod
-        from .device_configuration import DeviceConfiguration
-        from .enablement import Enablement
-        from .prerelease_features import PrereleaseFeatures
-        from .windows_delivery_optimization_mode import WindowsDeliveryOptimizationMode
-        from .windows_update_for_business_update_weeks import WindowsUpdateForBusinessUpdateWeeks
-        from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
-        from .windows_update_notification_display_option import WindowsUpdateNotificationDisplayOption
-        from .windows_update_type import WindowsUpdateType
-
         writer.write_bool_value("allowWindows11Upgrade", self.allow_windows11_upgrade)
         writer.write_enum_value("autoRestartNotificationDismissal", self.auto_restart_notification_dismissal)
         writer.write_enum_value("automaticUpdateMode", self.automatic_update_mode)

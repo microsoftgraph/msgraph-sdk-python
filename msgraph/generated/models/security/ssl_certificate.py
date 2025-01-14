@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .artifact import Artifact
@@ -28,7 +29,7 @@ class SslCertificate(Artifact, Parsable):
     # The most recent date and time when this sslCertificate was observed. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_seen_date_time: Optional[datetime.datetime] = None
     # The host resources related with this sslCertificate.
-    related_hosts: Optional[List[Host]] = None
+    related_hosts: Optional[list[Host]] = None
     # The serial number associated with an SSL certificate.
     serial_number: Optional[str] = None
     # A SHA-1 hash of the certificate. Note: This is not the signature.
@@ -47,10 +48,10 @@ class SslCertificate(Artifact, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SslCertificate()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .artifact import Artifact
         from .host import Host
@@ -60,7 +61,7 @@ class SslCertificate(Artifact, Parsable):
         from .host import Host
         from .ssl_certificate_entity import SslCertificateEntity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "fingerprint": lambda n : setattr(self, 'fingerprint', n.get_str_value()),
             "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
@@ -85,10 +86,6 @@ class SslCertificate(Artifact, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .artifact import Artifact
-        from .host import Host
-        from .ssl_certificate_entity import SslCertificateEntity
-
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("fingerprint", self.fingerprint)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)

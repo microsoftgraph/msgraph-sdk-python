@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..identity import Identity
@@ -41,10 +42,10 @@ class ParticipantEndpoint(Endpoint, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ParticipantEndpoint()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..identity import Identity
         from ..identity_set import IdentitySet
@@ -56,7 +57,7 @@ class ParticipantEndpoint(Endpoint, Parsable):
         from .endpoint import Endpoint
         from .user_feedback import UserFeedback
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "associatedIdentity": lambda n : setattr(self, 'associated_identity', n.get_object_value(Identity)),
             "cpuCoresCount": lambda n : setattr(self, 'cpu_cores_count', n.get_int_value()),
             "cpuName": lambda n : setattr(self, 'cpu_name', n.get_str_value()),
@@ -78,11 +79,6 @@ class ParticipantEndpoint(Endpoint, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..identity import Identity
-        from ..identity_set import IdentitySet
-        from .endpoint import Endpoint
-        from .user_feedback import UserFeedback
-
         writer.write_object_value("associatedIdentity", self.associated_identity)
         writer.write_int_value("cpuCoresCount", self.cpu_cores_count)
         writer.write_str_value("cpuName", self.cpu_name)

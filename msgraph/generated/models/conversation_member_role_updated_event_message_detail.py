@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .event_message_detail import EventMessageDetail
@@ -15,7 +16,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail, Parsab
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail"
     # Roles for the coversation member user.
-    conversation_member_roles: Optional[List[str]] = None
+    conversation_member_roles: Optional[list[str]] = None
     # Identity of the conversation member user.
     conversation_member_user: Optional[TeamworkUserIdentity] = None
     # Initiator of the event.
@@ -32,10 +33,10 @@ class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail, Parsab
             raise TypeError("parse_node cannot be null.")
         return ConversationMemberRoleUpdatedEventMessageDetail()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
@@ -45,7 +46,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail, Parsab
         from .identity_set import IdentitySet
         from .teamwork_user_identity import TeamworkUserIdentity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "conversationMemberRoles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
             "conversationMemberUser": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(TeamworkUserIdentity)),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
@@ -63,10 +64,6 @@ class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail, Parsab
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .event_message_detail import EventMessageDetail
-        from .identity_set import IdentitySet
-        from .teamwork_user_identity import TeamworkUserIdentity
-
         writer.write_collection_of_primitive_values("conversationMemberRoles", self.conversation_member_roles)
         writer.write_object_value("conversationMemberUser", self.conversation_member_user)
         writer.write_object_value("initiator", self.initiator)

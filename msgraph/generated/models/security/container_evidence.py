@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -15,9 +16,9 @@ class ContainerEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.containerEvidence"
     # The list of arguments.
-    args: Optional[List[str]] = None
+    args: Optional[list[str]] = None
     # The list of commands.
-    command: Optional[List[str]] = None
+    command: Optional[list[str]] = None
     # The container ID.
     container_id: Optional[str] = None
     # The image used to run the container.
@@ -40,10 +41,10 @@ class ContainerEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ContainerEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .container_image_evidence import ContainerImageEvidence
@@ -53,7 +54,7 @@ class ContainerEvidence(AlertEvidence, Parsable):
         from .container_image_evidence import ContainerImageEvidence
         from .kubernetes_pod_evidence import KubernetesPodEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "args": lambda n : setattr(self, 'args', n.get_collection_of_primitive_values(str)),
             "command": lambda n : setattr(self, 'command', n.get_collection_of_primitive_values(str)),
             "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
@@ -75,10 +76,6 @@ class ContainerEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .container_image_evidence import ContainerImageEvidence
-        from .kubernetes_pod_evidence import KubernetesPodEvidence
-
         writer.write_collection_of_primitive_values("args", self.args)
         writer.write_collection_of_primitive_values("command", self.command)
         writer.write_str_value("containerId", self.container_id)

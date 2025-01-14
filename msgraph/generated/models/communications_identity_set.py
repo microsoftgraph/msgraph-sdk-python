@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .endpoint_type import EndpointType
@@ -42,10 +43,10 @@ class CommunicationsIdentitySet(IdentitySet, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CommunicationsIdentitySet()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .endpoint_type import EndpointType
         from .identity import Identity
@@ -55,7 +56,7 @@ class CommunicationsIdentitySet(IdentitySet, Parsable):
         from .identity import Identity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applicationInstance": lambda n : setattr(self, 'application_instance', n.get_object_value(Identity)),
             "assertedIdentity": lambda n : setattr(self, 'asserted_identity', n.get_object_value(Identity)),
             "azureCommunicationServicesUser": lambda n : setattr(self, 'azure_communication_services_user', n.get_object_value(Identity)),
@@ -78,10 +79,6 @@ class CommunicationsIdentitySet(IdentitySet, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .endpoint_type import EndpointType
-        from .identity import Identity
-        from .identity_set import IdentitySet
-
         writer.write_object_value("applicationInstance", self.application_instance)
         writer.write_object_value("assertedIdentity", self.asserted_identity)
         writer.write_object_value("azureCommunicationServicesUser", self.azure_communication_services_user)

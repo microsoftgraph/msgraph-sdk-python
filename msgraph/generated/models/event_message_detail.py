@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .call_ended_event_message_detail import CallEndedEventMessageDetail
@@ -42,7 +43,7 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -182,10 +183,10 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
             return TeamUnarchivedEventMessageDetail()
         return EventMessageDetail()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .call_ended_event_message_detail import CallEndedEventMessageDetail
         from .call_recording_event_message_detail import CallRecordingEventMessageDetail
@@ -249,7 +250,7 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
         from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -262,37 +263,6 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .call_ended_event_message_detail import CallEndedEventMessageDetail
-        from .call_recording_event_message_detail import CallRecordingEventMessageDetail
-        from .call_started_event_message_detail import CallStartedEventMessageDetail
-        from .call_transcript_event_message_detail import CallTranscriptEventMessageDetail
-        from .channel_added_event_message_detail import ChannelAddedEventMessageDetail
-        from .channel_deleted_event_message_detail import ChannelDeletedEventMessageDetail
-        from .channel_description_updated_event_message_detail import ChannelDescriptionUpdatedEventMessageDetail
-        from .channel_renamed_event_message_detail import ChannelRenamedEventMessageDetail
-        from .channel_set_as_favorite_by_default_event_message_detail import ChannelSetAsFavoriteByDefaultEventMessageDetail
-        from .channel_unset_as_favorite_by_default_event_message_detail import ChannelUnsetAsFavoriteByDefaultEventMessageDetail
-        from .chat_renamed_event_message_detail import ChatRenamedEventMessageDetail
-        from .conversation_member_role_updated_event_message_detail import ConversationMemberRoleUpdatedEventMessageDetail
-        from .meeting_policy_updated_event_message_detail import MeetingPolicyUpdatedEventMessageDetail
-        from .members_added_event_message_detail import MembersAddedEventMessageDetail
-        from .members_deleted_event_message_detail import MembersDeletedEventMessageDetail
-        from .members_joined_event_message_detail import MembersJoinedEventMessageDetail
-        from .members_left_event_message_detail import MembersLeftEventMessageDetail
-        from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
-        from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
-        from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
-        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
-        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
-        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
-        from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
-        from .team_created_event_message_detail import TeamCreatedEventMessageDetail
-        from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
-        from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
-        from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
-        from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
-        from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
-
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_question import AccessPackageQuestion
@@ -14,7 +15,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Indicates whether the requestor is allowed to set a custom schedule.
     allow_custom_assignment_schedule: Optional[bool] = None
     # Indicates whether a request to add must be approved by an approver.
@@ -30,7 +31,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
     # The identifier of the policy that these requirements are associated with. This identifier can be used when creating a new assignment request.
     policy_id: Optional[str] = None
     # The questions property
-    questions: Optional[List[AccessPackageQuestion]] = None
+    questions: Optional[list[AccessPackageQuestion]] = None
     # Schedule restrictions enforced, if any.
     schedule: Optional[EntitlementManagementSchedule] = None
     
@@ -45,10 +46,10 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
             raise TypeError("parse_node cannot be null.")
         return AccessPackageAssignmentRequestRequirements()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_question import AccessPackageQuestion
         from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -56,7 +57,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
         from .access_package_question import AccessPackageQuestion
         from .entitlement_management_schedule import EntitlementManagementSchedule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
             "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
             "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
@@ -77,9 +78,6 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .access_package_question import AccessPackageQuestion
-        from .entitlement_management_schedule import EntitlementManagementSchedule
-
         writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)
         writer.write_bool_value("isApprovalRequiredForUpdate", self.is_approval_required_for_update)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -17,23 +18,23 @@ from ..entity import Entity
 @dataclass
 class Set(Entity, Parsable):
     # Children terms of set in term [store].
-    children: Optional[List[Term]] = None
+    children: Optional[list[Term]] = None
     # Date and time of set creation. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # Description that gives details on the term usage.
     description: Optional[str] = None
     # Name of the set for each languageTag.
-    localized_names: Optional[List[LocalizedName]] = None
+    localized_names: Optional[list[LocalizedName]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The parentGroup property
     parent_group: Optional[Group] = None
     # Custom properties for the set.
-    properties: Optional[List[KeyValue]] = None
+    properties: Optional[list[KeyValue]] = None
     # Indicates which terms have been pinned or reused directly under the set.
-    relations: Optional[List[Relation]] = None
+    relations: Optional[list[Relation]] = None
     # All the terms under the set.
-    terms: Optional[List[Term]] = None
+    terms: Optional[list[Term]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Set:
@@ -46,10 +47,10 @@ class Set(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Set()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..key_value import KeyValue
@@ -65,7 +66,7 @@ class Set(Entity, Parsable):
         from .relation import Relation
         from .term import Term
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(Term)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -88,13 +89,6 @@ class Set(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..key_value import KeyValue
-        from .group import Group
-        from .localized_name import LocalizedName
-        from .relation import Relation
-        from .term import Term
-
         writer.write_collection_of_object_values("children", self.children)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

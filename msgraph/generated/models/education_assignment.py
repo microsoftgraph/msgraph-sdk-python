@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_added_student_action import EducationAddedStudentAction
@@ -38,7 +39,7 @@ class EducationAssignment(Entity, Parsable):
     # The moment that the assignment was published to students and the assignment shows up on the students timeline. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     assigned_date_time: Optional[datetime.datetime] = None
     # When set, enables users to easily find assignments of a given type. Read-only. Nullable.
-    categories: Optional[List[EducationCategory]] = None
+    categories: Optional[list[EducationCategory]] = None
     # Class to which this assignment belongs.
     class_id: Optional[str] = None
     # Date when the assignment is closed for submissions. This is an optional field that can be null if the assignment doesn't allowLateSubmissions or when the closeDateTime is the same as the dueDateTime. But if specified, then the closeDateTime must be greater than or equal to the dueDateTime. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -70,7 +71,7 @@ class EducationAssignment(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Learning objects that are associated with this assignment. Only teachers can modify this list. Nullable.
-    resources: Optional[List[EducationAssignmentResource]] = None
+    resources: Optional[list[EducationAssignmentResource]] = None
     # Folder URL where all the file resources for this assignment are stored.
     resources_folder_url: Optional[str] = None
     # When set, the grading rubric attached to this assignment.
@@ -78,7 +79,7 @@ class EducationAssignment(Entity, Parsable):
     # Status of the assignment.  You can't PATCH this value. Possible values are: draft, scheduled, published, assigned, unknownFutureValue, inactive. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: inactive.
     status: Optional[EducationAssignmentStatus] = None
     # Once published, there's a submission object for each student representing their work and grade. Read-only. Nullable.
-    submissions: Optional[List[EducationSubmission]] = None
+    submissions: Optional[list[EducationSubmission]] = None
     # The deep link URL for the given assignment.
     web_url: Optional[str] = None
     
@@ -93,10 +94,10 @@ class EducationAssignment(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EducationAssignment()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .education_added_student_action import EducationAddedStudentAction
         from .education_add_to_calendar_options import EducationAddToCalendarOptions
@@ -126,7 +127,7 @@ class EducationAssignment(Entity, Parsable):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(EducationAddToCalendarOptions)),
             "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(EducationAddedStudentAction)),
             "allowLateSubmissions": lambda n : setattr(self, 'allow_late_submissions', n.get_bool_value()),
@@ -169,20 +170,6 @@ class EducationAssignment(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .education_added_student_action import EducationAddedStudentAction
-        from .education_add_to_calendar_options import EducationAddToCalendarOptions
-        from .education_assignment_grade_type import EducationAssignmentGradeType
-        from .education_assignment_recipient import EducationAssignmentRecipient
-        from .education_assignment_resource import EducationAssignmentResource
-        from .education_assignment_status import EducationAssignmentStatus
-        from .education_category import EducationCategory
-        from .education_grading_category import EducationGradingCategory
-        from .education_item_body import EducationItemBody
-        from .education_rubric import EducationRubric
-        from .education_submission import EducationSubmission
-        from .entity import Entity
-        from .identity_set import IdentitySet
-
         writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)
         writer.write_enum_value("addedStudentAction", self.added_student_action)
         writer.write_bool_value("allowLateSubmissions", self.allow_late_submissions)

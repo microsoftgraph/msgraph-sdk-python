@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
@@ -16,7 +17,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Possible values for when accounts are deleted on a shared PC.
     account_deletion_policy: Optional[SharedPCAccountDeletionPolicyType] = None
     # Sets the percentage of available disk space a PC should have before it stops deleting cached shared PC accounts. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
@@ -39,16 +40,16 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SharedPCAccountManagerPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
 
         from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountDeletionPolicy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(SharedPCAccountDeletionPolicyType)),
             "cacheAccountsAboveDiskFreePercentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
             "inactiveThresholdDays": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
@@ -65,8 +66,6 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
-
         writer.write_enum_value("accountDeletionPolicy", self.account_deletion_policy)
         writer.write_int_value("cacheAccountsAboveDiskFreePercentage", self.cache_accounts_above_disk_free_percentage)
         writer.write_int_value("inactiveThresholdDays", self.inactive_threshold_days)

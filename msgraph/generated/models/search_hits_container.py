@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .search_aggregation import SearchAggregation
@@ -14,11 +15,11 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The aggregations property
-    aggregations: Optional[List[SearchAggregation]] = None
+    aggregations: Optional[list[SearchAggregation]] = None
     # A collection of the search results.
-    hits: Optional[List[SearchHit]] = None
+    hits: Optional[list[SearchHit]] = None
     # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
     more_results_available: Optional[bool] = None
     # The OdataType property
@@ -37,10 +38,10 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SearchHitsContainer()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .search_aggregation import SearchAggregation
         from .search_hit import SearchHit
@@ -48,7 +49,7 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
         from .search_aggregation import SearchAggregation
         from .search_hit import SearchHit
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(SearchAggregation)),
             "hits": lambda n : setattr(self, 'hits', n.get_collection_of_object_values(SearchHit)),
             "moreResultsAvailable": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
@@ -65,9 +66,6 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .search_aggregation import SearchAggregation
-        from .search_hit import SearchHit
-
         writer.write_collection_of_object_values("aggregations", self.aggregations)
         writer.write_collection_of_object_values("hits", self.hits)
         writer.write_bool_value("moreResultsAvailable", self.more_results_available)

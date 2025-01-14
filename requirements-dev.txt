@@ -42,7 +42,7 @@ microsoft-kiota-serialization-multipart==1.7.0
 microsoft-kiota-serialization-text==1.7.0
 msal==1.31.1
 msal-extensions==1.2.0
-msgraph-core==1.1.8
+msgraph-core==1.2.0
 multidict==6.1.0
 mypy==1.14.1
 mypy-extensions==1.0.0

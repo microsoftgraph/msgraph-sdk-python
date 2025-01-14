@@ -22,13 +22,12 @@ dependencies = [
     "msgraph_core >=1.0.0"
 
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 license = {file = "LICENSE"}
 readme = "README.md"
 keywords = ["msgraph", "openAPI", "Microsoft", "Graph"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",

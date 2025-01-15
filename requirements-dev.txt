@@ -72,7 +72,7 @@ typing_extensions==4.12.2
 tzdata==2024.2
 uritemplate==4.1.1
 urllib3==2.2.3
-wrapt==1.17.1
+wrapt==1.17.2
 yapf==0.43.0
 yarl==1.15.2
 zipp==3.20.2

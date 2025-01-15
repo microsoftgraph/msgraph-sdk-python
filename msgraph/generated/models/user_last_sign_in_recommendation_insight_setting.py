@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
@@ -30,10 +31,10 @@ class UserLastSignInRecommendationInsightSetting(AccessReviewRecommendationInsig
             raise TypeError("parse_node cannot be null.")
         return UserLastSignInRecommendationInsightSetting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
         from .user_sign_in_recommendation_scope import UserSignInRecommendationScope
@@ -41,7 +42,7 @@ class UserLastSignInRecommendationInsightSetting(AccessReviewRecommendationInsig
         from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
         from .user_sign_in_recommendation_scope import UserSignInRecommendationScope
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "recommendationLookBackDuration": lambda n : setattr(self, 'recommendation_look_back_duration', n.get_timedelta_value()),
             "signInScope": lambda n : setattr(self, 'sign_in_scope', n.get_enum_value(UserSignInRecommendationScope)),
         }
@@ -58,9 +59,6 @@ class UserLastSignInRecommendationInsightSetting(AccessReviewRecommendationInsig
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
-        from .user_sign_in_recommendation_scope import UserSignInRecommendationScope
-
         writer.write_timedelta_value("recommendationLookBackDuration", self.recommendation_look_back_duration)
         writer.write_enum_value("signInScope", self.sign_in_scope)
     

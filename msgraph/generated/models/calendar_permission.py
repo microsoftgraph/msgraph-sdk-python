@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .calendar_role_type import CalendarRoleType
@@ -13,7 +14,7 @@ from .entity import Entity
 @dataclass
 class CalendarPermission(Entity, Parsable):
     # List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
-    allowed_roles: Optional[List[CalendarRoleType]] = None
+    allowed_roles: Optional[list[CalendarRoleType]] = None
     # Represents a share recipient or delegate who has access to the calendar. For the 'My Organization' share recipient, the address property is null. Read-only.
     email_address: Optional[EmailAddress] = None
     # True if the user in context (recipient or delegate) is inside the same organization as the calendar owner.
@@ -36,10 +37,10 @@ class CalendarPermission(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CalendarPermission()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .calendar_role_type import CalendarRoleType
         from .email_address import EmailAddress
@@ -49,7 +50,7 @@ class CalendarPermission(Entity, Parsable):
         from .email_address import EmailAddress
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(CalendarRoleType)),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
             "isInsideOrganization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
@@ -69,10 +70,6 @@ class CalendarPermission(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .calendar_role_type import CalendarRoleType
-        from .email_address import EmailAddress
-        from .entity import Entity
-
         writer.write_collection_of_enum_values("allowedRoles", self.allowed_roles)
         writer.write_object_value("emailAddress", self.email_address)
         writer.write_bool_value("isInsideOrganization", self.is_inside_organization)

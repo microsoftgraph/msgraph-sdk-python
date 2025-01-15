@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -30,10 +31,10 @@ class OnPremisesDirectorySynchronization(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OnPremisesDirectorySynchronization()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .on_premises_directory_synchronization_configuration import OnPremisesDirectorySynchronizationConfiguration
@@ -43,7 +44,7 @@ class OnPremisesDirectorySynchronization(Entity, Parsable):
         from .on_premises_directory_synchronization_configuration import OnPremisesDirectorySynchronizationConfiguration
         from .on_premises_directory_synchronization_feature import OnPremisesDirectorySynchronizationFeature
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(OnPremisesDirectorySynchronizationConfiguration)),
             "features": lambda n : setattr(self, 'features', n.get_object_value(OnPremisesDirectorySynchronizationFeature)),
         }
@@ -60,10 +61,6 @@ class OnPremisesDirectorySynchronization(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .on_premises_directory_synchronization_configuration import OnPremisesDirectorySynchronizationConfiguration
-        from .on_premises_directory_synchronization_feature import OnPremisesDirectorySynchronizationFeature
-
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("features", self.features)
     

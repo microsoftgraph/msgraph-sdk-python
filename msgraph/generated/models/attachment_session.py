@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -16,7 +17,7 @@ class AttachmentSession(Entity, Parsable):
     # The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached.
     expiration_date_time: Optional[datetime.datetime] = None
     # Indicates a single value {start} that represents the location in the file where the next upload should begin.
-    next_expected_ranges: Optional[List[str]] = None
+    next_expected_ranges: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -31,16 +32,16 @@ class AttachmentSession(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AttachmentSession()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
 
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "nextExpectedRanges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
@@ -58,8 +59,6 @@ class AttachmentSession(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-
         writer.write_bytes_value("content", self.content)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_primitive_values("nextExpectedRanges", self.next_expected_ranges)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -40,10 +41,10 @@ class ServiceApp(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ServiceApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .identity import Identity
@@ -55,7 +56,7 @@ class ServiceApp(Entity, Parsable):
         from .identity_set import IdentitySet
         from .service_app_status import ServiceAppStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(Identity)),
             "effectiveDateTime": lambda n : setattr(self, 'effective_date_time', n.get_datetime_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
@@ -76,11 +77,6 @@ class ServiceApp(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .identity import Identity
-        from .identity_set import IdentitySet
-        from .service_app_status import ServiceAppStatus
-
         writer.write_object_value("application", self.application)
         writer.write_datetime_value("effectiveDateTime", self.effective_date_time)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .printer_base import PrinterBase
@@ -17,7 +18,7 @@ class Printer(PrinterBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.printer"
     # The connectors that are associated with the printer.
-    connectors: Optional[List[PrintConnector]] = None
+    connectors: Optional[list[PrintConnector]] = None
     # True if the printer has a physical device for printing. Read-only.
     has_physical_device: Optional[bool] = None
     # True if the printer is shared; false otherwise. Read-only.
@@ -27,9 +28,9 @@ class Printer(PrinterBase, Parsable):
     # The DateTimeOffset when the printer was registered. Read-only.
     registered_date_time: Optional[datetime.datetime] = None
     # The list of printerShares that are associated with the printer. Currently, only one printerShare can be associated with the printer. Read-only. Nullable.
-    shares: Optional[List[PrinterShare]] = None
+    shares: Optional[list[PrinterShare]] = None
     # A list of task triggers that are associated with the printer.
-    task_triggers: Optional[List[PrintTaskTrigger]] = None
+    task_triggers: Optional[list[PrintTaskTrigger]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Printer:
@@ -42,10 +43,10 @@ class Printer(PrinterBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Printer()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .printer_base import PrinterBase
         from .printer_share import PrinterShare
@@ -57,7 +58,7 @@ class Printer(PrinterBase, Parsable):
         from .print_connector import PrintConnector
         from .print_task_trigger import PrintTaskTrigger
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(PrintConnector)),
             "hasPhysicalDevice": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
@@ -79,11 +80,6 @@ class Printer(PrinterBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .printer_base import PrinterBase
-        from .printer_share import PrinterShare
-        from .print_connector import PrintConnector
-        from .print_task_trigger import PrintTaskTrigger
-
         writer.write_collection_of_object_values("connectors", self.connectors)
         writer.write_bool_value("hasPhysicalDevice", self.has_physical_device)
         writer.write_bool_value("isShared", self.is_shared)

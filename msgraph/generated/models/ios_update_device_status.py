@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .compliance_status import ComplianceStatus
@@ -49,10 +50,10 @@ class IosUpdateDeviceStatus(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IosUpdateDeviceStatus()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .compliance_status import ComplianceStatus
         from .entity import Entity
@@ -62,7 +63,7 @@ class IosUpdateDeviceStatus(Entity, Parsable):
         from .entity import Entity
         from .ios_updates_install_status import IosUpdatesInstallStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
             "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
@@ -88,10 +89,6 @@ class IosUpdateDeviceStatus(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .compliance_status import ComplianceStatus
-        from .entity import Entity
-        from .ios_updates_install_status import IosUpdatesInstallStatus
-
         writer.write_datetime_value("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)
         writer.write_str_value("deviceDisplayName", self.device_display_name)
         writer.write_str_value("deviceId", self.device_id)

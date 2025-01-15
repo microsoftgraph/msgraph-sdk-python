@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections.abc import Callable
 from kiota_abstractions.api_client_builder import enable_backing_store_for_serialization_writer_factory, register_default_deserializer, register_default_serializer
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
@@ -12,7 +13,7 @@ from kiota_serialization_json.json_serialization_writer_factory import JsonSeria
 from kiota_serialization_multipart.multipart_serialization_writer_factory import MultipartSerializationWriterFactory
 from kiota_serialization_text.text_parse_node_factory import TextParseNodeFactory
 from kiota_serialization_text.text_serialization_writer_factory import TextSerializationWriterFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .admin.admin_request_builder import AdminRequestBuilder

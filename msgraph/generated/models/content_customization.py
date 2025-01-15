@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .key_value import KeyValue
@@ -13,15 +14,15 @@ class ContentCustomization(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Represents the content options of External Identities to be customized throughout the authentication flow for a tenant.
-    attribute_collection: Optional[List[KeyValue]] = None
+    attribute_collection: Optional[list[KeyValue]] = None
     # A relative URL for the content options of External Identities to be customized throughout the authentication flow for a tenant.
     attribute_collection_relative_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents content options to customize during MFA proofup interruptions.
-    registration_campaign: Optional[List[KeyValue]] = None
+    registration_campaign: Optional[list[KeyValue]] = None
     # The relative URL of the content options to customize during MFA proofup interruptions.
     registration_campaign_relative_url: Optional[str] = None
     
@@ -36,16 +37,16 @@ class ContentCustomization(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ContentCustomization()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .key_value import KeyValue
 
         from .key_value import KeyValue
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attributeCollection": lambda n : setattr(self, 'attribute_collection', n.get_collection_of_object_values(KeyValue)),
             "attributeCollectionRelativeUrl": lambda n : setattr(self, 'attribute_collection_relative_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -62,8 +63,6 @@ class ContentCustomization(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .key_value import KeyValue
-
         writer.write_collection_of_object_values("attributeCollection", self.attribute_collection)
         writer.write_str_value("attributeCollectionRelativeUrl", self.attribute_collection_relative_url)
         writer.write_str_value("@odata.type", self.odata_type)

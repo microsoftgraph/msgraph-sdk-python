@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -13,7 +14,7 @@ from .entity import Entity
 @dataclass
 class CalendarGroup(Entity, Parsable):
     # The calendars in the calendar group. Navigation property. Read-only. Nullable.
-    calendars: Optional[List[Calendar]] = None
+    calendars: Optional[list[Calendar]] = None
     # Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
     change_key: Optional[str] = None
     # The class identifier. Read-only.
@@ -34,10 +35,10 @@ class CalendarGroup(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CalendarGroup()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .calendar import Calendar
         from .entity import Entity
@@ -45,7 +46,7 @@ class CalendarGroup(Entity, Parsable):
         from .calendar import Calendar
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(Calendar)),
             "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
             "classId": lambda n : setattr(self, 'class_id', n.get_uuid_value()),
@@ -64,9 +65,6 @@ class CalendarGroup(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .calendar import Calendar
-        from .entity import Entity
-
         writer.write_collection_of_object_values("calendars", self.calendars)
         writer.write_str_value("changeKey", self.change_key)
         writer.write_uuid_value("classId", self.class_id)

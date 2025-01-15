@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
@@ -14,7 +15,7 @@ class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase, Parsab
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.clientCertificateAuthentication"
     # The list of certificates uploaded for this API connector.
-    certificate_list: Optional[List[Pkcs12CertificateInformation]] = None
+    certificate_list: Optional[list[Pkcs12CertificateInformation]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ClientCertificateAuthentication:
@@ -27,10 +28,10 @@ class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase, Parsab
             raise TypeError("parse_node cannot be null.")
         return ClientCertificateAuthentication()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
         from .pkcs12_certificate_information import Pkcs12CertificateInformation
@@ -38,7 +39,7 @@ class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase, Parsab
         from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
         from .pkcs12_certificate_information import Pkcs12CertificateInformation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "certificateList": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(Pkcs12CertificateInformation)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase, Parsab
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
-        from .pkcs12_certificate_information import Pkcs12CertificateInformation
-
         writer.write_collection_of_object_values("certificateList", self.certificate_list)
     
 

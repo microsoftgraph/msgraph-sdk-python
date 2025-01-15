@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -25,11 +26,11 @@ class NotificationMessageTemplate(Entity, Parsable):
     # DateTime the object was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The list of localized messages for this Notification Message Template.
-    localized_notification_messages: Optional[List[LocalizedNotificationMessage]] = None
+    localized_notification_messages: Optional[list[LocalizedNotificationMessage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # List of Scope Tags for this Entity instance.
-    role_scope_tag_ids: Optional[List[str]] = None
+    role_scope_tag_ids: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> NotificationMessageTemplate:
@@ -42,10 +43,10 @@ class NotificationMessageTemplate(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return NotificationMessageTemplate()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .localized_notification_message import LocalizedNotificationMessage
@@ -55,7 +56,7 @@ class NotificationMessageTemplate(Entity, Parsable):
         from .localized_notification_message import LocalizedNotificationMessage
         from .notification_template_branding_options import NotificationTemplateBrandingOptions
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "brandingOptions": lambda n : setattr(self, 'branding_options', n.get_collection_of_enum_values(NotificationTemplateBrandingOptions)),
             "defaultLocale": lambda n : setattr(self, 'default_locale', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -76,10 +77,6 @@ class NotificationMessageTemplate(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .localized_notification_message import LocalizedNotificationMessage
-        from .notification_template_branding_options import NotificationTemplateBrandingOptions
-
         writer.write_enum_value("brandingOptions", self.branding_options)
         writer.write_str_value("defaultLocale", self.default_locale)
         writer.write_str_value("displayName", self.display_name)

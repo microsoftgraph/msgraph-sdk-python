@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attack_simulation_operation import AttackSimulationOperation
@@ -59,10 +60,10 @@ class LongRunningOperation(Entity, Parsable):
             return RichLongRunningOperation()
         return LongRunningOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attack_simulation_operation import AttackSimulationOperation
         from .engagement_async_operation import EngagementAsyncOperation
@@ -76,7 +77,7 @@ class LongRunningOperation(Entity, Parsable):
         from .long_running_operation_status import LongRunningOperationStatus
         from .rich_long_running_operation import RichLongRunningOperation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
             "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
@@ -96,12 +97,6 @@ class LongRunningOperation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .attack_simulation_operation import AttackSimulationOperation
-        from .engagement_async_operation import EngagementAsyncOperation
-        from .entity import Entity
-        from .long_running_operation_status import LongRunningOperationStatus
-        from .rich_long_running_operation import RichLongRunningOperation
-
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
         writer.write_str_value("resourceLocation", self.resource_location)

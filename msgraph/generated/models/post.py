@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attachment import Attachment
@@ -20,7 +21,7 @@ class Post(OutlookItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.post"
     # Read-only. Nullable. Supports $expand.
-    attachments: Optional[List[Attachment]] = None
+    attachments: Optional[list[Attachment]] = None
     # The contents of the post. This is a default property. This property can be null.
     body: Optional[ItemBody] = None
     # Unique ID of the conversation. Read-only.
@@ -28,7 +29,7 @@ class Post(OutlookItem, Parsable):
     # Unique ID of the conversation thread. Read-only.
     conversation_thread_id: Optional[str] = None
     # The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
-    extensions: Optional[List[Extension]] = None
+    extensions: Optional[list[Extension]] = None
     # The from property
     from_: Optional[Recipient] = None
     # Indicates whether the post has at least one attachment. This is a default property.
@@ -36,15 +37,15 @@ class Post(OutlookItem, Parsable):
     # Read-only. Supports $expand.
     in_reply_to: Optional[Post] = None
     # The collection of multi-value extended properties defined for the post. Read-only. Nullable.
-    multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
+    multi_value_extended_properties: Optional[list[MultiValueLegacyExtendedProperty]] = None
     # Conversation participants that were added to the thread as part of this post.
-    new_participants: Optional[List[Recipient]] = None
+    new_participants: Optional[list[Recipient]] = None
     # Specifies when the post was received. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     received_date_time: Optional[datetime.datetime] = None
     # Contains the address of the sender. The value of Sender is assumed to be the address of the authenticated user in the case when Sender is not specified. This is a default property.
     sender: Optional[Recipient] = None
     # The collection of single-value extended properties defined for the post. Read-only. Nullable.
-    single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
+    single_value_extended_properties: Optional[list[SingleValueLegacyExtendedProperty]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Post:
@@ -57,10 +58,10 @@ class Post(OutlookItem, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Post()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attachment import Attachment
         from .extension import Extension
@@ -78,7 +79,7 @@ class Post(OutlookItem, Parsable):
         from .recipient import Recipient
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(Attachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
             "conversationId": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
@@ -106,14 +107,6 @@ class Post(OutlookItem, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .attachment import Attachment
-        from .extension import Extension
-        from .item_body import ItemBody
-        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
-        from .outlook_item import OutlookItem
-        from .recipient import Recipient
-        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
-
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
         writer.write_str_value("conversationId", self.conversation_id)

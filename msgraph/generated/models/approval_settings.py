@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .unified_approval_stage import UnifiedApprovalStage
@@ -13,11 +14,11 @@ class ApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
     approval_mode: Optional[str] = None
     # If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
-    approval_stages: Optional[List[UnifiedApprovalStage]] = None
+    approval_stages: Optional[list[UnifiedApprovalStage]] = None
     # Indicates whether approval is required for requests in this policy.
     is_approval_required: Optional[bool] = None
     # Indicates whether approval is required for a user to extend their assignment.
@@ -38,16 +39,16 @@ class ApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ApprovalSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .unified_approval_stage import UnifiedApprovalStage
 
         from .unified_approval_stage import UnifiedApprovalStage
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "approvalMode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
             "approvalStages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(UnifiedApprovalStage)),
             "isApprovalRequired": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
@@ -65,8 +66,6 @@ class ApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .unified_approval_stage import UnifiedApprovalStage
-
         writer.write_str_value("approvalMode", self.approval_mode)
         writer.write_collection_of_object_values("approvalStages", self.approval_stages)
         writer.write_bool_value("isApprovalRequired", self.is_approval_required)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...entity import Entity
@@ -15,7 +16,7 @@ class Manifest(Entity, Parsable):
     # The total file count for this partner tenant ID.
     blob_count: Optional[int] = None
     # A collection of blob objects that contain details of all the files for the partner tenant ID.
-    blobs: Optional[List[Blob]] = None
+    blobs: Optional[list[Blob]] = None
     # The date and time when a manifest resource was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # The billing data file format. The possible value is: compressedJSONLines. Each blob is a compressed file and data in the file is in JSON lines format. Decompress the file to access the data.
@@ -46,10 +47,10 @@ class Manifest(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Manifest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ...entity import Entity
         from .blob import Blob
@@ -57,7 +58,7 @@ class Manifest(Entity, Parsable):
         from ...entity import Entity
         from .blob import Blob
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "blobCount": lambda n : setattr(self, 'blob_count', n.get_int_value()),
             "blobs": lambda n : setattr(self, 'blobs', n.get_collection_of_object_values(Blob)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -82,9 +83,6 @@ class Manifest(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ...entity import Entity
-        from .blob import Blob
-
         writer.write_int_value("blobCount", self.blob_count)
         writer.write_collection_of_object_values("blobs", self.blobs)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

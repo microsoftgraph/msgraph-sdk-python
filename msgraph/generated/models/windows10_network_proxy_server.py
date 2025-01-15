@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class Windows10NetworkProxyServer(AdditionalDataHolder, BackedModel, Parsable):
@@ -13,11 +14,11 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Address to the proxy server. Specify an address in the format [':']
     address: Optional[str] = None
     # Addresses that should not use the proxy server. The system will not use the proxy server for addresses beginning with what is specified in this node.
-    exceptions: Optional[List[str]] = None
+    exceptions: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies whether the proxy server should be used for local (intranet) addresses.
@@ -34,12 +35,12 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Windows10NetworkProxyServer()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "exceptions": lambda n : setattr(self, 'exceptions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

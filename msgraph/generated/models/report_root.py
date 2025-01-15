@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_methods_root import AuthenticationMethodsRoot
@@ -17,17 +18,17 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Container for navigation properties for Microsoft Entra authentication methods resources.
     authentication_methods: Optional[AuthenticationMethodsRoot] = None
     # Retrieve a list of daily print usage summaries, grouped by printer.
-    daily_print_usage_by_printer: Optional[List[PrintUsageByPrinter]] = None
+    daily_print_usage_by_printer: Optional[list[PrintUsageByPrinter]] = None
     # Retrieve a list of daily print usage summaries, grouped by user.
-    daily_print_usage_by_user: Optional[List[PrintUsageByUser]] = None
+    daily_print_usage_by_user: Optional[list[PrintUsageByUser]] = None
     # Retrieve a list of monthly print usage summaries, grouped by printer.
-    monthly_print_usage_by_printer: Optional[List[PrintUsageByPrinter]] = None
+    monthly_print_usage_by_printer: Optional[list[PrintUsageByPrinter]] = None
     # Retrieve a list of monthly print usage summaries, grouped by user.
-    monthly_print_usage_by_user: Optional[List[PrintUsageByUser]] = None
+    monthly_print_usage_by_user: Optional[list[PrintUsageByUser]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents billing details for a Microsoft direct partner.
@@ -46,10 +47,10 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ReportRoot()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_methods_root import AuthenticationMethodsRoot
         from .partners.partners import Partners
@@ -63,7 +64,7 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         from .print_usage_by_user import PrintUsageByUser
         from .security_reports_root import SecurityReportsRoot
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "authenticationMethods": lambda n : setattr(self, 'authentication_methods', n.get_object_value(AuthenticationMethodsRoot)),
             "dailyPrintUsageByPrinter": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
             "dailyPrintUsageByUser": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
@@ -83,12 +84,6 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .authentication_methods_root import AuthenticationMethodsRoot
-        from .partners.partners import Partners
-        from .print_usage_by_printer import PrintUsageByPrinter
-        from .print_usage_by_user import PrintUsageByUser
-        from .security_reports_root import SecurityReportsRoot
-
         writer.write_object_value("authenticationMethods", self.authentication_methods)
         writer.write_collection_of_object_values("dailyPrintUsageByPrinter", self.daily_print_usage_by_printer)
         writer.write_collection_of_object_values("dailyPrintUsageByUser", self.daily_print_usage_by_user)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .......models.synchronization_job_application_parameters import SynchronizationJobApplicationParameters
@@ -13,9 +14,9 @@ class ProvisionOnDemandPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The parameters property
-    parameters: Optional[List[SynchronizationJobApplicationParameters]] = None
+    parameters: Optional[list[SynchronizationJobApplicationParameters]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ProvisionOnDemandPostRequestBody:
@@ -28,16 +29,16 @@ class ProvisionOnDemandPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
             raise TypeError("parse_node cannot be null.")
         return ProvisionOnDemandPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .......models.synchronization_job_application_parameters import SynchronizationJobApplicationParameters
 
         from .......models.synchronization_job_application_parameters import SynchronizationJobApplicationParameters
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "parameters": lambda n : setattr(self, 'parameters', n.get_collection_of_object_values(SynchronizationJobApplicationParameters)),
         }
         return fields
@@ -50,8 +51,6 @@ class ProvisionOnDemandPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .......models.synchronization_job_application_parameters import SynchronizationJobApplicationParameters
-
         writer.write_collection_of_object_values("parameters", self.parameters)
         writer.write_additional_data_value(self.additional_data)
     

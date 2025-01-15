@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_subject_type import AccessPackageSubjectType
@@ -40,10 +41,10 @@ class AccessPackageSubject(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackageSubject()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_subject_type import AccessPackageSubjectType
         from .connected_organization import ConnectedOrganization
@@ -53,7 +54,7 @@ class AccessPackageSubject(Entity, Parsable):
         from .connected_organization import ConnectedOrganization
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "connectedOrganization": lambda n : setattr(self, 'connected_organization', n.get_object_value(ConnectedOrganization)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
@@ -75,10 +76,6 @@ class AccessPackageSubject(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_subject_type import AccessPackageSubjectType
-        from .connected_organization import ConnectedOrganization
-        from .entity import Entity
-
         writer.write_object_value("connectedOrganization", self.connected_organization)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("email", self.email)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -32,10 +33,10 @@ class KubernetesNamespaceEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return KubernetesNamespaceEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .dictionary import Dictionary
@@ -45,7 +46,7 @@ class KubernetesNamespaceEvidence(AlertEvidence, Parsable):
         from .dictionary import Dictionary
         from .kubernetes_cluster_evidence import KubernetesClusterEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "cluster": lambda n : setattr(self, 'cluster', n.get_object_value(KubernetesClusterEvidence)),
             "labels": lambda n : setattr(self, 'labels', n.get_object_value(Dictionary)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
@@ -63,10 +64,6 @@ class KubernetesNamespaceEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .dictionary import Dictionary
-        from .kubernetes_cluster_evidence import KubernetesClusterEvidence
-
         writer.write_object_value("cluster", self.cluster)
         writer.write_object_value("labels", self.labels)
         writer.write_str_value("name", self.name)

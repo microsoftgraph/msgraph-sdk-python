@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -41,13 +42,13 @@ class AnalyzedMessageEvidence(AlertEvidence, Parsable):
     # Subject of the email.
     subject: Optional[str] = None
     # Collection of methods used to detect malware, phishing, or other threats found in the email.
-    threat_detection_methods: Optional[List[str]] = None
+    threat_detection_methods: Optional[list[str]] = None
     # Collection of detection names for malware or other threats found.
-    threats: Optional[List[str]] = None
+    threats: Optional[list[str]] = None
     # Number of embedded URLs in the email.
     url_count: Optional[int] = None
     # Collection of the URLs contained in this email.
-    urls: Optional[List[str]] = None
+    urls: Optional[list[str]] = None
     # Uniform resource name (URN) of the automated investigation where the cluster was identified.
     urn: Optional[str] = None
     
@@ -62,10 +63,10 @@ class AnalyzedMessageEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AnalyzedMessageEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .email_sender import EmailSender
@@ -73,7 +74,7 @@ class AnalyzedMessageEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
         from .email_sender import EmailSender
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "antiSpamDirection": lambda n : setattr(self, 'anti_spam_direction', n.get_str_value()),
             "attachmentsCount": lambda n : setattr(self, 'attachments_count', n.get_int_value()),
             "deliveryAction": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
@@ -106,9 +107,6 @@ class AnalyzedMessageEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .email_sender import EmailSender
-
         writer.write_str_value("antiSpamDirection", self.anti_spam_direction)
         writer.write_int_value("attachmentsCount", self.attachments_count)
         writer.write_str_value("deliveryAction", self.delivery_action)

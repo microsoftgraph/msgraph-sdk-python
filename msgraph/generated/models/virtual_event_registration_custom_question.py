@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .virtual_event_registration_question_answer_input_type import VirtualEventRegistrationQuestionAnswerInputType
@@ -14,7 +15,7 @@ class VirtualEventRegistrationCustomQuestion(VirtualEventRegistrationQuestionBas
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventRegistrationCustomQuestion"
     # Answer choices when answerInputType is singleChoice or multiChoice.
-    answer_choices: Optional[List[str]] = None
+    answer_choices: Optional[list[str]] = None
     # Input type of the registration question answer. Possible values are text, multilineText, singleChoice, multiChoice, boolean, and unknownFutureValue.
     answer_input_type: Optional[VirtualEventRegistrationQuestionAnswerInputType] = None
     
@@ -29,10 +30,10 @@ class VirtualEventRegistrationCustomQuestion(VirtualEventRegistrationQuestionBas
             raise TypeError("parse_node cannot be null.")
         return VirtualEventRegistrationCustomQuestion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .virtual_event_registration_question_answer_input_type import VirtualEventRegistrationQuestionAnswerInputType
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
@@ -40,7 +41,7 @@ class VirtualEventRegistrationCustomQuestion(VirtualEventRegistrationQuestionBas
         from .virtual_event_registration_question_answer_input_type import VirtualEventRegistrationQuestionAnswerInputType
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "answerChoices": lambda n : setattr(self, 'answer_choices', n.get_collection_of_primitive_values(str)),
             "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(VirtualEventRegistrationQuestionAnswerInputType)),
         }
@@ -57,9 +58,6 @@ class VirtualEventRegistrationCustomQuestion(VirtualEventRegistrationQuestionBas
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .virtual_event_registration_question_answer_input_type import VirtualEventRegistrationQuestionAnswerInputType
-        from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
-
         writer.write_collection_of_primitive_values("answerChoices", self.answer_choices)
         writer.write_enum_value("answerInputType", self.answer_input_type)
     

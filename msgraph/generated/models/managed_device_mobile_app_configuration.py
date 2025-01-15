@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -21,7 +22,7 @@ class ManagedDeviceMobileAppConfiguration(Entity, Parsable):
     An abstract class for Mobile app configuration for enrolled devices.
     """
     # The list of group assignemenets for app configration.
-    assignments: Optional[List[ManagedDeviceMobileAppConfigurationAssignment]] = None
+    assignments: Optional[list[ManagedDeviceMobileAppConfigurationAssignment]] = None
     # DateTime the object was created.
     created_date_time: Optional[datetime.datetime] = None
     # Admin provided description of the Device Configuration.
@@ -29,7 +30,7 @@ class ManagedDeviceMobileAppConfiguration(Entity, Parsable):
     # App configuration device status summary.
     device_status_summary: Optional[ManagedDeviceMobileAppConfigurationDeviceSummary] = None
     # List of ManagedDeviceMobileAppConfigurationDeviceStatus.
-    device_statuses: Optional[List[ManagedDeviceMobileAppConfigurationDeviceStatus]] = None
+    device_statuses: Optional[list[ManagedDeviceMobileAppConfigurationDeviceStatus]] = None
     # Admin provided name of the device configuration.
     display_name: Optional[str] = None
     # DateTime the object was last modified.
@@ -37,11 +38,11 @@ class ManagedDeviceMobileAppConfiguration(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # the associated app.
-    targeted_mobile_apps: Optional[List[str]] = None
+    targeted_mobile_apps: Optional[list[str]] = None
     # App configuration user status summary.
     user_status_summary: Optional[ManagedDeviceMobileAppConfigurationUserSummary] = None
     # List of ManagedDeviceMobileAppConfigurationUserStatus.
-    user_statuses: Optional[List[ManagedDeviceMobileAppConfigurationUserStatus]] = None
+    user_statuses: Optional[list[ManagedDeviceMobileAppConfigurationUserStatus]] = None
     # Version of the device configuration.
     version: Optional[int] = None
     
@@ -65,10 +66,10 @@ class ManagedDeviceMobileAppConfiguration(Entity, Parsable):
             return IosMobileAppConfiguration()
         return ManagedDeviceMobileAppConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .ios_mobile_app_configuration import IosMobileAppConfiguration
@@ -86,7 +87,7 @@ class ManagedDeviceMobileAppConfiguration(Entity, Parsable):
         from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
         from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -112,14 +113,6 @@ class ManagedDeviceMobileAppConfiguration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .ios_mobile_app_configuration import IosMobileAppConfiguration
-        from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
-        from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
-        from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
-        from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
-        from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
-
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

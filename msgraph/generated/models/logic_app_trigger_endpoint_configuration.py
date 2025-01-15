@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
@@ -32,16 +33,16 @@ class LogicAppTriggerEndpointConfiguration(CustomExtensionEndpointConfiguration,
             raise TypeError("parse_node cannot be null.")
         return LogicAppTriggerEndpointConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
 
         from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "logicAppWorkflowName": lambda n : setattr(self, 'logic_app_workflow_name', n.get_str_value()),
             "resourceGroupName": lambda n : setattr(self, 'resource_group_name', n.get_str_value()),
             "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
@@ -60,8 +61,6 @@ class LogicAppTriggerEndpointConfiguration(CustomExtensionEndpointConfiguration,
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
-
         writer.write_str_value("logicAppWorkflowName", self.logic_app_workflow_name)
         writer.write_str_value("resourceGroupName", self.resource_group_name)
         writer.write_str_value("subscriptionId", self.subscription_id)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -30,7 +31,7 @@ class ProtectionPolicyBase(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Contains the retention setting details for the policy.
-    retention_settings: Optional[List[RetentionSetting]] = None
+    retention_settings: Optional[list[RetentionSetting]] = None
     # The aggregated status of the protection units associated with the policy. The possible values are: inactive, activeWithErrors, updating, active, unknownFutureValue.
     status: Optional[ProtectionPolicyStatus] = None
     
@@ -62,10 +63,10 @@ class ProtectionPolicyBase(Entity, Parsable):
             return SharePointProtectionPolicy()
         return ProtectionPolicyBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .exchange_protection_policy import ExchangeProtectionPolicy
@@ -83,7 +84,7 @@ class ProtectionPolicyBase(Entity, Parsable):
         from .retention_setting import RetentionSetting
         from .share_point_protection_policy import SharePointProtectionPolicy
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -105,14 +106,6 @@ class ProtectionPolicyBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .exchange_protection_policy import ExchangeProtectionPolicy
-        from .identity_set import IdentitySet
-        from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
-        from .protection_policy_status import ProtectionPolicyStatus
-        from .retention_setting import RetentionSetting
-        from .share_point_protection_policy import SharePointProtectionPolicy
-
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .container_filter import ContainerFilter
@@ -16,7 +17,7 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The containerFilter property
     container_filter: Optional[ContainerFilter] = None
     # true if the synchronization rule can be customized; false if this rule is read-only and shouldn't be changed.
@@ -26,11 +27,11 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
     # Synchronization rule identifier. Must be one of the identifiers recognized by the synchronization engine. Supported rule identifiers can be found in the synchronization template returned by the API.
     id: Optional[str] = None
     # Additional extension properties. Unless instructed explicitly by the support team, metadata values shouldn't be changed.
-    metadata: Optional[List[StringKeyStringValuePair]] = None
+    metadata: Optional[list[StringKeyStringValuePair]] = None
     # Human-readable name of the synchronization rule. Not nullable.
     name: Optional[str] = None
     # Collection of object mappings supported by the rule. Tells the synchronization engine which objects should be synchronized.
-    object_mappings: Optional[List[ObjectMapping]] = None
+    object_mappings: Optional[list[ObjectMapping]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Priority relative to other rules in the synchronizationSchema. Rules with the lowest priority number will be processed first.
@@ -51,10 +52,10 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SynchronizationRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .container_filter import ContainerFilter
         from .group_filter import GroupFilter
@@ -66,7 +67,7 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
         from .object_mapping import ObjectMapping
         from .string_key_string_value_pair import StringKeyStringValuePair
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "containerFilter": lambda n : setattr(self, 'container_filter', n.get_object_value(ContainerFilter)),
             "editable": lambda n : setattr(self, 'editable', n.get_bool_value()),
             "groupFilter": lambda n : setattr(self, 'group_filter', n.get_object_value(GroupFilter)),
@@ -89,11 +90,6 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .container_filter import ContainerFilter
-        from .group_filter import GroupFilter
-        from .object_mapping import ObjectMapping
-        from .string_key_string_value_pair import StringKeyStringValuePair
-
         writer.write_object_value("containerFilter", self.container_filter)
         writer.write_bool_value("editable", self.editable)
         writer.write_object_value("groupFilter", self.group_filter)

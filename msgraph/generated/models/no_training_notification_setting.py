@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .end_user_notification_setting import EndUserNotificationSetting
@@ -27,10 +28,10 @@ class NoTrainingNotificationSetting(EndUserNotificationSetting, Parsable):
             raise TypeError("parse_node cannot be null.")
         return NoTrainingNotificationSetting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .end_user_notification_setting import EndUserNotificationSetting
         from .simulation_notification import SimulationNotification
@@ -38,7 +39,7 @@ class NoTrainingNotificationSetting(EndUserNotificationSetting, Parsable):
         from .end_user_notification_setting import EndUserNotificationSetting
         from .simulation_notification import SimulationNotification
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "simulationNotification": lambda n : setattr(self, 'simulation_notification', n.get_object_value(SimulationNotification)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class NoTrainingNotificationSetting(EndUserNotificationSetting, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .end_user_notification_setting import EndUserNotificationSetting
-        from .simulation_notification import SimulationNotification
-
         writer.write_object_value("simulationNotification", self.simulation_notification)
     
 

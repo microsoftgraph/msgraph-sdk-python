@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -14,7 +15,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
     call_chain_id: Optional[UUID] = None
     # A geo-region where the service is deployed, such as ProdNoam.
@@ -32,7 +33,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
     # A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
     media_leg_id: Optional[UUID] = None
     # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
-    media_quality_list: Optional[List[TeleconferenceDeviceMediaQuality]] = None
+    media_quality_list: Optional[list[TeleconferenceDeviceMediaQuality]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
@@ -49,16 +50,16 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TeleconferenceDeviceQuality()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
         from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_uuid_value()),
             "cloudServiceDeploymentEnvironment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
             "cloudServiceDeploymentId": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
@@ -81,8 +82,6 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
-
         writer.write_uuid_value("callChainId", self.call_chain_id)
         writer.write_str_value("cloudServiceDeploymentEnvironment", self.cloud_service_deployment_environment)
         writer.write_str_value("cloudServiceDeploymentId", self.cloud_service_deployment_id)

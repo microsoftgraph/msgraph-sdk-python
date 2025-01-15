@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
@@ -16,7 +17,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Session control to enforce application restrictions. Only Exchange Online and Sharepoint Online support this session control.
     application_enforced_restrictions: Optional[ApplicationEnforcedRestrictionsSessionControl] = None
     # Session control to apply cloud app security.
@@ -41,10 +42,10 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
             raise TypeError("parse_node cannot be null.")
         return ConditionalAccessSessionControls()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
         from .cloud_app_security_session_control import CloudAppSecuritySessionControl
@@ -56,7 +57,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
         from .persistent_browser_session_control import PersistentBrowserSessionControl
         from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applicationEnforcedRestrictions": lambda n : setattr(self, 'application_enforced_restrictions', n.get_object_value(ApplicationEnforcedRestrictionsSessionControl)),
             "cloudAppSecurity": lambda n : setattr(self, 'cloud_app_security', n.get_object_value(CloudAppSecuritySessionControl)),
             "disableResilienceDefaults": lambda n : setattr(self, 'disable_resilience_defaults', n.get_bool_value()),
@@ -74,11 +75,6 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
-        from .cloud_app_security_session_control import CloudAppSecuritySessionControl
-        from .persistent_browser_session_control import PersistentBrowserSessionControl
-        from .sign_in_frequency_session_control import SignInFrequencySessionControl
-
         writer.write_object_value("applicationEnforcedRestrictions", self.application_enforced_restrictions)
         writer.write_object_value("cloudAppSecurity", self.cloud_app_security)
         writer.write_bool_value("disableResilienceDefaults", self.disable_resilience_defaults)

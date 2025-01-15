@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -16,21 +17,21 @@ from .entity import Entity
 @dataclass
 class WorkbookWorksheet(Entity, Parsable):
     # The list of charts that are part of the worksheet. Read-only.
-    charts: Optional[List[WorkbookChart]] = None
+    charts: Optional[list[WorkbookChart]] = None
     # The display name of the worksheet.
     name: Optional[str] = None
     # The list of names that are associated with the worksheet. Read-only.
-    names: Optional[List[WorkbookNamedItem]] = None
+    names: Optional[list[WorkbookNamedItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of piot tables that are part of the worksheet.
-    pivot_tables: Optional[List[WorkbookPivotTable]] = None
+    pivot_tables: Optional[list[WorkbookPivotTable]] = None
     # The zero-based position of the worksheet within the workbook.
     position: Optional[int] = None
     # The sheet protection object for a worksheet. Read-only.
     protection: Optional[WorkbookWorksheetProtection] = None
     # The list of tables that are part of the worksheet. Read-only.
-    tables: Optional[List[WorkbookTable]] = None
+    tables: Optional[list[WorkbookTable]] = None
     # The visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
     visibility: Optional[str] = None
     
@@ -45,10 +46,10 @@ class WorkbookWorksheet(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkbookWorksheet()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .workbook_chart import WorkbookChart
@@ -64,7 +65,7 @@ class WorkbookWorksheet(Entity, Parsable):
         from .workbook_table import WorkbookTable
         from .workbook_worksheet_protection import WorkbookWorksheetProtection
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "charts": lambda n : setattr(self, 'charts', n.get_collection_of_object_values(WorkbookChart)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "names": lambda n : setattr(self, 'names', n.get_collection_of_object_values(WorkbookNamedItem)),
@@ -87,13 +88,6 @@ class WorkbookWorksheet(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .workbook_chart import WorkbookChart
-        from .workbook_named_item import WorkbookNamedItem
-        from .workbook_pivot_table import WorkbookPivotTable
-        from .workbook_table import WorkbookTable
-        from .workbook_worksheet_protection import WorkbookWorksheetProtection
-
         writer.write_collection_of_object_values("charts", self.charts)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("names", self.names)

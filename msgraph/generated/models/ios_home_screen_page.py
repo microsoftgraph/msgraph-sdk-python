@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .ios_home_screen_item import IosHomeScreenItem
@@ -16,11 +17,11 @@ class IosHomeScreenPage(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Name of the page
     display_name: Optional[str] = None
     # A list of apps, folders, and web clips to appear on a page. This collection can contain a maximum of 500 elements.
-    icons: Optional[List[IosHomeScreenItem]] = None
+    icons: Optional[list[IosHomeScreenItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,16 +36,16 @@ class IosHomeScreenPage(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IosHomeScreenPage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .ios_home_screen_item import IosHomeScreenItem
 
         from .ios_home_screen_item import IosHomeScreenItem
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "icons": lambda n : setattr(self, 'icons', n.get_collection_of_object_values(IosHomeScreenItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -59,8 +60,6 @@ class IosHomeScreenPage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .ios_home_screen_item import IosHomeScreenItem
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("icons", self.icons)
         writer.write_str_value("@odata.type", self.odata_type)

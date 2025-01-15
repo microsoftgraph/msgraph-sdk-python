@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -23,7 +24,7 @@ class ExtensionProperty(DirectoryObject, Parsable):
     # Name of the extension property. Not nullable. Supports $filter (eq).
     name: Optional[str] = None
     # Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization
-    target_objects: Optional[List[str]] = None
+    target_objects: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ExtensionProperty:
@@ -36,16 +37,16 @@ class ExtensionProperty(DirectoryObject, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ExtensionProperty()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
 
         from .directory_object import DirectoryObject
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "dataType": lambda n : setattr(self, 'data_type', n.get_str_value()),
             "isMultiValued": lambda n : setattr(self, 'is_multi_valued', n.get_bool_value()),
@@ -66,8 +67,6 @@ class ExtensionProperty(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("dataType", self.data_type)
         writer.write_bool_value("isMultiValued", self.is_multi_valued)

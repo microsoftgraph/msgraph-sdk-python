@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -34,10 +35,10 @@ class IpEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IpEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .geo_location import GeoLocation
@@ -47,7 +48,7 @@ class IpEvidence(AlertEvidence, Parsable):
         from .geo_location import GeoLocation
         from .stream import Stream
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(GeoLocation)),
@@ -66,10 +67,6 @@ class IpEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .geo_location import GeoLocation
-        from .stream import Stream
-
         writer.write_str_value("countryLetterCode", self.country_letter_code)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_object_value("location", self.location)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class ServicePrincipalLockConfiguration(AdditionalDataHolder, BackedModel, Parsable):
@@ -10,7 +11,7 @@ class ServicePrincipalLockConfiguration(AdditionalDataHolder, BackedModel, Parsa
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Enables locking all sensitive properties. The sensitive properties are keyCredentials, passwordCredentials, and tokenEncryptionKeyId.
     all_properties: Optional[bool] = None
     # Locks the keyCredentials and passwordCredentials properties for modification where credential usage type is Sign.
@@ -35,12 +36,12 @@ class ServicePrincipalLockConfiguration(AdditionalDataHolder, BackedModel, Parsa
             raise TypeError("parse_node cannot be null.")
         return ServicePrincipalLockConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allProperties": lambda n : setattr(self, 'all_properties', n.get_bool_value()),
             "credentialsWithUsageSign": lambda n : setattr(self, 'credentials_with_usage_sign', n.get_bool_value()),
             "credentialsWithUsageVerify": lambda n : setattr(self, 'credentials_with_usage_verify', n.get_bool_value()),

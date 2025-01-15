@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .notebook import Notebook
@@ -19,11 +20,11 @@ class SectionGroup(OnenoteEntityHierarchyModel, Parsable):
     # The section group that contains the section group. Read-only.
     parent_section_group: Optional[SectionGroup] = None
     # The section groups in the section. Read-only. Nullable.
-    section_groups: Optional[List[SectionGroup]] = None
+    section_groups: Optional[list[SectionGroup]] = None
     # The URL for the sectionGroups navigation property, which returns all the section groups in the section group. Read-only.
     section_groups_url: Optional[str] = None
     # The sections in the section group. Read-only. Nullable.
-    sections: Optional[List[OnenoteSection]] = None
+    sections: Optional[list[OnenoteSection]] = None
     # The URL for the sections navigation property, which returns all the sections in the section group. Read-only.
     sections_url: Optional[str] = None
     
@@ -38,10 +39,10 @@ class SectionGroup(OnenoteEntityHierarchyModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SectionGroup()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .notebook import Notebook
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -51,7 +52,7 @@ class SectionGroup(OnenoteEntityHierarchyModel, Parsable):
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
         from .onenote_section import OnenoteSection
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
             "parentSectionGroup": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
             "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
@@ -72,10 +73,6 @@ class SectionGroup(OnenoteEntityHierarchyModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .notebook import Notebook
-        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
-        from .onenote_section import OnenoteSection
-
         writer.write_object_value("parentNotebook", self.parent_notebook)
         writer.write_object_value("parentSectionGroup", self.parent_section_group)
         writer.write_collection_of_object_values("sectionGroups", self.section_groups)

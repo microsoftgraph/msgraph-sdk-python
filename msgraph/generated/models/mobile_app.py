@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_lob_app import AndroidLobApp
@@ -45,9 +46,9 @@ class MobileApp(Entity, Parsable):
     An abstract class containing the base properties for Intune mobile apps. Note: Listing mobile apps with `$expand=assignments` has been deprecated. Instead get the list of apps without the `$expand` query on `assignments`. Then, perform the expansion on individual applications.
     """
     # The list of group assignments for this mobile app.
-    assignments: Optional[List[MobileAppAssignment]] = None
+    assignments: Optional[list[MobileAppAssignment]] = None
     # The list of categories for this app.
-    categories: Optional[List[MobileAppCategory]] = None
+    categories: Optional[list[MobileAppCategory]] = None
     # The date and time the app was created.
     created_date_time: Optional[datetime.datetime] = None
     # The description of the app.
@@ -197,10 +198,10 @@ class MobileApp(Entity, Parsable):
             return WindowsWebApp()
         return MobileApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .android_lob_app import AndroidLobApp
         from .android_store_app import AndroidStoreApp
@@ -266,7 +267,7 @@ class MobileApp(Entity, Parsable):
         from .windows_universal_app_x import WindowsUniversalAppX
         from .windows_web_app import WindowsWebApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(MobileAppAssignment)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_object_values(MobileAppCategory)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -296,38 +297,6 @@ class MobileApp(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .android_lob_app import AndroidLobApp
-        from .android_store_app import AndroidStoreApp
-        from .entity import Entity
-        from .iosi_pad_o_s_web_clip import IosiPadOSWebClip
-        from .ios_lob_app import IosLobApp
-        from .ios_store_app import IosStoreApp
-        from .ios_vpp_app import IosVppApp
-        from .mac_o_s_dmg_app import MacOSDmgApp
-        from .mac_o_s_lob_app import MacOSLobApp
-        from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
-        from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
-        from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
-        from .managed_android_lob_app import ManagedAndroidLobApp
-        from .managed_android_store_app import ManagedAndroidStoreApp
-        from .managed_app import ManagedApp
-        from .managed_i_o_s_lob_app import ManagedIOSLobApp
-        from .managed_i_o_s_store_app import ManagedIOSStoreApp
-        from .managed_mobile_lob_app import ManagedMobileLobApp
-        from .microsoft_store_for_business_app import MicrosoftStoreForBusinessApp
-        from .mime_content import MimeContent
-        from .mobile_app_assignment import MobileAppAssignment
-        from .mobile_app_category import MobileAppCategory
-        from .mobile_app_publishing_state import MobileAppPublishingState
-        from .mobile_lob_app import MobileLobApp
-        from .web_app import WebApp
-        from .win32_lob_app import Win32LobApp
-        from .windows_app_x import WindowsAppX
-        from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
-        from .windows_mobile_m_s_i import WindowsMobileMSI
-        from .windows_universal_app_x import WindowsUniversalAppX
-        from .windows_web_app import WindowsWebApp
-
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("categories", self.categories)
         writer.write_str_value("description", self.description)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -46,10 +47,10 @@ class UserExperienceAnalyticsModelScores(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserExperienceAnalyticsModelScores()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
@@ -57,7 +58,7 @@ class UserExperienceAnalyticsModelScores(Entity, Parsable):
         from .entity import Entity
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appReliabilityScore": lambda n : setattr(self, 'app_reliability_score', n.get_float_value()),
             "batteryHealthScore": lambda n : setattr(self, 'battery_health_score', n.get_float_value()),
             "endpointAnalyticsScore": lambda n : setattr(self, 'endpoint_analytics_score', n.get_float_value()),
@@ -81,9 +82,6 @@ class UserExperienceAnalyticsModelScores(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
-
         writer.write_float_value("appReliabilityScore", self.app_reliability_score)
         writer.write_float_value("batteryHealthScore", self.battery_health_score)
         writer.write_float_value("endpointAnalyticsScore", self.endpoint_analytics_score)

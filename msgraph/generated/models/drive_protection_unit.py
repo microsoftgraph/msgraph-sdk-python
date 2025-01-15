@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .protection_unit_base import ProtectionUnitBase
@@ -30,16 +31,16 @@ class DriveProtectionUnit(ProtectionUnitBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DriveProtectionUnit()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .protection_unit_base import ProtectionUnitBase
 
         from .protection_unit_base import ProtectionUnitBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "directoryObjectId": lambda n : setattr(self, 'directory_object_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
@@ -57,8 +58,6 @@ class DriveProtectionUnit(ProtectionUnitBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .protection_unit_base import ProtectionUnitBase
-
         writer.write_str_value("directoryObjectId", self.directory_object_id)
     
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .call_participant_info import CallParticipantInfo
@@ -23,7 +24,7 @@ class CallEndedEventMessageDetail(EventMessageDetail, Parsable):
     # Unique identifier of the call.
     call_id: Optional[str] = None
     # List of call participants.
-    call_participants: Optional[List[CallParticipantInfo]] = None
+    call_participants: Optional[list[CallParticipantInfo]] = None
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     
@@ -38,10 +39,10 @@ class CallEndedEventMessageDetail(EventMessageDetail, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CallEndedEventMessageDetail()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .call_participant_info import CallParticipantInfo
         from .event_message_detail import EventMessageDetail
@@ -53,7 +54,7 @@ class CallEndedEventMessageDetail(EventMessageDetail, Parsable):
         from .identity_set import IdentitySet
         from .teamwork_call_event_type import TeamworkCallEventType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "callDuration": lambda n : setattr(self, 'call_duration', n.get_timedelta_value()),
             "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(TeamworkCallEventType)),
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
@@ -73,11 +74,6 @@ class CallEndedEventMessageDetail(EventMessageDetail, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .call_participant_info import CallParticipantInfo
-        from .event_message_detail import EventMessageDetail
-        from .identity_set import IdentitySet
-        from .teamwork_call_event_type import TeamworkCallEventType
-
         writer.write_timedelta_value("callDuration", self.call_duration)
         writer.write_enum_value("callEventType", self.call_event_type)
         writer.write_str_value("callId", self.call_id)

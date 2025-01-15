@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -14,7 +15,7 @@ class HorizontalSectionColumn(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The collection of WebParts in this column.
-    webparts: Optional[List[WebPart]] = None
+    webparts: Optional[list[WebPart]] = None
     # Width of the column. A horizontal section is divided into 12 grids. A column should have a value of 1-12 to represent its range spans. For example, there can be two columns both have a width of 6 in a section.
     width: Optional[int] = None
     
@@ -29,10 +30,10 @@ class HorizontalSectionColumn(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return HorizontalSectionColumn()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .web_part import WebPart
@@ -40,7 +41,7 @@ class HorizontalSectionColumn(Entity, Parsable):
         from .entity import Entity
         from .web_part import WebPart
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "webparts": lambda n : setattr(self, 'webparts', n.get_collection_of_object_values(WebPart)),
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
         }
@@ -57,9 +58,6 @@ class HorizontalSectionColumn(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .web_part import WebPart
-
         writer.write_collection_of_object_values("webparts", self.webparts)
         writer.write_int_value("width", self.width)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
@@ -16,7 +17,7 @@ class DelegatedAdminCustomer(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Contains the management details of a service in the customer tenant that's managed by delegated administration.
-    service_management_details: Optional[List[DelegatedAdminServiceManagementDetail]] = None
+    service_management_details: Optional[list[DelegatedAdminServiceManagementDetail]] = None
     # The Microsoft Entra ID-assigned tenant ID of the customer. Read-only.
     tenant_id: Optional[str] = None
     
@@ -31,10 +32,10 @@ class DelegatedAdminCustomer(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DelegatedAdminCustomer()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
         from .entity import Entity
@@ -42,7 +43,7 @@ class DelegatedAdminCustomer(Entity, Parsable):
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "serviceManagementDetails": lambda n : setattr(self, 'service_management_details', n.get_collection_of_object_values(DelegatedAdminServiceManagementDetail)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
@@ -60,9 +61,6 @@ class DelegatedAdminCustomer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
-        from .entity import Entity
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("serviceManagementDetails", self.service_management_details)
         writer.write_str_value("tenantId", self.tenant_id)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .average_comparative_score import AverageComparativeScore
@@ -17,17 +18,17 @@ class SecureScore(Entity, Parsable):
     # Active user count of the given tenant.
     active_user_count: Optional[int] = None
     # Average score by different scopes (for example, average by industry, average by seating) and control category (Identity, Data, Device, Apps, Infrastructure) within the scope.
-    average_comparative_scores: Optional[List[AverageComparativeScore]] = None
+    average_comparative_scores: Optional[list[AverageComparativeScore]] = None
     # GUID string for tenant ID.
     azure_tenant_id: Optional[str] = None
     # Contains tenant scores for a set of controls.
-    control_scores: Optional[List[ControlScore]] = None
+    control_scores: Optional[list[ControlScore]] = None
     # When the report was created.
     created_date_time: Optional[datetime.datetime] = None
     # Tenant current attained score on specified date.
     current_score: Optional[float] = None
     # Microsoft-provided services for the tenant (for example, Exchange online, Skype, Sharepoint).
-    enabled_services: Optional[List[str]] = None
+    enabled_services: Optional[list[str]] = None
     # Licensed user count of the given tenant.
     licensed_user_count: Optional[int] = None
     # Tenant maximum possible score on specified date.
@@ -48,10 +49,10 @@ class SecureScore(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SecureScore()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .average_comparative_score import AverageComparativeScore
         from .control_score import ControlScore
@@ -63,7 +64,7 @@ class SecureScore(Entity, Parsable):
         from .entity import Entity
         from .security_vendor_information import SecurityVendorInformation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activeUserCount": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
             "averageComparativeScores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(AverageComparativeScore)),
             "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
@@ -88,11 +89,6 @@ class SecureScore(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .average_comparative_score import AverageComparativeScore
-        from .control_score import ControlScore
-        from .entity import Entity
-        from .security_vendor_information import SecurityVendorInformation
-
         writer.write_int_value("activeUserCount", self.active_user_count)
         writer.write_collection_of_object_values("averageComparativeScores", self.average_comparative_scores)
         writer.write_str_value("azureTenantId", self.azure_tenant_id)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .column_definition import ColumnDefinition
@@ -17,17 +18,17 @@ from .entity import Entity
 @dataclass
 class ContentType(Entity, Parsable):
     # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type is applied to the lists in the enforced sites.
-    associated_hubs_urls: Optional[List[str]] = None
+    associated_hubs_urls: Optional[list[str]] = None
     # Parent contentType from which this content type is derived.
     base: Optional[ContentType] = None
     # The collection of content types that are ancestors of this content type.
-    base_types: Optional[List[ContentType]] = None
+    base_types: Optional[list[ContentType]] = None
     # The collection of columns that are required by this content type.
-    column_links: Optional[List[ColumnLink]] = None
+    column_links: Optional[list[ColumnLink]] = None
     # Column order information in a content type.
-    column_positions: Optional[List[ColumnDefinition]] = None
+    column_positions: Optional[list[ColumnDefinition]] = None
     # The collection of column definitions for this content type.
-    columns: Optional[List[ColumnDefinition]] = None
+    columns: Optional[list[ColumnDefinition]] = None
     # The descriptive text for the item.
     description: Optional[str] = None
     # Document Set metadata.
@@ -68,10 +69,10 @@ class ContentType(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ContentType()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .column_definition import ColumnDefinition
         from .column_link import ColumnLink
@@ -89,7 +90,7 @@ class ContentType(Entity, Parsable):
         from .entity import Entity
         from .item_reference import ItemReference
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "associatedHubsUrls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
             "base": lambda n : setattr(self, 'base', n.get_object_value(ContentType)),
             "baseTypes": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
@@ -123,14 +124,6 @@ class ContentType(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .column_definition import ColumnDefinition
-        from .column_link import ColumnLink
-        from .content_type_order import ContentTypeOrder
-        from .document_set import DocumentSet
-        from .document_set_content import DocumentSetContent
-        from .entity import Entity
-        from .item_reference import ItemReference
-
         writer.write_collection_of_primitive_values("associatedHubsUrls", self.associated_hubs_urls)
         writer.write_object_value("base", self.base)
         writer.write_collection_of_object_values("baseTypes", self.base_types)

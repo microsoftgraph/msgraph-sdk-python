@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...entity import Entity
@@ -15,11 +16,11 @@ from ...entity import Entity
 @dataclass
 class Billing(Entity, Parsable):
     # Represents metadata for the exported data.
-    manifests: Optional[List[Manifest]] = None
+    manifests: Optional[list[Manifest]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents an operation to export the billing data of a partner.
-    operations: Optional[List[Operation]] = None
+    operations: Optional[list[Operation]] = None
     # The reconciliation property
     reconciliation: Optional[BillingReconciliation] = None
     # The usage property
@@ -36,10 +37,10 @@ class Billing(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Billing()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ...entity import Entity
         from .azure_usage import AzureUsage
@@ -53,7 +54,7 @@ class Billing(Entity, Parsable):
         from .manifest import Manifest
         from .operation import Operation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "manifests": lambda n : setattr(self, 'manifests', n.get_collection_of_object_values(Manifest)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(Operation)),
             "reconciliation": lambda n : setattr(self, 'reconciliation', n.get_object_value(BillingReconciliation)),
@@ -72,12 +73,6 @@ class Billing(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ...entity import Entity
-        from .azure_usage import AzureUsage
-        from .billing_reconciliation import BillingReconciliation
-        from .manifest import Manifest
-        from .operation import Operation
-
         writer.write_collection_of_object_values("manifests", self.manifests)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_object_value("reconciliation", self.reconciliation)

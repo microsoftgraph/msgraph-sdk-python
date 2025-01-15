@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .weekly_schedule import WeeklySchedule
@@ -30,10 +31,10 @@ class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WindowsUpdateScheduledInstall()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .weekly_schedule import WeeklySchedule
         from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
@@ -41,7 +42,7 @@ class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType, Parsable):
         from .weekly_schedule import WeeklySchedule
         from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "scheduledInstallDay": lambda n : setattr(self, 'scheduled_install_day', n.get_enum_value(WeeklySchedule)),
             "scheduledInstallTime": lambda n : setattr(self, 'scheduled_install_time', n.get_time_value()),
         }
@@ -58,9 +59,6 @@ class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .weekly_schedule import WeeklySchedule
-        from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
-
         writer.write_enum_value("scheduledInstallDay", self.scheduled_install_day)
         writer.write_time_value("scheduledInstallTime", self.scheduled_install_time)
     

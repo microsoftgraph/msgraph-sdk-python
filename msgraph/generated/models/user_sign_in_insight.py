@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .governance_insight import GovernanceInsight
@@ -27,16 +28,16 @@ class UserSignInInsight(GovernanceInsight, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserSignInInsight()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .governance_insight import GovernanceInsight
 
         from .governance_insight import GovernanceInsight
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "lastSignInDateTime": lambda n : setattr(self, 'last_sign_in_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -52,8 +53,6 @@ class UserSignInInsight(GovernanceInsight, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .governance_insight import GovernanceInsight
-
         writer.write_datetime_value("lastSignInDateTime", self.last_sign_in_date_time)
     
 

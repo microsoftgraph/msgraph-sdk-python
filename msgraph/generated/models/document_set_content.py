@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .content_type_info import ContentTypeInfo
@@ -13,7 +14,7 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Content type information of the file.
     content_type: Optional[ContentTypeInfo] = None
     # Name of the file in resource folder that should be added as a default content or a template in the document set.
@@ -34,16 +35,16 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DocumentSetContent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .content_type_info import ContentTypeInfo
 
         from .content_type_info import ContentTypeInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "folderName": lambda n : setattr(self, 'folder_name', n.get_str_value()),
@@ -59,8 +60,6 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .content_type_info import ContentTypeInfo
-
         writer.write_object_value("contentType", self.content_type)
         writer.write_str_value("fileName", self.file_name)
         writer.write_str_value("folderName", self.folder_name)

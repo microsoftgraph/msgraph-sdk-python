@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .display_name_localization import DisplayNameLocalization
@@ -13,11 +14,11 @@ class ProfileCardAnnotation(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # If present, the value of this field is used by the profile card as the default property label in the experience (for example, 'Cost Center').
     display_name: Optional[str] = None
     # Each resource in this collection represents the localized value of the attribute name for a given language, used as the default label for that locale. For example, a user with a nb-NO client gets 'Kostnadssenter' as the attribute label, rather than 'Cost Center.'
-    localizations: Optional[List[DisplayNameLocalization]] = None
+    localizations: Optional[list[DisplayNameLocalization]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,16 +33,16 @@ class ProfileCardAnnotation(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ProfileCardAnnotation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .display_name_localization import DisplayNameLocalization
 
         from .display_name_localization import DisplayNameLocalization
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(DisplayNameLocalization)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -56,8 +57,6 @@ class ProfileCardAnnotation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .display_name_localization import DisplayNameLocalization
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("localizations", self.localizations)
         writer.write_str_value("@odata.type", self.odata_type)

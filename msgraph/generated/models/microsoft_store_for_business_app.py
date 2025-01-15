@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
@@ -38,10 +39,10 @@ class MicrosoftStoreForBusinessApp(MobileApp, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MicrosoftStoreForBusinessApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
         from .mobile_app import MobileApp
@@ -49,7 +50,7 @@ class MicrosoftStoreForBusinessApp(MobileApp, Parsable):
         from .microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
         from .mobile_app import MobileApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(MicrosoftStoreForBusinessLicenseType)),
             "packageIdentityName": lambda n : setattr(self, 'package_identity_name', n.get_str_value()),
             "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
@@ -69,9 +70,6 @@ class MicrosoftStoreForBusinessApp(MobileApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
-        from .mobile_app import MobileApp
-
         writer.write_enum_value("licenseType", self.license_type)
         writer.write_str_value("packageIdentityName", self.package_identity_name)
         writer.write_str_value("productKey", self.product_key)

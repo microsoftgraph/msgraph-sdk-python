@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mailbox_protection_rule import MailboxProtectionRule
@@ -15,9 +16,9 @@ class ExchangeProtectionPolicy(ProtectionPolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.exchangeProtectionPolicy"
     # The rules associated with the Exchange protection policy.
-    mailbox_inclusion_rules: Optional[List[MailboxProtectionRule]] = None
+    mailbox_inclusion_rules: Optional[list[MailboxProtectionRule]] = None
     # The protection units (mailboxes) that are  protected under the Exchange protection policy.
-    mailbox_protection_units: Optional[List[MailboxProtectionUnit]] = None
+    mailbox_protection_units: Optional[list[MailboxProtectionUnit]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ExchangeProtectionPolicy:
@@ -30,10 +31,10 @@ class ExchangeProtectionPolicy(ProtectionPolicyBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ExchangeProtectionPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mailbox_protection_rule import MailboxProtectionRule
         from .mailbox_protection_unit import MailboxProtectionUnit
@@ -43,7 +44,7 @@ class ExchangeProtectionPolicy(ProtectionPolicyBase, Parsable):
         from .mailbox_protection_unit import MailboxProtectionUnit
         from .protection_policy_base import ProtectionPolicyBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "mailboxInclusionRules": lambda n : setattr(self, 'mailbox_inclusion_rules', n.get_collection_of_object_values(MailboxProtectionRule)),
             "mailboxProtectionUnits": lambda n : setattr(self, 'mailbox_protection_units', n.get_collection_of_object_values(MailboxProtectionUnit)),
         }
@@ -60,10 +61,6 @@ class ExchangeProtectionPolicy(ProtectionPolicyBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mailbox_protection_rule import MailboxProtectionRule
-        from .mailbox_protection_unit import MailboxProtectionUnit
-        from .protection_policy_base import ProtectionPolicyBase
-
         writer.write_collection_of_object_values("mailboxInclusionRules", self.mailbox_inclusion_rules)
         writer.write_collection_of_object_values("mailboxProtectionUnits", self.mailbox_protection_units)
     

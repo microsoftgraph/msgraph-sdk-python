@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -29,7 +30,7 @@ class CompanySubscription(Entity, Parsable):
     # Indicates the entity that ownerId belongs to, for example, 'User'.
     owner_type: Optional[str] = None
     # The provisioning status of each service included in this subscription.
-    service_status: Optional[List[ServicePlanInfo]] = None
+    service_status: Optional[list[ServicePlanInfo]] = None
     # The object ID of the SKU associated with this subscription.
     sku_id: Optional[str] = None
     # The SKU associated with this subscription.
@@ -50,10 +51,10 @@ class CompanySubscription(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CompanySubscription()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .service_plan_info import ServicePlanInfo
@@ -61,7 +62,7 @@ class CompanySubscription(Entity, Parsable):
         from .entity import Entity
         from .service_plan_info import ServicePlanInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "commerceSubscriptionId": lambda n : setattr(self, 'commerce_subscription_id', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "isTrial": lambda n : setattr(self, 'is_trial', n.get_bool_value()),
@@ -88,9 +89,6 @@ class CompanySubscription(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .service_plan_info import ServicePlanInfo
-
         writer.write_str_value("commerceSubscriptionId", self.commerce_subscription_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_bool_value("isTrial", self.is_trial)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
@@ -10,7 +11,7 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The altitude, in meters, that the printer is located at.
     altitude_in_meters: Optional[int] = None
     # The building that the printer is located in.
@@ -30,7 +31,7 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The organizational hierarchy that the printer belongs to. The elements should be in hierarchical order.
-    organization: Optional[List[str]] = None
+    organization: Optional[list[str]] = None
     # The postal code that the printer is located in.
     postal_code: Optional[str] = None
     # The description of the room that the printer is located in.
@@ -44,9 +45,9 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
     # The street address where the printer is located.
     street_address: Optional[str] = None
     # The subdivision that the printer is located in. The elements should be in hierarchical order.
-    subdivision: Optional[List[str]] = None
+    subdivision: Optional[list[str]] = None
     # The subunit property
-    subunit: Optional[List[str]] = None
+    subunit: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PrinterLocation:
@@ -59,12 +60,12 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PrinterLocation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "altitudeInMeters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),

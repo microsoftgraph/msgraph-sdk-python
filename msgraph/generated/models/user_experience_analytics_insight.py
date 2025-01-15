@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .user_experience_analytics_insight_severity import UserExperienceAnalyticsInsightSeverity
@@ -17,7 +18,7 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The unique identifier of the user experience analytics insight.
     insight_id: Optional[str] = None
     # The OdataType property
@@ -27,7 +28,7 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
     # The unique identifier of the user experience analytics metric.
     user_experience_analytics_metric_id: Optional[str] = None
     # The value of the user experience analytics insight.
-    values: Optional[List[UserExperienceAnalyticsInsightValue]] = None
+    values: Optional[list[UserExperienceAnalyticsInsightValue]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsInsight:
@@ -40,10 +41,10 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
             raise TypeError("parse_node cannot be null.")
         return UserExperienceAnalyticsInsight()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .user_experience_analytics_insight_severity import UserExperienceAnalyticsInsightSeverity
         from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
@@ -51,7 +52,7 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
         from .user_experience_analytics_insight_severity import UserExperienceAnalyticsInsightSeverity
         from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "insightId": lambda n : setattr(self, 'insight_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(UserExperienceAnalyticsInsightSeverity)),
@@ -68,9 +69,6 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .user_experience_analytics_insight_severity import UserExperienceAnalyticsInsightSeverity
-        from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsightValue
-
         writer.write_str_value("insightId", self.insight_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("severity", self.severity)

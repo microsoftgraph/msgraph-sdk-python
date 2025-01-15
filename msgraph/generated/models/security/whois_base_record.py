@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -35,7 +36,7 @@ class WhoisBaseRecord(Entity, Parsable):
     # The date and time when this WHOIS record was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_update_date_time: Optional[datetime.datetime] = None
     # The nameservers for this WHOIS object.
-    nameservers: Optional[List[WhoisNameserver]] = None
+    nameservers: Optional[list[WhoisNameserver]] = None
     # The contact information for the noc contact.
     noc: Optional[WhoisContact] = None
     # The OdataType property
@@ -79,10 +80,10 @@ class WhoisBaseRecord(Entity, Parsable):
             return WhoisRecord()
         return WhoisBaseRecord()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .host import Host
@@ -98,7 +99,7 @@ class WhoisBaseRecord(Entity, Parsable):
         from .whois_nameserver import WhoisNameserver
         from .whois_record import WhoisRecord
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "abuse": lambda n : setattr(self, 'abuse', n.get_object_value(WhoisContact)),
             "admin": lambda n : setattr(self, 'admin', n.get_object_value(WhoisContact)),
             "billing": lambda n : setattr(self, 'billing', n.get_object_value(WhoisContact)),
@@ -131,13 +132,6 @@ class WhoisBaseRecord(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .host import Host
-        from .whois_contact import WhoisContact
-        from .whois_history_record import WhoisHistoryRecord
-        from .whois_nameserver import WhoisNameserver
-        from .whois_record import WhoisRecord
-
         writer.write_object_value("abuse", self.abuse)
         writer.write_object_value("admin", self.admin)
         writer.write_object_value("billing", self.billing)

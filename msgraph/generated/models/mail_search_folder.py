@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mail_folder import MailFolder
@@ -19,7 +20,7 @@ class MailSearchFolder(MailFolder, Parsable):
     # Indicates whether a search folder is editable using REST APIs.
     is_supported: Optional[bool] = None
     # The mailbox folders that should be mined.
-    source_folder_ids: Optional[List[str]] = None
+    source_folder_ids: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> MailSearchFolder:
@@ -32,16 +33,16 @@ class MailSearchFolder(MailFolder, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MailSearchFolder()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mail_folder import MailFolder
 
         from .mail_folder import MailFolder
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "filterQuery": lambda n : setattr(self, 'filter_query', n.get_str_value()),
             "includeNestedFolders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
             "isSupported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),
@@ -60,8 +61,6 @@ class MailSearchFolder(MailFolder, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mail_folder import MailFolder
-
         writer.write_str_value("filterQuery", self.filter_query)
         writer.write_bool_value("includeNestedFolders", self.include_nested_folders)
         writer.write_bool_value("isSupported", self.is_supported)

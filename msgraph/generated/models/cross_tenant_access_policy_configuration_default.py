@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
@@ -47,10 +48,10 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CrossTenantAccessPolicyConfigurationDefault()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
         from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
@@ -66,7 +67,7 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
         from .entity import Entity
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "automaticUserConsentSettings": lambda n : setattr(self, 'automatic_user_consent_settings', n.get_object_value(InboundOutboundPolicyConfiguration)),
             "b2bCollaborationInbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
             "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
@@ -90,13 +91,6 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
-        from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
-        from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
-        from .default_invitation_redemption_identity_provider_configuration import DefaultInvitationRedemptionIdentityProviderConfiguration
-        from .entity import Entity
-        from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
-
         writer.write_object_value("automaticUserConsentSettings", self.automatic_user_consent_settings)
         writer.write_object_value("b2bCollaborationInbound", self.b2b_collaboration_inbound)
         writer.write_object_value("b2bCollaborationOutbound", self.b2b_collaboration_outbound)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -25,9 +26,9 @@ class RetentionEvent(Entity, Parsable):
     # Name of the event.
     display_name: Optional[str] = None
     # Represents the success status of a created event and additional information.
-    event_propagation_results: Optional[List[EventPropagationResult]] = None
+    event_propagation_results: Optional[list[EventPropagationResult]] = None
     # Represents the workload (SharePoint Online, OneDrive for Business, Exchange Online) and identification information associated with a retention event.
-    event_queries: Optional[List[EventQuery]] = None
+    event_queries: Optional[list[EventQuery]] = None
     # Status of event propogation to the scoped locations after the event has been created.
     event_status: Optional[RetentionEventStatus] = None
     # Optional time when the event should be triggered.
@@ -54,10 +55,10 @@ class RetentionEvent(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RetentionEvent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..identity_set import IdentitySet
@@ -73,7 +74,7 @@ class RetentionEvent(Entity, Parsable):
         from .retention_event_status import RetentionEventStatus
         from .retention_event_type import RetentionEventType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -100,13 +101,6 @@ class RetentionEvent(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..identity_set import IdentitySet
-        from .event_propagation_result import EventPropagationResult
-        from .event_query import EventQuery
-        from .retention_event_status import RetentionEventStatus
-        from .retention_event_type import RetentionEventType
-
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

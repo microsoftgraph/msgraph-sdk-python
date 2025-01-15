@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -21,9 +22,9 @@ class Permission(Entity, Parsable):
     # For user type permissions, the details of the users and applications for this permission. Read-only.
     granted_to: Optional[IdentitySet] = None
     # For type permissions, the details of the users to whom permission was granted. Read-only.
-    granted_to_identities: Optional[List[IdentitySet]] = None
+    granted_to_identities: Optional[list[IdentitySet]] = None
     # For link type permissions, the details of the users to whom permission was granted. Read-only.
-    granted_to_identities_v2: Optional[List[SharePointIdentitySet]] = None
+    granted_to_identities_v2: Optional[list[SharePointIdentitySet]] = None
     # For user type permissions, the details of the users and applications for this permission. Read-only.
     granted_to_v2: Optional[SharePointIdentitySet] = None
     # Indicates whether the password is set for this permission. This property only appears in the response. Optional. Read-only. For OneDrive Personal only..
@@ -37,7 +38,7 @@ class Permission(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of permission, for example, read. See below for the full list of roles. Read-only.
-    roles: Optional[List[str]] = None
+    roles: Optional[list[str]] = None
     # A unique token that can be used to access this shared item via the shares API. Read-only.
     share_id: Optional[str] = None
     
@@ -52,10 +53,10 @@ class Permission(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Permission()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .identity_set import IdentitySet
@@ -71,7 +72,7 @@ class Permission(Entity, Parsable):
         from .sharing_invitation import SharingInvitation
         from .sharing_link import SharingLink
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "grantedTo": lambda n : setattr(self, 'granted_to', n.get_object_value(IdentitySet)),
             "grantedToIdentities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(IdentitySet)),
@@ -97,13 +98,6 @@ class Permission(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .identity_set import IdentitySet
-        from .item_reference import ItemReference
-        from .share_point_identity_set import SharePointIdentitySet
-        from .sharing_invitation import SharingInvitation
-        from .sharing_link import SharingLink
-
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_object_value("grantedTo", self.granted_to)
         writer.write_collection_of_object_values("grantedToIdentities", self.granted_to_identities)

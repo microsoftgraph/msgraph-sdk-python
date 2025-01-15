@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_required_password_type import AndroidRequiredPasswordType
@@ -26,11 +27,11 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Indicates whether or not to block the YouTube app.
     apps_block_you_tube: Optional[bool] = None
     # List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
-    apps_hide_list: Optional[List[AppListItem]] = None
+    apps_hide_list: Optional[list[AppListItem]] = None
     # List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
-    apps_install_allow_list: Optional[List[AppListItem]] = None
+    apps_install_allow_list: Optional[list[AppListItem]] = None
     # List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
-    apps_launch_block_list: Optional[List[AppListItem]] = None
+    apps_launch_block_list: Optional[list[AppListItem]] = None
     # Indicates whether or not to block Bluetooth.
     bluetooth_blocked: Optional[bool] = None
     # Indicates whether or not to block the use of the camera.
@@ -46,7 +47,7 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Possible values of the compliance app list.
     compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-    compliant_apps_list: Optional[List[AppListItem]] = None
+    compliant_apps_list: Optional[list[AppListItem]] = None
     # Indicates whether or not to allow device sharing mode.
     device_sharing_allowed: Optional[bool] = None
     # Indicates whether or not to block diagnostic data submission.
@@ -58,7 +59,7 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Indicates whether or not to block the Google Play store.
     google_play_store_blocked: Optional[bool] = None
     # A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
-    kiosk_mode_apps: Optional[List[AppListItem]] = None
+    kiosk_mode_apps: Optional[list[AppListItem]] = None
     # Indicates whether or not to block the screen sleep button while in Kiosk Mode.
     kiosk_mode_block_sleep_button: Optional[bool] = None
     # Indicates whether or not to block the volume buttons while in Kiosk Mode.
@@ -127,10 +128,10 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AndroidGeneralDeviceConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .android_required_password_type import AndroidRequiredPasswordType
         from .app_list_item import AppListItem
@@ -144,7 +145,7 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
         from .device_configuration import DeviceConfiguration
         from .web_browser_cookie_settings import WebBrowserCookieSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appsBlockClipboardSharing": lambda n : setattr(self, 'apps_block_clipboard_sharing', n.get_bool_value()),
             "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
             "appsBlockYouTube": lambda n : setattr(self, 'apps_block_you_tube', n.get_bool_value()),
@@ -207,12 +208,6 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .android_required_password_type import AndroidRequiredPasswordType
-        from .app_list_item import AppListItem
-        from .app_list_type import AppListType
-        from .device_configuration import DeviceConfiguration
-        from .web_browser_cookie_settings import WebBrowserCookieSettings
-
         writer.write_bool_value("appsBlockClipboardSharing", self.apps_block_clipboard_sharing)
         writer.write_bool_value("appsBlockCopyPaste", self.apps_block_copy_paste)
         writer.write_bool_value("appsBlockYouTube", self.apps_block_you_tube)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
@@ -17,7 +18,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # If true, app is denied protection or exemption.
     denied: Optional[bool] = None
     # The app's description.
@@ -55,10 +56,10 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
             return WindowsInformationProtectionStoreApp()
         return WindowsInformationProtectionApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
         from .windows_information_protection_store_app import WindowsInformationProtectionStoreApp
@@ -66,7 +67,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
         from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
         from .windows_information_protection_store_app import WindowsInformationProtectionStoreApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "denied": lambda n : setattr(self, 'denied', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -84,9 +85,6 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
-        from .windows_information_protection_store_app import WindowsInformationProtectionStoreApp
-
         writer.write_bool_value("denied", self.denied)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

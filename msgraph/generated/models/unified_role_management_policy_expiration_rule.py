@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
@@ -29,16 +30,16 @@ class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule,
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleManagementPolicyExpirationRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isExpirationRequired": lambda n : setattr(self, 'is_expiration_required', n.get_bool_value()),
             "maximumDuration": lambda n : setattr(self, 'maximum_duration', n.get_timedelta_value()),
         }
@@ -55,8 +56,6 @@ class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule,
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
-
         writer.write_bool_value("isExpirationRequired", self.is_expiration_required)
         writer.write_timedelta_value("maximumDuration", self.maximum_duration)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_list_item import AppListItem
@@ -21,9 +22,9 @@ class MacOSGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
     # Possible values of the compliance app list.
     compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-    compliant_apps_list: Optional[List[AppListItem]] = None
+    compliant_apps_list: Optional[list[AppListItem]] = None
     # An email address lacking a suffix that matches any of these strings will be considered out-of-domain.
-    email_in_domain_suffixes: Optional[List[str]] = None
+    email_in_domain_suffixes: Optional[list[str]] = None
     # Block simple passwords.
     password_block_simple: Optional[bool] = None
     # Number of days before the password expires.
@@ -54,10 +55,10 @@ class MacOSGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MacOSGeneralDeviceConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_list_item import AppListItem
         from .app_list_type import AppListType
@@ -69,7 +70,7 @@ class MacOSGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
         from .device_configuration import DeviceConfiguration
         from .required_password_type import RequiredPasswordType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
             "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
             "emailInDomainSuffixes": lambda n : setattr(self, 'email_in_domain_suffixes', n.get_collection_of_primitive_values(str)),
@@ -96,11 +97,6 @@ class MacOSGeneralDeviceConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_list_item import AppListItem
-        from .app_list_type import AppListType
-        from .device_configuration import DeviceConfiguration
-        from .required_password_type import RequiredPasswordType
-
         writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
         writer.write_collection_of_object_values("compliantAppsList", self.compliant_apps_list)
         writer.write_collection_of_primitive_values("emailInDomainSuffixes", self.email_in_domain_suffixes)

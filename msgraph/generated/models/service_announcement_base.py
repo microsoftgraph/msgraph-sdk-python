@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -15,7 +16,7 @@ from .entity import Entity
 @dataclass
 class ServiceAnnouncementBase(Entity, Parsable):
     # More details about service event. This property doesn't support filters.
-    details: Optional[List[KeyValuePair]] = None
+    details: Optional[list[KeyValuePair]] = None
     # The end time of the service event.
     end_date_time: Optional[datetime.datetime] = None
     # The last modified time of the service event.
@@ -51,10 +52,10 @@ class ServiceAnnouncementBase(Entity, Parsable):
             return ServiceUpdateMessage()
         return ServiceAnnouncementBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .key_value_pair import KeyValuePair
@@ -66,7 +67,7 @@ class ServiceAnnouncementBase(Entity, Parsable):
         from .service_health_issue import ServiceHealthIssue
         from .service_update_message import ServiceUpdateMessage
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(KeyValuePair)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
@@ -86,11 +87,6 @@ class ServiceAnnouncementBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .key_value_pair import KeyValuePair
-        from .service_health_issue import ServiceHealthIssue
-        from .service_update_message import ServiceUpdateMessage
-
         writer.write_collection_of_object_values("details", self.details)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)

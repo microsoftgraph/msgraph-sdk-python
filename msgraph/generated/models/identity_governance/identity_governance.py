@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..access_review_set import AccessReviewSet
@@ -18,7 +19,7 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The accessReviews property
     access_reviews: Optional[AccessReviewSet] = None
     # The appConsent property
@@ -45,10 +46,10 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IdentityGovernance()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..access_review_set import AccessReviewSet
         from ..app_consent_approval_route import AppConsentApprovalRoute
@@ -64,7 +65,7 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
         from ..terms_of_use_container import TermsOfUseContainer
         from .lifecycle_workflows_container import LifecycleWorkflowsContainer
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessReviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(AccessReviewSet)),
             "appConsent": lambda n : setattr(self, 'app_consent', n.get_object_value(AppConsentApprovalRoute)),
             "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(EntitlementManagement)),
@@ -83,13 +84,6 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ..access_review_set import AccessReviewSet
-        from ..app_consent_approval_route import AppConsentApprovalRoute
-        from ..entitlement_management import EntitlementManagement
-        from ..privileged_access_root import PrivilegedAccessRoot
-        from ..terms_of_use_container import TermsOfUseContainer
-        from .lifecycle_workflows_container import LifecycleWorkflowsContainer
-
         writer.write_object_value("accessReviews", self.access_reviews)
         writer.write_object_value("appConsent", self.app_consent)
         writer.write_object_value("entitlementManagement", self.entitlement_management)

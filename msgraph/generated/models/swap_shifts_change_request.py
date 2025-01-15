@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .offer_shift_request import OfferShiftRequest
@@ -26,16 +27,16 @@ class SwapShiftsChangeRequest(OfferShiftRequest, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SwapShiftsChangeRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .offer_shift_request import OfferShiftRequest
 
         from .offer_shift_request import OfferShiftRequest
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "recipientShiftId": lambda n : setattr(self, 'recipient_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -51,8 +52,6 @@ class SwapShiftsChangeRequest(OfferShiftRequest, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .offer_shift_request import OfferShiftRequest
-
         writer.write_str_value("recipientShiftId", self.recipient_shift_id)
     
 

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -19,7 +20,7 @@ class TeamworkTag(Entity, Parsable):
     # The number of users assigned to the tag.
     member_count: Optional[int] = None
     # Users assigned to the tag.
-    members: Optional[List[TeamworkTagMember]] = None
+    members: Optional[list[TeamworkTagMember]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the tag. Default is standard.
@@ -38,10 +39,10 @@ class TeamworkTag(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TeamworkTag()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .teamwork_tag_member import TeamworkTagMember
@@ -51,7 +52,7 @@ class TeamworkTag(Entity, Parsable):
         from .teamwork_tag_member import TeamworkTagMember
         from .teamwork_tag_type import TeamworkTagType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "memberCount": lambda n : setattr(self, 'member_count', n.get_int_value()),
@@ -72,10 +73,6 @@ class TeamworkTag(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .teamwork_tag_member import TeamworkTagMember
-        from .teamwork_tag_type import TeamworkTagType
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_int_value("memberCount", self.member_count)

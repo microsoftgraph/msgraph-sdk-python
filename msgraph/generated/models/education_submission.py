@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_outcome import EducationOutcome
@@ -23,7 +24,7 @@ class EducationSubmission(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The outcomes property
-    outcomes: Optional[List[EducationOutcome]] = None
+    outcomes: Optional[list[EducationOutcome]] = None
     # User who moved the status of this submission to reassigned.
     reassigned_by: Optional[IdentitySet] = None
     # Moment in time when the submission was reassigned. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -31,7 +32,7 @@ class EducationSubmission(Entity, Parsable):
     # Who this submission is assigned to.
     recipient: Optional[EducationSubmissionRecipient] = None
     # The resources property
-    resources: Optional[List[EducationSubmissionResource]] = None
+    resources: Optional[list[EducationSubmissionResource]] = None
     # Folder where all file resources for this submission need to be stored.
     resources_folder_url: Optional[str] = None
     # User who moved the status of this submission to returned.
@@ -45,7 +46,7 @@ class EducationSubmission(Entity, Parsable):
     # Moment in time when the submission was moved into the submitted state. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     submitted_date_time: Optional[datetime.datetime] = None
     # The submittedResources property
-    submitted_resources: Optional[List[EducationSubmissionResource]] = None
+    submitted_resources: Optional[list[EducationSubmissionResource]] = None
     # User who moved the resource from submitted into the working state.
     unsubmitted_by: Optional[IdentitySet] = None
     # Moment in time when the submission was moved from submitted into the working state. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -64,10 +65,10 @@ class EducationSubmission(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EducationSubmission()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .education_outcome import EducationOutcome
         from .education_submission_recipient import EducationSubmissionRecipient
@@ -83,7 +84,7 @@ class EducationSubmission(Entity, Parsable):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "excusedBy": lambda n : setattr(self, 'excused_by', n.get_object_value(IdentitySet)),
             "excusedDateTime": lambda n : setattr(self, 'excused_date_time', n.get_datetime_value()),
             "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(EducationOutcome)),
@@ -115,13 +116,6 @@ class EducationSubmission(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .education_outcome import EducationOutcome
-        from .education_submission_recipient import EducationSubmissionRecipient
-        from .education_submission_resource import EducationSubmissionResource
-        from .education_submission_status import EducationSubmissionStatus
-        from .entity import Entity
-        from .identity_set import IdentitySet
-
         writer.write_collection_of_object_values("outcomes", self.outcomes)
         writer.write_object_value("recipient", self.recipient)
         writer.write_collection_of_object_values("resources", self.resources)

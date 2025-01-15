@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
@@ -97,10 +98,10 @@ class CommsOperation(Entity, Parsable):
             return UpdateRecordingStatusOperation()
         return CommsOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
         from .cancel_media_processing_operation import CancelMediaProcessingOperation
@@ -134,7 +135,7 @@ class CommsOperation(Entity, Parsable):
         from .unmute_participant_operation import UnmuteParticipantOperation
         from .update_recording_status_operation import UpdateRecordingStatusOperation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
             "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(OperationStatus)),
@@ -152,22 +153,6 @@ class CommsOperation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
-        from .cancel_media_processing_operation import CancelMediaProcessingOperation
-        from .entity import Entity
-        from .invite_participants_operation import InviteParticipantsOperation
-        from .mute_participant_operation import MuteParticipantOperation
-        from .operation_status import OperationStatus
-        from .play_prompt_operation import PlayPromptOperation
-        from .record_operation import RecordOperation
-        from .result_info import ResultInfo
-        from .send_dtmf_tones_operation import SendDtmfTonesOperation
-        from .start_hold_music_operation import StartHoldMusicOperation
-        from .stop_hold_music_operation import StopHoldMusicOperation
-        from .subscribe_to_tone_operation import SubscribeToToneOperation
-        from .unmute_participant_operation import UnmuteParticipantOperation
-        from .update_recording_status_operation import UpdateRecordingStatusOperation
-
         writer.write_str_value("clientContext", self.client_context)
         writer.write_object_value("resultInfo", self.result_info)
         writer.write_enum_value("status", self.status)

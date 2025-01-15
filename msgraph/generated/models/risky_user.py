@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -16,7 +17,7 @@ from .entity import Entity
 @dataclass
 class RiskyUser(Entity, Parsable):
     # The activity related to user risk level change
-    history: Optional[List[RiskyUserHistoryItem]] = None
+    history: Optional[list[RiskyUserHistoryItem]] = None
     # Indicates whether the user is deleted. Possible values are: true, false.
     is_deleted: Optional[bool] = None
     # Indicates whether the backend is processing a user's risky state.
@@ -56,10 +57,10 @@ class RiskyUser(Entity, Parsable):
             return RiskyUserHistoryItem()
         return RiskyUser()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .risky_user_history_item import RiskyUserHistoryItem
@@ -73,7 +74,7 @@ class RiskyUser(Entity, Parsable):
         from .risk_level import RiskLevel
         from .risk_state import RiskState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(RiskyUserHistoryItem)),
             "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
             "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
@@ -97,12 +98,6 @@ class RiskyUser(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .risky_user_history_item import RiskyUserHistoryItem
-        from .risk_detail import RiskDetail
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
-
         writer.write_collection_of_object_values("history", self.history)
         writer.write_bool_value("isDeleted", self.is_deleted)
         writer.write_bool_value("isProcessing", self.is_processing)

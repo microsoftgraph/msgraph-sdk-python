@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_item import BaseItem
@@ -24,7 +25,7 @@ class ListItem(BaseItem, Parsable):
     # The content type of this list item
     content_type: Optional[ContentTypeInfo] = None
     # Version information for a document set version created by a user.
-    document_set_versions: Optional[List[DocumentSetVersion]] = None
+    document_set_versions: Optional[list[DocumentSetVersion]] = None
     # For document libraries, the driveItem relationship exposes the listItem as a driveItem
     drive_item: Optional[DriveItem] = None
     # The values of the columns set on this list item.
@@ -32,7 +33,7 @@ class ListItem(BaseItem, Parsable):
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
     sharepoint_ids: Optional[SharepointIds] = None
     # The list of previous versions of the list item.
-    versions: Optional[List[ListItemVersion]] = None
+    versions: Optional[list[ListItemVersion]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ListItem:
@@ -45,10 +46,10 @@ class ListItem(BaseItem, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ListItem()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .base_item import BaseItem
         from .content_type_info import ContentTypeInfo
@@ -68,7 +69,7 @@ class ListItem(BaseItem, Parsable):
         from .list_item_version import ListItemVersion
         from .sharepoint_ids import SharepointIds
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
             "documentSetVersions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(DocumentSetVersion)),
@@ -90,15 +91,6 @@ class ListItem(BaseItem, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .base_item import BaseItem
-        from .content_type_info import ContentTypeInfo
-        from .document_set_version import DocumentSetVersion
-        from .drive_item import DriveItem
-        from .field_value_set import FieldValueSet
-        from .item_analytics import ItemAnalytics
-        from .list_item_version import ListItemVersion
-        from .sharepoint_ids import SharepointIds
-
         writer.write_object_value("analytics", self.analytics)
         writer.write_object_value("contentType", self.content_type)
         writer.write_collection_of_object_values("documentSetVersions", self.document_set_versions)

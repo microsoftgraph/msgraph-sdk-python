@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .account_target_content import AccountTargetContent
@@ -13,7 +14,7 @@ class AddressBookAccountTargetContent(AccountTargetContent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.addressBookAccountTargetContent"
     # List of user emails targeted for an attack simulation training campaign.
-    account_target_emails: Optional[List[str]] = None
+    account_target_emails: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AddressBookAccountTargetContent:
@@ -26,16 +27,16 @@ class AddressBookAccountTargetContent(AccountTargetContent, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AddressBookAccountTargetContent()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .account_target_content import AccountTargetContent
 
         from .account_target_content import AccountTargetContent
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountTargetEmails": lambda n : setattr(self, 'account_target_emails', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
@@ -51,8 +52,6 @@ class AddressBookAccountTargetContent(AccountTargetContent, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .account_target_content import AccountTargetContent
-
         writer.write_collection_of_primitive_values("accountTargetEmails", self.account_target_emails)
     
 

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -27,10 +28,10 @@ class Partners(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Partners()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .billing.billing import Billing
@@ -38,7 +39,7 @@ class Partners(Entity, Parsable):
         from ..entity import Entity
         from .billing.billing import Billing
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "billing": lambda n : setattr(self, 'billing', n.get_object_value(Billing)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class Partners(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .billing.billing import Billing
-
         writer.write_object_value("billing", self.billing)
     
 

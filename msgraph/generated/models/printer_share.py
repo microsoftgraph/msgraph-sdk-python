@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .group import Group
@@ -20,9 +21,9 @@ class PrinterShare(PrinterBase, Parsable):
     # If true, all users and groups will be granted access to this printer share. This supersedes the allow lists defined by the allowedUsers and allowedGroups navigation properties.
     allow_all_users: Optional[bool] = None
     # The groups whose users have access to print using the printer.
-    allowed_groups: Optional[List[Group]] = None
+    allowed_groups: Optional[list[Group]] = None
     # The users who have access to print using the printer.
-    allowed_users: Optional[List[User]] = None
+    allowed_users: Optional[list[User]] = None
     # The DateTimeOffset when the printer share was created. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The printer that this printer share is related to.
@@ -41,10 +42,10 @@ class PrinterShare(PrinterBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PrinterShare()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .group import Group
         from .printer import Printer
@@ -58,7 +59,7 @@ class PrinterShare(PrinterBase, Parsable):
         from .printer_share_viewpoint import PrinterShareViewpoint
         from .user import User
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowAllUsers": lambda n : setattr(self, 'allow_all_users', n.get_bool_value()),
             "allowedGroups": lambda n : setattr(self, 'allowed_groups', n.get_collection_of_object_values(Group)),
             "allowedUsers": lambda n : setattr(self, 'allowed_users', n.get_collection_of_object_values(User)),
@@ -79,12 +80,6 @@ class PrinterShare(PrinterBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .group import Group
-        from .printer import Printer
-        from .printer_base import PrinterBase
-        from .printer_share_viewpoint import PrinterShareViewpoint
-        from .user import User
-
         writer.write_bool_value("allowAllUsers", self.allow_all_users)
         writer.write_collection_of_object_values("allowedGroups", self.allowed_groups)
         writer.write_collection_of_object_values("allowedUsers", self.allowed_users)

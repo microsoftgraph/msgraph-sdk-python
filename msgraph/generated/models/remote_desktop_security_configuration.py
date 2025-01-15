@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -16,7 +17,7 @@ class RemoteDesktopSecurityConfiguration(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The collection of target device groups that are associated with the RDS security configuration that will be enabled for SSO when a client connects to the target device over RDP using the new Microsoft Entra ID RDS authentication protocol.
-    target_device_groups: Optional[List[TargetDeviceGroup]] = None
+    target_device_groups: Optional[list[TargetDeviceGroup]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RemoteDesktopSecurityConfiguration:
@@ -29,10 +30,10 @@ class RemoteDesktopSecurityConfiguration(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RemoteDesktopSecurityConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .target_device_group import TargetDeviceGroup
@@ -40,7 +41,7 @@ class RemoteDesktopSecurityConfiguration(Entity, Parsable):
         from .entity import Entity
         from .target_device_group import TargetDeviceGroup
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isRemoteDesktopProtocolEnabled": lambda n : setattr(self, 'is_remote_desktop_protocol_enabled', n.get_bool_value()),
             "targetDeviceGroups": lambda n : setattr(self, 'target_device_groups', n.get_collection_of_object_values(TargetDeviceGroup)),
         }
@@ -57,9 +58,6 @@ class RemoteDesktopSecurityConfiguration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .target_device_group import TargetDeviceGroup
-
         writer.write_bool_value("isRemoteDesktopProtocolEnabled", self.is_remote_desktop_protocol_enabled)
         writer.write_collection_of_object_values("targetDeviceGroups", self.target_device_groups)
     

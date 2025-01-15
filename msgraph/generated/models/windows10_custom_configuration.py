@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_configuration import DeviceConfiguration
@@ -17,7 +18,7 @@ class Windows10CustomConfiguration(DeviceConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windows10CustomConfiguration"
     # OMA settings. This collection can contain a maximum of 1000 elements.
-    oma_settings: Optional[List[OmaSetting]] = None
+    oma_settings: Optional[list[OmaSetting]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Windows10CustomConfiguration:
@@ -30,10 +31,10 @@ class Windows10CustomConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Windows10CustomConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_configuration import DeviceConfiguration
         from .oma_setting import OmaSetting
@@ -41,7 +42,7 @@ class Windows10CustomConfiguration(DeviceConfiguration, Parsable):
         from .device_configuration import DeviceConfiguration
         from .oma_setting import OmaSetting
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "omaSettings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(OmaSetting)),
         }
         super_fields = super().get_field_deserializers()
@@ -57,9 +58,6 @@ class Windows10CustomConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_configuration import DeviceConfiguration
-        from .oma_setting import OmaSetting
-
         writer.write_collection_of_object_values("omaSettings", self.oma_settings)
     
 

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -54,10 +55,10 @@ class FilePlanDescriptor(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return FilePlanDescriptor()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .authority_template import AuthorityTemplate
@@ -83,7 +84,7 @@ class FilePlanDescriptor(Entity, Parsable):
         from .file_plan_reference import FilePlanReference
         from .file_plan_reference_template import FilePlanReferenceTemplate
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "authority": lambda n : setattr(self, 'authority', n.get_object_value(FilePlanAuthority)),
             "authorityTemplate": lambda n : setattr(self, 'authority_template', n.get_object_value(AuthorityTemplate)),
             "category": lambda n : setattr(self, 'category', n.get_object_value(FilePlanAppliedCategory)),
@@ -108,18 +109,6 @@ class FilePlanDescriptor(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .authority_template import AuthorityTemplate
-        from .category_template import CategoryTemplate
-        from .citation_template import CitationTemplate
-        from .department_template import DepartmentTemplate
-        from .file_plan_applied_category import FilePlanAppliedCategory
-        from .file_plan_authority import FilePlanAuthority
-        from .file_plan_citation import FilePlanCitation
-        from .file_plan_department import FilePlanDepartment
-        from .file_plan_reference import FilePlanReference
-        from .file_plan_reference_template import FilePlanReferenceTemplate
-
         writer.write_object_value("authority", self.authority)
         writer.write_object_value("authorityTemplate", self.authority_template)
         writer.write_object_value("category", self.category)

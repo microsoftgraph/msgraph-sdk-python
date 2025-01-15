@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_local_credential import DeviceLocalCredential
@@ -13,7 +14,7 @@ from .entity import Entity
 @dataclass
 class DeviceLocalCredentialInfo(Entity, Parsable):
     # The credentials of the device's local administrator account backed up to Azure Active Directory.
-    credentials: Optional[List[DeviceLocalCredential]] = None
+    credentials: Optional[list[DeviceLocalCredential]] = None
     # Display name of the device that the local credentials are associated with.
     device_name: Optional[str] = None
     # When the local administrator account credential was backed up to Azure Active Directory.
@@ -34,10 +35,10 @@ class DeviceLocalCredentialInfo(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeviceLocalCredentialInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_local_credential import DeviceLocalCredential
         from .entity import Entity
@@ -45,7 +46,7 @@ class DeviceLocalCredentialInfo(Entity, Parsable):
         from .device_local_credential import DeviceLocalCredential
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "credentials": lambda n : setattr(self, 'credentials', n.get_collection_of_object_values(DeviceLocalCredential)),
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
             "lastBackupDateTime": lambda n : setattr(self, 'last_backup_date_time', n.get_datetime_value()),
@@ -64,9 +65,6 @@ class DeviceLocalCredentialInfo(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_local_credential import DeviceLocalCredential
-        from .entity import Entity
-
         writer.write_collection_of_object_values("credentials", self.credentials)
         writer.write_str_value("deviceName", self.device_name)
         writer.write_datetime_value("lastBackupDateTime", self.last_backup_date_time)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -14,11 +15,11 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The addLicenses property
-    add_licenses: Optional[List[AssignedLicense]] = None
+    add_licenses: Optional[list[AssignedLicense]] = None
     # The removeLicenses property
-    remove_licenses: Optional[List[UUID]] = None
+    remove_licenses: Optional[list[UUID]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AssignLicensePostRequestBody:
@@ -31,16 +32,16 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AssignLicensePostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ....models.assigned_license import AssignedLicense
 
         from ....models.assigned_license import AssignedLicense
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "addLicenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(AssignedLicense)),
             "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(UUID)),
         }
@@ -54,8 +55,6 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ....models.assigned_license import AssignedLicense
-
         writer.write_collection_of_object_values("addLicenses", self.add_licenses)
         writer.write_collection_of_primitive_values("removeLicenses", self.remove_licenses)
         writer.write_additional_data_value(self.additional_data)

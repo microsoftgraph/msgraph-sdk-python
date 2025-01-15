@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -33,16 +34,16 @@ class ResourceOperation(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ResourceOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
 
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
@@ -60,8 +61,6 @@ class ResourceOperation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-
         writer.write_str_value("actionName", self.action_name)
         writer.write_str_value("description", self.description)
         writer.write_str_value("resourceName", self.resource_name)

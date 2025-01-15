@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_review_history_decision_filter import AccessReviewHistoryDecisionFilter
@@ -22,11 +23,11 @@ class AccessReviewHistoryDefinition(Entity, Parsable):
     # Timestamp when the access review definition was created.
     created_date_time: Optional[datetime.datetime] = None
     # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions are included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
-    decisions: Optional[List[AccessReviewHistoryDecisionFilter]] = None
+    decisions: Optional[list[AccessReviewHistoryDecisionFilter]] = None
     # Name for the access review history data collection. Required.
     display_name: Optional[str] = None
     # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that doesn't recur will have exactly one instance.
-    instances: Optional[List[AccessReviewHistoryInstance]] = None
+    instances: Optional[list[AccessReviewHistoryInstance]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings isn't defined.
@@ -36,7 +37,7 @@ class AccessReviewHistoryDefinition(Entity, Parsable):
     # The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime aren't defined. Not supported yet.
     schedule_settings: Optional[AccessReviewHistoryScheduleSettings] = None
     # Used to scope what reviews are included in the fetched history data. Fetches reviews whose scope matches with this provided scope. Required.
-    scopes: Optional[List[AccessReviewScope]] = None
+    scopes: Optional[list[AccessReviewScope]] = None
     # Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue.
     status: Optional[AccessReviewHistoryStatus] = None
     
@@ -51,10 +52,10 @@ class AccessReviewHistoryDefinition(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessReviewHistoryDefinition()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_review_history_decision_filter import AccessReviewHistoryDecisionFilter
         from .access_review_history_instance import AccessReviewHistoryInstance
@@ -72,7 +73,7 @@ class AccessReviewHistoryDefinition(Entity, Parsable):
         from .entity import Entity
         from .user_identity import UserIdentity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_enum_values(AccessReviewHistoryDecisionFilter)),
@@ -97,14 +98,6 @@ class AccessReviewHistoryDefinition(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_review_history_decision_filter import AccessReviewHistoryDecisionFilter
-        from .access_review_history_instance import AccessReviewHistoryInstance
-        from .access_review_history_schedule_settings import AccessReviewHistoryScheduleSettings
-        from .access_review_history_status import AccessReviewHistoryStatus
-        from .access_review_scope import AccessReviewScope
-        from .entity import Entity
-        from .user_identity import UserIdentity
-
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_enum_values("decisions", self.decisions)

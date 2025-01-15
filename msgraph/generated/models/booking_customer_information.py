@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .booking_customer_information_base import BookingCustomerInformationBase
@@ -15,7 +16,7 @@ class BookingCustomerInformation(BookingCustomerInformationBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.bookingCustomerInformation"
     # It consists of the list of custom questions and answers given by the customer as part of the appointment
-    custom_question_answers: Optional[List[BookingQuestionAnswer]] = None
+    custom_question_answers: Optional[list[BookingQuestionAnswer]] = None
     # The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
     customer_id: Optional[str] = None
     # The SMTP address of the bookingCustomer who is booking the appointment
@@ -42,10 +43,10 @@ class BookingCustomerInformation(BookingCustomerInformationBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BookingCustomerInformation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .booking_customer_information_base import BookingCustomerInformationBase
         from .booking_question_answer import BookingQuestionAnswer
@@ -55,7 +56,7 @@ class BookingCustomerInformation(BookingCustomerInformationBase, Parsable):
         from .booking_question_answer import BookingQuestionAnswer
         from .location import Location
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "customQuestionAnswers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(BookingQuestionAnswer)),
             "customerId": lambda n : setattr(self, 'customer_id', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
@@ -78,10 +79,6 @@ class BookingCustomerInformation(BookingCustomerInformationBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .booking_customer_information_base import BookingCustomerInformationBase
-        from .booking_question_answer import BookingQuestionAnswer
-        from .location import Location
-
         writer.write_collection_of_object_values("customQuestionAnswers", self.custom_question_answers)
         writer.write_str_value("customerId", self.customer_id)
         writer.write_str_value("emailAddress", self.email_address)

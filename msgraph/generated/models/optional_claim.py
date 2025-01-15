@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class OptionalClaim(AdditionalDataHolder, BackedModel, Parsable):
@@ -10,9 +11,9 @@ class OptionalClaim(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.
-    additional_properties: Optional[List[str]] = None
+    additional_properties: Optional[list[str]] = None
     # If the value is true, the claim specified by the client is necessary to ensure a smooth authorization experience for the specific task requested by the end user. The default value is false.
     essential: Optional[bool] = None
     # The name of the optional claim.
@@ -33,12 +34,12 @@ class OptionalClaim(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OptionalClaim()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "additionalProperties": lambda n : setattr(self, 'additional_properties', n.get_collection_of_primitive_values(str)),
             "essential": lambda n : setattr(self, 'essential', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

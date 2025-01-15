@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_catalog import AccessPackageCatalog
@@ -39,10 +40,10 @@ class AccessPackageResourceRequest(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackageResourceRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_catalog import AccessPackageCatalog
         from .access_package_request_state import AccessPackageRequestState
@@ -56,7 +57,7 @@ class AccessPackageResourceRequest(Entity, Parsable):
         from .access_package_resource import AccessPackageResource
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
@@ -76,12 +77,6 @@ class AccessPackageResourceRequest(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_catalog import AccessPackageCatalog
-        from .access_package_request_state import AccessPackageRequestState
-        from .access_package_request_type import AccessPackageRequestType
-        from .access_package_resource import AccessPackageResource
-        from .entity import Entity
-
         writer.write_object_value("catalog", self.catalog)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_enum_value("requestType", self.request_type)

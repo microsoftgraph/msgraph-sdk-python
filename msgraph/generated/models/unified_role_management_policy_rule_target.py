@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -14,21 +15,21 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The type of caller that's the target of the policy rule. Allowed values are: None, Admin, EndUser.
     caller: Optional[str] = None
     # The list of role settings that are enforced and cannot be overridden by child scopes. Use All for all settings.
-    enforced_settings: Optional[List[str]] = None
+    enforced_settings: Optional[list[str]] = None
     # The list of role settings that can be inherited by child scopes. Use All for all settings.
-    inheritable_settings: Optional[List[str]] = None
+    inheritable_settings: Optional[list[str]] = None
     # The role assignment type that's the target of policy rule. Allowed values are: Eligibility, Assignment.
     level: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The role management operations that are the target of the policy rule. Allowed values are: All, Activate, Deactivate, Assign, Update, Remove, Extend, Renew.
-    operations: Optional[List[UnifiedRoleManagementPolicyRuleTargetOperations]] = None
+    operations: Optional[list[UnifiedRoleManagementPolicyRuleTargetOperations]] = None
     # The targetObjects property
-    target_objects: Optional[List[DirectoryObject]] = None
+    target_objects: Optional[list[DirectoryObject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UnifiedRoleManagementPolicyRuleTarget:
@@ -41,10 +42,10 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
             raise TypeError("parse_node cannot be null.")
         return UnifiedRoleManagementPolicyRuleTarget()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .unified_role_management_policy_rule_target_operations import UnifiedRoleManagementPolicyRuleTargetOperations
@@ -52,7 +53,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
         from .directory_object import DirectoryObject
         from .unified_role_management_policy_rule_target_operations import UnifiedRoleManagementPolicyRuleTargetOperations
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "caller": lambda n : setattr(self, 'caller', n.get_str_value()),
             "enforcedSettings": lambda n : setattr(self, 'enforced_settings', n.get_collection_of_primitive_values(str)),
             "inheritableSettings": lambda n : setattr(self, 'inheritable_settings', n.get_collection_of_primitive_values(str)),
@@ -71,9 +72,6 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .directory_object import DirectoryObject
-        from .unified_role_management_policy_rule_target_operations import UnifiedRoleManagementPolicyRuleTargetOperations
-
         writer.write_str_value("caller", self.caller)
         writer.write_collection_of_primitive_values("enforcedSettings", self.enforced_settings)
         writer.write_collection_of_primitive_values("inheritableSettings", self.inheritable_settings)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .on_interactive_auth_flow_start_handler import OnInteractiveAuthFlowStartHandler
@@ -26,16 +27,16 @@ class OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp(OnInteractiveAuth
             raise TypeError("parse_node cannot be null.")
         return OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .on_interactive_auth_flow_start_handler import OnInteractiveAuthFlowStartHandler
 
         from .on_interactive_auth_flow_start_handler import OnInteractiveAuthFlowStartHandler
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isSignUpAllowed": lambda n : setattr(self, 'is_sign_up_allowed', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -51,8 +52,6 @@ class OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp(OnInteractiveAuth
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .on_interactive_auth_flow_start_handler import OnInteractiveAuthFlowStartHandler
-
         writer.write_bool_value("isSignUpAllowed", self.is_sign_up_allowed)
     
 

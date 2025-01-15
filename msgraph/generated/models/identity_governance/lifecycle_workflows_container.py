@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..deleted_item_container import DeletedItemContainer
@@ -18,7 +19,7 @@ from ..entity import Entity
 @dataclass
 class LifecycleWorkflowsContainer(Entity, Parsable):
     # The customTaskExtension instance.
-    custom_task_extensions: Optional[List[CustomTaskExtension]] = None
+    custom_task_extensions: Optional[list[CustomTaskExtension]] = None
     # Deleted workflows in your lifecycle workflows instance.
     deleted_items: Optional[DeletedItemContainer] = None
     # The insight container holding workflow insight summaries for a tenant.
@@ -28,11 +29,11 @@ class LifecycleWorkflowsContainer(Entity, Parsable):
     # The settings property
     settings: Optional[LifecycleManagementSettings] = None
     # The definition of tasks within the lifecycle workflows instance.
-    task_definitions: Optional[List[TaskDefinition]] = None
+    task_definitions: Optional[list[TaskDefinition]] = None
     # The workflow templates in the lifecycle workflow instance.
-    workflow_templates: Optional[List[WorkflowTemplate]] = None
+    workflow_templates: Optional[list[WorkflowTemplate]] = None
     # The workflows in the lifecycle workflows instance.
-    workflows: Optional[List[Workflow]] = None
+    workflows: Optional[list[Workflow]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> LifecycleWorkflowsContainer:
@@ -45,10 +46,10 @@ class LifecycleWorkflowsContainer(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return LifecycleWorkflowsContainer()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..deleted_item_container import DeletedItemContainer
         from ..entity import Entity
@@ -68,7 +69,7 @@ class LifecycleWorkflowsContainer(Entity, Parsable):
         from .workflow import Workflow
         from .workflow_template import WorkflowTemplate
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "customTaskExtensions": lambda n : setattr(self, 'custom_task_extensions', n.get_collection_of_object_values(CustomTaskExtension)),
             "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_object_value(DeletedItemContainer)),
             "insights": lambda n : setattr(self, 'insights', n.get_object_value(Insights)),
@@ -90,15 +91,6 @@ class LifecycleWorkflowsContainer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..deleted_item_container import DeletedItemContainer
-        from ..entity import Entity
-        from .custom_task_extension import CustomTaskExtension
-        from .insights import Insights
-        from .lifecycle_management_settings import LifecycleManagementSettings
-        from .task_definition import TaskDefinition
-        from .workflow import Workflow
-        from .workflow_template import WorkflowTemplate
-
         writer.write_collection_of_object_values("customTaskExtensions", self.custom_task_extensions)
         writer.write_object_value("deletedItems", self.deleted_items)
         writer.write_object_value("insights", self.insights)

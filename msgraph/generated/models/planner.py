@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -14,13 +15,13 @@ from .entity import Entity
 @dataclass
 class Planner(Entity, Parsable):
     # Read-only. Nullable. Returns a collection of the specified buckets
-    buckets: Optional[List[PlannerBucket]] = None
+    buckets: Optional[list[PlannerBucket]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Read-only. Nullable. Returns a collection of the specified plans
-    plans: Optional[List[PlannerPlan]] = None
+    plans: Optional[list[PlannerPlan]] = None
     # Read-only. Nullable. Returns a collection of the specified tasks
-    tasks: Optional[List[PlannerTask]] = None
+    tasks: Optional[list[PlannerTask]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Planner:
@@ -33,10 +34,10 @@ class Planner(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Planner()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .planner_bucket import PlannerBucket
@@ -48,7 +49,7 @@ class Planner(Entity, Parsable):
         from .planner_plan import PlannerPlan
         from .planner_task import PlannerTask
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(PlannerBucket)),
             "plans": lambda n : setattr(self, 'plans', n.get_collection_of_object_values(PlannerPlan)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PlannerTask)),
@@ -66,11 +67,6 @@ class Planner(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .planner_bucket import PlannerBucket
-        from .planner_plan import PlannerPlan
-        from .planner_task import PlannerTask
-
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_collection_of_object_values("plans", self.plans)
         writer.write_collection_of_object_values("tasks", self.tasks)

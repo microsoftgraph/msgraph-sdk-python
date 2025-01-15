@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .email_identity import EmailIdentity
@@ -31,7 +32,7 @@ class Training(Entity, Parsable):
     # Indicates whether the training has any evaluation.
     has_evaluation: Optional[bool] = None
     # Language specific details on a training.
-    language_details: Optional[List[TrainingLanguageDetail]] = None
+    language_details: Optional[list[TrainingLanguageDetail]] = None
     # Identity of the user who last modified the training.
     last_modified_by: Optional[EmailIdentity] = None
     # Date and time when the training was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -41,9 +42,9 @@ class Training(Entity, Parsable):
     # Training content source. Possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
     # Supported locales for content for the associated training.
-    supported_locales: Optional[List[str]] = None
+    supported_locales: Optional[list[str]] = None
     # Training tags.
-    tags: Optional[List[str]] = None
+    tags: Optional[list[str]] = None
     # The type of training. Possible values are: unknown, phishing, unknownFutureValue.
     type: Optional[TrainingType] = None
     
@@ -58,10 +59,10 @@ class Training(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Training()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .email_identity import EmailIdentity
         from .entity import Entity
@@ -77,7 +78,7 @@ class Training(Entity, Parsable):
         from .training_language_detail import TrainingLanguageDetail
         from .training_type import TrainingType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_enum_value(TrainingAvailabilityStatus)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -106,13 +107,6 @@ class Training(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .email_identity import EmailIdentity
-        from .entity import Entity
-        from .simulation_content_source import SimulationContentSource
-        from .training_availability_status import TrainingAvailabilityStatus
-        from .training_language_detail import TrainingLanguageDetail
-        from .training_type import TrainingType
-
         writer.write_enum_value("availabilityStatus", self.availability_status)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

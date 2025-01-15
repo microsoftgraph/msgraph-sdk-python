@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .bulk_upload import BulkUpload
@@ -26,7 +27,7 @@ class SynchronizationJob(Entity, Parsable):
     # Status of the job, which includes when the job was last run, current job state, and errors.
     status: Optional[SynchronizationStatus] = None
     # Settings associated with the job. Some settings are inherited from the template.
-    synchronization_job_settings: Optional[List[KeyValuePair]] = None
+    synchronization_job_settings: Optional[list[KeyValuePair]] = None
     # Identifier of the synchronization template this job is based on.
     template_id: Optional[str] = None
     
@@ -41,10 +42,10 @@ class SynchronizationJob(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SynchronizationJob()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .bulk_upload import BulkUpload
         from .entity import Entity
@@ -60,7 +61,7 @@ class SynchronizationJob(Entity, Parsable):
         from .synchronization_schema import SynchronizationSchema
         from .synchronization_status import SynchronizationStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "bulkUpload": lambda n : setattr(self, 'bulk_upload', n.get_object_value(BulkUpload)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(SynchronizationSchedule)),
             "schema": lambda n : setattr(self, 'schema', n.get_object_value(SynchronizationSchema)),
@@ -81,13 +82,6 @@ class SynchronizationJob(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .bulk_upload import BulkUpload
-        from .entity import Entity
-        from .key_value_pair import KeyValuePair
-        from .synchronization_schedule import SynchronizationSchedule
-        from .synchronization_schema import SynchronizationSchema
-        from .synchronization_status import SynchronizationStatus
-
         writer.write_object_value("bulkUpload", self.bulk_upload)
         writer.write_object_value("schedule", self.schedule)
         writer.write_object_value("schema", self.schema)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -28,13 +29,13 @@ class SubscribedSku(Entity, Parsable):
     # Information about the number and status of prepaid licenses.
     prepaid_units: Optional[LicenseUnitsDetail] = None
     # Information about the service plans that are available with the SKU. Not nullable.
-    service_plans: Optional[List[ServicePlanInfo]] = None
+    service_plans: Optional[list[ServicePlanInfo]] = None
     # The unique identifier (GUID) for the service SKU.
     sku_id: Optional[UUID] = None
     # The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
     sku_part_number: Optional[str] = None
     # A list of all subscription IDs associated with this SKU.
-    subscription_ids: Optional[List[str]] = None
+    subscription_ids: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SubscribedSku:
@@ -47,10 +48,10 @@ class SubscribedSku(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SubscribedSku()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .license_units_detail import LicenseUnitsDetail
@@ -60,7 +61,7 @@ class SubscribedSku(Entity, Parsable):
         from .license_units_detail import LicenseUnitsDetail
         from .service_plan_info import ServicePlanInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountId": lambda n : setattr(self, 'account_id', n.get_str_value()),
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
@@ -85,10 +86,6 @@ class SubscribedSku(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .license_units_detail import LicenseUnitsDetail
-        from .service_plan_info import ServicePlanInfo
-
         writer.write_str_value("accountId", self.account_id)
         writer.write_str_value("accountName", self.account_name)
         writer.write_str_value("appliesTo", self.applies_to)

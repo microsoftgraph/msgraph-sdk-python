@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_list_item import AppListItem
@@ -31,7 +32,7 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration, Parsable):
     # Possible values of the compliance app list.
     compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-    compliant_apps_list: Optional[List[AppListItem]] = None
+    compliant_apps_list: Optional[list[AppListItem]] = None
     # Indicates whether or not to block diagnostic data submission.
     diagnostic_data_block_submission: Optional[bool] = None
     # Indicates whether or not to block custom email accounts.
@@ -88,10 +89,10 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WindowsPhone81GeneralConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_list_item import AppListItem
         from .app_list_type import AppListType
@@ -103,7 +104,7 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration, Parsable):
         from .device_configuration import DeviceConfiguration
         from .required_password_type import RequiredPasswordType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applyOnlyToWindowsPhone81": lambda n : setattr(self, 'apply_only_to_windows_phone81', n.get_bool_value()),
             "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
             "bluetoothBlocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
@@ -147,11 +148,6 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .app_list_item import AppListItem
-        from .app_list_type import AppListType
-        from .device_configuration import DeviceConfiguration
-        from .required_password_type import RequiredPasswordType
-
         writer.write_bool_value("appsBlockCopyPaste", self.apps_block_copy_paste)
         writer.write_bool_value("bluetoothBlocked", self.bluetooth_blocked)
         writer.write_bool_value("cameraBlocked", self.camera_blocked)

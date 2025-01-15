@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .end_user_notification_preference import EndUserNotificationPreference
@@ -17,7 +18,7 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Notification preference. Possible values are: unknown, microsoft, custom, unknownFutureValue.
     notification_preference: Optional[EndUserNotificationPreference] = None
     # The OdataType property
@@ -51,10 +52,10 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
             return TrainingNotificationSetting()
         return EndUserNotificationSetting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .end_user_notification_preference import EndUserNotificationPreference
         from .end_user_notification_setting_type import EndUserNotificationSettingType
@@ -68,7 +69,7 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
         from .positive_reinforcement_notification import PositiveReinforcementNotification
         from .training_notification_setting import TrainingNotificationSetting
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "notificationPreference": lambda n : setattr(self, 'notification_preference', n.get_enum_value(EndUserNotificationPreference)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "positiveReinforcement": lambda n : setattr(self, 'positive_reinforcement', n.get_object_value(PositiveReinforcementNotification)),
@@ -84,12 +85,6 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .end_user_notification_preference import EndUserNotificationPreference
-        from .end_user_notification_setting_type import EndUserNotificationSettingType
-        from .no_training_notification_setting import NoTrainingNotificationSetting
-        from .positive_reinforcement_notification import PositiveReinforcementNotification
-        from .training_notification_setting import TrainingNotificationSetting
-
         writer.write_enum_value("notificationPreference", self.notification_preference)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("positiveReinforcement", self.positive_reinforcement)

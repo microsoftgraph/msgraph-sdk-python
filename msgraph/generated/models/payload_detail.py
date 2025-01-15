@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .email_payload_detail import EmailPayloadDetail
@@ -14,9 +15,9 @@ class PayloadDetail(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The coachmarks property
-    coachmarks: Optional[List[PayloadCoachmark]] = None
+    coachmarks: Optional[list[PayloadCoachmark]] = None
     # Payload content details.
     content: Optional[str] = None
     # The OdataType property
@@ -44,10 +45,10 @@ class PayloadDetail(AdditionalDataHolder, BackedModel, Parsable):
             return EmailPayloadDetail()
         return PayloadDetail()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .email_payload_detail import EmailPayloadDetail
         from .payload_coachmark import PayloadCoachmark
@@ -55,7 +56,7 @@ class PayloadDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .email_payload_detail import EmailPayloadDetail
         from .payload_coachmark import PayloadCoachmark
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "coachmarks": lambda n : setattr(self, 'coachmarks', n.get_collection_of_object_values(PayloadCoachmark)),
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -71,9 +72,6 @@ class PayloadDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .email_payload_detail import EmailPayloadDetail
-        from .payload_coachmark import PayloadCoachmark
-
         writer.write_collection_of_object_values("coachmarks", self.coachmarks)
         writer.write_str_value("content", self.content)
         writer.write_str_value("@odata.type", self.odata_type)

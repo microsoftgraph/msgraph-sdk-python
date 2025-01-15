@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -14,7 +15,7 @@ class ItemAnalytics(Entity, Parsable):
     # The allTime property
     all_time: Optional[ItemActivityStat] = None
     # The itemActivityStats property
-    item_activity_stats: Optional[List[ItemActivityStat]] = None
+    item_activity_stats: Optional[list[ItemActivityStat]] = None
     # The lastSevenDays property
     last_seven_days: Optional[ItemActivityStat] = None
     # The OdataType property
@@ -31,10 +32,10 @@ class ItemAnalytics(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ItemAnalytics()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .item_activity_stat import ItemActivityStat
@@ -42,7 +43,7 @@ class ItemAnalytics(Entity, Parsable):
         from .entity import Entity
         from .item_activity_stat import ItemActivityStat
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allTime": lambda n : setattr(self, 'all_time', n.get_object_value(ItemActivityStat)),
             "itemActivityStats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(ItemActivityStat)),
             "lastSevenDays": lambda n : setattr(self, 'last_seven_days', n.get_object_value(ItemActivityStat)),
@@ -60,9 +61,6 @@ class ItemAnalytics(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .item_activity_stat import ItemActivityStat
-
         writer.write_object_value("allTime", self.all_time)
         writer.write_collection_of_object_values("itemActivityStats", self.item_activity_stats)
         writer.write_object_value("lastSevenDays", self.last_seven_days)

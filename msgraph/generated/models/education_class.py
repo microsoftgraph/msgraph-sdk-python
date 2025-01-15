@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_assignment import EducationAssignment
@@ -23,13 +24,13 @@ from .entity import Entity
 @dataclass
 class EducationClass(Entity, Parsable):
     # All categories associated with this class. Nullable.
-    assignment_categories: Optional[List[EducationCategory]] = None
+    assignment_categories: Optional[list[EducationCategory]] = None
     # Specifies class-level defaults respected by new assignments created in the class.
     assignment_defaults: Optional[EducationAssignmentDefaults] = None
     # Specifies class-level assignments settings.
     assignment_settings: Optional[EducationAssignmentSettings] = None
     # All assignments associated with this class. Nullable.
-    assignments: Optional[List[EducationAssignment]] = None
+    assignments: Optional[list[EducationAssignment]] = None
     # Class code used by the school to identify the class.
     class_code: Optional[str] = None
     # The course property
@@ -55,15 +56,15 @@ class EducationClass(Entity, Parsable):
     # Mail name for sending email to all members, if this is enabled.
     mail_nickname: Optional[str] = None
     # All users in the class. Nullable.
-    members: Optional[List[EducationUser]] = None
+    members: Optional[list[EducationUser]] = None
     # All modules in the class. Nullable.
-    modules: Optional[List[EducationModule]] = None
+    modules: Optional[list[EducationModule]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # All schools that this class is associated with. Nullable.
-    schools: Optional[List[EducationSchool]] = None
+    schools: Optional[list[EducationSchool]] = None
     # All teachers in the class. Nullable.
-    teachers: Optional[List[EducationUser]] = None
+    teachers: Optional[list[EducationUser]] = None
     # Term for this class.
     term: Optional[EducationTerm] = None
     
@@ -78,10 +79,10 @@ class EducationClass(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EducationClass()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .education_assignment import EducationAssignment
         from .education_assignment_defaults import EducationAssignmentDefaults
@@ -111,7 +112,7 @@ class EducationClass(Entity, Parsable):
         from .group import Group
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignmentCategories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(EducationCategory)),
             "assignmentDefaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(EducationAssignmentDefaults)),
             "assignmentSettings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(EducationAssignmentSettings)),
@@ -147,20 +148,6 @@ class EducationClass(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .education_assignment import EducationAssignment
-        from .education_assignment_defaults import EducationAssignmentDefaults
-        from .education_assignment_settings import EducationAssignmentSettings
-        from .education_category import EducationCategory
-        from .education_course import EducationCourse
-        from .education_external_source import EducationExternalSource
-        from .education_module import EducationModule
-        from .education_school import EducationSchool
-        from .education_term import EducationTerm
-        from .education_user import EducationUser
-        from .entity import Entity
-        from .group import Group
-        from .identity_set import IdentitySet
-
         writer.write_collection_of_object_values("assignmentCategories", self.assignment_categories)
         writer.write_object_value("assignmentDefaults", self.assignment_defaults)
         writer.write_object_value("assignmentSettings", self.assignment_settings)

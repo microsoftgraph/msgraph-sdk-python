@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_install_state import DeviceInstallState
@@ -15,7 +16,7 @@ class UserInstallStateSummary(Entity, Parsable):
     Contains properties for the installation state summary for a user.
     """
     # The install state of the eBook.
-    device_states: Optional[List[DeviceInstallState]] = None
+    device_states: Optional[list[DeviceInstallState]] = None
     # Failed Device Count.
     failed_device_count: Optional[int] = None
     # Installed Device Count.
@@ -38,10 +39,10 @@ class UserInstallStateSummary(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserInstallStateSummary()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_install_state import DeviceInstallState
         from .entity import Entity
@@ -49,7 +50,7 @@ class UserInstallStateSummary(Entity, Parsable):
         from .device_install_state import DeviceInstallState
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(DeviceInstallState)),
             "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
             "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
@@ -69,9 +70,6 @@ class UserInstallStateSummary(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_install_state import DeviceInstallState
-        from .entity import Entity
-
         writer.write_collection_of_object_values("deviceStates", self.device_states)
         writer.write_int_value("failedDeviceCount", self.failed_device_count)
         writer.write_int_value("installedDeviceCount", self.installed_device_count)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .print_color_mode import PrintColorMode
@@ -19,7 +20,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The default color mode to use when printing the document. Valid values are described in the following table.
     color_mode: Optional[PrintColorMode] = None
     # The default content (MIME) type to use when processing documents.
@@ -31,7 +32,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
     # The default duplex (double-sided) configuration to use when printing a document. Valid values are described in the following table.
     duplex_mode: Optional[PrintDuplexMode] = None
     # The default set of finishings to apply to print jobs. Valid values are described in the following table.
-    finishings: Optional[List[PrintFinishing]] = None
+    finishings: Optional[list[PrintFinishing]] = None
     # The default fitPdfToPage setting. True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
     fit_pdf_to_page: Optional[bool] = None
     # The default input bin that serves as the paper source.
@@ -68,10 +69,10 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PrinterDefaults()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .print_color_mode import PrintColorMode
         from .print_duplex_mode import PrintDuplexMode
@@ -89,7 +90,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
         from .print_quality import PrintQuality
         from .print_scaling import PrintScaling
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(PrintColorMode)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "copiesPerJob": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),
@@ -119,14 +120,6 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .print_color_mode import PrintColorMode
-        from .print_duplex_mode import PrintDuplexMode
-        from .print_finishing import PrintFinishing
-        from .print_multipage_layout import PrintMultipageLayout
-        from .print_orientation import PrintOrientation
-        from .print_quality import PrintQuality
-        from .print_scaling import PrintScaling
-
         writer.write_enum_value("colorMode", self.color_mode)
         writer.write_str_value("contentType", self.content_type)
         writer.write_int_value("copiesPerJob", self.copies_per_job)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .conditional_access_applications import ConditionalAccessApplications
@@ -22,13 +23,13 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Applications and user actions included in and excluded from the policy. Required.
     applications: Optional[ConditionalAccessApplications] = None
     # Authentication flows included in the policy scope.
     authentication_flows: Optional[ConditionalAccessAuthenticationFlows] = None
     # Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.  The easUnsupported enumeration member will be deprecated in favor of exchangeActiveSync, which includes EAS supported and unsupported platforms.
-    client_app_types: Optional[List[ConditionalAccessClientApp]] = None
+    client_app_types: Optional[list[ConditionalAccessClientApp]] = None
     # Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
     client_applications: Optional[ConditionalAccessClientApplications] = None
     # Devices in the policy.
@@ -42,11 +43,11 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
     # Platforms included in and excluded from the policy.
     platforms: Optional[ConditionalAccessPlatforms] = None
     # Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
-    service_principal_risk_levels: Optional[List[RiskLevel]] = None
+    service_principal_risk_levels: Optional[list[RiskLevel]] = None
     # Sign-in risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
-    sign_in_risk_levels: Optional[List[RiskLevel]] = None
+    sign_in_risk_levels: Optional[list[RiskLevel]] = None
     # User risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
-    user_risk_levels: Optional[List[RiskLevel]] = None
+    user_risk_levels: Optional[list[RiskLevel]] = None
     # Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
     users: Optional[ConditionalAccessUsers] = None
     
@@ -61,10 +62,10 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
             raise TypeError("parse_node cannot be null.")
         return ConditionalAccessConditionSet()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .conditional_access_applications import ConditionalAccessApplications
         from .conditional_access_authentication_flows import ConditionalAccessAuthenticationFlows
@@ -88,7 +89,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
         from .conditional_access_users import ConditionalAccessUsers
         from .risk_level import RiskLevel
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(ConditionalAccessApplications)),
             "authenticationFlows": lambda n : setattr(self, 'authentication_flows', n.get_object_value(ConditionalAccessAuthenticationFlows)),
             "clientAppTypes": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(ConditionalAccessClientApp)),
@@ -113,17 +114,6 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .conditional_access_applications import ConditionalAccessApplications
-        from .conditional_access_authentication_flows import ConditionalAccessAuthenticationFlows
-        from .conditional_access_client_app import ConditionalAccessClientApp
-        from .conditional_access_client_applications import ConditionalAccessClientApplications
-        from .conditional_access_devices import ConditionalAccessDevices
-        from .conditional_access_insider_risk_levels import ConditionalAccessInsiderRiskLevels
-        from .conditional_access_locations import ConditionalAccessLocations
-        from .conditional_access_platforms import ConditionalAccessPlatforms
-        from .conditional_access_users import ConditionalAccessUsers
-        from .risk_level import RiskLevel
-
         writer.write_object_value("applications", self.applications)
         writer.write_object_value("authenticationFlows", self.authentication_flows)
         writer.write_collection_of_enum_values("clientAppTypes", self.client_app_types)

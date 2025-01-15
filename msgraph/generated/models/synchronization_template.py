@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -24,7 +25,7 @@ class SynchronizationTemplate(Entity, Parsable):
     # One of the well-known factory tags supported by the synchronization engine. The factoryTag tells the synchronization engine which implementation to use when processing jobs based on this template.
     factory_tag: Optional[str] = None
     # Additional extension properties. Unless mentioned explicitly, metadata values should not be changed.
-    metadata: Optional[List[SynchronizationMetadataEntry]] = None
+    metadata: Optional[list[SynchronizationMetadataEntry]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Default synchronization schema for the jobs based on this template.
@@ -41,10 +42,10 @@ class SynchronizationTemplate(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SynchronizationTemplate()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .synchronization_metadata_entry import SynchronizationMetadataEntry
@@ -54,7 +55,7 @@ class SynchronizationTemplate(Entity, Parsable):
         from .synchronization_metadata_entry import SynchronizationMetadataEntry
         from .synchronization_schema import SynchronizationSchema
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applicationId": lambda n : setattr(self, 'application_id', n.get_uuid_value()),
             "default": lambda n : setattr(self, 'default', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -76,10 +77,6 @@ class SynchronizationTemplate(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .synchronization_metadata_entry import SynchronizationMetadataEntry
-        from .synchronization_schema import SynchronizationSchema
-
         writer.write_uuid_value("applicationId", self.application_id)
         writer.write_bool_value("default", self.default)
         writer.write_str_value("description", self.description)

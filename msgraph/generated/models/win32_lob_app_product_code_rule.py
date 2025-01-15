@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .win32_lob_app_rule import Win32LobAppRule
@@ -34,10 +35,10 @@ class Win32LobAppProductCodeRule(Win32LobAppRule, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Win32LobAppProductCodeRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .win32_lob_app_rule import Win32LobAppRule
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
@@ -45,7 +46,7 @@ class Win32LobAppProductCodeRule(Win32LobAppRule, Parsable):
         from .win32_lob_app_rule import Win32LobAppRule
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
             "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
             "productVersionOperator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(Win32LobAppRuleOperator)),
@@ -63,9 +64,6 @@ class Win32LobAppProductCodeRule(Win32LobAppRule, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .win32_lob_app_rule import Win32LobAppRule
-        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
-
         writer.write_str_value("productCode", self.product_code)
         writer.write_str_value("productVersion", self.product_version)
         writer.write_enum_value("productVersionOperator", self.product_version_operator)

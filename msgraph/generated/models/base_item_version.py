@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .document_set_version import DocumentSetVersion
@@ -53,10 +54,10 @@ class BaseItemVersion(Entity, Parsable):
             return ListItemVersion()
         return BaseItemVersion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .document_set_version import DocumentSetVersion
         from .drive_item_version import DriveItemVersion
@@ -72,7 +73,7 @@ class BaseItemVersion(Entity, Parsable):
         from .list_item_version import ListItemVersion
         from .publication_facet import PublicationFacet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "publication": lambda n : setattr(self, 'publication', n.get_object_value(PublicationFacet)),
@@ -90,13 +91,6 @@ class BaseItemVersion(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .document_set_version import DocumentSetVersion
-        from .drive_item_version import DriveItemVersion
-        from .entity import Entity
-        from .identity_set import IdentitySet
-        from .list_item_version import ListItemVersion
-        from .publication_facet import PublicationFacet
-
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_object_value("publication", self.publication)

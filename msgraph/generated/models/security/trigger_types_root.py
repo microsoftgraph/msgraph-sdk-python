@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -14,7 +15,7 @@ class TriggerTypesRoot(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The retentionEventTypes property
-    retention_event_types: Optional[List[RetentionEventType]] = None
+    retention_event_types: Optional[list[RetentionEventType]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> TriggerTypesRoot:
@@ -27,10 +28,10 @@ class TriggerTypesRoot(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TriggerTypesRoot()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .retention_event_type import RetentionEventType
@@ -38,7 +39,7 @@ class TriggerTypesRoot(Entity, Parsable):
         from ..entity import Entity
         from .retention_event_type import RetentionEventType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "retentionEventTypes": lambda n : setattr(self, 'retention_event_types', n.get_collection_of_object_values(RetentionEventType)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class TriggerTypesRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .retention_event_type import RetentionEventType
-
         writer.write_collection_of_object_values("retentionEventTypes", self.retention_event_types)
     
 

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .managed_app_configuration import ManagedAppConfiguration
@@ -19,9 +20,9 @@ class TargetedManagedAppConfiguration(ManagedAppConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.targetedManagedAppConfiguration"
     # List of apps to which the policy is deployed.
-    apps: Optional[List[ManagedMobileApp]] = None
+    apps: Optional[list[ManagedMobileApp]] = None
     # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
-    assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None
+    assignments: Optional[list[TargetedManagedAppPolicyAssignment]] = None
     # Count of apps to which the current policy is deployed.
     deployed_app_count: Optional[int] = None
     # Navigation property to deployment summary of the configuration.
@@ -40,10 +41,10 @@ class TargetedManagedAppConfiguration(ManagedAppConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TargetedManagedAppConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .managed_app_configuration import ManagedAppConfiguration
         from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
@@ -55,7 +56,7 @@ class TargetedManagedAppConfiguration(ManagedAppConfiguration, Parsable):
         from .managed_mobile_app import ManagedMobileApp
         from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
             "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
@@ -75,11 +76,6 @@ class TargetedManagedAppConfiguration(ManagedAppConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .managed_app_configuration import ManagedAppConfiguration
-        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
-        from .managed_mobile_app import ManagedMobileApp
-        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
-
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_int_value("deployedAppCount", self.deployed_app_count)

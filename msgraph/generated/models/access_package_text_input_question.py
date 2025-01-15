@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_question import AccessPackageQuestion
@@ -28,16 +29,16 @@ class AccessPackageTextInputQuestion(AccessPackageQuestion, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackageTextInputQuestion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_question import AccessPackageQuestion
 
         from .access_package_question import AccessPackageQuestion
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isSingleLineQuestion": lambda n : setattr(self, 'is_single_line_question', n.get_bool_value()),
             "regexPattern": lambda n : setattr(self, 'regex_pattern', n.get_str_value()),
         }
@@ -54,8 +55,6 @@ class AccessPackageTextInputQuestion(AccessPackageQuestion, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_question import AccessPackageQuestion
-
         writer.write_bool_value("isSingleLineQuestion", self.is_single_line_question)
         writer.write_str_value("regexPattern", self.regex_pattern)
     

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .compliance_state import ComplianceState
@@ -46,15 +47,15 @@ class ManagedDevice(Entity, Parsable):
     # ConfigrMgr client enabled features. This property is read-only.
     configuration_manager_client_enabled_features: Optional[ConfigurationManagerClientEnabledFeatures] = None
     # List of ComplexType deviceActionResult objects. This property is read-only.
-    device_action_results: Optional[List[DeviceActionResult]] = None
+    device_action_results: Optional[list[DeviceActionResult]] = None
     # Device category
     device_category: Optional[DeviceCategory] = None
     # Device category display name. Default is an empty string. Supports $filter operator 'eq' and 'or'. This property is read-only.
     device_category_display_name: Optional[str] = None
     # Device compliance policy states for this device.
-    device_compliance_policy_states: Optional[List[DeviceCompliancePolicyState]] = None
+    device_compliance_policy_states: Optional[list[DeviceCompliancePolicyState]] = None
     # Device configuration states for this device.
-    device_configuration_states: Optional[List[DeviceConfigurationState]] = None
+    device_configuration_states: Optional[list[DeviceConfigurationState]] = None
     # Possible ways of adding a mobile device to management.
     device_enrollment_type: Optional[DeviceEnrollmentType] = None
     # The device health attestation state. This property is read-only.
@@ -98,7 +99,7 @@ class ManagedDevice(Entity, Parsable):
     # The date and time that the device last completed a successful sync with Intune. Supports $filter operator 'lt' and 'gt'. This property is read-only.
     last_sync_date_time: Optional[datetime.datetime] = None
     # List of log collection requests
-    log_collection_requests: Optional[List[DeviceLogCollectionResponse]] = None
+    log_collection_requests: Optional[list[DeviceLogCollectionResponse]] = None
     # Automatically generated name to identify a device. Can be overwritten to a user friendly name.
     managed_device_name: Optional[str] = None
     # Owner type of device.
@@ -148,7 +149,7 @@ class ManagedDevice(Entity, Parsable):
     # Device user principal name. This property is read-only.
     user_principal_name: Optional[str] = None
     # The primary users associated with the managed device.
-    users: Optional[List[User]] = None
+    users: Optional[list[User]] = None
     # Wi-Fi MAC. This property is read-only.
     wi_fi_mac_address: Optional[str] = None
     # The device protection status. This property is read-only.
@@ -165,10 +166,10 @@ class ManagedDevice(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ManagedDevice()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .compliance_state import ComplianceState
         from .configuration_manager_client_enabled_features import ConfigurationManagerClientEnabledFeatures
@@ -208,7 +209,7 @@ class ManagedDevice(Entity, Parsable):
         from .user import User
         from .windows_protection_state import WindowsProtectionState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activationLockBypassCode": lambda n : setattr(self, 'activation_lock_bypass_code', n.get_str_value()),
             "androidSecurityPatchLevel": lambda n : setattr(self, 'android_security_patch_level', n.get_str_value()),
             "azureADDeviceId": lambda n : setattr(self, 'azure_a_d_device_id', n.get_str_value()),
@@ -283,25 +284,6 @@ class ManagedDevice(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .compliance_state import ComplianceState
-        from .configuration_manager_client_enabled_features import ConfigurationManagerClientEnabledFeatures
-        from .device_action_result import DeviceActionResult
-        from .device_category import DeviceCategory
-        from .device_compliance_policy_state import DeviceCompliancePolicyState
-        from .device_configuration_state import DeviceConfigurationState
-        from .device_enrollment_type import DeviceEnrollmentType
-        from .device_health_attestation_state import DeviceHealthAttestationState
-        from .device_log_collection_response import DeviceLogCollectionResponse
-        from .device_management_exchange_access_state import DeviceManagementExchangeAccessState
-        from .device_management_exchange_access_state_reason import DeviceManagementExchangeAccessStateReason
-        from .device_registration_state import DeviceRegistrationState
-        from .entity import Entity
-        from .managed_device_owner_type import ManagedDeviceOwnerType
-        from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
-        from .management_agent_type import ManagementAgentType
-        from .user import User
-        from .windows_protection_state import WindowsProtectionState
-
         writer.write_enum_value("complianceState", self.compliance_state)
         writer.write_object_value("deviceCategory", self.device_category)
         writer.write_collection_of_object_values("deviceCompliancePolicyStates", self.device_compliance_policy_states)

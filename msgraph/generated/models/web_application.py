@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .implicit_grant_settings import ImplicitGrantSettings
@@ -14,7 +15,7 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Home page or landing page of the application.
     home_page_url: Optional[str] = None
     # Specifies whether this web application can request tokens using the OAuth 2.0 implicit flow.
@@ -24,9 +25,9 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The redirectUriSettings property
-    redirect_uri_settings: Optional[List[RedirectUriSettings]] = None
+    redirect_uri_settings: Optional[list[RedirectUriSettings]] = None
     # Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-    redirect_uris: Optional[List[str]] = None
+    redirect_uris: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WebApplication:
@@ -39,10 +40,10 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WebApplication()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .implicit_grant_settings import ImplicitGrantSettings
         from .redirect_uri_settings import RedirectUriSettings
@@ -50,7 +51,7 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
         from .implicit_grant_settings import ImplicitGrantSettings
         from .redirect_uri_settings import RedirectUriSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "homePageUrl": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
             "implicitGrantSettings": lambda n : setattr(self, 'implicit_grant_settings', n.get_object_value(ImplicitGrantSettings)),
             "logoutUrl": lambda n : setattr(self, 'logout_url', n.get_str_value()),
@@ -68,9 +69,6 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .implicit_grant_settings import ImplicitGrantSettings
-        from .redirect_uri_settings import RedirectUriSettings
-
         writer.write_str_value("homePageUrl", self.home_page_url)
         writer.write_object_value("implicitGrantSettings", self.implicit_grant_settings)
         writer.write_str_value("logoutUrl", self.logout_url)

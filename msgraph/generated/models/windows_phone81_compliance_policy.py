@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_compliance_policy import DeviceCompliancePolicy
@@ -50,10 +51,10 @@ class WindowsPhone81CompliancePolicy(DeviceCompliancePolicy, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WindowsPhone81CompliancePolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_compliance_policy import DeviceCompliancePolicy
         from .required_password_type import RequiredPasswordType
@@ -61,7 +62,7 @@ class WindowsPhone81CompliancePolicy(DeviceCompliancePolicy, Parsable):
         from .device_compliance_policy import DeviceCompliancePolicy
         from .required_password_type import RequiredPasswordType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
             "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
             "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
@@ -87,9 +88,6 @@ class WindowsPhone81CompliancePolicy(DeviceCompliancePolicy, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_compliance_policy import DeviceCompliancePolicy
-        from .required_password_type import RequiredPasswordType
-
         writer.write_str_value("osMaximumVersion", self.os_maximum_version)
         writer.write_str_value("osMinimumVersion", self.os_minimum_version)
         writer.write_bool_value("passwordBlockSimple", self.password_block_simple)

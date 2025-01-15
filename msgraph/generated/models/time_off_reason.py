@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .change_tracked_entity import ChangeTrackedEntity
@@ -31,10 +32,10 @@ class TimeOffReason(ChangeTrackedEntity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TimeOffReason()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .change_tracked_entity import ChangeTrackedEntity
         from .time_off_reason_icon_type import TimeOffReasonIconType
@@ -42,7 +43,7 @@ class TimeOffReason(ChangeTrackedEntity, Parsable):
         from .change_tracked_entity import ChangeTrackedEntity
         from .time_off_reason_icon_type import TimeOffReasonIconType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(TimeOffReasonIconType)),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
@@ -60,9 +61,6 @@ class TimeOffReason(ChangeTrackedEntity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .change_tracked_entity import ChangeTrackedEntity
-        from .time_off_reason_icon_type import TimeOffReasonIconType
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("iconType", self.icon_type)
         writer.write_bool_value("isActive", self.is_active)

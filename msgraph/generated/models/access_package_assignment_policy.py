@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package import AccessPackage
@@ -33,7 +34,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # The collection of stages when to execute one or more custom access package workflow extensions. Supports $expand.
-    custom_extension_stage_settings: Optional[List[CustomExtensionStageSetting]] = None
+    custom_extension_stage_settings: Optional[list[CustomExtensionStageSetting]] = None
     # The description of the policy.
     description: Optional[str] = None
     # The display name of the policy.
@@ -45,7 +46,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Questions that are posed to the  requestor.
-    questions: Optional[List[AccessPackageQuestion]] = None
+    questions: Optional[list[AccessPackageQuestion]] = None
     # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
     request_approval_settings: Optional[AccessPackageAssignmentApprovalSettings] = None
     # Provides additional settings to select who can create a request for an access package assignment through this policy, and what they can include in their request.
@@ -53,7 +54,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
     # Settings for access reviews of assignments through this policy.
     review_settings: Optional[AccessPackageAssignmentReviewSettings] = None
     # The principals that can be assigned access from an access package through this policy.
-    specific_allowed_targets: Optional[List[SubjectSet]] = None
+    specific_allowed_targets: Optional[list[SubjectSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AccessPackageAssignmentPolicy:
@@ -66,10 +67,10 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackageAssignmentPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package import AccessPackage
         from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
@@ -97,7 +98,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
         from .expiration_pattern import ExpirationPattern
         from .subject_set import SubjectSet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
             "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(AllowedTargetScope)),
             "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(AccessPackageAutomaticRequestSettings)),
@@ -127,19 +128,6 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package import AccessPackage
-        from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
-        from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
-        from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
-        from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
-        from .access_package_catalog import AccessPackageCatalog
-        from .access_package_question import AccessPackageQuestion
-        from .allowed_target_scope import AllowedTargetScope
-        from .custom_extension_stage_setting import CustomExtensionStageSetting
-        from .entity import Entity
-        from .expiration_pattern import ExpirationPattern
-        from .subject_set import SubjectSet
-
         writer.write_object_value("accessPackage", self.access_package)
         writer.write_enum_value("allowedTargetScope", self.allowed_target_scope)
         writer.write_object_value("automaticRequestSettings", self.automatic_request_settings)

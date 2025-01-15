@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authored_note import AuthoredNote
@@ -26,13 +27,13 @@ from .entity import Entity
 @dataclass
 class SubjectRightsRequest(Entity, Parsable):
     # Collection of users who can approve the request. Currently only supported for requests of type delete.
-    approvers: Optional[List[User]] = None
+    approvers: Optional[list[User]] = None
     # Identity that the request is assigned to.
     assigned_to: Optional[Identity] = None
     # The date and time when the request was closed. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     closed_date_time: Optional[datetime.datetime] = None
     # Collection of users who can collaborate on the request.
-    collaborators: Optional[List[User]] = None
+    collaborators: Optional[list[User]] = None
     # KQL based content query that should be used for search. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
     content_query: Optional[str] = None
     # Identity information for the entity that created the request.
@@ -50,7 +51,7 @@ class SubjectRightsRequest(Entity, Parsable):
     # The external ID for the request that is immutable after creation and is used for tracking the request for the external system. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
     external_id: Optional[str] = None
     # Collection of history change events.
-    history: Optional[List[SubjectRightsRequestHistory]] = None
+    history: Optional[list[SubjectRightsRequestHistory]] = None
     # Include all versions of the documents. By default, the current copies of the documents are returned. If SharePoint sites have versioning enabled, including all versions includes the historical copies of the documents. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
     include_all_versions: Optional[bool] = None
     # Include content authored by the data subject. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
@@ -66,17 +67,17 @@ class SubjectRightsRequest(Entity, Parsable):
     # The mailbox locations that should be searched. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
     mailbox_locations: Optional[SubjectRightsRequestMailboxLocation] = None
     # List of notes associated with the request.
-    notes: Optional[List[AuthoredNote]] = None
+    notes: Optional[list[AuthoredNote]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Pause the request after estimate has finished. By default, the data estimate runs and then pauses, allowing you to preview results and then select the option to retrieve data in the UI. You can set this property to false if you want it to perform the estimate and then automatically begin with the retrieval of the content. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
     pause_after_estimate: Optional[bool] = None
     # List of regulations that this request fulfill.
-    regulations: Optional[List[str]] = None
+    regulations: Optional[list[str]] = None
     # The SharePoint and OneDrive site locations that should be searched. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
     site_locations: Optional[SubjectRightsRequestSiteLocation] = None
     # Information about the different stages for the request.
-    stages: Optional[List[SubjectRightsRequestStageDetail]] = None
+    stages: Optional[list[SubjectRightsRequestStageDetail]] = None
     # The status of the request. Possible values are: active, closed, unknownFutureValue.
     status: Optional[SubjectRightsRequestStatus] = None
     # Information about the Microsoft Teams team that was created for the request.
@@ -95,10 +96,10 @@ class SubjectRightsRequest(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SubjectRightsRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authored_note import AuthoredNote
         from .data_subject import DataSubject
@@ -132,7 +133,7 @@ class SubjectRightsRequest(Entity, Parsable):
         from .team import Team
         from .user import User
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "approvers": lambda n : setattr(self, 'approvers', n.get_collection_of_object_values(User)),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_object_value(Identity)),
             "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
@@ -175,22 +176,6 @@ class SubjectRightsRequest(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authored_note import AuthoredNote
-        from .data_subject import DataSubject
-        from .data_subject_type import DataSubjectType
-        from .entity import Entity
-        from .identity import Identity
-        from .identity_set import IdentitySet
-        from .subject_rights_request_detail import SubjectRightsRequestDetail
-        from .subject_rights_request_history import SubjectRightsRequestHistory
-        from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
-        from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
-        from .subject_rights_request_stage_detail import SubjectRightsRequestStageDetail
-        from .subject_rights_request_status import SubjectRightsRequestStatus
-        from .subject_rights_request_type import SubjectRightsRequestType
-        from .team import Team
-        from .user import User
-
         writer.write_collection_of_object_values("approvers", self.approvers)
         writer.write_object_value("assignedTo", self.assigned_to)
         writer.write_datetime_value("closedDateTime", self.closed_date_time)

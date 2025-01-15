@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -43,10 +44,10 @@ class VirtualEventRegistrationQuestionBase(Entity, Parsable):
             return VirtualEventRegistrationPredefinedQuestion()
         return VirtualEventRegistrationQuestionBase()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
@@ -56,7 +57,7 @@ class VirtualEventRegistrationQuestionBase(Entity, Parsable):
         from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
         from .virtual_event_registration_predefined_question import VirtualEventRegistrationPredefinedQuestion
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
         }
@@ -73,10 +74,6 @@ class VirtualEventRegistrationQuestionBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
-        from .virtual_event_registration_predefined_question import VirtualEventRegistrationPredefinedQuestion
-
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isRequired", self.is_required)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .win32_lob_app_file_system_operation_type import Win32LobAppFileSystemOperationType
@@ -41,10 +42,10 @@ class Win32LobAppFileSystemRule(Win32LobAppRule, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Win32LobAppFileSystemRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .win32_lob_app_file_system_operation_type import Win32LobAppFileSystemOperationType
         from .win32_lob_app_rule import Win32LobAppRule
@@ -54,7 +55,7 @@ class Win32LobAppFileSystemRule(Win32LobAppRule, Parsable):
         from .win32_lob_app_rule import Win32LobAppRule
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "fileOrFolderName": lambda n : setattr(self, 'file_or_folder_name', n.get_str_value()),
@@ -75,10 +76,6 @@ class Win32LobAppFileSystemRule(Win32LobAppRule, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .win32_lob_app_file_system_operation_type import Win32LobAppFileSystemOperationType
-        from .win32_lob_app_rule import Win32LobAppRule
-        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
-
         writer.write_bool_value("check32BitOn64System", self.check32_bit_on64_system)
         writer.write_str_value("comparisonValue", self.comparison_value)
         writer.write_str_value("fileOrFolderName", self.file_or_folder_name)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .change_tracked_entity import ChangeTrackedEntity
@@ -35,10 +36,10 @@ class Shift(ChangeTrackedEntity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Shift()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .change_tracked_entity import ChangeTrackedEntity
         from .shift_item import ShiftItem
@@ -46,7 +47,7 @@ class Shift(ChangeTrackedEntity, Parsable):
         from .change_tracked_entity import ChangeTrackedEntity
         from .shift_item import ShiftItem
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "draftShift": lambda n : setattr(self, 'draft_shift', n.get_object_value(ShiftItem)),
             "isStagedForDeletion": lambda n : setattr(self, 'is_staged_for_deletion', n.get_bool_value()),
             "schedulingGroupId": lambda n : setattr(self, 'scheduling_group_id', n.get_str_value()),
@@ -66,9 +67,6 @@ class Shift(ChangeTrackedEntity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .change_tracked_entity import ChangeTrackedEntity
-        from .shift_item import ShiftItem
-
         writer.write_object_value("draftShift", self.draft_shift)
         writer.write_bool_value("isStagedForDeletion", self.is_staged_for_deletion)
         writer.write_str_value("schedulingGroupId", self.scheduling_group_id)

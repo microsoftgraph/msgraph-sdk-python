@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .conditional_access_condition_set import ConditionalAccessConditionSet
@@ -47,10 +48,10 @@ class ConditionalAccessPolicy(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ConditionalAccessPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .conditional_access_condition_set import ConditionalAccessConditionSet
         from .conditional_access_grant_controls import ConditionalAccessGrantControls
@@ -64,7 +65,7 @@ class ConditionalAccessPolicy(Entity, Parsable):
         from .conditional_access_session_controls import ConditionalAccessSessionControls
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(ConditionalAccessConditionSet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -88,12 +89,6 @@ class ConditionalAccessPolicy(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .conditional_access_condition_set import ConditionalAccessConditionSet
-        from .conditional_access_grant_controls import ConditionalAccessGrantControls
-        from .conditional_access_policy_state import ConditionalAccessPolicyState
-        from .conditional_access_session_controls import ConditionalAccessSessionControls
-        from .entity import Entity
-
         writer.write_object_value("conditions", self.conditions)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

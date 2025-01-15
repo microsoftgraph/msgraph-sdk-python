@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package import AccessPackage
@@ -22,7 +23,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     # The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
     access_package: Optional[AccessPackage] = None
     # Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
-    answers: Optional[List[AccessPackageAnswer]] = None
+    answers: Optional[list[AccessPackageAnswer]] = None
     # For a requestType of userAdd or adminAdd, this is an access package assignment requested to be created. For a requestType of userRemove, adminRemove or systemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
     assignment: Optional[AccessPackageAssignment] = None
     # The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -30,7 +31,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
     created_date_time: Optional[datetime.datetime] = None
     # Information about all the custom extension calls that were made during the access package assignment workflow.
-    custom_extension_callout_instances: Optional[List[CustomExtensionCalloutInstance]] = None
+    custom_extension_callout_instances: Optional[list[CustomExtensionCalloutInstance]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. Requests from the user have a requestType of userAdd, userUpdate, or userRemove. This property can't be changed once set.
@@ -55,10 +56,10 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessPackageAssignmentRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package import AccessPackage
         from .access_package_answer import AccessPackageAnswer
@@ -80,7 +81,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
             "answers": lambda n : setattr(self, 'answers', n.get_collection_of_object_values(AccessPackageAnswer)),
             "assignment": lambda n : setattr(self, 'assignment', n.get_object_value(AccessPackageAssignment)),
@@ -106,16 +107,6 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package import AccessPackage
-        from .access_package_answer import AccessPackageAnswer
-        from .access_package_assignment import AccessPackageAssignment
-        from .access_package_request_state import AccessPackageRequestState
-        from .access_package_request_type import AccessPackageRequestType
-        from .access_package_subject import AccessPackageSubject
-        from .custom_extension_callout_instance import CustomExtensionCalloutInstance
-        from .entitlement_management_schedule import EntitlementManagementSchedule
-        from .entity import Entity
-
         writer.write_object_value("accessPackage", self.access_package)
         writer.write_collection_of_object_values("answers", self.answers)
         writer.write_object_value("assignment", self.assignment)

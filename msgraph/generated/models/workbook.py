@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -20,19 +21,19 @@ class Workbook(Entity, Parsable):
     # The application property
     application: Optional[WorkbookApplication] = None
     # Represents a collection of comments in a workbook.
-    comments: Optional[List[WorkbookComment]] = None
+    comments: Optional[list[WorkbookComment]] = None
     # The functions property
     functions: Optional[WorkbookFunctions] = None
     # Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
-    names: Optional[List[WorkbookNamedItem]] = None
+    names: Optional[list[WorkbookNamedItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
-    operations: Optional[List[WorkbookOperation]] = None
+    operations: Optional[list[WorkbookOperation]] = None
     # Represents a collection of tables associated with the workbook. Read-only.
-    tables: Optional[List[WorkbookTable]] = None
+    tables: Optional[list[WorkbookTable]] = None
     # Represents a collection of worksheets associated with the workbook. Read-only.
-    worksheets: Optional[List[WorkbookWorksheet]] = None
+    worksheets: Optional[list[WorkbookWorksheet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Workbook:
@@ -45,10 +46,10 @@ class Workbook(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Workbook()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .workbook_application import WorkbookApplication
@@ -68,7 +69,7 @@ class Workbook(Entity, Parsable):
         from .workbook_table import WorkbookTable
         from .workbook_worksheet import WorkbookWorksheet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(WorkbookApplication)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(WorkbookComment)),
             "functions": lambda n : setattr(self, 'functions', n.get_object_value(WorkbookFunctions)),
@@ -90,15 +91,6 @@ class Workbook(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .workbook_application import WorkbookApplication
-        from .workbook_comment import WorkbookComment
-        from .workbook_functions import WorkbookFunctions
-        from .workbook_named_item import WorkbookNamedItem
-        from .workbook_operation import WorkbookOperation
-        from .workbook_table import WorkbookTable
-        from .workbook_worksheet import WorkbookWorksheet
-
         writer.write_object_value("application", self.application)
         writer.write_collection_of_object_values("comments", self.comments)
         writer.write_object_value("functions", self.functions)

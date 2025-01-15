@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .run_as_account_type import RunAsAccountType
@@ -46,10 +47,10 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Win32LobAppPowerShellScriptRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .run_as_account_type import RunAsAccountType
         from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
@@ -61,7 +62,7 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule, Parsable):
         from .win32_lob_app_rule import Win32LobAppRule
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enforceSignatureCheck": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
@@ -84,11 +85,6 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .run_as_account_type import RunAsAccountType
-        from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
-        from .win32_lob_app_rule import Win32LobAppRule
-        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
-
         writer.write_str_value("comparisonValue", self.comparison_value)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("enforceSignatureCheck", self.enforce_signature_check)

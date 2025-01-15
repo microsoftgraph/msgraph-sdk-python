@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -14,7 +15,7 @@ from .entity import Entity
 @dataclass
 class HorizontalSection(Entity, Parsable):
     # The set of vertical columns in this section.
-    columns: Optional[List[HorizontalSectionColumn]] = None
+    columns: Optional[list[HorizontalSectionColumn]] = None
     # Enumeration value that indicates the emphasis of the section background. The possible values are: none, netural, soft, strong, unknownFutureValue.
     emphasis: Optional[SectionEmphasisType] = None
     # Layout type of the section. The possible values are: none, oneColumn, twoColumns, threeColumns, oneThirdLeftColumn, oneThirdRightColumn, fullWidth, unknownFutureValue.
@@ -33,10 +34,10 @@ class HorizontalSection(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return HorizontalSection()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .horizontal_section_column import HorizontalSectionColumn
@@ -48,7 +49,7 @@ class HorizontalSection(Entity, Parsable):
         from .horizontal_section_layout_type import HorizontalSectionLayoutType
         from .section_emphasis_type import SectionEmphasisType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(HorizontalSectionColumn)),
             "emphasis": lambda n : setattr(self, 'emphasis', n.get_enum_value(SectionEmphasisType)),
             "layout": lambda n : setattr(self, 'layout', n.get_enum_value(HorizontalSectionLayoutType)),
@@ -66,11 +67,6 @@ class HorizontalSection(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .horizontal_section_column import HorizontalSectionColumn
-        from .horizontal_section_layout_type import HorizontalSectionLayoutType
-        from .section_emphasis_type import SectionEmphasisType
-
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_enum_value("emphasis", self.emphasis)
         writer.write_enum_value("layout", self.layout)

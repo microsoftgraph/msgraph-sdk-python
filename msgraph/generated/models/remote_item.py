@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .file import File
@@ -24,7 +25,7 @@ class RemoteItem(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Identity of the user, device, and application which created the item. Read-only.
     created_by: Optional[IdentitySet] = None
     # Date and time of item creation. Read-only.
@@ -77,10 +78,10 @@ class RemoteItem(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RemoteItem()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .file import File
         from .file_system_info import FileSystemInfo
@@ -106,7 +107,7 @@ class RemoteItem(AdditionalDataHolder, BackedModel, Parsable):
         from .special_folder import SpecialFolder
         from .video import Video
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(File)),
@@ -138,18 +139,6 @@ class RemoteItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .file import File
-        from .file_system_info import FileSystemInfo
-        from .folder import Folder
-        from .identity_set import IdentitySet
-        from .image import Image
-        from .item_reference import ItemReference
-        from .package import Package
-        from .shared import Shared
-        from .sharepoint_ids import SharepointIds
-        from .special_folder import SpecialFolder
-        from .video import Video
-
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("file", self.file)

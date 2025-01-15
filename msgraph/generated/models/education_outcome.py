@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_feedback_outcome import EducationFeedbackOutcome
@@ -55,10 +56,10 @@ class EducationOutcome(Entity, Parsable):
             return EducationRubricOutcome()
         return EducationOutcome()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .education_feedback_outcome import EducationFeedbackOutcome
         from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
@@ -74,7 +75,7 @@ class EducationOutcome(Entity, Parsable):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
@@ -91,13 +92,6 @@ class EducationOutcome(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .education_feedback_outcome import EducationFeedbackOutcome
-        from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
-        from .education_points_outcome import EducationPointsOutcome
-        from .education_rubric_outcome import EducationRubricOutcome
-        from .entity import Entity
-        from .identity_set import IdentitySet
-
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
     

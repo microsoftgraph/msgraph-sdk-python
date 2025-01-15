@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_combination_configuration import AuthenticationCombinationConfiguration
@@ -13,9 +14,9 @@ class X509CertificateCombinationConfiguration(AuthenticationCombinationConfigura
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.x509CertificateCombinationConfiguration"
     # A list of allowed subject key identifier values.
-    allowed_issuer_skis: Optional[List[str]] = None
+    allowed_issuer_skis: Optional[list[str]] = None
     # A list of allowed policy OIDs.
-    allowed_policy_o_i_ds: Optional[List[str]] = None
+    allowed_policy_o_i_ds: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> X509CertificateCombinationConfiguration:
@@ -28,16 +29,16 @@ class X509CertificateCombinationConfiguration(AuthenticationCombinationConfigura
             raise TypeError("parse_node cannot be null.")
         return X509CertificateCombinationConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
         from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowedIssuerSkis": lambda n : setattr(self, 'allowed_issuer_skis', n.get_collection_of_primitive_values(str)),
             "allowedPolicyOIDs": lambda n : setattr(self, 'allowed_policy_o_i_ds', n.get_collection_of_primitive_values(str)),
         }
@@ -54,8 +55,6 @@ class X509CertificateCombinationConfiguration(AuthenticationCombinationConfigura
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
-
         writer.write_collection_of_primitive_values("allowedIssuerSkis", self.allowed_issuer_skis)
         writer.write_collection_of_primitive_values("allowedPolicyOIDs", self.allowed_policy_o_i_ds)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_minimum_operating_system import AndroidMinimumOperatingSystem
@@ -36,10 +37,10 @@ class AndroidLobApp(MobileLobApp, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AndroidLobApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .android_minimum_operating_system import AndroidMinimumOperatingSystem
         from .mobile_lob_app import MobileLobApp
@@ -47,7 +48,7 @@ class AndroidLobApp(MobileLobApp, Parsable):
         from .android_minimum_operating_system import AndroidMinimumOperatingSystem
         from .mobile_lob_app import MobileLobApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(AndroidMinimumOperatingSystem)),
             "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
             "versionCode": lambda n : setattr(self, 'version_code', n.get_str_value()),
@@ -66,9 +67,6 @@ class AndroidLobApp(MobileLobApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .android_minimum_operating_system import AndroidMinimumOperatingSystem
-        from .mobile_lob_app import MobileLobApp
-
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
         writer.write_str_value("packageId", self.package_id)
         writer.write_str_value("versionCode", self.version_code)

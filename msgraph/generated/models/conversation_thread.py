@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -14,7 +15,7 @@ from .entity import Entity
 @dataclass
 class ConversationThread(Entity, Parsable):
     # The Cc: recipients for the thread. Returned only on $select.
-    cc_recipients: Optional[List[Recipient]] = None
+    cc_recipients: Optional[list[Recipient]] = None
     # Indicates whether any of the posts within this thread has at least one attachment. Returned by default.
     has_attachments: Optional[bool] = None
     # Indicates if the thread is locked. Returned by default.
@@ -24,15 +25,15 @@ class ConversationThread(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The posts property
-    posts: Optional[List[Post]] = None
+    posts: Optional[list[Post]] = None
     # A short summary from the body of the latest post in this conversation. Returned by default.
     preview: Optional[str] = None
     # The To: recipients for the thread. Returned only on $select.
-    to_recipients: Optional[List[Recipient]] = None
+    to_recipients: Optional[list[Recipient]] = None
     # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated. Returned by default.
     topic: Optional[str] = None
     # All the users that sent a message to this thread. Returned by default.
-    unique_senders: Optional[List[str]] = None
+    unique_senders: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ConversationThread:
@@ -45,10 +46,10 @@ class ConversationThread(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ConversationThread()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .post import Post
@@ -58,7 +59,7 @@ class ConversationThread(Entity, Parsable):
         from .post import Post
         from .recipient import Recipient
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "isLocked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
@@ -82,10 +83,6 @@ class ConversationThread(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .post import Post
-        from .recipient import Recipient
-
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_bool_value("isLocked", self.is_locked)

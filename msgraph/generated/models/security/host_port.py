@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -18,7 +19,7 @@ from ..entity import Entity
 @dataclass
 class HostPort(Entity, Parsable):
     # The hostPortBanners retrieved from scanning the port.
-    banners: Optional[List[HostPortBanner]] = None
+    banners: Optional[list[HostPortBanner]] = None
     # The first date and time when Microsoft Defender Threat Intelligence observed the hostPort. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z.
     first_seen_date_time: Optional[datetime.datetime] = None
     # The host property
@@ -36,7 +37,7 @@ class HostPort(Entity, Parsable):
     # The general protocol used to scan the port. The possible values are: tcp, udp, unknownFutureValue.
     protocol: Optional[HostPortProtocol] = None
     # The hostPortComponents retrieved from scanning the port.
-    services: Optional[List[HostPortComponent]] = None
+    services: Optional[list[HostPortComponent]] = None
     # The status of the port. The possible values are: open, filtered, closed, unknownFutureValue.
     status: Optional[HostPortStatus] = None
     # The total amount of times that Microsoft Defender Threat Intelligence has observed the hostPort in all its scans.
@@ -53,10 +54,10 @@ class HostPort(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return HostPort()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .host import Host
@@ -74,7 +75,7 @@ class HostPort(Entity, Parsable):
         from .host_port_status import HostPortStatus
         from .ssl_certificate import SslCertificate
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "banners": lambda n : setattr(self, 'banners', n.get_collection_of_object_values(HostPortBanner)),
             "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
             "host": lambda n : setattr(self, 'host', n.get_object_value(Host)),
@@ -100,14 +101,6 @@ class HostPort(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .host import Host
-        from .host_port_banner import HostPortBanner
-        from .host_port_component import HostPortComponent
-        from .host_port_protocol import HostPortProtocol
-        from .host_port_status import HostPortStatus
-        from .ssl_certificate import SslCertificate
-
         writer.write_collection_of_object_values("banners", self.banners)
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_object_value("host", self.host)

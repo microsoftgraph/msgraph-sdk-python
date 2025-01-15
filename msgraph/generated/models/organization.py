@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .assigned_plan import AssignedPlan
@@ -23,13 +24,13 @@ class Organization(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.organization"
     # The collection of service plans associated with the tenant. Not nullable.
-    assigned_plans: Optional[List[AssignedPlan]] = None
+    assigned_plans: Optional[list[AssignedPlan]] = None
     # Branding for the organization. Nullable.
     branding: Optional[OrganizationalBranding] = None
     # Telephone number for the organization. Although this property is a string collection, only one number can be set.
-    business_phones: Optional[List[str]] = None
+    business_phones: Optional[list[str]] = None
     # Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
-    certificate_based_auth_configuration: Optional[List[CertificateBasedAuthConfiguration]] = None
+    certificate_based_auth_configuration: Optional[list[CertificateBasedAuthConfiguration]] = None
     # City name of the address for the organization.
     city: Optional[str] = None
     # Country or region name of the address for the organization.
@@ -43,9 +44,9 @@ class Organization(DirectoryObject, Parsable):
     # The display name for the tenant.
     display_name: Optional[str] = None
     # The collection of open extensions defined for the organization. Read-only. Nullable.
-    extensions: Optional[List[Extension]] = None
+    extensions: Optional[list[Extension]] = None
     # Not nullable.
-    marketing_notification_emails: Optional[List[str]] = None
+    marketing_notification_emails: Optional[list[str]] = None
     # Mobile device management authority.
     mobile_device_management_authority: Optional[MdmAuthority] = None
     # The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -61,21 +62,21 @@ class Organization(DirectoryObject, Parsable):
     # The privacy profile of an organization.
     privacy_profile: Optional[PrivacyProfile] = None
     # Not nullable.
-    provisioned_plans: Optional[List[ProvisionedPlan]] = None
+    provisioned_plans: Optional[list[ProvisionedPlan]] = None
     # Not nullable.
-    security_compliance_notification_mails: Optional[List[str]] = None
+    security_compliance_notification_mails: Optional[list[str]] = None
     # Not nullable.
-    security_compliance_notification_phones: Optional[List[str]] = None
+    security_compliance_notification_phones: Optional[list[str]] = None
     # State name of the address for the organization.
     state: Optional[str] = None
     # Street name of the address for organization.
     street: Optional[str] = None
     # Not nullable.
-    technical_notification_mails: Optional[List[str]] = None
+    technical_notification_mails: Optional[list[str]] = None
     # Not nullable. Can be one of the following types:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C An identity access management (IAM) service that serves business-to-consumer (B2C) scenarios.   CIAM - A customer identity & access management (CIAM) solution that provides an integrated platform to serve consumers, partners, and citizen scenarios.
     tenant_type: Optional[str] = None
     # The collection of domains associated with this tenant. Not nullable.
-    verified_domains: Optional[List[VerifiedDomain]] = None
+    verified_domains: Optional[list[VerifiedDomain]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Organization:
@@ -88,10 +89,10 @@ class Organization(DirectoryObject, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Organization()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .assigned_plan import AssignedPlan
         from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
@@ -115,7 +116,7 @@ class Organization(DirectoryObject, Parsable):
         from .provisioned_plan import ProvisionedPlan
         from .verified_domain import VerifiedDomain
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(AssignedPlan)),
             "branding": lambda n : setattr(self, 'branding', n.get_object_value(OrganizationalBranding)),
             "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
@@ -157,17 +158,6 @@ class Organization(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .assigned_plan import AssignedPlan
-        from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
-        from .directory_object import DirectoryObject
-        from .extension import Extension
-        from .mdm_authority import MdmAuthority
-        from .organizational_branding import OrganizationalBranding
-        from .partner_tenant_type import PartnerTenantType
-        from .privacy_profile import PrivacyProfile
-        from .provisioned_plan import ProvisionedPlan
-        from .verified_domain import VerifiedDomain
-
         writer.write_collection_of_object_values("assignedPlans", self.assigned_plans)
         writer.write_object_value("branding", self.branding)
         writer.write_collection_of_primitive_values("businessPhones", self.business_phones)

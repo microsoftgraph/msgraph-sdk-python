@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .service_announcement_base import ServiceAnnouncementBase
@@ -29,7 +30,7 @@ class ServiceHealthIssue(ServiceAnnouncementBase, Parsable):
     # The origin property
     origin: Optional[ServiceHealthOrigin] = None
     # Collection of historical posts for the service issue.
-    posts: Optional[List[ServiceHealthIssuePost]] = None
+    posts: Optional[list[ServiceHealthIssuePost]] = None
     # Indicates the service affected by the issue.
     service: Optional[str] = None
     # The status property
@@ -46,10 +47,10 @@ class ServiceHealthIssue(ServiceAnnouncementBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ServiceHealthIssue()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .service_announcement_base import ServiceAnnouncementBase
         from .service_health_classification_type import ServiceHealthClassificationType
@@ -63,7 +64,7 @@ class ServiceHealthIssue(ServiceAnnouncementBase, Parsable):
         from .service_health_origin import ServiceHealthOrigin
         from .service_health_status import ServiceHealthStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(ServiceHealthClassificationType)),
             "feature": lambda n : setattr(self, 'feature', n.get_str_value()),
             "featureGroup": lambda n : setattr(self, 'feature_group', n.get_str_value()),
@@ -87,12 +88,6 @@ class ServiceHealthIssue(ServiceAnnouncementBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .service_announcement_base import ServiceAnnouncementBase
-        from .service_health_classification_type import ServiceHealthClassificationType
-        from .service_health_issue_post import ServiceHealthIssuePost
-        from .service_health_origin import ServiceHealthOrigin
-        from .service_health_status import ServiceHealthStatus
-
         writer.write_enum_value("classification", self.classification)
         writer.write_str_value("feature", self.feature)
         writer.write_str_value("featureGroup", self.feature_group)

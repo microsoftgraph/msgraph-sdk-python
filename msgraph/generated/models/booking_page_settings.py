@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .booking_page_access_control import BookingPageAccessControl
@@ -13,7 +14,7 @@ class BookingPageSettings(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The accessControl property
     access_control: Optional[BookingPageAccessControl] = None
     # Custom color for the booking page. The value should be in Hex format. For example, #123456.
@@ -50,16 +51,16 @@ class BookingPageSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BookingPageSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .booking_page_access_control import BookingPageAccessControl
 
         from .booking_page_access_control import BookingPageAccessControl
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessControl": lambda n : setattr(self, 'access_control', n.get_enum_value(BookingPageAccessControl)),
             "bookingPageColorCode": lambda n : setattr(self, 'booking_page_color_code', n.get_str_value()),
             "businessTimeZone": lambda n : setattr(self, 'business_time_zone', n.get_str_value()),
@@ -83,8 +84,6 @@ class BookingPageSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .booking_page_access_control import BookingPageAccessControl
-
         writer.write_enum_value("accessControl", self.access_control)
         writer.write_str_value("bookingPageColorCode", self.booking_page_color_code)
         writer.write_str_value("businessTimeZone", self.business_time_zone)

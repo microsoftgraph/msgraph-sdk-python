@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .column_definition import ColumnDefinition
@@ -15,21 +16,21 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Content types allowed in document set.
-    allowed_content_types: Optional[List[ContentTypeInfo]] = None
+    allowed_content_types: Optional[list[ContentTypeInfo]] = None
     # Default contents of document set.
-    default_contents: Optional[List[DocumentSetContent]] = None
+    default_contents: Optional[list[DocumentSetContent]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies whether to push welcome page changes to inherited content types.
     propagate_welcome_page_changes: Optional[bool] = None
     # The sharedColumns property
-    shared_columns: Optional[List[ColumnDefinition]] = None
+    shared_columns: Optional[list[ColumnDefinition]] = None
     # Indicates whether to add the name of the document set to each file name.
     should_prefix_name_to_file: Optional[bool] = None
     # The welcomePageColumns property
-    welcome_page_columns: Optional[List[ColumnDefinition]] = None
+    welcome_page_columns: Optional[list[ColumnDefinition]] = None
     # Welcome page absolute URL.
     welcome_page_url: Optional[str] = None
     
@@ -44,10 +45,10 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DocumentSet()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .column_definition import ColumnDefinition
         from .content_type_info import ContentTypeInfo
@@ -57,7 +58,7 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
         from .content_type_info import ContentTypeInfo
         from .document_set_content import DocumentSetContent
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowedContentTypes": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(ContentTypeInfo)),
             "defaultContents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(DocumentSetContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -77,10 +78,6 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .column_definition import ColumnDefinition
-        from .content_type_info import ContentTypeInfo
-        from .document_set_content import DocumentSetContent
-
         writer.write_collection_of_object_values("allowedContentTypes", self.allowed_content_types)
         writer.write_collection_of_object_values("defaultContents", self.default_contents)
         writer.write_str_value("@odata.type", self.odata_type)

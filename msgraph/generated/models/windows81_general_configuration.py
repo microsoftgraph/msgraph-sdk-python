@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_configuration import DeviceConfiguration
@@ -97,10 +98,10 @@ class Windows81GeneralConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Windows81GeneralConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_configuration import DeviceConfiguration
         from .internet_site_security_level import InternetSiteSecurityLevel
@@ -114,7 +115,7 @@ class Windows81GeneralConfiguration(DeviceConfiguration, Parsable):
         from .site_security_level import SiteSecurityLevel
         from .windows_user_account_control_settings import WindowsUserAccountControlSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
             "applyOnlyToWindows81": lambda n : setattr(self, 'apply_only_to_windows81', n.get_bool_value()),
             "browserBlockAutofill": lambda n : setattr(self, 'browser_block_autofill', n.get_bool_value()),
@@ -162,12 +163,6 @@ class Windows81GeneralConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_configuration import DeviceConfiguration
-        from .internet_site_security_level import InternetSiteSecurityLevel
-        from .required_password_type import RequiredPasswordType
-        from .site_security_level import SiteSecurityLevel
-        from .windows_user_account_control_settings import WindowsUserAccountControlSettings
-
         writer.write_bool_value("accountsBlockAddingNonMicrosoftAccountEmail", self.accounts_block_adding_non_microsoft_account_email)
         writer.write_bool_value("browserBlockAutofill", self.browser_block_autofill)
         writer.write_bool_value("browserBlockAutomaticDetectionOfIntranetSites", self.browser_block_automatic_detection_of_intranet_sites)

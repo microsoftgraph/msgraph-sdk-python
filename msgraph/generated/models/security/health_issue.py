@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -15,7 +16,7 @@ from ..entity import Entity
 @dataclass
 class HealthIssue(Entity, Parsable):
     # Contains additional information about the issue, such as a list of items to fix.
-    additional_information: Optional[List[str]] = None
+    additional_information: Optional[list[str]] = None
     # The date and time when the health issue was generated. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # Contains more detailed information about the health issue.
@@ -23,7 +24,7 @@ class HealthIssue(Entity, Parsable):
     # The display name of the health issue.
     display_name: Optional[str] = None
     # A list of the fully qualified domain names of the domains or the sensors the health issue is related to.
-    domain_names: Optional[List[str]] = None
+    domain_names: Optional[list[str]] = None
     # The type of the health issue. The possible values are: sensor, global, unknownFutureValue. For a list of all health issues and their identifiers, see Microsoft Defender for Identity health issues.
     health_issue_type: Optional[HealthIssueType] = None
     # The type identifier of the health issue. For a list of all health issues and their identifiers, see Microsoft Defender for Identity health issues.
@@ -33,11 +34,11 @@ class HealthIssue(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A list of recommended actions that can be taken to resolve the issue effectively and efficiently. These actions might include instructions for further investigation and aren't limited to prewritten responses.
-    recommendations: Optional[List[str]] = None
+    recommendations: Optional[list[str]] = None
     # A list of commands from the PowerShell module for the product that can be used to resolve the issue, if available. If no commands can be used to solve the issue, this property is empty. The commands, if present, provide a quick and efficient way to address the issue. These commands run in sequence for the single recommended fix.
-    recommended_action_commands: Optional[List[str]] = None
+    recommended_action_commands: Optional[list[str]] = None
     # A list of the DNS names of the sensors the health issue is related to.
-    sensor_d_n_s_names: Optional[List[str]] = None
+    sensor_d_n_s_names: Optional[list[str]] = None
     # The severity of the health issue. The possible values are: low, medium, high, unknownFutureValue.
     severity: Optional[HealthIssueSeverity] = None
     # The status of the health issue. The possible values are: open, closed, suppressed, unknownFutureValue.
@@ -54,10 +55,10 @@ class HealthIssue(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return HealthIssue()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from .health_issue_severity import HealthIssueSeverity
@@ -69,7 +70,7 @@ class HealthIssue(Entity, Parsable):
         from .health_issue_status import HealthIssueStatus
         from .health_issue_type import HealthIssueType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_collection_of_primitive_values(str)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -97,11 +98,6 @@ class HealthIssue(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from .health_issue_severity import HealthIssueSeverity
-        from .health_issue_status import HealthIssueStatus
-        from .health_issue_type import HealthIssueType
-
         writer.write_collection_of_primitive_values("additionalInformation", self.additional_information)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

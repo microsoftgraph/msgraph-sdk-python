@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .key_value_pair import KeyValuePair
@@ -18,7 +19,7 @@ class ManagedAppConfiguration(ManagedAppPolicy, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.managedAppConfiguration"
     # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-    custom_settings: Optional[List[KeyValuePair]] = None
+    custom_settings: Optional[list[KeyValuePair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ManagedAppConfiguration:
@@ -40,10 +41,10 @@ class ManagedAppConfiguration(ManagedAppPolicy, Parsable):
             return TargetedManagedAppConfiguration()
         return ManagedAppConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .key_value_pair import KeyValuePair
         from .managed_app_policy import ManagedAppPolicy
@@ -53,7 +54,7 @@ class ManagedAppConfiguration(ManagedAppPolicy, Parsable):
         from .managed_app_policy import ManagedAppPolicy
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(KeyValuePair)),
         }
         super_fields = super().get_field_deserializers()
@@ -69,10 +70,6 @@ class ManagedAppConfiguration(ManagedAppPolicy, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .key_value_pair import KeyValuePair
-        from .managed_app_policy import ManagedAppPolicy
-        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
-
         writer.write_collection_of_object_values("customSettings", self.custom_settings)
     
 

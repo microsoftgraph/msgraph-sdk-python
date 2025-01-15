@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .phone import Phone
@@ -13,7 +14,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The ID of the conference.
     conference_id: Optional[str] = None
     # The external link that launches the online meeting. This is a URL that clients launch into a browser and will redirect the user to join the meeting.
@@ -21,11 +22,11 @@ class OnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # All of the phone numbers associated with this conference.
-    phones: Optional[List[Phone]] = None
+    phones: Optional[list[Phone]] = None
     # The preformatted quick dial for this call.
     quick_dial: Optional[str] = None
     # The toll free numbers that can be used to join the conference.
-    toll_free_numbers: Optional[List[str]] = None
+    toll_free_numbers: Optional[list[str]] = None
     # The toll number that can be used to join the conference.
     toll_number: Optional[str] = None
     
@@ -40,16 +41,16 @@ class OnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OnlineMeetingInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .phone import Phone
 
         from .phone import Phone
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
             "joinUrl": lambda n : setattr(self, 'join_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -68,8 +69,6 @@ class OnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .phone import Phone
-
         writer.write_str_value("conferenceId", self.conference_id)
         writer.write_str_value("joinUrl", self.join_url)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -32,11 +33,11 @@ class UserRegistrationDetails(Entity, Parsable):
     # The date and time (UTC) when the report was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_updated_date_time: Optional[datetime.datetime] = None
     # Collection of authentication methods registered, such as mobilePhone, email, passKeyDeviceBound. Supports $filter (any with eq).
-    methods_registered: Optional[List[str]] = None
+    methods_registered: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of authentication methods that the system determined to be the most secure authentication methods among the registered methods for second factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. Supports $filter (any with eq).
-    system_preferred_authentication_methods: Optional[List[str]] = None
+    system_preferred_authentication_methods: Optional[list[str]] = None
     # The user display name, such as Adele Vance. Supports $filter (eq, startsWith) and $orderby.
     user_display_name: Optional[str] = None
     # The method the user selected as the default second-factor for performing multifactor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
@@ -57,10 +58,10 @@ class UserRegistrationDetails(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return UserRegistrationDetails()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .sign_in_user_type import SignInUserType
@@ -70,7 +71,7 @@ class UserRegistrationDetails(Entity, Parsable):
         from .sign_in_user_type import SignInUserType
         from .user_default_authentication_method import UserDefaultAuthenticationMethod
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isAdmin": lambda n : setattr(self, 'is_admin', n.get_bool_value()),
             "isMfaCapable": lambda n : setattr(self, 'is_mfa_capable', n.get_bool_value()),
             "isMfaRegistered": lambda n : setattr(self, 'is_mfa_registered', n.get_bool_value()),
@@ -100,10 +101,6 @@ class UserRegistrationDetails(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .sign_in_user_type import SignInUserType
-        from .user_default_authentication_method import UserDefaultAuthenticationMethod
-
         writer.write_bool_value("isAdmin", self.is_admin)
         writer.write_bool_value("isMfaCapable", self.is_mfa_capable)
         writer.write_bool_value("isMfaRegistered", self.is_mfa_registered)

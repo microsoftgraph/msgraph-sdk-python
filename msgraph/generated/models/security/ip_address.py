@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .autonomous_system import AutonomousSystem
@@ -33,10 +34,10 @@ class IpAddress(Host, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IpAddress()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .autonomous_system import AutonomousSystem
         from .host import Host
@@ -44,7 +45,7 @@ class IpAddress(Host, Parsable):
         from .autonomous_system import AutonomousSystem
         from .host import Host
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "autonomousSystem": lambda n : setattr(self, 'autonomous_system', n.get_object_value(AutonomousSystem)),
             "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "hostingProvider": lambda n : setattr(self, 'hosting_provider', n.get_str_value()),
@@ -63,9 +64,6 @@ class IpAddress(Host, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .autonomous_system import AutonomousSystem
-        from .host import Host
-
         writer.write_object_value("autonomousSystem", self.autonomous_system)
         writer.write_str_value("countryOrRegion", self.country_or_region)
         writer.write_str_value("hostingProvider", self.hosting_provider)

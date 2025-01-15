@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .managed_android_lob_app import ManagedAndroidLobApp
@@ -62,10 +63,10 @@ class ManagedApp(MobileApp, Parsable):
             return ManagedMobileLobApp()
         return ManagedApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .managed_android_lob_app import ManagedAndroidLobApp
         from .managed_android_store_app import ManagedAndroidStoreApp
@@ -83,7 +84,7 @@ class ManagedApp(MobileApp, Parsable):
         from .managed_mobile_lob_app import ManagedMobileLobApp
         from .mobile_app import MobileApp
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appAvailability": lambda n : setattr(self, 'app_availability', n.get_enum_value(ManagedAppAvailability)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
@@ -100,14 +101,6 @@ class ManagedApp(MobileApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .managed_android_lob_app import ManagedAndroidLobApp
-        from .managed_android_store_app import ManagedAndroidStoreApp
-        from .managed_app_availability import ManagedAppAvailability
-        from .managed_i_o_s_lob_app import ManagedIOSLobApp
-        from .managed_i_o_s_store_app import ManagedIOSStoreApp
-        from .managed_mobile_lob_app import ManagedMobileLobApp
-        from .mobile_app import MobileApp
-
         writer.write_enum_value("appAvailability", self.app_availability)
         writer.write_str_value("version", self.version)
     

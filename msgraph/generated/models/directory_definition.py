@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_definition_discoverabilities import DirectoryDefinitionDiscoverabilities
@@ -20,7 +21,7 @@ class DirectoryDefinition(Entity, Parsable):
     # Name of the directory. Must be unique within the synchronization schema. Not nullable.
     name: Optional[str] = None
     # Collection of objects supported by the directory.
-    objects: Optional[List[ObjectDefinition]] = None
+    objects: Optional[list[ObjectDefinition]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Whether this object is read-only.
@@ -39,10 +40,10 @@ class DirectoryDefinition(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DirectoryDefinition()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_definition_discoverabilities import DirectoryDefinitionDiscoverabilities
         from .entity import Entity
@@ -52,7 +53,7 @@ class DirectoryDefinition(Entity, Parsable):
         from .entity import Entity
         from .object_definition import ObjectDefinition
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "discoverabilities": lambda n : setattr(self, 'discoverabilities', n.get_collection_of_enum_values(DirectoryDefinitionDiscoverabilities)),
             "discoveryDateTime": lambda n : setattr(self, 'discovery_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
@@ -73,10 +74,6 @@ class DirectoryDefinition(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_definition_discoverabilities import DirectoryDefinitionDiscoverabilities
-        from .entity import Entity
-        from .object_definition import ObjectDefinition
-
         writer.write_enum_value("discoverabilities", self.discoverabilities)
         writer.write_datetime_value("discoveryDateTime", self.discovery_date_time)
         writer.write_str_value("name", self.name)

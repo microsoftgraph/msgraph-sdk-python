@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method import AuthenticationMethod
@@ -32,10 +33,10 @@ class PhoneAuthenticationMethod(AuthenticationMethod, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PhoneAuthenticationMethod()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method import AuthenticationMethod
         from .authentication_method_sign_in_state import AuthenticationMethodSignInState
@@ -45,7 +46,7 @@ class PhoneAuthenticationMethod(AuthenticationMethod, Parsable):
         from .authentication_method_sign_in_state import AuthenticationMethodSignInState
         from .authentication_phone_type import AuthenticationPhoneType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
             "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(AuthenticationPhoneType)),
             "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(AuthenticationMethodSignInState)),
@@ -63,10 +64,6 @@ class PhoneAuthenticationMethod(AuthenticationMethod, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_method import AuthenticationMethod
-        from .authentication_method_sign_in_state import AuthenticationMethodSignInState
-        from .authentication_phone_type import AuthenticationPhoneType
-
         writer.write_str_value("phoneNumber", self.phone_number)
         writer.write_enum_value("phoneType", self.phone_type)
         writer.write_enum_value("smsSignInState", self.sms_sign_in_state)

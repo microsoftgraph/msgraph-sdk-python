@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .booking_price_type import BookingPriceType
@@ -24,7 +25,7 @@ class BookingService(Entity, Parsable):
     # The date, time, and time zone when the service was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # Contains the set of custom questions associated with a particular service.
-    custom_questions: Optional[List[BookingQuestionAssignment]] = None
+    custom_questions: Optional[list[BookingQuestionAssignment]] = None
     # The default length of the service, represented in numbers of days, hours, minutes, and seconds. For example, P11D23H59M59.999999999999S.
     default_duration: Optional[datetime.timedelta] = None
     # The default physical location for the service.
@@ -34,7 +35,7 @@ class BookingService(Entity, Parsable):
     # Represents the type of pricing of a booking service.
     default_price_type: Optional[BookingPriceType] = None
     # The default set of reminders for an appointment of this service. The value of this property is available only when reading this bookingService by its ID.
-    default_reminders: Optional[List[BookingReminder]] = None
+    default_reminders: Optional[list[BookingReminder]] = None
     # A text description for the service.
     description: Optional[str] = None
     # A service name.
@@ -66,7 +67,7 @@ class BookingService(Entity, Parsable):
     # True indicates SMS notifications can be sent to the customers for the appointment of the service. Default value is false.
     sms_notifications_enabled: Optional[bool] = None
     # Represents those staff members who provide this service.
-    staff_member_ids: Optional[List[str]] = None
+    staff_member_ids: Optional[list[str]] = None
     # The URL a customer uses to access the service.
     web_url: Optional[str] = None
     
@@ -81,10 +82,10 @@ class BookingService(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BookingService()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .booking_price_type import BookingPriceType
         from .booking_question_assignment import BookingQuestionAssignment
@@ -100,7 +101,7 @@ class BookingService(Entity, Parsable):
         from .entity import Entity
         from .location import Location
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(BookingQuestionAssignment)),
@@ -139,13 +140,6 @@ class BookingService(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .booking_price_type import BookingPriceType
-        from .booking_question_assignment import BookingQuestionAssignment
-        from .booking_reminder import BookingReminder
-        from .booking_scheduling_policy import BookingSchedulingPolicy
-        from .entity import Entity
-        from .location import Location
-
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("customQuestions", self.custom_questions)

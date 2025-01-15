@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -42,10 +43,10 @@ class ImportedWindowsAutopilotDeviceIdentity(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ImportedWindowsAutopilotDeviceIdentity()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .imported_windows_autopilot_device_identity_state import ImportedWindowsAutopilotDeviceIdentityState
@@ -53,7 +54,7 @@ class ImportedWindowsAutopilotDeviceIdentity(Entity, Parsable):
         from .entity import Entity
         from .imported_windows_autopilot_device_identity_state import ImportedWindowsAutopilotDeviceIdentityState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignedUserPrincipalName": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
             "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
             "hardwareIdentifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),
@@ -75,9 +76,6 @@ class ImportedWindowsAutopilotDeviceIdentity(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .imported_windows_autopilot_device_identity_state import ImportedWindowsAutopilotDeviceIdentityState
-
         writer.write_str_value("assignedUserPrincipalName", self.assigned_user_principal_name)
         writer.write_str_value("groupTag", self.group_tag)
         writer.write_bytes_value("hardwareIdentifier", self.hardware_identifier)

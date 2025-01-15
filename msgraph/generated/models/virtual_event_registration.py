@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -31,9 +32,9 @@ class VirtualEventRegistration(Entity, Parsable):
     # Date and time when the registrant registers for the virtual event. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     registration_date_time: Optional[datetime.datetime] = None
     # The registrant's answer to the registration questions.
-    registration_question_answers: Optional[List[VirtualEventRegistrationQuestionAnswer]] = None
+    registration_question_answers: Optional[list[VirtualEventRegistrationQuestionAnswer]] = None
     # Sessions for a registration.
-    sessions: Optional[List[VirtualEventSession]] = None
+    sessions: Optional[list[VirtualEventSession]] = None
     # Registration status of the registrant. Read-only. Possible values are registered, canceled, waitlisted, pendingApproval, rejectedByOrganizer, and unknownFutureValue.
     status: Optional[VirtualEventAttendeeRegistrationStatus] = None
     # The registrant's ID in Microsoft Entra ID. Only appears when the registrant is registered in Microsoft Entra ID.
@@ -50,10 +51,10 @@ class VirtualEventRegistration(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return VirtualEventRegistration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .virtual_event_attendee_registration_status import VirtualEventAttendeeRegistrationStatus
@@ -65,7 +66,7 @@ class VirtualEventRegistration(Entity, Parsable):
         from .virtual_event_registration_question_answer import VirtualEventRegistrationQuestionAnswer
         from .virtual_event_session import VirtualEventSession
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "cancelationDateTime": lambda n : setattr(self, 'cancelation_date_time', n.get_datetime_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "firstName": lambda n : setattr(self, 'first_name', n.get_str_value()),
@@ -91,11 +92,6 @@ class VirtualEventRegistration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .virtual_event_attendee_registration_status import VirtualEventAttendeeRegistrationStatus
-        from .virtual_event_registration_question_answer import VirtualEventRegistrationQuestionAnswer
-        from .virtual_event_session import VirtualEventSession
-
         writer.write_datetime_value("cancelationDateTime", self.cancelation_date_time)
         writer.write_str_value("email", self.email)
         writer.write_str_value("firstName", self.first_name)

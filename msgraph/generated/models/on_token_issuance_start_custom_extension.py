@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .custom_authentication_extension import CustomAuthenticationExtension
@@ -14,7 +15,7 @@ class OnTokenIssuanceStartCustomExtension(CustomAuthenticationExtension, Parsabl
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.onTokenIssuanceStartCustomExtension"
     # Collection of claims to be returned by the API called by this custom authentication extension. Used to populate claims mapping experience in Microsoft Entra admin center. Optional.
-    claims_for_token_configuration: Optional[List[OnTokenIssuanceStartReturnClaim]] = None
+    claims_for_token_configuration: Optional[list[OnTokenIssuanceStartReturnClaim]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> OnTokenIssuanceStartCustomExtension:
@@ -27,10 +28,10 @@ class OnTokenIssuanceStartCustomExtension(CustomAuthenticationExtension, Parsabl
             raise TypeError("parse_node cannot be null.")
         return OnTokenIssuanceStartCustomExtension()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .custom_authentication_extension import CustomAuthenticationExtension
         from .on_token_issuance_start_return_claim import OnTokenIssuanceStartReturnClaim
@@ -38,7 +39,7 @@ class OnTokenIssuanceStartCustomExtension(CustomAuthenticationExtension, Parsabl
         from .custom_authentication_extension import CustomAuthenticationExtension
         from .on_token_issuance_start_return_claim import OnTokenIssuanceStartReturnClaim
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "claimsForTokenConfiguration": lambda n : setattr(self, 'claims_for_token_configuration', n.get_collection_of_object_values(OnTokenIssuanceStartReturnClaim)),
         }
         super_fields = super().get_field_deserializers()
@@ -54,9 +55,6 @@ class OnTokenIssuanceStartCustomExtension(CustomAuthenticationExtension, Parsabl
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .custom_authentication_extension import CustomAuthenticationExtension
-        from .on_token_issuance_start_return_claim import OnTokenIssuanceStartReturnClaim
-
         writer.write_collection_of_object_values("claimsForTokenConfiguration", self.claims_for_token_configuration)
     
 

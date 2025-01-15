@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
@@ -9,7 +10,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
@@ -22,7 +23,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the threads property of the microsoft.graph.group entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
         Instantiates a new ConversationThreadItemRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
@@ -36,14 +37,14 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
         Delete conversationThread.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/conversationthread-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-delete-thread?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -52,17 +53,17 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ConversationThreadItemRequestBuilderGetQueryParameters]] = None) -> Optional[ConversationThread]:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThread]
-        Find more info here: https://learn.microsoft.com/graph/api/conversationthread-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-get-thread?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -86,7 +87,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -108,7 +109,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ConversationThreadItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -170,7 +171,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationThreadItemRequestBuilderGetQueryParameters():
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -187,10 +188,10 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
             return original_name
         
         # Expand related entities
-        expand: Optional[List[str]] = None
+        expand: Optional[list[str]] = None
 
         # Select properties to be returned
-        select: Optional[List[str]] = None
+        select: Optional[list[str]] = None
 
     
     @dataclass

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -11,7 +12,7 @@ from .entity import Entity
 @dataclass
 class ApplicationTemplate(Entity, Parsable):
     # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
-    categories: Optional[List[str]] = None
+    categories: Optional[list[str]] = None
     # A description of the application.
     description: Optional[str] = None
     # The name of the application.
@@ -25,9 +26,9 @@ class ApplicationTemplate(Entity, Parsable):
     # The name of the publisher for this application.
     publisher: Optional[str] = None
     # The list of provisioning modes supported by this application. The only valid value is sync.
-    supported_provisioning_types: Optional[List[str]] = None
+    supported_provisioning_types: Optional[list[str]] = None
     # The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported.
-    supported_single_sign_on_modes: Optional[List[str]] = None
+    supported_single_sign_on_modes: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ApplicationTemplate:
@@ -40,16 +41,16 @@ class ApplicationTemplate(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ApplicationTemplate()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
 
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -72,8 +73,6 @@ class ApplicationTemplate(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-
         writer.write_collection_of_primitive_values("categories", self.categories)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

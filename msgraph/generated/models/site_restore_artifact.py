@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .restore_artifact_base import RestoreArtifactBase
@@ -30,16 +31,16 @@ class SiteRestoreArtifact(RestoreArtifactBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SiteRestoreArtifact()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .restore_artifact_base import RestoreArtifactBase
 
         from .restore_artifact_base import RestoreArtifactBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "restoredSiteId": lambda n : setattr(self, 'restored_site_id', n.get_str_value()),
             "restoredSiteName": lambda n : setattr(self, 'restored_site_name', n.get_str_value()),
             "restoredSiteWebUrl": lambda n : setattr(self, 'restored_site_web_url', n.get_str_value()),
@@ -57,8 +58,6 @@ class SiteRestoreArtifact(RestoreArtifactBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .restore_artifact_base import RestoreArtifactBase
-
         writer.write_str_value("restoredSiteId", self.restored_site_id)
     
 

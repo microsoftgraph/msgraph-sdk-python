@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_module_resource import EducationModuleResource
@@ -31,7 +32,7 @@ class EducationModule(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Learning objects that are associated with this module. Only teachers can modify this list. Nullable.
-    resources: Optional[List[EducationModuleResource]] = None
+    resources: Optional[list[EducationModuleResource]] = None
     # Folder URL where all the file resources for this module are stored.
     resources_folder_url: Optional[str] = None
     # Status of the module. You can't use a PATCH operation to update this value. Possible values are: draft and published.
@@ -48,10 +49,10 @@ class EducationModule(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EducationModule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .education_module_resource import EducationModuleResource
         from .education_module_status import EducationModuleStatus
@@ -63,7 +64,7 @@ class EducationModule(Entity, Parsable):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -88,11 +89,6 @@ class EducationModule(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .education_module_resource import EducationModuleResource
-        from .education_module_status import EducationModuleStatus
-        from .entity import Entity
-        from .identity_set import IdentitySet
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isPinned", self.is_pinned)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -34,13 +35,13 @@ class DeviceEvidence(AlertEvidence, Parsable):
     # The hostname without the domain suffix.
     host_name: Optional[str] = None
     # Ip interfaces of the device during the time of the alert.
-    ip_interfaces: Optional[List[str]] = None
+    ip_interfaces: Optional[list[str]] = None
     # The lastExternalIpAddress property
     last_external_ip_address: Optional[str] = None
     # The lastIpAddress property
     last_ip_address: Optional[str] = None
     # Users that were logged on the machine during the time of the alert.
-    logged_on_users: Optional[List[LoggedOnUser]] = None
+    logged_on_users: Optional[list[LoggedOnUser]] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
     # A logical grouping of computers within a Microsoft Windows network.
@@ -73,10 +74,10 @@ class DeviceEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeviceEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .defender_av_status import DefenderAvStatus
@@ -94,7 +95,7 @@ class DeviceEvidence(AlertEvidence, Parsable):
         from .onboarding_status import OnboardingStatus
         from .vm_metadata import VmMetadata
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
             "defenderAvStatus": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(DefenderAvStatus)),
             "deviceDnsName": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
@@ -130,14 +131,6 @@ class DeviceEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .defender_av_status import DefenderAvStatus
-        from .device_health_status import DeviceHealthStatus
-        from .device_risk_score import DeviceRiskScore
-        from .logged_on_user import LoggedOnUser
-        from .onboarding_status import OnboardingStatus
-        from .vm_metadata import VmMetadata
-
         writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)
         writer.write_enum_value("defenderAvStatus", self.defender_av_status)
         writer.write_str_value("deviceDnsName", self.device_dns_name)

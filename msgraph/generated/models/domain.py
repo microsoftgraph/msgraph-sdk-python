@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -19,9 +20,9 @@ class Domain(Entity, Parsable):
     # This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
     availability_status: Optional[str] = None
     # The objects such as users and groups that reference the domain ID. Read-only, Nullable. Doesn't support $expand. Supports $filter by the OData type of objects returned. For example, /domains/{domainId}/domainNameReferences/microsoft.graph.user and /domains/{domainId}/domainNameReferences/microsoft.graph.group.
-    domain_name_references: Optional[List[DirectoryObject]] = None
+    domain_name_references: Optional[list[DirectoryObject]] = None
     # Domain settings configured by a customer when federated with Microsoft Entra ID. Doesn't support $expand.
-    federation_configuration: Optional[List[InternalDomainFederation]] = None
+    federation_configuration: Optional[list[InternalDomainFederation]] = None
     # The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable
     is_admin_managed: Optional[bool] = None
     # true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable.
@@ -45,13 +46,13 @@ class Domain(Entity, Parsable):
     # Root domain of a subdomain. Read-only, Nullable. Supports $expand.
     root_domain: Optional[Domain] = None
     # DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Doesn't support $expand.
-    service_configuration_records: Optional[List[DomainDnsRecord]] = None
+    service_configuration_records: Optional[list[DomainDnsRecord]] = None
     # Status of asynchronous operations scheduled for the domain.
     state: Optional[DomainState] = None
     # The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable.
-    supported_services: Optional[List[str]] = None
+    supported_services: Optional[list[str]] = None
     # DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Microsoft Entra ID. Read-only, Nullable. Doesn't support $expand.
-    verification_dns_records: Optional[List[DomainDnsRecord]] = None
+    verification_dns_records: Optional[list[DomainDnsRecord]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Domain:
@@ -64,10 +65,10 @@ class Domain(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Domain()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .domain_dns_record import DomainDnsRecord
@@ -81,7 +82,7 @@ class Domain(Entity, Parsable):
         from .entity import Entity
         from .internal_domain_federation import InternalDomainFederation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
             "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_str_value()),
             "domainNameReferences": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(DirectoryObject)),
@@ -114,12 +115,6 @@ class Domain(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-        from .domain_dns_record import DomainDnsRecord
-        from .domain_state import DomainState
-        from .entity import Entity
-        from .internal_domain_federation import InternalDomainFederation
-
         writer.write_str_value("authenticationType", self.authentication_type)
         writer.write_str_value("availabilityStatus", self.availability_status)
         writer.write_collection_of_object_values("domainNameReferences", self.domain_name_references)

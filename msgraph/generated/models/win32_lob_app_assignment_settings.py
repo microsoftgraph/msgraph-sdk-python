@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mobile_app_assignment_settings import MobileAppAssignmentSettings
@@ -42,10 +43,10 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Win32LobAppAssignmentSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
         from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
@@ -61,7 +62,7 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
         from .win32_lob_app_notification import Win32LobAppNotification
         from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "autoUpdateSettings": lambda n : setattr(self, 'auto_update_settings', n.get_object_value(Win32LobAppAutoUpdateSettings)),
             "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(Win32LobAppDeliveryOptimizationPriority)),
             "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(MobileAppInstallTimeSettings)),
@@ -81,13 +82,6 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
-        from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
-        from .win32_lob_app_auto_update_settings import Win32LobAppAutoUpdateSettings
-        from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
-        from .win32_lob_app_notification import Win32LobAppNotification
-        from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
-
         writer.write_object_value("autoUpdateSettings", self.auto_update_settings)
         writer.write_enum_value("deliveryOptimizationPriority", self.delivery_optimization_priority)
         writer.write_object_value("installTimeSettings", self.install_time_settings)

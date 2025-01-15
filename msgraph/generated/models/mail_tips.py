@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .automatic_replies_mail_tips import AutomaticRepliesMailTips
@@ -17,7 +18,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Mail tips for automatic reply if it has been set up by the recipient.
     automatic_replies: Optional[AutomaticRepliesMailTips] = None
     # A custom mail tip that can be set on the recipient's mailbox.
@@ -41,7 +42,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
     # The scope of the recipient. Possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
     recipient_scope: Optional[RecipientScopeType] = None
     # Recipients suggested based on previous contexts where they appear in the same message.
-    recipient_suggestions: Optional[List[Recipient]] = None
+    recipient_suggestions: Optional[list[Recipient]] = None
     # The number of members if the recipient is a distribution list.
     total_member_count: Optional[int] = None
     
@@ -56,10 +57,10 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MailTips()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .automatic_replies_mail_tips import AutomaticRepliesMailTips
         from .email_address import EmailAddress
@@ -73,7 +74,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
         from .recipient import Recipient
         from .recipient_scope_type import RecipientScopeType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "automaticReplies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(AutomaticRepliesMailTips)),
             "customMailTip": lambda n : setattr(self, 'custom_mail_tip', n.get_str_value()),
             "deliveryRestricted": lambda n : setattr(self, 'delivery_restricted', n.get_bool_value()),
@@ -98,12 +99,6 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .automatic_replies_mail_tips import AutomaticRepliesMailTips
-        from .email_address import EmailAddress
-        from .mail_tips_error import MailTipsError
-        from .recipient import Recipient
-        from .recipient_scope_type import RecipientScopeType
-
         writer.write_object_value("automaticReplies", self.automatic_replies)
         writer.write_str_value("customMailTip", self.custom_mail_tip)
         writer.write_bool_value("deliveryRestricted", self.delivery_restricted)

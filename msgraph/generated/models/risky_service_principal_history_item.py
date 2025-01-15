@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .risky_service_principal import RiskyServicePrincipal
@@ -29,10 +30,10 @@ class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RiskyServicePrincipalHistoryItem()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .risky_service_principal import RiskyServicePrincipal
         from .risk_service_principal_activity import RiskServicePrincipalActivity
@@ -40,7 +41,7 @@ class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal, Parsable):
         from .risky_service_principal import RiskyServicePrincipal
         from .risk_service_principal_activity import RiskServicePrincipalActivity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskServicePrincipalActivity)),
             "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
         }
@@ -57,9 +58,6 @@ class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .risky_service_principal import RiskyServicePrincipal
-        from .risk_service_principal_activity import RiskServicePrincipalActivity
-
         writer.write_object_value("activity", self.activity)
         writer.write_str_value("initiatedBy", self.initiated_by)
     

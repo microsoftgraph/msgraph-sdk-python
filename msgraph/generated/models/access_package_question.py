@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_localized_text import AccessPackageLocalizedText
@@ -18,7 +19,7 @@ class AccessPackageQuestion(Entity, Parsable):
     # Whether the requestor is required to supply an answer or not.
     is_required: Optional[bool] = None
     # The text of the question represented in a format for a specific locale.
-    localizations: Optional[List[AccessPackageLocalizedText]] = None
+    localizations: Optional[list[AccessPackageLocalizedText]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Relative position of this question when displaying a list of questions to the requestor.
@@ -50,10 +51,10 @@ class AccessPackageQuestion(Entity, Parsable):
             return AccessPackageTextInputQuestion()
         return AccessPackageQuestion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_localized_text import AccessPackageLocalizedText
         from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
@@ -65,7 +66,7 @@ class AccessPackageQuestion(Entity, Parsable):
         from .access_package_text_input_question import AccessPackageTextInputQuestion
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isAnswerEditable": lambda n : setattr(self, 'is_answer_editable', n.get_bool_value()),
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(AccessPackageLocalizedText)),
@@ -85,11 +86,6 @@ class AccessPackageQuestion(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_localized_text import AccessPackageLocalizedText
-        from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
-        from .access_package_text_input_question import AccessPackageTextInputQuestion
-        from .entity import Entity
-
         writer.write_bool_value("isAnswerEditable", self.is_answer_editable)
         writer.write_bool_value("isRequired", self.is_required)
         writer.write_collection_of_object_values("localizations", self.localizations)

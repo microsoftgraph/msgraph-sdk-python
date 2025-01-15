@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .email_file_assessment_request import EmailFileAssessmentRequest
@@ -37,7 +38,7 @@ class ThreatAssessmentRequest(Entity, Parsable):
     # The source of the threat assessment request. Possible values are: administrator.
     request_source: Optional[ThreatAssessmentRequestSource] = None
     # A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
-    results: Optional[List[ThreatAssessmentResult]] = None
+    results: Optional[list[ThreatAssessmentResult]] = None
     # The assessment process status. Possible values are: pending, completed.
     status: Optional[ThreatAssessmentStatus] = None
     
@@ -73,10 +74,10 @@ class ThreatAssessmentRequest(Entity, Parsable):
             return UrlAssessmentRequest()
         return ThreatAssessmentRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .email_file_assessment_request import EmailFileAssessmentRequest
         from .entity import Entity
@@ -104,7 +105,7 @@ class ThreatAssessmentRequest(Entity, Parsable):
         from .threat_expected_assessment import ThreatExpectedAssessment
         from .url_assessment_request import UrlAssessmentRequest
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(ThreatCategory)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(ThreatAssessmentContentType)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
@@ -127,19 +128,6 @@ class ThreatAssessmentRequest(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .email_file_assessment_request import EmailFileAssessmentRequest
-        from .entity import Entity
-        from .file_assessment_request import FileAssessmentRequest
-        from .identity_set import IdentitySet
-        from .mail_assessment_request import MailAssessmentRequest
-        from .threat_assessment_content_type import ThreatAssessmentContentType
-        from .threat_assessment_request_source import ThreatAssessmentRequestSource
-        from .threat_assessment_result import ThreatAssessmentResult
-        from .threat_assessment_status import ThreatAssessmentStatus
-        from .threat_category import ThreatCategory
-        from .threat_expected_assessment import ThreatExpectedAssessment
-        from .url_assessment_request import UrlAssessmentRequest
-
         writer.write_enum_value("category", self.category)
         writer.write_enum_value("contentType", self.content_type)
         writer.write_object_value("createdBy", self.created_by)

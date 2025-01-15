@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.attendee_base import AttendeeBase
@@ -16,9 +17,9 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The attendees property
-    attendees: Optional[List[AttendeeBase]] = None
+    attendees: Optional[list[AttendeeBase]] = None
     # The isOrganizerOptional property
     is_organizer_optional: Optional[bool] = None
     # The locationConstraint property
@@ -45,10 +46,10 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
             raise TypeError("parse_node cannot be null.")
         return FindMeetingTimesPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ....models.attendee_base import AttendeeBase
         from ....models.location_constraint import LocationConstraint
@@ -58,7 +59,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         from ....models.location_constraint import LocationConstraint
         from ....models.time_constraint import TimeConstraint
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(AttendeeBase)),
             "isOrganizerOptional": lambda n : setattr(self, 'is_organizer_optional', n.get_bool_value()),
             "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(LocationConstraint)),
@@ -78,10 +79,6 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ....models.attendee_base import AttendeeBase
-        from ....models.location_constraint import LocationConstraint
-        from ....models.time_constraint import TimeConstraint
-
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
         writer.write_object_value("locationConstraint", self.location_constraint)

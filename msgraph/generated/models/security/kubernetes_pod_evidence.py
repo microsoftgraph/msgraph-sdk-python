@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -19,13 +20,13 @@ class KubernetesPodEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.kubernetesPodEvidence"
     # The list of pod containers which are not init or ephemeral containers.
-    containers: Optional[List[ContainerEvidence]] = None
+    containers: Optional[list[ContainerEvidence]] = None
     # The pod controller.
     controller: Optional[KubernetesControllerEvidence] = None
     # The list of pod ephemeral containers.
-    ephemeral_containers: Optional[List[ContainerEvidence]] = None
+    ephemeral_containers: Optional[list[ContainerEvidence]] = None
     # The list of pod init containers.
-    init_containers: Optional[List[ContainerEvidence]] = None
+    init_containers: Optional[list[ContainerEvidence]] = None
     # The pod labels.
     labels: Optional[Dictionary] = None
     # The pod name.
@@ -48,10 +49,10 @@ class KubernetesPodEvidence(AlertEvidence, Parsable):
             raise TypeError("parse_node cannot be null.")
         return KubernetesPodEvidence()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
         from .container_evidence import ContainerEvidence
@@ -69,7 +70,7 @@ class KubernetesPodEvidence(AlertEvidence, Parsable):
         from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
         from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "containers": lambda n : setattr(self, 'containers', n.get_collection_of_object_values(ContainerEvidence)),
             "controller": lambda n : setattr(self, 'controller', n.get_object_value(KubernetesControllerEvidence)),
             "ephemeralContainers": lambda n : setattr(self, 'ephemeral_containers', n.get_collection_of_object_values(ContainerEvidence)),
@@ -93,14 +94,6 @@ class KubernetesPodEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alert_evidence import AlertEvidence
-        from .container_evidence import ContainerEvidence
-        from .dictionary import Dictionary
-        from .ip_evidence import IpEvidence
-        from .kubernetes_controller_evidence import KubernetesControllerEvidence
-        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
-        from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
-
         writer.write_collection_of_object_values("containers", self.containers)
         writer.write_object_value("controller", self.controller)
         writer.write_collection_of_object_values("ephemeralContainers", self.ephemeral_containers)

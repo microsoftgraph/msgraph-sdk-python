@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -17,7 +18,7 @@ class VerticalSection(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The set of web parts in this section.
-    webparts: Optional[List[WebPart]] = None
+    webparts: Optional[list[WebPart]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> VerticalSection:
@@ -30,10 +31,10 @@ class VerticalSection(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return VerticalSection()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .section_emphasis_type import SectionEmphasisType
@@ -43,7 +44,7 @@ class VerticalSection(Entity, Parsable):
         from .section_emphasis_type import SectionEmphasisType
         from .web_part import WebPart
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "emphasis": lambda n : setattr(self, 'emphasis', n.get_enum_value(SectionEmphasisType)),
             "webparts": lambda n : setattr(self, 'webparts', n.get_collection_of_object_values(WebPart)),
         }
@@ -60,10 +61,6 @@ class VerticalSection(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .section_emphasis_type import SectionEmphasisType
-        from .web_part import WebPart
-
         writer.write_enum_value("emphasis", self.emphasis)
         writer.write_collection_of_object_values("webparts", self.webparts)
     

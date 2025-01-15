@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method_state import AuthenticationMethodState
@@ -21,7 +22,7 @@ from .entity import Entity
 @dataclass
 class AuthenticationMethodConfiguration(Entity, Parsable):
     # Groups of users that are excluded from a policy.
-    exclude_targets: Optional[List[ExcludeTarget]] = None
+    exclude_targets: Optional[list[ExcludeTarget]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The state of the policy. Possible values are: enabled, disabled.
@@ -75,10 +76,10 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
             return X509CertificateAuthenticationMethodConfiguration()
         return AuthenticationMethodConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method_state import AuthenticationMethodState
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
@@ -104,7 +105,7 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(ExcludeTarget)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AuthenticationMethodState)),
         }
@@ -121,18 +122,6 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_method_state import AuthenticationMethodState
-        from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
-        from .entity import Entity
-        from .exclude_target import ExcludeTarget
-        from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
-        from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
-        from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
-        from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
-        from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
-        from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
-        from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
-
         writer.write_collection_of_object_values("excludeTargets", self.exclude_targets)
         writer.write_enum_value("state", self.state)
     

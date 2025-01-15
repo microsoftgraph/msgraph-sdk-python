@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .audit_activity_initiator import AuditActivityInitiator
@@ -20,7 +21,7 @@ class DirectoryAudit(Entity, Parsable):
     # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For a list of activities logged, refer to Microsoft Entra audit log categories and activities. Supports $filter (eq, startswith).
     activity_display_name: Optional[str] = None
     # Indicates additional details on the activity.
-    additional_details: Optional[List[KeyValue]] = None
+    additional_details: Optional[list[KeyValue]] = None
     # Indicates which resource category that's targeted by the activity. For example: UserManagement, GroupManagement, ApplicationManagement, RoleManagement. For a list of categories for activities logged, refer to Microsoft Entra audit log categories and activities.
     category: Optional[str] = None
     # Indicates a unique ID that helps correlate activities that span across various services. Can be used to trace logs across services. Supports $filter (eq).
@@ -38,7 +39,7 @@ class DirectoryAudit(Entity, Parsable):
     # Indicates the reason for failure if the result is failure or timeout.
     result_reason: Optional[str] = None
     # Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other. Supports $filter (eq) for id and displayName; and $filter (startswith) for displayName.
-    target_resources: Optional[List[TargetResource]] = None
+    target_resources: Optional[list[TargetResource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DirectoryAudit:
@@ -51,10 +52,10 @@ class DirectoryAudit(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DirectoryAudit()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .audit_activity_initiator import AuditActivityInitiator
         from .entity import Entity
@@ -68,7 +69,7 @@ class DirectoryAudit(Entity, Parsable):
         from .operation_result import OperationResult
         from .target_resource import TargetResource
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "activityDisplayName": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
             "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(KeyValue)),
@@ -94,12 +95,6 @@ class DirectoryAudit(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .audit_activity_initiator import AuditActivityInitiator
-        from .entity import Entity
-        from .key_value import KeyValue
-        from .operation_result import OperationResult
-        from .target_resource import TargetResource
-
         writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("activityDisplayName", self.activity_display_name)
         writer.write_collection_of_object_values("additionalDetails", self.additional_details)

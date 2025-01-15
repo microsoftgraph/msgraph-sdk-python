@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_list_item import AppListItem
@@ -16,13 +17,13 @@ class IosNetworkUsageRule(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # If set to true, corresponding managed apps will not be allowed to use cellular data when roaming.
     cellular_data_block_when_roaming: Optional[bool] = None
     # If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
     cellular_data_blocked: Optional[bool] = None
     # Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
-    managed_apps: Optional[List[AppListItem]] = None
+    managed_apps: Optional[list[AppListItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,16 +38,16 @@ class IosNetworkUsageRule(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IosNetworkUsageRule()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_list_item import AppListItem
 
         from .app_list_item import AppListItem
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "cellularDataBlockWhenRoaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
             "cellularDataBlocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
             "managedApps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(AppListItem)),
@@ -62,8 +63,6 @@ class IosNetworkUsageRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .app_list_item import AppListItem
-
         writer.write_bool_value("cellularDataBlockWhenRoaming", self.cellular_data_block_when_roaming)
         writer.write_bool_value("cellularDataBlocked", self.cellular_data_blocked)
         writer.write_collection_of_object_values("managedApps", self.managed_apps)

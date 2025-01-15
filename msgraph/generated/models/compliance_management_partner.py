@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .compliance_management_partner_assignment import ComplianceManagementPartnerAssignment
@@ -17,19 +18,19 @@ class ComplianceManagementPartner(Entity, Parsable):
     Compliance management partner for all platforms
     """
     # User groups which enroll Android devices through partner.
-    android_enrollment_assignments: Optional[List[ComplianceManagementPartnerAssignment]] = None
+    android_enrollment_assignments: Optional[list[ComplianceManagementPartnerAssignment]] = None
     # Partner onboarded for Android devices.
     android_onboarded: Optional[bool] = None
     # Partner display name
     display_name: Optional[str] = None
     # User groups which enroll ios devices through partner.
-    ios_enrollment_assignments: Optional[List[ComplianceManagementPartnerAssignment]] = None
+    ios_enrollment_assignments: Optional[list[ComplianceManagementPartnerAssignment]] = None
     # Partner onboarded for ios devices.
     ios_onboarded: Optional[bool] = None
     # Timestamp of last heartbeat after admin onboarded to the compliance management partner
     last_heartbeat_date_time: Optional[datetime.datetime] = None
     # User groups which enroll Mac devices through partner.
-    mac_os_enrollment_assignments: Optional[List[ComplianceManagementPartnerAssignment]] = None
+    mac_os_enrollment_assignments: Optional[list[ComplianceManagementPartnerAssignment]] = None
     # Partner onboarded for Mac devices.
     mac_os_onboarded: Optional[bool] = None
     # The OdataType property
@@ -48,10 +49,10 @@ class ComplianceManagementPartner(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ComplianceManagementPartner()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .compliance_management_partner_assignment import ComplianceManagementPartnerAssignment
         from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
@@ -61,7 +62,7 @@ class ComplianceManagementPartner(Entity, Parsable):
         from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "androidEnrollmentAssignments": lambda n : setattr(self, 'android_enrollment_assignments', n.get_collection_of_object_values(ComplianceManagementPartnerAssignment)),
             "androidOnboarded": lambda n : setattr(self, 'android_onboarded', n.get_bool_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -85,10 +86,6 @@ class ComplianceManagementPartner(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .compliance_management_partner_assignment import ComplianceManagementPartnerAssignment
-        from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
-        from .entity import Entity
-
         writer.write_collection_of_object_values("androidEnrollmentAssignments", self.android_enrollment_assignments)
         writer.write_bool_value("androidOnboarded", self.android_onboarded)
         writer.write_str_value("displayName", self.display_name)

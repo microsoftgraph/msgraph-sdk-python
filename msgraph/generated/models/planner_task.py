@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -83,10 +84,10 @@ class PlannerTask(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PlannerTask()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .identity_set import IdentitySet
@@ -108,7 +109,7 @@ class PlannerTask(Entity, Parsable):
         from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
         from .planner_task_details import PlannerTaskDetails
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activeChecklistItemCount": lambda n : setattr(self, 'active_checklist_item_count', n.get_int_value()),
             "appliedCategories": lambda n : setattr(self, 'applied_categories', n.get_object_value(PlannerAppliedCategories)),
             "assignedToTaskBoardFormat": lambda n : setattr(self, 'assigned_to_task_board_format', n.get_object_value(PlannerAssignedToTaskBoardTaskFormat)),
@@ -148,16 +149,6 @@ class PlannerTask(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .identity_set import IdentitySet
-        from .planner_applied_categories import PlannerAppliedCategories
-        from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
-        from .planner_assignments import PlannerAssignments
-        from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
-        from .planner_preview_type import PlannerPreviewType
-        from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
-        from .planner_task_details import PlannerTaskDetails
-
         writer.write_int_value("activeChecklistItemCount", self.active_checklist_item_count)
         writer.write_object_value("appliedCategories", self.applied_categories)
         writer.write_object_value("assignedToTaskBoardFormat", self.assigned_to_task_board_format)

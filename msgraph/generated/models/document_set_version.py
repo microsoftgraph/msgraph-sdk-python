@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .document_set_version_item import DocumentSetVersionItem
@@ -22,7 +23,7 @@ class DocumentSetVersion(ListItemVersion, Parsable):
     # Date and time when this version was created.
     created_date_time: Optional[datetime.datetime] = None
     # Items within the document set that are captured as part of this version.
-    items: Optional[List[DocumentSetVersionItem]] = None
+    items: Optional[list[DocumentSetVersionItem]] = None
     # If true, minor versions of items are also captured; otherwise, only major versions are captured. The default value is false.
     should_capture_minor_version: Optional[bool] = None
     
@@ -37,10 +38,10 @@ class DocumentSetVersion(ListItemVersion, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DocumentSetVersion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .document_set_version_item import DocumentSetVersionItem
         from .identity_set import IdentitySet
@@ -50,7 +51,7 @@ class DocumentSetVersion(ListItemVersion, Parsable):
         from .identity_set import IdentitySet
         from .list_item_version import ListItemVersion
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -70,10 +71,6 @@ class DocumentSetVersion(ListItemVersion, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .document_set_version_item import DocumentSetVersionItem
-        from .identity_set import IdentitySet
-        from .list_item_version import ListItemVersion
-
         writer.write_str_value("comment", self.comment)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mobile_lob_app import MobileLobApp
@@ -39,9 +40,9 @@ class Win32LobApp(MobileLobApp, Parsable):
     # The MSI details if this Win32 app is an MSI app.
     msi_information: Optional[Win32LobAppMsiInformation] = None
     # The return codes for post installation behavior.
-    return_codes: Optional[List[Win32LobAppReturnCode]] = None
+    return_codes: Optional[list[Win32LobAppReturnCode]] = None
     # The detection and requirement rules for this app.
-    rules: Optional[List[Win32LobAppRule]] = None
+    rules: Optional[list[Win32LobAppRule]] = None
     # The relative path of the setup file in the encrypted Win32LobApp package.
     setup_file_path: Optional[str] = None
     # The command line to uninstall this app
@@ -58,10 +59,10 @@ class Win32LobApp(MobileLobApp, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Win32LobApp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mobile_lob_app import MobileLobApp
         from .win32_lob_app_install_experience import Win32LobAppInstallExperience
@@ -77,7 +78,7 @@ class Win32LobApp(MobileLobApp, Parsable):
         from .win32_lob_app_rule import Win32LobAppRule
         from .windows_architecture import WindowsArchitecture
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
             "installCommandLine": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
             "installExperience": lambda n : setattr(self, 'install_experience', n.get_object_value(Win32LobAppInstallExperience)),
@@ -105,13 +106,6 @@ class Win32LobApp(MobileLobApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mobile_lob_app import MobileLobApp
-        from .win32_lob_app_install_experience import Win32LobAppInstallExperience
-        from .win32_lob_app_msi_information import Win32LobAppMsiInformation
-        from .win32_lob_app_return_code import Win32LobAppReturnCode
-        from .win32_lob_app_rule import Win32LobAppRule
-        from .windows_architecture import WindowsArchitecture
-
         writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
         writer.write_str_value("installCommandLine", self.install_command_line)
         writer.write_object_value("installExperience", self.install_experience)

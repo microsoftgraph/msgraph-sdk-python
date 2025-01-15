@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -34,10 +35,10 @@ class SimulationAutomationRun(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SimulationAutomationRun()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .simulation_automation_run_status import SimulationAutomationRunStatus
@@ -45,7 +46,7 @@ class SimulationAutomationRun(Entity, Parsable):
         from .entity import Entity
         from .simulation_automation_run_status import SimulationAutomationRunStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "simulationId": lambda n : setattr(self, 'simulation_id', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
@@ -64,9 +65,6 @@ class SimulationAutomationRun(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .simulation_automation_run_status import SimulationAutomationRunStatus
-
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("simulationId", self.simulation_id)
         writer.write_datetime_value("startDateTime", self.start_date_time)

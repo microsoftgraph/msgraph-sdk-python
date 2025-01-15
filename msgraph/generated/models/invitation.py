@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -26,7 +27,7 @@ class Invitation(Entity, Parsable):
     # Contains configuration for the message being sent to the invited user, including customizing message text, language, and cc recipient list.
     invited_user_message_info: Optional[InvitedUserMessageInfo] = None
     # The users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date.
-    invited_user_sponsors: Optional[List[DirectoryObject]] = None
+    invited_user_sponsors: Optional[list[DirectoryObject]] = None
     # The userType of the user being invited. By default, this is Guest. You can invite as Member if you're a company administrator.
     invited_user_type: Optional[str] = None
     # The OdataType property
@@ -49,10 +50,10 @@ class Invitation(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Invitation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .entity import Entity
@@ -64,7 +65,7 @@ class Invitation(Entity, Parsable):
         from .invited_user_message_info import InvitedUserMessageInfo
         from .user import User
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "inviteRedeemUrl": lambda n : setattr(self, 'invite_redeem_url', n.get_str_value()),
             "inviteRedirectUrl": lambda n : setattr(self, 'invite_redirect_url', n.get_str_value()),
             "invitedUser": lambda n : setattr(self, 'invited_user', n.get_object_value(User)),
@@ -90,11 +91,6 @@ class Invitation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-        from .entity import Entity
-        from .invited_user_message_info import InvitedUserMessageInfo
-        from .user import User
-
         writer.write_str_value("inviteRedeemUrl", self.invite_redeem_url)
         writer.write_str_value("inviteRedirectUrl", self.invite_redirect_url)
         writer.write_object_value("invitedUser", self.invited_user)

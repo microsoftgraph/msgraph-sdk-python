@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_attribute_collection_page import AuthenticationAttributeCollectionPage
@@ -17,7 +18,7 @@ class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionH
     # Required. The configuration for how attributes are displayed in the sign-up experience defined by a user flow, like the externalUsersSelfServiceSignupEventsFlow, specifically on the attribute collection page.
     attribute_collection_page: Optional[AuthenticationAttributeCollectionPage] = None
     # The attributes property
-    attributes: Optional[List[IdentityUserFlowAttribute]] = None
+    attributes: Optional[list[IdentityUserFlowAttribute]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> OnAttributeCollectionExternalUsersSelfServiceSignUp:
@@ -30,10 +31,10 @@ class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionH
             raise TypeError("parse_node cannot be null.")
         return OnAttributeCollectionExternalUsersSelfServiceSignUp()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_attribute_collection_page import AuthenticationAttributeCollectionPage
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
@@ -43,7 +44,7 @@ class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionH
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
         from .on_attribute_collection_handler import OnAttributeCollectionHandler
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attributeCollectionPage": lambda n : setattr(self, 'attribute_collection_page', n.get_object_value(AuthenticationAttributeCollectionPage)),
             "attributes": lambda n : setattr(self, 'attributes', n.get_collection_of_object_values(IdentityUserFlowAttribute)),
         }
@@ -60,10 +61,6 @@ class OnAttributeCollectionExternalUsersSelfServiceSignUp(OnAttributeCollectionH
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_attribute_collection_page import AuthenticationAttributeCollectionPage
-        from .identity_user_flow_attribute import IdentityUserFlowAttribute
-        from .on_attribute_collection_handler import OnAttributeCollectionHandler
-
         writer.write_object_value("attributeCollectionPage", self.attribute_collection_page)
         writer.write_collection_of_object_values("attributes", self.attributes)
     

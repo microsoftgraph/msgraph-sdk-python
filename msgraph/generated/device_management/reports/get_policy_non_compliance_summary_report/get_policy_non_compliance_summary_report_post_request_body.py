@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 @dataclass
 class GetPolicyNonComplianceSummaryReportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -10,19 +11,19 @@ class GetPolicyNonComplianceSummaryReportPostRequestBody(AdditionalDataHolder, B
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The filter property
     filter: Optional[str] = None
     # The groupBy property
-    group_by: Optional[List[str]] = None
+    group_by: Optional[list[str]] = None
     # The name property
     name: Optional[str] = None
     # The orderBy property
-    order_by: Optional[List[str]] = None
+    order_by: Optional[list[str]] = None
     # The search property
     search: Optional[str] = None
     # The select property
-    select: Optional[List[str]] = None
+    select: Optional[list[str]] = None
     # The sessionId property
     session_id: Optional[str] = None
     # The skip property
@@ -41,12 +42,12 @@ class GetPolicyNonComplianceSummaryReportPostRequestBody(AdditionalDataHolder, B
             raise TypeError("parse_node cannot be null.")
         return GetPolicyNonComplianceSummaryReportPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "filter": lambda n : setattr(self, 'filter', n.get_str_value()),
             "groupBy": lambda n : setattr(self, 'group_by', n.get_collection_of_primitive_values(str)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

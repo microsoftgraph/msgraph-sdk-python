@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -44,10 +45,10 @@ class PrivilegedAccessGroupAssignmentScheduleRequest(PrivilegedAccessScheduleReq
             raise TypeError("parse_node cannot be null.")
         return PrivilegedAccessGroupAssignmentScheduleRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .group import Group
@@ -61,7 +62,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequest(PrivilegedAccessScheduleReq
         from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
         from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
             "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(PrivilegedAccessGroupEligibilitySchedule)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
@@ -84,12 +85,6 @@ class PrivilegedAccessGroupAssignmentScheduleRequest(PrivilegedAccessScheduleReq
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-        from .group import Group
-        from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
-        from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
-        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
-
         writer.write_enum_value("accessId", self.access_id)
         writer.write_object_value("activatedUsing", self.activated_using)
         writer.write_object_value("group", self.group)

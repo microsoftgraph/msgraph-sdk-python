@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .assigned_license import AssignedLicense
@@ -31,15 +32,15 @@ class EducationUser(Entity, Parsable):
     # True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
     account_enabled: Optional[bool] = None
     # The licenses that are assigned to the user. Not nullable.
-    assigned_licenses: Optional[List[AssignedLicense]] = None
+    assigned_licenses: Optional[list[AssignedLicense]] = None
     # The plans that are assigned to the user. Read-only. Not nullable.
-    assigned_plans: Optional[List[AssignedPlan]] = None
+    assigned_plans: Optional[list[AssignedPlan]] = None
     # Assignments belonging to the user.
-    assignments: Optional[List[EducationAssignment]] = None
+    assignments: Optional[list[EducationAssignment]] = None
     # The telephone numbers for the user. Note: Although this is a string collection, only one number can be set for this property.
-    business_phones: Optional[List[str]] = None
+    business_phones: Optional[list[str]] = None
     # Classes to which the user belongs. Nullable.
-    classes: Optional[List[EducationClass]] = None
+    classes: Optional[list[EducationClass]] = None
     # The entity who created the user.
     created_by: Optional[IdentitySet] = None
     # The name for the department in which the user works. Supports $filter.
@@ -77,17 +78,17 @@ class EducationUser(Entity, Parsable):
     # The primaryRole property
     primary_role: Optional[EducationUserRole] = None
     # The plans that are provisioned for the user. Read-only. Not nullable.
-    provisioned_plans: Optional[List[ProvisionedPlan]] = None
+    provisioned_plans: Optional[list[ProvisionedPlan]] = None
     # Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application needs to acquire a new refresh token by requesting the authorized endpoint. Returned only on $select. Read-only.
     refresh_tokens_valid_from_date_time: Optional[datetime.datetime] = None
     # Related records associated with the user. Read-only.
-    related_contacts: Optional[List[RelatedContact]] = None
+    related_contacts: Optional[list[RelatedContact]] = None
     # The address where the user lives.
     residence_address: Optional[PhysicalAddress] = None
     # When set, the grading rubric attached to the assignment.
-    rubrics: Optional[List[EducationRubric]] = None
+    rubrics: Optional[list[EducationRubric]] = None
     # Schools to which the user belongs. Nullable.
-    schools: Optional[List[EducationSchool]] = None
+    schools: Optional[list[EducationSchool]] = None
     # True if the Outlook Global Address List should contain this user; otherwise, false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
     show_in_address_list: Optional[bool] = None
     # If the primary role is student, this block will contain student specific data.
@@ -95,7 +96,7 @@ class EducationUser(Entity, Parsable):
     # The user's surname (family name or last name). Supports $filter.
     surname: Optional[str] = None
     # Classes for which the user is a teacher.
-    taught_classes: Optional[List[EducationClass]] = None
+    taught_classes: Optional[list[EducationClass]] = None
     # If the primary role is teacher, this block will contain teacher specific data.
     teacher: Optional[EducationTeacher] = None
     # A two-letter country code (ISO standard 3166). Required for users who will be assigned licenses due to a legal requirement to check for availability of services in countries or regions. Examples include: US, JP, and GB. Not nullable. Supports $filter.
@@ -118,10 +119,10 @@ class EducationUser(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EducationUser()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .assigned_license import AssignedLicense
         from .assigned_plan import AssignedPlan
@@ -161,7 +162,7 @@ class EducationUser(Entity, Parsable):
         from .related_contact import RelatedContact
         from .user import User
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
             "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(AssignedPlan)),
@@ -214,25 +215,6 @@ class EducationUser(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .assigned_license import AssignedLicense
-        from .assigned_plan import AssignedPlan
-        from .education_assignment import EducationAssignment
-        from .education_class import EducationClass
-        from .education_external_source import EducationExternalSource
-        from .education_on_premises_info import EducationOnPremisesInfo
-        from .education_rubric import EducationRubric
-        from .education_school import EducationSchool
-        from .education_student import EducationStudent
-        from .education_teacher import EducationTeacher
-        from .education_user_role import EducationUserRole
-        from .entity import Entity
-        from .identity_set import IdentitySet
-        from .password_profile import PasswordProfile
-        from .physical_address import PhysicalAddress
-        from .provisioned_plan import ProvisionedPlan
-        from .related_contact import RelatedContact
-        from .user import User
-
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("assignedLicenses", self.assigned_licenses)
         writer.write_collection_of_object_values("assignedPlans", self.assigned_plans)

@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .server_processed_content import ServerProcessedContent
@@ -15,7 +16,7 @@ class TitleArea(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Alternative text on the title area.
     alternative_text: Optional[str] = None
     # Indicates whether the title area has a gradient effect enabled.
@@ -50,10 +51,10 @@ class TitleArea(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return TitleArea()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .server_processed_content import ServerProcessedContent
         from .title_area_layout_type import TitleAreaLayoutType
@@ -63,7 +64,7 @@ class TitleArea(AdditionalDataHolder, BackedModel, Parsable):
         from .title_area_layout_type import TitleAreaLayoutType
         from .title_area_text_alignment_type import TitleAreaTextAlignmentType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "alternativeText": lambda n : setattr(self, 'alternative_text', n.get_str_value()),
             "enableGradientEffect": lambda n : setattr(self, 'enable_gradient_effect', n.get_bool_value()),
             "imageWebUrl": lambda n : setattr(self, 'image_web_url', n.get_str_value()),
@@ -86,10 +87,6 @@ class TitleArea(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .server_processed_content import ServerProcessedContent
-        from .title_area_layout_type import TitleAreaLayoutType
-        from .title_area_text_alignment_type import TitleAreaTextAlignmentType
-
         writer.write_str_value("alternativeText", self.alternative_text)
         writer.write_bool_value("enableGradientEffect", self.enable_gradient_effect)
         writer.write_str_value("imageWebUrl", self.image_web_url)

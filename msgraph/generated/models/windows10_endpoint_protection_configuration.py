@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .application_guard_block_clipboard_sharing_type import ApplicationGuardBlockClipboardSharingType
@@ -54,15 +55,15 @@ class Windows10EndpointProtectionConfiguration(DeviceConfiguration, Parsable):
     # BitLocker Removable Drive Policy.
     bit_locker_removable_drive_policy: Optional[BitLockerRemovableDrivePolicy] = None
     # List of folder paths to be added to the list of protected folders
-    defender_additional_guarded_folders: Optional[List[str]] = None
+    defender_additional_guarded_folders: Optional[list[str]] = None
     # List of exe files and folders to be excluded from attack surface reduction rules
-    defender_attack_surface_reduction_excluded_paths: Optional[List[str]] = None
+    defender_attack_surface_reduction_excluded_paths: Optional[list[str]] = None
     # Xml content containing information regarding exploit protection details.
     defender_exploit_protection_xml: Optional[bytes] = None
     # Name of the file from which DefenderExploitProtectionXml was obtained.
     defender_exploit_protection_xml_file_name: Optional[str] = None
     # List of paths to exe that are allowed to access protected folders
-    defender_guarded_folders_allowed_app_paths: Optional[List[str]] = None
+    defender_guarded_folders_allowed_app_paths: Optional[list[str]] = None
     # Indicates whether or not to block user from overriding Exploit Protection settings.
     defender_security_center_block_exploit_protection_override: Optional[bool] = None
     # Blocks stateful FTP connections to the device
@@ -107,10 +108,10 @@ class Windows10EndpointProtectionConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Windows10EndpointProtectionConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .application_guard_block_clipboard_sharing_type import ApplicationGuardBlockClipboardSharingType
         from .application_guard_block_file_transfer_type import ApplicationGuardBlockFileTransferType
@@ -132,7 +133,7 @@ class Windows10EndpointProtectionConfiguration(DeviceConfiguration, Parsable):
         from .firewall_pre_shared_key_encoding_method_type import FirewallPreSharedKeyEncodingMethodType
         from .windows_firewall_network_profile import WindowsFirewallNetworkProfile
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appLockerApplicationControl": lambda n : setattr(self, 'app_locker_application_control', n.get_enum_value(AppLockerApplicationControlType)),
             "applicationGuardAllowPersistence": lambda n : setattr(self, 'application_guard_allow_persistence', n.get_bool_value()),
             "applicationGuardAllowPrintToLocalPrinters": lambda n : setattr(self, 'application_guard_allow_print_to_local_printers', n.get_bool_value()),
@@ -183,16 +184,6 @@ class Windows10EndpointProtectionConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .application_guard_block_clipboard_sharing_type import ApplicationGuardBlockClipboardSharingType
-        from .application_guard_block_file_transfer_type import ApplicationGuardBlockFileTransferType
-        from .app_locker_application_control_type import AppLockerApplicationControlType
-        from .bit_locker_removable_drive_policy import BitLockerRemovableDrivePolicy
-        from .device_configuration import DeviceConfiguration
-        from .firewall_certificate_revocation_list_check_method_type import FirewallCertificateRevocationListCheckMethodType
-        from .firewall_packet_queueing_method_type import FirewallPacketQueueingMethodType
-        from .firewall_pre_shared_key_encoding_method_type import FirewallPreSharedKeyEncodingMethodType
-        from .windows_firewall_network_profile import WindowsFirewallNetworkProfile
-
         writer.write_enum_value("appLockerApplicationControl", self.app_locker_application_control)
         writer.write_bool_value("applicationGuardAllowPersistence", self.application_guard_allow_persistence)
         writer.write_bool_value("applicationGuardAllowPrintToLocalPrinters", self.application_guard_allow_print_to_local_printers)

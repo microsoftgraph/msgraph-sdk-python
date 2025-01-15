@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
@@ -31,7 +32,7 @@ class BrowserSite(Entity, Parsable):
     # The date and time when the site was deleted.
     deleted_date_time: Optional[datetime.datetime] = None
     # The history of modifications applied to the site.
-    history: Optional[List[BrowserSiteHistory]] = None
+    history: Optional[list[BrowserSiteHistory]] = None
     # The user who last modified the site.
     last_modified_by: Optional[IdentitySet] = None
     # The date and time when the site was last modified.
@@ -58,10 +59,10 @@ class BrowserSite(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BrowserSite()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
         from .browser_site_history import BrowserSiteHistory
@@ -79,7 +80,7 @@ class BrowserSite(Entity, Parsable):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowRedirect": lambda n : setattr(self, 'allow_redirect', n.get_bool_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
@@ -106,14 +107,6 @@ class BrowserSite(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
-        from .browser_site_history import BrowserSiteHistory
-        from .browser_site_merge_type import BrowserSiteMergeType
-        from .browser_site_status import BrowserSiteStatus
-        from .browser_site_target_environment import BrowserSiteTargetEnvironment
-        from .entity import Entity
-        from .identity_set import IdentitySet
-
         writer.write_bool_value("allowRedirect", self.allow_redirect)
         writer.write_str_value("comment", self.comment)
         writer.write_enum_value("compatibilityMode", self.compatibility_mode)

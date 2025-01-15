@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .compliance_information import ComplianceInformation
@@ -21,11 +22,11 @@ class SecureScoreControlProfile(Entity, Parsable):
     # GUID string for tenant ID.
     azure_tenant_id: Optional[str] = None
     # The collection of compliance information associated with secure score control
-    compliance_information: Optional[List[ComplianceInformation]] = None
+    compliance_information: Optional[list[ComplianceInformation]] = None
     # Control action category (Identity, Data, Device, Apps, Infrastructure).
     control_category: Optional[str] = None
     # Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
-    control_state_updates: Optional[List[SecureScoreControlStateUpdate]] = None
+    control_state_updates: Optional[list[SecureScoreControlStateUpdate]] = None
     # Flag to indicate if a control is depreciated.
     deprecated: Optional[bool] = None
     # Resource cost of implemmentating control (low, moderate, high).
@@ -45,7 +46,7 @@ class SecureScoreControlProfile(Entity, Parsable):
     # Service that owns the control (Exchange, Sharepoint, Microsoft Entra ID).
     service: Optional[str] = None
     # List of threats the control mitigates (accountBreach, dataDeletion, dataExfiltration, dataSpillage, elevationOfPrivilege, maliciousInsider, passwordCracking, phishingOrWhaling, spoofing).
-    threats: Optional[List[str]] = None
+    threats: Optional[list[str]] = None
     # Control tier (Core, Defense in Depth, Advanced.)
     tier: Optional[str] = None
     # Title of the control.
@@ -66,10 +67,10 @@ class SecureScoreControlProfile(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SecureScoreControlProfile()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .compliance_information import ComplianceInformation
         from .entity import Entity
@@ -81,7 +82,7 @@ class SecureScoreControlProfile(Entity, Parsable):
         from .secure_score_control_state_update import SecureScoreControlStateUpdate
         from .security_vendor_information import SecurityVendorInformation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "actionType": lambda n : setattr(self, 'action_type', n.get_str_value()),
             "actionUrl": lambda n : setattr(self, 'action_url', n.get_str_value()),
             "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
@@ -115,11 +116,6 @@ class SecureScoreControlProfile(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .compliance_information import ComplianceInformation
-        from .entity import Entity
-        from .secure_score_control_state_update import SecureScoreControlStateUpdate
-        from .security_vendor_information import SecurityVendorInformation
-
         writer.write_str_value("actionType", self.action_type)
         writer.write_str_value("actionUrl", self.action_url)
         writer.write_str_value("azureTenantId", self.azure_tenant_id)

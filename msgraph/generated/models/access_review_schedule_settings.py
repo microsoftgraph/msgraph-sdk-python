@@ -1,9 +1,10 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_review_apply_action import AccessReviewApplyAction
@@ -16,9 +17,9 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Optional field. Describes the  actions to take once a review is complete. There are two types that are currently supported: removeAccessApplyAction (default) and disableAndDeleteUserApplyAction. Field only needs to be specified in the case of disableAndDeleteUserApplyAction.
-    apply_actions: Optional[List[AccessReviewApplyAction]] = None
+    apply_actions: Optional[list[AccessReviewApplyAction]] = None
     # Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
     auto_apply_decisions_enabled: Optional[bool] = None
     # Indicates whether decisions on previous access review stages are available for reviewers on an accessReviewInstance with multiple subsequent stages. If not provided, the default is disabled (false).
@@ -36,7 +37,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Optional. Describes the types of insights that aid reviewers to make access review decisions. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationInsightSettings setting will be used instead of the value of this property.
-    recommendation_insight_settings: Optional[List[AccessReviewRecommendationInsightSetting]] = None
+    recommendation_insight_settings: Optional[list[AccessReviewRecommendationInsightSetting]] = None
     # Optional field. Indicates the period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look-back duration. For reviews of groups and Microsoft Entra roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationLookBackDuration setting will be used instead of the value of this property.
     recommendation_look_back_duration: Optional[datetime.timedelta] = None
     # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
@@ -57,10 +58,10 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessReviewScheduleSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_review_apply_action import AccessReviewApplyAction
         from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
@@ -70,7 +71,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
         from .patterned_recurrence import PatternedRecurrence
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "applyActions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(AccessReviewApplyAction)),
             "autoApplyDecisionsEnabled": lambda n : setattr(self, 'auto_apply_decisions_enabled', n.get_bool_value()),
             "decisionHistoriesForReviewersEnabled": lambda n : setattr(self, 'decision_histories_for_reviewers_enabled', n.get_bool_value()),
@@ -96,10 +97,6 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .access_review_apply_action import AccessReviewApplyAction
-        from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
-        from .patterned_recurrence import PatternedRecurrence
-
         writer.write_collection_of_object_values("applyActions", self.apply_actions)
         writer.write_bool_value("autoApplyDecisionsEnabled", self.auto_apply_decisions_enabled)
         writer.write_bool_value("decisionHistoriesForReviewersEnabled", self.decision_histories_for_reviewers_enabled)

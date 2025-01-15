@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .windows_device_usage_type import WindowsDeviceUsageType
@@ -17,7 +18,7 @@ class OutOfBoxExperienceSetting(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The deviceUsageType property
     device_usage_type: Optional[WindowsDeviceUsageType] = None
     # When TRUE, the link that allows user to start over with a different account on company sign-in is hidden. When false, the link that allows user to start over with a different account on company sign-in is available. Default value is FALSE.
@@ -44,10 +45,10 @@ class OutOfBoxExperienceSetting(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OutOfBoxExperienceSetting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .windows_device_usage_type import WindowsDeviceUsageType
         from .windows_user_type import WindowsUserType
@@ -55,7 +56,7 @@ class OutOfBoxExperienceSetting(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_device_usage_type import WindowsDeviceUsageType
         from .windows_user_type import WindowsUserType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "deviceUsageType": lambda n : setattr(self, 'device_usage_type', n.get_enum_value(WindowsDeviceUsageType)),
             "escapeLinkHidden": lambda n : setattr(self, 'escape_link_hidden', n.get_bool_value()),
             "eulaHidden": lambda n : setattr(self, 'eula_hidden', n.get_bool_value()),
@@ -74,9 +75,6 @@ class OutOfBoxExperienceSetting(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .windows_device_usage_type import WindowsDeviceUsageType
-        from .windows_user_type import WindowsUserType
-
         writer.write_enum_value("deviceUsageType", self.device_usage_type)
         writer.write_bool_value("escapeLinkHidden", self.escape_link_hidden)
         writer.write_bool_value("eulaHidden", self.eula_hidden)

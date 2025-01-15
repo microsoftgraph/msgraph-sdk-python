@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .custom_callout_extension import CustomCalloutExtension
@@ -36,10 +37,10 @@ class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension, Parsable)
             raise TypeError("parse_node cannot be null.")
         return AccessPackageAssignmentWorkflowExtension()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .custom_callout_extension import CustomCalloutExtension
         from .custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
@@ -47,7 +48,7 @@ class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension, Parsable)
         from .custom_callout_extension import CustomCalloutExtension
         from .custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "callbackConfiguration": lambda n : setattr(self, 'callback_configuration', n.get_object_value(CustomExtensionCallbackConfiguration)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -67,9 +68,6 @@ class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension, Parsable)
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .custom_callout_extension import CustomCalloutExtension
-        from .custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
-
         writer.write_object_value("callbackConfiguration", self.callback_configuration)
         writer.write_str_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

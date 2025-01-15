@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .defender_cloud_block_level_type import DefenderCloudBlockLevelType
@@ -42,7 +43,7 @@ class Windows10GeneralConfiguration(DeviceConfiguration, Parsable):
     # Indicates whether or not to disable the launch of all apps from Windows Store that came pre-installed or were downloaded.
     apps_block_windows_store_originated_apps: Optional[bool] = None
     # Specify a list of allowed Bluetooth services and profiles in hex formatted strings.
-    bluetooth_allowed_services: Optional[List[str]] = None
+    bluetooth_allowed_services: Optional[list[str]] = None
     # Whether or not to Block the user from using bluetooth advertising.
     bluetooth_block_advertising: Optional[bool] = None
     # Whether or not to Block the user from using bluetooth discoverable mode.
@@ -76,13 +77,13 @@ class Windows10GeneralConfiguration(DeviceConfiguration, Parsable):
     # Gets or sets Defender’s actions to take on detected Malware per threat level.
     defender_detected_malware_actions: Optional[DefenderDetectedMalwareActions] = None
     # File extensions to exclude from scans and real time protection.
-    defender_file_extensions_to_exclude: Optional[List[str]] = None
+    defender_file_extensions_to_exclude: Optional[list[str]] = None
     # Files and folder to exclude from scans and real time protection.
-    defender_files_and_folders_to_exclude: Optional[List[str]] = None
+    defender_files_and_folders_to_exclude: Optional[list[str]] = None
     # Possible values for monitoring file activity.
     defender_monitor_file_activity: Optional[DefenderMonitorFileActivity] = None
     # Processes to exclude from scans and real time protection.
-    defender_processes_to_exclude: Optional[List[str]] = None
+    defender_processes_to_exclude: Optional[list[str]] = None
     # Possible values for prompting user for samples submission.
     defender_prompt_for_sample_submission: Optional[DefenderPromptForSampleSubmission] = None
     # Indicates whether or not to require behavior monitoring.
@@ -170,7 +171,7 @@ class Windows10GeneralConfiguration(DeviceConfiguration, Parsable):
     # The first run URL for when Edge browser is opened for the first time.
     edge_first_run_url: Optional[str] = None
     # The list of URLs for homepages shodwn on MDM-enrolled devices on Edge browser.
-    edge_homepage_urls: Optional[List[str]] = None
+    edge_homepage_urls: Optional[list[str]] = None
     # Indicates whether or not to Require the user to use the smart screen filter.
     edge_require_smart_screen: Optional[bool] = None
     # Allows IT admins to set a default search engine for MDM-Controlled devices. Users can override this and change their default search engine provided the AllowSearchEngineCustomization policy is not set.
@@ -447,10 +448,10 @@ class Windows10GeneralConfiguration(DeviceConfiguration, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Windows10GeneralConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .defender_cloud_block_level_type import DefenderCloudBlockLevelType
         from .defender_detected_malware_actions import DefenderDetectedMalwareActions
@@ -490,7 +491,7 @@ class Windows10GeneralConfiguration(DeviceConfiguration, Parsable):
         from .windows_start_menu_app_list_visibility_type import WindowsStartMenuAppListVisibilityType
         from .windows_start_menu_mode_type import WindowsStartMenuModeType
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
             "antiTheftModeBlocked": lambda n : setattr(self, 'anti_theft_mode_blocked', n.get_bool_value()),
             "appsAllowTrustedAppsSideloading": lambda n : setattr(self, 'apps_allow_trusted_apps_sideloading', n.get_enum_value(StateManagementSetting)),
@@ -706,25 +707,6 @@ class Windows10GeneralConfiguration(DeviceConfiguration, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .defender_cloud_block_level_type import DefenderCloudBlockLevelType
-        from .defender_detected_malware_actions import DefenderDetectedMalwareActions
-        from .defender_monitor_file_activity import DefenderMonitorFileActivity
-        from .defender_prompt_for_sample_submission import DefenderPromptForSampleSubmission
-        from .defender_scan_type import DefenderScanType
-        from .device_configuration import DeviceConfiguration
-        from .diagnostic_data_submission_mode import DiagnosticDataSubmissionMode
-        from .edge_cookie_policy import EdgeCookiePolicy
-        from .edge_search_engine_base import EdgeSearchEngineBase
-        from .required_password_type import RequiredPasswordType
-        from .safe_search_filter_type import SafeSearchFilterType
-        from .state_management_setting import StateManagementSetting
-        from .visibility_setting import VisibilitySetting
-        from .weekly_schedule import WeeklySchedule
-        from .windows10_network_proxy_server import Windows10NetworkProxyServer
-        from .windows_spotlight_enablement_settings import WindowsSpotlightEnablementSettings
-        from .windows_start_menu_app_list_visibility_type import WindowsStartMenuAppListVisibilityType
-        from .windows_start_menu_mode_type import WindowsStartMenuModeType
-
         writer.write_bool_value("accountsBlockAddingNonMicrosoftAccountEmail", self.accounts_block_adding_non_microsoft_account_email)
         writer.write_bool_value("antiTheftModeBlocked", self.anti_theft_mode_blocked)
         writer.write_enum_value("appsAllowTrustedAppsSideloading", self.apps_allow_trusted_apps_sideloading)

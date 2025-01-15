@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -40,10 +41,10 @@ class PrintOperation(Entity, Parsable):
             return PrinterCreateOperation()
         return PrintOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .printer_create_operation import PrinterCreateOperation
@@ -53,7 +54,7 @@ class PrintOperation(Entity, Parsable):
         from .printer_create_operation import PrinterCreateOperation
         from .print_operation_status import PrintOperationStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(PrintOperationStatus)),
         }
@@ -70,10 +71,6 @@ class PrintOperation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .printer_create_operation import PrinterCreateOperation
-        from .print_operation_status import PrintOperationStatus
-
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("status", self.status)
     

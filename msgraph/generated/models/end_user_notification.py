@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .email_identity import EmailIdentity
@@ -23,7 +24,7 @@ class EndUserNotification(Entity, Parsable):
     # Description of the notification as defined by the user.
     description: Optional[str] = None
     # The details property
-    details: Optional[List[EndUserNotificationDetail]] = None
+    details: Optional[list[EndUserNotificationDetail]] = None
     # Name of the notification as defined by the user.
     display_name: Optional[str] = None
     # Identity of the user who last modified the notification.
@@ -39,7 +40,7 @@ class EndUserNotification(Entity, Parsable):
     # The status of the notification. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
     status: Optional[SimulationContentStatus] = None
     # Supported locales for endUserNotification content.
-    supported_locales: Optional[List[str]] = None
+    supported_locales: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EndUserNotification:
@@ -52,10 +53,10 @@ class EndUserNotification(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EndUserNotification()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .email_identity import EmailIdentity
         from .end_user_notification_detail import EndUserNotificationDetail
@@ -71,7 +72,7 @@ class EndUserNotification(Entity, Parsable):
         from .simulation_content_source import SimulationContentSource
         from .simulation_content_status import SimulationContentStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -97,13 +98,6 @@ class EndUserNotification(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .email_identity import EmailIdentity
-        from .end_user_notification_detail import EndUserNotificationDetail
-        from .end_user_notification_type import EndUserNotificationType
-        from .entity import Entity
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
-
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)

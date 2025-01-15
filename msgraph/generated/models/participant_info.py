@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .endpoint_type import EndpointType
@@ -14,7 +15,7 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The ISO 3166-1 Alpha-2 country code of the participant's best estimated physical location at the start of the call. Read-only.
     country_code: Optional[str] = None
     # The type of endpoint the participant is using. Possible values are: default, skypeForBusiness, or skypeForBusinessVoipPhone. Read-only.
@@ -41,10 +42,10 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ParticipantInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .endpoint_type import EndpointType
         from .identity_set import IdentitySet
@@ -52,7 +53,7 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .endpoint_type import EndpointType
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "countryCode": lambda n : setattr(self, 'country_code', n.get_str_value()),
             "endpointType": lambda n : setattr(self, 'endpoint_type', n.get_enum_value(EndpointType)),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
@@ -71,9 +72,6 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .endpoint_type import EndpointType
-        from .identity_set import IdentitySet
-
         writer.write_str_value("countryCode", self.country_code)
         writer.write_enum_value("endpointType", self.endpoint_type)
         writer.write_object_value("identity", self.identity)

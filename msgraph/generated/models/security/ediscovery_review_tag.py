@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .child_selectability import ChildSelectability
@@ -16,7 +17,7 @@ class EdiscoveryReviewTag(Tag, Parsable):
     # Indicates whether a single or multiple child tags can be associated with a document. Possible values are: One, Many.  This value controls whether the UX presents the tags as checkboxes or a radio button group.
     child_selectability: Optional[ChildSelectability] = None
     # Returns the tags that are a child of a tag.
-    child_tags: Optional[List[EdiscoveryReviewTag]] = None
+    child_tags: Optional[list[EdiscoveryReviewTag]] = None
     # Returns the parent tag of the specified tag.
     parent: Optional[EdiscoveryReviewTag] = None
     
@@ -31,10 +32,10 @@ class EdiscoveryReviewTag(Tag, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EdiscoveryReviewTag()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .child_selectability import ChildSelectability
         from .tag import Tag
@@ -42,7 +43,7 @@ class EdiscoveryReviewTag(Tag, Parsable):
         from .child_selectability import ChildSelectability
         from .tag import Tag
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(ChildSelectability)),
             "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(EdiscoveryReviewTag)),
             "parent": lambda n : setattr(self, 'parent', n.get_object_value(EdiscoveryReviewTag)),
@@ -60,9 +61,6 @@ class EdiscoveryReviewTag(Tag, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .child_selectability import ChildSelectability
-        from .tag import Tag
-
         writer.write_enum_value("childSelectability", self.child_selectability)
         writer.write_collection_of_object_values("childTags", self.child_tags)
         writer.write_object_value("parent", self.parent)

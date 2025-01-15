@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
@@ -25,9 +26,9 @@ class RoleDefinition(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # List of Role assignments for this role definition.
-    role_assignments: Optional[List[RoleAssignment]] = None
+    role_assignments: Optional[list[RoleAssignment]] = None
     # List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
-    role_permissions: Optional[List[RolePermission]] = None
+    role_permissions: Optional[list[RolePermission]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RoleDefinition:
@@ -49,10 +50,10 @@ class RoleDefinition(Entity, Parsable):
             return DeviceAndAppManagementRoleDefinition()
         return RoleDefinition()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
         from .entity import Entity
@@ -64,7 +65,7 @@ class RoleDefinition(Entity, Parsable):
         from .role_assignment import RoleAssignment
         from .role_permission import RolePermission
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
@@ -84,11 +85,6 @@ class RoleDefinition(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
-        from .entity import Entity
-        from .role_assignment import RoleAssignment
-        from .role_permission import RolePermission
-
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isBuiltIn", self.is_built_in)

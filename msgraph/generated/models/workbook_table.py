@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -15,7 +16,7 @@ from .entity import Entity
 @dataclass
 class WorkbookTable(Entity, Parsable):
     # The list of all the columns in the table. Read-only.
-    columns: Optional[List[WorkbookTableColumn]] = None
+    columns: Optional[list[WorkbookTableColumn]] = None
     # Indicates whether the first column contains special formatting.
     highlight_first_column: Optional[bool] = None
     # Indicates whether the last column contains special formatting.
@@ -27,7 +28,7 @@ class WorkbookTable(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of all the rows in the table. Read-only.
-    rows: Optional[List[WorkbookTableRow]] = None
+    rows: Optional[list[WorkbookTableRow]] = None
     # Indicates whether the columns show banded formatting in which odd columns are highlighted differently from even ones to make reading the table easier.
     show_banded_columns: Optional[bool] = None
     # Indicates whether the rows show banded formatting in which odd rows are highlighted differently from even ones to make reading the table easier.
@@ -56,10 +57,10 @@ class WorkbookTable(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkbookTable()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .workbook_table_column import WorkbookTableColumn
@@ -73,7 +74,7 @@ class WorkbookTable(Entity, Parsable):
         from .workbook_table_sort import WorkbookTableSort
         from .workbook_worksheet import WorkbookWorksheet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(WorkbookTableColumn)),
             "highlightFirstColumn": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
             "highlightLastColumn": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),
@@ -102,12 +103,6 @@ class WorkbookTable(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .workbook_table_column import WorkbookTableColumn
-        from .workbook_table_row import WorkbookTableRow
-        from .workbook_table_sort import WorkbookTableSort
-        from .workbook_worksheet import WorkbookWorksheet
-
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_bool_value("highlightFirstColumn", self.highlight_first_column)
         writer.write_bool_value("highlightLastColumn", self.highlight_last_column)

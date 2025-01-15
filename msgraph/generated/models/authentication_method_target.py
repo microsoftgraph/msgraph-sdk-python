@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method_target_type import AuthenticationMethodTargetType
@@ -44,10 +45,10 @@ class AuthenticationMethodTarget(Entity, Parsable):
             return SmsAuthenticationMethodTarget()
         return AuthenticationMethodTarget()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method_target_type import AuthenticationMethodTargetType
         from .entity import Entity
@@ -59,7 +60,7 @@ class AuthenticationMethodTarget(Entity, Parsable):
         from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
         from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "isRegistrationRequired": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
             "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(AuthenticationMethodTargetType)),
         }
@@ -76,11 +77,6 @@ class AuthenticationMethodTarget(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_method_target_type import AuthenticationMethodTargetType
-        from .entity import Entity
-        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
-        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
-
         writer.write_bool_value("isRegistrationRequired", self.is_registration_required)
         writer.write_enum_value("targetType", self.target_type)
     

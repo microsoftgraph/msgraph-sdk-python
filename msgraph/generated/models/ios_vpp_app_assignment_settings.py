@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .mobile_app_assignment_settings import MobileAppAssignmentSettings
@@ -31,16 +32,16 @@ class IosVppAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
             raise TypeError("parse_node cannot be null.")
         return IosVppAppAssignmentSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "useDeviceLicensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),
             "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
@@ -57,8 +58,6 @@ class IosVppAppAssignmentSettings(MobileAppAssignmentSettings, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
-
         writer.write_bool_value("useDeviceLicensing", self.use_device_licensing)
         writer.write_str_value("vpnConfigurationId", self.vpn_configuration_id)
     

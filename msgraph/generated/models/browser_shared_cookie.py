@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .browser_shared_cookie_history import BrowserSharedCookieHistory
@@ -24,7 +25,7 @@ class BrowserSharedCookie(Entity, Parsable):
     # The name of the cookie.
     display_name: Optional[str] = None
     # The history of modifications applied to the cookie.
-    history: Optional[List[BrowserSharedCookieHistory]] = None
+    history: Optional[list[BrowserSharedCookieHistory]] = None
     # Controls whether a cookie is a host-only or domain cookie.
     host_only: Optional[bool] = None
     # The URL of the cookie.
@@ -53,10 +54,10 @@ class BrowserSharedCookie(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return BrowserSharedCookie()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .browser_shared_cookie_history import BrowserSharedCookieHistory
         from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
@@ -70,7 +71,7 @@ class BrowserSharedCookie(Entity, Parsable):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
@@ -97,12 +98,6 @@ class BrowserSharedCookie(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .browser_shared_cookie_history import BrowserSharedCookieHistory
-        from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
-        from .browser_shared_cookie_status import BrowserSharedCookieStatus
-        from .entity import Entity
-        from .identity_set import IdentitySet
-
         writer.write_str_value("comment", self.comment)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("deletedDateTime", self.deleted_date_time)

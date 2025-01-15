@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .security.behavior_during_retention_period import BehaviorDuringRetentionPeriod
@@ -13,7 +14,7 @@ class RetentionLabelSettings(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Describes the item behavior during retention period. Possible values are: doNotRetain, retain, retainAsRecord, retainAsRegulatoryRecord, unknownFutureValue. Read-only.
     behavior_during_retention_period: Optional[BehaviorDuringRetentionPeriod] = None
     # Specifies whether updates to document content are allowed. Read-only.
@@ -40,16 +41,16 @@ class RetentionLabelSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return RetentionLabelSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .security.behavior_during_retention_period import BehaviorDuringRetentionPeriod
 
         from .security.behavior_during_retention_period import BehaviorDuringRetentionPeriod
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "behaviorDuringRetentionPeriod": lambda n : setattr(self, 'behavior_during_retention_period', n.get_enum_value(BehaviorDuringRetentionPeriod)),
             "isContentUpdateAllowed": lambda n : setattr(self, 'is_content_update_allowed', n.get_bool_value()),
             "isDeleteAllowed": lambda n : setattr(self, 'is_delete_allowed', n.get_bool_value()),
@@ -68,8 +69,6 @@ class RetentionLabelSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .security.behavior_during_retention_period import BehaviorDuringRetentionPeriod
-
         writer.write_enum_value("behaviorDuringRetentionPeriod", self.behavior_during_retention_period)
         writer.write_bool_value("isContentUpdateAllowed", self.is_content_update_allowed)
         writer.write_bool_value("isDeleteAllowed", self.is_delete_allowed)

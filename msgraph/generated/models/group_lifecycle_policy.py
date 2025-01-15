@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -30,16 +31,16 @@ class GroupLifecyclePolicy(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return GroupLifecyclePolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
 
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "alternateNotificationEmails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
             "groupLifetimeInDays": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
             "managedGroupTypes": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),
@@ -57,8 +58,6 @@ class GroupLifecyclePolicy(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-
         writer.write_str_value("alternateNotificationEmails", self.alternate_notification_emails)
         writer.write_int_value("groupLifetimeInDays", self.group_lifetime_in_days)
         writer.write_str_value("managedGroupTypes", self.managed_group_types)

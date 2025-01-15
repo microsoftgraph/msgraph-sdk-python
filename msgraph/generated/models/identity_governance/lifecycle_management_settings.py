@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..email_settings import EmailSettings
@@ -29,10 +30,10 @@ class LifecycleManagementSettings(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return LifecycleManagementSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..email_settings import EmailSettings
         from ..entity import Entity
@@ -40,7 +41,7 @@ class LifecycleManagementSettings(Entity, Parsable):
         from ..email_settings import EmailSettings
         from ..entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "emailSettings": lambda n : setattr(self, 'email_settings', n.get_object_value(EmailSettings)),
             "workflowScheduleIntervalInHours": lambda n : setattr(self, 'workflow_schedule_interval_in_hours', n.get_int_value()),
         }
@@ -57,9 +58,6 @@ class LifecycleManagementSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..email_settings import EmailSettings
-        from ..entity import Entity
-
         writer.write_object_value("emailSettings", self.email_settings)
         writer.write_int_value("workflowScheduleIntervalInHours", self.workflow_schedule_interval_in_hours)
     

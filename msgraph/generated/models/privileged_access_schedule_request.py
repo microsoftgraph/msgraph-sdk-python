@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
@@ -52,10 +53,10 @@ class PrivilegedAccessScheduleRequest(Request, Parsable):
             return PrivilegedAccessGroupEligibilityScheduleRequest()
         return PrivilegedAccessScheduleRequest()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
         from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
@@ -71,7 +72,7 @@ class PrivilegedAccessScheduleRequest(Request, Parsable):
         from .schedule_request_actions import ScheduleRequestActions
         from .ticket_info import TicketInfo
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(ScheduleRequestActions)),
             "isValidationOnly": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
@@ -91,13 +92,6 @@ class PrivilegedAccessScheduleRequest(Request, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
-        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
-        from .request import Request
-        from .request_schedule import RequestSchedule
-        from .schedule_request_actions import ScheduleRequestActions
-        from .ticket_info import TicketInfo
-
         writer.write_enum_value("action", self.action)
         writer.write_bool_value("isValidationOnly", self.is_validation_only)
         writer.write_str_value("justification", self.justification)

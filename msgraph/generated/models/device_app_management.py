@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_managed_app_protection import AndroidManagedAppProtection
@@ -29,23 +30,23 @@ class DeviceAppManagement(Entity, Parsable):
     Singleton entity that acts as a container for all device app management functionality.
     """
     # Android managed app policies.
-    android_managed_app_protections: Optional[List[AndroidManagedAppProtection]] = None
+    android_managed_app_protections: Optional[list[AndroidManagedAppProtection]] = None
     # Default managed app policies.
-    default_managed_app_protections: Optional[List[DefaultManagedAppProtection]] = None
+    default_managed_app_protections: Optional[list[DefaultManagedAppProtection]] = None
     # iOS managed app policies.
-    ios_managed_app_protections: Optional[List[IosManagedAppProtection]] = None
+    ios_managed_app_protections: Optional[list[IosManagedAppProtection]] = None
     # Whether the account is enabled for syncing applications from the Microsoft Store for Business.
     is_enabled_for_microsoft_store_for_business: Optional[bool] = None
     # Managed app policies.
-    managed_app_policies: Optional[List[ManagedAppPolicy]] = None
+    managed_app_policies: Optional[list[ManagedAppPolicy]] = None
     # The managed app registrations.
-    managed_app_registrations: Optional[List[ManagedAppRegistration]] = None
+    managed_app_registrations: Optional[list[ManagedAppRegistration]] = None
     # The managed app statuses.
-    managed_app_statuses: Optional[List[ManagedAppStatus]] = None
+    managed_app_statuses: Optional[list[ManagedAppStatus]] = None
     # The Managed eBook.
-    managed_e_books: Optional[List[ManagedEBook]] = None
+    managed_e_books: Optional[list[ManagedEBook]] = None
     # Windows information protection for apps running on devices which are MDM enrolled.
-    mdm_windows_information_protection_policies: Optional[List[MdmWindowsInformationProtectionPolicy]] = None
+    mdm_windows_information_protection_policies: Optional[list[MdmWindowsInformationProtectionPolicy]] = None
     # The locale information used to sync applications from the Microsoft Store for Business. Cultures that are specific to a country/region. The names of these cultures follow RFC 4646 (Windows Vista and later). The format is -<country/regioncode2>, where  is a lowercase two-letter code derived from ISO 639-1 and <country/regioncode2> is an uppercase two-letter code derived from ISO 3166. For example, en-US for English (United States) is a specific culture.
     microsoft_store_for_business_language: Optional[str] = None
     # The last time an application sync from the Microsoft Store for Business was completed.
@@ -53,19 +54,19 @@ class DeviceAppManagement(Entity, Parsable):
     # The last time the apps from the Microsoft Store for Business were synced successfully for the account.
     microsoft_store_for_business_last_successful_sync_date_time: Optional[datetime.datetime] = None
     # The mobile app categories.
-    mobile_app_categories: Optional[List[MobileAppCategory]] = None
+    mobile_app_categories: Optional[list[MobileAppCategory]] = None
     # The Managed Device Mobile Application Configurations.
-    mobile_app_configurations: Optional[List[ManagedDeviceMobileAppConfiguration]] = None
+    mobile_app_configurations: Optional[list[ManagedDeviceMobileAppConfiguration]] = None
     # The mobile apps.
-    mobile_apps: Optional[List[MobileApp]] = None
+    mobile_apps: Optional[list[MobileApp]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Targeted managed app configurations.
-    targeted_managed_app_configurations: Optional[List[TargetedManagedAppConfiguration]] = None
+    targeted_managed_app_configurations: Optional[list[TargetedManagedAppConfiguration]] = None
     # List of Vpp tokens for this organization.
-    vpp_tokens: Optional[List[VppToken]] = None
+    vpp_tokens: Optional[list[VppToken]] = None
     # Windows information protection for apps running on devices which are not MDM enrolled.
-    windows_information_protection_policies: Optional[List[WindowsInformationProtectionPolicy]] = None
+    windows_information_protection_policies: Optional[list[WindowsInformationProtectionPolicy]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DeviceAppManagement:
@@ -78,10 +79,10 @@ class DeviceAppManagement(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return DeviceAppManagement()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .android_managed_app_protection import AndroidManagedAppProtection
         from .default_managed_app_protection import DefaultManagedAppProtection
@@ -115,7 +116,7 @@ class DeviceAppManagement(Entity, Parsable):
         from .vpp_token import VppToken
         from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "androidManagedAppProtections": lambda n : setattr(self, 'android_managed_app_protections', n.get_collection_of_object_values(AndroidManagedAppProtection)),
             "defaultManagedAppProtections": lambda n : setattr(self, 'default_managed_app_protections', n.get_collection_of_object_values(DefaultManagedAppProtection)),
             "iosManagedAppProtections": lambda n : setattr(self, 'ios_managed_app_protections', n.get_collection_of_object_values(IosManagedAppProtection)),
@@ -148,22 +149,6 @@ class DeviceAppManagement(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .android_managed_app_protection import AndroidManagedAppProtection
-        from .default_managed_app_protection import DefaultManagedAppProtection
-        from .entity import Entity
-        from .ios_managed_app_protection import IosManagedAppProtection
-        from .managed_app_policy import ManagedAppPolicy
-        from .managed_app_registration import ManagedAppRegistration
-        from .managed_app_status import ManagedAppStatus
-        from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
-        from .managed_e_book import ManagedEBook
-        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
-        from .mobile_app import MobileApp
-        from .mobile_app_category import MobileAppCategory
-        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
-        from .vpp_token import VppToken
-        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
-
         writer.write_collection_of_object_values("androidManagedAppProtections", self.android_managed_app_protections)
         writer.write_collection_of_object_values("defaultManagedAppProtections", self.default_managed_app_protections)
         writer.write_collection_of_object_values("iosManagedAppProtections", self.ios_managed_app_protections)

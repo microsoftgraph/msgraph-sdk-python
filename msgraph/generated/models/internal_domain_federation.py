@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .federated_idp_mfa_behavior import FederatedIdpMfaBehavior
@@ -43,10 +44,10 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
             raise TypeError("parse_node cannot be null.")
         return InternalDomainFederation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .federated_idp_mfa_behavior import FederatedIdpMfaBehavior
         from .prompt_login_behavior import PromptLoginBehavior
@@ -58,7 +59,7 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
         from .saml_or_ws_fed_provider import SamlOrWsFedProvider
         from .signing_certificate_update_status import SigningCertificateUpdateStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "activeSignInUri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
             "federatedIdpMfaBehavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(FederatedIdpMfaBehavior)),
             "isSignedAuthenticationRequestRequired": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
@@ -81,11 +82,6 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .federated_idp_mfa_behavior import FederatedIdpMfaBehavior
-        from .prompt_login_behavior import PromptLoginBehavior
-        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
-        from .signing_certificate_update_status import SigningCertificateUpdateStatus
-
         writer.write_str_value("activeSignInUri", self.active_sign_in_uri)
         writer.write_enum_value("federatedIdpMfaBehavior", self.federated_idp_mfa_behavior)
         writer.write_bool_value("isSignedAuthenticationRequestRequired", self.is_signed_authentication_request_required)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -22,7 +23,7 @@ class Participant(Entity, Parsable):
     # true if the participant is muted (client or server muted).
     is_muted: Optional[bool] = None
     # The list of media streams.
-    media_streams: Optional[List[MediaStream]] = None
+    media_streams: Optional[list[MediaStream]] = None
     # A blob of data provided by the participant in the roster.
     metadata: Optional[str] = None
     # The OdataType property
@@ -47,10 +48,10 @@ class Participant(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Participant()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .media_stream import MediaStream
@@ -66,7 +67,7 @@ class Participant(Entity, Parsable):
         from .recording_info import RecordingInfo
         from .removed_state import RemovedState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "info": lambda n : setattr(self, 'info', n.get_object_value(ParticipantInfo)),
             "isInLobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
             "isMuted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
@@ -90,13 +91,6 @@ class Participant(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .media_stream import MediaStream
-        from .online_meeting_restricted import OnlineMeetingRestricted
-        from .participant_info import ParticipantInfo
-        from .recording_info import RecordingInfo
-        from .removed_state import RemovedState
-
         writer.write_object_value("info", self.info)
         writer.write_bool_value("isInLobby", self.is_in_lobby)
         writer.write_bool_value("isMuted", self.is_muted)

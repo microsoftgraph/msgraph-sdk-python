@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
@@ -88,10 +89,10 @@ class CaseOperation(Entity, Parsable):
             return EdiscoveryTagOperation()
         return CaseOperation()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
         from ..identity_set import IdentitySet
@@ -121,7 +122,7 @@ class CaseOperation(Entity, Parsable):
         from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
         from .ediscovery_tag_operation import EdiscoveryTagOperation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(CaseAction)),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
@@ -143,20 +144,6 @@ class CaseOperation(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from ..entity import Entity
-        from ..identity_set import IdentitySet
-        from ..result_info import ResultInfo
-        from .case_action import CaseAction
-        from .case_operation_status import CaseOperationStatus
-        from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
-        from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
-        from .ediscovery_export_operation import EdiscoveryExportOperation
-        from .ediscovery_hold_operation import EdiscoveryHoldOperation
-        from .ediscovery_index_operation import EdiscoveryIndexOperation
-        from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
-        from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
-        from .ediscovery_tag_operation import EdiscoveryTagOperation
-
         writer.write_enum_value("action", self.action)
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("createdBy", self.created_by)

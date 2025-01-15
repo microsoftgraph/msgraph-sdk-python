@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
@@ -9,7 +10,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
@@ -24,7 +25,7 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the roleEligibilitySchedules property of the microsoft.graph.rbacApplication entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
         Instantiates a new UnifiedRoleEligibilityScheduleItemRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
@@ -44,7 +45,7 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -62,7 +63,7 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -85,7 +86,7 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder(BaseRequestBuilder):
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
-        error_mapping: Dict[str, type[ParsableFactory]] = {
+        error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
@@ -204,10 +205,10 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder(BaseRequestBuilder):
             return original_name
         
         # Expand related entities
-        expand: Optional[List[str]] = None
+        expand: Optional[list[str]] = None
 
         # Select properties to be returned
-        select: Optional[List[str]] = None
+        select: Optional[list[str]] = None
 
     
     @dataclass

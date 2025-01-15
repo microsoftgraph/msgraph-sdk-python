@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .category_color import CategoryColor
@@ -29,10 +30,10 @@ class OutlookCategory(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OutlookCategory()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .category_color import CategoryColor
         from .entity import Entity
@@ -40,7 +41,7 @@ class OutlookCategory(Entity, Parsable):
         from .category_color import CategoryColor
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "color": lambda n : setattr(self, 'color', n.get_enum_value(CategoryColor)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
@@ -57,9 +58,6 @@ class OutlookCategory(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .category_color import CategoryColor
-        from .entity import Entity
-
         writer.write_enum_value("color", self.color)
         writer.write_str_value("displayName", self.display_name)
     

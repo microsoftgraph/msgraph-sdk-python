@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -20,7 +21,7 @@ class WindowsProtectionState(Entity, Parsable):
     # Current anti malware version
     anti_malware_version: Optional[str] = None
     # Device malware list
-    detected_malware_state: Optional[List[WindowsDeviceMalwareState]] = None
+    detected_malware_state: Optional[list[WindowsDeviceMalwareState]] = None
     # Indicates device's health state. Possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical. Possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical.
     device_state: Optional[WindowsDeviceHealthState] = None
     # Current endpoint protection engine's version
@@ -73,10 +74,10 @@ class WindowsProtectionState(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WindowsProtectionState()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .windows_defender_product_status import WindowsDefenderProductStatus
@@ -88,7 +89,7 @@ class WindowsProtectionState(Entity, Parsable):
         from .windows_device_health_state import WindowsDeviceHealthState
         from .windows_device_malware_state import WindowsDeviceMalwareState
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "antiMalwareVersion": lambda n : setattr(self, 'anti_malware_version', n.get_str_value()),
             "detectedMalwareState": lambda n : setattr(self, 'detected_malware_state', n.get_collection_of_object_values(WindowsDeviceMalwareState)),
             "deviceState": lambda n : setattr(self, 'device_state', n.get_collection_of_enum_values(WindowsDeviceHealthState)),
@@ -124,11 +125,6 @@ class WindowsProtectionState(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .windows_defender_product_status import WindowsDefenderProductStatus
-        from .windows_device_health_state import WindowsDeviceHealthState
-        from .windows_device_malware_state import WindowsDeviceMalwareState
-
         writer.write_str_value("antiMalwareVersion", self.anti_malware_version)
         writer.write_collection_of_object_values("detectedMalwareState", self.detected_malware_state)
         writer.write_enum_value("deviceState", self.device_state)

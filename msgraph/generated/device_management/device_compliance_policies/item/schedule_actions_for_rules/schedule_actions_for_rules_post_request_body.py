@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
@@ -13,9 +14,9 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, BackedModel, 
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The deviceComplianceScheduledActionForRules property
-    device_compliance_scheduled_action_for_rules: Optional[List[DeviceComplianceScheduledActionForRule]] = None
+    device_compliance_scheduled_action_for_rules: Optional[list[DeviceComplianceScheduledActionForRule]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ScheduleActionsForRulesPostRequestBody:
@@ -28,16 +29,16 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, BackedModel, 
             raise TypeError("parse_node cannot be null.")
         return ScheduleActionsForRulesPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
 
         from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "deviceComplianceScheduledActionForRules": lambda n : setattr(self, 'device_compliance_scheduled_action_for_rules', n.get_collection_of_object_values(DeviceComplianceScheduledActionForRule)),
         }
         return fields
@@ -50,8 +51,6 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, BackedModel, 
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
-
         writer.write_collection_of_object_values("deviceComplianceScheduledActionForRules", self.device_compliance_scheduled_action_for_rules)
         writer.write_additional_data_value(self.additional_data)
     

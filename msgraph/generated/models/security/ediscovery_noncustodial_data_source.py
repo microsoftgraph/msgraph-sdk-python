@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .data_source import DataSource
@@ -30,10 +31,10 @@ class EdiscoveryNoncustodialDataSource(DataSourceContainer, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EdiscoveryNoncustodialDataSource()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .data_source import DataSource
         from .data_source_container import DataSourceContainer
@@ -43,7 +44,7 @@ class EdiscoveryNoncustodialDataSource(DataSourceContainer, Parsable):
         from .data_source_container import DataSourceContainer
         from .ediscovery_index_operation import EdiscoveryIndexOperation
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "dataSource": lambda n : setattr(self, 'data_source', n.get_object_value(DataSource)),
             "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(EdiscoveryIndexOperation)),
         }
@@ -60,10 +61,6 @@ class EdiscoveryNoncustodialDataSource(DataSourceContainer, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .data_source import DataSource
-        from .data_source_container import DataSourceContainer
-        from .ediscovery_index_operation import EdiscoveryIndexOperation
-
         writer.write_object_value("dataSource", self.data_source)
         writer.write_object_value("lastIndexOperation", self.last_index_operation)
     

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alternative_security_id import AlternativeSecurityId
@@ -18,7 +19,7 @@ class Device(DirectoryObject, Parsable):
     # true if the account is enabled; otherwise, false. Required. Default is true.  Supports $filter (eq, ne, not, in). Only callers with at least the Cloud Device Administrator role can set this property.
     account_enabled: Optional[bool] = None
     # For internal use only. Not nullable. Supports $filter (eq, not, ge, le).
-    alternative_security_ids: Optional[List[AlternativeSecurityId]] = None
+    alternative_security_ids: Optional[list[AlternativeSecurityId]] = None
     # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderby.
     approximate_last_sign_in_date_time: Optional[datetime.datetime] = None
     # The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -40,7 +41,7 @@ class Device(DirectoryObject, Parsable):
     # Enrollment type of the device. Intune sets this property. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth,appleUserEnrollment, appleUserEnrollmentWithServiceAccount. NOTE: This property might return other values apart from those listed.
     enrollment_type: Optional[str] = None
     # The collection of open extensions defined for the device. Read-only. Nullable.
-    extensions: Optional[List[Extension]] = None
+    extensions: Optional[list[Extension]] = None
     # true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     is_compliant: Optional[bool] = None
     # true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
@@ -56,7 +57,7 @@ class Device(DirectoryObject, Parsable):
     # Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, not, startsWith).
     mdm_app_id: Optional[str] = None
     # Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
-    member_of: Optional[List[DirectoryObject]] = None
+    member_of: Optional[list[DirectoryObject]] = None
     # Model of the device. Read-only.
     model: Optional[str] = None
     # The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
@@ -70,19 +71,19 @@ class Device(DirectoryObject, Parsable):
     # The version of the operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
     operating_system_version: Optional[str] = None
     # For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith,/$count eq 0, /$count ne 0).
-    physical_ids: Optional[List[str]] = None
+    physical_ids: Optional[list[str]] = None
     # The profile type of the device. Possible values: RegisteredDevice (default), SecureVM, Printer, Shared, IoT.
     profile_type: Optional[str] = None
     # The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Read-only. Nullable. Supports $expand.
-    registered_owners: Optional[List[DirectoryObject]] = None
+    registered_owners: Optional[list[DirectoryObject]] = None
     # Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
-    registered_users: Optional[List[DirectoryObject]] = None
+    registered_users: Optional[list[DirectoryObject]] = None
     # Date and time of when the device was registered. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     registration_date_time: Optional[datetime.datetime] = None
     # List of labels applied to the device by the system. Supports $filter (/$count eq 0, /$count ne 0).
-    system_labels: Optional[List[str]] = None
+    system_labels: Optional[list[str]] = None
     # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
-    transitive_member_of: Optional[List[DirectoryObject]] = None
+    transitive_member_of: Optional[list[DirectoryObject]] = None
     # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud-only joined devices), ServerAd (on-premises domain joined devices joined to Microsoft Entra ID). For more information, see Introduction to device management in Microsoft Entra ID.
     trust_type: Optional[str] = None
     
@@ -97,10 +98,10 @@ class Device(DirectoryObject, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Device()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alternative_security_id import AlternativeSecurityId
         from .directory_object import DirectoryObject
@@ -110,7 +111,7 @@ class Device(DirectoryObject, Parsable):
         from .directory_object import DirectoryObject
         from .extension import Extension
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "alternativeSecurityIds": lambda n : setattr(self, 'alternative_security_ids', n.get_collection_of_object_values(AlternativeSecurityId)),
             "approximateLastSignInDateTime": lambda n : setattr(self, 'approximate_last_sign_in_date_time', n.get_datetime_value()),
@@ -160,10 +161,6 @@ class Device(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .alternative_security_id import AlternativeSecurityId
-        from .directory_object import DirectoryObject
-        from .extension import Extension
-
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("alternativeSecurityIds", self.alternative_security_ids)
         writer.write_datetime_value("approximateLastSignInDateTime", self.approximate_last_sign_in_date_time)

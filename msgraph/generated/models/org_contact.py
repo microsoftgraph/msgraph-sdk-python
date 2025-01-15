@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -18,13 +19,13 @@ class OrgContact(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.orgContact"
     # Postal addresses for this organizational contact. For now a contact can only have one physical address.
-    addresses: Optional[List[PhysicalOfficeAddress]] = None
+    addresses: Optional[list[PhysicalOfficeAddress]] = None
     # Name of the company that this organizational contact belongs to.  Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     company_name: Optional[str] = None
     # The name for the department in which the contact works.  Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     department: Optional[str] = None
     # The contact's direct reports. (The users and contacts that have their manager property set to this contact.)  Read-only. Nullable. Supports $expand.
-    direct_reports: Optional[List[DirectoryObject]] = None
+    direct_reports: Optional[list[DirectoryObject]] = None
     # Display name for this organizational contact. Maximum length is 256 characters. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderby.
     display_name: Optional[str] = None
     # First name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
@@ -38,23 +39,23 @@ class OrgContact(DirectoryObject, Parsable):
     # The user or contact that is this contact's manager. Read-only. Supports $expand and $filter (eq) by id.
     manager: Optional[DirectoryObject] = None
     # Groups that this contact is a member of. Read-only. Nullable. Supports $expand.
-    member_of: Optional[List[DirectoryObject]] = None
+    member_of: Optional[list[DirectoryObject]] = None
     # Date and time when this organizational contact was last synchronized from on-premises AD. This date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ne, not, ge, le, in).
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
     # List of any synchronization provisioning errors for this organizational contact. Supports $filter (eq, not for category and propertyCausingError), /$count eq 0, /$count ne 0.
-    on_premises_provisioning_errors: Optional[List[OnPremisesProvisioningError]] = None
+    on_premises_provisioning_errors: Optional[list[OnPremisesProvisioningError]] = None
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced and now mastered in Exchange; null if this object has never been synced from an on-premises directory (default).   Supports $filter (eq, ne, not, in, and eq for null values).
     on_premises_sync_enabled: Optional[bool] = None
     # List of phones for this organizational contact. Phone types can be mobile, business, and businessFax. Only one of each type can ever be present in the collection.
-    phones: Optional[List[Phone]] = None
+    phones: Optional[list[Phone]] = None
     # For example: 'SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com'. The any operator is required for filter expressions on multi-valued properties. Supports $filter (eq, not, ge, le, startsWith, /$count eq 0, /$count ne 0).
-    proxy_addresses: Optional[List[str]] = None
+    proxy_addresses: Optional[list[str]] = None
     # Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from an organizational contact object .  Supports $filter (eq, not, for isResolved and serviceInstance).
-    service_provisioning_errors: Optional[List[ServiceProvisioningError]] = None
+    service_provisioning_errors: Optional[list[ServiceProvisioningError]] = None
     # Last name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     surname: Optional[str] = None
     # Groups that this contact is a member of, including groups that the contact is nested under. Read-only. Nullable.
-    transitive_member_of: Optional[List[DirectoryObject]] = None
+    transitive_member_of: Optional[list[DirectoryObject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> OrgContact:
@@ -67,10 +68,10 @@ class OrgContact(DirectoryObject, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OrgContact()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .on_premises_provisioning_error import OnPremisesProvisioningError
@@ -84,7 +85,7 @@ class OrgContact(DirectoryObject, Parsable):
         from .physical_office_address import PhysicalOfficeAddress
         from .service_provisioning_error import ServiceProvisioningError
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(PhysicalOfficeAddress)),
             "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
@@ -118,12 +119,6 @@ class OrgContact(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-        from .on_premises_provisioning_error import OnPremisesProvisioningError
-        from .phone import Phone
-        from .physical_office_address import PhysicalOfficeAddress
-        from .service_provisioning_error import ServiceProvisioningError
-
         writer.write_collection_of_object_values("addresses", self.addresses)
         writer.write_str_value("companyName", self.company_name)
         writer.write_str_value("department", self.department)

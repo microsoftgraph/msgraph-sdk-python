@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .education_feedback import EducationFeedback
@@ -29,10 +30,10 @@ class EducationFeedbackOutcome(EducationOutcome, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EducationFeedbackOutcome()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .education_feedback import EducationFeedback
         from .education_outcome import EducationOutcome
@@ -40,7 +41,7 @@ class EducationFeedbackOutcome(EducationOutcome, Parsable):
         from .education_feedback import EducationFeedback
         from .education_outcome import EducationOutcome
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(EducationFeedback)),
             "publishedFeedback": lambda n : setattr(self, 'published_feedback', n.get_object_value(EducationFeedback)),
         }
@@ -57,9 +58,6 @@ class EducationFeedbackOutcome(EducationOutcome, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .education_feedback import EducationFeedback
-        from .education_outcome import EducationOutcome
-
         writer.write_object_value("feedback", self.feedback)
         writer.write_object_value("publishedFeedback", self.published_feedback)
     

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package import AccessPackage
@@ -23,29 +24,29 @@ from .entity import Entity
 @dataclass
 class EntitlementManagement(Entity, Parsable):
     # Approval stages for decisions associated with access package assignment requests.
-    access_package_assignment_approvals: Optional[List[Approval]] = None
+    access_package_assignment_approvals: Optional[list[Approval]] = None
     # Access packages define the collection of resource roles and the policies for which subjects can request or be assigned access to those resources.
-    access_packages: Optional[List[AccessPackage]] = None
+    access_packages: Optional[list[AccessPackage]] = None
     # Access package assignment policies govern which subjects can request or be assigned an access package via an access package assignment.
-    assignment_policies: Optional[List[AccessPackageAssignmentPolicy]] = None
+    assignment_policies: Optional[list[AccessPackageAssignmentPolicy]] = None
     # Access package assignment requests created by or on behalf of a subject.
-    assignment_requests: Optional[List[AccessPackageAssignmentRequest]] = None
+    assignment_requests: Optional[list[AccessPackageAssignmentRequest]] = None
     # The assignment of an access package to a subject for a period of time.
-    assignments: Optional[List[AccessPackageAssignment]] = None
+    assignments: Optional[list[AccessPackageAssignment]] = None
     # A container for access packages.
-    catalogs: Optional[List[AccessPackageCatalog]] = None
+    catalogs: Optional[list[AccessPackageCatalog]] = None
     # References to a directory or domain of another organization whose users can request access.
-    connected_organizations: Optional[List[ConnectedOrganization]] = None
+    connected_organizations: Optional[list[ConnectedOrganization]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A reference to the geolocation environments in which a resource is located.
-    resource_environments: Optional[List[AccessPackageResourceEnvironment]] = None
+    resource_environments: Optional[list[AccessPackageResourceEnvironment]] = None
     # Represents a request to add or remove a resource to or from a catalog respectively.
-    resource_requests: Optional[List[AccessPackageResourceRequest]] = None
+    resource_requests: Optional[list[AccessPackageResourceRequest]] = None
     # The resourceRoleScopes property
-    resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
+    resource_role_scopes: Optional[list[AccessPackageResourceRoleScope]] = None
     # The resources associated with the catalogs.
-    resources: Optional[List[AccessPackageResource]] = None
+    resources: Optional[list[AccessPackageResource]] = None
     # The settings that control the behavior of Microsoft Entra entitlement management.
     settings: Optional[EntitlementManagementSettings] = None
     
@@ -60,10 +61,10 @@ class EntitlementManagement(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EntitlementManagement()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package import AccessPackage
         from .access_package_assignment import AccessPackageAssignment
@@ -93,7 +94,7 @@ class EntitlementManagement(Entity, Parsable):
         from .entitlement_management_settings import EntitlementManagementSettings
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "accessPackageAssignmentApprovals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(Approval)),
             "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(AccessPackage)),
             "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
@@ -120,20 +121,6 @@ class EntitlementManagement(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package import AccessPackage
-        from .access_package_assignment import AccessPackageAssignment
-        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
-        from .access_package_assignment_request import AccessPackageAssignmentRequest
-        from .access_package_catalog import AccessPackageCatalog
-        from .access_package_resource import AccessPackageResource
-        from .access_package_resource_environment import AccessPackageResourceEnvironment
-        from .access_package_resource_request import AccessPackageResourceRequest
-        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
-        from .approval import Approval
-        from .connected_organization import ConnectedOrganization
-        from .entitlement_management_settings import EntitlementManagementSettings
-        from .entity import Entity
-
         writer.write_collection_of_object_values("accessPackageAssignmentApprovals", self.access_package_assignment_approvals)
         writer.write_collection_of_object_values("accessPackages", self.access_packages)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)

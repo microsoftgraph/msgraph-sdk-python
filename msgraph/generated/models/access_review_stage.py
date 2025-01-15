@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
@@ -14,15 +15,15 @@ from .entity import Entity
 @dataclass
 class AccessReviewStage(Entity, Parsable):
     # Each user reviewed in an accessReviewStage has a decision item representing if they were approved, denied, or not yet reviewed.
-    decisions: Optional[List[AccessReviewInstanceDecisionItem]] = None
+    decisions: Optional[list[AccessReviewInstanceDecisionItem]] = None
     # The date and time in ISO 8601 format and UTC time when the review stage is scheduled to end. This property is the cumulative total of the durationInDays for all stages. Read-only.
     end_date_time: Optional[datetime.datetime] = None
     # This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers are notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner doesn't exist, or manager is specified as reviewer but a user's manager doesn't exist.
-    fallback_reviewers: Optional[List[AccessReviewReviewerScope]] = None
+    fallback_reviewers: Optional[list[AccessReviewReviewerScope]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # This collection of access review scopes is used to define who the reviewers are. For examples of options for assigning reviewers, see Assign reviewers to your access review definition using the Microsoft Graph API.
-    reviewers: Optional[List[AccessReviewReviewerScope]] = None
+    reviewers: Optional[list[AccessReviewReviewerScope]] = None
     # The date and time in ISO 8601 format and UTC time when the review stage is scheduled to start. Read-only.
     start_date_time: Optional[datetime.datetime] = None
     # Specifies the status of an accessReviewStage. Possible values: Initializing, NotStarted, Starting, InProgress, Completing, Completed, AutoReviewing, and AutoReviewed. Supports $orderby, and $filter (eq only). Read-only.
@@ -39,10 +40,10 @@ class AccessReviewStage(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AccessReviewStage()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
         from .access_review_reviewer_scope import AccessReviewReviewerScope
@@ -52,7 +53,7 @@ class AccessReviewStage(Entity, Parsable):
         from .access_review_reviewer_scope import AccessReviewReviewerScope
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_object_values(AccessReviewInstanceDecisionItem)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
@@ -73,10 +74,6 @@ class AccessReviewStage(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
-        from .access_review_reviewer_scope import AccessReviewReviewerScope
-        from .entity import Entity
-
         writer.write_collection_of_object_values("decisions", self.decisions)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)

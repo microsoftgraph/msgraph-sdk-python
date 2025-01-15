@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .container_port_protocol import ContainerPortProtocol
@@ -13,7 +14,7 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The application protocol for this port.
     app_protocol: Optional[str] = None
     # The name of this port within the service.
@@ -40,16 +41,16 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return KubernetesServicePort()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .container_port_protocol import ContainerPortProtocol
 
         from .container_port_protocol import ContainerPortProtocol
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appProtocol": lambda n : setattr(self, 'app_protocol', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "nodePort": lambda n : setattr(self, 'node_port', n.get_int_value()),
@@ -68,8 +69,6 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .container_port_protocol import ContainerPortProtocol
-
         writer.write_str_value("appProtocol", self.app_protocol)
         writer.write_str_value("name", self.name)
         writer.write_int_value("nodePort", self.node_port)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -45,10 +46,10 @@ class MultiTenantOrganizationMember(DirectoryObject, Parsable):
             raise TypeError("parse_node cannot be null.")
         return MultiTenantOrganizationMember()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
         from .multi_tenant_organization_member_role import MultiTenantOrganizationMemberRole
@@ -60,7 +61,7 @@ class MultiTenantOrganizationMember(DirectoryObject, Parsable):
         from .multi_tenant_organization_member_state import MultiTenantOrganizationMemberState
         from .multi_tenant_organization_member_transition_details import MultiTenantOrganizationMemberTransitionDetails
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "addedByTenantId": lambda n : setattr(self, 'added_by_tenant_id', n.get_uuid_value()),
             "addedDateTime": lambda n : setattr(self, 'added_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -83,11 +84,6 @@ class MultiTenantOrganizationMember(DirectoryObject, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .directory_object import DirectoryObject
-        from .multi_tenant_organization_member_role import MultiTenantOrganizationMemberRole
-        from .multi_tenant_organization_member_state import MultiTenantOrganizationMemberState
-        from .multi_tenant_organization_member_transition_details import MultiTenantOrganizationMemberTransitionDetails
-
         writer.write_uuid_value("addedByTenantId", self.added_by_tenant_id)
         writer.write_datetime_value("addedDateTime", self.added_date_time)
         writer.write_str_value("displayName", self.display_name)

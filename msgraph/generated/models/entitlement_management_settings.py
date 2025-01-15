@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
@@ -30,10 +31,10 @@ class EntitlementManagementSettings(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return EntitlementManagementSettings()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
         from .entity import Entity
@@ -41,7 +42,7 @@ class EntitlementManagementSettings(Entity, Parsable):
         from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "durationUntilExternalUserDeletedAfterBlocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_timedelta_value()),
             "externalUserLifecycleAction": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(AccessPackageExternalUserLifecycleAction)),
         }
@@ -58,9 +59,6 @@ class EntitlementManagementSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
-        from .entity import Entity
-
         writer.write_timedelta_value("durationUntilExternalUserDeletedAfterBlocked", self.duration_until_external_user_deleted_after_blocked)
         writer.write_enum_value("externalUserLifecycleAction", self.external_user_lifecycle_action)
     

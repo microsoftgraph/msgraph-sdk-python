@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
@@ -15,7 +16,7 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method.
-    include_targets: Optional[List[AuthenticationMethodTarget]] = None
+    include_targets: Optional[list[AuthenticationMethodTarget]] = None
     # Determines whether attestation must be enforced for FIDO2 security key registration.
     is_attestation_enforced: Optional[bool] = None
     # Determines if users can register new FIDO2 security keys.
@@ -34,10 +35,10 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
             raise TypeError("parse_node cannot be null.")
         return Fido2AuthenticationMethodConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
@@ -47,7 +48,7 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
         from .authentication_method_target import AuthenticationMethodTarget
         from .fido2_key_restrictions import Fido2KeyRestrictions
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
             "isAttestationEnforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
             "isSelfServiceRegistrationAllowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
@@ -66,10 +67,6 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .authentication_method_configuration import AuthenticationMethodConfiguration
-        from .authentication_method_target import AuthenticationMethodTarget
-        from .fido2_key_restrictions import Fido2KeyRestrictions
-
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
         writer.write_bool_value("isAttestationEnforced", self.is_attestation_enforced)
         writer.write_bool_value("isSelfServiceRegistrationAllowed", self.is_self_service_registration_allowed)

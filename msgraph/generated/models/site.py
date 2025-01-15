@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_item import BaseItem
@@ -29,33 +30,33 @@ class Site(BaseItem, Parsable):
     # Analytics about the view activities that took place on this site.
     analytics: Optional[ItemAnalytics] = None
     # The collection of column definitions reusable across lists under this site.
-    columns: Optional[List[ColumnDefinition]] = None
+    columns: Optional[list[ColumnDefinition]] = None
     # The collection of content types defined for this site.
-    content_types: Optional[List[ContentType]] = None
+    content_types: Optional[list[ContentType]] = None
     # The full title for the site. Read-only.
     display_name: Optional[str] = None
     # The default drive (document library) for this site.
     drive: Optional[Drive] = None
     # The collection of drives (document libraries) under this site.
-    drives: Optional[List[Drive]] = None
+    drives: Optional[list[Drive]] = None
     # The error property
     error: Optional[PublicError] = None
     # The externalColumns property
-    external_columns: Optional[List[ColumnDefinition]] = None
+    external_columns: Optional[list[ColumnDefinition]] = None
     # Identifies whether the site is personal or not. Read-only.
     is_personal_site: Optional[bool] = None
     # Used to address any item contained in this site. This collection can't be enumerated.
-    items: Optional[List[BaseItem]] = None
+    items: Optional[list[BaseItem]] = None
     # The collection of lists under this site.
-    lists: Optional[List[List_]] = None
+    lists: Optional[list[List_]] = None
     # Calls the OneNote service for notebook related operations.
     onenote: Optional[Onenote] = None
     # The collection of long-running operations on the site.
-    operations: Optional[List[RichLongRunningOperation]] = None
+    operations: Optional[list[RichLongRunningOperation]] = None
     # The collection of pages in the baseSitePages list in this site.
-    pages: Optional[List[BaseSitePage]] = None
+    pages: Optional[list[BaseSitePage]] = None
     # The permissions associated with the site. Nullable.
-    permissions: Optional[List[Permission]] = None
+    permissions: Optional[list[Permission]] = None
     # If present, provides the root site in the site collection. Read-only.
     root: Optional[Root] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
@@ -63,11 +64,11 @@ class Site(BaseItem, Parsable):
     # Provides details about the site's site collection. Available only on the root site. Read-only.
     site_collection: Optional[SiteCollection] = None
     # The collection of the sub-sites under this site.
-    sites: Optional[List[Site]] = None
+    sites: Optional[list[Site]] = None
     # The default termStore under this site.
     term_store: Optional[Store] = None
     # The collection of termStores under this site.
-    term_stores: Optional[List[Store]] = None
+    term_stores: Optional[list[Store]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Site:
@@ -80,10 +81,10 @@ class Site(BaseItem, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Site()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .base_item import BaseItem
         from .base_site_page import BaseSitePage
@@ -117,7 +118,7 @@ class Site(BaseItem, Parsable):
         from .site_collection import SiteCollection
         from .term_store.store import Store
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
             "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(ContentType)),
@@ -153,22 +154,6 @@ class Site(BaseItem, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .base_item import BaseItem
-        from .base_site_page import BaseSitePage
-        from .column_definition import ColumnDefinition
-        from .content_type import ContentType
-        from .drive import Drive
-        from .item_analytics import ItemAnalytics
-        from .list_ import List_
-        from .onenote import Onenote
-        from .permission import Permission
-        from .public_error import PublicError
-        from .rich_long_running_operation import RichLongRunningOperation
-        from .root import Root
-        from .sharepoint_ids import SharepointIds
-        from .site_collection import SiteCollection
-        from .term_store.store import Store
-
         writer.write_object_value("analytics", self.analytics)
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_collection_of_object_values("contentTypes", self.content_types)

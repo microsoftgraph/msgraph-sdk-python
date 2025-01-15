@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .applied_conditional_access_policy import AppliedConditionalAccessPolicy
@@ -25,7 +26,7 @@ class SignIn(Entity, Parsable):
     # Unique GUID that represents the app ID in the Microsoft Entra ID.  Supports $filter (eq).
     app_id: Optional[str] = None
     # Provides a list of conditional access policies that the corresponding sign-in activity triggers. Apps need more Conditional Access-related privileges to read the details of this property. For more information, see Permissions for viewing applied conditional access (CA) policies in sign-ins.
-    applied_conditional_access_policies: Optional[List[AppliedConditionalAccessPolicy]] = None
+    applied_conditional_access_policies: Optional[list[AppliedConditionalAccessPolicy]] = None
     # Identifies the client used for the sign-in activity. Modern authentication clients include Browser, modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients.  Supports $filter (eq).
     client_app_used: Optional[str] = None
     # Reports status of an activated conditional access policy. Possible values are: success, failure, notApplied, and unknownFutureValue.  Supports $filter (eq).
@@ -51,9 +52,9 @@ class SignIn(Entity, Parsable):
     # The reason behind a specific state of a risky user, sign-in, or a risk event. The possible values are none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal, m365DAdminDismissedDetection, userChangedPasswordOnPremises, adminDismissedRiskForSignIn, adminConfirmedAccountSafe. You must use the Prefer: include-unknown-enum-members request header to get the following value or values in this evolvable enum: adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal, m365DAdminDismissedDetection, userChangedPasswordOnPremises, adminDismissedRiskForSignIn, adminConfirmedAccountSafe.The value none means that Microsoft Entra risk detection did not flag the user or the sign-in as a risky event so far.  Supports $filter (eq). Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
     risk_detail: Optional[RiskDetail] = None
     # The riskEventTypes property
-    risk_event_types: Optional[List[RiskEventType]] = None
+    risk_event_types: Optional[list[RiskEventType]] = None
     # The list of risk event types associated with the sign-in. Possible values: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence, generic, or unknownFutureValue.  Supports $filter (eq, startsWith).
-    risk_event_types_v2: Optional[List[str]] = None
+    risk_event_types_v2: Optional[list[str]] = None
     # Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
     risk_level_aggregated: Optional[RiskLevel] = None
     # Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq). Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
@@ -80,10 +81,10 @@ class SignIn(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return SignIn()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .applied_conditional_access_policy import AppliedConditionalAccessPolicy
         from .conditional_access_status import ConditionalAccessStatus
@@ -107,7 +108,7 @@ class SignIn(Entity, Parsable):
         from .sign_in_location import SignInLocation
         from .sign_in_status import SignInStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "appliedConditionalAccessPolicies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(AppliedConditionalAccessPolicy)),
@@ -145,17 +146,6 @@ class SignIn(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .applied_conditional_access_policy import AppliedConditionalAccessPolicy
-        from .conditional_access_status import ConditionalAccessStatus
-        from .device_detail import DeviceDetail
-        from .entity import Entity
-        from .risk_detail import RiskDetail
-        from .risk_event_type import RiskEventType
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
-        from .sign_in_location import SignInLocation
-        from .sign_in_status import SignInStatus
-
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("appId", self.app_id)
         writer.write_collection_of_object_values("appliedConditionalAccessPolicies", self.applied_conditional_access_policies)

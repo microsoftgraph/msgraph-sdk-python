@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
@@ -38,10 +39,10 @@ class MailboxRestoreArtifact(RestoreArtifactBase, Parsable):
             return GranularMailboxRestoreArtifact()
         return MailboxRestoreArtifact()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .restore_artifact_base import RestoreArtifactBase
@@ -49,7 +50,7 @@ class MailboxRestoreArtifact(RestoreArtifactBase, Parsable):
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .restore_artifact_base import RestoreArtifactBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "restoredFolderId": lambda n : setattr(self, 'restored_folder_id', n.get_str_value()),
             "restoredFolderName": lambda n : setattr(self, 'restored_folder_name', n.get_str_value()),
         }
@@ -66,9 +67,6 @@ class MailboxRestoreArtifact(RestoreArtifactBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
-        from .restore_artifact_base import RestoreArtifactBase
-
         writer.write_str_value("restoredFolderId", self.restored_folder_id)
     
 

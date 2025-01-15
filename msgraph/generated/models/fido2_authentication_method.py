@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attestation_level import AttestationLevel
@@ -17,7 +18,7 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
     # Authenticator Attestation GUID, an identifier that indicates the type (e.g. make and model) of the authenticator.
     aa_guid: Optional[str] = None
     # The attestation certificate(s) attached to this security key.
-    attestation_certificates: Optional[List[str]] = None
+    attestation_certificates: Optional[list[str]] = None
     # The attestation level of this FIDO2 security key. Possible values are: attested, or notAttested.
     attestation_level: Optional[AttestationLevel] = None
     # The timestamp when this key was registered to the user.
@@ -38,10 +39,10 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Fido2AuthenticationMethod()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attestation_level import AttestationLevel
         from .authentication_method import AuthenticationMethod
@@ -49,7 +50,7 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
         from .attestation_level import AttestationLevel
         from .authentication_method import AuthenticationMethod
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "aaGuid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
             "attestationCertificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
             "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(AttestationLevel)),
@@ -70,9 +71,6 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .attestation_level import AttestationLevel
-        from .authentication_method import AuthenticationMethod
-
         writer.write_str_value("aaGuid", self.aa_guid)
         writer.write_collection_of_primitive_values("attestationCertificates", self.attestation_certificates)
         writer.write_enum_value("attestationLevel", self.attestation_level)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .broadcast_meeting_settings import BroadcastMeetingSettings
@@ -32,11 +33,11 @@ class OnlineMeeting(OnlineMeetingBase, Parsable):
     # The participants associated with the online meeting, including the organizer and the attendees.
     participants: Optional[MeetingParticipants] = None
     # The recordings of an online meeting. Read-only.
-    recordings: Optional[List[CallRecording]] = None
+    recordings: Optional[list[CallRecording]] = None
     # The meeting start time in UTC.
     start_date_time: Optional[datetime.datetime] = None
     # The transcripts of an online meeting. Read-only.
-    transcripts: Optional[List[CallTranscript]] = None
+    transcripts: Optional[list[CallTranscript]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> OnlineMeeting:
@@ -49,10 +50,10 @@ class OnlineMeeting(OnlineMeetingBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OnlineMeeting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .broadcast_meeting_settings import BroadcastMeetingSettings
         from .call_recording import CallRecording
@@ -66,7 +67,7 @@ class OnlineMeeting(OnlineMeetingBase, Parsable):
         from .meeting_participants import MeetingParticipants
         from .online_meeting_base import OnlineMeetingBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "attendeeReport": lambda n : setattr(self, 'attendee_report', n.get_bytes_value()),
             "broadcastSettings": lambda n : setattr(self, 'broadcast_settings', n.get_object_value(BroadcastMeetingSettings)),
             "creationDateTime": lambda n : setattr(self, 'creation_date_time', n.get_datetime_value()),
@@ -91,12 +92,6 @@ class OnlineMeeting(OnlineMeetingBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .broadcast_meeting_settings import BroadcastMeetingSettings
-        from .call_recording import CallRecording
-        from .call_transcript import CallTranscript
-        from .meeting_participants import MeetingParticipants
-        from .online_meeting_base import OnlineMeetingBase
-
         writer.write_bytes_value("attendeeReport", self.attendee_report)
         writer.write_object_value("broadcastSettings", self.broadcast_settings)
         writer.write_datetime_value("creationDateTime", self.creation_date_time)

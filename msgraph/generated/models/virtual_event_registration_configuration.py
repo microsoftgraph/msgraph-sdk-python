@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -17,7 +18,7 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Registration questions.
-    questions: Optional[List[VirtualEventRegistrationQuestionBase]] = None
+    questions: Optional[list[VirtualEventRegistrationQuestionBase]] = None
     # Registration URL of the virtual event.
     registration_web_url: Optional[str] = None
     
@@ -41,10 +42,10 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
             return VirtualEventWebinarRegistrationConfiguration()
         return VirtualEventRegistrationConfiguration()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
@@ -54,7 +55,7 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "capacity": lambda n : setattr(self, 'capacity', n.get_int_value()),
             "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(VirtualEventRegistrationQuestionBase)),
             "registrationWebUrl": lambda n : setattr(self, 'registration_web_url', n.get_str_value()),
@@ -72,10 +73,6 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
-        from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
-
         writer.write_int_value("capacity", self.capacity)
         writer.write_collection_of_object_values("questions", self.questions)
         writer.write_str_value("registrationWebUrl", self.registration_web_url)

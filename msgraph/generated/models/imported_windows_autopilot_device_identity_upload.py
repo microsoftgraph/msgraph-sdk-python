@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -19,7 +20,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity, Parsable):
     # DateTime when the entity is created.
     created_date_time_utc: Optional[datetime.datetime] = None
     # Collection of all Autopilot devices as a part of this upload.
-    device_identities: Optional[List[ImportedWindowsAutopilotDeviceIdentity]] = None
+    device_identities: Optional[list[ImportedWindowsAutopilotDeviceIdentity]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
@@ -36,10 +37,10 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return ImportedWindowsAutopilotDeviceIdentityUpload()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
@@ -49,7 +50,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity, Parsable):
         from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
         from .imported_windows_autopilot_device_identity_upload_status import ImportedWindowsAutopilotDeviceIdentityUploadStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "createdDateTimeUtc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
             "deviceIdentities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ImportedWindowsAutopilotDeviceIdentityUploadStatus)),
@@ -67,10 +68,6 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
-        from .imported_windows_autopilot_device_identity_upload_status import ImportedWindowsAutopilotDeviceIdentityUploadStatus
-
         writer.write_datetime_value("createdDateTimeUtc", self.created_date_time_utc)
         writer.write_collection_of_object_values("deviceIdentities", self.device_identities)
         writer.write_enum_value("status", self.status)

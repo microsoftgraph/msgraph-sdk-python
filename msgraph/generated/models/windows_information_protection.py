@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -27,7 +28,7 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsInformationProtection"
     # Navigation property to list of security groups targeted for policy.
-    assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None
+    assignments: Optional[list[TargetedManagedAppPolicyAssignment]] = None
     # Specifies whether to allow Azure RMS encryption for WIP
     azure_rights_management_services_allowed: Optional[bool] = None
     # Specifies a recovery certificate that can be used for data recovery of encrypted files. This is the same as the data recovery agent(DRA) certificate for encrypting file system(EFS)
@@ -37,25 +38,25 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
     # Primary enterprise domain
     enterprise_domain: Optional[str] = None
     # Sets the enterprise IP ranges that define the computers in the enterprise network. Data that comes from those computers will be considered part of the enterprise and protected. These locations will be considered a safe destination for enterprise data to be shared to
-    enterprise_i_p_ranges: Optional[List[WindowsInformationProtectionIPRangeCollection]] = None
+    enterprise_i_p_ranges: Optional[list[WindowsInformationProtectionIPRangeCollection]] = None
     # Boolean value that tells the client to accept the configured list and not to use heuristics to attempt to find other subnets. Default is false
     enterprise_i_p_ranges_are_authoritative: Optional[bool] = None
     # This is the comma-separated list of internal proxy servers. For example, '157.54.14.28, 157.54.11.118, 10.202.14.167, 157.53.14.163, 157.69.210.59'. These proxies have been configured by the admin to connect to specific resources on the Internet. They are considered to be enterprise network locations. The proxies are only leveraged in configuring the EnterpriseProxiedDomains policy to force traffic to the matched domains through these proxies
-    enterprise_internal_proxy_servers: Optional[List[WindowsInformationProtectionResourceCollection]] = None
+    enterprise_internal_proxy_servers: Optional[list[WindowsInformationProtectionResourceCollection]] = None
     # This is the list of domains that comprise the boundaries of the enterprise. Data from one of these domains that is sent to a device will be considered enterprise data and protected These locations will be considered a safe destination for enterprise data to be shared to
-    enterprise_network_domain_names: Optional[List[WindowsInformationProtectionResourceCollection]] = None
+    enterprise_network_domain_names: Optional[list[WindowsInformationProtectionResourceCollection]] = None
     # List of enterprise domains to be protected
-    enterprise_protected_domain_names: Optional[List[WindowsInformationProtectionResourceCollection]] = None
+    enterprise_protected_domain_names: Optional[list[WindowsInformationProtectionResourceCollection]] = None
     # Contains a list of Enterprise resource domains hosted in the cloud that need to be protected. Connections to these resources are considered enterprise data. If a proxy is paired with a cloud resource, traffic to the cloud resource will be routed through the enterprise network via the denoted proxy server (on Port 80). A proxy server used for this purpose must also be configured using the EnterpriseInternalProxyServers policy
-    enterprise_proxied_domains: Optional[List[WindowsInformationProtectionProxiedDomainCollection]] = None
+    enterprise_proxied_domains: Optional[list[WindowsInformationProtectionProxiedDomainCollection]] = None
     # This is a list of proxy servers. Any server not on this list is considered non-enterprise
-    enterprise_proxy_servers: Optional[List[WindowsInformationProtectionResourceCollection]] = None
+    enterprise_proxy_servers: Optional[list[WindowsInformationProtectionResourceCollection]] = None
     # Boolean value that tells the client to accept the configured list of proxies and not try to detect other work proxies. Default is false
     enterprise_proxy_servers_are_authoritative: Optional[bool] = None
     # Another way to input exempt apps through xml files
-    exempt_app_locker_files: Optional[List[WindowsInformationProtectionAppLockerFile]] = None
+    exempt_app_locker_files: Optional[list[WindowsInformationProtectionAppLockerFile]] = None
     # Exempt applications can also access enterprise data, but the data handled by those applications are not protected. This is because some critical enterprise applications may have compatibility problems with encrypted data.
-    exempt_apps: Optional[List[WindowsInformationProtectionApp]] = None
+    exempt_apps: Optional[list[WindowsInformationProtectionApp]] = None
     # Determines whether overlays are added to icons for WIP protected files in Explorer and enterprise only app tiles in the Start menu. Starting in Windows 10, version 1703 this setting also configures the visibility of the WIP icon in the title bar of a WIP-protected app
     icons_visible: Optional[bool] = None
     # This switch is for the Windows Search Indexer, to allow or disallow indexing of items
@@ -63,11 +64,11 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
     # Indicates if the policy is deployed to any inclusion groups or not.
     is_assigned: Optional[bool] = None
     # List of domain names that can used for work or personal resource
-    neutral_domain_resources: Optional[List[WindowsInformationProtectionResourceCollection]] = None
+    neutral_domain_resources: Optional[list[WindowsInformationProtectionResourceCollection]] = None
     # Another way to input protected apps through xml files
-    protected_app_locker_files: Optional[List[WindowsInformationProtectionAppLockerFile]] = None
+    protected_app_locker_files: Optional[list[WindowsInformationProtectionAppLockerFile]] = None
     # Protected applications can access enterprise data and the data handled by those applications are protected with encryption
-    protected_apps: Optional[List[WindowsInformationProtectionApp]] = None
+    protected_apps: Optional[list[WindowsInformationProtectionApp]] = None
     # Specifies whether the protection under lock feature (also known as encrypt under pin) should be configured
     protection_under_lock_config_required: Optional[bool] = None
     # This policy controls whether to revoke the WIP keys when a device unenrolls from the management service. If set to 1 (Don't revoke keys), the keys will not be revoked and the user will continue to have access to protected files after unenrollment. If the keys are not revoked, there will be no revoked file cleanup subsequently.
@@ -75,7 +76,7 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
     # TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
     rights_management_services_template_id: Optional[UUID] = None
     # Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
-    smb_auto_encrypted_file_extensions: Optional[List[WindowsInformationProtectionResourceCollection]] = None
+    smb_auto_encrypted_file_extensions: Optional[list[WindowsInformationProtectionResourceCollection]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WindowsInformationProtection:
@@ -101,10 +102,10 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
             return WindowsInformationProtectionPolicy()
         return WindowsInformationProtection()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .managed_app_policy import ManagedAppPolicy
         from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
@@ -130,7 +131,7 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
         from .windows_information_protection_proxied_domain_collection import WindowsInformationProtectionProxiedDomainCollection
         from .windows_information_protection_resource_collection import WindowsInformationProtectionResourceCollection
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
             "azureRightsManagementServicesAllowed": lambda n : setattr(self, 'azure_rights_management_services_allowed', n.get_bool_value()),
             "dataRecoveryCertificate": lambda n : setattr(self, 'data_recovery_certificate', n.get_object_value(WindowsInformationProtectionDataRecoveryCertificate)),
@@ -170,18 +171,6 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .managed_app_policy import ManagedAppPolicy
-        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
-        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
-        from .windows_information_protection_app import WindowsInformationProtectionApp
-        from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
-        from .windows_information_protection_data_recovery_certificate import WindowsInformationProtectionDataRecoveryCertificate
-        from .windows_information_protection_enforcement_level import WindowsInformationProtectionEnforcementLevel
-        from .windows_information_protection_i_p_range_collection import WindowsInformationProtectionIPRangeCollection
-        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
-        from .windows_information_protection_proxied_domain_collection import WindowsInformationProtectionProxiedDomainCollection
-        from .windows_information_protection_resource_collection import WindowsInformationProtectionResourceCollection
-
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_bool_value("azureRightsManagementServicesAllowed", self.azure_rights_management_services_allowed)
         writer.write_object_value("dataRecoveryCertificate", self.data_recovery_certificate)

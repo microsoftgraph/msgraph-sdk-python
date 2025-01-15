@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.key_credential import KeyCredential
@@ -14,7 +15,7 @@ class AddKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The keyCredential property
     key_credential: Optional[KeyCredential] = None
     # The passwordCredential property
@@ -33,10 +34,10 @@ class AddKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AddKeyPostRequestBody()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ....models.key_credential import KeyCredential
         from ....models.password_credential import PasswordCredential
@@ -44,7 +45,7 @@ class AddKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.key_credential import KeyCredential
         from ....models.password_credential import PasswordCredential
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "keyCredential": lambda n : setattr(self, 'key_credential', n.get_object_value(KeyCredential)),
             "passwordCredential": lambda n : setattr(self, 'password_credential', n.get_object_value(PasswordCredential)),
             "proof": lambda n : setattr(self, 'proof', n.get_str_value()),
@@ -59,9 +60,6 @@ class AddKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from ....models.key_credential import KeyCredential
-        from ....models.password_credential import PasswordCredential
-
         writer.write_object_value("keyCredential", self.key_credential)
         writer.write_object_value("passwordCredential", self.password_credential)
         writer.write_str_value("proof", self.proof)

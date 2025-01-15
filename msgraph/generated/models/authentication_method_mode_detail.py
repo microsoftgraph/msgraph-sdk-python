@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_authentication_method import BaseAuthenticationMethod
@@ -29,10 +30,10 @@ class AuthenticationMethodModeDetail(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AuthenticationMethodModeDetail()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .base_authentication_method import BaseAuthenticationMethod
         from .entity import Entity
@@ -40,7 +41,7 @@ class AuthenticationMethodModeDetail(Entity, Parsable):
         from .base_authentication_method import BaseAuthenticationMethod
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "authenticationMethod": lambda n : setattr(self, 'authentication_method', n.get_enum_value(BaseAuthenticationMethod)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
@@ -57,9 +58,6 @@ class AuthenticationMethodModeDetail(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .base_authentication_method import BaseAuthenticationMethod
-        from .entity import Entity
-
         writer.write_enum_value("authenticationMethod", self.authentication_method)
         writer.write_str_value("displayName", self.display_name)
     

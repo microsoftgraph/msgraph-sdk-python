@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
@@ -30,10 +31,10 @@ class CustomExtensionStageSetting(Entity, Parsable):
             raise TypeError("parse_node cannot be null.")
         return CustomExtensionStageSetting()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
         from .custom_callout_extension import CustomCalloutExtension
@@ -43,7 +44,7 @@ class CustomExtensionStageSetting(Entity, Parsable):
         from .custom_callout_extension import CustomCalloutExtension
         from .entity import Entity
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "customExtension": lambda n : setattr(self, 'custom_extension', n.get_object_value(CustomCalloutExtension)),
             "stage": lambda n : setattr(self, 'stage', n.get_enum_value(AccessPackageCustomExtensionStage)),
         }
@@ -60,10 +61,6 @@ class CustomExtensionStageSetting(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
-        from .custom_callout_extension import CustomCalloutExtension
-        from .entity import Entity
-
         writer.write_object_value("customExtension", self.custom_extension)
         writer.write_enum_value("stage", self.stage)
     

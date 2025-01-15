@@ -1,8 +1,9 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .onenote_patch_action_type import OnenotePatchActionType
@@ -14,7 +15,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
     backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # The action property
     action: Optional[OnenotePatchActionType] = None
     # A string of well-formed HTML to add to the page, and any image or file binary data. If the content contains binary data, the request must be sent using the multipart/form-data content type with a 'Commands' part.
@@ -37,10 +38,10 @@ class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("parse_node cannot be null.")
         return OnenotePatchContentCommand()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .onenote_patch_action_type import OnenotePatchActionType
         from .onenote_patch_insert_position import OnenotePatchInsertPosition
@@ -48,7 +49,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_patch_action_type import OnenotePatchActionType
         from .onenote_patch_insert_position import OnenotePatchInsertPosition
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(OnenotePatchActionType)),
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -65,9 +66,6 @@ class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        from .onenote_patch_action_type import OnenotePatchActionType
-        from .onenote_patch_insert_position import OnenotePatchInsertPosition
-
         writer.write_enum_value("action", self.action)
         writer.write_str_value("content", self.content)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 import datetime
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -73,10 +74,10 @@ class Request(Entity, Parsable):
             return UserConsentRequest()
         return Request()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .identity_set import IdentitySet
@@ -96,7 +97,7 @@ class Request(Entity, Parsable):
         from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
         from .user_consent_request import UserConsentRequest
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "approvalId": lambda n : setattr(self, 'approval_id', n.get_str_value()),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
@@ -117,15 +118,6 @@ class Request(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .entity import Entity
-        from .identity_set import IdentitySet
-        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
-        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
-        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
-        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
-        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
-        from .user_consent_request import UserConsentRequest
-
         writer.write_str_value("approvalId", self.approval_id)
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("createdBy", self.created_by)

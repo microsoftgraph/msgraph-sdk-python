@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .booking_type import BookingType
@@ -36,7 +37,7 @@ class Room(Place, Parsable):
     # Specifies a nickname for the room, for example, 'conf room'.
     nickname: Optional[str] = None
     # Specifies other features of the room, for example, details like the type of view or furniture type.
-    tags: Optional[List[str]] = None
+    tags: Optional[list[str]] = None
     # Specifies the name of the video device in the room.
     video_device_name: Optional[str] = None
     
@@ -51,10 +52,10 @@ class Room(Place, Parsable):
             raise TypeError("parse_node cannot be null.")
         return Room()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .booking_type import BookingType
         from .place import Place
@@ -62,7 +63,7 @@ class Room(Place, Parsable):
         from .booking_type import BookingType
         from .place import Place
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "audioDeviceName": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
             "bookingType": lambda n : setattr(self, 'booking_type', n.get_enum_value(BookingType)),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
@@ -90,9 +91,6 @@ class Room(Place, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .booking_type import BookingType
-        from .place import Place
-
         writer.write_str_value("audioDeviceName", self.audio_device_name)
         writer.write_enum_value("bookingType", self.booking_type)
         writer.write_str_value("building", self.building)

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
@@ -43,10 +44,10 @@ class AuthorizationPolicy(PolicyBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return AuthorizationPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .allow_invites_from import AllowInvitesFrom
         from .default_user_role_permissions import DefaultUserRolePermissions
@@ -56,7 +57,7 @@ class AuthorizationPolicy(PolicyBase, Parsable):
         from .default_user_role_permissions import DefaultUserRolePermissions
         from .policy_base import PolicyBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "allowEmailVerifiedUsersToJoinOrganization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
             "allowInvitesFrom": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(AllowInvitesFrom)),
             "allowUserConsentForRiskyApps": lambda n : setattr(self, 'allow_user_consent_for_risky_apps', n.get_bool_value()),
@@ -79,10 +80,6 @@ class AuthorizationPolicy(PolicyBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .allow_invites_from import AllowInvitesFrom
-        from .default_user_role_permissions import DefaultUserRolePermissions
-        from .policy_base import PolicyBase
-
         writer.write_bool_value("allowEmailVerifiedUsersToJoinOrganization", self.allow_email_verified_users_to_join_organization)
         writer.write_enum_value("allowInvitesFrom", self.allow_invites_from)
         writer.write_bool_value("allowUserConsentForRiskyApps", self.allow_user_consent_for_risky_apps)

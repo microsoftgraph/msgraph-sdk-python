@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .permission_grant_condition_set import PermissionGrantConditionSet
@@ -14,9 +15,9 @@ class PermissionGrantPolicy(PolicyBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.permissionGrantPolicy"
     # Condition sets that are excluded in this permission grant policy. Automatically expanded on GET.
-    excludes: Optional[List[PermissionGrantConditionSet]] = None
+    excludes: Optional[list[PermissionGrantConditionSet]] = None
     # Condition sets that are included in this permission grant policy. Automatically expanded on GET.
-    includes: Optional[List[PermissionGrantConditionSet]] = None
+    includes: Optional[list[PermissionGrantConditionSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PermissionGrantPolicy:
@@ -29,10 +30,10 @@ class PermissionGrantPolicy(PolicyBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return PermissionGrantPolicy()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .permission_grant_condition_set import PermissionGrantConditionSet
         from .policy_base import PolicyBase
@@ -40,7 +41,7 @@ class PermissionGrantPolicy(PolicyBase, Parsable):
         from .permission_grant_condition_set import PermissionGrantConditionSet
         from .policy_base import PolicyBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "excludes": lambda n : setattr(self, 'excludes', n.get_collection_of_object_values(PermissionGrantConditionSet)),
             "includes": lambda n : setattr(self, 'includes', n.get_collection_of_object_values(PermissionGrantConditionSet)),
         }
@@ -57,9 +58,6 @@ class PermissionGrantPolicy(PolicyBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .permission_grant_condition_set import PermissionGrantConditionSet
-        from .policy_base import PolicyBase
-
         writer.write_collection_of_object_values("excludes", self.excludes)
         writer.write_collection_of_object_values("includes", self.includes)
     

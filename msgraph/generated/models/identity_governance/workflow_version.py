@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .workflow_base import WorkflowBase
@@ -26,16 +27,16 @@ class WorkflowVersion(WorkflowBase, Parsable):
             raise TypeError("parse_node cannot be null.")
         return WorkflowVersion()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .workflow_base import WorkflowBase
 
         from .workflow_base import WorkflowBase
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "versionNumber": lambda n : setattr(self, 'version_number', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -51,8 +52,6 @@ class WorkflowVersion(WorkflowBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        from .workflow_base import WorkflowBase
-
         writer.write_int_value("versionNumber", self.version_number)
     
 

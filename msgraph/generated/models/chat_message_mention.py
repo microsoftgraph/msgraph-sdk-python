@@ -19,7 +19,7 @@ class ChatMessageMention(AdditionalDataHolder, BackedModel, Parsable):
     id: Optional[int] = None
     # String used to represent the mention. For example, a user's display name, a team name.
     mention_text: Optional[str] = None
-    # The entity (user, application, team, or channel) that was @mentioned.
+    # The entity (user, application, team, channel, or chat) that was @mentioned.
     mentioned: Optional[ChatMessageMentionedIdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None

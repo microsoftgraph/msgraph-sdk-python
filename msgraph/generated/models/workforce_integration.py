@@ -20,13 +20,13 @@ class WorkforceIntegration(ChangeTrackedEntity, Parsable):
     api_version: Optional[int] = None
     # Name of the workforce integration.
     display_name: Optional[str] = None
-    # Support to view eligibility-filtered results. Possible values are: none, swapRequest, offerShiftRequest, unknownFutureValue, timeOffReason. You must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: timeOffReason.
+    # Support to view eligibility-filtered results. Possible values are: none, swapRequest, offerShiftRequest, unknownFutureValue, timeOffReason. Use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: timeOffReason.
     eligibility_filtering_enabled_entities: Optional[EligibilityFilteringEnabledEntities] = None
     # The workforce integration encryption resource.
     encryption: Optional[WorkforceIntegrationEncryption] = None
     # Indicates whether this workforce integration is currently active and available.
     is_active: Optional[bool] = None
-    # The Shifts entities supported for synchronous change notifications. Shifts call back to the provided URL when client changes occur to the entities specified in this property. By default, no entities are supported for change notifications. Possible values are: none, shift, swapRequest, userShiftPreferences, openShift, openShiftRequest, offerShiftRequest, unknownFutureValue, timeOffReason, timeOff, timeOffRequest. You must use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: timeOffReason, timeOff, timeOffRequest.
+    # The Shifts entities supported for synchronous change notifications. Shifts call back to the provided URL when client changes occur to the entities specified in this property. By default, no entities are supported for change notifications. Possible values are: none, shift, swapRequest, userShiftPreferences, openShift, openShiftRequest, offerShiftRequest, unknownFutureValue, timeOffReason, timeOff, timeOffRequest. Use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: timeOffReason, timeOff, timeOffRequest.
     supported_entities: Optional[WorkforceIntegrationSupportedEntities] = None
     # Workforce Integration URL for callbacks from the Shifts service.
     url: Optional[str] = None

@@ -52,7 +52,7 @@ class ChatMessage(Entity, Parsable):
     last_modified_date_time: Optional[datetime.datetime] = None
     # Locale of the chat message set by the client. Always set to en-us.
     locale: Optional[str] = None
-    # List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
+    # List of entities mentioned in the chat message. Supported entities are: user, bot, team, channel, chat, and tag.
     mentions: Optional[list[ChatMessageMention]] = None
     # List of activity history of a message item, including modification time and actions, such as reactionAdded, reactionRemoved, or reaction changes, on the message.
     message_history: Optional[list[ChatMessageHistoryItem]] = None

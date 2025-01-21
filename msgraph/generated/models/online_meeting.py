@@ -30,6 +30,8 @@ class OnlineMeeting(OnlineMeetingBase, Parsable):
     external_id: Optional[str] = None
     # Indicates whether this meeting is a Teams live event.
     is_broadcast: Optional[bool] = None
+    # The ID of the meeting template.
+    meeting_template_id: Optional[str] = None
     # The participants associated with the online meeting, including the organizer and the attendees.
     participants: Optional[MeetingParticipants] = None
     # The recordings of an online meeting. Read-only.
@@ -74,6 +76,7 @@ class OnlineMeeting(OnlineMeetingBase, Parsable):
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "isBroadcast": lambda n : setattr(self, 'is_broadcast', n.get_bool_value()),
+            "meetingTemplateId": lambda n : setattr(self, 'meeting_template_id', n.get_str_value()),
             "participants": lambda n : setattr(self, 'participants', n.get_object_value(MeetingParticipants)),
             "recordings": lambda n : setattr(self, 'recordings', n.get_collection_of_object_values(CallRecording)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
@@ -98,6 +101,7 @@ class OnlineMeeting(OnlineMeetingBase, Parsable):
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("externalId", self.external_id)
         writer.write_bool_value("isBroadcast", self.is_broadcast)
+        writer.write_str_value("meetingTemplateId", self.meeting_template_id)
         writer.write_object_value("participants", self.participants)
         writer.write_collection_of_object_values("recordings", self.recordings)
         writer.write_datetime_value("startDateTime", self.start_date_time)

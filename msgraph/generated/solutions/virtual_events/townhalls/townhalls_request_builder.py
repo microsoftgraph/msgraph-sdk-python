@@ -18,6 +18,8 @@ if TYPE_CHECKING:
     from ....models.virtual_event_townhall import VirtualEventTownhall
     from ....models.virtual_event_townhall_collection_response import VirtualEventTownhallCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
+    from .get_by_user_id_and_role_with_user_id_with_role.get_by_user_id_and_role_with_user_id_with_role_request_builder import GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder
+    from .get_by_user_role_with_role.get_by_user_role_with_role_request_builder import GetByUserRoleWithRoleRequestBuilder
     from .item.virtual_event_townhall_item_request_builder import VirtualEventTownhallItemRequestBuilder
 
 class TownhallsRequestBuilder(BaseRequestBuilder):
@@ -66,6 +68,33 @@ class TownhallsRequestBuilder(BaseRequestBuilder):
         from ....models.virtual_event_townhall_collection_response import VirtualEventTownhallCollectionResponse
 
         return await self.request_adapter.send_async(request_info, VirtualEventTownhallCollectionResponse, error_mapping)
+    
+    def get_by_user_id_and_role_with_user_id_with_role(self,role: str, user_id: str) -> GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder:
+        """
+        Provides operations to call the getByUserIdAndRole method.
+        param role: Usage: role='{role}'
+        param user_id: Usage: userId='{userId}'
+        Returns: GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder
+        """
+        if role is None:
+            raise TypeError("role cannot be null.")
+        if user_id is None:
+            raise TypeError("user_id cannot be null.")
+        from .get_by_user_id_and_role_with_user_id_with_role.get_by_user_id_and_role_with_user_id_with_role_request_builder import GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder
+
+        return GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder(self.request_adapter, self.path_parameters, role, user_id)
+    
+    def get_by_user_role_with_role(self,role: str) -> GetByUserRoleWithRoleRequestBuilder:
+        """
+        Provides operations to call the getByUserRole method.
+        param role: Usage: role='{role}'
+        Returns: GetByUserRoleWithRoleRequestBuilder
+        """
+        if role is None:
+            raise TypeError("role cannot be null.")
+        from .get_by_user_role_with_role.get_by_user_role_with_role_request_builder import GetByUserRoleWithRoleRequestBuilder
+
+        return GetByUserRoleWithRoleRequestBuilder(self.request_adapter, self.path_parameters, role)
     
     async def post(self,body: VirtualEventTownhall, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VirtualEventTownhall]:
         """

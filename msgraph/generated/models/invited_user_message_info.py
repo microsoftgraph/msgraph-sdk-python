@@ -17,7 +17,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # Additional recipients the invitation message should be sent to. Currently only one additional recipient is supported.
     cc_recipients: Optional[list[Recipient]] = None
-    # Customized message body you want to send if you don't want the default message.
+    # Customized message body you want to send if you don't want the default message. Only plain text is allowed.
     customized_message_body: Optional[str] = None
     # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
     message_language: Optional[str] = None

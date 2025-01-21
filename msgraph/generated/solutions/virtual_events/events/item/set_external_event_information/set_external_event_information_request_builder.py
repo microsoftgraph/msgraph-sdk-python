@@ -14,36 +14,35 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from .......models.o_data_errors.o_data_error import ODataError
-    from .target_apps_post_request_body import TargetAppsPostRequestBody
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .set_external_event_information_post_request_body import SetExternalEventInformationPostRequestBody
 
-class TargetAppsRequestBuilder(BaseRequestBuilder):
+class SetExternalEventInformationRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to call the targetApps method.
+    Provides operations to call the setExternalEventInformation method.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
-        Instantiates a new TargetAppsRequestBuilder and sets the default values.
+        Instantiates a new SetExternalEventInformationRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppRegistrations/{managedAppRegistration%2Did}/intendedPolicies/{managedAppPolicy%2Did}/targetApps", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/solutions/virtualEvents/events/{virtualEvent%2Did}/setExternalEventInformation", path_parameters)
     
-    async def post(self,body: TargetAppsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
+    async def post(self,body: SetExternalEventInformationPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Not yet documented
+        Invoke action setExternalEventInformation
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappprotection-targetapps?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors.o_data_error import ODataError
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
@@ -52,9 +51,9 @@ class TargetAppsRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: TargetAppsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_post_request_information(self,body: SetExternalEventInformationPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke action setExternalEventInformation
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -67,18 +66,18 @@ class TargetAppsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: str) -> TargetAppsRequestBuilder:
+    def with_url(self,raw_url: str) -> SetExternalEventInformationRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: TargetAppsRequestBuilder
+        Returns: SetExternalEventInformationRequestBuilder
         """
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
-        return TargetAppsRequestBuilder(self.request_adapter, raw_url)
+        return SetExternalEventInformationRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
-    class TargetAppsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class SetExternalEventInformationRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

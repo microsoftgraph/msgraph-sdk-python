@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .presenters.presenters_request_builder import PresentersRequestBuilder
     from .publish.publish_request_builder import PublishRequestBuilder
     from .sessions.sessions_request_builder import SessionsRequestBuilder
+    from .set_external_event_information.set_external_event_information_request_builder import SetExternalEventInformationRequestBuilder
 
 class VirtualEventItemRequestBuilder(BaseRequestBuilder):
     """
@@ -177,6 +178,15 @@ class VirtualEventItemRequestBuilder(BaseRequestBuilder):
         from .sessions.sessions_request_builder import SessionsRequestBuilder
 
         return SessionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_external_event_information(self) -> SetExternalEventInformationRequestBuilder:
+        """
+        Provides operations to call the setExternalEventInformation method.
+        """
+        from .set_external_event_information.set_external_event_information_request_builder import SetExternalEventInformationRequestBuilder
+
+        return SetExternalEventInformationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class VirtualEventItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

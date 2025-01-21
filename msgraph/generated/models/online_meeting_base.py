@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .audio_conferencing import AudioConferencing
     from .chat_info import ChatInfo
+    from .chat_restrictions import ChatRestrictions
     from .entity import Entity
     from .item_body import ItemBody
     from .join_meeting_id_settings import JoinMeetingIdSettings
@@ -31,8 +32,12 @@ class OnlineMeetingBase(Entity, Parsable):
     allow_meeting_chat: Optional[MeetingChatMode] = None
     # Specifies if participants are allowed to rename themselves in an instance of the meeting.
     allow_participants_to_change_name: Optional[bool] = None
+    # Indicates whether recording is enabled for the meeting.
+    allow_recording: Optional[bool] = None
     # Indicates if Teams reactions are enabled for the meeting.
     allow_teamwork_reactions: Optional[bool] = None
+    # Indicates whether transcription is enabled for the meeting.
+    allow_transcription: Optional[bool] = None
     # Specifies who can be a presenter in a meeting.
     allowed_presenters: Optional[OnlineMeetingPresenters] = None
     # The attendance reports of an online meeting. Read-only.
@@ -41,6 +46,8 @@ class OnlineMeetingBase(Entity, Parsable):
     audio_conferencing: Optional[AudioConferencing] = None
     # The chat information associated with this online meeting.
     chat_info: Optional[ChatInfo] = None
+    # The chatRestrictions property
+    chat_restrictions: Optional[ChatRestrictions] = None
     # Indicates whether to announce when callers join or leave.
     is_entry_exit_announced: Optional[bool] = None
     # The join information in the language and locale variant specified in 'Accept-Language' request HTTP header. Read-only.
@@ -95,6 +102,7 @@ class OnlineMeetingBase(Entity, Parsable):
         """
         from .audio_conferencing import AudioConferencing
         from .chat_info import ChatInfo
+        from .chat_restrictions import ChatRestrictions
         from .entity import Entity
         from .item_body import ItemBody
         from .join_meeting_id_settings import JoinMeetingIdSettings
@@ -109,6 +117,7 @@ class OnlineMeetingBase(Entity, Parsable):
 
         from .audio_conferencing import AudioConferencing
         from .chat_info import ChatInfo
+        from .chat_restrictions import ChatRestrictions
         from .entity import Entity
         from .item_body import ItemBody
         from .join_meeting_id_settings import JoinMeetingIdSettings
@@ -126,11 +135,14 @@ class OnlineMeetingBase(Entity, Parsable):
             "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
             "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(MeetingChatMode)),
             "allowParticipantsToChangeName": lambda n : setattr(self, 'allow_participants_to_change_name', n.get_bool_value()),
+            "allowRecording": lambda n : setattr(self, 'allow_recording', n.get_bool_value()),
             "allowTeamworkReactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
+            "allowTranscription": lambda n : setattr(self, 'allow_transcription', n.get_bool_value()),
             "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(OnlineMeetingPresenters)),
             "attendanceReports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(MeetingAttendanceReport)),
             "audioConferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(AudioConferencing)),
             "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
+            "chatRestrictions": lambda n : setattr(self, 'chat_restrictions', n.get_object_value(ChatRestrictions)),
             "isEntryExitAnnounced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
             "joinInformation": lambda n : setattr(self, 'join_information', n.get_object_value(ItemBody)),
             "joinMeetingIdSettings": lambda n : setattr(self, 'join_meeting_id_settings', n.get_object_value(JoinMeetingIdSettings)),
@@ -159,11 +171,14 @@ class OnlineMeetingBase(Entity, Parsable):
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)
         writer.write_bool_value("allowParticipantsToChangeName", self.allow_participants_to_change_name)
+        writer.write_bool_value("allowRecording", self.allow_recording)
         writer.write_bool_value("allowTeamworkReactions", self.allow_teamwork_reactions)
+        writer.write_bool_value("allowTranscription", self.allow_transcription)
         writer.write_enum_value("allowedPresenters", self.allowed_presenters)
         writer.write_collection_of_object_values("attendanceReports", self.attendance_reports)
         writer.write_object_value("audioConferencing", self.audio_conferencing)
         writer.write_object_value("chatInfo", self.chat_info)
+        writer.write_object_value("chatRestrictions", self.chat_restrictions)
         writer.write_bool_value("isEntryExitAnnounced", self.is_entry_exit_announced)
         writer.write_object_value("joinInformation", self.join_information)
         writer.write_object_value("joinMeetingIdSettings", self.join_meeting_id_settings)

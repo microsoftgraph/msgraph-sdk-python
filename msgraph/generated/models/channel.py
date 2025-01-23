@@ -35,7 +35,7 @@ class Channel(Entity, Parsable):
     is_favorite_by_default: Optional[bool] = None
     # A collection of membership records associated with the channel.
     members: Optional[list[ConversationMember]] = None
-    # The type of the channel. Can be set during creation and can't be changed. The possible values are: standard, private, unknownFutureValue, shared. The default value is standard. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: shared.
+    # The type of the channel. Can be set during creation and can't be changed. The possible values are: standard, private, unknownFutureValue, shared. The default value is standard. Use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: shared.
     membership_type: Optional[ChannelMembershipType] = None
     # A collection of all the messages in the channel. A navigation property. Nullable.
     messages: Optional[list[ChatMessage]] = None

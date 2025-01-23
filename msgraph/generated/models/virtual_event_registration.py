@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .virtual_event_attendee_registration_status import VirtualEventAttendeeRegistrationStatus
+    from .virtual_event_external_registration_information import VirtualEventExternalRegistrationInformation
     from .virtual_event_registration_question_answer import VirtualEventRegistrationQuestionAnswer
     from .virtual_event_session import VirtualEventSession
 
@@ -19,6 +20,8 @@ class VirtualEventRegistration(Entity, Parsable):
     cancelation_date_time: Optional[datetime.datetime] = None
     # Email address of the registrant.
     email: Optional[str] = None
+    # The external information for a virtual event registration.
+    external_registration_information: Optional[VirtualEventExternalRegistrationInformation] = None
     # First name of the registrant.
     first_name: Optional[str] = None
     # Last name of the registrant.
@@ -58,17 +61,20 @@ class VirtualEventRegistration(Entity, Parsable):
         """
         from .entity import Entity
         from .virtual_event_attendee_registration_status import VirtualEventAttendeeRegistrationStatus
+        from .virtual_event_external_registration_information import VirtualEventExternalRegistrationInformation
         from .virtual_event_registration_question_answer import VirtualEventRegistrationQuestionAnswer
         from .virtual_event_session import VirtualEventSession
 
         from .entity import Entity
         from .virtual_event_attendee_registration_status import VirtualEventAttendeeRegistrationStatus
+        from .virtual_event_external_registration_information import VirtualEventExternalRegistrationInformation
         from .virtual_event_registration_question_answer import VirtualEventRegistrationQuestionAnswer
         from .virtual_event_session import VirtualEventSession
 
         fields: dict[str, Callable[[Any], None]] = {
             "cancelationDateTime": lambda n : setattr(self, 'cancelation_date_time', n.get_datetime_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
+            "externalRegistrationInformation": lambda n : setattr(self, 'external_registration_information', n.get_object_value(VirtualEventExternalRegistrationInformation)),
             "firstName": lambda n : setattr(self, 'first_name', n.get_str_value()),
             "lastName": lambda n : setattr(self, 'last_name', n.get_str_value()),
             "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
@@ -94,6 +100,7 @@ class VirtualEventRegistration(Entity, Parsable):
         super().serialize(writer)
         writer.write_datetime_value("cancelationDateTime", self.cancelation_date_time)
         writer.write_str_value("email", self.email)
+        writer.write_object_value("externalRegistrationInformation", self.external_registration_information)
         writer.write_str_value("firstName", self.first_name)
         writer.write_str_value("lastName", self.last_name)
         writer.write_str_value("preferredLanguage", self.preferred_language)

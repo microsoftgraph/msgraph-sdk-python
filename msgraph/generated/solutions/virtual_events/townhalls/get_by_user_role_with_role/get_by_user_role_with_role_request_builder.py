@@ -14,62 +14,49 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from ......models.o_data_errors.o_data_error import ODataError
-    from ......models.post_collection_response import PostCollectionResponse
-    from .count.count_request_builder import CountRequestBuilder
-    from .item.post_item_request_builder import PostItemRequestBuilder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .get_by_user_role_with_role_get_response import GetByUserRoleWithRoleGetResponse
 
-class PostsRequestBuilder(BaseRequestBuilder):
+class GetByUserRoleWithRoleRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
+    Provides operations to call the getByUserRole method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]], role: Optional[str] = None) -> None:
         """
-        Instantiates a new PostsRequestBuilder and sets the default values.
+        Instantiates a new GetByUserRoleWithRoleRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
+        param role: Usage: role='{role}'
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/threads/{conversationThread%2Did}/posts{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        if isinstance(path_parameters, dict):
+            path_parameters['role'] = role
+        super().__init__(request_adapter, "{+baseurl}/solutions/virtualEvents/townhalls/getByUserRole(role='{role}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    def by_post_id(self,post_id: str) -> PostItemRequestBuilder:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetByUserRoleWithRoleRequestBuilderGetQueryParameters]] = None) -> Optional[GetByUserRoleWithRoleGetResponse]:
         """
-        Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
-        param post_id: The unique identifier of post
-        Returns: PostItemRequestBuilder
-        """
-        if post_id is None:
-            raise TypeError("post_id cannot be null.")
-        from .item.post_item_request_builder import PostItemRequestBuilder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["post%2Did"] = post_id
-        return PostItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def get(self,request_configuration: Optional[RequestConfiguration[PostsRequestBuilderGetQueryParameters]] = None) -> Optional[PostCollectionResponse]:
-        """
-        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the post resource supports extensions, you can also use the GET operation to get custom properties and extension data in a post instance.
+        Get a list of virtualEventTownhall objects where the signed-in user is either the organizer or a coorganizer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[PostCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/post-get?view=graph-rest-1.0
+        Returns: Optional[GetByUserRoleWithRoleGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualeventtownhall-getbyuserrole?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors.o_data_error import ODataError
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.post_collection_response import PostCollectionResponse
+        from .get_by_user_role_with_role_get_response import GetByUserRoleWithRoleGetResponse
 
-        return await self.request_adapter.send_async(request_info, PostCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetByUserRoleWithRoleGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PostsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetByUserRoleWithRoleRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the post resource supports extensions, you can also use the GET operation to get custom properties and extension data in a post instance.
+        Get a list of virtualEventTownhall objects where the signed-in user is either the organizer or a coorganizer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,29 +65,20 @@ class PostsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def with_url(self,raw_url: str) -> PostsRequestBuilder:
+    def with_url(self,raw_url: str) -> GetByUserRoleWithRoleRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: PostsRequestBuilder
+        Returns: GetByUserRoleWithRoleRequestBuilder
         """
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
-        return PostsRequestBuilder(self.request_adapter, raw_url)
-    
-    @property
-    def count(self) -> CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count.count_request_builder import CountRequestBuilder
-
-        return CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetByUserRoleWithRoleRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
-    class PostsRequestBuilderGetQueryParameters():
+    class GetByUserRoleWithRoleRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the post resource supports extensions, you can also use the GET operation to get custom properties and extension data in a post instance.
+        Get a list of virtualEventTownhall objects where the signed-in user is either the organizer or a coorganizer.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -154,7 +132,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
 
     
     @dataclass
-    class PostsRequestBuilderGetRequestConfiguration(RequestConfiguration[PostsRequestBuilderGetQueryParameters]):
+    class GetByUserRoleWithRoleRequestBuilderGetRequestConfiguration(RequestConfiguration[GetByUserRoleWithRoleRequestBuilderGetQueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

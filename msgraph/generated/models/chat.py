@@ -28,6 +28,8 @@ class Chat(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # A collection of all the apps in the chat. Nullable.
     installed_apps: Optional[list[TeamsAppInstallation]] = None
+    # Indicates whether the chat is hidden for all its members. Read-only.
+    is_hidden_for_all_members: Optional[bool] = None
     # Preview of the last message sent in the chat. Null if no messages were sent in the chat. Currently, only the list chats operation supports this property.
     last_message_preview: Optional[ChatMessageInfo] = None
     # Date and time at which the chat was renamed or the list of members was last changed. Read-only.
@@ -99,6 +101,7 @@ class Chat(Entity, Parsable):
             "chatType": lambda n : setattr(self, 'chat_type', n.get_enum_value(ChatType)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(TeamsAppInstallation)),
+            "isHiddenForAllMembers": lambda n : setattr(self, 'is_hidden_for_all_members', n.get_bool_value()),
             "lastMessagePreview": lambda n : setattr(self, 'last_message_preview', n.get_object_value(ChatMessageInfo)),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
@@ -128,6 +131,7 @@ class Chat(Entity, Parsable):
         writer.write_enum_value("chatType", self.chat_type)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("installedApps", self.installed_apps)
+        writer.write_bool_value("isHiddenForAllMembers", self.is_hidden_for_all_members)
         writer.write_object_value("lastMessagePreview", self.last_message_preview)
         writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_collection_of_object_values("members", self.members)

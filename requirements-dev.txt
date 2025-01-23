@@ -22,10 +22,10 @@ flit_core==3.10.1
 frozenlist==1.5.0
 h11==0.14.0
 h2==4.1.0
-hpack==4.0.0
+hpack==4.1.0
 httpcore==1.0.7
 httpx==0.28.1
-hyperframe==6.0.1
+hyperframe==6.1.0
 idna==3.10
 importlib-metadata==8.5.0
 isort==5.13.2
@@ -69,7 +69,7 @@ tomli==2.2.1
 tomli_w==1.2.0
 tomlkit==0.13.2
 typing_extensions==4.12.2
-tzdata==2024.2
+tzdata==2025.1
 uritemplate==4.1.1
 urllib3==2.2.3
 wrapt==1.17.2

@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .landing_page.landing_page_request_builder import LandingPageRequestBuilder
     from .login_page.login_page_request_builder import LoginPageRequestBuilder
     from .payload.payload_request_builder import PayloadRequestBuilder
+    from .report.simulation_users_report_request_builder import SimulationUsersReportRequestBuilder
 
 class SimulationItemRequestBuilder(BaseRequestBuilder):
     """
@@ -170,7 +171,16 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
         from .payload.payload_request_builder import PayloadRequestBuilder
 
         return PayloadRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
+    @property
+    def report_simulation_users(self) -> SimulationUsersReportRequestBuilder:
+        """
+        Provides operations to manage the payload property of the microsoft.graph.simulation entity.
+        """
+        from .report.simulation_users_report_request_builder import SimulationUsersReportRequestBuilder
+
+        return SimulationUsersReportRequestBuilder(self.request_adapter, self.path_parameters)
+
     @dataclass
     class SimulationItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
         """

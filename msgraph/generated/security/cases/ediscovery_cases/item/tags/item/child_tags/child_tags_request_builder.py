@@ -48,9 +48,10 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ChildTagsRequestBuilderGetQueryParameters]] = None) -> Optional[EdiscoveryReviewTagCollectionResponse]:
         """
-        Returns the tags that are a child of a tag.
+        List eDiscovery review tags with the tag hierarchy shown.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTagCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewtag-ashierarchy?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,7 +69,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ChildTagsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns the tags that are a child of a tag.
+        List eDiscovery review tags with the tag hierarchy shown.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +100,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChildTagsRequestBuilderGetQueryParameters():
         """
-        Returns the tags that are a child of a tag.
+        List eDiscovery review tags with the tag hierarchy shown.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

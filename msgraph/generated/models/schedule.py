@@ -59,7 +59,7 @@ class Schedule(Entity, Parsable):
     time_zone: Optional[str] = None
     # The instances of times off in the schedule.
     times_off: Optional[list[TimeOff]] = None
-    # The workforceIntegrationIds property
+    # The IDs for the workforce integrations associated with this schedule.
     workforce_integration_ids: Optional[list[str]] = None
     
     @staticmethod

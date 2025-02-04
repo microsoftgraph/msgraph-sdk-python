@@ -244,7 +244,7 @@ class User(DirectoryObject, Parsable):
     onenote: Optional[Onenote] = None
     # Information about a meeting, including the URL used to join a meeting, the attendees list, and the description.
     online_meetings: Optional[list[OnlineMeeting]] = None
-    # A list of other email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property can't contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
+    # A list of other email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. Can store up to 250 values, each with a limit of 250 characters. NOTE: This property can't contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
     other_mails: Optional[list[str]] = None
     # The outlook property
     outlook: Optional[OutlookUser] = None

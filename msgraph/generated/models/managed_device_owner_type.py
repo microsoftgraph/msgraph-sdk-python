@@ -1,10 +1,12 @@
 from enum import Enum
 
 class ManagedDeviceOwnerType(str, Enum):
-    # Unknown.
+    # Unknown device owner type.
     Unknown = "unknown",
-    # Owned by company.
+    # Corporate device owner type.
     Company = "company",
-    # Owned by person.
+    # Personal device owner type.
     Personal = "personal",
+    # Evolvable enumeration sentinel value. Do not use.
+    UnknownFutureValue = "unknownFutureValue",
 

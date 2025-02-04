@@ -46,7 +46,7 @@ class OnlineMeetingBase(Entity, Parsable):
     audio_conferencing: Optional[AudioConferencing] = None
     # The chat information associated with this online meeting.
     chat_info: Optional[ChatInfo] = None
-    # The chatRestrictions property
+    # Specifies the configuration settings for meeting chat restrictions.
     chat_restrictions: Optional[ChatRestrictions] = None
     # Indicates whether to announce when callers join or leave.
     is_entry_exit_announced: Optional[bool] = None

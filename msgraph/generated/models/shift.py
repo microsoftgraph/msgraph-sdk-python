@@ -14,7 +14,7 @@ from .change_tracked_entity import ChangeTrackedEntity
 class Shift(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.shift"
-    # Draft changes in the shift. Draft changes are only visible to managers. The changes are visible to employees when they are shared, which copies the changes from the draftShift to the sharedShift property.
+    # Draft changes in the shift. Draft changes are only visible to managers. The changes are visible to employees when they're shared, which copies the changes from the draftShift to the sharedShift property.
     draft_shift: Optional[ShiftItem] = None
     # The shift is marked for deletion, a process that is finalized when the schedule is shared.
     is_staged_for_deletion: Optional[bool] = None

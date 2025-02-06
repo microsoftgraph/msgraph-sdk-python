@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from .applications_with_unique_name.applications_with_unique_name_request_builder import ApplicationsWithUniqueNameRequestBuilder
     from .application_templates.application_templates_request_builder import ApplicationTemplatesRequestBuilder
     from .app_catalogs.app_catalogs_request_builder import AppCatalogsRequestBuilder
+    from .app_role_assignments.app_role_assignments_request_builder import AppRoleAssignmentsRequestBuilder
     from .audit_logs.audit_logs_request_builder import AuditLogsRequestBuilder
     from .authentication_methods_policy.authentication_methods_policy_request_builder import AuthenticationMethodsPolicyRequestBuilder
     from .authentication_method_configurations.authentication_method_configurations_request_builder import AuthenticationMethodConfigurationsRequestBuilder
@@ -237,6 +238,15 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         from .app_catalogs.app_catalogs_request_builder import AppCatalogsRequestBuilder
 
         return AppCatalogsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def app_role_assignments(self) -> AppRoleAssignmentsRequestBuilder:
+        """
+        Provides operations to manage the collection of appRoleAssignment entities.
+        """
+        from .app_role_assignments.app_role_assignments_request_builder import AppRoleAssignmentsRequestBuilder
+
+        return AppRoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def application_templates(self) -> ApplicationTemplatesRequestBuilder:

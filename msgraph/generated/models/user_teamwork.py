@@ -17,7 +17,7 @@ class UserTeamwork(Entity, Parsable):
     associated_teams: Optional[list[AssociatedTeamInfo]] = None
     # The apps installed in the personal scope of this user.
     installed_apps: Optional[list[UserScopeTeamsAppInstallation]] = None
-    # Represents the location that a user selected in Microsoft Teams and doesn't follow the Office's locale setting. A user’s locale is represented by their preferred language and country or region. For example, en-us. The language component follows two-letter codes as defined in ISO 639-1, and the country component follows two-letter codes as defined in ISO 3166-1 alpha-2.
+    # Represents the location that a user selected in Microsoft Teams and doesn't follow the Office's locale setting. A user's locale is represented by their preferred language and country or region. For example, en-us. The language component follows two-letter codes as defined in ISO 639-1, and the country component follows two-letter codes as defined in ISO 3166-1 alpha-2.
     locale: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

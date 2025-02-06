@@ -70,7 +70,7 @@ class WorkforceIntegrationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: WorkforceIntegration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WorkforceIntegration]:
         """
-        Create a new workforceIntegration object.You can set up which entities you want to receive Shifts synchronous change notifications on and set entities to configure filtering by WFM rules eligibility for, including swap requests.
+        Create a new workforceIntegration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkforceIntegration]
@@ -105,7 +105,7 @@ class WorkforceIntegrationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: WorkforceIntegration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new workforceIntegration object.You can set up which entities you want to receive Shifts synchronous change notifications on and set entities to configure filtering by WFM rules eligibility for, including swap requests.
+        Create a new workforceIntegration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

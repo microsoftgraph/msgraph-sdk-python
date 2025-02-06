@@ -13,6 +13,9 @@ from .entity import Entity
 
 @dataclass
 class DeviceConfigurationDeviceStatus(Entity, Parsable):
+    """
+    Support for this Entity is being deprecated starting May 2026 & will no longer be supported.
+    """
     # The DateTime when device compliance grace period expires
     compliance_grace_period_expiration_date_time: Optional[datetime.datetime] = None
     # Device name of the DevicePolicyStatus.

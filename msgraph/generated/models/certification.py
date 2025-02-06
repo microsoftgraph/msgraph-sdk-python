@@ -19,7 +19,7 @@ class Certification(AdditionalDataHolder, BackedModel, Parsable):
     certification_expiration_date_time: Optional[datetime.datetime] = None
     # Indicates whether the application is certified by Microsoft.
     is_certified_by_microsoft: Optional[bool] = None
-    # Indicates whether the application has been self-attested by the application developer or the publisher.
+    # Indicates whether the application developer or publisher completed Publisher Attestation.
     is_publisher_attested: Optional[bool] = None
     # The timestamp when the certification for the application was most recently added or updated.
     last_certification_date_time: Optional[datetime.datetime] = None

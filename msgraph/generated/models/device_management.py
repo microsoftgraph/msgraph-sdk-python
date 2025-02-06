@@ -75,9 +75,6 @@ from .entity import Entity
 
 @dataclass
 class DeviceManagement(Entity, Parsable):
-    """
-    Singleton entity that acts as a container for all device management functionality.
-    """
     # Apple push notification certificate.
     apple_push_notification_certificate: Optional[ApplePushNotificationCertificate] = None
     # The Audit Events

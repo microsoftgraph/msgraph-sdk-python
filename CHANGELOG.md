@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.20.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.19.0...v1.20.0) (2025-02-06)
+
+
+### Features
+
+* Python 3.13 support ([fac3184](https://github.com/microsoftgraph/msgraph-sdk-python/commit/fac3184cea86487b305d6bbadad084534944866f))
+* Python 3.13 support ([8605f62](https://github.com/microsoftgraph/msgraph-sdk-python/commit/8605f6238407d94f8d49aed782b97e48b179e304))
+
+
+### Bug Fixes
+
+* bump kiota and graph core dependencies ([499783f](https://github.com/microsoftgraph/msgraph-sdk-python/commit/499783f56bc264a8ea5fecb06cca43c31b915b3f))
+* Bump kiota versions ([1d21bdd](https://github.com/microsoftgraph/msgraph-sdk-python/commit/1d21bdd6d6ca9f2517f786bf27df30de2b42db8a))
+
 ## [1.19.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.18.0...v1.19.0) (2025-02-06)
 
 

@@ -5,6 +5,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .day_note import DayNote
+    from .day_of_week import DayOfWeek
     from .entity import Entity
     from .offer_shift_request import OfferShiftRequest
     from .open_shift import OpenShift
@@ -13,6 +15,8 @@ if TYPE_CHECKING:
     from .scheduling_group import SchedulingGroup
     from .shift import Shift
     from .swap_shifts_change_request import SwapShiftsChangeRequest
+    from .time_card import TimeCard
+    from .time_clock_settings import TimeClockSettings
     from .time_off import TimeOff
     from .time_off_reason import TimeOffReason
     from .time_off_request import TimeOffRequest
@@ -21,8 +25,12 @@ from .entity import Entity
 
 @dataclass
 class Schedule(Entity, Parsable):
+    # The day notes in the schedule.
+    day_notes: Optional[list[DayNote]] = None
     # Indicates whether the schedule is enabled for the team. Required.
     enabled: Optional[bool] = None
+    # Indicates whether copied shifts include activities from the original shift.
+    is_activities_included_when_copying_shifts_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The offer requests for shifts in the schedule.
@@ -43,12 +51,18 @@ class Schedule(Entity, Parsable):
     scheduling_groups: Optional[list[SchedulingGroup]] = None
     # The shifts in the schedule.
     shifts: Optional[list[Shift]] = None
+    # Indicates the start day of the week. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday.
+    start_day_of_week: Optional[DayOfWeek] = None
     # The swap requests for shifts in the schedule.
     swap_shifts_change_requests: Optional[list[SwapShiftsChangeRequest]] = None
     # Indicates whether swap shifts requests are enabled for the schedule.
     swap_shifts_requests_enabled: Optional[bool] = None
+    # The time cards in the schedule.
+    time_cards: Optional[list[TimeCard]] = None
     # Indicates whether time clock is enabled for the schedule.
     time_clock_enabled: Optional[bool] = None
+    # The time clock location settings for this schedule.
+    time_clock_settings: Optional[TimeClockSettings] = None
     # The set of reasons for a time off in the schedule.
     time_off_reasons: Optional[list[TimeOffReason]] = None
     # The time off requests in the schedule.
@@ -78,6 +92,8 @@ class Schedule(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .day_note import DayNote
+        from .day_of_week import DayOfWeek
         from .entity import Entity
         from .offer_shift_request import OfferShiftRequest
         from .open_shift import OpenShift
@@ -86,10 +102,14 @@ class Schedule(Entity, Parsable):
         from .scheduling_group import SchedulingGroup
         from .shift import Shift
         from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_card import TimeCard
+        from .time_clock_settings import TimeClockSettings
         from .time_off import TimeOff
         from .time_off_reason import TimeOffReason
         from .time_off_request import TimeOffRequest
 
+        from .day_note import DayNote
+        from .day_of_week import DayOfWeek
         from .entity import Entity
         from .offer_shift_request import OfferShiftRequest
         from .open_shift import OpenShift
@@ -98,12 +118,16 @@ class Schedule(Entity, Parsable):
         from .scheduling_group import SchedulingGroup
         from .shift import Shift
         from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_card import TimeCard
+        from .time_clock_settings import TimeClockSettings
         from .time_off import TimeOff
         from .time_off_reason import TimeOffReason
         from .time_off_request import TimeOffRequest
 
         fields: dict[str, Callable[[Any], None]] = {
+            "dayNotes": lambda n : setattr(self, 'day_notes', n.get_collection_of_object_values(DayNote)),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
+            "isActivitiesIncludedWhenCopyingShiftsEnabled": lambda n : setattr(self, 'is_activities_included_when_copying_shifts_enabled', n.get_bool_value()),
             "offerShiftRequests": lambda n : setattr(self, 'offer_shift_requests', n.get_collection_of_object_values(OfferShiftRequest)),
             "offerShiftRequestsEnabled": lambda n : setattr(self, 'offer_shift_requests_enabled', n.get_bool_value()),
             "openShiftChangeRequests": lambda n : setattr(self, 'open_shift_change_requests', n.get_collection_of_object_values(OpenShiftChangeRequest)),
@@ -113,9 +137,12 @@ class Schedule(Entity, Parsable):
             "provisionStatusCode": lambda n : setattr(self, 'provision_status_code', n.get_str_value()),
             "schedulingGroups": lambda n : setattr(self, 'scheduling_groups', n.get_collection_of_object_values(SchedulingGroup)),
             "shifts": lambda n : setattr(self, 'shifts', n.get_collection_of_object_values(Shift)),
+            "startDayOfWeek": lambda n : setattr(self, 'start_day_of_week', n.get_enum_value(DayOfWeek)),
             "swapShiftsChangeRequests": lambda n : setattr(self, 'swap_shifts_change_requests', n.get_collection_of_object_values(SwapShiftsChangeRequest)),
             "swapShiftsRequestsEnabled": lambda n : setattr(self, 'swap_shifts_requests_enabled', n.get_bool_value()),
+            "timeCards": lambda n : setattr(self, 'time_cards', n.get_collection_of_object_values(TimeCard)),
             "timeClockEnabled": lambda n : setattr(self, 'time_clock_enabled', n.get_bool_value()),
+            "timeClockSettings": lambda n : setattr(self, 'time_clock_settings', n.get_object_value(TimeClockSettings)),
             "timeOffReasons": lambda n : setattr(self, 'time_off_reasons', n.get_collection_of_object_values(TimeOffReason)),
             "timeOffRequests": lambda n : setattr(self, 'time_off_requests', n.get_collection_of_object_values(TimeOffRequest)),
             "timeOffRequestsEnabled": lambda n : setattr(self, 'time_off_requests_enabled', n.get_bool_value()),
@@ -136,7 +163,9 @@ class Schedule(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("dayNotes", self.day_notes)
         writer.write_bool_value("enabled", self.enabled)
+        writer.write_bool_value("isActivitiesIncludedWhenCopyingShiftsEnabled", self.is_activities_included_when_copying_shifts_enabled)
         writer.write_collection_of_object_values("offerShiftRequests", self.offer_shift_requests)
         writer.write_bool_value("offerShiftRequestsEnabled", self.offer_shift_requests_enabled)
         writer.write_collection_of_object_values("openShiftChangeRequests", self.open_shift_change_requests)
@@ -144,9 +173,12 @@ class Schedule(Entity, Parsable):
         writer.write_bool_value("openShiftsEnabled", self.open_shifts_enabled)
         writer.write_collection_of_object_values("schedulingGroups", self.scheduling_groups)
         writer.write_collection_of_object_values("shifts", self.shifts)
+        writer.write_enum_value("startDayOfWeek", self.start_day_of_week)
         writer.write_collection_of_object_values("swapShiftsChangeRequests", self.swap_shifts_change_requests)
         writer.write_bool_value("swapShiftsRequestsEnabled", self.swap_shifts_requests_enabled)
+        writer.write_collection_of_object_values("timeCards", self.time_cards)
         writer.write_bool_value("timeClockEnabled", self.time_clock_enabled)
+        writer.write_object_value("timeClockSettings", self.time_clock_settings)
         writer.write_collection_of_object_values("timeOffReasons", self.time_off_reasons)
         writer.write_collection_of_object_values("timeOffRequests", self.time_off_requests)
         writer.write_bool_value("timeOffRequestsEnabled", self.time_off_requests_enabled)

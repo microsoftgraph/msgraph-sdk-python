@@ -38,7 +38,7 @@ class UsersWithUserPrincipalNameRequestBuilder(BaseRequestBuilder):
         Deletes a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -54,10 +54,10 @@ class UsersWithUserPrincipalNameRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UsersWithUserPrincipalNameRequestBuilderGetQueryParameters]] = None) -> Optional[User]:
         """
-        Read properties and relationships of the user object.
+        Retrieve the properties and relationships of user object. This operation returns by default only a subset of the more commonly used properties for each user. These default properties are noted in the Properties section. To get properties that are not returned by default, do a GET operation for the user and specify the properties in a $select OData query option. Because the user resource supports extensions, you can also use the GET operation to get custom properties and extension data in a user instance. Customers through Microsoft Entra ID for customers can also use this API operation to retrieve their details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -79,7 +79,7 @@ class UsersWithUserPrincipalNameRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -110,7 +110,7 @@ class UsersWithUserPrincipalNameRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UsersWithUserPrincipalNameRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the user object.
+        Retrieve the properties and relationships of user object. This operation returns by default only a subset of the more commonly used properties for each user. These default properties are noted in the Properties section. To get properties that are not returned by default, do a GET operation for the user and specify the properties in a $select OData query option. Because the user resource supports extensions, you can also use the GET operation to get custom properties and extension data in a user instance. Customers through Microsoft Entra ID for customers can also use this API operation to retrieve their details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -154,7 +154,7 @@ class UsersWithUserPrincipalNameRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsersWithUserPrincipalNameRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the user object.
+        Retrieve the properties and relationships of user object. This operation returns by default only a subset of the more commonly used properties for each user. These default properties are noted in the Properties section. To get properties that are not returned by default, do a GET operation for the user and specify the properties in a $select OData query option. Because the user resource supports extensions, you can also use the GET operation to get custom properties and extension data in a user instance. Customers through Microsoft Entra ID for customers can also use this API operation to retrieve their details.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

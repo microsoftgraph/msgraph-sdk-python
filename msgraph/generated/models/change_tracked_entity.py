@@ -6,6 +6,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .day_note import DayNote
     from .entity import Entity
     from .identity_set import IdentitySet
     from .offer_shift_request import OfferShiftRequest
@@ -16,6 +17,7 @@ if TYPE_CHECKING:
     from .shift import Shift
     from .shift_preferences import ShiftPreferences
     from .swap_shifts_change_request import SwapShiftsChangeRequest
+    from .time_card import TimeCard
     from .time_off import TimeOff
     from .time_off_reason import TimeOffReason
     from .time_off_request import TimeOffRequest
@@ -25,6 +27,8 @@ from .entity import Entity
 
 @dataclass
 class ChangeTrackedEntity(Entity, Parsable):
+    # Identity of the creator of the entity.
+    created_by: Optional[IdentitySet] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     created_date_time: Optional[datetime.datetime] = None
     # Identity of the person who last modified the entity.
@@ -48,6 +52,10 @@ class ChangeTrackedEntity(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.dayNote".casefold():
+            from .day_note import DayNote
+
+            return DayNote()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
             from .offer_shift_request import OfferShiftRequest
 
@@ -80,6 +88,10 @@ class ChangeTrackedEntity(Entity, Parsable):
             from .swap_shifts_change_request import SwapShiftsChangeRequest
 
             return SwapShiftsChangeRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeCard".casefold():
+            from .time_card import TimeCard
+
+            return TimeCard()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOff".casefold():
             from .time_off import TimeOff
 
@@ -103,6 +115,7 @@ class ChangeTrackedEntity(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .day_note import DayNote
         from .entity import Entity
         from .identity_set import IdentitySet
         from .offer_shift_request import OfferShiftRequest
@@ -113,11 +126,13 @@ class ChangeTrackedEntity(Entity, Parsable):
         from .shift import Shift
         from .shift_preferences import ShiftPreferences
         from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_card import TimeCard
         from .time_off import TimeOff
         from .time_off_reason import TimeOffReason
         from .time_off_request import TimeOffRequest
         from .workforce_integration import WorkforceIntegration
 
+        from .day_note import DayNote
         from .entity import Entity
         from .identity_set import IdentitySet
         from .offer_shift_request import OfferShiftRequest
@@ -128,12 +143,14 @@ class ChangeTrackedEntity(Entity, Parsable):
         from .shift import Shift
         from .shift_preferences import ShiftPreferences
         from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_card import TimeCard
         from .time_off import TimeOff
         from .time_off_reason import TimeOffReason
         from .time_off_request import TimeOffRequest
         from .workforce_integration import WorkforceIntegration
 
         fields: dict[str, Callable[[Any], None]] = {
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
@@ -151,5 +168,6 @@ class ChangeTrackedEntity(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("createdBy", self.created_by)
     
 

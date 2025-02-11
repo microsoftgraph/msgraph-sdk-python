@@ -14,33 +14,32 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors.o_data_error import ODataError
-    from .....models.reference_update import ReferenceUpdate
+    from ......models.day_note import DayNote
+    from ......models.o_data_errors.o_data_error import ODataError
 
-class RefRequestBuilder(BaseRequestBuilder):
+class DayNoteItemRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to manage the collection of user entities.
+    Provides operations to manage the dayNotes property of the microsoft.graph.schedule entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
-        Instantiates a new RefRequestBuilder and sets the default values.
+        Instantiates a new DayNoteItemRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/manager/$ref", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/schedule/dayNotes/{dayNote%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Remove a user's manager.
+        Delete navigation property dayNotes for teams
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/user-delete-manager?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors.o_data_error import ODataError
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
@@ -49,50 +48,52 @@ class RefRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[str]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DayNoteItemRequestBuilderGetQueryParameters]] = None) -> Optional[DayNote]:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        The day notes in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[str]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-manager?view=graph-rest-1.0
+        Returns: Optional[DayNote]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors.o_data_error import ODataError
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "str", error_mapping)
+        from ......models.day_note import DayNote
+
+        return await self.request_adapter.send_async(request_info, DayNote, error_mapping)
     
-    async def put(self,body: ReferenceUpdate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
+    async def patch(self,body: DayNote, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DayNote]:
         """
-        Assign a user's manager.
+        Update the navigation property dayNotes in teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-manager?view=graph-rest-1.0
+        Returns: Optional[DayNote]
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = self.to_put_request_information(
+        request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors.o_data_error import ODataError
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        from ......models.day_note import DayNote
+
+        return await self.request_adapter.send_async(request_info, DayNote, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Remove a user's manager.
+        Delete navigation property dayNotes for teams
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +102,9 @@ class RefRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DayNoteItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        The day notes in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,47 +113,73 @@ class RefRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_put_request_information(self,body: ReferenceUpdate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: DayNote, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Assign a user's manager.
+        Update the navigation property dayNotes in teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.PUT, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: str) -> RefRequestBuilder:
+    def with_url(self,raw_url: str) -> DayNoteItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: RefRequestBuilder
+        Returns: DayNoteItemRequestBuilder
         """
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
-        return RefRequestBuilder(self.request_adapter, raw_url)
+        return DayNoteItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
-    class RefRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class DayNoteItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class RefRequestBuilderGetRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class DayNoteItemRequestBuilderGetQueryParameters():
+        """
+        The day notes in the schedule.
+        """
+        def get_query_parameter(self,original_name: str) -> str:
+            """
+            Maps the query parameters names to their encoded names for the URI template parsing.
+            param original_name: The original query parameter name in the class.
+            Returns: str
+            """
+            if original_name is None:
+                raise TypeError("original_name cannot be null.")
+            if original_name == "expand":
+                return "%24expand"
+            if original_name == "select":
+                return "%24select"
+            return original_name
+        
+        # Expand related entities
+        expand: Optional[list[str]] = None
+
+        # Select properties to be returned
+        select: Optional[list[str]] = None
+
+    
+    @dataclass
+    class DayNoteItemRequestBuilderGetRequestConfiguration(RequestConfiguration[DayNoteItemRequestBuilderGetQueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class RefRequestBuilderPutRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class DayNoteItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

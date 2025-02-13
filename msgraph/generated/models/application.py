@@ -93,7 +93,7 @@ class Application(DirectoryObject, Parsable):
     oauth2_require_post_response: Optional[bool] = None
     # Application developers can configure optional claims in their Microsoft Entra applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
     optional_claims: Optional[OptionalClaims] = None
-    # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
+    # Directory objects that are owners of this application. The owners are a set of nonadmin users or servicePrincipals who are allowed to modify this object. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
     owners: Optional[list[DirectoryObject]] = None
     # Specifies parental control settings for an application.
     parental_control_settings: Optional[ParentalControlSettings] = None

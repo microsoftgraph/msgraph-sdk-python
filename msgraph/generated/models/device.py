@@ -84,7 +84,7 @@ class Device(DirectoryObject, Parsable):
     system_labels: Optional[list[str]] = None
     # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
     transitive_member_of: Optional[list[DirectoryObject]] = None
-    # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud-only joined devices), ServerAd (on-premises domain joined devices joined to Microsoft Entra ID). For more information, see Introduction to device management in Microsoft Entra ID.
+    # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud-only joined devices), ServerAd (on-premises domain joined devices joined to Microsoft Entra ID). For more information, see Introduction to device management in Microsoft Entra ID. Supports $filter (eq, ne, not, in).
     trust_type: Optional[str] = None
     
     @staticmethod

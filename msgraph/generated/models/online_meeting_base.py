@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .allowed_lobby_admitter_roles import AllowedLobbyAdmitterRoles
     from .audio_conferencing import AudioConferencing
     from .chat_info import ChatInfo
     from .chat_restrictions import ChatRestrictions
@@ -15,6 +16,7 @@ if TYPE_CHECKING:
     from .meeting_attendance_report import MeetingAttendanceReport
     from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
     from .meeting_chat_mode import MeetingChatMode
+    from .meeting_live_share_options import MeetingLiveShareOptions
     from .online_meeting import OnlineMeeting
     from .online_meeting_presenters import OnlineMeetingPresenters
     from .virtual_event_session import VirtualEventSession
@@ -28,16 +30,26 @@ class OnlineMeetingBase(Entity, Parsable):
     allow_attendee_to_enable_camera: Optional[bool] = None
     # Indicates whether attendees can turn on their microphone.
     allow_attendee_to_enable_mic: Optional[bool] = None
+    # Indicates whether breakout rooms are enabled for the meeting.
+    allow_breakout_rooms: Optional[bool] = None
+    # Indicates whether live share is enabled for the meeting. Possible values are: enabled, disabled, unknownFutureValue.
+    allow_live_share: Optional[MeetingLiveShareOptions] = None
     # Specifies the mode of the meeting chat.
     allow_meeting_chat: Optional[MeetingChatMode] = None
     # Specifies if participants are allowed to rename themselves in an instance of the meeting.
     allow_participants_to_change_name: Optional[bool] = None
+    # Indicates whether PowerPoint live is enabled for the meeting.
+    allow_power_point_sharing: Optional[bool] = None
     # Indicates whether recording is enabled for the meeting.
     allow_recording: Optional[bool] = None
     # Indicates if Teams reactions are enabled for the meeting.
     allow_teamwork_reactions: Optional[bool] = None
     # Indicates whether transcription is enabled for the meeting.
     allow_transcription: Optional[bool] = None
+    # Indicates whether whiteboard is enabled for the meeting.
+    allow_whiteboard: Optional[bool] = None
+    # Specifies the users who can admit from the lobby. Possible values are: organizerAndCoOrganizersAndPresenters, organizerAndCoOrganizers, unknownFutureValue.
+    allowed_lobby_admitters: Optional[AllowedLobbyAdmitterRoles] = None
     # Specifies who can be a presenter in a meeting.
     allowed_presenters: Optional[OnlineMeetingPresenters] = None
     # The attendance reports of an online meeting. Read-only.
@@ -100,6 +112,7 @@ class OnlineMeetingBase(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .allowed_lobby_admitter_roles import AllowedLobbyAdmitterRoles
         from .audio_conferencing import AudioConferencing
         from .chat_info import ChatInfo
         from .chat_restrictions import ChatRestrictions
@@ -110,11 +123,13 @@ class OnlineMeetingBase(Entity, Parsable):
         from .meeting_attendance_report import MeetingAttendanceReport
         from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
         from .meeting_chat_mode import MeetingChatMode
+        from .meeting_live_share_options import MeetingLiveShareOptions
         from .online_meeting import OnlineMeeting
         from .online_meeting_presenters import OnlineMeetingPresenters
         from .virtual_event_session import VirtualEventSession
         from .watermark_protection_values import WatermarkProtectionValues
 
+        from .allowed_lobby_admitter_roles import AllowedLobbyAdmitterRoles
         from .audio_conferencing import AudioConferencing
         from .chat_info import ChatInfo
         from .chat_restrictions import ChatRestrictions
@@ -125,6 +140,7 @@ class OnlineMeetingBase(Entity, Parsable):
         from .meeting_attendance_report import MeetingAttendanceReport
         from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
         from .meeting_chat_mode import MeetingChatMode
+        from .meeting_live_share_options import MeetingLiveShareOptions
         from .online_meeting import OnlineMeeting
         from .online_meeting_presenters import OnlineMeetingPresenters
         from .virtual_event_session import VirtualEventSession
@@ -133,11 +149,16 @@ class OnlineMeetingBase(Entity, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
             "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
+            "allowBreakoutRooms": lambda n : setattr(self, 'allow_breakout_rooms', n.get_bool_value()),
+            "allowLiveShare": lambda n : setattr(self, 'allow_live_share', n.get_enum_value(MeetingLiveShareOptions)),
             "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(MeetingChatMode)),
             "allowParticipantsToChangeName": lambda n : setattr(self, 'allow_participants_to_change_name', n.get_bool_value()),
+            "allowPowerPointSharing": lambda n : setattr(self, 'allow_power_point_sharing', n.get_bool_value()),
             "allowRecording": lambda n : setattr(self, 'allow_recording', n.get_bool_value()),
             "allowTeamworkReactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
             "allowTranscription": lambda n : setattr(self, 'allow_transcription', n.get_bool_value()),
+            "allowWhiteboard": lambda n : setattr(self, 'allow_whiteboard', n.get_bool_value()),
+            "allowedLobbyAdmitters": lambda n : setattr(self, 'allowed_lobby_admitters', n.get_enum_value(AllowedLobbyAdmitterRoles)),
             "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(OnlineMeetingPresenters)),
             "attendanceReports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(MeetingAttendanceReport)),
             "audioConferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(AudioConferencing)),
@@ -169,11 +190,16 @@ class OnlineMeetingBase(Entity, Parsable):
         super().serialize(writer)
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
+        writer.write_bool_value("allowBreakoutRooms", self.allow_breakout_rooms)
+        writer.write_enum_value("allowLiveShare", self.allow_live_share)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)
         writer.write_bool_value("allowParticipantsToChangeName", self.allow_participants_to_change_name)
+        writer.write_bool_value("allowPowerPointSharing", self.allow_power_point_sharing)
         writer.write_bool_value("allowRecording", self.allow_recording)
         writer.write_bool_value("allowTeamworkReactions", self.allow_teamwork_reactions)
         writer.write_bool_value("allowTranscription", self.allow_transcription)
+        writer.write_bool_value("allowWhiteboard", self.allow_whiteboard)
+        writer.write_enum_value("allowedLobbyAdmitters", self.allowed_lobby_admitters)
         writer.write_enum_value("allowedPresenters", self.allowed_presenters)
         writer.write_collection_of_object_values("attendanceReports", self.attendance_reports)
         writer.write_object_value("audioConferencing", self.audio_conferencing)

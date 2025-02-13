@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from ......models.schedule import Schedule
+    from .day_notes.day_notes_request_builder import DayNotesRequestBuilder
     from .offer_shift_requests.offer_shift_requests_request_builder import OfferShiftRequestsRequestBuilder
     from .open_shifts.open_shifts_request_builder import OpenShiftsRequestBuilder
     from .open_shift_change_requests.open_shift_change_requests_request_builder import OpenShiftChangeRequestsRequestBuilder
@@ -24,6 +25,7 @@ if TYPE_CHECKING:
     from .shifts.shifts_request_builder import ShiftsRequestBuilder
     from .swap_shifts_change_requests.swap_shifts_change_requests_request_builder import SwapShiftsChangeRequestsRequestBuilder
     from .times_off.times_off_request_builder import TimesOffRequestBuilder
+    from .time_cards.time_cards_request_builder import TimeCardsRequestBuilder
     from .time_off_reasons.time_off_reasons_request_builder import TimeOffReasonsRequestBuilder
     from .time_off_requests.time_off_requests_request_builder import TimeOffRequestsRequestBuilder
 
@@ -149,6 +151,15 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
         return ScheduleRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def day_notes(self) -> DayNotesRequestBuilder:
+        """
+        Provides operations to manage the dayNotes property of the microsoft.graph.schedule entity.
+        """
+        from .day_notes.day_notes_request_builder import DayNotesRequestBuilder
+
+        return DayNotesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def offer_shift_requests(self) -> OfferShiftRequestsRequestBuilder:
         """
         Provides operations to manage the offerShiftRequests property of the microsoft.graph.schedule entity.
@@ -210,6 +221,15 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
         from .swap_shifts_change_requests.swap_shifts_change_requests_request_builder import SwapShiftsChangeRequestsRequestBuilder
 
         return SwapShiftsChangeRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def time_cards(self) -> TimeCardsRequestBuilder:
+        """
+        Provides operations to manage the timeCards property of the microsoft.graph.schedule entity.
+        """
+        from .time_cards.time_cards_request_builder import TimeCardsRequestBuilder
+
+        return TimeCardsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def time_off_reasons(self) -> TimeOffReasonsRequestBuilder:

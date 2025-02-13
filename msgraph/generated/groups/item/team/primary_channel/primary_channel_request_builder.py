@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.channel import Channel
     from .....models.o_data_errors.o_data_error import ODataError
+    from .all_members.all_members_request_builder import AllMembersRequestBuilder
     from .archive.archive_request_builder import ArchiveRequestBuilder
     from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
     from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder import DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder
@@ -148,6 +149,15 @@ class PrimaryChannelRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PrimaryChannelRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def all_members(self) -> AllMembersRequestBuilder:
+        """
+        Provides operations to manage the allMembers property of the microsoft.graph.channel entity.
+        """
+        from .all_members.all_members_request_builder import AllMembersRequestBuilder
+
+        return AllMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def archive(self) -> ArchiveRequestBuilder:

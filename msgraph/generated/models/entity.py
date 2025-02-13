@@ -183,6 +183,7 @@ if TYPE_CHECKING:
     from .custom_extension_stage_setting import CustomExtensionStageSetting
     from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
     from .data_policy_operation import DataPolicyOperation
+    from .day_note import DayNote
     from .default_managed_app_protection import DefaultManagedAppProtection
     from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
     from .delegated_admin_customer import DelegatedAdminCustomer
@@ -789,6 +790,7 @@ if TYPE_CHECKING:
     from .threat_assessment_request import ThreatAssessmentRequest
     from .threat_assessment_result import ThreatAssessmentResult
     from .thumbnail_set import ThumbnailSet
+    from .time_card import TimeCard
     from .time_off import TimeOff
     from .time_off_reason import TimeOffReason
     from .time_off_request import TimeOffRequest
@@ -1705,6 +1707,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .data_policy_operation import DataPolicyOperation
 
             return DataPolicyOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.dayNote".casefold():
+            from .day_note import DayNote
+
+            return DayNote()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
             from .default_managed_app_protection import DefaultManagedAppProtection
 
@@ -4137,6 +4143,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .thumbnail_set import ThumbnailSet
 
             return ThumbnailSet()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeCard".casefold():
+            from .time_card import TimeCard
+
+            return TimeCard()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOff".casefold():
             from .time_off import TimeOff
 
@@ -5037,6 +5047,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
+        from .day_note import DayNote
         from .default_managed_app_protection import DefaultManagedAppProtection
         from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
         from .delegated_admin_customer import DelegatedAdminCustomer
@@ -5643,6 +5654,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .threat_assessment_request import ThreatAssessmentRequest
         from .threat_assessment_result import ThreatAssessmentResult
         from .thumbnail_set import ThumbnailSet
+        from .time_card import TimeCard
         from .time_off import TimeOff
         from .time_off_reason import TimeOffReason
         from .time_off_request import TimeOffRequest
@@ -6000,6 +6012,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
+        from .day_note import DayNote
         from .default_managed_app_protection import DefaultManagedAppProtection
         from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
         from .delegated_admin_customer import DelegatedAdminCustomer
@@ -6606,6 +6619,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .threat_assessment_request import ThreatAssessmentRequest
         from .threat_assessment_result import ThreatAssessmentResult
         from .thumbnail_set import ThumbnailSet
+        from .time_card import TimeCard
         from .time_off import TimeOff
         from .time_off_reason import TimeOffReason
         from .time_off_request import TimeOffRequest

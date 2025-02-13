@@ -38,7 +38,7 @@ class Bookmark(SearchAnswer, Parsable):
     power_app_ids: Optional[list[str]] = None
     # The state property
     state: Optional[AnswerState] = None
-    # Variations of a bookmark for different countries or devices. Use when you need to show different content to users based on their device, country/region, or both. The date and group settings apply to all variations.
+    # Variations of a bookmark for different countries/regions or devices. Use when you need to show different content to users based on their device, country/region, or both. The date and group settings apply to all variations.
     targeted_variations: Optional[list[AnswerVariant]] = None
     
     @staticmethod

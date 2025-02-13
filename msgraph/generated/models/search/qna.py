@@ -34,7 +34,7 @@ class Qna(SearchAnswer, Parsable):
     platforms: Optional[list[DevicePlatformType]] = None
     # The state property
     state: Optional[AnswerState] = None
-    # Variations of a QnA for different countries or devices. Use when you need to show different content to users based on their device, country/region, or both. The date and group settings apply to all variations.
+    # Variations of a QnA for different countries/regions or devices. Use when you need to show different content to users based on their device, country/region, or both. The date and group settings apply to all variations.
     targeted_variations: Optional[list[AnswerVariant]] = None
     
     @staticmethod

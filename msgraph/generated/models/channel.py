@@ -19,6 +19,8 @@ from .entity import Entity
 
 @dataclass
 class Channel(Entity, Parsable):
+    # A collection of membership records associated with the channel, including both direct and indirect members of shared channels.
+    all_members: Optional[list[ConversationMember]] = None
     # Read only. Timestamp at which the channel was created.
     created_date_time: Optional[datetime.datetime] = None
     # Optional textual description for the channel.
@@ -87,6 +89,7 @@ class Channel(Entity, Parsable):
         from .teams_tab import TeamsTab
 
         fields: dict[str, Callable[[Any], None]] = {
+            "allMembers": lambda n : setattr(self, 'all_members', n.get_collection_of_object_values(ConversationMember)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -116,6 +119,7 @@ class Channel(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("allMembers", self.all_members)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

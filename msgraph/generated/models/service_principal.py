@@ -104,7 +104,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
     oauth2_permission_scopes: Optional[list[PermissionScope]] = None
     # Directory objects that this service principal owns. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_objects: Optional[list[DirectoryObject]] = None
-    # Directory objects that are owners of this servicePrincipal. The owners are a set of nonadmin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
+    # Directory objects that are owners of this servicePrincipal. The owners are a set of nonadmin users or servicePrincipals who are allowed to modify this object. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
     owners: Optional[list[DirectoryObject]] = None
     # The collection of password credentials associated with the application. Not nullable.
     password_credentials: Optional[list[PasswordCredential]] = None

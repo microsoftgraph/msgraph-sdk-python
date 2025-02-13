@@ -116,7 +116,7 @@ class User(DirectoryObject, Parsable):
     contact_folders: Optional[list[ContactFolder]] = None
     # The user's contacts. Read-only. Nullable.
     contacts: Optional[list[Contact]] = None
-    # The country/region where the user is located; for example, US or UK. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # The country or region where the user is located; for example, US or UK. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     country: Optional[str] = None
     # The date and time the user was created, in ISO 8601 format and UTC. The value can't be modified and is automatically populated when the entity is created. Nullable. For on-premises users, the value represents when they were first created in Microsoft Entra ID. Property is null for some users created before June 2018 and on-premises users that were synced to Microsoft Entra ID before June 2018. Read-only. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
     created_date_time: Optional[datetime.datetime] = None
@@ -268,7 +268,7 @@ class User(DirectoryObject, Parsable):
     photos: Optional[list[ProfilePhoto]] = None
     # Entry-point to the Planner resource that might exist for a user. Read-only.
     planner: Optional[PlannerUser] = None
-    # The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # The postal code for the user's postal address. The postal code is specific to the user's country or region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     postal_code: Optional[str] = None
     # The preferred data location for the user. For more information, see OneDrive Online Multi-Geo.
     preferred_data_location: Optional[str] = None
@@ -322,7 +322,7 @@ class User(DirectoryObject, Parsable):
     todo: Optional[Todo] = None
     # The groups, including nested groups, and directory roles that a user is a member of. Nullable.
     transitive_member_of: Optional[list[DirectoryObject]] = None
-    # A two-letter country code (ISO standard 3166). Required for users that are assigned licenses due to legal requirements to check for availability of services in countries. Examples include: US, JP, and GB. Not nullable. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # A two-letter country code (ISO standard 3166). Required for users that are assigned licenses due to legal requirements to check for availability of services in countries/regions. Examples include: US, JP, and GB. Not nullable. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     usage_location: Optional[str] = None
     # The user principal name (UPN) of the user. The UPN is an Internet-style sign-in name for the user based on the Internet standard RFC 822. By convention, this value should map to the user's email name. The general format is alias@domain, where the domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: This property can't contain accent characters. Only the following characters are allowed A - Z, a - z, 0 - 9, ' . - _ ! # ^ ~. For the complete list of allowed characters, see username policies. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith) and $orderby.
     user_principal_name: Optional[str] = None

@@ -9,6 +9,7 @@ class WorkforceIntegrationSupportedEntities(str, Enum):
     OpenShiftRequest = "openShiftRequest",
     OfferShiftRequest = "offerShiftRequest",
     UnknownFutureValue = "unknownFutureValue",
+    TimeCard = "timeCard",
     TimeOffReason = "timeOffReason",
     TimeOff = "timeOff",
     TimeOffRequest = "timeOffRequest",

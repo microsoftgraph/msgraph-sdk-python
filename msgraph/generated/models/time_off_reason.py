@@ -14,6 +14,8 @@ from .change_tracked_entity import ChangeTrackedEntity
 class TimeOffReason(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.timeOffReason"
+    # The code of the timeOffReason to represent an external identifier. This field must be unique within the team in Microsoft Teams and uses an alphanumeric format, with a maximum of 100 characters.
+    code: Optional[str] = None
     # The name of the timeOffReason. Required.
     display_name: Optional[str] = None
     # Supported icon types are: none, car, calendar, running, plane, firstAid, doctor, notWorking, clock, juryDuty, globe, cup, phone, weather, umbrella, piggyBank, dog, cake, trafficCone, pin, sunny. Required.
@@ -44,6 +46,7 @@ class TimeOffReason(ChangeTrackedEntity, Parsable):
         from .time_off_reason_icon_type import TimeOffReasonIconType
 
         fields: dict[str, Callable[[Any], None]] = {
+            "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(TimeOffReasonIconType)),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
@@ -61,6 +64,7 @@ class TimeOffReason(ChangeTrackedEntity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("code", self.code)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("iconType", self.icon_type)
         writer.write_bool_value("isActive", self.is_active)

@@ -44,7 +44,7 @@ class Message(OutlookItem, Parsable):
     conversation_index: Optional[bytes] = None
     # The collection of open extensions defined for the message. Nullable.
     extensions: Optional[list[Extension]] = None
-    # The flag value that indicates the status, start date, due date, or completion date for the message.
+    # Indicates the status, start date, due date, or completion date for the message.
     flag: Optional[FollowupFlag] = None
     # The owner of the mailbox from which the message is sent. In most cases, this value is the same as the sender property, except for sharing or delegation scenarios. The value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
     from_: Optional[Recipient] = None
@@ -74,7 +74,7 @@ class Message(OutlookItem, Parsable):
     received_date_time: Optional[datetime.datetime] = None
     # The email addresses to use when replying.
     reply_to: Optional[list[Recipient]] = None
-    # The account that is actually used to generate the message. In most cases, this value is the same as the from property. You can set this property to a different value when sending a message from a shared mailbox, for a shared calendar, or as a delegate. In any case, the value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
+    # The account that is used to generate the message. In most cases, this value is the same as the from property. You can set this property to a different value when sending a message from a shared mailbox, for a shared calendar, or as a delegate. In any case, the value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
     sender: Optional[Recipient] = None
     # The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     sent_date_time: Optional[datetime.datetime] = None

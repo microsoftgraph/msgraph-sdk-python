@@ -24,11 +24,11 @@ class Calendar(Entity, Parsable):
     calendar_permissions: Optional[list[CalendarPermission]] = None
     # The calendar view for the calendar. Navigation property. Read-only.
     calendar_view: Optional[list[Event]] = None
-    # true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access.
+    # true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who shared a calendar and granted write access.
     can_edit: Optional[bool] = None
-    # true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it.
+    # true if the user has permission to share the calendar, false otherwise. Only the user who created the calendar can share it.
     can_share: Optional[bool] = None
-    # true if the user can read calendar items that have been marked private, false otherwise.
+    # If true, the user can read calendar items that have been marked private, false otherwise.
     can_view_private_items: Optional[bool] = None
     # Identifies the version of the calendar object. Every time the calendar is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
     change_key: Optional[str] = None

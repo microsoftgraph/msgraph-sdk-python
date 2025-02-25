@@ -1,6 +1,7 @@
 from enum import Enum
 
 class RuleOperation(str, Enum):
+    Null = "null",
     Equals = "equals",
     NotEquals = "notEquals",
     Contains = "contains",

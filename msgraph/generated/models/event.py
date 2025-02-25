@@ -32,7 +32,7 @@ from .outlook_item import OutlookItem
 class Event(OutlookItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.event"
-    # true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.
+    # true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. The default is true.
     allow_new_time_proposals: Optional[bool] = None
     # The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.
     attachments: Optional[list[Attachment]] = None
@@ -40,7 +40,7 @@ class Event(OutlookItem, Parsable):
     attendees: Optional[list[Attendee]] = None
     # The body of the message associated with the event. It can be in HTML or text format.
     body: Optional[ItemBody] = None
-    # The preview of the message associated with the event. It is in text format.
+    # The preview of the message associated with the event. It's in text format.
     body_preview: Optional[str] = None
     # The calendar that contains the event. Navigation property. Read-only.
     calendar: Optional[Calendar] = None
@@ -50,35 +50,35 @@ class Event(OutlookItem, Parsable):
     extensions: Optional[list[Extension]] = None
     # Set to true if the event has attachments.
     has_attachments: Optional[bool] = None
-    # When set to true, each attendee only sees themselves in the meeting request and meeting Tracking list. Default is false.
+    # When set to true, each attendee only sees themselves in the meeting request and meeting Tracking list. The default is false.
     hide_attendees: Optional[bool] = None
     # A unique identifier for an event across calendars. This ID is different for each occurrence in a recurring series. Read-only.
     i_cal_u_id: Optional[str] = None
     # The importance of the event. The possible values are: low, normal, high.
     importance: Optional[Importance] = None
-    # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
+    # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions modified, but doesn't include occurrences cancelled from the series. Navigation property. Read-only. Nullable.
     instances: Optional[list[Event]] = None
-    # Set to true if the event lasts all day. If true, regardless of whether it's a single-day or multi-day event, start and end time must be set to midnight and be in the same time zone.
+    # Set to true if the event lasts all day. If true, regardless of whether it's a single-day or multi-day event, start, and endtime must be set to midnight and be in the same time zone.
     is_all_day: Optional[bool] = None
     # Set to true if the event has been canceled.
     is_cancelled: Optional[bool] = None
-    # Set to true if the user has updated the meeting in Outlook but has not sent the updates to attendees. Set to false if all changes have been sent, or if the event is an appointment without any attendees.
+    # Set to true if the user has updated the meeting in Outlook but hasn't sent the updates to attendees. Set to false if all changes are sent, or if the event is an appointment without any attendees.
     is_draft: Optional[bool] = None
-    # True if this event has online meeting information (that is, onlineMeeting points to an onlineMeetingInfo resource), false otherwise. Default is false (onlineMeeting is null). Optional.  After you set isOnlineMeeting to true, Microsoft Graph initializes onlineMeeting. Subsequently Outlook ignores any further changes to isOnlineMeeting, and the meeting remains available online.
+    # True if this event has online meeting information (that is, onlineMeeting points to an onlineMeetingInfo resource), false otherwise. Default is false (onlineMeeting is null). Optional.  After you set isOnlineMeeting to true, Microsoft Graph initializes onlineMeeting. Subsequently, Outlook ignores any further changes to isOnlineMeeting, and the meeting remains available online.
     is_online_meeting: Optional[bool] = None
-    # Set to true if the calendar owner (specified by the owner property of the calendar) is the organizer of the event (specified by the organizer property of the event). This also applies if a delegate organized the event on behalf of the owner.
+    # Set to true if the calendar owner (specified by the owner property of the calendar) is the organizer of the event (specified by the organizer property of the event). It also applies if a delegate organized the event on behalf of the owner.
     is_organizer: Optional[bool] = None
     # Set to true if an alert is set to remind the user of the event.
     is_reminder_on: Optional[bool] = None
     # The location of the event.
     location: Optional[Location] = None
-    # The locations where the event is held or attended from. The location and locations properties always correspond with each other. If you update the location property, any prior locations in the locations collection would be removed and replaced by the new location value.
+    # The locations where the event is held or attended from. The location and locations properties always correspond with each other. If you update the location property, any prior locations in the locations collection are removed and replaced by the new location value.
     locations: Optional[list[Location]] = None
     # The collection of multi-value extended properties defined for the event. Read-only. Nullable.
     multi_value_extended_properties: Optional[list[MultiValueLegacyExtendedProperty]] = None
-    # Details for an attendee to join the meeting online. Default is null. Read-only. After you set the isOnlineMeeting and onlineMeetingProvider properties to enable a meeting online, Microsoft Graph initializes onlineMeeting. When set, the meeting remains available online, and you cannot change the isOnlineMeeting, onlineMeetingProvider, and onlneMeeting properties again.
+    # Details for an attendee to join the meeting online. The default is null. Read-only. After you set the isOnlineMeeting and onlineMeetingProvider properties to enable a meeting online, Microsoft Graph initializes onlineMeeting. When set, the meeting remains available online, and you can't change the isOnlineMeeting, onlineMeetingProvider, and onlneMeeting properties again.
     online_meeting: Optional[OnlineMeetingInfo] = None
-    # Represents the online meeting service provider. By default, onlineMeetingProvider is unknown. The possible values are unknown, teamsForBusiness, skypeForBusiness, and skypeForConsumer. Optional.  After you set onlineMeetingProvider, Microsoft Graph initializes onlineMeeting. Subsequently you cannot change onlineMeetingProvider again, and the meeting remains available online.
+    # Represents the online meeting service provider. By default, onlineMeetingProvider is unknown. The possible values are unknown, teamsForBusiness, skypeForBusiness, and skypeForConsumer. Optional.  After you set onlineMeetingProvider, Microsoft Graph initializes onlineMeeting. Subsequently, you can't change onlineMeetingProvider again, and the meeting remains available online.
     online_meeting_provider: Optional[OnlineMeetingProviderType] = None
     # A URL for an online meeting. The property is set only when an organizer specifies in Outlook that an event is an online meeting such as Skype. Read-only.To access the URL to join an online meeting, use joinUrl which is exposed via the onlineMeeting property of the event. The onlineMeetingUrl property will be deprecated in the future.
     online_meeting_url: Optional[str] = None
@@ -86,7 +86,7 @@ class Event(OutlookItem, Parsable):
     organizer: Optional[Recipient] = None
     # The end time zone that was set when the event was created. A value of tzone://Microsoft/Custom indicates that a legacy custom time zone was set in desktop Outlook.
     original_end_time_zone: Optional[str] = None
-    # Represents the start time of an event when it is initially created as an occurrence or exception in a recurring series. This property is not returned for events that are single instances. Its date and time information is expressed in ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Represents the start time of an event when it's initially created as an occurrence or exception in a recurring series. This property is not returned for events that are single instances. Its date and time information is expressed in ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     original_start: Optional[datetime.datetime] = None
     # The start time zone that was set when the event was created. A value of tzone://Microsoft/Custom indicates that a legacy custom time zone was set in desktop Outlook.
     original_start_time_zone: Optional[str] = None
@@ -98,7 +98,7 @@ class Event(OutlookItem, Parsable):
     response_requested: Optional[bool] = None
     # Indicates the type of response sent in response to an event message.
     response_status: Optional[ResponseStatus] = None
-    # Possible values are: normal, personal, private, confidential.
+    # Possible values are: normal, personal, private, and confidential.
     sensitivity: Optional[Sensitivity] = None
     # The ID for the recurring series master item, if this event is part of a recurring series.
     series_master_id: Optional[str] = None
@@ -110,11 +110,11 @@ class Event(OutlookItem, Parsable):
     start: Optional[DateTimeTimeZone] = None
     # The text of the event's subject line.
     subject: Optional[str] = None
-    # A custom identifier specified by a client app for the server to avoid redundant POST operations in case of client retries to create the same event. This is useful when low network connectivity causes the client to time out before receiving a response from the server for the client's prior create-event request. After you set transactionId when creating an event, you cannot change transactionId in a subsequent update. This property is only returned in a response payload if an app has set it. Optional.
+    # A custom identifier specified by a client app for the server to avoid redundant POST operations in case of client retries to create the same event. It's useful when low network connectivity causes the client to time out before receiving a response from the server for the client's prior create-event request. After you set transactionId when creating an event, you can't change transactionId in a subsequent update. This property is only returned in a response payload if an app has set it. Optional.
     transaction_id: Optional[str] = None
     # The event type. Possible values are: singleInstance, occurrence, exception, seriesMaster. Read-only
     type: Optional[EventType] = None
-    # The URL to open the event in Outlook on the web.Outlook on the web opens the event in the browser if you are signed in to your mailbox. Otherwise, Outlook on the web prompts you to sign in.This URL cannot be accessed from within an iFrame.
+    # The URL to open the event in Outlook on the web.Outlook on the web opens the event in the browser if you are signed in to your mailbox. Otherwise, Outlook on the web prompts you to sign in.This URL can't be accessed from within an iFrame.
     web_link: Optional[str] = None
     
     @staticmethod

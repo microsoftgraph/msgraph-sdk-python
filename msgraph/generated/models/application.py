@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .api_application import ApiApplication
     from .app_management_policy import AppManagementPolicy
     from .app_role import AppRole
+    from .authentication_behaviors import AuthenticationBehaviors
     from .certification import Certification
     from .directory_object import DirectoryObject
     from .extension_property import ExtensionProperty
@@ -51,6 +52,8 @@ class Application(DirectoryObject, Parsable):
     app_roles: Optional[list[AppRole]] = None
     # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne). Read-only. null if the app wasn't created from an application template.
     application_template_id: Optional[str] = None
+    # The authenticationBehaviors property
+    authentication_behaviors: Optional[AuthenticationBehaviors] = None
     # Specifies the certification status of the application.
     certification: Optional[Certification] = None
     # The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderby.
@@ -154,6 +157,7 @@ class Application(DirectoryObject, Parsable):
         from .api_application import ApiApplication
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
+        from .authentication_behaviors import AuthenticationBehaviors
         from .certification import Certification
         from .directory_object import DirectoryObject
         from .extension_property import ExtensionProperty
@@ -180,6 +184,7 @@ class Application(DirectoryObject, Parsable):
         from .api_application import ApiApplication
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
+        from .authentication_behaviors import AuthenticationBehaviors
         from .certification import Certification
         from .directory_object import DirectoryObject
         from .extension_property import ExtensionProperty
@@ -209,6 +214,7 @@ class Application(DirectoryObject, Parsable):
             "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(AppManagementPolicy)),
             "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(AppRole)),
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
+            "authenticationBehaviors": lambda n : setattr(self, 'authentication_behaviors', n.get_object_value(AuthenticationBehaviors)),
             "certification": lambda n : setattr(self, 'certification', n.get_object_value(Certification)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(DirectoryObject)),
@@ -270,6 +276,7 @@ class Application(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)
         writer.write_collection_of_object_values("appRoles", self.app_roles)
         writer.write_str_value("applicationTemplateId", self.application_template_id)
+        writer.write_object_value("authenticationBehaviors", self.authentication_behaviors)
         writer.write_object_value("certification", self.certification)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("createdOnBehalfOf", self.created_on_behalf_of)

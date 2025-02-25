@@ -27,7 +27,7 @@ class EventMessage(Message, Parsable):
     event: Optional[Event] = None
     # The isAllDay property
     is_all_day: Optional[bool] = None
-    # True if this meeting request is accessible to a delegate, false otherwise. Default is false.
+    # True if this meeting request is accessible to a delegate, false otherwise. The default is false.
     is_delegated: Optional[bool] = None
     # The isOutOfDate property
     is_out_of_date: Optional[bool] = None

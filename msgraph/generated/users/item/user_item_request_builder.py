@@ -111,7 +111,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         Deletes a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -167,7 +167,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/user-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")

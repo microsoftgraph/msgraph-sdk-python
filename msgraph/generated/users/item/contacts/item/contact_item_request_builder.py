@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.contact import Contact
     from .....models.o_data_errors.o_data_error import ODataError
     from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
     from .photo.photo_request_builder import PhotoRequestBuilder
 
 class ContactItemRequestBuilder(BaseRequestBuilder):
@@ -148,6 +149,15 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
         from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
         return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permanent_delete(self) -> PermanentDeleteRequestBuilder:
+        """
+        Provides operations to call the permanentDelete method.
+        """
+        from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
+
+        return PermanentDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def photo(self) -> PhotoRequestBuilder:

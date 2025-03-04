@@ -53,6 +53,7 @@ if TYPE_CHECKING:
     from .security_group_evidence import SecurityGroupEvidence
     from .service_principal_evidence import ServicePrincipalEvidence
     from .submission_mail_evidence import SubmissionMailEvidence
+    from .teams_message_evidence import TeamsMessageEvidence
     from .url_evidence import UrlEvidence
     from .user_evidence import UserEvidence
 
@@ -266,6 +267,10 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .submission_mail_evidence import SubmissionMailEvidence
 
             return SubmissionMailEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.teamsMessageEvidence".casefold():
+            from .teams_message_evidence import TeamsMessageEvidence
+
+            return TeamsMessageEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.urlEvidence".casefold():
             from .url_evidence import UrlEvidence
 
@@ -327,6 +332,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .security_group_evidence import SecurityGroupEvidence
         from .service_principal_evidence import ServicePrincipalEvidence
         from .submission_mail_evidence import SubmissionMailEvidence
+        from .teams_message_evidence import TeamsMessageEvidence
         from .url_evidence import UrlEvidence
         from .user_evidence import UserEvidence
 
@@ -376,6 +382,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .security_group_evidence import SecurityGroupEvidence
         from .service_principal_evidence import ServicePrincipalEvidence
         from .submission_mail_evidence import SubmissionMailEvidence
+        from .teams_message_evidence import TeamsMessageEvidence
         from .url_evidence import UrlEvidence
         from .user_evidence import UserEvidence
 

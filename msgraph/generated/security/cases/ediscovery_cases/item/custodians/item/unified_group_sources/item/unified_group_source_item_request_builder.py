@@ -33,9 +33,10 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property unifiedGroupSources for security
+        Delete a unifiedGroupSource object associated with an ediscoveryCustodian.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/security-unifiedgroupsource-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -94,7 +95,7 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property unifiedGroupSources for security
+        Delete a unifiedGroupSource object associated with an ediscoveryCustodian.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

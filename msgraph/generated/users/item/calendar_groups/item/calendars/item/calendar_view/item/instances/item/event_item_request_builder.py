@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from .dismiss_reminder.dismiss_reminder_request_builder import DismissReminderRequestBuilder
     from .extensions.extensions_request_builder import ExtensionsRequestBuilder
     from .forward.forward_request_builder import ForwardRequestBuilder
+    from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
     from .snooze_reminder.snooze_reminder_request_builder import SnoozeReminderRequestBuilder
     from .tentatively_accept.tentatively_accept_request_builder import TentativelyAcceptRequestBuilder
 
@@ -152,6 +153,15 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         from .forward.forward_request_builder import ForwardRequestBuilder
 
         return ForwardRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permanent_delete(self) -> PermanentDeleteRequestBuilder:
+        """
+        Provides operations to call the permanentDelete method.
+        """
+        from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
+
+        return PermanentDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def snooze_reminder(self) -> SnoozeReminderRequestBuilder:

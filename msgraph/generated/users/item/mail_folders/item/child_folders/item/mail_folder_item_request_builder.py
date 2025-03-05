@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .messages.messages_request_builder import MessagesRequestBuilder
     from .message_rules.message_rules_request_builder import MessageRulesRequestBuilder
     from .move.move_request_builder import MoveRequestBuilder
+    from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
 
 class MailFolderItemRequestBuilder(BaseRequestBuilder):
     """
@@ -177,6 +178,15 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
         from .move.move_request_builder import MoveRequestBuilder
 
         return MoveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permanent_delete(self) -> PermanentDeleteRequestBuilder:
+        """
+        Provides operations to call the permanentDelete method.
+        """
+        from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
+
+        return PermanentDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MailFolderItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

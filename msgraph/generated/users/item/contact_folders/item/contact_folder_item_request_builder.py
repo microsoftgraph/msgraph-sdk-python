@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .child_folders.child_folders_request_builder import ChildFoldersRequestBuilder
     from .contacts.contacts_request_builder import ContactsRequestBuilder
+    from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
 
 class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
         from .contacts.contacts_request_builder import ContactsRequestBuilder
 
         return ContactsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permanent_delete(self) -> PermanentDeleteRequestBuilder:
+        """
+        Provides operations to call the permanentDelete method.
+        """
+        from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
+
+        return PermanentDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ContactFolderItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

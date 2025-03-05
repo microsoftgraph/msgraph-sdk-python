@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from .extensions.extensions_request_builder import ExtensionsRequestBuilder
     from .forward.forward_request_builder import ForwardRequestBuilder
     from .move.move_request_builder import MoveRequestBuilder
+    from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
     from .reply.reply_request_builder import ReplyRequestBuilder
     from .reply_all.reply_all_request_builder import ReplyAllRequestBuilder
     from .send.send_request_builder import SendRequestBuilder
@@ -230,6 +231,15 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
         from .move.move_request_builder import MoveRequestBuilder
 
         return MoveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permanent_delete(self) -> PermanentDeleteRequestBuilder:
+        """
+        Provides operations to call the permanentDelete method.
+        """
+        from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
+
+        return PermanentDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def reply(self) -> ReplyRequestBuilder:

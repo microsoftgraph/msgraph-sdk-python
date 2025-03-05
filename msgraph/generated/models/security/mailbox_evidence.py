@@ -18,6 +18,8 @@ class MailboxEvidence(AlertEvidence, Parsable):
     display_name: Optional[str] = None
     # The primary email address of the mailbox.
     primary_address: Optional[str] = None
+    # The user principal name of the mailbox.
+    upn: Optional[str] = None
     # The user account of the mailbox.
     user_account: Optional[UserAccount] = None
     
@@ -46,6 +48,7 @@ class MailboxEvidence(AlertEvidence, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "primaryAddress": lambda n : setattr(self, 'primary_address', n.get_str_value()),
+            "upn": lambda n : setattr(self, 'upn', n.get_str_value()),
             "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
         }
         super_fields = super().get_field_deserializers()
@@ -63,6 +66,7 @@ class MailboxEvidence(AlertEvidence, Parsable):
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("primaryAddress", self.primary_address)
+        writer.write_str_value("upn", self.upn)
         writer.write_object_value("userAccount", self.user_account)
     
 

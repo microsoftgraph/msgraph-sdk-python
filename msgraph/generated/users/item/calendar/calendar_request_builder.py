@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from .calendar_view.calendar_view_request_builder import CalendarViewRequestBuilder
     from .events.events_request_builder import EventsRequestBuilder
     from .get_schedule.get_schedule_request_builder import GetScheduleRequestBuilder
+    from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
 
 class CalendarRequestBuilder(BaseRequestBuilder):
     """
@@ -161,6 +162,15 @@ class CalendarRequestBuilder(BaseRequestBuilder):
         from .get_schedule.get_schedule_request_builder import GetScheduleRequestBuilder
 
         return GetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permanent_delete(self) -> PermanentDeleteRequestBuilder:
+        """
+        Provides operations to call the permanentDelete method.
+        """
+        from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
+
+        return PermanentDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CalendarRequestBuilderGetQueryParameters():

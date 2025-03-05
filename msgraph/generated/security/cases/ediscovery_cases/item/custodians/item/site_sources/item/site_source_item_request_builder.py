@@ -33,9 +33,10 @@ class SiteSourceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property siteSources for security
+        Delete a siteSource object associated with an ediscoveryCustodian.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycustodian-delete-sitesources?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -94,7 +95,7 @@ class SiteSourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property siteSources for security
+        Delete a siteSource object associated with an ediscoveryCustodian.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

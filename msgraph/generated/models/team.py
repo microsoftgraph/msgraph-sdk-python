@@ -41,6 +41,8 @@ class Team(Entity, Parsable):
     description: Optional[str] = None
     # The name of the team.
     display_name: Optional[str] = None
+    # The firstChannelName property
+    first_channel_name: Optional[str] = None
     # Settings to configure use of Giphy, memes, and stickers in the team.
     fun_settings: Optional[TeamFunSettings] = None
     # The group property
@@ -149,6 +151,7 @@ class Team(Entity, Parsable):
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "firstChannelName": lambda n : setattr(self, 'first_channel_name', n.get_str_value()),
             "funSettings": lambda n : setattr(self, 'fun_settings', n.get_object_value(TeamFunSettings)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
             "guestSettings": lambda n : setattr(self, 'guest_settings', n.get_object_value(TeamGuestSettings)),
@@ -191,6 +194,7 @@ class Team(Entity, Parsable):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("firstChannelName", self.first_channel_name)
         writer.write_object_value("funSettings", self.fun_settings)
         writer.write_object_value("group", self.group)
         writer.write_object_value("guestSettings", self.guest_settings)

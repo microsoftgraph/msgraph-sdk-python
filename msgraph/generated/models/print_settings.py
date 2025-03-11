@@ -5,6 +5,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .printer_discovery_settings import PrinterDiscoverySettings
+
 @dataclass
 class PrintSettings(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -16,6 +19,8 @@ class PrintSettings(AdditionalDataHolder, BackedModel, Parsable):
     document_conversion_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # Specifies settings that affect printer discovery when using Universal Print.
+    printer_discovery_settings: Optional[PrinterDiscoverySettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PrintSettings:
@@ -33,9 +38,14 @@ class PrintSettings(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .printer_discovery_settings import PrinterDiscoverySettings
+
+        from .printer_discovery_settings import PrinterDiscoverySettings
+
         fields: dict[str, Callable[[Any], None]] = {
             "documentConversionEnabled": lambda n : setattr(self, 'document_conversion_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "printerDiscoverySettings": lambda n : setattr(self, 'printer_discovery_settings', n.get_object_value(PrinterDiscoverySettings)),
         }
         return fields
     
@@ -49,6 +59,7 @@ class PrintSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("documentConversionEnabled", self.document_conversion_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("printerDiscoverySettings", self.printer_discovery_settings)
         writer.write_additional_data_value(self.additional_data)
     
 

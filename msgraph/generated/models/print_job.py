@@ -17,6 +17,8 @@ from .entity import Entity
 
 @dataclass
 class PrintJob(Entity, Parsable):
+    # The dateTimeOffset when the job was acknowledged. Read-only.
+    acknowledged_date_time: Optional[datetime.datetime] = None
     # The configuration property
     configuration: Optional[PrintJobConfiguration] = None
     # The createdBy property
@@ -25,6 +27,8 @@ class PrintJob(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # The documents property
     documents: Optional[list[PrintDocument]] = None
+    # The error code of the print job. Read-only.
+    error_code: Optional[int] = None
     # If true, document can be fetched by printer.
     is_fetchable: Optional[bool] = None
     # The OdataType property
@@ -69,10 +73,12 @@ class PrintJob(Entity, Parsable):
         from .user_identity import UserIdentity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "acknowledgedDateTime": lambda n : setattr(self, 'acknowledged_date_time', n.get_datetime_value()),
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(PrintJobConfiguration)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "documents": lambda n : setattr(self, 'documents', n.get_collection_of_object_values(PrintDocument)),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
             "isFetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
             "redirectedFrom": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
             "redirectedTo": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
@@ -92,10 +98,12 @@ class PrintJob(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_datetime_value("acknowledgedDateTime", self.acknowledged_date_time)
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("documents", self.documents)
+        writer.write_int_value("errorCode", self.error_code)
         writer.write_bool_value("isFetchable", self.is_fetchable)
         writer.write_str_value("redirectedFrom", self.redirected_from)
         writer.write_str_value("redirectedTo", self.redirected_to)

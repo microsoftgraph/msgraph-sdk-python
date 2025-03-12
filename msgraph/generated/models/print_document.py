@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -15,10 +16,14 @@ class PrintDocument(Entity, Parsable):
     content_type: Optional[str] = None
     # The document's name. Read-only.
     display_name: Optional[str] = None
+    # The time the document was downloaded. Read-only
+    downloaded_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The document's size in bytes. Read-only.
     size: Optional[int] = None
+    # The time the document was uploaded. Read-only
+    uploaded_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PrintDocument:
@@ -43,7 +48,9 @@ class PrintDocument(Entity, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "downloadedDateTime": lambda n : setattr(self, 'downloaded_date_time', n.get_datetime_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
+            "uploadedDateTime": lambda n : setattr(self, 'uploaded_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,6 +67,8 @@ class PrintDocument(Entity, Parsable):
         super().serialize(writer)
         writer.write_str_value("contentType", self.content_type)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_datetime_value("downloadedDateTime", self.downloaded_date_time)
         writer.write_int_value("size", self.size)
+        writer.write_datetime_value("uploadedDateTime", self.uploaded_date_time)
     
 

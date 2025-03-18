@@ -72,11 +72,11 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: CustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CustomCalloutExtension]:
         """
-        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
+        Update the properties of an accessPackageAssignmentWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomCalloutExtension]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentworkflowextension-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -118,7 +118,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: CustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
+        Update the properties of an accessPackageAssignmentWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

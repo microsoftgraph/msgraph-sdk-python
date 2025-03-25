@@ -16,7 +16,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_get_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse
+    from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_timeget_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimegetResponse
 
 class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -38,11 +38,11 @@ class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestB
             path_parameters['userId'] = user_id
         super().__init__(request_adapter, "{+baseurl}/reports/getUserArchivedPrintJobs(userId='{userId}',startDateTime={startDateTime},endDateTime={endDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimegetResponse]:
         """
         Get a list of archived print jobs for a particular user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse]
+        Returns: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/reports-getuserarchivedprintjobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -55,9 +55,9 @@ class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestB
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_get_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse
+        from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_timeget_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimegetResponse
 
-        return await self.request_adapter.send_async(request_info, GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

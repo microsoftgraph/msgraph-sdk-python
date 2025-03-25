@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .shared_with_me_get_response import SharedWithMeGetResponse
+    from .shared_with_meget_response import SharedWithMegetResponse
 
 class SharedWithMeRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class SharedWithMeRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/sharedWithMe(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[SharedWithMeRequestBuilderGetQueryParameters]] = None) -> Optional[SharedWithMeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SharedWithMeRequestBuilderGetQueryParameters]] = None) -> Optional[SharedWithMegetResponse]:
         """
         Get a list of driveItem objects shared with the owner of a drive. The driveItems returned from the sharedWithMe method always include the remoteItem facet that indicates they are items from a different drive.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SharedWithMeGetResponse]
+        Returns: Optional[SharedWithMegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/drive-sharedwithme?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class SharedWithMeRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .shared_with_me_get_response import SharedWithMeGetResponse
+        from .shared_with_meget_response import SharedWithMegetResponse
 
-        return await self.request_adapter.send_async(request_info, SharedWithMeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SharedWithMegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SharedWithMeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
+    from .invitepost_response import InvitepostResponse
     from .invite_post_request_body import InvitePostRequestBody
-    from .invite_post_response import InvitePostResponse
 
 class InviteRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class InviteRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/invite", path_parameters)
     
-    async def post(self,body: InvitePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[InvitePostResponse]:
+    async def post(self,body: InvitePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[InvitepostResponse]:
         """
         Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[InvitePostResponse]
+        Returns: Optional[InvitepostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-invite?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class InviteRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .invite_post_response import InvitePostResponse
+        from .invitepost_response import InvitepostResponse
 
-        return await self.request_adapter.send_async(request_info, InvitePostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, InvitepostResponse, error_mapping)
     
     def to_post_request_information(self,body: InvitePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

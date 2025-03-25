@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...........models.o_data_errors.o_data_error import ODataError
-    from .image_get_response import ImageGetResponse
+    from .imageget_response import ImagegetResponse
 
 class ImageRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class ImageRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/item(name='{name}')/image()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ImageGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ImagegetResponse]:
         """
         Invoke function image
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ImageGetResponse]
+        Returns: Optional[ImagegetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +46,9 @@ class ImageRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .image_get_response import ImageGetResponse
+        from .imageget_response import ImagegetResponse
 
-        return await self.request_adapter.send_async(request_info, ImageGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImagegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

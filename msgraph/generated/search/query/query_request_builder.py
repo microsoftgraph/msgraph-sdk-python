@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
+    from .querypost_response import QuerypostResponse
     from .query_post_request_body import QueryPostRequestBody
-    from .query_post_response import QueryPostResponse
 
 class QueryRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class QueryRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/search/query", path_parameters)
     
-    async def post(self,body: QueryPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[QueryPostResponse]:
+    async def post(self,body: QueryPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[QuerypostResponse]:
         """
         Runs the query specified in the request body. Search results are provided in the response.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[QueryPostResponse]
+        Returns: Optional[QuerypostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/search-query?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class QueryRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .query_post_response import QueryPostResponse
+        from .querypost_response import QuerypostResponse
 
-        return await self.request_adapter.send_async(request_info, QueryPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, QuerypostResponse, error_mapping)
     
     def to_post_request_information(self,body: QueryPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

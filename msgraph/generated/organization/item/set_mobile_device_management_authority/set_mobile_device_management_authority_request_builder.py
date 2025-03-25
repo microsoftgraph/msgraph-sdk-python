@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .set_mobile_device_management_authority_post_response import SetMobileDeviceManagementAuthorityPostResponse
+    from .set_mobile_device_management_authoritypost_response import SetMobileDeviceManagementAuthoritypostResponse
 
 class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/organization/{organization%2Did}/setMobileDeviceManagementAuthority", path_parameters)
     
-    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SetMobileDeviceManagementAuthorityPostResponse]:
+    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SetMobileDeviceManagementAuthoritypostResponse]:
         """
         Set mobile device management authority
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SetMobileDeviceManagementAuthorityPostResponse]
+        Returns: Optional[SetMobileDeviceManagementAuthoritypostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-organization-setmobiledevicemanagementauthority?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
@@ -47,9 +47,9 @@ class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .set_mobile_device_management_authority_post_response import SetMobileDeviceManagementAuthorityPostResponse
+        from .set_mobile_device_management_authoritypost_response import SetMobileDeviceManagementAuthoritypostResponse
 
-        return await self.request_adapter.send_async(request_info, SetMobileDeviceManagementAuthorityPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SetMobileDeviceManagementAuthoritypostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

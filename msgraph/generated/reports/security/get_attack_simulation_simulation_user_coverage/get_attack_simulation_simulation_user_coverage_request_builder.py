@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_attack_simulation_simulation_user_coverage_get_response import GetAttackSimulationSimulationUserCoverageGetResponse
+    from .get_attack_simulation_simulation_user_coverageget_response import GetAttackSimulationSimulationUserCoveragegetResponse
 
 class GetAttackSimulationSimulationUserCoverageRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetAttackSimulationSimulationUserCoverageRequestBuilder(BaseRequestBuilder
         """
         super().__init__(request_adapter, "{+baseurl}/reports/security/getAttackSimulationSimulationUserCoverage(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetAttackSimulationSimulationUserCoverageRequestBuilderGetQueryParameters]] = None) -> Optional[GetAttackSimulationSimulationUserCoverageGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetAttackSimulationSimulationUserCoverageRequestBuilderGetQueryParameters]] = None) -> Optional[GetAttackSimulationSimulationUserCoveragegetResponse]:
         """
         List training coverage for each tenant user in attack simulation and training campaigns. This function supports @odata.nextLink for pagination.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAttackSimulationSimulationUserCoverageGetResponse]
+        Returns: Optional[GetAttackSimulationSimulationUserCoveragegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/securityreportsroot-getattacksimulationsimulationusercoverage?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetAttackSimulationSimulationUserCoverageRequestBuilder(BaseRequestBuilder
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_attack_simulation_simulation_user_coverage_get_response import GetAttackSimulationSimulationUserCoverageGetResponse
+        from .get_attack_simulation_simulation_user_coverageget_response import GetAttackSimulationSimulationUserCoveragegetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAttackSimulationSimulationUserCoverageGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAttackSimulationSimulationUserCoveragegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetAttackSimulationSimulationUserCoverageRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

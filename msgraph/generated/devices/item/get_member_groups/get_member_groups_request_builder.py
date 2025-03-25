@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
+    from .get_member_groupspost_response import GetMemberGroupspostResponse
     from .get_member_groups_post_request_body import GetMemberGroupsPostRequestBody
-    from .get_member_groups_post_response import GetMemberGroupsPostResponse
 
 class GetMemberGroupsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetMemberGroupsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/devices/{device%2Did}/getMemberGroups", path_parameters)
     
-    async def post(self,body: GetMemberGroupsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetMemberGroupsPostResponse]:
+    async def post(self,body: GetMemberGroupsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetMemberGroupspostResponse]:
         """
         Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the DirectoryResultSizeLimitExceeded error code. If you get the DirectoryResultSizeLimitExceeded error code, use the List group transitive memberOf API instead.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetMemberGroupsPostResponse]
+        Returns: Optional[GetMemberGroupspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetMemberGroupsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_member_groups_post_response import GetMemberGroupsPostResponse
+        from .get_member_groupspost_response import GetMemberGroupspostResponse
 
-        return await self.request_adapter.send_async(request_info, GetMemberGroupsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetMemberGroupspostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetMemberGroupsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_user_ids_with_flagged_app_registration_get_response import GetUserIdsWithFlaggedAppRegistrationGetResponse
+    from .get_user_ids_with_flagged_app_registrationget_response import GetUserIdsWithFlaggedAppRegistrationgetResponse
 
 class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppRegistrations/getUserIdsWithFlaggedAppRegistration(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetQueryParameters]] = None) -> Optional[GetUserIdsWithFlaggedAppRegistrationGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetQueryParameters]] = None) -> Optional[GetUserIdsWithFlaggedAppRegistrationgetResponse]:
         """
         Not yet documented
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetUserIdsWithFlaggedAppRegistrationGetResponse]
+        Returns: Optional[GetUserIdsWithFlaggedAppRegistrationgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappregistration-getuseridswithflaggedappregistration?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_user_ids_with_flagged_app_registration_get_response import GetUserIdsWithFlaggedAppRegistrationGetResponse
+        from .get_user_ids_with_flagged_app_registrationget_response import GetUserIdsWithFlaggedAppRegistrationgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetUserIdsWithFlaggedAppRegistrationGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetUserIdsWithFlaggedAppRegistrationgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

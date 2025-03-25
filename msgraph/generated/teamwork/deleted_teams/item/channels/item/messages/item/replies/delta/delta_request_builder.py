@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ..........models.o_data_errors.o_data_error import ODataError
-    from .delta_get_response import DeltaGetResponse
+    from .deltaget_response import DeltagetResponse
 
 class DeltaRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/teamwork/deletedTeams/{deletedTeam%2Did}/channels/{channel%2Did}/messages/{chatMessage%2Did}/replies/delta(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltaGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltagetResponse]:
         """
         Get the list of messages from all chats in which a user is a participant, including one-on-one chats, group chats, and meeting chats. When you use delta query, you can get new or updated messages. To get the replies for a message, use the list message replies or the get message reply operations. A GET request with the delta function returns one of the following: State tokens are opaque to the client. To proceed with a round of change tracking, copy and apply the @odata.nextLink or @odata.deltaLink URL returned from the last GET request to the next delta function call. An @odata.deltaLink returned in a response signifies that the current round of change tracking is complete. You can save and use the @odata.deltaLink URL when you begin to retrieve more changes (messages changed or posted after you acquire @odata.deltaLink). For more information, see the delta query documentation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[DeltaGetResponse]
+        Returns: Optional[DeltagetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/chatmessage-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .delta_get_response import DeltaGetResponse
+        from .deltaget_response import DeltagetResponse
 
-        return await self.request_adapter.send_async(request_info, DeltaGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeltagetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

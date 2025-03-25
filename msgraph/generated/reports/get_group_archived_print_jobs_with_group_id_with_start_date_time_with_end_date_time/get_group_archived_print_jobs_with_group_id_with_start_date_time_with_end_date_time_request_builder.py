@@ -16,7 +16,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_get_response import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeGetResponse
+    from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_timeget_response import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimegetResponse
 
 class GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -38,11 +38,11 @@ class GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeReques
             path_parameters['startDateTime'] = start_date_time
         super().__init__(request_adapter, "{+baseurl}/reports/getGroupArchivedPrintJobs(groupId='{groupId}',startDateTime={startDateTime},endDateTime={endDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimegetResponse]:
         """
         Get a list of archived print jobs for a particular group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeGetResponse]
+        Returns: Optional[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/reports-getgrouparchivedprintjobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -55,9 +55,9 @@ class GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeReques
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_get_response import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeGetResponse
+        from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_timeget_response import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimegetResponse
 
-        return await self.request_adapter.send_async(request_info, GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

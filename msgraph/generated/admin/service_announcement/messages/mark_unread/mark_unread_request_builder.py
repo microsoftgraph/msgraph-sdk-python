@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .mark_unreadpost_response import MarkUnreadpostResponse
     from .mark_unread_post_request_body import MarkUnreadPostRequestBody
-    from .mark_unread_post_response import MarkUnreadPostResponse
 
 class MarkUnreadRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class MarkUnreadRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/markUnread", path_parameters)
     
-    async def post(self,body: MarkUnreadPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MarkUnreadPostResponse]:
+    async def post(self,body: MarkUnreadPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MarkUnreadpostResponse]:
         """
         Mark a list of serviceUpdateMessages as unread for the signed in user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[MarkUnreadPostResponse]
+        Returns: Optional[MarkUnreadpostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-markunread?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class MarkUnreadRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .mark_unread_post_response import MarkUnreadPostResponse
+        from .mark_unreadpost_response import MarkUnreadpostResponse
 
-        return await self.request_adapter.send_async(request_info, MarkUnreadPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, MarkUnreadpostResponse, error_mapping)
     
     def to_post_request_information(self,body: MarkUnreadPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

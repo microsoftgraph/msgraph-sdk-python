@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
+    from .add_grouppost_response import AddGrouppostResponse
     from .add_group_post_request_body import AddGroupPostRequestBody
-    from .add_group_post_response import AddGroupPostResponse
 
 class AddGroupRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groupLifecyclePolicies/{groupLifecyclePolicy%2Did}/addGroup", path_parameters)
     
-    async def post(self,body: AddGroupPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AddGroupPostResponse]:
+    async def post(self,body: AddGroupPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AddGrouppostResponse]:
         """
         Add a group to a groupLifecyclePolicy. This action is supported only if the managedGroupTypes property of the policy is set to Selected.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AddGroupPostResponse]
+        Returns: Optional[AddGrouppostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/grouplifecyclepolicy-addgroup?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .add_group_post_response import AddGroupPostResponse
+        from .add_grouppost_response import AddGrouppostResponse
 
-        return await self.request_adapter.send_async(request_info, AddGroupPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddGrouppostResponse, error_mapping)
     
     def to_post_request_information(self,body: AddGroupPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .delta_with_token_get_response import DeltaWithTokenGetResponse
+    from .delta_with_tokenget_response import DeltaWithTokengetResponse
 
 class DeltaWithTokenRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class DeltaWithTokenRequestBuilder(BaseRequestBuilder):
             path_parameters['token'] = token
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/list/items/delta(token='{token}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaWithTokenRequestBuilderGetQueryParameters]] = None) -> Optional[DeltaWithTokenGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaWithTokenRequestBuilderGetQueryParameters]] = None) -> Optional[DeltaWithTokengetResponse]:
         """
         Invoke function delta
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[DeltaWithTokenGetResponse]
+        Returns: Optional[DeltaWithTokengetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class DeltaWithTokenRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .delta_with_token_get_response import DeltaWithTokenGetResponse
+        from .delta_with_tokenget_response import DeltaWithTokengetResponse
 
-        return await self.request_adapter.send_async(request_info, DeltaWithTokenGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeltaWithTokengetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeltaWithTokenRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

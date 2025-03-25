@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
+    from .get_available_extension_propertiespost_response import GetAvailableExtensionPropertiespostResponse
     from .get_available_extension_properties_post_request_body import GetAvailableExtensionPropertiesPostRequestBody
-    from .get_available_extension_properties_post_response import GetAvailableExtensionPropertiesPostResponse
 
 class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/devices/getAvailableExtensionProperties", path_parameters)
     
-    async def post(self,body: GetAvailableExtensionPropertiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetAvailableExtensionPropertiesPostResponse]:
+    async def post(self,body: GetAvailableExtensionPropertiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetAvailableExtensionPropertiespostResponse]:
         """
         Return all directory extension definitions that have been registered in a directory, including through multi-tenant apps. The following entities support extension properties:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAvailableExtensionPropertiesPostResponse]
+        Returns: Optional[GetAvailableExtensionPropertiespostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getavailableextensionproperties?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_available_extension_properties_post_response import GetAvailableExtensionPropertiesPostResponse
+        from .get_available_extension_propertiespost_response import GetAvailableExtensionPropertiespostResponse
 
-        return await self.request_adapter.send_async(request_info, GetAvailableExtensionPropertiesPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAvailableExtensionPropertiespostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetAvailableExtensionPropertiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

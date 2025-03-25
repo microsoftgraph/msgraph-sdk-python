@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .delta_get_response import DeltaGetResponse
+    from .deltaget_response import DeltagetResponse
 
 class DeltaRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/calendar/calendarView/delta()?endDateTime={endDateTime}&startDateTime={startDateTime}{&%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltaGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltagetResponse]:
         """
         Get a set of event resources that have been added, deleted, or updated in a calendarView (a range of events defined by start and end dates) of the user's primary calendar. Typically, synchronizing events in a calendarView in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the incremental changes (additions, deletions, or updates). This allows you to maintain and synchronize a local store of events in the specified calendarView, without having to fetch all the events of that calendar from the server every time.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[DeltaGetResponse]
+        Returns: Optional[DeltagetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/event-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .delta_get_response import DeltaGetResponse
+        from .deltaget_response import DeltagetResponse
 
-        return await self.request_adapter.send_async(request_info, DeltaGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeltagetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

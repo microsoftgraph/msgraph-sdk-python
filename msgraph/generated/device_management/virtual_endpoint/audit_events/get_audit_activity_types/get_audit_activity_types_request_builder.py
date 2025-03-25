@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .get_audit_activity_types_get_response import GetAuditActivityTypesGetResponse
+    from .get_audit_activity_typesget_response import GetAuditActivityTypesgetResponse
 
 class GetAuditActivityTypesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetAuditActivityTypesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/virtualEndpoint/auditEvents/getAuditActivityTypes(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetAuditActivityTypesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAuditActivityTypesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetAuditActivityTypesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAuditActivityTypesgetResponse]:
         """
         Get audit activity types by tenant ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAuditActivityTypesGetResponse]
+        Returns: Optional[GetAuditActivityTypesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/cloudpcauditevent-getauditactivitytypes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetAuditActivityTypesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_audit_activity_types_get_response import GetAuditActivityTypesGetResponse
+        from .get_audit_activity_typesget_response import GetAuditActivityTypesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAuditActivityTypesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAuditActivityTypesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetAuditActivityTypesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
+    from .add_activitiespost_response import AddActivitiespostResponse
     from .add_activities_post_request_body import AddActivitiesPostRequestBody
-    from .add_activities_post_response import AddActivitiesPostResponse
 
 class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
         """
         super().__init__(request_adapter, "{+baseurl}/connections/{externalConnection%2Did}/items/{externalItem%2Did}/microsoft.graph.externalConnectors.addActivities", path_parameters)
     
-    async def post(self,body: AddActivitiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AddActivitiesPostResponse]:
+    async def post(self,body: AddActivitiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AddActivitiespostResponse]:
         """
         Invoke action addActivities
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AddActivitiesPostResponse]
+        Returns: Optional[AddActivitiespostResponse]
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -50,9 +50,9 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .add_activities_post_response import AddActivitiesPostResponse
+        from .add_activitiespost_response import AddActivitiespostResponse
 
-        return await self.request_adapter.send_async(request_info, AddActivitiesPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddActivitiespostResponse, error_mapping)
     
     def to_post_request_information(self,body: AddActivitiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

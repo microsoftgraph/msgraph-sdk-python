@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .mark_readpost_response import MarkReadpostResponse
     from .mark_read_post_request_body import MarkReadPostRequestBody
-    from .mark_read_post_response import MarkReadPostResponse
 
 class MarkReadRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class MarkReadRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/markRead", path_parameters)
     
-    async def post(self,body: MarkReadPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MarkReadPostResponse]:
+    async def post(self,body: MarkReadPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MarkReadpostResponse]:
         """
         Mark a list of serviceUpdateMessages as read for the signed in user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[MarkReadPostResponse]
+        Returns: Optional[MarkReadpostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-markread?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class MarkReadRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .mark_read_post_response import MarkReadPostResponse
+        from .mark_readpost_response import MarkReadpostResponse
 
-        return await self.request_adapter.send_async(request_info, MarkReadPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, MarkReadpostResponse, error_mapping)
     
     def to_post_request_information(self,body: MarkReadPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

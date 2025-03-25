@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .archivepost_response import ArchivepostResponse
     from .archive_post_request_body import ArchivePostRequestBody
-    from .archive_post_response import ArchivePostResponse
 
 class ArchiveRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class ArchiveRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/archive", path_parameters)
     
-    async def post(self,body: ArchivePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ArchivePostResponse]:
+    async def post(self,body: ArchivePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ArchivepostResponse]:
         """
         Archive a list of serviceUpdateMessages for the signed in user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ArchivePostResponse]
+        Returns: Optional[ArchivepostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-archive?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class ArchiveRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .archive_post_response import ArchivePostResponse
+        from .archivepost_response import ArchivepostResponse
 
-        return await self.request_adapter.send_async(request_info, ArchivePostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ArchivepostResponse, error_mapping)
     
     def to_post_request_information(self,body: ArchivePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

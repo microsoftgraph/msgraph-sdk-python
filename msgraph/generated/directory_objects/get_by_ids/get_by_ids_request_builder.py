@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
+    from .get_by_idspost_response import GetByIdspostResponse
     from .get_by_ids_post_request_body import GetByIdsPostRequestBody
-    from .get_by_ids_post_response import GetByIdsPostResponse
 
 class GetByIdsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directoryObjects/getByIds", path_parameters)
     
-    async def post(self,body: GetByIdsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetByIdsPostResponse]:
+    async def post(self,body: GetByIdsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetByIdspostResponse]:
         """
         Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetByIdsPostResponse]
+        Returns: Optional[GetByIdspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getbyids?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_by_ids_post_response import GetByIdsPostResponse
+        from .get_by_idspost_response import GetByIdspostResponse
 
-        return await self.request_adapter.send_async(request_info, GetByIdsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetByIdspostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetByIdsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

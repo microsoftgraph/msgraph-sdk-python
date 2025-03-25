@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_all_retained_messages_get_response import GetAllRetainedMessagesGetResponse
+    from .get_all_retained_messagesget_response import GetAllRetainedMessagesgetResponse
 
 class GetAllRetainedMessagesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetAllRetainedMessagesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/teamwork/deletedTeams/{deletedTeam%2Did}/channels/getAllRetainedMessages(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetAllRetainedMessagesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAllRetainedMessagesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetAllRetainedMessagesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAllRetainedMessagesgetResponse]:
         """
         Get all retained messages across all channels in a team. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAllRetainedMessagesGetResponse]
+        Returns: Optional[GetAllRetainedMessagesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/channel-getallretainedmessages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetAllRetainedMessagesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_all_retained_messages_get_response import GetAllRetainedMessagesGetResponse
+        from .get_all_retained_messagesget_response import GetAllRetainedMessagesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAllRetainedMessagesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAllRetainedMessagesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetAllRetainedMessagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

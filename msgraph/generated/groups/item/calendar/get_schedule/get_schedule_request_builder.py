@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .get_schedulepost_response import GetSchedulepostResponse
     from .get_schedule_post_request_body import GetSchedulePostRequestBody
-    from .get_schedule_post_response import GetSchedulePostResponse
 
 class GetScheduleRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetScheduleRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/calendar/getSchedule", path_parameters)
     
-    async def post(self,body: GetSchedulePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetSchedulePostResponse]:
+    async def post(self,body: GetSchedulePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetSchedulepostResponse]:
         """
         Get the free/busy availability information for a collection of users, distributions lists, or resources (rooms or equipment) for a specified time period.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetSchedulePostResponse]
+        Returns: Optional[GetSchedulepostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/calendar-getschedule?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetScheduleRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_schedule_post_response import GetSchedulePostResponse
+        from .get_schedulepost_response import GetSchedulepostResponse
 
-        return await self.request_adapter.send_async(request_info, GetSchedulePostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetSchedulepostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetSchedulePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

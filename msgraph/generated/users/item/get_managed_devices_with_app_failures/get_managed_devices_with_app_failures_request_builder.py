@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_managed_devices_with_app_failures_get_response import GetManagedDevicesWithAppFailuresGetResponse
+    from .get_managed_devices_with_app_failuresget_response import GetManagedDevicesWithAppFailuresgetResponse
 
 class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/getManagedDevicesWithAppFailures(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetManagedDevicesWithAppFailuresRequestBuilderGetQueryParameters]] = None) -> Optional[GetManagedDevicesWithAppFailuresGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetManagedDevicesWithAppFailuresRequestBuilderGetQueryParameters]] = None) -> Optional[GetManagedDevicesWithAppFailuresgetResponse]:
         """
         Retrieves the list of devices with failed apps
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetManagedDevicesWithAppFailuresGetResponse]
+        Returns: Optional[GetManagedDevicesWithAppFailuresgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-troubleshooting-user-getmanageddeviceswithappfailures?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_managed_devices_with_app_failures_get_response import GetManagedDevicesWithAppFailuresGetResponse
+        from .get_managed_devices_with_app_failuresget_response import GetManagedDevicesWithAppFailuresgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetManagedDevicesWithAppFailuresGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetManagedDevicesWithAppFailuresgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetManagedDevicesWithAppFailuresRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

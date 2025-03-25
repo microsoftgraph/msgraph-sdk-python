@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .favoritepost_response import FavoritepostResponse
     from .favorite_post_request_body import FavoritePostRequestBody
-    from .favorite_post_response import FavoritePostResponse
 
 class FavoriteRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class FavoriteRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/favorite", path_parameters)
     
-    async def post(self,body: FavoritePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[FavoritePostResponse]:
+    async def post(self,body: FavoritePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[FavoritepostResponse]:
         """
         Change the status of a list of serviceUpdateMessages to favorite for the signed in user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FavoritePostResponse]
+        Returns: Optional[FavoritepostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-favorite?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class FavoriteRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .favorite_post_response import FavoritePostResponse
+        from .favoritepost_response import FavoritepostResponse
 
-        return await self.request_adapter.send_async(request_info, FavoritePostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FavoritepostResponse, error_mapping)
     
     def to_post_request_information(self,body: FavoritePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

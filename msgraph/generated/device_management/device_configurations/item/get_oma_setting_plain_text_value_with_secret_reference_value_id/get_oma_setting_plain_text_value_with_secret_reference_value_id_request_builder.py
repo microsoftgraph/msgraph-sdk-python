@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .get_oma_setting_plain_text_value_with_secret_reference_value_id_get_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse
+    from .get_oma_setting_plain_text_value_with_secret_reference_value_idget_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdgetResponse
 
 class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRe
             path_parameters['secretReferenceValueId'] = secret_reference_value_id
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/getOmaSettingPlainTextValue(secretReferenceValueId='{secretReferenceValueId}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdgetResponse]:
         """
         Invoke function getOmaSettingPlainTextValue
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse]
+        Returns: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdgetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRe
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_oma_setting_plain_text_value_with_secret_reference_value_id_get_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse
+        from .get_oma_setting_plain_text_value_with_secret_reference_value_idget_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetOmaSettingPlainTextValueWithSecretReferenceValueIdgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

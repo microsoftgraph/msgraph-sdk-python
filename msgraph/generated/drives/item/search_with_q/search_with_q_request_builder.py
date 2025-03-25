@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .search_with_q_get_response import SearchWithQGetResponse
+    from .search_with_qget_response import SearchWithQgetResponse
 
 class SearchWithQRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
             path_parameters['q'] = q
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/search(q='{q}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[SearchWithQRequestBuilderGetQueryParameters]] = None) -> Optional[SearchWithQGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SearchWithQRequestBuilderGetQueryParameters]] = None) -> Optional[SearchWithQgetResponse]:
         """
         Search the hierarchy of items for items matching a query.You can search within a folder hierarchy, a whole drive, or files shared with the current user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SearchWithQGetResponse]
+        Returns: Optional[SearchWithQgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-search?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -50,9 +50,9 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .search_with_q_get_response import SearchWithQGetResponse
+        from .search_with_qget_response import SearchWithQgetResponse
 
-        return await self.request_adapter.send_async(request_info, SearchWithQGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SearchWithQgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SearchWithQRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

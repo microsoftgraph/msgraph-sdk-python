@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .supported_languages_get_response import SupportedLanguagesGetResponse
+    from .supported_languagesget_response import SupportedLanguagesgetResponse
 
 class SupportedLanguagesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class SupportedLanguagesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/outlook/supportedLanguages(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[SupportedLanguagesRequestBuilderGetQueryParameters]] = None) -> Optional[SupportedLanguagesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SupportedLanguagesRequestBuilderGetQueryParameters]] = None) -> Optional[SupportedLanguagesgetResponse]:
         """
         Get the list of locales and languages that are supported for the user, as configured on the user's mailbox server. When setting up an Outlook client, the user selects the preferred language from this supported list. You can subsequently get the preferred language bygetting the user's mailbox settings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SupportedLanguagesGetResponse]
+        Returns: Optional[SupportedLanguagesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/outlookuser-supportedlanguages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class SupportedLanguagesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .supported_languages_get_response import SupportedLanguagesGetResponse
+        from .supported_languagesget_response import SupportedLanguagesgetResponse
 
-        return await self.request_adapter.send_async(request_info, SupportedLanguagesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SupportedLanguagesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SupportedLanguagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

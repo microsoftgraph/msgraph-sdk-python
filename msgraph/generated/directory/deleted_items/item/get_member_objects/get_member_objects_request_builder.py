@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .get_member_objectspost_response import GetMemberObjectspostResponse
     from .get_member_objects_post_request_body import GetMemberObjectsPostRequestBody
-    from .get_member_objects_post_response import GetMemberObjectsPostResponse
 
 class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directory/deletedItems/{directoryObject%2Did}/getMemberObjects", path_parameters)
     
-    async def post(self,body: GetMemberObjectsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetMemberObjectsPostResponse]:
+    async def post(self,body: GetMemberObjectsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetMemberObjectspostResponse]:
         """
         Return all IDs for the groups, administrative units, and directory roles that an object of one of the following types is a member of:- user- group- service principal- organizational contact- device- directory object This function is transitive. Only users and role-enabled groups can be members of directory roles.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetMemberObjectsPostResponse]
+        Returns: Optional[GetMemberObjectspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getmemberobjects?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_member_objects_post_response import GetMemberObjectsPostResponse
+        from .get_member_objectspost_response import GetMemberObjectspostResponse
 
-        return await self.request_adapter.send_async(request_info, GetMemberObjectsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetMemberObjectspostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetMemberObjectsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

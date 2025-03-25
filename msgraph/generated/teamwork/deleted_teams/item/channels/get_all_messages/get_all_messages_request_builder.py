@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_all_messages_get_response import GetAllMessagesGetResponse
+    from .get_all_messagesget_response import GetAllMessagesgetResponse
 
 class GetAllMessagesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/teamwork/deletedTeams/{deletedTeam%2Did}/channels/getAllMessages(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top,model*}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetAllMessagesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAllMessagesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetAllMessagesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAllMessagesgetResponse]:
         """
         Retrieve messages across all channels in a team, including text, audio, and video conversations. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAllMessagesGetResponse]
+        Returns: Optional[GetAllMessagesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/channel-getallmessages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_all_messages_get_response import GetAllMessagesGetResponse
+        from .get_all_messagesget_response import GetAllMessagesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAllMessagesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAllMessagesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetAllMessagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

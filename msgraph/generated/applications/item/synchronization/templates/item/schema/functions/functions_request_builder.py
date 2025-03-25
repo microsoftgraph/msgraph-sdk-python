@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
-    from .functions_get_response import FunctionsGetResponse
+    from .functionsget_response import FunctionsgetResponse
 
 class FunctionsRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/synchronization/templates/{synchronizationTemplate%2Did}/schema/functions(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[FunctionsRequestBuilderGetQueryParameters]] = None) -> Optional[FunctionsGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[FunctionsRequestBuilderGetQueryParameters]] = None) -> Optional[FunctionsgetResponse]:
         """
         List all the functions currently supported in the attributeMappingSource.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FunctionsGetResponse]
+        Returns: Optional[FunctionsgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-functions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .functions_get_response import FunctionsGetResponse
+        from .functionsget_response import FunctionsgetResponse
 
-        return await self.request_adapter.send_async(request_info, FunctionsGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FunctionsgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FunctionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

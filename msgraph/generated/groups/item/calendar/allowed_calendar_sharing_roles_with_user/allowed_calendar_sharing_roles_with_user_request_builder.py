@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .allowed_calendar_sharing_roles_with_user_get_response import AllowedCalendarSharingRolesWithUserGetResponse
+    from .allowed_calendar_sharing_roles_with_userget_response import AllowedCalendarSharingRolesWithUsergetResponse
 
 class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
             path_parameters['User'] = user
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/calendar/allowedCalendarSharingRoles(User='{User}'){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[AllowedCalendarSharingRolesWithUserRequestBuilderGetQueryParameters]] = None) -> Optional[AllowedCalendarSharingRolesWithUserGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AllowedCalendarSharingRolesWithUserRequestBuilderGetQueryParameters]] = None) -> Optional[AllowedCalendarSharingRolesWithUsergetResponse]:
         """
         Invoke function allowedCalendarSharingRoles
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AllowedCalendarSharingRolesWithUserGetResponse]
+        Returns: Optional[AllowedCalendarSharingRolesWithUsergetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .allowed_calendar_sharing_roles_with_user_get_response import AllowedCalendarSharingRolesWithUserGetResponse
+        from .allowed_calendar_sharing_roles_with_userget_response import AllowedCalendarSharingRolesWithUsergetResponse
 
-        return await self.request_adapter.send_async(request_info, AllowedCalendarSharingRolesWithUserGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AllowedCalendarSharingRolesWithUsergetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AllowedCalendarSharingRolesWithUserRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .get_all_sites_get_response import GetAllSitesGetResponse
+    from .get_all_sitesget_response import GetAllSitesgetResponse
 
 class GetAllSitesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetAllSitesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/getAllSites(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetAllSitesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAllSitesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetAllSitesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAllSitesgetResponse]:
         """
         List sites across geographies in an organization. This API can also be used to enumerate all sites in a non-multi-geo tenant. For more information, see Best practices for discovering files and detecting changes at scale.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAllSitesGetResponse]
+        Returns: Optional[GetAllSitesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/site-getallsites?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetAllSitesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_all_sites_get_response import GetAllSitesGetResponse
+        from .get_all_sitesget_response import GetAllSitesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAllSitesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAllSitesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetAllSitesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

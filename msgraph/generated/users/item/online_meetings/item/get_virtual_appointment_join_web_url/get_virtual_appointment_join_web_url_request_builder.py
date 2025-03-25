@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_virtual_appointment_join_web_url_get_response import GetVirtualAppointmentJoinWebUrlGetResponse
+    from .get_virtual_appointment_join_web_urlget_response import GetVirtualAppointmentJoinWebUrlgetResponse
 
 class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onlineMeetings/{onlineMeeting%2Did}/getVirtualAppointmentJoinWebUrl()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetVirtualAppointmentJoinWebUrlGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetVirtualAppointmentJoinWebUrlgetResponse]:
         """
         Get a join web URL for a Microsoft Virtual Appointment. This web URL includes enhanced business-to-customer experiences such as mobile browser join and virtual lobby rooms. With Teams Premium, you can configure a custom lobby room experience for attendees by adding your company logo and access the Virtual Appointments usage report for organizational analytics.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetVirtualAppointmentJoinWebUrlGetResponse]
+        Returns: Optional[GetVirtualAppointmentJoinWebUrlgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/virtualappointment-getvirtualappointmentjoinweburl?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_virtual_appointment_join_web_url_get_response import GetVirtualAppointmentJoinWebUrlGetResponse
+        from .get_virtual_appointment_join_web_urlget_response import GetVirtualAppointmentJoinWebUrlgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetVirtualAppointmentJoinWebUrlGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetVirtualAppointmentJoinWebUrlgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
+    from .check_member_objectspost_response import CheckMemberObjectspostResponse
     from .check_member_objects_post_request_body import CheckMemberObjectsPostRequestBody
-    from .check_member_objects_post_response import CheckMemberObjectsPostResponse
 
 class CheckMemberObjectsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class CheckMemberObjectsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directoryRoles/{directoryRole%2Did}/checkMemberObjects", path_parameters)
     
-    async def post(self,body: CheckMemberObjectsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CheckMemberObjectsPostResponse]:
+    async def post(self,body: CheckMemberObjectsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CheckMemberObjectspostResponse]:
         """
         Invoke action checkMemberObjects
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CheckMemberObjectsPostResponse]
+        Returns: Optional[CheckMemberObjectspostResponse]
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -50,9 +50,9 @@ class CheckMemberObjectsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .check_member_objects_post_response import CheckMemberObjectsPostResponse
+        from .check_member_objectspost_response import CheckMemberObjectspostResponse
 
-        return await self.request_adapter.send_async(request_info, CheckMemberObjectsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CheckMemberObjectspostResponse, error_mapping)
     
     def to_post_request_information(self,body: CheckMemberObjectsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .download_apple_push_notification_certificate_signing_request_get_response import DownloadApplePushNotificationCertificateSigningRequestGetResponse
+    from .download_apple_push_notification_certificate_signing_requestget_response import DownloadApplePushNotificationCertificateSigningRequestgetResponse
 
 class DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(BaseR
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/applePushNotificationCertificate/downloadApplePushNotificationCertificateSigningRequest()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DownloadApplePushNotificationCertificateSigningRequestGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DownloadApplePushNotificationCertificateSigningRequestgetResponse]:
         """
         Download Apple push notification certificate signing request
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[DownloadApplePushNotificationCertificateSigningRequestGetResponse]
+        Returns: Optional[DownloadApplePushNotificationCertificateSigningRequestgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-devices-applepushnotificationcertificate-downloadapplepushnotificationcertificatesigningrequest?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(BaseR
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .download_apple_push_notification_certificate_signing_request_get_response import DownloadApplePushNotificationCertificateSigningRequestGetResponse
+        from .download_apple_push_notification_certificate_signing_requestget_response import DownloadApplePushNotificationCertificateSigningRequestgetResponse
 
-        return await self.request_adapter.send_async(request_info, DownloadApplePushNotificationCertificateSigningRequestGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DownloadApplePushNotificationCertificateSigningRequestgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

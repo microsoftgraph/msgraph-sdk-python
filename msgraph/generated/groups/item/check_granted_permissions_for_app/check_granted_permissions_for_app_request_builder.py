@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .check_granted_permissions_for_app_post_response import CheckGrantedPermissionsForAppPostResponse
+    from .check_granted_permissions_for_apppost_response import CheckGrantedPermissionsForApppostResponse
 
 class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/checkGrantedPermissionsForApp", path_parameters)
     
-    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CheckGrantedPermissionsForAppPostResponse]:
+    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CheckGrantedPermissionsForApppostResponse]:
         """
         Invoke action checkGrantedPermissionsForApp
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CheckGrantedPermissionsForAppPostResponse]
+        Returns: Optional[CheckGrantedPermissionsForApppostResponse]
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -46,9 +46,9 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .check_granted_permissions_for_app_post_response import CheckGrantedPermissionsForAppPostResponse
+        from .check_granted_permissions_for_apppost_response import CheckGrantedPermissionsForApppostResponse
 
-        return await self.request_adapter.send_async(request_info, CheckGrantedPermissionsForAppPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CheckGrantedPermissionsForApppostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

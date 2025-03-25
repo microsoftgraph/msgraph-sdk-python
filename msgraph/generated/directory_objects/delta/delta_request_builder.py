@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .delta_get_response import DeltaGetResponse
+    from .deltaget_response import DeltagetResponse
 
 class DeltaRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directoryObjects/delta(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltaGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltagetResponse]:
         """
         Get newly created, updated, or deleted directory objects without performing a full read of the entire directoryObject collection. For more information, see Use delta query to track changes in Microsoft Graph data for details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[DeltaGetResponse]
+        Returns: Optional[DeltagetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .delta_get_response import DeltaGetResponse
+        from .deltaget_response import DeltagetResponse
 
-        return await self.request_adapter.send_async(request_info, DeltaGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeltagetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

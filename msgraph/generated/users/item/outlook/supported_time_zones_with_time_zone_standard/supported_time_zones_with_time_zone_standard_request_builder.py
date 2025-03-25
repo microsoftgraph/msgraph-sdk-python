@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .supported_time_zones_with_time_zone_standard_get_response import SupportedTimeZonesWithTimeZoneStandardGetResponse
+    from .supported_time_zones_with_time_zone_standardget_response import SupportedTimeZonesWithTimeZoneStandardgetResponse
 
 class SupportedTimeZonesWithTimeZoneStandardRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class SupportedTimeZonesWithTimeZoneStandardRequestBuilder(BaseRequestBuilder):
             path_parameters['TimeZoneStandard'] = time_zone_standard
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/outlook/supportedTimeZones(TimeZoneStandard='{TimeZoneStandard}'){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[SupportedTimeZonesWithTimeZoneStandardRequestBuilderGetQueryParameters]] = None) -> Optional[SupportedTimeZonesWithTimeZoneStandardGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SupportedTimeZonesWithTimeZoneStandardRequestBuilderGetQueryParameters]] = None) -> Optional[SupportedTimeZonesWithTimeZoneStandardgetResponse]:
         """
         Invoke function supportedTimeZones
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SupportedTimeZonesWithTimeZoneStandardGetResponse]
+        Returns: Optional[SupportedTimeZonesWithTimeZoneStandardgetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class SupportedTimeZonesWithTimeZoneStandardRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .supported_time_zones_with_time_zone_standard_get_response import SupportedTimeZonesWithTimeZoneStandardGetResponse
+        from .supported_time_zones_with_time_zone_standardget_response import SupportedTimeZonesWithTimeZoneStandardgetResponse
 
-        return await self.request_adapter.send_async(request_info, SupportedTimeZonesWithTimeZoneStandardGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SupportedTimeZonesWithTimeZoneStandardgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SupportedTimeZonesWithTimeZoneStandardRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

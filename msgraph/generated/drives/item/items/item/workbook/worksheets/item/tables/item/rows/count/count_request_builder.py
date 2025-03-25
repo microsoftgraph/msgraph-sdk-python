@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ............models.o_data_errors.o_data_error import ODataError
-    from .count_get_response import CountGetResponse
+    from .countget_response import CountgetResponse
 
 class CountRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class CountRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/tables/{workbookTable%2Did}/rows/count()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CountGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CountgetResponse]:
         """
         Invoke function count
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CountGetResponse]
+        Returns: Optional[CountgetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +46,9 @@ class CountRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .count_get_response import CountGetResponse
+        from .countget_response import CountgetResponse
 
-        return await self.request_adapter.send_async(request_info, CountGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CountgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

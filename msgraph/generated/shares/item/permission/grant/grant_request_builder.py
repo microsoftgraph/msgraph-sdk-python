@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .grantpost_response import GrantpostResponse
     from .grant_post_request_body import GrantPostRequestBody
-    from .grant_post_response import GrantPostResponse
 
 class GrantRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GrantRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/shares/{sharedDriveItem%2Did}/permission/grant", path_parameters)
     
-    async def post(self,body: GrantPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GrantPostResponse]:
+    async def post(self,body: GrantPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GrantpostResponse]:
         """
         Grant users access to a link represented by a permission.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GrantPostResponse]
+        Returns: Optional[GrantpostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/permission-grant?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GrantRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .grant_post_response import GrantPostResponse
+        from .grantpost_response import GrantpostResponse
 
-        return await self.request_adapter.send_async(request_info, GrantPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GrantpostResponse, error_mapping)
     
     def to_post_request_information(self,body: GrantPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

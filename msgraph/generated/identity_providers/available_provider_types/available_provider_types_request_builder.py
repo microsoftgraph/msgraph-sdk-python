@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .available_provider_types_get_response import AvailableProviderTypesGetResponse
+    from .available_provider_typesget_response import AvailableProviderTypesgetResponse
 
 class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityProviders/availableProviderTypes(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[AvailableProviderTypesRequestBuilderGetQueryParameters]] = None) -> Optional[AvailableProviderTypesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AvailableProviderTypesRequestBuilderGetQueryParameters]] = None) -> Optional[AvailableProviderTypesgetResponse]:
         """
         Retrieves all identity provider types available in a directory.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AvailableProviderTypesGetResponse]
+        Returns: Optional[AvailableProviderTypesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identityprovider-list-availableprovidertypes?view=graph-rest-1.0
         """
         warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider on 2021-08-24 and will be removed 2023-03-15", DeprecationWarning)
@@ -48,9 +48,9 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .available_provider_types_get_response import AvailableProviderTypesGetResponse
+        from .available_provider_typesget_response import AvailableProviderTypesgetResponse
 
-        return await self.request_adapter.send_async(request_info, AvailableProviderTypesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AvailableProviderTypesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AvailableProviderTypesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

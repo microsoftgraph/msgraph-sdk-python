@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...........models.o_data_errors.o_data_error import ODataError
-    from .image_with_width_with_height_with_fitting_mode_get_response import ImageWithWidthWithHeightWithFittingModeGetResponse
+    from .image_with_width_with_height_with_fitting_modeget_response import ImageWithWidthWithHeightWithFittingModegetResponse
 
 class ImageWithWidthWithHeightWithFittingModeRequestBuilder(BaseRequestBuilder):
     """
@@ -37,11 +37,11 @@ class ImageWithWidthWithHeightWithFittingModeRequestBuilder(BaseRequestBuilder):
             path_parameters['width'] = width
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/item(name='{name}')/image(width={width},height={height},fittingMode='{fittingMode}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ImageWithWidthWithHeightWithFittingModeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ImageWithWidthWithHeightWithFittingModegetResponse]:
         """
         Invoke function image
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ImageWithWidthWithHeightWithFittingModeGetResponse]
+        Returns: Optional[ImageWithWidthWithHeightWithFittingModegetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -53,9 +53,9 @@ class ImageWithWidthWithHeightWithFittingModeRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .image_with_width_with_height_with_fitting_mode_get_response import ImageWithWidthWithHeightWithFittingModeGetResponse
+        from .image_with_width_with_height_with_fitting_modeget_response import ImageWithWidthWithHeightWithFittingModegetResponse
 
-        return await self.request_adapter.send_async(request_info, ImageWithWidthWithHeightWithFittingModeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImageWithWidthWithHeightWithFittingModegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
+    from .check_member_groupspost_response import CheckMemberGroupspostResponse
     from .check_member_groups_post_request_body import CheckMemberGroupsPostRequestBody
-    from .check_member_groups_post_response import CheckMemberGroupsPostResponse
 
 class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directoryRoles/{directoryRole%2Did}/checkMemberGroups", path_parameters)
     
-    async def post(self,body: CheckMemberGroupsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CheckMemberGroupsPostResponse]:
+    async def post(self,body: CheckMemberGroupsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CheckMemberGroupspostResponse]:
         """
         Check for membership in a specified list of group IDs, and return from that list the IDs of groups where a specified object is a member. The specified object can be of one of the following types:- user- group- service principal- organizational contact- device- directory object This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Microsoft Entra ID. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CheckMemberGroupsPostResponse]
+        Returns: Optional[CheckMemberGroupspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-checkmembergroups?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .check_member_groups_post_response import CheckMemberGroupsPostResponse
+        from .check_member_groupspost_response import CheckMemberGroupspostResponse
 
-        return await self.request_adapter.send_async(request_info, CheckMemberGroupsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CheckMemberGroupspostResponse, error_mapping)
     
     def to_post_request_information(self,body: CheckMemberGroupsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

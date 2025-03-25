@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...........models.o_data_errors.o_data_error import ODataError
-    from .image_with_width_get_response import ImageWithWidthGetResponse
+    from .image_with_widthget_response import ImageWithWidthgetResponse
 
 class ImageWithWidthRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class ImageWithWidthRequestBuilder(BaseRequestBuilder):
             path_parameters['width'] = width
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/item(name='{name}')/image(width={width})", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ImageWithWidthGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ImageWithWidthgetResponse]:
         """
         Invoke function image
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ImageWithWidthGetResponse]
+        Returns: Optional[ImageWithWidthgetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class ImageWithWidthRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .image_with_width_get_response import ImageWithWidthGetResponse
+        from .image_with_widthget_response import ImageWithWidthgetResponse
 
-        return await self.request_adapter.send_async(request_info, ImageWithWidthGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImageWithWidthgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

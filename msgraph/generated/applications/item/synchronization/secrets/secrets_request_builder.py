@@ -16,8 +16,8 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
+    from .secretsput_response import SecretsputResponse
     from .secrets_put_request_body import SecretsPutRequestBody
-    from .secrets_put_response import SecretsPutResponse
 
 class SecretsRequestBuilder(BaseRequestBuilder):
     """
@@ -32,12 +32,12 @@ class SecretsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/synchronization/secrets", path_parameters)
     
-    async def put(self,body: SecretsPutRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SecretsPutResponse]:
+    async def put(self,body: SecretsPutRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SecretsputResponse]:
         """
         Update property secrets value.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SecretsPutResponse]
+        Returns: Optional[SecretsputResponse]
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -51,9 +51,9 @@ class SecretsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .secrets_put_response import SecretsPutResponse
+        from .secretsput_response import SecretsputResponse
 
-        return await self.request_adapter.send_async(request_info, SecretsPutResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SecretsputResponse, error_mapping)
     
     def to_put_request_information(self,body: SecretsPutRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

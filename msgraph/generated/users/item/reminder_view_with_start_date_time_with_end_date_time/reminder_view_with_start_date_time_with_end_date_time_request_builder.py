@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .reminder_view_with_start_date_time_with_end_date_time_get_response import ReminderViewWithStartDateTimeWithEndDateTimeGetResponse
+    from .reminder_view_with_start_date_time_with_end_date_timeget_response import ReminderViewWithStartDateTimeWithEndDateTimegetResponse
 
 class ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -35,11 +35,11 @@ class ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuil
             path_parameters['StartDateTime'] = start_date_time
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/reminderView(StartDateTime='{StartDateTime}',EndDateTime='{EndDateTime}'){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[ReminderViewWithStartDateTimeWithEndDateTimeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[ReminderViewWithStartDateTimeWithEndDateTimegetResponse]:
         """
         Invoke function reminderView
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ReminderViewWithStartDateTimeWithEndDateTimeGetResponse]
+        Returns: Optional[ReminderViewWithStartDateTimeWithEndDateTimegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-reminderview?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -52,9 +52,9 @@ class ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuil
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .reminder_view_with_start_date_time_with_end_date_time_get_response import ReminderViewWithStartDateTimeWithEndDateTimeGetResponse
+        from .reminder_view_with_start_date_time_with_end_date_timeget_response import ReminderViewWithStartDateTimeWithEndDateTimegetResponse
 
-        return await self.request_adapter.send_async(request_info, ReminderViewWithStartDateTimeWithEndDateTimeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ReminderViewWithStartDateTimeWithEndDateTimegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

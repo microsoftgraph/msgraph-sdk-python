@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .get_staff_availabilitypost_response import GetStaffAvailabilitypostResponse
     from .get_staff_availability_post_request_body import GetStaffAvailabilityPostRequestBody
-    from .get_staff_availability_post_response import GetStaffAvailabilityPostResponse
 
 class GetStaffAvailabilityRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetStaffAvailabilityRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/getStaffAvailability", path_parameters)
     
-    async def post(self,body: GetStaffAvailabilityPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetStaffAvailabilityPostResponse]:
+    async def post(self,body: GetStaffAvailabilityPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetStaffAvailabilitypostResponse]:
         """
         Get the availability information of staff members of a Microsoft Bookings calendar.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetStaffAvailabilityPostResponse]
+        Returns: Optional[GetStaffAvailabilitypostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-getstaffavailability?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetStaffAvailabilityRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_staff_availability_post_response import GetStaffAvailabilityPostResponse
+        from .get_staff_availabilitypost_response import GetStaffAvailabilitypostResponse
 
-        return await self.request_adapter.send_async(request_info, GetStaffAvailabilityPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetStaffAvailabilitypostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetStaffAvailabilityPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

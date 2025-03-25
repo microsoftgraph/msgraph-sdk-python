@@ -16,7 +16,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_pstn_calls_with_from_date_time_with_to_date_time_get_response import GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse
+    from .get_pstn_calls_with_from_date_time_with_to_date_timeget_response import GetPstnCallsWithFromDateTimeWithToDateTimegetResponse
 
 class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -36,11 +36,11 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
             path_parameters['toDateTime'] = to_date_time
         super().__init__(request_adapter, "{+baseurl}/communications/callRecords/microsoft.graph.callRecords.getPstnCalls(fromDateTime={fromDateTime},toDateTime={toDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetPstnCallsWithFromDateTimeWithToDateTimegetResponse]:
         """
         Get a log of PSTN calls as a collection of pstnCallLogRow entries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse]
+        Returns: Optional[GetPstnCallsWithFromDateTimeWithToDateTimegetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,9 +52,9 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_pstn_calls_with_from_date_time_with_to_date_time_get_response import GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse
+        from .get_pstn_calls_with_from_date_time_with_to_date_timeget_response import GetPstnCallsWithFromDateTimeWithToDateTimegetResponse
 
-        return await self.request_adapter.send_async(request_info, GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetPstnCallsWithFromDateTimeWithToDateTimegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

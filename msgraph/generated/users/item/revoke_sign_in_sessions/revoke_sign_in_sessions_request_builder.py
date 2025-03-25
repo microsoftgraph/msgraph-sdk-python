@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .revoke_sign_in_sessions_post_response import RevokeSignInSessionsPostResponse
+    from .revoke_sign_in_sessionspost_response import RevokeSignInSessionspostResponse
 
 class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/revokeSignInSessions", path_parameters)
     
-    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RevokeSignInSessionsPostResponse]:
+    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RevokeSignInSessionspostResponse]:
         """
         Invalidates all the refresh tokens issued to applications for a user (and session cookies in a user's browser), by resetting the signInSessionsValidFromDateTime user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they consented to previously, independent of device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[RevokeSignInSessionsPostResponse]
+        Returns: Optional[RevokeSignInSessionspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-revokesigninsessions?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
@@ -47,9 +47,9 @@ class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .revoke_sign_in_sessions_post_response import RevokeSignInSessionsPostResponse
+        from .revoke_sign_in_sessionspost_response import RevokeSignInSessionspostResponse
 
-        return await self.request_adapter.send_async(request_info, RevokeSignInSessionsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RevokeSignInSessionspostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

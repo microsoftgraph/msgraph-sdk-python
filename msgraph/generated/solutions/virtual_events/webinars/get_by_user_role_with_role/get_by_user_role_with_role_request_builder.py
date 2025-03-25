@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .get_by_user_role_with_role_get_response import GetByUserRoleWithRoleGetResponse
+    from .get_by_user_role_with_roleget_response import GetByUserRoleWithRolegetResponse
 
 class GetByUserRoleWithRoleRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class GetByUserRoleWithRoleRequestBuilder(BaseRequestBuilder):
             path_parameters['role'] = role
         super().__init__(request_adapter, "{+baseurl}/solutions/virtualEvents/webinars/getByUserRole(role='{role}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetByUserRoleWithRoleRequestBuilderGetQueryParameters]] = None) -> Optional[GetByUserRoleWithRoleGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetByUserRoleWithRoleRequestBuilderGetQueryParameters]] = None) -> Optional[GetByUserRoleWithRolegetResponse]:
         """
         Get a virtualEventWebinar collection where the signed-in user is either the organizer or a coorganizer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetByUserRoleWithRoleGetResponse]
+        Returns: Optional[GetByUserRoleWithRolegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/virtualeventwebinar-getbyuserrole?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -50,9 +50,9 @@ class GetByUserRoleWithRoleRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_by_user_role_with_role_get_response import GetByUserRoleWithRoleGetResponse
+        from .get_by_user_role_with_roleget_response import GetByUserRoleWithRolegetResponse
 
-        return await self.request_adapter.send_async(request_info, GetByUserRoleWithRoleGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetByUserRoleWithRolegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetByUserRoleWithRoleRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

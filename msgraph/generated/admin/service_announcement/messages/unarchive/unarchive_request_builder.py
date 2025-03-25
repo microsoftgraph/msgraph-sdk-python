@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .unarchivepost_response import UnarchivepostResponse
     from .unarchive_post_request_body import UnarchivePostRequestBody
-    from .unarchive_post_response import UnarchivePostResponse
 
 class UnarchiveRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/unarchive", path_parameters)
     
-    async def post(self,body: UnarchivePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UnarchivePostResponse]:
+    async def post(self,body: UnarchivePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UnarchivepostResponse]:
         """
         Unarchive a list of serviceUpdateMessages for the signed in user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[UnarchivePostResponse]
+        Returns: Optional[UnarchivepostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-unarchive?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .unarchive_post_response import UnarchivePostResponse
+        from .unarchivepost_response import UnarchivepostResponse
 
-        return await self.request_adapter.send_async(request_info, UnarchivePostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnarchivepostResponse, error_mapping)
     
     def to_post_request_information(self,body: UnarchivePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
+    from .translate_exchange_idspost_response import TranslateExchangeIdspostResponse
     from .translate_exchange_ids_post_request_body import TranslateExchangeIdsPostRequestBody
-    from .translate_exchange_ids_post_response import TranslateExchangeIdsPostResponse
 
 class TranslateExchangeIdsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class TranslateExchangeIdsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/translateExchangeIds", path_parameters)
     
-    async def post(self,body: TranslateExchangeIdsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TranslateExchangeIdsPostResponse]:
+    async def post(self,body: TranslateExchangeIdsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TranslateExchangeIdspostResponse]:
         """
         Translate identifiers of Outlook-related resources between formats.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[TranslateExchangeIdsPostResponse]
+        Returns: Optional[TranslateExchangeIdspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-translateexchangeids?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class TranslateExchangeIdsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .translate_exchange_ids_post_response import TranslateExchangeIdsPostResponse
+        from .translate_exchange_idspost_response import TranslateExchangeIdspostResponse
 
-        return await self.request_adapter.send_async(request_info, TranslateExchangeIdsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TranslateExchangeIdspostResponse, error_mapping)
     
     def to_post_request_information(self,body: TranslateExchangeIdsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

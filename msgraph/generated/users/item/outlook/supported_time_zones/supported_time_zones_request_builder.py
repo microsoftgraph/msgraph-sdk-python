@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .supported_time_zones_get_response import SupportedTimeZonesGetResponse
+    from .supported_time_zonesget_response import SupportedTimeZonesgetResponse
 
 class SupportedTimeZonesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class SupportedTimeZonesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/outlook/supportedTimeZones(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[SupportedTimeZonesRequestBuilderGetQueryParameters]] = None) -> Optional[SupportedTimeZonesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SupportedTimeZonesRequestBuilderGetQueryParameters]] = None) -> Optional[SupportedTimeZonesgetResponse]:
         """
         Invoke function supportedTimeZones
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SupportedTimeZonesGetResponse]
+        Returns: Optional[SupportedTimeZonesgetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +46,9 @@ class SupportedTimeZonesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .supported_time_zones_get_response import SupportedTimeZonesGetResponse
+        from .supported_time_zonesget_response import SupportedTimeZonesgetResponse
 
-        return await self.request_adapter.send_async(request_info, SupportedTimeZonesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SupportedTimeZonesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SupportedTimeZonesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

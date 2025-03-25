@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
+    from .remove_grouppost_response import RemoveGrouppostResponse
     from .remove_group_post_request_body import RemoveGroupPostRequestBody
-    from .remove_group_post_response import RemoveGroupPostResponse
 
 class RemoveGroupRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class RemoveGroupRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groupLifecyclePolicies/{groupLifecyclePolicy%2Did}/removeGroup", path_parameters)
     
-    async def post(self,body: RemoveGroupPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RemoveGroupPostResponse]:
+    async def post(self,body: RemoveGroupPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RemoveGrouppostResponse]:
         """
         Removes a group from a lifecycle policy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[RemoveGroupPostResponse]
+        Returns: Optional[RemoveGrouppostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/grouplifecyclepolicy-removegroup?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class RemoveGroupRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .remove_group_post_response import RemoveGroupPostResponse
+        from .remove_grouppost_response import RemoveGrouppostResponse
 
-        return await self.request_adapter.send_async(request_info, RemoveGroupPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RemoveGrouppostResponse, error_mapping)
     
     def to_post_request_information(self,body: RemoveGroupPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

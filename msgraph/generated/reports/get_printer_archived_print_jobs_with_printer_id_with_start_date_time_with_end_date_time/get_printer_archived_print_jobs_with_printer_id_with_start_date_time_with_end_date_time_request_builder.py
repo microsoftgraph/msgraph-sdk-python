@@ -16,7 +16,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_get_response import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeGetResponse
+    from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_timeget_response import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimegetResponse
 
 class GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -38,11 +38,11 @@ class GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRe
             path_parameters['startDateTime'] = start_date_time
         super().__init__(request_adapter, "{+baseurl}/reports/getPrinterArchivedPrintJobs(printerId='{printerId}',startDateTime={startDateTime},endDateTime={endDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimegetResponse]:
         """
         Get a list of archived print jobs that were queued for particular printer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeGetResponse]
+        Returns: Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/reports-getprinterarchivedprintjobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -55,9 +55,9 @@ class GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRe
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_get_response import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeGetResponse
+        from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_timeget_response import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimegetResponse
 
-        return await self.request_adapter.send_async(request_info, GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

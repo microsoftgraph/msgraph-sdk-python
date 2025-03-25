@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .verify_windows_enrollment_auto_discovery_with_domain_name_get_response import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameGetResponse
+    from .verify_windows_enrollment_auto_discovery_with_domain_nameget_response import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNamegetResponse
 
 class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(BaseReque
             path_parameters['domainName'] = domain_name
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/verifyWindowsEnrollmentAutoDiscovery(domainName='{domainName}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNamegetResponse]:
         """
         Invoke function verifyWindowsEnrollmentAutoDiscovery
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameGetResponse]
+        Returns: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNamegetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(BaseReque
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .verify_windows_enrollment_auto_discovery_with_domain_name_get_response import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameGetResponse
+        from .verify_windows_enrollment_auto_discovery_with_domain_nameget_response import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNamegetResponse
 
-        return await self.request_adapter.send_async(request_info, VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, VerifyWindowsEnrollmentAutoDiscoveryWithDomainNamegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .additional_access_get_response import AdditionalAccessGetResponse
+    from .additional_accessget_response import AdditionalAccessgetResponse
 
 class AdditionalAccessRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class AdditionalAccessRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/assignments/additionalAccess(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[AdditionalAccessRequestBuilderGetQueryParameters]] = None) -> Optional[AdditionalAccessGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AdditionalAccessRequestBuilderGetQueryParameters]] = None) -> Optional[AdditionalAccessgetResponse]:
         """
         In Microsoft Entra Entitlement Management, retrieve a collection of accessPackageAssignment objects that indicate a target user has an assignment to a specified access package and also an assignment to another, potentially incompatible, access package.  This can be used to prepare to configure the incompatible access packages for a specific access package.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AdditionalAccessGetResponse]
+        Returns: Optional[AdditionalAccessgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignment-additionalaccess?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class AdditionalAccessRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .additional_access_get_response import AdditionalAccessGetResponse
+        from .additional_accessget_response import AdditionalAccessgetResponse
 
-        return await self.request_adapter.send_async(request_info, AdditionalAccessGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AdditionalAccessgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AdditionalAccessRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

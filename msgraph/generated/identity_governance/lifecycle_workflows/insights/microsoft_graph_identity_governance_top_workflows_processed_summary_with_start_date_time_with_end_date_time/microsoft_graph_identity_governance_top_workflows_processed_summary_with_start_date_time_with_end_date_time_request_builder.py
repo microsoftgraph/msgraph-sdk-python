@@ -16,7 +16,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .top_workflows_processed_summary_with_start_date_time_with_end_date_time_get_response import TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse
+    from .top_workflows_processed_summary_with_start_date_time_with_end_date_timeget_response import TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimegetResponse
 
 class MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -36,11 +36,11 @@ class MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateT
             path_parameters['startDateTime'] = start_date_time
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/insights/microsoft.graph.identityGovernance.topWorkflowsProcessedSummary(startDateTime={startDateTime},endDateTime={endDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimegetResponse]:
         """
         Provide a summary of the workflows processed the most, known as top workflows, for a specified period in a tenant. Workflow basic details are given, along with run information. For information about tasks processed, see insights: topTasksProcessedSummary.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse]
+        Returns: Optional[TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimegetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-insights-topworkflowsprocessedsummary?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -53,9 +53,9 @@ class MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateT
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .top_workflows_processed_summary_with_start_date_time_with_end_date_time_get_response import TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse
+        from .top_workflows_processed_summary_with_start_date_time_with_end_date_timeget_response import TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimegetResponse
 
-        return await self.request_adapter.send_async(request_info, TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_audit_categories_get_response import GetAuditCategoriesGetResponse
+    from .get_audit_categoriesget_response import GetAuditCategoriesgetResponse
 
 class GetAuditCategoriesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetAuditCategoriesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/auditEvents/getAuditCategories(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetAuditCategoriesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAuditCategoriesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetAuditCategoriesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAuditCategoriesgetResponse]:
         """
         Not yet documented
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAuditCategoriesGetResponse]
+        Returns: Optional[GetAuditCategoriesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-auditing-auditevent-getauditcategories?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetAuditCategoriesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_audit_categories_get_response import GetAuditCategoriesGetResponse
+        from .get_audit_categoriesget_response import GetAuditCategoriesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAuditCategoriesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAuditCategoriesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetAuditCategoriesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

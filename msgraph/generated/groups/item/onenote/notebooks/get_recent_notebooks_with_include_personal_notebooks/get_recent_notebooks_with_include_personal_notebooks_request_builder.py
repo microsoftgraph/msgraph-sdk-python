@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_recent_notebooks_with_include_personal_notebooks_get_response import GetRecentNotebooksWithIncludePersonalNotebooksGetResponse
+    from .get_recent_notebooks_with_include_personal_notebooksget_response import GetRecentNotebooksWithIncludePersonalNotebooksgetResponse
 
 class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
             path_parameters['includePersonalNotebooks'] = include_personal_notebooks
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/onenote/notebooks/getRecentNotebooks(includePersonalNotebooks={includePersonalNotebooks}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters]] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters]] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksgetResponse]:
         """
         Get a list of recentNotebook instances that have been accessed by the signed-in user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]
+        Returns: Optional[GetRecentNotebooksWithIncludePersonalNotebooksgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/notebook-getrecentnotebooks?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -50,9 +50,9 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_recent_notebooks_with_include_personal_notebooks_get_response import GetRecentNotebooksWithIncludePersonalNotebooksGetResponse
+        from .get_recent_notebooks_with_include_personal_notebooksget_response import GetRecentNotebooksWithIncludePersonalNotebooksgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetRecentNotebooksWithIncludePersonalNotebooksGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetRecentNotebooksWithIncludePersonalNotebooksgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

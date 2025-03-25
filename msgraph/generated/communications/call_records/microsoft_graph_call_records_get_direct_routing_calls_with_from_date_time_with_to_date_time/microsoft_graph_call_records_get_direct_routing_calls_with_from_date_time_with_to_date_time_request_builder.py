@@ -16,7 +16,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_direct_routing_calls_with_from_date_time_with_to_date_time_get_response import GetDirectRoutingCallsWithFromDateTimeWithToDateTimeGetResponse
+    from .get_direct_routing_calls_with_from_date_time_with_to_date_timeget_response import GetDirectRoutingCallsWithFromDateTimeWithToDateTimegetResponse
 
 class MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -36,11 +36,11 @@ class MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTi
             path_parameters['toDateTime'] = to_date_time
         super().__init__(request_adapter, "{+baseurl}/communications/callRecords/microsoft.graph.callRecords.getDirectRoutingCalls(fromDateTime={fromDateTime},toDateTime={toDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetDirectRoutingCallsWithFromDateTimeWithToDateTimeGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[GetDirectRoutingCallsWithFromDateTimeWithToDateTimegetResponse]:
         """
         Get a log of direct routing calls as a collection of directRoutingLogRow entries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetDirectRoutingCallsWithFromDateTimeWithToDateTimeGetResponse]
+        Returns: Optional[GetDirectRoutingCallsWithFromDateTimeWithToDateTimegetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,9 +52,9 @@ class MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTi
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_direct_routing_calls_with_from_date_time_with_to_date_time_get_response import GetDirectRoutingCallsWithFromDateTimeWithToDateTimeGetResponse
+        from .get_direct_routing_calls_with_from_date_time_with_to_date_timeget_response import GetDirectRoutingCallsWithFromDateTimeWithToDateTimegetResponse
 
-        return await self.request_adapter.send_async(request_info, GetDirectRoutingCallsWithFromDateTimeWithToDateTimeGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetDirectRoutingCallsWithFromDateTimeWithToDateTimegetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

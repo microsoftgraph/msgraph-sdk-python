@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
-    from .filter_operators_get_response import FilterOperatorsGetResponse
+    from .filter_operatorsget_response import FilterOperatorsgetResponse
 
 class FilterOperatorsRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/synchronization/jobs/{synchronizationJob%2Did}/schema/filterOperators(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[FilterOperatorsRequestBuilderGetQueryParameters]] = None) -> Optional[FilterOperatorsGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[FilterOperatorsRequestBuilderGetQueryParameters]] = None) -> Optional[FilterOperatorsgetResponse]:
         """
         List all operators supported in the scoping filters.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FilterOperatorsGetResponse]
+        Returns: Optional[FilterOperatorsgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-filteroperators?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .filter_operators_get_response import FilterOperatorsGetResponse
+        from .filter_operatorsget_response import FilterOperatorsgetResponse
 
-        return await self.request_adapter.send_async(request_info, FilterOperatorsGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FilterOperatorsgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FilterOperatorsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

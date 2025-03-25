@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
+    from .get_presences_by_user_idpost_response import GetPresencesByUserIdpostResponse
     from .get_presences_by_user_id_post_request_body import GetPresencesByUserIdPostRequestBody
-    from .get_presences_by_user_id_post_response import GetPresencesByUserIdPostResponse
 
 class GetPresencesByUserIdRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetPresencesByUserIdRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/getPresencesByUserId", path_parameters)
     
-    async def post(self,body: GetPresencesByUserIdPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetPresencesByUserIdPostResponse]:
+    async def post(self,body: GetPresencesByUserIdPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetPresencesByUserIdpostResponse]:
         """
         Get the presence information for multiple users.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetPresencesByUserIdPostResponse]
+        Returns: Optional[GetPresencesByUserIdpostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/cloudcommunications-getpresencesbyuserid?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetPresencesByUserIdRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_presences_by_user_id_post_response import GetPresencesByUserIdPostResponse
+        from .get_presences_by_user_idpost_response import GetPresencesByUserIdpostResponse
 
-        return await self.request_adapter.send_async(request_info, GetPresencesByUserIdPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetPresencesByUserIdpostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetPresencesByUserIdPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

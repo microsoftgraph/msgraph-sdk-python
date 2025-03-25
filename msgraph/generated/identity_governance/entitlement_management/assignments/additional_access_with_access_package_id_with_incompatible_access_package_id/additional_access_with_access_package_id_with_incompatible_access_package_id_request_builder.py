@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .additional_access_with_access_package_id_with_incompatible_access_package_id_get_response import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse
+    from .additional_access_with_access_package_id_with_incompatible_access_package_idget_response import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdgetResponse
 
 class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(BaseRequestBuilder):
     """
@@ -35,11 +35,11 @@ class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestB
             path_parameters['incompatibleAccessPackageId'] = incompatible_access_package_id
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/assignments/additionalAccess(accessPackageId='{accessPackageId}',incompatibleAccessPackageId='{incompatibleAccessPackageId}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilderGetQueryParameters]] = None) -> Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilderGetQueryParameters]] = None) -> Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdgetResponse]:
         """
         Invoke function additionalAccess
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse]
+        Returns: Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdgetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -51,9 +51,9 @@ class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestB
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .additional_access_with_access_package_id_with_incompatible_access_package_id_get_response import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse
+        from .additional_access_with_access_package_id_with_incompatible_access_package_idget_response import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdgetResponse
 
-        return await self.request_adapter.send_async(request_info, AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

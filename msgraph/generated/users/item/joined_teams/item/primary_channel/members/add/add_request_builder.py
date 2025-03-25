@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
+    from .addpost_response import AddpostResponse
     from .add_post_request_body import AddPostRequestBody
-    from .add_post_response import AddPostResponse
 
 class AddRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class AddRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/primaryChannel/members/add", path_parameters)
     
-    async def post(self,body: AddPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AddPostResponse]:
+    async def post(self,body: AddPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AddpostResponse]:
         """
         Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AddPostResponse]
+        Returns: Optional[AddpostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/conversationmembers-add?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class AddRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .add_post_response import AddPostResponse
+        from .addpost_response import AddpostResponse
 
-        return await self.request_adapter.send_async(request_info, AddPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddpostResponse, error_mapping)
     
     def to_post_request_information(self,body: AddPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

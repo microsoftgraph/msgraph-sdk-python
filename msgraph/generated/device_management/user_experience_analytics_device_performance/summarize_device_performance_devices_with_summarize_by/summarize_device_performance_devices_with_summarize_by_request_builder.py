@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .summarize_device_performance_devices_with_summarize_by_get_response import SummarizeDevicePerformanceDevicesWithSummarizeByGetResponse
+    from .summarize_device_performance_devices_with_summarize_byget_response import SummarizeDevicePerformanceDevicesWithSummarizeBygetResponse
 
 class SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder(BaseRequest
             path_parameters['summarizeBy'] = summarize_by
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/userExperienceAnalyticsDevicePerformance/summarizeDevicePerformanceDevices(summarizeBy='{summarizeBy}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilderGetQueryParameters]] = None) -> Optional[SummarizeDevicePerformanceDevicesWithSummarizeByGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilderGetQueryParameters]] = None) -> Optional[SummarizeDevicePerformanceDevicesWithSummarizeBygetResponse]:
         """
         Invoke function summarizeDevicePerformanceDevices
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SummarizeDevicePerformanceDevicesWithSummarizeByGetResponse]
+        Returns: Optional[SummarizeDevicePerformanceDevicesWithSummarizeBygetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder(BaseRequest
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .summarize_device_performance_devices_with_summarize_by_get_response import SummarizeDevicePerformanceDevicesWithSummarizeByGetResponse
+        from .summarize_device_performance_devices_with_summarize_byget_response import SummarizeDevicePerformanceDevicesWithSummarizeBygetResponse
 
-        return await self.request_adapter.send_async(request_info, SummarizeDevicePerformanceDevicesWithSummarizeByGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SummarizeDevicePerformanceDevicesWithSummarizeBygetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

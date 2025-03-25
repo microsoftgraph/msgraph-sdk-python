@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .get_source_images_get_response import GetSourceImagesGetResponse
+    from .get_source_imagesget_response import GetSourceImagesgetResponse
 
 class GetSourceImagesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetSourceImagesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/virtualEndpoint/deviceImages/getSourceImages(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetSourceImagesRequestBuilderGetQueryParameters]] = None) -> Optional[GetSourceImagesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetSourceImagesRequestBuilderGetQueryParameters]] = None) -> Optional[GetSourceImagesgetResponse]:
         """
         Get cloudPcSourceDeviceImage objects that can be uploaded and used on Cloud PCs. View a list of all the managed image resources from your Microsoft Entra subscriptions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetSourceImagesGetResponse]
+        Returns: Optional[GetSourceImagesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/cloudpcdeviceimage-getsourceimages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetSourceImagesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_source_images_get_response import GetSourceImagesGetResponse
+        from .get_source_imagesget_response import GetSourceImagesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetSourceImagesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetSourceImagesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetSourceImagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

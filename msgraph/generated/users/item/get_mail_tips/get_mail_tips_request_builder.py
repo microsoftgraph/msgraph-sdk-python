@@ -15,8 +15,8 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
+    from .get_mail_tipspost_response import GetMailTipspostResponse
     from .get_mail_tips_post_request_body import GetMailTipsPostRequestBody
-    from .get_mail_tips_post_response import GetMailTipsPostResponse
 
 class GetMailTipsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,12 +31,12 @@ class GetMailTipsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/getMailTips", path_parameters)
     
-    async def post(self,body: GetMailTipsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetMailTipsPostResponse]:
+    async def post(self,body: GetMailTipsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetMailTipspostResponse]:
         """
         Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a POST call to the getMailTips action, you can request specific types of MailTips tobe returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetMailTipsPostResponse]
+        Returns: Optional[GetMailTipspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-getmailtips?view=graph-rest-1.0
         """
         if body is None:
@@ -51,9 +51,9 @@ class GetMailTipsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_mail_tips_post_response import GetMailTipsPostResponse
+        from .get_mail_tipspost_response import GetMailTipspostResponse
 
-        return await self.request_adapter.send_async(request_info, GetMailTipsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetMailTipspostResponse, error_mapping)
     
     def to_post_request_information(self,body: GetMailTipsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

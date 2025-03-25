@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .recent_get_response import RecentGetResponse
+    from .recentget_response import RecentgetResponse
 
 class RecentRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class RecentRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/activities/recent(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[RecentRequestBuilderGetQueryParameters]] = None) -> Optional[RecentGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[RecentRequestBuilderGetQueryParameters]] = None) -> Optional[RecentgetResponse]:
         """
         Get recent activities for a given user. This OData function has some default behaviors included to make it operate like a 'most recently used' API. The service queries for the most recent activityHistoryItems, and then pull those related activities. Activities are sorted according to the most recent lastModified on the activityHistoryItem. This means that activities without activityHistoryItems won't be included in the response. The UserActivity.ReadWrite.CreatedByApp permission will also apply extra filtering to the response, so that only activities created by your application are returned. This server-side filtering might result in empty pages if the user is active and other applications have created more recent activities. To get your application's activities, use the nextLink property to paginate.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[RecentGetResponse]
+        Returns: Optional[RecentgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/projectrome-get-recent-activities?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class RecentRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .recent_get_response import RecentGetResponse
+        from .recentget_response import RecentgetResponse
 
-        return await self.request_adapter.send_async(request_info, RecentGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RecentgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RecentRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

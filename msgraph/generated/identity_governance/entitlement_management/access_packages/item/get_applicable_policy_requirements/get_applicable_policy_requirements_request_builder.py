@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_applicable_policy_requirements_post_response import GetApplicablePolicyRequirementsPostResponse
+    from .get_applicable_policy_requirementspost_response import GetApplicablePolicyRequirementspostResponse
 
 class GetApplicablePolicyRequirementsRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetApplicablePolicyRequirementsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/accessPackages/{accessPackage%2Did}/getApplicablePolicyRequirements", path_parameters)
     
-    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetApplicablePolicyRequirementsPostResponse]:
+    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetApplicablePolicyRequirementspostResponse]:
         """
         In Microsoft Entra entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetApplicablePolicyRequirementsPostResponse]
+        Returns: Optional[GetApplicablePolicyRequirementspostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accesspackage-getapplicablepolicyrequirements?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
@@ -47,9 +47,9 @@ class GetApplicablePolicyRequirementsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_applicable_policy_requirements_post_response import GetApplicablePolicyRequirementsPostResponse
+        from .get_applicable_policy_requirementspost_response import GetApplicablePolicyRequirementspostResponse
 
-        return await self.request_adapter.send_async(request_info, GetApplicablePolicyRequirementsPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetApplicablePolicyRequirementspostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

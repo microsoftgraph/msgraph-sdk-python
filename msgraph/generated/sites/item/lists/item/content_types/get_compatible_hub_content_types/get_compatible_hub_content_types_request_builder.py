@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
-    from .get_compatible_hub_content_types_get_response import GetCompatibleHubContentTypesGetResponse
+    from .get_compatible_hub_content_typesget_response import GetCompatibleHubContentTypesgetResponse
 
 class GetCompatibleHubContentTypesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetCompatibleHubContentTypesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/contentTypes/getCompatibleHubContentTypes(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetCompatibleHubContentTypesRequestBuilderGetQueryParameters]] = None) -> Optional[GetCompatibleHubContentTypesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetCompatibleHubContentTypesRequestBuilderGetQueryParameters]] = None) -> Optional[GetCompatibleHubContentTypesgetResponse]:
         """
         Get a list of compatible content types from the content type hub that can be added to a target site or a list. This method is part of the content type publishing changes to optimize the syncing of published content types to sites and lists, effectively switching from a 'push everywhere' to 'pull as needed' approach. The method allows users to pull content types directly from the content type hub to a site or list. For more information, see contentType: addCopyFromContentTypeHub and the blog post Syntex Product Updates – August 2021.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetCompatibleHubContentTypesGetResponse]
+        Returns: Optional[GetCompatibleHubContentTypesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/contenttype-getcompatiblehubcontenttypes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetCompatibleHubContentTypesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_compatible_hub_content_types_get_response import GetCompatibleHubContentTypesGetResponse
+        from .get_compatible_hub_content_typesget_response import GetCompatibleHubContentTypesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetCompatibleHubContentTypesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetCompatibleHubContentTypesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetCompatibleHubContentTypesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

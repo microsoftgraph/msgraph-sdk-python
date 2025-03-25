@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .filter_by_current_user_with_on_get_response import FilterByCurrentUserWithOnGetResponse
+    from .filter_by_current_user_with_onget_response import FilterByCurrentUserWithOngetResponse
 
 class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     """
@@ -33,11 +33,11 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
             path_parameters['on'] = on
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group/assignmentScheduleRequests/filterByCurrentUser(on='{on}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[FilterByCurrentUserWithOnRequestBuilderGetQueryParameters]] = None) -> Optional[FilterByCurrentUserWithOnGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[FilterByCurrentUserWithOnRequestBuilderGetQueryParameters]] = None) -> Optional[FilterByCurrentUserWithOngetResponse]:
         """
         In PIM for groups, retrieve the requests for membership or ownership assignments for the calling principal to groups that are governed by PIM.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FilterByCurrentUserWithOnGetResponse]
+        Returns: Optional[FilterByCurrentUserWithOngetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupassignmentschedulerequest-filterbycurrentuser?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -50,9 +50,9 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .filter_by_current_user_with_on_get_response import FilterByCurrentUserWithOnGetResponse
+        from .filter_by_current_user_with_onget_response import FilterByCurrentUserWithOngetResponse
 
-        return await self.request_adapter.send_async(request_info, FilterByCurrentUserWithOnGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FilterByCurrentUserWithOngetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FilterByCurrentUserWithOnRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

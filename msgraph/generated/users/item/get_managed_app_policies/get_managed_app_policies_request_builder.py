@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_managed_app_policies_get_response import GetManagedAppPoliciesGetResponse
+    from .get_managed_app_policiesget_response import GetManagedAppPoliciesgetResponse
 
 class GetManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class GetManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/getManagedAppPolicies(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[GetManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> Optional[GetManagedAppPoliciesGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[GetManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> Optional[GetManagedAppPoliciesgetResponse]:
         """
         Gets app restrictions for a given user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetManagedAppPoliciesGetResponse]
+        Returns: Optional[GetManagedAppPoliciesgetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-getmanagedapppolicies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -47,9 +47,9 @@ class GetManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_managed_app_policies_get_response import GetManagedAppPoliciesGetResponse
+        from .get_managed_app_policiesget_response import GetManagedAppPoliciesgetResponse
 
-        return await self.request_adapter.send_async(request_info, GetManagedAppPoliciesGetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetManagedAppPoliciesgetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetManagedAppPoliciesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

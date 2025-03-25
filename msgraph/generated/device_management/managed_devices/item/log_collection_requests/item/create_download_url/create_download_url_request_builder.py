@@ -15,7 +15,7 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
-    from .create_download_url_post_response import CreateDownloadUrlPostResponse
+    from .create_download_urlpost_response import CreateDownloadUrlpostResponse
 
 class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
     """
@@ -30,11 +30,11 @@ class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/managedDevices/{managedDevice%2Did}/logCollectionRequests/{deviceLogCollectionResponse%2Did}/createDownloadUrl", path_parameters)
     
-    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CreateDownloadUrlPostResponse]:
+    async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CreateDownloadUrlpostResponse]:
         """
         Invoke action createDownloadUrl
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CreateDownloadUrlPostResponse]
+        Returns: Optional[CreateDownloadUrlpostResponse]
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -46,9 +46,9 @@ class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .create_download_url_post_response import CreateDownloadUrlPostResponse
+        from .create_download_urlpost_response import CreateDownloadUrlpostResponse
 
-        return await self.request_adapter.send_async(request_info, CreateDownloadUrlPostResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CreateDownloadUrlpostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """

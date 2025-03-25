@@ -73,7 +73,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ReferenceCreate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Add an owner to an application. Currently, only individual users are supported as owners of applications.
+        Add an owner to an application. Application owners can be individual users, the associated service principal, or another service principal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -117,7 +117,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ReferenceCreate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Add an owner to an application. Currently, only individual users are supported as owners of applications.
+        Add an owner to an application. Application owners can be individual users, the associated service principal, or another service principal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

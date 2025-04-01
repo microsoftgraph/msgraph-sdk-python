@@ -5,4 +5,5 @@ class ExportFileStructure(str, Enum):
     Directory = "directory",
     Pst = "pst",
     UnknownFutureValue = "unknownFutureValue",
+    Msg = "msg",
 

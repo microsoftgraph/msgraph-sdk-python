@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class SchemaExtension(Entity, Parsable):
-    # Description for the schema extension. Supports $filter (eq).
+    # Description for the schema extension.
     description: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

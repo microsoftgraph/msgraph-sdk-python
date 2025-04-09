@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
     from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
     from .access_package_catalog import AccessPackageCatalog
+    from .access_package_notification_settings import AccessPackageNotificationSettings
     from .access_package_question import AccessPackageQuestion
     from .allowed_target_scope import AllowedTargetScope
     from .custom_extension_stage_setting import CustomExtensionStageSetting
@@ -43,6 +44,8 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
     expiration: Optional[ExpirationPattern] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     modified_date_time: Optional[datetime.datetime] = None
+    # The notificationSettings property
+    notification_settings: Optional[AccessPackageNotificationSettings] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Questions that are posed to the  requestor.
@@ -78,6 +81,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
         from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
         from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
         from .access_package_catalog import AccessPackageCatalog
+        from .access_package_notification_settings import AccessPackageNotificationSettings
         from .access_package_question import AccessPackageQuestion
         from .allowed_target_scope import AllowedTargetScope
         from .custom_extension_stage_setting import CustomExtensionStageSetting
@@ -91,6 +95,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
         from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
         from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
         from .access_package_catalog import AccessPackageCatalog
+        from .access_package_notification_settings import AccessPackageNotificationSettings
         from .access_package_question import AccessPackageQuestion
         from .allowed_target_scope import AllowedTargetScope
         from .custom_extension_stage_setting import CustomExtensionStageSetting
@@ -109,6 +114,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(ExpirationPattern)),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "notificationSettings": lambda n : setattr(self, 'notification_settings', n.get_object_value(AccessPackageNotificationSettings)),
             "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(AccessPackageQuestion)),
             "requestApprovalSettings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(AccessPackageAssignmentApprovalSettings)),
             "requestorSettings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(AccessPackageAssignmentRequestorSettings)),
@@ -138,6 +144,7 @@ class AccessPackageAssignmentPolicy(Entity, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("expiration", self.expiration)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_object_value("notificationSettings", self.notification_settings)
         writer.write_collection_of_object_values("questions", self.questions)
         writer.write_object_value("requestApprovalSettings", self.request_approval_settings)
         writer.write_object_value("requestorSettings", self.requestor_settings)

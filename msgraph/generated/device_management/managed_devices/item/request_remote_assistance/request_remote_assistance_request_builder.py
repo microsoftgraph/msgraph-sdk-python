@@ -56,7 +56,6 @@ class RequestRemoteAssistanceRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: str) -> RequestRemoteAssistanceRequestBuilder:

@@ -51,10 +51,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a macOSLobApp.
+        Deletes a windowsWebApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-macoslobapp-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-windowswebapp-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,10 +70,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MobileAppItemRequestBuilderGetQueryParameters]] = None) -> Optional[MobileApp]:
         """
-        Read properties and relationships of the managedMobileLobApp object.
+        Read properties and relationships of the iosLobApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managedmobilelobapp-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-ioslobapp-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,11 +91,11 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: MobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MobileApp]:
         """
-        Update the properties of a managedAndroidLobApp object.
+        Update the properties of a androidLobApp object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managedandroidlobapp-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-androidlobapp-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -115,18 +115,17 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a macOSLobApp.
+        Deletes a windowsWebApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MobileAppItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedMobileLobApp object.
+        Read properties and relationships of the iosLobApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +136,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: MobileApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a managedAndroidLobApp object.
+        Update the properties of a androidLobApp object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -341,7 +340,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedMobileLobApp object.
+        Read properties and relationships of the iosLobApp object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

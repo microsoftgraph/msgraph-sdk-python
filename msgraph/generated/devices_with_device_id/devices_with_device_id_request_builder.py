@@ -105,7 +105,6 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DevicesWithDeviceIdRequestBuilderGetQueryParameters]] = None) -> RequestInformation:

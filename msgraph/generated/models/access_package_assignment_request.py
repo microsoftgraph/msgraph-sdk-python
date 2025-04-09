@@ -32,6 +32,8 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # Information about all the custom extension calls that were made during the access package assignment workflow.
     custom_extension_callout_instances: Optional[list[CustomExtensionCalloutInstance]] = None
+    # The justification property
+    justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. Requests from the user have a requestType of userAdd, userUpdate, or userRemove. This property can't be changed once set.
@@ -88,6 +90,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
+            "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
             "requestor": lambda n : setattr(self, 'requestor', n.get_object_value(AccessPackageSubject)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
@@ -113,6 +116,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("customExtensionCalloutInstances", self.custom_extension_callout_instances)
+        writer.write_str_value("justification", self.justification)
         writer.write_enum_value("requestType", self.request_type)
         writer.write_object_value("requestor", self.requestor)
         writer.write_object_value("schedule", self.schedule)

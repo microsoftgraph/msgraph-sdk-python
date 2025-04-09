@@ -58,7 +58,7 @@ class GetFinalReportRequestBuilder(BaseRequestBuilder):
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate on 2022-03-22 and will be removed 2025-03-20", DeprecationWarning)
         request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/octet-stream, application/json")
+        request_info.headers.try_add("Accept", "application/octet-stream")
         return request_info
     
     def with_url(self,raw_url: str) -> GetFinalReportRequestBuilder:

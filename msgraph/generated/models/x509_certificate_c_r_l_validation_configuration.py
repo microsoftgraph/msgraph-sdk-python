@@ -15,7 +15,7 @@ class X509CertificateCRLValidationConfiguration(AdditionalDataHolder, BackedMode
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The exemptedCertificateAuthoritiesSubjectKeyIdentifiers property
+    # Represents the SKIs of CAs that should be excluded from the valid CRL distribution point check. SKI is represented as a hexadecimal string.
     exempted_certificate_authorities_subject_key_identifiers: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None

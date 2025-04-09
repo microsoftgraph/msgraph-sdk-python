@@ -72,11 +72,11 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: ConversationMember, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ConversationMember]:
         """
-        Update the role of a conversationMember in a channel. This operation is allowed only for channels with a membershipType value of private or shared.
+        Update the role of a conversationMember in a team or channel.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/channel-update-members?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/conversationmember-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -102,7 +102,6 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ConversationMemberItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
@@ -118,7 +117,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: ConversationMember, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the role of a conversationMember in a channel. This operation is allowed only for channels with a membershipType value of private or shared.
+        Update the role of a conversationMember in a team or channel.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

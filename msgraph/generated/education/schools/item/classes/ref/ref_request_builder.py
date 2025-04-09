@@ -101,7 +101,6 @@ class RefRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.DELETE, '{+baseurl}/education/schools/{educationSchool%2Did}/classes/$ref?@id={%40id}', self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RefRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
@@ -126,7 +125,6 @@ class RefRequestBuilder(BaseRequestBuilder):
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, '{+baseurl}/education/schools/{educationSchool%2Did}/classes/$ref', self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

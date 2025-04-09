@@ -39,6 +39,8 @@ class Alert(Entity, Parsable):
     comments: Optional[list[AlertComment]] = None
     # Time when Microsoft 365 Defender created the alert.
     created_date_time: Optional[datetime.datetime] = None
+    # The customDetails property
+    custom_details: Optional[Dictionary] = None
     # String value describing each alert.
     description: Optional[str] = None
     # Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement, microsoftSentinel, nrtAlerts, scheduledAlerts, microsoftDefenderThreatIntelligenceAnalytics, builtInMl. Use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement, microsoftSentinel, nrtAlerts, scheduledAlerts, microsoftDefenderThreatIntelligenceAnalytics, builtInMl.
@@ -136,6 +138,7 @@ class Alert(Entity, Parsable):
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(AlertComment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "customDetails": lambda n : setattr(self, 'custom_details', n.get_object_value(Dictionary)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "detectionSource": lambda n : setattr(self, 'detection_source', n.get_enum_value(DetectionSource)),
             "detectorId": lambda n : setattr(self, 'detector_id', n.get_str_value()),
@@ -182,6 +185,7 @@ class Alert(Entity, Parsable):
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("comments", self.comments)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("customDetails", self.custom_details)
         writer.write_str_value("description", self.description)
         writer.write_enum_value("detectionSource", self.detection_source)
         writer.write_str_value("detectorId", self.detector_id)

@@ -22,6 +22,8 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
     is_approval_required_for_add: Optional[bool] = None
     # Indicates whether a request to update must be approved by an approver.
     is_approval_required_for_update: Optional[bool] = None
+    # The isRequestorJustificationRequired property
+    is_requestor_justification_required: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The description of the policy that the user is trying to request access using.
@@ -61,6 +63,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
             "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
             "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
             "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
+            "isRequestorJustificationRequired": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "policyDescription": lambda n : setattr(self, 'policy_description', n.get_str_value()),
             "policyDisplayName": lambda n : setattr(self, 'policy_display_name', n.get_str_value()),
@@ -81,6 +84,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
         writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)
         writer.write_bool_value("isApprovalRequiredForUpdate", self.is_approval_required_for_update)
+        writer.write_bool_value("isRequestorJustificationRequired", self.is_requestor_justification_required)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("policyDescription", self.policy_description)
         writer.write_str_value("policyDisplayName", self.policy_display_name)

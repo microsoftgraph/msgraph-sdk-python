@@ -16,7 +16,7 @@ from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.internalDomainFederation"
-    # URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
+    # URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.
     active_sign_in_uri: Optional[str] = None
     # Determines whether Microsoft Entra ID accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.
     federated_idp_mfa_behavior: Optional[FederatedIdpMfaBehavior] = None
@@ -28,7 +28,7 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
     password_reset_uri: Optional[str] = None
     # Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.
     prompt_login_behavior: Optional[PromptLoginBehavior] = None
-    # URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
+    # URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.
     sign_out_uri: Optional[str] = None
     # Provides status and timestamp of the last update of the signing certificate.
     signing_certificate_update_status: Optional[SigningCertificateUpdateStatus] = None

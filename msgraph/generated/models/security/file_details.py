@@ -22,12 +22,16 @@ class FileDetails(AdditionalDataHolder, BackedModel, Parsable):
     file_size: Optional[int] = None
     # The certificate authority (CA) that issued the certificate.
     issuer: Optional[str] = None
+    # The Md5 cryptographic hash of the file content.
+    md5: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The Sha1 cryptographic hash of the file content.
     sha1: Optional[str] = None
     # The Sha256 cryptographic hash of the file content.
     sha256: Optional[str] = None
+    # The sha256Ac property
+    sha256_ac: Optional[str] = None
     # The signer of the signed file.
     signer: Optional[str] = None
     
@@ -53,9 +57,11 @@ class FileDetails(AdditionalDataHolder, BackedModel, Parsable):
             "filePublisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
             "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
+            "md5": lambda n : setattr(self, 'md5', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sha1": lambda n : setattr(self, 'sha1', n.get_str_value()),
             "sha256": lambda n : setattr(self, 'sha256', n.get_str_value()),
+            "sha256Ac": lambda n : setattr(self, 'sha256_ac', n.get_str_value()),
             "signer": lambda n : setattr(self, 'signer', n.get_str_value()),
         }
         return fields
@@ -73,9 +79,11 @@ class FileDetails(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("filePublisher", self.file_publisher)
         writer.write_int_value("fileSize", self.file_size)
         writer.write_str_value("issuer", self.issuer)
+        writer.write_str_value("md5", self.md5)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sha1", self.sha1)
         writer.write_str_value("sha256", self.sha256)
+        writer.write_str_value("sha256Ac", self.sha256_ac)
         writer.write_str_value("signer", self.signer)
         writer.write_additional_data_value(self.additional_data)
     

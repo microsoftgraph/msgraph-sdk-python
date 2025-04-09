@@ -106,7 +106,6 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider on 2021-08-24 and will be removed 2023-03-15", DeprecationWarning)
         request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[IdentityProviderItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:

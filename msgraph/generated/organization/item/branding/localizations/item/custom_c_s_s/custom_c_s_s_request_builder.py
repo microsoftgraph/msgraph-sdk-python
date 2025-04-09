@@ -97,7 +97,6 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
@@ -108,7 +107,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "image/bmp, image/jpg, image/jpeg, image/gif, image/vnd.microsoft.icon, image/png, image/tiff, application/json")
+        request_info.headers.try_add("Accept", "image/bmp, image/jpg, image/jpeg, image/gif, image/vnd.microsoft.icon, image/png, image/tiff")
         return request_info
     
     def to_put_request_information(self,body: bytes, content_type: str, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
@@ -125,7 +124,6 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
             raise TypeError("content_type cannot be null.")
         request_info = RequestInformation(Method.PUT, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
         request_info.set_stream_content(body, content_type)
         return request_info
     

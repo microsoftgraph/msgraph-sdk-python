@@ -12,15 +12,15 @@ class Hashes(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The CRC32 value of the file in little endian (if available). Read-only.
+    # The CRC32 value of the file (if available). Read-only.
     crc32_hash: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # A proprietary hash of the file that can be used to determine if the contents of the file have changed (if available). Read-only.
+    # A proprietary hash of the file that can be used to determine if the contents of the file change (if available). Read-only.
     quick_xor_hash: Optional[str] = None
     # SHA1 hash for the contents of the file (if available). Read-only.
     sha1_hash: Optional[str] = None
-    # SHA256 hash for the contents of the file (if available). Read-only.
+    # This property isn't supported. Don't use.
     sha256_hash: Optional[str] = None
     
     @staticmethod

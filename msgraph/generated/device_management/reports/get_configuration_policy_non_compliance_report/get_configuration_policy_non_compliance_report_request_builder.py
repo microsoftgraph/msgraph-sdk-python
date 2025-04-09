@@ -63,7 +63,7 @@ class GetConfigurationPolicyNonComplianceReportRequestBuilder(BaseRequestBuilder
             raise TypeError("body cannot be null.")
         request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/octet-stream, application/json")
+        request_info.headers.try_add("Accept", "application/octet-stream")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

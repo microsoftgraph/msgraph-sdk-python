@@ -21,7 +21,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # Fraction of the call that the media endpoint detected the available bandwidth or bandwidth policy was low enough to cause poor quality of the audio sent.
     bandwidth_low_event_ratio: Optional[float] = None
-    # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
+    # The wireless LAN basic service set identifier of the media endpoint used to connect to the network. This property isn't available if the user disables precise location sharing in their operating system or Microsoft Teams app settings.
     basic_service_set_identifier: Optional[str] = None
     # The connectionType property
     connection_type: Optional[NetworkConnectionType] = None

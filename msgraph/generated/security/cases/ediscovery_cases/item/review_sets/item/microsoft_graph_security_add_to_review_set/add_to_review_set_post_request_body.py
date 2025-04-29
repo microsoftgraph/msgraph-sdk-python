@@ -7,10 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models.security.additional_data_options import AdditionalDataOptions
-    from ........models.security.cloud_attachment_version import CloudAttachmentVersion
-    from ........models.security.document_version import DocumentVersion
     from ........models.security.ediscovery_search import EdiscoverySearch
-    from ........models.security.items_to_include import ItemsToInclude
 
 @dataclass
 class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -21,12 +18,6 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The additionalDataOptions property
     additional_data_options: Optional[AdditionalDataOptions] = None
-    # The cloudAttachmentVersion property
-    cloud_attachment_version: Optional[CloudAttachmentVersion] = None
-    # The documentVersion property
-    document_version: Optional[DocumentVersion] = None
-    # The itemsToInclude property
-    items_to_include: Optional[ItemsToInclude] = None
     # The search property
     search: Optional[EdiscoverySearch] = None
     
@@ -47,22 +38,13 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ........models.security.additional_data_options import AdditionalDataOptions
-        from ........models.security.cloud_attachment_version import CloudAttachmentVersion
-        from ........models.security.document_version import DocumentVersion
         from ........models.security.ediscovery_search import EdiscoverySearch
-        from ........models.security.items_to_include import ItemsToInclude
 
         from ........models.security.additional_data_options import AdditionalDataOptions
-        from ........models.security.cloud_attachment_version import CloudAttachmentVersion
-        from ........models.security.document_version import DocumentVersion
         from ........models.security.ediscovery_search import EdiscoverySearch
-        from ........models.security.items_to_include import ItemsToInclude
 
         fields: dict[str, Callable[[Any], None]] = {
             "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_collection_of_enum_values(AdditionalDataOptions)),
-            "cloudAttachmentVersion": lambda n : setattr(self, 'cloud_attachment_version', n.get_enum_value(CloudAttachmentVersion)),
-            "documentVersion": lambda n : setattr(self, 'document_version', n.get_enum_value(DocumentVersion)),
-            "itemsToInclude": lambda n : setattr(self, 'items_to_include', n.get_collection_of_enum_values(ItemsToInclude)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
         return fields
@@ -76,9 +58,6 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("additionalDataOptions", self.additional_data_options)
-        writer.write_enum_value("cloudAttachmentVersion", self.cloud_attachment_version)
-        writer.write_enum_value("documentVersion", self.document_version)
-        writer.write_enum_value("itemsToInclude", self.items_to_include)
         writer.write_object_value("search", self.search)
         writer.write_additional_data_value(self.additional_data)
     

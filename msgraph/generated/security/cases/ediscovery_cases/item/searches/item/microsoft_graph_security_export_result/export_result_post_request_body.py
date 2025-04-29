@@ -7,8 +7,6 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models.security.additional_options import AdditionalOptions
-    from ........models.security.cloud_attachment_version import CloudAttachmentVersion
-    from ........models.security.document_version import DocumentVersion
     from ........models.security.export_criteria import ExportCriteria
     from ........models.security.export_format import ExportFormat
     from ........models.security.export_location import ExportLocation
@@ -22,14 +20,10 @@ class ExportResultPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The additionalOptions property
     additional_options: Optional[AdditionalOptions] = None
-    # The cloudAttachmentVersion property
-    cloud_attachment_version: Optional[CloudAttachmentVersion] = None
     # The description property
     description: Optional[str] = None
     # The displayName property
     display_name: Optional[str] = None
-    # The documentVersion property
-    document_version: Optional[DocumentVersion] = None
     # The exportCriteria property
     export_criteria: Optional[ExportCriteria] = None
     # The exportFormat property
@@ -56,25 +50,19 @@ class ExportResultPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ........models.security.additional_options import AdditionalOptions
-        from ........models.security.cloud_attachment_version import CloudAttachmentVersion
-        from ........models.security.document_version import DocumentVersion
         from ........models.security.export_criteria import ExportCriteria
         from ........models.security.export_format import ExportFormat
         from ........models.security.export_location import ExportLocation
 
         from ........models.security.additional_options import AdditionalOptions
-        from ........models.security.cloud_attachment_version import CloudAttachmentVersion
-        from ........models.security.document_version import DocumentVersion
         from ........models.security.export_criteria import ExportCriteria
         from ........models.security.export_format import ExportFormat
         from ........models.security.export_location import ExportLocation
 
         fields: dict[str, Callable[[Any], None]] = {
             "additionalOptions": lambda n : setattr(self, 'additional_options', n.get_collection_of_enum_values(AdditionalOptions)),
-            "cloudAttachmentVersion": lambda n : setattr(self, 'cloud_attachment_version', n.get_enum_value(CloudAttachmentVersion)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "documentVersion": lambda n : setattr(self, 'document_version', n.get_enum_value(DocumentVersion)),
             "exportCriteria": lambda n : setattr(self, 'export_criteria', n.get_collection_of_enum_values(ExportCriteria)),
             "exportFormat": lambda n : setattr(self, 'export_format', n.get_enum_value(ExportFormat)),
             "exportLocation": lambda n : setattr(self, 'export_location', n.get_collection_of_enum_values(ExportLocation)),
@@ -91,10 +79,8 @@ class ExportResultPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("additionalOptions", self.additional_options)
-        writer.write_enum_value("cloudAttachmentVersion", self.cloud_attachment_version)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("documentVersion", self.document_version)
         writer.write_enum_value("exportCriteria", self.export_criteria)
         writer.write_enum_value("exportFormat", self.export_format)
         writer.write_enum_value("exportLocation", self.export_location)

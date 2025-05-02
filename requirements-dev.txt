@@ -20,7 +20,7 @@ docutils==0.20.1
 flit==3.12.0
 flit_core==3.12.0
 frozenlist==1.6.0
-h11==0.14.0
+h11==0.16.0
 h2==4.2.0
 hpack==4.1.0
 httpcore==1.0.9

@@ -10,7 +10,7 @@ build==1.2.2.post1
 bumpver==2024.1130
 certifi==2025.4.26
 cffi==1.17.1
-charset-normalizer==3.4.1
+charset-normalizer==3.4.2
 click==8.1.8
 colorama==0.4.6
 cryptography==44.0.2

@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
     from .mailbox_restore_artifact import MailboxRestoreArtifact
+    from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
     from .restore_session_base import RestoreSessionBase
 
 from .restore_session_base import RestoreSessionBase
@@ -19,6 +20,8 @@ class ExchangeRestoreSession(RestoreSessionBase, Parsable):
     granular_mailbox_restore_artifacts: Optional[list[GranularMailboxRestoreArtifact]] = None
     # A collection of restore points and destination details that can be used to restore Exchange mailboxes.
     mailbox_restore_artifacts: Optional[list[MailboxRestoreArtifact]] = None
+    # The mailboxRestoreArtifactsBulkAdditionRequests property
+    mailbox_restore_artifacts_bulk_addition_requests: Optional[list[MailboxRestoreArtifactsBulkAdditionRequest]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ExchangeRestoreSession:
@@ -38,15 +41,18 @@ class ExchangeRestoreSession(RestoreSessionBase, Parsable):
         """
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .mailbox_restore_artifact import MailboxRestoreArtifact
+        from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
         from .restore_session_base import RestoreSessionBase
 
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .mailbox_restore_artifact import MailboxRestoreArtifact
+        from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
         from .restore_session_base import RestoreSessionBase
 
         fields: dict[str, Callable[[Any], None]] = {
             "granularMailboxRestoreArtifacts": lambda n : setattr(self, 'granular_mailbox_restore_artifacts', n.get_collection_of_object_values(GranularMailboxRestoreArtifact)),
             "mailboxRestoreArtifacts": lambda n : setattr(self, 'mailbox_restore_artifacts', n.get_collection_of_object_values(MailboxRestoreArtifact)),
+            "mailboxRestoreArtifactsBulkAdditionRequests": lambda n : setattr(self, 'mailbox_restore_artifacts_bulk_addition_requests', n.get_collection_of_object_values(MailboxRestoreArtifactsBulkAdditionRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,5 +69,6 @@ class ExchangeRestoreSession(RestoreSessionBase, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("granularMailboxRestoreArtifacts", self.granular_mailbox_restore_artifacts)
         writer.write_collection_of_object_values("mailboxRestoreArtifacts", self.mailbox_restore_artifacts)
+        writer.write_collection_of_object_values("mailboxRestoreArtifactsBulkAdditionRequests", self.mailbox_restore_artifacts_bulk_addition_requests)
     
 

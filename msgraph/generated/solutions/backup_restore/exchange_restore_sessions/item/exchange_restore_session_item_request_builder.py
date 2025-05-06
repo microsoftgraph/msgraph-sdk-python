@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .granular_mailbox_restore_artifacts.granular_mailbox_restore_artifacts_request_builder import GranularMailboxRestoreArtifactsRequestBuilder
     from .mailbox_restore_artifacts.mailbox_restore_artifacts_request_builder import MailboxRestoreArtifactsRequestBuilder
+    from .mailbox_restore_artifacts_bulk_addition_requests.mailbox_restore_artifacts_bulk_addition_requests_request_builder import MailboxRestoreArtifactsBulkAdditionRequestsRequestBuilder
 
 class ExchangeRestoreSessionItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class ExchangeRestoreSessionItemRequestBuilder(BaseRequestBuilder):
         from .mailbox_restore_artifacts.mailbox_restore_artifacts_request_builder import MailboxRestoreArtifactsRequestBuilder
 
         return MailboxRestoreArtifactsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mailbox_restore_artifacts_bulk_addition_requests(self) -> MailboxRestoreArtifactsBulkAdditionRequestsRequestBuilder:
+        """
+        Provides operations to manage the mailboxRestoreArtifactsBulkAdditionRequests property of the microsoft.graph.exchangeRestoreSession entity.
+        """
+        from .mailbox_restore_artifacts_bulk_addition_requests.mailbox_restore_artifacts_bulk_addition_requests_request_builder import MailboxRestoreArtifactsBulkAdditionRequestsRequestBuilder
+
+        return MailboxRestoreArtifactsBulkAdditionRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ExchangeRestoreSessionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

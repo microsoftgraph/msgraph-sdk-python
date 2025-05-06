@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
     from .....models.o_data_errors.o_data_error import ODataError
     from .drive_restore_artifacts.drive_restore_artifacts_request_builder import DriveRestoreArtifactsRequestBuilder
+    from .drive_restore_artifacts_bulk_addition_requests.drive_restore_artifacts_bulk_addition_requests_request_builder import DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder
 
 class OneDriveForBusinessRestoreSessionItemRequestBuilder(BaseRequestBuilder):
     """
@@ -147,6 +148,15 @@ class OneDriveForBusinessRestoreSessionItemRequestBuilder(BaseRequestBuilder):
         from .drive_restore_artifacts.drive_restore_artifacts_request_builder import DriveRestoreArtifactsRequestBuilder
 
         return DriveRestoreArtifactsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def drive_restore_artifacts_bulk_addition_requests(self) -> DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder:
+        """
+        Provides operations to manage the driveRestoreArtifactsBulkAdditionRequests property of the microsoft.graph.oneDriveForBusinessRestoreSession entity.
+        """
+        from .drive_restore_artifacts_bulk_addition_requests.drive_restore_artifacts_bulk_addition_requests_request_builder import DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder
+
+        return DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OneDriveForBusinessRestoreSessionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

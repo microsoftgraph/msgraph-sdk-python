@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from .protection_policy_base import ProtectionPolicyBase
     from .site_protection_rule import SiteProtectionRule
     from .site_protection_unit import SiteProtectionUnit
+    from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
 from .protection_policy_base import ProtectionPolicyBase
 
@@ -19,6 +20,8 @@ class SharePointProtectionPolicy(ProtectionPolicyBase, Parsable):
     site_inclusion_rules: Optional[list[SiteProtectionRule]] = None
     # The protection units (sites) that are protected under the site protection policy.
     site_protection_units: Optional[list[SiteProtectionUnit]] = None
+    # The siteProtectionUnitsBulkAdditionJobs property
+    site_protection_units_bulk_addition_jobs: Optional[list[SiteProtectionUnitsBulkAdditionJob]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SharePointProtectionPolicy:
@@ -39,14 +42,17 @@ class SharePointProtectionPolicy(ProtectionPolicyBase, Parsable):
         from .protection_policy_base import ProtectionPolicyBase
         from .site_protection_rule import SiteProtectionRule
         from .site_protection_unit import SiteProtectionUnit
+        from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
         from .protection_policy_base import ProtectionPolicyBase
         from .site_protection_rule import SiteProtectionRule
         from .site_protection_unit import SiteProtectionUnit
+        from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
         fields: dict[str, Callable[[Any], None]] = {
             "siteInclusionRules": lambda n : setattr(self, 'site_inclusion_rules', n.get_collection_of_object_values(SiteProtectionRule)),
             "siteProtectionUnits": lambda n : setattr(self, 'site_protection_units', n.get_collection_of_object_values(SiteProtectionUnit)),
+            "siteProtectionUnitsBulkAdditionJobs": lambda n : setattr(self, 'site_protection_units_bulk_addition_jobs', n.get_collection_of_object_values(SiteProtectionUnitsBulkAdditionJob)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,5 +69,6 @@ class SharePointProtectionPolicy(ProtectionPolicyBase, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("siteInclusionRules", self.site_inclusion_rules)
         writer.write_collection_of_object_values("siteProtectionUnits", self.site_protection_units)
+        writer.write_collection_of_object_values("siteProtectionUnitsBulkAdditionJobs", self.site_protection_units_bulk_addition_jobs)
     
 

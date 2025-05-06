@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.share_point_restore_session import SharePointRestoreSession
     from .site_restore_artifacts.site_restore_artifacts_request_builder import SiteRestoreArtifactsRequestBuilder
+    from .site_restore_artifacts_bulk_addition_requests.site_restore_artifacts_bulk_addition_requests_request_builder import SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder
 
 class SharePointRestoreSessionItemRequestBuilder(BaseRequestBuilder):
     """
@@ -146,6 +147,15 @@ class SharePointRestoreSessionItemRequestBuilder(BaseRequestBuilder):
         from .site_restore_artifacts.site_restore_artifacts_request_builder import SiteRestoreArtifactsRequestBuilder
 
         return SiteRestoreArtifactsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def site_restore_artifacts_bulk_addition_requests(self) -> SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder:
+        """
+        Provides operations to manage the siteRestoreArtifactsBulkAdditionRequests property of the microsoft.graph.sharePointRestoreSession entity.
+        """
+        from .site_restore_artifacts_bulk_addition_requests.site_restore_artifacts_bulk_addition_requests_request_builder import SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder
+
+        return SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SharePointRestoreSessionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

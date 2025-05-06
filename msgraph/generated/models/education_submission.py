@@ -17,10 +17,16 @@ from .entity import Entity
 
 @dataclass
 class EducationSubmission(Entity, Parsable):
+    # The unique identifier for the assignment with which this submission is associated. A submission is always associated with one and only one assignment.
+    assignment_id: Optional[str] = None
     # The user that marked the submission as excused.
     excused_by: Optional[IdentitySet] = None
     # The time that the submission was excused. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     excused_date_time: Optional[datetime.datetime] = None
+    # The identities of those who modified the submission.
+    last_modified_by: Optional[IdentitySet] = None
+    # The date and time the submission was modified.
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The outcomes property
@@ -85,8 +91,11 @@ class EducationSubmission(Entity, Parsable):
         from .identity_set import IdentitySet
 
         fields: dict[str, Callable[[Any], None]] = {
+            "assignmentId": lambda n : setattr(self, 'assignment_id', n.get_str_value()),
             "excusedBy": lambda n : setattr(self, 'excused_by', n.get_object_value(IdentitySet)),
             "excusedDateTime": lambda n : setattr(self, 'excused_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(EducationOutcome)),
             "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(IdentitySet)),
             "reassignedDateTime": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),

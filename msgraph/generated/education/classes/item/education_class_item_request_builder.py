@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .assignment_categories.assignment_categories_request_builder import AssignmentCategoriesRequestBuilder
     from .assignment_defaults.assignment_defaults_request_builder import AssignmentDefaultsRequestBuilder
     from .assignment_settings.assignment_settings_request_builder import AssignmentSettingsRequestBuilder
+    from .get_recently_modified_submissions.get_recently_modified_submissions_request_builder import GetRecentlyModifiedSubmissionsRequestBuilder
     from .group.group_request_builder import GroupRequestBuilder
     from .members.members_request_builder import MembersRequestBuilder
     from .modules.modules_request_builder import ModulesRequestBuilder
@@ -184,6 +185,15 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
         return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_recently_modified_submissions(self) -> GetRecentlyModifiedSubmissionsRequestBuilder:
+        """
+        Provides operations to call the getRecentlyModifiedSubmissions method.
+        """
+        from .get_recently_modified_submissions.get_recently_modified_submissions_request_builder import GetRecentlyModifiedSubmissionsRequestBuilder
+
+        return GetRecentlyModifiedSubmissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def group(self) -> GroupRequestBuilder:

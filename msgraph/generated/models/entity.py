@@ -175,6 +175,9 @@ if TYPE_CHECKING:
     from .conversation import Conversation
     from .conversation_member import ConversationMember
     from .conversation_thread import ConversationThread
+    from .copilot_admin import CopilotAdmin
+    from .copilot_admin_limited_mode import CopilotAdminLimitedMode
+    from .copilot_admin_setting import CopilotAdminSetting
     from .country_named_location import CountryNamedLocation
     from .cross_tenant_access_policy import CrossTenantAccessPolicy
     from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
@@ -257,7 +260,9 @@ if TYPE_CHECKING:
     from .drive_item_version import DriveItemVersion
     from .drive_protection_rule import DriveProtectionRule
     from .drive_protection_unit import DriveProtectionUnit
+    from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
     from .drive_restore_artifact import DriveRestoreArtifact
+    from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
     from .edge import Edge
     from .edition_upgrade_configuration import EditionUpgradeConfiguration
     from .education_assignment import EducationAssignment
@@ -413,7 +418,9 @@ if TYPE_CHECKING:
     from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
     from .mailbox_protection_rule import MailboxProtectionRule
     from .mailbox_protection_unit import MailboxProtectionUnit
+    from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
     from .mailbox_restore_artifact import MailboxRestoreArtifact
+    from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
     from .mail_assessment_request import MailAssessmentRequest
     from .mail_folder import MailFolder
     from .mail_search_folder import MailSearchFolder
@@ -487,6 +494,10 @@ if TYPE_CHECKING:
     from .online_meeting import OnlineMeeting
     from .online_meeting_base import OnlineMeetingBase
     from .on_attribute_collection_listener import OnAttributeCollectionListener
+    from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
+    from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+    from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
+    from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
     from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
     from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
     from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
@@ -543,6 +554,7 @@ if TYPE_CHECKING:
     from .planner_task import PlannerTask
     from .planner_task_details import PlannerTaskDetails
     from .planner_user import PlannerUser
+    from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
     from .play_prompt_operation import PlayPromptOperation
     from .policy_base import PolicyBase
     from .policy_root import PolicyRoot
@@ -581,6 +593,7 @@ if TYPE_CHECKING:
     from .pronouns_settings import PronounsSettings
     from .protection_policy_base import ProtectionPolicyBase
     from .protection_rule_base import ProtectionRuleBase
+    from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
     from .protection_unit_base import ProtectionUnitBase
     from .provisioning_object_summary import ProvisioningObjectSummary
     from .rbac_application import RbacApplication
@@ -595,6 +608,7 @@ if TYPE_CHECKING:
     from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
     from .resource_operation import ResourceOperation
     from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+    from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase
     from .restore_artifact_base import RestoreArtifactBase
     from .restore_point import RestorePoint
     from .restore_session_base import RestoreSessionBase
@@ -730,7 +744,9 @@ if TYPE_CHECKING:
     from .site_page import SitePage
     from .site_protection_rule import SiteProtectionRule
     from .site_protection_unit import SiteProtectionUnit
+    from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
     from .site_restore_artifact import SiteRestoreArtifact
+    from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
     from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
     from .skype_user_conversation_member import SkypeUserConversationMember
     from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
@@ -1675,6 +1691,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .conversation_thread import ConversationThread
 
             return ConversationThread()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotAdmin".casefold():
+            from .copilot_admin import CopilotAdmin
+
+            return CopilotAdmin()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotAdminLimitedMode".casefold():
+            from .copilot_admin_limited_mode import CopilotAdminLimitedMode
+
+            return CopilotAdminLimitedMode()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotAdminSetting".casefold():
+            from .copilot_admin_setting import CopilotAdminSetting
+
+            return CopilotAdminSetting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.countryNamedLocation".casefold():
             from .country_named_location import CountryNamedLocation
 
@@ -2003,10 +2031,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .drive_protection_unit import DriveProtectionUnit
 
             return DriveProtectionUnit()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveProtectionUnitsBulkAdditionJob".casefold():
+            from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
+
+            return DriveProtectionUnitsBulkAdditionJob()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveRestoreArtifact".casefold():
             from .drive_restore_artifact import DriveRestoreArtifact
 
             return DriveRestoreArtifact()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveRestoreArtifactsBulkAdditionRequest".casefold():
+            from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
+
+            return DriveRestoreArtifactsBulkAdditionRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eBookInstallSummary".casefold():
             from .e_book_install_summary import EBookInstallSummary
 
@@ -2633,10 +2669,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .mailbox_protection_unit import MailboxProtectionUnit
 
             return MailboxProtectionUnit()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxProtectionUnitsBulkAdditionJob".casefold():
+            from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
+
+            return MailboxProtectionUnitsBulkAdditionJob()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxRestoreArtifact".casefold():
             from .mailbox_restore_artifact import MailboxRestoreArtifact
 
             return MailboxRestoreArtifact()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxRestoreArtifactsBulkAdditionRequest".casefold():
+            from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
+
+            return MailboxRestoreArtifactsBulkAdditionRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailFolder".casefold():
             from .mail_folder import MailFolder
 
@@ -2881,6 +2925,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .on_attribute_collection_listener import OnAttributeCollectionListener
 
             return OnAttributeCollectionListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionStartCustomExtension".casefold():
+            from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
+
+            return OnAttributeCollectionStartCustomExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionStartListener".casefold():
+            from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+
+            return OnAttributeCollectionStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitCustomExtension".casefold():
+            from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
+
+            return OnAttributeCollectionSubmitCustomExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitListener".casefold():
+            from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
+
+            return OnAttributeCollectionSubmitListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAuthenticationMethodLoadStartListener".casefold():
             from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
 
@@ -3152,6 +3212,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .planner_user import PlannerUser
 
             return PlannerUser()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.platformCredentialAuthenticationMethod".casefold():
+            from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
+
+            return PlatformCredentialAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.playPromptOperation".casefold():
             from .play_prompt_operation import PlayPromptOperation
 
@@ -3308,6 +3372,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .protection_unit_base import ProtectionUnitBase
 
             return ProtectionUnitBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.protectionUnitsBulkJobBase".casefold():
+            from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
+
+            return ProtectionUnitsBulkJobBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisioningObjectSummary".casefold():
             from .provisioning_object_summary import ProvisioningObjectSummary
 
@@ -3364,6 +3432,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .restore_artifact_base import RestoreArtifactBase
 
             return RestoreArtifactBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.restoreArtifactsBulkRequestBase".casefold():
+            from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase
+
+            return RestoreArtifactsBulkRequestBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.restorePoint".casefold():
             from .restore_point import RestorePoint
 
@@ -3902,10 +3974,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .site_protection_unit import SiteProtectionUnit
 
             return SiteProtectionUnit()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.siteProtectionUnitsBulkAdditionJob".casefold():
+            from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
+
+            return SiteProtectionUnitsBulkAdditionJob()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.siteRestoreArtifact".casefold():
             from .site_restore_artifact import SiteRestoreArtifact
 
             return SiteRestoreArtifact()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.siteRestoreArtifactsBulkAdditionRequest".casefold():
+            from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
+
+            return SiteRestoreArtifactsBulkAdditionRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeForBusinessUserConversationMember".casefold():
             from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
 
@@ -5039,6 +5119,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .conversation import Conversation
         from .conversation_member import ConversationMember
         from .conversation_thread import ConversationThread
+        from .copilot_admin import CopilotAdmin
+        from .copilot_admin_limited_mode import CopilotAdminLimitedMode
+        from .copilot_admin_setting import CopilotAdminSetting
         from .country_named_location import CountryNamedLocation
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
@@ -5121,7 +5204,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .drive_item_version import DriveItemVersion
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
+        from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
         from .drive_restore_artifact import DriveRestoreArtifact
+        from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
         from .edge import Edge
         from .edition_upgrade_configuration import EditionUpgradeConfiguration
         from .education_assignment import EducationAssignment
@@ -5277,7 +5362,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
         from .mailbox_protection_rule import MailboxProtectionRule
         from .mailbox_protection_unit import MailboxProtectionUnit
+        from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
         from .mailbox_restore_artifact import MailboxRestoreArtifact
+        from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
         from .mail_assessment_request import MailAssessmentRequest
         from .mail_folder import MailFolder
         from .mail_search_folder import MailSearchFolder
@@ -5351,6 +5438,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .online_meeting import OnlineMeeting
         from .online_meeting_base import OnlineMeetingBase
         from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
+        from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+        from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
+        from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
@@ -5407,6 +5498,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .planner_task import PlannerTask
         from .planner_task_details import PlannerTaskDetails
         from .planner_user import PlannerUser
+        from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
         from .play_prompt_operation import PlayPromptOperation
         from .policy_base import PolicyBase
         from .policy_root import PolicyRoot
@@ -5445,6 +5537,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .pronouns_settings import PronounsSettings
         from .protection_policy_base import ProtectionPolicyBase
         from .protection_rule_base import ProtectionRuleBase
+        from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
         from .protection_unit_base import ProtectionUnitBase
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .rbac_application import RbacApplication
@@ -5459,6 +5552,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
         from .resource_operation import ResourceOperation
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase
         from .restore_artifact_base import RestoreArtifactBase
         from .restore_point import RestorePoint
         from .restore_session_base import RestoreSessionBase
@@ -5594,7 +5688,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .site_page import SitePage
         from .site_protection_rule import SiteProtectionRule
         from .site_protection_unit import SiteProtectionUnit
+        from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
         from .site_restore_artifact import SiteRestoreArtifact
+        from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
         from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
         from .skype_user_conversation_member import SkypeUserConversationMember
         from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
@@ -6004,6 +6100,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .conversation import Conversation
         from .conversation_member import ConversationMember
         from .conversation_thread import ConversationThread
+        from .copilot_admin import CopilotAdmin
+        from .copilot_admin_limited_mode import CopilotAdminLimitedMode
+        from .copilot_admin_setting import CopilotAdminSetting
         from .country_named_location import CountryNamedLocation
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
@@ -6086,7 +6185,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .drive_item_version import DriveItemVersion
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
+        from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
         from .drive_restore_artifact import DriveRestoreArtifact
+        from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
         from .edge import Edge
         from .edition_upgrade_configuration import EditionUpgradeConfiguration
         from .education_assignment import EducationAssignment
@@ -6242,7 +6343,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
         from .mailbox_protection_rule import MailboxProtectionRule
         from .mailbox_protection_unit import MailboxProtectionUnit
+        from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
         from .mailbox_restore_artifact import MailboxRestoreArtifact
+        from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
         from .mail_assessment_request import MailAssessmentRequest
         from .mail_folder import MailFolder
         from .mail_search_folder import MailSearchFolder
@@ -6316,6 +6419,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .online_meeting import OnlineMeeting
         from .online_meeting_base import OnlineMeetingBase
         from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
+        from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+        from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
+        from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
@@ -6372,6 +6479,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .planner_task import PlannerTask
         from .planner_task_details import PlannerTaskDetails
         from .planner_user import PlannerUser
+        from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
         from .play_prompt_operation import PlayPromptOperation
         from .policy_base import PolicyBase
         from .policy_root import PolicyRoot
@@ -6410,6 +6518,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .pronouns_settings import PronounsSettings
         from .protection_policy_base import ProtectionPolicyBase
         from .protection_rule_base import ProtectionRuleBase
+        from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
         from .protection_unit_base import ProtectionUnitBase
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .rbac_application import RbacApplication
@@ -6424,6 +6533,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
         from .resource_operation import ResourceOperation
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase
         from .restore_artifact_base import RestoreArtifactBase
         from .restore_point import RestorePoint
         from .restore_session_base import RestoreSessionBase
@@ -6559,7 +6669,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .site_page import SitePage
         from .site_protection_rule import SiteProtectionRule
         from .site_protection_unit import SiteProtectionUnit
+        from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
         from .site_restore_artifact import SiteRestoreArtifact
+        from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
         from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
         from .skype_user_conversation_member import SkypeUserConversationMember
         from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration

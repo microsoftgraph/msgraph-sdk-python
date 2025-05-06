@@ -8,6 +8,8 @@ if TYPE_CHECKING:
     from .authentication_conditions import AuthenticationConditions
     from .entity import Entity
     from .on_attribute_collection_listener import OnAttributeCollectionListener
+    from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+    from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
     from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
     from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
     from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
@@ -42,6 +44,14 @@ class AuthenticationEventListener(Entity, Parsable):
             from .on_attribute_collection_listener import OnAttributeCollectionListener
 
             return OnAttributeCollectionListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionStartListener".casefold():
+            from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+
+            return OnAttributeCollectionStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitListener".casefold():
+            from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
+
+            return OnAttributeCollectionSubmitListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAuthenticationMethodLoadStartListener".casefold():
             from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
 
@@ -68,6 +78,8 @@ class AuthenticationEventListener(Entity, Parsable):
         from .authentication_conditions import AuthenticationConditions
         from .entity import Entity
         from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+        from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
@@ -76,6 +88,8 @@ class AuthenticationEventListener(Entity, Parsable):
         from .authentication_conditions import AuthenticationConditions
         from .entity import Entity
         from .on_attribute_collection_listener import OnAttributeCollectionListener
+        from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
+        from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener

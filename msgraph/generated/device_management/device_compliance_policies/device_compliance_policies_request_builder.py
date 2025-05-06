@@ -49,10 +49,10 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceCompliancePoliciesRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceCompliancePolicyCollectionResponse]:
         """
-        List properties and relationships of the windows10CompliancePolicy objects.
+        List properties and relationships of the androidWorkProfileCompliancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10compliancepolicy-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidworkprofilecompliancepolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +70,11 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: DeviceCompliancePolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Create a new iosCompliancePolicy object.
+        Create a new androidWorkProfileCompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-ioscompliancepolicy-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidworkprofilecompliancepolicy-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +94,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceCompliancePoliciesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the windows10CompliancePolicy objects.
+        List properties and relationships of the androidWorkProfileCompliancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +105,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: DeviceCompliancePolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new iosCompliancePolicy object.
+        Create a new androidWorkProfileCompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCompliancePoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windows10CompliancePolicy objects.
+        List properties and relationships of the androidWorkProfileCompliancePolicy objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

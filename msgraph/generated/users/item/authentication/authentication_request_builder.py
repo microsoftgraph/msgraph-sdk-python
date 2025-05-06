@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .operations.operations_request_builder import OperationsRequestBuilder
     from .password_methods.password_methods_request_builder import PasswordMethodsRequestBuilder
     from .phone_methods.phone_methods_request_builder import PhoneMethodsRequestBuilder
+    from .platform_credential_methods.platform_credential_methods_request_builder import PlatformCredentialMethodsRequestBuilder
     from .software_oath_methods.software_oath_methods_request_builder import SoftwareOathMethodsRequestBuilder
     from .temporary_access_pass_methods.temporary_access_pass_methods_request_builder import TemporaryAccessPassMethodsRequestBuilder
     from .windows_hello_for_business_methods.windows_hello_for_business_methods_request_builder import WindowsHelloForBusinessMethodsRequestBuilder
@@ -209,6 +210,15 @@ class AuthenticationRequestBuilder(BaseRequestBuilder):
         from .phone_methods.phone_methods_request_builder import PhoneMethodsRequestBuilder
 
         return PhoneMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def platform_credential_methods(self) -> PlatformCredentialMethodsRequestBuilder:
+        """
+        Provides operations to manage the platformCredentialMethods property of the microsoft.graph.authentication entity.
+        """
+        from .platform_credential_methods.platform_credential_methods_request_builder import PlatformCredentialMethodsRequestBuilder
+
+        return PlatformCredentialMethodsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def software_oath_methods(self) -> SoftwareOathMethodsRequestBuilder:

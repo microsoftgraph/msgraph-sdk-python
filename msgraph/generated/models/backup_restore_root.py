@@ -7,11 +7,13 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .drive_protection_rule import DriveProtectionRule
     from .drive_protection_unit import DriveProtectionUnit
+    from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
     from .entity import Entity
     from .exchange_protection_policy import ExchangeProtectionPolicy
     from .exchange_restore_session import ExchangeRestoreSession
     from .mailbox_protection_rule import MailboxProtectionRule
     from .mailbox_protection_unit import MailboxProtectionUnit
+    from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
     from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
     from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
     from .protection_policy_base import ProtectionPolicyBase
@@ -24,6 +26,7 @@ if TYPE_CHECKING:
     from .share_point_restore_session import SharePointRestoreSession
     from .site_protection_rule import SiteProtectionRule
     from .site_protection_unit import SiteProtectionUnit
+    from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
 from .entity import Entity
 
@@ -33,6 +36,8 @@ class BackupRestoreRoot(Entity, Parsable):
     drive_inclusion_rules: Optional[list[DriveProtectionRule]] = None
     # The list of drive protection units in the tenant.
     drive_protection_units: Optional[list[DriveProtectionUnit]] = None
+    # The driveProtectionUnitsBulkAdditionJobs property
+    drive_protection_units_bulk_addition_jobs: Optional[list[DriveProtectionUnitsBulkAdditionJob]] = None
     # The list of Exchange protection policies in the tenant.
     exchange_protection_policies: Optional[list[ExchangeProtectionPolicy]] = None
     # The list of Exchange restore sessions available in the tenant.
@@ -41,6 +46,8 @@ class BackupRestoreRoot(Entity, Parsable):
     mailbox_inclusion_rules: Optional[list[MailboxProtectionRule]] = None
     # The list of mailbox protection units in the tenant.
     mailbox_protection_units: Optional[list[MailboxProtectionUnit]] = None
+    # The mailboxProtectionUnitsBulkAdditionJobs property
+    mailbox_protection_units_bulk_addition_jobs: Optional[list[MailboxProtectionUnitsBulkAdditionJob]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of OneDrive for Business protection policies in the tenant.
@@ -67,6 +74,8 @@ class BackupRestoreRoot(Entity, Parsable):
     site_inclusion_rules: Optional[list[SiteProtectionRule]] = None
     # The list of site protection units in the tenant.
     site_protection_units: Optional[list[SiteProtectionUnit]] = None
+    # The siteProtectionUnitsBulkAdditionJobs property
+    site_protection_units_bulk_addition_jobs: Optional[list[SiteProtectionUnitsBulkAdditionJob]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> BackupRestoreRoot:
@@ -86,11 +95,13 @@ class BackupRestoreRoot(Entity, Parsable):
         """
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
+        from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
         from .entity import Entity
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
         from .mailbox_protection_rule import MailboxProtectionRule
         from .mailbox_protection_unit import MailboxProtectionUnit
+        from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
         from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
         from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
         from .protection_policy_base import ProtectionPolicyBase
@@ -103,14 +114,17 @@ class BackupRestoreRoot(Entity, Parsable):
         from .share_point_restore_session import SharePointRestoreSession
         from .site_protection_rule import SiteProtectionRule
         from .site_protection_unit import SiteProtectionUnit
+        from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
+        from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
         from .entity import Entity
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
         from .mailbox_protection_rule import MailboxProtectionRule
         from .mailbox_protection_unit import MailboxProtectionUnit
+        from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
         from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
         from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
         from .protection_policy_base import ProtectionPolicyBase
@@ -123,14 +137,17 @@ class BackupRestoreRoot(Entity, Parsable):
         from .share_point_restore_session import SharePointRestoreSession
         from .site_protection_rule import SiteProtectionRule
         from .site_protection_unit import SiteProtectionUnit
+        from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
         fields: dict[str, Callable[[Any], None]] = {
             "driveInclusionRules": lambda n : setattr(self, 'drive_inclusion_rules', n.get_collection_of_object_values(DriveProtectionRule)),
             "driveProtectionUnits": lambda n : setattr(self, 'drive_protection_units', n.get_collection_of_object_values(DriveProtectionUnit)),
+            "driveProtectionUnitsBulkAdditionJobs": lambda n : setattr(self, 'drive_protection_units_bulk_addition_jobs', n.get_collection_of_object_values(DriveProtectionUnitsBulkAdditionJob)),
             "exchangeProtectionPolicies": lambda n : setattr(self, 'exchange_protection_policies', n.get_collection_of_object_values(ExchangeProtectionPolicy)),
             "exchangeRestoreSessions": lambda n : setattr(self, 'exchange_restore_sessions', n.get_collection_of_object_values(ExchangeRestoreSession)),
             "mailboxInclusionRules": lambda n : setattr(self, 'mailbox_inclusion_rules', n.get_collection_of_object_values(MailboxProtectionRule)),
             "mailboxProtectionUnits": lambda n : setattr(self, 'mailbox_protection_units', n.get_collection_of_object_values(MailboxProtectionUnit)),
+            "mailboxProtectionUnitsBulkAdditionJobs": lambda n : setattr(self, 'mailbox_protection_units_bulk_addition_jobs', n.get_collection_of_object_values(MailboxProtectionUnitsBulkAdditionJob)),
             "oneDriveForBusinessProtectionPolicies": lambda n : setattr(self, 'one_drive_for_business_protection_policies', n.get_collection_of_object_values(OneDriveForBusinessProtectionPolicy)),
             "oneDriveForBusinessRestoreSessions": lambda n : setattr(self, 'one_drive_for_business_restore_sessions', n.get_collection_of_object_values(OneDriveForBusinessRestoreSession)),
             "protectionPolicies": lambda n : setattr(self, 'protection_policies', n.get_collection_of_object_values(ProtectionPolicyBase)),
@@ -143,6 +160,7 @@ class BackupRestoreRoot(Entity, Parsable):
             "sharePointRestoreSessions": lambda n : setattr(self, 'share_point_restore_sessions', n.get_collection_of_object_values(SharePointRestoreSession)),
             "siteInclusionRules": lambda n : setattr(self, 'site_inclusion_rules', n.get_collection_of_object_values(SiteProtectionRule)),
             "siteProtectionUnits": lambda n : setattr(self, 'site_protection_units', n.get_collection_of_object_values(SiteProtectionUnit)),
+            "siteProtectionUnitsBulkAdditionJobs": lambda n : setattr(self, 'site_protection_units_bulk_addition_jobs', n.get_collection_of_object_values(SiteProtectionUnitsBulkAdditionJob)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -159,10 +177,12 @@ class BackupRestoreRoot(Entity, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("driveInclusionRules", self.drive_inclusion_rules)
         writer.write_collection_of_object_values("driveProtectionUnits", self.drive_protection_units)
+        writer.write_collection_of_object_values("driveProtectionUnitsBulkAdditionJobs", self.drive_protection_units_bulk_addition_jobs)
         writer.write_collection_of_object_values("exchangeProtectionPolicies", self.exchange_protection_policies)
         writer.write_collection_of_object_values("exchangeRestoreSessions", self.exchange_restore_sessions)
         writer.write_collection_of_object_values("mailboxInclusionRules", self.mailbox_inclusion_rules)
         writer.write_collection_of_object_values("mailboxProtectionUnits", self.mailbox_protection_units)
+        writer.write_collection_of_object_values("mailboxProtectionUnitsBulkAdditionJobs", self.mailbox_protection_units_bulk_addition_jobs)
         writer.write_collection_of_object_values("oneDriveForBusinessProtectionPolicies", self.one_drive_for_business_protection_policies)
         writer.write_collection_of_object_values("oneDriveForBusinessRestoreSessions", self.one_drive_for_business_restore_sessions)
         writer.write_collection_of_object_values("protectionPolicies", self.protection_policies)
@@ -175,5 +195,6 @@ class BackupRestoreRoot(Entity, Parsable):
         writer.write_collection_of_object_values("sharePointRestoreSessions", self.share_point_restore_sessions)
         writer.write_collection_of_object_values("siteInclusionRules", self.site_inclusion_rules)
         writer.write_collection_of_object_values("siteProtectionUnits", self.site_protection_units)
+        writer.write_collection_of_object_values("siteProtectionUnitsBulkAdditionJobs", self.site_protection_units_bulk_addition_jobs)
     
 

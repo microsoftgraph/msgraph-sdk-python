@@ -111,7 +111,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         Deletes a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -145,7 +145,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         Read properties and relationships of the user object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

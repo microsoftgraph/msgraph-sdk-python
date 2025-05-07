@@ -53,10 +53,10 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UsersRequestBuilderGetQueryParameters]] = None) -> Optional[UserCollectionResponse]:
         """
-        List properties and relationships of the user objects.
+        Retrieve a list of user objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,11 +74,11 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: User, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[User]:
         """
-        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
+        Create a new user object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -98,7 +98,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UsersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the user objects.
+        Retrieve a list of user objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: User, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
+        Create a new user object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -180,7 +180,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the user objects.
+        Retrieve a list of user objects.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

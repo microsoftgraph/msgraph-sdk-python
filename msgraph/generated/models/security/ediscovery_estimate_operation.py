@@ -7,7 +7,6 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .case_operation import CaseOperation
     from .ediscovery_search import EdiscoverySearch
-    from .statistics_options import StatisticsOptions
 
 from .case_operation import CaseOperation
 
@@ -25,8 +24,6 @@ class EdiscoveryEstimateOperation(CaseOperation, Parsable):
     search: Optional[EdiscoverySearch] = None
     # The number of mailboxes that had search hits.
     site_count: Optional[int] = None
-    # The statisticsOptions property
-    statistics_options: Optional[StatisticsOptions] = None
     # The estimated count of unindexed items for the collection.
     unindexed_item_count: Optional[int] = None
     # The estimated size of unindexed items for the collection.
@@ -50,11 +47,9 @@ class EdiscoveryEstimateOperation(CaseOperation, Parsable):
         """
         from .case_operation import CaseOperation
         from .ediscovery_search import EdiscoverySearch
-        from .statistics_options import StatisticsOptions
 
         from .case_operation import CaseOperation
         from .ediscovery_search import EdiscoverySearch
-        from .statistics_options import StatisticsOptions
 
         fields: dict[str, Callable[[Any], None]] = {
             "indexedItemCount": lambda n : setattr(self, 'indexed_item_count', n.get_int_value()),
@@ -62,7 +57,6 @@ class EdiscoveryEstimateOperation(CaseOperation, Parsable):
             "mailboxCount": lambda n : setattr(self, 'mailbox_count', n.get_int_value()),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
             "siteCount": lambda n : setattr(self, 'site_count', n.get_int_value()),
-            "statisticsOptions": lambda n : setattr(self, 'statistics_options', n.get_collection_of_enum_values(StatisticsOptions)),
             "unindexedItemCount": lambda n : setattr(self, 'unindexed_item_count', n.get_int_value()),
             "unindexedItemsSize": lambda n : setattr(self, 'unindexed_items_size', n.get_int_value()),
         }
@@ -84,7 +78,6 @@ class EdiscoveryEstimateOperation(CaseOperation, Parsable):
         writer.write_int_value("mailboxCount", self.mailbox_count)
         writer.write_object_value("search", self.search)
         writer.write_int_value("siteCount", self.site_count)
-        writer.write_enum_value("statisticsOptions", self.statistics_options)
         writer.write_int_value("unindexedItemCount", self.unindexed_item_count)
         writer.write_int_value("unindexedItemsSize", self.unindexed_items_size)
     

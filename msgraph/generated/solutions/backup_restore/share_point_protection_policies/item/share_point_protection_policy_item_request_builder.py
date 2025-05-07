@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .....models.share_point_protection_policy import SharePointProtectionPolicy
     from .site_inclusion_rules.site_inclusion_rules_request_builder import SiteInclusionRulesRequestBuilder
     from .site_protection_units.site_protection_units_request_builder import SiteProtectionUnitsRequestBuilder
+    from .site_protection_units_bulk_addition_jobs.site_protection_units_bulk_addition_jobs_request_builder import SiteProtectionUnitsBulkAdditionJobsRequestBuilder
 
 class SharePointProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class SharePointProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
         from .site_protection_units.site_protection_units_request_builder import SiteProtectionUnitsRequestBuilder
 
         return SiteProtectionUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def site_protection_units_bulk_addition_jobs(self) -> SiteProtectionUnitsBulkAdditionJobsRequestBuilder:
+        """
+        Provides operations to manage the siteProtectionUnitsBulkAdditionJobs property of the microsoft.graph.sharePointProtectionPolicy entity.
+        """
+        from .site_protection_units_bulk_addition_jobs.site_protection_units_bulk_addition_jobs_request_builder import SiteProtectionUnitsBulkAdditionJobsRequestBuilder
+
+        return SiteProtectionUnitsBulkAdditionJobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SharePointProtectionPolicyItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

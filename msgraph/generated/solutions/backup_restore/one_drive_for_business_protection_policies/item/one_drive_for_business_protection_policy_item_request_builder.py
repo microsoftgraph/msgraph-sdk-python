@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .drive_inclusion_rules.drive_inclusion_rules_request_builder import DriveInclusionRulesRequestBuilder
     from .drive_protection_units.drive_protection_units_request_builder import DriveProtectionUnitsRequestBuilder
+    from .drive_protection_units_bulk_addition_jobs.drive_protection_units_bulk_addition_jobs_request_builder import DriveProtectionUnitsBulkAdditionJobsRequestBuilder
 
 class OneDriveForBusinessProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class OneDriveForBusinessProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
         from .drive_protection_units.drive_protection_units_request_builder import DriveProtectionUnitsRequestBuilder
 
         return DriveProtectionUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def drive_protection_units_bulk_addition_jobs(self) -> DriveProtectionUnitsBulkAdditionJobsRequestBuilder:
+        """
+        Provides operations to manage the driveProtectionUnitsBulkAdditionJobs property of the microsoft.graph.oneDriveForBusinessProtectionPolicy entity.
+        """
+        from .drive_protection_units_bulk_addition_jobs.drive_protection_units_bulk_addition_jobs_request_builder import DriveProtectionUnitsBulkAdditionJobsRequestBuilder
+
+        return DriveProtectionUnitsBulkAdditionJobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OneDriveForBusinessProtectionPolicyItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

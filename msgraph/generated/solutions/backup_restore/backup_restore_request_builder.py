@@ -18,11 +18,13 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .drive_inclusion_rules.drive_inclusion_rules_request_builder import DriveInclusionRulesRequestBuilder
     from .drive_protection_units.drive_protection_units_request_builder import DriveProtectionUnitsRequestBuilder
+    from .drive_protection_units_bulk_addition_jobs.drive_protection_units_bulk_addition_jobs_request_builder import DriveProtectionUnitsBulkAdditionJobsRequestBuilder
     from .enable.enable_request_builder import EnableRequestBuilder
     from .exchange_protection_policies.exchange_protection_policies_request_builder import ExchangeProtectionPoliciesRequestBuilder
     from .exchange_restore_sessions.exchange_restore_sessions_request_builder import ExchangeRestoreSessionsRequestBuilder
     from .mailbox_inclusion_rules.mailbox_inclusion_rules_request_builder import MailboxInclusionRulesRequestBuilder
     from .mailbox_protection_units.mailbox_protection_units_request_builder import MailboxProtectionUnitsRequestBuilder
+    from .mailbox_protection_units_bulk_addition_jobs.mailbox_protection_units_bulk_addition_jobs_request_builder import MailboxProtectionUnitsBulkAdditionJobsRequestBuilder
     from .one_drive_for_business_protection_policies.one_drive_for_business_protection_policies_request_builder import OneDriveForBusinessProtectionPoliciesRequestBuilder
     from .one_drive_for_business_restore_sessions.one_drive_for_business_restore_sessions_request_builder import OneDriveForBusinessRestoreSessionsRequestBuilder
     from .protection_policies.protection_policies_request_builder import ProtectionPoliciesRequestBuilder
@@ -34,6 +36,7 @@ if TYPE_CHECKING:
     from .share_point_restore_sessions.share_point_restore_sessions_request_builder import SharePointRestoreSessionsRequestBuilder
     from .site_inclusion_rules.site_inclusion_rules_request_builder import SiteInclusionRulesRequestBuilder
     from .site_protection_units.site_protection_units_request_builder import SiteProtectionUnitsRequestBuilder
+    from .site_protection_units_bulk_addition_jobs.site_protection_units_bulk_addition_jobs_request_builder import SiteProtectionUnitsBulkAdditionJobsRequestBuilder
 
 class BackupRestoreRequestBuilder(BaseRequestBuilder):
     """
@@ -175,6 +178,15 @@ class BackupRestoreRequestBuilder(BaseRequestBuilder):
         return DriveProtectionUnitsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def drive_protection_units_bulk_addition_jobs(self) -> DriveProtectionUnitsBulkAdditionJobsRequestBuilder:
+        """
+        Provides operations to manage the driveProtectionUnitsBulkAdditionJobs property of the microsoft.graph.backupRestoreRoot entity.
+        """
+        from .drive_protection_units_bulk_addition_jobs.drive_protection_units_bulk_addition_jobs_request_builder import DriveProtectionUnitsBulkAdditionJobsRequestBuilder
+
+        return DriveProtectionUnitsBulkAdditionJobsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def enable(self) -> EnableRequestBuilder:
         """
         Provides operations to call the enable method.
@@ -218,6 +230,15 @@ class BackupRestoreRequestBuilder(BaseRequestBuilder):
         from .mailbox_protection_units.mailbox_protection_units_request_builder import MailboxProtectionUnitsRequestBuilder
 
         return MailboxProtectionUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mailbox_protection_units_bulk_addition_jobs(self) -> MailboxProtectionUnitsBulkAdditionJobsRequestBuilder:
+        """
+        Provides operations to manage the mailboxProtectionUnitsBulkAdditionJobs property of the microsoft.graph.backupRestoreRoot entity.
+        """
+        from .mailbox_protection_units_bulk_addition_jobs.mailbox_protection_units_bulk_addition_jobs_request_builder import MailboxProtectionUnitsBulkAdditionJobsRequestBuilder
+
+        return MailboxProtectionUnitsBulkAdditionJobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def one_drive_for_business_protection_policies(self) -> OneDriveForBusinessProtectionPoliciesRequestBuilder:
@@ -317,6 +338,15 @@ class BackupRestoreRequestBuilder(BaseRequestBuilder):
         from .site_protection_units.site_protection_units_request_builder import SiteProtectionUnitsRequestBuilder
 
         return SiteProtectionUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def site_protection_units_bulk_addition_jobs(self) -> SiteProtectionUnitsBulkAdditionJobsRequestBuilder:
+        """
+        Provides operations to manage the siteProtectionUnitsBulkAdditionJobs property of the microsoft.graph.backupRestoreRoot entity.
+        """
+        from .site_protection_units_bulk_addition_jobs.site_protection_units_bulk_addition_jobs_request_builder import SiteProtectionUnitsBulkAdditionJobsRequestBuilder
+
+        return SiteProtectionUnitsBulkAdditionJobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class BackupRestoreRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

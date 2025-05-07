@@ -44,8 +44,12 @@ class Event(OutlookItem, Parsable):
     body_preview: Optional[str] = None
     # The calendar that contains the event. Navigation property. Read-only.
     calendar: Optional[Calendar] = None
+    # The cancelledOccurrences property
+    cancelled_occurrences: Optional[list[str]] = None
     # The date, time, and time zone that the event ends. By default, the end time is in UTC.
     end: Optional[DateTimeTimeZone] = None
+    # The exceptionOccurrences property
+    exception_occurrences: Optional[list[Event]] = None
     # The collection of open extensions defined for the event. Nullable.
     extensions: Optional[list[Extension]] = None
     # Set to true if the event has attachments.
@@ -180,7 +184,9 @@ class Event(OutlookItem, Parsable):
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
             "bodyPreview": lambda n : setattr(self, 'body_preview', n.get_str_value()),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(Calendar)),
+            "cancelledOccurrences": lambda n : setattr(self, 'cancelled_occurrences', n.get_collection_of_primitive_values(str)),
             "end": lambda n : setattr(self, 'end', n.get_object_value(DateTimeTimeZone)),
+            "exceptionOccurrences": lambda n : setattr(self, 'exception_occurrences', n.get_collection_of_object_values(Event)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "hideAttendees": lambda n : setattr(self, 'hide_attendees', n.get_bool_value()),
@@ -236,7 +242,9 @@ class Event(OutlookItem, Parsable):
         writer.write_object_value("body", self.body)
         writer.write_str_value("bodyPreview", self.body_preview)
         writer.write_object_value("calendar", self.calendar)
+        writer.write_collection_of_primitive_values("cancelledOccurrences", self.cancelled_occurrences)
         writer.write_object_value("end", self.end)
+        writer.write_collection_of_object_values("exceptionOccurrences", self.exception_occurrences)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_bool_value("hideAttendees", self.hide_attendees)

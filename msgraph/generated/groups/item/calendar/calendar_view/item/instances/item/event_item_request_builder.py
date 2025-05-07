@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from .cancel.cancel_request_builder import CancelRequestBuilder
     from .decline.decline_request_builder import DeclineRequestBuilder
     from .dismiss_reminder.dismiss_reminder_request_builder import DismissReminderRequestBuilder
+    from .exception_occurrences.exception_occurrences_request_builder import ExceptionOccurrencesRequestBuilder
     from .extensions.extensions_request_builder import ExtensionsRequestBuilder
     from .forward.forward_request_builder import ForwardRequestBuilder
     from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
@@ -135,6 +136,15 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         from .dismiss_reminder.dismiss_reminder_request_builder import DismissReminderRequestBuilder
 
         return DismissReminderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def exception_occurrences(self) -> ExceptionOccurrencesRequestBuilder:
+        """
+        Provides operations to manage the exceptionOccurrences property of the microsoft.graph.event entity.
+        """
+        from .exception_occurrences.exception_occurrences_request_builder import ExceptionOccurrencesRequestBuilder
+
+        return ExceptionOccurrencesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def extensions(self) -> ExtensionsRequestBuilder:

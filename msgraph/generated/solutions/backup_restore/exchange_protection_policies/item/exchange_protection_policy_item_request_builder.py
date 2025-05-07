@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .mailbox_inclusion_rules.mailbox_inclusion_rules_request_builder import MailboxInclusionRulesRequestBuilder
     from .mailbox_protection_units.mailbox_protection_units_request_builder import MailboxProtectionUnitsRequestBuilder
+    from .mailbox_protection_units_bulk_addition_jobs.mailbox_protection_units_bulk_addition_jobs_request_builder import MailboxProtectionUnitsBulkAdditionJobsRequestBuilder
 
 class ExchangeProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class ExchangeProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
         from .mailbox_protection_units.mailbox_protection_units_request_builder import MailboxProtectionUnitsRequestBuilder
 
         return MailboxProtectionUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mailbox_protection_units_bulk_addition_jobs(self) -> MailboxProtectionUnitsBulkAdditionJobsRequestBuilder:
+        """
+        Provides operations to manage the mailboxProtectionUnitsBulkAdditionJobs property of the microsoft.graph.exchangeProtectionPolicy entity.
+        """
+        from .mailbox_protection_units_bulk_addition_jobs.mailbox_protection_units_bulk_addition_jobs_request_builder import MailboxProtectionUnitsBulkAdditionJobsRequestBuilder
+
+        return MailboxProtectionUnitsBulkAdditionJobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ExchangeProtectionPolicyItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

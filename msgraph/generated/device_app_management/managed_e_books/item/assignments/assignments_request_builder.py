@@ -70,11 +70,11 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ManagedEBookAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Create a new iosVppEBookAssignment object.
+        Create a new managedEBookAssignment object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -105,7 +105,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ManagedEBookAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new iosVppEBookAssignment object.
+        Create a new managedEBookAssignment object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

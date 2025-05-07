@@ -96,7 +96,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         Read properties and relationships of the deviceManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-auditing-devicemanagement-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -130,7 +130,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagement-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-devicemanagement-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")

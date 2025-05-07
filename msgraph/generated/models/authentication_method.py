@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
     from .password_authentication_method import PasswordAuthenticationMethod
     from .phone_authentication_method import PhoneAuthenticationMethod
+    from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
     from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
     from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
     from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
@@ -56,6 +57,10 @@ class AuthenticationMethod(Entity, Parsable):
             from .phone_authentication_method import PhoneAuthenticationMethod
 
             return PhoneAuthenticationMethod()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.platformCredentialAuthenticationMethod".casefold():
+            from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
+
+            return PlatformCredentialAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethod".casefold():
             from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
 
@@ -81,6 +86,7 @@ class AuthenticationMethod(Entity, Parsable):
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .password_authentication_method import PasswordAuthenticationMethod
         from .phone_authentication_method import PhoneAuthenticationMethod
+        from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
@@ -91,6 +97,7 @@ class AuthenticationMethod(Entity, Parsable):
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .password_authentication_method import PasswordAuthenticationMethod
         from .phone_authentication_method import PhoneAuthenticationMethod
+        from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod

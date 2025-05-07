@@ -57,10 +57,10 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        Read properties and relationships of the iosMobileAppConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-manageddevicemobileappconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-iosmobileappconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -112,7 +112,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        Read properties and relationships of the iosMobileAppConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -210,7 +210,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        Read properties and relationships of the iosMobileAppConfiguration object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

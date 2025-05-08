@@ -51,7 +51,7 @@ opentelemetry-sdk==1.32.1
 opentelemetry-semantic-conventions==0.53b1
 packaging==25.0
 pathlib2==2.3.7.post1
-platformdirs==4.3.7
+platformdirs==4.3.8
 portalocker==2.10.1
 pycparser==2.22
 PyJWT==2.9.0

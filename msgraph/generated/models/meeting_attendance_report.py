@@ -16,7 +16,7 @@ from .entity import Entity
 class MeetingAttendanceReport(Entity, Parsable):
     # List of attendance records of an attendance report. Read-only.
     attendance_records: Optional[list[AttendanceRecord]] = None
-    # The externalEventInformation property
+    # The external information of a virtual event. Returned only for event organizers or coorganizers. Read-only.
     external_event_information: Optional[list[VirtualEventExternalInformation]] = None
     # UTC time when the meeting ended. Read-only.
     meeting_end_date_time: Optional[datetime.datetime] = None

@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .......models.access_package_resource import AccessPackageResource
     from .......models.o_data_errors.o_data_error import ODataError
     from .environment.environment_request_builder import EnvironmentRequestBuilder
+    from .refresh.refresh_request_builder import RefreshRequestBuilder
     from .roles.roles_request_builder import RolesRequestBuilder
     from .scopes.scopes_request_builder import ScopesRequestBuilder
 
@@ -148,6 +149,15 @@ class AccessPackageResourceItemRequestBuilder(BaseRequestBuilder):
         from .environment.environment_request_builder import EnvironmentRequestBuilder
 
         return EnvironmentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def refresh(self) -> RefreshRequestBuilder:
+        """
+        Provides operations to call the refresh method.
+        """
+        from .refresh.refresh_request_builder import RefreshRequestBuilder
+
+        return RefreshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def roles(self) -> RolesRequestBuilder:

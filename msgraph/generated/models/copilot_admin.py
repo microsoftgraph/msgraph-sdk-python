@@ -14,7 +14,7 @@ from .entity import Entity
 class CopilotAdmin(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The settings property
+    # Set of Microsoft 365 Copilot settings that can be added or modified. Read-only. Nullable.
     settings: Optional[CopilotAdminSetting] = None
     
     @staticmethod

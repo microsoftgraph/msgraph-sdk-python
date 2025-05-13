@@ -11,9 +11,9 @@ from .entity import Entity
 
 @dataclass
 class CopilotAdminLimitedMode(Entity, Parsable):
-    # The groupId property
+    # The ID of a Microsoft Entra group, for which the value of isEnabledForGroup is applied. The default value is null. If isEnabledForGroup is set to true, the groupId value must be provided for the Copilot limited mode in Teams meetings to be enabled for the members of the group. Optional.
     group_id: Optional[str] = None
-    # The isEnabledForGroup property
+    # Enables the user to be in limited mode for Copilot in Teams meetings. When copilotAdminLimitedMode=true, users in this mode can ask any questions, but Copilot doesn't respond to certain questions related to inferring emotions, behavior, or judgments. When copilotAdminLimitedMode=false, it responds to all types of questions grounded to the meeting conversation. The default value is false.
     is_enabled_for_group: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

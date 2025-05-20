@@ -45,7 +45,7 @@ class Group(DirectoryObject, Parsable):
     app_role_assignments: Optional[list[AppRoleAssignment]] = None
     # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role.
     assigned_labels: Optional[list[AssignedLabel]] = None
-    # The licenses that are assigned to the group. Returned only on $select. Supports $filter (eq).Read-only.
+    # The licenses that are assigned to the group. Returned only on $select. Supports $filter (eq). Read-only.
     assigned_licenses: Optional[list[AssignedLicense]] = None
     # Indicates if new members added to the group are autosubscribed to receive email notifications. You can set this property in a PATCH request for the group; don't set it in the initial POST request that creates the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     auto_subscribe_new_members: Optional[bool] = None

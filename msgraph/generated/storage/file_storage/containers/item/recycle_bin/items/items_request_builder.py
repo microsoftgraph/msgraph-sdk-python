@@ -49,9 +49,10 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ItemsRequestBuilderGetQueryParameters]] = None) -> Optional[RecycleBinItemCollectionResponse]:
         """
-        List of the recycleBinItems deleted by a user.
+        Get a collection of recycleBinItem resources in the recycleBin of the specified SharePoint Embedded fileStorageContainer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RecycleBinItemCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/recyclebin-list-items?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ItemsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List of the recycleBinItems deleted by a user.
+        Get a collection of recycleBinItem resources in the recycleBin of the specified SharePoint Embedded fileStorageContainer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():
         """
-        List of the recycleBinItems deleted by a user.
+        Get a collection of recycleBinItem resources in the recycleBin of the specified SharePoint Embedded fileStorageContainer.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -44,11 +44,11 @@ class Event(OutlookItem, Parsable):
     body_preview: Optional[str] = None
     # The calendar that contains the event. Navigation property. Read-only.
     calendar: Optional[Calendar] = None
-    # The cancelledOccurrences property
+    # Contains occurrenceId property values of canceled instances in a recurring series, if the event is the series master. Instances in a recurring series that are canceled are called canceled occurences.Returned only on $select in a Get operation which specifies the ID (seriesMasterId property value) of a series master event.
     cancelled_occurrences: Optional[list[str]] = None
     # The date, time, and time zone that the event ends. By default, the end time is in UTC.
     end: Optional[DateTimeTimeZone] = None
-    # The exceptionOccurrences property
+    # Contains the id property values of the event instances that are exceptions in a recurring series.Exceptions can differ from other occurrences in a recurring series, such as the subject, start or end times, or attendees. Exceptions don't include canceled occurrences.Returned only on $select and $expand in a GET operation that specifies the ID (seriesMasterId property value) of a series master event.
     exception_occurrences: Optional[list[Event]] = None
     # The collection of open extensions defined for the event. Nullable.
     extensions: Optional[list[Extension]] = None
@@ -60,7 +60,7 @@ class Event(OutlookItem, Parsable):
     i_cal_u_id: Optional[str] = None
     # The importance of the event. The possible values are: low, normal, high.
     importance: Optional[Importance] = None
-    # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions modified, but doesn't include occurrences cancelled from the series. Navigation property. Read-only. Nullable.
+    # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions modified, but doesn't include occurrences canceled from the series. Navigation property. Read-only. Nullable.
     instances: Optional[list[Event]] = None
     # Set to true if the event lasts all day. If true, regardless of whether it's a single-day or multi-day event, start, and endtime must be set to midnight and be in the same time zone.
     is_all_day: Optional[bool] = None

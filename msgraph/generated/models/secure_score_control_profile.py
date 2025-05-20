@@ -21,7 +21,7 @@ class SecureScoreControlProfile(Entity, Parsable):
     action_url: Optional[str] = None
     # GUID string for tenant ID.
     azure_tenant_id: Optional[str] = None
-    # The collection of compliance information associated with secure score control
+    # The collection of compliance information associated with secure score control. Not implemented. Currently returns null.
     compliance_information: Optional[list[ComplianceInformation]] = None
     # Control action category (Identity, Data, Device, Apps, Infrastructure).
     control_category: Optional[str] = None

@@ -22,7 +22,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedMod
     is_approval_required_for_add: Optional[bool] = None
     # Indicates whether a request to update must be approved by an approver.
     is_approval_required_for_update: Optional[bool] = None
-    # The isRequestorJustificationRequired property
+    # Indicates whether requestors must justify requesting access to an access package.
     is_requestor_justification_required: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

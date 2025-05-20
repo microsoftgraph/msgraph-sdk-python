@@ -6,6 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
     from .chat_message_from_identity_set import ChatMessageFromIdentitySet
     from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
     from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
@@ -43,6 +44,10 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiInteractionMentionedIdentitySet".casefold():
+            from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
+
+            return AiInteractionMentionedIdentitySet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageFromIdentitySet".casefold():
             from .chat_message_from_identity_set import ChatMessageFromIdentitySet
 
@@ -70,6 +75,7 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
         from .chat_message_from_identity_set import ChatMessageFromIdentitySet
         from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
         from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
@@ -77,6 +83,7 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
         from .identity import Identity
         from .share_point_identity_set import SharePointIdentitySet
 
+        from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
         from .chat_message_from_identity_set import ChatMessageFromIdentitySet
         from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
         from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet

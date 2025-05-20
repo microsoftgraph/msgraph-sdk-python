@@ -19,7 +19,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
     is_approval_required_for_add: Optional[bool] = None
     # If false, then approval isn't required for updates to requests in this policy.
     is_approval_required_for_update: Optional[bool] = None
-    # The isRequestorJustificationRequired property
+    # If false, then requestor justification isn't required for updates to requests in this policy.
     is_requestor_justification_required: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

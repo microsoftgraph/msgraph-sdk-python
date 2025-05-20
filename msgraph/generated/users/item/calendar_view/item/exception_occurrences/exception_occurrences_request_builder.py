@@ -49,7 +49,7 @@ class ExceptionOccurrencesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ExceptionOccurrencesRequestBuilderGetQueryParameters]] = None) -> Optional[EventCollectionResponse]:
         """
-        Get exceptionOccurrences from users
+        Contains the id property values of the event instances that are exceptions in a recurring series.Exceptions can differ from other occurrences in a recurring series, such as the subject, start or end times, or attendees. Exceptions don't include canceled occurrences.Returned only on $select and $expand in a GET operation that specifies the ID (seriesMasterId property value) of a series master event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EventCollectionResponse]
         """
@@ -69,7 +69,7 @@ class ExceptionOccurrencesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ExceptionOccurrencesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get exceptionOccurrences from users
+        Contains the id property values of the event instances that are exceptions in a recurring series.Exceptions can differ from other occurrences in a recurring series, such as the subject, start or end times, or attendees. Exceptions don't include canceled occurrences.Returned only on $select and $expand in a GET operation that specifies the ID (seriesMasterId property value) of a series master event.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ExceptionOccurrencesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExceptionOccurrencesRequestBuilderGetQueryParameters():
         """
-        Get exceptionOccurrences from users
+        Contains the id property values of the event instances that are exceptions in a recurring series.Exceptions can differ from other occurrences in a recurring series, such as the subject, start or end times, or attendees. Exceptions don't include canceled occurrences.Returned only on $select and $expand in a GET operation that specifies the ID (seriesMasterId property value) of a series master event.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

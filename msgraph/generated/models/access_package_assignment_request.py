@@ -32,7 +32,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # Information about all the custom extension calls that were made during the access package assignment workflow.
     custom_extension_callout_instances: Optional[list[CustomExtensionCalloutInstance]] = None
-    # The justification property
+    # The requestor's supplied justification.
     justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

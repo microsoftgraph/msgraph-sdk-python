@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .identity_provider_base import IdentityProviderBase
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+    from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
 
 from .entity import Entity
 
@@ -35,6 +36,8 @@ class Directory(Entity, Parsable):
     odata_type: Optional[str] = None
     # A container for on-premises directory synchronization functionalities that are available for the organization.
     on_premises_synchronization: Optional[list[OnPremisesDirectorySynchronization]] = None
+    # The publicKeyInfrastructure property
+    public_key_infrastructure: Optional[PublicKeyInfrastructureRoot] = None
     # List of commercial subscriptions that an organization acquired.
     subscriptions: Optional[list[CompanySubscription]] = None
     
@@ -63,6 +66,7 @@ class Directory(Entity, Parsable):
         from .entity import Entity
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
 
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
@@ -73,6 +77,7 @@ class Directory(Entity, Parsable):
         from .entity import Entity
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
 
         fields: dict[str, Callable[[Any], None]] = {
             "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(AdministrativeUnit)),
@@ -82,6 +87,7 @@ class Directory(Entity, Parsable):
             "deviceLocalCredentials": lambda n : setattr(self, 'device_local_credentials', n.get_collection_of_object_values(DeviceLocalCredentialInfo)),
             "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(IdentityProviderBase)),
             "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(OnPremisesDirectorySynchronization)),
+            "publicKeyInfrastructure": lambda n : setattr(self, 'public_key_infrastructure', n.get_object_value(PublicKeyInfrastructureRoot)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(CompanySubscription)),
         }
         super_fields = super().get_field_deserializers()
@@ -104,6 +110,7 @@ class Directory(Entity, Parsable):
         writer.write_collection_of_object_values("deviceLocalCredentials", self.device_local_credentials)
         writer.write_collection_of_object_values("federationConfigurations", self.federation_configurations)
         writer.write_collection_of_object_values("onPremisesSynchronization", self.on_premises_synchronization)
+        writer.write_object_value("publicKeyInfrastructure", self.public_key_infrastructure)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
     
 

@@ -45,6 +45,9 @@ if TYPE_CHECKING:
     from .agreement_file_localization import AgreementFileLocalization
     from .agreement_file_properties import AgreementFileProperties
     from .agreement_file_version import AgreementFileVersion
+    from .ai_interaction import AiInteraction
+    from .ai_interaction_history import AiInteractionHistory
+    from .ai_user import AiUser
     from .alert import Alert
     from .allowed_value import AllowedValue
     from .android_compliance_policy import AndroidCompliancePolicy
@@ -137,7 +140,9 @@ if TYPE_CHECKING:
     from .call_transcript import CallTranscript
     from .cancel_media_processing_operation import CancelMediaProcessingOperation
     from .canvas_layout import CanvasLayout
+    from .certificate_authority_detail import CertificateAuthorityDetail
     from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+    from .certificate_based_auth_pki import CertificateBasedAuthPki
     from .change_tracked_entity import ChangeTrackedEntity
     from .channel import Channel
     from .chat import Chat
@@ -596,6 +601,7 @@ if TYPE_CHECKING:
     from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
     from .protection_unit_base import ProtectionUnitBase
     from .provisioning_object_summary import ProvisioningObjectSummary
+    from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
     from .rbac_application import RbacApplication
     from .record_operation import RecordOperation
     from .recycle_bin import RecycleBin
@@ -1169,6 +1175,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .agreement_file_version import AgreementFileVersion
 
             return AgreementFileVersion()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiInteraction".casefold():
+            from .ai_interaction import AiInteraction
+
+            return AiInteraction()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiInteractionHistory".casefold():
+            from .ai_interaction_history import AiInteractionHistory
+
+            return AiInteractionHistory()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiUser".casefold():
+            from .ai_user import AiUser
+
+            return AiUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.alert".casefold():
             from .alert import Alert
             from .security.alert import Alert
@@ -1539,10 +1557,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .canvas_layout import CanvasLayout
 
             return CanvasLayout()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.certificateAuthorityDetail".casefold():
+            from .certificate_authority_detail import CertificateAuthorityDetail
+
+            return CertificateAuthorityDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.certificateBasedAuthConfiguration".casefold():
             from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
 
             return CertificateBasedAuthConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.certificateBasedAuthPki".casefold():
+            from .certificate_based_auth_pki import CertificateBasedAuthPki
+
+            return CertificateBasedAuthPki()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.changeTrackedEntity".casefold():
             from .change_tracked_entity import ChangeTrackedEntity
 
@@ -3380,6 +3406,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .provisioning_object_summary import ProvisioningObjectSummary
 
             return ProvisioningObjectSummary()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.publicKeyInfrastructureRoot".casefold():
+            from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
+
+            return PublicKeyInfrastructureRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.rbacApplication".casefold():
             from .rbac_application import RbacApplication
 
@@ -4989,6 +5019,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .agreement_file_localization import AgreementFileLocalization
         from .agreement_file_properties import AgreementFileProperties
         from .agreement_file_version import AgreementFileVersion
+        from .ai_interaction import AiInteraction
+        from .ai_interaction_history import AiInteractionHistory
+        from .ai_user import AiUser
         from .alert import Alert
         from .allowed_value import AllowedValue
         from .android_compliance_policy import AndroidCompliancePolicy
@@ -5081,7 +5114,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .call_transcript import CallTranscript
         from .cancel_media_processing_operation import CancelMediaProcessingOperation
         from .canvas_layout import CanvasLayout
+        from .certificate_authority_detail import CertificateAuthorityDetail
         from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+        from .certificate_based_auth_pki import CertificateBasedAuthPki
         from .change_tracked_entity import ChangeTrackedEntity
         from .channel import Channel
         from .chat import Chat
@@ -5540,6 +5575,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
         from .protection_unit_base import ProtectionUnitBase
         from .provisioning_object_summary import ProvisioningObjectSummary
+        from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .recycle_bin import RecycleBin
@@ -5970,6 +6006,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .agreement_file_localization import AgreementFileLocalization
         from .agreement_file_properties import AgreementFileProperties
         from .agreement_file_version import AgreementFileVersion
+        from .ai_interaction import AiInteraction
+        from .ai_interaction_history import AiInteractionHistory
+        from .ai_user import AiUser
         from .alert import Alert
         from .allowed_value import AllowedValue
         from .android_compliance_policy import AndroidCompliancePolicy
@@ -6062,7 +6101,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .call_transcript import CallTranscript
         from .cancel_media_processing_operation import CancelMediaProcessingOperation
         from .canvas_layout import CanvasLayout
+        from .certificate_authority_detail import CertificateAuthorityDetail
         from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+        from .certificate_based_auth_pki import CertificateBasedAuthPki
         from .change_tracked_entity import ChangeTrackedEntity
         from .channel import Channel
         from .chat import Chat
@@ -6521,6 +6562,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
         from .protection_unit_base import ProtectionUnitBase
         from .provisioning_object_summary import ProvisioningObjectSummary
+        from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .recycle_bin import RecycleBin

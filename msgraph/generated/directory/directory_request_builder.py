@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .device_local_credentials.device_local_credentials_request_builder import DeviceLocalCredentialsRequestBuilder
     from .federation_configurations.federation_configurations_request_builder import FederationConfigurationsRequestBuilder
     from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
+    from .public_key_infrastructure.public_key_infrastructure_request_builder import PublicKeyInfrastructureRequestBuilder
     from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
     from .subscriptions_with_commerce_subscription_id.subscriptions_with_commerce_subscription_id_request_builder import SubscriptionsWithCommerceSubscriptionIdRequestBuilder
 
@@ -192,6 +193,15 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
 
         return OnPremisesSynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def public_key_infrastructure(self) -> PublicKeyInfrastructureRequestBuilder:
+        """
+        Provides operations to manage the publicKeyInfrastructure property of the microsoft.graph.directory entity.
+        """
+        from .public_key_infrastructure.public_key_infrastructure_request_builder import PublicKeyInfrastructureRequestBuilder
+
+        return PublicKeyInfrastructureRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def subscriptions(self) -> SubscriptionsRequestBuilder:

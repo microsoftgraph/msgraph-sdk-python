@@ -18,11 +18,11 @@ class VppToken(Entity, Parsable):
     """
     You purchase multiple licenses for iOS apps through the Apple Volume Purchase Program for Business or Education. This involves setting up an Apple VPP account from the Apple website and uploading the Apple VPP Business or Education token to Intune. You can then synchronize your volume purchase information with Intune and track your volume-purchased app use. You can upload multiple Apple VPP Business or Education tokens.
     """
-    # The apple Id associated with the given Apple Volume Purchase Program Token.
+    # The Apple ID associated with the given Apple Volume Purchase Program Token.
     apple_id: Optional[str] = None
     # Whether or not apps for the VPP token will be automatically updated.
     automatically_update_apps: Optional[bool] = None
-    # Whether or not apps for the VPP token will be automatically updated.
+    # The country or region associated with the Apple Volume Purchase Program Token.
     country_or_region: Optional[str] = None
     # The expiration date time of the Apple Volume Purchase Program Token.
     expiration_date_time: Optional[datetime.datetime] = None

@@ -12,6 +12,8 @@ if TYPE_CHECKING:
     from .app_management_policy import AppManagementPolicy
     from .app_role_assignment import AppRoleAssignment
     from .authorization_policy import AuthorizationPolicy
+    from .certificate_authority_detail import CertificateAuthorityDetail
+    from .certificate_based_auth_pki import CertificateBasedAuthPki
     from .claims_mapping_policy import ClaimsMappingPolicy
     from .contract import Contract
     from .cross_tenant_access_policy import CrossTenantAccessPolicy
@@ -86,6 +88,14 @@ class DirectoryObject(Entity, Parsable):
             from .authorization_policy import AuthorizationPolicy
 
             return AuthorizationPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.certificateAuthorityDetail".casefold():
+            from .certificate_authority_detail import CertificateAuthorityDetail
+
+            return CertificateAuthorityDetail()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.certificateBasedAuthPki".casefold():
+            from .certificate_based_auth_pki import CertificateBasedAuthPki
+
+            return CertificateBasedAuthPki()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.claimsMappingPolicy".casefold():
             from .claims_mapping_policy import ClaimsMappingPolicy
 
@@ -199,6 +209,8 @@ class DirectoryObject(Entity, Parsable):
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
         from .authorization_policy import AuthorizationPolicy
+        from .certificate_authority_detail import CertificateAuthorityDetail
+        from .certificate_based_auth_pki import CertificateBasedAuthPki
         from .claims_mapping_policy import ClaimsMappingPolicy
         from .contract import Contract
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
@@ -232,6 +244,8 @@ class DirectoryObject(Entity, Parsable):
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
         from .authorization_policy import AuthorizationPolicy
+        from .certificate_authority_detail import CertificateAuthorityDetail
+        from .certificate_based_auth_pki import CertificateBasedAuthPki
         from .claims_mapping_policy import ClaimsMappingPolicy
         from .contract import Contract
         from .cross_tenant_access_policy import CrossTenantAccessPolicy

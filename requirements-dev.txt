@@ -27,7 +27,7 @@ httpcore==1.0.9
 httpx==0.28.1
 hyperframe==6.1.0
 idna==3.10
-importlib-metadata==8.5.0
+importlib-metadata==8.7.0
 isort==6.0.1
 lazy-object-proxy==1.11.0
 lexid==2021.1006

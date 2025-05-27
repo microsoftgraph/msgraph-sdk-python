@@ -22,31 +22,31 @@ from .entity import Entity
 
 @dataclass
 class RestoreArtifactsBulkRequestBase(Entity, Parsable):
-    # The createdBy property
+    # The identity of the person who created the bulk request.
     created_by: Optional[IdentitySet] = None
-    # The createdDateTime property
+    # The time when the bulk request was created.
     created_date_time: Optional[datetime.datetime] = None
-    # The destinationType property
+    # Indicates the restoration destination. The possible values are: new, inPlace, unknownFutureValue.
     destination_type: Optional[DestinationType] = None
-    # The displayName property
+    # Name of the addition request.
     display_name: Optional[str] = None
-    # The error property
+    # Error details are populated for resource resolution failures.
     error: Optional[PublicError] = None
-    # The lastModifiedBy property
+    # Identity of the person who last modified this entity.
     last_modified_by: Optional[IdentitySet] = None
-    # The lastModifiedDateTime property
+    # Timestamp when this entity was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The protectionTimePeriod property
+    # The start and end date and time of the protection period.
     protection_time_period: Optional[TimePeriod] = None
-    # The protectionUnitIds property
+    # Indicates which protection units to restore. This property isn't implemented yet. Future value; don't use.
     protection_unit_ids: Optional[list[str]] = None
-    # The restorePointPreference property
+    # Indicates which restore point to return. The possible values are: oldest, latest, unknownFutureValue.
     restore_point_preference: Optional[RestorePointPreference] = None
     # The status property
     status: Optional[RestoreArtifactsBulkRequestStatus] = None
-    # The tags property
+    # The type of the restore point. The possible values are: none, fastRestore, unknownFutureValue.
     tags: Optional[RestorePointTags] = None
     
     @staticmethod

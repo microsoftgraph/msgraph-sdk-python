@@ -49,9 +49,10 @@ class SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SiteRestoreArtifactsBulkAdditionRequestsRequestBuilderGetQueryParameters]] = None) -> Optional[SiteRestoreArtifactsBulkAdditionRequestCollectionResponse]:
         """
-        Get siteRestoreArtifactsBulkAdditionRequests from solutions
+        Get a list of the siteRestoreArtifactsBulkAdditionRequest objects associated with a sharePointRestoreSession. The siteWebUrls property is deliberately omitted from the response body in order to limit the response size.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteRestoreArtifactsBulkAdditionRequestCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/sharepointrestoresession-list-siterestoreartifactsbulkadditionrequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder)
     
     async def post(self,body: SiteRestoreArtifactsBulkAdditionRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SiteRestoreArtifactsBulkAdditionRequest]:
         """
-        Create new navigation property to siteRestoreArtifactsBulkAdditionRequests for solutions
+        Create a new siteRestoreArtifactsBulkAdditionRequest object associated with a sharePointRestoreSession. The following steps describe how to create and manage a sharePointRestoreSession with bulk artifact additions:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteRestoreArtifactsBulkAdditionRequest]
+        Find more info here: https://learn.microsoft.com/graph/api/sharepointrestoresession-post-siterestoreartifactsbulkadditionrequests?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SiteRestoreArtifactsBulkAdditionRequestsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get siteRestoreArtifactsBulkAdditionRequests from solutions
+        Get a list of the siteRestoreArtifactsBulkAdditionRequest objects associated with a sharePointRestoreSession. The siteWebUrls property is deliberately omitted from the response body in order to limit the response size.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder)
     
     def to_post_request_information(self,body: SiteRestoreArtifactsBulkAdditionRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to siteRestoreArtifactsBulkAdditionRequests for solutions
+        Create a new siteRestoreArtifactsBulkAdditionRequest object associated with a sharePointRestoreSession. The following steps describe how to create and manage a sharePointRestoreSession with bulk artifact additions:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +140,7 @@ class SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder)
     @dataclass
     class SiteRestoreArtifactsBulkAdditionRequestsRequestBuilderGetQueryParameters():
         """
-        Get siteRestoreArtifactsBulkAdditionRequests from solutions
+        Get a list of the siteRestoreArtifactsBulkAdditionRequest objects associated with a sharePointRestoreSession. The siteWebUrls property is deliberately omitted from the response body in order to limit the response size.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

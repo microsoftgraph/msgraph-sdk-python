@@ -32,9 +32,10 @@ class DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilder(BaseRequestBuil
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property driveRestoreArtifactsBulkAdditionRequests for solutions
+        Delete a driveRestoreArtifactsBulkAdditionRequest object associated with a oneDriveForBusinessRestoreSession.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/driverestoreartifactsbulkadditionrequest-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,9 +51,10 @@ class DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilder(BaseRequestBuil
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilderGetQueryParameters]] = None) -> Optional[DriveRestoreArtifactsBulkAdditionRequest]:
         """
-        Get driveRestoreArtifactsBulkAdditionRequests from solutions
+        Get a driveRestoreArtifactsBulkAdditionRequest object by its id, associated with a oneDriveForBusinessRestoreSession.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveRestoreArtifactsBulkAdditionRequest]
+        Find more info here: https://learn.microsoft.com/graph/api/driverestoreartifactsbulkadditionrequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,7 +95,7 @@ class DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilder(BaseRequestBuil
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property driveRestoreArtifactsBulkAdditionRequests for solutions
+        Delete a driveRestoreArtifactsBulkAdditionRequest object associated with a oneDriveForBusinessRestoreSession.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilder(BaseRequestBuil
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get driveRestoreArtifactsBulkAdditionRequests from solutions
+        Get a driveRestoreArtifactsBulkAdditionRequest object by its id, associated with a oneDriveForBusinessRestoreSession.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +149,7 @@ class DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilder(BaseRequestBuil
     @dataclass
     class DriveRestoreArtifactsBulkAdditionRequestItemRequestBuilderGetQueryParameters():
         """
-        Get driveRestoreArtifactsBulkAdditionRequests from solutions
+        Get a driveRestoreArtifactsBulkAdditionRequest object by its id, associated with a oneDriveForBusinessRestoreSession.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -11,9 +11,9 @@ from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase
 
 @dataclass
 class MailboxRestoreArtifactsBulkAdditionRequest(RestoreArtifactsBulkRequestBase, Parsable):
-    # The directoryObjectIds property
+    # The list of directory object IDs that are added to the corresponding Exchange restore session in a bulk operation.
     directory_object_ids: Optional[list[str]] = None
-    # The mailboxes property
+    # The list of email addresses that are added to the corresponding Exchange restore session in a bulk operation.
     mailboxes: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None

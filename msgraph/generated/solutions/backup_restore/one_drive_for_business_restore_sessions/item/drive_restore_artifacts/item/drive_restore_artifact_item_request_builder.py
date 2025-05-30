@@ -51,7 +51,7 @@ class DriveRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DriveRestoreArtifactItemRequestBuilderGetQueryParameters]] = None) -> Optional[DriveRestoreArtifact]:
         """
-        A collection of restore points and destination details that can be used to restore a OneDrive for Business drive.
+        A collection of restore points and destination details that can be used to restore a OneDrive for work or school drive.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveRestoreArtifact]
         """
@@ -104,7 +104,7 @@ class DriveRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DriveRestoreArtifactItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        A collection of restore points and destination details that can be used to restore a OneDrive for Business drive.
+        A collection of restore points and destination details that can be used to restore a OneDrive for work or school drive.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -157,7 +157,7 @@ class DriveRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DriveRestoreArtifactItemRequestBuilderGetQueryParameters():
         """
-        A collection of restore points and destination details that can be used to restore a OneDrive for Business drive.
+        A collection of restore points and destination details that can be used to restore a OneDrive for work or school drive.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -49,9 +49,10 @@ class DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DriveRestoreArtifactsBulkAdditionRequestsRequestBuilderGetQueryParameters]] = None) -> Optional[DriveRestoreArtifactsBulkAdditionRequestCollectionResponse]:
         """
-        Get driveRestoreArtifactsBulkAdditionRequests from solutions
+        Get a list of the driveRestoreArtifactsBulkAdditionRequest objects associated with a oneDriveForBusinessRestoreSession. The drives property is deliberately omitted from the response body in order to limit the response size.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveRestoreArtifactsBulkAdditionRequestCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/onedriveforbusinessrestoresession-list-driverestoreartifactsbulkadditionrequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder
     
     async def post(self,body: DriveRestoreArtifactsBulkAdditionRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DriveRestoreArtifactsBulkAdditionRequest]:
         """
-        Create new navigation property to driveRestoreArtifactsBulkAdditionRequests for solutions
+        Create a driveRestoreArtifactsBulkAdditionRequest object associated with a oneDriveForBusinessRestoreSession. The following steps describe how to create and manage a oneDriveForBusinessRestoreSession with bulk artifact additions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveRestoreArtifactsBulkAdditionRequest]
+        Find more info here: https://learn.microsoft.com/graph/api/onedriveforbusinessrestoresession-post-driverestoreartifactsbulkadditionrequests?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DriveRestoreArtifactsBulkAdditionRequestsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get driveRestoreArtifactsBulkAdditionRequests from solutions
+        Get a list of the driveRestoreArtifactsBulkAdditionRequest objects associated with a oneDriveForBusinessRestoreSession. The drives property is deliberately omitted from the response body in order to limit the response size.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder
     
     def to_post_request_information(self,body: DriveRestoreArtifactsBulkAdditionRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to driveRestoreArtifactsBulkAdditionRequests for solutions
+        Create a driveRestoreArtifactsBulkAdditionRequest object associated with a oneDriveForBusinessRestoreSession. The following steps describe how to create and manage a oneDriveForBusinessRestoreSession with bulk artifact additions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +140,7 @@ class DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder(BaseRequestBuilder
     @dataclass
     class DriveRestoreArtifactsBulkAdditionRequestsRequestBuilderGetQueryParameters():
         """
-        Get driveRestoreArtifactsBulkAdditionRequests from solutions
+        Get a list of the driveRestoreArtifactsBulkAdditionRequest objects associated with a oneDriveForBusinessRestoreSession. The drives property is deliberately omitted from the response body in order to limit the response size.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

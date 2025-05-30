@@ -51,10 +51,10 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppPolicyItemRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppPolicy]:
         """
-        Read properties and relationships of the managedAppConfiguration object.
+        Read properties and relationships of the targetedManagedAppProtection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-targetedmanagedappprotection-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -105,7 +105,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppPolicyItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedAppConfiguration object.
+        Read properties and relationships of the targetedManagedAppProtection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedAppConfiguration object.
+        Read properties and relationships of the targetedManagedAppProtection object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

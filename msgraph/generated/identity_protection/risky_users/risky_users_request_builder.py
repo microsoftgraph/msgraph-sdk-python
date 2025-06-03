@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ...models.risky_user import RiskyUser
     from ...models.risky_user_collection_response import RiskyUserCollectionResponse
     from .confirm_compromised.confirm_compromised_request_builder import ConfirmCompromisedRequestBuilder
+    from .confirm_safe.confirm_safe_request_builder import ConfirmSafeRequestBuilder
     from .count.count_request_builder import CountRequestBuilder
     from .dismiss.dismiss_request_builder import DismissRequestBuilder
     from .item.risky_user_item_request_builder import RiskyUserItemRequestBuilder
@@ -137,6 +138,15 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
         from .confirm_compromised.confirm_compromised_request_builder import ConfirmCompromisedRequestBuilder
 
         return ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def confirm_safe(self) -> ConfirmSafeRequestBuilder:
+        """
+        Provides operations to call the confirmSafe method.
+        """
+        from .confirm_safe.confirm_safe_request_builder import ConfirmSafeRequestBuilder
+
+        return ConfirmSafeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def count(self) -> CountRequestBuilder:

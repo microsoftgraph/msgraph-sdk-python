@@ -13,9 +13,9 @@ from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
 class DriveProtectionUnitsBulkAdditionJob(ProtectionUnitsBulkJobBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.driveProtectionUnitsBulkAdditionJob"
-    # The directoryObjectIds property
+    # The list of OneDrive directoryObjectIds to add to the OneDrive protection policy.
     directory_object_ids: Optional[list[str]] = None
-    # The drives property
+    # The list of email addresses to add to the OneDrive protection policy.
     drives: Optional[list[str]] = None
     
     @staticmethod

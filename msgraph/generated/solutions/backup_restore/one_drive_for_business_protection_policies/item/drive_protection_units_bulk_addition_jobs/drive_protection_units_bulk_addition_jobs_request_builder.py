@@ -48,9 +48,10 @@ class DriveProtectionUnitsBulkAdditionJobsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DriveProtectionUnitsBulkAdditionJobsRequestBuilderGetQueryParameters]] = None) -> Optional[DriveProtectionUnitsBulkAdditionJobCollectionResponse]:
         """
-        Get driveProtectionUnitsBulkAdditionJobs from solutions
+        Get a list of driveProtectionUnitsBulkAdditionJobs objects associated with a oneDriveForBusinessProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveProtectionUnitsBulkAdditionJobCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/onedriveforbusinessprotectionpolicy-list-driveprotectionunitsbulkadditionjobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,7 +69,7 @@ class DriveProtectionUnitsBulkAdditionJobsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DriveProtectionUnitsBulkAdditionJobsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get driveProtectionUnitsBulkAdditionJobs from solutions
+        Get a list of driveProtectionUnitsBulkAdditionJobs objects associated with a oneDriveForBusinessProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +100,7 @@ class DriveProtectionUnitsBulkAdditionJobsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DriveProtectionUnitsBulkAdditionJobsRequestBuilderGetQueryParameters():
         """
-        Get driveProtectionUnitsBulkAdditionJobs from solutions
+        Get a list of driveProtectionUnitsBulkAdditionJobs objects associated with a oneDriveForBusinessProtectionPolicy.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -32,9 +32,10 @@ class DriveProtectionUnitsBulkAdditionJobItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DriveProtectionUnitsBulkAdditionJobItemRequestBuilderGetQueryParameters]] = None) -> Optional[DriveProtectionUnitsBulkAdditionJob]:
         """
-        Get driveProtectionUnitsBulkAdditionJobs from solutions
+        Get a driveProtectionUnitsBulkAdditionJob object by the ID associated with a oneDriveForBusinessProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveProtectionUnitsBulkAdditionJob]
+        Find more info here: https://learn.microsoft.com/graph/api/driveprotectionunitsbulkadditionjobs-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,7 +53,7 @@ class DriveProtectionUnitsBulkAdditionJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DriveProtectionUnitsBulkAdditionJobItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get driveProtectionUnitsBulkAdditionJobs from solutions
+        Get a driveProtectionUnitsBulkAdditionJob object by the ID associated with a oneDriveForBusinessProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +75,7 @@ class DriveProtectionUnitsBulkAdditionJobItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DriveProtectionUnitsBulkAdditionJobItemRequestBuilderGetQueryParameters():
         """
-        Get driveProtectionUnitsBulkAdditionJobs from solutions
+        Get a driveProtectionUnitsBulkAdditionJob object by the ID associated with a oneDriveForBusinessProtectionPolicy.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

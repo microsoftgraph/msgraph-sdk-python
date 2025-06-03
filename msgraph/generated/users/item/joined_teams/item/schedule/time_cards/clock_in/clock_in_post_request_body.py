@@ -19,6 +19,8 @@ class ClockInPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     is_at_approved_location: Optional[bool] = None
     # The notes property
     notes: Optional[ItemBody] = None
+    # The onBehalfOfUserId property
+    on_behalf_of_user_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ClockInPostRequestBody:
@@ -43,6 +45,7 @@ class ClockInPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "isAtApprovedLocation": lambda n : setattr(self, 'is_at_approved_location', n.get_bool_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_object_value(ItemBody)),
+            "onBehalfOfUserId": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_str_value()),
         }
         return fields
     
@@ -56,6 +59,7 @@ class ClockInPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isAtApprovedLocation", self.is_at_approved_location)
         writer.write_object_value("notes", self.notes)
+        writer.write_str_value("onBehalfOfUserId", self.on_behalf_of_user_id)
         writer.write_additional_data_value(self.additional_data)
     
 

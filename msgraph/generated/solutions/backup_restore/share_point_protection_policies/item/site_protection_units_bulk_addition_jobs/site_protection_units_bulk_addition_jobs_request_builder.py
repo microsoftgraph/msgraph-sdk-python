@@ -48,9 +48,10 @@ class SiteProtectionUnitsBulkAdditionJobsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SiteProtectionUnitsBulkAdditionJobsRequestBuilderGetQueryParameters]] = None) -> Optional[SiteProtectionUnitsBulkAdditionJobCollectionResponse]:
         """
-        Get siteProtectionUnitsBulkAdditionJobs from solutions
+        Get a list of siteProtectionUnitsBulkAdditionJobs objects associated with a sharePointProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteProtectionUnitsBulkAdditionJobCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-list-siteprotectionunitsbulkadditionjobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,7 +69,7 @@ class SiteProtectionUnitsBulkAdditionJobsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SiteProtectionUnitsBulkAdditionJobsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get siteProtectionUnitsBulkAdditionJobs from solutions
+        Get a list of siteProtectionUnitsBulkAdditionJobs objects associated with a sharePointProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +100,7 @@ class SiteProtectionUnitsBulkAdditionJobsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SiteProtectionUnitsBulkAdditionJobsRequestBuilderGetQueryParameters():
         """
-        Get siteProtectionUnitsBulkAdditionJobs from solutions
+        Get a list of siteProtectionUnitsBulkAdditionJobs objects associated with a sharePointProtectionPolicy.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

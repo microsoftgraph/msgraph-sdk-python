@@ -15,13 +15,13 @@ from .schedule_change_request import ScheduleChangeRequest
 class OfferShiftRequest(ScheduleChangeRequest, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.offerShiftRequest"
-    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # The date and time when the recipient approved or declined the request.
     recipient_action_date_time: Optional[datetime.datetime] = None
-    # Custom message sent by recipient of the offer shift request.
+    # The message sent by the recipient regarding the request.
     recipient_action_message: Optional[str] = None
-    # User ID of the recipient of the offer shift request.
+    # The recipient's user ID.
     recipient_user_id: Optional[str] = None
-    # User ID of the sender of the offer shift request.
+    # The sender's shift ID.
     sender_shift_id: Optional[str] = None
     
     @staticmethod

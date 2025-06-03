@@ -32,10 +32,10 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a countryNamedLocation object.
+        Delete a namedLocation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/countrynamedlocation-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/namedlocation-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -72,11 +72,11 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: NamedLocation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[NamedLocation]:
         """
-        Update the properties of an ipNamedLocation object.
+        Update the properties of a countryNamedLocation object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NamedLocation]
-        Find more info here: https://learn.microsoft.com/graph/api/ipnamedlocation-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/countrynamedlocation-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +96,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a countryNamedLocation object.
+        Delete a namedLocation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +117,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: NamedLocation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of an ipNamedLocation object.
+        Update the properties of a countryNamedLocation object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

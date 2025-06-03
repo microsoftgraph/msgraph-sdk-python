@@ -32,9 +32,10 @@ class SiteProtectionUnitsBulkAdditionJobItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SiteProtectionUnitsBulkAdditionJobItemRequestBuilderGetQueryParameters]] = None) -> Optional[SiteProtectionUnitsBulkAdditionJob]:
         """
-        Get siteProtectionUnitsBulkAdditionJobs from solutions
+        Get a siteProtectionUnitsBulkAdditionJob object by the ID associated with a sharePointProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteProtectionUnitsBulkAdditionJob]
+        Find more info here: https://learn.microsoft.com/graph/api/siteprotectionunitsbulkadditionjobs-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,7 +53,7 @@ class SiteProtectionUnitsBulkAdditionJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SiteProtectionUnitsBulkAdditionJobItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get siteProtectionUnitsBulkAdditionJobs from solutions
+        Get a siteProtectionUnitsBulkAdditionJob object by the ID associated with a sharePointProtectionPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +75,7 @@ class SiteProtectionUnitsBulkAdditionJobItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SiteProtectionUnitsBulkAdditionJobItemRequestBuilderGetQueryParameters():
         """
-        Get siteProtectionUnitsBulkAdditionJobs from solutions
+        Get a siteProtectionUnitsBulkAdditionJob object by the ID associated with a sharePointProtectionPolicy.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

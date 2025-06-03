@@ -70,10 +70,11 @@ class TimeOffRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: TimeOffRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TimeOffRequest]:
         """
-        Create new navigation property to timeOffRequests for teams
+        Create instance of a timeoffrequest object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffRequest]
+        Find more info here: https://learn.microsoft.com/graph/api/timeoffrequest-post?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -104,7 +105,7 @@ class TimeOffRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: TimeOffRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to timeOffRequests for teams
+        Create instance of a timeoffrequest object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

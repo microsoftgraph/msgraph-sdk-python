@@ -69,7 +69,7 @@ tomli_w==1.2.0
 tomlkit==0.13.2
 typing_extensions==4.13.2
 tzdata==2025.2
-uritemplate==4.1.1
+uritemplate==4.2.0
 urllib3==2.4.0
 wrapt==1.17.2
 yapf==0.43.0

@@ -17,7 +17,7 @@ class AiInteractionMentionedIdentitySet(IdentitySet, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.aiInteractionMentionedIdentitySet"
     # The conversation property
     conversation: Optional[TeamworkConversationIdentity] = None
-    # The tag property
+    # The tag details.
     tag: Optional[TeamworkTagIdentity] = None
     
     @staticmethod

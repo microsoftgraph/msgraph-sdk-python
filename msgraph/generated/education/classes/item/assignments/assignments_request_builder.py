@@ -75,7 +75,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-post-assignment?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/educationclass-post-assignments?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")

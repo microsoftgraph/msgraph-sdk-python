@@ -24,7 +24,7 @@ class ProtectionRuleBase(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # Contains error details if an operation on a rule fails.
     error: Optional[PublicError] = None
-    # true indicates that the protection rule is dynamic; false that it's static. Currently, only static rules are supported.
+    # The isAutoApplyEnabled property
     is_auto_apply_enabled: Optional[bool] = None
     # The identity of the person who last modified the rule.
     last_modified_by: Optional[IdentitySet] = None

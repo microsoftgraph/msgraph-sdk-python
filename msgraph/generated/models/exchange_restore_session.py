@@ -20,7 +20,7 @@ class ExchangeRestoreSession(RestoreSessionBase, Parsable):
     granular_mailbox_restore_artifacts: Optional[list[GranularMailboxRestoreArtifact]] = None
     # A collection of restore points and destination details that can be used to restore Exchange mailboxes.
     mailbox_restore_artifacts: Optional[list[MailboxRestoreArtifact]] = None
-    # The mailboxRestoreArtifactsBulkAdditionRequests property
+    # A collection of user mailboxes and destination details that can be used to restore Exchange mailboxes.
     mailbox_restore_artifacts_bulk_addition_requests: Optional[list[MailboxRestoreArtifactsBulkAdditionRequest]] = None
     
     @staticmethod

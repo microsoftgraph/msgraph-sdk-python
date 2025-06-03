@@ -13,9 +13,9 @@ from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
 class MailboxProtectionUnitsBulkAdditionJob(ProtectionUnitsBulkJobBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mailboxProtectionUnitsBulkAdditionJob"
-    # The directoryObjectIds property
+    # The list of Exchange directoryObjectIds to add to the Exchange protection policy.
     directory_object_ids: Optional[list[str]] = None
-    # The mailboxes property
+    # The list of Exchange email addresses to add to the Exchange protection policy.
     mailboxes: Optional[list[str]] = None
     
     @staticmethod

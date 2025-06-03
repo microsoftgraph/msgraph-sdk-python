@@ -13,9 +13,9 @@ from .protection_units_bulk_job_base import ProtectionUnitsBulkJobBase
 class SiteProtectionUnitsBulkAdditionJob(ProtectionUnitsBulkJobBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.siteProtectionUnitsBulkAdditionJob"
-    # The siteIds property
+    # The list of SharePoint site IDs to add to the SharePoint protection policy.
     site_ids: Optional[list[str]] = None
-    # The siteWebUrls property
+    # The list of SharePoint site URLs to add to the SharePoint protection policy.
     site_web_urls: Optional[list[str]] = None
     
     @staticmethod

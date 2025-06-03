@@ -18,17 +18,17 @@ from .entity import Entity
 
 @dataclass
 class ProtectionUnitsBulkJobBase(Entity, Parsable):
-    # The createdBy property
+    # The identity of person who created the job.
     created_by: Optional[IdentitySet] = None
-    # The createdDateTime property
+    # The time of creation of the job.
     created_date_time: Optional[datetime.datetime] = None
-    # The displayName property
+    # The name of the protection units bulk addition job.
     display_name: Optional[str] = None
-    # The error property
+    # Error details containing resource resolution failures, if any.
     error: Optional[PublicError] = None
-    # The lastModifiedBy property
+    # The identity of the person who last modified the job.
     last_modified_by: Optional[IdentitySet] = None
-    # The lastModifiedDateTime property
+    # Timestamp of the last modification made to the job.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None

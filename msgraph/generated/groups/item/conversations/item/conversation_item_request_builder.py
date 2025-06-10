@@ -52,10 +52,10 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ConversationItemRequestBuilderGetQueryParameters]] = None) -> Optional[Conversation]:
         """
-        The group's conversations.
+        Retrieve the properties and relationships of conversation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Conversation]
-        Find more info here: https://learn.microsoft.com/graph/api/group-get-conversation?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/conversation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -79,11 +79,12 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ConversationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The group's conversations.
+        Retrieve the properties and relationships of conversation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +122,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationItemRequestBuilderGetQueryParameters():
         """
-        The group's conversations.
+        Retrieve the properties and relationships of conversation object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

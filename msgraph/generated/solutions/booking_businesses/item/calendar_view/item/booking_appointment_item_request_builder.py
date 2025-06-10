@@ -100,6 +100,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
         """
         request_info = RequestInformation(Method.DELETE, '{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView/{bookingAppointment%2Did}', self.path_parameters)
         request_info.configure(request_configuration)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[BookingAppointmentItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:

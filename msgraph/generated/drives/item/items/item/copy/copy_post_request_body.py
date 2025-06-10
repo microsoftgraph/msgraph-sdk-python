@@ -15,6 +15,10 @@ class CopyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The childrenOnly property
+    children_only: Optional[bool] = None
+    # The includeAllVersionHistory property
+    include_all_version_history: Optional[bool] = None
     # The name property
     name: Optional[str] = None
     # The parentReference property
@@ -41,6 +45,8 @@ class CopyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ......models.item_reference import ItemReference
 
         fields: dict[str, Callable[[Any], None]] = {
+            "childrenOnly": lambda n : setattr(self, 'children_only', n.get_bool_value()),
+            "includeAllVersionHistory": lambda n : setattr(self, 'include_all_version_history', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(ItemReference)),
         }
@@ -54,6 +60,8 @@ class CopyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_bool_value("childrenOnly", self.children_only)
+        writer.write_bool_value("includeAllVersionHistory", self.include_all_version_history)
         writer.write_str_value("name", self.name)
         writer.write_object_value("parentReference", self.parent_reference)
         writer.write_additional_data_value(self.additional_data)

@@ -49,9 +49,10 @@ class AttendanceRecordsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AttendanceRecordsRequestBuilderGetQueryParameters]] = None) -> Optional[AttendanceRecordCollectionResponse]:
         """
-        List of attendance records of an attendance report. Read-only.
+        Get a list of attendanceRecord objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttendanceRecordCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/attendancerecord-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class AttendanceRecordsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AttendanceRecordsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List of attendance records of an attendance report. Read-only.
+        Get a list of attendanceRecord objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class AttendanceRecordsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttendanceRecordsRequestBuilderGetQueryParameters():
         """
-        List of attendance records of an attendance report. Read-only.
+        Get a list of attendanceRecord objects and their properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

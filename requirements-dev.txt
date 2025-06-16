@@ -8,7 +8,7 @@ azure-core==1.34.0
 azure-identity==1.23.0
 build==1.2.2.post1
 bumpver==2024.1130
-certifi==2025.4.26
+certifi==2025.6.15
 cffi==1.17.1
 charset-normalizer==3.4.2
 click==8.1.8

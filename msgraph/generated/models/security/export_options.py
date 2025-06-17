@@ -6,4 +6,8 @@ class ExportOptions(str, Enum):
     PdfReplacement = "pdfReplacement",
     Tags = "tags",
     UnknownFutureValue = "unknownFutureValue",
+    SplitSource = "splitSource",
+    IncludeFolderAndPath = "includeFolderAndPath",
+    FriendlyName = "friendlyName",
+    CondensePaths = "condensePaths",
 

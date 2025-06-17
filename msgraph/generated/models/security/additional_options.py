@@ -8,4 +8,12 @@ class AdditionalOptions(str, Enum):
     SubfolderContents = "subfolderContents",
     ListAttachments = "listAttachments",
     UnknownFutureValue = "unknownFutureValue",
+    HtmlTranscripts = "htmlTranscripts",
+    AdvancedIndexing = "advancedIndexing",
+    AllItemsInFolder = "allItemsInFolder",
+    IncludeFolderAndPath = "includeFolderAndPath",
+    CondensePaths = "condensePaths",
+    FriendlyName = "friendlyName",
+    SplitSource = "splitSource",
+    IncludeReport = "includeReport",
 

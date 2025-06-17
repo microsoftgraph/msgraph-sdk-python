@@ -16,9 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.event_collection_response import EventCollectionResponse
     from ....models.o_data_errors.o_data_error import ODataError
-    from .count.count_request_builder import CountRequestBuilder
     from .delta.delta_request_builder import DeltaRequestBuilder
-    from .item.event_item_request_builder import EventItemRequestBuilder
 
 class CalendarViewRequestBuilder(BaseRequestBuilder):
     """
@@ -32,20 +30,6 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/calendarView?endDateTime={endDateTime}&startDateTime={startDateTime}{&%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
-    
-    def by_event_id(self,event_id: str) -> EventItemRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.group entity.
-        param event_id: The unique identifier of event
-        Returns: EventItemRequestBuilder
-        """
-        if event_id is None:
-            raise TypeError("event_id cannot be null.")
-        from .item.event_item_request_builder import EventItemRequestBuilder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did"] = event_id
-        return EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CalendarViewRequestBuilderGetQueryParameters]] = None) -> Optional[EventCollectionResponse]:
         """
@@ -88,15 +72,6 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CalendarViewRequestBuilder(self.request_adapter, raw_url)
-    
-    @property
-    def count(self) -> CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count.count_request_builder import CountRequestBuilder
-
-        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def delta(self) -> DeltaRequestBuilder:

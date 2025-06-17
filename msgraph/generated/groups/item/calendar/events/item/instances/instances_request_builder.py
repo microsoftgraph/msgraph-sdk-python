@@ -16,9 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .......models.event_collection_response import EventCollectionResponse
     from .......models.o_data_errors.o_data_error import ODataError
-    from .count.count_request_builder import CountRequestBuilder
     from .delta.delta_request_builder import DeltaRequestBuilder
-    from .item.event_item_request_builder import EventItemRequestBuilder
 
 class InstancesRequestBuilder(BaseRequestBuilder):
     """
@@ -32,20 +30,6 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/calendar/events/{event%2Did}/instances?endDateTime={endDateTime}&startDateTime={startDateTime}{&%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
-    
-    def by_event_id1(self,event_id1: str) -> EventItemRequestBuilder:
-        """
-        Provides operations to manage the instances property of the microsoft.graph.event entity.
-        param event_id1: The unique identifier of event
-        Returns: EventItemRequestBuilder
-        """
-        if event_id1 is None:
-            raise TypeError("event_id1 cannot be null.")
-        from .item.event_item_request_builder import EventItemRequestBuilder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did1"] = event_id1
-        return EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[InstancesRequestBuilderGetQueryParameters]] = None) -> Optional[EventCollectionResponse]:
         """
@@ -87,15 +71,6 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return InstancesRequestBuilder(self.request_adapter, raw_url)
-    
-    @property
-    def count(self) -> CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count.count_request_builder import CountRequestBuilder
-
-        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def delta(self) -> DeltaRequestBuilder:

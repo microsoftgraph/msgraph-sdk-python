@@ -24,7 +24,7 @@ class Subscription(Entity, Parsable):
     encryption_certificate: Optional[str] = None
     # Optional. A custom app-provided identifier to help identify the certificate needed to decrypt resource data.
     encryption_certificate_id: Optional[str] = None
-    # Required. Specifies the date and time when the webhook subscription expires. The time is in UTC, and can be an amount of time from subscription creation that varies for the resource subscribed to. For the maximum supported subscription length of time, see Subscription lifetime.
+    # Required. Specifies the date and time when the webhook subscription expires. The time is in UTC, and can be an amount of time from subscription creation that varies for the resource subscribed to. Any value under 45 minutes after the time of the request is automatically set to 45 minutes after the request time. For the maximum supported subscription length of time, see Subscription lifetime.
     expiration_date_time: Optional[datetime.datetime] = None
     # Optional. When set to true, change notifications include resource data (such as content of a chat message).
     include_resource_data: Optional[bool] = None

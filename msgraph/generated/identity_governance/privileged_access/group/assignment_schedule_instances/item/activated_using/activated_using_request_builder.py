@@ -32,7 +32,7 @@ class ActivatedUsingRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ActivatedUsingRequestBuilderGetQueryParameters]] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleInstance]:
         """
-        When the request activates a membership or ownership in PIM for groups, this object represents the eligibility request for the group. Otherwise, it is null.
+        When the request activates a membership or ownership in PIM for Groups, this object represents the eligibility request for the group. Otherwise, it is null.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupEligibilityScheduleInstance]
         """
@@ -52,7 +52,7 @@ class ActivatedUsingRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ActivatedUsingRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        When the request activates a membership or ownership in PIM for groups, this object represents the eligibility request for the group. Otherwise, it is null.
+        When the request activates a membership or ownership in PIM for Groups, this object represents the eligibility request for the group. Otherwise, it is null.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class ActivatedUsingRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ActivatedUsingRequestBuilderGetQueryParameters():
         """
-        When the request activates a membership or ownership in PIM for groups, this object represents the eligibility request for the group. Otherwise, it is null.
+        When the request activates a membership or ownership in PIM for Groups, this object represents the eligibility request for the group. Otherwise, it is null.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

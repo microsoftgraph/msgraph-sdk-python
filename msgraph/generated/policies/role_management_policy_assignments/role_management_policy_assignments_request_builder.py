@@ -49,7 +49,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RoleManagementPolicyAssignmentsRequestBuilderGetQueryParameters]] = None) -> Optional[UnifiedRoleManagementPolicyAssignmentCollectionResponse]:
         """
-        Get the details of all role management policy assignments made in PIM for Microsoft Entra roles and PIM for groups.
+        Get the details of all role management policy assignments made in PIM for Microsoft Entra roles and PIM for Groups.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleManagementPolicyAssignmentCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/policyroot-list-rolemanagementpolicyassignments?view=graph-rest-1.0
@@ -93,7 +93,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RoleManagementPolicyAssignmentsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the details of all role management policy assignments made in PIM for Microsoft Entra roles and PIM for groups.
+        Get the details of all role management policy assignments made in PIM for Microsoft Entra roles and PIM for Groups.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +139,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleManagementPolicyAssignmentsRequestBuilderGetQueryParameters():
         """
-        Get the details of all role management policy assignments made in PIM for Microsoft Entra roles and PIM for groups.
+        Get the details of all role management policy assignments made in PIM for Microsoft Entra roles and PIM for Groups.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

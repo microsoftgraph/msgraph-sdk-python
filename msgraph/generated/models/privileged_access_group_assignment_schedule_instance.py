@@ -21,21 +21,21 @@ class PrivilegedAccessGroupAssignmentScheduleInstance(PrivilegedAccessScheduleIn
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupAssignmentScheduleInstance"
     # The identifier of the membership or ownership assignment relationship to the group. Required. The possible values are: owner, member,  unknownFutureValue. Supports $filter (eq).
     access_id: Optional[PrivilegedAccessGroupRelationships] = None
-    # When the request activates a membership or ownership in PIM for groups, this object represents the eligibility request for the group. Otherwise, it is null.
+    # When the request activates a membership or ownership in PIM for Groups, this object represents the eligibility request for the group. Otherwise, it is null.
     activated_using: Optional[PrivilegedAccessGroupEligibilityScheduleInstance] = None
     # The identifier of the privilegedAccessGroupAssignmentSchedule from which this instance was created. Required. Supports $filter (eq, ne).
     assignment_schedule_id: Optional[str] = None
     # Indicates whether the membership or ownership assignment is granted through activation of an eligibility or through direct assignment. Required. The possible values are: assigned, activated, unknownFutureValue. Supports $filter (eq).
     assignment_type: Optional[PrivilegedAccessGroupAssignmentType] = None
-    # References the group that is the scope of the membership or ownership assignment through PIM for groups. Supports $expand.
+    # References the group that is the scope of the membership or ownership assignment through PIM for Groups. Supports $expand.
     group: Optional[Group] = None
-    # The identifier of the group representing the scope of the membership or ownership assignment through PIM for groups. Optional. Supports $filter (eq).
+    # The identifier of the group representing the scope of the membership or ownership assignment through PIM for Groups. Optional. Supports $filter (eq).
     group_id: Optional[str] = None
     # Indicates whether the assignment is derived from a group assignment. It can further imply whether the caller can manage the assignment schedule. Required. The possible values are: direct, group, unknownFutureValue. Supports $filter (eq).
     member_type: Optional[PrivilegedAccessGroupMemberType] = None
     # References the principal that's in the scope of the membership or ownership assignment request through the group that's governed by PIM. Supports $expand.
     principal: Optional[DirectoryObject] = None
-    # The identifier of the principal whose membership or ownership assignment to the group is managed through PIM for groups. Required. Supports $filter (eq).
+    # The identifier of the principal whose membership or ownership assignment to the group is managed through PIM for Groups. Required. Supports $filter (eq).
     principal_id: Optional[str] = None
     
     @staticmethod

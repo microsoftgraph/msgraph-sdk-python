@@ -19,15 +19,15 @@ class PrivilegedAccessGroupAssignmentScheduleRequest(PrivilegedAccessScheduleReq
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest"
     # The identifier of a membership or ownership assignment relationship to the group. Required. The possible values are: owner, member, unknownFutureValue.
     access_id: Optional[PrivilegedAccessGroupRelationships] = None
-    # When the request activates a membership or ownership assignment in PIM for groups, this object represents the eligibility policy for the group. Otherwise, it is null. Supports $expand.
+    # When the request activates a membership or ownership assignment in PIM for Groups, this object represents the eligibility policy for the group. Otherwise, it is null. Supports $expand.
     activated_using: Optional[PrivilegedAccessGroupEligibilitySchedule] = None
-    # References the group that is the scope of the membership or ownership assignment request through PIM for groups. Supports $expand and $select nested in $expand for select properties like id, displayName, and mail.
+    # References the group that is the scope of the membership or ownership assignment request through PIM for Groups. Supports $expand and $select nested in $expand for select properties like id, displayName, and mail.
     group: Optional[Group] = None
-    # The identifier of the group representing the scope of the membership or ownership assignment through PIM for groups. Required.
+    # The identifier of the group representing the scope of the membership or ownership assignment through PIM for Groups. Required.
     group_id: Optional[str] = None
     # References the principal that's in the scope of this membership or ownership assignment request through the group that's governed by PIM. Supports $expand and $select nested in $expand for id only.
     principal: Optional[DirectoryObject] = None
-    # The identifier of the principal whose membership or ownership assignment to the group is managed through PIM for groups. Supports $filter (eq, ne).
+    # The identifier of the principal whose membership or ownership assignment to the group is managed through PIM for Groups. Supports $filter (eq, ne).
     principal_id: Optional[str] = None
     # Schedule created by this request. Supports $expand.
     target_schedule: Optional[PrivilegedAccessGroupEligibilitySchedule] = None

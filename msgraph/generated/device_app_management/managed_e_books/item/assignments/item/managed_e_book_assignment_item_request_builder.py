@@ -51,10 +51,10 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedEBookAssignmentItemRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Read properties and relationships of the managedEBookAssignment object.
+        Read properties and relationships of the iosVppEBookAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +72,11 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: ManagedEBookAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Update the properties of a iosVppEBookAssignment object.
+        Update the properties of a managedEBookAssignment object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -107,7 +107,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedEBookAssignmentItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedEBookAssignment object.
+        Read properties and relationships of the iosVppEBookAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +118,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: ManagedEBookAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a iosVppEBookAssignment object.
+        Update the properties of a managedEBookAssignment object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +151,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBookAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedEBookAssignment object.
+        Read properties and relationships of the iosVppEBookAssignment object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

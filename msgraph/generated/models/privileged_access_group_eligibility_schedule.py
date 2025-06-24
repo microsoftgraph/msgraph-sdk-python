@@ -19,15 +19,15 @@ class PrivilegedAccessGroupEligibilitySchedule(PrivilegedAccessSchedule, Parsabl
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupEligibilitySchedule"
     # The identifier of the membership or ownership eligibility to the group that is governed by PIM. Required. The possible values are: owner, member. Supports $filter (eq).
     access_id: Optional[PrivilegedAccessGroupRelationships] = None
-    # References the group that is the scope of the membership or ownership eligibility through PIM for groups. Supports $expand.
+    # References the group that is the scope of the membership or ownership eligibility through PIM for Groups. Supports $expand.
     group: Optional[Group] = None
-    # The identifier of the group representing the scope of the membership or ownership eligibility through PIM for groups. Required. Supports $filter (eq).
+    # The identifier of the group representing the scope of the membership or ownership eligibility through PIM for Groups. Required. Supports $filter (eq).
     group_id: Optional[str] = None
     # Indicates whether the assignment is derived from a group assignment. It can further imply whether the caller can manage the schedule. Required. The possible values are: direct, group, unknownFutureValue. Supports $filter (eq).
     member_type: Optional[PrivilegedAccessGroupMemberType] = None
     # References the principal that's in the scope of this membership or ownership eligibility request to the group that's governed by PIM. Supports $expand.
     principal: Optional[DirectoryObject] = None
-    # The identifier of the principal whose membership or ownership eligibility is granted through PIM for groups. Required. Supports $filter (eq).
+    # The identifier of the principal whose membership or ownership eligibility is granted through PIM for Groups. Required. Supports $filter (eq).
     principal_id: Optional[str] = None
     
     @staticmethod

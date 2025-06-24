@@ -33,7 +33,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GroupRequestBuilderGetQueryParameters]] = None) -> Optional[Group]:
         """
-        References the group that is the scope of the membership or ownership eligibility through PIM for groups. Supports $expand.
+        References the group that is the scope of the membership or ownership eligibility through PIM for Groups. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Group]
         """
@@ -53,7 +53,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GroupRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        References the group that is the scope of the membership or ownership eligibility through PIM for groups. Supports $expand.
+        References the group that is the scope of the membership or ownership eligibility through PIM for Groups. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,7 +84,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GroupRequestBuilderGetQueryParameters():
         """
-        References the group that is the scope of the membership or ownership eligibility through PIM for groups. Supports $expand.
+        References the group that is the scope of the membership or ownership eligibility through PIM for Groups. Supports $expand.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

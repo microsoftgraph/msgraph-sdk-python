@@ -35,7 +35,7 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FilterByCurrentUserWithOnRequestBuilderGetQueryParameters]] = None) -> Optional[FilterByCurrentUserWithOnGetResponse]:
         """
-        In Microsoft Entra entitlement management, return a collection of access package assignment approvals. The objects returned are those that are in scope for approval by the calling user. In PIM for groups, return a collection of assignment approvals. The objects returned are those that are in scope for approval by the calling user.
+        In Microsoft Entra entitlement management, return a collection of access package assignment approvals. The objects returned are those that are in scope for approval by the calling user. In PIM for Groups, return a collection of assignment approvals. The objects returned are those that are in scope for approval by the calling user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterByCurrentUserWithOnGetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/approval-filterbycurrentuser?view=graph-rest-1.0
@@ -56,7 +56,7 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FilterByCurrentUserWithOnRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        In Microsoft Entra entitlement management, return a collection of access package assignment approvals. The objects returned are those that are in scope for approval by the calling user. In PIM for groups, return a collection of assignment approvals. The objects returned are those that are in scope for approval by the calling user.
+        In Microsoft Entra entitlement management, return a collection of access package assignment approvals. The objects returned are those that are in scope for approval by the calling user. In PIM for Groups, return a collection of assignment approvals. The objects returned are those that are in scope for approval by the calling user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,7 +78,7 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FilterByCurrentUserWithOnRequestBuilderGetQueryParameters():
         """
-        In Microsoft Entra entitlement management, return a collection of access package assignment approvals. The objects returned are those that are in scope for approval by the calling user. In PIM for groups, return a collection of assignment approvals. The objects returned are those that are in scope for approval by the calling user.
+        In Microsoft Entra entitlement management, return a collection of access package assignment approvals. The objects returned are those that are in scope for approval by the calling user. In PIM for Groups, return a collection of assignment approvals. The objects returned are those that are in scope for approval by the calling user.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

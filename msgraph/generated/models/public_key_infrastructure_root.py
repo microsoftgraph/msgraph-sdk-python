@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class PublicKeyInfrastructureRoot(Entity, Parsable):
-    # The certificateBasedAuthConfigurations property
+    # The collection of public key infrastructure instances for the certificate-based authentication feature for users.
     certificate_based_auth_configurations: Optional[list[CertificateBasedAuthPki]] = None
     # The OdataType property
     odata_type: Optional[str] = None

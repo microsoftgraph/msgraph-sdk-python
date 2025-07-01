@@ -51,7 +51,7 @@ class PublicKeyInfrastructureRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PublicKeyInfrastructureRequestBuilderGetQueryParameters]] = None) -> Optional[PublicKeyInfrastructureRoot]:
         """
-        Get publicKeyInfrastructure from directory
+        The collection of public key infrastructure instances for the certificate-based authentication feature for users in a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PublicKeyInfrastructureRoot]
         """
@@ -105,7 +105,7 @@ class PublicKeyInfrastructureRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PublicKeyInfrastructureRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get publicKeyInfrastructure from directory
+        The collection of public key infrastructure instances for the certificate-based authentication feature for users in a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class PublicKeyInfrastructureRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PublicKeyInfrastructureRequestBuilderGetQueryParameters():
         """
-        Get publicKeyInfrastructure from directory
+        The collection of public key infrastructure instances for the certificate-based authentication feature for users in a Microsoft Entra tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

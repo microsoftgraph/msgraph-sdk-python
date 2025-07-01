@@ -54,7 +54,7 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AdministrativeUnitItemRequestBuilderGetQueryParameters]] = None) -> Optional[AdministrativeUnit]:
         """
-        Retrieve the properties and relationships of an administrativeUnit object.
+        Retrieve the properties and relationships of an administrativeUnit object. The administrativeUnit resource supports extensions, which also allows you to use the GET operation to get custom properties and extension data in an administrativeUnit instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
         Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-get?view=graph-rest-1.0
@@ -110,7 +110,7 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AdministrativeUnitItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an administrativeUnit object.
+        Retrieve the properties and relationships of an administrativeUnit object. The administrativeUnit resource supports extensions, which also allows you to use the GET operation to get custom properties and extension data in an administrativeUnit instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -181,7 +181,7 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdministrativeUnitItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an administrativeUnit object.
+        Retrieve the properties and relationships of an administrativeUnit object. The administrativeUnit resource supports extensions, which also allows you to use the GET operation to get custom properties and extension data in an administrativeUnit instance.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

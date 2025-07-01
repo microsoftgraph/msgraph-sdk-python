@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...entity import Entity
     from .billed_reconciliation import BilledReconciliation
+    from .unbilled_reconciliation import UnbilledReconciliation
 
 from ...entity import Entity
 
@@ -16,6 +17,8 @@ class BillingReconciliation(Entity, Parsable):
     billed: Optional[BilledReconciliation] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The unbilled property
+    unbilled: Optional[UnbilledReconciliation] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> BillingReconciliation:
@@ -35,12 +38,15 @@ class BillingReconciliation(Entity, Parsable):
         """
         from ...entity import Entity
         from .billed_reconciliation import BilledReconciliation
+        from .unbilled_reconciliation import UnbilledReconciliation
 
         from ...entity import Entity
         from .billed_reconciliation import BilledReconciliation
+        from .unbilled_reconciliation import UnbilledReconciliation
 
         fields: dict[str, Callable[[Any], None]] = {
             "billed": lambda n : setattr(self, 'billed', n.get_object_value(BilledReconciliation)),
+            "unbilled": lambda n : setattr(self, 'unbilled', n.get_object_value(UnbilledReconciliation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -56,5 +62,6 @@ class BillingReconciliation(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("billed", self.billed)
+        writer.write_object_value("unbilled", self.unbilled)
     
 

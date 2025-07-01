@@ -130,6 +130,7 @@ if TYPE_CHECKING:
     from .calendar_permission import CalendarPermission
     from .calendar_sharing_message import CalendarSharingMessage
     from .call import Call
+    from .call_event import CallEvent
     from .call_recording import CallRecording
     from .call_records.call_record import CallRecord
     from .call_records.organizer import Organizer
@@ -293,6 +294,7 @@ if TYPE_CHECKING:
     from .email_authentication_method import EmailAuthenticationMethod
     from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
     from .email_file_assessment_request import EmailFileAssessmentRequest
+    from .emergency_call_event import EmergencyCallEvent
     from .employee_experience_user import EmployeeExperienceUser
     from .endpoint import Endpoint
     from .end_user_notification import EndUserNotification
@@ -536,6 +538,7 @@ if TYPE_CHECKING:
     from .partners.billing.manifest import Manifest
     from .partners.billing.operation import Operation
     from .partners.billing.running_operation import RunningOperation
+    from .partners.billing.unbilled_reconciliation import UnbilledReconciliation
     from .partners.billing.unbilled_usage import UnbilledUsage
     from .partners.partners import Partners
     from .password_authentication_method import PasswordAuthenticationMethod
@@ -1516,6 +1519,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .call import Call
 
             return Call()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callEvent".casefold():
+            from .call_event import CallEvent
+
+            return CallEvent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecording".casefold():
             from .call_recording import CallRecording
 
@@ -2173,6 +2180,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .email_file_assessment_request import EmailFileAssessmentRequest
 
             return EmailFileAssessmentRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.emergencyCallEvent".casefold():
+            from .emergency_call_event import EmergencyCallEvent
+
+            return EmergencyCallEvent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.employeeExperienceUser".casefold():
             from .employee_experience_user import EmployeeExperienceUser
 
@@ -3150,6 +3161,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .partners.billing.running_operation import RunningOperation
 
             return RunningOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.unbilledReconciliation".casefold():
+            from .partners.billing.unbilled_reconciliation import UnbilledReconciliation
+
+            return UnbilledReconciliation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.unbilledUsage".casefold():
             from .partners.billing.unbilled_usage import UnbilledUsage
 
@@ -5104,6 +5119,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_event import CallEvent
         from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
         from .call_records.organizer import Organizer
@@ -5267,6 +5283,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .email_authentication_method import EmailAuthenticationMethod
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .emergency_call_event import EmergencyCallEvent
         from .employee_experience_user import EmployeeExperienceUser
         from .endpoint import Endpoint
         from .end_user_notification import EndUserNotification
@@ -5510,6 +5527,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .partners.billing.manifest import Manifest
         from .partners.billing.operation import Operation
         from .partners.billing.running_operation import RunningOperation
+        from .partners.billing.unbilled_reconciliation import UnbilledReconciliation
         from .partners.billing.unbilled_usage import UnbilledUsage
         from .partners.partners import Partners
         from .password_authentication_method import PasswordAuthenticationMethod
@@ -6091,6 +6109,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_event import CallEvent
         from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
         from .call_records.organizer import Organizer
@@ -6254,6 +6273,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .email_authentication_method import EmailAuthenticationMethod
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .emergency_call_event import EmergencyCallEvent
         from .employee_experience_user import EmployeeExperienceUser
         from .endpoint import Endpoint
         from .end_user_notification import EndUserNotification
@@ -6497,6 +6517,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .partners.billing.manifest import Manifest
         from .partners.billing.operation import Operation
         from .partners.billing.running_operation import RunningOperation
+        from .partners.billing.unbilled_reconciliation import UnbilledReconciliation
         from .partners.billing.unbilled_usage import UnbilledUsage
         from .partners.partners import Partners
         from .password_authentication_method import PasswordAuthenticationMethod

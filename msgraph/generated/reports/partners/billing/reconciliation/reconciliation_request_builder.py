@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.partners.billing.billing_reconciliation import BillingReconciliation
     from .billed.billed_request_builder import BilledRequestBuilder
+    from .unbilled.unbilled_request_builder import UnbilledRequestBuilder
 
 class ReconciliationRequestBuilder(BaseRequestBuilder):
     """
@@ -147,6 +148,15 @@ class ReconciliationRequestBuilder(BaseRequestBuilder):
         from .billed.billed_request_builder import BilledRequestBuilder
 
         return BilledRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unbilled(self) -> UnbilledRequestBuilder:
+        """
+        Provides operations to manage the unbilled property of the microsoft.graph.partners.billing.billingReconciliation entity.
+        """
+        from .unbilled.unbilled_request_builder import UnbilledRequestBuilder
+
+        return UnbilledRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ReconciliationRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

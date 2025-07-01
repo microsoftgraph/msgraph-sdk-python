@@ -49,9 +49,10 @@ class CertificateAuthoritiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CertificateAuthoritiesRequestBuilderGetQueryParameters]] = None) -> Optional[CertificateAuthorityDetailCollectionResponse]:
         """
-        Get certificateAuthorities from directory
+        Get a list of the certificateAuthorityDetail objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CertificateAuthorityDetailCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/certificatebasedauthpki-list-certificateauthorities?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class CertificateAuthoritiesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: CertificateAuthorityDetail, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CertificateAuthorityDetail]:
         """
-        Create new navigation property to certificateAuthorities for directory
+        Create a new certificateAuthorityDetail object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CertificateAuthorityDetail]
+        Find more info here: https://learn.microsoft.com/graph/api/certificatebasedauthpki-post-certificateauthorities?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class CertificateAuthoritiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CertificateAuthoritiesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get certificateAuthorities from directory
+        Get a list of the certificateAuthorityDetail objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class CertificateAuthoritiesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: CertificateAuthorityDetail, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to certificateAuthorities for directory
+        Create a new certificateAuthorityDetail object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +140,7 @@ class CertificateAuthoritiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CertificateAuthoritiesRequestBuilderGetQueryParameters():
         """
-        Get certificateAuthorities from directory
+        Get a list of the certificateAuthorityDetail objects and their properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -15,27 +15,27 @@ from .directory_object import DirectoryObject
 class CertificateAuthorityDetail(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.certificateAuthorityDetail"
-    # The certificate property
+    # The public key of the certificate authority.
     certificate: Optional[bytes] = None
-    # The certificateAuthorityType property
+    # The type of certificate authority. The possible values are: root, intermediate, unknownFutureValue. Supports $filter (eq).
     certificate_authority_type: Optional[CertificateAuthorityType] = None
-    # The certificateRevocationListUrl property
+    # The URL to check if the certificate is revoked.
     certificate_revocation_list_url: Optional[str] = None
-    # The createdDateTime property
+    # The date and time when the certificate authority was created.
     created_date_time: Optional[datetime.datetime] = None
     # The deltaCertificateRevocationListUrl property
     delta_certificate_revocation_list_url: Optional[str] = None
-    # The displayName property
+    # The display name of the certificate authority.
     display_name: Optional[str] = None
-    # The expirationDateTime property
+    # The date and time when the certificate authority expires. Supports $filter (eq) and $orderby.
     expiration_date_time: Optional[datetime.datetime] = None
-    # The isIssuerHintEnabled property
+    # Indicates whether the certificate picker presents the certificate authority to the user to use for authentication. Default value is false. Optional.
     is_issuer_hint_enabled: Optional[bool] = None
-    # The issuer property
+    # The issuer of the certificate authority.
     issuer: Optional[str] = None
-    # The issuerSubjectKeyIdentifier property
+    # The subject key identifier of certificate authority.
     issuer_subject_key_identifier: Optional[str] = None
-    # The thumbprint property
+    # The thumbprint of certificate authority certificate. Supports $filter (eq, startswith).
     thumbprint: Optional[str] = None
     
     @staticmethod

@@ -57,7 +57,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeletedItemsRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
-        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items. Retrieve the properties of a recently deleted directory object from deleted items. The following types are supported:- administrativeUnit- application- certificateBasedAuthPki- certificateAuthorityDetail- group- servicePrincipal- user
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
         """
@@ -77,7 +77,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeletedItemsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items. Retrieve the properties of a recently deleted directory object from deleted items. The following types are supported:- administrativeUnit- application- certificateBasedAuthPki- certificateAuthorityDetail- group- servicePrincipal- user
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -189,7 +189,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeletedItemsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items. Retrieve the properties of a recently deleted directory object from deleted items. The following types are supported:- administrativeUnit- application- certificateBasedAuthPki- certificateAuthorityDetail- group- servicePrincipal- user
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

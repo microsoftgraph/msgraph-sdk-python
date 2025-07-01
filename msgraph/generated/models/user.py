@@ -178,7 +178,7 @@ class User(DirectoryObject, Parsable):
     insights: Optional[ItemInsights] = None
     # A list for the user to describe their interests. Returned only on $select.
     interests: Optional[list[str]] = None
-    # The isManagementRestricted property
+    # true if the user is a member of a restricted management administrative unit. If not set, the default value is null and the default behavior is false. Read-only.  To manage a user who is a member of a restricted management administrative unit, the administrator or calling app must be assigned a Microsoft Entra role at the scope of the restricted management administrative unit. Returned only on $select.
     is_management_restricted: Optional[bool] = None
     # Don't use – reserved for future use.
     is_resource_account: Optional[bool] = None

@@ -34,9 +34,10 @@ class CertificateBasedAuthPkiItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property certificateBasedAuthConfigurations for directory
+        Delete a certificateBasedAuthPki object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/publickeyinfrastructureroot-delete-certificatebasedauthconfigurations?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,9 +53,10 @@ class CertificateBasedAuthPkiItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CertificateBasedAuthPkiItemRequestBuilderGetQueryParameters]] = None) -> Optional[CertificateBasedAuthPki]:
         """
-        Get certificateBasedAuthConfigurations from directory
+        Read the properties and relationships of a certificateBasedAuthPki object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CertificateBasedAuthPki]
+        Find more info here: https://learn.microsoft.com/graph/api/certificatebasedauthpki-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,10 +74,11 @@ class CertificateBasedAuthPkiItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: CertificateBasedAuthPki, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CertificateBasedAuthPki]:
         """
-        Update the navigation property certificateBasedAuthConfigurations in directory
+        Update the properties of a certificateBasedAuthPki object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CertificateBasedAuthPki]
+        Find more info here: https://learn.microsoft.com/graph/api/certificatebasedauthpki-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -95,7 +98,7 @@ class CertificateBasedAuthPkiItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property certificateBasedAuthConfigurations for directory
+        Delete a certificateBasedAuthPki object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +109,7 @@ class CertificateBasedAuthPkiItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CertificateBasedAuthPkiItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get certificateBasedAuthConfigurations from directory
+        Read the properties and relationships of a certificateBasedAuthPki object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +120,7 @@ class CertificateBasedAuthPkiItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: CertificateBasedAuthPki, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property certificateBasedAuthConfigurations in directory
+        Update the properties of a certificateBasedAuthPki object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +171,7 @@ class CertificateBasedAuthPkiItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CertificateBasedAuthPkiItemRequestBuilderGetQueryParameters():
         """
-        Get certificateBasedAuthConfigurations from directory
+        Read the properties and relationships of a certificateBasedAuthPki object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

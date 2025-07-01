@@ -21,7 +21,7 @@ class AdministrativeUnit(DirectoryObject, Parsable):
     display_name: Optional[str] = None
     # The collection of open extensions defined for this administrative unit. Nullable.
     extensions: Optional[list[Extension]] = None
-    # The isMemberManagementRestricted property
+    # true if members of this administrative unit should be treated as sensitive, which requires specific permissions to manage. If not set, the default value is null and the default behavior is false. Use this property to define administrative units with roles that don't inherit from tenant-level administrators, and where the management of individual member objects is limited to administrators scoped to a restricted management administrative unit. This property is immutable and can't be changed later.  For more information on how to work with restricted management administrative units, see Restricted management administrative units in Microsoft Entra ID.
     is_member_management_restricted: Optional[bool] = None
     # Users and groups that are members of this administrative unit. Supports $expand.
     members: Optional[list[DirectoryObject]] = None

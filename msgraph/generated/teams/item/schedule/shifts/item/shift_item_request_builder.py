@@ -72,7 +72,7 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Shift, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Shift]:
         """
-        Replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than 1 minute or longer than 24 hours.
+        Replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than one minute or longer than 24 hours.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Shift]
@@ -118,7 +118,7 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Shift, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than 1 minute or longer than 24 hours.
+        Replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than one minute or longer than 24 hours.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

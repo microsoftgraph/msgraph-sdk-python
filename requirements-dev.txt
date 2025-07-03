@@ -7,7 +7,7 @@ attrs==25.3.0
 azure-core==1.35.0
 azure-identity==1.23.0
 build==1.2.2.post1
-bumpver==2024.1130
+bumpver==2025.1131
 certifi==2025.6.15
 cffi==1.17.1
 charset-normalizer==3.4.2

@@ -32,6 +32,7 @@ if TYPE_CHECKING:
     from .access_review_schedule_definition import AccessReviewScheduleDefinition
     from .access_review_set import AccessReviewSet
     from .access_review_stage import AccessReviewStage
+    from .activities_container import ActivitiesContainer
     from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
     from .activity_history_item import ActivityHistoryItem
     from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
@@ -175,6 +176,7 @@ if TYPE_CHECKING:
     from .connected_organization import ConnectedOrganization
     from .contact import Contact
     from .contact_folder import ContactFolder
+    from .content_activity import ContentActivity
     from .content_sharing_session import ContentSharingSession
     from .content_type import ContentType
     from .contract import Contract
@@ -192,6 +194,7 @@ if TYPE_CHECKING:
     from .custom_extension_stage_setting import CustomExtensionStageSetting
     from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
     from .data_policy_operation import DataPolicyOperation
+    from .data_security_and_governance import DataSecurityAndGovernance
     from .day_note import DayNote
     from .default_managed_app_protection import DefaultManagedAppProtection
     from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
@@ -398,6 +401,7 @@ if TYPE_CHECKING:
     from .item_attachment import ItemAttachment
     from .item_insights import ItemInsights
     from .item_retention_label import ItemRetentionLabel
+    from .label_content_right import LabelContentRight
     from .landing_page import LandingPage
     from .landing_page_detail import LandingPageDetail
     from .learning_assignment import LearningAssignment
@@ -802,6 +806,8 @@ if TYPE_CHECKING:
     from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
     from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
     from .tenant_app_management_policy import TenantAppManagementPolicy
+    from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
+    from .tenant_protection_scope_container import TenantProtectionScopeContainer
     from .terms_and_conditions import TermsAndConditions
     from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
     from .terms_and_conditions_assignment import TermsAndConditionsAssignment
@@ -851,10 +857,12 @@ if TYPE_CHECKING:
     from .unmute_participant_operation import UnmuteParticipantOperation
     from .update_recording_status_operation import UpdateRecordingStatusOperation
     from .url_assessment_request import UrlAssessmentRequest
+    from .usage_rights_included import UsageRightsIncluded
     from .used_insight import UsedInsight
     from .user import User
     from .user_activity import UserActivity
     from .user_consent_request import UserConsentRequest
+    from .user_data_security_and_governance import UserDataSecurityAndGovernance
     from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
     from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
     from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
@@ -883,6 +891,7 @@ if TYPE_CHECKING:
     from .user_flow_language_page import UserFlowLanguagePage
     from .user_insights_settings import UserInsightsSettings
     from .user_install_state_summary import UserInstallStateSummary
+    from .user_protection_scope_container import UserProtectionScopeContainer
     from .user_registration_details import UserRegistrationDetails
     from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
     from .user_settings import UserSettings
@@ -1126,6 +1135,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .access_review_stage import AccessReviewStage
 
             return AccessReviewStage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.activitiesContainer".casefold():
+            from .activities_container import ActivitiesContainer
+
+            return ActivitiesContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
             from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
 
@@ -1700,6 +1713,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .contact_folder import ContactFolder
 
             return ContactFolder()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.contentActivity".casefold():
+            from .content_activity import ContentActivity
+
+            return ContentActivity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contentSharingSession".casefold():
             from .content_sharing_session import ContentSharingSession
 
@@ -1768,6 +1785,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .data_policy_operation import DataPolicyOperation
 
             return DataPolicyOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.dataSecurityAndGovernance".casefold():
+            from .data_security_and_governance import DataSecurityAndGovernance
+
+            return DataSecurityAndGovernance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.dayNote".casefold():
             from .day_note import DayNote
 
@@ -2594,6 +2615,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .item_retention_label import ItemRetentionLabel
 
             return ItemRetentionLabel()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.labelContentRight".casefold():
+            from .label_content_right import LabelContentRight
+
+            return LabelContentRight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.landingPage".casefold():
             from .landing_page import LandingPage
 
@@ -4215,6 +4240,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .tenant_app_management_policy import TenantAppManagementPolicy
 
             return TenantAppManagementPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantDataSecurityAndGovernance".casefold():
+            from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
+
+            return TenantDataSecurityAndGovernance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantProtectionScopeContainer".casefold():
+            from .tenant_protection_scope_container import TenantProtectionScopeContainer
+
+            return TenantProtectionScopeContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termsAndConditions".casefold():
             from .terms_and_conditions import TermsAndConditions
 
@@ -4412,6 +4445,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .url_assessment_request import UrlAssessmentRequest
 
             return UrlAssessmentRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.usageRightsIncluded".casefold():
+            from .usage_rights_included import UsageRightsIncluded
+
+            return UsageRightsIncluded()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.usedInsight".casefold():
             from .used_insight import UsedInsight
 
@@ -4428,6 +4465,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_consent_request import UserConsentRequest
 
             return UserConsentRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userDataSecurityAndGovernance".casefold():
+            from .user_data_security_and_governance import UserDataSecurityAndGovernance
+
+            return UserDataSecurityAndGovernance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthApplicationPerformance".casefold():
             from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
 
@@ -4540,6 +4581,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_install_state_summary import UserInstallStateSummary
 
             return UserInstallStateSummary()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userProtectionScopeContainer".casefold():
+            from .user_protection_scope_container import UserProtectionScopeContainer
+
+            return UserProtectionScopeContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userRegistrationDetails".casefold():
             from .user_registration_details import UserRegistrationDetails
 
@@ -5021,6 +5066,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .access_review_schedule_definition import AccessReviewScheduleDefinition
         from .access_review_set import AccessReviewSet
         from .access_review_stage import AccessReviewStage
+        from .activities_container import ActivitiesContainer
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .activity_history_item import ActivityHistoryItem
         from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
@@ -5164,6 +5210,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .connected_organization import ConnectedOrganization
         from .contact import Contact
         from .contact_folder import ContactFolder
+        from .content_activity import ContentActivity
         from .content_sharing_session import ContentSharingSession
         from .content_type import ContentType
         from .contract import Contract
@@ -5181,6 +5228,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
+        from .data_security_and_governance import DataSecurityAndGovernance
         from .day_note import DayNote
         from .default_managed_app_protection import DefaultManagedAppProtection
         from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
@@ -5387,6 +5435,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .item_attachment import ItemAttachment
         from .item_insights import ItemInsights
         from .item_retention_label import ItemRetentionLabel
+        from .label_content_right import LabelContentRight
         from .landing_page import LandingPage
         from .landing_page_detail import LandingPageDetail
         from .learning_assignment import LearningAssignment
@@ -5791,6 +5840,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
         from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
+        from .tenant_protection_scope_container import TenantProtectionScopeContainer
         from .terms_and_conditions import TermsAndConditions
         from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
         from .terms_and_conditions_assignment import TermsAndConditionsAssignment
@@ -5840,10 +5891,12 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .unmute_participant_operation import UnmuteParticipantOperation
         from .update_recording_status_operation import UpdateRecordingStatusOperation
         from .url_assessment_request import UrlAssessmentRequest
+        from .usage_rights_included import UsageRightsIncluded
         from .used_insight import UsedInsight
         from .user import User
         from .user_activity import UserActivity
         from .user_consent_request import UserConsentRequest
+        from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
         from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
         from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
@@ -5872,6 +5925,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_flow_language_page import UserFlowLanguagePage
         from .user_insights_settings import UserInsightsSettings
         from .user_install_state_summary import UserInstallStateSummary
+        from .user_protection_scope_container import UserProtectionScopeContainer
         from .user_registration_details import UserRegistrationDetails
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
         from .user_settings import UserSettings
@@ -6011,6 +6065,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .access_review_schedule_definition import AccessReviewScheduleDefinition
         from .access_review_set import AccessReviewSet
         from .access_review_stage import AccessReviewStage
+        from .activities_container import ActivitiesContainer
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .activity_history_item import ActivityHistoryItem
         from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
@@ -6154,6 +6209,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .connected_organization import ConnectedOrganization
         from .contact import Contact
         from .contact_folder import ContactFolder
+        from .content_activity import ContentActivity
         from .content_sharing_session import ContentSharingSession
         from .content_type import ContentType
         from .contract import Contract
@@ -6171,6 +6227,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
+        from .data_security_and_governance import DataSecurityAndGovernance
         from .day_note import DayNote
         from .default_managed_app_protection import DefaultManagedAppProtection
         from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
@@ -6377,6 +6434,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .item_attachment import ItemAttachment
         from .item_insights import ItemInsights
         from .item_retention_label import ItemRetentionLabel
+        from .label_content_right import LabelContentRight
         from .landing_page import LandingPage
         from .landing_page_detail import LandingPageDetail
         from .learning_assignment import LearningAssignment
@@ -6781,6 +6839,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
         from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
+        from .tenant_protection_scope_container import TenantProtectionScopeContainer
         from .terms_and_conditions import TermsAndConditions
         from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
         from .terms_and_conditions_assignment import TermsAndConditionsAssignment
@@ -6830,10 +6890,12 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .unmute_participant_operation import UnmuteParticipantOperation
         from .update_recording_status_operation import UpdateRecordingStatusOperation
         from .url_assessment_request import UrlAssessmentRequest
+        from .usage_rights_included import UsageRightsIncluded
         from .used_insight import UsedInsight
         from .user import User
         from .user_activity import UserActivity
         from .user_consent_request import UserConsentRequest
+        from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
         from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
         from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
@@ -6862,6 +6924,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_flow_language_page import UserFlowLanguagePage
         from .user_insights_settings import UserInsightsSettings
         from .user_install_state_summary import UserInstallStateSummary
+        from .user_protection_scope_container import UserProtectionScopeContainer
         from .user_registration_details import UserRegistrationDetails
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
         from .user_settings import UserSettings

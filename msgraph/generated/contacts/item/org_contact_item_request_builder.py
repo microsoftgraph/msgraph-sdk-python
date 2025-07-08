@@ -41,24 +41,6 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/contacts/{orgContact%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
-        """
-        Delete entity from contacts
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: None
-        """
-        request_info = self.to_delete_request_information(
-            request_configuration
-        )
-        from ...models.o_data_errors.o_data_error import ODataError
-
-        error_mapping: dict[str, type[ParsableFactory]] = {
-            "XXX": ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
     async def get(self,request_configuration: Optional[RequestConfiguration[OrgContactItemRequestBuilderGetQueryParameters]] = None) -> Optional[OrgContact]:
         """
         Get the properties and relationships of an organizational contact.
@@ -80,40 +62,6 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OrgContact, error_mapping)
     
-    async def patch(self,body: OrgContact, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[OrgContact]:
-        """
-        Update entity in contacts
-        param body: The request body
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[OrgContact]
-        """
-        if body is None:
-            raise TypeError("body cannot be null.")
-        request_info = self.to_patch_request_information(
-            body, request_configuration
-        )
-        from ...models.o_data_errors.o_data_error import ODataError
-
-        error_mapping: dict[str, type[ParsableFactory]] = {
-            "XXX": ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        from ...models.org_contact import OrgContact
-
-        return await self.request_adapter.send_async(request_info, OrgContact, error_mapping)
-    
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
-        """
-        Delete entity from contacts
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
-        request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
-        return request_info
-    
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[OrgContactItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Get the properties and relationships of an organizational contact.
@@ -123,21 +71,6 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
         request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
-        return request_info
-    
-    def to_patch_request_information(self,body: OrgContact, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
-        """
-        Update entity in contacts
-        param body: The request body
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
-        request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
     def with_url(self,raw_url: str) -> OrgContactItemRequestBuilder:
@@ -250,13 +183,6 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
         return TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
-    class OrgContactItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
-    
-    @dataclass
     class OrgContactItemRequestBuilderGetQueryParameters():
         """
         Get the properties and relationships of an organizational contact.
@@ -284,13 +210,6 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
     
     @dataclass
     class OrgContactItemRequestBuilderGetRequestConfiguration(RequestConfiguration[OrgContactItemRequestBuilderGetQueryParameters]):
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
-    
-    @dataclass
-    class OrgContactItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

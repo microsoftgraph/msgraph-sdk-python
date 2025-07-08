@@ -17,7 +17,10 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.sign_in import SignIn
     from ...models.sign_in_collection_response import SignInCollectionResponse
+    from .confirm_compromised.confirm_compromised_request_builder import ConfirmCompromisedRequestBuilder
+    from .confirm_safe.confirm_safe_request_builder import ConfirmSafeRequestBuilder
     from .count.count_request_builder import CountRequestBuilder
+    from .dismiss.dismiss_request_builder import DismissRequestBuilder
     from .item.sign_in_item_request_builder import SignInItemRequestBuilder
 
 class SignInsRequestBuilder(BaseRequestBuilder):
@@ -128,6 +131,24 @@ class SignInsRequestBuilder(BaseRequestBuilder):
         return SignInsRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def confirm_compromised(self) -> ConfirmCompromisedRequestBuilder:
+        """
+        Provides operations to call the confirmCompromised method.
+        """
+        from .confirm_compromised.confirm_compromised_request_builder import ConfirmCompromisedRequestBuilder
+
+        return ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def confirm_safe(self) -> ConfirmSafeRequestBuilder:
+        """
+        Provides operations to call the confirmSafe method.
+        """
+        from .confirm_safe.confirm_safe_request_builder import ConfirmSafeRequestBuilder
+
+        return ConfirmSafeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -135,6 +156,15 @@ class SignInsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def dismiss(self) -> DismissRequestBuilder:
+        """
+        Provides operations to call the dismiss method.
+        """
+        from .dismiss.dismiss_request_builder import DismissRequestBuilder
+
+        return DismissRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SignInsRequestBuilderGetQueryParameters():

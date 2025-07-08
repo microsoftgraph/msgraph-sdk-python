@@ -1,0 +1,25 @@
+from enum import Enum
+
+class UsageRights(str, Enum):
+    Unknown = "unknown",
+    DocEdit = "docEdit",
+    Edit = "edit",
+    Comment = "comment",
+    Export = "export",
+    Forward = "forward",
+    Owner = "owner",
+    Print = "print",
+    Reply = "reply",
+    ReplyAll = "replyAll",
+    View = "view",
+    Extract = "extract",
+    ViewRightsData = "viewRightsData",
+    EditRightsData = "editRightsData",
+    ObjModel = "objModel",
+    AccessDenied = "accessDenied",
+    UserDefinedProtectionTypeNotSupportedException = "userDefinedProtectionTypeNotSupportedException",
+    EncryptedProtectionTypeNotSupportedException = "encryptedProtectionTypeNotSupportedException",
+    PurviewClaimsChallengeNotSupportedException = "purviewClaimsChallengeNotSupportedException",
+    Exception = "exception",
+    UnknownFutureValue = "unknownFutureValue",
+

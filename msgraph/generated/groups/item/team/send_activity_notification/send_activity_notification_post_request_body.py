@@ -22,6 +22,8 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, BackedModel,
     activity_type: Optional[str] = None
     # The chainId property
     chain_id: Optional[int] = None
+    # The iconId property
+    icon_id: Optional[str] = None
     # The previewText property
     preview_text: Optional[ItemBody] = None
     # The recipient property
@@ -62,6 +64,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, BackedModel,
         fields: dict[str, Callable[[Any], None]] = {
             "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
             "chainId": lambda n : setattr(self, 'chain_id', n.get_int_value()),
+            "iconId": lambda n : setattr(self, 'icon_id', n.get_str_value()),
             "previewText": lambda n : setattr(self, 'preview_text', n.get_object_value(ItemBody)),
             "recipient": lambda n : setattr(self, 'recipient', n.get_object_value(TeamworkNotificationRecipient)),
             "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
@@ -80,6 +83,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, BackedModel,
             raise TypeError("writer cannot be null.")
         writer.write_str_value("activityType", self.activity_type)
         writer.write_int_value("chainId", self.chain_id)
+        writer.write_str_value("iconId", self.icon_id)
         writer.write_object_value("previewText", self.preview_text)
         writer.write_object_value("recipient", self.recipient)
         writer.write_str_value("teamsAppId", self.teams_app_id)

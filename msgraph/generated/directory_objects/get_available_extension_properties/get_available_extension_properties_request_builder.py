@@ -33,7 +33,7 @@ class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: GetAvailableExtensionPropertiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GetAvailableExtensionPropertiesPostResponse]:
         """
-        Return all directory extension definitions that have been registered in a directory, including through multi-tenant apps. The following entities support extension properties:
+        Return all directory extension definitions that are registered in a directory, including through multitenant apps. The following entities support extension properties:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetAvailableExtensionPropertiesPostResponse]
@@ -57,7 +57,7 @@ class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: GetAvailableExtensionPropertiesPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Return all directory extension definitions that have been registered in a directory, including through multi-tenant apps. The following entities support extension properties:
+        Return all directory extension definitions that are registered in a directory, including through multitenant apps. The following entities support extension properties:
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

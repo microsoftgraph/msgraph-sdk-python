@@ -56,6 +56,7 @@ if TYPE_CHECKING:
     from .team import Team
     from .todo import Todo
     from .user_activity import UserActivity
+    from .user_data_security_and_governance import UserDataSecurityAndGovernance
     from .user_print import UserPrint
     from .user_settings import UserSettings
     from .user_solution_root import UserSolutionRoot
@@ -126,6 +127,8 @@ class User(DirectoryObject, Parsable):
     creation_type: Optional[str] = None
     # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). The filter value is case-sensitive. To read this property, the calling app must be assigned the CustomSecAttributeAssignment.Read.All permission. To write this property, the calling app must be assigned the CustomSecAttributeAssignment.ReadWrite.All permissions. To read or write this property in delegated scenarios, the admin must be assigned the Attribute Assignment Administrator role.
     custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
+    # The data security and governance settings for the user. Read-only. Nullable.
+    data_security_and_governance: Optional[UserDataSecurityAndGovernance] = None
     # The name of the department in which the user works. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, and eq on null values).
     department: Optional[str] = None
     # The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000.
@@ -395,6 +398,7 @@ class User(DirectoryObject, Parsable):
         from .team import Team
         from .todo import Todo
         from .user_activity import UserActivity
+        from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_print import UserPrint
         from .user_settings import UserSettings
         from .user_solution_root import UserSolutionRoot
@@ -450,6 +454,7 @@ class User(DirectoryObject, Parsable):
         from .team import Team
         from .todo import Todo
         from .user_activity import UserActivity
+        from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_print import UserPrint
         from .user_settings import UserSettings
         from .user_solution_root import UserSolutionRoot
@@ -484,6 +489,7 @@ class User(DirectoryObject, Parsable):
             "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
             "creationType": lambda n : setattr(self, 'creation_type', n.get_str_value()),
             "customSecurityAttributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
+            "dataSecurityAndGovernance": lambda n : setattr(self, 'data_security_and_governance', n.get_object_value(UserDataSecurityAndGovernance)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
             "deviceEnrollmentLimit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
             "deviceManagementTroubleshootingEvents": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
@@ -627,6 +633,7 @@ class User(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
         writer.write_str_value("creationType", self.creation_type)
         writer.write_object_value("customSecurityAttributes", self.custom_security_attributes)
+        writer.write_object_value("dataSecurityAndGovernance", self.data_security_and_governance)
         writer.write_str_value("department", self.department)
         writer.write_int_value("deviceEnrollmentLimit", self.device_enrollment_limit)
         writer.write_collection_of_object_values("deviceManagementTroubleshootingEvents", self.device_management_troubleshooting_events)

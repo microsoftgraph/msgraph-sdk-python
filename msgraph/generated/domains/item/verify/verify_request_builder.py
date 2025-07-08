@@ -32,7 +32,7 @@ class VerifyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Domain]:
         """
-        Validates the ownership of the domain.
+        Validate the ownership of a domain. This operation only applies to an unverified domain. For an unverified domain, the isVerified property is false.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Domain]
         Find more info here: https://learn.microsoft.com/graph/api/domain-verify?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class VerifyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Validates the ownership of the domain.
+        Validate the ownership of a domain. This operation only applies to an unverified domain. For an unverified domain, the isVerified property is false.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

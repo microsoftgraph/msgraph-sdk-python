@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .alerts_v2.alerts_v2_request_builder import Alerts_v2RequestBuilder
     from .attack_simulation.attack_simulation_request_builder import AttackSimulationRequestBuilder
     from .cases.cases_request_builder import CasesRequestBuilder
+    from .data_security_and_governance.data_security_and_governance_request_builder import DataSecurityAndGovernanceRequestBuilder
     from .identities.identities_request_builder import IdentitiesRequestBuilder
     from .incidents.incidents_request_builder import IncidentsRequestBuilder
     from .labels.labels_request_builder import LabelsRequestBuilder
@@ -158,6 +159,15 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         from .cases.cases_request_builder import CasesRequestBuilder
 
         return CasesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def data_security_and_governance(self) -> DataSecurityAndGovernanceRequestBuilder:
+        """
+        Provides operations to manage the dataSecurityAndGovernance property of the microsoft.graph.security entity.
+        """
+        from .data_security_and_governance.data_security_and_governance_request_builder import DataSecurityAndGovernanceRequestBuilder
+
+        return DataSecurityAndGovernanceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def identities(self) -> IdentitiesRequestBuilder:

@@ -6,18 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
 from .entity import Entity
 
 @dataclass
 class WorkbookChartGridlines(Entity, Parsable):
-    # Represents the formatting of chart gridlines. Read-only.
-    format: Optional[WorkbookChartGridlinesFormat] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
-    # Indicates whether the axis gridlines are visible.
-    visible: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartGridlines:
@@ -36,14 +29,10 @@ class WorkbookChartGridlines(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
         from .entity import Entity
-        from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
         fields: dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartGridlinesFormat)),
-            "visible": lambda n : setattr(self, 'visible', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +47,5 @@ class WorkbookChartGridlines(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("format", self.format)
-        writer.write_bool_value("visible", self.visible)
     
 

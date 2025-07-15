@@ -34,7 +34,6 @@ class SendRequestBuilder(BaseRequestBuilder):
         Send an existing draft message. The draft message can be a new message draft, reply draft, reply-all draft, or a forward draft. This method saves the message in the Sent Items folder. Alternatively, send a new message in a single operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/message-send?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

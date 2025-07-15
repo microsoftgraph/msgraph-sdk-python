@@ -34,7 +34,6 @@ class MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(BaseRequestBuilder)
         Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverysearch-estimatestatistics?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

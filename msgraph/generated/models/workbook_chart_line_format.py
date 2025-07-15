@@ -11,10 +11,6 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartLineFormat(Entity, Parsable):
-    # The HTML color code that represents the color of lines in the chart.
-    color: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartLineFormat:
@@ -37,7 +33,6 @@ class WorkbookChartLineFormat(Entity, Parsable):
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
-            "color": lambda n : setattr(self, 'color', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,6 +47,5 @@ class WorkbookChartLineFormat(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("color", self.color)
     
 

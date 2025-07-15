@@ -35,7 +35,6 @@ class SharedWithMeRequestBuilder(BaseRequestBuilder):
         Get a list of driveItem objects shared with the owner of a drive. The driveItems returned from the sharedWithMe method always include the remoteItem facet that indicates they are items from a different drive.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharedWithMeGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/drive-sharedwithme?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

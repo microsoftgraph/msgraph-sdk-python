@@ -5,9 +5,6 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from .......models.authentication_method_modes import AuthenticationMethodModes
-
 @dataclass
 class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -16,7 +13,7 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The allowedCombinations property
-    allowed_combinations: Optional[list[AuthenticationMethodModes]] = None
+    allowed_combinations: Optional[list[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UpdateAllowedCombinationsPostRequestBody:
@@ -34,12 +31,8 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
-        from .......models.authentication_method_modes import AuthenticationMethodModes
-
-        from .......models.authentication_method_modes import AuthenticationMethodModes
-
         fields: dict[str, Callable[[Any], None]] = {
-            "allowedCombinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "allowedCombinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -51,7 +44,7 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_enum_values("allowedCombinations", self.allowed_combinations)
+        writer.write_collection_of_primitive_values("allowedCombinations", self.allowed_combinations)
         writer.write_additional_data_value(self.additional_data)
     
 

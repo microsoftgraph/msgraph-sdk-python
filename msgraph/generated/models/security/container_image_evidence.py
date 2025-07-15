@@ -6,20 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
-    from .container_registry_evidence import ContainerRegistryEvidence
 
 from .alert_evidence import AlertEvidence
 
 @dataclass
 class ContainerImageEvidence(AlertEvidence, Parsable):
-    # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.containerImageEvidence"
-    # The digest image entity, in case this is a tag image.
-    digest_image: Optional[ContainerImageEvidence] = None
-    # The unique identifier for the container image entity.
-    image_id: Optional[str] = None
-    # The container registry for this image.
-    registry: Optional[ContainerRegistryEvidence] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ContainerImageEvidence:
@@ -38,15 +29,10 @@ class ContainerImageEvidence(AlertEvidence, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
-        from .container_registry_evidence import ContainerRegistryEvidence
 
         from .alert_evidence import AlertEvidence
-        from .container_registry_evidence import ContainerRegistryEvidence
 
         fields: dict[str, Callable[[Any], None]] = {
-            "digestImage": lambda n : setattr(self, 'digest_image', n.get_object_value(ContainerImageEvidence)),
-            "imageId": lambda n : setattr(self, 'image_id', n.get_str_value()),
-            "registry": lambda n : setattr(self, 'registry', n.get_object_value(ContainerRegistryEvidence)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,8 +47,5 @@ class ContainerImageEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("digestImage", self.digest_image)
-        writer.write_str_value("imageId", self.image_id)
-        writer.write_object_value("registry", self.registry)
     
 

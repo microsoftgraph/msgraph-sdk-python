@@ -654,6 +654,9 @@ if TYPE_CHECKING:
     from .security.article import Article
     from .security.article_indicator import ArticleIndicator
     from .security.artifact import Artifact
+    from .security.audit_core_root import AuditCoreRoot
+    from .security.audit_log_query import AuditLogQuery
+    from .security.audit_log_record import AuditLogRecord
     from .security.authority_template import AuthorityTemplate
     from .security.case import Case
     from .security.cases_root import CasesRoot
@@ -727,6 +730,7 @@ if TYPE_CHECKING:
     from .security.whois_record import WhoisRecord
     from .security_reports_root import SecurityReportsRoot
     from .send_dtmf_tones_operation import SendDtmfTonesOperation
+    from .sensitivity_label import SensitivityLabel
     from .service_announcement import ServiceAnnouncement
     from .service_announcement_attachment import ServiceAnnouncementAttachment
     from .service_announcement_base import ServiceAnnouncementBase
@@ -3635,6 +3639,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.artifact import Artifact
 
             return Artifact()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.auditCoreRoot".casefold():
+            from .security.audit_core_root import AuditCoreRoot
+
+            return AuditCoreRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.auditLogQuery".casefold():
+            from .security.audit_log_query import AuditLogQuery
+
+            return AuditLogQuery()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.auditLogRecord".casefold():
+            from .security.audit_log_record import AuditLogRecord
+
+            return AuditLogRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.authorityTemplate".casefold():
             from .security.authority_template import AuthorityTemplate
 
@@ -3924,6 +3940,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .send_dtmf_tones_operation import SendDtmfTonesOperation
 
             return SendDtmfTonesOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sensitivityLabel".casefold():
+            from .sensitivity_label import SensitivityLabel
+
+            return SensitivityLabel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceAnnouncement".casefold():
             from .service_announcement import ServiceAnnouncement
 
@@ -5688,6 +5708,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
+        from .security.audit_core_root import AuditCoreRoot
+        from .security.audit_log_query import AuditLogQuery
+        from .security.audit_log_record import AuditLogRecord
         from .security.authority_template import AuthorityTemplate
         from .security.case import Case
         from .security.cases_root import CasesRoot
@@ -5761,6 +5784,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.whois_record import WhoisRecord
         from .security_reports_root import SecurityReportsRoot
         from .send_dtmf_tones_operation import SendDtmfTonesOperation
+        from .sensitivity_label import SensitivityLabel
         from .service_announcement import ServiceAnnouncement
         from .service_announcement_attachment import ServiceAnnouncementAttachment
         from .service_announcement_base import ServiceAnnouncementBase
@@ -6687,6 +6711,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
+        from .security.audit_core_root import AuditCoreRoot
+        from .security.audit_log_query import AuditLogQuery
+        from .security.audit_log_record import AuditLogRecord
         from .security.authority_template import AuthorityTemplate
         from .security.case import Case
         from .security.cases_root import CasesRoot
@@ -6760,6 +6787,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.whois_record import WhoisRecord
         from .security_reports_root import SecurityReportsRoot
         from .send_dtmf_tones_operation import SendDtmfTonesOperation
+        from .sensitivity_label import SensitivityLabel
         from .service_announcement import ServiceAnnouncement
         from .service_announcement_attachment import ServiceAnnouncementAttachment
         from .service_announcement_base import ServiceAnnouncementBase

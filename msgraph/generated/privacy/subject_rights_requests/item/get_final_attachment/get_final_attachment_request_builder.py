@@ -34,7 +34,6 @@ class GetFinalAttachmentRequestBuilder(BaseRequestBuilder):
         Get the final attachment for a subject rights request. The attachment is a zip file that contains all the files that were included by the privacy administrator.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-getfinalattachment?view=graph-rest-1.0
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate on 2022-03-22 and will be removed 2025-03-20", DeprecationWarning)
         request_info = self.to_get_request_information(

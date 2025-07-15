@@ -37,7 +37,6 @@ class GetSharePointActivityUserCountsWithPeriodRequestBuilder(BaseRequestBuilder
         Get the trend in the number of active users. A user is considered active if they have executed a file activity (save, sync, modify, or share) or visited a page within the specified time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getsharepointactivityusercounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

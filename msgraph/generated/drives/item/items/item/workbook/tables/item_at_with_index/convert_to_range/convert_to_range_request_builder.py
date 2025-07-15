@@ -35,7 +35,6 @@ class ConvertToRangeRequestBuilder(BaseRequestBuilder):
         Converts the table into a normal range of cells. All data is preserved.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
-        Find more info here: https://learn.microsoft.com/graph/api/table-converttorange?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

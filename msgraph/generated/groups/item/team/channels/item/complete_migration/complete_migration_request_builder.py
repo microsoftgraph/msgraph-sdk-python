@@ -34,7 +34,6 @@ class CompleteMigrationRequestBuilder(BaseRequestBuilder):
         Complete the message migration process by removing migration mode from a channel in a team. Migration mode is a special state that prevents certain operations, like sending messages and adding members, during the data migration process. After a completeMigration request is made, you can't import additional messages into the team. You can add members to the team after the request returns a successful response.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/channel-completemigration?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

@@ -20,7 +20,7 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
     # The day of the month on which the event occurs. Required if type is absoluteMonthly or absoluteYearly.
     day_of_month: Optional[int] = None
     # A collection of the days of the week on which the event occurs. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday. If type is relativeMonthly or relativeYearly, and daysOfWeek specifies more than one day, the event falls on the first day that satisfies the pattern.  Required if type is weekly, relativeMonthly, or relativeYearly.
-    days_of_week: Optional[list[DayOfWeek]] = None
+    days_of_week: Optional[list[str]] = None
     # The first day of the week. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday. Default is sunday. Required if type is weekly.
     first_day_of_week: Optional[DayOfWeek] = None
     # Specifies on which instance of the allowed days specified in daysOfWeek the event occurs, counted from the first instance in the month. The possible values are: first, second, third, fourth, last. Default is first. Optional and used if type is relativeMonthly or relativeYearly.
@@ -60,7 +60,7 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "dayOfMonth": lambda n : setattr(self, 'day_of_month', n.get_int_value()),
-            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(DayOfWeek)),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_primitive_values(str)),
             "firstDayOfWeek": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(DayOfWeek)),
             "index": lambda n : setattr(self, 'index', n.get_enum_value(WeekIndex)),
             "interval": lambda n : setattr(self, 'interval', n.get_int_value()),
@@ -79,7 +79,7 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("dayOfMonth", self.day_of_month)
-        writer.write_collection_of_enum_values("daysOfWeek", self.days_of_week)
+        writer.write_collection_of_primitive_values("daysOfWeek", self.days_of_week)
         writer.write_enum_value("firstDayOfWeek", self.first_day_of_week)
         writer.write_enum_value("index", self.index)
         writer.write_int_value("interval", self.interval)

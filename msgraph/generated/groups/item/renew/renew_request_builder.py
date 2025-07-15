@@ -34,7 +34,6 @@ class RenewRequestBuilder(BaseRequestBuilder):
         Renew a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/group-renew?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

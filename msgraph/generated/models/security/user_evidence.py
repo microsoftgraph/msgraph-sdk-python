@@ -6,19 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
-    from .stream import Stream
-    from .user_account import UserAccount
 
 from .alert_evidence import AlertEvidence
 
 @dataclass
 class UserEvidence(AlertEvidence, Parsable):
-    # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.userEvidence"
-    # The stream property
-    stream: Optional[Stream] = None
-    # The user account details.
-    user_account: Optional[UserAccount] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserEvidence:
@@ -37,16 +29,10 @@ class UserEvidence(AlertEvidence, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
-        from .stream import Stream
-        from .user_account import UserAccount
 
         from .alert_evidence import AlertEvidence
-        from .stream import Stream
-        from .user_account import UserAccount
 
         fields: dict[str, Callable[[Any], None]] = {
-            "stream": lambda n : setattr(self, 'stream', n.get_object_value(Stream)),
-            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +47,5 @@ class UserEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("stream", self.stream)
-        writer.write_object_value("userAccount", self.user_account)
     
 

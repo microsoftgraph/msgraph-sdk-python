@@ -18,6 +18,8 @@ class VirtualEventSession(OnlineMeetingBase, Parsable):
     end_date_time: Optional[DateTimeTimeZone] = None
     # The virtual event session start time.
     start_date_time: Optional[DateTimeTimeZone] = None
+    # The URL of the video on demand (VOD) for Microsoft Teams events that allows webinar and town hall organizers to quickly publish and share event recordings.
+    video_on_demand_web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> VirtualEventSession:
@@ -44,6 +46,7 @@ class VirtualEventSession(OnlineMeetingBase, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "videoOnDemandWebUrl": lambda n : setattr(self, 'video_on_demand_web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,5 +63,6 @@ class VirtualEventSession(OnlineMeetingBase, Parsable):
         super().serialize(writer)
         writer.write_object_value("endDateTime", self.end_date_time)
         writer.write_object_value("startDateTime", self.start_date_time)
+        writer.write_str_value("videoOnDemandWebUrl", self.video_on_demand_web_url)
     
 

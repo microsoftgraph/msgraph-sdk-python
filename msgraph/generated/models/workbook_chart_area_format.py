@@ -6,19 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .workbook_chart_fill import WorkbookChartFill
-    from .workbook_chart_font import WorkbookChartFont
 
 from .entity import Entity
 
 @dataclass
 class WorkbookChartAreaFormat(Entity, Parsable):
-    # Represents the fill format of an object, which includes background formatting information. Read-only.
-    fill: Optional[WorkbookChartFill] = None
-    # Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
-    font: Optional[WorkbookChartFont] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartAreaFormat:
@@ -37,16 +29,10 @@ class WorkbookChartAreaFormat(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .workbook_chart_fill import WorkbookChartFill
-        from .workbook_chart_font import WorkbookChartFont
 
         from .entity import Entity
-        from .workbook_chart_fill import WorkbookChartFill
-        from .workbook_chart_font import WorkbookChartFont
 
         fields: dict[str, Callable[[Any], None]] = {
-            "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookChartFill)),
-            "font": lambda n : setattr(self, 'font', n.get_object_value(WorkbookChartFont)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +47,5 @@ class WorkbookChartAreaFormat(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("fill", self.fill)
-        writer.write_object_value("font", self.font)
     
 

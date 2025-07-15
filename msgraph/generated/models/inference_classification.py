@@ -6,16 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .inference_classification_override import InferenceClassificationOverride
 
 from .entity import Entity
 
 @dataclass
 class InferenceClassification(Entity, Parsable):
-    # The OdataType property
-    odata_type: Optional[str] = None
-    # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-    overrides: Optional[list[InferenceClassificationOverride]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> InferenceClassification:
@@ -34,13 +29,10 @@ class InferenceClassification(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .inference_classification_override import InferenceClassificationOverride
 
         from .entity import Entity
-        from .inference_classification_override import InferenceClassificationOverride
 
         fields: dict[str, Callable[[Any], None]] = {
-            "overrides": lambda n : setattr(self, 'overrides', n.get_collection_of_object_values(InferenceClassificationOverride)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,6 +47,5 @@ class InferenceClassification(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("overrides", self.overrides)
     
 

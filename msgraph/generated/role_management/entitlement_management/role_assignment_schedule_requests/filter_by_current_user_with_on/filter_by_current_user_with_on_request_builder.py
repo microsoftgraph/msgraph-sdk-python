@@ -38,7 +38,6 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         In PIM, retrieve the requests for active role assignments for a particular principal. The principal can be the creator or approver of the unifiedRoleAssignmentScheduleRequest object, or they can be the target of the assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterByCurrentUserWithOnGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroleassignmentschedulerequest-filterbycurrentuser?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

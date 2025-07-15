@@ -35,7 +35,6 @@ class VerifyRequestBuilder(BaseRequestBuilder):
         Validate the ownership of a domain. This operation only applies to an unverified domain. For an unverified domain, the isVerified property is false.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Domain]
-        Find more info here: https://learn.microsoft.com/graph/api/domain-verify?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

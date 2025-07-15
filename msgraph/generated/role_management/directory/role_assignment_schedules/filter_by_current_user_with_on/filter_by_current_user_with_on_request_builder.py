@@ -38,7 +38,6 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         Retrieve the schedules for active role assignment operations for which the signed-in user is the principal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterByCurrentUserWithOnGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroleassignmentschedule-filterbycurrentuser?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -35,7 +35,6 @@ class StartRequestBuilder(BaseRequestBuilder):
         Submits the print job to the associated printer or printerShare. It will be printed after any existing pending jobs are completed, aborted, or canceled.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintJobStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/printjob-start?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

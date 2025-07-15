@@ -34,7 +34,6 @@ class RemoveEmailRequestBuilder(BaseRequestBuilder):
         Remove the email address of a channel. You can remove an email address only if it was provisioned using the provisionEmail method or through the Microsoft Teams client.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/channel-removeemail?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

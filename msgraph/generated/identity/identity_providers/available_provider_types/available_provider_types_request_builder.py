@@ -35,7 +35,6 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         Get all identity providers supported in a directory.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AvailableProviderTypesGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/identityproviderbase-availableprovidertypes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

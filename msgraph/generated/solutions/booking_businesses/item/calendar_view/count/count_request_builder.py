@@ -27,7 +27,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView/$count?end={end}&start={start}{&%24filter,%24search}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView/$count{?%24filter,%24search}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CountRequestBuilderGetQueryParameters]] = None) -> Optional[int]:
         """
@@ -85,23 +85,13 @@ class CountRequestBuilder(BaseRequestBuilder):
                 return "%24filter"
             if original_name == "search":
                 return "%24search"
-            if original_name == "end":
-                return "end"
-            if original_name == "start":
-                return "start"
             return original_name
         
-        # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
-        end: Optional[str] = None
-
         # Filter items by property values
         filter: Optional[str] = None
 
         # Search items by search phrases
         search: Optional[str] = None
-
-        # The start date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T19:00:00-08:00
-        start: Optional[str] = None
 
     
     @dataclass

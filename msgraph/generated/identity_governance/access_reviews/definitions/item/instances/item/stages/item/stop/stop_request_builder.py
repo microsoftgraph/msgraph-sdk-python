@@ -34,7 +34,6 @@ class StopRequestBuilder(BaseRequestBuilder):
         Stop an access review stage that is inProgress. After the access review stage stops, the stage status will be Completed and the reviewers can no longer give input. If there are subsequent stages that depend on the completed stage, the next stage will be created.  The accessReviewInstanceDecisionItem objects will always reflect the last decisions recorded across all stages at that given time, regardless of the status of the stages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewstage-stop?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

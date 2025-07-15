@@ -34,7 +34,6 @@ class ClearRequestBuilder(BaseRequestBuilder):
         Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/tablesort-clear?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

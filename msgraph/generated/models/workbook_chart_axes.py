@@ -6,20 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .workbook_chart_axis import WorkbookChartAxis
 
 from .entity import Entity
 
 @dataclass
 class WorkbookChartAxes(Entity, Parsable):
-    # Represents the category axis in a chart. Read-only.
-    category_axis: Optional[WorkbookChartAxis] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
-    # Represents the series axis of a 3-dimensional chart. Read-only.
-    series_axis: Optional[WorkbookChartAxis] = None
-    # Represents the value axis in an axis. Read-only.
-    value_axis: Optional[WorkbookChartAxis] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartAxes:
@@ -38,15 +29,10 @@ class WorkbookChartAxes(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .workbook_chart_axis import WorkbookChartAxis
 
         from .entity import Entity
-        from .workbook_chart_axis import WorkbookChartAxis
 
         fields: dict[str, Callable[[Any], None]] = {
-            "categoryAxis": lambda n : setattr(self, 'category_axis', n.get_object_value(WorkbookChartAxis)),
-            "seriesAxis": lambda n : setattr(self, 'series_axis', n.get_object_value(WorkbookChartAxis)),
-            "valueAxis": lambda n : setattr(self, 'value_axis', n.get_object_value(WorkbookChartAxis)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,8 +47,5 @@ class WorkbookChartAxes(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("categoryAxis", self.category_axis)
-        writer.write_object_value("seriesAxis", self.series_axis)
-        writer.write_object_value("valueAxis", self.value_axis)
     
 

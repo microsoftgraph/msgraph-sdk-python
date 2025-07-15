@@ -6,19 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .workbook_chart_fill import WorkbookChartFill
-    from .workbook_chart_line_format import WorkbookChartLineFormat
 
 from .entity import Entity
 
 @dataclass
 class WorkbookChartSeriesFormat(Entity, Parsable):
-    # Represents the fill format of a chart series, which includes background formatting information. Read-only.
-    fill: Optional[WorkbookChartFill] = None
-    # Represents line formatting. Read-only.
-    line: Optional[WorkbookChartLineFormat] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartSeriesFormat:
@@ -37,16 +29,10 @@ class WorkbookChartSeriesFormat(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .workbook_chart_fill import WorkbookChartFill
-        from .workbook_chart_line_format import WorkbookChartLineFormat
 
         from .entity import Entity
-        from .workbook_chart_fill import WorkbookChartFill
-        from .workbook_chart_line_format import WorkbookChartLineFormat
 
         fields: dict[str, Callable[[Any], None]] = {
-            "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookChartFill)),
-            "line": lambda n : setattr(self, 'line', n.get_object_value(WorkbookChartLineFormat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +47,5 @@ class WorkbookChartSeriesFormat(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("fill", self.fill)
-        writer.write_object_value("line", self.line)
     
 

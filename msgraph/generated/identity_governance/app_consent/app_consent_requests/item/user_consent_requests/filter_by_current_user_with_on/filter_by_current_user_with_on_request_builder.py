@@ -38,7 +38,6 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         Retrieve a collection of userConsentRequest objects for accessing a specified app, for which the current user is the reviewer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterByCurrentUserWithOnGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/userconsentrequest-filterbycurrentuser?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

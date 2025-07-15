@@ -35,7 +35,6 @@ class PublishRequestBuilder(BaseRequestBuilder):
         Change the state of an educationModule from its original draft status to the published status. Only teachers in the class can perform this operation. When a module is in draft status, students can't see the module. When you call this API, the module appears in the student's class work list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationModule]
-        Find more info here: https://learn.microsoft.com/graph/api/educationmodule-publish?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

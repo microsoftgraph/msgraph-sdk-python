@@ -6,7 +6,6 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .training import Training
-    from .training_assigned_to import TrainingAssignedTo
     from .training_setting import TrainingSetting
 
 from .training_setting import TrainingSetting
@@ -16,7 +15,7 @@ class MicrosoftTrainingAssignmentMapping(TrainingSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftTrainingAssignmentMapping"
     # A user collection that specifies to whom the training should be assigned. Possible values are: none, allUsers, clickedPayload, compromised, reportedPhish, readButNotClicked, didNothing, unknownFutureValue.
-    assigned_to: Optional[list[TrainingAssignedTo]] = None
+    assigned_to: Optional[list[str]] = None
     # The training property
     training: Optional[Training] = None
     
@@ -37,15 +36,13 @@ class MicrosoftTrainingAssignmentMapping(TrainingSetting, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .training import Training
-        from .training_assigned_to import TrainingAssignedTo
         from .training_setting import TrainingSetting
 
         from .training import Training
-        from .training_assigned_to import TrainingAssignedTo
         from .training_setting import TrainingSetting
 
         fields: dict[str, Callable[[Any], None]] = {
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_collection_of_enum_values(TrainingAssignedTo)),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_collection_of_primitive_values(str)),
             "training": lambda n : setattr(self, 'training', n.get_object_value(Training)),
         }
         super_fields = super().get_field_deserializers()
@@ -61,7 +58,7 @@ class MicrosoftTrainingAssignmentMapping(TrainingSetting, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_enum_values("assignedTo", self.assigned_to)
+        writer.write_collection_of_primitive_values("assignedTo", self.assigned_to)
         writer.write_object_value("training", self.training)
     
 

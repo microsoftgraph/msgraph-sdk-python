@@ -33,7 +33,7 @@ class MicrosoftGraphPartnersBillingExportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ExportPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Operation]:
         """
-        Invoke action export
+        Export the unbilled invoice reconciliation data for a specific billing period and a given currency.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Operation]
@@ -56,7 +56,7 @@ class MicrosoftGraphPartnersBillingExportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ExportPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action export
+        Export the unbilled invoice reconciliation data for a specific billing period and a given currency.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -11,10 +11,6 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class UrlEvidence(AlertEvidence, Parsable):
-    # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.urlEvidence"
-    # The Unique Resource Locator (URL).
-    url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UrlEvidence:
@@ -37,7 +33,6 @@ class UrlEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
 
         fields: dict[str, Callable[[Any], None]] = {
-            "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,6 +47,5 @@ class UrlEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("url", self.url)
     
 

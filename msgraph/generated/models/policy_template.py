@@ -6,19 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
-    from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
 
 from .entity import Entity
 
 @dataclass
 class PolicyTemplate(Entity, Parsable):
-    # Defines an optional cross-tenant access policy template with user synchronization settings for a multitenant organization.
-    multi_tenant_organization_identity_synchronization: Optional[MultiTenantOrganizationIdentitySyncPolicyTemplate] = None
-    # Defines an optional cross-tenant access policy template with inbound and outbound partner configuration settings for a multitenant organization.
-    multi_tenant_organization_partner_configuration: Optional[MultiTenantOrganizationPartnerConfigurationTemplate] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PolicyTemplate:
@@ -37,16 +29,10 @@ class PolicyTemplate(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
-        from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
 
         from .entity import Entity
-        from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
-        from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
 
         fields: dict[str, Callable[[Any], None]] = {
-            "multiTenantOrganizationIdentitySynchronization": lambda n : setattr(self, 'multi_tenant_organization_identity_synchronization', n.get_object_value(MultiTenantOrganizationIdentitySyncPolicyTemplate)),
-            "multiTenantOrganizationPartnerConfiguration": lambda n : setattr(self, 'multi_tenant_organization_partner_configuration', n.get_object_value(MultiTenantOrganizationPartnerConfigurationTemplate)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +47,5 @@ class PolicyTemplate(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("multiTenantOrganizationIdentitySynchronization", self.multi_tenant_organization_identity_synchronization)
-        writer.write_object_value("multiTenantOrganizationPartnerConfiguration", self.multi_tenant_organization_partner_configuration)
     
 

@@ -8,9 +8,6 @@ if TYPE_CHECKING:
     from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
     from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
     from .custom_authentication_extension import CustomAuthenticationExtension
-    from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
-    from .custom_extension_client_configuration import CustomExtensionClientConfiguration
-    from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
     from .entity import Entity
     from .identity_governance.custom_task_extension import CustomTaskExtension
     from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
@@ -21,18 +18,6 @@ from .entity import Entity
 
 @dataclass
 class CustomCalloutExtension(Entity, Parsable):
-    # Configuration for securing the API call to the logic app. For example, using OAuth client credentials flow.
-    authentication_configuration: Optional[CustomExtensionAuthenticationConfiguration] = None
-    # HTTP connection settings that define how long Microsoft Entra ID can wait for a connection to a logic app, how many times you can retry a timed-out connection and the exception scenarios when retries are allowed.
-    client_configuration: Optional[CustomExtensionClientConfiguration] = None
-    # Description for the customCalloutExtension object.
-    description: Optional[str] = None
-    # Display name for the customCalloutExtension object.
-    display_name: Optional[str] = None
-    # The type and details for configuring the endpoint to call the logic app's workflow.
-    endpoint_configuration: Optional[CustomExtensionEndpointConfiguration] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CustomCalloutExtension:
@@ -86,9 +71,6 @@ class CustomCalloutExtension(Entity, Parsable):
         from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
         from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
         from .custom_authentication_extension import CustomAuthenticationExtension
-        from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
-        from .custom_extension_client_configuration import CustomExtensionClientConfiguration
-        from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
         from .entity import Entity
         from .identity_governance.custom_task_extension import CustomTaskExtension
         from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
@@ -98,9 +80,6 @@ class CustomCalloutExtension(Entity, Parsable):
         from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
         from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
         from .custom_authentication_extension import CustomAuthenticationExtension
-        from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
-        from .custom_extension_client_configuration import CustomExtensionClientConfiguration
-        from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
         from .entity import Entity
         from .identity_governance.custom_task_extension import CustomTaskExtension
         from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
@@ -108,11 +87,6 @@ class CustomCalloutExtension(Entity, Parsable):
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
         fields: dict[str, Callable[[Any], None]] = {
-            "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(CustomExtensionAuthenticationConfiguration)),
-            "clientConfiguration": lambda n : setattr(self, 'client_configuration', n.get_object_value(CustomExtensionClientConfiguration)),
-            "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "endpointConfiguration": lambda n : setattr(self, 'endpoint_configuration', n.get_object_value(CustomExtensionEndpointConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -127,10 +101,5 @@ class CustomCalloutExtension(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
-        writer.write_object_value("clientConfiguration", self.client_configuration)
-        writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("endpointConfiguration", self.endpoint_configuration)
     
 

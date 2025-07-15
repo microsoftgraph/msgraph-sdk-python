@@ -34,7 +34,6 @@ class MicrosoftGraphSecurityUpdateIndexRequestBuilder(BaseRequestBuilder):
         Trigger an indexOperation to make a non-custodial data source and its associated data source searchable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverynoncustodialdatasource-updateindex?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

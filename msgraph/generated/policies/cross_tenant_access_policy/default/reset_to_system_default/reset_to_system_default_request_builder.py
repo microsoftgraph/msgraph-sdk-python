@@ -34,7 +34,6 @@ class ResetToSystemDefaultRequestBuilder(BaseRequestBuilder):
         Reset any changes made to the default configuration in a cross-tenant access policy back to the system default.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationdefault-resettosystemdefault?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

@@ -6,16 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .todo_task_list import TodoTaskList
 
 from .entity import Entity
 
 @dataclass
 class Todo(Entity, Parsable):
-    # The task lists in the users mailbox.
-    lists: Optional[list[TodoTaskList]] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Todo:
@@ -34,13 +29,10 @@ class Todo(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .todo_task_list import TodoTaskList
 
         from .entity import Entity
-        from .todo_task_list import TodoTaskList
 
         fields: dict[str, Callable[[Any], None]] = {
-            "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(TodoTaskList)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,6 +47,5 @@ class Todo(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("lists", self.lists)
     
 

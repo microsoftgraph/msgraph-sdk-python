@@ -40,7 +40,6 @@ class GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder(BaseRequestBuilder):
         Get a virtualEventWebinar collection where the specified user is either the organizer or a coorganizer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetByUserIdAndRoleWithUserIdWithRoleGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/virtualeventwebinar-getbyuseridandrole?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

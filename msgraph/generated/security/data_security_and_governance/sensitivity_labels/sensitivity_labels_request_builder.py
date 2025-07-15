@@ -1,0 +1,238 @@
+from __future__ import annotations
+from collections.abc import Callable
+from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
+from kiota_abstractions.get_path_parameters import get_path_parameters
+from kiota_abstractions.method import Method
+from kiota_abstractions.request_adapter import RequestAdapter
+from kiota_abstractions.request_information import RequestInformation
+from kiota_abstractions.request_option import RequestOption
+from kiota_abstractions.serialization import Parsable, ParsableFactory
+from typing import Any, Optional, TYPE_CHECKING, Union
+from warnings import warn
+
+if TYPE_CHECKING:
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.sensitivity_label import SensitivityLabel
+    from ....models.sensitivity_label_collection_response import SensitivityLabelCollectionResponse
+    from .compute_inheritance_with_label_ids_with_locale_with_content_formats.compute_inheritance_with_label_ids_with_locale_with_content_formats_request_builder import ComputeInheritanceWithLabelIdsWithLocaleWithContentFormatsRequestBuilder
+    from .compute_rights_and_inheritance.compute_rights_and_inheritance_request_builder import ComputeRightsAndInheritanceRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.sensitivity_label_item_request_builder import SensitivityLabelItemRequestBuilder
+
+class SensitivityLabelsRequestBuilder(BaseRequestBuilder):
+    """
+    Provides operations to manage the sensitivityLabels property of the microsoft.graph.dataSecurityAndGovernance entity.
+    """
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
+        """
+        Instantiates a new SensitivityLabelsRequestBuilder and sets the default values.
+        param path_parameters: The raw url or the url-template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
+        """
+        super().__init__(request_adapter, "{+baseurl}/security/dataSecurityAndGovernance/sensitivityLabels{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+    
+    def by_sensitivity_label_id(self,sensitivity_label_id: str) -> SensitivityLabelItemRequestBuilder:
+        """
+        Provides operations to manage the sensitivityLabels property of the microsoft.graph.dataSecurityAndGovernance entity.
+        param sensitivity_label_id: The unique identifier of sensitivityLabel
+        Returns: SensitivityLabelItemRequestBuilder
+        """
+        if sensitivity_label_id is None:
+            raise TypeError("sensitivity_label_id cannot be null.")
+        from .item.sensitivity_label_item_request_builder import SensitivityLabelItemRequestBuilder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["sensitivityLabel%2Did"] = sensitivity_label_id
+        return SensitivityLabelItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def compute_inheritance_with_label_ids_with_locale_with_content_formats(self,content_formats: str, label_ids: str, locale: str) -> ComputeInheritanceWithLabelIdsWithLocaleWithContentFormatsRequestBuilder:
+        """
+        Provides operations to call the computeInheritance method.
+        param content_formats: Usage: contentFormats={contentFormats}
+        param label_ids: Usage: labelIds={labelIds}
+        param locale: Usage: locale='{locale}'
+        Returns: ComputeInheritanceWithLabelIdsWithLocaleWithContentFormatsRequestBuilder
+        """
+        if content_formats is None:
+            raise TypeError("content_formats cannot be null.")
+        if label_ids is None:
+            raise TypeError("label_ids cannot be null.")
+        if locale is None:
+            raise TypeError("locale cannot be null.")
+        from .compute_inheritance_with_label_ids_with_locale_with_content_formats.compute_inheritance_with_label_ids_with_locale_with_content_formats_request_builder import ComputeInheritanceWithLabelIdsWithLocaleWithContentFormatsRequestBuilder
+
+        return ComputeInheritanceWithLabelIdsWithLocaleWithContentFormatsRequestBuilder(self.request_adapter, self.path_parameters, content_formats, label_ids, locale)
+    
+    async def get(self,request_configuration: Optional[RequestConfiguration[SensitivityLabelsRequestBuilderGetQueryParameters]] = None) -> Optional[SensitivityLabelCollectionResponse]:
+        """
+        List the sensitivity labels available for the entire tenant.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[SensitivityLabelCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantdatasecurityandgovernance-list-sensitivitylabels?view=graph-rest-1.0
+        """
+        request_info = self.to_get_request_information(
+            request_configuration
+        )
+        from ....models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: dict[str, type[ParsableFactory]] = {
+            "XXX": ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        from ....models.sensitivity_label_collection_response import SensitivityLabelCollectionResponse
+
+        return await self.request_adapter.send_async(request_info, SensitivityLabelCollectionResponse, error_mapping)
+    
+    async def post(self,body: SensitivityLabel, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SensitivityLabel]:
+        """
+        Create new navigation property to sensitivityLabels for security
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[SensitivityLabel]
+        """
+        if body is None:
+            raise TypeError("body cannot be null.")
+        request_info = self.to_post_request_information(
+            body, request_configuration
+        )
+        from ....models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: dict[str, type[ParsableFactory]] = {
+            "XXX": ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        from ....models.sensitivity_label import SensitivityLabel
+
+        return await self.request_adapter.send_async(request_info, SensitivityLabel, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SensitivityLabelsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
+        """
+        List the sensitivity labels available for the entire tenant.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
+        request_info.headers.try_add("Accept", "application/json")
+        return request_info
+    
+    def to_post_request_information(self,body: SensitivityLabel, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+        """
+        Create new navigation property to sensitivityLabels for security
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise TypeError("body cannot be null.")
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
+        request_info.headers.try_add("Accept", "application/json")
+        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+        return request_info
+    
+    def with_url(self,raw_url: str) -> SensitivityLabelsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: SensitivityLabelsRequestBuilder
+        """
+        if raw_url is None:
+            raise TypeError("raw_url cannot be null.")
+        return SensitivityLabelsRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def compute_rights_and_inheritance(self) -> ComputeRightsAndInheritanceRequestBuilder:
+        """
+        Provides operations to call the computeRightsAndInheritance method.
+        """
+        from .compute_rights_and_inheritance.compute_rights_and_inheritance_request_builder import ComputeRightsAndInheritanceRequestBuilder
+
+        return ComputeRightsAndInheritanceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def count(self) -> CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        from .count.count_request_builder import CountRequestBuilder
+
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @dataclass
+    class SensitivityLabelsRequestBuilderGetQueryParameters():
+        """
+        List the sensitivity labels available for the entire tenant.
+        """
+        def get_query_parameter(self,original_name: str) -> str:
+            """
+            Maps the query parameters names to their encoded names for the URI template parsing.
+            param original_name: The original query parameter name in the class.
+            Returns: str
+            """
+            if original_name is None:
+                raise TypeError("original_name cannot be null.")
+            if original_name == "count":
+                return "%24count"
+            if original_name == "expand":
+                return "%24expand"
+            if original_name == "filter":
+                return "%24filter"
+            if original_name == "orderby":
+                return "%24orderby"
+            if original_name == "search":
+                return "%24search"
+            if original_name == "select":
+                return "%24select"
+            if original_name == "skip":
+                return "%24skip"
+            if original_name == "top":
+                return "%24top"
+            return original_name
+        
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[list[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[list[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[list[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
+    
+    @dataclass
+    class SensitivityLabelsRequestBuilderGetRequestConfiguration(RequestConfiguration[SensitivityLabelsRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class SensitivityLabelsRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+

@@ -40,7 +40,6 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         Retrieves a series based on its position in the collection
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartSeries]
-        Find more info here: https://learn.microsoft.com/graph/api/chartseriescollection-itemat?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

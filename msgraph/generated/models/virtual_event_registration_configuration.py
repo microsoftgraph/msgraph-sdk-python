@@ -6,21 +6,12 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
     from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
 from .entity import Entity
 
 @dataclass
 class VirtualEventRegistrationConfiguration(Entity, Parsable):
-    # Total capacity of the virtual event.
-    capacity: Optional[int] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
-    # Registration questions.
-    questions: Optional[list[VirtualEventRegistrationQuestionBase]] = None
-    # Registration URL of the virtual event.
-    registration_web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> VirtualEventRegistrationConfiguration:
@@ -48,17 +39,12 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
         from .entity import Entity
-        from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
         fields: dict[str, Callable[[Any], None]] = {
-            "capacity": lambda n : setattr(self, 'capacity', n.get_int_value()),
-            "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(VirtualEventRegistrationQuestionBase)),
-            "registrationWebUrl": lambda n : setattr(self, 'registration_web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,8 +59,5 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("capacity", self.capacity)
-        writer.write_collection_of_object_values("questions", self.questions)
-        writer.write_str_value("registrationWebUrl", self.registration_web_url)
     
 

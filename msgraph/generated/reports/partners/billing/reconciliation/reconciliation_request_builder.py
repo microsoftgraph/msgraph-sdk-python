@@ -52,7 +52,7 @@ class ReconciliationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ReconciliationRequestBuilderGetQueryParameters]] = None) -> Optional[BillingReconciliation]:
         """
-        Represents details for billed invoice reconciliation data.
+        Represents details for billed and unbilled invoice reconciliation data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BillingReconciliation]
         """
@@ -106,7 +106,7 @@ class ReconciliationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ReconciliationRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents details for billed invoice reconciliation data.
+        Represents details for billed and unbilled invoice reconciliation data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +168,7 @@ class ReconciliationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ReconciliationRequestBuilderGetQueryParameters():
         """
-        Represents details for billed invoice reconciliation data.
+        Represents details for billed and unbilled invoice reconciliation data.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

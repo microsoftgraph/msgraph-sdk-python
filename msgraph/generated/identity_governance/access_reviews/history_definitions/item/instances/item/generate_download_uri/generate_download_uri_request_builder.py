@@ -35,7 +35,6 @@ class GenerateDownloadUriRequestBuilder(BaseRequestBuilder):
         Generates a URI for an accessReviewHistoryInstance object the status for which is done. Each URI can be used to retrieve the instance's review history data. Each URI is valid for 24 hours and can be retrieved by fetching the downloadUri property from the accessReviewHistoryInstance object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewHistoryInstance]
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewhistoryinstance-generatedownloaduri?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

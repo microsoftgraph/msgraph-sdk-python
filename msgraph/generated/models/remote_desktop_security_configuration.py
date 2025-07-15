@@ -6,18 +6,11 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .target_device_group import TargetDeviceGroup
 
 from .entity import Entity
 
 @dataclass
 class RemoteDesktopSecurityConfiguration(Entity, Parsable):
-    # Determines if Microsoft Entra ID RDS authentication protocol for RDP is enabled.
-    is_remote_desktop_protocol_enabled: Optional[bool] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
-    # The collection of target device groups that are associated with the RDS security configuration that will be enabled for SSO when a client connects to the target device over RDP using the new Microsoft Entra ID RDS authentication protocol.
-    target_device_groups: Optional[list[TargetDeviceGroup]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RemoteDesktopSecurityConfiguration:
@@ -36,14 +29,10 @@ class RemoteDesktopSecurityConfiguration(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .target_device_group import TargetDeviceGroup
 
         from .entity import Entity
-        from .target_device_group import TargetDeviceGroup
 
         fields: dict[str, Callable[[Any], None]] = {
-            "isRemoteDesktopProtocolEnabled": lambda n : setattr(self, 'is_remote_desktop_protocol_enabled', n.get_bool_value()),
-            "targetDeviceGroups": lambda n : setattr(self, 'target_device_groups', n.get_collection_of_object_values(TargetDeviceGroup)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +47,5 @@ class RemoteDesktopSecurityConfiguration(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isRemoteDesktopProtocolEnabled", self.is_remote_desktop_protocol_enabled)
-        writer.write_collection_of_object_values("targetDeviceGroups", self.target_device_groups)
     
 

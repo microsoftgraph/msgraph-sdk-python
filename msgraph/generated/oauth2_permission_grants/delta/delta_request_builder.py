@@ -35,7 +35,6 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         Get newly created, updated, or deleted oauth2permissiongrant objects without performing a full read of the entire resource collection. For more information, see Use delta query to track changes in Microsoft Graph data for details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/oauth2permissiongrant-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -35,7 +35,6 @@ class SupportedLanguagesRequestBuilder(BaseRequestBuilder):
         Get the list of locales and languages that are supported for the user, as configured on the user's mailbox server. When setting up an Outlook client, the user selects the preferred language from this supported list. You can subsequently get the preferred language bygetting the user's mailbox settings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SupportedLanguagesGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/outlookuser-supportedlanguages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

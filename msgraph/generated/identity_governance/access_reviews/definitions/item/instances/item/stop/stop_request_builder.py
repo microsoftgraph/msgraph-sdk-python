@@ -34,7 +34,6 @@ class StopRequestBuilder(BaseRequestBuilder):
         Stop a currently active accessReviewInstance. After the access review instance stops, the instance status is marked as Completed, the reviewers can no longer give input, and the access review decisions are applied. Stopping an instance will not stop future instances. To prevent a recurring access review from starting future instances, update the schedule definition to change its scheduled end date.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstance-stop?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

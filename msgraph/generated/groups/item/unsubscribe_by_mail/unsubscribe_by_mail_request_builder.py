@@ -34,7 +34,6 @@ class UnsubscribeByMailRequestBuilder(BaseRequestBuilder):
         Calling this method prevents the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/group-unsubscribebymail?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

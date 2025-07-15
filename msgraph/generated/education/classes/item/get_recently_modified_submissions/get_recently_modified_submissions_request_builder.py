@@ -35,7 +35,6 @@ class GetRecentlyModifiedSubmissionsRequestBuilder(BaseRequestBuilder):
         Retrieve submissions modified in the previous seven days. Only teachers and applications with application permissions can perform this operation. A submission object represents a student's work for an assignment. Resources associated with the submission represent their work. A teacher or application with application permissions has full access to all submission objects. The grade and feedback from a teacher are part of the educationOutcome associated with this object. Only teachers or applications with application permissions can add or change grades and feedback. Students can't see the grade or feedback until the assignment is released.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetRecentlyModifiedSubmissionsGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-getrecentlymodifiedsubmissions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -37,7 +37,6 @@ class GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder(BaseRequestB
         Get the daily total number of groups and how many of them were active based on email conversations, Yammer posts, and SharePoint file activities.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getoffice365groupsactivitygroupcounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

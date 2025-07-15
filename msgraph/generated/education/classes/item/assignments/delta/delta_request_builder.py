@@ -35,7 +35,6 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         Get a list of newly-created or updated assignments without reading the whole collection. A teacher or an application running with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

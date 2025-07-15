@@ -6,7 +6,6 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .user_experience_analytics_insight import UserExperienceAnalyticsInsight
 
 from .entity import Entity
 
@@ -15,10 +14,6 @@ class UserExperienceAnalyticsOverview(Entity, Parsable):
     """
     The user experience analytics overview entity contains the overall score and the scores and insights of every metric of all categories.
     """
-    # The user experience analytics insights. Read-only.
-    insights: Optional[list[UserExperienceAnalyticsInsight]] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserExperienceAnalyticsOverview:
@@ -37,13 +32,10 @@ class UserExperienceAnalyticsOverview(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .user_experience_analytics_insight import UserExperienceAnalyticsInsight
 
         from .entity import Entity
-        from .user_experience_analytics_insight import UserExperienceAnalyticsInsight
 
         fields: dict[str, Callable[[Any], None]] = {
-            "insights": lambda n : setattr(self, 'insights', n.get_collection_of_object_values(UserExperienceAnalyticsInsight)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +50,5 @@ class UserExperienceAnalyticsOverview(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("insights", self.insights)
     
 

@@ -51,7 +51,7 @@ class UnbilledRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UnbilledRequestBuilderGetQueryParameters]] = None) -> Optional[UnbilledReconciliation]:
         """
-        Get unbilled from reports
+        Represents details for unbilled invoice reconciliation data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnbilledReconciliation]
         """
@@ -105,7 +105,7 @@ class UnbilledRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UnbilledRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get unbilled from reports
+        Represents details for unbilled invoice reconciliation data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class UnbilledRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UnbilledRequestBuilderGetQueryParameters():
         """
-        Get unbilled from reports
+        Represents details for unbilled invoice reconciliation data.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

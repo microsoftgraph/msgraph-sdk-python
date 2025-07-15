@@ -35,7 +35,6 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         List all operators supported in the scoping filters.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterOperatorsGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-filteroperators?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

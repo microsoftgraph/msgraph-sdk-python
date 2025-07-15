@@ -14,20 +14,6 @@ class EBookInstallSummary(Entity, Parsable):
     """
     Contains properties for the installation summary of a book for a device.
     """
-    # Number of Devices that have failed to install this book.
-    failed_device_count: Optional[int] = None
-    # Number of Users that have 1 or more device that failed to install this book.
-    failed_user_count: Optional[int] = None
-    # Number of Devices that have successfully installed this book.
-    installed_device_count: Optional[int] = None
-    # Number of Users whose devices have all succeeded to install this book.
-    installed_user_count: Optional[int] = None
-    # Number of Devices that does not have this book installed.
-    not_installed_device_count: Optional[int] = None
-    # Number of Users that did not install this book.
-    not_installed_user_count: Optional[int] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EBookInstallSummary:
@@ -50,12 +36,6 @@ class EBookInstallSummary(Entity, Parsable):
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
-            "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
-            "failedUserCount": lambda n : setattr(self, 'failed_user_count', n.get_int_value()),
-            "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
-            "installedUserCount": lambda n : setattr(self, 'installed_user_count', n.get_int_value()),
-            "notInstalledDeviceCount": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
-            "notInstalledUserCount": lambda n : setattr(self, 'not_installed_user_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,11 +50,5 @@ class EBookInstallSummary(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("failedDeviceCount", self.failed_device_count)
-        writer.write_int_value("failedUserCount", self.failed_user_count)
-        writer.write_int_value("installedDeviceCount", self.installed_device_count)
-        writer.write_int_value("installedUserCount", self.installed_user_count)
-        writer.write_int_value("notInstalledDeviceCount", self.not_installed_device_count)
-        writer.write_int_value("notInstalledUserCount", self.not_installed_user_count)
     
 

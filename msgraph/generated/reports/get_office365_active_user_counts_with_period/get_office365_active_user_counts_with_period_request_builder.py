@@ -37,7 +37,6 @@ class GetOffice365ActiveUserCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         Get the count of daily active users in the reporting period by product.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getoffice365activeusercounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

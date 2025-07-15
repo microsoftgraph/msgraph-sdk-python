@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
     from .cloud_app_security_session_control import CloudAppSecuritySessionControl
     from .persistent_browser_session_control import PersistentBrowserSessionControl
+    from .secure_sign_in_session_control import SecureSignInSessionControl
     from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
 @dataclass
@@ -28,6 +29,8 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
     odata_type: Optional[str] = None
     # Session control to define whether to persist cookies or not. All apps should be selected for this session control to work correctly.
     persistent_browser: Optional[PersistentBrowserSessionControl] = None
+    # The secureSignInSession property
+    secure_sign_in_session: Optional[SecureSignInSessionControl] = None
     # Session control to enforce signin frequency.
     sign_in_frequency: Optional[SignInFrequencySessionControl] = None
     
@@ -50,11 +53,13 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
         from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
         from .cloud_app_security_session_control import CloudAppSecuritySessionControl
         from .persistent_browser_session_control import PersistentBrowserSessionControl
+        from .secure_sign_in_session_control import SecureSignInSessionControl
         from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
         from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
         from .cloud_app_security_session_control import CloudAppSecuritySessionControl
         from .persistent_browser_session_control import PersistentBrowserSessionControl
+        from .secure_sign_in_session_control import SecureSignInSessionControl
         from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -63,6 +68,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
             "disableResilienceDefaults": lambda n : setattr(self, 'disable_resilience_defaults', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "persistentBrowser": lambda n : setattr(self, 'persistent_browser', n.get_object_value(PersistentBrowserSessionControl)),
+            "secureSignInSession": lambda n : setattr(self, 'secure_sign_in_session', n.get_object_value(SecureSignInSessionControl)),
             "signInFrequency": lambda n : setattr(self, 'sign_in_frequency', n.get_object_value(SignInFrequencySessionControl)),
         }
         return fields
@@ -80,6 +86,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
         writer.write_bool_value("disableResilienceDefaults", self.disable_resilience_defaults)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("persistentBrowser", self.persistent_browser)
+        writer.write_object_value("secureSignInSession", self.secure_sign_in_session)
         writer.write_object_value("signInFrequency", self.sign_in_frequency)
         writer.write_additional_data_value(self.additional_data)
     

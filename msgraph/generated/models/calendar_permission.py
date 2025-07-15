@@ -14,7 +14,7 @@ from .entity import Entity
 @dataclass
 class CalendarPermission(Entity, Parsable):
     # List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
-    allowed_roles: Optional[list[CalendarRoleType]] = None
+    allowed_roles: Optional[list[str]] = None
     # Represents a share recipient or delegate who has access to the calendar. For the 'My Organization' share recipient, the address property is null. Read-only.
     email_address: Optional[EmailAddress] = None
     # True if the user in context (recipient or delegate) is inside the same organization as the calendar owner.
@@ -51,7 +51,7 @@ class CalendarPermission(Entity, Parsable):
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
-            "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(CalendarRoleType)),
+            "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_primitive_values(str)),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
             "isInsideOrganization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
             "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
@@ -70,7 +70,7 @@ class CalendarPermission(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_enum_values("allowedRoles", self.allowed_roles)
+        writer.write_collection_of_primitive_values("allowedRoles", self.allowed_roles)
         writer.write_object_value("emailAddress", self.email_address)
         writer.write_bool_value("isInsideOrganization", self.is_inside_organization)
         writer.write_bool_value("isRemovable", self.is_removable)

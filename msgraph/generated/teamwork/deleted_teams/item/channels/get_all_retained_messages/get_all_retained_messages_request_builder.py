@@ -35,7 +35,6 @@ class GetAllRetainedMessagesRequestBuilder(BaseRequestBuilder):
         Get all retained messages across all channels in a team. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetAllRetainedMessagesGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/channel-getallretainedmessages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -35,7 +35,6 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         Get a set of contact folders that have been added, deleted, or removed from the user's mailbox. A delta function call for contact folders in a mailbox is similar to a GET request, except that by appropriately applying state tokens in one or more of these calls, you can query for incremental changes in the contact folders. This allows you to maintain and synchronize a local store of a user's contact folders without having to fetch all the contact folders of that mailbox from the server every time.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

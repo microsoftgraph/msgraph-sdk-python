@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ...models.tenant_data_security_and_governance import TenantDataSecurityAndGovernance
     from .process_content_async.process_content_async_request_builder import ProcessContentAsyncRequestBuilder
     from .protection_scopes.protection_scopes_request_builder import ProtectionScopesRequestBuilder
+    from .sensitivity_labels.sensitivity_labels_request_builder import SensitivityLabelsRequestBuilder
 
 class DataSecurityAndGovernanceRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class DataSecurityAndGovernanceRequestBuilder(BaseRequestBuilder):
         from .protection_scopes.protection_scopes_request_builder import ProtectionScopesRequestBuilder
 
         return ProtectionScopesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sensitivity_labels(self) -> SensitivityLabelsRequestBuilder:
+        """
+        Provides operations to manage the sensitivityLabels property of the microsoft.graph.dataSecurityAndGovernance entity.
+        """
+        from .sensitivity_labels.sensitivity_labels_request_builder import SensitivityLabelsRequestBuilder
+
+        return SensitivityLabelsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DataSecurityAndGovernanceRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

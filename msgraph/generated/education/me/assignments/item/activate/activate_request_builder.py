@@ -35,7 +35,6 @@ class ActivateRequestBuilder(BaseRequestBuilder):
         Activate an inactive educationAssignment to signal that the assignment has further action items for teachers or students. This action can only be performed by a teacher on currently inactive assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-activate?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

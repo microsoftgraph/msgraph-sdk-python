@@ -39,6 +39,7 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         Retrieve a point based on its position within the series.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPoint]
+        Find more info here: https://learn.microsoft.com/graph/api/chartpointscollection-itemat?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -33,10 +33,11 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: InvitePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[InviteParticipantsOperation]:
         """
-        Invite participants to the active call. For more information about how to handle operations, see commsOperation.
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InviteParticipantsOperation]
+        Find more info here: https://learn.microsoft.com/graph/api/participant-delete?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -56,7 +57,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: InvitePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invite participants to the active call. For more information about how to handle operations, see commsOperation.
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

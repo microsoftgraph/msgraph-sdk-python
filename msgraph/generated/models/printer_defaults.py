@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .print_color_mode import PrintColorMode
     from .print_duplex_mode import PrintDuplexMode
+    from .print_finishing import PrintFinishing
     from .print_multipage_layout import PrintMultipageLayout
     from .print_orientation import PrintOrientation
     from .print_quality import PrintQuality
@@ -31,7 +32,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
     # The default duplex (double-sided) configuration to use when printing a document. Valid values are described in the following table.
     duplex_mode: Optional[PrintDuplexMode] = None
     # The default set of finishings to apply to print jobs. Valid values are described in the following table.
-    finishings: Optional[list[str]] = None
+    finishings: Optional[list[PrintFinishing]] = None
     # The default fitPdfToPage setting. True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
     fit_pdf_to_page: Optional[bool] = None
     # The default input bin that serves as the paper source.
@@ -75,6 +76,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .print_color_mode import PrintColorMode
         from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
         from .print_multipage_layout import PrintMultipageLayout
         from .print_orientation import PrintOrientation
         from .print_quality import PrintQuality
@@ -82,6 +84,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
 
         from .print_color_mode import PrintColorMode
         from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
         from .print_multipage_layout import PrintMultipageLayout
         from .print_orientation import PrintOrientation
         from .print_quality import PrintQuality
@@ -93,7 +96,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
             "copiesPerJob": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),
             "dpi": lambda n : setattr(self, 'dpi', n.get_int_value()),
             "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(PrintDuplexMode)),
-            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_primitive_values(str)),
+            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(PrintFinishing)),
             "fitPdfToPage": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
             "inputBin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
             "mediaColor": lambda n : setattr(self, 'media_color', n.get_str_value()),
@@ -122,7 +125,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("copiesPerJob", self.copies_per_job)
         writer.write_int_value("dpi", self.dpi)
         writer.write_enum_value("duplexMode", self.duplex_mode)
-        writer.write_collection_of_primitive_values("finishings", self.finishings)
+        writer.write_collection_of_enum_values("finishings", self.finishings)
         writer.write_bool_value("fitPdfToPage", self.fit_pdf_to_page)
         writer.write_str_value("inputBin", self.input_bin)
         writer.write_str_value("mediaColor", self.media_color)

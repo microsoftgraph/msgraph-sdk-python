@@ -35,6 +35,7 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
         Get a join web URL for a Microsoft Virtual Appointment. This web URL includes enhanced business-to-customer experiences such as mobile browser join and virtual lobby rooms. With Teams Premium, you can configure a custom lobby room experience for attendees by adding your company logo and access the Virtual Appointments usage report for organizational analytics.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetVirtualAppointmentJoinWebUrlGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualappointment-getvirtualappointmentjoinweburl?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

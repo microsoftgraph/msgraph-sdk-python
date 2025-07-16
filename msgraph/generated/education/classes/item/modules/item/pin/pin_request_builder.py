@@ -35,6 +35,7 @@ class PinRequestBuilder(BaseRequestBuilder):
         Pin an educationModule in the class work list. This action sets the isPinned property to true for an educationModule. Only teachers can perform this action and only one module at a time can be pinned in the class work list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationModule]
+        Find more info here: https://learn.microsoft.com/graph/api/educationmodule-pin?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

@@ -35,6 +35,7 @@ class GetApplicablePolicyRequirementsRequestBuilder(BaseRequestBuilder):
         In Microsoft Entra entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetApplicablePolicyRequirementsPostResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackage-getapplicablepolicyrequirements?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

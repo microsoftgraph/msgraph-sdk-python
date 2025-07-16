@@ -35,6 +35,7 @@ class GetOrderRequestBuilder(BaseRequestBuilder):
         Get the order of identityUserFlowAttributeAssignments being collected within a user flow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AssignmentOrder]
+        Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattributeassignment-getorder?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

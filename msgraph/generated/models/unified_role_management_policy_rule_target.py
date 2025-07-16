@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
+    from .unified_role_management_policy_rule_target_operations import UnifiedRoleManagementPolicyRuleTargetOperations
 
 @dataclass
 class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, Parsable):
@@ -26,7 +27,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
     # The OdataType property
     odata_type: Optional[str] = None
     # The role management operations that are the target of the policy rule. Allowed values are: All, Activate, Deactivate, Assign, Update, Remove, Extend, Renew.
-    operations: Optional[list[str]] = None
+    operations: Optional[list[UnifiedRoleManagementPolicyRuleTargetOperations]] = None
     # The targetObjects property
     target_objects: Optional[list[DirectoryObject]] = None
     
@@ -47,8 +48,10 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .directory_object import DirectoryObject
+        from .unified_role_management_policy_rule_target_operations import UnifiedRoleManagementPolicyRuleTargetOperations
 
         from .directory_object import DirectoryObject
+        from .unified_role_management_policy_rule_target_operations import UnifiedRoleManagementPolicyRuleTargetOperations
 
         fields: dict[str, Callable[[Any], None]] = {
             "caller": lambda n : setattr(self, 'caller', n.get_str_value()),
@@ -56,7 +59,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
             "inheritableSettings": lambda n : setattr(self, 'inheritable_settings', n.get_collection_of_primitive_values(str)),
             "level": lambda n : setattr(self, 'level', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_primitive_values(str)),
+            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_enum_values(UnifiedRoleManagementPolicyRuleTargetOperations)),
             "targetObjects": lambda n : setattr(self, 'target_objects', n.get_collection_of_object_values(DirectoryObject)),
         }
         return fields
@@ -74,7 +77,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
         writer.write_collection_of_primitive_values("inheritableSettings", self.inheritable_settings)
         writer.write_str_value("level", self.level)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_collection_of_primitive_values("operations", self.operations)
+        writer.write_collection_of_enum_values("operations", self.operations)
         writer.write_collection_of_object_values("targetObjects", self.target_objects)
         writer.write_additional_data_value(self.additional_data)
     

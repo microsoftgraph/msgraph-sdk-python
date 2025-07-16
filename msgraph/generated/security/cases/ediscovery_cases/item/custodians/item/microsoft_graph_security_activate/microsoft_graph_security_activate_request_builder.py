@@ -34,6 +34,7 @@ class MicrosoftGraphSecurityActivateRequestBuilder(BaseRequestBuilder):
         Activate a custodian that has been released from a case to make them part of the case again. For details, see Manage custodians in an eDiscovery (Premium) case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycustodian-activate?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

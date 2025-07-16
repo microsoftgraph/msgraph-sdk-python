@@ -6,11 +6,18 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
 
 from .entity import Entity
 
 @dataclass
 class WorkbookWorksheetProtection(Entity, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Worksheet protection options. Read-only.
+    options: Optional[WorkbookWorksheetProtectionOptions] = None
+    # Indicates whether the worksheet is protected.  Read-only.
+    protected: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookWorksheetProtection:
@@ -29,10 +36,14 @@ class WorkbookWorksheetProtection(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
 
         from .entity import Entity
+        from .workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
 
         fields: dict[str, Callable[[Any], None]] = {
+            "options": lambda n : setattr(self, 'options', n.get_object_value(WorkbookWorksheetProtectionOptions)),
+            "protected": lambda n : setattr(self, 'protected', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +58,7 @@ class WorkbookWorksheetProtection(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("options", self.options)
+        writer.write_bool_value("protected", self.protected)
     
 

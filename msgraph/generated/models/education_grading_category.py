@@ -11,6 +11,12 @@ from .entity import Entity
 
 @dataclass
 class EducationGradingCategory(Entity, Parsable):
+    # The name of the grading category.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The weight of the category; an integer between 0 and 100.
+    percentage_weight: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EducationGradingCategory:
@@ -33,6 +39,8 @@ class EducationGradingCategory(Entity, Parsable):
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "percentageWeight": lambda n : setattr(self, 'percentage_weight', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,7 @@ class EducationGradingCategory(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("displayName", self.display_name)
+        writer.write_int_value("percentageWeight", self.percentage_weight)
     
 

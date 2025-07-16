@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .printer_feed_orientation import PrinterFeedOrientation
     from .print_color_mode import PrintColorMode
     from .print_duplex_mode import PrintDuplexMode
+    from .print_finishing import PrintFinishing
     from .print_margin import PrintMargin
     from .print_multipage_layout import PrintMultipageLayout
     from .print_orientation import PrintOrientation
@@ -36,7 +37,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # The orientation to use when feeding media into the printer. Valid values are described in the following table. Read-only.
     feed_orientation: Optional[PrinterFeedOrientation] = None
     # Finishing processes to use when printing.
-    finishings: Optional[list[str]] = None
+    finishings: Optional[list[PrintFinishing]] = None
     # True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
     fit_pdf_to_page: Optional[bool] = None
     # The input bin (tray) to use when printing. See the printer's capabilities for a list of supported input bins.
@@ -84,6 +85,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         from .printer_feed_orientation import PrinterFeedOrientation
         from .print_color_mode import PrintColorMode
         from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
         from .print_margin import PrintMargin
         from .print_multipage_layout import PrintMultipageLayout
         from .print_orientation import PrintOrientation
@@ -94,6 +96,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         from .printer_feed_orientation import PrinterFeedOrientation
         from .print_color_mode import PrintColorMode
         from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
         from .print_margin import PrintMargin
         from .print_multipage_layout import PrintMultipageLayout
         from .print_orientation import PrintOrientation
@@ -107,7 +110,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
             "dpi": lambda n : setattr(self, 'dpi', n.get_int_value()),
             "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(PrintDuplexMode)),
             "feedOrientation": lambda n : setattr(self, 'feed_orientation', n.get_enum_value(PrinterFeedOrientation)),
-            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_primitive_values(str)),
+            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(PrintFinishing)),
             "fitPdfToPage": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
             "inputBin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
             "margin": lambda n : setattr(self, 'margin', n.get_object_value(PrintMargin)),
@@ -138,7 +141,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("dpi", self.dpi)
         writer.write_enum_value("duplexMode", self.duplex_mode)
         writer.write_enum_value("feedOrientation", self.feed_orientation)
-        writer.write_collection_of_primitive_values("finishings", self.finishings)
+        writer.write_collection_of_enum_values("finishings", self.finishings)
         writer.write_bool_value("fitPdfToPage", self.fit_pdf_to_page)
         writer.write_str_value("inputBin", self.input_bin)
         writer.write_object_value("margin", self.margin)

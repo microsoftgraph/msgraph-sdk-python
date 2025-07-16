@@ -11,6 +11,8 @@ from .case_operation import CaseOperation
 
 @dataclass
 class EdiscoveryIndexOperation(CaseOperation, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EdiscoveryIndexOperation:

@@ -42,6 +42,7 @@ class ComputeInheritanceWithLabelIdsWithLocaleWithContentFormatsRequestBuilder(B
         Calculate the sensitivity label that should be inherited by an output artifact, given a set of sensitivity labels from input or referenced artifacts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SensitivityLabel]
+        Find more info here: https://learn.microsoft.com/graph/api/sensitivitylabel-computeinheritance?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

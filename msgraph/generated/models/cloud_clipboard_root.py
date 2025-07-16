@@ -5,12 +5,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .cloud_clipboard_item import CloudClipboardItem
     from .entity import Entity
 
 from .entity import Entity
 
 @dataclass
 class CloudClipboardRoot(Entity, Parsable):
+    # Represents a collection of Cloud Clipboard items.
+    items: Optional[list[CloudClipboardItem]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CloudClipboardRoot:
@@ -28,11 +33,14 @@ class CloudClipboardRoot(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .cloud_clipboard_item import CloudClipboardItem
         from .entity import Entity
 
+        from .cloud_clipboard_item import CloudClipboardItem
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(CloudClipboardItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class CloudClipboardRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("items", self.items)
     
 

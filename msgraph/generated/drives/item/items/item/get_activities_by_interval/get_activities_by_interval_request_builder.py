@@ -35,6 +35,7 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
         Get a collection of itemActivityStats resources for the activities that took place on this resource within the specified time interval. Analytics aggregates might not be available for all action types.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetActivitiesByIntervalGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/itemactivitystat-getactivitybyinterval?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

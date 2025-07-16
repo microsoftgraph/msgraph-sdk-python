@@ -7,6 +7,8 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
     from .entity import Entity
+    from .role_assignment import RoleAssignment
+    from .role_permission import RolePermission
 
 from .entity import Entity
 
@@ -15,6 +17,18 @@ class RoleDefinition(Entity, Parsable):
     """
     The Role Definition resource. The role definition is the foundation of role based access in Intune. The role combines an Intune resource such as a Mobile App and associated role permissions such as Create or Read for the resource. There are two types of roles, built-in and custom. Built-in roles cannot be modified. Both built-in roles and custom roles must have assignments to be enforced. Create custom roles if you want to define a role that allows any of the available resources and role permissions to be combined into a single role.
     """
+    # Description of the Role definition.
+    description: Optional[str] = None
+    # Display Name of the Role definition.
+    display_name: Optional[str] = None
+    # Type of Role. Set to True if it is built-in, or set to False if it is a custom role definition.
+    is_built_in: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # List of Role assignments for this role definition.
+    role_assignments: Optional[list[RoleAssignment]] = None
+    # List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
+    role_permissions: Optional[list[RolePermission]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RoleDefinition:
@@ -43,11 +57,20 @@ class RoleDefinition(Entity, Parsable):
         """
         from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
         from .entity import Entity
+        from .role_assignment import RoleAssignment
+        from .role_permission import RolePermission
 
         from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
         from .entity import Entity
+        from .role_assignment import RoleAssignment
+        from .role_permission import RolePermission
 
         fields: dict[str, Callable[[Any], None]] = {
+            "description": lambda n : setattr(self, 'description', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(RoleAssignment)),
+            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(RolePermission)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,5 +85,10 @@ class RoleDefinition(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("description", self.description)
+        writer.write_str_value("displayName", self.display_name)
+        writer.write_bool_value("isBuiltIn", self.is_built_in)
+        writer.write_collection_of_object_values("roleAssignments", self.role_assignments)
+        writer.write_collection_of_object_values("rolePermissions", self.role_permissions)
     
 

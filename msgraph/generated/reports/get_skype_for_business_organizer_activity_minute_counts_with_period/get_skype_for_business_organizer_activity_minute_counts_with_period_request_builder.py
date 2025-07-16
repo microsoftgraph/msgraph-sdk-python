@@ -37,6 +37,7 @@ class GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(B
         Get usage trends on the length in minutes and type of conference sessions held and organized by users in your organization. Types of conference sessions include audio/video, and dial-in and dial-out - Microsoft.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getskypeforbusinessorganizeractivityminutecounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

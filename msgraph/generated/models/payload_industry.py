@@ -1,0 +1,26 @@
+from enum import Enum
+
+class PayloadIndustry(str, Enum):
+    Unknown = "unknown",
+    Other = "other",
+    Banking = "banking",
+    BusinessServices = "businessServices",
+    ConsumerServices = "consumerServices",
+    Education = "education",
+    Energy = "energy",
+    Construction = "construction",
+    Consulting = "consulting",
+    FinancialServices = "financialServices",
+    Government = "government",
+    Hospitality = "hospitality",
+    Insurance = "insurance",
+    Legal = "legal",
+    CourierServices = "courierServices",
+    IT = "IT",
+    Healthcare = "healthcare",
+    Manufacturing = "manufacturing",
+    Retail = "retail",
+    Telecom = "telecom",
+    RealEstate = "realEstate",
+    UnknownFutureValue = "unknownFutureValue",
+

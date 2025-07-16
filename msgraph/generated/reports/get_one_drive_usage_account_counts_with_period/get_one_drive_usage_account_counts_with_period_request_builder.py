@@ -37,6 +37,7 @@ class GetOneDriveUsageAccountCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         Get the trend in the number of active OneDrive for Business sites. Any site on which users viewed, modified, uploaded, downloaded, shared, or synced files is considered an active site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getonedriveusageaccountcounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

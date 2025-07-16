@@ -11,6 +11,10 @@ from .entity import Entity
 
 @dataclass
 class PronounsSettings(Entity, Parsable):
+    # true to enable pronouns in the organization; otherwise, false. The default value is false, and pronouns are disabled.
+    is_enabled_in_organization: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PronounsSettings:
@@ -33,6 +37,7 @@ class PronounsSettings(Entity, Parsable):
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "isEnabledInOrganization": lambda n : setattr(self, 'is_enabled_in_organization', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +52,6 @@ class PronounsSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_bool_value("isEnabledInOrganization", self.is_enabled_in_organization)
     
 

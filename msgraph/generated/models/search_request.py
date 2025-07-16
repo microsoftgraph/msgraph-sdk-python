@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .aggregation_option import AggregationOption
     from .collapse_property import CollapseProperty
+    from .entity_type import EntityType
     from .result_template_option import ResultTemplateOption
     from .search_alteration_options import SearchAlterationOptions
     from .search_query import SearchQuery
@@ -32,7 +33,7 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
     # This triggers hybrid sort for messages : the first 3 messages are the most relevant. This property is only applicable to entityType=message. Optional.
     enable_top_results: Optional[bool] = None
     # One or more types of resources expected in the response. Possible values are: event, message, driveItem, externalItem, site, list, listItem, drive, chatMessage, person, acronym, bookmark.  Use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: chatMessage, person, acronym, bookmark. See known limitations for those combinations of two or more entity types that are supported in the same search request. Required.
-    entity_types: Optional[list[str]] = None
+    entity_types: Optional[list[EntityType]] = None
     # Contains the fields to be returned for each resource object specified in entityTypes, allowing customization of the fields returned by default; otherwise, including additional fields such as custom managed properties from SharePoint and OneDrive, or custom fields in externalItem from the content that Microsoft 365 Copilot connectors bring in. The fields property can use the semantic labels applied to properties. For example, if a property is labeled as title, you can retrieve it using the following syntax: label_title. Optional.
     fields: Optional[list[str]] = None
     # Specifies the offset for the search results. Offset 0 returns the very first result. Optional.
@@ -72,6 +73,7 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .aggregation_option import AggregationOption
         from .collapse_property import CollapseProperty
+        from .entity_type import EntityType
         from .result_template_option import ResultTemplateOption
         from .search_alteration_options import SearchAlterationOptions
         from .search_query import SearchQuery
@@ -80,6 +82,7 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
 
         from .aggregation_option import AggregationOption
         from .collapse_property import CollapseProperty
+        from .entity_type import EntityType
         from .result_template_option import ResultTemplateOption
         from .search_alteration_options import SearchAlterationOptions
         from .search_query import SearchQuery
@@ -92,7 +95,7 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
             "collapseProperties": lambda n : setattr(self, 'collapse_properties', n.get_collection_of_object_values(CollapseProperty)),
             "contentSources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),
             "enableTopResults": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
-            "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_primitive_values(str)),
+            "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(EntityType)),
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_primitive_values(str)),
             "from": lambda n : setattr(self, 'from_', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -119,7 +122,7 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("collapseProperties", self.collapse_properties)
         writer.write_collection_of_primitive_values("contentSources", self.content_sources)
         writer.write_bool_value("enableTopResults", self.enable_top_results)
-        writer.write_collection_of_primitive_values("entityTypes", self.entity_types)
+        writer.write_collection_of_enum_values("entityTypes", self.entity_types)
         writer.write_collection_of_primitive_values("fields", self.fields)
         writer.write_int_value("from", self.from_)
         writer.write_str_value("@odata.type", self.odata_type)

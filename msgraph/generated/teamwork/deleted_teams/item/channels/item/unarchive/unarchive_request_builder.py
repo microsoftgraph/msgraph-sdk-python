@@ -34,6 +34,7 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
         Restore an archived channel. Unarchiving restores the ability for users to send messages and edit the channel. Channels are archived via the channel: archive method. Unarchiving is an asynchronous operation; a channel is unarchived when the asynchronous unarchiving operation completes successfully, which might occur after this method responds.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/channel-unarchive?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

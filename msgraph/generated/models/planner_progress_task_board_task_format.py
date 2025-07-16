@@ -11,6 +11,10 @@ from .entity import Entity
 
 @dataclass
 class PlannerProgressTaskBoardTaskFormat(Entity, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.
+    order_hint: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PlannerProgressTaskBoardTaskFormat:
@@ -33,6 +37,7 @@ class PlannerProgressTaskBoardTaskFormat(Entity, Parsable):
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +52,6 @@ class PlannerProgressTaskBoardTaskFormat(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("orderHint", self.order_hint)
     
 

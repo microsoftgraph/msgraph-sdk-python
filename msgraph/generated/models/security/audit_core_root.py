@@ -6,11 +6,16 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
+    from .audit_log_query import AuditLogQuery
 
 from ..entity import Entity
 
 @dataclass
 class AuditCoreRoot(Entity, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The queries property
+    queries: Optional[list[AuditLogQuery]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AuditCoreRoot:
@@ -29,10 +34,13 @@ class AuditCoreRoot(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
+        from .audit_log_query import AuditLogQuery
 
         from ..entity import Entity
+        from .audit_log_query import AuditLogQuery
 
         fields: dict[str, Callable[[Any], None]] = {
+            "queries": lambda n : setattr(self, 'queries', n.get_collection_of_object_values(AuditLogQuery)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class AuditCoreRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("queries", self.queries)
     
 

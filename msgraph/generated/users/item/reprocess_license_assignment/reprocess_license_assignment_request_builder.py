@@ -35,6 +35,7 @@ class ReprocessLicenseAssignmentRequestBuilder(BaseRequestBuilder):
         Reprocess all group-based license assignments for the user. To learn more about group-based licensing, see What is group-based licensing in Microsoft Entra ID. Also see Identify and resolve license assignment problems for a group in Microsoft Entra ID for more details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
+        Find more info here: https://learn.microsoft.com/graph/api/user-reprocesslicenseassignment?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

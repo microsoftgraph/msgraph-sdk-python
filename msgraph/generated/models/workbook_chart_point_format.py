@@ -6,11 +6,16 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .workbook_chart_fill import WorkbookChartFill
 
 from .entity import Entity
 
 @dataclass
 class WorkbookChartPointFormat(Entity, Parsable):
+    # Represents the fill format of a chart, which includes background formatting information. Read-only.
+    fill: Optional[WorkbookChartFill] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WorkbookChartPointFormat:
@@ -29,10 +34,13 @@ class WorkbookChartPointFormat(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
 
         from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
 
         fields: dict[str, Callable[[Any], None]] = {
+            "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookChartFill)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class WorkbookChartPointFormat(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("fill", self.fill)
     
 

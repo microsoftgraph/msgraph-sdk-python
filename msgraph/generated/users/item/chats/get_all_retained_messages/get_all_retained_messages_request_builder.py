@@ -35,6 +35,7 @@ class GetAllRetainedMessagesRequestBuilder(BaseRequestBuilder):
         Get all retained messages from all chats that a user is a participant in, including one-on-one chats, group chats, and meeting chats. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetAllRetainedMessagesGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/chat-getallretainedmessages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

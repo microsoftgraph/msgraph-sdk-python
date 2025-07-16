@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .sensitivity_label import SensitivityLabel
     from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
     from .user_data_security_and_governance import UserDataSecurityAndGovernance
 
@@ -13,6 +14,10 @@ from .entity import Entity
 
 @dataclass
 class DataSecurityAndGovernance(Entity, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The sensitivityLabels property
+    sensitivity_labels: Optional[list[SensitivityLabel]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DataSecurityAndGovernance:
@@ -44,14 +49,17 @@ class DataSecurityAndGovernance(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .sensitivity_label import SensitivityLabel
         from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
         from .user_data_security_and_governance import UserDataSecurityAndGovernance
 
         from .entity import Entity
+        from .sensitivity_label import SensitivityLabel
         from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
         from .user_data_security_and_governance import UserDataSecurityAndGovernance
 
         fields: dict[str, Callable[[Any], None]] = {
+            "sensitivityLabels": lambda n : setattr(self, 'sensitivity_labels', n.get_collection_of_object_values(SensitivityLabel)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,5 +74,6 @@ class DataSecurityAndGovernance(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("sensitivityLabels", self.sensitivity_labels)
     
 

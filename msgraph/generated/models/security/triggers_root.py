@@ -6,11 +6,16 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
+    from .retention_event import RetentionEvent
 
 from ..entity import Entity
 
 @dataclass
 class TriggersRoot(Entity, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The retentionEvents property
+    retention_events: Optional[list[RetentionEvent]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> TriggersRoot:
@@ -29,10 +34,13 @@ class TriggersRoot(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
+        from .retention_event import RetentionEvent
 
         from ..entity import Entity
+        from .retention_event import RetentionEvent
 
         fields: dict[str, Callable[[Any], None]] = {
+            "retentionEvents": lambda n : setattr(self, 'retention_events', n.get_collection_of_object_values(RetentionEvent)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class TriggersRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("retentionEvents", self.retention_events)
     
 

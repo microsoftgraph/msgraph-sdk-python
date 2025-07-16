@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .device_detail import DeviceDetail
     from .entity import Entity
     from .risk_detail import RiskDetail
+    from .risk_event_type import RiskEventType
     from .risk_level import RiskLevel
     from .risk_state import RiskState
     from .sign_in_location import SignInLocation
@@ -51,7 +52,7 @@ class SignIn(Entity, Parsable):
     # The reason behind a specific state of a risky user, sign-in, or a risk event. The possible values are none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal, m365DAdminDismissedDetection, userChangedPasswordOnPremises, adminDismissedRiskForSignIn, adminConfirmedAccountSafe. Use the Prefer: include-unknown-enum-members request header to get the following value or values in this evolvable enum: adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal, m365DAdminDismissedDetection, userChangedPasswordOnPremises, adminDismissedRiskForSignIn, adminConfirmedAccountSafe.The value none means that Microsoft Entra risk detection did not flag the user or the sign-in as a risky event so far.  Supports $filter (eq). Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
     risk_detail: Optional[RiskDetail] = None
     # The riskEventTypes property
-    risk_event_types: Optional[list[str]] = None
+    risk_event_types: Optional[list[RiskEventType]] = None
     # The list of risk event types associated with the sign-in. Possible values: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence, generic, or unknownFutureValue.  Supports $filter (eq, startsWith).
     risk_event_types_v2: Optional[list[str]] = None
     # Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
@@ -90,6 +91,7 @@ class SignIn(Entity, Parsable):
         from .device_detail import DeviceDetail
         from .entity import Entity
         from .risk_detail import RiskDetail
+        from .risk_event_type import RiskEventType
         from .risk_level import RiskLevel
         from .risk_state import RiskState
         from .sign_in_location import SignInLocation
@@ -100,6 +102,7 @@ class SignIn(Entity, Parsable):
         from .device_detail import DeviceDetail
         from .entity import Entity
         from .risk_detail import RiskDetail
+        from .risk_event_type import RiskEventType
         from .risk_level import RiskLevel
         from .risk_state import RiskState
         from .sign_in_location import SignInLocation
@@ -120,7 +123,7 @@ class SignIn(Entity, Parsable):
             "resourceDisplayName": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
-            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
+            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(RiskEventType)),
             "riskEventTypes_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
             "riskLevelAggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(RiskLevel)),
             "riskLevelDuringSignIn": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(RiskLevel)),
@@ -157,7 +160,7 @@ class SignIn(Entity, Parsable):
         writer.write_str_value("resourceDisplayName", self.resource_display_name)
         writer.write_str_value("resourceId", self.resource_id)
         writer.write_enum_value("riskDetail", self.risk_detail)
-        writer.write_collection_of_primitive_values("riskEventTypes", self.risk_event_types)
+        writer.write_collection_of_enum_values("riskEventTypes", self.risk_event_types)
         writer.write_collection_of_primitive_values("riskEventTypes_v2", self.risk_event_types_v2)
         writer.write_enum_value("riskLevelAggregated", self.risk_level_aggregated)
         writer.write_enum_value("riskLevelDuringSignIn", self.risk_level_during_sign_in)

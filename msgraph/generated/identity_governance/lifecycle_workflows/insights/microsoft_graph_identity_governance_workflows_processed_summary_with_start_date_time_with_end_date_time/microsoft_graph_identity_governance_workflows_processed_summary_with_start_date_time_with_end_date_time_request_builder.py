@@ -41,6 +41,7 @@ class MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTime
         Provide a summary of all workflows processed within a tenant for a specified period. Because the amount of results for listed workflows as returned by the List workflows does not tell you which workflows were processed from the list of created workflows, this summary gives you a quick overview of processed status based on counts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkflowsInsightsSummary]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-insights-workflowsprocessedsummary?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

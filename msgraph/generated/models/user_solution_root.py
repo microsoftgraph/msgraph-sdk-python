@@ -6,11 +6,16 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .working_time_schedule import WorkingTimeSchedule
 
 from .entity import Entity
 
 @dataclass
 class UserSolutionRoot(Entity, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The working time schedule entity associated with the solution.
+    working_time_schedule: Optional[WorkingTimeSchedule] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> UserSolutionRoot:
@@ -29,10 +34,13 @@ class UserSolutionRoot(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .working_time_schedule import WorkingTimeSchedule
 
         from .entity import Entity
+        from .working_time_schedule import WorkingTimeSchedule
 
         fields: dict[str, Callable[[Any], None]] = {
+            "workingTimeSchedule": lambda n : setattr(self, 'working_time_schedule', n.get_object_value(WorkingTimeSchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class UserSolutionRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("workingTimeSchedule", self.working_time_schedule)
     
 

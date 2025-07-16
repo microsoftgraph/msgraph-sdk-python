@@ -35,6 +35,7 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
         Retrieve messages across all channels in a team, including text, audio, and video conversations. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetAllMessagesGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/channel-getallmessages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -34,6 +34,7 @@ class GetOffice365ActivationsUserCountsRequestBuilder(BaseRequestBuilder):
         Get the count of users that are enabled and the ones that activated the Office subscription on desktop or devices or shared computers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getoffice365activationsusercounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

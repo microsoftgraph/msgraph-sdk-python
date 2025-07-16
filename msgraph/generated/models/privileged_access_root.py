@@ -6,11 +6,16 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .privileged_access_group import PrivilegedAccessGroup
 
 from .entity import Entity
 
 @dataclass
 class PrivilegedAccessRoot(Entity, Parsable):
+    # A group that's governed through Privileged Identity Management (PIM).
+    group: Optional[PrivilegedAccessGroup] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PrivilegedAccessRoot:
@@ -29,10 +34,13 @@ class PrivilegedAccessRoot(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .privileged_access_group import PrivilegedAccessGroup
 
         from .entity import Entity
+        from .privileged_access_group import PrivilegedAccessGroup
 
         fields: dict[str, Callable[[Any], None]] = {
+            "group": lambda n : setattr(self, 'group', n.get_object_value(PrivilegedAccessGroup)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class PrivilegedAccessRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("group", self.group)
     
 

@@ -34,6 +34,7 @@ class CancelRequestBuilder(BaseRequestBuilder):
         Cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/printjob-cancel?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

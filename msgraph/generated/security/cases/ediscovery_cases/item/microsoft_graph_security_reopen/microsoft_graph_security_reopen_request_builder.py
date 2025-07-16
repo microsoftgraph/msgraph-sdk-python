@@ -34,6 +34,7 @@ class MicrosoftGraphSecurityReopenRequestBuilder(BaseRequestBuilder):
         Reopen an eDiscovery case that was closed. For details, see Reopen a closed case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-reopen?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

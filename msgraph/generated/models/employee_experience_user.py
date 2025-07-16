@@ -6,11 +6,16 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .learning_course_activity import LearningCourseActivity
 
 from .entity import Entity
 
 @dataclass
 class EmployeeExperienceUser(Entity, Parsable):
+    # The learningCourseActivities property
+    learning_course_activities: Optional[list[LearningCourseActivity]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EmployeeExperienceUser:
@@ -29,10 +34,13 @@ class EmployeeExperienceUser(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .learning_course_activity import LearningCourseActivity
 
         from .entity import Entity
+        from .learning_course_activity import LearningCourseActivity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "learningCourseActivities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class EmployeeExperienceUser(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)
     
 

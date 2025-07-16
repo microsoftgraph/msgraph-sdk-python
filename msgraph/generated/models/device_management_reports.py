@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .device_management_export_job import DeviceManagementExportJob
     from .entity import Entity
 
 from .entity import Entity
@@ -14,6 +15,10 @@ class DeviceManagementReports(Entity, Parsable):
     """
     Singleton entity that acts as a container for all reports functionality.
     """
+    # Entity representing a job to export a report
+    export_jobs: Optional[list[DeviceManagementExportJob]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DeviceManagementReports:
@@ -31,11 +36,14 @@ class DeviceManagementReports(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .device_management_export_job import DeviceManagementExportJob
         from .entity import Entity
 
+        from .device_management_export_job import DeviceManagementExportJob
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "exportJobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(DeviceManagementExportJob)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -50,5 +58,6 @@ class DeviceManagementReports(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("exportJobs", self.export_jobs)
     
 

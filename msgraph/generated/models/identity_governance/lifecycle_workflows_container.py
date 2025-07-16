@@ -5,12 +5,35 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from ..deleted_item_container import DeletedItemContainer
     from ..entity import Entity
+    from .custom_task_extension import CustomTaskExtension
+    from .insights import Insights
+    from .lifecycle_management_settings import LifecycleManagementSettings
+    from .task_definition import TaskDefinition
+    from .workflow import Workflow
+    from .workflow_template import WorkflowTemplate
 
 from ..entity import Entity
 
 @dataclass
 class LifecycleWorkflowsContainer(Entity, Parsable):
+    # The customTaskExtension instance.
+    custom_task_extensions: Optional[list[CustomTaskExtension]] = None
+    # Deleted workflows in your lifecycle workflows instance.
+    deleted_items: Optional[DeletedItemContainer] = None
+    # The insight container holding workflow insight summaries for a tenant.
+    insights: Optional[Insights] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The settings property
+    settings: Optional[LifecycleManagementSettings] = None
+    # The definition of tasks within the lifecycle workflows instance.
+    task_definitions: Optional[list[TaskDefinition]] = None
+    # The workflow templates in the lifecycle workflow instance.
+    workflow_templates: Optional[list[WorkflowTemplate]] = None
+    # The workflows in the lifecycle workflows instance.
+    workflows: Optional[list[Workflow]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> LifecycleWorkflowsContainer:
@@ -28,11 +51,32 @@ class LifecycleWorkflowsContainer(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from ..deleted_item_container import DeletedItemContainer
         from ..entity import Entity
+        from .custom_task_extension import CustomTaskExtension
+        from .insights import Insights
+        from .lifecycle_management_settings import LifecycleManagementSettings
+        from .task_definition import TaskDefinition
+        from .workflow import Workflow
+        from .workflow_template import WorkflowTemplate
 
+        from ..deleted_item_container import DeletedItemContainer
         from ..entity import Entity
+        from .custom_task_extension import CustomTaskExtension
+        from .insights import Insights
+        from .lifecycle_management_settings import LifecycleManagementSettings
+        from .task_definition import TaskDefinition
+        from .workflow import Workflow
+        from .workflow_template import WorkflowTemplate
 
         fields: dict[str, Callable[[Any], None]] = {
+            "customTaskExtensions": lambda n : setattr(self, 'custom_task_extensions', n.get_collection_of_object_values(CustomTaskExtension)),
+            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_object_value(DeletedItemContainer)),
+            "insights": lambda n : setattr(self, 'insights', n.get_object_value(Insights)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(LifecycleManagementSettings)),
+            "taskDefinitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(TaskDefinition)),
+            "workflowTemplates": lambda n : setattr(self, 'workflow_templates', n.get_collection_of_object_values(WorkflowTemplate)),
+            "workflows": lambda n : setattr(self, 'workflows', n.get_collection_of_object_values(Workflow)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +91,12 @@ class LifecycleWorkflowsContainer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("customTaskExtensions", self.custom_task_extensions)
+        writer.write_object_value("deletedItems", self.deleted_items)
+        writer.write_object_value("insights", self.insights)
+        writer.write_object_value("settings", self.settings)
+        writer.write_collection_of_object_values("taskDefinitions", self.task_definitions)
+        writer.write_collection_of_object_values("workflowTemplates", self.workflow_templates)
+        writer.write_collection_of_object_values("workflows", self.workflows)
     
 

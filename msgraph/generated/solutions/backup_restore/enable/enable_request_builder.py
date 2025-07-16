@@ -37,6 +37,7 @@ class EnableRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceStatus]
+        Find more info here: https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")

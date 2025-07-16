@@ -38,6 +38,7 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         In Microsoft Entra entitlement management, return a collection of access package assignment approvals. The objects returned are those that are in scope for approval by the calling user. In PIM for Groups, return a collection of assignment approvals. The objects returned are those that are in scope for approval by the calling user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterByCurrentUserWithOnGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/approval-filterbycurrentuser?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

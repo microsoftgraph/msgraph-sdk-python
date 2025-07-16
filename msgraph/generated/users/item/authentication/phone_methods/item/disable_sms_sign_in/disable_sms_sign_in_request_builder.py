@@ -34,6 +34,7 @@ class DisableSmsSignInRequestBuilder(BaseRequestBuilder):
         Disable SMS sign-in for an existing mobile phone number registered to a user. The number will no longer be available for SMS sign-in, which can prevent your user from signing in.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

@@ -34,6 +34,7 @@ class DiscardCheckoutRequestBuilder(BaseRequestBuilder):
         Discard the check out of a driveItem. This action releases a driveItem resource that was previously checked out. Any changes made to the item while it was checked out are discarded.  The same user that performed the checkout must discard it. Another alternative is to use application permissions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/driveitem-discardcheckout?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

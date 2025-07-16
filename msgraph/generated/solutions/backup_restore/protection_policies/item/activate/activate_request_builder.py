@@ -35,6 +35,7 @@ class ActivateRequestBuilder(BaseRequestBuilder):
         Activate a protectionPolicyBase. Currently, only one active backup policy per underlying service is supported (that is, one for OneDrive accounts, one for SharePoint sites, and one for Exchange Online users). You can add or remove artifacts (sites or user accounts) to or from each active policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProtectionPolicyBase]
+        Find more info here: https://learn.microsoft.com/graph/api/protectionpolicybase-activate?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

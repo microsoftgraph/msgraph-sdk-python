@@ -37,6 +37,7 @@ class GetEmailActivityCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         Enables you to understand the trends of email activity (like how many were sent, read, and received) in your organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getemailactivitycounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

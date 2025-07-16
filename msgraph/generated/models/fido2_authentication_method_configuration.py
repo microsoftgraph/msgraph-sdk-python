@@ -21,7 +21,7 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
     is_attestation_enforced: Optional[bool] = None
     # Determines if users can register new FIDO2 security keys.
     is_self_service_registration_allowed: Optional[bool] = None
-    # Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (e.g. make and model) of the authenticator.
+    # Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (for example, make and model) of the authenticator.
     key_restrictions: Optional[Fido2KeyRestrictions] = None
     
     @staticmethod

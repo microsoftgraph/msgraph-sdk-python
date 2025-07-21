@@ -34,6 +34,7 @@ class ResetUnseenCountRequestBuilder(BaseRequestBuilder):
         Reset the unseenCount of all the posts that the current user hasn't seen since their last visit. Supported for Microsoft 365 groups only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/group-resetunseencount?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

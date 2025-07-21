@@ -43,6 +43,7 @@ class GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRe
         Get a list of archived print jobs that were queued for particular printer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/reports-getprinterarchivedprintjobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

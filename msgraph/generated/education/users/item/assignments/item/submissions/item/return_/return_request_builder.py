@@ -35,6 +35,7 @@ class ReturnRequestBuilder(BaseRequestBuilder):
         Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationSubmission]
+        Find more info here: https://learn.microsoft.com/graph/api/educationsubmission-return?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

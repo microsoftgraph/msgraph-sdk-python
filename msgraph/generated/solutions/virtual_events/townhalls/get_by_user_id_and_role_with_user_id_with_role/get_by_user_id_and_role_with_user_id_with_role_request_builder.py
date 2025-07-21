@@ -40,6 +40,7 @@ class GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder(BaseRequestBuilder):
         Get a list of virtualEventTownhall objects where the specified user is either the organizer or a coorganizer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetByUserIdAndRoleWithUserIdWithRoleGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualeventtownhall-getbyuseridandrole?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

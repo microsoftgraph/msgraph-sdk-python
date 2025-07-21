@@ -35,6 +35,7 @@ class RecentRequestBuilder(BaseRequestBuilder):
         List a set of items that have been recently used by the signed in user.This collection includes items that are in the user's drive and items they have access to from other drives.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RecentGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/drive-recent?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -129,6 +129,7 @@ class HeaderRowRangeRequestBuilder(BaseRequestBuilder):
         Gets the range object associated with the header row of the column.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
+        Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-headerrowrange?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

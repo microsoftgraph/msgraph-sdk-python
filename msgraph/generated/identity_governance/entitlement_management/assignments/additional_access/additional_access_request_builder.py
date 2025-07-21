@@ -35,6 +35,7 @@ class AdditionalAccessRequestBuilder(BaseRequestBuilder):
         In Microsoft Entra Entitlement Management, retrieve a collection of accessPackageAssignment objects that indicate a target user has an assignment to a specified access package and also an assignment to another, potentially incompatible, access package.  This can be used to prepare to configure the incompatible access packages for a specific access package.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdditionalAccessGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignment-additionalaccess?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

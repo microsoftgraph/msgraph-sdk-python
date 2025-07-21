@@ -35,6 +35,7 @@ class SetUpResourcesFolderRequestBuilder(BaseRequestBuilder):
         Create a SharePoint folder to upload files for a given educationAssignment. Only teachers can perform this operation. The teacher determines the resources to upload in the assignment's folder. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignment]
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-setupresourcesfolder?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

@@ -11,6 +11,10 @@ from .entity import Entity
 
 @dataclass
 class TeamsLicensingDetails(Entity, Parsable):
+    # Indicates whether the user has a valid license to use Microsoft Teams.
+    has_teams_license: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> TeamsLicensingDetails:
@@ -33,6 +37,7 @@ class TeamsLicensingDetails(Entity, Parsable):
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "hasTeamsLicense": lambda n : setattr(self, 'has_teams_license', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +52,6 @@ class TeamsLicensingDetails(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_bool_value("hasTeamsLicense", self.has_teams_license)
     
 

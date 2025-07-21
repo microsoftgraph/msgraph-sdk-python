@@ -6,11 +6,19 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .planner_plan import PlannerPlan
+    from .planner_task import PlannerTask
 
 from .entity import Entity
 
 @dataclass
 class PlannerUser(Entity, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Read-only. Nullable. Returns the plannerTasks assigned to the user.
+    plans: Optional[list[PlannerPlan]] = None
+    # Read-only. Nullable. Returns the plannerPlans shared with the user.
+    tasks: Optional[list[PlannerTask]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PlannerUser:
@@ -29,10 +37,16 @@ class PlannerUser(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .planner_plan import PlannerPlan
+        from .planner_task import PlannerTask
 
         from .entity import Entity
+        from .planner_plan import PlannerPlan
+        from .planner_task import PlannerTask
 
         fields: dict[str, Callable[[Any], None]] = {
+            "plans": lambda n : setattr(self, 'plans', n.get_collection_of_object_values(PlannerPlan)),
+            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PlannerTask)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +61,7 @@ class PlannerUser(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("plans", self.plans)
+        writer.write_collection_of_object_values("tasks", self.tasks)
     
 

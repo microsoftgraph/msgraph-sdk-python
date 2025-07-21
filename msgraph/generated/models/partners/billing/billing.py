@@ -6,11 +6,25 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...entity import Entity
+    from .azure_usage import AzureUsage
+    from .billing_reconciliation import BillingReconciliation
+    from .manifest import Manifest
+    from .operation import Operation
 
 from ...entity import Entity
 
 @dataclass
 class Billing(Entity, Parsable):
+    # Represents metadata for the exported data.
+    manifests: Optional[list[Manifest]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Represents an operation to export the billing data of a partner.
+    operations: Optional[list[Operation]] = None
+    # The reconciliation property
+    reconciliation: Optional[BillingReconciliation] = None
+    # The usage property
+    usage: Optional[AzureUsage] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Billing:
@@ -29,10 +43,22 @@ class Billing(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ...entity import Entity
+        from .azure_usage import AzureUsage
+        from .billing_reconciliation import BillingReconciliation
+        from .manifest import Manifest
+        from .operation import Operation
 
         from ...entity import Entity
+        from .azure_usage import AzureUsage
+        from .billing_reconciliation import BillingReconciliation
+        from .manifest import Manifest
+        from .operation import Operation
 
         fields: dict[str, Callable[[Any], None]] = {
+            "manifests": lambda n : setattr(self, 'manifests', n.get_collection_of_object_values(Manifest)),
+            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(Operation)),
+            "reconciliation": lambda n : setattr(self, 'reconciliation', n.get_object_value(BillingReconciliation)),
+            "usage": lambda n : setattr(self, 'usage', n.get_object_value(AzureUsage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +73,9 @@ class Billing(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("manifests", self.manifests)
+        writer.write_collection_of_object_values("operations", self.operations)
+        writer.write_object_value("reconciliation", self.reconciliation)
+        writer.write_object_value("usage", self.usage)
     
 

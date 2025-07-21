@@ -7,6 +7,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .day_of_week import DayOfWeek
     from .time_zone_base import TimeZoneBase
 
 @dataclass
@@ -17,7 +18,7 @@ class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The days of the week on which the user works.
-    days_of_week: Optional[list[str]] = None
+    days_of_week: Optional[list[DayOfWeek]] = None
     # The time of the day that the user stops working.
     end_time: Optional[datetime.time] = None
     # The OdataType property
@@ -43,12 +44,14 @@ class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .day_of_week import DayOfWeek
         from .time_zone_base import TimeZoneBase
 
+        from .day_of_week import DayOfWeek
         from .time_zone_base import TimeZoneBase
 
         fields: dict[str, Callable[[Any], None]] = {
-            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_primitive_values(str)),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(DayOfWeek)),
             "endTime": lambda n : setattr(self, 'end_time', n.get_time_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startTime": lambda n : setattr(self, 'start_time', n.get_time_value()),
@@ -64,7 +67,7 @@ class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("daysOfWeek", self.days_of_week)
+        writer.write_collection_of_enum_values("daysOfWeek", self.days_of_week)
         writer.write_time_value("endTime", self.end_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_time_value("startTime", self.start_time)

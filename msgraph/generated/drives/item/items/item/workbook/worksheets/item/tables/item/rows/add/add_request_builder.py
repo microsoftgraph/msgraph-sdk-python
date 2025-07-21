@@ -37,6 +37,7 @@ class AddRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRow]
+        Find more info here: https://learn.microsoft.com/graph/api/tablerowcollection-add?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")

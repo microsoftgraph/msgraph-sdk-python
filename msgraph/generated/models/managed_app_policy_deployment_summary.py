@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -6,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .managed_app_policy_deployment_summary_per_app import ManagedAppPolicyDeploymentSummaryPerApp
 
 from .entity import Entity
 
@@ -14,6 +16,18 @@ class ManagedAppPolicyDeploymentSummary(Entity, Parsable):
     """
     The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
     """
+    # Not yet documented
+    configuration_deployed_user_count: Optional[int] = None
+    # Not yet documented
+    configuration_deployment_summary_per_app: Optional[list[ManagedAppPolicyDeploymentSummaryPerApp]] = None
+    # Not yet documented
+    display_name: Optional[str] = None
+    # Not yet documented
+    last_refresh_time: Optional[datetime.datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Version of the entity.
+    version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ManagedAppPolicyDeploymentSummary:
@@ -32,10 +46,17 @@ class ManagedAppPolicyDeploymentSummary(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .managed_app_policy_deployment_summary_per_app import ManagedAppPolicyDeploymentSummaryPerApp
 
         from .entity import Entity
+        from .managed_app_policy_deployment_summary_per_app import ManagedAppPolicyDeploymentSummaryPerApp
 
         fields: dict[str, Callable[[Any], None]] = {
+            "configurationDeployedUserCount": lambda n : setattr(self, 'configuration_deployed_user_count', n.get_int_value()),
+            "configurationDeploymentSummaryPerApp": lambda n : setattr(self, 'configuration_deployment_summary_per_app', n.get_collection_of_object_values(ManagedAppPolicyDeploymentSummaryPerApp)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastRefreshTime": lambda n : setattr(self, 'last_refresh_time', n.get_datetime_value()),
+            "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -50,5 +71,10 @@ class ManagedAppPolicyDeploymentSummary(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_int_value("configurationDeployedUserCount", self.configuration_deployed_user_count)
+        writer.write_collection_of_object_values("configurationDeploymentSummaryPerApp", self.configuration_deployment_summary_per_app)
+        writer.write_str_value("displayName", self.display_name)
+        writer.write_datetime_value("lastRefreshTime", self.last_refresh_time)
+        writer.write_str_value("version", self.version)
     
 

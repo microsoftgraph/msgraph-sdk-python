@@ -35,6 +35,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         Get a list of newly created or updated educationCategory objects without having to perform a full read of the collection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/educationcategory-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

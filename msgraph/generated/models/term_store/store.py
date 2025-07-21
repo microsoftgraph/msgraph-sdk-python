@@ -6,11 +6,23 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
+    from .group import Group
+    from .set import Set
 
 from ..entity import Entity
 
 @dataclass
 class Store(Entity, Parsable):
+    # Default language of the term store.
+    default_language_tag: Optional[str] = None
+    # Collection of all groups available in the term store.
+    groups: Optional[list[Group]] = None
+    # List of languages for the term store.
+    language_tags: Optional[list[str]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
+    sets: Optional[list[Set]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Store:
@@ -29,10 +41,18 @@ class Store(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
+        from .group import Group
+        from .set import Set
 
         from ..entity import Entity
+        from .group import Group
+        from .set import Set
 
         fields: dict[str, Callable[[Any], None]] = {
+            "defaultLanguageTag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
+            "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(Group)),
+            "languageTags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
+            "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(Set)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +67,9 @@ class Store(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("defaultLanguageTag", self.default_language_tag)
+        writer.write_collection_of_object_values("groups", self.groups)
+        writer.write_collection_of_primitive_values("languageTags", self.language_tags)
+        writer.write_collection_of_object_values("sets", self.sets)
     
 

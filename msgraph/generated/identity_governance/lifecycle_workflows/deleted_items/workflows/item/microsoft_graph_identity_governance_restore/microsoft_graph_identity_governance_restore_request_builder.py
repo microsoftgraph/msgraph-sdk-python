@@ -35,6 +35,7 @@ class MicrosoftGraphIdentityGovernanceRestoreRequestBuilder(BaseRequestBuilder):
         Restore a workflow that has been deleted. You can only restore a workflow that was deleted within the last 30 days before Microsoft Entra ID automatically permanently deletes it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Workflow]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-restore?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

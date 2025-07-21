@@ -5,12 +5,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .content_activity import ContentActivity
     from .entity import Entity
 
 from .entity import Entity
 
 @dataclass
 class ActivitiesContainer(Entity, Parsable):
+    # Collection of activity logs related to content processing.
+    content_activities: Optional[list[ContentActivity]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ActivitiesContainer:
@@ -28,11 +33,14 @@ class ActivitiesContainer(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .content_activity import ContentActivity
         from .entity import Entity
 
+        from .content_activity import ContentActivity
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "contentActivities": lambda n : setattr(self, 'content_activities', n.get_collection_of_object_values(ContentActivity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class ActivitiesContainer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("contentActivities", self.content_activities)
     
 

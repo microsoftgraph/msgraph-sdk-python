@@ -5,12 +5,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .apps_installation_options_for_mac import AppsInstallationOptionsForMac
+    from .apps_installation_options_for_windows import AppsInstallationOptionsForWindows
+    from .apps_update_channel_type import AppsUpdateChannelType
     from .entity import Entity
 
 from .entity import Entity
 
 @dataclass
 class M365AppsInstallationOptions(Entity, Parsable):
+    # The appsForMac property
+    apps_for_mac: Optional[AppsInstallationOptionsForMac] = None
+    # The appsForWindows property
+    apps_for_windows: Optional[AppsInstallationOptionsForWindows] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The updateChannel property
+    update_channel: Optional[AppsUpdateChannelType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> M365AppsInstallationOptions:
@@ -28,11 +39,20 @@ class M365AppsInstallationOptions(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .apps_installation_options_for_mac import AppsInstallationOptionsForMac
+        from .apps_installation_options_for_windows import AppsInstallationOptionsForWindows
+        from .apps_update_channel_type import AppsUpdateChannelType
         from .entity import Entity
 
+        from .apps_installation_options_for_mac import AppsInstallationOptionsForMac
+        from .apps_installation_options_for_windows import AppsInstallationOptionsForWindows
+        from .apps_update_channel_type import AppsUpdateChannelType
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "appsForMac": lambda n : setattr(self, 'apps_for_mac', n.get_object_value(AppsInstallationOptionsForMac)),
+            "appsForWindows": lambda n : setattr(self, 'apps_for_windows', n.get_object_value(AppsInstallationOptionsForWindows)),
+            "updateChannel": lambda n : setattr(self, 'update_channel', n.get_enum_value(AppsUpdateChannelType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +67,8 @@ class M365AppsInstallationOptions(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("appsForMac", self.apps_for_mac)
+        writer.write_object_value("appsForWindows", self.apps_for_windows)
+        writer.write_enum_value("updateChannel", self.update_channel)
     
 

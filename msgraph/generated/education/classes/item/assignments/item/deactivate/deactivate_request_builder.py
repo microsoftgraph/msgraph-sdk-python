@@ -35,6 +35,7 @@ class DeactivateRequestBuilder(BaseRequestBuilder):
         Mark an assigned educationAssignment as inactive to signal that the assignment has no further action items for teachers and students. This action can only be performed by a teacher on assigned assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignment]
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-deactivate?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

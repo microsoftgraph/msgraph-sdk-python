@@ -34,6 +34,7 @@ class UnpublishRequestBuilder(BaseRequestBuilder):
         Make the scheduling page of this business not available to external customers. Set the isPublished property to false, and the publicUrl property to null.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-unpublish?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

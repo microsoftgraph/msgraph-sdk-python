@@ -37,6 +37,7 @@ class GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuild
         Get the number of users using unique devices in your organization. The report will show you the number of users per device including Windows, Windows phone, Android phone, iPhone, and iPad.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getskypeforbusinessdeviceusagedistributionusercounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

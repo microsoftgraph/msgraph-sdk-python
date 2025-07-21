@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .invitation_participant_info import InvitationParticipantInfo
     from .media_config import MediaConfig
     from .meeting_info import MeetingInfo
+    from .modality import Modality
     from .participant import Participant
     from .participant_info import ParticipantInfo
     from .result_info import ResultInfo
@@ -62,7 +63,7 @@ class Call(Entity, Parsable):
     # The participants property
     participants: Optional[list[Participant]] = None
     # The list of requested modalities. Possible values are: unknown, audio, video, videoBasedScreenSharing, data.
-    requested_modalities: Optional[list[str]] = None
+    requested_modalities: Optional[list[Modality]] = None
     # The result information. For example, the result can hold termination reason. Read-only.
     result_info: Optional[ResultInfo] = None
     # The originator of the call.
@@ -111,6 +112,7 @@ class Call(Entity, Parsable):
         from .invitation_participant_info import InvitationParticipantInfo
         from .media_config import MediaConfig
         from .meeting_info import MeetingInfo
+        from .modality import Modality
         from .participant import Participant
         from .participant_info import ParticipantInfo
         from .result_info import ResultInfo
@@ -131,6 +133,7 @@ class Call(Entity, Parsable):
         from .invitation_participant_info import InvitationParticipantInfo
         from .media_config import MediaConfig
         from .meeting_info import MeetingInfo
+        from .modality import Modality
         from .participant import Participant
         from .participant_info import ParticipantInfo
         from .result_info import ResultInfo
@@ -152,7 +155,7 @@ class Call(Entity, Parsable):
             "myParticipantId": lambda n : setattr(self, 'my_participant_id', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(CommsOperation)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(Participant)),
-            "requestedModalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_primitive_values(str)),
+            "requestedModalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_enum_values(Modality)),
             "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
             "source": lambda n : setattr(self, 'source', n.get_object_value(ParticipantInfo)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(CallState)),
@@ -190,7 +193,7 @@ class Call(Entity, Parsable):
         writer.write_str_value("myParticipantId", self.my_participant_id)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("participants", self.participants)
-        writer.write_collection_of_primitive_values("requestedModalities", self.requested_modalities)
+        writer.write_collection_of_enum_values("requestedModalities", self.requested_modalities)
         writer.write_object_value("resultInfo", self.result_info)
         writer.write_object_value("source", self.source)
         writer.write_enum_value("state", self.state)

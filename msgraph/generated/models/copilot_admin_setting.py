@@ -5,12 +5,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .copilot_admin_limited_mode import CopilotAdminLimitedMode
     from .entity import Entity
 
 from .entity import Entity
 
 @dataclass
 class CopilotAdminSetting(Entity, Parsable):
+    # Represents a setting that controls whether users of Microsoft 365 Copilot in Teams meetings can receive responses to sentiment-related prompts. Read-only. Nullable.
+    limited_mode: Optional[CopilotAdminLimitedMode] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CopilotAdminSetting:
@@ -28,11 +33,14 @@ class CopilotAdminSetting(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .copilot_admin_limited_mode import CopilotAdminLimitedMode
         from .entity import Entity
 
+        from .copilot_admin_limited_mode import CopilotAdminLimitedMode
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "limitedMode": lambda n : setattr(self, 'limited_mode', n.get_object_value(CopilotAdminLimitedMode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,5 +55,6 @@ class CopilotAdminSetting(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("limitedMode", self.limited_mode)
     
 

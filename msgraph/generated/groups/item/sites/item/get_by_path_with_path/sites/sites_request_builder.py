@@ -28,7 +28,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getByPath(path='{path}')/sites{?%24count,%24expand,%24filter,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getByPath(path='{path}')/sites{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SitesRequestBuilderGetQueryParameters]] = None) -> Optional[SiteCollectionResponse]:
         """
@@ -90,6 +90,8 @@ class SitesRequestBuilder(BaseRequestBuilder):
                 return "%24expand"
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "orderby":
+                return "%24orderby"
             if original_name == "search":
                 return "%24search"
             if original_name == "select":
@@ -108,6 +110,9 @@ class SitesRequestBuilder(BaseRequestBuilder):
 
         # Filter items by property values
         filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[list[str]] = None
 
         # Search items by search phrases
         search: Optional[str] = None

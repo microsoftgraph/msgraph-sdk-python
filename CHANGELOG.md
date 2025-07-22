@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.39.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.38.0...v1.39.0) (2025-07-22)
+
+
+### Features
+
+* **generation:** update request builders and models ([cd04cfb](https://github.com/microsoftgraph/msgraph-sdk-python/commit/cd04cfb6088769a15dfa09cab8f93028c91f6685))
+
 ## [1.38.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.37.0...v1.38.0) (2025-07-16)
 
 

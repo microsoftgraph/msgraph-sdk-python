@@ -50,9 +50,10 @@ class LoginPageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[LoginPageItemRequestBuilderGetQueryParameters]] = None) -> Optional[LoginPage]:
         """
-        Represents an attack simulation training login page.
+        Get a loginPage associated with an attack simulation campaign for a tenant. Login pages are shown to users in attack simulations that use credential harvest and link in attachment social engineering techniques.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LoginPage]
+        Find more info here: https://learn.microsoft.com/graph/api/loginpage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +105,7 @@ class LoginPageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[LoginPageItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents an attack simulation training login page.
+        Get a loginPage associated with an attack simulation campaign for a tenant. Login pages are shown to users in attack simulations that use credential harvest and link in attachment social engineering techniques.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +149,7 @@ class LoginPageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LoginPageItemRequestBuilderGetQueryParameters():
         """
-        Represents an attack simulation training login page.
+        Get a loginPage associated with an attack simulation campaign for a tenant. Login pages are shown to users in attack simulations that use credential harvest and link in attachment social engineering techniques.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

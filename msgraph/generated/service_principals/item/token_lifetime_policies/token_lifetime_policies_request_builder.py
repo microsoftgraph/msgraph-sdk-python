@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ....models.token_lifetime_policy_collection_response import TokenLifetimePolicyCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
     from .item.token_lifetime_policy_item_request_builder import TokenLifetimePolicyItemRequestBuilder
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
     """
@@ -34,7 +35,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
     
     def by_token_lifetime_policy_id(self,token_lifetime_policy_id: str) -> TokenLifetimePolicyItemRequestBuilder:
         """
-        Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.servicePrincipal entity.
+        Gets an item from the msgraph.generated.servicePrincipals.item.tokenLifetimePolicies.item collection
         param token_lifetime_policy_id: The unique identifier of tokenLifetimePolicy
         Returns: TokenLifetimePolicyItemRequestBuilder
         """
@@ -96,6 +97,15 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def ref(self) -> RefRequestBuilder:
+        """
+        Provides operations to manage the collection of servicePrincipal entities.
+        """
+        from .ref.ref_request_builder import RefRequestBuilder
+
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TokenLifetimePoliciesRequestBuilderGetQueryParameters():

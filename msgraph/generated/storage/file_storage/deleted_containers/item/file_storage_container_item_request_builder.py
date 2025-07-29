@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.file_storage_container import FileStorageContainer
     from .....models.o_data_errors.o_data_error import ODataError
     from .activate.activate_request_builder import ActivateRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
     from .drive.drive_request_builder import DriveRequestBuilder
     from .lock.lock_request_builder import LockRequestBuilder
     from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
@@ -154,6 +155,15 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
         from .activate.activate_request_builder import ActivateRequestBuilder
 
         return ActivateRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def columns(self) -> ColumnsRequestBuilder:
+        """
+        Provides operations to manage the columns property of the microsoft.graph.fileStorageContainer entity.
+        """
+        from .columns.columns_request_builder import ColumnsRequestBuilder
+
+        return ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def drive(self) -> DriveRequestBuilder:

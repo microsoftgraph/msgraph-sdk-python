@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .conditional_access_policy_state import ConditionalAccessPolicyState
     from .conditional_access_session_controls import ConditionalAccessSessionControls
     from .entity import Entity
+    from .what_if_analysis_result import WhatIfAnalysisResult
 
 from .entity import Entity
 
@@ -34,7 +35,7 @@ class ConditionalAccessPolicy(Entity, Parsable):
     session_controls: Optional[ConditionalAccessSessionControls] = None
     # The state property
     state: Optional[ConditionalAccessPolicyState] = None
-    # The templateId property
+    # Specifies the unique identifier of a Conditional Access template. Inherited from entity.
     template_id: Optional[str] = None
     
     @staticmethod
@@ -46,6 +47,15 @@ class ConditionalAccessPolicy(Entity, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.whatIfAnalysisResult".casefold():
+            from .what_if_analysis_result import WhatIfAnalysisResult
+
+            return WhatIfAnalysisResult()
         return ConditionalAccessPolicy()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -58,12 +68,14 @@ class ConditionalAccessPolicy(Entity, Parsable):
         from .conditional_access_policy_state import ConditionalAccessPolicyState
         from .conditional_access_session_controls import ConditionalAccessSessionControls
         from .entity import Entity
+        from .what_if_analysis_result import WhatIfAnalysisResult
 
         from .conditional_access_condition_set import ConditionalAccessConditionSet
         from .conditional_access_grant_controls import ConditionalAccessGrantControls
         from .conditional_access_policy_state import ConditionalAccessPolicyState
         from .conditional_access_session_controls import ConditionalAccessSessionControls
         from .entity import Entity
+        from .what_if_analysis_result import WhatIfAnalysisResult
 
         fields: dict[str, Callable[[Any], None]] = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(ConditionalAccessConditionSet)),

@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .out_of_office_settings import OutOfOfficeSettings
     from .presence_status_message import PresenceStatusMessage
 
 from .entity import Entity
@@ -18,6 +19,10 @@ class Presence(Entity, Parsable):
     availability: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The outOfOfficeSettings property
+    out_of_office_settings: Optional[OutOfOfficeSettings] = None
+    # The sequenceNumber property
+    sequence_number: Optional[str] = None
     # The presence status message of a user.
     status_message: Optional[PresenceStatusMessage] = None
     
@@ -38,14 +43,18 @@ class Presence(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .out_of_office_settings import OutOfOfficeSettings
         from .presence_status_message import PresenceStatusMessage
 
         from .entity import Entity
+        from .out_of_office_settings import OutOfOfficeSettings
         from .presence_status_message import PresenceStatusMessage
 
         fields: dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "availability": lambda n : setattr(self, 'availability', n.get_str_value()),
+            "outOfOfficeSettings": lambda n : setattr(self, 'out_of_office_settings', n.get_object_value(OutOfOfficeSettings)),
+            "sequenceNumber": lambda n : setattr(self, 'sequence_number', n.get_str_value()),
             "statusMessage": lambda n : setattr(self, 'status_message', n.get_object_value(PresenceStatusMessage)),
         }
         super_fields = super().get_field_deserializers()
@@ -63,6 +72,7 @@ class Presence(Entity, Parsable):
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
+        writer.write_object_value("outOfOfficeSettings", self.out_of_office_settings)
         writer.write_object_value("statusMessage", self.status_message)
     
 

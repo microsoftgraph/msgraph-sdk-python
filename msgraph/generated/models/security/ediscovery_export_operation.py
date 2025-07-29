@@ -20,9 +20,9 @@ class EdiscoveryExportOperation(CaseOperation, Parsable):
     description: Optional[str] = None
     # Contains the properties for an export file metadata, including downloadUrl, fileName, and size.
     export_file_metadata: Optional[list[ExportFileMetadata]] = None
-    # The options provided for the export. For more information, see reviewSet: export. Possible values are: originalFiles, text, pdfReplacement,  tags.
+    # The options provided for the export. For more information, see reviewSet: export. Possible values are: originalFiles, text, pdfReplacement, tags, unknownFutureValue, splitSource, includeFolderAndPath, friendlyName, condensePaths. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: splitSource, includeFolderAndPath, friendlyName, condensePaths.
     export_options: Optional[ExportOptions] = None
-    # The options that specify the structure of the export. For more information, see reviewSet: export. Possible values are: none, directory, pst.
+    # The options that specify the structure of the export. For more information, see reviewSet: export. Possible values are: none, directory (deprecated), pst, unknownFutureValue, msg. Use the Prefer: include-unknown-enum-members request header to get the following value from this evolvable enum: msg. The directory member is deprecated. It remains in v1.0 for backward compatibility. Going forward, use either pst or msg.
     export_structure: Optional[ExportFileStructure] = None
     # The OdataType property
     odata_type: Optional[str] = None

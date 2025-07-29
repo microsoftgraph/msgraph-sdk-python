@@ -49,7 +49,7 @@ class LanguageDetailsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[LanguageDetailsRequestBuilderGetQueryParameters]] = None) -> Optional[TrainingLanguageDetailCollectionResponse]:
         """
-        Language specific details on a training.
+        Get the language details about an attack simulation training for a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TrainingLanguageDetailCollectionResponse]
         """
@@ -92,7 +92,7 @@ class LanguageDetailsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[LanguageDetailsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Language specific details on a training.
+        Get the language details about an attack simulation training for a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class LanguageDetailsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LanguageDetailsRequestBuilderGetQueryParameters():
         """
-        Language specific details on a training.
+        Get the language details about an attack simulation training for a tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

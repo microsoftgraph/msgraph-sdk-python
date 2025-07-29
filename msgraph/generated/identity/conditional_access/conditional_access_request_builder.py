@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authentication_context_class_references.authentication_context_class_references_request_builder import AuthenticationContextClassReferencesRequestBuilder
     from .authentication_strength.authentication_strength_request_builder import AuthenticationStrengthRequestBuilder
+    from .evaluate.evaluate_request_builder import EvaluateRequestBuilder
     from .named_locations.named_locations_request_builder import NamedLocationsRequestBuilder
     from .policies.policies_request_builder import PoliciesRequestBuilder
     from .templates.templates_request_builder import TemplatesRequestBuilder
@@ -42,6 +43,15 @@ class ConditionalAccessRequestBuilder(BaseRequestBuilder):
         from .authentication_strength.authentication_strength_request_builder import AuthenticationStrengthRequestBuilder
 
         return AuthenticationStrengthRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def evaluate(self) -> EvaluateRequestBuilder:
+        """
+        Provides operations to call the evaluate method.
+        """
+        from .evaluate.evaluate_request_builder import EvaluateRequestBuilder
+
+        return EvaluateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def named_locations(self) -> NamedLocationsRequestBuilder:

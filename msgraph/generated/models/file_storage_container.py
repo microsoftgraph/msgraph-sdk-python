@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
+    from .column_definition import ColumnDefinition
     from .drive import Drive
     from .entity import Entity
     from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
@@ -21,6 +22,8 @@ from .entity import Entity
 
 @dataclass
 class FileStorageContainer(Entity, Parsable):
+    # The columns property
+    columns: Optional[list[ColumnDefinition]] = None
     # Container type ID of the fileStorageContainer. For details about container types, see Container Types. Each container must have only one container type. Read-only.
     container_type_id: Optional[UUID] = None
     # Date and time of the fileStorageContainer creation. Read-only.
@@ -64,6 +67,7 @@ class FileStorageContainer(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .column_definition import ColumnDefinition
         from .drive import Drive
         from .entity import Entity
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
@@ -74,6 +78,7 @@ class FileStorageContainer(Entity, Parsable):
         from .recycle_bin import RecycleBin
         from .site_lock_state import SiteLockState
 
+        from .column_definition import ColumnDefinition
         from .drive import Drive
         from .entity import Entity
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
@@ -85,6 +90,7 @@ class FileStorageContainer(Entity, Parsable):
         from .site_lock_state import SiteLockState
 
         fields: dict[str, Callable[[Any], None]] = {
+            "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
             "containerTypeId": lambda n : setattr(self, 'container_type_id', n.get_uuid_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customProperties": lambda n : setattr(self, 'custom_properties', n.get_object_value(FileStorageContainerCustomPropertyDictionary)),
@@ -111,6 +117,7 @@ class FileStorageContainer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("columns", self.columns)
         writer.write_uuid_value("containerTypeId", self.container_type_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("customProperties", self.custom_properties)

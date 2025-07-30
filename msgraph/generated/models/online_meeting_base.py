@@ -60,6 +60,8 @@ class OnlineMeetingBase(Entity, Parsable):
     chat_info: Optional[ChatInfo] = None
     # Specifies the configuration settings for meeting chat restrictions.
     chat_restrictions: Optional[ChatRestrictions] = None
+    # The isEndToEndEncryptionEnabled property
+    is_end_to_end_encryption_enabled: Optional[bool] = None
     # Indicates whether to announce when callers join or leave.
     is_entry_exit_announced: Optional[bool] = None
     # The join information in the language and locale variant specified in 'Accept-Language' request HTTP header. Read-only.
@@ -164,6 +166,7 @@ class OnlineMeetingBase(Entity, Parsable):
             "audioConferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(AudioConferencing)),
             "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
             "chatRestrictions": lambda n : setattr(self, 'chat_restrictions', n.get_object_value(ChatRestrictions)),
+            "isEndToEndEncryptionEnabled": lambda n : setattr(self, 'is_end_to_end_encryption_enabled', n.get_bool_value()),
             "isEntryExitAnnounced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
             "joinInformation": lambda n : setattr(self, 'join_information', n.get_object_value(ItemBody)),
             "joinMeetingIdSettings": lambda n : setattr(self, 'join_meeting_id_settings', n.get_object_value(JoinMeetingIdSettings)),
@@ -205,6 +208,7 @@ class OnlineMeetingBase(Entity, Parsable):
         writer.write_object_value("audioConferencing", self.audio_conferencing)
         writer.write_object_value("chatInfo", self.chat_info)
         writer.write_object_value("chatRestrictions", self.chat_restrictions)
+        writer.write_bool_value("isEndToEndEncryptionEnabled", self.is_end_to_end_encryption_enabled)
         writer.write_bool_value("isEntryExitAnnounced", self.is_entry_exit_announced)
         writer.write_object_value("joinInformation", self.join_information)
         writer.write_object_value("joinMeetingIdSettings", self.join_meeting_id_settings)

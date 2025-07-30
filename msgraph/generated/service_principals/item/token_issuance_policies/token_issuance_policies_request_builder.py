@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ....models.token_issuance_policy_collection_response import TokenIssuancePolicyCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
     from .item.token_issuance_policy_item_request_builder import TokenIssuancePolicyItemRequestBuilder
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
     """
@@ -34,7 +35,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
     
     def by_token_issuance_policy_id(self,token_issuance_policy_id: str) -> TokenIssuancePolicyItemRequestBuilder:
         """
-        Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.servicePrincipal entity.
+        Gets an item from the msgraph.generated.servicePrincipals.item.tokenIssuancePolicies.item collection
         param token_issuance_policy_id: The unique identifier of tokenIssuancePolicy
         Returns: TokenIssuancePolicyItemRequestBuilder
         """
@@ -95,6 +96,15 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def ref(self) -> RefRequestBuilder:
+        """
+        Provides operations to manage the collection of servicePrincipal entities.
+        """
+        from .ref.ref_request_builder import RefRequestBuilder
+
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TokenIssuancePoliciesRequestBuilderGetQueryParameters():

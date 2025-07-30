@@ -553,6 +553,7 @@ if TYPE_CHECKING:
     from .permission_grant_policy import PermissionGrantPolicy
     from .person import Person
     from .phone_authentication_method import PhoneAuthenticationMethod
+    from .phone_user_conversation_member import PhoneUserConversationMember
     from .pinned_chat_message_info import PinnedChatMessageInfo
     from .place import Place
     from .planner import Planner
@@ -610,13 +611,16 @@ if TYPE_CHECKING:
     from .provisioning_object_summary import ProvisioningObjectSummary
     from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
     from .rbac_application import RbacApplication
+    from .reading_assignment_submission import ReadingAssignmentSubmission
     from .record_operation import RecordOperation
     from .recycle_bin import RecycleBin
     from .recycle_bin_item import RecycleBinItem
     from .reference_attachment import ReferenceAttachment
+    from .reflect_check_in_response import ReflectCheckInResponse
     from .relying_party_detailed_summary import RelyingPartyDetailedSummary
     from .remote_assistance_partner import RemoteAssistancePartner
     from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+    from .reports_root import ReportsRoot
     from .request import Request
     from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
     from .resource_operation import ResourceOperation
@@ -654,9 +658,6 @@ if TYPE_CHECKING:
     from .security.article import Article
     from .security.article_indicator import ArticleIndicator
     from .security.artifact import Artifact
-    from .security.audit_core_root import AuditCoreRoot
-    from .security.audit_log_query import AuditLogQuery
-    from .security.audit_log_record import AuditLogRecord
     from .security.authority_template import AuthorityTemplate
     from .security.case import Case
     from .security.cases_root import CasesRoot
@@ -921,6 +922,7 @@ if TYPE_CHECKING:
     from .vpp_token import VppToken
     from .web_app import WebApp
     from .web_part import WebPart
+    from .what_if_analysis_result import WhatIfAnalysisResult
     from .win32_lob_app import Win32LobApp
     from .windows10_compliance_policy import Windows10CompliancePolicy
     from .windows10_custom_configuration import Windows10CustomConfiguration
@@ -3230,6 +3232,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .phone_authentication_method import PhoneAuthenticationMethod
 
             return PhoneAuthenticationMethod()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.phoneUserConversationMember".casefold():
+            from .phone_user_conversation_member import PhoneUserConversationMember
+
+            return PhoneUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.pinnedChatMessageInfo".casefold():
             from .pinned_chat_message_info import PinnedChatMessageInfo
 
@@ -3458,6 +3464,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .rbac_application import RbacApplication
 
             return RbacApplication()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.readingAssignmentSubmission".casefold():
+            from .reading_assignment_submission import ReadingAssignmentSubmission
+
+            return ReadingAssignmentSubmission()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.recordOperation".casefold():
             from .record_operation import RecordOperation
 
@@ -3474,6 +3484,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .reference_attachment import ReferenceAttachment
 
             return ReferenceAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.reflectCheckInResponse".casefold():
+            from .reflect_check_in_response import ReflectCheckInResponse
+
+            return ReflectCheckInResponse()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.relyingPartyDetailedSummary".casefold():
             from .relying_party_detailed_summary import RelyingPartyDetailedSummary
 
@@ -3486,6 +3500,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
 
             return RemoteDesktopSecurityConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.reportsRoot".casefold():
+            from .reports_root import ReportsRoot
+
+            return ReportsRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.request".casefold():
             from .request import Request
 
@@ -3639,18 +3657,6 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.artifact import Artifact
 
             return Artifact()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.auditCoreRoot".casefold():
-            from .security.audit_core_root import AuditCoreRoot
-
-            return AuditCoreRoot()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.auditLogQuery".casefold():
-            from .security.audit_log_query import AuditLogQuery
-
-            return AuditLogQuery()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.auditLogRecord".casefold():
-            from .security.audit_log_record import AuditLogRecord
-
-            return AuditLogRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.authorityTemplate".casefold():
             from .security.authority_template import AuthorityTemplate
 
@@ -4705,6 +4711,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .web_part import WebPart
 
             return WebPart()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.whatIfAnalysisResult".casefold():
+            from .what_if_analysis_result import WhatIfAnalysisResult
+
+            return WhatIfAnalysisResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobApp".casefold():
             from .win32_lob_app import Win32LobApp
 
@@ -5607,6 +5617,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .permission_grant_policy import PermissionGrantPolicy
         from .person import Person
         from .phone_authentication_method import PhoneAuthenticationMethod
+        from .phone_user_conversation_member import PhoneUserConversationMember
         from .pinned_chat_message_info import PinnedChatMessageInfo
         from .place import Place
         from .planner import Planner
@@ -5664,13 +5675,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .rbac_application import RbacApplication
+        from .reading_assignment_submission import ReadingAssignmentSubmission
         from .record_operation import RecordOperation
         from .recycle_bin import RecycleBin
         from .recycle_bin_item import RecycleBinItem
         from .reference_attachment import ReferenceAttachment
+        from .reflect_check_in_response import ReflectCheckInResponse
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+        from .reports_root import ReportsRoot
         from .request import Request
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
         from .resource_operation import ResourceOperation
@@ -5708,9 +5722,6 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
-        from .security.audit_core_root import AuditCoreRoot
-        from .security.audit_log_query import AuditLogQuery
-        from .security.audit_log_record import AuditLogRecord
         from .security.authority_template import AuthorityTemplate
         from .security.case import Case
         from .security.cases_root import CasesRoot
@@ -5975,6 +5986,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .vpp_token import VppToken
         from .web_app import WebApp
         from .web_part import WebPart
+        from .what_if_analysis_result import WhatIfAnalysisResult
         from .win32_lob_app import Win32LobApp
         from .windows10_compliance_policy import Windows10CompliancePolicy
         from .windows10_custom_configuration import Windows10CustomConfiguration
@@ -6610,6 +6622,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .permission_grant_policy import PermissionGrantPolicy
         from .person import Person
         from .phone_authentication_method import PhoneAuthenticationMethod
+        from .phone_user_conversation_member import PhoneUserConversationMember
         from .pinned_chat_message_info import PinnedChatMessageInfo
         from .place import Place
         from .planner import Planner
@@ -6667,13 +6680,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .rbac_application import RbacApplication
+        from .reading_assignment_submission import ReadingAssignmentSubmission
         from .record_operation import RecordOperation
         from .recycle_bin import RecycleBin
         from .recycle_bin_item import RecycleBinItem
         from .reference_attachment import ReferenceAttachment
+        from .reflect_check_in_response import ReflectCheckInResponse
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+        from .reports_root import ReportsRoot
         from .request import Request
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
         from .resource_operation import ResourceOperation
@@ -6711,9 +6727,6 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
-        from .security.audit_core_root import AuditCoreRoot
-        from .security.audit_log_query import AuditLogQuery
-        from .security.audit_log_record import AuditLogRecord
         from .security.authority_template import AuthorityTemplate
         from .security.case import Case
         from .security.cases_root import CasesRoot
@@ -6978,6 +6991,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .vpp_token import VppToken
         from .web_app import WebApp
         from .web_part import WebPart
+        from .what_if_analysis_result import WhatIfAnalysisResult
         from .win32_lob_app import Win32LobApp
         from .windows10_compliance_policy import Windows10CompliancePolicy
         from .windows10_custom_configuration import Windows10CustomConfiguration

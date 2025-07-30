@@ -20,13 +20,13 @@ class ShiftActivity(AdditionalDataHolder, BackedModel, Parsable):
     code: Optional[str] = None
     # The name of the shiftActivity. Required.
     display_name: Optional[str] = None
-    # The end date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
+    # The end date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
     end_date_time: Optional[datetime.datetime] = None
     # Indicates whether the microsoft.graph.user should be paid for the activity during their shift. Required.
     is_paid: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The start date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
+    # The start date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
     start_date_time: Optional[datetime.datetime] = None
     # The theme property
     theme: Optional[ScheduleEntityTheme] = None

@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from .classes.classes_request_builder import ClassesRequestBuilder
     from .me.me_request_builder import MeRequestBuilder
+    from .reports.reports_request_builder import ReportsRequestBuilder
     from .schools.schools_request_builder import SchoolsRequestBuilder
     from .users.users_request_builder import UsersRequestBuilder
 
@@ -130,6 +131,15 @@ class EducationRequestBuilder(BaseRequestBuilder):
         from .me.me_request_builder import MeRequestBuilder
 
         return MeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reports(self) -> ReportsRequestBuilder:
+        """
+        Provides operations to manage the reports property of the microsoft.graph.educationRoot entity.
+        """
+        from .reports.reports_request_builder import ReportsRequestBuilder
+
+        return ReportsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def schools(self) -> SchoolsRequestBuilder:

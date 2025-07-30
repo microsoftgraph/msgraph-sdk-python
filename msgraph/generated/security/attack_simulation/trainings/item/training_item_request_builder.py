@@ -51,9 +51,10 @@ class TrainingItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TrainingItemRequestBuilderGetQueryParameters]] = None) -> Optional[Training]:
         """
-        Represents details about attack simulation trainings.
+        Get an attack simulation training for a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Training]
+        Find more info here: https://learn.microsoft.com/graph/api/training-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -105,7 +106,7 @@ class TrainingItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TrainingItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents details about attack simulation trainings.
+        Get an attack simulation training for a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +159,7 @@ class TrainingItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TrainingItemRequestBuilderGetQueryParameters():
         """
-        Represents details about attack simulation trainings.
+        Get an attack simulation training for a tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

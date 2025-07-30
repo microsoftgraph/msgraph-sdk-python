@@ -53,9 +53,10 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[OwnedObjectsRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
-        Directory objects that this service principal owns. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+        Retrieve a list of objects owned by the servicePrincipal.  This could include applications or groups.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-ownedobjects?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,7 +74,7 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[OwnedObjectsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Directory objects that this service principal owns. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+        Retrieve a list of objects owned by the servicePrincipal.  This could include applications or groups.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +150,7 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OwnedObjectsRequestBuilderGetQueryParameters():
         """
-        Directory objects that this service principal owns. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+        Retrieve a list of objects owned by the servicePrincipal.  This could include applications or groups.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

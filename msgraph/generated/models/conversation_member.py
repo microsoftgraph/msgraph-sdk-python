@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
     from .entity import Entity
     from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+    from .phone_user_conversation_member import PhoneUserConversationMember
     from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
     from .skype_user_conversation_member import SkypeUserConversationMember
 
@@ -57,6 +58,10 @@ class ConversationMember(Entity, Parsable):
             from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
 
             return MicrosoftAccountUserConversationMember()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.phoneUserConversationMember".casefold():
+            from .phone_user_conversation_member import PhoneUserConversationMember
+
+            return PhoneUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeForBusinessUserConversationMember".casefold():
             from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
 
@@ -77,6 +82,7 @@ class ConversationMember(Entity, Parsable):
         from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
         from .entity import Entity
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+        from .phone_user_conversation_member import PhoneUserConversationMember
         from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
         from .skype_user_conversation_member import SkypeUserConversationMember
 
@@ -85,6 +91,7 @@ class ConversationMember(Entity, Parsable):
         from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
         from .entity import Entity
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+        from .phone_user_conversation_member import PhoneUserConversationMember
         from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
         from .skype_user_conversation_member import SkypeUserConversationMember
 

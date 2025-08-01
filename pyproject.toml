@@ -20,7 +20,8 @@ dependencies = [
 
 ]
 requires-python = ">=3.9"
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "README.md"
 keywords = ["msgraph", "openAPI", "Microsoft", "Graph"]
 classifiers = [

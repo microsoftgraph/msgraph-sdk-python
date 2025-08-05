@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.41.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.40.0...v1.41.0) (2025-08-05)
+
+
+### Features
+
+* **generation:** update request builders and models ([c2d45c8](https://github.com/microsoftgraph/msgraph-sdk-python/commit/c2d45c848133aa3cdb5d9e93bafef50a064b6524))
+
+
+### Bug Fixes
+
+* Update license field to use proper SPDX identifier ([aab1c9e](https://github.com/microsoftgraph/msgraph-sdk-python/commit/aab1c9e4e7da347c867480bbc510a5723761e8fa))
+
 ## [1.40.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.39.0...v1.40.0) (2025-07-30)
 
 

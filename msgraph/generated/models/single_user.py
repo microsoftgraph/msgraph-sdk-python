@@ -13,7 +13,7 @@ from .subject_set import SubjectSet
 class SingleUser(SubjectSet, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.singleUser"
-    # The name of the user in Microsoft Entra ID. Read only.
+    # The name of the user in Microsoft Entra ID. Read-only.
     description: Optional[str] = None
     # The ID of the user in Microsoft Entra ID.
     user_id: Optional[str] = None

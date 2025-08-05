@@ -18,6 +18,8 @@ class MailboxRestoreArtifact(RestoreArtifactBase, Parsable):
     restored_folder_id: Optional[str] = None
     # The new restored folder name.
     restored_folder_name: Optional[str] = None
+    # The number of items that are being restored in the folder.
+    restored_item_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> MailboxRestoreArtifact:
@@ -53,6 +55,7 @@ class MailboxRestoreArtifact(RestoreArtifactBase, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "restoredFolderId": lambda n : setattr(self, 'restored_folder_id', n.get_str_value()),
             "restoredFolderName": lambda n : setattr(self, 'restored_folder_name', n.get_str_value()),
+            "restoredItemCount": lambda n : setattr(self, 'restored_item_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -68,5 +71,6 @@ class MailboxRestoreArtifact(RestoreArtifactBase, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("restoredFolderId", self.restored_folder_id)
+        writer.write_int_value("restoredItemCount", self.restored_item_count)
     
 

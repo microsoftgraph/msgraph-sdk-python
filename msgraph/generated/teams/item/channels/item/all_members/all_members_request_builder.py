@@ -51,7 +51,7 @@ class AllMembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AllMembersRequestBuilderGetQueryParameters]] = None) -> Optional[ConversationMemberCollectionResponse]:
         """
-        Get a list of all members in a channel. It supports all types of channels. In the case of shared channels, it includes all cross-tenant and cross-team members in a channel.
+        Get a list of all members in a channel. This API supports all channel types, including shared channels. For shared channels, the response includes:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMemberCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/channel-list-allmembers?view=graph-rest-1.0
@@ -95,7 +95,7 @@ class AllMembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AllMembersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of all members in a channel. It supports all types of channels. In the case of shared channels, it includes all cross-tenant and cross-team members in a channel.
+        Get a list of all members in a channel. This API supports all channel types, including shared channels. For shared channels, the response includes:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +159,7 @@ class AllMembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllMembersRequestBuilderGetQueryParameters():
         """
-        Get a list of all members in a channel. It supports all types of channels. In the case of shared channels, it includes all cross-tenant and cross-team members in a channel.
+        Get a list of all members in a channel. This API supports all channel types, including shared channels. For shared channels, the response includes:
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -50,7 +50,7 @@ class OnlineMeetingBase(Entity, Parsable):
     allow_whiteboard: Optional[bool] = None
     # Specifies the users who can admit from the lobby. Possible values are: organizerAndCoOrganizersAndPresenters, organizerAndCoOrganizers, unknownFutureValue.
     allowed_lobby_admitters: Optional[AllowedLobbyAdmitterRoles] = None
-    # Specifies who can be a presenter in a meeting.
+    # Specifies who can be a presenter in a meeting. Possible values are: everyone, organization, roleIsPresenter, organizer, unknownFutureValue. Inherited from onlineMeetingBase.
     allowed_presenters: Optional[OnlineMeetingPresenters] = None
     # The attendance reports of an online meeting. Read-only.
     attendance_reports: Optional[list[MeetingAttendanceReport]] = None

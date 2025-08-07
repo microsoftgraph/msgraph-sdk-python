@@ -50,9 +50,10 @@ class RestorePointsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RestorePointsRequestBuilderGetQueryParameters]] = None) -> Optional[RestorePointCollectionResponse]:
         """
-        List of restore points in the tenant.
+        Get a list of the restorePoint objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RestorePointCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/backuprestoreroot-list-restorepoints?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,7 +94,7 @@ class RestorePointsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RestorePointsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List of restore points in the tenant.
+        Get a list of the restorePoint objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +149,7 @@ class RestorePointsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RestorePointsRequestBuilderGetQueryParameters():
         """
-        List of restore points in the tenant.
+        Get a list of the restorePoint objects and their properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class AppScope(Entity, Parsable):
-    # Provides the display name of the app-specific resource represented by the app scope. Read only.
+    # Provides the display name of the app-specific resource represented by the app scope. Read-only.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .end_grace_period.end_grace_period_request_builder import EndGracePeriodRequestBuilder
     from .reboot.reboot_request_builder import RebootRequestBuilder
     from .rename.rename_request_builder import RenameRequestBuilder
+    from .resize.resize_request_builder import ResizeRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
     from .troubleshoot.troubleshoot_request_builder import TroubleshootRequestBuilder
 
@@ -170,6 +171,15 @@ class CloudPCItemRequestBuilder(BaseRequestBuilder):
         from .rename.rename_request_builder import RenameRequestBuilder
 
         return RenameRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resize(self) -> ResizeRequestBuilder:
+        """
+        Provides operations to call the resize method.
+        """
+        from .resize.resize_request_builder import ResizeRequestBuilder
+
+        return ResizeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def restore(self) -> RestoreRequestBuilder:

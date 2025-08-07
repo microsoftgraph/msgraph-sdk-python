@@ -17,13 +17,13 @@ from .case_operation import CaseOperation
 
 @dataclass
 class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
-    # The additionalDataOptions property
+    # The options to add items to the review set. Possible values are: allVersions, linkedFiles, unknownFutureValue, advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder.
     additional_data_options: Optional[AdditionalDataOptions] = None
-    # The cloudAttachmentVersion property
+    # Specifies the number of most recent versions of cloud attachments to collect. Possible values are: latest, recent10, recent100, all, unknownFutureValue.
     cloud_attachment_version: Optional[CloudAttachmentVersion] = None
-    # The documentVersion property
+    # Specifies the number of most recent versions of SharePoint documents to collect. Possible values are: latest, recent10, recent100, all, unknownFutureValue.
     document_version: Optional[DocumentVersion] = None
-    # The itemsToInclude property
+    # The items to include in the review set. Possible values are: searchHits, partiallyIndexed, unknownFutureValue.
     items_to_include: Optional[ItemsToInclude] = None
     # The OdataType property
     odata_type: Optional[str] = None

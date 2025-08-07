@@ -35,7 +35,6 @@ class MicrosoftGraphSecurityGetDeploymentPackageUriRequestBuilder(BaseRequestBui
         Get the sensor deployment package URL and version. You can use this URL to download the installer to install the sensor on a server.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SensorDeploymentPackage]
-        Find more info here: https://learn.microsoft.com/graph/api/security-sensor-getdeploymentpackageuri?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

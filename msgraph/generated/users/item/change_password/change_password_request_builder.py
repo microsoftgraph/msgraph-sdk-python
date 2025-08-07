@@ -32,7 +32,7 @@ class ChangePasswordRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ChangePasswordPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Update the signed-in user's password. Any user can update their password without belonging to any administrator role.
+        Update the signed-in user's password. Any user can update their password without belonging to any administrator role.To update another user's password in either delegated or app-only scenarios, update the passwordProfile property of the user instead. See Example 3: Update the passwordProfile of a user and reset their password.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -54,7 +54,7 @@ class ChangePasswordRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ChangePasswordPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the signed-in user's password. Any user can update their password without belonging to any administrator role.
+        Update the signed-in user's password. Any user can update their password without belonging to any administrator role.To update another user's password in either delegated or app-only scenarios, update the passwordProfile property of the user instead. See Example 3: Update the passwordProfile of a user and reset their password.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

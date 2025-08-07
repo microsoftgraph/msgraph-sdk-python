@@ -14,13 +14,13 @@ from .entity import Entity
 
 @dataclass
 class UsedInsight(Entity, Parsable):
-    # Information about when the item was last viewed or modified by the user. Read only.
+    # Information about when the item was last viewed or modified by the user. Read-only.
     last_used: Optional[UsageDetails] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Used for navigating to the item that was used. For file attachments, the type is fileAttachment. For linked attachments, the type is driveItem.
     resource: Optional[Entity] = None
-    # Reference properties of the used document, such as the url and type of the document. Read-only
+    # Reference properties of the used document, such as the URL and type of the document. Read-only
     resource_reference: Optional[ResourceReference] = None
     # Properties that you can use to visualize the document in your experience. Read-only
     resource_visualization: Optional[ResourceVisualization] = None

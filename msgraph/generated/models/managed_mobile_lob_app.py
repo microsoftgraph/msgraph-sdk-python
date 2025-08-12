@@ -15,7 +15,7 @@ from .managed_app import ManagedApp
 @dataclass
 class ManagedMobileLobApp(ManagedApp, Parsable):
     """
-    An abstract base class containing properties for all managed mobile line of business apps.
+    An abstract base class containing properties for all managed mobile line-of-business apps.
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.managedMobileLobApp"

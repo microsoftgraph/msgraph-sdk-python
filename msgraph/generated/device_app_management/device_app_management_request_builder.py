@@ -27,6 +27,7 @@ if TYPE_CHECKING:
     from .mobile_apps.mobile_apps_request_builder import MobileAppsRequestBuilder
     from .mobile_app_categories.mobile_app_categories_request_builder import MobileAppCategoriesRequestBuilder
     from .mobile_app_configurations.mobile_app_configurations_request_builder import MobileAppConfigurationsRequestBuilder
+    from .mobile_app_relationships.mobile_app_relationships_request_builder import MobileAppRelationshipsRequestBuilder
     from .sync_microsoft_store_for_business_apps.sync_microsoft_store_for_business_apps_request_builder import SyncMicrosoftStoreForBusinessAppsRequestBuilder
     from .targeted_managed_app_configurations.targeted_managed_app_configurations_request_builder import TargetedManagedAppConfigurationsRequestBuilder
     from .vpp_tokens.vpp_tokens_request_builder import VppTokensRequestBuilder
@@ -72,7 +73,7 @@ class DeviceAppManagementRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAppManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-deviceappmanagement-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-partnerintegration-deviceappmanagement-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -215,6 +216,15 @@ class DeviceAppManagementRequestBuilder(BaseRequestBuilder):
         from .mobile_app_configurations.mobile_app_configurations_request_builder import MobileAppConfigurationsRequestBuilder
 
         return MobileAppConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mobile_app_relationships(self) -> MobileAppRelationshipsRequestBuilder:
+        """
+        Provides operations to manage the mobileAppRelationships property of the microsoft.graph.deviceAppManagement entity.
+        """
+        from .mobile_app_relationships.mobile_app_relationships_request_builder import MobileAppRelationshipsRequestBuilder
+
+        return MobileAppRelationshipsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def mobile_apps(self) -> MobileAppsRequestBuilder:

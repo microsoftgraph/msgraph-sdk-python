@@ -9,6 +9,6 @@ class WindowsUpdateNotificationDisplayOption(str, Enum):
     RestartWarningsOnly = "restartWarningsOnly",
     # Turn off all notifications, including restart warnings.
     DisableAllNotifications = "disableAllNotifications",
-    # Evolvable enum member
+    # Evolvable enumeration sentinel value. Do not use.
     UnknownFutureValue = "unknownFutureValue",
 

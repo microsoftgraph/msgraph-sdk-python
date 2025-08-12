@@ -19,35 +19,35 @@ from .entity import Entity
 
 @dataclass
 class AiInteraction(Entity, Parsable):
-    # The data source for Copilot data. For example, IPM.SkypeTeams.Message.Copilot.Excel or IPM.SkypeTeams.Message.Copilot.Loop.
+    # The appClass property
     app_class: Optional[str] = None
-    # The collection of documents attached to the interaction, such as cards and images.
+    # The attachments property
     attachments: Optional[list[AiInteractionAttachment]] = None
-    # The body of the message, including the text of the body and its body type.
+    # The body property
     body: Optional[ItemBody] = None
-    # The identifer that maps to all contexts associated with an interaction.
+    # The contexts property
     contexts: Optional[list[AiInteractionContext]] = None
-    # The type of the conversation. For example, appchat or bizchat.
+    # The conversationType property
     conversation_type: Optional[str] = None
-    # The time when the interaction was created.
+    # The createdDateTime property
     created_date_time: Optional[datetime.datetime] = None
-    # The timestamp of when the interaction was last modified.
+    # The etag property
     etag: Optional[str] = None
     # The from property
     from_: Optional[IdentitySet] = None
     # The interactionType property
     interaction_type: Optional[AiInteractionType] = None
-    # The collection of links that appear in the interaction.
+    # The links property
     links: Optional[list[AiInteractionLink]] = None
-    # The locale of the sender.
+    # The locale property
     locale: Optional[str] = None
-    # The collection of the entities that were mentioned in the interaction, including users, bots, and so on.
+    # The mentions property
     mentions: Optional[list[AiInteractionMention]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The identifier that groups a user prompt with its Copilot response.
+    # The requestId property
     request_id: Optional[str] = None
-    # The thread ID or conversation identifier that maps to all Copilot sessions for the user.
+    # The sessionId property
     session_id: Optional[str] = None
     
     @staticmethod

@@ -476,6 +476,7 @@ if TYPE_CHECKING:
     from .mobile_app_category import MobileAppCategory
     from .mobile_app_content import MobileAppContent
     from .mobile_app_content_file import MobileAppContentFile
+    from .mobile_app_relationship import MobileAppRelationship
     from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
     from .mobile_contained_app import MobileContainedApp
     from .mobile_lob_app import MobileLobApp
@@ -510,7 +511,9 @@ if TYPE_CHECKING:
     from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
     from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
     from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+    from .on_email_otp_send_listener import OnEmailOtpSendListener
     from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
+    from .on_otp_send_custom_extension import OnOtpSendCustomExtension
     from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
     from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
@@ -2921,6 +2924,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .mobile_app_content_file import MobileAppContentFile
 
             return MobileAppContentFile()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileAppRelationship".casefold():
+            from .mobile_app_relationship import MobileAppRelationship
+
+            return MobileAppRelationship()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileAppTroubleshootingEvent".casefold():
             from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
 
@@ -3021,6 +3028,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
 
             return OneDriveForBusinessRestoreSession()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onEmailOtpSendListener".casefold():
+            from .on_email_otp_send_listener import OnEmailOtpSendListener
+
+            return OnEmailOtpSendListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenote".casefold():
             from .onenote import Onenote
 
@@ -3065,6 +3076,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .online_meeting_base import OnlineMeetingBase
 
             return OnlineMeetingBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onOtpSendCustomExtension".casefold():
+            from .on_otp_send_custom_extension import OnOtpSendCustomExtension
+
+            return OnOtpSendCustomExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onPremisesConditionalAccessSettings".casefold():
             from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
 
@@ -5540,6 +5555,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_app_category import MobileAppCategory
         from .mobile_app_content import MobileAppContent
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_relationship import MobileAppRelationship
         from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
@@ -5574,7 +5590,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
         from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_email_otp_send_listener import OnEmailOtpSendListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
+        from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
@@ -6545,6 +6563,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_app_category import MobileAppCategory
         from .mobile_app_content import MobileAppContent
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_relationship import MobileAppRelationship
         from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
@@ -6579,7 +6598,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
         from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_email_otp_send_listener import OnEmailOtpSendListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
+        from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension

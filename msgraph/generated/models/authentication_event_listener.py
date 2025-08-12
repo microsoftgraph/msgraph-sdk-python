@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
     from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
     from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+    from .on_email_otp_send_listener import OnEmailOtpSendListener
     from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
     from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
     from .on_user_create_start_listener import OnUserCreateStartListener
@@ -56,6 +57,10 @@ class AuthenticationEventListener(Entity, Parsable):
             from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
 
             return OnAuthenticationMethodLoadStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onEmailOtpSendListener".casefold():
+            from .on_email_otp_send_listener import OnEmailOtpSendListener
+
+            return OnEmailOtpSendListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartListener".casefold():
             from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
 
@@ -81,6 +86,7 @@ class AuthenticationEventListener(Entity, Parsable):
         from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
         from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_email_otp_send_listener import OnEmailOtpSendListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .on_user_create_start_listener import OnUserCreateStartListener
@@ -91,6 +97,7 @@ class AuthenticationEventListener(Entity, Parsable):
         from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
         from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
+        from .on_email_otp_send_listener import OnEmailOtpSendListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .on_user_create_start_listener import OnUserCreateStartListener

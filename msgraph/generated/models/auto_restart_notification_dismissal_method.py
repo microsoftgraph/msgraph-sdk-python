@@ -7,6 +7,6 @@ class AutoRestartNotificationDismissalMethod(str, Enum):
     Automatic = "automatic",
     # User dismissal. Allows the user to dismiss the notification
     User = "user",
-    # Evolvable enum member
+    # Evolvable enumeration sentinel value. Do not use.
     UnknownFutureValue = "unknownFutureValue",
 

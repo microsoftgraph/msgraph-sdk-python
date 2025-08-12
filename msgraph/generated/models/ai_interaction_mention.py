@@ -1,22 +1,25 @@
 from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
-    from .entity import Entity
-
-from .entity import Entity
 
 @dataclass
-class AiInteractionMention(Entity, Parsable):
-    # The identifier for the mention.
+class AiInteractionMention(AdditionalDataHolder, BackedModel, Parsable):
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: dict[str, Any] = field(default_factory=dict)
+    # The mentionId property
     mention_id: Optional[int] = None
-    # The text mentioned in the message.
+    # The mentionText property
     mention_text: Optional[str] = None
-    # The entity mentioned in the message.
+    # The mentioned property
     mentioned: Optional[AiInteractionMentionedIdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -38,18 +41,15 @@ class AiInteractionMention(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
-        from .entity import Entity
 
         from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
-        from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
             "mentionId": lambda n : setattr(self, 'mention_id', n.get_int_value()),
             "mentionText": lambda n : setattr(self, 'mention_text', n.get_str_value()),
             "mentioned": lambda n : setattr(self, 'mentioned', n.get_object_value(AiInteractionMentionedIdentitySet)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
-        super_fields = super().get_field_deserializers()
-        fields.update(super_fields)
         return fields
     
     def serialize(self,writer: SerializationWriter) -> None:
@@ -60,9 +60,10 @@ class AiInteractionMention(Entity, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        super().serialize(writer)
         writer.write_int_value("mentionId", self.mention_id)
         writer.write_str_value("mentionText", self.mention_text)
         writer.write_object_value("mentioned", self.mentioned)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_additional_data_value(self.additional_data)
     
 

@@ -32,10 +32,11 @@ class ResizeRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ResizePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Invoke action resize
+        Upgrade or downgrade an existing Cloud PC to a configuration with a new virtual CPU (vCPU) and storage size.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/cloudpc-resize?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -53,7 +54,7 @@ class ResizeRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ResizePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action resize
+        Upgrade or downgrade an existing Cloud PC to a configuration with a new virtual CPU (vCPU) and storage size.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

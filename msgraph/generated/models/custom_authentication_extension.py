@@ -6,8 +6,10 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .custom_callout_extension import CustomCalloutExtension
+    from .custom_extension_behavior_on_error import CustomExtensionBehaviorOnError
     from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
     from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
+    from .on_otp_send_custom_extension import OnOtpSendCustomExtension
     from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
 from .custom_callout_extension import CustomCalloutExtension
@@ -16,6 +18,8 @@ from .custom_callout_extension import CustomCalloutExtension
 class CustomAuthenticationExtension(CustomCalloutExtension, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.customAuthenticationExtension"
+    # The behaviour on error for the custom authentication extension.
+    behavior_on_error: Optional[CustomExtensionBehaviorOnError] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CustomAuthenticationExtension:
@@ -39,6 +43,10 @@ class CustomAuthenticationExtension(CustomCalloutExtension, Parsable):
             from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
 
             return OnAttributeCollectionSubmitCustomExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onOtpSendCustomExtension".casefold():
+            from .on_otp_send_custom_extension import OnOtpSendCustomExtension
+
+            return OnOtpSendCustomExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartCustomExtension".casefold():
             from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
@@ -51,16 +59,21 @@ class CustomAuthenticationExtension(CustomCalloutExtension, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .custom_callout_extension import CustomCalloutExtension
+        from .custom_extension_behavior_on_error import CustomExtensionBehaviorOnError
         from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
         from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
+        from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
         from .custom_callout_extension import CustomCalloutExtension
+        from .custom_extension_behavior_on_error import CustomExtensionBehaviorOnError
         from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
         from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
+        from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
         fields: dict[str, Callable[[Any], None]] = {
+            "behaviorOnError": lambda n : setattr(self, 'behavior_on_error', n.get_object_value(CustomExtensionBehaviorOnError)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,5 +88,6 @@ class CustomAuthenticationExtension(CustomCalloutExtension, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("behaviorOnError", self.behavior_on_error)
     
 

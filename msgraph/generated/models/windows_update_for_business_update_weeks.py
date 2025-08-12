@@ -13,6 +13,6 @@ class WindowsUpdateForBusinessUpdateWeeks(str, Enum):
     FourthWeek = "fourthWeek",
     # Scheduled the update installation on every week of the month
     EveryWeek = "everyWeek",
-    # Evolvable enum member
+    # Evolvable enumeration sentinel value. Do not use.
     UnknownFutureValue = "unknownFutureValue",
 

@@ -30,7 +30,7 @@ from .entity import Entity
 @dataclass
 class ManagedDevice(Entity, Parsable):
     """
-    Devices that are managed or pre-enrolled through Intune
+    Devices that are managed or pre-enrolled through Intune. Limited support for $filter: Only properties whose descriptions mention support for $filter may be used, and combinations of those filtered properties must use 'and', not 'or'.
     """
     # The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. To retrieve actual values GET call needs to be made, with device id and included in select parameter. Supports: $select. $Search is not supported. Read-only. This property is read-only.
     activation_lock_bypass_code: Optional[str] = None

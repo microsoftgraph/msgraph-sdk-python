@@ -21,7 +21,7 @@ from .mobile_app import MobileApp
 @dataclass
 class MobileLobApp(MobileApp, Parsable):
     """
-    An abstract base class containing properties for all mobile line of business apps.
+    An abstract base class containing properties for all mobile line-of-business apps.
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mobileLobApp"

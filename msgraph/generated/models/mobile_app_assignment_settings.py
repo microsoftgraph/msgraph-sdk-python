@@ -6,6 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .ios_ddm_lob_app_assignment_settings import IosDdmLobAppAssignmentSettings
     from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
     from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
     from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
@@ -42,6 +43,10 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosDdmLobAppAssignmentSettings".casefold():
+            from .ios_ddm_lob_app_assignment_settings import IosDdmLobAppAssignmentSettings
+
+            return IosDdmLobAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobAppAssignmentSettings".casefold():
             from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
 
@@ -81,6 +86,7 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .ios_ddm_lob_app_assignment_settings import IosDdmLobAppAssignmentSettings
         from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
         from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
         from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
@@ -90,6 +96,7 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
         from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
 
+        from .ios_ddm_lob_app_assignment_settings import IosDdmLobAppAssignmentSettings
         from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
         from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
         from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings

@@ -60,7 +60,7 @@ class OnlineMeetingBase(Entity, Parsable):
     chat_info: Optional[ChatInfo] = None
     # Specifies the configuration settings for meeting chat restrictions.
     chat_restrictions: Optional[ChatRestrictions] = None
-    # The isEndToEndEncryptionEnabled property
+    # Indicates whether end-to-end encryption (E2EE) is enabled for the online meeting.
     is_end_to_end_encryption_enabled: Optional[bool] = None
     # Indicates whether to announce when callers join or leave.
     is_entry_exit_announced: Optional[bool] = None

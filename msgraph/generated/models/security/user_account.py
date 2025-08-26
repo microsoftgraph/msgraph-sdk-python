@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from .resource_access_event import ResourceAccessEvent
@@ -17,6 +18,8 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The displayed name of the user account.
     account_name: Optional[str] = None
+    # The activeDirectoryObjectGuid property
+    active_directory_object_guid: Optional[UUID] = None
     # The user object identifier in Microsoft Entra ID.
     azure_ad_user_id: Optional[str] = None
     # The user display name in Microsoft Entra ID.
@@ -54,6 +57,7 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "activeDirectoryObjectGuid": lambda n : setattr(self, 'active_directory_object_guid', n.get_uuid_value()),
             "azureAdUserId": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
@@ -73,6 +77,7 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("accountName", self.account_name)
+        writer.write_uuid_value("activeDirectoryObjectGuid", self.active_directory_object_guid)
         writer.write_str_value("azureAdUserId", self.azure_ad_user_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("domainName", self.domain_name)

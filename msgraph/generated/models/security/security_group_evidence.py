@@ -3,6 +3,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
@@ -13,10 +14,18 @@ from .alert_evidence import AlertEvidence
 class SecurityGroupEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.securityGroupEvidence"
+    # The activeDirectoryObjectGuid property
+    active_directory_object_guid: Optional[UUID] = None
     # The name of the security group.
     display_name: Optional[str] = None
+    # The distinguishedName property
+    distinguished_name: Optional[str] = None
+    # The friendlyName property
+    friendly_name: Optional[str] = None
     # Unique identifier of the security group.
     security_group_id: Optional[str] = None
+    # The sid property
+    sid: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SecurityGroupEvidence:
@@ -39,8 +48,12 @@ class SecurityGroupEvidence(AlertEvidence, Parsable):
         from .alert_evidence import AlertEvidence
 
         fields: dict[str, Callable[[Any], None]] = {
+            "activeDirectoryObjectGuid": lambda n : setattr(self, 'active_directory_object_guid', n.get_uuid_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "distinguishedName": lambda n : setattr(self, 'distinguished_name', n.get_str_value()),
+            "friendlyName": lambda n : setattr(self, 'friendly_name', n.get_str_value()),
             "securityGroupId": lambda n : setattr(self, 'security_group_id', n.get_str_value()),
+            "sid": lambda n : setattr(self, 'sid', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +68,11 @@ class SecurityGroupEvidence(AlertEvidence, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_uuid_value("activeDirectoryObjectGuid", self.active_directory_object_guid)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("distinguishedName", self.distinguished_name)
+        writer.write_str_value("friendlyName", self.friendly_name)
         writer.write_str_value("securityGroupId", self.security_group_id)
+        writer.write_str_value("sid", self.sid)
     
 

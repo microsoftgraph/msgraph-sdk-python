@@ -32,6 +32,8 @@ class OnlineMeetingBase(Entity, Parsable):
     allow_attendee_to_enable_mic: Optional[bool] = None
     # Indicates whether breakout rooms are enabled for the meeting.
     allow_breakout_rooms: Optional[bool] = None
+    # The allowCopyingAndSharingMeetingContent property
+    allow_copying_and_sharing_meeting_content: Optional[bool] = None
     # Indicates whether live share is enabled for the meeting. Possible values are: enabled, disabled, unknownFutureValue.
     allow_live_share: Optional[MeetingLiveShareOptions] = None
     # Specifies the mode of the meeting chat.
@@ -152,6 +154,7 @@ class OnlineMeetingBase(Entity, Parsable):
             "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
             "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
             "allowBreakoutRooms": lambda n : setattr(self, 'allow_breakout_rooms', n.get_bool_value()),
+            "allowCopyingAndSharingMeetingContent": lambda n : setattr(self, 'allow_copying_and_sharing_meeting_content', n.get_bool_value()),
             "allowLiveShare": lambda n : setattr(self, 'allow_live_share', n.get_enum_value(MeetingLiveShareOptions)),
             "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(MeetingChatMode)),
             "allowParticipantsToChangeName": lambda n : setattr(self, 'allow_participants_to_change_name', n.get_bool_value()),
@@ -194,6 +197,7 @@ class OnlineMeetingBase(Entity, Parsable):
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
         writer.write_bool_value("allowBreakoutRooms", self.allow_breakout_rooms)
+        writer.write_bool_value("allowCopyingAndSharingMeetingContent", self.allow_copying_and_sharing_meeting_content)
         writer.write_enum_value("allowLiveShare", self.allow_live_share)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)
         writer.write_bool_value("allowParticipantsToChangeName", self.allow_participants_to_change_name)

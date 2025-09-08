@@ -70,11 +70,11 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Conversation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Conversation]:
         """
-        Use reply thread or reply post to further post to that conversation.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Conversation]
-        Find more info here: https://learn.microsoft.com/graph/api/group-post-conversations?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -105,7 +105,7 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Conversation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Use reply thread or reply post to further post to that conversation.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

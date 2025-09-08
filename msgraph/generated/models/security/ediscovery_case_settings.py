@@ -6,20 +6,26 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
+    from .case_type import CaseType
     from .ocr_settings import OcrSettings
     from .redundancy_detection_settings import RedundancyDetectionSettings
+    from .review_set_settings import ReviewSetSettings
     from .topic_modeling_settings import TopicModelingSettings
 
 from ..entity import Entity
 
 @dataclass
 class EdiscoveryCaseSettings(Entity, Parsable):
+    # The caseType property
+    case_type: Optional[CaseType] = None
     # The OCR (Optical Character Recognition) settings for the case.
     ocr: Optional[OcrSettings] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The redundancy (near duplicate and email threading) detection settings for the case.
     redundancy_detection: Optional[RedundancyDetectionSettings] = None
+    # The reviewSetSettings property
+    review_set_settings: Optional[ReviewSetSettings] = None
     # The Topic Modeling (Themes) settings for the case.
     topic_modeling: Optional[TopicModelingSettings] = None
     
@@ -40,18 +46,24 @@ class EdiscoveryCaseSettings(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
+        from .case_type import CaseType
         from .ocr_settings import OcrSettings
         from .redundancy_detection_settings import RedundancyDetectionSettings
+        from .review_set_settings import ReviewSetSettings
         from .topic_modeling_settings import TopicModelingSettings
 
         from ..entity import Entity
+        from .case_type import CaseType
         from .ocr_settings import OcrSettings
         from .redundancy_detection_settings import RedundancyDetectionSettings
+        from .review_set_settings import ReviewSetSettings
         from .topic_modeling_settings import TopicModelingSettings
 
         fields: dict[str, Callable[[Any], None]] = {
+            "caseType": lambda n : setattr(self, 'case_type', n.get_enum_value(CaseType)),
             "ocr": lambda n : setattr(self, 'ocr', n.get_object_value(OcrSettings)),
             "redundancyDetection": lambda n : setattr(self, 'redundancy_detection', n.get_object_value(RedundancyDetectionSettings)),
+            "reviewSetSettings": lambda n : setattr(self, 'review_set_settings', n.get_collection_of_enum_values(ReviewSetSettings)),
             "topicModeling": lambda n : setattr(self, 'topic_modeling', n.get_object_value(TopicModelingSettings)),
         }
         super_fields = super().get_field_deserializers()
@@ -67,8 +79,10 @@ class EdiscoveryCaseSettings(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_enum_value("caseType", self.case_type)
         writer.write_object_value("ocr", self.ocr)
         writer.write_object_value("redundancyDetection", self.redundancy_detection)
+        writer.write_enum_value("reviewSetSettings", self.review_set_settings)
         writer.write_object_value("topicModeling", self.topic_modeling)
     
 

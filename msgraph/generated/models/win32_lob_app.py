@@ -21,6 +21,8 @@ class Win32LobApp(MobileLobApp, Parsable):
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.win32LobApp"
+    # Indicates the Windows architecture(s) this app should be installed on. The app will be treated as not applicable for devices with architectures not matching the selected value. When a non-null value is provided for the `allowedArchitectures` property, the value of the `applicableArchitectures` property is set to `none`. Possible values are: `null`, `x86`, `x64`, `arm64`.
+    allowed_architectures: Optional[WindowsArchitecture] = None
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None
     # The command line to install this app
@@ -79,6 +81,7 @@ class Win32LobApp(MobileLobApp, Parsable):
         from .windows_architecture import WindowsArchitecture
 
         fields: dict[str, Callable[[Any], None]] = {
+            "allowedArchitectures": lambda n : setattr(self, 'allowed_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
             "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
             "installCommandLine": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
             "installExperience": lambda n : setattr(self, 'install_experience', n.get_object_value(Win32LobAppInstallExperience)),
@@ -106,6 +109,7 @@ class Win32LobApp(MobileLobApp, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_enum_value("allowedArchitectures", self.allowed_architectures)
         writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
         writer.write_str_value("installCommandLine", self.install_command_line)
         writer.write_object_value("installExperience", self.install_experience)

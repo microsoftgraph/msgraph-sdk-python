@@ -22,6 +22,8 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
     is_content_sharing_notification_enabled: Optional[bool] = None
     # Indicates whether delta roster is enabled for the call.
     is_delta_roster_enabled: Optional[bool] = None
+    # Indicates whether delta roster filtering by participant interactivity is enabled.
+    is_interactive_roster_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -64,6 +66,7 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
             "hideBotAfterEscalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
             "isContentSharingNotificationEnabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
             "isDeltaRosterEnabled": lambda n : setattr(self, 'is_delta_roster_enabled', n.get_bool_value()),
+            "isInteractiveRosterEnabled": lambda n : setattr(self, 'is_interactive_roster_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -79,6 +82,7 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("hideBotAfterEscalation", self.hide_bot_after_escalation)
         writer.write_bool_value("isContentSharingNotificationEnabled", self.is_content_sharing_notification_enabled)
         writer.write_bool_value("isDeltaRosterEnabled", self.is_delta_roster_enabled)
+        writer.write_bool_value("isInteractiveRosterEnabled", self.is_interactive_roster_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

@@ -25,7 +25,7 @@ class CloudPcDeviceImage(Entity, Parsable):
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The operating system (OS) of the image. For example, Windows 10 Enterprise. Read-only.
+    # The operating system (OS) of the image. For example, Windows 11 Enterprise. Read-only.
     operating_system: Optional[str] = None
     # The OS build version of the image. For example, 1909. Read-only.
     os_build_number: Optional[str] = None

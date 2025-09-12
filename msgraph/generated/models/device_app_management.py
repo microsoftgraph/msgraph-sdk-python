@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
     from .mobile_app import MobileApp
     from .mobile_app_category import MobileAppCategory
+    from .mobile_app_relationship import MobileAppRelationship
     from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
     from .vpp_token import VppToken
     from .windows_information_protection_policy import WindowsInformationProtectionPolicy
@@ -57,6 +58,8 @@ class DeviceAppManagement(Entity, Parsable):
     mobile_app_categories: Optional[list[MobileAppCategory]] = None
     # The Managed Device Mobile Application Configurations.
     mobile_app_configurations: Optional[list[ManagedDeviceMobileAppConfiguration]] = None
+    # The mobile app relationship represents the dependency or supersedence relationship between two Intune mobile LOB applications.
+    mobile_app_relationships: Optional[list[MobileAppRelationship]] = None
     # The mobile apps.
     mobile_apps: Optional[list[MobileApp]] = None
     # The OdataType property
@@ -96,6 +99,7 @@ class DeviceAppManagement(Entity, Parsable):
         from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
         from .mobile_app import MobileApp
         from .mobile_app_category import MobileAppCategory
+        from .mobile_app_relationship import MobileAppRelationship
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
         from .vpp_token import VppToken
         from .windows_information_protection_policy import WindowsInformationProtectionPolicy
@@ -112,6 +116,7 @@ class DeviceAppManagement(Entity, Parsable):
         from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
         from .mobile_app import MobileApp
         from .mobile_app_category import MobileAppCategory
+        from .mobile_app_relationship import MobileAppRelationship
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
         from .vpp_token import VppToken
         from .windows_information_protection_policy import WindowsInformationProtectionPolicy
@@ -131,6 +136,7 @@ class DeviceAppManagement(Entity, Parsable):
             "microsoftStoreForBusinessLastSuccessfulSyncDateTime": lambda n : setattr(self, 'microsoft_store_for_business_last_successful_sync_date_time', n.get_datetime_value()),
             "mobileAppCategories": lambda n : setattr(self, 'mobile_app_categories', n.get_collection_of_object_values(MobileAppCategory)),
             "mobileAppConfigurations": lambda n : setattr(self, 'mobile_app_configurations', n.get_collection_of_object_values(ManagedDeviceMobileAppConfiguration)),
+            "mobileAppRelationships": lambda n : setattr(self, 'mobile_app_relationships', n.get_collection_of_object_values(MobileAppRelationship)),
             "mobileApps": lambda n : setattr(self, 'mobile_apps', n.get_collection_of_object_values(MobileApp)),
             "targetedManagedAppConfigurations": lambda n : setattr(self, 'targeted_managed_app_configurations', n.get_collection_of_object_values(TargetedManagedAppConfiguration)),
             "vppTokens": lambda n : setattr(self, 'vpp_tokens', n.get_collection_of_object_values(VppToken)),
@@ -163,6 +169,7 @@ class DeviceAppManagement(Entity, Parsable):
         writer.write_datetime_value("microsoftStoreForBusinessLastSuccessfulSyncDateTime", self.microsoft_store_for_business_last_successful_sync_date_time)
         writer.write_collection_of_object_values("mobileAppCategories", self.mobile_app_categories)
         writer.write_collection_of_object_values("mobileAppConfigurations", self.mobile_app_configurations)
+        writer.write_collection_of_object_values("mobileAppRelationships", self.mobile_app_relationships)
         writer.write_collection_of_object_values("mobileApps", self.mobile_apps)
         writer.write_collection_of_object_values("targetedManagedAppConfigurations", self.targeted_managed_app_configurations)
         writer.write_collection_of_object_values("vppTokens", self.vpp_tokens)

@@ -1,21 +1,22 @@
 from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from .entity import Entity
-
-from .entity import Entity
-
 @dataclass
-class AiInteractionLink(Entity, Parsable):
-    # The name of the link.
+class AiInteractionLink(AdditionalDataHolder, BackedModel, Parsable):
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: dict[str, Any] = field(default_factory=dict)
+    # The displayName property
     display_name: Optional[str] = None
-    # Information about a link in an app chat or Business Chat (BizChat) interaction.
+    # The linkType property
     link_type: Optional[str] = None
-    # The URL of the link.
+    # The linkUrl property
     link_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -36,17 +37,12 @@ class AiInteractionLink(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
-        from .entity import Entity
-
-        from .entity import Entity
-
         fields: dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "linkType": lambda n : setattr(self, 'link_type', n.get_str_value()),
             "linkUrl": lambda n : setattr(self, 'link_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
-        super_fields = super().get_field_deserializers()
-        fields.update(super_fields)
         return fields
     
     def serialize(self,writer: SerializationWriter) -> None:
@@ -57,9 +53,10 @@ class AiInteractionLink(Entity, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("linkType", self.link_type)
         writer.write_str_value("linkUrl", self.link_url)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_additional_data_value(self.additional_data)
     
 

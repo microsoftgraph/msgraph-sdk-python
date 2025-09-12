@@ -11,7 +11,7 @@ from .mailbox_restore_artifact import MailboxRestoreArtifact
 
 @dataclass
 class GranularMailboxRestoreArtifact(MailboxRestoreArtifact, Parsable):
-    # .
+    # This property will be deprecated soon. Don't use.
     artifact_count: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None

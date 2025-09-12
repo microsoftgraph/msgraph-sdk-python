@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .ediscovery_review_set import EdiscoveryReviewSet
     from .ediscovery_search import EdiscoverySearch
     from .items_to_include import ItemsToInclude
+    from .report_file_metadata import ReportFileMetadata
 
 from .case_operation import CaseOperation
 
@@ -27,6 +28,8 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
     items_to_include: Optional[ItemsToInclude] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # Contains the properties for report file metadata, including downloadUrl, fileName, and size.
+    report_file_metadata: Optional[list[ReportFileMetadata]] = None
     # eDiscovery review set to which items matching source collection query gets added.
     review_set: Optional[EdiscoveryReviewSet] = None
     # eDiscovery search that gets added to review set.
@@ -55,6 +58,7 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
         from .ediscovery_review_set import EdiscoveryReviewSet
         from .ediscovery_search import EdiscoverySearch
         from .items_to_include import ItemsToInclude
+        from .report_file_metadata import ReportFileMetadata
 
         from .additional_data_options import AdditionalDataOptions
         from .case_operation import CaseOperation
@@ -63,12 +67,14 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
         from .ediscovery_review_set import EdiscoveryReviewSet
         from .ediscovery_search import EdiscoverySearch
         from .items_to_include import ItemsToInclude
+        from .report_file_metadata import ReportFileMetadata
 
         fields: dict[str, Callable[[Any], None]] = {
             "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_collection_of_enum_values(AdditionalDataOptions)),
             "cloudAttachmentVersion": lambda n : setattr(self, 'cloud_attachment_version', n.get_enum_value(CloudAttachmentVersion)),
             "documentVersion": lambda n : setattr(self, 'document_version', n.get_enum_value(DocumentVersion)),
             "itemsToInclude": lambda n : setattr(self, 'items_to_include', n.get_collection_of_enum_values(ItemsToInclude)),
+            "reportFileMetadata": lambda n : setattr(self, 'report_file_metadata', n.get_collection_of_object_values(ReportFileMetadata)),
             "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(EdiscoveryReviewSet)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
@@ -89,6 +95,7 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
         writer.write_enum_value("cloudAttachmentVersion", self.cloud_attachment_version)
         writer.write_enum_value("documentVersion", self.document_version)
         writer.write_enum_value("itemsToInclude", self.items_to_include)
+        writer.write_collection_of_object_values("reportFileMetadata", self.report_file_metadata)
         writer.write_object_value("reviewSet", self.review_set)
         writer.write_object_value("search", self.search)
     

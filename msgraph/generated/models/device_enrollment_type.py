@@ -27,4 +27,6 @@ class DeviceEnrollmentType(str, Enum):
     AppleUserEnrollment = "appleUserEnrollment",
     # Indicates the device is enrolled via Apple User Enrollment with Company Portal using a device enrollment manager user. It results in an enrollment with a new partition for managed apps and data and which supports a limited set of management capabilities
     AppleUserEnrollmentWithServiceAccount = "appleUserEnrollmentWithServiceAccount",
+    # Evolvable enumeration sentinel value. Do not use.
+    UnknownFutureValue = "unknownFutureValue",
 

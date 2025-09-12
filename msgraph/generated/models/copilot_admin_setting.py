@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class CopilotAdminSetting(Entity, Parsable):
-    # Represents a setting that controls whether users of Microsoft 365 Copilot in Teams meetings can receive responses to sentiment-related prompts. Read-only. Nullable.
+    # The limitedMode property
     limited_mode: Optional[CopilotAdminLimitedMode] = None
     # The OdataType property
     odata_type: Optional[str] = None

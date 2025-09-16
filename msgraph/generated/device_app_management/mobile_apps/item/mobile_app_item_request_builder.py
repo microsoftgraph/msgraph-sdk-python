@@ -51,10 +51,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a iosStoreApp.
+        Deletes a win32LobApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-iosstoreapp-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-win32lobapp-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,10 +70,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MobileAppItemRequestBuilderGetQueryParameters]] = None) -> Optional[MobileApp]:
         """
-        Read properties and relationships of the managedIOSLobApp object.
+        Read properties and relationships of the managedMobileLobApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managedioslobapp-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managedmobilelobapp-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -115,7 +115,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a iosStoreApp.
+        Deletes a win32LobApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,7 +126,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MobileAppItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedIOSLobApp object.
+        Read properties and relationships of the managedMobileLobApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -341,7 +341,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedIOSLobApp object.
+        Read properties and relationships of the managedMobileLobApp object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

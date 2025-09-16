@@ -32,7 +32,7 @@ class OnlineMeetingBase(Entity, Parsable):
     allow_attendee_to_enable_mic: Optional[bool] = None
     # Indicates whether breakout rooms are enabled for the meeting.
     allow_breakout_rooms: Optional[bool] = None
-    # The allowCopyingAndSharingMeetingContent property
+    # Indicates whether the ability to copy and share meeting content is enabled for the meeting.
     allow_copying_and_sharing_meeting_content: Optional[bool] = None
     # Indicates whether live share is enabled for the meeting. Possible values are: enabled, disabled, unknownFutureValue.
     allow_live_share: Optional[MeetingLiveShareOptions] = None

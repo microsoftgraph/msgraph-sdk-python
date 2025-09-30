@@ -13,15 +13,15 @@ from .entity import Entity
 
 @dataclass
 class Presence(Entity, Parsable):
-    # The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.
+    # The supplemental information to a user's availability. Possible values are available, away, beRightBack, busy, doNotDisturb, offline, outOfOffice, presenceUnknown.
     activity: Optional[str] = None
-    # The base presence information for a user. Possible values are Available, availableIdle,  Away, beRightBack, Busy, busyIdle, DoNotDisturb, Offline, presenceUnknown.
+    # The base presence information for a user. Possible values are available, away, beRightBack, busy, doNotDisturb, focusing, inACall, inAMeeting, offline, presenting, presenceUnknown.
     availability: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The user's out-of-office settings.
+    # The out of office settings for a user.
     out_of_office_settings: Optional[OutOfOfficeSettings] = None
-    # The lexicographically sortable string stamp that represents the version of a presence object.
+    # The lexicographically sortable String stamp that represents the version of a presence object.
     sequence_number: Optional[str] = None
     # The presence status message of a user.
     status_message: Optional[PresenceStatusMessage] = None

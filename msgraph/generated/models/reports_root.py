@@ -15,9 +15,9 @@ from .entity import Entity
 class ReportsRoot(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The readingAssignmentSubmissions property
+    # Details of submitted reading assignments.
     reading_assignment_submissions: Optional[list[ReadingAssignmentSubmission]] = None
-    # The reflectCheckInResponses property
+    # Details of check-in responses.
     reflect_check_in_responses: Optional[list[ReflectCheckInResponse]] = None
     
     @staticmethod

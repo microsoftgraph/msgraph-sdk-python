@@ -18,21 +18,21 @@ from .entity import Entity
 
 @dataclass
 class ProtectionUnitBase(Entity, Parsable):
-    # The identity of person who created the protection unit.
+    # The identity of the person who created the protection unit.
     created_by: Optional[IdentitySet] = None
-    # The time of creation of the protection unit.
+    # The time of creation of the protection unit. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # Contains error details if an error occurred while creating a protection unit.
     error: Optional[PublicError] = None
     # The identity of person who last modified the protection unit.
     last_modified_by: Optional[IdentitySet] = None
-    # Timestamp of the last modification of this protection unit.
+    # Timestamp of the last modification of this protection unit. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The unique identifier of the protection policy based on which protection unit was created.
     policy_id: Optional[str] = None
-    # The status of the protection unit. The possible values are: protectRequested, protected, unprotectRequested, unprotected, removeRequested, unknownFutureValue.
+    # The status of the protection unit. The possible values are: protectRequested, protected, unprotectRequested, unprotected, removeRequested, unknownFutureValue, offboardRequested, offboarded, cancelOffboardRequested. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: offboardRequested, offboarded, cancelOffboardRequested.
     status: Optional[ProtectionUnitStatus] = None
     
     @staticmethod

@@ -51,7 +51,7 @@ class DeviceAppManagementRequestBuilder(BaseRequestBuilder):
         Read properties and relationships of the deviceAppManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAppManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-policyset-deviceappmanagement-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-deviceappmanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

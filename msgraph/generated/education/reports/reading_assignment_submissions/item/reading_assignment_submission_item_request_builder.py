@@ -50,7 +50,7 @@ class ReadingAssignmentSubmissionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ReadingAssignmentSubmissionItemRequestBuilderGetQueryParameters]] = None) -> Optional[ReadingAssignmentSubmission]:
         """
-        Get readingAssignmentSubmissions from education
+        Details of submitted reading assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ReadingAssignmentSubmission]
         """
@@ -104,7 +104,7 @@ class ReadingAssignmentSubmissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ReadingAssignmentSubmissionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get readingAssignmentSubmissions from education
+        Details of submitted reading assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class ReadingAssignmentSubmissionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ReadingAssignmentSubmissionItemRequestBuilderGetQueryParameters():
         """
-        Get readingAssignmentSubmissions from education
+        Details of submitted reading assignments.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

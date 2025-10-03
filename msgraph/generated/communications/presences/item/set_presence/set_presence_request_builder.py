@@ -32,7 +32,7 @@ class SetPresenceRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: SetPresencePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Set the state of a user's presence session as an application.
+        Set the state of a user's presence session as an application. For more information about presence sessions, states permutations, and timeouts, see Manage presence state using the Microsoft Graph API.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -54,7 +54,7 @@ class SetPresenceRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: SetPresencePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Set the state of a user's presence session as an application.
+        Set the state of a user's presence session as an application. For more information about presence sessions, states permutations, and timeouts, see Manage presence state using the Microsoft Graph API.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

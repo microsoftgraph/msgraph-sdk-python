@@ -50,7 +50,7 @@ class ReflectCheckInResponseItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ReflectCheckInResponseItemRequestBuilderGetQueryParameters]] = None) -> Optional[ReflectCheckInResponse]:
         """
-        Get reflectCheckInResponses from education
+        Details of check-in responses.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ReflectCheckInResponse]
         """
@@ -104,7 +104,7 @@ class ReflectCheckInResponseItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ReflectCheckInResponseItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get reflectCheckInResponses from education
+        Details of check-in responses.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class ReflectCheckInResponseItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ReflectCheckInResponseItemRequestBuilderGetQueryParameters():
         """
-        Get reflectCheckInResponses from education
+        Details of check-in responses.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

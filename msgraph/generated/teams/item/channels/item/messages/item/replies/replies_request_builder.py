@@ -71,11 +71,11 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ChatMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ChatMessage]:
         """
-        Send a new reply to a chatMessage in a specified channel.
+        Create a new reply to a chatMessage in a specified channel.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-post-replies?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/channel-post-messagereply?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -106,7 +106,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ChatMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Send a new reply to a chatMessage in a specified channel.
+        Create a new reply to a chatMessage in a specified channel.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

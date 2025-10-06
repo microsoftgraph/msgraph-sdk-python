@@ -34,7 +34,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/contacts{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/contacts{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_org_contact_id(self,org_contact_id: str) -> OrgContactItemRequestBuilder:
         """
@@ -162,6 +162,8 @@ class ContactsRequestBuilder(BaseRequestBuilder):
                 return "%24search"
             if original_name == "select":
                 return "%24select"
+            if original_name == "skip":
+                return "%24skip"
             if original_name == "top":
                 return "%24top"
             return original_name
@@ -183,6 +185,9 @@ class ContactsRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[list[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
 
         # Show only the first n items
         top: Optional[int] = None

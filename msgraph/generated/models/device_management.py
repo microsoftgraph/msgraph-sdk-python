@@ -39,7 +39,6 @@ if TYPE_CHECKING:
     from .resource_operation import ResourceOperation
     from .role_definition import RoleDefinition
     from .software_update_status_summary import SoftwareUpdateStatusSummary
-    from .telecom_expense_management_partner import TelecomExpenseManagementPartner
     from .terms_and_conditions import TermsAndConditions
     from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
     from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
@@ -141,8 +140,6 @@ class DeviceManagement(Entity, Parsable):
     software_update_status_summary: Optional[SoftwareUpdateStatusSummary] = None
     # Tenant mobile device management subscription state.
     subscription_state: Optional[DeviceManagementSubscriptionState] = None
-    # The telecom expense management partners.
-    telecom_expense_management_partners: Optional[list[TelecomExpenseManagementPartner]] = None
     # The terms and conditions associated with device management of the company.
     terms_and_conditions: Optional[list[TermsAndConditions]] = None
     # The list of troubleshooting events for the tenant.
@@ -257,7 +254,6 @@ class DeviceManagement(Entity, Parsable):
         from .resource_operation import ResourceOperation
         from .role_definition import RoleDefinition
         from .software_update_status_summary import SoftwareUpdateStatusSummary
-        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
         from .terms_and_conditions import TermsAndConditions
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
         from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
@@ -322,7 +318,6 @@ class DeviceManagement(Entity, Parsable):
         from .resource_operation import ResourceOperation
         from .role_definition import RoleDefinition
         from .software_update_status_summary import SoftwareUpdateStatusSummary
-        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
         from .terms_and_conditions import TermsAndConditions
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
         from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
@@ -387,7 +382,6 @@ class DeviceManagement(Entity, Parsable):
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(DeviceManagementSettings)),
             "softwareUpdateStatusSummary": lambda n : setattr(self, 'software_update_status_summary', n.get_object_value(SoftwareUpdateStatusSummary)),
             "subscriptionState": lambda n : setattr(self, 'subscription_state', n.get_enum_value(DeviceManagementSubscriptionState)),
-            "telecomExpenseManagementPartners": lambda n : setattr(self, 'telecom_expense_management_partners', n.get_collection_of_object_values(TelecomExpenseManagementPartner)),
             "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_collection_of_object_values(TermsAndConditions)),
             "troubleshootingEvents": lambda n : setattr(self, 'troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
             "userExperienceAnalyticsAppHealthApplicationPerformance": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthApplicationPerformance)),
@@ -466,7 +460,6 @@ class DeviceManagement(Entity, Parsable):
         writer.write_object_value("settings", self.settings)
         writer.write_object_value("softwareUpdateStatusSummary", self.software_update_status_summary)
         writer.write_enum_value("subscriptionState", self.subscription_state)
-        writer.write_collection_of_object_values("telecomExpenseManagementPartners", self.telecom_expense_management_partners)
         writer.write_collection_of_object_values("termsAndConditions", self.terms_and_conditions)
         writer.write_collection_of_object_values("troubleshootingEvents", self.troubleshooting_events)
         writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthApplicationPerformance", self.user_experience_analytics_app_health_application_performance)

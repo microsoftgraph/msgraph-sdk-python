@@ -44,7 +44,6 @@ if TYPE_CHECKING:
     from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
     from .role_definitions.role_definitions_request_builder import RoleDefinitionsRequestBuilder
     from .software_update_status_summary.software_update_status_summary_request_builder import SoftwareUpdateStatusSummaryRequestBuilder
-    from .telecom_expense_management_partners.telecom_expense_management_partners_request_builder import TelecomExpenseManagementPartnersRequestBuilder
     from .terms_and_conditions.terms_and_conditions_request_builder import TermsAndConditionsRequestBuilder
     from .troubleshooting_events.troubleshooting_events_request_builder import TroubleshootingEventsRequestBuilder
     from .user_experience_analytics_app_health_application_performance.user_experience_analytics_app_health_application_performance_request_builder import UserExperienceAnalyticsAppHealthApplicationPerformanceRequestBuilder
@@ -96,7 +95,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         Read properties and relationships of the deviceManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-remoteassistance-devicemanagement-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-androidforwork-devicemanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -130,7 +129,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-tem-devicemanagement-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-androidforwork-devicemanagement-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -438,15 +437,6 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         from .software_update_status_summary.software_update_status_summary_request_builder import SoftwareUpdateStatusSummaryRequestBuilder
 
         return SoftwareUpdateStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def telecom_expense_management_partners(self) -> TelecomExpenseManagementPartnersRequestBuilder:
-        """
-        Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
-        """
-        from .telecom_expense_management_partners.telecom_expense_management_partners_request_builder import TelecomExpenseManagementPartnersRequestBuilder
-
-        return TelecomExpenseManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def terms_and_conditions(self) -> TermsAndConditionsRequestBuilder:

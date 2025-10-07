@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from .managed_device_owner_type import ManagedDeviceOwnerType
     from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
     from .management_agent_type import ManagementAgentType
+    from .management_state import ManagementState
     from .user import User
     from .windows_protection_state import WindowsProtectionState
 
@@ -108,6 +109,8 @@ class ManagedDevice(Entity, Parsable):
     management_agent: Optional[ManagementAgentType] = None
     # Reports device management certificate expiration date. This property is read-only.
     management_certificate_expiration_date: Optional[datetime.datetime] = None
+    # Management state of device in Microsoft Intune.
+    management_state: Optional[ManagementState] = None
     # Manufacturer of the device. This property is read-only.
     manufacturer: Optional[str] = None
     # MEID. This property is read-only.
@@ -187,6 +190,7 @@ class ManagedDevice(Entity, Parsable):
         from .managed_device_owner_type import ManagedDeviceOwnerType
         from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
         from .management_agent_type import ManagementAgentType
+        from .management_state import ManagementState
         from .user import User
         from .windows_protection_state import WindowsProtectionState
 
@@ -206,6 +210,7 @@ class ManagedDevice(Entity, Parsable):
         from .managed_device_owner_type import ManagedDeviceOwnerType
         from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
         from .management_agent_type import ManagementAgentType
+        from .management_state import ManagementState
         from .user import User
         from .windows_protection_state import WindowsProtectionState
 
@@ -248,6 +253,7 @@ class ManagedDevice(Entity, Parsable):
             "managedDeviceOwnerType": lambda n : setattr(self, 'managed_device_owner_type', n.get_enum_value(ManagedDeviceOwnerType)),
             "managementAgent": lambda n : setattr(self, 'management_agent', n.get_enum_value(ManagementAgentType)),
             "managementCertificateExpirationDate": lambda n : setattr(self, 'management_certificate_expiration_date', n.get_datetime_value()),
+            "managementState": lambda n : setattr(self, 'management_state', n.get_enum_value(ManagementState)),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "meid": lambda n : setattr(self, 'meid', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
@@ -296,6 +302,7 @@ class ManagedDevice(Entity, Parsable):
         writer.write_str_value("managedDeviceName", self.managed_device_name)
         writer.write_enum_value("managedDeviceOwnerType", self.managed_device_owner_type)
         writer.write_enum_value("managementAgent", self.management_agent)
+        writer.write_enum_value("managementState", self.management_state)
         writer.write_str_value("notes", self.notes)
         writer.write_enum_value("partnerReportedThreatState", self.partner_reported_threat_state)
         writer.write_collection_of_object_values("users", self.users)

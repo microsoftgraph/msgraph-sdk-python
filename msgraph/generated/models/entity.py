@@ -303,6 +303,12 @@ if TYPE_CHECKING:
     from .end_user_notification import EndUserNotification
     from .end_user_notification_detail import EndUserNotificationDetail
     from .engagement_async_operation import EngagementAsyncOperation
+    from .engagement_conversation import EngagementConversation
+    from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
+    from .engagement_conversation_message import EngagementConversationMessage
+    from .engagement_conversation_message_reaction import EngagementConversationMessageReaction
+    from .engagement_conversation_question_message import EngagementConversationQuestionMessage
+    from .engagement_conversation_system_message import EngagementConversationSystemMessage
     from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
     from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
     from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
@@ -505,6 +511,7 @@ if TYPE_CHECKING:
     from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
     from .online_meeting import OnlineMeeting
     from .online_meeting_base import OnlineMeetingBase
+    from .online_meeting_engagement_conversation import OnlineMeetingEngagementConversation
     from .on_attribute_collection_listener import OnAttributeCollectionListener
     from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
     from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
@@ -516,6 +523,7 @@ if TYPE_CHECKING:
     from .on_otp_send_custom_extension import OnOtpSendCustomExtension
     from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+    from .on_premises_sync_behavior import OnPremisesSyncBehavior
     from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
     from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
     from .on_user_create_start_listener import OnUserCreateStartListener
@@ -615,6 +623,7 @@ if TYPE_CHECKING:
     from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
     from .rbac_application import RbacApplication
     from .reading_assignment_submission import ReadingAssignmentSubmission
+    from .reading_coach_passage import ReadingCoachPassage
     from .record_operation import RecordOperation
     from .recycle_bin import RecycleBin
     from .recycle_bin_item import RecycleBinItem
@@ -679,6 +688,7 @@ if TYPE_CHECKING:
     from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
     from .security.ediscovery_export_operation import EdiscoveryExportOperation
     from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
+    from .security.ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
     from .security.ediscovery_index_operation import EdiscoveryIndexOperation
     from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
     from .security.ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
@@ -776,6 +786,7 @@ if TYPE_CHECKING:
     from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
     from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
     from .software_update_status_summary import SoftwareUpdateStatusSummary
+    from .speaker_assignment_submission import SpeakerAssignmentSubmission
     from .standard_web_part import StandardWebPart
     from .start_hold_music_operation import StartHoldMusicOperation
     from .stop_hold_music_operation import StopHoldMusicOperation
@@ -810,7 +821,6 @@ if TYPE_CHECKING:
     from .teamwork_tag import TeamworkTag
     from .teamwork_tag_member import TeamworkTagMember
     from .team_info import TeamInfo
-    from .telecom_expense_management_partner import TelecomExpenseManagementPartner
     from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
     from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
     from .tenant_app_management_policy import TenantAppManagementPolicy
@@ -2234,6 +2244,30 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .engagement_async_operation import EngagementAsyncOperation
 
             return EngagementAsyncOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversation".casefold():
+            from .engagement_conversation import EngagementConversation
+
+            return EngagementConversation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationDiscussionMessage".casefold():
+            from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
+
+            return EngagementConversationDiscussionMessage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationMessage".casefold():
+            from .engagement_conversation_message import EngagementConversationMessage
+
+            return EngagementConversationMessage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationMessageReaction".casefold():
+            from .engagement_conversation_message_reaction import EngagementConversationMessageReaction
+
+            return EngagementConversationMessageReaction()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationQuestionMessage".casefold():
+            from .engagement_conversation_question_message import EngagementConversationQuestionMessage
+
+            return EngagementConversationQuestionMessage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationSystemMessage".casefold():
+            from .engagement_conversation_system_message import EngagementConversationSystemMessage
+
+            return EngagementConversationSystemMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.enrollmentConfigurationAssignment".casefold():
             from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
@@ -3076,6 +3110,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .online_meeting_base import OnlineMeetingBase
 
             return OnlineMeetingBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onlineMeetingEngagementConversation".casefold():
+            from .online_meeting_engagement_conversation import OnlineMeetingEngagementConversation
+
+            return OnlineMeetingEngagementConversation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onOtpSendCustomExtension".casefold():
             from .on_otp_send_custom_extension import OnOtpSendCustomExtension
 
@@ -3088,6 +3126,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
             return OnPremisesDirectorySynchronization()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onPremisesSyncBehavior".casefold():
+            from .on_premises_sync_behavior import OnPremisesSyncBehavior
+
+            return OnPremisesSyncBehavior()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartCustomExtension".casefold():
             from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
@@ -3483,6 +3525,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .reading_assignment_submission import ReadingAssignmentSubmission
 
             return ReadingAssignmentSubmission()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.readingCoachPassage".casefold():
+            from .reading_coach_passage import ReadingCoachPassage
+
+            return ReadingCoachPassage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.recordOperation".casefold():
             from .record_operation import RecordOperation
 
@@ -3744,6 +3790,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
 
             return EdiscoveryHoldOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldPolicySyncOperation".casefold():
+            from .security.ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
+
+            return EdiscoveryHoldPolicySyncOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryIndexOperation".casefold():
             from .security.ediscovery_index_operation import EdiscoveryIndexOperation
 
@@ -4129,6 +4179,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .software_update_status_summary import SoftwareUpdateStatusSummary
 
             return SoftwareUpdateStatusSummary()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.speakerAssignmentSubmission".casefold():
+            from .speaker_assignment_submission import SpeakerAssignmentSubmission
+
+            return SpeakerAssignmentSubmission()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.standardWebPart".casefold():
             from .standard_web_part import StandardWebPart
 
@@ -4265,10 +4319,6 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .teamwork_tag_member import TeamworkTagMember
 
             return TeamworkTagMember()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.telecomExpenseManagementPartner".casefold():
-            from .telecom_expense_management_partner import TelecomExpenseManagementPartner
-
-            return TelecomExpenseManagementPartner()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethod".casefold():
             from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
 
@@ -5382,6 +5432,12 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .end_user_notification import EndUserNotification
         from .end_user_notification_detail import EndUserNotificationDetail
         from .engagement_async_operation import EngagementAsyncOperation
+        from .engagement_conversation import EngagementConversation
+        from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
+        from .engagement_conversation_message import EngagementConversationMessage
+        from .engagement_conversation_message_reaction import EngagementConversationMessageReaction
+        from .engagement_conversation_question_message import EngagementConversationQuestionMessage
+        from .engagement_conversation_system_message import EngagementConversationSystemMessage
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
         from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
@@ -5584,6 +5640,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
         from .online_meeting import OnlineMeeting
         from .online_meeting_base import OnlineMeetingBase
+        from .online_meeting_engagement_conversation import OnlineMeetingEngagementConversation
         from .on_attribute_collection_listener import OnAttributeCollectionListener
         from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
         from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
@@ -5595,6 +5652,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .on_user_create_start_listener import OnUserCreateStartListener
@@ -5694,6 +5752,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .rbac_application import RbacApplication
         from .reading_assignment_submission import ReadingAssignmentSubmission
+        from .reading_coach_passage import ReadingCoachPassage
         from .record_operation import RecordOperation
         from .recycle_bin import RecycleBin
         from .recycle_bin_item import RecycleBinItem
@@ -5758,6 +5817,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
         from .security.ediscovery_export_operation import EdiscoveryExportOperation
         from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .security.ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
         from .security.ediscovery_index_operation import EdiscoveryIndexOperation
         from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
         from .security.ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
@@ -5855,6 +5915,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
         from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .speaker_assignment_submission import SpeakerAssignmentSubmission
         from .standard_web_part import StandardWebPart
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
@@ -5889,7 +5950,6 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .teamwork_tag import TeamworkTag
         from .teamwork_tag_member import TeamworkTagMember
         from .team_info import TeamInfo
-        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
         from .tenant_app_management_policy import TenantAppManagementPolicy
@@ -6390,6 +6450,12 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .end_user_notification import EndUserNotification
         from .end_user_notification_detail import EndUserNotificationDetail
         from .engagement_async_operation import EngagementAsyncOperation
+        from .engagement_conversation import EngagementConversation
+        from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
+        from .engagement_conversation_message import EngagementConversationMessage
+        from .engagement_conversation_message_reaction import EngagementConversationMessageReaction
+        from .engagement_conversation_question_message import EngagementConversationQuestionMessage
+        from .engagement_conversation_system_message import EngagementConversationSystemMessage
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
         from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
@@ -6592,6 +6658,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
         from .online_meeting import OnlineMeeting
         from .online_meeting_base import OnlineMeetingBase
+        from .online_meeting_engagement_conversation import OnlineMeetingEngagementConversation
         from .on_attribute_collection_listener import OnAttributeCollectionListener
         from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
         from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
@@ -6603,6 +6670,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .on_user_create_start_listener import OnUserCreateStartListener
@@ -6702,6 +6770,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .rbac_application import RbacApplication
         from .reading_assignment_submission import ReadingAssignmentSubmission
+        from .reading_coach_passage import ReadingCoachPassage
         from .record_operation import RecordOperation
         from .recycle_bin import RecycleBin
         from .recycle_bin_item import RecycleBinItem
@@ -6766,6 +6835,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
         from .security.ediscovery_export_operation import EdiscoveryExportOperation
         from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .security.ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
         from .security.ediscovery_index_operation import EdiscoveryIndexOperation
         from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
         from .security.ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
@@ -6863,6 +6933,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
         from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .speaker_assignment_submission import SpeakerAssignmentSubmission
         from .standard_web_part import StandardWebPart
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
@@ -6897,7 +6968,6 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .teamwork_tag import TeamworkTag
         from .teamwork_tag_member import TeamworkTagMember
         from .team_info import TeamInfo
-        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
         from .tenant_app_management_policy import TenantAppManagementPolicy

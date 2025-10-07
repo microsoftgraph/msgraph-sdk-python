@@ -38,6 +38,7 @@ if TYPE_CHECKING:
     from .members_with_license_errors.members_with_license_errors_request_builder import MembersWithLicenseErrorsRequestBuilder
     from .member_of.member_of_request_builder import MemberOfRequestBuilder
     from .onenote.onenote_request_builder import OnenoteRequestBuilder
+    from .on_premises_sync_behavior.on_premises_sync_behavior_request_builder import OnPremisesSyncBehaviorRequestBuilder
     from .owners.owners_request_builder import OwnersRequestBuilder
     from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
     from .photo.photo_request_builder import PhotoRequestBuilder
@@ -372,6 +373,15 @@ class GroupItemRequestBuilder(BaseRequestBuilder):
         from .members_with_license_errors.members_with_license_errors_request_builder import MembersWithLicenseErrorsRequestBuilder
 
         return MembersWithLicenseErrorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def on_premises_sync_behavior(self) -> OnPremisesSyncBehaviorRequestBuilder:
+        """
+        Provides operations to manage the onPremisesSyncBehavior property of the microsoft.graph.group entity.
+        """
+        from .on_premises_sync_behavior.on_premises_sync_behavior_request_builder import OnPremisesSyncBehaviorRequestBuilder
+
+        return OnPremisesSyncBehaviorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def onenote(self) -> OnenoteRequestBuilder:

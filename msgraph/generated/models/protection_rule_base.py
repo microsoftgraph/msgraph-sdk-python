@@ -24,7 +24,7 @@ class ProtectionRuleBase(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # Contains error details if an operation on a rule fails.
     error: Optional[PublicError] = None
-    # The isAutoApplyEnabled property
+    # true indicates that the protection rule is dynamic; false that it's static.
     is_auto_apply_enabled: Optional[bool] = None
     # The identity of the person who last modified the rule.
     last_modified_by: Optional[IdentitySet] = None
@@ -32,7 +32,7 @@ class ProtectionRuleBase(Entity, Parsable):
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The status of the protection rule. The possible values are: draft, active, completed, completedWithErrors, unknownFutureValue. The draft member is currently unsupported.
+    # The status of the protection rule. The possible values are: draft, active, completed, completedWithErrors, unknownFutureValue, updateRequested, deleteRequested. Use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: updateRequested , deleteRequested. The draft member is currently unsupported.
     status: Optional[ProtectionRuleStatus] = None
     
     @staticmethod

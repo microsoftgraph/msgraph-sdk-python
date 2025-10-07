@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
     from .ediscovery_export_operation import EdiscoveryExportOperation
     from .ediscovery_hold_operation import EdiscoveryHoldOperation
+    from .ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
     from .ediscovery_index_operation import EdiscoveryIndexOperation
     from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
     from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
@@ -71,6 +72,10 @@ class CaseOperation(Entity, Parsable):
             from .ediscovery_hold_operation import EdiscoveryHoldOperation
 
             return EdiscoveryHoldOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldPolicySyncOperation".casefold():
+            from .ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
+
+            return EdiscoveryHoldPolicySyncOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryIndexOperation".casefold():
             from .ediscovery_index_operation import EdiscoveryIndexOperation
 
@@ -103,6 +108,7 @@ class CaseOperation(Entity, Parsable):
         from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
         from .ediscovery_export_operation import EdiscoveryExportOperation
         from .ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
         from .ediscovery_index_operation import EdiscoveryIndexOperation
         from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
         from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
@@ -117,6 +123,7 @@ class CaseOperation(Entity, Parsable):
         from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
         from .ediscovery_export_operation import EdiscoveryExportOperation
         from .ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
         from .ediscovery_index_operation import EdiscoveryIndexOperation
         from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
         from .ediscovery_search_export_operation import EdiscoverySearchExportOperation

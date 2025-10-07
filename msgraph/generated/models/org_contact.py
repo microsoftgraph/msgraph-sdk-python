@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
     from .on_premises_provisioning_error import OnPremisesProvisioningError
+    from .on_premises_sync_behavior import OnPremisesSyncBehavior
     from .phone import Phone
     from .physical_office_address import PhysicalOfficeAddress
     from .service_provisioning_error import ServiceProvisioningError
@@ -44,6 +45,8 @@ class OrgContact(DirectoryObject, Parsable):
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
     # List of any synchronization provisioning errors for this organizational contact. Supports $filter (eq, not for category and propertyCausingError), /$count eq 0, /$count ne 0.
     on_premises_provisioning_errors: Optional[list[OnPremisesProvisioningError]] = None
+    # The onPremisesSyncBehavior property
+    on_premises_sync_behavior: Optional[OnPremisesSyncBehavior] = None
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced and now mastered in Exchange; null if this object has never been synced from an on-premises directory (default).   Supports $filter (eq, ne, not, in, and eq for null values).
     on_premises_sync_enabled: Optional[bool] = None
     # List of phones for this organizational contact. Phone types can be mobile, business, and businessFax. Only one of each type can ever be present in the collection.
@@ -75,12 +78,14 @@ class OrgContact(DirectoryObject, Parsable):
         """
         from .directory_object import DirectoryObject
         from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .phone import Phone
         from .physical_office_address import PhysicalOfficeAddress
         from .service_provisioning_error import ServiceProvisioningError
 
         from .directory_object import DirectoryObject
         from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .phone import Phone
         from .physical_office_address import PhysicalOfficeAddress
         from .service_provisioning_error import ServiceProvisioningError
@@ -99,6 +104,7 @@ class OrgContact(DirectoryObject, Parsable):
             "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
             "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
+            "onPremisesSyncBehavior": lambda n : setattr(self, 'on_premises_sync_behavior', n.get_object_value(OnPremisesSyncBehavior)),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
             "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
@@ -132,6 +138,7 @@ class OrgContact(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("memberOf", self.member_of)
         writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
+        writer.write_object_value("onPremisesSyncBehavior", self.on_premises_sync_behavior)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_collection_of_object_values("phones", self.phones)
         writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)

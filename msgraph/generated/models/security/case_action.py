@@ -12,4 +12,5 @@ class CaseAction(str, Enum):
     PurgeData = "purgeData",
     ExportReport = "exportReport",
     ExportResult = "exportResult",
+    HoldPolicySync = "holdPolicySync",
 

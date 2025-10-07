@@ -18,8 +18,10 @@ if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from .calls.calls_request_builder import CallsRequestBuilder
     from .call_records.call_records_request_builder import CallRecordsRequestBuilder
+    from .get_all_online_meeting_messages.get_all_online_meeting_messages_request_builder import GetAllOnlineMeetingMessagesRequestBuilder
     from .get_presences_by_user_id.get_presences_by_user_id_request_builder import GetPresencesByUserIdRequestBuilder
     from .online_meetings.online_meetings_request_builder import OnlineMeetingsRequestBuilder
+    from .online_meeting_conversations.online_meeting_conversations_request_builder import OnlineMeetingConversationsRequestBuilder
     from .presences.presences_request_builder import PresencesRequestBuilder
 
 class CommunicationsRequestBuilder(BaseRequestBuilder):
@@ -58,7 +60,7 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: CloudCommunications, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CloudCommunications]:
         """
         Update communications
-        param body: The request body
+        param body: Represents a container that exposes navigation properties for cloud communications resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudCommunications]
         """
@@ -92,7 +94,7 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: CloudCommunications, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update communications
-        param body: The request body
+        param body: Represents a container that exposes navigation properties for cloud communications resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -133,6 +135,15 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
         return CallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def get_all_online_meeting_messages(self) -> GetAllOnlineMeetingMessagesRequestBuilder:
+        """
+        Provides operations to call the getAllOnlineMeetingMessages method.
+        """
+        from .get_all_online_meeting_messages.get_all_online_meeting_messages_request_builder import GetAllOnlineMeetingMessagesRequestBuilder
+
+        return GetAllOnlineMeetingMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def get_presences_by_user_id(self) -> GetPresencesByUserIdRequestBuilder:
         """
         Provides operations to call the getPresencesByUserId method.
@@ -140,6 +151,15 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
         from .get_presences_by_user_id.get_presences_by_user_id_request_builder import GetPresencesByUserIdRequestBuilder
 
         return GetPresencesByUserIdRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def online_meeting_conversations(self) -> OnlineMeetingConversationsRequestBuilder:
+        """
+        Provides operations to manage the onlineMeetingConversations property of the microsoft.graph.cloudCommunications entity.
+        """
+        from .online_meeting_conversations.online_meeting_conversations_request_builder import OnlineMeetingConversationsRequestBuilder
+
+        return OnlineMeetingConversationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def online_meetings(self) -> OnlineMeetingsRequestBuilder:

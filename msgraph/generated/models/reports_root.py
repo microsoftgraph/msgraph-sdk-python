@@ -7,7 +7,9 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .reading_assignment_submission import ReadingAssignmentSubmission
+    from .reading_coach_passage import ReadingCoachPassage
     from .reflect_check_in_response import ReflectCheckInResponse
+    from .speaker_assignment_submission import SpeakerAssignmentSubmission
 
 from .entity import Entity
 
@@ -17,8 +19,12 @@ class ReportsRoot(Entity, Parsable):
     odata_type: Optional[str] = None
     # Details of submitted reading assignments.
     reading_assignment_submissions: Optional[list[ReadingAssignmentSubmission]] = None
+    # Details of practiced Reading Coach passages.
+    reading_coach_passages: Optional[list[ReadingCoachPassage]] = None
     # Details of check-in responses.
     reflect_check_in_responses: Optional[list[ReflectCheckInResponse]] = None
+    # Details of submitted speaker assignments.
+    speaker_assignment_submissions: Optional[list[SpeakerAssignmentSubmission]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ReportsRoot:
@@ -38,15 +44,21 @@ class ReportsRoot(Entity, Parsable):
         """
         from .entity import Entity
         from .reading_assignment_submission import ReadingAssignmentSubmission
+        from .reading_coach_passage import ReadingCoachPassage
         from .reflect_check_in_response import ReflectCheckInResponse
+        from .speaker_assignment_submission import SpeakerAssignmentSubmission
 
         from .entity import Entity
         from .reading_assignment_submission import ReadingAssignmentSubmission
+        from .reading_coach_passage import ReadingCoachPassage
         from .reflect_check_in_response import ReflectCheckInResponse
+        from .speaker_assignment_submission import SpeakerAssignmentSubmission
 
         fields: dict[str, Callable[[Any], None]] = {
             "readingAssignmentSubmissions": lambda n : setattr(self, 'reading_assignment_submissions', n.get_collection_of_object_values(ReadingAssignmentSubmission)),
+            "readingCoachPassages": lambda n : setattr(self, 'reading_coach_passages', n.get_collection_of_object_values(ReadingCoachPassage)),
             "reflectCheckInResponses": lambda n : setattr(self, 'reflect_check_in_responses', n.get_collection_of_object_values(ReflectCheckInResponse)),
+            "speakerAssignmentSubmissions": lambda n : setattr(self, 'speaker_assignment_submissions', n.get_collection_of_object_values(SpeakerAssignmentSubmission)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,6 +74,8 @@ class ReportsRoot(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("readingAssignmentSubmissions", self.reading_assignment_submissions)
+        writer.write_collection_of_object_values("readingCoachPassages", self.reading_coach_passages)
         writer.write_collection_of_object_values("reflectCheckInResponses", self.reflect_check_in_responses)
+        writer.write_collection_of_object_values("speakerAssignmentSubmissions", self.speaker_assignment_submissions)
     
 

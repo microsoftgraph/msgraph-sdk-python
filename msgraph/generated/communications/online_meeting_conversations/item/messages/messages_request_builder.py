@@ -14,87 +14,85 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from ...models.o_data_errors.o_data_error import ODataError
-    from ...models.telecom_expense_management_partner import TelecomExpenseManagementPartner
-    from ...models.telecom_expense_management_partner_collection_response import TelecomExpenseManagementPartnerCollectionResponse
+    from .....models.engagement_conversation_message import EngagementConversationMessage
+    from .....models.engagement_conversation_message_collection_response import EngagementConversationMessageCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
-    from .item.telecom_expense_management_partner_item_request_builder import TelecomExpenseManagementPartnerItemRequestBuilder
+    from .item.engagement_conversation_message_item_request_builder import EngagementConversationMessageItemRequestBuilder
 
-class TelecomExpenseManagementPartnersRequestBuilder(BaseRequestBuilder):
+class MessagesRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
+    Provides operations to manage the messages property of the microsoft.graph.engagementConversation entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
-        Instantiates a new TelecomExpenseManagementPartnersRequestBuilder and sets the default values.
+        Instantiates a new MessagesRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceManagement/telecomExpenseManagementPartners{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/communications/onlineMeetingConversations/{onlineMeetingEngagementConversation%2Did}/messages{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    def by_telecom_expense_management_partner_id(self,telecom_expense_management_partner_id: str) -> TelecomExpenseManagementPartnerItemRequestBuilder:
+    def by_engagement_conversation_message_id(self,engagement_conversation_message_id: str) -> EngagementConversationMessageItemRequestBuilder:
         """
-        Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
-        param telecom_expense_management_partner_id: The unique identifier of telecomExpenseManagementPartner
-        Returns: TelecomExpenseManagementPartnerItemRequestBuilder
+        Provides operations to manage the messages property of the microsoft.graph.engagementConversation entity.
+        param engagement_conversation_message_id: The unique identifier of engagementConversationMessage
+        Returns: EngagementConversationMessageItemRequestBuilder
         """
-        if telecom_expense_management_partner_id is None:
-            raise TypeError("telecom_expense_management_partner_id cannot be null.")
-        from .item.telecom_expense_management_partner_item_request_builder import TelecomExpenseManagementPartnerItemRequestBuilder
+        if engagement_conversation_message_id is None:
+            raise TypeError("engagement_conversation_message_id cannot be null.")
+        from .item.engagement_conversation_message_item_request_builder import EngagementConversationMessageItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["telecomExpenseManagementPartner%2Did"] = telecom_expense_management_partner_id
-        return TelecomExpenseManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
+        url_tpl_params["engagementConversationMessage%2Did"] = engagement_conversation_message_id
+        return EngagementConversationMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[TelecomExpenseManagementPartnersRequestBuilderGetQueryParameters]] = None) -> Optional[TelecomExpenseManagementPartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[MessagesRequestBuilderGetQueryParameters]] = None) -> Optional[EngagementConversationMessageCollectionResponse]:
         """
-        List properties and relationships of the telecomExpenseManagementPartner objects.
+        The messages in a Viva Engage conversation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[TelecomExpenseManagementPartnerCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-tem-telecomexpensemanagementpartner-list?view=graph-rest-1.0
+        Returns: Optional[EngagementConversationMessageCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors.o_data_error import ODataError
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.telecom_expense_management_partner_collection_response import TelecomExpenseManagementPartnerCollectionResponse
+        from .....models.engagement_conversation_message_collection_response import EngagementConversationMessageCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, TelecomExpenseManagementPartnerCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EngagementConversationMessageCollectionResponse, error_mapping)
     
-    async def post(self,body: TelecomExpenseManagementPartner, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TelecomExpenseManagementPartner]:
+    async def post(self,body: EngagementConversationMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EngagementConversationMessage]:
         """
-        Create a new telecomExpenseManagementPartner object.
+        Create new navigation property to messages for communications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[TelecomExpenseManagementPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-tem-telecomexpensemanagementpartner-create?view=graph-rest-1.0
+        Returns: Optional[EngagementConversationMessage]
         """
         if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors.o_data_error import ODataError
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.telecom_expense_management_partner import TelecomExpenseManagementPartner
+        from .....models.engagement_conversation_message import EngagementConversationMessage
 
-        return await self.request_adapter.send_async(request_info, TelecomExpenseManagementPartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, EngagementConversationMessage, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TelecomExpenseManagementPartnersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MessagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the telecomExpenseManagementPartner objects.
+        The messages in a Viva Engage conversation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,9 +101,9 @@ class TelecomExpenseManagementPartnersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: TelecomExpenseManagementPartner, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_post_request_information(self,body: EngagementConversationMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new telecomExpenseManagementPartner object.
+        Create new navigation property to messages for communications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -118,15 +116,15 @@ class TelecomExpenseManagementPartnersRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: str) -> TelecomExpenseManagementPartnersRequestBuilder:
+    def with_url(self,raw_url: str) -> MessagesRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: TelecomExpenseManagementPartnersRequestBuilder
+        Returns: MessagesRequestBuilder
         """
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
-        return TelecomExpenseManagementPartnersRequestBuilder(self.request_adapter, raw_url)
+        return MessagesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -138,9 +136,9 @@ class TelecomExpenseManagementPartnersRequestBuilder(BaseRequestBuilder):
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
-    class TelecomExpenseManagementPartnersRequestBuilderGetQueryParameters():
+    class MessagesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the telecomExpenseManagementPartner objects.
+        The messages in a Viva Engage conversation.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -194,14 +192,14 @@ class TelecomExpenseManagementPartnersRequestBuilder(BaseRequestBuilder):
 
     
     @dataclass
-    class TelecomExpenseManagementPartnersRequestBuilderGetRequestConfiguration(RequestConfiguration[TelecomExpenseManagementPartnersRequestBuilderGetQueryParameters]):
+    class MessagesRequestBuilderGetRequestConfiguration(RequestConfiguration[MessagesRequestBuilderGetQueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class TelecomExpenseManagementPartnersRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class MessagesRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

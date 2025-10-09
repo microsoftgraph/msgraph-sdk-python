@@ -14,33 +14,32 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 from warnings import warn
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors.o_data_error import ODataError
-    from ....models.telecom_expense_management_partner import TelecomExpenseManagementPartner
+    from .........models.engagement_conversation_message_reaction import EngagementConversationMessageReaction
+    from .........models.o_data_errors.o_data_error import ODataError
 
-class TelecomExpenseManagementPartnerItemRequestBuilder(BaseRequestBuilder):
+class EngagementConversationMessageReactionItemRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
+    Provides operations to manage the reactions property of the microsoft.graph.engagementConversationMessage entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, dict[str, Any]]) -> None:
         """
-        Instantiates a new TelecomExpenseManagementPartnerItemRequestBuilder and sets the default values.
+        Instantiates a new EngagementConversationMessageReactionItemRequestBuilder and sets the default values.
         param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceManagement/telecomExpenseManagementPartners/{telecomExpenseManagementPartner%2Did}{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/communications/onlineMeetingConversations/{onlineMeetingEngagementConversation%2Did}/starter/replies/{engagementConversationMessage%2Did}/reactions/{engagementConversationMessageReaction%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a telecomExpenseManagementPartner.
+        Delete navigation property reactions for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-tem-telecomexpensemanagementpartner-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors.o_data_error import ODataError
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
@@ -49,54 +48,52 @@ class TelecomExpenseManagementPartnerItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[TelecomExpenseManagementPartnerItemRequestBuilderGetQueryParameters]] = None) -> Optional[TelecomExpenseManagementPartner]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[EngagementConversationMessageReactionItemRequestBuilderGetQueryParameters]] = None) -> Optional[EngagementConversationMessageReaction]:
         """
-        Read properties and relationships of the telecomExpenseManagementPartner object.
+        A collection of reactions (such as like and smile) that users have applied to this message.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[TelecomExpenseManagementPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-tem-telecomexpensemanagementpartner-get?view=graph-rest-1.0
+        Returns: Optional[EngagementConversationMessageReaction]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors.o_data_error import ODataError
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.telecom_expense_management_partner import TelecomExpenseManagementPartner
+        from .........models.engagement_conversation_message_reaction import EngagementConversationMessageReaction
 
-        return await self.request_adapter.send_async(request_info, TelecomExpenseManagementPartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, EngagementConversationMessageReaction, error_mapping)
     
-    async def patch(self,body: TelecomExpenseManagementPartner, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TelecomExpenseManagementPartner]:
+    async def patch(self,body: EngagementConversationMessageReaction, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EngagementConversationMessageReaction]:
         """
-        Update the properties of a telecomExpenseManagementPartner object.
+        Update the navigation property reactions in communications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[TelecomExpenseManagementPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-tem-telecomexpensemanagementpartner-update?view=graph-rest-1.0
+        Returns: Optional[EngagementConversationMessageReaction]
         """
         if body is None:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors.o_data_error import ODataError
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: dict[str, type[ParsableFactory]] = {
             "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.telecom_expense_management_partner import TelecomExpenseManagementPartner
+        from .........models.engagement_conversation_message_reaction import EngagementConversationMessageReaction
 
-        return await self.request_adapter.send_async(request_info, TelecomExpenseManagementPartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, EngagementConversationMessageReaction, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a telecomExpenseManagementPartner.
+        Delete navigation property reactions for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,9 +102,9 @@ class TelecomExpenseManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TelecomExpenseManagementPartnerItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[EngagementConversationMessageReactionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the telecomExpenseManagementPartner object.
+        A collection of reactions (such as like and smile) that users have applied to this message.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,9 +113,9 @@ class TelecomExpenseManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: TelecomExpenseManagementPartner, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: EngagementConversationMessageReaction, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a telecomExpenseManagementPartner object.
+        Update the navigation property reactions in communications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -131,27 +128,27 @@ class TelecomExpenseManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: str) -> TelecomExpenseManagementPartnerItemRequestBuilder:
+    def with_url(self,raw_url: str) -> EngagementConversationMessageReactionItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: TelecomExpenseManagementPartnerItemRequestBuilder
+        Returns: EngagementConversationMessageReactionItemRequestBuilder
         """
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
-        return TelecomExpenseManagementPartnerItemRequestBuilder(self.request_adapter, raw_url)
+        return EngagementConversationMessageReactionItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
-    class TelecomExpenseManagementPartnerItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class EngagementConversationMessageReactionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class TelecomExpenseManagementPartnerItemRequestBuilderGetQueryParameters():
+    class EngagementConversationMessageReactionItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the telecomExpenseManagementPartner object.
+        A collection of reactions (such as like and smile) that users have applied to this message.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """
@@ -175,14 +172,14 @@ class TelecomExpenseManagementPartnerItemRequestBuilder(BaseRequestBuilder):
 
     
     @dataclass
-    class TelecomExpenseManagementPartnerItemRequestBuilderGetRequestConfiguration(RequestConfiguration[TelecomExpenseManagementPartnerItemRequestBuilderGetQueryParameters]):
+    class EngagementConversationMessageReactionItemRequestBuilderGetRequestConfiguration(RequestConfiguration[EngagementConversationMessageReactionItemRequestBuilderGetQueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
-    class TelecomExpenseManagementPartnerItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
+    class EngagementConversationMessageReactionItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

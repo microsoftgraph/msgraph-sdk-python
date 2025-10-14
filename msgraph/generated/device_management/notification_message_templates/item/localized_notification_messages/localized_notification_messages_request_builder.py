@@ -49,10 +49,9 @@ class LocalizedNotificationMessagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[LocalizedNotificationMessagesRequestBuilderGetQueryParameters]] = None) -> Optional[LocalizedNotificationMessageCollectionResponse]:
         """
-        List properties and relationships of the localizedNotificationMessage objects.
+        The list of localized messages for this Notification Message Template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LocalizedNotificationMessageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-localizednotificationmessage-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class LocalizedNotificationMessagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: LocalizedNotificationMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Create a new localizedNotificationMessage object.
+        Create new navigation property to localizedNotificationMessages for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LocalizedNotificationMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-localizednotificationmessage-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class LocalizedNotificationMessagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[LocalizedNotificationMessagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the localizedNotificationMessage objects.
+        The list of localized messages for this Notification Message Template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class LocalizedNotificationMessagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: LocalizedNotificationMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new localizedNotificationMessage object.
+        Create new navigation property to localizedNotificationMessages for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class LocalizedNotificationMessagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LocalizedNotificationMessagesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the localizedNotificationMessage objects.
+        The list of localized messages for this Notification Message Template.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

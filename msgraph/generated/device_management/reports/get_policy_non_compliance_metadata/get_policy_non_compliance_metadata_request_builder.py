@@ -32,11 +32,10 @@ class GetPolicyNonComplianceMetadataRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: GetPolicyNonComplianceMetadataPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
-        Not yet documented
+        Invoke action getPolicyNonComplianceMetadata
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagementreports-getpolicynoncompliancemetadata?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -54,7 +53,7 @@ class GetPolicyNonComplianceMetadataRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: GetPolicyNonComplianceMetadataPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke action getPolicyNonComplianceMetadata
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

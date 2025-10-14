@@ -49,10 +49,9 @@ class WindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters]] = None) -> Optional[WindowsAutopilotDeviceIdentityCollectionResponse]:
         """
-        List properties and relationships of the windowsAutopilotDeviceIdentity objects.
+        The Windows autopilot device identities contained collection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsAutopilotDeviceIdentityCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-enrollment-windowsautopilotdeviceidentity-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class WindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: WindowsAutopilotDeviceIdentity, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WindowsAutopilotDeviceIdentity]:
         """
-        Create a new windowsAutopilotDeviceIdentity object.
+        Create new navigation property to windowsAutopilotDeviceIdentities for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsAutopilotDeviceIdentity]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-enrollment-windowsautopilotdeviceidentity-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class WindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsAutopilotDeviceIdentity objects.
+        The Windows autopilot device identities contained collection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class WindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: WindowsAutopilotDeviceIdentity, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new windowsAutopilotDeviceIdentity object.
+        Create new navigation property to windowsAutopilotDeviceIdentities for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class WindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsAutopilotDeviceIdentity objects.
+        The Windows autopilot device identities contained collection.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

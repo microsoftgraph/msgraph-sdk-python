@@ -50,10 +50,9 @@ class ConditionalAccessSettingsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ConditionalAccessSettingsRequestBuilderGetQueryParameters]] = None) -> Optional[OnPremisesConditionalAccessSettings]:
         """
-        Read properties and relationships of the onPremisesConditionalAccessSettings object.
+        The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnPremisesConditionalAccessSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-onpremisesconditionalaccesssettings-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,11 +70,10 @@ class ConditionalAccessSettingsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: OnPremisesConditionalAccessSettings, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[OnPremisesConditionalAccessSettings]:
         """
-        Update the properties of a onPremisesConditionalAccessSettings object.
+        Update the navigation property conditionalAccessSettings in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnPremisesConditionalAccessSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-onpremisesconditionalaccesssettings-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -106,7 +104,7 @@ class ConditionalAccessSettingsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ConditionalAccessSettingsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the onPremisesConditionalAccessSettings object.
+        The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +115,7 @@ class ConditionalAccessSettingsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: OnPremisesConditionalAccessSettings, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a onPremisesConditionalAccessSettings object.
+        Update the navigation property conditionalAccessSettings in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class ConditionalAccessSettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConditionalAccessSettingsRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the onPremisesConditionalAccessSettings object.
+        The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

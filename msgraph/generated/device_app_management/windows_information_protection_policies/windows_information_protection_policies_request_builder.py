@@ -49,10 +49,9 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WindowsInformationProtectionPoliciesRequestBuilderGetQueryParameters]] = None) -> Optional[WindowsInformationProtectionPolicyCollectionResponse]:
         """
-        List properties and relationships of the windowsInformationProtectionPolicy objects.
+        Windows information protection for apps running on devices which are not MDM enrolled.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotectionpolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: WindowsInformationProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WindowsInformationProtectionPolicy]:
         """
-        Create a new windowsInformationProtectionPolicy object.
+        Create new navigation property to windowsInformationProtectionPolicies for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotectionpolicy-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WindowsInformationProtectionPoliciesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsInformationProtectionPolicy objects.
+        Windows information protection for apps running on devices which are not MDM enrolled.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: WindowsInformationProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new windowsInformationProtectionPolicy object.
+        Create new navigation property to windowsInformationProtectionPolicies for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WindowsInformationProtectionPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsInformationProtectionPolicy objects.
+        Windows information protection for apps running on devices which are not MDM enrolled.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

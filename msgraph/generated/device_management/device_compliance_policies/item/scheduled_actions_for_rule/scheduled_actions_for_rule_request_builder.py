@@ -49,10 +49,9 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ScheduledActionsForRuleRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceComplianceScheduledActionForRuleCollectionResponse]:
         """
-        List properties and relationships of the deviceComplianceScheduledActionForRule objects.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceScheduledActionForRuleCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: DeviceComplianceScheduledActionForRule, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceComplianceScheduledActionForRule]:
         """
-        Create a new deviceComplianceScheduledActionForRule object.
+        Create new navigation property to scheduledActionsForRule for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceScheduledActionForRule]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ScheduledActionsForRuleRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceComplianceScheduledActionForRule objects.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: DeviceComplianceScheduledActionForRule, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new deviceComplianceScheduledActionForRule object.
+        Create new navigation property to scheduledActionsForRule for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScheduledActionsForRuleRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceComplianceScheduledActionForRule objects.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

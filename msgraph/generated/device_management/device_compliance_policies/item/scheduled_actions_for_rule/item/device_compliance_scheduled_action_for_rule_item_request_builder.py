@@ -33,10 +33,9 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a deviceComplianceScheduledActionForRule.
+        Delete navigation property scheduledActionsForRule for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,10 +51,9 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceComplianceScheduledActionForRuleItemRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceComplianceScheduledActionForRule]:
         """
-        Read properties and relationships of the deviceComplianceScheduledActionForRule object.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceScheduledActionForRule]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,11 +71,10 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     
     async def patch(self,body: DeviceComplianceScheduledActionForRule, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceComplianceScheduledActionForRule]:
         """
-        Update the properties of a deviceComplianceScheduledActionForRule object.
+        Update the navigation property scheduledActionsForRule in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceScheduledActionForRule]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -97,7 +94,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a deviceComplianceScheduledActionForRule.
+        Delete navigation property scheduledActionsForRule for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +105,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceComplianceScheduledActionForRuleItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceComplianceScheduledActionForRule object.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +116,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     
     def to_patch_request_information(self,body: DeviceComplianceScheduledActionForRule, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a deviceComplianceScheduledActionForRule object.
+        Update the navigation property scheduledActionsForRule in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     @dataclass
     class DeviceComplianceScheduledActionForRuleItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceComplianceScheduledActionForRule object.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

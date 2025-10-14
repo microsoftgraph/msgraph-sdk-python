@@ -14,7 +14,7 @@ from .case_operation import CaseOperation
 class EdiscoveryHoldPolicySyncOperation(CaseOperation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The reportFileMetadata property
+    # Contains the properties for report file metadata, including downloadUrl, fileName, and size.
     report_file_metadata: Optional[list[ReportFileMetadata]] = None
     
     @staticmethod

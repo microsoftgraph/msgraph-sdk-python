@@ -69,11 +69,10 @@ class ManagedDevicesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ManagedDevice, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedDevice]:
         """
-        Create a new managedDevice object.
+        Create new navigation property to managedDevices for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDevice]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -104,7 +103,7 @@ class ManagedDevicesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ManagedDevice, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new managedDevice object.
+        Create new navigation property to managedDevices for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

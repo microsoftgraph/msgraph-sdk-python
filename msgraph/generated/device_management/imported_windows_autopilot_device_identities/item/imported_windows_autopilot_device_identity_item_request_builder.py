@@ -32,10 +32,9 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a importedWindowsAutopilotDeviceIdentity.
+        Delete navigation property importedWindowsAutopilotDeviceIdentities for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-enrollment-importedwindowsautopilotdeviceidentity-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetQueryParameters]] = None) -> Optional[ImportedWindowsAutopilotDeviceIdentity]:
         """
-        Read properties and relationships of the importedWindowsAutopilotDeviceIdentity object.
+        Collection of imported Windows autopilot devices.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ImportedWindowsAutopilotDeviceIdentity]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-enrollment-importedwindowsautopilotdeviceidentity-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -95,7 +93,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a importedWindowsAutopilotDeviceIdentity.
+        Delete navigation property importedWindowsAutopilotDeviceIdentities for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +104,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the importedWindowsAutopilotDeviceIdentity object.
+        Collection of imported Windows autopilot devices.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -150,7 +148,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     @dataclass
     class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the importedWindowsAutopilotDeviceIdentity object.
+        Collection of imported Windows autopilot devices.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

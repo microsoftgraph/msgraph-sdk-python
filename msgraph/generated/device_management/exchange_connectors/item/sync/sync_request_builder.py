@@ -32,11 +32,10 @@ class SyncRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: SyncPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Not yet documented
+        Invoke action sync
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagementexchangeconnector-sync?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -54,7 +53,7 @@ class SyncRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: SyncPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke action sync
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

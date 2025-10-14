@@ -18,7 +18,7 @@ class WindowsDeviceAccount(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # Not yet documented
+    # The password property
     password: Optional[str] = None
     
     @staticmethod

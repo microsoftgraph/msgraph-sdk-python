@@ -13,9 +13,9 @@ from .windows_device_account import WindowsDeviceAccount
 class WindowsDeviceADAccount(WindowsDeviceAccount, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsDeviceADAccount"
-    # Not yet documented
+    # The domainName property
     domain_name: Optional[str] = None
-    # Not yet documented
+    # The userName property
     user_name: Optional[str] = None
     
     @staticmethod

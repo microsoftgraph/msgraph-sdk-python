@@ -49,10 +49,9 @@ class ExemptAppLockerFilesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ExemptAppLockerFilesRequestBuilderGetQueryParameters]] = None) -> Optional[WindowsInformationProtectionAppLockerFileCollectionResponse]:
         """
-        List properties and relationships of the windowsInformationProtectionAppLockerFile objects.
+        Another way to input exempt apps through xml files
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionAppLockerFileCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotectionapplockerfile-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class ExemptAppLockerFilesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: WindowsInformationProtectionAppLockerFile, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WindowsInformationProtectionAppLockerFile]:
         """
-        Create a new windowsInformationProtectionAppLockerFile object.
+        Create new navigation property to exemptAppLockerFiles for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionAppLockerFile]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotectionapplockerfile-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class ExemptAppLockerFilesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ExemptAppLockerFilesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsInformationProtectionAppLockerFile objects.
+        Another way to input exempt apps through xml files
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class ExemptAppLockerFilesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: WindowsInformationProtectionAppLockerFile, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new windowsInformationProtectionAppLockerFile object.
+        Create new navigation property to exemptAppLockerFiles for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class ExemptAppLockerFilesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExemptAppLockerFilesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsInformationProtectionAppLockerFile objects.
+        Another way to input exempt apps through xml files
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

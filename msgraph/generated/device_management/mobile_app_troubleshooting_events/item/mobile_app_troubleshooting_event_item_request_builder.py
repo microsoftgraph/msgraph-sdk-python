@@ -33,10 +33,9 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a mobileAppTroubleshootingEvent.
+        Delete navigation property mobileAppTroubleshootingEvents for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-mobileapptroubleshootingevent-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,10 +51,9 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MobileAppTroubleshootingEventItemRequestBuilderGetQueryParameters]] = None) -> Optional[MobileAppTroubleshootingEvent]:
         """
-        Read properties and relationships of the mobileAppTroubleshootingEvent object.
+        The collection property of MobileAppTroubleshootingEvent.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppTroubleshootingEvent]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-mobileapptroubleshootingevent-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,11 +71,10 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: MobileAppTroubleshootingEvent, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MobileAppTroubleshootingEvent]:
         """
-        Update the properties of a mobileAppTroubleshootingEvent object.
+        Update the navigation property mobileAppTroubleshootingEvents in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppTroubleshootingEvent]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-mobileapptroubleshootingevent-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -97,7 +94,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a mobileAppTroubleshootingEvent.
+        Delete navigation property mobileAppTroubleshootingEvents for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +105,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MobileAppTroubleshootingEventItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the mobileAppTroubleshootingEvent object.
+        The collection property of MobileAppTroubleshootingEvent.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +116,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: MobileAppTroubleshootingEvent, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a mobileAppTroubleshootingEvent object.
+        Update the navigation property mobileAppTroubleshootingEvents in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppTroubleshootingEventItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the mobileAppTroubleshootingEvent object.
+        The collection property of MobileAppTroubleshootingEvent.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

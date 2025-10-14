@@ -32,10 +32,9 @@ class GetAuditCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GetAuditCategoriesRequestBuilderGetQueryParameters]] = None) -> Optional[GetAuditCategoriesGetResponse]:
         """
-        Not yet documented
+        Invoke function getAuditCategories
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetAuditCategoriesGetResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-auditing-auditevent-getauditcategories?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -53,7 +52,7 @@ class GetAuditCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GetAuditCategoriesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke function getAuditCategories
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -75,7 +74,7 @@ class GetAuditCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GetAuditCategoriesRequestBuilderGetQueryParameters():
         """
-        Not yet documented
+        Invoke function getAuditCategories
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

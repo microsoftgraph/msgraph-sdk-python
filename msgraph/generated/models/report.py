@@ -15,7 +15,7 @@ class Report(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Not yet documented
+    # The http content that has the data
     content: Optional[bytes] = None
     # The OdataType property
     odata_type: Optional[str] = None

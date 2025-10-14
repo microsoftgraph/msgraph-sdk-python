@@ -32,10 +32,9 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a managedAppOperation.
+        Delete navigation property operations for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappoperation-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagedAppOperationItemRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppOperation]:
         """
-        Read properties and relationships of the managedAppOperation object.
+        Zero or more long running operations triggered on the app registration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppOperation]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappoperation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: ManagedAppOperation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedAppOperation]:
         """
-        Update the properties of a managedAppOperation object.
+        Update the navigation property operations in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppOperation]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappoperation-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a managedAppOperation.
+        Delete navigation property operations for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagedAppOperationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedAppOperation object.
+        Zero or more long running operations triggered on the app registration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: ManagedAppOperation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a managedAppOperation object.
+        Update the navigation property operations in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppOperationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedAppOperation object.
+        Zero or more long running operations triggered on the app registration.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -50,7 +50,7 @@ class MobileContainedAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MobileContainedAppItemRequestBuilderGetQueryParameters]] = None) -> Optional[MobileContainedApp]:
         """
-        The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+        The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app. This property is read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileContainedApp]
         """
@@ -104,7 +104,7 @@ class MobileContainedAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MobileContainedAppItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+        The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app. This property is read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class MobileContainedAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileContainedAppItemRequestBuilderGetQueryParameters():
         """
-        The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+        The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app. This property is read-only.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

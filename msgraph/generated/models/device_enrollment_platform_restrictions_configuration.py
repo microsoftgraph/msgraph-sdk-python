@@ -17,15 +17,15 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(DeviceEnrollmentConfigur
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration"
-    # Android restrictions based on platform, platform operating system version, and device ownership
+    # Indicates restrictions for Android platform.
     android_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
-    # Ios restrictions based on platform, platform operating system version, and device ownership
+    # Indicates restrictions for IOS platform.
     ios_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
-    # Mac restrictions based on platform, platform operating system version, and device ownership
+    # Indicates restrictions for MacOS platform.
     mac_o_s_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
-    # Windows mobile restrictions based on platform, platform operating system version, and device ownership
+    # Indicates restrictions for Windows Mobile platform.
     windows_mobile_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
-    # Windows restrictions based on platform, platform operating system version, and device ownership
+    # Indicates restrictions for Windows platform.
     windows_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
     
     @staticmethod

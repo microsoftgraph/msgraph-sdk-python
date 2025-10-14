@@ -24,17 +24,17 @@ class WindowsUniversalAppX(MobileLobApp, Parsable):
     applicable_architectures: Optional[WindowsArchitecture] = None
     # Contains properties for Windows device type. Multiple values can be selected. Default value is `none`.
     applicable_device_types: Optional[WindowsDeviceType] = None
-    # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+    # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app. This property is read-only.
     committed_contained_apps: Optional[list[MobileContainedApp]] = None
-    # The Identity Name.
+    # The Identity Name of the app, parsed from the appx file when it is uploaded through the Intune MEM console. For example: 'Contoso.DemoApp'.
     identity_name: Optional[str] = None
-    # The Identity Publisher Hash.
+    # The Identity Publisher Hash of the app, parsed from the appx file when it is uploaded through the Intune MEM console. For example: 'AB82CD0XYZ'.
     identity_publisher_hash: Optional[str] = None
-    # The Identity Resource Identifier.
+    # The Identity Resource Identifier of the app, parsed from the appx file when it is uploaded through the Intune MEM console. For example: 'TestResourceId'.
     identity_resource_identifier: Optional[str] = None
-    # The identity version.
+    # The Identity Version of the app, parsed from the appx file when it is uploaded through the Intune MEM console.  For example: '1.0.0.0'.
     identity_version: Optional[str] = None
-    # Whether or not the app is a bundle.
+    # Whether or not the app is a bundle. If TRUE, app is a bundle; if FALSE, app is not a bundle.
     is_bundle: Optional[bool] = None
     # The minimum operating system required for a Windows mobile app.
     minimum_supported_operating_system: Optional[WindowsMinimumOperatingSystem] = None

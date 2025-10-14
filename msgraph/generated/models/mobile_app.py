@@ -49,7 +49,7 @@ class MobileApp(Entity, Parsable):
     assignments: Optional[list[MobileAppAssignment]] = None
     # The list of categories for this app.
     categories: Optional[list[MobileAppCategory]] = None
-    # The date and time the app was created.
+    # The date and time the app was created. This property is read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The description of the app.
     description: Optional[str] = None
@@ -63,7 +63,7 @@ class MobileApp(Entity, Parsable):
     is_featured: Optional[bool] = None
     # The large icon, to be displayed in the app details and used for upload of the icon.
     large_icon: Optional[MimeContent] = None
-    # The date and time the app was last modified.
+    # The date and time the app was last modified. This property is read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # Notes for the app.
     notes: Optional[str] = None

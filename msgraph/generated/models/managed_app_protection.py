@@ -48,7 +48,7 @@ class ManagedAppProtection(ManagedAppPolicy, Parsable):
     managed_browser: Optional[ManagedBrowserType] = None
     # Indicates whether internet links should be opened in the managed browser app, or any custom browser specified by CustomBrowserProtocol (for iOS) or CustomBrowserPackageId/CustomBrowserDisplayName (for Android)
     managed_browser_to_open_links_required: Optional[bool] = None
-    # Maximum number of incorrect pin retry attempts before the managed app is either blocked or wiped.
+    # Maximum number of incorrect pin retry attempts before the managed app is either blocked or wiped. Valid values 1 to 65535
     maximum_pin_retries: Optional[int] = None
     # Minimum pin length required for an app-level pin if PinRequired is set to True
     minimum_pin_length: Optional[int] = None

@@ -32,10 +32,9 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a deviceManagementExportJob.
+        Delete navigation property exportJobs for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagementexportjob-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceManagementExportJobItemRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceManagementExportJob]:
         """
-        Read properties and relationships of the deviceManagementExportJob object.
+        Entity representing a job to export a report.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementExportJob]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagementexportjob-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: DeviceManagementExportJob, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceManagementExportJob]:
         """
-        Update the properties of a deviceManagementExportJob object.
+        Update the navigation property exportJobs in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementExportJob]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagementexportjob-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a deviceManagementExportJob.
+        Delete navigation property exportJobs for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceManagementExportJobItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceManagementExportJob object.
+        Entity representing a job to export a report.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: DeviceManagementExportJob, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a deviceManagementExportJob object.
+        Update the navigation property exportJobs in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementExportJobItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceManagementExportJob object.
+        Entity representing a job to export a report.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

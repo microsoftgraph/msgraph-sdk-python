@@ -18,9 +18,9 @@ class DeviceManagementExportJob(Entity, Parsable):
     """
     Entity representing a job to export a report.
     """
-    # Time that the exported report expires
+    # Time that the exported report expires.
     expiration_date_time: Optional[datetime.datetime] = None
-    # Filters applied on the report
+    # Filters applied on the report. The maximum length allowed for this property is 2000 characters.
     filter: Optional[str] = None
     # Possible values for the file format of a report to be exported.
     format: Optional[DeviceManagementReportFileFormat] = None
@@ -28,17 +28,17 @@ class DeviceManagementExportJob(Entity, Parsable):
     localization_type: Optional[DeviceManagementExportJobLocalizationType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Name of the report
+    # Name of the report. The maximum length allowed for this property is 2000 characters.
     report_name: Optional[str] = None
-    # Time that the exported report was requested
+    # Time that the exported report was requested.
     request_date_time: Optional[datetime.datetime] = None
-    # Columns selected from the report
+    # Columns selected from the report. The maximum number of allowed columns names is 256. The maximum length allowed for each column name in this property is 1000 characters.
     select: Optional[list[str]] = None
-    # A snapshot is an identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. If a sessionId is specified, Filter, Select, and OrderBy are applied to the data represented by the sessionId. Filter, Select, and OrderBy cannot be specified together with a CachedReportConfiguration id.
+    # A snapshot is an identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. If a sessionId is specified, Filter, Select, and OrderBy are applied to the data represented by the sessionId. Filter, Select, and OrderBy cannot be specified together with a CachedReportConfiguration id. The maximum length allowed for this property is 128 characters.
     snapshot_id: Optional[str] = None
     # Possible statuses associated with a generated report.
     status: Optional[DeviceManagementReportStatus] = None
-    # Temporary location of the exported report
+    # Temporary location of the exported report.
     url: Optional[str] = None
     
     @staticmethod

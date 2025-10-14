@@ -75,7 +75,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, BackedModel, Parsable):
     test_signing: Optional[str] = None
     # The security version number of the Boot Application
     tpm_version: Optional[str] = None
-    # VSM is a container that protects high value assets from a compromised kernel
+    # Indicates whether the device has Virtual Secure Mode (VSM) enabled. Virtual Secure Mode (VSM) is a container that protects high value assets from a compromised kernel. This property will be deprecated in beta from August 2023. Support for this property will end in August 2025 for v1.0 API. A new property virtualizationBasedSecurity is added and used instead. The value used for virtualSecureMode will be passed by virtualizationBasedSecurity during the deprecation process. Possible values are 'enabled', 'disabled' and 'notApplicable'. 'enabled' indicates Virtual Secure Mode (VSM) is enabled. 'disabled' indicates Virtual Secure Mode (VSM) is disabled. 'notApplicable' indicates the device is not a Windows 11 device. Default value is 'notApplicable'.
     virtual_secure_mode: Optional[str] = None
     # Operating system running with limited services that is used to prepare a computer for Windows
     windows_p_e: Optional[str] = None

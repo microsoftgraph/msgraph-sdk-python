@@ -40,7 +40,7 @@ class AndroidWorkProfileCompliancePolicy(DeviceCompliancePolicy, Parsable):
     password_required: Optional[bool] = None
     # Android required password type.
     password_required_type: Optional[AndroidRequiredPasswordType] = None
-    # Devices must not be jailbroken or rooted.
+    # Indicates the device should not be rooted. When TRUE, if the device is detected as rooted it will be reported non-compliant. When FALSE, the device is not reported as non-compliant regardless of device rooted state. Default is FALSE.
     security_block_jailbroken_devices: Optional[bool] = None
     # Disable USB debugging on Android devices.
     security_disable_usb_debugging: Optional[bool] = None
@@ -50,9 +50,9 @@ class AndroidWorkProfileCompliancePolicy(DeviceCompliancePolicy, Parsable):
     security_require_company_portal_app_integrity: Optional[bool] = None
     # Require Google Play Services to be installed and enabled on the device.
     security_require_google_play_services: Optional[bool] = None
-    # Require the device to pass the SafetyNet basic integrity check.
+    # Require the device to pass the Play Integrity basic integrity check.
     security_require_safety_net_attestation_basic_integrity: Optional[bool] = None
-    # Require the device to pass the SafetyNet certified device check.
+    # Require the device to pass the Play Integrity device integrity check.
     security_require_safety_net_attestation_certified_device: Optional[bool] = None
     # Require the device to have up to date security providers. The device will require Google Play Services to be enabled and up to date.
     security_require_up_to_date_security_providers: Optional[bool] = None

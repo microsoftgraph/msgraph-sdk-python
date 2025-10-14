@@ -32,10 +32,9 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a settingStateDeviceSummary.
+        Delete navigation property deviceSettingStateSummaries for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-settingstatedevicesummary-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SettingStateDeviceSummaryItemRequestBuilderGetQueryParameters]] = None) -> Optional[SettingStateDeviceSummary]:
         """
-        Read properties and relationships of the settingStateDeviceSummary object.
+        Device Configuration Setting State Device Summary
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SettingStateDeviceSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-settingstatedevicesummary-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: SettingStateDeviceSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SettingStateDeviceSummary]:
         """
-        Update the properties of a settingStateDeviceSummary object.
+        Update the navigation property deviceSettingStateSummaries in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SettingStateDeviceSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-settingstatedevicesummary-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a settingStateDeviceSummary.
+        Delete navigation property deviceSettingStateSummaries for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SettingStateDeviceSummaryItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the settingStateDeviceSummary object.
+        Device Configuration Setting State Device Summary
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: SettingStateDeviceSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a settingStateDeviceSummary object.
+        Update the navigation property deviceSettingStateSummaries in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SettingStateDeviceSummaryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the settingStateDeviceSummary object.
+        Device Configuration Setting State Device Summary
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

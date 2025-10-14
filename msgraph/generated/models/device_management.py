@@ -126,7 +126,7 @@ class DeviceManagement(Entity, Parsable):
     odata_type: Optional[str] = None
     # The remote assist partners.
     remote_assistance_partners: Optional[list[RemoteAssistancePartner]] = None
-    # Reports singleton
+    # The reports property
     reports: Optional[DeviceManagementReports] = None
     # The Resource Operations.
     resource_operations: Optional[list[ResourceOperation]] = None
@@ -192,7 +192,7 @@ class DeviceManagement(Entity, Parsable):
     user_experience_analytics_work_from_anywhere_metrics: Optional[list[UserExperienceAnalyticsWorkFromAnywhereMetric]] = None
     # The user experience analytics work from anywhere model performance
     user_experience_analytics_work_from_anywhere_model_performance: Optional[list[UserExperienceAnalyticsWorkFromAnywhereModelPerformance]] = None
-    # Virtual endpoint
+    # The virtualEndpoint property
     virtual_endpoint: Optional[VirtualEndpoint] = None
     # The Windows autopilot device identities contained collection.
     windows_autopilot_device_identities: Optional[list[WindowsAutopilotDeviceIdentity]] = None

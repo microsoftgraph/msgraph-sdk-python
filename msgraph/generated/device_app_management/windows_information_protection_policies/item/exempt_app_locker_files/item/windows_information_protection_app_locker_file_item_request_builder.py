@@ -32,10 +32,9 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a windowsInformationProtectionAppLockerFile.
+        Delete navigation property exemptAppLockerFiles for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotectionapplockerfile-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WindowsInformationProtectionAppLockerFileItemRequestBuilderGetQueryParameters]] = None) -> Optional[WindowsInformationProtectionAppLockerFile]:
         """
-        Read properties and relationships of the windowsInformationProtectionAppLockerFile object.
+        Another way to input exempt apps through xml files
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionAppLockerFile]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotectionapplockerfile-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
     
     async def patch(self,body: WindowsInformationProtectionAppLockerFile, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WindowsInformationProtectionAppLockerFile]:
         """
-        Update the properties of a windowsInformationProtectionAppLockerFile object.
+        Update the navigation property exemptAppLockerFiles in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionAppLockerFile]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotectionapplockerfile-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a windowsInformationProtectionAppLockerFile.
+        Delete navigation property exemptAppLockerFiles for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WindowsInformationProtectionAppLockerFileItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the windowsInformationProtectionAppLockerFile object.
+        Another way to input exempt apps through xml files
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
     
     def to_patch_request_information(self,body: WindowsInformationProtectionAppLockerFile, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a windowsInformationProtectionAppLockerFile object.
+        Update the navigation property exemptAppLockerFiles in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
     @dataclass
     class WindowsInformationProtectionAppLockerFileItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the windowsInformationProtectionAppLockerFile object.
+        Another way to input exempt apps through xml files
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

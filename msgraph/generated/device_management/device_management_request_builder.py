@@ -92,10 +92,9 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceManagementRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceManagement]:
         """
-        Read properties and relationships of the deviceManagement object.
+        Get deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-androidforwork-devicemanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -125,11 +124,10 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: DeviceManagement, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceManagement]:
         """
-        Update the properties of a deviceManagement object.
+        Update deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-androidforwork-devicemanagement-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -149,7 +147,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceManagementRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceManagement object.
+        Get deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +158,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: DeviceManagement, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a deviceManagement object.
+        Update deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -720,7 +718,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceManagement object.
+        Get deviceManagement
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

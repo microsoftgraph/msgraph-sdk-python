@@ -34,10 +34,9 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a notificationMessageTemplate.
+        Delete navigation property notificationMessageTemplates for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-notificationmessagetemplate-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,10 +52,9 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[NotificationMessageTemplateItemRequestBuilderGetQueryParameters]] = None) -> Optional[NotificationMessageTemplate]:
         """
-        Read properties and relationships of the notificationMessageTemplate object.
+        The Notification Message Templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NotificationMessageTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-notificationmessagetemplate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,11 +72,10 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: NotificationMessageTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[NotificationMessageTemplate]:
         """
-        Update the properties of a notificationMessageTemplate object.
+        Update the navigation property notificationMessageTemplates in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NotificationMessageTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-notificationmessagetemplate-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -98,7 +95,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a notificationMessageTemplate.
+        Delete navigation property notificationMessageTemplates for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +106,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[NotificationMessageTemplateItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the notificationMessageTemplate object.
+        The Notification Message Templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +117,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: NotificationMessageTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a notificationMessageTemplate object.
+        Update the navigation property notificationMessageTemplates in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +168,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NotificationMessageTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the notificationMessageTemplate object.
+        The Notification Message Templates.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

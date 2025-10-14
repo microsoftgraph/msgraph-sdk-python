@@ -33,10 +33,9 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a deviceCompliancePolicySettingStateSummary.
+        Delete navigation property deviceCompliancePolicySettingStateSummaries for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancepolicysettingstatesummary-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,10 +51,9 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceCompliancePolicySettingStateSummary]:
         """
-        Read properties and relationships of the deviceCompliancePolicySettingStateSummary object.
+        The summary states of compliance policy settings for this account.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicySettingStateSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancepolicysettingstatesummary-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,11 +71,10 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
     
     async def patch(self,body: DeviceCompliancePolicySettingStateSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceCompliancePolicySettingStateSummary]:
         """
-        Update the properties of a deviceCompliancePolicySettingStateSummary object.
+        Update the navigation property deviceCompliancePolicySettingStateSummaries in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicySettingStateSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancepolicysettingstatesummary-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -97,7 +94,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a deviceCompliancePolicySettingStateSummary.
+        Delete navigation property deviceCompliancePolicySettingStateSummaries for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +105,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceCompliancePolicySettingStateSummary object.
+        The summary states of compliance policy settings for this account.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +116,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
     
     def to_patch_request_information(self,body: DeviceCompliancePolicySettingStateSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a deviceCompliancePolicySettingStateSummary object.
+        Update the navigation property deviceCompliancePolicySettingStateSummaries in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
     @dataclass
     class DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceCompliancePolicySettingStateSummary object.
+        The summary states of compliance policy settings for this account.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

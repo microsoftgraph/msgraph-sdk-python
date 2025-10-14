@@ -16,13 +16,13 @@ class ManagedAppPolicyDeploymentSummary(Entity, Parsable):
     """
     The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
     """
-    # Not yet documented
+    # The configurationDeployedUserCount property
     configuration_deployed_user_count: Optional[int] = None
-    # Not yet documented
+    # The configurationDeploymentSummaryPerApp property
     configuration_deployment_summary_per_app: Optional[list[ManagedAppPolicyDeploymentSummaryPerApp]] = None
-    # Not yet documented
+    # The displayName property
     display_name: Optional[str] = None
-    # Not yet documented
+    # The lastRefreshTime property
     last_refresh_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None

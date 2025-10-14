@@ -16,15 +16,15 @@ class RoleAssignment(Entity, Parsable):
     """
     The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
     """
-    # Description of the Role Assignment.
+    # Indicates the description of the role assignment. For example: 'All administrators, employees and scope tags associated with the Houston office.' Max length is 1024 characters.
     description: Optional[str] = None
-    # The display or friendly name of the role Assignment.
+    # Indicates the display name of the role assignment. For example: 'Houston administrators and users'. Max length is 128 characters.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # List of ids of role scope member security groups.  These are IDs from Azure Active Directory.
+    # Indicates the list of resource scope security group Entra IDs. For example: {dec942f4-6777-4998-96b4-522e383b08e2}.
     resource_scopes: Optional[list[str]] = None
-    # Role definition this assignment is part of.
+    # Indicates the role definition for this role assignment.
     role_definition: Optional[RoleDefinition] = None
     
     @staticmethod

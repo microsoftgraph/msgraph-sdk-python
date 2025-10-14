@@ -13,7 +13,7 @@ from .windows_device_account import WindowsDeviceAccount
 class WindowsDeviceAzureADAccount(WindowsDeviceAccount, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsDeviceAzureADAccount"
-    # Not yet documented
+    # The userPrincipalName property
     user_principal_name: Optional[str] = None
     
     @staticmethod

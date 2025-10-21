@@ -49,10 +49,9 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceCategoriesRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceCategoryCollectionResponse]:
         """
-        List properties and relationships of the deviceCategory objects.
+        The list of device categories with the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategoryCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicecategory-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: DeviceCategory, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceCategory]:
         """
-        Create a new deviceCategory object.
+        Create new navigation property to deviceCategories for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicecategory-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceCategoriesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceCategory objects.
+        The list of device categories with the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: DeviceCategory, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new deviceCategory object.
+        Create new navigation property to deviceCategories for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCategoriesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceCategory objects.
+        The list of device categories with the tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

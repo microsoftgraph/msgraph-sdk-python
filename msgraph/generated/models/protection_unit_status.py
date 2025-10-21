@@ -7,4 +7,7 @@ class ProtectionUnitStatus(str, Enum):
     Unprotected = "unprotected",
     RemoveRequested = "removeRequested",
     UnknownFutureValue = "unknownFutureValue",
+    OffboardRequested = "offboardRequested",
+    Offboarded = "offboarded",
+    CancelOffboardRequested = "cancelOffboardRequested",
 

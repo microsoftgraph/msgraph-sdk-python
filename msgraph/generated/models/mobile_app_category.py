@@ -17,7 +17,7 @@ class MobileAppCategory(Entity, Parsable):
     """
     # The name of the app category.
     display_name: Optional[str] = None
-    # The date and time the mobileAppCategory was last modified.
+    # The date and time the mobileAppCategory was last modified. This property is read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None

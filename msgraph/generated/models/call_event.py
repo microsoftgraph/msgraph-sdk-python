@@ -17,11 +17,11 @@ from .entity import Entity
 class CallEvent(Entity, Parsable):
     # The callEventType property
     call_event_type: Optional[CallEventType] = None
-    # The eventDateTime property
+    # The date and time when the event occurred. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     event_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The participants property
+    # Participants collection for the call event.
     participants: Optional[list[Participant]] = None
     
     @staticmethod

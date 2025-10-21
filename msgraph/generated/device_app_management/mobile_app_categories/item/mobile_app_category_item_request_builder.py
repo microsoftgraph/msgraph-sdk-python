@@ -32,10 +32,9 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a mobileAppCategory.
+        Delete navigation property mobileAppCategories for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-mobileappcategory-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MobileAppCategoryItemRequestBuilderGetQueryParameters]] = None) -> Optional[MobileAppCategory]:
         """
-        Read properties and relationships of the mobileAppCategory object.
+        The mobile app categories.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-mobileappcategory-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: MobileAppCategory, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MobileAppCategory]:
         """
-        Update the properties of a mobileAppCategory object.
+        Update the navigation property mobileAppCategories in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-mobileappcategory-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a mobileAppCategory.
+        Delete navigation property mobileAppCategories for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MobileAppCategoryItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the mobileAppCategory object.
+        The mobile app categories.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: MobileAppCategory, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a mobileAppCategory object.
+        Update the navigation property mobileAppCategories in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppCategoryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the mobileAppCategory object.
+        The mobile app categories.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

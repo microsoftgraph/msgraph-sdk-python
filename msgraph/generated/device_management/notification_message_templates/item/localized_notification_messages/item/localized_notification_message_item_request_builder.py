@@ -32,10 +32,9 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a localizedNotificationMessage.
+        Delete navigation property localizedNotificationMessages for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-localizednotificationmessage-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[LocalizedNotificationMessageItemRequestBuilderGetQueryParameters]] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Read properties and relationships of the localizedNotificationMessage object.
+        The list of localized messages for this Notification Message Template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LocalizedNotificationMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-localizednotificationmessage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: LocalizedNotificationMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Update the properties of a localizedNotificationMessage object.
+        Update the navigation property localizedNotificationMessages in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LocalizedNotificationMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-localizednotificationmessage-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a localizedNotificationMessage.
+        Delete navigation property localizedNotificationMessages for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[LocalizedNotificationMessageItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the localizedNotificationMessage object.
+        The list of localized messages for this Notification Message Template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: LocalizedNotificationMessage, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a localizedNotificationMessage object.
+        Update the navigation property localizedNotificationMessages in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LocalizedNotificationMessageItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the localizedNotificationMessage object.
+        The list of localized messages for this Notification Message Template.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

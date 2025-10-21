@@ -49,10 +49,9 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UserStatusesRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceComplianceUserStatusCollectionResponse]:
         """
-        List properties and relationships of the deviceComplianceUserStatus objects.
+        List of DeviceComplianceUserStatus.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceUserStatusCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecomplianceuserstatus-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: DeviceComplianceUserStatus, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceComplianceUserStatus]:
         """
-        Create a new deviceComplianceUserStatus object.
+        Create new navigation property to userStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceUserStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecomplianceuserstatus-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UserStatusesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceComplianceUserStatus objects.
+        List of DeviceComplianceUserStatus.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: DeviceComplianceUserStatus, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new deviceComplianceUserStatus object.
+        Create new navigation property to userStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceComplianceUserStatus objects.
+        List of DeviceComplianceUserStatus.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

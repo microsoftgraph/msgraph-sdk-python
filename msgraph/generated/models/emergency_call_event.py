@@ -12,13 +12,13 @@ from .call_event import CallEvent
 
 @dataclass
 class EmergencyCallEvent(CallEvent, Parsable):
-    # The callerInfo property
+    # The information of the emergency caller.
     caller_info: Optional[EmergencyCallerInfo] = None
-    # The emergencyNumberDialed property
+    # The emergency number dialed.
     emergency_number_dialed: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The policyName property
+    # The policy name for the emergency call event.
     policy_name: Optional[str] = None
     
     @staticmethod

@@ -16,9 +16,11 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.protection_unit_base import ProtectionUnitBase
+    from .cancel_offboard.cancel_offboard_request_builder import CancelOffboardRequestBuilder
     from .graph_drive_protection_unit.graph_drive_protection_unit_request_builder import GraphDriveProtectionUnitRequestBuilder
     from .graph_mailbox_protection_unit.graph_mailbox_protection_unit_request_builder import GraphMailboxProtectionUnitRequestBuilder
     from .graph_site_protection_unit.graph_site_protection_unit_request_builder import GraphSiteProtectionUnitRequestBuilder
+    from .offboard.offboard_request_builder import OffboardRequestBuilder
 
 class ProtectionUnitBaseItemRequestBuilder(BaseRequestBuilder):
     """
@@ -76,6 +78,15 @@ class ProtectionUnitBaseItemRequestBuilder(BaseRequestBuilder):
         return ProtectionUnitBaseItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def cancel_offboard(self) -> CancelOffboardRequestBuilder:
+        """
+        Provides operations to call the cancelOffboard method.
+        """
+        from .cancel_offboard.cancel_offboard_request_builder import CancelOffboardRequestBuilder
+
+        return CancelOffboardRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def graph_drive_protection_unit(self) -> GraphDriveProtectionUnitRequestBuilder:
         """
         Casts the previous resource to driveProtectionUnit.
@@ -101,6 +112,15 @@ class ProtectionUnitBaseItemRequestBuilder(BaseRequestBuilder):
         from .graph_site_protection_unit.graph_site_protection_unit_request_builder import GraphSiteProtectionUnitRequestBuilder
 
         return GraphSiteProtectionUnitRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def offboard(self) -> OffboardRequestBuilder:
+        """
+        Provides operations to call the offboard method.
+        """
+        from .offboard.offboard_request_builder import OffboardRequestBuilder
+
+        return OffboardRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ProtectionUnitBaseItemRequestBuilderGetQueryParameters():

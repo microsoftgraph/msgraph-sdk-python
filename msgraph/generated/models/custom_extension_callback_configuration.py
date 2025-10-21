@@ -7,6 +7,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_package_request_approval_stage_callback_configuration import AccessPackageRequestApprovalStageCallbackConfiguration
     from .identity_governance.custom_task_extension_callback_configuration import CustomTaskExtensionCallbackConfiguration
 
 @dataclass
@@ -35,6 +36,10 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, BackedModel, Pa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageRequestApprovalStageCallbackConfiguration".casefold():
+            from .access_package_request_approval_stage_callback_configuration import AccessPackageRequestApprovalStageCallbackConfiguration
+
+            return AccessPackageRequestApprovalStageCallbackConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCallbackConfiguration".casefold():
             from .identity_governance.custom_task_extension_callback_configuration import CustomTaskExtensionCallbackConfiguration
 
@@ -46,8 +51,10 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, BackedModel, Pa
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .access_package_request_approval_stage_callback_configuration import AccessPackageRequestApprovalStageCallbackConfiguration
         from .identity_governance.custom_task_extension_callback_configuration import CustomTaskExtensionCallbackConfiguration
 
+        from .access_package_request_approval_stage_callback_configuration import AccessPackageRequestApprovalStageCallbackConfiguration
         from .identity_governance.custom_task_extension_callback_configuration import CustomTaskExtensionCallbackConfiguration
 
         fields: dict[str, Callable[[Any], None]] = {

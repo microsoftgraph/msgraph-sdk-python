@@ -15,17 +15,17 @@ class EmergencyCallerInfo(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The displayName property
+    # The display name of the emergency caller.
     display_name: Optional[str] = None
-    # The location property
+    # The location of the emergency caller.
     location: Optional[Location] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The phoneNumber property
+    # The phone number of the emergency caller.
     phone_number: Optional[str] = None
-    # The tenantId property
+    # The tenant ID of the emergency caller.
     tenant_id: Optional[str] = None
-    # The upn property
+    # The user principal name of the emergency caller.
     upn: Optional[str] = None
     
     @staticmethod

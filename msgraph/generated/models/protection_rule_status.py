@@ -6,4 +6,6 @@ class ProtectionRuleStatus(str, Enum):
     Completed = "completed",
     CompletedWithErrors = "completedWithErrors",
     UnknownFutureValue = "unknownFutureValue",
+    UpdateRequested = "updateRequested",
+    DeleteRequested = "deleteRequested",
 

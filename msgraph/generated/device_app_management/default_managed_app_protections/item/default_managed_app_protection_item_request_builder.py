@@ -34,10 +34,9 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a defaultManagedAppProtection.
+        Delete navigation property defaultManagedAppProtections for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-defaultmanagedappprotection-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,10 +52,9 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DefaultManagedAppProtectionItemRequestBuilderGetQueryParameters]] = None) -> Optional[DefaultManagedAppProtection]:
         """
-        Read properties and relationships of the defaultManagedAppProtection object.
+        Default managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-defaultmanagedappprotection-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,11 +72,10 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: DefaultManagedAppProtection, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DefaultManagedAppProtection]:
         """
-        Update the properties of a defaultManagedAppProtection object.
+        Update the navigation property defaultManagedAppProtections in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-defaultmanagedappprotection-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -98,7 +95,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a defaultManagedAppProtection.
+        Delete navigation property defaultManagedAppProtections for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +106,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DefaultManagedAppProtectionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the defaultManagedAppProtection object.
+        Default managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +117,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: DefaultManagedAppProtection, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a defaultManagedAppProtection object.
+        Update the navigation property defaultManagedAppProtections in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +168,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DefaultManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the defaultManagedAppProtection object.
+        Default managed app policies.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

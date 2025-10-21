@@ -14,7 +14,7 @@ class DeviceAndAppManagementRoleAssignment(RoleAssignment, Parsable):
     """
     The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
     """
-    # The list of ids of role member security groups. These are IDs from Azure Active Directory.
+    # Indicates the list of role member security group Entra IDs. For example: {dec942f4-6777-4998-96b4-522e383b08e2}.
     members: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None

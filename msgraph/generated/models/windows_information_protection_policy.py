@@ -17,21 +17,21 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection, Parsable)
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsInformationProtectionPolicy"
-    # Offline interval before app data is wiped (days)
+    # Offline interval before app data is wiped (days) . Valid values 0 to 999
     days_without_contact_before_unenroll: Optional[int] = None
     # Enrollment url for the MDM
     mdm_enrollment_url: Optional[str] = None
-    # Specifies the maximum amount of time (in minutes) allowed after the device is idle that will cause the device to become PIN or password locked.   Range is an integer X where 0 <= X <= 999.
+    # Specifies the maximum amount of time (in minutes) allowed after the device is idle that will cause the device to become PIN or password locked.   Range is an integer X where 0 <= X <= 999. Valid values 0 to 999
     minutes_of_inactivity_before_device_lock: Optional[int] = None
-    # Integer value that specifies the number of past PINs that can be associated to a user account that can't be reused. The largest number you can configure for this policy setting is 50. The lowest number you can configure for this policy setting is 0. If this policy is set to 0, then storage of previous PINs is not required. This node was added in Windows 10, version 1511. Default is 0.
+    # Integer value that specifies the number of past PINs that can be associated to a user account that can't be reused. The largest number you can configure for this policy setting is 50. The lowest number you can configure for this policy setting is 0. If this policy is set to 0, then storage of previous PINs is not required. This node was added in Windows 10, version 1511. Default is 0. Valid values 0 to 50
     number_of_past_pins_remembered: Optional[int] = None
-    # The number of authentication failures allowed before the device will be wiped. A value of 0 disables device wipe functionality. Range is an integer X where 4 <= X <= 16 for desktop and 0 <= X <= 999 for mobile devices.
+    # The number of authentication failures allowed before the device will be wiped. A value of 0 disables device wipe functionality. Range is an integer X where 4 <= X <= 16 for desktop and 0 <= X <= 999 for mobile devices. Valid values 0 to 999
     password_maximum_attempt_count: Optional[int] = None
-    # Integer value specifies the period of time (in days) that a PIN can be used before the system requires the user to change it. The largest number you can configure for this policy setting is 730. The lowest number you can configure for this policy setting is 0. If this policy is set to 0, then the user's PIN will never expire. This node was added in Windows 10, version 1511. Default is 0.
+    # Integer value specifies the period of time (in days) that a PIN can be used before the system requires the user to change it. The largest number you can configure for this policy setting is 730. The lowest number you can configure for this policy setting is 0. If this policy is set to 0, then the user's PIN will never expire. This node was added in Windows 10, version 1511. Default is 0. Valid values 0 to 730
     pin_expiration_days: Optional[int] = None
     # Pin Character Requirements
     pin_lowercase_letters: Optional[WindowsInformationProtectionPinCharacterRequirements] = None
-    # Integer value that sets the minimum number of characters required for the PIN. Default value is 4. The lowest number you can configure for this policy setting is 4. The largest number you can configure must be less than the number configured in the Maximum PIN length policy setting or the number 127, whichever is the lowest.
+    # Integer value that sets the minimum number of characters required for the PIN. Default value is 4. The lowest number you can configure for this policy setting is 4. The largest number you can configure must be less than the number configured in the Maximum PIN length policy setting or the number 127, whichever is the lowest. Valid values 0 to 127
     pin_minimum_length: Optional[int] = None
     # Pin Character Requirements
     pin_special_characters: Optional[WindowsInformationProtectionPinCharacterRequirements] = None

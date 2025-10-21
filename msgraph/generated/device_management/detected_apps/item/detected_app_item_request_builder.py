@@ -33,10 +33,9 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a detectedApp.
+        Delete navigation property detectedApps for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,10 +51,9 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DetectedAppItemRequestBuilderGetQueryParameters]] = None) -> Optional[DetectedApp]:
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DetectedApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,11 +71,10 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: DetectedApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DetectedApp]:
         """
-        Update the properties of a detectedApp object.
+        Update the navigation property detectedApps in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DetectedApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -97,7 +94,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a detectedApp.
+        Delete navigation property detectedApps for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +105,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DetectedAppItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +116,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: DetectedApp, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a detectedApp object.
+        Update the navigation property detectedApps in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DetectedAppItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

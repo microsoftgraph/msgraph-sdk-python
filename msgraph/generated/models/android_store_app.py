@@ -21,7 +21,7 @@ class AndroidStoreApp(MobileApp, Parsable):
     app_store_url: Optional[str] = None
     # The value for the minimum applicable operating system.
     minimum_supported_operating_system: Optional[AndroidMinimumOperatingSystem] = None
-    # The package identifier.
+    # The package identifier. This property is read-only.
     package_id: Optional[str] = None
     
     @staticmethod

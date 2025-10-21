@@ -49,10 +49,9 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AndroidManagedAppProtectionsRequestBuilderGetQueryParameters]] = None) -> Optional[AndroidManagedAppProtectionCollectionResponse]:
         """
-        List properties and relationships of the androidManagedAppProtection objects.
+        Android managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AndroidManagedAppProtectionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: AndroidManagedAppProtection, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Create a new androidManagedAppProtection object.
+        Create new navigation property to androidManagedAppProtections for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AndroidManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AndroidManagedAppProtectionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the androidManagedAppProtection objects.
+        Android managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: AndroidManagedAppProtection, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new androidManagedAppProtection object.
+        Create new navigation property to androidManagedAppProtections for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AndroidManagedAppProtectionsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the androidManagedAppProtection objects.
+        Android managed app policies.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

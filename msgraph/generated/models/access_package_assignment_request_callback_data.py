@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
+    from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
     from .custom_extension_data import CustomExtensionData
 
 from .custom_extension_data import CustomExtensionData
@@ -32,6 +33,15 @@ class AccessPackageAssignmentRequestCallbackData(CustomExtensionData, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.assignmentRequestApprovalStageCallbackData".casefold():
+            from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
+
+            return AssignmentRequestApprovalStageCallbackData()
         return AccessPackageAssignmentRequestCallbackData()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -40,9 +50,11 @@ class AccessPackageAssignmentRequestCallbackData(CustomExtensionData, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
+        from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
         from .custom_extension_data import CustomExtensionData
 
         from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
+        from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
         from .custom_extension_data import CustomExtensionData
 
         fields: dict[str, Callable[[Any], None]] = {

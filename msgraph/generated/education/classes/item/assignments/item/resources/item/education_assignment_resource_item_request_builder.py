@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ........models.education_assignment_resource import EducationAssignmentResource
     from ........models.o_data_errors.o_data_error import ODataError
+    from .dependent_resources.dependent_resources_request_builder import DependentResourcesRequestBuilder
 
 class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
     """
@@ -139,6 +140,15 @@ class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return EducationAssignmentResourceItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def dependent_resources(self) -> DependentResourcesRequestBuilder:
+        """
+        Provides operations to manage the dependentResources property of the microsoft.graph.educationAssignmentResource entity.
+        """
+        from .dependent_resources.dependent_resources_request_builder import DependentResourcesRequestBuilder
+
+        return DependentResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EducationAssignmentResourceItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

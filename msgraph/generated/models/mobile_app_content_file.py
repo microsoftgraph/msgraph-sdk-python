@@ -16,25 +16,25 @@ class MobileAppContentFile(Entity, Parsable):
     """
     Contains properties for a single installer file that is associated with a given mobileAppContent version.
     """
-    # The Azure Storage URI.
+    # Indicates the Azure Storage URI that the file is uploaded to. Created by the service upon receiving a valid mobileAppContentFile. Read-only. This property is read-only.
     azure_storage_uri: Optional[str] = None
-    # The time the Azure storage Uri expires.
+    # Indicates the date and time when the Azure storage URI expires, in ISO 8601 format. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'. Read-only. This property is read-only.
     azure_storage_uri_expiration_date_time: Optional[datetime.datetime] = None
-    # The time the file was created.
+    # Indicates created date and time associated with app content file, in ISO 8601 format. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'. Read-only. This property is read-only.
     created_date_time: Optional[datetime.datetime] = None
-    # A value indicating whether the file is committed.
+    # A value indicating whether the file is committed. A committed app content file has been fully uploaded and validated by the Intune service. TRUE means that app content file is committed, FALSE means that app content file is not committed. Defaults to FALSE. Read-only. This property is read-only.
     is_committed: Optional[bool] = None
     # Indicates whether this content file is a dependency for the main content file. TRUE means that the content file is a dependency, FALSE means that the content file is not a dependency and is the main content file. Defaults to FALSE.
     is_dependency: Optional[bool] = None
-    # The manifest information.
+    # Indicates the manifest information, containing file metadata.
     manifest: Optional[bytes] = None
-    # the file name.
+    # Indicates the name of the file.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The size of the file prior to encryption.
+    # Indicates the original size of the file, in bytes.
     size: Optional[int] = None
-    # The size of the file after encryption.
+    # Indicates the size of the file after encryption, in bytes.
     size_encrypted: Optional[int] = None
     # Contains properties for upload request states.
     upload_state: Optional[MobileAppContentFileUploadState] = None

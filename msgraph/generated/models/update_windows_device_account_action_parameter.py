@@ -15,19 +15,19 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, BackedMode
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Not yet documented
+    # The calendarSyncEnabled property
     calendar_sync_enabled: Optional[bool] = None
-    # Not yet documented
+    # The deviceAccount property
     device_account: Optional[WindowsDeviceAccount] = None
-    # Not yet documented
+    # The deviceAccountEmail property
     device_account_email: Optional[str] = None
-    # Not yet documented
+    # The exchangeServer property
     exchange_server: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Not yet documented
+    # The passwordRotationEnabled property
     password_rotation_enabled: Optional[bool] = None
-    # Not yet documented
+    # The sessionInitiationProtocalAddress property
     session_initiation_protocal_address: Optional[str] = None
     
     @staticmethod

@@ -20,7 +20,7 @@ class Workflow(WorkflowBase, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.workflow"
     # When the workflow was deleted.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     deleted_date_time: Optional[datetime.datetime] = None
-    # The unique identifier of the Microsoft Entra identity that last modified the workflow object.
+    # The list of users that meet the workflowExecutionConditions of a workflow.
     execution_scope: Optional[list[UserProcessingResult]] = None
     # Identifier used for individually addressing a specific workflow.Supports $filter(eq, ne) and $orderby.
     id: Optional[str] = None

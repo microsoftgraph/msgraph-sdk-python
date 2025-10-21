@@ -33,7 +33,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: RestorePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DriveItem]:
         """
-        Restore a driveItem that has been deleted and is currently in the recycle bin.
+        Restore a deleted driveItem that is currently in the recycle bin.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
@@ -57,7 +57,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: RestorePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Restore a driveItem that has been deleted and is currently in the recycle bin.
+        Restore a deleted driveItem that is currently in the recycle bin.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

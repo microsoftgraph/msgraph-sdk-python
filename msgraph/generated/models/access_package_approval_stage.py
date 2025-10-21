@@ -7,6 +7,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
     from .subject_set import SubjectSet
 
 @dataclass
@@ -44,6 +45,15 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageDynamicApprovalStage".casefold():
+            from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
+
+            return AccessPackageDynamicApprovalStage()
         return AccessPackageApprovalStage()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -51,8 +61,10 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
         from .subject_set import SubjectSet
 
+        from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
         from .subject_set import SubjectSet
 
         fields: dict[str, Callable[[Any], None]] = {

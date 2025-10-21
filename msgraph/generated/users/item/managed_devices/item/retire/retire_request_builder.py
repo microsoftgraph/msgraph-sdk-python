@@ -34,7 +34,6 @@ class RetireRequestBuilder(BaseRequestBuilder):
         Retire a device
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-retire?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration

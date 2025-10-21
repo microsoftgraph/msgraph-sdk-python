@@ -32,10 +32,9 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a termsAndConditionsAssignment.
+        Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsassignment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TermsAndConditionsAssignmentItemRequestBuilderGetQueryParameters]] = None) -> Optional[TermsAndConditionsAssignment]:
         """
-        Read properties and relationships of the termsAndConditionsAssignment object.
+        The list of assignments for this T&C policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: TermsAndConditionsAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TermsAndConditionsAssignment]:
         """
-        Update the properties of a termsAndConditionsAssignment object.
+        Update the navigation property assignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsassignment-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a termsAndConditionsAssignment.
+        Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TermsAndConditionsAssignmentItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the termsAndConditionsAssignment object.
+        The list of assignments for this T&C policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: TermsAndConditionsAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a termsAndConditionsAssignment object.
+        Update the navigation property assignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the termsAndConditionsAssignment object.
+        The list of assignments for this T&C policy.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

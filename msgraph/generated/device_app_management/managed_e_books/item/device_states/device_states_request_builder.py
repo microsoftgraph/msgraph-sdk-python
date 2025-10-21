@@ -49,10 +49,9 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceStatesRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceInstallStateCollectionResponse]:
         """
-        List properties and relationships of the deviceInstallState objects.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceInstallStateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-deviceinstallstate-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: DeviceInstallState, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceInstallState]:
         """
-        Create a new deviceInstallState object.
+        Create new navigation property to deviceStates for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceInstallState]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-deviceinstallstate-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceStatesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceInstallState objects.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: DeviceInstallState, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new deviceInstallState object.
+        Create new navigation property to deviceStates for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceStatesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceInstallState objects.
+        The list of installation states for this eBook.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

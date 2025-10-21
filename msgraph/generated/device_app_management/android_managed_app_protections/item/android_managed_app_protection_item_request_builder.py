@@ -35,10 +35,9 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Deletes a androidManagedAppProtection.
+        Delete navigation property androidManagedAppProtections for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -54,10 +53,9 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AndroidManagedAppProtectionItemRequestBuilderGetQueryParameters]] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Read properties and relationships of the androidManagedAppProtection object.
+        Android managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AndroidManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -75,11 +73,10 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: AndroidManagedAppProtection, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Update the properties of a androidManagedAppProtection object.
+        Update the navigation property androidManagedAppProtections in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AndroidManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -99,7 +96,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deletes a androidManagedAppProtection.
+        Delete navigation property androidManagedAppProtections for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +107,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AndroidManagedAppProtectionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the androidManagedAppProtection object.
+        Android managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +118,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: AndroidManagedAppProtection, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a androidManagedAppProtection object.
+        Update the navigation property androidManagedAppProtections in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +178,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AndroidManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the androidManagedAppProtection object.
+        Android managed app policies.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

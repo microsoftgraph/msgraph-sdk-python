@@ -49,10 +49,9 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TermsAndConditionsRequestBuilderGetQueryParameters]] = None) -> Optional[TermsAndConditionsCollectionResponse]:
         """
-        List properties and relationships of the termsAndConditions objects.
+        The terms and conditions associated with device management of the company.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditions-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: TermsAndConditions, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TermsAndConditions]:
         """
-        Create a new termsAndConditions object.
+        Create new navigation property to termsAndConditions for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditions]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditions-create?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +92,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TermsAndConditionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List properties and relationships of the termsAndConditions objects.
+        The terms and conditions associated with device management of the company.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: TermsAndConditions, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new termsAndConditions object.
+        Create new navigation property to termsAndConditions for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the termsAndConditions objects.
+        The terms and conditions associated with device management of the company.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

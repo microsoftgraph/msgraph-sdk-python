@@ -12,8 +12,10 @@ from .entity import Entity
 
 @dataclass
 class EducationSubmissionResource(Entity, Parsable):
-    # Pointer to the assignment from which the resource was copied, and if null, the student uploaded the resource.
+    # Pointer to the assignment from which the resource was copied. If the value is null, the student uploaded the resource.
     assignment_resource_url: Optional[str] = None
+    # A collection of submission resources that depend on the parent educationSubmissionResource.
+    dependent_resources: Optional[list[EducationSubmissionResource]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Resource object.
@@ -43,6 +45,7 @@ class EducationSubmissionResource(Entity, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "assignmentResourceUrl": lambda n : setattr(self, 'assignment_resource_url', n.get_str_value()),
+            "dependentResources": lambda n : setattr(self, 'dependent_resources', n.get_collection_of_object_values(EducationSubmissionResource)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(EducationResource)),
         }
         super_fields = super().get_field_deserializers()
@@ -59,6 +62,7 @@ class EducationSubmissionResource(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("assignmentResourceUrl", self.assignment_resource_url)
+        writer.write_collection_of_object_values("dependentResources", self.dependent_resources)
         writer.write_object_value("resource", self.resource)
     
 

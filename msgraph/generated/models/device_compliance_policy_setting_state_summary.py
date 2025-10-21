@@ -20,7 +20,7 @@ class DeviceCompliancePolicySettingStateSummary(Entity, Parsable):
     compliant_device_count: Optional[int] = None
     # Number of conflict devices
     conflict_device_count: Optional[int] = None
-    # Not yet documented
+    # The deviceComplianceSettingStates property
     device_compliance_setting_states: Optional[list[DeviceComplianceSettingState]] = None
     # Number of error devices
     error_device_count: Optional[int] = None

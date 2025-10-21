@@ -50,10 +50,9 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeploymentSummaryRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
-        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
+        Navigation property to deployment summary of the configuration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyDeploymentSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedapppolicydeploymentsummary-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,11 +70,10 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: ManagedAppPolicyDeploymentSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
-        Update the properties of a managedAppPolicyDeploymentSummary object.
+        Update the navigation property deploymentSummary in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyDeploymentSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedapppolicydeploymentsummary-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -106,7 +104,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeploymentSummaryRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
+        Navigation property to deployment summary of the configuration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +115,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: ManagedAppPolicyDeploymentSummary, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a managedAppPolicyDeploymentSummary object.
+        Update the navigation property deploymentSummary in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeploymentSummaryRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
+        Navigation property to deployment summary of the configuration.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

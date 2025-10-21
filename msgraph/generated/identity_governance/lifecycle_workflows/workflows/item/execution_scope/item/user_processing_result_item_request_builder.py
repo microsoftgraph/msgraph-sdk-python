@@ -32,7 +32,7 @@ class UserProcessingResultItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UserProcessingResultItemRequestBuilderGetQueryParameters]] = None) -> Optional[UserProcessingResult]:
         """
-        The unique identifier of the Microsoft Entra identity that last modified the workflow object.
+        The list of users that meet the workflowExecutionConditions of a workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserProcessingResult]
         """
@@ -52,7 +52,7 @@ class UserProcessingResultItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UserProcessingResultItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The unique identifier of the Microsoft Entra identity that last modified the workflow object.
+        The list of users that meet the workflowExecutionConditions of a workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class UserProcessingResultItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserProcessingResultItemRequestBuilderGetQueryParameters():
         """
-        The unique identifier of the Microsoft Entra identity that last modified the workflow object.
+        The list of users that meet the workflowExecutionConditions of a workflow.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

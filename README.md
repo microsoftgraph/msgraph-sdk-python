@@ -206,7 +206,7 @@ By default a maximum of 100 rows are returned but in the response if odata_next_
 
 ### Update Schedule
 
-The Microsoft Graph Python SDK is scheduled to be updated during the week of the second and fourth Tuesday of each month
+The Microsoft Graph .NET Client Library is scheduled to be updated during the second and fourth week of each month
 
 ## Upgrading
 

@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .calendar_group import CalendarGroup
     from .chat import Chat
     from .cloud_clipboard_root import CloudClipboardRoot
+    from .cloud_p_c import CloudPC
     from .contact import Contact
     from .contact_folder import ContactFolder
     from .custom_security_attribute_value import CustomSecurityAttributeValue
@@ -109,6 +110,8 @@ class User(DirectoryObject, Parsable):
     city: Optional[str] = None
     # The cloudClipboard property
     cloud_clipboard: Optional[CloudClipboardRoot] = None
+    # The user's Cloud PCs. Read-only. Nullable.
+    cloud_p_cs: Optional[list[CloudPC]] = None
     # The name of the company that the user is associated with. This property can be useful for describing the company that a guest comes from. The maximum length is 64 characters.Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     company_name: Optional[str] = None
     # Sets whether consent was obtained for minors. Allowed values: null, Granted, Denied, and NotRequired. For more information, see legal age group property definitions. Returned only on $select. Supports $filter (eq, ne, not, and in).
@@ -358,6 +361,7 @@ class User(DirectoryObject, Parsable):
         from .calendar_group import CalendarGroup
         from .chat import Chat
         from .cloud_clipboard_root import CloudClipboardRoot
+        from .cloud_p_c import CloudPC
         from .contact import Contact
         from .contact_folder import ContactFolder
         from .custom_security_attribute_value import CustomSecurityAttributeValue
@@ -414,6 +418,7 @@ class User(DirectoryObject, Parsable):
         from .calendar_group import CalendarGroup
         from .chat import Chat
         from .cloud_clipboard_root import CloudClipboardRoot
+        from .cloud_p_c import CloudPC
         from .contact import Contact
         from .contact_folder import ContactFolder
         from .custom_security_attribute_value import CustomSecurityAttributeValue
@@ -480,6 +485,7 @@ class User(DirectoryObject, Parsable):
             "chats": lambda n : setattr(self, 'chats', n.get_collection_of_object_values(Chat)),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
             "cloudClipboard": lambda n : setattr(self, 'cloud_clipboard', n.get_object_value(CloudClipboardRoot)),
+            "cloudPCs": lambda n : setattr(self, 'cloud_p_cs', n.get_collection_of_object_values(CloudPC)),
             "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "consentProvidedForMinor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
             "contactFolders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(ContactFolder)),
@@ -624,6 +630,7 @@ class User(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("chats", self.chats)
         writer.write_str_value("city", self.city)
         writer.write_object_value("cloudClipboard", self.cloud_clipboard)
+        writer.write_collection_of_object_values("cloudPCs", self.cloud_p_cs)
         writer.write_str_value("companyName", self.company_name)
         writer.write_str_value("consentProvidedForMinor", self.consent_provided_for_minor)
         writer.write_collection_of_object_values("contactFolders", self.contact_folders)

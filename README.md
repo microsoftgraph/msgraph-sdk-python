@@ -204,6 +204,10 @@ By default a maximum of 100 rows are returned but in the response if odata_next_
 
 * [Samples](docs)
 
+### Update Schedule
+
+The Microsoft Graph .NET Client Library is scheduled to be updated during the second and fourth week of each month
+
 ## Upgrading
 
 For detailed information on breaking changes, bug fixes and new functionality introduced during major upgrades, check out our [Upgrade Guide](UPGRADING.md)

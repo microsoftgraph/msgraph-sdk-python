@@ -13,7 +13,7 @@ from .attachment import Attachment
 class FileAttachment(Attachment, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.fileAttachment"
-    # The base64-encoded contents of the file.
+    # The raw bytes of the file.
     content_bytes: Optional[bytes] = None
     # The ID of the attachment in the Exchange store.
     content_id: Optional[str] = None

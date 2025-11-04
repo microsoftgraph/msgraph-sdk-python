@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .identity_api_connector import IdentityApiConnector
     from .identity_provider_base import IdentityProviderBase
     from .identity_user_flow_attribute import IdentityUserFlowAttribute
+    from .risk_prevention_container import RiskPreventionContainer
 
 from .entity import Entity
 
@@ -35,6 +36,8 @@ class IdentityContainer(Entity, Parsable):
     identity_providers: Optional[list[IdentityProviderBase]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The riskPrevention property
+    risk_prevention: Optional[RiskPreventionContainer] = None
     # Represents entry point for identity userflow attributes.
     user_flow_attributes: Optional[list[IdentityUserFlowAttribute]] = None
     
@@ -63,6 +66,7 @@ class IdentityContainer(Entity, Parsable):
         from .identity_api_connector import IdentityApiConnector
         from .identity_provider_base import IdentityProviderBase
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .risk_prevention_container import RiskPreventionContainer
 
         from .authentication_events_flow import AuthenticationEventsFlow
         from .authentication_event_listener import AuthenticationEventListener
@@ -73,6 +77,7 @@ class IdentityContainer(Entity, Parsable):
         from .identity_api_connector import IdentityApiConnector
         from .identity_provider_base import IdentityProviderBase
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .risk_prevention_container import RiskPreventionContainer
 
         fields: dict[str, Callable[[Any], None]] = {
             "apiConnectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(IdentityApiConnector)),
@@ -82,6 +87,7 @@ class IdentityContainer(Entity, Parsable):
             "conditionalAccess": lambda n : setattr(self, 'conditional_access', n.get_object_value(ConditionalAccessRoot)),
             "customAuthenticationExtensions": lambda n : setattr(self, 'custom_authentication_extensions', n.get_collection_of_object_values(CustomAuthenticationExtension)),
             "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProviderBase)),
+            "riskPrevention": lambda n : setattr(self, 'risk_prevention', n.get_object_value(RiskPreventionContainer)),
             "userFlowAttributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(IdentityUserFlowAttribute)),
         }
         super_fields = super().get_field_deserializers()
@@ -104,6 +110,7 @@ class IdentityContainer(Entity, Parsable):
         writer.write_object_value("conditionalAccess", self.conditional_access)
         writer.write_collection_of_object_values("customAuthenticationExtensions", self.custom_authentication_extensions)
         writer.write_collection_of_object_values("identityProviders", self.identity_providers)
+        writer.write_object_value("riskPrevention", self.risk_prevention)
         writer.write_collection_of_object_values("userFlowAttributes", self.user_flow_attributes)
     
 

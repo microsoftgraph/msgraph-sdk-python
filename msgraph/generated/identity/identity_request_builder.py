@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .conditional_access.conditional_access_request_builder import ConditionalAccessRequestBuilder
     from .custom_authentication_extensions.custom_authentication_extensions_request_builder import CustomAuthenticationExtensionsRequestBuilder
     from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
+    from .risk_prevention.risk_prevention_request_builder import RiskPreventionRequestBuilder
     from .user_flow_attributes.user_flow_attributes_request_builder import UserFlowAttributesRequestBuilder
 
 class IdentityRequestBuilder(BaseRequestBuilder):
@@ -179,6 +180,15 @@ class IdentityRequestBuilder(BaseRequestBuilder):
         from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
 
         return IdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def risk_prevention(self) -> RiskPreventionRequestBuilder:
+        """
+        Provides operations to manage the riskPrevention property of the microsoft.graph.identityContainer entity.
+        """
+        from .risk_prevention.risk_prevention_request_builder import RiskPreventionRequestBuilder
+
+        return RiskPreventionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_flow_attributes(self) -> UserFlowAttributesRequestBuilder:

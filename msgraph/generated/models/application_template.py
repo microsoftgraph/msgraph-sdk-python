@@ -11,11 +11,11 @@ from .entity import Entity
 
 @dataclass
 class ApplicationTemplate(Entity, Parsable):
-    # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
+    # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.  Supports $filter (contains).
     categories: Optional[list[str]] = None
     # A description of the application.
     description: Optional[str] = None
-    # The name of the application.
+    # The name of the application. Supports $filter (contains).
     display_name: Optional[str] = None
     # The home page URL of the application.
     home_page_url: Optional[str] = None

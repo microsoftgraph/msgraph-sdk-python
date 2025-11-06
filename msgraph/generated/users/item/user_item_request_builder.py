@@ -30,6 +30,7 @@ if TYPE_CHECKING:
     from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
     from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
     from .cloud_clipboard.cloud_clipboard_request_builder import CloudClipboardRequestBuilder
+    from .cloud_p_cs.cloud_p_cs_request_builder import CloudPCsRequestBuilder
     from .contacts.contacts_request_builder import ContactsRequestBuilder
     from .contact_folders.contact_folders_request_builder import ContactFoldersRequestBuilder
     from .created_objects.created_objects_request_builder import CreatedObjectsRequestBuilder
@@ -373,6 +374,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         from .cloud_clipboard.cloud_clipboard_request_builder import CloudClipboardRequestBuilder
 
         return CloudClipboardRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def cloud_p_cs(self) -> CloudPCsRequestBuilder:
+        """
+        Provides operations to manage the cloudPCs property of the microsoft.graph.user entity.
+        """
+        from .cloud_p_cs.cloud_p_cs_request_builder import CloudPCsRequestBuilder
+
+        return CloudPCsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def contact_folders(self) -> ContactFoldersRequestBuilder:

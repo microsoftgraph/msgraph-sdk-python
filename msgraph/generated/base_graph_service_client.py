@@ -610,7 +610,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
     @property
     def places(self) -> PlacesRequestBuilder:
         """
-        The places property
+        Provides operations to manage the collection of place entities.
         """
         from .places.places_request_builder import PlacesRequestBuilder
 

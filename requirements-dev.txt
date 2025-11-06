@@ -53,7 +53,7 @@ packaging==25.0
 pathlib2==2.3.7.post1
 platformdirs==4.4.0
 portalocker==2.10.1
-pycparser==2.22
+pycparser==2.23
 PyJWT==2.9.0
 pylint==3.3.8
 pyproject_hooks==1.2.0

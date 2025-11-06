@@ -49,6 +49,7 @@ if TYPE_CHECKING:
     from .ai_interaction import AiInteraction
     from .ai_interaction_history import AiInteractionHistory
     from .ai_user import AiUser
+    from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
     from .alert import Alert
     from .allowed_value import AllowedValue
     from .android_compliance_policy import AndroidCompliancePolicy
@@ -155,6 +156,7 @@ if TYPE_CHECKING:
     from .claims_mapping_policy import ClaimsMappingPolicy
     from .cloud_clipboard_item import CloudClipboardItem
     from .cloud_clipboard_root import CloudClipboardRoot
+    from .cloud_flare_web_application_firewall_provider import CloudFlareWebApplicationFirewallProvider
     from .cloud_pc_audit_event import CloudPcAuditEvent
     from .cloud_pc_device_image import CloudPcDeviceImage
     from .cloud_pc_gallery_image import CloudPcGalleryImage
@@ -283,6 +285,7 @@ if TYPE_CHECKING:
     from .education_feedback_outcome import EducationFeedbackOutcome
     from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
     from .education_grading_category import EducationGradingCategory
+    from .education_grading_scheme import EducationGradingScheme
     from .education_module import EducationModule
     from .education_module_resource import EducationModuleResource
     from .education_organization import EducationOrganization
@@ -934,6 +937,8 @@ if TYPE_CHECKING:
     from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
     from .vpp_token import VppToken
     from .web_app import WebApp
+    from .web_application_firewall_provider import WebApplicationFirewallProvider
+    from .web_application_firewall_verification_model import WebApplicationFirewallVerificationModel
     from .web_part import WebPart
     from .what_if_analysis_result import WhatIfAnalysisResult
     from .win32_lob_app import Win32LobApp
@@ -1222,6 +1227,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .ai_user import AiUser
 
             return AiUser()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.akamaiWebApplicationFirewallProvider".casefold():
+            from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
+
+            return AkamaiWebApplicationFirewallProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.alert".casefold():
             from .alert import Alert
             from .security.alert import Alert
@@ -1648,6 +1657,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .cloud_clipboard_root import CloudClipboardRoot
 
             return CloudClipboardRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudFlareWebApplicationFirewallProvider".casefold():
+            from .cloud_flare_web_application_firewall_provider import CloudFlareWebApplicationFirewallProvider
+
+            return CloudFlareWebApplicationFirewallProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPC".casefold():
             from .cloud_p_c import CloudPC
 
@@ -2164,6 +2177,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .education_grading_category import EducationGradingCategory
 
             return EducationGradingCategory()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationGradingScheme".casefold():
+            from .education_grading_scheme import EducationGradingScheme
+
+            return EducationGradingScheme()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationModule".casefold():
             from .education_module import EducationModule
 
@@ -4772,6 +4789,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .web_app import WebApp
 
             return WebApp()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.webApplicationFirewallProvider".casefold():
+            from .web_application_firewall_provider import WebApplicationFirewallProvider
+
+            return WebApplicationFirewallProvider()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.webApplicationFirewallVerificationModel".casefold():
+            from .web_application_firewall_verification_model import WebApplicationFirewallVerificationModel
+
+            return WebApplicationFirewallVerificationModel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.webPart".casefold():
             from .web_part import WebPart
 
@@ -5178,6 +5203,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .ai_interaction import AiInteraction
         from .ai_interaction_history import AiInteractionHistory
         from .ai_user import AiUser
+        from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
         from .alert import Alert
         from .allowed_value import AllowedValue
         from .android_compliance_policy import AndroidCompliancePolicy
@@ -5284,6 +5310,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .claims_mapping_policy import ClaimsMappingPolicy
         from .cloud_clipboard_item import CloudClipboardItem
         from .cloud_clipboard_root import CloudClipboardRoot
+        from .cloud_flare_web_application_firewall_provider import CloudFlareWebApplicationFirewallProvider
         from .cloud_pc_audit_event import CloudPcAuditEvent
         from .cloud_pc_device_image import CloudPcDeviceImage
         from .cloud_pc_gallery_image import CloudPcGalleryImage
@@ -5412,6 +5439,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .education_feedback_outcome import EducationFeedbackOutcome
         from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
         from .education_grading_category import EducationGradingCategory
+        from .education_grading_scheme import EducationGradingScheme
         from .education_module import EducationModule
         from .education_module_resource import EducationModuleResource
         from .education_organization import EducationOrganization
@@ -6063,6 +6091,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp
+        from .web_application_firewall_provider import WebApplicationFirewallProvider
+        from .web_application_firewall_verification_model import WebApplicationFirewallVerificationModel
         from .web_part import WebPart
         from .what_if_analysis_result import WhatIfAnalysisResult
         from .win32_lob_app import Win32LobApp
@@ -6196,6 +6226,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .ai_interaction import AiInteraction
         from .ai_interaction_history import AiInteractionHistory
         from .ai_user import AiUser
+        from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
         from .alert import Alert
         from .allowed_value import AllowedValue
         from .android_compliance_policy import AndroidCompliancePolicy
@@ -6302,6 +6333,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .claims_mapping_policy import ClaimsMappingPolicy
         from .cloud_clipboard_item import CloudClipboardItem
         from .cloud_clipboard_root import CloudClipboardRoot
+        from .cloud_flare_web_application_firewall_provider import CloudFlareWebApplicationFirewallProvider
         from .cloud_pc_audit_event import CloudPcAuditEvent
         from .cloud_pc_device_image import CloudPcDeviceImage
         from .cloud_pc_gallery_image import CloudPcGalleryImage
@@ -6430,6 +6462,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .education_feedback_outcome import EducationFeedbackOutcome
         from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
         from .education_grading_category import EducationGradingCategory
+        from .education_grading_scheme import EducationGradingScheme
         from .education_module import EducationModule
         from .education_module_resource import EducationModuleResource
         from .education_organization import EducationOrganization
@@ -7081,6 +7114,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp
+        from .web_application_firewall_provider import WebApplicationFirewallProvider
+        from .web_application_firewall_verification_model import WebApplicationFirewallVerificationModel
         from .web_part import WebPart
         from .what_if_analysis_result import WhatIfAnalysisResult
         from .win32_lob_app import Win32LobApp

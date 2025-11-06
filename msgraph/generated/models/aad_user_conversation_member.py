@@ -16,11 +16,11 @@ class AadUserConversationMember(ConversationMember, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.aadUserConversationMember"
     # The email address of the user.
     email: Optional[str] = None
-    # TenantId which the Microsoft Entra user belongs to.
+    # The tenant ID of the Microsoft Entra user.
     tenant_id: Optional[str] = None
     # The user property
     user: Optional[User] = None
-    # The guid of the user.
+    # The user ID of the Microsoft Entra user.
     user_id: Optional[str] = None
     
     @staticmethod

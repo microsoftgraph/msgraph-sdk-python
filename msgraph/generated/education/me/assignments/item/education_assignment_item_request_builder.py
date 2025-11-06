@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .categories.categories_request_builder import CategoriesRequestBuilder
     from .deactivate.deactivate_request_builder import DeactivateRequestBuilder
     from .grading_category.grading_category_request_builder import GradingCategoryRequestBuilder
+    from .grading_scheme.grading_scheme_request_builder import GradingSchemeRequestBuilder
     from .publish.publish_request_builder import PublishRequestBuilder
     from .resources.resources_request_builder import ResourcesRequestBuilder
     from .rubric.rubric_request_builder import RubricRequestBuilder
@@ -183,6 +184,15 @@ class EducationAssignmentItemRequestBuilder(BaseRequestBuilder):
         from .grading_category.grading_category_request_builder import GradingCategoryRequestBuilder
 
         return GradingCategoryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def grading_scheme(self) -> GradingSchemeRequestBuilder:
+        """
+        Provides operations to manage the gradingScheme property of the microsoft.graph.educationAssignment entity.
+        """
+        from .grading_scheme.grading_scheme_request_builder import GradingSchemeRequestBuilder
+
+        return GradingSchemeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def publish(self) -> PublishRequestBuilder:

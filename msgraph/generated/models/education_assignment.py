@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .education_assignment_status import EducationAssignmentStatus
     from .education_category import EducationCategory
     from .education_grading_category import EducationGradingCategory
+    from .education_grading_scheme import EducationGradingScheme
     from .education_item_body import EducationItemBody
     from .education_rubric import EducationRubric
     from .education_submission import EducationSubmission
@@ -58,8 +59,12 @@ class EducationAssignment(Entity, Parsable):
     grading: Optional[EducationAssignmentGradeType] = None
     # When set, enables users to weight assignments differently when computing a class average grade.
     grading_category: Optional[EducationGradingCategory] = None
+    # When set, enables users to configure custom string grades based on the percentage of total points earned on this assignment.
+    grading_scheme: Optional[EducationGradingScheme] = None
     # Instructions for the assignment. The instructions and the display name tell the student what to do.
     instructions: Optional[EducationItemBody] = None
+    # Specifies the language in which UI notifications for the assignment are displayed. If languageTag isn't provided, the default language is en-US. Optional.
+    language_tag: Optional[str] = None
     # Who last modified the assignment.
     last_modified_by: Optional[IdentitySet] = None
     # The date and time on which the assignment was modified. A student submission doesn't modify the assignment; only teachers can update assignments. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -107,6 +112,7 @@ class EducationAssignment(Entity, Parsable):
         from .education_assignment_status import EducationAssignmentStatus
         from .education_category import EducationCategory
         from .education_grading_category import EducationGradingCategory
+        from .education_grading_scheme import EducationGradingScheme
         from .education_item_body import EducationItemBody
         from .education_rubric import EducationRubric
         from .education_submission import EducationSubmission
@@ -121,6 +127,7 @@ class EducationAssignment(Entity, Parsable):
         from .education_assignment_status import EducationAssignmentStatus
         from .education_category import EducationCategory
         from .education_grading_category import EducationGradingCategory
+        from .education_grading_scheme import EducationGradingScheme
         from .education_item_body import EducationItemBody
         from .education_rubric import EducationRubric
         from .education_submission import EducationSubmission
@@ -145,7 +152,9 @@ class EducationAssignment(Entity, Parsable):
             "feedbackResourcesFolderUrl": lambda n : setattr(self, 'feedback_resources_folder_url', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(EducationAssignmentGradeType)),
             "gradingCategory": lambda n : setattr(self, 'grading_category', n.get_object_value(EducationGradingCategory)),
+            "gradingScheme": lambda n : setattr(self, 'grading_scheme', n.get_object_value(EducationGradingScheme)),
             "instructions": lambda n : setattr(self, 'instructions', n.get_object_value(EducationItemBody)),
+            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "moduleUrl": lambda n : setattr(self, 'module_url', n.get_str_value()),
@@ -182,7 +191,9 @@ class EducationAssignment(Entity, Parsable):
         writer.write_datetime_value("dueDateTime", self.due_date_time)
         writer.write_object_value("grading", self.grading)
         writer.write_object_value("gradingCategory", self.grading_category)
+        writer.write_object_value("gradingScheme", self.grading_scheme)
         writer.write_object_value("instructions", self.instructions)
+        writer.write_str_value("languageTag", self.language_tag)
         writer.write_str_value("moduleUrl", self.module_url)
         writer.write_str_value("notificationChannelUrl", self.notification_channel_url)
         writer.write_collection_of_object_values("resources", self.resources)

@@ -16,7 +16,9 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.education_assignment_settings import EducationAssignmentSettings
     from .....models.o_data_errors.o_data_error import ODataError
+    from .default_grading_scheme.default_grading_scheme_request_builder import DefaultGradingSchemeRequestBuilder
     from .grading_categories.grading_categories_request_builder import GradingCategoriesRequestBuilder
+    from .grading_schemes.grading_schemes_request_builder import GradingSchemesRequestBuilder
 
 class AssignmentSettingsRequestBuilder(BaseRequestBuilder):
     """
@@ -141,6 +143,15 @@ class AssignmentSettingsRequestBuilder(BaseRequestBuilder):
         return AssignmentSettingsRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def default_grading_scheme(self) -> DefaultGradingSchemeRequestBuilder:
+        """
+        Provides operations to manage the defaultGradingScheme property of the microsoft.graph.educationAssignmentSettings entity.
+        """
+        from .default_grading_scheme.default_grading_scheme_request_builder import DefaultGradingSchemeRequestBuilder
+
+        return DefaultGradingSchemeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def grading_categories(self) -> GradingCategoriesRequestBuilder:
         """
         Provides operations to manage the gradingCategories property of the microsoft.graph.educationAssignmentSettings entity.
@@ -148,6 +159,15 @@ class AssignmentSettingsRequestBuilder(BaseRequestBuilder):
         from .grading_categories.grading_categories_request_builder import GradingCategoriesRequestBuilder
 
         return GradingCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def grading_schemes(self) -> GradingSchemesRequestBuilder:
+        """
+        Provides operations to manage the gradingSchemes property of the microsoft.graph.educationAssignmentSettings entity.
+        """
+        from .grading_schemes.grading_schemes_request_builder import GradingSchemesRequestBuilder
+
+        return GradingSchemesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssignmentSettingsRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

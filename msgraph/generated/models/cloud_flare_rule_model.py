@@ -12,13 +12,13 @@ class CloudFlareRuleModel(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The action property
+    # The action Cloudflare applies when the rule matches traffic. Common values include Managed Challenge, Interactive Challenge, Log, Block, JS Challenge, or Skip.
     action: Optional[str] = None
-    # The name property
+    # Friendly name for the rule, used in UIs or logs to help administrators identify the rule.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The ruleId property
+    # Unique identifier assigned to the rule by Cloudflare or the integration.
     rule_id: Optional[str] = None
     
     @staticmethod

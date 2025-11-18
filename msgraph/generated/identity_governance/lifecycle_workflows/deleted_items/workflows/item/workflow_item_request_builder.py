@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .execution_scope.execution_scope_request_builder import ExecutionScopeRequestBuilder
     from .last_modified_by.last_modified_by_request_builder import LastModifiedByRequestBuilder
     from .microsoft_graph_identity_governance_activate.microsoft_graph_identity_governance_activate_request_builder import MicrosoftGraphIdentityGovernanceActivateRequestBuilder
+    from .microsoft_graph_identity_governance_activate_with_scope.microsoft_graph_identity_governance_activate_with_scope_request_builder import MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder
     from .microsoft_graph_identity_governance_create_new_version.microsoft_graph_identity_governance_create_new_version_request_builder import MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder
     from .microsoft_graph_identity_governance_restore.microsoft_graph_identity_governance_restore_request_builder import MicrosoftGraphIdentityGovernanceRestoreRequestBuilder
     from .runs.runs_request_builder import RunsRequestBuilder
@@ -148,6 +149,15 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
         from .microsoft_graph_identity_governance_activate.microsoft_graph_identity_governance_activate_request_builder import MicrosoftGraphIdentityGovernanceActivateRequestBuilder
 
         return MicrosoftGraphIdentityGovernanceActivateRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_identity_governance_activate_with_scope(self) -> MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder:
+        """
+        Provides operations to call the activateWithScope method.
+        """
+        from .microsoft_graph_identity_governance_activate_with_scope.microsoft_graph_identity_governance_activate_with_scope_request_builder import MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder
+
+        return MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def microsoft_graph_identity_governance_create_new_version(self) -> MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder:

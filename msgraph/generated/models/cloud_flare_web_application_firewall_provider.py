@@ -13,9 +13,9 @@ from .web_application_firewall_provider import WebApplicationFirewallProvider
 class CloudFlareWebApplicationFirewallProvider(WebApplicationFirewallProvider, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.cloudFlareWebApplicationFirewallProvider"
-    # The apiToken property
+    # Cloudflare API token or credential used by Microsoft services to authenticate to the Cloudflare account. Contact your Cloudflare Customer Success Manager for assistance with your apitoken.
     api_token: Optional[str] = None
-    # The zoneId property
+    # Default Cloudflare Zone ID associated with this provider configuration. This ID identifies the DNS zone in Cloudflare that is commonly used for verification and configuration operations for the provider.
     zone_id: Optional[str] = None
     
     @staticmethod

@@ -12,9 +12,9 @@ class AkamaiAttackGroupActionModel(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The action property
+    # The action Akamai applies to the attack group when a matching threat is detected. Common values include deny, none or alert.
     action: Optional[str] = None
-    # The group property
+    # The name or identifier of the attack group. This value categorizes the type of attack the action applies to.
     group: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

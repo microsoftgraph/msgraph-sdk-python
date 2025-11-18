@@ -8,6 +8,8 @@ if TYPE_CHECKING:
     from ..entity import Entity
     from .health_issue import HealthIssue
     from .sensor import Sensor
+    from .sensor_candidate import SensorCandidate
+    from .sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
 
 from ..entity import Entity
 
@@ -17,6 +19,10 @@ class IdentityContainer(Entity, Parsable):
     health_issues: Optional[list[HealthIssue]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The sensorCandidateActivationConfiguration property
+    sensor_candidate_activation_configuration: Optional[SensorCandidateActivationConfiguration] = None
+    # Represents Microsoft Defender for Identity sensors that are ready to be activated.
+    sensor_candidates: Optional[list[SensorCandidate]] = None
     # Represents a customer's Microsoft Defender for Identity sensors.
     sensors: Optional[list[Sensor]] = None
     
@@ -39,13 +45,19 @@ class IdentityContainer(Entity, Parsable):
         from ..entity import Entity
         from .health_issue import HealthIssue
         from .sensor import Sensor
+        from .sensor_candidate import SensorCandidate
+        from .sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
 
         from ..entity import Entity
         from .health_issue import HealthIssue
         from .sensor import Sensor
+        from .sensor_candidate import SensorCandidate
+        from .sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
 
         fields: dict[str, Callable[[Any], None]] = {
             "healthIssues": lambda n : setattr(self, 'health_issues', n.get_collection_of_object_values(HealthIssue)),
+            "sensorCandidateActivationConfiguration": lambda n : setattr(self, 'sensor_candidate_activation_configuration', n.get_object_value(SensorCandidateActivationConfiguration)),
+            "sensorCandidates": lambda n : setattr(self, 'sensor_candidates', n.get_collection_of_object_values(SensorCandidate)),
             "sensors": lambda n : setattr(self, 'sensors', n.get_collection_of_object_values(Sensor)),
         }
         super_fields = super().get_field_deserializers()
@@ -62,6 +74,8 @@ class IdentityContainer(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("healthIssues", self.health_issues)
+        writer.write_object_value("sensorCandidateActivationConfiguration", self.sensor_candidate_activation_configuration)
+        writer.write_collection_of_object_values("sensorCandidates", self.sensor_candidates)
         writer.write_collection_of_object_values("sensors", self.sensors)
     
 

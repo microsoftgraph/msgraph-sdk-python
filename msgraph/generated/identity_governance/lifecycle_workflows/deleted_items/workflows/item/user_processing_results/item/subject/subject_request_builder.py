@@ -34,7 +34,7 @@ class SubjectRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SubjectRequestBuilderGetQueryParameters]] = None) -> Optional[User]:
         """
-        The unique identifier of the AAD user targeted for the taskProcessingResult.Supports $filter(eq, ne) and $expand.
+        The unique identifier of the user targeted for the taskProcessingResult.Supports $filter(eq, ne) and $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
         """
@@ -54,7 +54,7 @@ class SubjectRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SubjectRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The unique identifier of the AAD user targeted for the taskProcessingResult.Supports $filter(eq, ne) and $expand.
+        The unique identifier of the user targeted for the taskProcessingResult.Supports $filter(eq, ne) and $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -94,7 +94,7 @@ class SubjectRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubjectRequestBuilderGetQueryParameters():
         """
-        The unique identifier of the AAD user targeted for the taskProcessingResult.Supports $filter(eq, ne) and $expand.
+        The unique identifier of the user targeted for the taskProcessingResult.Supports $filter(eq, ne) and $expand.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

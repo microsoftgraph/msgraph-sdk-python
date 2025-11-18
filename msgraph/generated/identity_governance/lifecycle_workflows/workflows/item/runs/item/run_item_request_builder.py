@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .......models.identity_governance.run import Run
     from .......models.o_data_errors.o_data_error import ODataError
+    from .reprocessed_runs.reprocessed_runs_request_builder import ReprocessedRunsRequestBuilder
     from .task_processing_results.task_processing_results_request_builder import TaskProcessingResultsRequestBuilder
     from .user_processing_results.user_processing_results_request_builder import UserProcessingResultsRequestBuilder
 
@@ -73,6 +74,15 @@ class RunItemRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RunItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def reprocessed_runs(self) -> ReprocessedRunsRequestBuilder:
+        """
+        Provides operations to manage the reprocessedRuns property of the microsoft.graph.identityGovernance.run entity.
+        """
+        from .reprocessed_runs.reprocessed_runs_request_builder import ReprocessedRunsRequestBuilder
+
+        return ReprocessedRunsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def task_processing_results(self) -> TaskProcessingResultsRequestBuilder:

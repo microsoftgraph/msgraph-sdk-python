@@ -17,15 +17,15 @@ from .entity import Entity
 class WebApplicationFirewallVerificationModel(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The provider property
+    # Reference to a provider resource associated with this verification model. Represents a WAF provider that can be used to verify or manage the host.
     provider: Optional[WebApplicationFirewallProvider] = None
     # The providerType property
     provider_type: Optional[WebApplicationFirewallProviderType] = None
-    # The verificationResult property
+    # An object describing the outcome of the verification operation, including status, errors or warnings
     verification_result: Optional[WebApplicationFirewallVerificationResult] = None
-    # The verifiedDetails property
+    # Details of DNS configuration
     verified_details: Optional[WebApplicationFirewallVerifiedDetails] = None
-    # The verifiedHost property
+    # The host (domain or subdomain) that was verified as part of this verification operation.
     verified_host: Optional[str] = None
     
     @staticmethod

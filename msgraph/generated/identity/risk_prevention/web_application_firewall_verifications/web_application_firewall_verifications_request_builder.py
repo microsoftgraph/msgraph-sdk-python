@@ -49,9 +49,10 @@ class WebApplicationFirewallVerificationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WebApplicationFirewallVerificationsRequestBuilderGetQueryParameters]] = None) -> Optional[WebApplicationFirewallVerificationModelCollectionResponse]:
         """
-        Get webApplicationFirewallVerifications from identity
+        Get a list of the webApplicationFirewallVerificationModel objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WebApplicationFirewallVerificationModelCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/riskpreventioncontainer-list-webapplicationfirewallverifications?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class WebApplicationFirewallVerificationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WebApplicationFirewallVerificationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get webApplicationFirewallVerifications from identity
+        Get a list of the webApplicationFirewallVerificationModel objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class WebApplicationFirewallVerificationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WebApplicationFirewallVerificationsRequestBuilderGetQueryParameters():
         """
-        Get webApplicationFirewallVerifications from identity
+        Get a list of the webApplicationFirewallVerificationModel objects and their properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

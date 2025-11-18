@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.risk_prevention_container import RiskPreventionContainer
+    from .fraud_protection_providers.fraud_protection_providers_request_builder import FraudProtectionProvidersRequestBuilder
     from .web_application_firewall_providers.web_application_firewall_providers_request_builder import WebApplicationFirewallProvidersRequestBuilder
     from .web_application_firewall_verifications.web_application_firewall_verifications_request_builder import WebApplicationFirewallVerificationsRequestBuilder
 
@@ -52,7 +53,7 @@ class RiskPreventionRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RiskPreventionRequestBuilderGetQueryParameters]] = None) -> Optional[RiskPreventionContainer]:
         """
-        Get riskPrevention from identity
+        Represents the entry point for fraud and risk prevention configurations in Microsoft Entra External ID, including third-party provider settings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskPreventionContainer]
         """
@@ -106,7 +107,7 @@ class RiskPreventionRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RiskPreventionRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get riskPrevention from identity
+        Represents the entry point for fraud and risk prevention configurations in Microsoft Entra External ID, including third-party provider settings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -141,6 +142,15 @@ class RiskPreventionRequestBuilder(BaseRequestBuilder):
         return RiskPreventionRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def fraud_protection_providers(self) -> FraudProtectionProvidersRequestBuilder:
+        """
+        Provides operations to manage the fraudProtectionProviders property of the microsoft.graph.riskPreventionContainer entity.
+        """
+        from .fraud_protection_providers.fraud_protection_providers_request_builder import FraudProtectionProvidersRequestBuilder
+
+        return FraudProtectionProvidersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def web_application_firewall_providers(self) -> WebApplicationFirewallProvidersRequestBuilder:
         """
         Provides operations to manage the webApplicationFirewallProviders property of the microsoft.graph.riskPreventionContainer entity.
@@ -168,7 +178,7 @@ class RiskPreventionRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RiskPreventionRequestBuilderGetQueryParameters():
         """
-        Get riskPrevention from identity
+        Represents the entry point for fraud and risk prevention configurations in Microsoft Entra External ID, including third-party provider settings.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

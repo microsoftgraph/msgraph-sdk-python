@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
     from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
     from .learning_providers.learning_providers_request_builder import LearningProvidersRequestBuilder
+    from .roles.roles_request_builder import RolesRequestBuilder
 
 class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
     """
@@ -161,6 +162,15 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
         from .learning_providers.learning_providers_request_builder import LearningProvidersRequestBuilder
 
         return LearningProvidersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def roles(self) -> RolesRequestBuilder:
+        """
+        Provides operations to manage the roles property of the microsoft.graph.employeeExperience entity.
+        """
+        from .roles.roles_request_builder import RolesRequestBuilder
+
+        return RolesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EmployeeExperienceRequestBuilderGetQueryParameters():

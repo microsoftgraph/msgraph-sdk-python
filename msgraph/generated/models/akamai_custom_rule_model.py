@@ -12,13 +12,13 @@ class AkamaiCustomRuleModel(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The action property
+    # The action Akamai applies when the rule matches traffic. Common values include deny, none or alert.
     action: Optional[str] = None
-    # The name property
+    # Friendly name for the rule, used in UIs or logs to help administrators identify the rule (for example, 'Block suspicious user agents').
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The ruleId property
+    # Unique identifier assigned to the rule by Akamai or the integration. Use this identifier to reference, update, or remove the rule in API requests.
     rule_id: Optional[str] = None
     
     @staticmethod

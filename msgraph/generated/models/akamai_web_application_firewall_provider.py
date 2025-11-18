@@ -13,13 +13,13 @@ from .web_application_firewall_provider import WebApplicationFirewallProvider
 class AkamaiWebApplicationFirewallProvider(WebApplicationFirewallProvider, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.akamaiWebApplicationFirewallProvider"
-    # The accessToken property
+    # Akamai API access token used to authenticate to the Akamai account. Contact your Akamai Customer Success Manager for assistance with your accessToken.
     access_token: Optional[str] = None
-    # The clientSecret property
+    # Akamai API client secret used in conjunction with the client token and access token for authentication. Contact your Akamai Customer Success Manager for assistance with this information.
     client_secret: Optional[str] = None
-    # The clientToken property
+    # Akamai API client token used for authentication to the Akamai account. Contact your Akamai Customer Success Manager for assistance with this information.
     client_token: Optional[str] = None
-    # The hostPrefix property
+    # Prefix used to identify the host or domain in Akamai configuration operations. This value may be required for certain API calls or configuration scenarios.
     host_prefix: Optional[str] = None
     
     @staticmethod

@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .community import Community
     from .engagement_async_operation import EngagementAsyncOperation
+    from .engagement_role import EngagementRole
     from .learning_course_activity import LearningCourseActivity
     from .learning_provider import LearningProvider
 
@@ -31,6 +32,8 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
     learning_providers: Optional[list[LearningProvider]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # A collection of roles in Viva Engage.
+    roles: Optional[list[EngagementRole]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EmployeeExperience:
@@ -50,11 +53,13 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .community import Community
         from .engagement_async_operation import EngagementAsyncOperation
+        from .engagement_role import EngagementRole
         from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
 
         from .community import Community
         from .engagement_async_operation import EngagementAsyncOperation
+        from .engagement_role import EngagementRole
         from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
 
@@ -64,6 +69,7 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
             "learningCourseActivities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
             "learningProviders": lambda n : setattr(self, 'learning_providers', n.get_collection_of_object_values(LearningProvider)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "roles": lambda n : setattr(self, 'roles', n.get_collection_of_object_values(EngagementRole)),
         }
         return fields
     
@@ -80,6 +86,7 @@ class EmployeeExperience(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)
         writer.write_collection_of_object_values("learningProviders", self.learning_providers)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("roles", self.roles)
         writer.write_additional_data_value(self.additional_data)
     
 

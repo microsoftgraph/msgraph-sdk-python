@@ -33,9 +33,10 @@ class WebApplicationFirewallVerificationModelItemRequestBuilder(BaseRequestBuild
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property webApplicationFirewallVerifications for identity
+        Delete a webApplicationFirewallVerificationModel object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/riskpreventioncontainer-delete-webapplicationfirewallverifications?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,9 +52,10 @@ class WebApplicationFirewallVerificationModelItemRequestBuilder(BaseRequestBuild
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WebApplicationFirewallVerificationModelItemRequestBuilderGetQueryParameters]] = None) -> Optional[WebApplicationFirewallVerificationModel]:
         """
-        Get webApplicationFirewallVerifications from identity
+        Read the properties and relationships of webApplicationFirewallVerificationModel object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WebApplicationFirewallVerificationModel]
+        Find more info here: https://learn.microsoft.com/graph/api/webapplicationfirewallverificationmodel-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -94,7 +96,7 @@ class WebApplicationFirewallVerificationModelItemRequestBuilder(BaseRequestBuild
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property webApplicationFirewallVerifications for identity
+        Delete a webApplicationFirewallVerificationModel object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +107,7 @@ class WebApplicationFirewallVerificationModelItemRequestBuilder(BaseRequestBuild
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WebApplicationFirewallVerificationModelItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get webApplicationFirewallVerifications from identity
+        Read the properties and relationships of webApplicationFirewallVerificationModel object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +160,7 @@ class WebApplicationFirewallVerificationModelItemRequestBuilder(BaseRequestBuild
     @dataclass
     class WebApplicationFirewallVerificationModelItemRequestBuilderGetQueryParameters():
         """
-        Get webApplicationFirewallVerifications from identity
+        Read the properties and relationships of webApplicationFirewallVerificationModel object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

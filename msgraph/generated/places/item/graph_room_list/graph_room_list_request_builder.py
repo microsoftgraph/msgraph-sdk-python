@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.room_list import RoomList
+    from .check_ins.check_ins_request_builder import CheckInsRequestBuilder
     from .rooms.rooms_request_builder import RoomsRequestBuilder
 
 class GraphRoomListRequestBuilder(BaseRequestBuilder):
@@ -71,6 +72,15 @@ class GraphRoomListRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return GraphRoomListRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def check_ins(self) -> CheckInsRequestBuilder:
+        """
+        Provides operations to manage the checkIns property of the microsoft.graph.place entity.
+        """
+        from .check_ins.check_ins_request_builder import CheckInsRequestBuilder
+
+        return CheckInsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def rooms(self) -> RoomsRequestBuilder:

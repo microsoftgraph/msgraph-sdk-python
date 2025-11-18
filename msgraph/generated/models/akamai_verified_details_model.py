@@ -16,11 +16,11 @@ from .web_application_firewall_verified_details import WebApplicationFirewallVer
 class AkamaiVerifiedDetailsModel(WebApplicationFirewallVerifiedDetails, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.akamaiVerifiedDetailsModel"
-    # The activeAttackGroups property
+    # Collection of Akamai attack groups that are currently active for the zone or host, including the action applied to each group (for example, deny, none or alert).
     active_attack_groups: Optional[list[AkamaiAttackGroupActionModel]] = None
-    # The activeCustomRules property
+    # Collection of Akamai custom rules that are currently enabled for the zone or host. Each entry includes rule metadata such as the rule identifier, friendly name, and the action taken when the rule matches traffic.
     active_custom_rules: Optional[list[AkamaiCustomRuleModel]] = None
-    # The rapidRules property
+    # Configuration for Akamai Rapid Rules, including whether Rapid Rules are enabled and the default action applied to matching traffic.
     rapid_rules: Optional[AkamaiRapidRulesModel] = None
     
     @staticmethod

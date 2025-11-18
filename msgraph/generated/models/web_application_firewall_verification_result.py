@@ -17,15 +17,15 @@ class WebApplicationFirewallVerificationResult(AdditionalDataHolder, BackedModel
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The errors property
+    # List of errors encountered during the verification process.
     errors: Optional[list[GenericError]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
     status: Optional[WebApplicationFirewallVerificationStatus] = None
-    # The verifiedOnDateTime property
+    # UTC timestamp when the verification was performed or last updated. This indicates when the verification result was produced.
     verified_on_date_time: Optional[datetime.datetime] = None
-    # The warnings property
+    # List of warnings produced during verification.
     warnings: Optional[list[GenericError]] = None
     
     @staticmethod

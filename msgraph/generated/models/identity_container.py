@@ -36,7 +36,7 @@ class IdentityContainer(Entity, Parsable):
     identity_providers: Optional[list[IdentityProviderBase]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The riskPrevention property
+    # Represents the entry point for fraud and risk prevention configurations in Microsoft Entra External ID, including third-party provider settings.
     risk_prevention: Optional[RiskPreventionContainer] = None
     # Represents entry point for identity userflow attributes.
     user_flow_attributes: Optional[list[IdentityUserFlowAttribute]] = None

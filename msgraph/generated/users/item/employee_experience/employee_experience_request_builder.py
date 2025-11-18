@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.employee_experience_user import EmployeeExperienceUser
     from ....models.o_data_errors.o_data_error import ODataError
+    from .assigned_roles.assigned_roles_request_builder import AssignedRolesRequestBuilder
     from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
     from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
 
@@ -151,6 +152,15 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return EmployeeExperienceRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def assigned_roles(self) -> AssignedRolesRequestBuilder:
+        """
+        Provides operations to manage the assignedRoles property of the microsoft.graph.employeeExperienceUser entity.
+        """
+        from .assigned_roles.assigned_roles_request_builder import AssignedRolesRequestBuilder
+
+        return AssignedRolesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def learning_course_activities(self) -> LearningCourseActivitiesRequestBuilder:

@@ -12,9 +12,9 @@ class AkamaiRapidRulesModel(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The defaultAction property
+    # The default action Akamai applies to traffic that matches Rapid Rules. Common values include deny, none or alert.
     default_action: Optional[str] = None
-    # The isEnabled property
+    # Indicates whether Akamai Rapid Rules are enabled for the WAF integration. If true, Rapid Rules are active and applied to incoming traffic.
     is_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

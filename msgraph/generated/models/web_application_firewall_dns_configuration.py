@@ -15,17 +15,17 @@ class WebApplicationFirewallDnsConfiguration(AdditionalDataHolder, BackedModel, 
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The isDomainVerified property
+    # Indicates whether the domain owning this DNS record has been verified by the WAF provider.
     is_domain_verified: Optional[bool] = None
-    # The isProxied property
+    # Indicates whether traffic for this DNS record is proxied through the WAF provider's network (for example, using a CDN or reverse proxy).
     is_proxied: Optional[bool] = None
-    # The name property
+    # The DNS record name (for example, www.contoso.com or contoso.com). This is the host or zone name to which the configuration applies.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The recordType property
     record_type: Optional[WebApplicationFirewallDnsRecordType] = None
-    # The value property
+    # The value of the DNS record.
     value: Optional[str] = None
     
     @staticmethod

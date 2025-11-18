@@ -12,13 +12,13 @@ class CloudFlareRulesetModel(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The name property
+    # Friendly name for the ruleset, used in UIs and logs to help administrators identify the ruleset.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The phaseName property
+    # Name of the phase during which the ruleset is evaluated (for example, httprequestfirewallmanaged, httprequestfirewallcustom, or provider-specific phase names). This indicates when in the request/response lifecycle the rules apply.
     phase_name: Optional[str] = None
-    # The rulesetId property
+    # Unique identifier assigned to the ruleset by Cloudflare or the integration.
     ruleset_id: Optional[str] = None
     
     @staticmethod

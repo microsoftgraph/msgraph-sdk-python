@@ -32,7 +32,7 @@ class ProviderRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ProviderRequestBuilderGetQueryParameters]] = None) -> Optional[WebApplicationFirewallProvider]:
         """
-        Get provider from identity
+        Reference to a provider resource associated with this verification model. Represents a WAF provider that can be used to verify or manage the host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WebApplicationFirewallProvider]
         """
@@ -52,7 +52,7 @@ class ProviderRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ProviderRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get provider from identity
+        Reference to a provider resource associated with this verification model. Represents a WAF provider that can be used to verify or manage the host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class ProviderRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProviderRequestBuilderGetQueryParameters():
         """
-        Get provider from identity
+        Reference to a provider resource associated with this verification model. Represents a WAF provider that can be used to verify or manage the host.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

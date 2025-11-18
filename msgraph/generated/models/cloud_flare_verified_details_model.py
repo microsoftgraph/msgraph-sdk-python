@@ -15,11 +15,11 @@ from .web_application_firewall_verified_details import WebApplicationFirewallVer
 class CloudFlareVerifiedDetailsModel(WebApplicationFirewallVerifiedDetails, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.cloudFlareVerifiedDetailsModel"
-    # The enabledCustomRules property
+    # Collection of Cloudflare custom rules that are currently enabled for the zone or host.
     enabled_custom_rules: Optional[list[CloudFlareRuleModel]] = None
-    # The enabledRecommendedRulesets property
+    # Collection of Cloudflare recommended rulesets that are enabled for the zone or host.
     enabled_recommended_rulesets: Optional[list[CloudFlareRulesetModel]] = None
-    # The zoneId property
+    # Cloudflare-assigned identifier for the DNS zone associated with the verified host (for example, the Cloudflare Zone ID). This ID is used to correlate verification details with the Cloudflare account and to perform configuration operations via the provider's API.
     zone_id: Optional[str] = None
     
     @staticmethod

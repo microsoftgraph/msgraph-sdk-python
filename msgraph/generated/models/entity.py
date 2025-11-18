@@ -77,6 +77,7 @@ if TYPE_CHECKING:
     from .app_management_policy import AppManagementPolicy
     from .app_role_assignment import AppRoleAssignment
     from .app_scope import AppScope
+    from .arkose_fraud_protection_provider import ArkoseFraudProtectionProvider
     from .associated_team_info import AssociatedTeamInfo
     from .attachment import Attachment
     from .attachment_base import AttachmentBase
@@ -312,6 +313,8 @@ if TYPE_CHECKING:
     from .engagement_conversation_message_reaction import EngagementConversationMessageReaction
     from .engagement_conversation_question_message import EngagementConversationQuestionMessage
     from .engagement_conversation_system_message import EngagementConversationSystemMessage
+    from .engagement_role import EngagementRole
+    from .engagement_role_member import EngagementRoleMember
     from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
     from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
     from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
@@ -347,6 +350,7 @@ if TYPE_CHECKING:
     from .file_storage import FileStorage
     from .file_storage_container import FileStorageContainer
     from .filter_operator_schema import FilterOperatorSchema
+    from .fraud_protection_provider import FraudProtectionProvider
     from .governance_insight import GovernanceInsight
     from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
     from .group import Group
@@ -356,6 +360,7 @@ if TYPE_CHECKING:
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
     from .horizontal_section import HorizontalSection
     from .horizontal_section_column import HorizontalSectionColumn
+    from .human_security_fraud_protection_provider import HumanSecurityFraudProtectionProvider
     from .identity_api_connector import IdentityApiConnector
     from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
     from .identity_container import IdentityContainer
@@ -522,6 +527,7 @@ if TYPE_CHECKING:
     from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
     from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
     from .on_email_otp_send_listener import OnEmailOtpSendListener
+    from .on_fraud_protection_load_start_listener import OnFraudProtectionLoadStartListener
     from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
     from .on_otp_send_custom_extension import OnOtpSendCustomExtension
     from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
@@ -729,6 +735,8 @@ if TYPE_CHECKING:
     from .security.search import Search
     from .security.security import Security
     from .security.sensor import Sensor
+    from .security.sensor_candidate import SensorCandidate
+    from .security.sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
     from .security.site_source import SiteSource
     from .security.ssl_certificate import SslCertificate
     from .security.subcategory_template import SubcategoryTemplate
@@ -1340,6 +1348,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .app_scope import AppScope
 
             return AppScope()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.arkoseFraudProtectionProvider".casefold():
+            from .arkose_fraud_protection_provider import ArkoseFraudProtectionProvider
+
+            return ArkoseFraudProtectionProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.associatedTeamInfo".casefold():
             from .associated_team_info import AssociatedTeamInfo
 
@@ -2285,6 +2297,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .engagement_conversation_system_message import EngagementConversationSystemMessage
 
             return EngagementConversationSystemMessage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementRole".casefold():
+            from .engagement_role import EngagementRole
+
+            return EngagementRole()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementRoleMember".casefold():
+            from .engagement_role_member import EngagementRoleMember
+
+            return EngagementRoleMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.enrollmentConfigurationAssignment".casefold():
             from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
@@ -2421,6 +2441,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .filter_operator_schema import FilterOperatorSchema
 
             return FilterOperatorSchema()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fraudProtectionProvider".casefold():
+            from .fraud_protection_provider import FraudProtectionProvider
+
+            return FraudProtectionProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.governanceInsight".casefold():
             from .governance_insight import GovernanceInsight
 
@@ -2458,6 +2482,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .horizontal_section_column import HorizontalSectionColumn
 
             return HorizontalSectionColumn()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.humanSecurityFraudProtectionProvider".casefold():
+            from .human_security_fraud_protection_provider import HumanSecurityFraudProtectionProvider
+
+            return HumanSecurityFraudProtectionProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityApiConnector".casefold():
             from .identity_api_connector import IdentityApiConnector
 
@@ -3115,6 +3143,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .onenote_section import OnenoteSection
 
             return OnenoteSection()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onFraudProtectionLoadStartListener".casefold():
+            from .on_fraud_protection_load_start_listener import OnFraudProtectionLoadStartListener
+
+            return OnFraudProtectionLoadStartListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartListener".casefold():
             from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
 
@@ -3956,6 +3988,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.sensor import Sensor
 
             return Sensor()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.sensorCandidate".casefold():
+            from .security.sensor_candidate import SensorCandidate
+
+            return SensorCandidate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.sensorCandidateActivationConfiguration".casefold():
+            from .security.sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
+
+            return SensorCandidateActivationConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.siteSource".casefold():
             from .security.site_source import SiteSource
 
@@ -5231,6 +5271,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
         from .app_scope import AppScope
+        from .arkose_fraud_protection_provider import ArkoseFraudProtectionProvider
         from .associated_team_info import AssociatedTeamInfo
         from .attachment import Attachment
         from .attachment_base import AttachmentBase
@@ -5466,6 +5507,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .engagement_conversation_message_reaction import EngagementConversationMessageReaction
         from .engagement_conversation_question_message import EngagementConversationQuestionMessage
         from .engagement_conversation_system_message import EngagementConversationSystemMessage
+        from .engagement_role import EngagementRole
+        from .engagement_role_member import EngagementRoleMember
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
         from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
@@ -5501,6 +5544,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .file_storage import FileStorage
         from .file_storage_container import FileStorageContainer
         from .filter_operator_schema import FilterOperatorSchema
+        from .fraud_protection_provider import FraudProtectionProvider
         from .governance_insight import GovernanceInsight
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .group import Group
@@ -5510,6 +5554,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .horizontal_section import HorizontalSection
         from .horizontal_section_column import HorizontalSectionColumn
+        from .human_security_fraud_protection_provider import HumanSecurityFraudProtectionProvider
         from .identity_api_connector import IdentityApiConnector
         from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
         from .identity_container import IdentityContainer
@@ -5676,6 +5721,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
         from .on_email_otp_send_listener import OnEmailOtpSendListener
+        from .on_fraud_protection_load_start_listener import OnFraudProtectionLoadStartListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
@@ -5883,6 +5929,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.search import Search
         from .security.security import Security
         from .security.sensor import Sensor
+        from .security.sensor_candidate import SensorCandidate
+        from .security.sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
         from .security.site_source import SiteSource
         from .security.ssl_certificate import SslCertificate
         from .security.subcategory_template import SubcategoryTemplate
@@ -6254,6 +6302,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
         from .app_scope import AppScope
+        from .arkose_fraud_protection_provider import ArkoseFraudProtectionProvider
         from .associated_team_info import AssociatedTeamInfo
         from .attachment import Attachment
         from .attachment_base import AttachmentBase
@@ -6489,6 +6538,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .engagement_conversation_message_reaction import EngagementConversationMessageReaction
         from .engagement_conversation_question_message import EngagementConversationQuestionMessage
         from .engagement_conversation_system_message import EngagementConversationSystemMessage
+        from .engagement_role import EngagementRole
+        from .engagement_role_member import EngagementRoleMember
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
         from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
@@ -6524,6 +6575,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .file_storage import FileStorage
         from .file_storage_container import FileStorageContainer
         from .filter_operator_schema import FilterOperatorSchema
+        from .fraud_protection_provider import FraudProtectionProvider
         from .governance_insight import GovernanceInsight
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .group import Group
@@ -6533,6 +6585,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .horizontal_section import HorizontalSection
         from .horizontal_section_column import HorizontalSectionColumn
+        from .human_security_fraud_protection_provider import HumanSecurityFraudProtectionProvider
         from .identity_api_connector import IdentityApiConnector
         from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
         from .identity_container import IdentityContainer
@@ -6699,6 +6752,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
         from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
         from .on_email_otp_send_listener import OnEmailOtpSendListener
+        from .on_fraud_protection_load_start_listener import OnFraudProtectionLoadStartListener
         from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
         from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
@@ -6906,6 +6960,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.search import Search
         from .security.security import Security
         from .security.sensor import Sensor
+        from .security.sensor_candidate import SensorCandidate
+        from .security.sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
         from .security.site_source import SiteSource
         from .security.ssl_certificate import SslCertificate
         from .security.subcategory_template import SubcategoryTemplate

@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .file_storage_container_viewpoint import FileStorageContainerViewpoint
     from .permission import Permission
     from .recycle_bin import RecycleBin
+    from .share_point_migration_job import SharePointMigrationJob
     from .site_lock_state import SiteLockState
 
 from .entity import Entity
@@ -38,6 +39,8 @@ class FileStorageContainer(Entity, Parsable):
     drive: Optional[Drive] = None
     # Indicates the lock state of the fileStorageContainer. The possible values are unlocked and lockedReadOnly. Read-only.
     lock_state: Optional[SiteLockState] = None
+    # The collection of sharePointMigrationJob objects local to the container. Read-write.
+    migration_jobs: Optional[list[SharePointMigrationJob]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The set of permissions for users in the fileStorageContainer. Permission for each user is set by the roles property. The possible values are: reader, writer, manager, and owner. Read-write.
@@ -76,6 +79,7 @@ class FileStorageContainer(Entity, Parsable):
         from .file_storage_container_viewpoint import FileStorageContainerViewpoint
         from .permission import Permission
         from .recycle_bin import RecycleBin
+        from .share_point_migration_job import SharePointMigrationJob
         from .site_lock_state import SiteLockState
 
         from .column_definition import ColumnDefinition
@@ -87,6 +91,7 @@ class FileStorageContainer(Entity, Parsable):
         from .file_storage_container_viewpoint import FileStorageContainerViewpoint
         from .permission import Permission
         from .recycle_bin import RecycleBin
+        from .share_point_migration_job import SharePointMigrationJob
         from .site_lock_state import SiteLockState
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -98,6 +103,7 @@ class FileStorageContainer(Entity, Parsable):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "lockState": lambda n : setattr(self, 'lock_state', n.get_enum_value(SiteLockState)),
+            "migrationJobs": lambda n : setattr(self, 'migration_jobs', n.get_collection_of_object_values(SharePointMigrationJob)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),
             "recycleBin": lambda n : setattr(self, 'recycle_bin', n.get_object_value(RecycleBin)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(FileStorageContainerSettings)),
@@ -125,6 +131,7 @@ class FileStorageContainer(Entity, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_enum_value("lockState", self.lock_state)
+        writer.write_collection_of_object_values("migrationJobs", self.migration_jobs)
         writer.write_collection_of_object_values("permissions", self.permissions)
         writer.write_object_value("recycleBin", self.recycle_bin)
         writer.write_object_value("settings", self.settings)

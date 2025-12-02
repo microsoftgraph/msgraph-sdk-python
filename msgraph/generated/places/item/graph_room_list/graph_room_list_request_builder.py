@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ....models.room_list import RoomList
     from .check_ins.check_ins_request_builder import CheckInsRequestBuilder
     from .rooms.rooms_request_builder import RoomsRequestBuilder
+    from .workspaces.workspaces_request_builder import WorkspacesRequestBuilder
 
 class GraphRoomListRequestBuilder(BaseRequestBuilder):
     """
@@ -90,6 +91,15 @@ class GraphRoomListRequestBuilder(BaseRequestBuilder):
         from .rooms.rooms_request_builder import RoomsRequestBuilder
 
         return RoomsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def workspaces(self) -> WorkspacesRequestBuilder:
+        """
+        Provides operations to manage the workspaces property of the microsoft.graph.roomList entity.
+        """
+        from .workspaces.workspaces_request_builder import WorkspacesRequestBuilder
+
+        return WorkspacesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GraphRoomListRequestBuilderGetQueryParameters():

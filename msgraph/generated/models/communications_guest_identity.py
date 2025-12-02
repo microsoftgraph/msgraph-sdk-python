@@ -13,6 +13,8 @@ from .identity import Identity
 class CommunicationsGuestIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsGuestIdentity"
+    # The email of the guest user.
+    email: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CommunicationsGuestIdentity:
@@ -35,6 +37,7 @@ class CommunicationsGuestIdentity(Identity, Parsable):
         from .identity import Identity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "email": lambda n : setattr(self, 'email', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -49,5 +52,6 @@ class CommunicationsGuestIdentity(Identity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("email", self.email)
     
 

@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .place import Place
     from .room import Room
+    from .workspace import Workspace
 
 from .place import Place
 
@@ -18,6 +19,8 @@ class RoomList(Place, Parsable):
     email_address: Optional[str] = None
     # The rooms property
     rooms: Optional[list[Room]] = None
+    # The workspaces property
+    workspaces: Optional[list[Workspace]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RoomList:
@@ -37,13 +40,16 @@ class RoomList(Place, Parsable):
         """
         from .place import Place
         from .room import Room
+        from .workspace import Workspace
 
         from .place import Place
         from .room import Room
+        from .workspace import Workspace
 
         fields: dict[str, Callable[[Any], None]] = {
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "rooms": lambda n : setattr(self, 'rooms', n.get_collection_of_object_values(Room)),
+            "workspaces": lambda n : setattr(self, 'workspaces', n.get_collection_of_object_values(Workspace)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,5 +66,6 @@ class RoomList(Place, Parsable):
         super().serialize(writer)
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_collection_of_object_values("rooms", self.rooms)
+        writer.write_collection_of_object_values("workspaces", self.workspaces)
     
 

@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .attribute_change_trigger import AttributeChangeTrigger
     from .membership_change_trigger import MembershipChangeTrigger
     from .time_based_attribute_trigger import TimeBasedAttributeTrigger
+    from .user_inactivity_trigger import UserInactivityTrigger
 
 @dataclass
 class WorkflowExecutionTrigger(AdditionalDataHolder, BackedModel, Parsable):
@@ -46,6 +47,10 @@ class WorkflowExecutionTrigger(AdditionalDataHolder, BackedModel, Parsable):
             from .time_based_attribute_trigger import TimeBasedAttributeTrigger
 
             return TimeBasedAttributeTrigger()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.userInactivityTrigger".casefold():
+            from .user_inactivity_trigger import UserInactivityTrigger
+
+            return UserInactivityTrigger()
         return WorkflowExecutionTrigger()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -56,10 +61,12 @@ class WorkflowExecutionTrigger(AdditionalDataHolder, BackedModel, Parsable):
         from .attribute_change_trigger import AttributeChangeTrigger
         from .membership_change_trigger import MembershipChangeTrigger
         from .time_based_attribute_trigger import TimeBasedAttributeTrigger
+        from .user_inactivity_trigger import UserInactivityTrigger
 
         from .attribute_change_trigger import AttributeChangeTrigger
         from .membership_change_trigger import MembershipChangeTrigger
         from .time_based_attribute_trigger import TimeBasedAttributeTrigger
+        from .user_inactivity_trigger import UserInactivityTrigger
 
         fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

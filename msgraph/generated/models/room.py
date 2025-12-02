@@ -30,14 +30,8 @@ class Room(Place, Parsable):
     floor_label: Optional[str] = None
     # Specifies the floor number that the room is on.
     floor_number: Optional[int] = None
-    # Specifies whether the room is wheelchair accessible.
-    is_wheel_chair_accessible: Optional[bool] = None
-    # Specifies a descriptive label for the room, for example, a number or name.
-    label: Optional[str] = None
     # Specifies a nickname for the room, for example, 'conf room'.
     nickname: Optional[str] = None
-    # Specifies other features of the room, for example, details like the type of view or furniture type.
-    tags: Optional[list[str]] = None
     # Specifies the name of the video device in the room.
     video_device_name: Optional[str] = None
     
@@ -72,10 +66,7 @@ class Room(Place, Parsable):
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "floorLabel": lambda n : setattr(self, 'floor_label', n.get_str_value()),
             "floorNumber": lambda n : setattr(self, 'floor_number', n.get_int_value()),
-            "isWheelChairAccessible": lambda n : setattr(self, 'is_wheel_chair_accessible', n.get_bool_value()),
-            "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "nickname": lambda n : setattr(self, 'nickname', n.get_str_value()),
-            "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "videoDeviceName": lambda n : setattr(self, 'video_device_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -99,10 +90,7 @@ class Room(Place, Parsable):
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_str_value("floorLabel", self.floor_label)
         writer.write_int_value("floorNumber", self.floor_number)
-        writer.write_bool_value("isWheelChairAccessible", self.is_wheel_chair_accessible)
-        writer.write_str_value("label", self.label)
         writer.write_str_value("nickname", self.nickname)
-        writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_str_value("videoDeviceName", self.video_device_name)
     
 

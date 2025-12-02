@@ -38,7 +38,7 @@ class RestoreSessionBase(Entity, Parsable):
     restore_job_type: Optional[RestoreJobType] = None
     # The number of metadata artifacts that belong to this restore session.
     restore_session_artifact_count: Optional[RestoreSessionArtifactCount] = None
-    # Status of the restore session. The value is an aggregated status of the restored artifacts. The possible values are: draft, activating, active, completedWithError, completed, unknownFutureValue, failed. Use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: failed.
+    # Status of the restore session. The value is an aggregated status of the restored artifacts. The possible values are: draft, activating, active, completedWithError, completed, unknownFutureValue, failed. Use the Prefer: include-unknown-enum-members request header to get the following members in this evolvable enum: failed.
     status: Optional[RestoreSessionStatus] = None
     
     @staticmethod

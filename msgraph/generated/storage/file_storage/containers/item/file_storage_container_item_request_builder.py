@@ -20,8 +20,10 @@ if TYPE_CHECKING:
     from .columns.columns_request_builder import ColumnsRequestBuilder
     from .drive.drive_request_builder import DriveRequestBuilder
     from .lock.lock_request_builder import LockRequestBuilder
+    from .migration_jobs.migration_jobs_request_builder import MigrationJobsRequestBuilder
     from .permanent_delete.permanent_delete_request_builder import PermanentDeleteRequestBuilder
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
+    from .provision_migration_containers.provision_migration_containers_request_builder import ProvisionMigrationContainersRequestBuilder
     from .recycle_bin.recycle_bin_request_builder import RecycleBinRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
     from .unlock.unlock_request_builder import UnlockRequestBuilder
@@ -184,6 +186,15 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
         return LockRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def migration_jobs(self) -> MigrationJobsRequestBuilder:
+        """
+        Provides operations to manage the migrationJobs property of the microsoft.graph.fileStorageContainer entity.
+        """
+        from .migration_jobs.migration_jobs_request_builder import MigrationJobsRequestBuilder
+
+        return MigrationJobsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def permanent_delete(self) -> PermanentDeleteRequestBuilder:
         """
         Provides operations to call the permanentDelete method.
@@ -200,6 +211,15 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
         from .permissions.permissions_request_builder import PermissionsRequestBuilder
 
         return PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def provision_migration_containers(self) -> ProvisionMigrationContainersRequestBuilder:
+        """
+        Provides operations to call the provisionMigrationContainers method.
+        """
+        from .provision_migration_containers.provision_migration_containers_request_builder import ProvisionMigrationContainersRequestBuilder
+
+        return ProvisionMigrationContainersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def recycle_bin(self) -> RecycleBinRequestBuilder:

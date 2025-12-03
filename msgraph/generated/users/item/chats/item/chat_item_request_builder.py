@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from .messages.messages_request_builder import MessagesRequestBuilder
     from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
     from .pinned_messages.pinned_messages_request_builder import PinnedMessagesRequestBuilder
+    from .remove_all_access_for_user.remove_all_access_for_user_request_builder import RemoveAllAccessForUserRequestBuilder
     from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
     from .tabs.tabs_request_builder import TabsRequestBuilder
     from .unhide_for_user.unhide_for_user_request_builder import UnhideForUserRequestBuilder
@@ -231,6 +232,15 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
         from .pinned_messages.pinned_messages_request_builder import PinnedMessagesRequestBuilder
 
         return PinnedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def remove_all_access_for_user(self) -> RemoveAllAccessForUserRequestBuilder:
+        """
+        Provides operations to call the removeAllAccessForUser method.
+        """
+        from .remove_all_access_for_user.remove_all_access_for_user_request_builder import RemoveAllAccessForUserRequestBuilder
+
+        return RemoveAllAccessForUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def send_activity_notification(self) -> SendActivityNotificationRequestBuilder:

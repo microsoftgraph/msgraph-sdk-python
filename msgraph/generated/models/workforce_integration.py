@@ -20,7 +20,7 @@ class WorkforceIntegration(ChangeTrackedEntity, Parsable):
     api_version: Optional[int] = None
     # Name of the workforce integration.
     display_name: Optional[str] = None
-    # Support to view eligibility-filtered results. Possible values are: none, swapRequest, offerShiftRequest, unknownFutureValue, timeOffReason. Use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: timeOffReason.
+    # Support to view eligibility-filtered results. Possible values are: none, swapRequest, offerShiftRequest, unknownFutureValue, timeOffReason. Use the Prefer: include-unknown-enum-members request header to get the following members in this evolvable enum: timeOffReason.
     eligibility_filtering_enabled_entities: Optional[EligibilityFilteringEnabledEntities] = None
     # The workforce integration encryption resource.
     encryption: Optional[WorkforceIntegrationEncryption] = None

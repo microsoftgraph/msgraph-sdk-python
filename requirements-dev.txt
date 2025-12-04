@@ -1,4 +1,4 @@
-aiohttp==3.12.15
+aiohttp==3.13.2
 aiosignal==1.4.0
 anyio==4.10.0
 astroid==3.3.11

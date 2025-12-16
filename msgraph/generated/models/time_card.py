@@ -25,7 +25,7 @@ class TimeCard(ChangeTrackedEntity, Parsable):
     clock_in_event: Optional[TimeCardEvent] = None
     # The clock-out event of the timeCard.
     clock_out_event: Optional[TimeCardEvent] = None
-    # Indicates whether this timeCard entry is confirmed. Possible values are: none, user, manager, unknownFutureValue.
+    # Indicates whether this timeCard entry is confirmed. The possible values are: none, user, manager, unknownFutureValue.
     confirmed_by: Optional[ConfirmedBy] = None
     # Notes about the timeCard.
     notes: Optional[ItemBody] = None

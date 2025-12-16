@@ -31,7 +31,7 @@ class CloudPcGalleryImage(Entity, Parsable):
     sku_name: Optional[str] = None
     # The date when the Cloud PC image is available for provisioning new Cloud PCs. For example, 2022-09-20. Read-only.
     start_date: Optional[datetime.date] = None
-    # The status of the gallery image on the Cloud PC. Possible values are: supported, supportedWithWarning, notSupported, unknownFutureValue. The default value is supported. Read-only.
+    # The status of the gallery image on the Cloud PC. The possible values are: supported, supportedWithWarning, notSupported, unknownFutureValue. The default value is supported. Read-only.
     status: Optional[CloudPcGalleryImageStatus] = None
     
     @staticmethod

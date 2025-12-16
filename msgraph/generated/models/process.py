@@ -25,7 +25,7 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # Complex type containing file hashes (cryptographic and location-sensitive).
     file_hash: Optional[FileHash] = None
-    # The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
+    # The integrity level of the process. The possible values are: unknown, untrusted, low, medium, high, system.
     integrity_level: Optional[ProcessIntegrityLevel] = None
     # True if the process is elevated.
     is_elevated: Optional[bool] = None

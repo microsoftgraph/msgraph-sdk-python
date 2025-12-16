@@ -15,7 +15,7 @@ class RetentionLabelSettings(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Describes the item behavior during retention period. Possible values are: doNotRetain, retain, retainAsRecord, retainAsRegulatoryRecord, unknownFutureValue. Read-only.
+    # Describes the item behavior during retention period. The possible values are: doNotRetain, retain, retainAsRecord, retainAsRegulatoryRecord, unknownFutureValue. Read-only.
     behavior_during_retention_period: Optional[BehaviorDuringRetentionPeriod] = None
     # Specifies whether updates to document content are allowed. Read-only.
     is_content_update_allowed: Optional[bool] = None

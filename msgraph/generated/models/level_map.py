@@ -16,13 +16,13 @@ from .base_map_feature import BaseMapFeature
 class LevelMap(BaseMapFeature, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.levelMap"
-    # The fixtures property
+    # Collection of fixtures (such as furniture or equipment) on this level. Supports upsert.
     fixtures: Optional[list[FixtureMap]] = None
-    # The placeId property
+    # Identifier of the floor to which this levelMap belongs.
     place_id: Optional[str] = None
-    # The sections property
+    # Collection of sections (such as zones or partitions) on this level. Supports upsert.
     sections: Optional[list[SectionMap]] = None
-    # The units property
+    # Collection of units (such as rooms or offices) on this level. Supports upsert.
     units: Optional[list[UnitMap]] = None
     
     @staticmethod

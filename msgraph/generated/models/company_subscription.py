@@ -35,7 +35,7 @@ class CompanySubscription(Entity, Parsable):
     sku_id: Optional[str] = None
     # The SKU associated with this subscription.
     sku_part_number: Optional[str] = None
-    # The status of this subscription. Possible values are: Enabled, Deleted, Suspended, Warning, LockedOut.
+    # The status of this subscription. The possible values are: Enabled, Deleted, Suspended, Warning, LockedOut.
     status: Optional[str] = None
     # The number of licenses included in this subscription.
     total_licenses: Optional[int] = None

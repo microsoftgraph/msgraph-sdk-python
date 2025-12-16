@@ -17,7 +17,7 @@ class ConnectionOperation(Entity, Parsable):
     error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
+    # Indicates the status of the asynchronous operation. The possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
     status: Optional[ConnectionOperationStatus] = None
     
     @staticmethod

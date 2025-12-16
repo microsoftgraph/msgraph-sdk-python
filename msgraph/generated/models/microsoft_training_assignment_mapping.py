@@ -15,7 +15,7 @@ from .training_setting import TrainingSetting
 class MicrosoftTrainingAssignmentMapping(TrainingSetting, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftTrainingAssignmentMapping"
-    # A user collection that specifies to whom the training should be assigned. Possible values are: none, allUsers, clickedPayload, compromised, reportedPhish, readButNotClicked, didNothing, unknownFutureValue.
+    # A user collection that specifies to whom the training should be assigned. The possible values are: none, allUsers, clickedPayload, compromised, reportedPhish, readButNotClicked, didNothing, unknownFutureValue.
     assigned_to: Optional[list[TrainingAssignedTo]] = None
     # The training property
     training: Optional[Training] = None

@@ -23,9 +23,9 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, BackedModel, Parsable
     total_user_count: Optional[int] = None
     # Number of users registered or capable for multi-factor authentication, self-service password reset, and passwordless authentication.
     user_registration_feature_counts: Optional[list[UserRegistrationFeatureCount]] = None
-    # The role type of the user. Possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
+    # The role type of the user. The possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
     user_roles: Optional[IncludedUserRoles] = None
-    # User type. Possible values are: all, member, guest, unknownFutureValue.
+    # User type. The possible values are: all, member, guest, unknownFutureValue.
     user_types: Optional[IncludedUserTypes] = None
     
     @staticmethod

@@ -13,7 +13,7 @@ from .place import Place
 class Floor(Place, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.floor"
-    # The sortOrder property
+    # Specifies the sort order of the floor. For example, a floor might be named 'Lobby' with a sort order of 0 to show this floor first in ordered lists.
     sort_order: Optional[int] = None
     
     @staticmethod

@@ -24,7 +24,7 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     account_name: Optional[str] = None
     # NetBIOS/Active Directory domain of user account (that is, domain/account format).
     domain_name: Optional[str] = None
-    # For email-related alerts - user account's email 'role'. Possible values are: unknown, sender, recipient.
+    # For email-related alerts - user account's email 'role'. The possible values are: unknown, sender, recipient.
     email_role: Optional[EmailRole] = None
     # Indicates whether the user logged on through a VPN.
     is_vpn: Optional[bool] = None
@@ -36,7 +36,7 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     logon_ip: Optional[str] = None
     # Location (by IP address mapping) associated with a user sign-in event by this user.
     logon_location: Optional[str] = None
-    # Method of user sign in. Possible values are: unknown, interactive, remoteInteractive, network, batch, service.
+    # Method of user sign in. The possible values are: unknown, interactive, remoteInteractive, network, batch, service.
     logon_type: Optional[LogonType] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -44,7 +44,7 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     on_premises_security_identifier: Optional[str] = None
     # Provider-generated/calculated risk score of the user account. Recommended value range of 0-1, which equates to a percentage.
     risk_score: Optional[str] = None
-    # User account type (group membership), per Windows definition. Possible values are: unknown, standard, power, administrator.
+    # User account type (group membership), per Windows definition. The possible values are: unknown, standard, power, administrator.
     user_account_type: Optional[UserAccountSecurityType] = None
     # User sign-in name - internet format: (user account name)@(user account DNS domain name).
     user_principal_name: Optional[str] = None

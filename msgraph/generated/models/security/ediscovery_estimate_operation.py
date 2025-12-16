@@ -28,7 +28,7 @@ class EdiscoveryEstimateOperation(CaseOperation, Parsable):
     search: Optional[EdiscoverySearch] = None
     # The number of mailboxes that had search hits.
     site_count: Optional[int] = None
-    # The options to generate statistics. Possible values are: includeRefiners, includeQueryStats, includeUnindexedStats, advancedIndexing, locationsWithoutHits, unknownFutureValue.
+    # The options to generate statistics. The possible values are: includeRefiners, includeQueryStats, includeUnindexedStats, advancedIndexing, locationsWithoutHits, unknownFutureValue.
     statistics_options: Optional[StatisticsOptions] = None
     # The estimated count of unindexed items for the collection.
     unindexed_item_count: Optional[int] = None

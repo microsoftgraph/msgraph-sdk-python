@@ -28,7 +28,7 @@ class DataSourceContainer(Entity, Parsable):
     odata_type: Optional[str] = None
     # Date and time that the dataSourceContainer was released from the case.
     released_date_time: Optional[datetime.datetime] = None
-    # Latest status of the dataSourceContainer. Possible values are: Active, Released.
+    # Latest status of the dataSourceContainer. The possible values are: Active, Released.
     status: Optional[DataSourceContainerStatus] = None
     
     @staticmethod

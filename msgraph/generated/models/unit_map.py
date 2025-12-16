@@ -13,7 +13,7 @@ from .base_map_feature import BaseMapFeature
 class UnitMap(BaseMapFeature, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.unitMap"
-    # The placeId property
+    # Identifier of the place (such as a room) to which this unitMap belongs.
     place_id: Optional[str] = None
     
     @staticmethod

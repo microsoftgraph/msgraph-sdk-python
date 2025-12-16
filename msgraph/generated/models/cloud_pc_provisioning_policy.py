@@ -50,7 +50,7 @@ class CloudPcProvisioningPolicy(Entity, Parsable):
     microsoft_managed_desktop: Optional[MicrosoftManagedDesktop] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Specifies the type of license used when provisioning Cloud PCs using this policy. By default, the license type is dedicated if the provisioningType isn't specified when you create the cloudPcProvisioningPolicy. You can't change this property after the cloudPcProvisioningPolicy was created. Possible values are: dedicated, shared, unknownFutureValue.
+    # Specifies the type of license used when provisioning Cloud PCs using this policy. By default, the license type is dedicated if the provisioningType isn't specified when you create the cloudPcProvisioningPolicy. You can't change this property after the cloudPcProvisioningPolicy was created. The possible values are: dedicated, shared, unknownFutureValue.
     provisioning_type: Optional[CloudPcProvisioningType] = None
     # Indicates a specific Windows setting to configure during the creation of Cloud PCs for this provisioning policy. Supports $select.
     windows_setting: Optional[CloudPcWindowsSetting] = None

@@ -15,9 +15,9 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
+    # The possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
     exclude_platforms: Optional[list[ConditionalAccessDevicePlatform]] = None
-    # Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
+    # The possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
     include_platforms: Optional[list[ConditionalAccessDevicePlatform]] = None
     # The OdataType property
     odata_type: Optional[str] = None

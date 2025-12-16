@@ -22,7 +22,7 @@ class CallRecordingEventMessageDetail(EventMessageDetail, Parsable):
     call_recording_display_name: Optional[str] = None
     # Duration of the call recording.
     call_recording_duration: Optional[datetime.timedelta] = None
-    # Status of the call recording. Possible values are: success, failure, initial, chunkFinished, unknownFutureValue.
+    # Status of the call recording. The possible values are: success, failure, initial, chunkFinished, unknownFutureValue.
     call_recording_status: Optional[CallRecordingStatus] = None
     # Call recording URL.
     call_recording_url: Optional[str] = None

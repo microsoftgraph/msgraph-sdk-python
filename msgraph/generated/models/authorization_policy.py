@@ -18,7 +18,7 @@ class AuthorizationPolicy(PolicyBase, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.authorizationPolicy"
     # Indicates whether a user can join the tenant by email validation.
     allow_email_verified_users_to_join_organization: Optional[bool] = None
-    # Indicates who can invite guests to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more information, see allowInvitesFrom values.
+    # Indicates who can invite guests to the organization. The possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more information, see allowInvitesFrom values.
     allow_invites_from: Optional[AllowInvitesFrom] = None
     # Indicates whether user consent for risky apps is allowed. We recommend keeping allowUserConsentForRiskyApps as false. Default value is false.
     allow_user_consent_for_risky_apps: Optional[bool] = None

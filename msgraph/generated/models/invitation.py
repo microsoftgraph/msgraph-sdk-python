@@ -36,7 +36,7 @@ class Invitation(Entity, Parsable):
     reset_redemption: Optional[bool] = None
     # Indicates whether an email should be sent to the user being invited. The default is false.
     send_invitation_message: Optional[bool] = None
-    # The status of the invitation. Possible values are: PendingAcceptance, Completed, InProgress, and Error.
+    # The status of the invitation. The possible values are: PendingAcceptance, Completed, InProgress, and Error.
     status: Optional[str] = None
     
     @staticmethod

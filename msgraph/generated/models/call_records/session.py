@@ -26,7 +26,7 @@ class Session(Entity, Parsable):
     failure_info: Optional[FailureInfo] = None
     # Specifies whether the session is a test.
     is_test: Optional[bool] = None
-    # List of modalities present in the session. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
+    # List of modalities present in the session. The possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
     modalities: Optional[list[Modality]] = None
     # The OdataType property
     odata_type: Optional[str] = None

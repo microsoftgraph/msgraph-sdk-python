@@ -25,7 +25,7 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # The port that this service exposes.
     port: Optional[int] = None
-    # The protocol name. Possible values are: udp, tcp, sctp, unknownFutureValue.
+    # The protocol name. The possible values are: udp, tcp, sctp, unknownFutureValue.
     protocol: Optional[ContainerPortProtocol] = None
     # The name or number of the port to access on the pods targeted by the service. The port number must be in the range 1 to 65535. The name must be an IANASVCNAME.
     target_port: Optional[str] = None

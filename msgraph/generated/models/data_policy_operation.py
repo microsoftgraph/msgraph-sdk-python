@@ -19,7 +19,7 @@ class DataPolicyOperation(Entity, Parsable):
     odata_type: Optional[str] = None
     # Specifies the progress of an operation.
     progress: Optional[float] = None
-    # Possible values are: notStarted, running, complete, failed, unknownFutureValue.
+    # The possible values are: notStarted, running, complete, failed, unknownFutureValue.
     status: Optional[DataPolicyOperationStatus] = None
     # The URL location to where data is being exported for export requests.
     storage_location: Optional[str] = None

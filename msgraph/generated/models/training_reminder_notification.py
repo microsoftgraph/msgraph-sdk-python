@@ -14,7 +14,7 @@ from .base_end_user_notification import BaseEndUserNotification
 class TrainingReminderNotification(BaseEndUserNotification, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.trainingReminderNotification"
-    # Configurable frequency for the reminder email introduced during simulation creation. Possible values are: unknown, weekly, biWeekly, unknownFutureValue.
+    # Configurable frequency for the reminder email introduced during simulation creation. The possible values are: unknown, weekly, biWeekly, unknownFutureValue.
     delivery_frequency: Optional[NotificationDeliveryFrequency] = None
     
     @staticmethod

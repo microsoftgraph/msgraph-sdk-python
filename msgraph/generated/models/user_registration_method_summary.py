@@ -23,9 +23,9 @@ class UserRegistrationMethodSummary(AdditionalDataHolder, BackedModel, Parsable)
     total_user_count: Optional[int] = None
     # Number of users registered for each authentication method.
     user_registration_method_counts: Optional[list[UserRegistrationMethodCount]] = None
-    # The role type of the user. Possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
+    # The role type of the user. The possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
     user_roles: Optional[IncludedUserRoles] = None
-    # User type. Possible values are: all, member, guest, unknownFutureValue.
+    # User type. The possible values are: all, member, guest, unknownFutureValue.
     user_types: Optional[IncludedUserTypes] = None
     
     @staticmethod

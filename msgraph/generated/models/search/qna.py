@@ -30,7 +30,7 @@ class Qna(SearchAnswer, Parsable):
     language_tags: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # List of devices and operating systems that are able to view this QnA. Possible values are: android, androidForWork, ios, macOS, windowsPhone81, windowsPhone81AndLater, windows10AndLater, androidWorkProfile, unknown, androidASOP, androidMobileApplicationManagement, iOSMobileApplicationManagement, unknownFutureValue.
+    # List of devices and operating systems that are able to view this QnA. The possible values are: android, androidForWork, ios, macOS, windowsPhone81, windowsPhone81AndLater, windows10AndLater, androidWorkProfile, unknown, androidASOP, androidMobileApplicationManagement, iOSMobileApplicationManagement, unknownFutureValue.
     platforms: Optional[list[DevicePlatformType]] = None
     # The state property
     state: Optional[AnswerState] = None

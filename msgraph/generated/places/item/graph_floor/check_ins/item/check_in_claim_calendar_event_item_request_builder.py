@@ -50,7 +50,7 @@ class CheckInClaimCalendarEventItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CheckInClaimCalendarEventItemRequestBuilderGetQueryParameters]] = None) -> Optional[CheckInClaim]:
         """
-        Get checkIns from places
+        A subresource of a place object that indicates the check-in status of an Outlook calendar event booked at the place.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CheckInClaim]
         """
@@ -104,7 +104,7 @@ class CheckInClaimCalendarEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CheckInClaimCalendarEventItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get checkIns from places
+        A subresource of a place object that indicates the check-in status of an Outlook calendar event booked at the place.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class CheckInClaimCalendarEventItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CheckInClaimCalendarEventItemRequestBuilderGetQueryParameters():
         """
-        Get checkIns from places
+        A subresource of a place object that indicates the check-in status of an Outlook calendar event booked at the place.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

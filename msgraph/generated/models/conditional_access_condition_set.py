@@ -28,7 +28,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
     applications: Optional[ConditionalAccessApplications] = None
     # Authentication flows included in the policy scope.
     authentication_flows: Optional[ConditionalAccessAuthenticationFlows] = None
-    # Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.  The easUnsupported enumeration member will be deprecated in favor of exchangeActiveSync, which includes EAS supported and unsupported platforms.
+    # Client application types included in the policy. The possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.  The easUnsupported enumeration member will be deprecated in favor of exchangeActiveSync, which includes EAS supported and unsupported platforms.
     client_app_types: Optional[list[ConditionalAccessClientApp]] = None
     # Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
     client_applications: Optional[ConditionalAccessClientApplications] = None
@@ -42,11 +42,11 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
     odata_type: Optional[str] = None
     # Platforms included in and excluded from the policy.
     platforms: Optional[ConditionalAccessPlatforms] = None
-    # Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
+    # Service principal risk levels included in the policy. The possible values are: low, medium, high, none, unknownFutureValue.
     service_principal_risk_levels: Optional[list[RiskLevel]] = None
-    # Sign-in risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
+    # Sign-in risk levels included in the policy. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
     sign_in_risk_levels: Optional[list[RiskLevel]] = None
-    # User risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
+    # User risk levels included in the policy. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
     user_risk_levels: Optional[list[RiskLevel]] = None
     # Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
     users: Optional[ConditionalAccessUsers] = None

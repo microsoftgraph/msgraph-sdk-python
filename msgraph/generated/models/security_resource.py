@@ -19,7 +19,7 @@ class SecurityResource(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # Name of the resource that is related to current alert. Required.
     resource: Optional[str] = None
-    # Represents type of security resources related to an alert. Possible values are: attacked, related.
+    # Represents type of security resources related to an alert. The possible values are: attacked, related.
     resource_type: Optional[SecurityResourceType] = None
     
     @staticmethod

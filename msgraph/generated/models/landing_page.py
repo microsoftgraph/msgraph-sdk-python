@@ -34,9 +34,9 @@ class LandingPage(Entity, Parsable):
     locale: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
+    # The source of the content. The possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
-    # The status of the simulation. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
+    # The status of the simulation. The possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
     status: Optional[SimulationContentStatus] = None
     # Supported locales.
     supported_locales: Optional[list[str]] = None

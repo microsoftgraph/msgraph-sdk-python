@@ -19,7 +19,7 @@ class AccountTargetContent(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # The type of account target content. Possible values are: unknown, includeAll, addressBook, unknownFutureValue.
+    # The type of account target content. The possible values are: unknown, includeAll, addressBook, unknownFutureValue.
     type: Optional[AccountTargetContentType] = None
     
     @staticmethod

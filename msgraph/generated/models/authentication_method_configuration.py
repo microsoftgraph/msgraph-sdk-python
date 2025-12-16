@@ -25,7 +25,7 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
     exclude_targets: Optional[list[ExcludeTarget]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The state of the policy. Possible values are: enabled, disabled.
+    # The state of the policy. The possible values are: enabled, disabled.
     state: Optional[AuthenticationMethodState] = None
     
     @staticmethod

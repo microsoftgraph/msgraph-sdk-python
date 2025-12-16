@@ -41,7 +41,7 @@ class ExternalConnection(Entity, Parsable):
     schema: Optional[Schema] = None
     # The settings configuring the search experience for content in this connection, such as the display templates for search results.
     search_settings: Optional[SearchSettings] = None
-    # Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
+    # Indicates the current state of the connection. The possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
     state: Optional[ConnectionState] = None
     
     @staticmethod

@@ -24,9 +24,9 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
     event_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The stage when the entity was changed. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue, approval. Use the Prefer: include-unknown-enum-members request header to get the following members in this evolvable enum: approval.
+    # The stage when the entity was changed.
     stage: Optional[SubjectRightsRequestStage] = None
-    # The status of the stage when the entity was changed. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
+    # The status of the stage when the entity was changed. The possible values are: notStarted, current, completed, failed, unknownFutureValue.
     stage_status: Optional[SubjectRightsRequestStageStatus] = None
     # Type of history.
     type: Optional[str] = None

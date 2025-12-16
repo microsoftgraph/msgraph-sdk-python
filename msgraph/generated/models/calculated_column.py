@@ -12,13 +12,13 @@ class CalculatedColumn(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # For dateTime output types, the format of the value. Possible values are: dateOnly or dateTime.
+    # For dateTime output types, the format of the value. The possible values are: dateOnly or dateTime.
     format: Optional[str] = None
     # The formula used to compute the value for this column.
     formula: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The output type used to format values in this column. Possible values are: boolean, currency, dateTime, number, or text.
+    # The output type used to format values in this column. The possible values are: boolean, currency, dateTime, number, or text.
     output_type: Optional[str] = None
     
     @staticmethod

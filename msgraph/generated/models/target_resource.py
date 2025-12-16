@@ -18,7 +18,7 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # Indicates the visible name defined for the resource. Typically specified when the resource is created.
     display_name: Optional[str] = None
-    # When type is set to Group, this indicates the group type. Possible values are: unifiedGroups, azureAD, and unknownFutureValue
+    # When type is set to Group, this indicates the group type. The possible values are: unifiedGroups, azureAD, and unknownFutureValue
     group_type: Optional[GroupType] = None
     # Indicates the unique ID of the resource.
     id: Optional[str] = None

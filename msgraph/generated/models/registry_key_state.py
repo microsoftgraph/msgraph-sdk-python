@@ -17,7 +17,7 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # A Windows registry hive : HKEYCURRENTCONFIG HKEYCURRENTUSER HKEYLOCALMACHINE/SAM HKEYLOCALMACHINE/Security HKEYLOCALMACHINE/Software HKEYLOCALMACHINE/System HKEY_USERS/.Default. Possible values are: unknown, currentConfig, currentUser, localMachineSam, localMachineSecurity, localMachineSoftware, localMachineSystem, usersDefault.
+    # A Windows registry hive : HKEYCURRENTCONFIG HKEYCURRENTUSER HKEYLOCALMACHINE/SAM HKEYLOCALMACHINE/Security HKEYLOCALMACHINE/Software HKEYLOCALMACHINE/System HKEY_USERS/.Default. The possible values are: unknown, currentConfig, currentUser, localMachineSam, localMachineSecurity, localMachineSoftware, localMachineSystem, usersDefault.
     hive: Optional[RegistryHive] = None
     # Current (i.e. changed) registry key (excludes HIVE).
     key: Optional[str] = None
@@ -29,7 +29,7 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
     old_value_data: Optional[str] = None
     # Previous (i.e. before changed) registry key value name.
     old_value_name: Optional[str] = None
-    # Operation that changed the registry key name and/or value. Possible values are: unknown, create, modify, delete.
+    # Operation that changed the registry key name and/or value. The possible values are: unknown, create, modify, delete.
     operation: Optional[RegistryOperation] = None
     # Process ID (PID) of the process that modified the registry key (process details will appear in the alert 'processes' collection).
     process_id: Optional[int] = None
@@ -37,7 +37,7 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
     value_data: Optional[str] = None
     # Current (i.e. changed) registry key value name
     value_name: Optional[str] = None
-    # Registry key value type REGBINARY REGDWORD REGDWORDLITTLEENDIAN REGDWORDBIGENDIANREGEXPANDSZ REGLINK REGMULTISZ REGNONE REGQWORD REGQWORDLITTLEENDIAN REG_SZ Possible values are: unknown, binary, dword, dwordLittleEndian, dwordBigEndian, expandSz, link, multiSz, none, qword, qwordlittleEndian, sz.
+    # Registry key value type REGBINARY REGDWORD REGDWORDLITTLEENDIAN REGDWORDBIGENDIANREGEXPANDSZ REGLINK REGMULTISZ REGNONE REGQWORD REGQWORDLITTLEENDIAN REG_SZ The possible values are: unknown, binary, dword, dwordLittleEndian, dwordBigEndian, expandSz, link, multiSz, none, qword, qwordlittleEndian, sz.
     value_type: Optional[RegistryValueType] = None
     
     @staticmethod

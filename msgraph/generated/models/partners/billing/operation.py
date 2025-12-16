@@ -22,7 +22,7 @@ class Operation(Entity, Parsable):
     last_action_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The status of the operation. Possible values are: notStarted, running, completed, failed, unknownFutureValue.
+    # The status of the operation. The possible values are: notStarted, running, completed, failed, unknownFutureValue.
     status: Optional[LongRunningOperationStatus] = None
     
     @staticmethod

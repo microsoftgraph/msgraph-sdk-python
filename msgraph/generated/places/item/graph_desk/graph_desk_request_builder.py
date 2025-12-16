@@ -33,9 +33,10 @@ class GraphDeskRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GraphDeskRequestBuilderGetQueryParameters]] = None) -> Optional[Desk]:
         """
-        Get the item of type microsoft.graph.place as microsoft.graph.desk
+        Get a collection of the specified type of place objects defined in a tenant. You can do the following for a given tenant:- List all buildings.- List all floors.- List all sections.- List all desks.- List all rooms.- List all workspaces.- List all room lists.- List rooms in a specific room list.- List workspaces in a specific room list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Desk]
+        Find more info here: https://learn.microsoft.com/graph/api/place-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -53,7 +54,7 @@ class GraphDeskRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GraphDeskRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the item of type microsoft.graph.place as microsoft.graph.desk
+        Get a collection of the specified type of place objects defined in a tenant. You can do the following for a given tenant:- List all buildings.- List all floors.- List all sections.- List all desks.- List all rooms.- List all workspaces.- List all room lists.- List rooms in a specific room list.- List workspaces in a specific room list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,7 +85,7 @@ class GraphDeskRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GraphDeskRequestBuilderGetQueryParameters():
         """
-        Get the item of type microsoft.graph.place as microsoft.graph.desk
+        Get a collection of the specified type of place objects defined in a tenant. You can do the following for a given tenant:- List all buildings.- List all floors.- List all sections.- List all desks.- List all rooms.- List all workspaces.- List all room lists.- List rooms in a specific room list.- List workspaces in a specific room list.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

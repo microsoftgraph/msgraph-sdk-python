@@ -13,9 +13,9 @@ from .place_mode import PlaceMode
 class AssignedPlaceMode(PlaceMode, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.assignedPlaceMode"
-    # The assignedUserEmailAddress property
+    # The email address of the user to whom the desk is assigned.
     assigned_user_email_address: Optional[str] = None
-    # The assignedUserId property
+    # The user ID of the user to whom the desk is assigned.
     assigned_user_id: Optional[str] = None
     
     @staticmethod

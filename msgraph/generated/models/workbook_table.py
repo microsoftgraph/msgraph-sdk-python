@@ -41,7 +41,7 @@ class WorkbookTable(Entity, Parsable):
     show_totals: Optional[bool] = None
     # The sorting for the table. Read-only.
     sort: Optional[WorkbookTableSort] = None
-    # A constant value that represents the Table style. Possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
+    # A constant value that represents the Table style. The possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
     style: Optional[str] = None
     # The worksheet containing the current table. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None

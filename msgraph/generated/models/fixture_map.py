@@ -13,7 +13,7 @@ from .base_map_feature import BaseMapFeature
 class FixtureMap(BaseMapFeature, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.fixtureMap"
-    # The placeId property
+    # Identifier for the floor to which this fixtureMap belongs.
     place_id: Optional[str] = None
     
     @staticmethod

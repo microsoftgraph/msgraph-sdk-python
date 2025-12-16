@@ -14,7 +14,7 @@ from .base_end_user_notification import BaseEndUserNotification
 class PositiveReinforcementNotification(BaseEndUserNotification, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.positiveReinforcementNotification"
-    # Delivery preference. Possible values are: unknown, deliverImmedietly, deliverAfterCampaignEnd, unknownFutureValue.
+    # Delivery preference. The possible values are: unknown, deliverImmedietly, deliverAfterCampaignEnd, unknownFutureValue.
     delivery_preference: Optional[NotificationDeliveryPreference] = None
     
     @staticmethod

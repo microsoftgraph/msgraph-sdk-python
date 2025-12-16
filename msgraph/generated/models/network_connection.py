@@ -30,7 +30,7 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
     destination_port: Optional[str] = None
     # Network connection URL/URI string - excluding parameters. (for example 'www.contoso.com/products/default.html')
     destination_url: Optional[str] = None
-    # Network connection direction. Possible values are: unknown, inbound, outbound.
+    # Network connection direction. The possible values are: unknown, inbound, outbound.
     direction: Optional[ConnectionDirection] = None
     # Date when the destination domain was registered. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     domain_registered_date_time: Optional[datetime.datetime] = None
@@ -46,7 +46,7 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
     nat_source_port: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Network protocol. Possible values are: unknown, ip, icmp, igmp, ggp, ipv4, tcp, pup, udp, idp, ipv6, ipv6RoutingHeader, ipv6FragmentHeader, ipSecEncapsulatingSecurityPayload, ipSecAuthenticationHeader, icmpV6, ipv6NoNextHeader, ipv6DestinationOptions, nd, raw, ipx, spx, spxII.
+    # Network protocol. The possible values are: unknown, ip, icmp, igmp, ggp, ipv4, tcp, pup, udp, idp, ipv6, ipv6RoutingHeader, ipv6FragmentHeader, ipSecEncapsulatingSecurityPayload, ipSecAuthenticationHeader, icmpV6, ipv6NoNextHeader, ipv6DestinationOptions, nd, raw, ipx, spx, spxII.
     protocol: Optional[SecurityNetworkProtocol] = None
     # Provider generated/calculated risk score of the network connection. Recommended value range of 0-1, which equates to a percentage.
     risk_score: Optional[str] = None
@@ -56,7 +56,7 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
     source_location: Optional[str] = None
     # Source (i.e. origin) IP port (of the network connection).
     source_port: Optional[str] = None
-    # Network connection status. Possible values are: unknown, attempted, succeeded, blocked, failed.
+    # Network connection status. The possible values are: unknown, attempted, succeeded, blocked, failed.
     status: Optional[ConnectionStatus] = None
     # Parameters (suffix) of the destination URL.
     url_parameters: Optional[str] = None

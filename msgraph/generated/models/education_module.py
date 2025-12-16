@@ -35,7 +35,7 @@ class EducationModule(Entity, Parsable):
     resources: Optional[list[EducationModuleResource]] = None
     # Folder URL where all the file resources for this module are stored.
     resources_folder_url: Optional[str] = None
-    # Status of the module. You can't use a PATCH operation to update this value. Possible values are: draft and published.
+    # Status of the module. You can't use a PATCH operation to update this value. The possible values are: draft and published.
     status: Optional[EducationModuleStatus] = None
     
     @staticmethod

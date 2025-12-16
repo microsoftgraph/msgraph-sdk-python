@@ -16,7 +16,7 @@ class RemoteDesktopSecurityConfiguration(Entity, Parsable):
     is_remote_desktop_protocol_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The collection of target device groups that are associated with the RDS security configuration that will be enabled for SSO when a client connects to the target device over RDP using the new Microsoft Entra ID RDS authentication protocol.
+    # The collection of target device groups that are associated with the RDS security configuration that will be enabled for SSO when a client connects to the target device over RDP using the new Microsoft Entra ID RDS authentication protocol. <br/<Supports $expand.
     target_device_groups: Optional[list[TargetDeviceGroup]] = None
     
     @staticmethod

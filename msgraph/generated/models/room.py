@@ -16,7 +16,7 @@ class Room(Place, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.room"
     # Specifies the name of the audio device in the room.
     audio_device_name: Optional[str] = None
-    # Type of room. Possible values are standard, and reserved.
+    # Type of room. Possible values are: unknown, standard, reserved.
     booking_type: Optional[BookingType] = None
     # Specifies the building name or building number that the room is in.
     building: Optional[str] = None

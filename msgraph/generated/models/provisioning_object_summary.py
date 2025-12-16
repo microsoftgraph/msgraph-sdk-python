@@ -36,7 +36,7 @@ class ProvisioningObjectSummary(Entity, Parsable):
     modified_properties: Optional[list[ModifiedProperty]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Microsoft Entra activity list. Supports $filter (eq, contains).
+    # Indicates the activity name or the operation name. The possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Microsoft Entra activity list. Supports $filter (eq, contains).
     provisioning_action: Optional[ProvisioningAction] = None
     # Details of provisioning status.
     provisioning_status_info: Optional[ProvisioningStatusInfo] = None

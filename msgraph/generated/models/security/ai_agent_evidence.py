@@ -18,7 +18,7 @@ class AiAgentEvidence(AlertEvidence, Parsable):
     agent_id: Optional[str] = None
     # The display name for the AI agent.
     agent_name: Optional[str] = None
-    # Type of the platform the agent runs on. Possible values are: unknown, azureAIFoundry, copilotStudio, copilot, unknownFutureValue.
+    # Type of the platform the agent runs on. The possible values are: unknown, azureAIFoundry, copilotStudio, copilot, unknownFutureValue.
     hosting_platform_type: Optional[AiAgentPlatform] = None
     # The instructions of the agent.
     instructions: Optional[str] = None

@@ -18,9 +18,9 @@ class SubscribedSku(Entity, Parsable):
     account_id: Optional[str] = None
     # The name of the account this SKU belongs to.
     account_name: Optional[str] = None
-    # The target class for this SKU. Only SKUs with target class User are assignable. Possible values are: User, Company.
+    # The target class for this SKU. Only SKUs with target class User are assignable. The possible values are: User, Company.
     applies_to: Optional[str] = None
-    # Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.
+    # Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. The possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.
     capability_status: Optional[str] = None
     # The number of licenses that have been assigned.
     consumed_units: Optional[int] = None

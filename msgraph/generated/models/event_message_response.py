@@ -17,7 +17,7 @@ class EventMessageResponse(EventMessage, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.eventMessageResponse"
     # An alternate date/time proposed by an invitee for a meeting request to start and end. Read-only. Not filterable.
     proposed_new_time: Optional[TimeSlot] = None
-    # Specifies the type of response to a meeting request. Possible values are: tentativelyAccepted, accepted, declined. For the eventMessageResponse type, none, organizer, and notResponded are not supported. Read-only. Not filterable.
+    # Specifies the type of response to a meeting request. The possible values are: tentativelyAccepted, accepted, declined. For the eventMessageResponse type, none, organizer, and notResponded are not supported. Read-only. Not filterable.
     response_type: Optional[ResponseType] = None
     
     @staticmethod

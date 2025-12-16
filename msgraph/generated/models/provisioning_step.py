@@ -25,9 +25,9 @@ class ProvisioningStep(AdditionalDataHolder, BackedModel, Parsable):
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Type of step. Possible values are: import, scoping, matching, processing, referenceResolution, export, unknownFutureValue.
+    # Type of step. The possible values are: import, scoping, matching, processing, referenceResolution, export, unknownFutureValue.
     provisioning_step_type: Optional[ProvisioningStepType] = None
-    # Status of the step. Possible values are: success, warning,  failure, skipped, unknownFutureValue.
+    # Status of the step. The possible values are: success, warning,  failure, skipped, unknownFutureValue.
     status: Optional[ProvisioningResult] = None
     
     @staticmethod

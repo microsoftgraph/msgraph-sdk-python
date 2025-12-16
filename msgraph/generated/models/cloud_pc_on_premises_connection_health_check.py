@@ -25,7 +25,7 @@ class CloudPcOnPremisesConnectionHealthCheck(AdditionalDataHolder, BackedModel, 
     display_name: Optional[str] = None
     # The value cannot be modified and is automatically populated when the health check ends. The Timestamp type represents date and time information using ISO 8601 format and is in Coordinated Universal Time (UTC). For example, midnight UTC on Jan 1, 2024 would look like this: '2024-01-01T00:00:00Z'. Returned by default. Read-only.
     end_date_time: Optional[datetime.datetime] = None
-    # The type of error that occurred during this health check. Possible values are: endpointConnectivityCheckCloudPcUrlNotAllowListed, endpointConnectivityCheckWVDUrlNotAllowListed, etc. (The all possible values can refer to cloudPcOnPremisesConnectionHealthCheckErrorType) Read-Only.
+    # The type of error that occurred during this health check. The possible values are: endpointConnectivityCheckCloudPcUrlNotAllowListed, endpointConnectivityCheckWVDUrlNotAllowListed, etc. (The all possible values can refer to cloudPcOnPremisesConnectionHealthCheckErrorType) Read-Only.
     error_type: Optional[CloudPcOnPremisesConnectionHealthCheckErrorType] = None
     # The OdataType property
     odata_type: Optional[str] = None

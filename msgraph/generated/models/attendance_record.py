@@ -26,7 +26,7 @@ class AttendanceRecord(Entity, Parsable):
     odata_type: Optional[str] = None
     # Unique identifier of a virtualEventRegistration that is available to all participants registered for the virtualEventWebinar.
     registration_id: Optional[str] = None
-    # Role of the attendee. Possible values are: None, Attendee, Presenter, and Organizer.
+    # Role of the attendee. The possible values are: None, Attendee, Presenter, and Organizer.
     role: Optional[str] = None
     # Total duration of the attendances in seconds.
     total_attendance_in_seconds: Optional[int] = None

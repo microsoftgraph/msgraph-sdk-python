@@ -12,7 +12,7 @@ from .comms_operation import CommsOperation
 
 @dataclass
 class SendDtmfTonesOperation(CommsOperation, Parsable):
-    # The results of the action. Possible values are: unknown, completedSuccessfully, mediaOperationCanceled, unknownfutureValue.
+    # The results of the action. The possible values are: unknown, completedSuccessfully, mediaOperationCanceled, unknownfutureValue.
     completion_reason: Optional[SendDtmfCompletionReason] = None
     # The OdataType property
     odata_type: Optional[str] = None

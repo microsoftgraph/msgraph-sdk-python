@@ -102,11 +102,11 @@ class Event(OutlookItem, Parsable):
     response_requested: Optional[bool] = None
     # Indicates the type of response sent in response to an event message.
     response_status: Optional[ResponseStatus] = None
-    # Possible values are: normal, personal, private, and confidential.
+    # The possible values are: normal, personal, private, and confidential.
     sensitivity: Optional[Sensitivity] = None
     # The ID for the recurring series master item, if this event is part of a recurring series.
     series_master_id: Optional[str] = None
-    # The status to show. Possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+    # The status to show. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
     show_as: Optional[FreeBusyStatus] = None
     # The collection of single-value extended properties defined for the event. Read-only. Nullable.
     single_value_extended_properties: Optional[list[SingleValueLegacyExtendedProperty]] = None
@@ -116,7 +116,7 @@ class Event(OutlookItem, Parsable):
     subject: Optional[str] = None
     # A custom identifier specified by a client app for the server to avoid redundant POST operations in case of client retries to create the same event. It's useful when low network connectivity causes the client to time out before receiving a response from the server for the client's prior create-event request. After you set transactionId when creating an event, you can't change transactionId in a subsequent update. This property is only returned in a response payload if an app has set it. Optional.
     transaction_id: Optional[str] = None
-    # The event type. Possible values are: singleInstance, occurrence, exception, seriesMaster. Read-only
+    # The event type. The possible values are: singleInstance, occurrence, exception, seriesMaster. Read-only
     type: Optional[EventType] = None
     # The URL to open the event in Outlook on the web.Outlook on the web opens the event in the browser if you are signed in to your mailbox. Otherwise, Outlook on the web prompts you to sign in.This URL can't be accessed from within an iFrame.
     web_link: Optional[str] = None

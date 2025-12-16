@@ -19,7 +19,7 @@ class ResourceSpecificPermissionGrant(DirectoryObject, Parsable):
     client_id: Optional[str] = None
     # The name of the resource-specific permission. Read-only.
     permission: Optional[str] = None
-    # The type of permission. Possible values are: Application, Delegated. Read-only.
+    # The type of permission. The possible values are: Application, Delegated. Read-only.
     permission_type: Optional[str] = None
     # ID of the Microsoft Entra app that is hosting the resource. Read-only.
     resource_app_id: Optional[str] = None

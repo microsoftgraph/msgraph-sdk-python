@@ -49,10 +49,10 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FederatedIdentityCredentialsRequestBuilderGetQueryParameters]] = None) -> Optional[FederatedIdentityCredentialCollectionResponse]:
         """
-        Get a list of the federatedIdentityCredential objects and their properties.
+        Get a list of the federatedIdentityCredential objects and their properties assigned to an application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FederatedIdentityCredentialCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/application-list-federatedidentitycredentials?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/federatedidentitycredential-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,7 +74,7 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FederatedIdentityCredential]
-        Find more info here: https://learn.microsoft.com/graph/api/application-post-federatedidentitycredentials?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/federatedidentitycredential-post?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +94,7 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FederatedIdentityCredentialsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of the federatedIdentityCredential objects and their properties.
+        Get a list of the federatedIdentityCredential objects and their properties assigned to an application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +140,7 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FederatedIdentityCredentialsRequestBuilderGetQueryParameters():
         """
-        Get a list of the federatedIdentityCredential objects and their properties.
+        Get a list of the federatedIdentityCredential objects and their properties assigned to an application.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

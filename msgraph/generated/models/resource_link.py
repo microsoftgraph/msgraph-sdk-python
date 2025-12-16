@@ -17,11 +17,11 @@ class ResourceLink(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The linkType property
     link_type: Optional[ResourceLinkType] = None
-    # The name property
+    # The link text that is visible in the Places app. The maximum length is 200 characters.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The value property
+    # The URL of the resource link. The maximum length is 200 characters.
     value: Optional[str] = None
     
     @staticmethod

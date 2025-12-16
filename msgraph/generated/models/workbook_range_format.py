@@ -23,7 +23,7 @@ class WorkbookRangeFormat(Entity, Parsable):
     fill: Optional[WorkbookRangeFill] = None
     # Returns the font object defined on the overall range selected Read-only.
     font: Optional[WorkbookRangeFont] = None
-    # The horizontal alignment for the specified object. Possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
+    # The horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
     horizontal_alignment: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -31,7 +31,7 @@ class WorkbookRangeFormat(Entity, Parsable):
     protection: Optional[WorkbookFormatProtection] = None
     # The height of all rows in the range. If the row heights aren't uniform null will be returned.
     row_height: Optional[float] = None
-    # The vertical alignment for the specified object. Possible values are: Top, Center, Bottom, Justify, Distributed.
+    # The vertical alignment for the specified object. The possible values are: Top, Center, Bottom, Justify, Distributed.
     vertical_alignment: Optional[str] = None
     # Indicates whether Excel wraps the text in the object. A null value indicates that the entire range doesn't have a uniform wrap setting.
     wrap_text: Optional[bool] = None

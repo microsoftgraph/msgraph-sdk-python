@@ -31,7 +31,7 @@ class Notebook(OnenoteEntityHierarchyModel, Parsable):
     sections: Optional[list[OnenoteSection]] = None
     # The URL for the sections navigation property, which returns all the sections in the notebook. Read-only.
     sections_url: Optional[str] = None
-    # Possible values are: Owner, Contributor, Reader, None. Owner represents owner-level access to the notebook. Contributor represents read/write access to the notebook. Reader represents read-only access to the notebook. Read-only.
+    # The possible values are: Owner, Contributor, Reader, None. Owner represents owner-level access to the notebook. Contributor represents read/write access to the notebook. Reader represents read-only access to the notebook. Read-only.
     user_role: Optional[OnenoteUserRole] = None
     
     @staticmethod

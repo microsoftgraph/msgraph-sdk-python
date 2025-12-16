@@ -19,13 +19,13 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Notification preference. Possible values are: unknown, microsoft, custom, unknownFutureValue.
+    # Notification preference. The possible values are: unknown, microsoft, custom, unknownFutureValue.
     notification_preference: Optional[EndUserNotificationPreference] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Positive reinforcement detail.
     positive_reinforcement: Optional[PositiveReinforcementNotification] = None
-    # End user notification type. Possible values are: unknown, noTraining, trainingSelected, noNotification, unknownFutureValue.
+    # End user notification type. The possible values are: unknown, noTraining, trainingSelected, noNotification, unknownFutureValue.
     setting_type: Optional[EndUserNotificationSettingType] = None
     
     @staticmethod

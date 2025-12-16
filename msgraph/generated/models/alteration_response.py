@@ -22,7 +22,7 @@ class AlterationResponse(AdditionalDataHolder, BackedModel, Parsable):
     original_query_string: Optional[str] = None
     # Defines the details of the alteration information for the spelling correction.
     query_alteration: Optional[SearchAlteration] = None
-    # Defines the type of the spelling correction. Possible values are: suggestion, modification.
+    # Defines the type of the spelling correction. The possible values are: suggestion, modification.
     query_alteration_type: Optional[SearchAlterationType] = None
     
     @staticmethod

@@ -17,7 +17,7 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, BackedModel, Parsable
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # Possible values are: sharedSecret, unknownFutureValue.
+    # The possible values are: sharedSecret, unknownFutureValue.
     protocol: Optional[WorkforceIntegrationEncryptionProtocol] = None
     # Encryption shared secret.
     secret: Optional[str] = None

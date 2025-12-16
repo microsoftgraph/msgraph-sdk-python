@@ -51,7 +51,7 @@ class FederatedIdentityCredentialItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FederatedIdentityCredentialItemRequestBuilderGetQueryParameters]] = None) -> Optional[FederatedIdentityCredential]:
         """
-        Read the properties and relationships of a federatedIdentityCredential object.
+        Read the properties and relationships of a federatedIdentityCredential object assigned to an application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FederatedIdentityCredential]
         Find more info here: https://learn.microsoft.com/graph/api/federatedidentitycredential-get?view=graph-rest-1.0
@@ -107,7 +107,7 @@ class FederatedIdentityCredentialItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FederatedIdentityCredentialItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a federatedIdentityCredential object.
+        Read the properties and relationships of a federatedIdentityCredential object assigned to an application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -151,7 +151,7 @@ class FederatedIdentityCredentialItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FederatedIdentityCredentialItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a federatedIdentityCredential object.
+        Read the properties and relationships of a federatedIdentityCredential object assigned to an application.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookApplication(Entity, Parsable):
-    # Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
+    # Returns the calculation mode used in the workbook. The possible values are: Automatic, AutomaticExceptTables, Manual.
     calculation_mode: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -16,11 +16,11 @@ class OnlineMeetingRestricted(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Specifies the reason shared content from this participant is disabled. Possible values are: watermarkProtection, unknownFutureValue.
+    # Specifies the reason shared content from this participant is disabled. The possible values are: watermarkProtection, unknownFutureValue.
     content_sharing_disabled: Optional[OnlineMeetingContentSharingDisabledReason] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Specifies the reason video from this participant is disabled. Possible values are: watermarkProtection, unknownFutureValue.
+    # Specifies the reason video from this participant is disabled. The possible values are: watermarkProtection, unknownFutureValue.
     video_disabled: Optional[OnlineMeetingVideoDisabledReason] = None
     
     @staticmethod

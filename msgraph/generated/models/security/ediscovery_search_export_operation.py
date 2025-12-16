@@ -21,13 +21,13 @@ from .case_operation import CaseOperation
 class EdiscoverySearchExportOperation(CaseOperation, Parsable):
     # The additional items to include in the export. The possible values are: none, teamsAndYammerConversations, cloudAttachments, allDocumentVersions, subfolderContents, listAttachments, unknownFutureValue, htmlTranscripts, advancedIndexing, allItemsInFolder, includeFolderAndPath, condensePaths, friendlyName, splitSource, includeReport. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: htmlTranscripts, advancedIndexing, allItemsInFolder, includeFolderAndPath, condensePaths, friendlyName, splitSource, includeReport.
     additional_options: Optional[AdditionalOptions] = None
-    # The versions of cloud attachments to include in messages. Possible values are: latest, recent10, recent100, all, unknownFutureValue.
+    # The versions of cloud attachments to include in messages. The possible values are: latest, recent10, recent100, all, unknownFutureValue.
     cloud_attachment_version: Optional[CloudAttachmentVersion] = None
     # The description of the export by the user.
     description: Optional[str] = None
     # The name of export provided by the user.
     display_name: Optional[str] = None
-    # The versions of files in SharePoint to include. Possible values are: latest, recent10, recent100, all, unknownFutureValue.
+    # The versions of files in SharePoint to include. The possible values are: latest, recent10, recent100, all, unknownFutureValue.
     document_version: Optional[DocumentVersion] = None
     # Items to be included in the export. The possible values are: searchHits, partiallyIndexed, unknownFutureValue.
     export_criteria: Optional[ExportCriteria] = None

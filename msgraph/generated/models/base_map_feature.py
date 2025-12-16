@@ -19,7 +19,7 @@ from .entity import Entity
 class BaseMapFeature(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The properties property
+    # Concatenated key-value pair of all properties of a GeoJSON file for this baseMapFeature.
     properties: Optional[str] = None
     
     @staticmethod

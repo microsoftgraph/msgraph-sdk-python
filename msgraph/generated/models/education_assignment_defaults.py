@@ -16,7 +16,7 @@ from .entity import Entity
 class EducationAssignmentDefaults(Entity, Parsable):
     # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Use the Prefer: include-unknown-enum-members request header to get the following members in this evolvable enum: studentsOnly. The default value is none.
     add_to_calendar_action: Optional[EducationAddToCalendarOptions] = None
-    # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
+    # Class-level default behavior for handling students who are added after the assignment is published. The possible values are: none, assignIfOpen.
     added_student_action: Optional[EducationAddedStudentAction] = None
     # Class-level default value for due time field. Default value is 23:59:00.
     due_time: Optional[datetime.time] = None

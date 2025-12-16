@@ -14,15 +14,15 @@ from .place import Place
 class Workspace(Place, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.workspace"
-    # The capacity property
+    # The maximum number of individual desks within a workspace.
     capacity: Optional[int] = None
-    # The displayDeviceName property
+    # The name of the display device (for example, monitor or projector) that is available in the workspace.
     display_device_name: Optional[str] = None
-    # The emailAddress property
+    # The email address that is associated with the workspace. This email address is used for booking.
     email_address: Optional[str] = None
-    # The mode property
+    # The mode for a workspace. The supported modes are:reservablePlaceMode - Workspaces that can be booked in advance using desk pool reservation tools.dropInPlaceMode - First come, first served desks. When you plug into a peripheral on one of these desks in the workspace, the desk is booked for you, assuming that the peripheral has been associated with the desk in the Microsoft Teams Rooms Pro management portal.
     mode: Optional[PlaceMode] = None
-    # The nickname property
+    # A short, friendly name for the workspace, often used for easier identification or display in the UI.
     nickname: Optional[str] = None
     
     @staticmethod

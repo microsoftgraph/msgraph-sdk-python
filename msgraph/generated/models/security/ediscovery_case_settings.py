@@ -24,7 +24,7 @@ class EdiscoveryCaseSettings(Entity, Parsable):
     odata_type: Optional[str] = None
     # The redundancy (near duplicate and email threading) detection settings for the case.
     redundancy_detection: Optional[RedundancyDetectionSettings] = None
-    # The settings of the review set for the case. Possible values are: none, disableGrouping, unknownFutureValue.
+    # The settings of the review set for the case. The possible values are: none, disableGrouping, unknownFutureValue.
     review_set_settings: Optional[ReviewSetSettings] = None
     # The Topic Modeling (Themes) settings for the case.
     topic_modeling: Optional[TopicModelingSettings] = None

@@ -55,10 +55,11 @@ class PlacesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Place, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Place]:
         """
-        Add new entity to places
+        Create a new place object. You can also use this method to create the following child object types: building, floor, section, room, workspace, or desk.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Place]
+        Find more info here: https://learn.microsoft.com/graph/api/place-post?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -78,7 +79,7 @@ class PlacesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Place, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Add new entity to places
+        Create a new place object. You can also use this method to create the following child object types: building, floor, section, room, workspace, or desk.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

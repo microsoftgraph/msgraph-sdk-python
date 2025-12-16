@@ -23,7 +23,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, BackedModel, Parsable):
     description: Optional[ItemBody] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The post type of the service issue historical post. Possible values are: regular, quick, strategic, unknownFutureValue.
+    # The post type of the service issue historical post. The possible values are: regular, quick, strategic, unknownFutureValue.
     post_type: Optional[PostType] = None
     
     @staticmethod

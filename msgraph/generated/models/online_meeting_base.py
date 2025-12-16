@@ -34,7 +34,7 @@ class OnlineMeetingBase(Entity, Parsable):
     allow_breakout_rooms: Optional[bool] = None
     # Indicates whether the ability to copy and share meeting content is enabled for the meeting.
     allow_copying_and_sharing_meeting_content: Optional[bool] = None
-    # Indicates whether live share is enabled for the meeting. Possible values are: enabled, disabled, unknownFutureValue.
+    # Indicates whether live share is enabled for the meeting. The possible values are: enabled, disabled, unknownFutureValue.
     allow_live_share: Optional[MeetingLiveShareOptions] = None
     # Specifies the mode of the meeting chat.
     allow_meeting_chat: Optional[MeetingChatMode] = None
@@ -50,9 +50,9 @@ class OnlineMeetingBase(Entity, Parsable):
     allow_transcription: Optional[bool] = None
     # Indicates whether whiteboard is enabled for the meeting.
     allow_whiteboard: Optional[bool] = None
-    # Specifies the users who can admit from the lobby. Possible values are: organizerAndCoOrganizersAndPresenters, organizerAndCoOrganizers, unknownFutureValue.
+    # Specifies the users who can admit from the lobby. The possible values are: organizerAndCoOrganizersAndPresenters, organizerAndCoOrganizers, unknownFutureValue.
     allowed_lobby_admitters: Optional[AllowedLobbyAdmitterRoles] = None
-    # Specifies who can be a presenter in a meeting. Possible values are: everyone, organization, roleIsPresenter, organizer, unknownFutureValue. Inherited from onlineMeetingBase.
+    # Specifies who can be a presenter in a meeting. The possible values are: everyone, organization, roleIsPresenter, organizer, unknownFutureValue. Inherited from onlineMeetingBase.
     allowed_presenters: Optional[OnlineMeetingPresenters] = None
     # The attendance reports of an online meeting. Read-only.
     attendance_reports: Optional[list[MeetingAttendanceReport]] = None
@@ -78,7 +78,7 @@ class OnlineMeetingBase(Entity, Parsable):
     odata_type: Optional[str] = None
     # Indicates whether to record the meeting automatically.
     record_automatically: Optional[bool] = None
-    # Specifies whether meeting chat history is shared with participants.  Possible values are: all, none, unknownFutureValue.
+    # Specifies whether meeting chat history is shared with participants.  The possible values are: all, none, unknownFutureValue.
     share_meeting_chat_history_default: Optional[MeetingChatHistoryDefaultMode] = None
     # The subject of the online meeting.
     subject: Optional[str] = None

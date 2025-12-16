@@ -16,7 +16,7 @@ class EmailFileAssessmentRequest(ThreatAssessmentRequest, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.emailFileAssessmentRequest"
     # Base64 encoded .eml email file content. The file content can't fetch back because it isn't stored.
     content_data: Optional[str] = None
-    # The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
+    # The reason for mail routed to its destination. The possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
     destination_routing_reason: Optional[MailDestinationRoutingReason] = None
     # The mail recipient whose policies are used to assess the mail.
     recipient_email: Optional[str] = None

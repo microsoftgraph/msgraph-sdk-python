@@ -18,7 +18,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # Display name of the training.
     display_name: Optional[str] = None
-    # Latest status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
+    # Latest status of the training assigned to the user. The possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
     latest_training_status: Optional[TrainingStatus] = None
     # The OdataType property
     odata_type: Optional[str] = None

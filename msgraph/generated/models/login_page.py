@@ -33,9 +33,9 @@ class LoginPage(Entity, Parsable):
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
+    # The source of the content. The possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
-    # The login page status. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
+    # The login page status. The possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
     status: Optional[SimulationContentStatus] = None
     
     @staticmethod

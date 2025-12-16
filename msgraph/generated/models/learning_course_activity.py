@@ -29,7 +29,7 @@ class LearningCourseActivity(Entity, Parsable):
     learning_provider_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The status of the course activity. Possible values are: notStarted, inProgress, completed. Required.
+    # The status of the course activity. The possible values are: notStarted, inProgress, completed. Required.
     status: Optional[CourseStatus] = None
     
     @staticmethod

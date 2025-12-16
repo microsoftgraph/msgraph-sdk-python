@@ -21,7 +21,7 @@ class Win32LobApp(MobileLobApp, Parsable):
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.win32LobApp"
-    # Indicates the Windows architecture(s) this app should be installed on. The app will be treated as not applicable for devices with architectures not matching the selected value. When a non-null value is provided for the allowedArchitectures property, the value of the applicableArchitectures property is set to none. Possible values are: null, x86, x64, arm64. Possible values are: none, x86, x64, arm, neutral.
+    # Indicates the Windows architecture(s) this app should be installed on. The app will be treated as not applicable for devices with architectures not matching the selected value. When a non-null value is provided for the allowedArchitectures property, the value of the applicableArchitectures property is set to none. The possible values are: null, x86, x64, arm64. The possible values are: none, x86, x64, arm, neutral.
     allowed_architectures: Optional[WindowsArchitecture] = None
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None
@@ -43,7 +43,7 @@ class Win32LobApp(MobileLobApp, Parsable):
     msi_information: Optional[Win32LobAppMsiInformation] = None
     # Indicates the return codes for post installation behavior.
     return_codes: Optional[list[Win32LobAppReturnCode]] = None
-    # Indicates the detection and requirement rules for this app. Possible values are: Win32LobAppFileSystemRule, Win32LobAppPowerShellScriptRule, Win32LobAppProductCodeRule, Win32LobAppRegistryRule.
+    # Indicates the detection and requirement rules for this app. The possible values are: Win32LobAppFileSystemRule, Win32LobAppPowerShellScriptRule, Win32LobAppProductCodeRule, Win32LobAppRegistryRule.
     rules: Optional[list[Win32LobAppRule]] = None
     # Indicates the relative path of the setup file in the encrypted Win32LobApp package. Example: Intel-SA-00075 Detection and Mitigation Tool.msi.
     setup_file_path: Optional[str] = None

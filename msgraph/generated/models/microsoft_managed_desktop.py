@@ -15,7 +15,7 @@ class MicrosoftManagedDesktop(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Indicates the provisioning policy associated with Microsoft Managed Desktop settings. Possible values are: notManaged, premiumManaged, standardManaged, starterManaged, unknownFutureValue. The default is notManaged.
+    # Indicates the provisioning policy associated with Microsoft Managed Desktop settings. The possible values are: notManaged, premiumManaged, standardManaged, starterManaged, unknownFutureValue. The default is notManaged.
     managed_type: Optional[MicrosoftManagedDesktopType] = None
     # The OdataType property
     odata_type: Optional[str] = None

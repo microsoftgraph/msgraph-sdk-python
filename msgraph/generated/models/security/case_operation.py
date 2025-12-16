@@ -25,7 +25,7 @@ from ..entity import Entity
 
 @dataclass
 class CaseOperation(Entity, Parsable):
-    # The type of action the operation represents. Possible values are: contentExport,  applyTags, convertToPdf, index, estimateStatistics, addToReviewSet, holdUpdate, unknownFutureValue, purgeData, exportReport, exportResult, holdPolicySync. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: purgeData, exportReport, exportResult, holdPolicySync.
+    # The type of action the operation represents. The possible values are: contentExport,  applyTags, convertToPdf, index, estimateStatistics, addToReviewSet, holdUpdate, unknownFutureValue, purgeData, exportReport, exportResult, holdPolicySync. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: purgeData, exportReport, exportResult, holdPolicySync.
     action: Optional[CaseAction] = None
     # The date and time the operation was completed.
     completed_date_time: Optional[datetime.datetime] = None
@@ -39,7 +39,7 @@ class CaseOperation(Entity, Parsable):
     percent_progress: Optional[int] = None
     # Contains success and failure-specific result information.
     result_info: Optional[ResultInfo] = None
-    # The status of the case operation. Possible values are: notStarted, submissionFailed, running, succeeded, partiallySucceeded, failed, unknownFutureValue.
+    # The status of the case operation. The possible values are: notStarted, submissionFailed, running, succeeded, partiallySucceeded, failed, unknownFutureValue.
     status: Optional[CaseOperationStatus] = None
     
     @staticmethod

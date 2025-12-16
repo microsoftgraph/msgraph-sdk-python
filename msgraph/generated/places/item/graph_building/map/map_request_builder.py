@@ -34,9 +34,10 @@ class MapRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property map for places
+        Delete the map of a specific building.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/buildingmap-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,9 +53,10 @@ class MapRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MapRequestBuilderGetQueryParameters]] = None) -> Optional[BuildingMap]:
         """
-        Get map from places
+        Get the map of a building in IMDF format.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BuildingMap]
+        Find more info here: https://learn.microsoft.com/graph/api/buildingmap-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -95,7 +97,7 @@ class MapRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property map for places
+        Delete the map of a specific building.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +108,7 @@ class MapRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MapRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get map from places
+        Get the map of a building in IMDF format.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +170,7 @@ class MapRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MapRequestBuilderGetQueryParameters():
         """
-        Get map from places
+        Get the map of a building in IMDF format.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

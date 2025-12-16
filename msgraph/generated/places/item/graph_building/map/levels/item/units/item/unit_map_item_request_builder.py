@@ -32,9 +32,10 @@ class UnitMapItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property units for places
+        Delete a unitMap object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/unitmap-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,7 +51,7 @@ class UnitMapItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[UnitMapItemRequestBuilderGetQueryParameters]] = None) -> Optional[UnitMap]:
         """
-        Get units from places
+        Collection of units (such as rooms or offices) on this level. Supports upsert.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnitMap]
         """
@@ -70,10 +71,11 @@ class UnitMapItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: UnitMap, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UnitMap]:
         """
-        Update the navigation property units in places
+        Update the properties of an existing unitMap object in IMDF format on a specified floor, or create one if it doesn't exist.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnitMap]
+        Find more info here: https://learn.microsoft.com/graph/api/unitmap-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -93,7 +95,7 @@ class UnitMapItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property units for places
+        Delete a unitMap object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +106,7 @@ class UnitMapItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UnitMapItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get units from places
+        Collection of units (such as rooms or offices) on this level. Supports upsert.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +117,7 @@ class UnitMapItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: UnitMap, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property units in places
+        Update the properties of an existing unitMap object in IMDF format on a specified floor, or create one if it doesn't exist.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +150,7 @@ class UnitMapItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UnitMapItemRequestBuilderGetQueryParameters():
         """
-        Get units from places
+        Collection of units (such as rooms or offices) on this level. Supports upsert.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

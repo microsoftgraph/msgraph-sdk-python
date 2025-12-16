@@ -36,11 +36,11 @@ class UserRegistrationDetails(Entity, Parsable):
     methods_registered: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Collection of authentication methods that the system determined to be the most secure authentication methods among the registered methods for second factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. Supports $filter (any with eq).
+    # Collection of authentication methods that the system determined to be the most secure authentication methods among the registered methods for second factor authentication. The possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. Supports $filter (any with eq).
     system_preferred_authentication_methods: Optional[list[str]] = None
     # The user display name, such as Adele Vance. Supports $filter (eq, startsWith) and $orderby.
     user_display_name: Optional[str] = None
-    # The method the user selected as the default second-factor for performing multifactor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
+    # The method the user selected as the default second-factor for performing multifactor authentication. The possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
     user_preferred_method_for_secondary_authentication: Optional[UserDefaultAuthenticationMethod] = None
     # The user principal name, such as AdeleV@contoso.com. Supports $filter (eq, startsWith) and $orderby.
     user_principal_name: Optional[str] = None

@@ -15,9 +15,9 @@ from .place import Place
 class Building(Place, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.building"
-    # The map property
+    # Map file associated with a building in Places. This object is the IMDF-format representation of building.geojson.
     map: Optional[BuildingMap] = None
-    # The resourceLinks property
+    # A set of links to external resources that are associated with the building. Inherited from place.
     resource_links: Optional[list[ResourceLink]] = None
     
     @staticmethod

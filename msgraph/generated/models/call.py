@@ -62,13 +62,13 @@ class Call(Entity, Parsable):
     operations: Optional[list[CommsOperation]] = None
     # The participants property
     participants: Optional[list[Participant]] = None
-    # The list of requested modalities. Possible values are: unknown, audio, video, videoBasedScreenSharing, data.
+    # The list of requested modalities. The possible values are: unknown, audio, video, videoBasedScreenSharing, data.
     requested_modalities: Optional[list[Modality]] = None
     # The result information. For example, the result can hold termination reason. Read-only.
     result_info: Optional[ResultInfo] = None
     # The originator of the call.
     source: Optional[ParticipantInfo] = None
-    # The call state. Possible values are: incoming, establishing, ringing, established, hold, transferring, transferAccepted, redirecting, terminating, terminated. Read-only.
+    # The call state. The possible values are: incoming, establishing, ringing, established, hold, transferring, transferAccepted, redirecting, terminating, terminated. Read-only.
     state: Optional[CallState] = None
     # The subject of the conversation.
     subject: Optional[str] = None

@@ -49,9 +49,10 @@ class LevelsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[LevelsRequestBuilderGetQueryParameters]] = None) -> Optional[LevelMapCollectionResponse]:
         """
-        Get levels from places
+        Get a list of the levelMap objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LevelMapCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/buildingmap-list-levels?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class LevelsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[LevelsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get levels from places
+        Get a list of the levelMap objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class LevelsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LevelsRequestBuilderGetQueryParameters():
         """
-        Get levels from places
+        Get a list of the levelMap objects and their properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

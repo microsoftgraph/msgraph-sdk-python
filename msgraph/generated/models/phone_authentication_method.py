@@ -17,9 +17,9 @@ class PhoneAuthenticationMethod(AuthenticationMethod, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.phoneAuthenticationMethod"
     # The phone number to text or call for authentication. Phone numbers use the format +{country code} {number}x{extension}, with extension optional. For example, +1 5555551234 or +1 5555551234x123 are valid. Numbers are rejected when creating or updating if they don't match the required format.
     phone_number: Optional[str] = None
-    # The type of this phone. Possible values are: mobile, alternateMobile, or office.
+    # The type of this phone. The possible values are: mobile, alternateMobile, or office.
     phone_type: Optional[AuthenticationPhoneType] = None
-    # Whether a phone is ready to be used for SMS sign-in or not. Possible values are: notSupported, notAllowedByPolicy, notEnabled, phoneNumberNotUnique, ready, or notConfigured, unknownFutureValue.
+    # Whether a phone is ready to be used for SMS sign-in or not. The possible values are: notSupported, notAllowedByPolicy, notEnabled, phoneNumberNotUnique, ready, or notConfigured, unknownFutureValue.
     sms_sign_in_state: Optional[AuthenticationMethodSignInState] = None
     
     @staticmethod

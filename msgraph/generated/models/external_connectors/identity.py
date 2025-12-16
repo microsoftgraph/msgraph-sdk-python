@@ -14,7 +14,7 @@ from ..entity import Entity
 class Identity(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The type of identity. Possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.
+    # The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.
     type: Optional[IdentityType] = None
     
     @staticmethod

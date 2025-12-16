@@ -21,7 +21,7 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
     allow_giphy: Optional[bool] = None
     # If set to true, enables users to include stickers and memes.
     allow_stickers_and_memes: Optional[bool] = None
-    # Giphy content rating. Possible values are: moderate, strict.
+    # Giphy content rating. The possible values are: moderate, strict.
     giphy_content_rating: Optional[GiphyRatingType] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -15,11 +15,11 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceDetails(Entity, Parsable)
     """
     The user experience analytics device performance entity contains device performance details.
     """
-    # The friendly name of the application for which the event occurred. Possible values are: outlook.exe, excel.exe. Supports: $select, $OrderBy. Read-only.
+    # The friendly name of the application for which the event occurred. The possible values are: outlook.exe, excel.exe. Supports: $select, $OrderBy. Read-only.
     app_display_name: Optional[str] = None
     # The publisher of the application. Supports: $select, $OrderBy. Read-only.
     app_publisher: Optional[str] = None
-    # The version of the application. Possible values are: 1.0.0.1, 75.65.23.9. Supports: $select, $OrderBy. Read-only.
+    # The version of the application. The possible values are: 1.0.0.1, 75.65.23.9. Supports: $select, $OrderBy. Read-only.
     app_version: Optional[str] = None
     # The name of the device. Supports: $select, $OrderBy. Read-only.
     device_display_name: Optional[str] = None

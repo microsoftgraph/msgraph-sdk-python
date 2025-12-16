@@ -35,7 +35,7 @@ class CloudPC(Entity, Parsable):
     provisioning_policy_id: Optional[str] = None
     # The provisioning policy that applied during the provisioning of Cloud PCs. Maximum length is 120 characters. Read-only.
     provisioning_policy_name: Optional[str] = None
-    # The type of licenses to be used when provisioning Cloud PCs using this policy. Possible values are: dedicated, shared, unknownFutureValue. The default value is dedicated.
+    # The type of licenses to be used when provisioning Cloud PCs using this policy. The possible values are: dedicated, shared, unknownFutureValue. The default value is dedicated.
     provisioning_type: Optional[CloudPcProvisioningType] = None
     # The service plan ID for the Cloud PC that consists of 32 characters in a GUID format. For more information about service plans, see Product names and service plan identifiers for licensing. Read-only.
     service_plan_id: Optional[str] = None

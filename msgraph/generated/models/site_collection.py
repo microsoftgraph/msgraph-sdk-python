@@ -16,7 +16,7 @@ class SiteCollection(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # Represents whether the site collection is recently archived, fully archived, or reactivating. Possible values are: recentlyArchived, fullyArchived, reactivating, unknownFutureValue.
+    # Represents whether the site collection is recently archived, fully archived, or reactivating. The possible values are: recentlyArchived, fullyArchived, reactivating, unknownFutureValue.
     archival_details: Optional[SiteArchivalDetails] = None
     # The geographic region code for where this site collection resides. Only present for multi-geo tenants. Read-only.
     data_location_code: Optional[str] = None

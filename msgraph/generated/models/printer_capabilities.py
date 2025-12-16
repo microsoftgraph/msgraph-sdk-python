@@ -49,9 +49,9 @@ class PrinterCapabilities(AdditionalDataHolder, BackedModel, Parsable):
     is_page_range_supported: Optional[bool] = None
     # A list of supported left margins(in microns) for the printer.
     left_margins: Optional[list[int]] = None
-    # The media (i.e., paper) colors supported by the printer.
+    # The media (for example, paper) colors supported by the printer.
     media_colors: Optional[list[str]] = None
-    # The media sizes supported by the printer. Supports standard size names for ISO and ANSI media sizes. Valid values are in the following table.
+    # The media sizes supported by the printer. Supports standard size names for ISO and ANSI media sizes. For the list of supported values, see mediaSizes values.
     media_sizes: Optional[list[str]] = None
     # The media types supported by the printer.
     media_types: Optional[list[str]] = None

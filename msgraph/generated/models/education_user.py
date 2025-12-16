@@ -47,7 +47,7 @@ class EducationUser(Entity, Parsable):
     department: Optional[str] = None
     # The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.
     display_name: Optional[str] = None
-    # Where this user was created from. Possible values are: sis, manual.
+    # Where this user was created from. The possible values are: sis, manual.
     external_source: Optional[EducationExternalSource] = None
     # The name of the external source this resource was generated from.
     external_source_detail: Optional[str] = None

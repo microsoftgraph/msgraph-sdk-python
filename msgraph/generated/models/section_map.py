@@ -13,7 +13,7 @@ from .base_map_feature import BaseMapFeature
 class SectionMap(BaseMapFeature, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sectionMap"
-    # The placeId property
+    # Identifier of the section to which this sectionMap belongs.
     place_id: Optional[str] = None
     
     @staticmethod

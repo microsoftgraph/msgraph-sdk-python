@@ -15,7 +15,7 @@ from .event_message_detail import EventMessageDetail
 class CallStartedEventMessageDetail(EventMessageDetail, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callStartedEventMessageDetail"
-    # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
+    # Represents the call event type. The possible values are: call, meeting, screenShare, unknownFutureValue.
     call_event_type: Optional[TeamworkCallEventType] = None
     # Unique identifier of the call.
     call_id: Optional[str] = None

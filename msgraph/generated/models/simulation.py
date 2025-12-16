@@ -25,9 +25,9 @@ from .entity import Entity
 
 @dataclass
 class Simulation(Entity, Parsable):
-    # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue, oAuthConsentGrant. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: oAuthConsentGrant. For more information on the types of social engineering attack techniques, see simulations.
+    # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. The possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue, oAuthConsentGrant. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: oAuthConsentGrant. For more information on the types of social engineering attack techniques, see simulations.
     attack_technique: Optional[SimulationAttackTechnique] = None
-    # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
+    # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. The possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
     attack_type: Optional[SimulationAttackType] = None
     # Unique identifier for the attack simulation automation.
     automation_id: Optional[str] = None
@@ -67,11 +67,11 @@ class Simulation(Entity, Parsable):
     odata_type: Optional[str] = None
     # The payload associated with a simulation during its creation.
     payload: Optional[Payload] = None
-    # Method of delivery of the phishing payload used in the attack simulation and training campaign. Possible values are: unknown, sms, email, teams, unknownFutureValue.
+    # Method of delivery of the phishing payload used in the attack simulation and training campaign. The possible values are: unknown, sms, email, teams, unknownFutureValue.
     payload_delivery_platform: Optional[PayloadDeliveryPlatform] = None
     # Report of the attack simulation and training campaign.
     report: Optional[SimulationReport] = None
-    # Status of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, draft, running, scheduled, succeeded, failed, cancelled, excluded, unknownFutureValue.
+    # Status of the attack simulation and training campaign. Supports $filter and $orderby. The possible values are: unknown, draft, running, scheduled, succeeded, failed, cancelled, excluded, unknownFutureValue.
     status: Optional[SimulationStatus] = None
     # Details about the training settings for a simulation.
     training_setting: Optional[TrainingSetting] = None

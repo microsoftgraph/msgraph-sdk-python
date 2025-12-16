@@ -20,7 +20,7 @@ from .change_tracked_entity import ChangeTrackedEntity
 class ScheduleChangeRequest(ChangeTrackedEntity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.scheduleChangeRequest"
-    # Indicates who the request is assigned to. Possible values are: sender, recipient, manager, system, unknownFutureValue.
+    # Indicates who the request is assigned to. The possible values are: sender, recipient, manager, system, unknownFutureValue.
     assigned_to: Optional[ScheduleChangeRequestActor] = None
     # The date and time when the manager approved or declined the scheduleChangeRequest. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     manager_action_date_time: Optional[datetime.datetime] = None
@@ -34,7 +34,7 @@ class ScheduleChangeRequest(ChangeTrackedEntity, Parsable):
     sender_message: Optional[str] = None
     # The user ID of the sender of the scheduleChangeRequest.
     sender_user_id: Optional[str] = None
-    # The state of the scheduleChangeRequest. Possible values are: pending, approved, declined, unknownFutureValue.
+    # The state of the scheduleChangeRequest. The possible values are: pending, approved, declined, unknownFutureValue.
     state: Optional[ScheduleChangeState] = None
     
     @staticmethod

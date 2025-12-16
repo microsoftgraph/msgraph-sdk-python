@@ -24,7 +24,7 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
     service_id: Optional[str] = None
     # The startDateTime property
     start_date_time: Optional[DateTimeTimeZone] = None
-    # The status of the staff member. Possible values are: available, busy, slotsAvailable, outOfOffice, unknownFutureValue.
+    # The status of the staff member. The possible values are: available, busy, slotsAvailable, outOfOffice, unknownFutureValue.
     status: Optional[BookingsAvailabilityStatus] = None
     
     @staticmethod

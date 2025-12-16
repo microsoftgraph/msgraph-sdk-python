@@ -12,9 +12,9 @@ class MailboxDetails(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The emailAddress property
+    # The primary SMTP address associated with the mailbox.
     email_address: Optional[str] = None
-    # The externalDirectoryObjectId property
+    # The unique identifier of the mailbox in the external directory (such as Microsoft Entra).
     external_directory_object_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

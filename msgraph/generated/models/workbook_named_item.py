@@ -20,7 +20,7 @@ class WorkbookNamedItem(Entity, Parsable):
     odata_type: Optional[str] = None
     # Indicates whether the name is scoped to the workbook or to a specific worksheet. Read-only.
     scope: Optional[str] = None
-    # The type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
+    # The type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
     type: Optional[str] = None
     # Indicates whether the object is visible.
     visible: Optional[bool] = None

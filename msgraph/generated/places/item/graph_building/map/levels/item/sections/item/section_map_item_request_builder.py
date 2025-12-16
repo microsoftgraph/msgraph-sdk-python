@@ -50,7 +50,7 @@ class SectionMapItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SectionMapItemRequestBuilderGetQueryParameters]] = None) -> Optional[SectionMap]:
         """
-        Get sections from places
+        Collection of sections (such as zones or partitions) on this level. Supports upsert.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SectionMap]
         """
@@ -104,7 +104,7 @@ class SectionMapItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SectionMapItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get sections from places
+        Collection of sections (such as zones or partitions) on this level. Supports upsert.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class SectionMapItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SectionMapItemRequestBuilderGetQueryParameters():
         """
-        Get sections from places
+        Collection of sections (such as zones or partitions) on this level. Supports upsert.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

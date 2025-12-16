@@ -15,11 +15,11 @@ from .base_map_feature import BaseMapFeature
 class BuildingMap(BaseMapFeature, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.buildingMap"
-    # The footprints property
+    # Represents the approximate physical extent of a referenced building. It corresponds to footprint.geojson in IMDF format.
     footprints: Optional[list[FootprintMap]] = None
-    # The levels property
+    # Represents a physical floor structure within a building. It corresponds to level.geojson in IMDF format.
     levels: Optional[list[LevelMap]] = None
-    # The placeId property
+    # Identifier for the building to which this buildingMap belongs.
     place_id: Optional[str] = None
     
     @staticmethod

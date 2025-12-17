@@ -25,7 +25,7 @@ from .entity import Entity
 class ThreatAssessmentRequest(Entity, Parsable):
     # The category property
     category: Optional[ThreatCategory] = None
-    # The content type of threat assessment. Possible values are: mail, url, file.
+    # The content type of threat assessment. The possible values are: mail, url, file.
     content_type: Optional[ThreatAssessmentContentType] = None
     # The threat assessment request creator.
     created_by: Optional[IdentitySet] = None
@@ -35,11 +35,11 @@ class ThreatAssessmentRequest(Entity, Parsable):
     expected_assessment: Optional[ThreatExpectedAssessment] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source of the threat assessment request. Possible values are: administrator.
+    # The source of the threat assessment request. The possible values are: administrator.
     request_source: Optional[ThreatAssessmentRequestSource] = None
     # A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
     results: Optional[list[ThreatAssessmentResult]] = None
-    # The assessment process status. Possible values are: pending, completed.
+    # The assessment process status. The possible values are: pending, completed.
     status: Optional[ThreatAssessmentStatus] = None
     
     @staticmethod

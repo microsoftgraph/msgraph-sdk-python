@@ -49,7 +49,7 @@ class CheckInsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CheckInsRequestBuilderGetQueryParameters]] = None) -> Optional[CheckInClaimCollectionResponse]:
         """
-        Get checkIns from places
+        Read the properties and relationships of a checkInClaim object. This API provides the check-in status for a specific place, such as a desk, room, or workspace, associated with a particular reservation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CheckInClaimCollectionResponse]
         """
@@ -69,10 +69,11 @@ class CheckInsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: CheckInClaim, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CheckInClaim]:
         """
-        Create new navigation property to checkIns for places
+        Create a new checkInClaim object to record the check-in status for a specific place, such as a desk or a room, associated with a specific calendar reservation. This check-in confirms that the reserved space is in use and prevents automatic release if auto-release policies are configured for that place.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CheckInClaim]
+        Find more info here: https://learn.microsoft.com/graph/api/place-post-checkins?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +93,7 @@ class CheckInsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CheckInsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get checkIns from places
+        Read the properties and relationships of a checkInClaim object. This API provides the check-in status for a specific place, such as a desk, room, or workspace, associated with a particular reservation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +104,7 @@ class CheckInsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: CheckInClaim, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to checkIns for places
+        Create a new checkInClaim object to record the check-in status for a specific place, such as a desk or a room, associated with a specific calendar reservation. This check-in confirms that the reserved space is in use and prevents automatic release if auto-release policies are configured for that place.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +139,7 @@ class CheckInsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CheckInsRequestBuilderGetQueryParameters():
         """
-        Get checkIns from places
+        Read the properties and relationships of a checkInClaim object. This API provides the check-in status for a specific place, such as a desk, room, or workspace, associated with a particular reservation.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -15,7 +15,7 @@ class CallMediaState(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The audio media state. Possible values are: active, inactive, unknownFutureValue.
+    # The audio media state. The possible values are: active, inactive, unknownFutureValue.
     audio: Optional[MediaState] = None
     # The OdataType property
     odata_type: Optional[str] = None

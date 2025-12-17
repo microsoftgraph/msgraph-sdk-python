@@ -21,25 +21,25 @@ from .entity import Entity
 
 @dataclass
 class Place(Entity, Parsable):
-    # The street address of the place.
+    # The physical address of the place, including the street, city, state, country or region, and postal code.
     address: Optional[PhysicalAddress] = None
-    # The checkIns property
+    # A subresource of a place object that indicates the check-in status of an Outlook calendar event booked at the place.
     check_ins: Optional[list[CheckInClaim]] = None
-    # The name associated with the place.
+    # The name that is associated with the place.
     display_name: Optional[str] = None
     # Specifies the place location in latitude, longitude, and (optionally) altitude coordinates.
     geo_coordinates: Optional[OutlookGeoCoordinates] = None
-    # The isWheelChairAccessible property
+    # Indicates whether the place is wheelchair accessible.
     is_wheel_chair_accessible: Optional[bool] = None
-    # The label property
+    # User-defined description of the place.
     label: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The parentId property
+    # The ID of a parent place.
     parent_id: Optional[str] = None
     # The phone number of the place.
     phone: Optional[str] = None
-    # The tags property
+    # Custom tags that are associated with the place for categorization or filtering.
     tags: Optional[list[str]] = None
     
     @staticmethod

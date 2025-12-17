@@ -20,7 +20,7 @@ class KubernetesClusterEvidence(AlertEvidence, Parsable):
     distribution: Optional[str] = None
     # The cluster name.
     name: Optional[str] = None
-    # The platform the cluster runs on. Possible values are: unknown, aks, eks, gke, arc, unknownFutureValue.
+    # The platform the cluster runs on. The possible values are: unknown, aks, eks, gke, arc, unknownFutureValue.
     platform: Optional[KubernetesPlatform] = None
     # The kubernetes version of the cluster.
     version: Optional[str] = None

@@ -21,7 +21,7 @@ class AttackSimulationOperation(LongRunningOperation, Parsable):
     percentage_completed: Optional[int] = None
     # Tenant identifier.
     tenant_id: Optional[str] = None
-    # The attack simulation operation type. Possible values are: createSimulation, updateSimulation, unknownFutureValue.
+    # The attack simulation operation type. The possible values are: createSimulation, updateSimulation, unknownFutureValue.
     type: Optional[AttackSimulationOperationType] = None
     
     @staticmethod

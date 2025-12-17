@@ -13,7 +13,7 @@ from .entity import Entity
 
 @dataclass
 class CalendarPermission(Entity, Parsable):
-    # List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
+    # List of allowed sharing or delegating permission levels for the calendar. The possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
     allowed_roles: Optional[list[CalendarRoleType]] = None
     # Represents a share recipient or delegate who has access to the calendar. For the 'My Organization' share recipient, the address property is null. Read-only.
     email_address: Optional[EmailAddress] = None

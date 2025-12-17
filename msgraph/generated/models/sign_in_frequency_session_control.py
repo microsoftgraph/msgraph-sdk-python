@@ -20,7 +20,7 @@ class SignInFrequencySessionControl(ConditionalAccessSessionControl, Parsable):
     authentication_type: Optional[SignInFrequencyAuthenticationType] = None
     # The possible values are timeBased, everyTime, unknownFutureValue. Sign-in frequency of everyTime is available for risky users, risky sign-ins, and Intune device enrollment. For more information, see Require reauthentication every time.
     frequency_interval: Optional[SignInFrequencyInterval] = None
-    # Possible values are: days, hours.
+    # The possible values are: days, hours.
     type: Optional[SigninFrequencyType] = None
     # The number of days or hours.
     value: Optional[int] = None

@@ -19,7 +19,7 @@ class ThreatAssessmentResult(Entity, Parsable):
     message: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The threat assessment result type. Possible values are: checkPolicy, rescan.
+    # The threat assessment result type. The possible values are: checkPolicy, rescan.
     result_type: Optional[ThreatAssessmentResultType] = None
     
     @staticmethod

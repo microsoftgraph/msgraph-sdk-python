@@ -17,7 +17,7 @@ from .entity import Entity
 
 @dataclass
 class Training(Entity, Parsable):
-    # Training availability status. Possible values are: unknown, notAvailable, available, archive, delete, unknownFutureValue.
+    # Training availability status. The possible values are: unknown, notAvailable, available, archive, delete, unknownFutureValue.
     availability_status: Optional[TrainingAvailabilityStatus] = None
     # Identity of the user who created the training.
     created_by: Optional[EmailIdentity] = None
@@ -39,13 +39,13 @@ class Training(Entity, Parsable):
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Training content source. Possible values are: unknown, global, tenant, unknownFutureValue.
+    # Training content source. The possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
     # Supported locales for content for the associated training.
     supported_locales: Optional[list[str]] = None
     # Training tags.
     tags: Optional[list[str]] = None
-    # The type of training. Possible values are: unknown, phishing, unknownFutureValue.
+    # The type of training. The possible values are: unknown, phishing, unknownFutureValue.
     type: Optional[TrainingType] = None
     
     @staticmethod

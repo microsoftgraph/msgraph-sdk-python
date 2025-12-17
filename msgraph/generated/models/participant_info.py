@@ -18,7 +18,7 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The ISO 3166-1 Alpha-2 country code of the participant's best estimated physical location at the start of the call. Read-only.
     country_code: Optional[str] = None
-    # The type of endpoint the participant is using. Possible values are: default, skypeForBusiness, or skypeForBusinessVoipPhone. Read-only.
+    # The type of endpoint the participant is using. The possible values are: default, skypeForBusiness, or skypeForBusinessVoipPhone. Read-only.
     endpoint_type: Optional[EndpointType] = None
     # The identity property
     identity: Optional[IdentitySet] = None

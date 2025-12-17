@@ -23,9 +23,9 @@ class PlatformCredentialAuthenticationMethod(AuthenticationMethod, Parsable):
     device: Optional[Device] = None
     # The name of the device on which Platform Credential is registered.
     display_name: Optional[str] = None
-    # Key strength of this Platform Credential key. Possible values are: normal, weak, unknown.
+    # Key strength of this Platform Credential key. The possible values are: normal, weak, unknown.
     key_strength: Optional[AuthenticationMethodKeyStrength] = None
-    # Platform on which this Platform Credential key is present. Possible values are: unknown, windows, macOS,iOS, android, linux.
+    # Platform on which this Platform Credential key is present. The possible values are: unknown, windows, macOS,iOS, android, linux.
     platform: Optional[AuthenticationMethodPlatform] = None
     
     @staticmethod

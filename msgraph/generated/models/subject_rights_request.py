@@ -42,7 +42,7 @@ class SubjectRightsRequest(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # Information about the data subject.
     data_subject: Optional[DataSubject] = None
-    # The type of the data subject. Possible values are: customer, currentEmployee, formerEmployee, prospectiveEmployee, student, teacher, faculty, other, unknownFutureValue.
+    # The type of the data subject. The possible values are: customer, currentEmployee, formerEmployee, prospectiveEmployee, student, teacher, faculty, other, unknownFutureValue.
     data_subject_type: Optional[DataSubjectType] = None
     # Description for the request.
     description: Optional[str] = None
@@ -78,11 +78,11 @@ class SubjectRightsRequest(Entity, Parsable):
     site_locations: Optional[SubjectRightsRequestSiteLocation] = None
     # Information about the different stages for the request.
     stages: Optional[list[SubjectRightsRequestStageDetail]] = None
-    # The status of the request. Possible values are: active, closed, unknownFutureValue.
+    # The status of the request. The possible values are: active, closed, unknownFutureValue.
     status: Optional[SubjectRightsRequestStatus] = None
     # Information about the Microsoft Teams team that was created for the request.
     team: Optional[Team] = None
-    # The type of the request. Possible values are: export, delete, access, tagForAction, unknownFutureValue.
+    # The type of the request. The possible values are: export, delete, access, tagForAction, unknownFutureValue.
     type: Optional[SubjectRightsRequestType] = None
     
     @staticmethod

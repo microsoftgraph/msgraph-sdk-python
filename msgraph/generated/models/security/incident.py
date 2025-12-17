@@ -22,7 +22,7 @@ class Incident(Entity, Parsable):
     alerts: Optional[list[Alert]] = None
     # Owner of the incident, or null if no owner is assigned. Free editable text.
     assigned_to: Optional[str] = None
-    # The specification for the incident. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
+    # The specification for the incident. The possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
     classification: Optional[AlertClassification] = None
     # Array of comments created by the Security Operations (SecOps) team when the incident is managed.
     comments: Optional[list[AlertComment]] = None
@@ -32,7 +32,7 @@ class Incident(Entity, Parsable):
     custom_tags: Optional[list[str]] = None
     # Description of the incident.
     description: Optional[str] = None
-    # Specifies the determination of the incident. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
+    # Specifies the determination of the incident. The possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
     determination: Optional[AlertDetermination] = None
     # The incident name.
     display_name: Optional[str] = None

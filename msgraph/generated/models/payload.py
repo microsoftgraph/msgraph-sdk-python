@@ -23,9 +23,9 @@ from .entity import Entity
 
 @dataclass
 class Payload(Entity, Parsable):
-    # The branch of a payload. Possible values are: unknown, other, americanExpress, capitalOne, dhl, docuSign, dropbox, facebook, firstAmerican, microsoft, netflix, scotiabank, sendGrid, stewartTitle, tesco, wellsFargo, syrinxCloud, adobe, teams, zoom, unknownFutureValue.
+    # The branch of a payload. The possible values are: unknown, other, americanExpress, capitalOne, dhl, docuSign, dropbox, facebook, firstAmerican, microsoft, netflix, scotiabank, sendGrid, stewartTitle, tesco, wellsFargo, syrinxCloud, adobe, teams, zoom, unknownFutureValue.
     brand: Optional[PayloadBrand] = None
-    # The complexity of a payload. Possible values are: unknown, low, medium, high, unknownFutureValue.
+    # The complexity of a payload. The possible values are: unknown, low, medium, high, unknownFutureValue.
     complexity: Optional[PayloadComplexity] = None
     # Identity of the user who created the attack simulation and training campaign payload.
     created_by: Optional[EmailIdentity] = None
@@ -37,7 +37,7 @@ class Payload(Entity, Parsable):
     detail: Optional[PayloadDetail] = None
     # Display name of the attack simulation and training campaign payload. Supports $filter and $orderby.
     display_name: Optional[str] = None
-    # Industry of a payload. Possible values are: unknown, other, banking, businessServices, consumerServices, education, energy, construction, consulting, financialServices, government, hospitality, insurance, legal, courierServices, IT, healthcare, manufacturing, retail, telecom, realEstate, unknownFutureValue.
+    # Industry of a payload. The possible values are: unknown, other, banking, businessServices, consumerServices, education, energy, construction, consulting, financialServices, government, hospitality, insurance, legal, courierServices, IT, healthcare, manufacturing, retail, telecom, realEstate, unknownFutureValue.
     industry: Optional[PayloadIndustry] = None
     # Indicates whether the attack simulation and training campaign payload was created from an automation flow. Supports $filter and $orderby.
     is_automated: Optional[bool] = None
@@ -55,19 +55,19 @@ class Payload(Entity, Parsable):
     odata_type: Optional[str] = None
     # Free text tags for a payload.
     payload_tags: Optional[list[str]] = None
-    # The payload delivery platform for a simulation. Possible values are: unknown, sms, email, teams, unknownFutureValue.
+    # The payload delivery platform for a simulation. The possible values are: unknown, sms, email, teams, unknownFutureValue.
     platform: Optional[PayloadDeliveryPlatform] = None
     # Predicted probability for a payload to phish a targeted user.
     predicted_compromise_rate: Optional[float] = None
-    # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
+    # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. The possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
     simulation_attack_type: Optional[SimulationAttackType] = None
     # The source property
     source: Optional[SimulationContentSource] = None
-    # Simulation content status. Supports $filter and $orderby. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
+    # Simulation content status. Supports $filter and $orderby. The possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
     status: Optional[SimulationContentStatus] = None
-    # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue, oAuthConsentGrant. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: oAuthConsentGrant. For more information on the types of social engineering attack techniques, see simulations.
+    # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. The possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue, oAuthConsentGrant. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: oAuthConsentGrant. For more information on the types of social engineering attack techniques, see simulations.
     technique: Optional[SimulationAttackTechnique] = None
-    # The theme of a payload. Possible values are: unknown, other, accountActivation, accountVerification, billing, cleanUpMail, controversial, documentReceived, expense, fax, financeReport, incomingMessages, invoice, itemReceived, loginAlert, mailReceived, password, payment, payroll, personalizedOffer, quarantine, remoteWork, reviewMessage, securityUpdate, serviceSuspended, signatureRequired, upgradeMailboxStorage, verifyMailbox, voicemail, advertisement, employeeEngagement, unknownFutureValue.
+    # The theme of a payload. The possible values are: unknown, other, accountActivation, accountVerification, billing, cleanUpMail, controversial, documentReceived, expense, fax, financeReport, incomingMessages, invoice, itemReceived, loginAlert, mailReceived, password, payment, payroll, personalizedOffer, quarantine, remoteWork, reviewMessage, securityUpdate, serviceSuspended, signatureRequired, upgradeMailboxStorage, verifyMailbox, voicemail, advertisement, employeeEngagement, unknownFutureValue.
     theme: Optional[PayloadTheme] = None
     
     @staticmethod

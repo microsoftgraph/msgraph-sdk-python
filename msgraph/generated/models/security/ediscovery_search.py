@@ -24,7 +24,7 @@ class EdiscoverySearch(Search, Parsable):
     additional_sources: Optional[list[DataSource]] = None
     # Custodian sources that are included in the eDiscovery search.
     custodian_sources: Optional[list[DataSource]] = None
-    # When specified, the collection spans across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
+    # When specified, the collection spans across a service for an entire workload. The possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
     data_source_scopes: Optional[DataSourceScopes] = None
     # The last estimate operation associated with the eDiscovery search.
     last_estimate_statistics_operation: Optional[EdiscoveryEstimateOperation] = None

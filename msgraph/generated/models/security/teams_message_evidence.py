@@ -24,9 +24,9 @@ class TeamsMessageEvidence(AlertEvidence, Parsable):
     campaign_id: Optional[str] = None
     # The channel ID associated with this Teams message.
     channel_id: Optional[str] = None
-    # The delivery action of this Teams message. Possible values are: unknown, deliveredAsSpam, delivered, blocked, replaced, unknownFutureValue.
+    # The delivery action of this Teams message. The possible values are: unknown, deliveredAsSpam, delivered, blocked, replaced, unknownFutureValue.
     delivery_action: Optional[TeamsMessageDeliveryAction] = None
-    # The delivery location of this Teams message. Possible values are: unknown, teams, quarantine, failed, unknownFutureValue.
+    # The delivery location of this Teams message. The possible values are: unknown, teams, quarantine, failed, unknownFutureValue.
     delivery_location: Optional[TeamsDeliveryLocation] = None
     # The list of file entities that are attached to this Teams message.
     files: Optional[list[FileEvidence]] = None

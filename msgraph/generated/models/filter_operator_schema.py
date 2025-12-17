@@ -20,7 +20,7 @@ class FilterOperatorSchema(Entity, Parsable):
     multivalued_comparison_type: Optional[ScopeOperatorMultiValuedComparisonType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Attribute types supported by the operator. Possible values are: Boolean, Binary, Reference, Integer, String.
+    # Attribute types supported by the operator. The possible values are: Boolean, Binary, Reference, Integer, String.
     supported_attribute_types: Optional[list[AttributeType]] = None
     
     @staticmethod

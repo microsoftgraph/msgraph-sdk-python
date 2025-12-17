@@ -18,7 +18,7 @@ from .entity import Entity
 
 @dataclass
 class Calendar(Entity, Parsable):
-    # Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
+    # Represent the online meeting service providers that can be used to create online meetings in this calendar. The possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
     allowed_online_meeting_providers: Optional[list[OnlineMeetingProviderType]] = None
     # The permissions of the users with whom the calendar is shared.
     calendar_permissions: Optional[list[CalendarPermission]] = None
@@ -34,7 +34,7 @@ class Calendar(Entity, Parsable):
     change_key: Optional[str] = None
     # Specifies the color theme to distinguish the calendar from other calendars in a UI. The property values are: auto, lightBlue, lightGreen, lightOrange, lightGray, lightYellow, lightTeal, lightPink, lightBrown, lightRed, maxColor.
     color: Optional[CalendarColor] = None
-    # The default online meeting provider for meetings sent from this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
+    # The default online meeting provider for meetings sent from this calendar. The possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
     default_online_meeting_provider: Optional[OnlineMeetingProviderType] = None
     # The events in the calendar. Navigation property. Read-only.
     events: Optional[list[Event]] = None

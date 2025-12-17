@@ -18,13 +18,13 @@ class UserExperienceAnalyticsAppHealthApplicationPerformance(Entity, Parsable):
     active_device_count: Optional[int] = None
     # The number of crashes for the application. Valid values 0 to 2147483647. Supports: $select, $OrderBy. Read-only. Valid values -2147483648 to 2147483647
     app_crash_count: Optional[int] = None
-    # The friendly name of the application. Possible values are: Outlook, Excel. Supports: $select, $OrderBy. Read-only.
+    # The friendly name of the application. The possible values are: Outlook, Excel. Supports: $select, $OrderBy. Read-only.
     app_display_name: Optional[str] = None
     # The number of hangs for the application. Supports: $select, $OrderBy. Read-only. Valid values -2147483648 to 2147483647
     app_hang_count: Optional[int] = None
     # The health score of the application. Valid values 0 to 100. Supports: $filter, $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
     app_health_score: Optional[float] = None
-    # The name of the application. Possible values are: outlook.exe, excel.exe. Supports: $select, $OrderBy. Read-only.
+    # The name of the application. The possible values are: outlook.exe, excel.exe. Supports: $select, $OrderBy. Read-only.
     app_name: Optional[str] = None
     # The publisher of the application. Supports: $select, $OrderBy. Read-only.
     app_publisher: Optional[str] = None

@@ -53,7 +53,7 @@ class LevelMapItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[LevelMapItemRequestBuilderGetQueryParameters]] = None) -> Optional[LevelMap]:
         """
-        Get levels from places
+        Represents a physical floor structure within a building. It corresponds to level.geojson in IMDF format.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LevelMap]
         """
@@ -107,7 +107,7 @@ class LevelMapItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[LevelMapItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get levels from places
+        Represents a physical floor structure within a building. It corresponds to level.geojson in IMDF format.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -178,7 +178,7 @@ class LevelMapItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LevelMapItemRequestBuilderGetQueryParameters():
         """
-        Get levels from places
+        Represents a physical floor structure within a building. It corresponds to level.geojson in IMDF format.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

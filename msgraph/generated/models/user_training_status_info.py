@@ -24,7 +24,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, BackedModel, Parsable):
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
+    # The status of the training assigned to the user. The possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
     training_status: Optional[TrainingStatus] = None
     
     @staticmethod

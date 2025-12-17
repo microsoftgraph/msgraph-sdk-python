@@ -16,7 +16,7 @@ class UserSource(DataSource, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.security.userSource"
     # Email address of the user's mailbox.
     email: Optional[str] = None
-    # Specifies which sources are included in this group. Possible values are: mailbox, site.
+    # Specifies which sources are included in this group. The possible values are: mailbox, site.
     included_sources: Optional[SourceType] = None
     # The URL of the user's OneDrive for Business site. Read-only.
     site_web_url: Optional[str] = None

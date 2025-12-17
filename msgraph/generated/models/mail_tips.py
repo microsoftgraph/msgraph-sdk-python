@@ -39,7 +39,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
     max_message_size: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The scope of the recipient. Possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
+    # The scope of the recipient. The possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
     recipient_scope: Optional[RecipientScopeType] = None
     # Recipients suggested based on previous contexts where they appear in the same message.
     recipient_suggestions: Optional[list[Recipient]] = None

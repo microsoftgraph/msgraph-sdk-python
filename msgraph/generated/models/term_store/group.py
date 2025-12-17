@@ -24,7 +24,7 @@ class Group(Entity, Parsable):
     odata_type: Optional[str] = None
     # ID of the parent site of this group.
     parent_site_id: Optional[str] = None
-    # Returns the type of the group. Possible values are: global, system, and siteCollection.
+    # Returns the type of the group. The possible values are: global, system, and siteCollection.
     scope: Optional[TermGroupScope] = None
     # All sets under the group in a term [store].
     sets: Optional[list[Set]] = None

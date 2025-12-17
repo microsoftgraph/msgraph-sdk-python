@@ -26,7 +26,7 @@ class SharepointSettings(Entity, Parsable):
     excluded_file_extensions_for_sync_app: Optional[list[str]] = None
     # Specifies the idle session sign-out policies for the tenant.
     idle_session_sign_out: Optional[IdleSessionSignOut] = None
-    # Specifies the image tagging option for the tenant. Possible values are: disabled, basic, enhanced.
+    # Specifies the image tagging option for the tenant. The possible values are: disabled, basic, enhanced.
     image_tagging_option: Optional[ImageTaggingChoice] = None
     # Indicates whether comments are allowed on modern site pages in SharePoint.
     is_commenting_on_site_pages_enabled: Optional[bool] = None
@@ -66,9 +66,9 @@ class SharepointSettings(Entity, Parsable):
     sharing_allowed_domain_list: Optional[list[str]] = None
     # Collection of email domains that are blocked for sharing outside the organization.
     sharing_blocked_domain_list: Optional[list[str]] = None
-    # Sharing capability for the tenant. Possible values are: disabled, externalUserSharingOnly, externalUserAndGuestSharing, existingExternalUserSharingOnly.
+    # Sharing capability for the tenant. The possible values are: disabled, externalUserSharingOnly, externalUserAndGuestSharing, existingExternalUserSharingOnly.
     sharing_capability: Optional[SharingCapabilities] = None
-    # Specifies the external sharing mode for domains. Possible values are: none, allowList, blockList.
+    # Specifies the external sharing mode for domains. The possible values are: none, allowList, blockList.
     sharing_domain_restriction_mode: Optional[SharingDomainRestrictionMode] = None
     # The value of the team site managed path. This is the path under which new team sites will be created.
     site_creation_default_managed_path: Optional[str] = None

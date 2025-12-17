@@ -31,13 +31,13 @@ class EndUserNotification(Entity, Parsable):
     last_modified_by: Optional[EmailIdentity] = None
     # Date and time when the notification was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
-    # Type of notification. Possible values are: unknown, positiveReinforcement, noTraining, trainingAssignment, trainingReminder, unknownFutureValue.
+    # Type of notification. The possible values are: unknown, positiveReinforcement, noTraining, trainingAssignment, trainingReminder, unknownFutureValue.
     notification_type: Optional[EndUserNotificationType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
+    # The source of the content. The possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
-    # The status of the notification. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
+    # The status of the notification. The possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
     status: Optional[SimulationContentStatus] = None
     # Supported locales for endUserNotification content.
     supported_locales: Optional[list[str]] = None

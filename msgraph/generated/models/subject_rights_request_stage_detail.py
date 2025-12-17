@@ -21,9 +21,9 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, BackedModel, Parsabl
     error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The stage of the subject rights request. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue, approval. Use the Prefer: include-unknown-enum-members request header to get the following members in this evolvable enum: approval.
+    # The stage of the subject rights request.
     stage: Optional[SubjectRightsRequestStage] = None
-    # Status of the current stage. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
+    # Status of the current stage. The possible values are: notStarted, current, completed, failed, unknownFutureValue.
     status: Optional[SubjectRightsRequestStageStatus] = None
     
     @staticmethod

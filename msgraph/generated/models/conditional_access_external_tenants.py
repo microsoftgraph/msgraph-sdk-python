@@ -17,7 +17,7 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The membership kind. Possible values are: all, enumerated, unknownFutureValue. The enumerated member references an conditionalAccessEnumeratedExternalTenants object.
+    # The membership kind. The possible values are: all, enumerated, unknownFutureValue. The enumerated member references an conditionalAccessEnumeratedExternalTenants object.
     membership_kind: Optional[ConditionalAccessExternalTenantsMembershipKind] = None
     # The OdataType property
     odata_type: Optional[str] = None

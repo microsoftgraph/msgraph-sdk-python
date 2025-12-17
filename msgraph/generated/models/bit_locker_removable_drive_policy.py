@@ -20,7 +20,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, BackedModel, Parsable)
     additional_data: dict[str, Any] = field(default_factory=dict)
     # This policy setting determines whether BitLocker protection is required for removable data drives to be writable on a computer.
     block_cross_organization_write_access: Optional[bool] = None
-    # Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
+    # Select the encryption method for removable  drives. The possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
     encryption_method: Optional[BitLockerEncryptionMethod] = None
     # The OdataType property
     odata_type: Optional[str] = None

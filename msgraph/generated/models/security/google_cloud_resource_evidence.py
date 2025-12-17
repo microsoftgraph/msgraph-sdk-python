@@ -18,7 +18,7 @@ class GoogleCloudResourceEvidence(AlertEvidence, Parsable):
     full_resource_name: Optional[str] = None
     # The zone or region where the resource is located.
     location: Optional[str] = None
-    # The type of location. Possible values are: unknown, regional, zonal, global, unknownFutureValue.
+    # The type of location. The possible values are: unknown, regional, zonal, global, unknownFutureValue.
     location_type: Optional[GoogleCloudLocationType] = None
     # The Google project ID as defined by the user.
     project_id: Optional[str] = None

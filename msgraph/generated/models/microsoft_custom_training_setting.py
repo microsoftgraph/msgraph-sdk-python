@@ -20,7 +20,7 @@ class MicrosoftCustomTrainingSetting(TrainingSetting, Parsable):
     completion_date_time: Optional[datetime.datetime] = None
     # The mapping details of the associated training.
     training_assignment_mappings: Optional[list[MicrosoftTrainingAssignmentMapping]] = None
-    # The training completion duration that needs to be provided before scheduling the training. Possible values are: week, fortnite, month, unknownFutureValue.
+    # The training completion duration that needs to be provided before scheduling the training. The possible values are: week, fortnite, month, unknownFutureValue.
     training_completion_duration: Optional[TrainingCompletionDuration] = None
     
     @staticmethod

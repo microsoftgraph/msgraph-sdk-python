@@ -29,7 +29,7 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule, Parsable):
     operation_type: Optional[Win32LobAppPowerShellScriptRuleOperationType] = None
     # Contains properties for detection operator.
     operator: Optional[Win32LobAppRuleOperator] = None
-    # The execution context of the script. Do not specify this value if the rule is used for detection. Script detection rules will run in the same context as the associated app install context. Possible values are: system, user.
+    # The execution context of the script. Do not specify this value if the rule is used for detection. Script detection rules will run in the same context as the associated app install context. The possible values are: system, user.
     run_as_account: Optional[RunAsAccountType] = None
     # A value indicating whether the script should run as 32-bit.
     run_as32_bit: Optional[bool] = None

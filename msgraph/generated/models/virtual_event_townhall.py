@@ -16,7 +16,7 @@ from .virtual_event import VirtualEvent
 class VirtualEventTownhall(VirtualEvent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventTownhall"
-    # The audience to whom the town hall is visible. Possible values are: everyone, organization, and unknownFutureValue.
+    # The audience to whom the town hall is visible. The possible values are: everyone, organization, and unknownFutureValue.
     audience: Optional[MeetingAudience] = None
     # Identity information of the coorganizers of the town hall.
     co_organizers: Optional[list[CommunicationsUserIdentity]] = None

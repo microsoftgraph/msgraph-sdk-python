@@ -19,7 +19,7 @@ from .entity import Entity
 
 @dataclass
 class RiskDetection(Entity, Parsable):
-    # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.
+    # Indicates the activity type the detected risk is linked to.
     activity: Optional[ActivityType] = None
     # Date and time that the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
     activity_date_time: Optional[datetime.datetime] = None
@@ -29,7 +29,7 @@ class RiskDetection(Entity, Parsable):
     correlation_id: Optional[str] = None
     # Date and time that the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 looks like this: 2014-01-01T00:00:00Z
     detected_date_time: Optional[datetime.datetime] = None
-    # Timing of the detected risk (real-time/offline). Possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
+    # Timing of the detected risk (real-time/offline). The possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
     detection_timing_type: Optional[RiskDetectionTimingType] = None
     # Provides the IP address of the client from where the risk occurred.
     ip_address: Optional[str] = None
@@ -45,13 +45,13 @@ class RiskDetection(Entity, Parsable):
     risk_detail: Optional[RiskDetail] = None
     # The type of risk event detected. The possible values are adminConfirmedUserCompromised, anomalousToken, anomalousUserActivity, anonymizedIPAddress, generic, impossibleTravel, investigationsThreatIntelligence, suspiciousSendingPatterns, leakedCredentials, maliciousIPAddress,malwareInfectedIPAddress, mcasSuspiciousInboxManipulationRules, newCountry, passwordSpray,riskyIPAddress, suspiciousAPITraffic, suspiciousBrowser,suspiciousInboxForwarding, suspiciousIPAddress, tokenIssuerAnomaly, unfamiliarFeatures, unlikelyTravel. If the risk detection is a premium detection, will show generic. For more information about each value, see Risk types and detection.
     risk_event_type: Optional[str] = None
-    # Level of the detected risk. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
+    # Level of the detected risk. The possible values are: low, medium, high, hidden, none, unknownFutureValue.
     risk_level: Optional[RiskLevel] = None
-    # The state of a detected risky user or sign-in. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
+    # The state of a detected risky user or sign-in. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
     risk_state: Optional[RiskState] = None
     # Source of the risk detection. For example, activeDirectory.
     source: Optional[str] = None
-    # Indicates the type of token issuer for the detected sign-in risk. Possible values are: AzureAD, ADFederationServices, UnknownFutureValue.
+    # Indicates the type of token issuer for the detected sign-in risk. The possible values are: AzureAD, ADFederationServices, UnknownFutureValue.
     token_issuer_type: Optional[TokenIssuerType] = None
     # The user principal name (UPN) of the user.
     user_display_name: Optional[str] = None

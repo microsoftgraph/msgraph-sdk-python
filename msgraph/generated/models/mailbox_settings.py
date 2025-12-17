@@ -25,7 +25,7 @@ class MailboxSettings(AdditionalDataHolder, BackedModel, Parsable):
     automatic_replies_setting: Optional[AutomaticRepliesSetting] = None
     # The date format for the user's mailbox.
     date_format: Optional[str] = None
-    # If the user has a calendar delegate, this specifies whether the delegate, mailbox owner, or both receive meeting messages and meeting responses. Possible values are: sendToDelegateAndInformationToPrincipal, sendToDelegateAndPrincipal, sendToDelegateOnly.
+    # If the user has a calendar delegate, this specifies whether the delegate, mailbox owner, or both receive meeting messages and meeting responses. The possible values are: sendToDelegateAndInformationToPrincipal, sendToDelegateAndPrincipal, sendToDelegateOnly.
     delegate_meeting_message_delivery_options: Optional[DelegateMeetingMessageDeliveryOptions] = None
     # The locale information for the user, including the preferred language and country/region.
     language: Optional[LocaleInfo] = None
@@ -35,7 +35,7 @@ class MailboxSettings(AdditionalDataHolder, BackedModel, Parsable):
     time_format: Optional[str] = None
     # The default time zone for the user's mailbox.
     time_zone: Optional[str] = None
-    # The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. Possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.
+    # The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. The possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.
     user_purpose: Optional[UserPurpose] = None
     # The days of the week and hours in a specific time zone that the user works.
     working_hours: Optional[WorkingHours] = None

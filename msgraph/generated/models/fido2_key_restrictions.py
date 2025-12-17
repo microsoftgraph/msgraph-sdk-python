@@ -17,7 +17,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # A collection of Authenticator Attestation GUIDs. AADGUIDs define key types and manufacturers.
     aa_guids: Optional[list[str]] = None
-    # Enforcement type. Possible values are: allow, block.
+    # Enforcement type. The possible values are: allow, block.
     enforcement_type: Optional[Fido2RestrictionEnforcementType] = None
     # Determines if the configured key enforcement is enabled.
     is_enforced: Optional[bool] = None

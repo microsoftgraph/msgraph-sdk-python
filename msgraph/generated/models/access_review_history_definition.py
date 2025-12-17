@@ -22,7 +22,7 @@ class AccessReviewHistoryDefinition(Entity, Parsable):
     created_by: Optional[UserIdentity] = None
     # Timestamp when the access review definition was created.
     created_date_time: Optional[datetime.datetime] = None
-    # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions are included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
+    # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions are included by default if no decisions are provided on create. The possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
     decisions: Optional[list[AccessReviewHistoryDecisionFilter]] = None
     # Name for the access review history data collection. Required.
     display_name: Optional[str] = None

@@ -18,7 +18,7 @@ from .entity import Entity
 class RiskyUser(Entity, Parsable):
     # The activity related to user risk level change
     history: Optional[list[RiskyUserHistoryItem]] = None
-    # Indicates whether the user is deleted. Possible values are: true, false.
+    # Indicates whether the user is deleted. The possible values are: true, false.
     is_deleted: Optional[bool] = None
     # Indicates whether the backend is processing a user's risky state.
     is_processing: Optional[bool] = None
@@ -28,9 +28,9 @@ class RiskyUser(Entity, Parsable):
     risk_detail: Optional[RiskDetail] = None
     # The date and time that the risky user was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     risk_last_updated_date_time: Optional[datetime.datetime] = None
-    # Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
+    # Level of the detected risky user. The possible values are: low, medium, high, hidden, none, unknownFutureValue.
     risk_level: Optional[RiskLevel] = None
-    # State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
+    # State of the user's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
     risk_state: Optional[RiskState] = None
     # Risky user display name.
     user_display_name: Optional[str] = None

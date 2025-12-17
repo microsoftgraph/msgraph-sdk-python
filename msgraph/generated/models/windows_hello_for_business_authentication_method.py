@@ -22,7 +22,7 @@ class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod, Parsable
     device: Optional[Device] = None
     # The name of the device on which Windows Hello for Business is registered
     display_name: Optional[str] = None
-    # Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
+    # Key strength of this Windows Hello for Business key. The possible values are: normal, weak, unknown.
     key_strength: Optional[AuthenticationMethodKeyStrength] = None
     
     @staticmethod

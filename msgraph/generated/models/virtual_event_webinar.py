@@ -17,7 +17,7 @@ from .virtual_event import VirtualEvent
 class VirtualEventWebinar(VirtualEvent, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.virtualEventWebinar"
-    # To whom the webinar is visible. Possible values are: everyone, organization, and unknownFutureValue.
+    # To whom the webinar is visible. The possible values are: everyone, organization, and unknownFutureValue.
     audience: Optional[MeetingAudience] = None
     # Identity information of coorganizers of the webinar.
     co_organizers: Optional[list[CommunicationsUserIdentity]] = None

@@ -64,7 +64,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration, Parsable):
     feature_updates_rollback_window_in_days: Optional[int] = None
     # When TRUE, rollback Feature Updates on the next device check in. When FALSE, do not rollback Feature Updates on the next device check in. Returned by default.Query parameters are not supported.
     feature_updates_will_be_rolled_back: Optional[bool] = None
-    # The Installation Schedule. Possible values are: ActiveHoursStart, ActiveHoursEnd, ScheduledInstallDay, ScheduledInstallTime. Returned by default. Query parameters are not supported.
+    # The Installation Schedule. The possible values are: ActiveHoursStart, ActiveHoursEnd, ScheduledInstallDay, ScheduledInstallTime. Returned by default. Query parameters are not supported.
     installation_schedule: Optional[WindowsUpdateInstallScheduleType] = None
     # When TRUE, allows Microsoft Update Service. When FALSE, does not allow Microsoft Update Service. Returned by default. Query parameters are not supported.
     microsoft_update_service_allowed: Optional[bool] = None
@@ -92,7 +92,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration, Parsable):
     skip_checks_before_restart: Optional[bool] = None
     # Windows Update Notification Display Options
     update_notification_level: Optional[WindowsUpdateNotificationDisplayOption] = None
-    # Schedule the update installation on the weeks of the month. Possible values are: UserDefined, FirstWeek, SecondWeek, ThirdWeek, FourthWeek, EveryWeek. Returned by default. Query parameters are not supported. Possible values are: userDefined, firstWeek, secondWeek, thirdWeek, fourthWeek, everyWeek, unknownFutureValue.
+    # Schedule the update installation on the weeks of the month. The possible values are: UserDefined, FirstWeek, SecondWeek, ThirdWeek, FourthWeek, EveryWeek. Returned by default. Query parameters are not supported. The possible values are: userDefined, firstWeek, secondWeek, thirdWeek, fourthWeek, everyWeek, unknownFutureValue.
     update_weeks: Optional[WindowsUpdateForBusinessUpdateWeeks] = None
     # Possible values of a property
     user_pause_access: Optional[Enablement] = None

@@ -16,11 +16,11 @@ class CheckInClaim(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The calendarEventId property
+    # The unique identifier for an Outlook calendar event associated with the checkInClaim object. For more information, see the iCalUId property in event.
     calendar_event_id: Optional[str] = None
     # The checkInMethod property
     check_in_method: Optional[CheckInMethod] = None
-    # The createdDateTime property
+    # The date and time when the checkInClaim object was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None

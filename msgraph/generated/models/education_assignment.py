@@ -81,7 +81,7 @@ class EducationAssignment(Entity, Parsable):
     resources_folder_url: Optional[str] = None
     # When set, the grading rubric attached to this assignment.
     rubric: Optional[EducationRubric] = None
-    # Status of the assignment.  You can't PATCH this value. Possible values are: draft, scheduled, published, assigned, unknownFutureValue, inactive. Use the Prefer: include-unknown-enum-members request header to get the following members in this evolvable enum: inactive.
+    # Status of the assignment.  You can't PATCH this value. The possible values are: draft, scheduled, published, assigned, unknownFutureValue, inactive. Use the Prefer: include-unknown-enum-members request header to get the following members in this evolvable enum: inactive.
     status: Optional[EducationAssignmentStatus] = None
     # Once published, there's a submission object for each student representing their work and grade. Read-only. Nullable.
     submissions: Optional[list[EducationSubmission]] = None

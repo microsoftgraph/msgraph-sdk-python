@@ -14,7 +14,7 @@ from .conditional_access_session_control import ConditionalAccessSessionControl
 class PersistentBrowserSessionControl(ConditionalAccessSessionControl, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.persistentBrowserSessionControl"
-    # Possible values are: always, never.
+    # The possible values are: always, never.
     mode: Optional[PersistentBrowserSessionMode] = None
     
     @staticmethod

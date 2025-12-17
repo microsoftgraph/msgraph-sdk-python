@@ -17,7 +17,7 @@ class UnifiedGroupSource(DataSource, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.security.unifiedGroupSource"
     # The group property
     group: Optional[Group] = None
-    # Specifies which sources are included in this group. Possible values are: mailbox, site.
+    # Specifies which sources are included in this group. The possible values are: mailbox, site.
     included_sources: Optional[SourceType] = None
     
     @staticmethod

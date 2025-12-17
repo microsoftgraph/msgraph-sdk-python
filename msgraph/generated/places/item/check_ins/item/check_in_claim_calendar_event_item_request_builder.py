@@ -50,9 +50,10 @@ class CheckInClaimCalendarEventItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CheckInClaimCalendarEventItemRequestBuilderGetQueryParameters]] = None) -> Optional[CheckInClaim]:
         """
-        Get checkIns from places
+        Read the properties and relationships of a checkInClaim object. This API provides the check-in status for a specific place, such as a desk, room, or workspace, associated with a particular reservation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CheckInClaim]
+        Find more info here: https://learn.microsoft.com/graph/api/checkinclaim-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +105,7 @@ class CheckInClaimCalendarEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CheckInClaimCalendarEventItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get checkIns from places
+        Read the properties and relationships of a checkInClaim object. This API provides the check-in status for a specific place, such as a desk, room, or workspace, associated with a particular reservation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +149,7 @@ class CheckInClaimCalendarEventItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CheckInClaimCalendarEventItemRequestBuilderGetQueryParameters():
         """
-        Get checkIns from places
+        Read the properties and relationships of a checkInClaim object. This API provides the check-in status for a specific place, such as a desk, room, or workspace, associated with a particular reservation.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

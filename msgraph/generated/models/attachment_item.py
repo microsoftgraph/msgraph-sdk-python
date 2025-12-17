@@ -15,7 +15,7 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The type of attachment. Possible values are: file, item, reference. Required.
+    # The type of attachment. The possible values are: file, item, reference. Required.
     attachment_type: Optional[AttachmentType] = None
     # The CID or Content-Id of the attachment for referencing for the in-line attachments using the <img src='cid:contentId'> tag in HTML messages. Optional.
     content_id: Optional[str] = None

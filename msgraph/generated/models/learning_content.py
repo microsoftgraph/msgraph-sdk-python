@@ -39,7 +39,7 @@ class LearningContent(Entity, Parsable):
     language_tag: Optional[str] = None
     # The date and time when the learning content was last modified. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
     last_modified_date_time: Optional[datetime.datetime] = None
-    # The difficulty level of the learning content. Possible values are: Beginner, Intermediate, Advanced, unknownFutureValue. Optional.
+    # The difficulty level of the learning content. The possible values are: Beginner, Intermediate, Advanced, unknownFutureValue. Optional.
     level: Optional[Level] = None
     # The number of pages of the learning content, for example, 9. Optional.
     number_of_pages: Optional[int] = None

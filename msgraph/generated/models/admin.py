@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .people_admin_settings import PeopleAdminSettings
     from .service_announcement import ServiceAnnouncement
     from .sharepoint import Sharepoint
+    from .teams_administration.teams_admin_root import TeamsAdminRoot
 
 @dataclass
 class Admin(AdditionalDataHolder, BackedModel, Parsable):
@@ -34,6 +35,8 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     service_announcement: Optional[ServiceAnnouncement] = None
     # The sharepoint property
     sharepoint: Optional[Sharepoint] = None
+    # Represents a collection of user configurations.
+    teams: Optional[TeamsAdminRoot] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Admin:
@@ -57,6 +60,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
+        from .teams_administration.teams_admin_root import TeamsAdminRoot
 
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .admin_report_settings import AdminReportSettings
@@ -64,6 +68,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
+        from .teams_administration.teams_admin_root import TeamsAdminRoot
 
         fields: dict[str, Callable[[Any], None]] = {
             "edge": lambda n : setattr(self, 'edge', n.get_object_value(Edge)),
@@ -73,6 +78,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
             "reportSettings": lambda n : setattr(self, 'report_settings', n.get_object_value(AdminReportSettings)),
             "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(ServiceAnnouncement)),
             "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(Sharepoint)),
+            "teams": lambda n : setattr(self, 'teams', n.get_object_value(TeamsAdminRoot)),
         }
         return fields
     
@@ -91,6 +97,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("reportSettings", self.report_settings)
         writer.write_object_value("serviceAnnouncement", self.service_announcement)
         writer.write_object_value("sharepoint", self.sharepoint)
+        writer.write_object_value("teams", self.teams)
         writer.write_additional_data_value(self.additional_data)
     
 

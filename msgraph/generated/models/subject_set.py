@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .requestor_manager import RequestorManager
     from .single_service_principal import SingleServicePrincipal
     from .single_user import SingleUser
+    from .target_agent_identity_sponsors_or_owners import TargetAgentIdentitySponsorsOrOwners
     from .target_application_owners import TargetApplicationOwners
     from .target_manager import TargetManager
     from .target_user_sponsors import TargetUserSponsors
@@ -84,6 +85,10 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
             from .single_user import SingleUser
 
             return SingleUser()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetAgentIdentitySponsorsOrOwners".casefold():
+            from .target_agent_identity_sponsors_or_owners import TargetAgentIdentitySponsorsOrOwners
+
+            return TargetAgentIdentitySponsorsOrOwners()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetApplicationOwners".casefold():
             from .target_application_owners import TargetApplicationOwners
 
@@ -113,6 +118,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         from .requestor_manager import RequestorManager
         from .single_service_principal import SingleServicePrincipal
         from .single_user import SingleUser
+        from .target_agent_identity_sponsors_or_owners import TargetAgentIdentitySponsorsOrOwners
         from .target_application_owners import TargetApplicationOwners
         from .target_manager import TargetManager
         from .target_user_sponsors import TargetUserSponsors
@@ -127,6 +133,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         from .requestor_manager import RequestorManager
         from .single_service_principal import SingleServicePrincipal
         from .single_user import SingleUser
+        from .target_agent_identity_sponsors_or_owners import TargetAgentIdentitySponsorsOrOwners
         from .target_application_owners import TargetApplicationOwners
         from .target_manager import TargetManager
         from .target_user_sponsors import TargetUserSponsors

@@ -20,10 +20,12 @@ class Workspace(Place, Parsable):
     display_device_name: Optional[str] = None
     # The email address that is associated with the workspace. This email address is used for booking.
     email_address: Optional[str] = None
-    # The mode for a workspace. The supported modes are:reservablePlaceMode - Workspaces that can be booked in advance using desk pool reservation tools.dropInPlaceMode - First come, first served desks. When you plug into a peripheral on one of these desks in the workspace, the desk is booked for you, assuming that the peripheral has been associated with the desk in the Microsoft Teams Rooms Pro management portal.
+    # The mode for a workspace. The supported modes are:reservablePlaceMode - Workspaces that can be booked in advance using desk pool reservation tools.dropInPlaceMode - First come, first served desks. When you plug into a peripheral on one of these desks in the workspace, the desk is booked for you, assuming that the peripheral has been associated with the desk in the Microsoft Teams Rooms pro management portal.unavailablePlaceMode - Workspaces that are taken down for maintenance or marked as not reservable.
     mode: Optional[PlaceMode] = None
     # A short, friendly name for the workspace, often used for easier identification or display in the UI.
     nickname: Optional[str] = None
+    # An alternative immutable unique identifier of the workspace. Read-only.
+    place_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Workspace:
@@ -53,6 +55,7 @@ class Workspace(Place, Parsable):
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "mode": lambda n : setattr(self, 'mode', n.get_object_value(PlaceMode)),
             "nickname": lambda n : setattr(self, 'nickname', n.get_str_value()),
+            "placeId": lambda n : setattr(self, 'place_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,5 +75,6 @@ class Workspace(Place, Parsable):
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_object_value("mode", self.mode)
         writer.write_str_value("nickname", self.nickname)
+        writer.write_str_value("placeId", self.place_id)
     
 

@@ -7,14 +7,20 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .file_storage_container import FileStorageContainer
+    from .file_storage_container_type import FileStorageContainerType
+    from .file_storage_container_type_registration import FileStorageContainerTypeRegistration
 
 from .entity import Entity
 
 @dataclass
 class FileStorage(Entity, Parsable):
-    # The containers property
+    # The collection of fileStorageContainerTypeRegistration resources.
+    container_type_registrations: Optional[list[FileStorageContainerTypeRegistration]] = None
+    # The collection of fileStorageContainerType resources.
+    container_types: Optional[list[FileStorageContainerType]] = None
+    # The collection of active fileStorageContainer resources.
     containers: Optional[list[FileStorageContainer]] = None
-    # The deletedContainers property
+    # The collection of deleted fileStorageContainer resources.
     deleted_containers: Optional[list[FileStorageContainer]] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -37,11 +43,17 @@ class FileStorage(Entity, Parsable):
         """
         from .entity import Entity
         from .file_storage_container import FileStorageContainer
+        from .file_storage_container_type import FileStorageContainerType
+        from .file_storage_container_type_registration import FileStorageContainerTypeRegistration
 
         from .entity import Entity
         from .file_storage_container import FileStorageContainer
+        from .file_storage_container_type import FileStorageContainerType
+        from .file_storage_container_type_registration import FileStorageContainerTypeRegistration
 
         fields: dict[str, Callable[[Any], None]] = {
+            "containerTypeRegistrations": lambda n : setattr(self, 'container_type_registrations', n.get_collection_of_object_values(FileStorageContainerTypeRegistration)),
+            "containerTypes": lambda n : setattr(self, 'container_types', n.get_collection_of_object_values(FileStorageContainerType)),
             "containers": lambda n : setattr(self, 'containers', n.get_collection_of_object_values(FileStorageContainer)),
             "deletedContainers": lambda n : setattr(self, 'deleted_containers', n.get_collection_of_object_values(FileStorageContainer)),
         }
@@ -58,6 +70,8 @@ class FileStorage(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("containerTypeRegistrations", self.container_type_registrations)
+        writer.write_collection_of_object_values("containerTypes", self.container_types)
         writer.write_collection_of_object_values("containers", self.containers)
         writer.write_collection_of_object_values("deletedContainers", self.deleted_containers)
     

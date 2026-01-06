@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .cloud_pc_gallery_image import CloudPcGalleryImage
     from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
     from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+    from .cloud_pc_report import CloudPcReport
     from .cloud_pc_user_setting import CloudPcUserSetting
     from .cloud_p_c import CloudPC
     from .entity import Entity
@@ -32,6 +33,8 @@ class VirtualEndpoint(Entity, Parsable):
     on_premises_connections: Optional[list[CloudPcOnPremisesConnection]] = None
     # A collection of Cloud PC provisioning policies.
     provisioning_policies: Optional[list[CloudPcProvisioningPolicy]] = None
+    # Cloud PC-related reports. Read-only.
+    report: Optional[CloudPcReport] = None
     # A collection of Cloud PC user settings.
     user_settings: Optional[list[CloudPcUserSetting]] = None
     
@@ -56,6 +59,7 @@ class VirtualEndpoint(Entity, Parsable):
         from .cloud_pc_gallery_image import CloudPcGalleryImage
         from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+        from .cloud_pc_report import CloudPcReport
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_p_c import CloudPC
         from .entity import Entity
@@ -65,6 +69,7 @@ class VirtualEndpoint(Entity, Parsable):
         from .cloud_pc_gallery_image import CloudPcGalleryImage
         from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+        from .cloud_pc_report import CloudPcReport
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_p_c import CloudPC
         from .entity import Entity
@@ -76,6 +81,7 @@ class VirtualEndpoint(Entity, Parsable):
             "galleryImages": lambda n : setattr(self, 'gallery_images', n.get_collection_of_object_values(CloudPcGalleryImage)),
             "onPremisesConnections": lambda n : setattr(self, 'on_premises_connections', n.get_collection_of_object_values(CloudPcOnPremisesConnection)),
             "provisioningPolicies": lambda n : setattr(self, 'provisioning_policies', n.get_collection_of_object_values(CloudPcProvisioningPolicy)),
+            "report": lambda n : setattr(self, 'report', n.get_object_value(CloudPcReport)),
             "userSettings": lambda n : setattr(self, 'user_settings', n.get_collection_of_object_values(CloudPcUserSetting)),
         }
         super_fields = super().get_field_deserializers()
@@ -97,6 +103,7 @@ class VirtualEndpoint(Entity, Parsable):
         writer.write_collection_of_object_values("galleryImages", self.gallery_images)
         writer.write_collection_of_object_values("onPremisesConnections", self.on_premises_connections)
         writer.write_collection_of_object_values("provisioningPolicies", self.provisioning_policies)
+        writer.write_object_value("report", self.report)
         writer.write_collection_of_object_values("userSettings", self.user_settings)
     
 

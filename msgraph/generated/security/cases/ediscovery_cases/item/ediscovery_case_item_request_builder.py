@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.security.ediscovery_case import EdiscoveryCase
+    from .case_members.case_members_request_builder import CaseMembersRequestBuilder
     from .custodians.custodians_request_builder import CustodiansRequestBuilder
     from .microsoft_graph_security_close.microsoft_graph_security_close_request_builder import MicrosoftGraphSecurityCloseRequestBuilder
     from .microsoft_graph_security_reopen.microsoft_graph_security_reopen_request_builder import MicrosoftGraphSecurityReopenRequestBuilder
@@ -149,6 +150,15 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return EdiscoveryCaseItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def case_members(self) -> CaseMembersRequestBuilder:
+        """
+        Provides operations to manage the caseMembers property of the microsoft.graph.security.ediscoveryCase entity.
+        """
+        from .case_members.case_members_request_builder import CaseMembersRequestBuilder
+
+        return CaseMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def custodians(self) -> CustodiansRequestBuilder:

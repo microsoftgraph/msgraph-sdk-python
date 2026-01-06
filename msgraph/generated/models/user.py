@@ -6,6 +6,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .adhoc_call import AdhocCall
     from .agreement_acceptance import AgreementAcceptance
     from .app_role_assignment import AppRoleAssignment
     from .assigned_license import AssignedLicense
@@ -41,6 +42,7 @@ if TYPE_CHECKING:
     from .online_meeting import OnlineMeeting
     from .on_premises_extension_attributes import OnPremisesExtensionAttributes
     from .on_premises_provisioning_error import OnPremisesProvisioningError
+    from .on_premises_sync_behavior import OnPremisesSyncBehavior
     from .outlook_user import OutlookUser
     from .o_auth2_permission_grant import OAuth2PermissionGrant
     from .password_profile import PasswordProfile
@@ -78,6 +80,8 @@ class User(DirectoryObject, Parsable):
     account_enabled: Optional[bool] = None
     # The user's activities across devices. Read-only. Nullable.
     activities: Optional[list[UserActivity]] = None
+    # Ad hoc calls associated with the user. Read-only. Nullable.
+    adhoc_calls: Optional[list[AdhocCall]] = None
     # Sets the age group of the user. Allowed values: null, Minor, NotAdult, and Adult. For more information, see legal age group property definitions. Returned only on $select. Supports $filter (eq, ne, not, and in).
     age_group: Optional[str] = None
     # The user's terms of use acceptance statuses. Read-only. Nullable.
@@ -242,6 +246,8 @@ class User(DirectoryObject, Parsable):
     on_premises_sam_account_name: Optional[str] = None
     # Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select. Supports $filter (eq including on null values).
     on_premises_security_identifier: Optional[str] = None
+    # The onPremisesSyncBehavior property
+    on_premises_sync_behavior: Optional[OnPremisesSyncBehavior] = None
     # true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Microsoft Entra ID. Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
     on_premises_sync_enabled: Optional[bool] = None
     # Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
@@ -351,6 +357,7 @@ class User(DirectoryObject, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .adhoc_call import AdhocCall
         from .agreement_acceptance import AgreementAcceptance
         from .app_role_assignment import AppRoleAssignment
         from .assigned_license import AssignedLicense
@@ -386,6 +393,7 @@ class User(DirectoryObject, Parsable):
         from .online_meeting import OnlineMeeting
         from .on_premises_extension_attributes import OnPremisesExtensionAttributes
         from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .outlook_user import OutlookUser
         from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .password_profile import PasswordProfile
@@ -408,6 +416,7 @@ class User(DirectoryObject, Parsable):
         from .user_solution_root import UserSolutionRoot
         from .user_teamwork import UserTeamwork
 
+        from .adhoc_call import AdhocCall
         from .agreement_acceptance import AgreementAcceptance
         from .app_role_assignment import AppRoleAssignment
         from .assigned_license import AssignedLicense
@@ -443,6 +452,7 @@ class User(DirectoryObject, Parsable):
         from .online_meeting import OnlineMeeting
         from .on_premises_extension_attributes import OnPremisesExtensionAttributes
         from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .outlook_user import OutlookUser
         from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .password_profile import PasswordProfile
@@ -469,6 +479,7 @@ class User(DirectoryObject, Parsable):
             "aboutMe": lambda n : setattr(self, 'about_me', n.get_str_value()),
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(UserActivity)),
+            "adhocCalls": lambda n : setattr(self, 'adhoc_calls', n.get_collection_of_object_values(AdhocCall)),
             "ageGroup": lambda n : setattr(self, 'age_group', n.get_str_value()),
             "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
             "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
@@ -551,6 +562,7 @@ class User(DirectoryObject, Parsable):
             "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
             "onPremisesSamAccountName": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "onPremisesSyncBehavior": lambda n : setattr(self, 'on_premises_sync_behavior', n.get_object_value(OnPremisesSyncBehavior)),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "onPremisesUserPrincipalName": lambda n : setattr(self, 'on_premises_user_principal_name', n.get_str_value()),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
@@ -614,6 +626,7 @@ class User(DirectoryObject, Parsable):
         writer.write_str_value("aboutMe", self.about_me)
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("activities", self.activities)
+        writer.write_collection_of_object_values("adhocCalls", self.adhoc_calls)
         writer.write_str_value("ageGroup", self.age_group)
         writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
         writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)
@@ -696,6 +709,7 @@ class User(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
         writer.write_str_value("onPremisesSamAccountName", self.on_premises_sam_account_name)
         writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
+        writer.write_object_value("onPremisesSyncBehavior", self.on_premises_sync_behavior)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_str_value("onPremisesUserPrincipalName", self.on_premises_user_principal_name)
         writer.write_object_value("onenote", self.onenote)

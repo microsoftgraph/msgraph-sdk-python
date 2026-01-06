@@ -71,7 +71,7 @@ class SecureScoreControlProfileItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: SecureScoreControlProfile, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SecureScoreControlProfile]:
         """
-        Update an editable secureScoreControlProfile object within any integrated solution to change various properties, such as assignedTo or tenantNote.
+        Update an editable secureScoreControlProfile object within any integrated solution to change various properties, such as tenantNote.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SecureScoreControlProfile]
@@ -117,7 +117,7 @@ class SecureScoreControlProfileItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: SecureScoreControlProfile, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update an editable secureScoreControlProfile object within any integrated solution to change various properties, such as assignedTo or tenantNote.
+        Update an editable secureScoreControlProfile object within any integrated solution to change various properties, such as tenantNote.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

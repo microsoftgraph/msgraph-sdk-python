@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
+    from .assigned_label import AssignedLabel
     from .column_definition import ColumnDefinition
     from .drive import Drive
     from .entity import Entity
@@ -23,6 +24,8 @@ from .entity import Entity
 
 @dataclass
 class FileStorageContainer(Entity, Parsable):
+    # Sensitivity label assigned to the fileStorageContainer. Read-write.
+    assigned_sensitivity_label: Optional[AssignedLabel] = None
     # The columns property
     columns: Optional[list[ColumnDefinition]] = None
     # Container type ID of the fileStorageContainer. For details about container types, see Container Types. Each container must have only one container type. Read-only.
@@ -70,6 +73,7 @@ class FileStorageContainer(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .assigned_label import AssignedLabel
         from .column_definition import ColumnDefinition
         from .drive import Drive
         from .entity import Entity
@@ -82,6 +86,7 @@ class FileStorageContainer(Entity, Parsable):
         from .share_point_migration_job import SharePointMigrationJob
         from .site_lock_state import SiteLockState
 
+        from .assigned_label import AssignedLabel
         from .column_definition import ColumnDefinition
         from .drive import Drive
         from .entity import Entity
@@ -95,6 +100,7 @@ class FileStorageContainer(Entity, Parsable):
         from .site_lock_state import SiteLockState
 
         fields: dict[str, Callable[[Any], None]] = {
+            "assignedSensitivityLabel": lambda n : setattr(self, 'assigned_sensitivity_label', n.get_object_value(AssignedLabel)),
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
             "containerTypeId": lambda n : setattr(self, 'container_type_id', n.get_uuid_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -123,6 +129,7 @@ class FileStorageContainer(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("assignedSensitivityLabel", self.assigned_sensitivity_label)
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_uuid_value("containerTypeId", self.container_type_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

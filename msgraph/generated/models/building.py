@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .building_map import BuildingMap
     from .place import Place
+    from .place_feature_enablement import PlaceFeatureEnablement
     from .resource_link import ResourceLink
 
 from .place import Place
@@ -19,6 +20,8 @@ class Building(Place, Parsable):
     map: Optional[BuildingMap] = None
     # A set of links to external resources that are associated with the building. Inherited from place.
     resource_links: Optional[list[ResourceLink]] = None
+    # The wifiState property
+    wifi_state: Optional[PlaceFeatureEnablement] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Building:
@@ -38,15 +41,18 @@ class Building(Place, Parsable):
         """
         from .building_map import BuildingMap
         from .place import Place
+        from .place_feature_enablement import PlaceFeatureEnablement
         from .resource_link import ResourceLink
 
         from .building_map import BuildingMap
         from .place import Place
+        from .place_feature_enablement import PlaceFeatureEnablement
         from .resource_link import ResourceLink
 
         fields: dict[str, Callable[[Any], None]] = {
             "map": lambda n : setattr(self, 'map', n.get_object_value(BuildingMap)),
             "resourceLinks": lambda n : setattr(self, 'resource_links', n.get_collection_of_object_values(ResourceLink)),
+            "wifiState": lambda n : setattr(self, 'wifi_state', n.get_enum_value(PlaceFeatureEnablement)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,5 +69,6 @@ class Building(Place, Parsable):
         super().serialize(writer)
         writer.write_object_value("map", self.map)
         writer.write_collection_of_object_values("resourceLinks", self.resource_links)
+        writer.write_enum_value("wifiState", self.wifi_state)
     
 

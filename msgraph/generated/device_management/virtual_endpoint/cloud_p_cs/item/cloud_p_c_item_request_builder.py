@@ -19,8 +19,10 @@ if TYPE_CHECKING:
     from .end_grace_period.end_grace_period_request_builder import EndGracePeriodRequestBuilder
     from .reboot.reboot_request_builder import RebootRequestBuilder
     from .rename.rename_request_builder import RenameRequestBuilder
+    from .reprovision.reprovision_request_builder import ReprovisionRequestBuilder
     from .resize.resize_request_builder import ResizeRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
+    from .retrieve_cloud_pc_launch_detail.retrieve_cloud_pc_launch_detail_request_builder import RetrieveCloudPcLaunchDetailRequestBuilder
     from .troubleshoot.troubleshoot_request_builder import TroubleshootRequestBuilder
 
 class CloudPCItemRequestBuilder(BaseRequestBuilder):
@@ -173,6 +175,15 @@ class CloudPCItemRequestBuilder(BaseRequestBuilder):
         return RenameRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def reprovision(self) -> ReprovisionRequestBuilder:
+        """
+        Provides operations to call the reprovision method.
+        """
+        from .reprovision.reprovision_request_builder import ReprovisionRequestBuilder
+
+        return ReprovisionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def resize(self) -> ResizeRequestBuilder:
         """
         Provides operations to call the resize method.
@@ -189,6 +200,15 @@ class CloudPCItemRequestBuilder(BaseRequestBuilder):
         from .restore.restore_request_builder import RestoreRequestBuilder
 
         return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def retrieve_cloud_pc_launch_detail(self) -> RetrieveCloudPcLaunchDetailRequestBuilder:
+        """
+        Provides operations to call the retrieveCloudPcLaunchDetail method.
+        """
+        from .retrieve_cloud_pc_launch_detail.retrieve_cloud_pc_launch_detail_request_builder import RetrieveCloudPcLaunchDetailRequestBuilder
+
+        return RetrieveCloudPcLaunchDetailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def troubleshoot(self) -> TroubleshootRequestBuilder:

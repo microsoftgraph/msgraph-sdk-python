@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from .report_settings.report_settings_request_builder import ReportSettingsRequestBuilder
     from .service_announcement.service_announcement_request_builder import ServiceAnnouncementRequestBuilder
     from .sharepoint.sharepoint_request_builder import SharepointRequestBuilder
+    from .teams.teams_request_builder import TeamsRequestBuilder
 
 class AdminRequestBuilder(BaseRequestBuilder):
     """
@@ -168,6 +169,15 @@ class AdminRequestBuilder(BaseRequestBuilder):
         from .sharepoint.sharepoint_request_builder import SharepointRequestBuilder
 
         return SharepointRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def teams(self) -> TeamsRequestBuilder:
+        """
+        Provides operations to manage the teams property of the microsoft.graph.admin entity.
+        """
+        from .teams.teams_request_builder import TeamsRequestBuilder
+
+        return TeamsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AdminRequestBuilderGetQueryParameters():

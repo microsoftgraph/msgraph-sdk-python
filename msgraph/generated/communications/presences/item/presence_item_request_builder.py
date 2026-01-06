@@ -16,8 +16,12 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.presence import Presence
+    from .clear_automatic_location.clear_automatic_location_request_builder import ClearAutomaticLocationRequestBuilder
+    from .clear_location.clear_location_request_builder import ClearLocationRequestBuilder
     from .clear_presence.clear_presence_request_builder import ClearPresenceRequestBuilder
     from .clear_user_preferred_presence.clear_user_preferred_presence_request_builder import ClearUserPreferredPresenceRequestBuilder
+    from .set_automatic_location.set_automatic_location_request_builder import SetAutomaticLocationRequestBuilder
+    from .set_manual_location.set_manual_location_request_builder import SetManualLocationRequestBuilder
     from .set_presence.set_presence_request_builder import SetPresenceRequestBuilder
     from .set_status_message.set_status_message_request_builder import SetStatusMessageRequestBuilder
     from .set_user_preferred_presence.set_user_preferred_presence_request_builder import SetUserPreferredPresenceRequestBuilder
@@ -145,6 +149,24 @@ class PresenceItemRequestBuilder(BaseRequestBuilder):
         return PresenceItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def clear_automatic_location(self) -> ClearAutomaticLocationRequestBuilder:
+        """
+        Provides operations to call the clearAutomaticLocation method.
+        """
+        from .clear_automatic_location.clear_automatic_location_request_builder import ClearAutomaticLocationRequestBuilder
+
+        return ClearAutomaticLocationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def clear_location(self) -> ClearLocationRequestBuilder:
+        """
+        Provides operations to call the clearLocation method.
+        """
+        from .clear_location.clear_location_request_builder import ClearLocationRequestBuilder
+
+        return ClearLocationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def clear_presence(self) -> ClearPresenceRequestBuilder:
         """
         Provides operations to call the clearPresence method.
@@ -161,6 +183,24 @@ class PresenceItemRequestBuilder(BaseRequestBuilder):
         from .clear_user_preferred_presence.clear_user_preferred_presence_request_builder import ClearUserPreferredPresenceRequestBuilder
 
         return ClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_automatic_location(self) -> SetAutomaticLocationRequestBuilder:
+        """
+        Provides operations to call the setAutomaticLocation method.
+        """
+        from .set_automatic_location.set_automatic_location_request_builder import SetAutomaticLocationRequestBuilder
+
+        return SetAutomaticLocationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_manual_location(self) -> SetManualLocationRequestBuilder:
+        """
+        Provides operations to call the setManualLocation method.
+        """
+        from .set_manual_location.set_manual_location_request_builder import SetManualLocationRequestBuilder
+
+        return SetManualLocationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def set_presence(self) -> SetPresenceRequestBuilder:

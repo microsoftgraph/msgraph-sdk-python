@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .device_risk_score import DeviceRiskScore
     from .logged_on_user import LoggedOnUser
     from .onboarding_status import OnboardingStatus
+    from .resource_access_event import ResourceAccessEvent
     from .vm_metadata import VmMetadata
 
 from .alert_evidence import AlertEvidence
@@ -22,7 +23,7 @@ class DeviceEvidence(AlertEvidence, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.security.deviceEvidence"
     # A unique identifier assigned to a device by Microsoft Entra ID when device is Microsoft Entra joined.
     azure_ad_device_id: Optional[str] = None
-    # State of the Defender AntiMalware engine. The possible values are: notReporting, disabled, notUpdated, updated, unknown, notSupported, unknownFutureValue.
+    # State of the Defender anti-malware engine. The possible values are: notReporting, disabled, notUpdated, updated, unknown, notSupported, unknownFutureValue.
     defender_av_status: Optional[DefenderAvStatus] = None
     # The fully qualified domain name (FQDN) for the device.
     device_dns_name: Optional[str] = None
@@ -56,6 +57,8 @@ class DeviceEvidence(AlertEvidence, Parsable):
     rbac_group_id: Optional[int] = None
     # The name of the RBAC device group.
     rbac_group_name: Optional[str] = None
+    # Information on resource access attempts made by the user account.
+    resource_access_events: Optional[list[ResourceAccessEvent]] = None
     # Risk score as evaluated by Microsoft Defender for Endpoint. The possible values are: none, informational, low, medium, high, unknownFutureValue.
     risk_score: Optional[DeviceRiskScore] = None
     # The version of the operating system platform.
@@ -85,6 +88,7 @@ class DeviceEvidence(AlertEvidence, Parsable):
         from .device_risk_score import DeviceRiskScore
         from .logged_on_user import LoggedOnUser
         from .onboarding_status import OnboardingStatus
+        from .resource_access_event import ResourceAccessEvent
         from .vm_metadata import VmMetadata
 
         from .alert_evidence import AlertEvidence
@@ -93,6 +97,7 @@ class DeviceEvidence(AlertEvidence, Parsable):
         from .device_risk_score import DeviceRiskScore
         from .logged_on_user import LoggedOnUser
         from .onboarding_status import OnboardingStatus
+        from .resource_access_event import ResourceAccessEvent
         from .vm_metadata import VmMetadata
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -114,6 +119,7 @@ class DeviceEvidence(AlertEvidence, Parsable):
             "osPlatform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
             "rbacGroupId": lambda n : setattr(self, 'rbac_group_id', n.get_int_value()),
             "rbacGroupName": lambda n : setattr(self, 'rbac_group_name', n.get_str_value()),
+            "resourceAccessEvents": lambda n : setattr(self, 'resource_access_events', n.get_collection_of_object_values(ResourceAccessEvent)),
             "riskScore": lambda n : setattr(self, 'risk_score', n.get_enum_value(DeviceRiskScore)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
             "vmMetadata": lambda n : setattr(self, 'vm_metadata', n.get_object_value(VmMetadata)),
@@ -149,6 +155,7 @@ class DeviceEvidence(AlertEvidence, Parsable):
         writer.write_str_value("osPlatform", self.os_platform)
         writer.write_int_value("rbacGroupId", self.rbac_group_id)
         writer.write_str_value("rbacGroupName", self.rbac_group_name)
+        writer.write_collection_of_object_values("resourceAccessEvents", self.resource_access_events)
         writer.write_enum_value("riskScore", self.risk_score)
         writer.write_str_value("version", self.version)
         writer.write_object_value("vmMetadata", self.vm_metadata)

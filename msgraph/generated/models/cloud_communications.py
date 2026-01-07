@@ -6,6 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .adhoc_call import AdhocCall
     from .call import Call
     from .call_records.call_record import CallRecord
     from .online_meeting import OnlineMeeting
@@ -22,6 +23,8 @@ class CloudCommunications(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The adhocCalls property
+    adhoc_calls: Optional[list[AdhocCall]] = None
     # The callRecords property
     call_records: Optional[list[CallRecord]] = None
     # The calls property
@@ -51,12 +54,14 @@ class CloudCommunications(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .adhoc_call import AdhocCall
         from .call import Call
         from .call_records.call_record import CallRecord
         from .online_meeting import OnlineMeeting
         from .online_meeting_engagement_conversation import OnlineMeetingEngagementConversation
         from .presence import Presence
 
+        from .adhoc_call import AdhocCall
         from .call import Call
         from .call_records.call_record import CallRecord
         from .online_meeting import OnlineMeeting
@@ -64,6 +69,7 @@ class CloudCommunications(AdditionalDataHolder, BackedModel, Parsable):
         from .presence import Presence
 
         fields: dict[str, Callable[[Any], None]] = {
+            "adhocCalls": lambda n : setattr(self, 'adhoc_calls', n.get_collection_of_object_values(AdhocCall)),
             "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(CallRecord)),
             "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(Call)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -81,6 +87,7 @@ class CloudCommunications(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_collection_of_object_values("adhocCalls", self.adhoc_calls)
         writer.write_collection_of_object_values("callRecords", self.call_records)
         writer.write_collection_of_object_values("calls", self.calls)
         writer.write_str_value("@odata.type", self.odata_type)

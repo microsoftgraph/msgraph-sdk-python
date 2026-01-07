@@ -34,7 +34,7 @@ class ServiceAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a serviceApp.
+        Delete a serviceApp. When this API is called via Microsoft Graph PowerShell, it returns a 403 Forbidden response code.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/backuprestoreroot-delete-serviceapps?view=graph-rest-1.0
@@ -97,7 +97,7 @@ class ServiceAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a serviceApp.
+        Delete a serviceApp. When this API is called via Microsoft Graph PowerShell, it returns a 403 Forbidden response code.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

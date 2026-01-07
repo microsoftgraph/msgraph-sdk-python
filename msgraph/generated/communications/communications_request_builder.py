@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ..models.cloud_communications import CloudCommunications
     from ..models.o_data_errors.o_data_error import ODataError
+    from .adhoc_calls.adhoc_calls_request_builder import AdhocCallsRequestBuilder
     from .calls.calls_request_builder import CallsRequestBuilder
     from .call_records.call_records_request_builder import CallRecordsRequestBuilder
     from .get_all_online_meeting_messages.get_all_online_meeting_messages_request_builder import GetAllOnlineMeetingMessagesRequestBuilder
@@ -115,6 +116,15 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CommunicationsRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def adhoc_calls(self) -> AdhocCallsRequestBuilder:
+        """
+        Provides operations to manage the adhocCalls property of the microsoft.graph.cloudCommunications entity.
+        """
+        from .adhoc_calls.adhoc_calls_request_builder import AdhocCallsRequestBuilder
+
+        return AdhocCallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def call_records(self) -> CallRecordsRequestBuilder:

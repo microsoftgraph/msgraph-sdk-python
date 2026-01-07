@@ -36,6 +36,7 @@ if TYPE_CHECKING:
     from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
     from .activity_history_item import ActivityHistoryItem
     from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+    from .adhoc_call import AdhocCall
     from .administrative_unit import AdministrativeUnit
     from .admin_consent_request_policy import AdminConsentRequestPolicy
     from .admin_microsoft365_apps import AdminMicrosoft365Apps
@@ -48,6 +49,7 @@ if TYPE_CHECKING:
     from .agreement_file_version import AgreementFileVersion
     from .ai_interaction import AiInteraction
     from .ai_interaction_history import AiInteractionHistory
+    from .ai_online_meeting import AiOnlineMeeting
     from .ai_user import AiUser
     from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
     from .alert import Alert
@@ -136,6 +138,7 @@ if TYPE_CHECKING:
     from .calendar_permission import CalendarPermission
     from .calendar_sharing_message import CalendarSharingMessage
     from .call import Call
+    from .call_ai_insight import CallAiInsight
     from .call_event import CallEvent
     from .call_recording import CallRecording
     from .call_records.call_record import CallRecord
@@ -167,6 +170,7 @@ if TYPE_CHECKING:
     from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
     from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
     from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
+    from .cloud_pc_report import CloudPcReport
     from .cloud_pc_user_setting import CloudPcUserSetting
     from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
     from .cloud_p_c import CloudPC
@@ -354,6 +358,8 @@ if TYPE_CHECKING:
     from .file_attachment import FileAttachment
     from .file_storage import FileStorage
     from .file_storage_container import FileStorageContainer
+    from .file_storage_container_type import FileStorageContainerType
+    from .file_storage_container_type_registration import FileStorageContainerTypeRegistration
     from .filter_operator_schema import FilterOperatorSchema
     from .fixture_map import FixtureMap
     from .floor import Floor
@@ -703,6 +709,7 @@ if TYPE_CHECKING:
     from .security.disposition_review_stage import DispositionReviewStage
     from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
     from .security.ediscovery_case import EdiscoveryCase
+    from .security.ediscovery_case_member import EdiscoveryCaseMember
     from .security.ediscovery_case_settings import EdiscoveryCaseSettings
     from .security.ediscovery_custodian import EdiscoveryCustodian
     from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
@@ -842,6 +849,8 @@ if TYPE_CHECKING:
     from .target_device_group import TargetDeviceGroup
     from .task_file_attachment import TaskFileAttachment
     from .team import Team
+    from .teams_administration.teams_admin_root import TeamsAdminRoot
+    from .teams_administration.teams_user_configuration import TeamsUserConfiguration
     from .teams_app import TeamsApp
     from .teams_app_definition import TeamsAppDefinition
     from .teams_app_installation import TeamsAppInstallation
@@ -1059,6 +1068,9 @@ if TYPE_CHECKING:
     from .workforce_integration import WorkforceIntegration
     from .working_time_schedule import WorkingTimeSchedule
     from .workspace import Workspace
+    from .work_hours_and_locations_setting import WorkHoursAndLocationsSetting
+    from .work_plan_occurrence import WorkPlanOccurrence
+    from .work_plan_recurrence import WorkPlanRecurrence
     from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
     from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
@@ -1208,6 +1220,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
 
             return AddLargeGalleryViewOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.adhocCall".casefold():
+            from .adhoc_call import AdhocCall
+
+            return AdhocCall()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.adminConsentRequestPolicy".casefold():
             from .admin_consent_request_policy import AdminConsentRequestPolicy
 
@@ -1256,6 +1272,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .ai_interaction_history import AiInteractionHistory
 
             return AiInteractionHistory()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiOnlineMeeting".casefold():
+            from .ai_online_meeting import AiOnlineMeeting
+
+            return AiOnlineMeeting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiUser".casefold():
             from .ai_user import AiUser
 
@@ -1609,6 +1629,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .call import Call
 
             return Call()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callAiInsight".casefold():
+            from .call_ai_insight import CallAiInsight
+
+            return CallAiInsight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callEvent".casefold():
             from .call_event import CallEvent
 
@@ -1738,6 +1762,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
 
             return CloudPcProvisioningPolicyAssignment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcReport".casefold():
+            from .cloud_pc_report import CloudPcReport
+
+            return CloudPcReport()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcUserSetting".casefold():
             from .cloud_pc_user_setting import CloudPcUserSetting
 
@@ -2482,6 +2510,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .file_storage_container import FileStorageContainer
 
             return FileStorageContainer()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileStorageContainerType".casefold():
+            from .file_storage_container_type import FileStorageContainerType
+
+            return FileStorageContainerType()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileStorageContainerTypeRegistration".casefold():
+            from .file_storage_container_type_registration import FileStorageContainerTypeRegistration
+
+            return FileStorageContainerTypeRegistration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.filterOperatorSchema".casefold():
             from .filter_operator_schema import FilterOperatorSchema
 
@@ -3888,6 +3924,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.ediscovery_case import EdiscoveryCase
 
             return EdiscoveryCase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryCaseMember".casefold():
+            from .security.ediscovery_case_member import EdiscoveryCaseMember
+
+            return EdiscoveryCaseMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryCaseSettings".casefold():
             from .security.ediscovery_case_settings import EdiscoveryCaseSettings
 
@@ -4446,6 +4486,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .team_info import TeamInfo
 
             return TeamInfo()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsAdminRoot".casefold():
+            from .teams_administration.teams_admin_root import TeamsAdminRoot
+
+            return TeamsAdminRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsUserConfiguration".casefold():
+            from .teams_administration.teams_user_configuration import TeamsUserConfiguration
+
+            return TeamsUserConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsApp".casefold():
             from .teams_app import TeamsApp
 
@@ -5304,10 +5352,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .workforce_integration import WorkforceIntegration
 
             return WorkforceIntegration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.workHoursAndLocationsSetting".casefold():
+            from .work_hours_and_locations_setting import WorkHoursAndLocationsSetting
+
+            return WorkHoursAndLocationsSetting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workingTimeSchedule".casefold():
             from .working_time_schedule import WorkingTimeSchedule
 
             return WorkingTimeSchedule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.workPlanOccurrence".casefold():
+            from .work_plan_occurrence import WorkPlanOccurrence
+
+            return WorkPlanOccurrence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.workPlanRecurrence".casefold():
+            from .work_plan_recurrence import WorkPlanRecurrence
+
+            return WorkPlanRecurrence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workspace".casefold():
             from .workspace import Workspace
 
@@ -5357,6 +5417,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .activity_history_item import ActivityHistoryItem
         from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+        from .adhoc_call import AdhocCall
         from .administrative_unit import AdministrativeUnit
         from .admin_consent_request_policy import AdminConsentRequestPolicy
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
@@ -5369,6 +5430,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .agreement_file_version import AgreementFileVersion
         from .ai_interaction import AiInteraction
         from .ai_interaction_history import AiInteractionHistory
+        from .ai_online_meeting import AiOnlineMeeting
         from .ai_user import AiUser
         from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
         from .alert import Alert
@@ -5457,6 +5519,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_ai_insight import CallAiInsight
         from .call_event import CallEvent
         from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
@@ -5488,6 +5551,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
         from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
+        from .cloud_pc_report import CloudPcReport
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
         from .cloud_p_c import CloudPC
@@ -5675,6 +5739,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .file_attachment import FileAttachment
         from .file_storage import FileStorage
         from .file_storage_container import FileStorageContainer
+        from .file_storage_container_type import FileStorageContainerType
+        from .file_storage_container_type_registration import FileStorageContainerTypeRegistration
         from .filter_operator_schema import FilterOperatorSchema
         from .fixture_map import FixtureMap
         from .floor import Floor
@@ -6024,6 +6090,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.disposition_review_stage import DispositionReviewStage
         from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .security.ediscovery_case import EdiscoveryCase
+        from .security.ediscovery_case_member import EdiscoveryCaseMember
         from .security.ediscovery_case_settings import EdiscoveryCaseSettings
         from .security.ediscovery_custodian import EdiscoveryCustodian
         from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
@@ -6163,6 +6230,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.teams_admin_root import TeamsAdminRoot
+        from .teams_administration.teams_user_configuration import TeamsUserConfiguration
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
         from .teams_app_installation import TeamsAppInstallation
@@ -6380,6 +6449,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .workforce_integration import WorkforceIntegration
         from .working_time_schedule import WorkingTimeSchedule
         from .workspace import Workspace
+        from .work_hours_and_locations_setting import WorkHoursAndLocationsSetting
+        from .work_plan_occurrence import WorkPlanOccurrence
+        from .work_plan_recurrence import WorkPlanRecurrence
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
         from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
@@ -6413,6 +6485,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .activity_history_item import ActivityHistoryItem
         from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+        from .adhoc_call import AdhocCall
         from .administrative_unit import AdministrativeUnit
         from .admin_consent_request_policy import AdminConsentRequestPolicy
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
@@ -6425,6 +6498,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .agreement_file_version import AgreementFileVersion
         from .ai_interaction import AiInteraction
         from .ai_interaction_history import AiInteractionHistory
+        from .ai_online_meeting import AiOnlineMeeting
         from .ai_user import AiUser
         from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
         from .alert import Alert
@@ -6513,6 +6587,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_ai_insight import CallAiInsight
         from .call_event import CallEvent
         from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
@@ -6544,6 +6619,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
         from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
+        from .cloud_pc_report import CloudPcReport
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
         from .cloud_p_c import CloudPC
@@ -6731,6 +6807,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .file_attachment import FileAttachment
         from .file_storage import FileStorage
         from .file_storage_container import FileStorageContainer
+        from .file_storage_container_type import FileStorageContainerType
+        from .file_storage_container_type_registration import FileStorageContainerTypeRegistration
         from .filter_operator_schema import FilterOperatorSchema
         from .fixture_map import FixtureMap
         from .floor import Floor
@@ -7080,6 +7158,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.disposition_review_stage import DispositionReviewStage
         from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .security.ediscovery_case import EdiscoveryCase
+        from .security.ediscovery_case_member import EdiscoveryCaseMember
         from .security.ediscovery_case_settings import EdiscoveryCaseSettings
         from .security.ediscovery_custodian import EdiscoveryCustodian
         from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
@@ -7219,6 +7298,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.teams_admin_root import TeamsAdminRoot
+        from .teams_administration.teams_user_configuration import TeamsUserConfiguration
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
         from .teams_app_installation import TeamsAppInstallation
@@ -7436,6 +7517,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .workforce_integration import WorkforceIntegration
         from .working_time_schedule import WorkingTimeSchedule
         from .workspace import Workspace
+        from .work_hours_and_locations_setting import WorkHoursAndLocationsSetting
+        from .work_plan_occurrence import WorkPlanOccurrence
+        from .work_plan_recurrence import WorkPlanRecurrence
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
         from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 

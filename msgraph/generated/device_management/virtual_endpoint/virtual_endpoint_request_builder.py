@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from .gallery_images.gallery_images_request_builder import GalleryImagesRequestBuilder
     from .on_premises_connections.on_premises_connections_request_builder import OnPremisesConnectionsRequestBuilder
     from .provisioning_policies.provisioning_policies_request_builder import ProvisioningPoliciesRequestBuilder
+    from .report.report_request_builder import ReportRequestBuilder
     from .user_settings.user_settings_request_builder import UserSettingsRequestBuilder
 
 class VirtualEndpointRequestBuilder(BaseRequestBuilder):
@@ -198,6 +199,15 @@ class VirtualEndpointRequestBuilder(BaseRequestBuilder):
         from .provisioning_policies.provisioning_policies_request_builder import ProvisioningPoliciesRequestBuilder
 
         return ProvisioningPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def report(self) -> ReportRequestBuilder:
+        """
+        Provides operations to manage the report property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .report.report_request_builder import ReportRequestBuilder
+
+        return ReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_settings(self) -> UserSettingsRequestBuilder:

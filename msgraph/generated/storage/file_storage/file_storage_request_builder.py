@@ -17,6 +17,8 @@ if TYPE_CHECKING:
     from ...models.file_storage import FileStorage
     from ...models.o_data_errors.o_data_error import ODataError
     from .containers.containers_request_builder import ContainersRequestBuilder
+    from .container_types.container_types_request_builder import ContainerTypesRequestBuilder
+    from .container_type_registrations.container_type_registrations_request_builder import ContainerTypeRegistrationsRequestBuilder
     from .deleted_containers.deleted_containers_request_builder import DeletedContainersRequestBuilder
 
 class FileStorageRequestBuilder(BaseRequestBuilder):
@@ -139,6 +141,24 @@ class FileStorageRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return FileStorageRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def container_type_registrations(self) -> ContainerTypeRegistrationsRequestBuilder:
+        """
+        Provides operations to manage the containerTypeRegistrations property of the microsoft.graph.fileStorage entity.
+        """
+        from .container_type_registrations.container_type_registrations_request_builder import ContainerTypeRegistrationsRequestBuilder
+
+        return ContainerTypeRegistrationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def container_types(self) -> ContainerTypesRequestBuilder:
+        """
+        Provides operations to manage the containerTypes property of the microsoft.graph.fileStorage entity.
+        """
+        from .container_types.container_types_request_builder import ContainerTypesRequestBuilder
+
+        return ContainerTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def containers(self) -> ContainersRequestBuilder:

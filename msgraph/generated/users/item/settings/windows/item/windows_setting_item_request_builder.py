@@ -51,7 +51,7 @@ class WindowsSettingItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[WindowsSettingItemRequestBuilderGetQueryParameters]] = None) -> Optional[WindowsSetting]:
         """
-        Get windows from users
+        The Windows settings of the user stored in the cloud.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsSetting]
         """
@@ -105,7 +105,7 @@ class WindowsSettingItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[WindowsSettingItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get windows from users
+        The Windows settings of the user stored in the cloud.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class WindowsSettingItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WindowsSettingItemRequestBuilderGetQueryParameters():
         """
-        Get windows from users
+        The Windows settings of the user stored in the cloud.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

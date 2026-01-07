@@ -15,17 +15,17 @@ from .alert_evidence import AlertEvidence
 class MailboxConfigurationEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.mailboxConfigurationEvidence"
-    # The configurationId property
+    # The unique identifier of the mailbox configuration.
     configuration_id: Optional[str] = None
-    # The configurationType property
+    # The type of mailbox configuration. The possible values are: mailForwardingRule, owaSettings, ewsSettings, mailDelegation, userInboxRule, unknownFutureValue.
     configuration_type: Optional[MailboxConfigurationType] = None
-    # The displayName property
+    # The display name of the mailbox.
     display_name: Optional[str] = None
-    # The externalDirectoryObjectId property
+    # The external directory object identifier of the mailbox.
     external_directory_object_id: Optional[UUID] = None
-    # The mailboxPrimaryAddress property
+    # The primary email address of the mailbox.
     mailbox_primary_address: Optional[str] = None
-    # The upn property
+    # The user principal name (UPN) of the mailbox.
     upn: Optional[str] = None
     
     @staticmethod

@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
     from .storage.storage_request_builder import StorageRequestBuilder
     from .windows.windows_request_builder import WindowsRequestBuilder
+    from .work_hours_and_locations.work_hours_and_locations_request_builder import WorkHoursAndLocationsRequestBuilder
 
 class SettingsRequestBuilder(BaseRequestBuilder):
     """
@@ -177,6 +178,15 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         from .windows.windows_request_builder import WindowsRequestBuilder
 
         return WindowsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def work_hours_and_locations(self) -> WorkHoursAndLocationsRequestBuilder:
+        """
+        Provides operations to manage the workHoursAndLocations property of the microsoft.graph.userSettings entity.
+        """
+        from .work_hours_and_locations.work_hours_and_locations_request_builder import WorkHoursAndLocationsRequestBuilder
+
+        return WorkHoursAndLocationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SettingsRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

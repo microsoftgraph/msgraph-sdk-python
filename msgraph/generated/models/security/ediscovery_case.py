@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ..identity_set import IdentitySet
     from .case import Case
     from .case_operation import CaseOperation
+    from .ediscovery_case_member import EdiscoveryCaseMember
     from .ediscovery_case_settings import EdiscoveryCaseSettings
     from .ediscovery_custodian import EdiscoveryCustodian
     from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
@@ -22,6 +23,8 @@ from .case import Case
 class EdiscoveryCase(Case, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryCase"
+    # Represents members of an eDiscovery case.
+    case_members: Optional[list[EdiscoveryCaseMember]] = None
     # The user who closed the case.
     closed_by: Optional[IdentitySet] = None
     # The date and time when the case was closed. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -62,6 +65,7 @@ class EdiscoveryCase(Case, Parsable):
         from ..identity_set import IdentitySet
         from .case import Case
         from .case_operation import CaseOperation
+        from .ediscovery_case_member import EdiscoveryCaseMember
         from .ediscovery_case_settings import EdiscoveryCaseSettings
         from .ediscovery_custodian import EdiscoveryCustodian
         from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
@@ -72,6 +76,7 @@ class EdiscoveryCase(Case, Parsable):
         from ..identity_set import IdentitySet
         from .case import Case
         from .case_operation import CaseOperation
+        from .ediscovery_case_member import EdiscoveryCaseMember
         from .ediscovery_case_settings import EdiscoveryCaseSettings
         from .ediscovery_custodian import EdiscoveryCustodian
         from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
@@ -80,6 +85,7 @@ class EdiscoveryCase(Case, Parsable):
         from .ediscovery_search import EdiscoverySearch
 
         fields: dict[str, Callable[[Any], None]] = {
+            "caseMembers": lambda n : setattr(self, 'case_members', n.get_collection_of_object_values(EdiscoveryCaseMember)),
             "closedBy": lambda n : setattr(self, 'closed_by', n.get_object_value(IdentitySet)),
             "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
             "custodians": lambda n : setattr(self, 'custodians', n.get_collection_of_object_values(EdiscoveryCustodian)),
@@ -104,6 +110,7 @@ class EdiscoveryCase(Case, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("caseMembers", self.case_members)
         writer.write_object_value("closedBy", self.closed_by)
         writer.write_datetime_value("closedDateTime", self.closed_date_time)
         writer.write_collection_of_object_values("custodians", self.custodians)

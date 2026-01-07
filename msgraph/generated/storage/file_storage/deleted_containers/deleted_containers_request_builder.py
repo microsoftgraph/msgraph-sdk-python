@@ -49,7 +49,7 @@ class DeletedContainersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeletedContainersRequestBuilderGetQueryParameters]] = None) -> Optional[FileStorageContainerCollectionResponse]:
         """
-        Get deletedContainers from storage
+        The collection of deleted fileStorageContainer resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FileStorageContainerCollectionResponse]
         """
@@ -92,7 +92,7 @@ class DeletedContainersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeletedContainersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get deletedContainers from storage
+        The collection of deleted fileStorageContainer resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class DeletedContainersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeletedContainersRequestBuilderGetQueryParameters():
         """
-        Get deletedContainers from storage
+        The collection of deleted fileStorageContainer resources.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

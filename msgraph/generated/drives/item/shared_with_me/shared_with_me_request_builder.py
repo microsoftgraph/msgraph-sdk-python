@@ -37,6 +37,7 @@ class SharedWithMeRequestBuilder(BaseRequestBuilder):
         Returns: Optional[SharedWithMeGetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/drive-sharedwithme?view=graph-rest-1.0
         """
+        warn("This API is deprecated and will stop returning data after November, 2027. as of 2025-11/Removal on 2025-11-13 and will be removed 2027-11-01", DeprecationWarning)
         request_info = self.to_get_request_information(
             request_configuration
         )
@@ -57,6 +58,7 @@ class SharedWithMeRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("This API is deprecated and will stop returning data after November, 2027. as of 2025-11/Removal on 2025-11-13 and will be removed 2027-11-01", DeprecationWarning)
         request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
@@ -68,6 +70,7 @@ class SharedWithMeRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: SharedWithMeRequestBuilder
         """
+        warn("This API is deprecated and will stop returning data after November, 2027. as of 2025-11/Removal on 2025-11-13 and will be removed 2027-11-01", DeprecationWarning)
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SharedWithMeRequestBuilder(self.request_adapter, raw_url)

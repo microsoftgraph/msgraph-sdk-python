@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.user import User
     from .activities.activities_request_builder import ActivitiesRequestBuilder
+    from .adhoc_calls.adhoc_calls_request_builder import AdhocCallsRequestBuilder
     from .agreement_acceptances.agreement_acceptances_request_builder import AgreementAcceptancesRequestBuilder
     from .app_role_assignments.app_role_assignments_request_builder import AppRoleAssignmentsRequestBuilder
     from .assign_license.assign_license_request_builder import AssignLicenseRequestBuilder
@@ -67,6 +68,7 @@ if TYPE_CHECKING:
     from .oauth2_permission_grants.oauth2_permission_grants_request_builder import Oauth2PermissionGrantsRequestBuilder
     from .onenote.onenote_request_builder import OnenoteRequestBuilder
     from .online_meetings.online_meetings_request_builder import OnlineMeetingsRequestBuilder
+    from .on_premises_sync_behavior.on_premises_sync_behavior_request_builder import OnPremisesSyncBehaviorRequestBuilder
     from .outlook.outlook_request_builder import OutlookRequestBuilder
     from .owned_devices.owned_devices_request_builder import OwnedDevicesRequestBuilder
     from .owned_objects.owned_objects_request_builder import OwnedObjectsRequestBuilder
@@ -257,6 +259,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         from .activities.activities_request_builder import ActivitiesRequestBuilder
 
         return ActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def adhoc_calls(self) -> AdhocCallsRequestBuilder:
+        """
+        Provides operations to manage the adhocCalls property of the microsoft.graph.user entity.
+        """
+        from .adhoc_calls.adhoc_calls_request_builder import AdhocCallsRequestBuilder
+
+        return AdhocCallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def agreement_acceptances(self) -> AgreementAcceptancesRequestBuilder:
@@ -680,6 +691,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         from .oauth2_permission_grants.oauth2_permission_grants_request_builder import Oauth2PermissionGrantsRequestBuilder
 
         return Oauth2PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def on_premises_sync_behavior(self) -> OnPremisesSyncBehaviorRequestBuilder:
+        """
+        Provides operations to manage the onPremisesSyncBehavior property of the microsoft.graph.user entity.
+        """
+        from .on_premises_sync_behavior.on_premises_sync_behavior_request_builder import OnPremisesSyncBehaviorRequestBuilder
+
+        return OnPremisesSyncBehaviorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def onenote(self) -> OnenoteRequestBuilder:

@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .base_item import BaseItem
     from .content_type_info import ContentTypeInfo
+    from .deleted import Deleted
     from .document_set_version import DocumentSetVersion
     from .drive_item import DriveItem
     from .field_value_set import FieldValueSet
@@ -24,6 +25,8 @@ class ListItem(BaseItem, Parsable):
     analytics: Optional[ItemAnalytics] = None
     # The content type of this list item
     content_type: Optional[ContentTypeInfo] = None
+    # If present in the result of a delta enumeration, indicates that the item was deleted. Read-only.
+    deleted: Optional[Deleted] = None
     # Version information for a document set version created by a user.
     document_set_versions: Optional[list[DocumentSetVersion]] = None
     # For document libraries, the driveItem relationship exposes the listItem as a driveItem
@@ -53,6 +56,7 @@ class ListItem(BaseItem, Parsable):
         """
         from .base_item import BaseItem
         from .content_type_info import ContentTypeInfo
+        from .deleted import Deleted
         from .document_set_version import DocumentSetVersion
         from .drive_item import DriveItem
         from .field_value_set import FieldValueSet
@@ -62,6 +66,7 @@ class ListItem(BaseItem, Parsable):
 
         from .base_item import BaseItem
         from .content_type_info import ContentTypeInfo
+        from .deleted import Deleted
         from .document_set_version import DocumentSetVersion
         from .drive_item import DriveItem
         from .field_value_set import FieldValueSet
@@ -72,6 +77,7 @@ class ListItem(BaseItem, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
+            "deleted": lambda n : setattr(self, 'deleted', n.get_object_value(Deleted)),
             "documentSetVersions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(DocumentSetVersion)),
             "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
             "fields": lambda n : setattr(self, 'fields', n.get_object_value(FieldValueSet)),
@@ -93,6 +99,7 @@ class ListItem(BaseItem, Parsable):
         super().serialize(writer)
         writer.write_object_value("analytics", self.analytics)
         writer.write_object_value("contentType", self.content_type)
+        writer.write_object_value("deleted", self.deleted)
         writer.write_collection_of_object_values("documentSetVersions", self.document_set_versions)
         writer.write_object_value("driveItem", self.drive_item)
         writer.write_object_value("fields", self.fields)

@@ -10,5 +10,6 @@ class AllowedTargetScope(str, Enum):
     AllDirectoryServicePrincipals = "allDirectoryServicePrincipals",
     AllConfiguredConnectedOrganizationUsers = "allConfiguredConnectedOrganizationUsers",
     AllExternalUsers = "allExternalUsers",
+    AllDirectoryAgentIdentities = "allDirectoryAgentIdentities",
     UnknownFutureValue = "unknownFutureValue",
 

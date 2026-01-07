@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .booking_type import BookingType
     from .place import Place
+    from .place_feature_enablement import PlaceFeatureEnablement
 
 from .place import Place
 
@@ -32,6 +33,10 @@ class Room(Place, Parsable):
     floor_number: Optional[int] = None
     # Specifies a nickname for the room, for example, 'conf room'.
     nickname: Optional[str] = None
+    # An alternative immutable unique identifier of the room. Read-only.
+    place_id: Optional[str] = None
+    # The teamsEnabledState property
+    teams_enabled_state: Optional[PlaceFeatureEnablement] = None
     # Specifies the name of the video device in the room.
     video_device_name: Optional[str] = None
     
@@ -53,9 +58,11 @@ class Room(Place, Parsable):
         """
         from .booking_type import BookingType
         from .place import Place
+        from .place_feature_enablement import PlaceFeatureEnablement
 
         from .booking_type import BookingType
         from .place import Place
+        from .place_feature_enablement import PlaceFeatureEnablement
 
         fields: dict[str, Callable[[Any], None]] = {
             "audioDeviceName": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
@@ -67,6 +74,8 @@ class Room(Place, Parsable):
             "floorLabel": lambda n : setattr(self, 'floor_label', n.get_str_value()),
             "floorNumber": lambda n : setattr(self, 'floor_number', n.get_int_value()),
             "nickname": lambda n : setattr(self, 'nickname', n.get_str_value()),
+            "placeId": lambda n : setattr(self, 'place_id', n.get_str_value()),
+            "teamsEnabledState": lambda n : setattr(self, 'teams_enabled_state', n.get_enum_value(PlaceFeatureEnablement)),
             "videoDeviceName": lambda n : setattr(self, 'video_device_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -91,6 +100,8 @@ class Room(Place, Parsable):
         writer.write_str_value("floorLabel", self.floor_label)
         writer.write_int_value("floorNumber", self.floor_number)
         writer.write_str_value("nickname", self.nickname)
+        writer.write_str_value("placeId", self.place_id)
+        writer.write_enum_value("teamsEnabledState", self.teams_enabled_state)
         writer.write_str_value("videoDeviceName", self.video_device_name)
     
 

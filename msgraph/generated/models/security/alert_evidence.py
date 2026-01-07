@@ -7,6 +7,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .active_directory_domain_evidence import ActiveDirectoryDomainEvidence
     from .ai_agent_evidence import AiAgentEvidence
     from .amazon_resource_evidence import AmazonResourceEvidence
     from .analyzed_message_evidence import AnalyzedMessageEvidence
@@ -96,6 +97,10 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.activeDirectoryDomainEvidence".casefold():
+            from .active_directory_domain_evidence import ActiveDirectoryDomainEvidence
+
+            return ActiveDirectoryDomainEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.aiAgentEvidence".casefold():
             from .ai_agent_evidence import AiAgentEvidence
 
@@ -291,6 +296,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .active_directory_domain_evidence import ActiveDirectoryDomainEvidence
         from .ai_agent_evidence import AiAgentEvidence
         from .amazon_resource_evidence import AmazonResourceEvidence
         from .analyzed_message_evidence import AnalyzedMessageEvidence
@@ -342,6 +348,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .url_evidence import UrlEvidence
         from .user_evidence import UserEvidence
 
+        from .active_directory_domain_evidence import ActiveDirectoryDomainEvidence
         from .ai_agent_evidence import AiAgentEvidence
         from .amazon_resource_evidence import AmazonResourceEvidence
         from .analyzed_message_evidence import AnalyzedMessageEvidence

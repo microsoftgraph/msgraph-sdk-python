@@ -61,7 +61,7 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FileStorageContainerItemRequestBuilderGetQueryParameters]] = None) -> Optional[FileStorageContainer]:
         """
-        Get containers from storage
+        The collection of active fileStorageContainer resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FileStorageContainer]
         """
@@ -115,7 +115,7 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FileStorageContainerItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get containers from storage
+        The collection of active fileStorageContainer resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -258,7 +258,7 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FileStorageContainerItemRequestBuilderGetQueryParameters():
         """
-        Get containers from storage
+        The collection of active fileStorageContainer resources.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

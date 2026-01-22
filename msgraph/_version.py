@@ -1,4 +1,4 @@
 # The SDK version
 # x-release-please-start-version
-VERSION: str = '1.52.0'
+VERSION: str = '1.53.0'
 # x-release-please-end

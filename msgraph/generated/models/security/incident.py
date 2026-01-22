@@ -44,6 +44,8 @@ class Incident(Entity, Parsable):
     last_update_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The priorityScore property
+    priority_score: Optional[int] = None
     # Only populated in case an incident is grouped with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
     redirect_incident_id: Optional[str] = None
     # User input that explains the resolution of the incident and the classification choice. This property contains free editable text.
@@ -104,6 +106,7 @@ class Incident(Entity, Parsable):
             "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
             "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "priorityScore": lambda n : setattr(self, 'priority_score', n.get_int_value()),
             "redirectIncidentId": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
             "resolvingComment": lambda n : setattr(self, 'resolving_comment', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
@@ -137,6 +140,7 @@ class Incident(Entity, Parsable):
         writer.write_str_value("incidentWebUrl", self.incident_web_url)
         writer.write_str_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
+        writer.write_int_value("priorityScore", self.priority_score)
         writer.write_str_value("redirectIncidentId", self.redirect_incident_id)
         writer.write_str_value("resolvingComment", self.resolving_comment)
         writer.write_enum_value("severity", self.severity)

@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .sensor_health_status import SensorHealthStatus
     from .sensor_settings import SensorSettings
     from .sensor_type import SensorType
+    from .service_status import ServiceStatus
 
 from ..entity import Entity
 
@@ -35,6 +36,8 @@ class Sensor(Entity, Parsable):
     open_health_issues_count: Optional[int] = None
     # The sensorType property
     sensor_type: Optional[SensorType] = None
+    # The serviceStatus property
+    service_status: Optional[ServiceStatus] = None
     # The settings property
     settings: Optional[SensorSettings] = None
     # The version of the sensor.
@@ -62,6 +65,7 @@ class Sensor(Entity, Parsable):
         from .sensor_health_status import SensorHealthStatus
         from .sensor_settings import SensorSettings
         from .sensor_type import SensorType
+        from .service_status import ServiceStatus
 
         from ..entity import Entity
         from .deployment_status import DeploymentStatus
@@ -69,6 +73,7 @@ class Sensor(Entity, Parsable):
         from .sensor_health_status import SensorHealthStatus
         from .sensor_settings import SensorSettings
         from .sensor_type import SensorType
+        from .service_status import ServiceStatus
 
         fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -79,6 +84,7 @@ class Sensor(Entity, Parsable):
             "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(SensorHealthStatus)),
             "openHealthIssuesCount": lambda n : setattr(self, 'open_health_issues_count', n.get_int_value()),
             "sensorType": lambda n : setattr(self, 'sensor_type', n.get_enum_value(SensorType)),
+            "serviceStatus": lambda n : setattr(self, 'service_status', n.get_enum_value(ServiceStatus)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(SensorSettings)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
@@ -103,6 +109,7 @@ class Sensor(Entity, Parsable):
         writer.write_enum_value("healthStatus", self.health_status)
         writer.write_int_value("openHealthIssuesCount", self.open_health_issues_count)
         writer.write_enum_value("sensorType", self.sensor_type)
+        writer.write_enum_value("serviceStatus", self.service_status)
         writer.write_object_value("settings", self.settings)
         writer.write_str_value("version", self.version)
     

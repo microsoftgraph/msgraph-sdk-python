@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ....models.authentication import Authentication
     from ....models.o_data_errors.o_data_error import ODataError
     from .email_methods.email_methods_request_builder import EmailMethodsRequestBuilder
+    from .external_authentication_methods.external_authentication_methods_request_builder import ExternalAuthenticationMethodsRequestBuilder
     from .fido2_methods.fido2_methods_request_builder import Fido2MethodsRequestBuilder
     from .methods.methods_request_builder import MethodsRequestBuilder
     from .microsoft_authenticator_methods.microsoft_authenticator_methods_request_builder import MicrosoftAuthenticatorMethodsRequestBuilder
@@ -157,6 +158,15 @@ class AuthenticationRequestBuilder(BaseRequestBuilder):
         from .email_methods.email_methods_request_builder import EmailMethodsRequestBuilder
 
         return EmailMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def external_authentication_methods(self) -> ExternalAuthenticationMethodsRequestBuilder:
+        """
+        Provides operations to manage the externalAuthenticationMethods property of the microsoft.graph.authentication entity.
+        """
+        from .external_authentication_methods.external_authentication_methods_request_builder import ExternalAuthenticationMethodsRequestBuilder
+
+        return ExternalAuthenticationMethodsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def fido2_methods(self) -> Fido2MethodsRequestBuilder:

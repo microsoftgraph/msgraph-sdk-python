@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .built_in_identity_provider import BuiltInIdentityProvider
     from .entity import Entity
     from .internal_domain_federation import InternalDomainFederation
+    from .oidc_identity_provider import OidcIdentityProvider
     from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
     from .saml_or_ws_fed_provider import SamlOrWsFedProvider
     from .social_identity_provider import SocialIdentityProvider
@@ -48,6 +49,10 @@ class IdentityProviderBase(Entity, Parsable):
             from .internal_domain_federation import InternalDomainFederation
 
             return InternalDomainFederation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.oidcIdentityProvider".casefold():
+            from .oidc_identity_provider import OidcIdentityProvider
+
+            return OidcIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedExternalDomainFederation".casefold():
             from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
 
@@ -71,6 +76,7 @@ class IdentityProviderBase(Entity, Parsable):
         from .built_in_identity_provider import BuiltInIdentityProvider
         from .entity import Entity
         from .internal_domain_federation import InternalDomainFederation
+        from .oidc_identity_provider import OidcIdentityProvider
         from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
         from .saml_or_ws_fed_provider import SamlOrWsFedProvider
         from .social_identity_provider import SocialIdentityProvider
@@ -79,6 +85,7 @@ class IdentityProviderBase(Entity, Parsable):
         from .built_in_identity_provider import BuiltInIdentityProvider
         from .entity import Entity
         from .internal_domain_federation import InternalDomainFederation
+        from .oidc_identity_provider import OidcIdentityProvider
         from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
         from .saml_or_ws_fed_provider import SamlOrWsFedProvider
         from .social_identity_provider import SocialIdentityProvider

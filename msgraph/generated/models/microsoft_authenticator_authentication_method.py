@@ -1,5 +1,4 @@
 from __future__ import annotations
-import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -15,8 +14,6 @@ from .authentication_method import AuthenticationMethod
 class MicrosoftAuthenticatorAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
-    # The date and time that this app was registered. This property is null if the device isn't registered for passwordless Phone Sign-In.
-    created_date_time: Optional[datetime.datetime] = None
     # The registered device on which Microsoft Authenticator resides. This property is null if the device isn't registered for passwordless Phone Sign-In.
     device: Optional[Device] = None
     # Tags containing app metadata.
@@ -49,7 +46,6 @@ class MicrosoftAuthenticatorAuthenticationMethod(AuthenticationMethod, Parsable)
         from .device import Device
 
         fields: dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(Device)),
             "deviceTag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -68,7 +64,6 @@ class MicrosoftAuthenticatorAuthenticationMethod(AuthenticationMethod, Parsable)
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("device", self.device)
         writer.write_str_value("deviceTag", self.device_tag)
         writer.write_str_value("displayName", self.display_name)

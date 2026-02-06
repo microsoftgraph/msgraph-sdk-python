@@ -14,8 +14,6 @@ from .authentication_method import AuthenticationMethod
 class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.temporaryAccessPassAuthenticationMethod"
-    # The date and time when the Temporary Access Pass was created.
-    created_date_time: Optional[datetime.datetime] = None
     # The state of the authentication method that indicates whether it's currently usable by the user.
     is_usable: Optional[bool] = None
     # Determines whether the pass is limited to a one-time use. If true, the pass can be used once; if false, the pass can be used multiple times within the Temporary Access Pass lifetime.
@@ -50,7 +48,6 @@ class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod, Parsable):
         from .authentication_method import AuthenticationMethod
 
         fields: dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "isUsable": lambda n : setattr(self, 'is_usable', n.get_bool_value()),
             "isUsableOnce": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
             "lifetimeInMinutes": lambda n : setattr(self, 'lifetime_in_minutes', n.get_int_value()),
@@ -71,7 +68,6 @@ class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_bool_value("isUsable", self.is_usable)
         writer.write_bool_value("isUsableOnce", self.is_usable_once)
         writer.write_int_value("lifetimeInMinutes", self.lifetime_in_minutes)

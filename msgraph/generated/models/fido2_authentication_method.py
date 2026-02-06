@@ -1,5 +1,4 @@
 from __future__ import annotations
-import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -21,8 +20,6 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
     attestation_certificates: Optional[list[str]] = None
     # The attestation level of this FIDO2 security key. The possible values are: attested, or notAttested.
     attestation_level: Optional[AttestationLevel] = None
-    # The timestamp when this key was registered to the user.
-    created_date_time: Optional[datetime.datetime] = None
     # The display name of the key as given by the user.
     display_name: Optional[str] = None
     # The manufacturer-assigned model of the FIDO2 security key.
@@ -54,7 +51,6 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
             "aaGuid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
             "attestationCertificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
             "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(AttestationLevel)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
         }
@@ -74,7 +70,6 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
         writer.write_str_value("aaGuid", self.aa_guid)
         writer.write_collection_of_primitive_values("attestationCertificates", self.attestation_certificates)
         writer.write_enum_value("attestationLevel", self.attestation_level)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("model", self.model)
     

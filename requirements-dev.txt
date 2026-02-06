@@ -70,7 +70,7 @@ tomlkit==0.13.3
 typing_extensions==4.15.0
 tzdata==2025.2
 uritemplate==4.2.0
-urllib3==2.5.0
+urllib3==2.6.3
 wrapt==1.17.3
 yapf==0.43.0
 yarl==1.20.1

@@ -337,6 +337,7 @@ if TYPE_CHECKING:
     from .exchange_restore_session import ExchangeRestoreSession
     from .extension import Extension
     from .extension_property import ExtensionProperty
+    from .external_authentication_method import ExternalAuthenticationMethod
     from .external_connectors.connection_operation import ConnectionOperation
     from .external_connectors.external_activity import ExternalActivity
     from .external_connectors.external_activity_result import ExternalActivityResult
@@ -522,6 +523,7 @@ if TYPE_CHECKING:
     from .notification_message_template import NotificationMessageTemplate
     from .offer_shift_request import OfferShiftRequest
     from .office_graph_insights import OfficeGraphInsights
+    from .oidc_identity_provider import OidcIdentityProvider
     from .onenote import Onenote
     from .onenote_entity_base_model import OnenoteEntityBaseModel
     from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -849,7 +851,10 @@ if TYPE_CHECKING:
     from .target_device_group import TargetDeviceGroup
     from .task_file_attachment import TaskFileAttachment
     from .team import Team
+    from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
     from .teams_administration.teams_admin_root import TeamsAdminRoot
+    from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+    from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
     from .teams_administration.teams_user_configuration import TeamsUserConfiguration
     from .teams_app import TeamsApp
     from .teams_app_definition import TeamsAppDefinition
@@ -2430,6 +2435,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .extension_property import ExtensionProperty
 
             return ExtensionProperty()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethod".casefold():
+            from .external_authentication_method import ExternalAuthenticationMethod
+
+            return ExternalAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.connectionOperation".casefold():
             from .external_connectors.connection_operation import ConnectionOperation
 
@@ -3172,6 +3181,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .office_graph_insights import OfficeGraphInsights
 
             return OfficeGraphInsights()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.oidcIdentityProvider".casefold():
+            from .oidc_identity_provider import OidcIdentityProvider
+
+            return OidcIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionListener".casefold():
             from .on_attribute_collection_listener import OnAttributeCollectionListener
 
@@ -4486,10 +4499,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .team_info import TeamInfo
 
             return TeamInfo()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.policyIdentifierDetail".casefold():
+            from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
+
+            return PolicyIdentifierDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsAdminRoot".casefold():
             from .teams_administration.teams_admin_root import TeamsAdminRoot
 
             return TeamsAdminRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsPolicyAssignment".casefold():
+            from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+
+            return TeamsPolicyAssignment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsPolicyUserAssignment".casefold():
+            from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
+
+            return TeamsPolicyUserAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsUserConfiguration".casefold():
             from .teams_administration.teams_user_configuration import TeamsUserConfiguration
 
@@ -5718,6 +5743,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .exchange_restore_session import ExchangeRestoreSession
         from .extension import Extension
         from .extension_property import ExtensionProperty
+        from .external_authentication_method import ExternalAuthenticationMethod
         from .external_connectors.connection_operation import ConnectionOperation
         from .external_connectors.external_activity import ExternalActivity
         from .external_connectors.external_activity_result import ExternalActivityResult
@@ -5903,6 +5929,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .notification_message_template import NotificationMessageTemplate
         from .offer_shift_request import OfferShiftRequest
         from .office_graph_insights import OfficeGraphInsights
+        from .oidc_identity_provider import OidcIdentityProvider
         from .onenote import Onenote
         from .onenote_entity_base_model import OnenoteEntityBaseModel
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -6230,7 +6257,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
         from .teams_administration.teams_admin_root import TeamsAdminRoot
+        from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+        from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
         from .teams_administration.teams_user_configuration import TeamsUserConfiguration
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
@@ -6786,6 +6816,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .exchange_restore_session import ExchangeRestoreSession
         from .extension import Extension
         from .extension_property import ExtensionProperty
+        from .external_authentication_method import ExternalAuthenticationMethod
         from .external_connectors.connection_operation import ConnectionOperation
         from .external_connectors.external_activity import ExternalActivity
         from .external_connectors.external_activity_result import ExternalActivityResult
@@ -6971,6 +7002,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .notification_message_template import NotificationMessageTemplate
         from .offer_shift_request import OfferShiftRequest
         from .office_graph_insights import OfficeGraphInsights
+        from .oidc_identity_provider import OidcIdentityProvider
         from .onenote import Onenote
         from .onenote_entity_base_model import OnenoteEntityBaseModel
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -7298,7 +7330,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
         from .teams_administration.teams_admin_root import TeamsAdminRoot
+        from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+        from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
         from .teams_administration.teams_user_configuration import TeamsUserConfiguration
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition

@@ -1,5 +1,4 @@
 from __future__ import annotations
-import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -17,8 +16,6 @@ from .authentication_method import AuthenticationMethod
 class PlatformCredentialAuthenticationMethod(AuthenticationMethod, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.platformCredentialAuthenticationMethod"
-    # The date and time that this Platform Credential Key was registered.
-    created_date_time: Optional[datetime.datetime] = None
     # The registered device on which this Platform Credential resides. Supports $expand. When you get a user's Platform Credential registration information, this property is returned only on a single GET and when you specify ?$expand. For example, GET /users/admin@contoso.com/authentication/platformCredentialAuthenticationMethod/_jpuR-TGZtk6aQCLF3BQjA2?$expand=device.
     device: Optional[Device] = None
     # The name of the device on which Platform Credential is registered.
@@ -55,7 +52,6 @@ class PlatformCredentialAuthenticationMethod(AuthenticationMethod, Parsable):
         from .device import Device
 
         fields: dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(Device)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "keyStrength": lambda n : setattr(self, 'key_strength', n.get_enum_value(AuthenticationMethodKeyStrength)),
@@ -74,7 +70,6 @@ class PlatformCredentialAuthenticationMethod(AuthenticationMethod, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("device", self.device)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("keyStrength", self.key_strength)

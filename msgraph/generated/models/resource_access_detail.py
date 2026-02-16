@@ -18,21 +18,21 @@ class ResourceAccessDetail(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The accessType property
     access_type: Optional[ResourceAccessType] = None
-    # The identifier property
+    # Unique identifier of the resource accessed.
     identifier: Optional[str] = None
-    # The isCrossPromptInjectionDetected property
+    # Indicates whether cross-prompt injection was detected during the access attempt.
     is_cross_prompt_injection_detected: Optional[bool] = None
-    # The labelId property
+    # Identifier for the sensitivity label applied to the resource, if any.
     label_id: Optional[str] = None
-    # The name property
+    # Name of the resource accessed.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
     status: Optional[ResourceAccessStatus] = None
-    # The storageId property
+    # Identifier for the resource in its native storage format. For SharePoint resources, this is the unique identifier of the list item.  For other resources, this is the name of the location, such as Box, Dropbox, Exchange, or Google Drive.
     storage_id: Optional[str] = None
-    # The url property
+    # URL of the resource accessed.
     url: Optional[str] = None
     
     @staticmethod

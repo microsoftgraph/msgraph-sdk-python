@@ -150,6 +150,10 @@ class Group(DirectoryObject, Parsable):
     rejected_senders: Optional[list[DirectoryObject]] = None
     # Timestamp of when the group was last renewed. This value can't be modified directly and is only updated via the renew service action. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on January 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
     renewed_date_time: Optional[datetime.datetime] = None
+    # Specifies the group behaviors that can be set for a Microsoft 365 group during creation. This property can be set only as part of creation (POST). For the list of possible values, see Microsoft 365 group behaviors and provisioning options.
+    resource_behavior_options: Optional[list[str]] = None
+    # Specifies the group resources that are associated with the Microsoft 365 group. The possible value is Team. For more information, see Microsoft 365 group behaviors and provisioning options. Returned by default. Supports $filter (eq, not, startsWith).
+    resource_provisioning_options: Optional[list[str]] = None
     # Specifies whether the group is a security group. Required. Returned by default. Supports $filter (eq, ne, not, in).
     security_enabled: Optional[bool] = None
     # Security identifier of the group, used in Windows scenarios. Read-only. Returned by default.
@@ -296,6 +300,8 @@ class Group(DirectoryObject, Parsable):
             "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
             "rejectedSenders": lambda n : setattr(self, 'rejected_senders', n.get_collection_of_object_values(DirectoryObject)),
             "renewedDateTime": lambda n : setattr(self, 'renewed_date_time', n.get_datetime_value()),
+            "resourceBehaviorOptions": lambda n : setattr(self, 'resource_behavior_options', n.get_collection_of_primitive_values(str)),
+            "resourceProvisioningOptions": lambda n : setattr(self, 'resource_provisioning_options', n.get_collection_of_primitive_values(str)),
             "securityEnabled": lambda n : setattr(self, 'security_enabled', n.get_bool_value()),
             "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
             "serviceProvisioningErrors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
@@ -379,6 +385,8 @@ class Group(DirectoryObject, Parsable):
         writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
         writer.write_collection_of_object_values("rejectedSenders", self.rejected_senders)
         writer.write_datetime_value("renewedDateTime", self.renewed_date_time)
+        writer.write_collection_of_primitive_values("resourceBehaviorOptions", self.resource_behavior_options)
+        writer.write_collection_of_primitive_values("resourceProvisioningOptions", self.resource_provisioning_options)
         writer.write_bool_value("securityEnabled", self.security_enabled)
         writer.write_str_value("securityIdentifier", self.security_identifier)
         writer.write_collection_of_object_values("serviceProvisioningErrors", self.service_provisioning_errors)

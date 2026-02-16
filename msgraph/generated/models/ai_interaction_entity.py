@@ -16,13 +16,13 @@ class AiInteractionEntity(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The identifier property
+    # The unique identifier of the AI entity.
     identifier: Optional[str] = None
-    # The name property
+    # The display name of the AI entity.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The version property
+    # The version of the AI entity used.
     version: Optional[str] = None
     
     @staticmethod

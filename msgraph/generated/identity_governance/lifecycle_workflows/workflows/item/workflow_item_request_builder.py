@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.identity_governance.workflow import Workflow
     from .....models.o_data_errors.o_data_error import ODataError
+    from .administration_scope_targets.administration_scope_targets_request_builder import AdministrationScopeTargetsRequestBuilder
     from .created_by.created_by_request_builder import CreatedByRequestBuilder
     from .execution_scope.execution_scope_request_builder import ExecutionScopeRequestBuilder
     from .last_modified_by.last_modified_by_request_builder import LastModifiedByRequestBuilder
@@ -152,6 +153,15 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return WorkflowItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def administration_scope_targets(self) -> AdministrationScopeTargetsRequestBuilder:
+        """
+        Provides operations to manage the administrationScopeTargets property of the microsoft.graph.identityGovernance.workflowBase entity.
+        """
+        from .administration_scope_targets.administration_scope_targets_request_builder import AdministrationScopeTargetsRequestBuilder
+
+        return AdministrationScopeTargetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def created_by(self) -> CreatedByRequestBuilder:

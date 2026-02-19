@@ -16,11 +16,11 @@ from .process_content_metadata_base import ProcessContentMetadataBase
 class ProcessConversationMetadata(ProcessContentMetadataBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.processConversationMetadata"
-    # List of resources (for example, file URLs, web URLs) accessed during the generation of this message (relevant for bot interactions).
+    # List of resources (for example, file URLs, web URLs) accessed during the generation of this message (relevant for bot interactions). The accessedResources property is deprecated and stopped returning data on August 20, 2025. Going forward, use the accessedResources_v2 property.
     accessed_resources: Optional[list[str]] = None
-    # The accessedResources_v2 property
+    # Lists details about the resources accessed by AI agents, such as identifiers, access type, and status.
     accessed_resources_v2: Optional[list[ResourceAccessDetail]] = None
-    # The agents property
+    # Indicates the information about an AI agent that participated in the preparation of the message.
     agents: Optional[list[AiAgentInfo]] = None
     # Identifier of the parent message in a threaded conversation, if applicable.
     parent_message_id: Optional[str] = None

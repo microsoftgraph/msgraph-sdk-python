@@ -333,11 +333,15 @@ if TYPE_CHECKING:
     from .event_message import EventMessage
     from .event_message_request import EventMessageRequest
     from .event_message_response import EventMessageResponse
+    from .exchange_admin import ExchangeAdmin
+    from .exchange_message_trace import ExchangeMessageTrace
+    from .exchange_message_trace_detail import ExchangeMessageTraceDetail
     from .exchange_protection_policy import ExchangeProtectionPolicy
     from .exchange_restore_session import ExchangeRestoreSession
     from .extension import Extension
     from .extension_property import ExtensionProperty
     from .external_authentication_method import ExternalAuthenticationMethod
+    from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
     from .external_connectors.connection_operation import ConnectionOperation
     from .external_connectors.external_activity import ExternalActivity
     from .external_connectors.external_activity_result import ExternalActivityResult
@@ -496,6 +500,7 @@ if TYPE_CHECKING:
     from .membership_outlier_insight import MembershipOutlierInsight
     from .message import Message
     from .message_rule import MessageRule
+    from .message_tracing_root import MessageTracingRoot
     from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
     from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
     from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
@@ -2419,6 +2424,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .event_message_response import EventMessageResponse
 
             return EventMessageResponse()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeAdmin".casefold():
+            from .exchange_admin import ExchangeAdmin
+
+            return ExchangeAdmin()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeMessageTrace".casefold():
+            from .exchange_message_trace import ExchangeMessageTrace
+
+            return ExchangeMessageTrace()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeMessageTraceDetail".casefold():
+            from .exchange_message_trace_detail import ExchangeMessageTraceDetail
+
+            return ExchangeMessageTraceDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeProtectionPolicy".casefold():
             from .exchange_protection_policy import ExchangeProtectionPolicy
 
@@ -2439,6 +2456,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .external_authentication_method import ExternalAuthenticationMethod
 
             return ExternalAuthenticationMethod()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethodConfiguration".casefold():
+            from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
+
+            return ExternalAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.connectionOperation".casefold():
             from .external_connectors.connection_operation import ConnectionOperation
 
@@ -3069,6 +3090,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .message_rule import MessageRule
 
             return MessageRule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.messageTracingRoot".casefold():
+            from .message_tracing_root import MessageTracingRoot
+
+            return MessageTracingRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAccountUserConversationMember".casefold():
             from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
 
@@ -5739,11 +5764,15 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .event_message import EventMessage
         from .event_message_request import EventMessageRequest
         from .event_message_response import EventMessageResponse
+        from .exchange_admin import ExchangeAdmin
+        from .exchange_message_trace import ExchangeMessageTrace
+        from .exchange_message_trace_detail import ExchangeMessageTraceDetail
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
         from .extension import Extension
         from .extension_property import ExtensionProperty
         from .external_authentication_method import ExternalAuthenticationMethod
+        from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
         from .external_connectors.connection_operation import ConnectionOperation
         from .external_connectors.external_activity import ExternalActivity
         from .external_connectors.external_activity_result import ExternalActivityResult
@@ -5902,6 +5931,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .membership_outlier_insight import MembershipOutlierInsight
         from .message import Message
         from .message_rule import MessageRule
+        from .message_tracing_root import MessageTracingRoot
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
@@ -6812,11 +6842,15 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .event_message import EventMessage
         from .event_message_request import EventMessageRequest
         from .event_message_response import EventMessageResponse
+        from .exchange_admin import ExchangeAdmin
+        from .exchange_message_trace import ExchangeMessageTrace
+        from .exchange_message_trace_detail import ExchangeMessageTraceDetail
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
         from .extension import Extension
         from .extension_property import ExtensionProperty
         from .external_authentication_method import ExternalAuthenticationMethod
+        from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
         from .external_connectors.connection_operation import ConnectionOperation
         from .external_connectors.external_activity import ExternalActivity
         from .external_connectors.external_activity_result import ExternalActivityResult
@@ -6975,6 +7009,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .membership_outlier_insight import MembershipOutlierInsight
         from .message import Message
         from .message_rule import MessageRule
+        from .message_tracing_root import MessageTracingRoot
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration

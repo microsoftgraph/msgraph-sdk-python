@@ -333,10 +333,15 @@ if TYPE_CHECKING:
     from .event_message import EventMessage
     from .event_message_request import EventMessageRequest
     from .event_message_response import EventMessageResponse
+    from .exchange_admin import ExchangeAdmin
+    from .exchange_message_trace import ExchangeMessageTrace
+    from .exchange_message_trace_detail import ExchangeMessageTraceDetail
     from .exchange_protection_policy import ExchangeProtectionPolicy
     from .exchange_restore_session import ExchangeRestoreSession
     from .extension import Extension
     from .extension_property import ExtensionProperty
+    from .external_authentication_method import ExternalAuthenticationMethod
+    from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
     from .external_connectors.connection_operation import ConnectionOperation
     from .external_connectors.external_activity import ExternalActivity
     from .external_connectors.external_activity_result import ExternalActivityResult
@@ -495,6 +500,7 @@ if TYPE_CHECKING:
     from .membership_outlier_insight import MembershipOutlierInsight
     from .message import Message
     from .message_rule import MessageRule
+    from .message_tracing_root import MessageTracingRoot
     from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
     from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
     from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
@@ -522,6 +528,7 @@ if TYPE_CHECKING:
     from .notification_message_template import NotificationMessageTemplate
     from .offer_shift_request import OfferShiftRequest
     from .office_graph_insights import OfficeGraphInsights
+    from .oidc_identity_provider import OidcIdentityProvider
     from .onenote import Onenote
     from .onenote_entity_base_model import OnenoteEntityBaseModel
     from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -849,7 +856,10 @@ if TYPE_CHECKING:
     from .target_device_group import TargetDeviceGroup
     from .task_file_attachment import TaskFileAttachment
     from .team import Team
+    from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
     from .teams_administration.teams_admin_root import TeamsAdminRoot
+    from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+    from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
     from .teams_administration.teams_user_configuration import TeamsUserConfiguration
     from .teams_app import TeamsApp
     from .teams_app_definition import TeamsAppDefinition
@@ -2414,6 +2424,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .event_message_response import EventMessageResponse
 
             return EventMessageResponse()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeAdmin".casefold():
+            from .exchange_admin import ExchangeAdmin
+
+            return ExchangeAdmin()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeMessageTrace".casefold():
+            from .exchange_message_trace import ExchangeMessageTrace
+
+            return ExchangeMessageTrace()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeMessageTraceDetail".casefold():
+            from .exchange_message_trace_detail import ExchangeMessageTraceDetail
+
+            return ExchangeMessageTraceDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeProtectionPolicy".casefold():
             from .exchange_protection_policy import ExchangeProtectionPolicy
 
@@ -2430,6 +2452,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .extension_property import ExtensionProperty
 
             return ExtensionProperty()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethod".casefold():
+            from .external_authentication_method import ExternalAuthenticationMethod
+
+            return ExternalAuthenticationMethod()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethodConfiguration".casefold():
+            from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
+
+            return ExternalAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.connectionOperation".casefold():
             from .external_connectors.connection_operation import ConnectionOperation
 
@@ -3060,6 +3090,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .message_rule import MessageRule
 
             return MessageRule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.messageTracingRoot".casefold():
+            from .message_tracing_root import MessageTracingRoot
+
+            return MessageTracingRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAccountUserConversationMember".casefold():
             from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
 
@@ -3172,6 +3206,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .office_graph_insights import OfficeGraphInsights
 
             return OfficeGraphInsights()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.oidcIdentityProvider".casefold():
+            from .oidc_identity_provider import OidcIdentityProvider
+
+            return OidcIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionListener".casefold():
             from .on_attribute_collection_listener import OnAttributeCollectionListener
 
@@ -4486,10 +4524,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .team_info import TeamInfo
 
             return TeamInfo()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.policyIdentifierDetail".casefold():
+            from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
+
+            return PolicyIdentifierDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsAdminRoot".casefold():
             from .teams_administration.teams_admin_root import TeamsAdminRoot
 
             return TeamsAdminRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsPolicyAssignment".casefold():
+            from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+
+            return TeamsPolicyAssignment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsPolicyUserAssignment".casefold():
+            from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
+
+            return TeamsPolicyUserAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.teamsUserConfiguration".casefold():
             from .teams_administration.teams_user_configuration import TeamsUserConfiguration
 
@@ -5714,10 +5764,15 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .event_message import EventMessage
         from .event_message_request import EventMessageRequest
         from .event_message_response import EventMessageResponse
+        from .exchange_admin import ExchangeAdmin
+        from .exchange_message_trace import ExchangeMessageTrace
+        from .exchange_message_trace_detail import ExchangeMessageTraceDetail
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
         from .extension import Extension
         from .extension_property import ExtensionProperty
+        from .external_authentication_method import ExternalAuthenticationMethod
+        from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
         from .external_connectors.connection_operation import ConnectionOperation
         from .external_connectors.external_activity import ExternalActivity
         from .external_connectors.external_activity_result import ExternalActivityResult
@@ -5876,6 +5931,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .membership_outlier_insight import MembershipOutlierInsight
         from .message import Message
         from .message_rule import MessageRule
+        from .message_tracing_root import MessageTracingRoot
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
@@ -5903,6 +5959,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .notification_message_template import NotificationMessageTemplate
         from .offer_shift_request import OfferShiftRequest
         from .office_graph_insights import OfficeGraphInsights
+        from .oidc_identity_provider import OidcIdentityProvider
         from .onenote import Onenote
         from .onenote_entity_base_model import OnenoteEntityBaseModel
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -6230,7 +6287,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
         from .teams_administration.teams_admin_root import TeamsAdminRoot
+        from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+        from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
         from .teams_administration.teams_user_configuration import TeamsUserConfiguration
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
@@ -6782,10 +6842,15 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .event_message import EventMessage
         from .event_message_request import EventMessageRequest
         from .event_message_response import EventMessageResponse
+        from .exchange_admin import ExchangeAdmin
+        from .exchange_message_trace import ExchangeMessageTrace
+        from .exchange_message_trace_detail import ExchangeMessageTraceDetail
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
         from .extension import Extension
         from .extension_property import ExtensionProperty
+        from .external_authentication_method import ExternalAuthenticationMethod
+        from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
         from .external_connectors.connection_operation import ConnectionOperation
         from .external_connectors.external_activity import ExternalActivity
         from .external_connectors.external_activity_result import ExternalActivityResult
@@ -6944,6 +7009,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .membership_outlier_insight import MembershipOutlierInsight
         from .message import Message
         from .message_rule import MessageRule
+        from .message_tracing_root import MessageTracingRoot
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
@@ -6971,6 +7037,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .notification_message_template import NotificationMessageTemplate
         from .offer_shift_request import OfferShiftRequest
         from .office_graph_insights import OfficeGraphInsights
+        from .oidc_identity_provider import OidcIdentityProvider
         from .onenote import Onenote
         from .onenote_entity_base_model import OnenoteEntityBaseModel
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -7298,7 +7365,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
         from .teams_administration.teams_admin_root import TeamsAdminRoot
+        from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
+        from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
         from .teams_administration.teams_user_configuration import TeamsUserConfiguration
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition

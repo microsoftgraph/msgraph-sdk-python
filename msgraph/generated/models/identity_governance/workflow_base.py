@@ -7,6 +7,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from ..directory_object import DirectoryObject
     from ..user import User
     from .lifecycle_workflow_category import LifecycleWorkflowCategory
     from .task import Task
@@ -21,6 +22,8 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The administrationScopeTargets property
+    administration_scope_targets: Optional[list[DirectoryObject]] = None
     # The category property
     category: Optional[LifecycleWorkflowCategory] = None
     # The user who created the workflow.
@@ -75,6 +78,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from ..directory_object import DirectoryObject
         from ..user import User
         from .lifecycle_workflow_category import LifecycleWorkflowCategory
         from .task import Task
@@ -82,6 +86,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         from .workflow_execution_conditions import WorkflowExecutionConditions
         from .workflow_version import WorkflowVersion
 
+        from ..directory_object import DirectoryObject
         from ..user import User
         from .lifecycle_workflow_category import LifecycleWorkflowCategory
         from .task import Task
@@ -90,6 +95,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         from .workflow_version import WorkflowVersion
 
         fields: dict[str, Callable[[Any], None]] = {
+            "administrationScopeTargets": lambda n : setattr(self, 'administration_scope_targets', n.get_collection_of_object_values(DirectoryObject)),
             "category": lambda n : setattr(self, 'category', n.get_enum_value(LifecycleWorkflowCategory)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(User)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -113,6 +119,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_collection_of_object_values("administrationScopeTargets", self.administration_scope_targets)
         writer.write_enum_value("category", self.category)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

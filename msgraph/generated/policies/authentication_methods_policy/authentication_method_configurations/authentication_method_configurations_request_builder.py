@@ -49,7 +49,7 @@ class AuthenticationMethodConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AuthenticationMethodConfigurationsRequestBuilderGetQueryParameters]] = None) -> Optional[AuthenticationMethodConfigurationCollectionResponse]:
         """
-        Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
+        Read the properties and relationships of an externalAuthenticationMethodConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodConfigurationCollectionResponse]
         """
@@ -92,7 +92,7 @@ class AuthenticationMethodConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AuthenticationMethodConfigurationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
+        Read the properties and relationships of an externalAuthenticationMethodConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class AuthenticationMethodConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodConfigurationsRequestBuilderGetQueryParameters():
         """
-        Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
+        Read the properties and relationships of an externalAuthenticationMethodConfiguration object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

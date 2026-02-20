@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .case_operation import CaseOperation
+    from .report_file_metadata import ReportFileMetadata
 
 from .case_operation import CaseOperation
 
@@ -13,6 +14,8 @@ from .case_operation import CaseOperation
 class EdiscoveryPurgeDataOperation(CaseOperation, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
+    # The purge job report file metadata. It contains the properties for report file metadata, including downloadUrl, fileName, and size.
+    report_file_metadata: Optional[list[ReportFileMetadata]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EdiscoveryPurgeDataOperation:
@@ -31,10 +34,13 @@ class EdiscoveryPurgeDataOperation(CaseOperation, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .case_operation import CaseOperation
+        from .report_file_metadata import ReportFileMetadata
 
         from .case_operation import CaseOperation
+        from .report_file_metadata import ReportFileMetadata
 
         fields: dict[str, Callable[[Any], None]] = {
+            "reportFileMetadata": lambda n : setattr(self, 'report_file_metadata', n.get_collection_of_object_values(ReportFileMetadata)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -49,5 +55,6 @@ class EdiscoveryPurgeDataOperation(CaseOperation, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("reportFileMetadata", self.report_file_metadata)
     
 

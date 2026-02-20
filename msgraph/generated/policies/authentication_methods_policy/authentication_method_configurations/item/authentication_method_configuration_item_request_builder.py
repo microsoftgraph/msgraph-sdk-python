@@ -32,9 +32,10 @@ class AuthenticationMethodConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property authenticationMethodConfigurations for policies
+        Delete an externalAuthenticationMethodConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/externalauthenticationmethodconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,9 +51,10 @@ class AuthenticationMethodConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AuthenticationMethodConfigurationItemRequestBuilderGetQueryParameters]] = None) -> Optional[AuthenticationMethodConfiguration]:
         """
-        Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
+        Read the properties and relationships of an externalAuthenticationMethodConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodConfiguration]
+        Find more info here: https://learn.microsoft.com/graph/api/externalauthenticationmethodconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +72,11 @@ class AuthenticationMethodConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: AuthenticationMethodConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AuthenticationMethodConfiguration]:
         """
-        Update the navigation property authenticationMethodConfigurations in policies
+        Update the properties of an externalAuthenticationMethodConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodConfiguration]
+        Find more info here: https://learn.microsoft.com/graph/api/externalauthenticationmethodconfiguration-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -93,7 +96,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property authenticationMethodConfigurations for policies
+        Delete an externalAuthenticationMethodConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +107,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AuthenticationMethodConfigurationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
+        Read the properties and relationships of an externalAuthenticationMethodConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +118,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: AuthenticationMethodConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property authenticationMethodConfigurations in policies
+        Update the properties of an externalAuthenticationMethodConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +151,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
+        Read the properties and relationships of an externalAuthenticationMethodConfiguration object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

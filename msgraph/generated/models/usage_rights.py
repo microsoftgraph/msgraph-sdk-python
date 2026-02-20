@@ -21,5 +21,6 @@ class UsageRights(str, Enum):
     EncryptedProtectionTypeNotSupportedException = "encryptedProtectionTypeNotSupportedException",
     PurviewClaimsChallengeNotSupportedException = "purviewClaimsChallengeNotSupportedException",
     Exception = "exception",
+    LabelNotFoundException = "labelNotFoundException",
     UnknownFutureValue = "unknownFutureValue",
 

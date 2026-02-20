@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
     from .entity import Entity
     from .exclude_target import ExcludeTarget
+    from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
     from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
     from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
     from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
@@ -46,6 +47,10 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
             from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
 
             return EmailAuthenticationMethodConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethodConfiguration".casefold():
+            from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
+
+            return ExternalAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethodConfiguration".casefold():
             from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
 
@@ -85,6 +90,7 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .entity import Entity
         from .exclude_target import ExcludeTarget
+        from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
         from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
         from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
         from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
@@ -97,6 +103,7 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .entity import Entity
         from .exclude_target import ExcludeTarget
+        from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
         from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
         from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
         from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration

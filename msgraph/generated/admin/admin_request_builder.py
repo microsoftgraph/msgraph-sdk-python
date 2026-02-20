@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ..models.admin import Admin
     from ..models.o_data_errors.o_data_error import ODataError
     from .edge.edge_request_builder import EdgeRequestBuilder
+    from .exchange.exchange_request_builder import ExchangeRequestBuilder
     from .microsoft365_apps.microsoft365_apps_request_builder import Microsoft365AppsRequestBuilder
     from .people.people_request_builder import PeopleRequestBuilder
     from .report_settings.report_settings_request_builder import ReportSettingsRequestBuilder
@@ -124,6 +125,15 @@ class AdminRequestBuilder(BaseRequestBuilder):
         from .edge.edge_request_builder import EdgeRequestBuilder
 
         return EdgeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def exchange(self) -> ExchangeRequestBuilder:
+        """
+        Provides operations to manage the exchange property of the microsoft.graph.admin entity.
+        """
+        from .exchange.exchange_request_builder import ExchangeRequestBuilder
+
+        return ExchangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def microsoft365_apps(self) -> Microsoft365AppsRequestBuilder:

@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -7,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .email_authentication_method import EmailAuthenticationMethod
     from .entity import Entity
+    from .external_authentication_method import ExternalAuthenticationMethod
     from .fido2_authentication_method import Fido2AuthenticationMethod
     from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
     from .password_authentication_method import PasswordAuthenticationMethod
@@ -20,6 +22,8 @@ from .entity import Entity
 
 @dataclass
 class AuthenticationMethod(Entity, Parsable):
+    # Represents the date and time when an entity was created. Read-only.
+    created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -41,6 +45,10 @@ class AuthenticationMethod(Entity, Parsable):
             from .email_authentication_method import EmailAuthenticationMethod
 
             return EmailAuthenticationMethod()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethod".casefold():
+            from .external_authentication_method import ExternalAuthenticationMethod
+
+            return ExternalAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethod".casefold():
             from .fido2_authentication_method import Fido2AuthenticationMethod
 
@@ -82,6 +90,7 @@ class AuthenticationMethod(Entity, Parsable):
         """
         from .email_authentication_method import EmailAuthenticationMethod
         from .entity import Entity
+        from .external_authentication_method import ExternalAuthenticationMethod
         from .fido2_authentication_method import Fido2AuthenticationMethod
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .password_authentication_method import PasswordAuthenticationMethod
@@ -93,6 +102,7 @@ class AuthenticationMethod(Entity, Parsable):
 
         from .email_authentication_method import EmailAuthenticationMethod
         from .entity import Entity
+        from .external_authentication_method import ExternalAuthenticationMethod
         from .fido2_authentication_method import Fido2AuthenticationMethod
         from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
         from .password_authentication_method import PasswordAuthenticationMethod
@@ -103,6 +113,7 @@ class AuthenticationMethod(Entity, Parsable):
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
         fields: dict[str, Callable[[Any], None]] = {
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -117,5 +128,6 @@ class AuthenticationMethod(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
     
 

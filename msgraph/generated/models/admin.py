@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .admin_microsoft365_apps import AdminMicrosoft365Apps
     from .admin_report_settings import AdminReportSettings
     from .edge import Edge
+    from .exchange_admin import ExchangeAdmin
     from .people_admin_settings import PeopleAdminSettings
     from .service_announcement import ServiceAnnouncement
     from .sharepoint import Sharepoint
@@ -23,6 +24,8 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # A container for Microsoft Edge resources. Read-only.
     edge: Optional[Edge] = None
+    # A container for the Exchange admin functionality. Read-only.
+    exchange: Optional[ExchangeAdmin] = None
     # A container for the Microsoft 365 apps admin functionality.
     microsoft365_apps: Optional[AdminMicrosoft365Apps] = None
     # The OdataType property
@@ -35,7 +38,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     service_announcement: Optional[ServiceAnnouncement] = None
     # The sharepoint property
     sharepoint: Optional[Sharepoint] = None
-    # Represents a collection of user configurations.
+    # A container for Teams administration functionalities, such as user configurations and policy assignments.
     teams: Optional[TeamsAdminRoot] = None
     
     @staticmethod
@@ -57,6 +60,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .admin_report_settings import AdminReportSettings
         from .edge import Edge
+        from .exchange_admin import ExchangeAdmin
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
@@ -65,6 +69,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .admin_report_settings import AdminReportSettings
         from .edge import Edge
+        from .exchange_admin import ExchangeAdmin
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
@@ -72,6 +77,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "edge": lambda n : setattr(self, 'edge', n.get_object_value(Edge)),
+            "exchange": lambda n : setattr(self, 'exchange', n.get_object_value(ExchangeAdmin)),
             "microsoft365Apps": lambda n : setattr(self, 'microsoft365_apps', n.get_object_value(AdminMicrosoft365Apps)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "people": lambda n : setattr(self, 'people', n.get_object_value(PeopleAdminSettings)),
@@ -91,6 +97,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("edge", self.edge)
+        writer.write_object_value("exchange", self.exchange)
         writer.write_object_value("microsoft365Apps", self.microsoft365_apps)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("people", self.people)

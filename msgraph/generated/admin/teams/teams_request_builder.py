@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.teams_administration.teams_admin_root import TeamsAdminRoot
     from .policy.policy_request_builder import PolicyRequestBuilder
+    from .telephone_number_management.telephone_number_management_request_builder import TelephoneNumberManagementRequestBuilder
     from .user_configurations.user_configurations_request_builder import UserConfigurationsRequestBuilder
 
 class TeamsRequestBuilder(BaseRequestBuilder):
@@ -52,7 +53,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TeamsRequestBuilderGetQueryParameters]] = None) -> Optional[TeamsAdminRoot]:
         """
-        A container for Teams administration functionalities, such as user configurations and policy assignments.
+        A container for Teams administration functionalities, such as Teams telephone number management functionalities, user Teams configurations, and policy assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAdminRoot]
         """
@@ -106,7 +107,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TeamsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        A container for Teams administration functionalities, such as user configurations and policy assignments.
+        A container for Teams administration functionalities, such as Teams telephone number management functionalities, user Teams configurations, and policy assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -150,6 +151,15 @@ class TeamsRequestBuilder(BaseRequestBuilder):
         return PolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def telephone_number_management(self) -> TelephoneNumberManagementRequestBuilder:
+        """
+        Provides operations to manage the telephoneNumberManagement property of the microsoft.graph.teamsAdministration.teamsAdminRoot entity.
+        """
+        from .telephone_number_management.telephone_number_management_request_builder import TelephoneNumberManagementRequestBuilder
+
+        return TelephoneNumberManagementRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def user_configurations(self) -> UserConfigurationsRequestBuilder:
         """
         Provides operations to manage the userConfigurations property of the microsoft.graph.teamsAdministration.teamsAdminRoot entity.
@@ -168,7 +178,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsRequestBuilderGetQueryParameters():
         """
-        A container for Teams administration functionalities, such as user configurations and policy assignments.
+        A container for Teams administration functionalities, such as Teams telephone number management functionalities, user Teams configurations, and policy assignments.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

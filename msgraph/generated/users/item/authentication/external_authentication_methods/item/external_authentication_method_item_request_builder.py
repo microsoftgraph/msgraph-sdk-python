@@ -51,7 +51,7 @@ class ExternalAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ExternalAuthenticationMethodItemRequestBuilderGetQueryParameters]] = None) -> Optional[ExternalAuthenticationMethod]:
         """
-        Represents the external authentication methods registered to a user for authentication using an external identity provider.
+        Represents the external MFA registered to a user for authentication using an external identity provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalAuthenticationMethod]
         """
@@ -105,7 +105,7 @@ class ExternalAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ExternalAuthenticationMethodItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents the external authentication methods registered to a user for authentication using an external identity provider.
+        Represents the external MFA registered to a user for authentication using an external identity provider.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +149,7 @@ class ExternalAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExternalAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Represents the external authentication methods registered to a user for authentication using an external identity provider.
+        Represents the external MFA registered to a user for authentication using an external identity provider.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

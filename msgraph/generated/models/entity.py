@@ -41,6 +41,10 @@ if TYPE_CHECKING:
     from .admin_consent_request_policy import AdminConsentRequestPolicy
     from .admin_microsoft365_apps import AdminMicrosoft365Apps
     from .admin_report_settings import AdminReportSettings
+    from .agent_identity import AgentIdentity
+    from .agent_identity_blueprint import AgentIdentityBlueprint
+    from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+    from .agent_user import AgentUser
     from .agreement import Agreement
     from .agreement_acceptance import AgreementAcceptance
     from .agreement_file import AgreementFile
@@ -645,6 +649,7 @@ if TYPE_CHECKING:
     from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
     from .profile_card_property import ProfileCardProperty
     from .profile_photo import ProfilePhoto
+    from .profile_source import ProfileSource
     from .pronouns_settings import PronounsSettings
     from .protection_policy_base import ProtectionPolicyBase
     from .protection_rule_base import ProtectionRuleBase
@@ -652,6 +657,10 @@ if TYPE_CHECKING:
     from .protection_unit_base import ProtectionUnitBase
     from .provisioning_object_summary import ProvisioningObjectSummary
     from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
+    from .qr_code import QrCode
+    from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
+    from .qr_code_pin_authentication_method_configuration import QrCodePinAuthenticationMethodConfiguration
+    from .qr_pin import QrPin
     from .rbac_application import RbacApplication
     from .reading_assignment_submission import ReadingAssignmentSubmission
     from .reading_coach_passage import ReadingCoachPassage
@@ -800,6 +809,8 @@ if TYPE_CHECKING:
     from .shared_with_channel_team_info import SharedWithChannelTeamInfo
     from .sharepoint import Sharepoint
     from .sharepoint_settings import SharepointSettings
+    from .share_point_group import SharePointGroup
+    from .share_point_group_member import SharePointGroupMember
     from .share_point_migration_event import SharePointMigrationEvent
     from .share_point_migration_finish_manifest_file_upload_event import SharePointMigrationFinishManifestFileUploadEvent
     from .share_point_migration_job import SharePointMigrationJob
@@ -856,11 +867,14 @@ if TYPE_CHECKING:
     from .target_device_group import TargetDeviceGroup
     from .task_file_attachment import TaskFileAttachment
     from .team import Team
+    from .teams_administration.number_assignment import NumberAssignment
     from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
     from .teams_administration.teams_admin_root import TeamsAdminRoot
     from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
     from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
     from .teams_administration.teams_user_configuration import TeamsUserConfiguration
+    from .teams_administration.telephone_number_long_running_operation import TelephoneNumberLongRunningOperation
+    from .teams_administration.telephone_number_management_root import TelephoneNumberManagementRoot
     from .teams_app import TeamsApp
     from .teams_app_definition import TeamsAppDefinition
     from .teams_app_installation import TeamsAppInstallation
@@ -1250,6 +1264,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .admin_report_settings import AdminReportSettings
 
             return AdminReportSettings()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentity".casefold():
+            from .agent_identity import AgentIdentity
+
+            return AgentIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprint".casefold():
+            from .agent_identity_blueprint import AgentIdentityBlueprint
+
+            return AgentIdentityBlueprint()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprintPrincipal".casefold():
+            from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+
+            return AgentIdentityBlueprintPrincipal()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentUser".casefold():
+            from .agent_user import AgentUser
+
+            return AgentUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreement".casefold():
             from .agreement import Agreement
 
@@ -3673,6 +3703,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .profile_photo import ProfilePhoto
 
             return ProfilePhoto()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.profileSource".casefold():
+            from .profile_source import ProfileSource
+
+            return ProfileSource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.pronounsSettings".casefold():
             from .pronouns_settings import PronounsSettings
 
@@ -3701,6 +3735,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
 
             return PublicKeyInfrastructureRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.qrCode".casefold():
+            from .qr_code import QrCode
+
+            return QrCode()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.qrCodePinAuthenticationMethod".casefold():
+            from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
+
+            return QrCodePinAuthenticationMethod()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.qrCodePinAuthenticationMethodConfiguration".casefold():
+            from .qr_code_pin_authentication_method_configuration import QrCodePinAuthenticationMethodConfiguration
+
+            return QrCodePinAuthenticationMethodConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.qrPin".casefold():
+            from .qr_pin import QrPin
+
+            return QrPin()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.rbacApplication".casefold():
             from .rbac_application import RbacApplication
 
@@ -4292,6 +4342,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .sharepoint import Sharepoint
 
             return Sharepoint()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointGroup".casefold():
+            from .share_point_group import SharePointGroup
+
+            return SharePointGroup()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointGroupMember".casefold():
+            from .share_point_group_member import SharePointGroupMember
+
+            return SharePointGroupMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationEvent".casefold():
             from .share_point_migration_event import SharePointMigrationEvent
 
@@ -4524,6 +4582,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .team_info import TeamInfo
 
             return TeamInfo()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.numberAssignment".casefold():
+            from .teams_administration.number_assignment import NumberAssignment
+
+            return NumberAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.policyIdentifierDetail".casefold():
             from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
 
@@ -4544,6 +4606,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .teams_administration.teams_user_configuration import TeamsUserConfiguration
 
             return TeamsUserConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.telephoneNumberLongRunningOperation".casefold():
+            from .teams_administration.telephone_number_long_running_operation import TelephoneNumberLongRunningOperation
+
+            return TelephoneNumberLongRunningOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAdministration.telephoneNumberManagementRoot".casefold():
+            from .teams_administration.telephone_number_management_root import TelephoneNumberManagementRoot
+
+            return TelephoneNumberManagementRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsApp".casefold():
             from .teams_app import TeamsApp
 
@@ -5472,6 +5542,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .admin_consent_request_policy import AdminConsentRequestPolicy
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .admin_report_settings import AdminReportSettings
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint import AgentIdentityBlueprint
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+        from .agent_user import AgentUser
         from .agreement import Agreement
         from .agreement_acceptance import AgreementAcceptance
         from .agreement_file import AgreementFile
@@ -6076,6 +6150,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
         from .profile_card_property import ProfileCardProperty
         from .profile_photo import ProfilePhoto
+        from .profile_source import ProfileSource
         from .pronouns_settings import PronounsSettings
         from .protection_policy_base import ProtectionPolicyBase
         from .protection_rule_base import ProtectionRuleBase
@@ -6083,6 +6158,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .protection_unit_base import ProtectionUnitBase
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
+        from .qr_code import QrCode
+        from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
+        from .qr_code_pin_authentication_method_configuration import QrCodePinAuthenticationMethodConfiguration
+        from .qr_pin import QrPin
         from .rbac_application import RbacApplication
         from .reading_assignment_submission import ReadingAssignmentSubmission
         from .reading_coach_passage import ReadingCoachPassage
@@ -6231,6 +6310,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
         from .sharepoint import Sharepoint
         from .sharepoint_settings import SharepointSettings
+        from .share_point_group import SharePointGroup
+        from .share_point_group_member import SharePointGroupMember
         from .share_point_migration_event import SharePointMigrationEvent
         from .share_point_migration_finish_manifest_file_upload_event import SharePointMigrationFinishManifestFileUploadEvent
         from .share_point_migration_job import SharePointMigrationJob
@@ -6287,11 +6368,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.number_assignment import NumberAssignment
         from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
         from .teams_administration.teams_admin_root import TeamsAdminRoot
         from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
         from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
         from .teams_administration.teams_user_configuration import TeamsUserConfiguration
+        from .teams_administration.telephone_number_long_running_operation import TelephoneNumberLongRunningOperation
+        from .teams_administration.telephone_number_management_root import TelephoneNumberManagementRoot
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
         from .teams_app_installation import TeamsAppInstallation
@@ -6550,6 +6634,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .admin_consent_request_policy import AdminConsentRequestPolicy
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .admin_report_settings import AdminReportSettings
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint import AgentIdentityBlueprint
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+        from .agent_user import AgentUser
         from .agreement import Agreement
         from .agreement_acceptance import AgreementAcceptance
         from .agreement_file import AgreementFile
@@ -7154,6 +7242,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
         from .profile_card_property import ProfileCardProperty
         from .profile_photo import ProfilePhoto
+        from .profile_source import ProfileSource
         from .pronouns_settings import PronounsSettings
         from .protection_policy_base import ProtectionPolicyBase
         from .protection_rule_base import ProtectionRuleBase
@@ -7161,6 +7250,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .protection_unit_base import ProtectionUnitBase
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
+        from .qr_code import QrCode
+        from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
+        from .qr_code_pin_authentication_method_configuration import QrCodePinAuthenticationMethodConfiguration
+        from .qr_pin import QrPin
         from .rbac_application import RbacApplication
         from .reading_assignment_submission import ReadingAssignmentSubmission
         from .reading_coach_passage import ReadingCoachPassage
@@ -7309,6 +7402,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
         from .sharepoint import Sharepoint
         from .sharepoint_settings import SharepointSettings
+        from .share_point_group import SharePointGroup
+        from .share_point_group_member import SharePointGroupMember
         from .share_point_migration_event import SharePointMigrationEvent
         from .share_point_migration_finish_manifest_file_upload_event import SharePointMigrationFinishManifestFileUploadEvent
         from .share_point_migration_job import SharePointMigrationJob
@@ -7365,11 +7460,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .target_device_group import TargetDeviceGroup
         from .task_file_attachment import TaskFileAttachment
         from .team import Team
+        from .teams_administration.number_assignment import NumberAssignment
         from .teams_administration.policy_identifier_detail import PolicyIdentifierDetail
         from .teams_administration.teams_admin_root import TeamsAdminRoot
         from .teams_administration.teams_policy_assignment import TeamsPolicyAssignment
         from .teams_administration.teams_policy_user_assignment import TeamsPolicyUserAssignment
         from .teams_administration.teams_user_configuration import TeamsUserConfiguration
+        from .teams_administration.telephone_number_long_running_operation import TelephoneNumberLongRunningOperation
+        from .teams_administration.telephone_number_management_root import TelephoneNumberManagementRoot
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
         from .teams_app_installation import TeamsAppInstallation

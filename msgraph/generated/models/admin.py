@@ -38,7 +38,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     service_announcement: Optional[ServiceAnnouncement] = None
     # The sharepoint property
     sharepoint: Optional[Sharepoint] = None
-    # A container for Teams administration functionalities, such as user configurations and policy assignments.
+    # A container for Teams administration functionalities, such as Teams telephone number management functionalities, user Teams configurations, and policy assignments.
     teams: Optional[TeamsAdminRoot] = None
     
     @staticmethod

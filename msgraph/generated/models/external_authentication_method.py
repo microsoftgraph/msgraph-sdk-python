@@ -15,7 +15,7 @@ class ExternalAuthenticationMethod(AuthenticationMethod, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.externalAuthenticationMethod"
     # A unique identifier used to manage the external auth method within Microsoft Entra ID.
     configuration_id: Optional[str] = None
-    # Custom name given to the registered external authentication method.
+    # Custom name given to the registered external MFA.
     display_name: Optional[str] = None
     
     @staticmethod

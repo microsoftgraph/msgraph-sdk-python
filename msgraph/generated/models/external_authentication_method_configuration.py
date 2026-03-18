@@ -17,7 +17,7 @@ class ExternalAuthenticationMethodConfiguration(AuthenticationMethodConfiguratio
     odata_type: Optional[str] = "#microsoft.graph.externalAuthenticationMethodConfiguration"
     # appId for the app registration in Microsoft Entra ID representing the integration with the external provider.
     app_id: Optional[str] = None
-    # Display name for the external authentication method. This name is shown to users during sign-in.
+    # Display name for the external MFA. This name is shown to users during sign-in.
     display_name: Optional[str] = None
     # A collection of groups that are enabled to use an authentication method as part of an authentication method policy in Microsoft Entra ID.
     include_targets: Optional[list[AuthenticationMethodTarget]] = None

@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .configuration import Configuration
     from .connection_operation import ConnectionOperation
     from .connection_state import ConnectionState
+    from .content_category import ContentCategory
     from .external_group import ExternalGroup
     from .external_item import ExternalItem
     from .schema import Schema
@@ -25,6 +26,8 @@ class ExternalConnection(Entity, Parsable):
     configuration: Optional[Configuration] = None
     # The Teams app ID. Optional.
     connector_id: Optional[str] = None
+    # The contentCategory property
+    content_category: Optional[ContentCategory] = None
     # Description of the connection displayed in the Microsoft 365 admin center. Optional.
     description: Optional[str] = None
     # The groups property
@@ -65,6 +68,7 @@ class ExternalConnection(Entity, Parsable):
         from .configuration import Configuration
         from .connection_operation import ConnectionOperation
         from .connection_state import ConnectionState
+        from .content_category import ContentCategory
         from .external_group import ExternalGroup
         from .external_item import ExternalItem
         from .schema import Schema
@@ -75,6 +79,7 @@ class ExternalConnection(Entity, Parsable):
         from .configuration import Configuration
         from .connection_operation import ConnectionOperation
         from .connection_state import ConnectionState
+        from .content_category import ContentCategory
         from .external_group import ExternalGroup
         from .external_item import ExternalItem
         from .schema import Schema
@@ -84,6 +89,7 @@ class ExternalConnection(Entity, Parsable):
             "activitySettings": lambda n : setattr(self, 'activity_settings', n.get_object_value(ActivitySettings)),
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(Configuration)),
             "connectorId": lambda n : setattr(self, 'connector_id', n.get_str_value()),
+            "contentCategory": lambda n : setattr(self, 'content_category', n.get_enum_value(ContentCategory)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(ExternalGroup)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(ExternalItem)),
@@ -109,6 +115,7 @@ class ExternalConnection(Entity, Parsable):
         writer.write_object_value("activitySettings", self.activity_settings)
         writer.write_object_value("configuration", self.configuration)
         writer.write_str_value("connectorId", self.connector_id)
+        writer.write_enum_value("contentCategory", self.content_category)
         writer.write_str_value("description", self.description)
         writer.write_collection_of_object_values("groups", self.groups)
         writer.write_collection_of_object_values("items", self.items)

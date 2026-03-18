@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .adhoc_call import AdhocCall
+    from .agent_user import AgentUser
     from .agreement_acceptance import AgreementAcceptance
     from .app_role_assignment import AppRoleAssignment
     from .assigned_license import AssignedLicense
@@ -180,6 +181,8 @@ class User(DirectoryObject, Parsable):
     hire_date: Optional[datetime.datetime] = None
     # Represents the identities that can be used to sign in to this user account. Microsoft (also known as a local account), organizations, or social identity providers such as Facebook, Google, and Microsoft can provide identity and tie it to a user account. It might contain multiple items with the same signInType value. Returned only on $select.  Supports $filter (eq) with limitations.
     identities: Optional[list[ObjectIdentity]] = None
+    # The identityParentId property
+    identity_parent_id: Optional[str] = None
     # The instant message voice-over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith).
     im_addresses: Optional[list[str]] = None
     # Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
@@ -350,6 +353,15 @@ class User(DirectoryObject, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentUser".casefold():
+            from .agent_user import AgentUser
+
+            return AgentUser()
         return User()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -358,6 +370,7 @@ class User(DirectoryObject, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .adhoc_call import AdhocCall
+        from .agent_user import AgentUser
         from .agreement_acceptance import AgreementAcceptance
         from .app_role_assignment import AppRoleAssignment
         from .assigned_license import AssignedLicense
@@ -417,6 +430,7 @@ class User(DirectoryObject, Parsable):
         from .user_teamwork import UserTeamwork
 
         from .adhoc_call import AdhocCall
+        from .agent_user import AgentUser
         from .agreement_acceptance import AgreementAcceptance
         from .app_role_assignment import AppRoleAssignment
         from .assigned_license import AssignedLicense
@@ -529,6 +543,7 @@ class User(DirectoryObject, Parsable):
             "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
             "hireDate": lambda n : setattr(self, 'hire_date', n.get_datetime_value()),
             "identities": lambda n : setattr(self, 'identities', n.get_collection_of_object_values(ObjectIdentity)),
+            "identityParentId": lambda n : setattr(self, 'identity_parent_id', n.get_str_value()),
             "imAddresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
             "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_object_value(InferenceClassification)),
             "insights": lambda n : setattr(self, 'insights', n.get_object_value(ItemInsights)),
@@ -676,6 +691,7 @@ class User(DirectoryObject, Parsable):
         writer.write_str_value("givenName", self.given_name)
         writer.write_datetime_value("hireDate", self.hire_date)
         writer.write_collection_of_object_values("identities", self.identities)
+        writer.write_str_value("identityParentId", self.identity_parent_id)
         writer.write_collection_of_primitive_values("imAddresses", self.im_addresses)
         writer.write_object_value("inferenceClassification", self.inference_classification)
         writer.write_object_value("insights", self.insights)

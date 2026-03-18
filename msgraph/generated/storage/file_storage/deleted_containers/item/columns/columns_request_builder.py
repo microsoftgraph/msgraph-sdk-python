@@ -49,7 +49,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ColumnsRequestBuilderGetQueryParameters]] = None) -> Optional[ColumnDefinitionCollectionResponse]:
         """
-        Get columns from storage
+        The set of custom structured metadata supported by the fileStorageContainer. Read-write.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ColumnDefinitionCollectionResponse]
         """
@@ -92,7 +92,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ColumnsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get columns from storage
+        The set of custom structured metadata supported by the fileStorageContainer. Read-write.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        Get columns from storage
+        The set of custom structured metadata supported by the fileStorageContainer. Read-write.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

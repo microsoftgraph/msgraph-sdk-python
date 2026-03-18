@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from ..entity import Entity
     from .teams_policy_assignment import TeamsPolicyAssignment
     from .teams_user_configuration import TeamsUserConfiguration
+    from .telephone_number_management_root import TelephoneNumberManagementRoot
 
 from ..entity import Entity
 
@@ -17,6 +18,8 @@ class TeamsAdminRoot(Entity, Parsable):
     odata_type: Optional[str] = None
     # Represents a navigation property to the Teams policy assignment object.
     policy: Optional[TeamsPolicyAssignment] = None
+    # Represents a collection of available telephone number management operations.
+    telephone_number_management: Optional[TelephoneNumberManagementRoot] = None
     # Represents the configuration information of users who have accounts hosted on Microsoft Teams
     user_configurations: Optional[list[TeamsUserConfiguration]] = None
     
@@ -39,13 +42,16 @@ class TeamsAdminRoot(Entity, Parsable):
         from ..entity import Entity
         from .teams_policy_assignment import TeamsPolicyAssignment
         from .teams_user_configuration import TeamsUserConfiguration
+        from .telephone_number_management_root import TelephoneNumberManagementRoot
 
         from ..entity import Entity
         from .teams_policy_assignment import TeamsPolicyAssignment
         from .teams_user_configuration import TeamsUserConfiguration
+        from .telephone_number_management_root import TelephoneNumberManagementRoot
 
         fields: dict[str, Callable[[Any], None]] = {
             "policy": lambda n : setattr(self, 'policy', n.get_object_value(TeamsPolicyAssignment)),
+            "telephoneNumberManagement": lambda n : setattr(self, 'telephone_number_management', n.get_object_value(TelephoneNumberManagementRoot)),
             "userConfigurations": lambda n : setattr(self, 'user_configurations', n.get_collection_of_object_values(TeamsUserConfiguration)),
         }
         super_fields = super().get_field_deserializers()
@@ -62,6 +68,7 @@ class TeamsAdminRoot(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("policy", self.policy)
+        writer.write_object_value("telephoneNumberManagement", self.telephone_number_management)
         writer.write_collection_of_object_values("userConfigurations", self.user_configurations)
     
 

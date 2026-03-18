@@ -71,7 +71,7 @@ class Simulation(Entity, Parsable):
     payload_delivery_platform: Optional[PayloadDeliveryPlatform] = None
     # Report of the attack simulation and training campaign.
     report: Optional[SimulationReport] = None
-    # Status of the attack simulation and training campaign. Supports $filter and $orderby. The possible values are: unknown, draft, running, scheduled, succeeded, failed, cancelled, excluded, unknownFutureValue.
+    # Status of the attack simulation and training campaign. Supports $filter and $orderby. The possible values are: unknown, draft, running, scheduled, succeeded, failed, canceled, excluded, unknownFutureValue.
     status: Optional[SimulationStatus] = None
     # Details about the training settings for a simulation.
     training_setting: Optional[TrainingSetting] = None

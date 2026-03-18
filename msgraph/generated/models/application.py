@@ -8,6 +8,7 @@ from uuid import UUID
 
 if TYPE_CHECKING:
     from .add_in import AddIn
+    from .agent_identity_blueprint import AgentIdentityBlueprint
     from .api_application import ApiApplication
     from .app_management_policy import AppManagementPolicy
     from .app_role import AppRole
@@ -146,6 +147,15 @@ class Application(DirectoryObject, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprint".casefold():
+            from .agent_identity_blueprint import AgentIdentityBlueprint
+
+            return AgentIdentityBlueprint()
         return Application()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -154,6 +164,7 @@ class Application(DirectoryObject, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .add_in import AddIn
+        from .agent_identity_blueprint import AgentIdentityBlueprint
         from .api_application import ApiApplication
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
@@ -181,6 +192,7 @@ class Application(DirectoryObject, Parsable):
         from .web_application import WebApplication
 
         from .add_in import AddIn
+        from .agent_identity_blueprint import AgentIdentityBlueprint
         from .api_application import ApiApplication
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole

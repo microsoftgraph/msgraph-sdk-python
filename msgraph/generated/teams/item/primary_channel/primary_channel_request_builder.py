@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .archive.archive_request_builder import ArchiveRequestBuilder
     from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
     from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder import DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder
+    from .enabled_apps.enabled_apps_request_builder import EnabledAppsRequestBuilder
     from .files_folder.files_folder_request_builder import FilesFolderRequestBuilder
     from .members.members_request_builder import MembersRequestBuilder
     from .messages.messages_request_builder import MessagesRequestBuilder
@@ -186,6 +187,15 @@ class PrimaryChannelRequestBuilder(BaseRequestBuilder):
         from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder import DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder
 
         return DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def enabled_apps(self) -> EnabledAppsRequestBuilder:
+        """
+        Provides operations to manage the enabledApps property of the microsoft.graph.channel entity.
+        """
+        from .enabled_apps.enabled_apps_request_builder import EnabledAppsRequestBuilder
+
+        return EnabledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def files_folder(self) -> FilesFolderRequestBuilder:

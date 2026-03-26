@@ -32,11 +32,11 @@ class SetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: SetVerifiedPublisherPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
+        Set the the verifiedPublisher on an agentIdentityBlueprint. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/application-setverifiedpublisher?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentidentityblueprint-setverifiedpublisher?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -54,7 +54,7 @@ class SetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: SetVerifiedPublisherPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
+        Set the the verifiedPublisher on an agentIdentityBlueprint. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

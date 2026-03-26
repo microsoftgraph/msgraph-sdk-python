@@ -53,7 +53,7 @@ class ApplicationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ApplicationsRequestBuilderGetQueryParameters]] = None) -> Optional[ApplicationCollectionResponse]:
         """
-        Get the list of applications in this organization.
+        Get the list of applications in this organization. This API also returns agentIdentityBlueprint objects, which are identified by the @odata.type property of #microsoft.graph.agentIdentityBlueprint.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApplicationCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/application-list?view=graph-rest-1.0
@@ -74,7 +74,7 @@ class ApplicationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Application, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Application]:
         """
-        Create a new application object.
+        Create a new application object. This API can also create an agentIdentityBlueprint object when the @odata.type property is set to #microsoft.graph.agentIdentityBlueprint.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Application]
@@ -98,7 +98,7 @@ class ApplicationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ApplicationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the list of applications in this organization.
+        Get the list of applications in this organization. This API also returns agentIdentityBlueprint objects, which are identified by the @odata.type property of #microsoft.graph.agentIdentityBlueprint.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ApplicationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Application, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new application object.
+        Create a new application object. This API can also create an agentIdentityBlueprint object when the @odata.type property is set to #microsoft.graph.agentIdentityBlueprint.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -180,7 +180,7 @@ class ApplicationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApplicationsRequestBuilderGetQueryParameters():
         """
-        Get the list of applications in this organization.
+        Get the list of applications in this organization. This API also returns agentIdentityBlueprint objects, which are identified by the @odata.type property of #microsoft.graph.agentIdentityBlueprint.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

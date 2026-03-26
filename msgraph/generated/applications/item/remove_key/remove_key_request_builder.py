@@ -32,11 +32,11 @@ class RemoveKeyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: RemoveKeyPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Remove a key credential from an application. This method along with addKey can be used by an application to automate rolling its expiring keys. As part of the request validation for this method, a proof of possession of an existing key is verified before the action can be performed.
+        Remove a key credential from an agentIdentityBlueprint. This method along with addKey can be used to automate rolling its expiring keys.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/application-removekey?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentidentityblueprint-removekey?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -54,7 +54,7 @@ class RemoveKeyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: RemoveKeyPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Remove a key credential from an application. This method along with addKey can be used by an application to automate rolling its expiring keys. As part of the request validation for this method, a proof of possession of an existing key is verified before the action can be performed.
+        Remove a key credential from an agentIdentityBlueprint. This method along with addKey can be used to automate rolling its expiring keys.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

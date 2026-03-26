@@ -6,12 +6,15 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .mailbox import Mailbox
     from .message_tracing_root import MessageTracingRoot
 
 from .entity import Entity
 
 @dataclass
 class ExchangeAdmin(Entity, Parsable):
+    # The mailboxes property
+    mailboxes: Optional[list[Mailbox]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents a container for administrative resources to trace messages.
@@ -34,12 +37,15 @@ class ExchangeAdmin(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .mailbox import Mailbox
         from .message_tracing_root import MessageTracingRoot
 
         from .entity import Entity
+        from .mailbox import Mailbox
         from .message_tracing_root import MessageTracingRoot
 
         fields: dict[str, Callable[[Any], None]] = {
+            "mailboxes": lambda n : setattr(self, 'mailboxes', n.get_collection_of_object_values(Mailbox)),
             "tracing": lambda n : setattr(self, 'tracing', n.get_object_value(MessageTracingRoot)),
         }
         super_fields = super().get_field_deserializers()
@@ -55,6 +61,7 @@ class ExchangeAdmin(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("mailboxes", self.mailboxes)
         writer.write_object_value("tracing", self.tracing)
     
 

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .drive_item import DriveItem
     from .entity import Entity
     from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+    from .teams_app import TeamsApp
     from .teams_tab import TeamsTab
 
 from .entity import Entity
@@ -29,6 +30,8 @@ class Channel(Entity, Parsable):
     display_name: Optional[str] = None
     # The email address for sending messages to the channel. Read-only.
     email: Optional[str] = None
+    # The enabledApps property
+    enabled_apps: Optional[list[TeamsApp]] = None
     # Metadata for the location where the channel's files are stored.
     files_folder: Optional[DriveItem] = None
     # Indicates whether the channel is archived. Read-only.
@@ -77,6 +80,7 @@ class Channel(Entity, Parsable):
         from .drive_item import DriveItem
         from .entity import Entity
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .teams_app import TeamsApp
         from .teams_tab import TeamsTab
 
         from .channel_membership_type import ChannelMembershipType
@@ -86,6 +90,7 @@ class Channel(Entity, Parsable):
         from .drive_item import DriveItem
         from .entity import Entity
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .teams_app import TeamsApp
         from .teams_tab import TeamsTab
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -94,6 +99,7 @@ class Channel(Entity, Parsable):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
+            "enabledApps": lambda n : setattr(self, 'enabled_apps', n.get_collection_of_object_values(TeamsApp)),
             "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(DriveItem)),
             "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "isFavoriteByDefault": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
@@ -124,6 +130,7 @@ class Channel(Entity, Parsable):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("email", self.email)
+        writer.write_collection_of_object_values("enabledApps", self.enabled_apps)
         writer.write_object_value("filesFolder", self.files_folder)
         writer.write_bool_value("isArchived", self.is_archived)
         writer.write_bool_value("isFavoriteByDefault", self.is_favorite_by_default)

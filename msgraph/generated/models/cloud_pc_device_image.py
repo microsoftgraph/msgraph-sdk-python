@@ -31,6 +31,10 @@ class CloudPcDeviceImage(Entity, Parsable):
     os_build_number: Optional[str] = None
     # The OS status of this image. The possible values are: supported, supportedWithWarning, unknown, unknownFutureValue. The default value is unknown. Read-only.
     os_status: Optional[CloudPcDeviceImageOsStatus] = None
+    # The operating system version of this image. For example, 10.0.22000.296. Read-only.
+    os_version_number: Optional[str] = None
+    # The size of the image in GB. For example, 64. Read-only.
+    size_in_g_b: Optional[int] = None
     # The unique identifier (ID) of the source image resource on Azure. The required ID format is: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}'. Read-only.
     source_image_resource_id: Optional[str] = None
     # The status of the image on the Cloud PC. The possible values are: pending, ready, failed, unknownFutureValue. Read-only.
@@ -72,6 +76,8 @@ class CloudPcDeviceImage(Entity, Parsable):
             "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
             "osBuildNumber": lambda n : setattr(self, 'os_build_number', n.get_str_value()),
             "osStatus": lambda n : setattr(self, 'os_status', n.get_enum_value(CloudPcDeviceImageOsStatus)),
+            "osVersionNumber": lambda n : setattr(self, 'os_version_number', n.get_str_value()),
+            "sizeInGB": lambda n : setattr(self, 'size_in_g_b', n.get_int_value()),
             "sourceImageResourceId": lambda n : setattr(self, 'source_image_resource_id', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(CloudPcDeviceImageStatus)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
@@ -96,6 +102,8 @@ class CloudPcDeviceImage(Entity, Parsable):
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_str_value("osBuildNumber", self.os_build_number)
         writer.write_enum_value("osStatus", self.os_status)
+        writer.write_str_value("osVersionNumber", self.os_version_number)
+        writer.write_int_value("sizeInGB", self.size_in_g_b)
         writer.write_str_value("sourceImageResourceId", self.source_image_resource_id)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("version", self.version)

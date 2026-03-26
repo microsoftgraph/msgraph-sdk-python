@@ -25,7 +25,7 @@ from .entity import Entity
 class Authentication(Entity, Parsable):
     # The email address registered to a user for authentication.
     email_methods: Optional[list[EmailAuthenticationMethod]] = None
-    # Represents the external authentication methods registered to a user for authentication using an external identity provider.
+    # Represents the external MFA registered to a user for authentication using an external identity provider.
     external_authentication_methods: Optional[list[ExternalAuthenticationMethod]] = None
     # Represents the FIDO2 security keys registered to a user for authentication.
     fido2_methods: Optional[list[Fido2AuthenticationMethod]] = None

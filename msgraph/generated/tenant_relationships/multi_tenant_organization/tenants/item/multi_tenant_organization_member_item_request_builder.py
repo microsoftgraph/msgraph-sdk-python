@@ -72,10 +72,11 @@ class MultiTenantOrganizationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: MultiTenantOrganizationMember, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MultiTenantOrganizationMember]:
         """
-        Update the navigation property tenants in tenantRelationships
+        Update the properties of a tenant in a multitenant organization. Only owner tenants can call this API.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MultiTenantOrganizationMember]
+        Find more info here: https://learn.microsoft.com/graph/api/multitenantorganizationmember-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -117,7 +118,7 @@ class MultiTenantOrganizationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: MultiTenantOrganizationMember, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property tenants in tenantRelationships
+        Update the properties of a tenant in a multitenant organization. Only owner tenants can call this API.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

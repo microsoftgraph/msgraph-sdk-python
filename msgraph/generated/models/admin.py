@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .admin_microsoft365_apps import AdminMicrosoft365Apps
     from .admin_report_settings import AdminReportSettings
+    from .configuration_management import ConfigurationManagement
     from .edge import Edge
     from .exchange_admin import ExchangeAdmin
     from .people_admin_settings import PeopleAdminSettings
@@ -22,6 +23,8 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # A container for Tenant Configuration Management (TCM) resources. Read-only.
+    configuration_management: Optional[ConfigurationManagement] = None
     # A container for Microsoft Edge resources. Read-only.
     edge: Optional[Edge] = None
     # A container for the Exchange admin functionality. Read-only.
@@ -38,7 +41,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     service_announcement: Optional[ServiceAnnouncement] = None
     # The sharepoint property
     sharepoint: Optional[Sharepoint] = None
-    # A container for Teams administration functionalities, such as user configurations and policy assignments.
+    # A container for Teams administration functionalities, such as Teams telephone number management functionalities, user Teams configurations, and policy assignments.
     teams: Optional[TeamsAdminRoot] = None
     
     @staticmethod
@@ -59,6 +62,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .admin_report_settings import AdminReportSettings
+        from .configuration_management import ConfigurationManagement
         from .edge import Edge
         from .exchange_admin import ExchangeAdmin
         from .people_admin_settings import PeopleAdminSettings
@@ -68,6 +72,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
 
         from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .admin_report_settings import AdminReportSettings
+        from .configuration_management import ConfigurationManagement
         from .edge import Edge
         from .exchange_admin import ExchangeAdmin
         from .people_admin_settings import PeopleAdminSettings
@@ -76,6 +81,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         from .teams_administration.teams_admin_root import TeamsAdminRoot
 
         fields: dict[str, Callable[[Any], None]] = {
+            "configurationManagement": lambda n : setattr(self, 'configuration_management', n.get_object_value(ConfigurationManagement)),
             "edge": lambda n : setattr(self, 'edge', n.get_object_value(Edge)),
             "exchange": lambda n : setattr(self, 'exchange', n.get_object_value(ExchangeAdmin)),
             "microsoft365Apps": lambda n : setattr(self, 'microsoft365_apps', n.get_object_value(AdminMicrosoft365Apps)),
@@ -96,6 +102,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_object_value("configurationManagement", self.configuration_management)
         writer.write_object_value("edge", self.edge)
         writer.write_object_value("exchange", self.exchange)
         writer.write_object_value("microsoft365Apps", self.microsoft365_apps)

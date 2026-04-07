@@ -32,7 +32,7 @@ class DeactivateRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ProtectionPolicyBase]:
         """
-        Deactivate a protectionPolicyBase.
+        Deactivate a protectionPolicyBase. When a protection policy is deactivated, backup activity stops immediately, no new backups are taken, and the protected resources are no longer covered by the policy. Any backups taken before deactivation are retained according to the retention policy, after which they're offboarded. You can restore data using previous restore points even after deactivation. To reactivate a deactivated policy, use the activate API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProtectionPolicyBase]
         Find more info here: https://learn.microsoft.com/graph/api/protectionpolicybase-deactivate?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class DeactivateRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Deactivate a protectionPolicyBase.
+        Deactivate a protectionPolicyBase. When a protection policy is deactivated, backup activity stops immediately, no new backups are taken, and the protected resources are no longer covered by the policy. Any backups taken before deactivation are retained according to the retention policy, after which they're offboarded. You can restore data using previous restore points even after deactivation. To reactivate a deactivated policy, use the activate API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

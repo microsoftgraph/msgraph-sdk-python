@@ -8,7 +8,9 @@ if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
     from .authentication_method_target import AuthenticationMethodTarget
     from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+    from .x509_certificate_authority_scope import X509CertificateAuthorityScope
     from .x509_certificate_c_r_l_validation_configuration import X509CertificateCRLValidationConfiguration
+    from .x509_certificate_issuer_hints_configuration import X509CertificateIssuerHintsConfiguration
     from .x509_certificate_user_binding import X509CertificateUserBinding
 
 from .authentication_method_configuration import AuthenticationMethodConfiguration
@@ -19,12 +21,16 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
     odata_type: Optional[str] = "#microsoft.graph.x509CertificateAuthenticationMethodConfiguration"
     # Defines strong authentication configurations. This configuration includes the default authentication mode and the different rules for strong authentication bindings.
     authentication_mode_configuration: Optional[X509CertificateAuthenticationModeConfiguration] = None
+    # The certificateAuthorityScopes property
+    certificate_authority_scopes: Optional[list[X509CertificateAuthorityScope]] = None
     # Defines fields in the X.509 certificate that map to attributes of the Microsoft Entra user object in order to bind the certificate to the user. The priority of the object determines the order in which the binding is carried out. The first binding that matches will be used and the rest ignored.
     certificate_user_bindings: Optional[list[X509CertificateUserBinding]] = None
     # The crlValidationConfiguration property
     crl_validation_configuration: Optional[X509CertificateCRLValidationConfiguration] = None
     # A collection of groups that are enabled to use the authentication method.
     include_targets: Optional[list[AuthenticationMethodTarget]] = None
+    # The issuerHintsConfiguration property
+    issuer_hints_configuration: Optional[X509CertificateIssuerHintsConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> X509CertificateAuthenticationMethodConfiguration:
@@ -45,20 +51,26 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
         from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+        from .x509_certificate_authority_scope import X509CertificateAuthorityScope
         from .x509_certificate_c_r_l_validation_configuration import X509CertificateCRLValidationConfiguration
+        from .x509_certificate_issuer_hints_configuration import X509CertificateIssuerHintsConfiguration
         from .x509_certificate_user_binding import X509CertificateUserBinding
 
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
         from .x509_certificate_authentication_mode_configuration import X509CertificateAuthenticationModeConfiguration
+        from .x509_certificate_authority_scope import X509CertificateAuthorityScope
         from .x509_certificate_c_r_l_validation_configuration import X509CertificateCRLValidationConfiguration
+        from .x509_certificate_issuer_hints_configuration import X509CertificateIssuerHintsConfiguration
         from .x509_certificate_user_binding import X509CertificateUserBinding
 
         fields: dict[str, Callable[[Any], None]] = {
             "authenticationModeConfiguration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(X509CertificateAuthenticationModeConfiguration)),
+            "certificateAuthorityScopes": lambda n : setattr(self, 'certificate_authority_scopes', n.get_collection_of_object_values(X509CertificateAuthorityScope)),
             "certificateUserBindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(X509CertificateUserBinding)),
             "crlValidationConfiguration": lambda n : setattr(self, 'crl_validation_configuration', n.get_object_value(X509CertificateCRLValidationConfiguration)),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
+            "issuerHintsConfiguration": lambda n : setattr(self, 'issuer_hints_configuration', n.get_object_value(X509CertificateIssuerHintsConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,8 +86,10 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("authenticationModeConfiguration", self.authentication_mode_configuration)
+        writer.write_collection_of_object_values("certificateAuthorityScopes", self.certificate_authority_scopes)
         writer.write_collection_of_object_values("certificateUserBindings", self.certificate_user_bindings)
         writer.write_object_value("crlValidationConfiguration", self.crl_validation_configuration)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
+        writer.write_object_value("issuerHintsConfiguration", self.issuer_hints_configuration)
     
 

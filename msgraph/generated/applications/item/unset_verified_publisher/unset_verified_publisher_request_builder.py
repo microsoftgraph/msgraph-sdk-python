@@ -31,10 +31,10 @@ class UnsetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification.
+        Unset the verifiedPublisher previously set on an agentIdentityBlueprint, removing all verified publisher properties. For more information, see Publisher verification.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/application-unsetverifiedpublisher?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentidentityblueprint-unsetverifiedpublisher?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -50,7 +50,7 @@ class UnsetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification.
+        Unset the verifiedPublisher previously set on an agentIdentityBlueprint, removing all verified publisher properties. For more information, see Publisher verification.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

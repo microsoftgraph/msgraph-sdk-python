@@ -7,6 +7,8 @@ from uuid import UUID
 
 if TYPE_CHECKING:
     from .add_in import AddIn
+    from .agent_identity import AgentIdentity
+    from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
     from .app_management_policy import AppManagementPolicy
     from .app_role import AppRole
     from .app_role_assignment import AppRoleAssignment
@@ -64,6 +66,8 @@ class ServicePrincipal(DirectoryObject, Parsable):
     application_template_id: Optional[str] = None
     # The claimsMappingPolicies assigned to this service principal. Supports $expand.
     claims_mapping_policies: Optional[list[ClaimsMappingPolicy]] = None
+    # The appId of the application that created this service principal. Set internally by Microsoft Entra ID. Read-only.
+    created_by_app_id: Optional[str] = None
     # Directory objects created by this service principal. Read-only. Nullable.
     created_objects: Optional[list[DirectoryObject]] = None
     # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive. To read this property, the calling app must be assigned the CustomSecAttributeAssignment.Read.All permission. To write this property, the calling app must be assigned the CustomSecAttributeAssignment.ReadWrite.All permissions. To read or write this property in delegated scenarios, the admin must be assigned the Attribute Assignment Administrator role.
@@ -150,6 +154,19 @@ class ServicePrincipal(DirectoryObject, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentity".casefold():
+            from .agent_identity import AgentIdentity
+
+            return AgentIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprintPrincipal".casefold():
+            from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+
+            return AgentIdentityBlueprintPrincipal()
         return ServicePrincipal()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -158,6 +175,8 @@ class ServicePrincipal(DirectoryObject, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .add_in import AddIn
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
         from .app_role_assignment import AppRoleAssignment
@@ -182,6 +201,8 @@ class ServicePrincipal(DirectoryObject, Parsable):
         from .verified_publisher import VerifiedPublisher
 
         from .add_in import AddIn
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
         from .app_role_assignment import AppRoleAssignment
@@ -220,6 +241,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
             "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(AppRole)),
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
             "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(ClaimsMappingPolicy)),
+            "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
             "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
             "customSecurityAttributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
             "delegatedPermissionClassifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(DelegatedPermissionClassification)),
@@ -286,6 +308,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("appRoles", self.app_roles)
         writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_collection_of_object_values("claimsMappingPolicies", self.claims_mapping_policies)
+        writer.write_str_value("createdByAppId", self.created_by_app_id)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
         writer.write_object_value("customSecurityAttributes", self.custom_security_attributes)
         writer.write_collection_of_object_values("delegatedPermissionClassifications", self.delegated_permission_classifications)

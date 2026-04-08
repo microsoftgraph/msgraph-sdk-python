@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.user_settings import UserSettings
+    from .exchange.exchange_request_builder import ExchangeRequestBuilder
     from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
     from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
     from .storage.storage_request_builder import StorageRequestBuilder
@@ -142,6 +143,15 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SettingsRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def exchange(self) -> ExchangeRequestBuilder:
+        """
+        Provides operations to manage the exchange property of the microsoft.graph.userSettings entity.
+        """
+        from .exchange.exchange_request_builder import ExchangeRequestBuilder
+
+        return ExchangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def item_insights(self) -> ItemInsightsRequestBuilder:

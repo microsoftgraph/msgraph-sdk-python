@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .custom_metadata_dictionary import CustomMetadataDictionary
     from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+    from .open_complex_dictionary_type import OpenComplexDictionaryType
     from .result_template_dictionary import ResultTemplateDictionary
 
 @dataclass
@@ -42,6 +43,10 @@ class Dictionary(AdditionalDataHolder, BackedModel, Parsable):
             from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
 
             return FileStorageContainerCustomPropertyDictionary()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.openComplexDictionaryType".casefold():
+            from .open_complex_dictionary_type import OpenComplexDictionaryType
+
+            return OpenComplexDictionaryType()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resultTemplateDictionary".casefold():
             from .result_template_dictionary import ResultTemplateDictionary
 
@@ -55,10 +60,12 @@ class Dictionary(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .custom_metadata_dictionary import CustomMetadataDictionary
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+        from .open_complex_dictionary_type import OpenComplexDictionaryType
         from .result_template_dictionary import ResultTemplateDictionary
 
         from .custom_metadata_dictionary import CustomMetadataDictionary
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
+        from .open_complex_dictionary_type import OpenComplexDictionaryType
         from .result_template_dictionary import ResultTemplateDictionary
 
         fields: dict[str, Callable[[Any], None]] = {

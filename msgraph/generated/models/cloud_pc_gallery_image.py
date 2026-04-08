@@ -23,6 +23,8 @@ class CloudPcGalleryImage(Entity, Parsable):
     odata_type: Optional[str] = None
     # The offer name of this gallery image that is passed to Azure Resource Manager (ARM) to retrieve the image resource. Read-only.
     offer_name: Optional[str] = None
+    # The operating system version of this gallery image. For example, 10.0.22000.296. Read-only.
+    os_version_number: Optional[str] = None
     # The publisher name of this gallery image that is passed to Azure Resource Manager (ARM) to retrieve the image resource. Read-only.
     publisher_name: Optional[str] = None
     # Indicates the size of this image in gigabytes. For example, 64. Read-only.
@@ -61,6 +63,7 @@ class CloudPcGalleryImage(Entity, Parsable):
             "endDate": lambda n : setattr(self, 'end_date', n.get_date_value()),
             "expirationDate": lambda n : setattr(self, 'expiration_date', n.get_date_value()),
             "offerName": lambda n : setattr(self, 'offer_name', n.get_str_value()),
+            "osVersionNumber": lambda n : setattr(self, 'os_version_number', n.get_str_value()),
             "publisherName": lambda n : setattr(self, 'publisher_name', n.get_str_value()),
             "sizeInGB": lambda n : setattr(self, 'size_in_g_b', n.get_int_value()),
             "skuName": lambda n : setattr(self, 'sku_name', n.get_str_value()),
@@ -84,6 +87,7 @@ class CloudPcGalleryImage(Entity, Parsable):
         writer.write_date_value("endDate", self.end_date)
         writer.write_date_value("expirationDate", self.expiration_date)
         writer.write_str_value("offerName", self.offer_name)
+        writer.write_str_value("osVersionNumber", self.os_version_number)
         writer.write_str_value("publisherName", self.publisher_name)
         writer.write_int_value("sizeInGB", self.size_in_g_b)
         writer.write_str_value("skuName", self.sku_name)

@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.directory_object_item_request_builder import DirectoryObjectItemRequestBuilder
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class SponsorsRequestBuilder(BaseRequestBuilder):
     """
@@ -34,7 +35,7 @@ class SponsorsRequestBuilder(BaseRequestBuilder):
     
     def by_directory_object_id(self,directory_object_id: str) -> DirectoryObjectItemRequestBuilder:
         """
-        Provides operations to manage the sponsors property of the microsoft.graph.user entity.
+        Gets an item from the msgraph.generated.users.item.sponsors.item collection
         param directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
@@ -96,6 +97,15 @@ class SponsorsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def ref(self) -> RefRequestBuilder:
+        """
+        Provides operations to manage the collection of user entities.
+        """
+        from .ref.ref_request_builder import RefRequestBuilder
+
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SponsorsRequestBuilderGetQueryParameters():

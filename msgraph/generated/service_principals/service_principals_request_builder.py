@@ -53,7 +53,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ServicePrincipalsRequestBuilderGetQueryParameters]] = None) -> Optional[ServicePrincipalCollectionResponse]:
         """
-        Retrieve a list of servicePrincipal objects.
+        Retrieve a list of servicePrincipal objects. This API also returns agentIdentityBlueprintPrincipal objects, which are identified by the @odata.type property of #microsoft.graph.agentIdentityBlueprintPrincipal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipalCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list?view=graph-rest-1.0
@@ -74,7 +74,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ServicePrincipal, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ServicePrincipal]:
         """
-        Create a new servicePrincipal object.
+        Create a new servicePrincipal object. This API can also create an agentIdentityBlueprintPrincipal object from an agentIdentityBlueprint when the @odata.type property is set to #microsoft.graph.agentIdentityBlueprintPrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipal]
@@ -98,7 +98,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ServicePrincipalsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve a list of servicePrincipal objects.
+        Retrieve a list of servicePrincipal objects. This API also returns agentIdentityBlueprintPrincipal objects, which are identified by the @odata.type property of #microsoft.graph.agentIdentityBlueprintPrincipal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ServicePrincipal, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new servicePrincipal object.
+        Create a new servicePrincipal object. This API can also create an agentIdentityBlueprintPrincipal object from an agentIdentityBlueprint when the @odata.type property is set to #microsoft.graph.agentIdentityBlueprintPrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -180,7 +180,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicePrincipalsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of servicePrincipal objects.
+        Retrieve a list of servicePrincipal objects. This API also returns agentIdentityBlueprintPrincipal objects, which are identified by the @odata.type property of #microsoft.graph.agentIdentityBlueprintPrincipal.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

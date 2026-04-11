@@ -18,6 +18,9 @@ if TYPE_CHECKING:
     from ...models.people_admin_settings import PeopleAdminSettings
     from .item_insights.item_insights_request_builder import ItemInsightsRequestBuilder
     from .profile_card_properties.profile_card_properties_request_builder import ProfileCardPropertiesRequestBuilder
+    from .profile_property_settings.profile_property_settings_request_builder import ProfilePropertySettingsRequestBuilder
+    from .profile_sources.profile_sources_request_builder import ProfileSourcesRequestBuilder
+    from .profile_sources_with_source_id.profile_sources_with_source_id_request_builder import ProfileSourcesWithSourceIdRequestBuilder
     from .pronouns.pronouns_request_builder import PronounsRequestBuilder
 
 class PeopleRequestBuilder(BaseRequestBuilder):
@@ -53,6 +56,18 @@ class PeopleRequestBuilder(BaseRequestBuilder):
         from ...models.people_admin_settings import PeopleAdminSettings
 
         return await self.request_adapter.send_async(request_info, PeopleAdminSettings, error_mapping)
+    
+    def profile_sources_with_source_id(self,source_id: str) -> ProfileSourcesWithSourceIdRequestBuilder:
+        """
+        Provides operations to manage the profileSources property of the microsoft.graph.peopleAdminSettings entity.
+        param source_id: Alternate key of profileSource
+        Returns: ProfileSourcesWithSourceIdRequestBuilder
+        """
+        if source_id is None:
+            raise TypeError("source_id cannot be null.")
+        from .profile_sources_with_source_id.profile_sources_with_source_id_request_builder import ProfileSourcesWithSourceIdRequestBuilder
+
+        return ProfileSourcesWithSourceIdRequestBuilder(self.request_adapter, self.path_parameters, source_id)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PeopleRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
@@ -92,6 +107,24 @@ class PeopleRequestBuilder(BaseRequestBuilder):
         from .profile_card_properties.profile_card_properties_request_builder import ProfileCardPropertiesRequestBuilder
 
         return ProfileCardPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def profile_property_settings(self) -> ProfilePropertySettingsRequestBuilder:
+        """
+        Provides operations to manage the profilePropertySettings property of the microsoft.graph.peopleAdminSettings entity.
+        """
+        from .profile_property_settings.profile_property_settings_request_builder import ProfilePropertySettingsRequestBuilder
+
+        return ProfilePropertySettingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def profile_sources(self) -> ProfileSourcesRequestBuilder:
+        """
+        Provides operations to manage the profileSources property of the microsoft.graph.peopleAdminSettings entity.
+        """
+        from .profile_sources.profile_sources_request_builder import ProfileSourcesRequestBuilder
+
+        return ProfileSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def pronouns(self) -> PronounsRequestBuilder:

@@ -18,6 +18,8 @@ if TYPE_CHECKING:
     from ...models.adhoc_call_collection_response import AdhocCallCollectionResponse
     from ...models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
+    from .get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
     from .item.adhoc_call_item_request_builder import AdhocCallItemRequestBuilder
 
 class AdhocCallsRequestBuilder(BaseRequestBuilder):
@@ -134,6 +136,24 @@ class AdhocCallsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time(self) -> GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+        """
+        Provides operations to call the getAllRecordings method.
+        """
+        from .get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+
+        return GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time(self) -> GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+        """
+        Provides operations to call the getAllTranscripts method.
+        """
+        from .get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+
+        return GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AdhocCallsRequestBuilderGetQueryParameters():

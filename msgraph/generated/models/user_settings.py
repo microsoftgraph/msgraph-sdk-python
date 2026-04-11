@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .exchange_settings import ExchangeSettings
     from .shift_preferences import ShiftPreferences
     from .user_insights_settings import UserInsightsSettings
     from .user_storage import UserStorage
@@ -20,6 +21,8 @@ class UserSettings(Entity, Parsable):
     contribution_to_content_discovery_as_organization_disabled: Optional[bool] = None
     # When set to true, the delegate access to the user's trending API is disabled. When set to true, documents in the user's Office Delve are disabled. When set to true, the relevancy of the content displayed in Microsoft 365, for example in Suggested sites in SharePoint Home and the Discover view in OneDrive for work or school is affected. Users can control this setting in Office Delve.
     contribution_to_content_discovery_disabled: Optional[bool] = None
+    # The exchange property
+    exchange: Optional[ExchangeSettings] = None
     # The user's settings for the visibility of meeting hour insights, and insights derived between a user and other items in Microsoft 365, such as documents or sites. Get userInsightsSettings through this navigation property.
     item_insights: Optional[UserInsightsSettings] = None
     # The OdataType property
@@ -50,6 +53,7 @@ class UserSettings(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .exchange_settings import ExchangeSettings
         from .shift_preferences import ShiftPreferences
         from .user_insights_settings import UserInsightsSettings
         from .user_storage import UserStorage
@@ -57,6 +61,7 @@ class UserSettings(Entity, Parsable):
         from .work_hours_and_locations_setting import WorkHoursAndLocationsSetting
 
         from .entity import Entity
+        from .exchange_settings import ExchangeSettings
         from .shift_preferences import ShiftPreferences
         from .user_insights_settings import UserInsightsSettings
         from .user_storage import UserStorage
@@ -66,6 +71,7 @@ class UserSettings(Entity, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "contributionToContentDiscoveryAsOrganizationDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_as_organization_disabled', n.get_bool_value()),
             "contributionToContentDiscoveryDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_disabled', n.get_bool_value()),
+            "exchange": lambda n : setattr(self, 'exchange', n.get_object_value(ExchangeSettings)),
             "itemInsights": lambda n : setattr(self, 'item_insights', n.get_object_value(UserInsightsSettings)),
             "shiftPreferences": lambda n : setattr(self, 'shift_preferences', n.get_object_value(ShiftPreferences)),
             "storage": lambda n : setattr(self, 'storage', n.get_object_value(UserStorage)),
@@ -87,6 +93,7 @@ class UserSettings(Entity, Parsable):
         super().serialize(writer)
         writer.write_bool_value("contributionToContentDiscoveryAsOrganizationDisabled", self.contribution_to_content_discovery_as_organization_disabled)
         writer.write_bool_value("contributionToContentDiscoveryDisabled", self.contribution_to_content_discovery_disabled)
+        writer.write_object_value("exchange", self.exchange)
         writer.write_object_value("itemInsights", self.item_insights)
         writer.write_object_value("shiftPreferences", self.shift_preferences)
         writer.write_object_value("storage", self.storage)

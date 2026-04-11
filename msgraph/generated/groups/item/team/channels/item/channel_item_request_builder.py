@@ -20,12 +20,14 @@ if TYPE_CHECKING:
     from .archive.archive_request_builder import ArchiveRequestBuilder
     from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
     from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder import DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder
+    from .enabled_apps.enabled_apps_request_builder import EnabledAppsRequestBuilder
     from .files_folder.files_folder_request_builder import FilesFolderRequestBuilder
     from .members.members_request_builder import MembersRequestBuilder
     from .messages.messages_request_builder import MessagesRequestBuilder
     from .provision_email.provision_email_request_builder import ProvisionEmailRequestBuilder
     from .remove_email.remove_email_request_builder import RemoveEmailRequestBuilder
     from .shared_with_teams.shared_with_teams_request_builder import SharedWithTeamsRequestBuilder
+    from .start_migration.start_migration_request_builder import StartMigrationRequestBuilder
     from .tabs.tabs_request_builder import TabsRequestBuilder
     from .unarchive.unarchive_request_builder import UnarchiveRequestBuilder
 
@@ -187,6 +189,15 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
         return DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def enabled_apps(self) -> EnabledAppsRequestBuilder:
+        """
+        Provides operations to manage the enabledApps property of the microsoft.graph.channel entity.
+        """
+        from .enabled_apps.enabled_apps_request_builder import EnabledAppsRequestBuilder
+
+        return EnabledAppsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def files_folder(self) -> FilesFolderRequestBuilder:
         """
         Provides operations to manage the filesFolder property of the microsoft.graph.channel entity.
@@ -239,6 +250,15 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
         from .shared_with_teams.shared_with_teams_request_builder import SharedWithTeamsRequestBuilder
 
         return SharedWithTeamsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def start_migration(self) -> StartMigrationRequestBuilder:
+        """
+        Provides operations to call the startMigration method.
+        """
+        from .start_migration.start_migration_request_builder import StartMigrationRequestBuilder
+
+        return StartMigrationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def tabs(self) -> TabsRequestBuilder:

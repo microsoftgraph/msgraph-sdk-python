@@ -24,9 +24,9 @@ from .entity import Entity
 
 @dataclass
 class AccessPackageAssignmentPolicy(Entity, Parsable):
-    # Access package containing this policy. Read-only.  Supports $expand.
+    # Access package containing this policy. Read-only. Supports $expand.
     access_package: Optional[AccessPackage] = None
-    # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
+    # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, allDirectoryAgentIdentities, unknownFutureValue.
     allowed_target_scope: Optional[AllowedTargetScope] = None
     # This property is only present for an auto assignment policy; if absent, this is a request-based policy.
     automatic_request_settings: Optional[AccessPackageAutomaticRequestSettings] = None

@@ -35,7 +35,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a servicePrincipal object.
+        Delete a servicePrincipal object. This API can also delete an agentIdentityBlueprintPrincipal object by its ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-delete?view=graph-rest-1.0
@@ -54,7 +54,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ServicePrincipalsWithAppIdRequestBuilderGetQueryParameters]] = None) -> Optional[ServicePrincipal]:
         """
-        Retrieve the properties and relationships of a servicePrincipal object.
+        Retrieve the properties and relationships of a servicePrincipal object. This API can be used to get agentIdentityBlueprintPrincipal objects as well by their ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipal]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-get?view=graph-rest-1.0
@@ -75,7 +75,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: ServicePrincipal, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ServicePrincipal]:
         """
-        Create a new servicePrincipal object if it doesn't exist, or update the properties of an existing servicePrincipal object.
+        Create a new servicePrincipal object if it doesn't exist, or update the properties of an existing servicePrincipal object. This API can also create an agentIdentityBlueprintPrincipal object from an agentIdentityBlueprint if it doesn't exist, or update properties of an existing agentIdentityBlueprintPrincipal, when the @odata.type property is set to #microsoft.graph.agentIdentityBlueprintPrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipal]
@@ -99,7 +99,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a servicePrincipal object.
+        Delete a servicePrincipal object. This API can also delete an agentIdentityBlueprintPrincipal object by its ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ServicePrincipalsWithAppIdRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a servicePrincipal object.
+        Retrieve the properties and relationships of a servicePrincipal object. This API can be used to get agentIdentityBlueprintPrincipal objects as well by their ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +121,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: ServicePrincipal, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new servicePrincipal object if it doesn't exist, or update the properties of an existing servicePrincipal object.
+        Create a new servicePrincipal object if it doesn't exist, or update the properties of an existing servicePrincipal object. This API can also create an agentIdentityBlueprintPrincipal object from an agentIdentityBlueprint if it doesn't exist, or update properties of an existing agentIdentityBlueprintPrincipal, when the @odata.type property is set to #microsoft.graph.agentIdentityBlueprintPrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -154,7 +154,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicePrincipalsWithAppIdRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a servicePrincipal object.
+        Retrieve the properties and relationships of a servicePrincipal object. This API can be used to get agentIdentityBlueprintPrincipal objects as well by their ID.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

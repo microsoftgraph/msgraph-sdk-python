@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .identity import Identity
     from .identity_set import IdentitySet
+    from .share_point_group_identity import SharePointGroupIdentity
     from .share_point_identity import SharePointIdentity
 
 from .identity_set import IdentitySet
@@ -17,6 +18,8 @@ class SharePointIdentitySet(IdentitySet, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.sharePointIdentitySet"
     # The group associated with this action. Optional.
     group: Optional[Identity] = None
+    # The sharePointGroup property
+    share_point_group: Optional[SharePointGroupIdentity] = None
     # The SharePoint group associated with this action. Optional.
     site_group: Optional[SharePointIdentity] = None
     # The SharePoint user associated with this action. Optional.
@@ -40,14 +43,17 @@ class SharePointIdentitySet(IdentitySet, Parsable):
         """
         from .identity import Identity
         from .identity_set import IdentitySet
+        from .share_point_group_identity import SharePointGroupIdentity
         from .share_point_identity import SharePointIdentity
 
         from .identity import Identity
         from .identity_set import IdentitySet
+        from .share_point_group_identity import SharePointGroupIdentity
         from .share_point_identity import SharePointIdentity
 
         fields: dict[str, Callable[[Any], None]] = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(Identity)),
+            "sharePointGroup": lambda n : setattr(self, 'share_point_group', n.get_object_value(SharePointGroupIdentity)),
             "siteGroup": lambda n : setattr(self, 'site_group', n.get_object_value(SharePointIdentity)),
             "siteUser": lambda n : setattr(self, 'site_user', n.get_object_value(SharePointIdentity)),
         }
@@ -65,6 +71,7 @@ class SharePointIdentitySet(IdentitySet, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("group", self.group)
+        writer.write_object_value("sharePointGroup", self.share_point_group)
         writer.write_object_value("siteGroup", self.site_group)
         writer.write_object_value("siteUser", self.site_user)
     

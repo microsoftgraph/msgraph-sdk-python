@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ...models.exchange_admin import ExchangeAdmin
     from ...models.o_data_errors.o_data_error import ODataError
+    from .mailboxes.mailboxes_request_builder import MailboxesRequestBuilder
     from .tracing.tracing_request_builder import TracingRequestBuilder
 
 class ExchangeRequestBuilder(BaseRequestBuilder):
@@ -138,6 +139,15 @@ class ExchangeRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return ExchangeRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def mailboxes(self) -> MailboxesRequestBuilder:
+        """
+        Provides operations to manage the mailboxes property of the microsoft.graph.exchangeAdmin entity.
+        """
+        from .mailboxes.mailboxes_request_builder import MailboxesRequestBuilder
+
+        return MailboxesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def tracing(self) -> TracingRequestBuilder:

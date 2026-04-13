@@ -6,14 +6,14 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...models.base_delta_function_response import BaseDeltaFunctionResponse
-    from ...models.user import User
+    from ...models.directory_object import DirectoryObject
 
 from ...models.base_delta_function_response import BaseDeltaFunctionResponse
 
 @dataclass
 class DeltaGetResponse(BaseDeltaFunctionResponse, Parsable):
     # The value property
-    value: Optional[list[User]] = None
+    value: Optional[list[DirectoryObject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> DeltaGetResponse:
@@ -32,13 +32,13 @@ class DeltaGetResponse(BaseDeltaFunctionResponse, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ...models.base_delta_function_response import BaseDeltaFunctionResponse
-        from ...models.user import User
+        from ...models.directory_object import DirectoryObject
 
         from ...models.base_delta_function_response import BaseDeltaFunctionResponse
-        from ...models.user import User
+        from ...models.directory_object import DirectoryObject
 
         fields: dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(User)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(DirectoryObject)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

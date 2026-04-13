@@ -8,6 +8,7 @@ from uuid import UUID
 
 if TYPE_CHECKING:
     from .add_in import AddIn
+    from .agent_identity_blueprint import AgentIdentityBlueprint
     from .api_application import ApiApplication
     from .app_management_policy import AppManagementPolicy
     from .app_role import AppRole
@@ -56,6 +57,8 @@ class Application(DirectoryObject, Parsable):
     authentication_behaviors: Optional[AuthenticationBehaviors] = None
     # Specifies the certification status of the application.
     certification: Optional[Certification] = None
+    # The appId of the application that created this application. Set internally by Microsoft Entra ID. Read-only.
+    created_by_app_id: Optional[str] = None
     # The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderby.
     created_date_time: Optional[datetime.datetime] = None
     # Supports $filter (/$count eq 0, /$count ne 0). Read-only.
@@ -82,6 +85,8 @@ class Application(DirectoryObject, Parsable):
     info: Optional[InformationalUrl] = None
     # Specifies whether this application supports device authentication without a user. The default is false.
     is_device_only_auth_supported: Optional[bool] = None
+    # The isDisabled property
+    is_disabled: Optional[bool] = None
     # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false, which means the fallback application type is confidential client such as a web app. There are certain scenarios where Microsoft Entra ID can't determine the client application type. For example, the ROPC flow where it's configured without specifying a redirect URI. In those cases, Microsoft Entra ID interprets the application type based on the value of this property.
     is_fallback_public_client: Optional[bool] = None
     # The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
@@ -146,6 +151,15 @@ class Application(DirectoryObject, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprint".casefold():
+            from .agent_identity_blueprint import AgentIdentityBlueprint
+
+            return AgentIdentityBlueprint()
         return Application()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -154,6 +168,7 @@ class Application(DirectoryObject, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .add_in import AddIn
+        from .agent_identity_blueprint import AgentIdentityBlueprint
         from .api_application import ApiApplication
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
@@ -181,6 +196,7 @@ class Application(DirectoryObject, Parsable):
         from .web_application import WebApplication
 
         from .add_in import AddIn
+        from .agent_identity_blueprint import AgentIdentityBlueprint
         from .api_application import ApiApplication
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
@@ -216,6 +232,7 @@ class Application(DirectoryObject, Parsable):
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
             "authenticationBehaviors": lambda n : setattr(self, 'authentication_behaviors', n.get_object_value(AuthenticationBehaviors)),
             "certification": lambda n : setattr(self, 'certification', n.get_object_value(Certification)),
+            "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(DirectoryObject)),
             "defaultRedirectUri": lambda n : setattr(self, 'default_redirect_uri', n.get_str_value()),
@@ -229,6 +246,7 @@ class Application(DirectoryObject, Parsable):
             "identifierUris": lambda n : setattr(self, 'identifier_uris', n.get_collection_of_primitive_values(str)),
             "info": lambda n : setattr(self, 'info', n.get_object_value(InformationalUrl)),
             "isDeviceOnlyAuthSupported": lambda n : setattr(self, 'is_device_only_auth_supported', n.get_bool_value()),
+            "isDisabled": lambda n : setattr(self, 'is_disabled', n.get_bool_value()),
             "isFallbackPublicClient": lambda n : setattr(self, 'is_fallback_public_client', n.get_bool_value()),
             "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredential)),
             "logo": lambda n : setattr(self, 'logo', n.get_bytes_value()),
@@ -278,6 +296,7 @@ class Application(DirectoryObject, Parsable):
         writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_object_value("authenticationBehaviors", self.authentication_behaviors)
         writer.write_object_value("certification", self.certification)
+        writer.write_str_value("createdByAppId", self.created_by_app_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("createdOnBehalfOf", self.created_on_behalf_of)
         writer.write_str_value("defaultRedirectUri", self.default_redirect_uri)
@@ -291,6 +310,7 @@ class Application(DirectoryObject, Parsable):
         writer.write_collection_of_primitive_values("identifierUris", self.identifier_uris)
         writer.write_object_value("info", self.info)
         writer.write_bool_value("isDeviceOnlyAuthSupported", self.is_device_only_auth_supported)
+        writer.write_bool_value("isDisabled", self.is_disabled)
         writer.write_bool_value("isFallbackPublicClient", self.is_fallback_public_client)
         writer.write_collection_of_object_values("keyCredentials", self.key_credentials)
         writer.write_bytes_value("logo", self.logo)

@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from .provision_migration_containers.provision_migration_containers_request_builder import ProvisionMigrationContainersRequestBuilder
     from .recycle_bin.recycle_bin_request_builder import RecycleBinRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
+    from .share_point_groups.share_point_groups_request_builder import SharePointGroupsRequestBuilder
     from .unlock.unlock_request_builder import UnlockRequestBuilder
 
 class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
@@ -238,6 +239,15 @@ class FileStorageContainerItemRequestBuilder(BaseRequestBuilder):
         from .restore.restore_request_builder import RestoreRequestBuilder
 
         return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def share_point_groups(self) -> SharePointGroupsRequestBuilder:
+        """
+        Provides operations to manage the sharePointGroups property of the microsoft.graph.fileStorageContainer entity.
+        """
+        from .share_point_groups.share_point_groups_request_builder import SharePointGroupsRequestBuilder
+
+        return SharePointGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def unlock(self) -> UnlockRequestBuilder:

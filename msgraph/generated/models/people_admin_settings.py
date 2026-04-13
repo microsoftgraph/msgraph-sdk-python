@@ -8,6 +8,8 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .insights_settings import InsightsSettings
     from .profile_card_property import ProfileCardProperty
+    from .profile_property_setting import ProfilePropertySetting
+    from .profile_source import ProfileSource
     from .pronouns_settings import PronounsSettings
 
 from .entity import Entity
@@ -20,6 +22,10 @@ class PeopleAdminSettings(Entity, Parsable):
     odata_type: Optional[str] = None
     # Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
     profile_card_properties: Optional[list[ProfileCardProperty]] = None
+    # A collection of profile property configuration settings defined by an administrator for an organization.
+    profile_property_settings: Optional[list[ProfilePropertySetting]] = None
+    # A collection of profile source settings configured by an administrator in an organization.
+    profile_sources: Optional[list[ProfileSource]] = None
     # Represents administrator settings that manage the support of pronouns in an organization.
     pronouns: Optional[PronounsSettings] = None
     
@@ -42,16 +48,22 @@ class PeopleAdminSettings(Entity, Parsable):
         from .entity import Entity
         from .insights_settings import InsightsSettings
         from .profile_card_property import ProfileCardProperty
+        from .profile_property_setting import ProfilePropertySetting
+        from .profile_source import ProfileSource
         from .pronouns_settings import PronounsSettings
 
         from .entity import Entity
         from .insights_settings import InsightsSettings
         from .profile_card_property import ProfileCardProperty
+        from .profile_property_setting import ProfilePropertySetting
+        from .profile_source import ProfileSource
         from .pronouns_settings import PronounsSettings
 
         fields: dict[str, Callable[[Any], None]] = {
             "itemInsights": lambda n : setattr(self, 'item_insights', n.get_object_value(InsightsSettings)),
             "profileCardProperties": lambda n : setattr(self, 'profile_card_properties', n.get_collection_of_object_values(ProfileCardProperty)),
+            "profilePropertySettings": lambda n : setattr(self, 'profile_property_settings', n.get_collection_of_object_values(ProfilePropertySetting)),
+            "profileSources": lambda n : setattr(self, 'profile_sources', n.get_collection_of_object_values(ProfileSource)),
             "pronouns": lambda n : setattr(self, 'pronouns', n.get_object_value(PronounsSettings)),
         }
         super_fields = super().get_field_deserializers()
@@ -69,6 +81,8 @@ class PeopleAdminSettings(Entity, Parsable):
         super().serialize(writer)
         writer.write_object_value("itemInsights", self.item_insights)
         writer.write_collection_of_object_values("profileCardProperties", self.profile_card_properties)
+        writer.write_collection_of_object_values("profilePropertySettings", self.profile_property_settings)
+        writer.write_collection_of_object_values("profileSources", self.profile_sources)
         writer.write_object_value("pronouns", self.pronouns)
     
 

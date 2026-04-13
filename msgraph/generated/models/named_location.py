@@ -7,21 +7,23 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .country_named_location import CountryNamedLocation
-    from .entity import Entity
     from .ip_named_location import IpNamedLocation
+    from .policy_deletable_item import PolicyDeletableItem
 
-from .entity import Entity
+from .policy_deletable_item import PolicyDeletableItem
 
 @dataclass
-class NamedLocation(Entity, Parsable):
+class NamedLocation(PolicyDeletableItem, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.namedLocation"
     # The Timestamp type represents creation date and time of the location using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # Human-readable name of the location.
     display_name: Optional[str] = None
+    # Identifier of a namedLocation object. Read-only.
+    id: Optional[str] = None
     # The Timestamp type represents last modified date and time of the location using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     modified_date_time: Optional[datetime.datetime] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> NamedLocation:
@@ -53,16 +55,17 @@ class NamedLocation(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .country_named_location import CountryNamedLocation
-        from .entity import Entity
         from .ip_named_location import IpNamedLocation
+        from .policy_deletable_item import PolicyDeletableItem
 
         from .country_named_location import CountryNamedLocation
-        from .entity import Entity
         from .ip_named_location import IpNamedLocation
+        from .policy_deletable_item import PolicyDeletableItem
 
         fields: dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -80,6 +83,7 @@ class NamedLocation(Entity, Parsable):
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("id", self.id)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
     
 

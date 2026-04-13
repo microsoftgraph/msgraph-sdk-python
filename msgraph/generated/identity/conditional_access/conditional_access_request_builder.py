@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authentication_context_class_references.authentication_context_class_references_request_builder import AuthenticationContextClassReferencesRequestBuilder
     from .authentication_strength.authentication_strength_request_builder import AuthenticationStrengthRequestBuilder
+    from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
     from .evaluate.evaluate_request_builder import EvaluateRequestBuilder
     from .named_locations.named_locations_request_builder import NamedLocationsRequestBuilder
     from .policies.policies_request_builder import PoliciesRequestBuilder
@@ -43,6 +44,15 @@ class ConditionalAccessRequestBuilder(BaseRequestBuilder):
         from .authentication_strength.authentication_strength_request_builder import AuthenticationStrengthRequestBuilder
 
         return AuthenticationStrengthRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def deleted_items(self) -> DeletedItemsRequestBuilder:
+        """
+        Provides operations to manage the deletedItems property of the microsoft.graph.conditionalAccessRoot entity.
+        """
+        from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
+
+        return DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def evaluate(self) -> EvaluateRequestBuilder:

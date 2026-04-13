@@ -12,7 +12,9 @@ if TYPE_CHECKING:
     from .conversation_member import ConversationMember
     from .drive_item import DriveItem
     from .entity import Entity
+    from .migration_mode import MigrationMode
     from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+    from .teams_app import TeamsApp
     from .teams_tab import TeamsTab
 
 from .entity import Entity
@@ -29,6 +31,8 @@ class Channel(Entity, Parsable):
     display_name: Optional[str] = None
     # The email address for sending messages to the channel. Read-only.
     email: Optional[str] = None
+    # A collection of enabled apps in the channel.
+    enabled_apps: Optional[list[TeamsApp]] = None
     # Metadata for the location where the channel's files are stored.
     files_folder: Optional[DriveItem] = None
     # Indicates whether the channel is archived. Read-only.
@@ -41,8 +45,12 @@ class Channel(Entity, Parsable):
     membership_type: Optional[ChannelMembershipType] = None
     # A collection of all the messages in the channel. A navigation property. Nullable.
     messages: Optional[list[ChatMessage]] = None
+    # The migrationMode property
+    migration_mode: Optional[MigrationMode] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The originalCreatedDateTime property
+    original_created_date_time: Optional[datetime.datetime] = None
     # A collection of teams with which a channel is shared.
     shared_with_teams: Optional[list[SharedWithChannelTeamInfo]] = None
     # Contains summary information about the channel, including number of owners, members, guests, and an indicator for members from other tenants. The summary property will only be returned if it is specified in the $select clause of the Get channel method.
@@ -76,7 +84,9 @@ class Channel(Entity, Parsable):
         from .conversation_member import ConversationMember
         from .drive_item import DriveItem
         from .entity import Entity
+        from .migration_mode import MigrationMode
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .teams_app import TeamsApp
         from .teams_tab import TeamsTab
 
         from .channel_membership_type import ChannelMembershipType
@@ -85,7 +95,9 @@ class Channel(Entity, Parsable):
         from .conversation_member import ConversationMember
         from .drive_item import DriveItem
         from .entity import Entity
+        from .migration_mode import MigrationMode
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .teams_app import TeamsApp
         from .teams_tab import TeamsTab
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -94,12 +106,15 @@ class Channel(Entity, Parsable):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
+            "enabledApps": lambda n : setattr(self, 'enabled_apps', n.get_collection_of_object_values(TeamsApp)),
             "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(DriveItem)),
             "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "isFavoriteByDefault": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
             "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(ChannelMembershipType)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ChatMessage)),
+            "migrationMode": lambda n : setattr(self, 'migration_mode', n.get_enum_value(MigrationMode)),
+            "originalCreatedDateTime": lambda n : setattr(self, 'original_created_date_time', n.get_datetime_value()),
             "sharedWithTeams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(SharedWithChannelTeamInfo)),
             "summary": lambda n : setattr(self, 'summary', n.get_object_value(ChannelSummary)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(TeamsTab)),
@@ -124,12 +139,15 @@ class Channel(Entity, Parsable):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("email", self.email)
+        writer.write_collection_of_object_values("enabledApps", self.enabled_apps)
         writer.write_object_value("filesFolder", self.files_folder)
         writer.write_bool_value("isArchived", self.is_archived)
         writer.write_bool_value("isFavoriteByDefault", self.is_favorite_by_default)
         writer.write_collection_of_object_values("members", self.members)
         writer.write_enum_value("membershipType", self.membership_type)
         writer.write_collection_of_object_values("messages", self.messages)
+        writer.write_enum_value("migrationMode", self.migration_mode)
+        writer.write_datetime_value("originalCreatedDateTime", self.original_created_date_time)
         writer.write_collection_of_object_values("sharedWithTeams", self.shared_with_teams)
         writer.write_object_value("summary", self.summary)
         writer.write_collection_of_object_values("tabs", self.tabs)

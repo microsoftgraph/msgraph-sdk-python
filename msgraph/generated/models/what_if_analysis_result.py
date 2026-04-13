@@ -12,10 +12,10 @@ from .conditional_access_policy import ConditionalAccessPolicy
 
 @dataclass
 class WhatIfAnalysisResult(ConditionalAccessPolicy, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.whatIfAnalysisResult"
     # The analysisReasons property
     analysis_reasons: Optional[WhatIfAnalysisReasons] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # Specifies whether the policy applies to the sign-in properties provided in the request body. If policyApplies is true, the policy applies to the sign-in based on the sign-in properties provided. If policyApplies is false, the policy doesn't apply to the sign-in based on the sign-in properties provided and the analysisReasons property is populated to show the reason for the policy not applying.
     policy_applies: Optional[bool] = None
     

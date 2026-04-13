@@ -24,7 +24,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     access_package: Optional[AccessPackage] = None
     # Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
     answers: Optional[list[AccessPackageAnswer]] = None
-    # For a requestType of userAdd or adminAdd, this is an access package assignment requested to be created. For a requestType of userRemove, adminRemove or systemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
+    # For a requestType of userAdd or adminAdd, this is an access package assignment requested to be created. For a requestType of userRemove, adminRemove, approverRemove, or systemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
     assignment: Optional[AccessPackageAssignment] = None
     # The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     completed_date_time: Optional[datetime.datetime] = None
@@ -36,11 +36,11 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. Requests from the user have a requestType of userAdd, userUpdate, or userRemove. This property can't be changed once set.
+    # The type of the request. The possible values are: notSpecified, userAdd, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. Use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: approverRemove. Requests from the user have a requestType of userAdd, userUpdate, or userRemove. This property can't be changed once set.
     request_type: Optional[AccessPackageRequestType] = None
     # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
     requestor: Optional[AccessPackageSubject] = None
-    # The range of dates that access is to be assigned to the requestor. This property can't be changed once set, but a new schedule for an assignment can be included in another userUpdate or UserExtend or adminUpdate assignment request.
+    # The range of dates that access is to be assigned to the requestor. This property can't be changed once set, but a new schedule for an assignment can be included in another userUpdate or adminUpdate assignment request.
     schedule: Optional[EntitlementManagementSchedule] = None
     # The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only. Supports $filter (eq).
     state: Optional[AccessPackageRequestState] = None

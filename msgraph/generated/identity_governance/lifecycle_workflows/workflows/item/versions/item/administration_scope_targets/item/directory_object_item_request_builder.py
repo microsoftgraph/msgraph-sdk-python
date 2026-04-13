@@ -32,7 +32,7 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DirectoryObjectItemRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObject]:
         """
-        Get administrationScopeTargets from identityGovernance
+        The administrative units in the scope of the workflow. Optional. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
         """
@@ -52,7 +52,7 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DirectoryObjectItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get administrationScopeTargets from identityGovernance
+        The administrative units in the scope of the workflow. Optional. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DirectoryObjectItemRequestBuilderGetQueryParameters():
         """
-        Get administrationScopeTargets from identityGovernance
+        The administrative units in the scope of the workflow. Optional. Supports $expand.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

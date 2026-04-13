@@ -7,6 +7,8 @@ from uuid import UUID
 
 if TYPE_CHECKING:
     from .add_in import AddIn
+    from .agent_identity import AgentIdentity
+    from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
     from .app_management_policy import AppManagementPolicy
     from .app_role import AppRole
     from .app_role_assignment import AppRoleAssignment
@@ -64,6 +66,8 @@ class ServicePrincipal(DirectoryObject, Parsable):
     application_template_id: Optional[str] = None
     # The claimsMappingPolicies assigned to this service principal. Supports $expand.
     claims_mapping_policies: Optional[list[ClaimsMappingPolicy]] = None
+    # The appId of the application that created this service principal. Set internally by Microsoft Entra ID. Read-only.
+    created_by_app_id: Optional[str] = None
     # Directory objects created by this service principal. Read-only. Nullable.
     created_objects: Optional[list[DirectoryObject]] = None
     # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive. To read this property, the calling app must be assigned the CustomSecAttributeAssignment.Read.All permission. To write this property, the calling app must be assigned the CustomSecAttributeAssignment.ReadWrite.All permissions. To read or write this property in delegated scenarios, the admin must be assigned the Attribute Assignment Administrator role.
@@ -86,6 +90,8 @@ class ServicePrincipal(DirectoryObject, Parsable):
     homepage: Optional[str] = None
     # Basic profile information of the acquired application such as app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Microsoft Entra apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
     info: Optional[InformationalUrl] = None
+    # The isDisabled property
+    is_disabled: Optional[bool] = None
     # The collection of key credentials associated with the service principal. Not nullable. Supports $filter (eq, not, ge, le).
     key_credentials: Optional[list[KeyCredential]] = None
     # Specifies the URL where the service provider redirects the user to Microsoft Entra ID to authenticate. Microsoft Entra ID uses the URL to launch the application from Microsoft 365 or the Microsoft Entra My Apps. When blank, Microsoft Entra ID performs IdP-initiated sign-on for applications configured with SAML-based single sign-on. The user launches the application from Microsoft 365, the Microsoft Entra My Apps, or the Microsoft Entra SSO URL.
@@ -150,6 +156,19 @@ class ServicePrincipal(DirectoryObject, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentity".casefold():
+            from .agent_identity import AgentIdentity
+
+            return AgentIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprintPrincipal".casefold():
+            from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+
+            return AgentIdentityBlueprintPrincipal()
         return ServicePrincipal()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -158,6 +177,8 @@ class ServicePrincipal(DirectoryObject, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .add_in import AddIn
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
         from .app_role_assignment import AppRoleAssignment
@@ -182,6 +203,8 @@ class ServicePrincipal(DirectoryObject, Parsable):
         from .verified_publisher import VerifiedPublisher
 
         from .add_in import AddIn
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
         from .app_management_policy import AppManagementPolicy
         from .app_role import AppRole
         from .app_role_assignment import AppRoleAssignment
@@ -220,6 +243,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
             "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(AppRole)),
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
             "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(ClaimsMappingPolicy)),
+            "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
             "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
             "customSecurityAttributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
             "delegatedPermissionClassifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(DelegatedPermissionClassification)),
@@ -231,6 +255,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
             "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
             "homepage": lambda n : setattr(self, 'homepage', n.get_str_value()),
             "info": lambda n : setattr(self, 'info', n.get_object_value(InformationalUrl)),
+            "isDisabled": lambda n : setattr(self, 'is_disabled', n.get_bool_value()),
             "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredential)),
             "loginUrl": lambda n : setattr(self, 'login_url', n.get_str_value()),
             "logoutUrl": lambda n : setattr(self, 'logout_url', n.get_str_value()),
@@ -286,6 +311,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("appRoles", self.app_roles)
         writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_collection_of_object_values("claimsMappingPolicies", self.claims_mapping_policies)
+        writer.write_str_value("createdByAppId", self.created_by_app_id)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
         writer.write_object_value("customSecurityAttributes", self.custom_security_attributes)
         writer.write_collection_of_object_values("delegatedPermissionClassifications", self.delegated_permission_classifications)
@@ -297,6 +323,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("homeRealmDiscoveryPolicies", self.home_realm_discovery_policies)
         writer.write_str_value("homepage", self.homepage)
         writer.write_object_value("info", self.info)
+        writer.write_bool_value("isDisabled", self.is_disabled)
         writer.write_collection_of_object_values("keyCredentials", self.key_credentials)
         writer.write_str_value("loginUrl", self.login_url)
         writer.write_str_value("logoutUrl", self.logout_url)

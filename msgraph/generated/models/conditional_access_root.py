@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authentication_context_class_reference import AuthenticationContextClassReference
     from .authentication_strength_root import AuthenticationStrengthRoot
+    from .ca_policies_deletable_root import CaPoliciesDeletableRoot
     from .conditional_access_policy import ConditionalAccessPolicy
     from .conditional_access_template import ConditionalAccessTemplate
     from .entity import Entity
@@ -20,6 +21,8 @@ class ConditionalAccessRoot(Entity, Parsable):
     authentication_context_class_references: Optional[list[AuthenticationContextClassReference]] = None
     # The authenticationStrength property
     authentication_strength: Optional[AuthenticationStrengthRoot] = None
+    # The deletedItems property
+    deleted_items: Optional[CaPoliciesDeletableRoot] = None
     # Read-only. Nullable. Returns a collection of the specified named locations.
     named_locations: Optional[list[NamedLocation]] = None
     # The OdataType property
@@ -47,6 +50,7 @@ class ConditionalAccessRoot(Entity, Parsable):
         """
         from .authentication_context_class_reference import AuthenticationContextClassReference
         from .authentication_strength_root import AuthenticationStrengthRoot
+        from .ca_policies_deletable_root import CaPoliciesDeletableRoot
         from .conditional_access_policy import ConditionalAccessPolicy
         from .conditional_access_template import ConditionalAccessTemplate
         from .entity import Entity
@@ -54,6 +58,7 @@ class ConditionalAccessRoot(Entity, Parsable):
 
         from .authentication_context_class_reference import AuthenticationContextClassReference
         from .authentication_strength_root import AuthenticationStrengthRoot
+        from .ca_policies_deletable_root import CaPoliciesDeletableRoot
         from .conditional_access_policy import ConditionalAccessPolicy
         from .conditional_access_template import ConditionalAccessTemplate
         from .entity import Entity
@@ -62,6 +67,7 @@ class ConditionalAccessRoot(Entity, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(AuthenticationContextClassReference)),
             "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthRoot)),
+            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_object_value(CaPoliciesDeletableRoot)),
             "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(NamedLocation)),
             "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(ConditionalAccessPolicy)),
             "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(ConditionalAccessTemplate)),
@@ -81,6 +87,7 @@ class ConditionalAccessRoot(Entity, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("authenticationContextClassReferences", self.authentication_context_class_references)
         writer.write_object_value("authenticationStrength", self.authentication_strength)
+        writer.write_object_value("deletedItems", self.deleted_items)
         writer.write_collection_of_object_values("namedLocations", self.named_locations)
         writer.write_collection_of_object_values("policies", self.policies)
         writer.write_collection_of_object_values("templates", self.templates)

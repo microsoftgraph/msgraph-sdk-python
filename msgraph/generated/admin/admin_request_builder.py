@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ..models.admin import Admin
     from ..models.o_data_errors.o_data_error import ODataError
+    from .configuration_management.configuration_management_request_builder import ConfigurationManagementRequestBuilder
     from .edge.edge_request_builder import EdgeRequestBuilder
     from .exchange.exchange_request_builder import ExchangeRequestBuilder
     from .microsoft365_apps.microsoft365_apps_request_builder import Microsoft365AppsRequestBuilder
@@ -116,6 +117,15 @@ class AdminRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AdminRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def configuration_management(self) -> ConfigurationManagementRequestBuilder:
+        """
+        Provides operations to manage the configurationManagement property of the microsoft.graph.admin entity.
+        """
+        from .configuration_management.configuration_management_request_builder import ConfigurationManagementRequestBuilder
+
+        return ConfigurationManagementRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def edge(self) -> EdgeRequestBuilder:

@@ -38,6 +38,7 @@ class GetDetailsByRecipientWithRecipientAddressRequestBuilder(BaseRequestBuilder
         Get a list of exchangeMessageTraceDetail objects filtered on the recipient.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetDetailsByRecipientWithRecipientAddressGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/exchangemessagetrace-getdetailsbyrecipient?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

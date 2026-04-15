@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from .sensors.sensors_request_builder import SensorsRequestBuilder
     from .sensor_candidates.sensor_candidates_request_builder import SensorCandidatesRequestBuilder
     from .sensor_candidate_activation_configuration.sensor_candidate_activation_configuration_request_builder import SensorCandidateActivationConfigurationRequestBuilder
+    from .settings.settings_request_builder import SettingsRequestBuilder
 
 class IdentitiesRequestBuilder(BaseRequestBuilder):
     """
@@ -187,6 +188,15 @@ class IdentitiesRequestBuilder(BaseRequestBuilder):
         from .sensors.sensors_request_builder import SensorsRequestBuilder
 
         return SensorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def settings(self) -> SettingsRequestBuilder:
+        """
+        Provides operations to manage the settings property of the microsoft.graph.security.identityContainer entity.
+        """
+        from .settings.settings_request_builder import SettingsRequestBuilder
+
+        return SettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IdentitiesRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

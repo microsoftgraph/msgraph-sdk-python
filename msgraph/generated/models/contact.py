@@ -78,14 +78,20 @@ class Contact(OutlookItem, Parsable):
     personal_notes: Optional[str] = None
     # Optional contact picture. You can get or set a photo for a contact.
     photo: Optional[ProfilePhoto] = None
+    # The contact's primary email address.
+    primary_email_address: Optional[EmailAddress] = None
     # The contact's profession.
     profession: Optional[str] = None
+    # The contact's secondary email address.
+    secondary_email_address: Optional[EmailAddress] = None
     # The collection of single-value extended properties defined for the contact. Read-only. Nullable.
     single_value_extended_properties: Optional[list[SingleValueLegacyExtendedProperty]] = None
     # The name of the contact's spouse/partner.
     spouse_name: Optional[str] = None
     # The contact's surname.
     surname: Optional[str] = None
+    # The contact's tertiary email address.
+    tertiary_email_address: Optional[EmailAddress] = None
     # The contact's title.
     title: Optional[str] = None
     # The phonetic Japanese company name of the contact.
@@ -157,10 +163,13 @@ class Contact(OutlookItem, Parsable):
             "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
             "personalNotes": lambda n : setattr(self, 'personal_notes', n.get_str_value()),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
+            "primaryEmailAddress": lambda n : setattr(self, 'primary_email_address', n.get_object_value(EmailAddress)),
             "profession": lambda n : setattr(self, 'profession', n.get_str_value()),
+            "secondaryEmailAddress": lambda n : setattr(self, 'secondary_email_address', n.get_object_value(EmailAddress)),
             "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
             "spouseName": lambda n : setattr(self, 'spouse_name', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
+            "tertiaryEmailAddress": lambda n : setattr(self, 'tertiary_email_address', n.get_object_value(EmailAddress)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "yomiCompanyName": lambda n : setattr(self, 'yomi_company_name', n.get_str_value()),
             "yomiGivenName": lambda n : setattr(self, 'yomi_given_name', n.get_str_value()),
@@ -208,10 +217,13 @@ class Contact(OutlookItem, Parsable):
         writer.write_str_value("parentFolderId", self.parent_folder_id)
         writer.write_str_value("personalNotes", self.personal_notes)
         writer.write_object_value("photo", self.photo)
+        writer.write_object_value("primaryEmailAddress", self.primary_email_address)
         writer.write_str_value("profession", self.profession)
+        writer.write_object_value("secondaryEmailAddress", self.secondary_email_address)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
         writer.write_str_value("spouseName", self.spouse_name)
         writer.write_str_value("surname", self.surname)
+        writer.write_object_value("tertiaryEmailAddress", self.tertiary_email_address)
         writer.write_str_value("title", self.title)
         writer.write_str_value("yomiCompanyName", self.yomi_company_name)
         writer.write_str_value("yomiGivenName", self.yomi_given_name)

@@ -180,6 +180,8 @@ class Group(DirectoryObject, Parsable):
     unseen_count: Optional[int] = None
     # Specifies the group join policy and group content visibility for groups. The possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value isn't specified during group creation on Microsoft Graph, a security group is created as Private by default, and the Microsoft 365 group is Public. Groups assignable to roles are always Private. To learn more, see group visibility options. Returned by default. Nullable.
     visibility: Optional[str] = None
+    # The welcomeMessageEnabled property
+    welcome_message_enabled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Group:
@@ -315,6 +317,7 @@ class Group(DirectoryObject, Parsable):
             "uniqueName": lambda n : setattr(self, 'unique_name', n.get_str_value()),
             "unseenCount": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
+            "welcomeMessageEnabled": lambda n : setattr(self, 'welcome_message_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -400,5 +403,6 @@ class Group(DirectoryObject, Parsable):
         writer.write_str_value("uniqueName", self.unique_name)
         writer.write_int_value("unseenCount", self.unseen_count)
         writer.write_str_value("visibility", self.visibility)
+        writer.write_bool_value("welcomeMessageEnabled", self.welcome_message_enabled)
     
 

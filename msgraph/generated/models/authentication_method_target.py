@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from .authentication_method_target_type import AuthenticationMethodTargetType
     from .entity import Entity
     from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+    from .passkey_authentication_method_target import PasskeyAuthenticationMethodTarget
     from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
 from .entity import Entity
@@ -39,6 +40,10 @@ class AuthenticationMethodTarget(Entity, Parsable):
             from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
 
             return MicrosoftAuthenticatorAuthenticationMethodTarget()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.passkeyAuthenticationMethodTarget".casefold():
+            from .passkey_authentication_method_target import PasskeyAuthenticationMethodTarget
+
+            return PasskeyAuthenticationMethodTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodTarget".casefold():
             from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
@@ -53,11 +58,13 @@ class AuthenticationMethodTarget(Entity, Parsable):
         from .authentication_method_target_type import AuthenticationMethodTargetType
         from .entity import Entity
         from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .passkey_authentication_method_target import PasskeyAuthenticationMethodTarget
         from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
         from .authentication_method_target_type import AuthenticationMethodTargetType
         from .entity import Entity
         from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .passkey_authentication_method_target import PasskeyAuthenticationMethodTarget
         from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
         fields: dict[str, Callable[[Any], None]] = {

@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .sensor import Sensor
     from .sensor_candidate import SensorCandidate
     from .sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
+    from .settings_container import SettingsContainer
 
 from ..entity import Entity
 
@@ -28,6 +29,8 @@ class IdentityContainer(Entity, Parsable):
     sensor_candidates: Optional[list[SensorCandidate]] = None
     # Represents a customer's Microsoft Defender for Identity sensors.
     sensors: Optional[list[Sensor]] = None
+    # Represents a container for security identities settings APIs.
+    settings: Optional[SettingsContainer] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> IdentityContainer:
@@ -51,6 +54,7 @@ class IdentityContainer(Entity, Parsable):
         from .sensor import Sensor
         from .sensor_candidate import SensorCandidate
         from .sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
+        from .settings_container import SettingsContainer
 
         from ..entity import Entity
         from .health_issue import HealthIssue
@@ -58,6 +62,7 @@ class IdentityContainer(Entity, Parsable):
         from .sensor import Sensor
         from .sensor_candidate import SensorCandidate
         from .sensor_candidate_activation_configuration import SensorCandidateActivationConfiguration
+        from .settings_container import SettingsContainer
 
         fields: dict[str, Callable[[Any], None]] = {
             "healthIssues": lambda n : setattr(self, 'health_issues', n.get_collection_of_object_values(HealthIssue)),
@@ -65,6 +70,7 @@ class IdentityContainer(Entity, Parsable):
             "sensorCandidateActivationConfiguration": lambda n : setattr(self, 'sensor_candidate_activation_configuration', n.get_object_value(SensorCandidateActivationConfiguration)),
             "sensorCandidates": lambda n : setattr(self, 'sensor_candidates', n.get_collection_of_object_values(SensorCandidate)),
             "sensors": lambda n : setattr(self, 'sensors', n.get_collection_of_object_values(Sensor)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(SettingsContainer)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,5 +90,6 @@ class IdentityContainer(Entity, Parsable):
         writer.write_object_value("sensorCandidateActivationConfiguration", self.sensor_candidate_activation_configuration)
         writer.write_collection_of_object_values("sensorCandidates", self.sensor_candidates)
         writer.write_collection_of_object_values("sensors", self.sensors)
+        writer.write_object_value("settings", self.settings)
     
 

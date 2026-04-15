@@ -22,7 +22,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The administrationScopeTargets property
+    # The administrative units in the scope of the workflow. Optional. Supports $expand.
     administration_scope_targets: Optional[list[DirectoryObject]] = None
     # The category property
     category: Optional[LifecycleWorkflowCategory] = None

@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
     from .....models.o_data_errors.o_data_error import ODataError
     from .run_health_checks.run_health_checks_request_builder import RunHealthChecksRequestBuilder
+    from .update_ad_domain_password.update_ad_domain_password_request_builder import UpdateAdDomainPasswordRequestBuilder
 
 class CloudPcOnPremisesConnectionItemRequestBuilder(BaseRequestBuilder):
     """
@@ -150,6 +151,15 @@ class CloudPcOnPremisesConnectionItemRequestBuilder(BaseRequestBuilder):
         from .run_health_checks.run_health_checks_request_builder import RunHealthChecksRequestBuilder
 
         return RunHealthChecksRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def update_ad_domain_password(self) -> UpdateAdDomainPasswordRequestBuilder:
+        """
+        Provides operations to call the updateAdDomainPassword method.
+        """
+        from .update_ad_domain_password.update_ad_domain_password_request_builder import UpdateAdDomainPasswordRequestBuilder
+
+        return UpdateAdDomainPasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CloudPcOnPremisesConnectionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

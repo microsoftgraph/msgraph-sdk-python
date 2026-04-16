@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ...models.chat import Chat
     from ...models.o_data_errors.o_data_error import ODataError
+    from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
     from .hide_for_user.hide_for_user_request_builder import HideForUserRequestBuilder
     from .installed_apps.installed_apps_request_builder import InstalledAppsRequestBuilder
     from .last_message_preview.last_message_preview_request_builder import LastMessagePreviewRequestBuilder
@@ -27,6 +28,7 @@ if TYPE_CHECKING:
     from .pinned_messages.pinned_messages_request_builder import PinnedMessagesRequestBuilder
     from .remove_all_access_for_user.remove_all_access_for_user_request_builder import RemoveAllAccessForUserRequestBuilder
     from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
+    from .start_migration.start_migration_request_builder import StartMigrationRequestBuilder
     from .tabs.tabs_request_builder import TabsRequestBuilder
     from .unhide_for_user.unhide_for_user_request_builder import UnhideForUserRequestBuilder
 
@@ -155,6 +157,15 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
         return ChatItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def complete_migration(self) -> CompleteMigrationRequestBuilder:
+        """
+        Provides operations to call the completeMigration method.
+        """
+        from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
+
+        return CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def hide_for_user(self) -> HideForUserRequestBuilder:
         """
         Provides operations to call the hideForUser method.
@@ -252,6 +263,15 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
         from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
 
         return SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def start_migration(self) -> StartMigrationRequestBuilder:
+        """
+        Provides operations to call the startMigration method.
+        """
+        from .start_migration.start_migration_request_builder import StartMigrationRequestBuilder
+
+        return StartMigrationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def tabs(self) -> TabsRequestBuilder:

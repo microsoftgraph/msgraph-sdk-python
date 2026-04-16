@@ -20,6 +20,8 @@ class WindowsProtectionState(Entity, Parsable):
     """
     # Current anti malware version
     anti_malware_version: Optional[str] = None
+    # When TRUE indicates the Windows Defender controlled configuration feature is enabled, when FALSE indicates the Windows Defender controlled configuration feature is not enabled. Defaults to setting on client device.
+    controlled_configuration_enabled: Optional[bool] = None
     # Device malware list
     detected_malware_state: Optional[list[WindowsDeviceMalwareState]] = None
     # Indicates device's health state. The possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical. The possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical.
@@ -91,6 +93,7 @@ class WindowsProtectionState(Entity, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "antiMalwareVersion": lambda n : setattr(self, 'anti_malware_version', n.get_str_value()),
+            "controlledConfigurationEnabled": lambda n : setattr(self, 'controlled_configuration_enabled', n.get_bool_value()),
             "detectedMalwareState": lambda n : setattr(self, 'detected_malware_state', n.get_collection_of_object_values(WindowsDeviceMalwareState)),
             "deviceState": lambda n : setattr(self, 'device_state', n.get_collection_of_enum_values(WindowsDeviceHealthState)),
             "engineVersion": lambda n : setattr(self, 'engine_version', n.get_str_value()),
@@ -126,6 +129,7 @@ class WindowsProtectionState(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("antiMalwareVersion", self.anti_malware_version)
+        writer.write_bool_value("controlledConfigurationEnabled", self.controlled_configuration_enabled)
         writer.write_collection_of_object_values("detectedMalwareState", self.detected_malware_state)
         writer.write_enum_value("deviceState", self.device_state)
         writer.write_str_value("engineVersion", self.engine_version)

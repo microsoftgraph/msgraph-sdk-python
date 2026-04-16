@@ -12,14 +12,14 @@ from .named_location import NamedLocation
 
 @dataclass
 class CountryNamedLocation(NamedLocation, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.countryNamedLocation"
     # List of countries and/or regions in two-letter format specified by ISO 3166-2. Required.
     countries_and_regions: Optional[list[str]] = None
     # Determines what method is used to decide which country the user is located in. Possible values are clientIpAddress(default) and authenticatorAppGps. Note: authenticatorAppGps is not yet supported in the Microsoft Cloud for US Government.
     country_lookup_method: Optional[CountryLookupMethodType] = None
     # true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
     include_unknown_countries_and_regions: Optional[bool] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CountryNamedLocation:

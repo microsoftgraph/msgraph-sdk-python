@@ -18,4 +18,5 @@ class AuthenticationMethodModes(str, Enum):
     FederatedSingleFactor = "federatedSingleFactor",
     FederatedMultiFactor = "federatedMultiFactor",
     UnknownFutureValue = "unknownFutureValue",
+    QrCodePin = "qrCodePin",
 

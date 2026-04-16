@@ -12,12 +12,12 @@ from .named_location import NamedLocation
 
 @dataclass
 class IpNamedLocation(NamedLocation, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.ipNamedLocation"
     # List of IP address ranges in IPv4 CIDR format (for example, 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
     ip_ranges: Optional[list[IpRange]] = None
     # true if this location is explicitly trusted. Optional. Default value is false.
     is_trusted: Optional[bool] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> IpNamedLocation:

@@ -8,6 +8,10 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
     from .administrative_unit import AdministrativeUnit
+    from .agent_identity import AgentIdentity
+    from .agent_identity_blueprint import AgentIdentityBlueprint
+    from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+    from .agent_user import AgentUser
     from .application import Application
     from .app_management_policy import AppManagementPolicy
     from .app_role_assignment import AppRoleAssignment
@@ -28,6 +32,7 @@ if TYPE_CHECKING:
     from .group_setting_template import GroupSettingTemplate
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
     from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+    from .mailbox import Mailbox
     from .multi_tenant_organization_member import MultiTenantOrganizationMember
     from .organization import Organization
     from .org_contact import OrgContact
@@ -72,6 +77,22 @@ class DirectoryObject(Entity, Parsable):
             from .administrative_unit import AdministrativeUnit
 
             return AdministrativeUnit()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentity".casefold():
+            from .agent_identity import AgentIdentity
+
+            return AgentIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprint".casefold():
+            from .agent_identity_blueprint import AgentIdentityBlueprint
+
+            return AgentIdentityBlueprint()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentIdentityBlueprintPrincipal".casefold():
+            from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+
+            return AgentIdentityBlueprintPrincipal()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agentUser".casefold():
+            from .agent_user import AgentUser
+
+            return AgentUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.application".casefold():
             from .application import Application
 
@@ -148,6 +169,10 @@ class DirectoryObject(Entity, Parsable):
             from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
 
             return IdentitySecurityDefaultsEnforcementPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailbox".casefold():
+            from .mailbox import Mailbox
+
+            return Mailbox()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganizationMember".casefold():
             from .multi_tenant_organization_member import MultiTenantOrganizationMember
 
@@ -205,6 +230,10 @@ class DirectoryObject(Entity, Parsable):
         """
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .administrative_unit import AdministrativeUnit
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint import AgentIdentityBlueprint
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+        from .agent_user import AgentUser
         from .application import Application
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
@@ -225,6 +254,7 @@ class DirectoryObject(Entity, Parsable):
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .mailbox import Mailbox
         from .multi_tenant_organization_member import MultiTenantOrganizationMember
         from .organization import Organization
         from .org_contact import OrgContact
@@ -240,6 +270,10 @@ class DirectoryObject(Entity, Parsable):
 
         from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
         from .administrative_unit import AdministrativeUnit
+        from .agent_identity import AgentIdentity
+        from .agent_identity_blueprint import AgentIdentityBlueprint
+        from .agent_identity_blueprint_principal import AgentIdentityBlueprintPrincipal
+        from .agent_user import AgentUser
         from .application import Application
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
@@ -260,6 +294,7 @@ class DirectoryObject(Entity, Parsable):
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .mailbox import Mailbox
         from .multi_tenant_organization_member import MultiTenantOrganizationMember
         from .organization import Organization
         from .org_contact import OrgContact

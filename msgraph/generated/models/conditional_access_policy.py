@@ -10,13 +10,15 @@ if TYPE_CHECKING:
     from .conditional_access_grant_controls import ConditionalAccessGrantControls
     from .conditional_access_policy_state import ConditionalAccessPolicyState
     from .conditional_access_session_controls import ConditionalAccessSessionControls
-    from .entity import Entity
+    from .policy_deletable_item import PolicyDeletableItem
     from .what_if_analysis_result import WhatIfAnalysisResult
 
-from .entity import Entity
+from .policy_deletable_item import PolicyDeletableItem
 
 @dataclass
-class ConditionalAccessPolicy(Entity, Parsable):
+class ConditionalAccessPolicy(PolicyDeletableItem, Parsable):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.conditionalAccessPolicy"
     # The conditions property
     conditions: Optional[ConditionalAccessConditionSet] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
@@ -27,10 +29,10 @@ class ConditionalAccessPolicy(Entity, Parsable):
     display_name: Optional[str] = None
     # Specifies the grant controls that must be fulfilled to pass the policy.
     grant_controls: Optional[ConditionalAccessGrantControls] = None
+    # Specifies the identifier of a conditionalAccessPolicy object. Read-only.
+    id: Optional[str] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
     modified_date_time: Optional[datetime.datetime] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # Specifies the session controls that are enforced after sign-in.
     session_controls: Optional[ConditionalAccessSessionControls] = None
     # The state property
@@ -67,14 +69,14 @@ class ConditionalAccessPolicy(Entity, Parsable):
         from .conditional_access_grant_controls import ConditionalAccessGrantControls
         from .conditional_access_policy_state import ConditionalAccessPolicyState
         from .conditional_access_session_controls import ConditionalAccessSessionControls
-        from .entity import Entity
+        from .policy_deletable_item import PolicyDeletableItem
         from .what_if_analysis_result import WhatIfAnalysisResult
 
         from .conditional_access_condition_set import ConditionalAccessConditionSet
         from .conditional_access_grant_controls import ConditionalAccessGrantControls
         from .conditional_access_policy_state import ConditionalAccessPolicyState
         from .conditional_access_session_controls import ConditionalAccessSessionControls
-        from .entity import Entity
+        from .policy_deletable_item import PolicyDeletableItem
         from .what_if_analysis_result import WhatIfAnalysisResult
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -83,6 +85,7 @@ class ConditionalAccessPolicy(Entity, Parsable):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(ConditionalAccessGrantControls)),
+            "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(ConditionalAccessSessionControls)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ConditionalAccessPolicyState)),
@@ -106,6 +109,7 @@ class ConditionalAccessPolicy(Entity, Parsable):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("grantControls", self.grant_controls)
+        writer.write_str_value("id", self.id)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_object_value("sessionControls", self.session_controls)
         writer.write_enum_value("state", self.state)

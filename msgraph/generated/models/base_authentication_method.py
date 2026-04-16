@@ -14,4 +14,5 @@ class BaseAuthenticationMethod(str, Enum):
     X509Certificate = "x509Certificate",
     Federation = "federation",
     UnknownFutureValue = "unknownFutureValue",
+    QrCodePin = "qrCodePin",
 

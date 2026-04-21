@@ -54,7 +54,7 @@ class Message(OutlookItem, Parsable):
     importance: Optional[Importance] = None
     # The classification of the message for the user, based on inferred relevance or importance, or on an explicit override. The possible values are: focused or other.
     inference_classification: Optional[InferenceClassificationType] = None
-    # A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+    # A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Requires $select to retrieve. Read-only.
     internet_message_headers: Optional[list[InternetMessageHeader]] = None
     # The message ID in the format specified by RFC2822.
     internet_message_id: Optional[str] = None

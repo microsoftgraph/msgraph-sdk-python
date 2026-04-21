@@ -27,7 +27,7 @@ class ConfigurationMonitor(Entity, Parsable):
     description: Optional[str] = None
     # User-friendly name given by the user to the monitor. Supports $filter (eq, ne, startsWith) and $orderby.
     display_name: Optional[str] = None
-    # The reason for the monitor's inactivation. Returned only on $select.
+    # The reason for the monitor's inactivation. Requires $select to retrieve.
     inactivation_reason: Optional[str] = None
     # The lastModifiedBy property
     last_modified_by: Optional[IdentitySet] = None
@@ -39,7 +39,7 @@ class ConfigurationMonitor(Entity, Parsable):
     monitor_run_frequency_in_hours: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Key-value pairs that contain parameter values which might be used in the baseline. Returned only on $select.
+    # Key-value pairs that contain parameter values which might be used in the baseline. Requires $select to retrieve.
     parameters: Optional[OpenComplexDictionaryType] = None
     # The status property
     status: Optional[MonitorStatus] = None

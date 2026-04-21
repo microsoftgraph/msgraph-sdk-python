@@ -40,15 +40,15 @@ class Group(DirectoryObject, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.group"
     # The list of users or groups allowed to create posts or calendar events in this group. If this list is nonempty, then only users or groups listed here are allowed to post.
     accepted_senders: Optional[list[DirectoryObject]] = None
-    # Indicates if people external to the organization can send messages to the group. The default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+    # Indicates if people external to the organization can send messages to the group. The default value is false. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     allow_external_senders: Optional[bool] = None
     # Represents the app roles granted to a group for an application. Supports $expand.
     app_role_assignments: Optional[list[AppRoleAssignment]] = None
-    # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role.
+    # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Requires $select to retrieve. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role.
     assigned_labels: Optional[list[AssignedLabel]] = None
-    # The licenses that are assigned to the group. Returned only on $select. Supports $filter (eq). Read-only.
+    # The licenses that are assigned to the group. Requires $select to retrieve. Supports $filter (eq). Read-only.
     assigned_licenses: Optional[list[AssignedLicense]] = None
-    # Indicates if new members added to the group are autosubscribed to receive email notifications. You can set this property in a PATCH request for the group; don't set it in the initial POST request that creates the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+    # Indicates if new members added to the group are autosubscribed to receive email notifications. You can set this property in a PATCH request for the group; don't set it in the initial POST request that creates the group. Default value is false. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     auto_subscribe_new_members: Optional[bool] = None
     # The group's calendar. Read-only.
     calendar: Optional[Calendar] = None
@@ -82,19 +82,19 @@ class Group(DirectoryObject, Parsable):
     group_types: Optional[list[str]] = None
     # Indicates whether there are members in this group that have license errors from its group-based license assignment. This property is never returned on a GET operation. You can use it as a $filter argument to get groups that have members with license errors (that is, filter for this property being true). See an example. Supports $filter (eq).
     has_members_with_license_errors: Optional[bool] = None
-    # True if the group isn't displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. The default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+    # True if the group isn't displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. The default value is false. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     hide_from_address_lists: Optional[bool] = None
-    # True if the group isn't displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. The default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+    # True if the group isn't displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. The default value is false. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     hide_from_outlook_clients: Optional[bool] = None
     # When a group is associated with a team, this property determines whether the team is in read-only mode.To read this property, use the /group/{groupId}/team endpoint or the Get team API. To update this property, use the archiveTeam and unarchiveTeam APIs.
     is_archived: Optional[bool] = None
     # Indicates whether this group can be assigned to a Microsoft Entra role. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group can't be a dynamic group (that is, groupTypes can't contain DynamicMembership). Only callers with at least the Privileged Role Administrator role can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Microsoft Entra role assignmentsUsing this feature requires a Microsoft Entra ID P1 license. Returned by default. Supports $filter (eq, ne, not).
     is_assignable_to_role: Optional[bool] = None
-    # Indicates whether the group is a member of a restricted management administrative unit. If not set, the default value is null and the default behavior is false. Read-only.  To manage a group member of a restricted management administrative unit, the administrator or calling app must be assigned a Microsoft Entra role at the scope of the restricted management administrative unit. Returned only on $select.
+    # Indicates whether the group is a member of a restricted management administrative unit. If not set, the default value is null and the default behavior is false. Read-only.  To manage a group member of a restricted management administrative unit, the administrator or calling app must be assigned a Microsoft Entra role at the scope of the restricted management administrative unit. Requires $select to retrieve.
     is_management_restricted: Optional[bool] = None
-    # Indicates whether the signed-in user is subscribed to receive email conversations. The default value is true. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+    # Indicates whether the signed-in user is subscribed to receive email conversations. The default value is true. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     is_subscribed_by_mail: Optional[bool] = None
-    # Indicates the status of the group license assignment to all group members. The default value is false. Read-only. Possible values: QueuedForProcessing, ProcessingInProgress, and ProcessingComplete.Returned only on $select. Read-only.
+    # Indicates the status of the group license assignment to all group members. The default value is false. Read-only. Possible values: QueuedForProcessing, ProcessingInProgress, and ProcessingComplete.Requires $select to retrieve. Read-only.
     license_processing_state: Optional[LicenseProcessingState] = None
     # The SMTP address for the group, for example, 'serviceadmins@contoso.com'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     mail: Optional[str] = None
@@ -176,7 +176,7 @@ class Group(DirectoryObject, Parsable):
     transitive_members: Optional[list[DirectoryObject]] = None
     # The unique identifier that can be assigned to a group and used as an alternate key. Immutable. Read-only.
     unique_name: Optional[str] = None
-    # Count of conversations that received new posts since the signed-in user last visited the group. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+    # Count of conversations that received new posts since the signed-in user last visited the group. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     unseen_count: Optional[int] = None
     # Specifies the group join policy and group content visibility for groups. The possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value isn't specified during group creation on Microsoft Graph, a security group is created as Private by default, and the Microsoft 365 group is Public. Groups assignable to roles are always Private. To learn more, see group visibility options. Returned by default. Nullable.
     visibility: Optional[str] = None

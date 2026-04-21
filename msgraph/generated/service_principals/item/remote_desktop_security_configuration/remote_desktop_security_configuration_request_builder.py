@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+    from .approved_client_apps.approved_client_apps_request_builder import ApprovedClientAppsRequestBuilder
     from .target_device_groups.target_device_groups_request_builder import TargetDeviceGroupsRequestBuilder
 
 class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
@@ -141,6 +142,15 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return RemoteDesktopSecurityConfigurationRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def approved_client_apps(self) -> ApprovedClientAppsRequestBuilder:
+        """
+        Provides operations to manage the approvedClientApps property of the microsoft.graph.remoteDesktopSecurityConfiguration entity.
+        """
+        from .approved_client_apps.approved_client_apps_request_builder import ApprovedClientAppsRequestBuilder
+
+        return ApprovedClientAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def target_device_groups(self) -> TargetDeviceGroupsRequestBuilder:

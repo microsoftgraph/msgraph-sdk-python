@@ -70,7 +70,7 @@ class TargetDeviceGroupsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: TargetDeviceGroup, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TargetDeviceGroup]:
         """
-        Create a new targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguraiton object on the servicePrincipal.
+        Create a new targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguration object on the servicePrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetDeviceGroup]
@@ -105,7 +105,7 @@ class TargetDeviceGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: TargetDeviceGroup, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguraiton object on the servicePrincipal.
+        Create a new targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguration object on the servicePrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

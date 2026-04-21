@@ -12,9 +12,9 @@ class EmployeeOrgData(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The cost center associated with the user. Returned only on $select. Supports $filter.
+    # The cost center associated with the user. Requires $select to retrieve. Supports $filter.
     cost_center: Optional[str] = None
-    # The name of the division in which the user works. Returned only on $select. Supports $filter.
+    # The name of the division in which the user works. Requires $select to retrieve. Supports $filter.
     division: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

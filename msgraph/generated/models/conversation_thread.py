@@ -14,7 +14,7 @@ from .entity import Entity
 
 @dataclass
 class ConversationThread(Entity, Parsable):
-    # The Cc: recipients for the thread. Returned only on $select.
+    # The Cc: recipients for the thread. Requires $select to retrieve.
     cc_recipients: Optional[list[Recipient]] = None
     # Indicates whether any of the posts within this thread has at least one attachment. Returned by default.
     has_attachments: Optional[bool] = None
@@ -28,7 +28,7 @@ class ConversationThread(Entity, Parsable):
     posts: Optional[list[Post]] = None
     # A short summary from the body of the latest post in this conversation. Returned by default.
     preview: Optional[str] = None
-    # The To: recipients for the thread. Returned only on $select.
+    # The To: recipients for the thread. Requires $select to retrieve.
     to_recipients: Optional[list[Recipient]] = None
     # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated. Returned by default.
     topic: Optional[str] = None

@@ -13,4 +13,5 @@ class AccessPackageRequestType(str, Enum):
     SystemRemove = "systemRemove",
     OnBehalfAdd = "onBehalfAdd",
     UnknownFutureValue = "unknownFutureValue",
+    ApproverRemove = "approverRemove",
 

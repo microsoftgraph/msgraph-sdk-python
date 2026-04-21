@@ -76,6 +76,7 @@ if TYPE_CHECKING:
     from .application_template import ApplicationTemplate
     from .approval import Approval
     from .approval_stage import ApprovalStage
+    from .approved_client_app import ApprovedClientApp
     from .app_catalogs import AppCatalogs
     from .app_consent_approval_route import AppConsentApprovalRoute
     from .app_consent_request import AppConsentRequest
@@ -1442,6 +1443,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .approval_stage import ApprovalStage
 
             return ApprovalStage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.approvedClientApp".casefold():
+            from .approved_client_app import ApprovedClientApp
+
+            return ApprovedClientApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appScope".casefold():
             from .app_scope import AppScope
 
@@ -5642,6 +5647,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .application_template import ApplicationTemplate
         from .approval import Approval
         from .approval_stage import ApprovalStage
+        from .approved_client_app import ApprovedClientApp
         from .app_catalogs import AppCatalogs
         from .app_consent_approval_route import AppConsentApprovalRoute
         from .app_consent_request import AppConsentRequest
@@ -6747,6 +6753,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .application_template import ApplicationTemplate
         from .approval import Approval
         from .approval_stage import ApprovalStage
+        from .approved_client_app import ApprovedClientApp
         from .app_catalogs import AppCatalogs
         from .app_consent_approval_route import AppConsentApprovalRoute
         from .app_consent_request import AppConsentRequest

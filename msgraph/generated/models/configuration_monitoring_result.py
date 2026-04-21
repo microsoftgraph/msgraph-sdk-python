@@ -16,7 +16,7 @@ from .entity import Entity
 class ConfigurationMonitoringResult(Entity, Parsable):
     # Number of drifts observed during a monitor run. Supports $filter (eq, ne, ge, le) and $orderby.
     drifts_count: Optional[int] = None
-    # All the error details that prevent the monitor from running successfully. The error details are a contained entity. Returned only on $select.
+    # All the error details that prevent the monitor from running successfully. The error details are a contained entity. Requires $select to retrieve.
     error_details: Optional[list[ErrorDetail]] = None
     # Globally unique identifier (GUID) of the monitor. System-generated. Supports $filter (eq, ne).
     monitor_id: Optional[str] = None

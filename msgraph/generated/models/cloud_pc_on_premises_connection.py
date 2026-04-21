@@ -20,7 +20,7 @@ class CloudPcOnPremisesConnection(Entity, Parsable):
     ad_domain_password: Optional[str] = None
     # The username of an Active Directory account (user or service account) that has permission to create computer objects in Active Directory. Required format: admin@contoso.com. Optional.
     ad_domain_username: Optional[str] = None
-    # The interface URL of the partner service's resource that links to this Azure network connection. Returned only on $select.
+    # The interface URL of the partner service's resource that links to this Azure network connection. Requires $select to retrieve.
     alternate_resource_url: Optional[str] = None
     # Specifies how the provisioned Cloud PC joins to Microsoft Entra. It includes different types, one is Microsoft Entra ID join, which means there's no on-premises Active Directory (AD) in the current tenant, and the Cloud PC device is joined by Microsoft Entra. Another one is hybridAzureADJoin, which means there's also an on-premises Active Directory (AD) in the current tenant and the Cloud PC device joins to on-premises Active Directory (AD) and Microsoft Entra. The type also determines which types of users can be assigned and can sign into a Cloud PC. The azureADJoin type indicates that cloud-only and hybrid users can be assigned and signed into the Cloud PC. hybridAzureADJoin indicates only hybrid users can be assigned and signed into the Cloud PC. The default value is hybridAzureADJoin.
     connection_type: Optional[CloudPcOnPremisesConnectionType] = None
@@ -30,9 +30,9 @@ class CloudPcOnPremisesConnection(Entity, Parsable):
     health_check_paused: Optional[bool] = None
     # The healthCheckStatus property
     health_check_status: Optional[CloudPcOnPremisesConnectionStatus] = None
-    # Indicates the results of health checks performed on the on-premises connection. Read-only. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetail. Read-only.
+    # Indicates the results of health checks performed on the on-premises connection. Read-only. Requires $select to retrieve. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetail. Read-only.
     health_check_status_detail: Optional[CloudPcOnPremisesConnectionStatusDetail] = None
-    # When true, the Azure network connection is in use. When false, the connection isn't in use. You can't delete a connection that’s in use. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetail. Read-only.
+    # When true, the Azure network connection is in use. When false, the connection isn't in use. You can't delete a connection that’s in use. Requires $select to retrieve. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetail. Read-only.
     in_use: Optional[bool] = None
     # The inUseByCloudPc property
     in_use_by_cloud_pc: Optional[bool] = None

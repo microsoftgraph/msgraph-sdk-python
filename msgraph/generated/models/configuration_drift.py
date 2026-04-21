@@ -17,7 +17,7 @@ from .entity import Entity
 class ConfigurationDrift(Entity, Parsable):
     # Resource instance for which the drift is detected. Supports $filter (eq, ne, startsWith) and $orderby.
     baseline_resource_display_name: Optional[str] = None
-    # Properties within one or more resource instances in which drift is detected. Returned only on $select.
+    # Properties within one or more resource instances in which drift is detected. Requires $select to retrieve.
     drifted_properties: Optional[list[DriftedProperty]] = None
     # The date and time at which drift is first detected. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ne, ge, le) and $orderby.
     first_reported_date_time: Optional[datetime.datetime] = None

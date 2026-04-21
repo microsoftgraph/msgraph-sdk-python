@@ -70,7 +70,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
     created_by_app_id: Optional[str] = None
     # Directory objects created by this service principal. Read-only. Nullable.
     created_objects: Optional[list[DirectoryObject]] = None
-    # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive. To read this property, the calling app must be assigned the CustomSecAttributeAssignment.Read.All permission. To write this property, the calling app must be assigned the CustomSecAttributeAssignment.ReadWrite.All permissions. To read or write this property in delegated scenarios, the admin must be assigned the Attribute Assignment Administrator role.
+    # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Requires $select to retrieve. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive. To read this property, the calling app must be assigned the CustomSecAttributeAssignment.Read.All permission. To write this property, the calling app must be assigned the CustomSecAttributeAssignment.ReadWrite.All permissions. To read or write this property in delegated scenarios, the admin must be assigned the Attribute Assignment Administrator role.
     custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
     # The delegatedPermissionClassifications property
     delegated_permission_classifications: Optional[list[DelegatedPermissionClassification]] = None

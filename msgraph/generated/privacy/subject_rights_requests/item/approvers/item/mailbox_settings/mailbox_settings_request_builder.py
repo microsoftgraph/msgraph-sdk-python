@@ -32,7 +32,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxSettingsRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxSettings]:
         """
-        Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Returned only on $select.
+        Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Requires $select to retrieve.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailboxSettings]
         """
@@ -77,7 +77,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MailboxSettingsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Returned only on $select.
+        Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Requires $select to retrieve.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +117,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MailboxSettingsRequestBuilderGetQueryParameters():
         """
-        Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Returned only on $select.
+        Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Requires $select to retrieve.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

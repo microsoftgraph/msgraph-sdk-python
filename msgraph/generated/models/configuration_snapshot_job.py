@@ -24,13 +24,13 @@ class ConfigurationSnapshotJob(Entity, Parsable):
     description: Optional[str] = None
     # User-friendly name provided by the user during snapshot creation. Supports $filter (eq, ne, startsWith) and $orderby.
     display_name: Optional[str] = None
-    # Details of errors related to the reasons why the snapshot can't complete. Returned only on $select.
+    # Details of errors related to the reasons why the snapshot can't complete. Requires $select to retrieve.
     error_details: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The URL at which the snapshot file resides. Returned only on $select.
+    # The URL at which the snapshot file resides. Requires $select to retrieve.
     resource_location: Optional[str] = None
-    # The names of all resources included in the request body by the user who created the snapshot. Fetched by the system. Returned only on $select.
+    # The names of all resources included in the request body by the user who created the snapshot. Fetched by the system. Requires $select to retrieve.
     resources: Optional[list[str]] = None
     # The status property
     status: Optional[SnapshotJobStatus] = None

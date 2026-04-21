@@ -93,6 +93,8 @@ class Application(DirectoryObject, Parsable):
     key_credentials: Optional[list[KeyCredential]] = None
     # The main logo for the application. Not nullable.
     logo: Optional[bytes] = None
+    # A collection of application IDs for Microsoft first-party applications designated as managers. Manager applications can create service principals, agent identities, and agent users for managed agent blueprints. Limited to a maximum of 10 entries. Not nullable. Only supported on agentIdentityBlueprint objects; attempts to set this property on non-agent-blueprint applications return an error. Not returned by default; must be explicitly requested via $select.
+    manager_applications: Optional[list[UUID]] = None
     # Specifies whether the Native Authentication APIs are enabled for the application. The possible values are: none and all. Default is none. For more information, see Native Authentication.
     native_authentication_apis_enabled: Optional[NativeAuthenticationApisEnabled] = None
     # Notes relevant for the management of the application.
@@ -250,6 +252,7 @@ class Application(DirectoryObject, Parsable):
             "isFallbackPublicClient": lambda n : setattr(self, 'is_fallback_public_client', n.get_bool_value()),
             "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredential)),
             "logo": lambda n : setattr(self, 'logo', n.get_bytes_value()),
+            "managerApplications": lambda n : setattr(self, 'manager_applications', n.get_collection_of_primitive_values(UUID)),
             "nativeAuthenticationApisEnabled": lambda n : setattr(self, 'native_authentication_apis_enabled', n.get_collection_of_enum_values(NativeAuthenticationApisEnabled)),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "oauth2RequirePostResponse": lambda n : setattr(self, 'oauth2_require_post_response', n.get_bool_value()),
@@ -314,6 +317,7 @@ class Application(DirectoryObject, Parsable):
         writer.write_bool_value("isFallbackPublicClient", self.is_fallback_public_client)
         writer.write_collection_of_object_values("keyCredentials", self.key_credentials)
         writer.write_bytes_value("logo", self.logo)
+        writer.write_collection_of_primitive_values("managerApplications", self.manager_applications)
         writer.write_enum_value("nativeAuthenticationApisEnabled", self.native_authentication_apis_enabled)
         writer.write_str_value("notes", self.notes)
         writer.write_bool_value("oauth2RequirePostResponse", self.oauth2_require_post_response)

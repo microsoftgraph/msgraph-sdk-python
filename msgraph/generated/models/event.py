@@ -44,11 +44,11 @@ class Event(OutlookItem, Parsable):
     body_preview: Optional[str] = None
     # The calendar that contains the event. Navigation property. Read-only.
     calendar: Optional[Calendar] = None
-    # Contains occurrenceId property values of canceled instances in a recurring series, if the event is the series master. Instances in a recurring series that are canceled are called canceled occurences.Returned only on $select in a Get operation which specifies the ID (seriesMasterId property value) of a series master event.
+    # Contains occurrenceId property values of canceled instances in a recurring series, if the event is the series master. Instances in a recurring series that are canceled are called canceled occurences.Requires $select to retrieve. Only returned in a Get operation that specifies the ID (seriesMasterId property value) of a series master event.
     cancelled_occurrences: Optional[list[str]] = None
     # The date, time, and time zone that the event ends. By default, the end time is in UTC.
     end: Optional[DateTimeTimeZone] = None
-    # Contains the id property values of the event instances that are exceptions in a recurring series.Exceptions can differ from other occurrences in a recurring series, such as the subject, start or end times, or attendees. Exceptions don't include canceled occurrences.Returned only on $select and $expand in a GET operation that specifies the ID (seriesMasterId property value) of a series master event.
+    # Contains the id property values of the event instances that are exceptions in a recurring series.Exceptions can differ from other occurrences in a recurring series, such as the subject, start or end times, or attendees. Exceptions don't include canceled occurrences.Requires $select and $expand to retrieve. Only returned in a GET operation that specifies the ID (seriesMasterId property value) of a series master event.
     exception_occurrences: Optional[list[Event]] = None
     # The collection of open extensions defined for the event. Nullable.
     extensions: Optional[list[Extension]] = None

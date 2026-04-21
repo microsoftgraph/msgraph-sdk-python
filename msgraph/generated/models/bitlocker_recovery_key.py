@@ -17,7 +17,7 @@ class BitlockerRecoveryKey(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # Identifier of the device the BitLocker key is originally backed up from. Supports $filter (eq).
     device_id: Optional[str] = None
-    # The BitLocker recovery key. Returned only on $select. Not nullable.
+    # The BitLocker recovery key. Requires $select to retrieve. Not nullable.
     key: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

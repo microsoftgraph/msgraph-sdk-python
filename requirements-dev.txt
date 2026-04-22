@@ -4,8 +4,8 @@ anyio==4.10.0
 astroid==3.3.11
 async-timeout==5.0.1
 attrs==25.3.0
-azure-core==1.38.0
-azure-identity==1.25.1
+azure-core==1.39.0
+azure-identity==1.25.3
 build==1.4.3
 bumpver==2025.1131
 certifi==2025.8.3

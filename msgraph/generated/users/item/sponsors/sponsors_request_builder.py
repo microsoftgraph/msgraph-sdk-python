@@ -49,10 +49,10 @@ class SponsorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SponsorsRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
-        Get a user's sponsors. Sponsors are users and groups that are responsible for this guest's privileges in the tenant and for keeping the guest's information and access up to date.
+        Get an agentUser's sponsors. Sponsors are users and groups that are responsible for this agent user's privileges in the tenant and for keeping the agent user's information and access up to date.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-sponsors?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentuser-list-sponsors?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,7 +70,7 @@ class SponsorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SponsorsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a user's sponsors. Sponsors are users and groups that are responsible for this guest's privileges in the tenant and for keeping the guest's information and access up to date.
+        Get an agentUser's sponsors. Sponsors are users and groups that are responsible for this agent user's privileges in the tenant and for keeping the agent user's information and access up to date.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class SponsorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SponsorsRequestBuilderGetQueryParameters():
         """
-        Get a user's sponsors. Sponsors are users and groups that are responsible for this guest's privileges in the tenant and for keeping the guest's information and access up to date.
+        Get an agentUser's sponsors. Sponsors are users and groups that are responsible for this agent user's privileges in the tenant and for keeping the agent user's information and access up to date.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -12,7 +12,7 @@ class LocalAdminPasswordSettings(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The isEnabled property
+    # Specifies whether LAPS is enabled. The default value is false. An admin can set it to true to enable Local Admin Password Solution (LAPS) within their organization.
     is_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

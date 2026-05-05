@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
     from .risk_prevention.risk_prevention_request_builder import RiskPreventionRequestBuilder
     from .user_flow_attributes.user_flow_attributes_request_builder import UserFlowAttributesRequestBuilder
+    from .verified_id.verified_id_request_builder import VerifiedIdRequestBuilder
 
 class IdentityRequestBuilder(BaseRequestBuilder):
     """
@@ -198,6 +199,15 @@ class IdentityRequestBuilder(BaseRequestBuilder):
         from .user_flow_attributes.user_flow_attributes_request_builder import UserFlowAttributesRequestBuilder
 
         return UserFlowAttributesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def verified_id(self) -> VerifiedIdRequestBuilder:
+        """
+        Provides operations to manage the verifiedId property of the microsoft.graph.identityContainer entity.
+        """
+        from .verified_id.verified_id_request_builder import VerifiedIdRequestBuilder
+
+        return VerifiedIdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IdentityRequestBuilderGetQueryParameters():

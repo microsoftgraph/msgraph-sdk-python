@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .drive_restore_artifact import DriveRestoreArtifact
     from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
+    from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
     from .restore_session_base import RestoreSessionBase
 
 from .restore_session_base import RestoreSessionBase
@@ -19,6 +20,8 @@ class OneDriveForBusinessRestoreSession(RestoreSessionBase, Parsable):
     drive_restore_artifacts: Optional[list[DriveRestoreArtifact]] = None
     # A collection of user mailboxes and destination details that can be used to restore a OneDrive for work or school drive.
     drive_restore_artifacts_bulk_addition_requests: Optional[list[DriveRestoreArtifactsBulkAdditionRequest]] = None
+    # The granularDriveRestoreArtifacts property
+    granular_drive_restore_artifacts: Optional[list[GranularDriveRestoreArtifact]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> OneDriveForBusinessRestoreSession:
@@ -38,15 +41,18 @@ class OneDriveForBusinessRestoreSession(RestoreSessionBase, Parsable):
         """
         from .drive_restore_artifact import DriveRestoreArtifact
         from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
+        from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
         from .restore_session_base import RestoreSessionBase
 
         from .drive_restore_artifact import DriveRestoreArtifact
         from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
+        from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
         from .restore_session_base import RestoreSessionBase
 
         fields: dict[str, Callable[[Any], None]] = {
             "driveRestoreArtifacts": lambda n : setattr(self, 'drive_restore_artifacts', n.get_collection_of_object_values(DriveRestoreArtifact)),
             "driveRestoreArtifactsBulkAdditionRequests": lambda n : setattr(self, 'drive_restore_artifacts_bulk_addition_requests', n.get_collection_of_object_values(DriveRestoreArtifactsBulkAdditionRequest)),
+            "granularDriveRestoreArtifacts": lambda n : setattr(self, 'granular_drive_restore_artifacts', n.get_collection_of_object_values(GranularDriveRestoreArtifact)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,5 +69,6 @@ class OneDriveForBusinessRestoreSession(RestoreSessionBase, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("driveRestoreArtifacts", self.drive_restore_artifacts)
         writer.write_collection_of_object_values("driveRestoreArtifactsBulkAdditionRequests", self.drive_restore_artifacts_bulk_addition_requests)
+        writer.write_collection_of_object_values("granularDriveRestoreArtifacts", self.granular_drive_restore_artifacts)
     
 

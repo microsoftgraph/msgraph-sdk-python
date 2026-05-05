@@ -31,6 +31,7 @@ if TYPE_CHECKING:
     from .feature_rollout_policies.feature_rollout_policies_request_builder import FeatureRolloutPoliciesRequestBuilder
     from .home_realm_discovery_policies.home_realm_discovery_policies_request_builder import HomeRealmDiscoveryPoliciesRequestBuilder
     from .identity_security_defaults_enforcement_policy.identity_security_defaults_enforcement_policy_request_builder import IdentitySecurityDefaultsEnforcementPolicyRequestBuilder
+    from .ownerless_group_policy.ownerless_group_policy_request_builder import OwnerlessGroupPolicyRequestBuilder
     from .permission_grant_policies.permission_grant_policies_request_builder import PermissionGrantPoliciesRequestBuilder
     from .role_management_policies.role_management_policies_request_builder import RoleManagementPoliciesRequestBuilder
     from .role_management_policy_assignments.role_management_policy_assignments_request_builder import RoleManagementPolicyAssignmentsRequestBuilder
@@ -263,6 +264,15 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
         from .identity_security_defaults_enforcement_policy.identity_security_defaults_enforcement_policy_request_builder import IdentitySecurityDefaultsEnforcementPolicyRequestBuilder
 
         return IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def ownerless_group_policy(self) -> OwnerlessGroupPolicyRequestBuilder:
+        """
+        Provides operations to manage the ownerlessGroupPolicy property of the microsoft.graph.policyRoot entity.
+        """
+        from .ownerless_group_policy.ownerless_group_policy_request_builder import OwnerlessGroupPolicyRequestBuilder
+
+        return OwnerlessGroupPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def permission_grant_policies(self) -> PermissionGrantPoliciesRequestBuilder:

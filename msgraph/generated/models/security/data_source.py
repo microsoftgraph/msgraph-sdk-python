@@ -23,7 +23,7 @@ class DataSource(Entity, Parsable):
     created_date_time: Optional[datetime.datetime] = None
     # The display name of the dataSource and is the name of the SharePoint site.
     display_name: Optional[str] = None
-    # The hold status of the dataSource.The possible values are: notApplied, applied, applying, removing, partial
+    # The hold status of the dataSource. The possible values are: notApplied, applied, applying, removing, partial.
     hold_status: Optional[DataSourceHoldStatus] = None
     # The OdataType property
     odata_type: Optional[str] = None

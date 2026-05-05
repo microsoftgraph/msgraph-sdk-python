@@ -50,7 +50,7 @@ class SharePointGroupMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SharePointGroupMemberItemRequestBuilderGetQueryParameters]] = None) -> Optional[SharePointGroupMember]:
         """
-        Get members from storage
+        The set of members in the sharePointGroup. Read-write.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharePointGroupMember]
         """
@@ -104,7 +104,7 @@ class SharePointGroupMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SharePointGroupMemberItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get members from storage
+        The set of members in the sharePointGroup. Read-write.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class SharePointGroupMemberItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharePointGroupMemberItemRequestBuilderGetQueryParameters():
         """
-        Get members from storage
+        The set of members in the sharePointGroup. Read-write.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

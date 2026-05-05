@@ -50,4 +50,9 @@ class Label(str, Enum):
     PersonManager = "personManager",
     PersonAlternateContacts = "personAlternateContacts",
     PersonEmergencyContacts = "personEmergencyContacts",
+    PersonEducationalActivities = "personEducationalActivities",
+    PersonInterests = "personInterests",
+    PersonLanguages = "personLanguages",
+    PersonPublications = "personPublications",
+    PersonPatents = "personPatents",
 

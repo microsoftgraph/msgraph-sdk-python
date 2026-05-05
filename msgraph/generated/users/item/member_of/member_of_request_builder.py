@@ -51,10 +51,10 @@ class MemberOfRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MemberOfRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
-        Get groups, directory roles, and administrative units that the user is a direct member of. This operation isn't transitive. To retrieve groups, directory roles, and administrative units that the user is a member through transitive membership, use the List user transitive memberOf API.
+        Get groups, directory roles, and administrative units that the agentUser is a direct member of. This operation isn't transitive.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-memberof?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentuser-list-memberof?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,7 +72,7 @@ class MemberOfRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MemberOfRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get groups, directory roles, and administrative units that the user is a direct member of. This operation isn't transitive. To retrieve groups, directory roles, and administrative units that the user is a member through transitive membership, use the List user transitive memberOf API.
+        Get groups, directory roles, and administrative units that the agentUser is a direct member of. This operation isn't transitive.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -130,7 +130,7 @@ class MemberOfRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MemberOfRequestBuilderGetQueryParameters():
         """
-        Get groups, directory roles, and administrative units that the user is a direct member of. This operation isn't transitive. To retrieve groups, directory roles, and administrative units that the user is a member through transitive membership, use the List user transitive memberOf API.
+        Get groups, directory roles, and administrative units that the agentUser is a direct member of. This operation isn't transitive.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

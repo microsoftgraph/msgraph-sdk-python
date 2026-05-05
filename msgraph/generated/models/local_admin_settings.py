@@ -15,11 +15,11 @@ class LocalAdminSettings(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The enableGlobalAdmins property
+    # Indicates whether global administrators are local administrators on all Microsoft Entra-joined devices. This setting only applies to future registrations. Default is true.
     enable_global_admins: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The registeringUsers property
+    # Determines the users and groups that become local administrators on Microsoft Entra joined devices that they register.
     registering_users: Optional[DeviceRegistrationMembership] = None
     
     @staticmethod

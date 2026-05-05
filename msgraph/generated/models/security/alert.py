@@ -32,6 +32,8 @@ class Alert(Entity, Parsable):
     alert_web_url: Optional[str] = None
     # Owner of the alert, or null if no owner is assigned.
     assigned_to: Optional[str] = None
+    # The categories property
+    categories: Optional[list[str]] = None
     # The attack kill-chain category that the alert belongs to. Aligned with the MITRE ATT&CK framework.
     category: Optional[str] = None
     # Specifies whether the alert represents a true threat. The possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
@@ -139,6 +141,7 @@ class Alert(Entity, Parsable):
             "alertPolicyId": lambda n : setattr(self, 'alert_policy_id', n.get_str_value()),
             "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(AlertComment)),
@@ -187,6 +190,7 @@ class Alert(Entity, Parsable):
         writer.write_str_value("alertPolicyId", self.alert_policy_id)
         writer.write_str_value("alertWebUrl", self.alert_web_url)
         writer.write_str_value("assignedTo", self.assigned_to)
+        writer.write_collection_of_primitive_values("categories", self.categories)
         writer.write_str_value("category", self.category)
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("comments", self.comments)

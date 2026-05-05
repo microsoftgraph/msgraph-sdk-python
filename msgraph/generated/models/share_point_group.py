@@ -12,15 +12,15 @@ from .entity import Entity
 
 @dataclass
 class SharePointGroup(Entity, Parsable):
-    # The description property
+    # The user-visible description of the sharePointGroup. Read-write.
     description: Optional[str] = None
-    # The members property
+    # The set of members in the sharePointGroup. Read-write.
     members: Optional[list[SharePointGroupMember]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The principalId property
+    # The principal ID of the SharePoint group in the tenant. Read-only.
     principal_id: Optional[str] = None
-    # The title property
+    # The user-visible title of the sharePointGroup. Read-write.
     title: Optional[str] = None
     
     @staticmethod

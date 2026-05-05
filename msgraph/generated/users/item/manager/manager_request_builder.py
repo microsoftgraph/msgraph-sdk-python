@@ -33,10 +33,10 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ManagerRequestBuilderGetQueryParameters]] = None) -> Optional[DirectoryObject]:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        Returns the user or organizational contact assigned as the agentUser's manager.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-manager?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentuser-list-manager?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -54,7 +54,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ManagerRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        Returns the user or organizational contact assigned as the agentUser's manager.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -85,7 +85,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagerRequestBuilderGetQueryParameters():
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        Returns the user or organizational contact assigned as the agentUser's manager.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

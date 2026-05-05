@@ -19,4 +19,5 @@ class RiskDetail(str, Enum):
     UserChangedPasswordOnPremises = "userChangedPasswordOnPremises",
     AdminDismissedRiskForSignIn = "adminDismissedRiskForSignIn",
     AdminConfirmedAccountSafe = "adminConfirmedAccountSafe",
+    MicrosoftRevokedSessions = "microsoftRevokedSessions",
 

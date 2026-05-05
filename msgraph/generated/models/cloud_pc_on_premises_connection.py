@@ -26,15 +26,15 @@ class CloudPcOnPremisesConnection(Entity, Parsable):
     connection_type: Optional[CloudPcOnPremisesConnectionType] = None
     # The display name for the Azure network connection.
     display_name: Optional[str] = None
-    # The healthCheckPaused property
+    # Indicates whether regular health checks on the network or domain configuration are paused or active. false if the regular health checks on the network or domain configuration are currently active. true if the checks are paused. If you perform a create or update operation on a onPremisesNetworkConnection resource, this value is set to false for four weeks. If you retry a health check on network or domain configuration, this value is set to false for two weeks. If the onPremisesNetworkConnection resource is attached in a provisioningPolicy or used by a Cloud PC in the past four weeks, healthCheckPaused is set to false. Read-only. Default is false.
     health_check_paused: Optional[bool] = None
     # The healthCheckStatus property
     health_check_status: Optional[CloudPcOnPremisesConnectionStatus] = None
     # Indicates the results of health checks performed on the on-premises connection. Read-only. Requires $select to retrieve. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetail. Read-only.
     health_check_status_detail: Optional[CloudPcOnPremisesConnectionStatusDetail] = None
-    # When true, the Azure network connection is in use. When false, the connection isn't in use. You can't delete a connection that’s in use. Requires $select to retrieve. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetail. Read-only.
+    # When true, the Azure network connection is in use. When false, the connection isn't in use. You can't delete a connection that’s in use. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetail. Read-only.
     in_use: Optional[bool] = None
-    # The inUseByCloudPc property
+    # Indicates whether a Cloud PC is using this on-premises network connection. true if at least one Cloud PC is using it. Otherwise, false. Read-only. Default is false.
     in_use_by_cloud_pc: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -42,7 +42,7 @@ class CloudPcOnPremisesConnection(Entity, Parsable):
     organizational_unit: Optional[str] = None
     # The unique identifier of the target resource group used associated with the on-premises network connectivity for Cloud PCs. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}'
     resource_group_id: Optional[str] = None
-    # The scopeIds property
+    # The scope IDs of the corresponding permission. Currently, it's the Intune scope tag ID.
     scope_ids: Optional[list[str]] = None
     # The unique identifier of the target subnet used associated with the on-premises network connectivity for Cloud PCs. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkId}/subnets/{subnetName}'
     subnet_id: Optional[str] = None

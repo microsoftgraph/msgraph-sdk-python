@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.share_point_restore_session import SharePointRestoreSession
+    from .granular_site_restore_artifacts.granular_site_restore_artifacts_request_builder import GranularSiteRestoreArtifactsRequestBuilder
     from .site_restore_artifacts.site_restore_artifacts_request_builder import SiteRestoreArtifactsRequestBuilder
     from .site_restore_artifacts_bulk_addition_requests.site_restore_artifacts_bulk_addition_requests_request_builder import SiteRestoreArtifactsBulkAdditionRequestsRequestBuilder
 
@@ -139,6 +140,15 @@ class SharePointRestoreSessionItemRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SharePointRestoreSessionItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def granular_site_restore_artifacts(self) -> GranularSiteRestoreArtifactsRequestBuilder:
+        """
+        Provides operations to manage the granularSiteRestoreArtifacts property of the microsoft.graph.sharePointRestoreSession entity.
+        """
+        from .granular_site_restore_artifacts.granular_site_restore_artifacts_request_builder import GranularSiteRestoreArtifactsRequestBuilder
+
+        return GranularSiteRestoreArtifactsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def site_restore_artifacts(self) -> SiteRestoreArtifactsRequestBuilder:

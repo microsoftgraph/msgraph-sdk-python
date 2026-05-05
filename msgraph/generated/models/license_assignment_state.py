@@ -14,19 +14,19 @@ class LicenseAssignmentState(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The assignedByGroup property
+    # Indicates whether the license is directly-assigned or inherited from a group. If directly-assigned, this field is null; if inherited through a group membership, this field contains the ID of the group. Read-Only.
     assigned_by_group: Optional[str] = None
-    # The disabledPlans property
+    # The service plans that are disabled in this assignment. Read-Only.
     disabled_plans: Optional[list[UUID]] = None
-    # The error property
+    # License assignment failure error. If the license is assigned successfully, this field will be Null. Read-Only. The possible values are CountViolation, MutuallyExclusiveViolation, DependencyViolation, ProhibitedInUsageLocationViolation, UniquenessViolation, and Other. For more information on how to identify and resolve license assignment errors, see here.
     error: Optional[str] = None
-    # The lastUpdatedDateTime property
+    # The timestamp when the state of the license assignment was last updated.
     last_updated_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The skuId property
+    # The unique identifier for the SKU. Read-Only.
     sku_id: Optional[UUID] = None
-    # The state property
+    # Indicate the current state of this assignment. Read-Only. The possible values are Active, ActiveWithError, Disabled, and Error.
     state: Optional[str] = None
     
     @staticmethod

@@ -53,7 +53,7 @@ class FileStorageContainer(Entity, Parsable):
     recycle_bin: Optional[RecycleBin] = None
     # The settings property
     settings: Optional[FileStorageContainerSettings] = None
-    # The sharePointGroups property
+    # The collection of sharePointGroup objects local to the container. Read-write.
     share_point_groups: Optional[list[SharePointGroup]] = None
     # Status of the fileStorageContainer. Containers are created as inactive and require activation. Inactive containers are subjected to automatic deletion in 24 hours. The possible values are: inactive, active. Read-only.
     status: Optional[FileStorageContainerStatus] = None

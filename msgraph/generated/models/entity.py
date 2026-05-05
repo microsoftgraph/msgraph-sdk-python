@@ -134,6 +134,7 @@ if TYPE_CHECKING:
     from .browser_shared_cookie import BrowserSharedCookie
     from .browser_site import BrowserSite
     from .browser_site_list import BrowserSiteList
+    from .browse_session_base import BrowseSessionBase
     from .building import Building
     from .building_map import BuildingMap
     from .built_in_identity_provider import BuiltInIdentityProvider
@@ -382,7 +383,10 @@ if TYPE_CHECKING:
     from .footprint_map import FootprintMap
     from .fraud_protection_provider import FraudProtectionProvider
     from .governance_insight import GovernanceInsight
+    from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
     from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
+    from .granular_restore_artifact_base import GranularRestoreArtifactBase
+    from .granular_site_restore_artifact import GranularSiteRestoreArtifact
     from .group import Group
     from .group_lifecycle_policy import GroupLifecyclePolicy
     from .group_setting import GroupSetting
@@ -412,6 +416,7 @@ if TYPE_CHECKING:
     from .identity_user_flow import IdentityUserFlow
     from .identity_user_flow_attribute import IdentityUserFlowAttribute
     from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+    from .identity_verified_id_root import IdentityVerifiedIdRoot
     from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
     from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
     from .inference_classification import InferenceClassification
@@ -549,6 +554,7 @@ if TYPE_CHECKING:
     from .onenote_page import OnenotePage
     from .onenote_resource import OnenoteResource
     from .onenote_section import OnenoteSection
+    from .one_drive_for_business_browse_session import OneDriveForBusinessBrowseSession
     from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
     from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
     from .online_meeting import OnlineMeeting
@@ -572,6 +578,8 @@ if TYPE_CHECKING:
     from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
     from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
     from .on_user_create_start_listener import OnUserCreateStartListener
+    from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
+    from .on_verified_id_claim_validation_listener import OnVerifiedIdClaimValidationListener
     from .open_shift import OpenShift
     from .open_shift_change_request import OpenShiftChangeRequest
     from .open_type_extension import OpenTypeExtension
@@ -584,6 +592,7 @@ if TYPE_CHECKING:
     from .outlook_category import OutlookCategory
     from .outlook_item import OutlookItem
     from .outlook_user import OutlookUser
+    from .ownerless_group_policy import OwnerlessGroupPolicy
     from .o_auth2_permission_grant import OAuth2PermissionGrant
     from .participant import Participant
     from .participant_joining_notification import ParticipantJoiningNotification
@@ -824,6 +833,7 @@ if TYPE_CHECKING:
     from .shared_with_channel_team_info import SharedWithChannelTeamInfo
     from .sharepoint import Sharepoint
     from .sharepoint_settings import SharepointSettings
+    from .share_point_browse_session import SharePointBrowseSession
     from .share_point_group import SharePointGroup
     from .share_point_group_member import SharePointGroupMember
     from .share_point_migration_event import SharePointMigrationEvent
@@ -1000,6 +1010,7 @@ if TYPE_CHECKING:
     from .user_solution_root import UserSolutionRoot
     from .user_storage import UserStorage
     from .user_teamwork import UserTeamwork
+    from .verified_id_profile import VerifiedIdProfile
     from .vertical_section import VerticalSection
     from .virtual_endpoint import VirtualEndpoint
     from .virtual_event import VirtualEvent
@@ -1651,6 +1662,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .browser_site_list import BrowserSiteList
 
             return BrowserSiteList()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.browseSessionBase".casefold():
+            from .browse_session_base import BrowseSessionBase
+
+            return BrowseSessionBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.building".casefold():
             from .building import Building
 
@@ -2644,10 +2659,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .governance_insight import GovernanceInsight
 
             return GovernanceInsight()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularDriveRestoreArtifact".casefold():
+            from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
+
+            return GranularDriveRestoreArtifact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularMailboxRestoreArtifact".casefold():
             from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
 
             return GranularMailboxRestoreArtifact()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularRestoreArtifactBase".casefold():
+            from .granular_restore_artifact_base import GranularRestoreArtifactBase
+
+            return GranularRestoreArtifactBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularSiteRestoreArtifact".casefold():
+            from .granular_site_restore_artifact import GranularSiteRestoreArtifact
+
+            return GranularSiteRestoreArtifact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.group".casefold():
             from .group import Group
             from .term_store.group import Group
@@ -2766,6 +2793,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
 
             return IdentityUserFlowAttributeAssignment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityVerifiedIdRoot".casefold():
+            from .identity_verified_id_root import IdentityVerifiedIdRoot
+
+            return IdentityVerifiedIdRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.importedWindowsAutopilotDeviceIdentity".casefold():
             from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
 
@@ -3310,6 +3341,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
 
             return OnAuthenticationMethodLoadStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.oneDriveForBusinessBrowseSession".casefold():
+            from .one_drive_for_business_browse_session import OneDriveForBusinessBrowseSession
+
+            return OneDriveForBusinessBrowseSession()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.oneDriveForBusinessProtectionPolicy".casefold():
             from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
 
@@ -3410,6 +3445,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .on_user_create_start_listener import OnUserCreateStartListener
 
             return OnUserCreateStartListener()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onVerifiedIdClaimValidationCustomExtension".casefold():
+            from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
+
+            return OnVerifiedIdClaimValidationCustomExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onVerifiedIdClaimValidationListener".casefold():
+            from .on_verified_id_claim_validation_listener import OnVerifiedIdClaimValidationListener
+
+            return OnVerifiedIdClaimValidationListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShift".casefold():
             from .open_shift import OpenShift
 
@@ -3459,6 +3502,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .outlook_user import OutlookUser
 
             return OutlookUser()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.ownerlessGroupPolicy".casefold():
+            from .ownerless_group_policy import OwnerlessGroupPolicy
+
+            return OwnerlessGroupPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.participant".casefold():
             from .call_records.participant import Participant
             from .participant import Participant
@@ -4416,6 +4463,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .sharepoint import Sharepoint
 
             return Sharepoint()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointBrowseSession".casefold():
+            from .share_point_browse_session import SharePointBrowseSession
+
+            return SharePointBrowseSession()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointGroup".casefold():
             from .share_point_group import SharePointGroup
 
@@ -5126,6 +5177,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_teamwork import UserTeamwork
 
             return UserTeamwork()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.verifiedIdProfile".casefold():
+            from .verified_id_profile import VerifiedIdProfile
+
+            return VerifiedIdProfile()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.verticalSection".casefold():
             from .vertical_section import VerticalSection
 
@@ -5705,6 +5760,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .browser_shared_cookie import BrowserSharedCookie
         from .browser_site import BrowserSite
         from .browser_site_list import BrowserSiteList
+        from .browse_session_base import BrowseSessionBase
         from .building import Building
         from .building_map import BuildingMap
         from .built_in_identity_provider import BuiltInIdentityProvider
@@ -5953,7 +6009,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .footprint_map import FootprintMap
         from .fraud_protection_provider import FraudProtectionProvider
         from .governance_insight import GovernanceInsight
+        from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
+        from .granular_restore_artifact_base import GranularRestoreArtifactBase
+        from .granular_site_restore_artifact import GranularSiteRestoreArtifact
         from .group import Group
         from .group_lifecycle_policy import GroupLifecyclePolicy
         from .group_setting import GroupSetting
@@ -5983,6 +6042,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .identity_user_flow import IdentityUserFlow
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
         from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+        from .identity_verified_id_root import IdentityVerifiedIdRoot
         from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
         from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
         from .inference_classification import InferenceClassification
@@ -6120,6 +6180,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_page import OnenotePage
         from .onenote_resource import OnenoteResource
         from .onenote_section import OnenoteSection
+        from .one_drive_for_business_browse_session import OneDriveForBusinessBrowseSession
         from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
         from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
         from .online_meeting import OnlineMeeting
@@ -6143,6 +6204,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .on_user_create_start_listener import OnUserCreateStartListener
+        from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
+        from .on_verified_id_claim_validation_listener import OnVerifiedIdClaimValidationListener
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
         from .open_type_extension import OpenTypeExtension
@@ -6155,6 +6218,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .outlook_category import OutlookCategory
         from .outlook_item import OutlookItem
         from .outlook_user import OutlookUser
+        from .ownerless_group_policy import OwnerlessGroupPolicy
         from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .participant import Participant
         from .participant_joining_notification import ParticipantJoiningNotification
@@ -6395,6 +6459,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
         from .sharepoint import Sharepoint
         from .sharepoint_settings import SharepointSettings
+        from .share_point_browse_session import SharePointBrowseSession
         from .share_point_group import SharePointGroup
         from .share_point_group_member import SharePointGroupMember
         from .share_point_migration_event import SharePointMigrationEvent
@@ -6571,6 +6636,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_solution_root import UserSolutionRoot
         from .user_storage import UserStorage
         from .user_teamwork import UserTeamwork
+        from .verified_id_profile import VerifiedIdProfile
         from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint
         from .virtual_event import VirtualEvent
@@ -6811,6 +6877,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .browser_shared_cookie import BrowserSharedCookie
         from .browser_site import BrowserSite
         from .browser_site_list import BrowserSiteList
+        from .browse_session_base import BrowseSessionBase
         from .building import Building
         from .building_map import BuildingMap
         from .built_in_identity_provider import BuiltInIdentityProvider
@@ -7059,7 +7126,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .footprint_map import FootprintMap
         from .fraud_protection_provider import FraudProtectionProvider
         from .governance_insight import GovernanceInsight
+        from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
+        from .granular_restore_artifact_base import GranularRestoreArtifactBase
+        from .granular_site_restore_artifact import GranularSiteRestoreArtifact
         from .group import Group
         from .group_lifecycle_policy import GroupLifecyclePolicy
         from .group_setting import GroupSetting
@@ -7089,6 +7159,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .identity_user_flow import IdentityUserFlow
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
         from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+        from .identity_verified_id_root import IdentityVerifiedIdRoot
         from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
         from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
         from .inference_classification import InferenceClassification
@@ -7226,6 +7297,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_page import OnenotePage
         from .onenote_resource import OnenoteResource
         from .onenote_section import OnenoteSection
+        from .one_drive_for_business_browse_session import OneDriveForBusinessBrowseSession
         from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
         from .one_drive_for_business_restore_session import OneDriveForBusinessRestoreSession
         from .online_meeting import OnlineMeeting
@@ -7249,6 +7321,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
         from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .on_user_create_start_listener import OnUserCreateStartListener
+        from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
+        from .on_verified_id_claim_validation_listener import OnVerifiedIdClaimValidationListener
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
         from .open_type_extension import OpenTypeExtension
@@ -7261,6 +7335,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .outlook_category import OutlookCategory
         from .outlook_item import OutlookItem
         from .outlook_user import OutlookUser
+        from .ownerless_group_policy import OwnerlessGroupPolicy
         from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .participant import Participant
         from .participant_joining_notification import ParticipantJoiningNotification
@@ -7501,6 +7576,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .shared_with_channel_team_info import SharedWithChannelTeamInfo
         from .sharepoint import Sharepoint
         from .sharepoint_settings import SharepointSettings
+        from .share_point_browse_session import SharePointBrowseSession
         from .share_point_group import SharePointGroup
         from .share_point_group_member import SharePointGroupMember
         from .share_point_migration_event import SharePointMigrationEvent
@@ -7677,6 +7753,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_solution_root import UserSolutionRoot
         from .user_storage import UserStorage
         from .user_teamwork import UserTeamwork
+        from .verified_id_profile import VerifiedIdProfile
         from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint
         from .virtual_event import VirtualEvent

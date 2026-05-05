@@ -49,7 +49,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MembersRequestBuilderGetQueryParameters]] = None) -> Optional[SharePointGroupMemberCollectionResponse]:
         """
-        Get members from storage
+        The set of members in the sharePointGroup. Read-write.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharePointGroupMemberCollectionResponse]
         """
@@ -92,7 +92,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MembersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get members from storage
+        The set of members in the sharePointGroup. Read-write.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        Get members from storage
+        The set of members in the sharePointGroup. Read-write.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

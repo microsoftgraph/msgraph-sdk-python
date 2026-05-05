@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class SharePointGroupMember(Entity, Parsable):
-    # The identity property
+    # The identity represented by the sharePointGroupMember object.
     identity: Optional[SharePointIdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None

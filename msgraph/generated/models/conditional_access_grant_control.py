@@ -9,4 +9,5 @@ class ConditionalAccessGrantControl(str, Enum):
     CompliantApplication = "compliantApplication",
     PasswordChange = "passwordChange",
     UnknownFutureValue = "unknownFutureValue",
+    RiskRemediation = "riskRemediation",
 

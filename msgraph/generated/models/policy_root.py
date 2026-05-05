@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .feature_rollout_policy import FeatureRolloutPolicy
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
     from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+    from .ownerless_group_policy import OwnerlessGroupPolicy
     from .permission_grant_policy import PermissionGrantPolicy
     from .tenant_app_management_policy import TenantAppManagementPolicy
     from .token_issuance_policy import TokenIssuancePolicy
@@ -63,6 +64,8 @@ class PolicyRoot(Entity, Parsable):
     identity_security_defaults_enforcement_policy: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The ownerlessGroupPolicy property
+    ownerless_group_policy: Optional[OwnerlessGroupPolicy] = None
     # The policy that specifies the conditions under which consent can be granted.
     permission_grant_policies: Optional[list[PermissionGrantPolicy]] = None
     # Specifies the various policies associated with scopes and roles.
@@ -105,6 +108,7 @@ class PolicyRoot(Entity, Parsable):
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .ownerless_group_policy import OwnerlessGroupPolicy
         from .permission_grant_policy import PermissionGrantPolicy
         from .tenant_app_management_policy import TenantAppManagementPolicy
         from .token_issuance_policy import TokenIssuancePolicy
@@ -127,6 +131,7 @@ class PolicyRoot(Entity, Parsable):
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .ownerless_group_policy import OwnerlessGroupPolicy
         from .permission_grant_policy import PermissionGrantPolicy
         from .tenant_app_management_policy import TenantAppManagementPolicy
         from .token_issuance_policy import TokenIssuancePolicy
@@ -150,6 +155,7 @@ class PolicyRoot(Entity, Parsable):
             "featureRolloutPolicies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(FeatureRolloutPolicy)),
             "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
             "identitySecurityDefaultsEnforcementPolicy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(IdentitySecurityDefaultsEnforcementPolicy)),
+            "ownerlessGroupPolicy": lambda n : setattr(self, 'ownerless_group_policy', n.get_object_value(OwnerlessGroupPolicy)),
             "permissionGrantPolicies": lambda n : setattr(self, 'permission_grant_policies', n.get_collection_of_object_values(PermissionGrantPolicy)),
             "roleManagementPolicies": lambda n : setattr(self, 'role_management_policies', n.get_collection_of_object_values(UnifiedRoleManagementPolicy)),
             "roleManagementPolicyAssignments": lambda n : setattr(self, 'role_management_policy_assignments', n.get_collection_of_object_values(UnifiedRoleManagementPolicyAssignment)),
@@ -184,6 +190,7 @@ class PolicyRoot(Entity, Parsable):
         writer.write_collection_of_object_values("featureRolloutPolicies", self.feature_rollout_policies)
         writer.write_collection_of_object_values("homeRealmDiscoveryPolicies", self.home_realm_discovery_policies)
         writer.write_object_value("identitySecurityDefaultsEnforcementPolicy", self.identity_security_defaults_enforcement_policy)
+        writer.write_object_value("ownerlessGroupPolicy", self.ownerless_group_policy)
         writer.write_collection_of_object_values("permissionGrantPolicies", self.permission_grant_policies)
         writer.write_collection_of_object_values("roleManagementPolicies", self.role_management_policies)
         writer.write_collection_of_object_values("roleManagementPolicyAssignments", self.role_management_policy_assignments)

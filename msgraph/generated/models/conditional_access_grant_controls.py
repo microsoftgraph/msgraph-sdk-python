@@ -18,7 +18,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The authenticationStrength property
     authentication_strength: Optional[AuthenticationStrengthPolicy] = None
-    # List of values of built-in controls required by the policy. Possible values: block, mfa, compliantDevice, domainJoinedDevice, approvedApplication, compliantApplication, passwordChange, unknownFutureValue.
+    # List of values of built-in controls required by the policy. Possible values: block, mfa, compliantDevice, domainJoinedDevice, approvedApplication, compliantApplication, passwordChange, unknownFutureValue, riskRemediation.  Use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: riskRemediation.
     built_in_controls: Optional[list[ConditionalAccessGrantControl]] = None
     # List of custom controls IDs required by the policy. For more information, see Custom controls.
     custom_authentication_factors: Optional[list[str]] = None

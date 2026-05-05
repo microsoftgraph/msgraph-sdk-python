@@ -11,7 +11,7 @@ from .ai_interaction_entity import AiInteractionEntity
 
 @dataclass
 class AiAgentInfo(AiInteractionEntity, Parsable):
-    # The unique identifier of the parent agent blueprint that defines the identity and configuration of this agent instance.
+    # The unique identifier of the parent agent blueprint that defines the identity and configuration of this agent instance. This identifier is provided by Microsoft Entra.
     blueprint_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

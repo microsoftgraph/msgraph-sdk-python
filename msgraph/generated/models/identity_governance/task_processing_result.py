@@ -23,6 +23,8 @@ class TaskProcessingResult(Entity, Parsable):
     failure_reason: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The processingInfo property
+    processing_info: Optional[str] = None
     # The processingStatus property
     processing_status: Optional[LifecycleWorkflowProcessingStatus] = None
     # The date time when taskProcessingResult execution started. Value is null if task execution has not yet started.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
@@ -62,6 +64,7 @@ class TaskProcessingResult(Entity, Parsable):
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
+            "processingInfo": lambda n : setattr(self, 'processing_info', n.get_str_value()),
             "processingStatus": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
             "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_object_value(User)),
@@ -83,6 +86,7 @@ class TaskProcessingResult(Entity, Parsable):
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("failureReason", self.failure_reason)
+        writer.write_str_value("processingInfo", self.processing_info)
         writer.write_enum_value("processingStatus", self.processing_status)
         writer.write_datetime_value("startedDateTime", self.started_date_time)
         writer.write_object_value("subject", self.subject)

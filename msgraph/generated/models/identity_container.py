@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .identity_api_connector import IdentityApiConnector
     from .identity_provider_base import IdentityProviderBase
     from .identity_user_flow_attribute import IdentityUserFlowAttribute
+    from .identity_verified_id_root import IdentityVerifiedIdRoot
     from .risk_prevention_container import RiskPreventionContainer
 
 from .entity import Entity
@@ -40,6 +41,8 @@ class IdentityContainer(Entity, Parsable):
     risk_prevention: Optional[RiskPreventionContainer] = None
     # Represents entry point for identity userflow attributes.
     user_flow_attributes: Optional[list[IdentityUserFlowAttribute]] = None
+    # The verifiedId property
+    verified_id: Optional[IdentityVerifiedIdRoot] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> IdentityContainer:
@@ -66,6 +69,7 @@ class IdentityContainer(Entity, Parsable):
         from .identity_api_connector import IdentityApiConnector
         from .identity_provider_base import IdentityProviderBase
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .identity_verified_id_root import IdentityVerifiedIdRoot
         from .risk_prevention_container import RiskPreventionContainer
 
         from .authentication_events_flow import AuthenticationEventsFlow
@@ -77,6 +81,7 @@ class IdentityContainer(Entity, Parsable):
         from .identity_api_connector import IdentityApiConnector
         from .identity_provider_base import IdentityProviderBase
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .identity_verified_id_root import IdentityVerifiedIdRoot
         from .risk_prevention_container import RiskPreventionContainer
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -89,6 +94,7 @@ class IdentityContainer(Entity, Parsable):
             "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProviderBase)),
             "riskPrevention": lambda n : setattr(self, 'risk_prevention', n.get_object_value(RiskPreventionContainer)),
             "userFlowAttributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(IdentityUserFlowAttribute)),
+            "verifiedId": lambda n : setattr(self, 'verified_id', n.get_object_value(IdentityVerifiedIdRoot)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -112,5 +118,6 @@ class IdentityContainer(Entity, Parsable):
         writer.write_collection_of_object_values("identityProviders", self.identity_providers)
         writer.write_object_value("riskPrevention", self.risk_prevention)
         writer.write_collection_of_object_values("userFlowAttributes", self.user_flow_attributes)
+        writer.write_object_value("verifiedId", self.verified_id)
     
 

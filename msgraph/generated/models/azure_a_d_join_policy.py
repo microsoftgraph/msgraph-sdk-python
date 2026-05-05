@@ -16,11 +16,11 @@ class AzureADJoinPolicy(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The allowedToJoin property
+    # Determines if Microsoft Entra join is allowed.
     allowed_to_join: Optional[DeviceRegistrationMembership] = None
-    # The isAdminConfigurable property
+    # Determines if administrators can modify this policy.
     is_admin_configurable: Optional[bool] = None
-    # The localAdmins property
+    # Determines who becomes a local administrator on joined devices.
     local_admins: Optional[LocalAdminSettings] = None
     # The OdataType property
     odata_type: Optional[str] = None

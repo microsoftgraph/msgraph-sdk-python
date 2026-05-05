@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .on_otp_send_custom_extension import OnOtpSendCustomExtension
     from .on_password_submit_custom_extension import OnPasswordSubmitCustomExtension
     from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+    from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
 
 from .entity import Entity
 
@@ -86,6 +87,10 @@ class CustomCalloutExtension(Entity, Parsable):
             from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
             return OnTokenIssuanceStartCustomExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onVerifiedIdClaimValidationCustomExtension".casefold():
+            from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
+
+            return OnVerifiedIdClaimValidationCustomExtension()
         return CustomCalloutExtension()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -106,6 +111,7 @@ class CustomCalloutExtension(Entity, Parsable):
         from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_password_submit_custom_extension import OnPasswordSubmitCustomExtension
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+        from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
 
         from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
         from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
@@ -120,6 +126,7 @@ class CustomCalloutExtension(Entity, Parsable):
         from .on_otp_send_custom_extension import OnOtpSendCustomExtension
         from .on_password_submit_custom_extension import OnPasswordSubmitCustomExtension
         from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+        from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
 
         fields: dict[str, Callable[[Any], None]] = {
             "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(CustomExtensionAuthenticationConfiguration)),

@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .drive_restore_artifacts.drive_restore_artifacts_request_builder import DriveRestoreArtifactsRequestBuilder
     from .drive_restore_artifacts_bulk_addition_requests.drive_restore_artifacts_bulk_addition_requests_request_builder import DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder
+    from .granular_drive_restore_artifacts.granular_drive_restore_artifacts_request_builder import GranularDriveRestoreArtifactsRequestBuilder
 
 class OneDriveForBusinessRestoreSessionItemRequestBuilder(BaseRequestBuilder):
     """
@@ -158,6 +159,15 @@ class OneDriveForBusinessRestoreSessionItemRequestBuilder(BaseRequestBuilder):
         from .drive_restore_artifacts_bulk_addition_requests.drive_restore_artifacts_bulk_addition_requests_request_builder import DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder
 
         return DriveRestoreArtifactsBulkAdditionRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def granular_drive_restore_artifacts(self) -> GranularDriveRestoreArtifactsRequestBuilder:
+        """
+        Provides operations to manage the granularDriveRestoreArtifacts property of the microsoft.graph.oneDriveForBusinessRestoreSession entity.
+        """
+        from .granular_drive_restore_artifacts.granular_drive_restore_artifacts_request_builder import GranularDriveRestoreArtifactsRequestBuilder
+
+        return GranularDriveRestoreArtifactsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OneDriveForBusinessRestoreSessionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

@@ -13,9 +13,9 @@ from .identity import Identity
 class SharePointGroupIdentity(Identity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharePointGroupIdentity"
-    # The principalId property
+    # The principal ID of the SharePoint group in the tenant. Read-only.
     principal_id: Optional[str] = None
-    # The title property
+    # The title of the SharePoint group. Read-only.
     title: Optional[str] = None
     
     @staticmethod

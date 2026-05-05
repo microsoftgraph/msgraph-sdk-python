@@ -32,9 +32,10 @@ class DeviceRegistrationPolicyRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeviceRegistrationPolicyRequestBuilderGetQueryParameters]] = None) -> Optional[DeviceRegistrationPolicy]:
         """
-        Get deviceRegistrationPolicy from policies
+        Read the properties and relationships of a deviceRegistrationPolicy object. Represents deviceRegistrationPolicy quota restrictions, additional authentication, and authorization policies to register device identities to your organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceRegistrationPolicy]
+        Find more info here: https://learn.microsoft.com/graph/api/deviceregistrationpolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,7 +53,7 @@ class DeviceRegistrationPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeviceRegistrationPolicyRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get deviceRegistrationPolicy from policies
+        Read the properties and relationships of a deviceRegistrationPolicy object. Represents deviceRegistrationPolicy quota restrictions, additional authentication, and authorization policies to register device identities to your organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +75,7 @@ class DeviceRegistrationPolicyRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceRegistrationPolicyRequestBuilderGetQueryParameters():
         """
-        Get deviceRegistrationPolicy from policies
+        Read the properties and relationships of a deviceRegistrationPolicy object. Represents deviceRegistrationPolicy quota restrictions, additional authentication, and authorization policies to register device identities to your organization.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

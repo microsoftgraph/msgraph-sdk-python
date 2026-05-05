@@ -13,9 +13,9 @@ from .device_registration_membership import DeviceRegistrationMembership
 class EnumeratedDeviceRegistrationMembership(DeviceRegistrationMembership, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.enumeratedDeviceRegistrationMembership"
-    # The groups property
+    # List of groups that this policy applies to.
     groups: Optional[list[str]] = None
-    # The users property
+    # List of users that this policy applies to.
     users: Optional[list[str]] = None
     
     @staticmethod

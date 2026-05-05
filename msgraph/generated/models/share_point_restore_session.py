@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .granular_site_restore_artifact import GranularSiteRestoreArtifact
     from .restore_session_base import RestoreSessionBase
     from .site_restore_artifact import SiteRestoreArtifact
     from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
@@ -15,6 +16,8 @@ from .restore_session_base import RestoreSessionBase
 class SharePointRestoreSession(RestoreSessionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharePointRestoreSession"
+    # The granularSiteRestoreArtifacts property
+    granular_site_restore_artifacts: Optional[list[GranularSiteRestoreArtifact]] = None
     # A collection of restore points and destination details that can be used to restore SharePoint sites.
     site_restore_artifacts: Optional[list[SiteRestoreArtifact]] = None
     # A collection of SharePoint site URLs and destination details that can be used to restore SharePoint sites.
@@ -36,15 +39,18 @@ class SharePointRestoreSession(RestoreSessionBase, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .granular_site_restore_artifact import GranularSiteRestoreArtifact
         from .restore_session_base import RestoreSessionBase
         from .site_restore_artifact import SiteRestoreArtifact
         from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
 
+        from .granular_site_restore_artifact import GranularSiteRestoreArtifact
         from .restore_session_base import RestoreSessionBase
         from .site_restore_artifact import SiteRestoreArtifact
         from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
 
         fields: dict[str, Callable[[Any], None]] = {
+            "granularSiteRestoreArtifacts": lambda n : setattr(self, 'granular_site_restore_artifacts', n.get_collection_of_object_values(GranularSiteRestoreArtifact)),
             "siteRestoreArtifacts": lambda n : setattr(self, 'site_restore_artifacts', n.get_collection_of_object_values(SiteRestoreArtifact)),
             "siteRestoreArtifactsBulkAdditionRequests": lambda n : setattr(self, 'site_restore_artifacts_bulk_addition_requests', n.get_collection_of_object_values(SiteRestoreArtifactsBulkAdditionRequest)),
         }
@@ -61,6 +67,7 @@ class SharePointRestoreSession(RestoreSessionBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("granularSiteRestoreArtifacts", self.granular_site_restore_artifacts)
         writer.write_collection_of_object_values("siteRestoreArtifacts", self.site_restore_artifacts)
         writer.write_collection_of_object_values("siteRestoreArtifactsBulkAdditionRequests", self.site_restore_artifacts_bulk_addition_requests)
     

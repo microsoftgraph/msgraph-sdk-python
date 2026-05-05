@@ -49,10 +49,10 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignmentsRequestBuilderGetQueryParameters]] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
         """
-        Retrieve the list of appRoleAssignments that are currently granted to a user. This operation also returns app role assignments granted to groups that the user is a direct member of.
+        Retrieve the list of appRoleAssignments granted to an agentUser.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-approleassignments?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentuser-list-approleassignments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +70,11 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: AppRoleAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[AppRoleAssignment]:
         """
-        Assign an app role to a user, creating an appRoleAssignment object. To grant an app role assignment to a user, you need three identifiers:
+        Grant an app role assignment to an agentUser.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-approleassignments?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agentuser-post-approleassignments?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -94,7 +94,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AppRoleAssignmentsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the list of appRoleAssignments that are currently granted to a user. This operation also returns app role assignments granted to groups that the user is a direct member of.
+        Retrieve the list of appRoleAssignments granted to an agentUser.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +105,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: AppRoleAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Assign an app role to a user, creating an appRoleAssignment object. To grant an app role assignment to a user, you need three identifiers:
+        Grant an app role assignment to an agentUser.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppRoleAssignmentsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of appRoleAssignments that are currently granted to a user. This operation also returns app role assignments granted to groups that the user is a direct member of.
+        Retrieve the list of appRoleAssignments granted to an agentUser.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

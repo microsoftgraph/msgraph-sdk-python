@@ -1,0 +1,45 @@
+trigger: none
+pr: none
+
+schedules:
+  - cron: '0 0 * * 1,3'
+    displayName: Monday and Wednesday builds
+    branches:
+      include:
+        - main
+    always: true
+
+resources:
+  repositories:
+    - repository: 1ESPipelineTemplates
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
+
+extends:
+  template: v1/1ES.Unofficial.PipelineTemplate.yml@1ESPipelineTemplates
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      os: linux
+    stages:
+      - stage: Build
+        jobs:
+          - job: Build
+            displayName: Build Python SDK
+            steps:
+              - checkout: self
+                submodules: recursive
+
+              - task: UsePythonVersion@0
+                displayName: Set up Python
+                inputs:
+                  versionSpec: '3.12'
+
+              - script: python -m pip install --upgrade pip
+                displayName: Upgrade pip
+                workingDirectory: $(Build.SourcesDirectory)
+
+              - script: pip install -e ".[dev]"
+                displayName: Install dependencies
+                workingDirectory: $(Build.SourcesDirectory)

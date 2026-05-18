@@ -7,8 +7,8 @@
   // "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
   // "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
   // "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
-  //"image": "mcr.microsoft.com/devcontainers/python:3.13-bookworm",
-  "image": "mcr.microsoft.com/devcontainers/python:3.13-bullseye",
+  //"image": "mcr.microsoft.com/devcontainers/python:3.14-bookworm",
+  "image": "mcr.microsoft.com/devcontainers/python:3.14-bullseye",
 
   "features": {
     "ghcr.io/hspaans/devcontainer-features/pytest:1": {},

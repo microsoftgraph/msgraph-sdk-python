@@ -13,7 +13,7 @@ from .granular_restore_artifact_base import GranularRestoreArtifactBase
 class GranularSiteRestoreArtifact(GranularRestoreArtifactBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The siteId property
+    # Id of the site in which artifact is present.
     site_id: Optional[str] = None
     
     @staticmethod

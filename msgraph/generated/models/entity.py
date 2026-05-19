@@ -1010,6 +1010,8 @@ if TYPE_CHECKING:
     from .user_solution_root import UserSolutionRoot
     from .user_storage import UserStorage
     from .user_teamwork import UserTeamwork
+    from .verifiable_credentials_authentication_method_configuration import VerifiableCredentialsAuthenticationMethodConfiguration
+    from .verifiable_credential_authentication_method_target import VerifiableCredentialAuthenticationMethodTarget
     from .verified_id_profile import VerifiedIdProfile
     from .vertical_section import VerticalSection
     from .virtual_endpoint import VirtualEndpoint
@@ -5177,6 +5179,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_teamwork import UserTeamwork
 
             return UserTeamwork()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.verifiableCredentialAuthenticationMethodTarget".casefold():
+            from .verifiable_credential_authentication_method_target import VerifiableCredentialAuthenticationMethodTarget
+
+            return VerifiableCredentialAuthenticationMethodTarget()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.verifiableCredentialsAuthenticationMethodConfiguration".casefold():
+            from .verifiable_credentials_authentication_method_configuration import VerifiableCredentialsAuthenticationMethodConfiguration
+
+            return VerifiableCredentialsAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.verifiedIdProfile".casefold():
             from .verified_id_profile import VerifiedIdProfile
 
@@ -6636,6 +6646,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_solution_root import UserSolutionRoot
         from .user_storage import UserStorage
         from .user_teamwork import UserTeamwork
+        from .verifiable_credentials_authentication_method_configuration import VerifiableCredentialsAuthenticationMethodConfiguration
+        from .verifiable_credential_authentication_method_target import VerifiableCredentialAuthenticationMethodTarget
         from .verified_id_profile import VerifiedIdProfile
         from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint
@@ -7753,6 +7765,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_solution_root import UserSolutionRoot
         from .user_storage import UserStorage
         from .user_teamwork import UserTeamwork
+        from .verifiable_credentials_authentication_method_configuration import VerifiableCredentialsAuthenticationMethodConfiguration
+        from .verifiable_credential_authentication_method_target import VerifiableCredentialAuthenticationMethodTarget
         from .verified_id_profile import VerifiedIdProfile
         from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint

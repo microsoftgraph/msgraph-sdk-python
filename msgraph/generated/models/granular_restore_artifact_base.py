@@ -15,25 +15,25 @@ from .entity import Entity
 
 @dataclass
 class GranularRestoreArtifactBase(Entity, Parsable):
-    # The browseSessionId property
+    # The unique identifier of the browseSession
     browse_session_id: Optional[str] = None
-    # The completionDateTime property
+    # Date time when the artifact's restoration completes.
     completion_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The restorePointDateTime property
+    # The restore point date time to which the artifact is restored.
     restore_point_date_time: Optional[datetime.datetime] = None
-    # The restoredItemKey property
+    # The unique identifier for the restored artifact.
     restored_item_key: Optional[str] = None
-    # The restoredItemPath property
+    # The path of the restored artifact. It's the path of the folder where all the artifacts are restored within a granular restore session.
     restored_item_path: Optional[str] = None
-    # The restoredItemWebUrl property
+    # The web url of the restored artifact.
     restored_item_web_url: Optional[str] = None
-    # The startDateTime property
+    # The start time of the restoration.
     start_date_time: Optional[datetime.datetime] = None
     # The status property
     status: Optional[ArtifactRestoreStatus] = None
-    # The webUrl property
+    # The original web url of the artifact being restored.
     web_url: Optional[str] = None
     
     @staticmethod

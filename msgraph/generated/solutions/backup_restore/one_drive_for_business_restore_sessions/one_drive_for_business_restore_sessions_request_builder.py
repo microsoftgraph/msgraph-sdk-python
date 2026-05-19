@@ -69,7 +69,7 @@ class OneDriveForBusinessRestoreSessionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: OneDriveForBusinessRestoreSession, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[OneDriveForBusinessRestoreSession]:
         """
-        Create a new oneDriveForBusinessRestoreSession object.
+        Create a new oneDriveForBusinessRestoreSession object. To create a granular restore session, granular drive restore artifacts must be present in the payload. A request can't include both granularDriveRestoreArtifact and driveRestoreArtifact in the same create or update request. If no payload is provided when you create the restore session, the request creates an empty standard restore session by default.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OneDriveForBusinessRestoreSession]
@@ -104,7 +104,7 @@ class OneDriveForBusinessRestoreSessionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: OneDriveForBusinessRestoreSession, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new oneDriveForBusinessRestoreSession object.
+        Create a new oneDriveForBusinessRestoreSession object. To create a granular restore session, granular drive restore artifacts must be present in the payload. A request can't include both granularDriveRestoreArtifact and driveRestoreArtifact in the same create or update request. If no payload is provided when you create the restore session, the request creates an empty standard restore session by default.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

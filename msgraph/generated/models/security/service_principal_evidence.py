@@ -14,17 +14,17 @@ from .alert_evidence import AlertEvidence
 class ServicePrincipalEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.servicePrincipalEvidence"
-    # The appId property
+    # The unique identifier for the associated application, represented by its appId property.
     app_id: Optional[str] = None
-    # The appOwnerTenantId property
+    # The tenant ID where the application is registered.
     app_owner_tenant_id: Optional[str] = None
-    # The servicePrincipalName property
+    # The display name for the service principal.
     service_principal_name: Optional[str] = None
-    # The servicePrincipalObjectId property
+    # The unique identifier for the service principal.
     service_principal_object_id: Optional[str] = None
-    # The servicePrincipalType property
+    # The service principal type. Possible values are: unknown, application, managedIdentity, legacy, unknownFutureValue.
     service_principal_type: Optional[ServicePrincipalType] = None
-    # The tenantId property
+    # The Microsoft Entra tenant ID of the service principal.
     tenant_id: Optional[str] = None
     
     @staticmethod

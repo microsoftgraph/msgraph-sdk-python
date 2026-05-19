@@ -13,7 +13,7 @@ from .entity import Entity
 
 @dataclass
 class ExchangeAdmin(Entity, Parsable):
-    # The mailboxes property
+    # Represents a user's mailboxes.
     mailboxes: Optional[list[Mailbox]] = None
     # The OdataType property
     odata_type: Optional[str] = None

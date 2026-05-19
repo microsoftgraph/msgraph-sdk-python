@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_credential_restriction_type import AppCredentialRestrictionType
+    from .app_management_policy_actor_exemptions import AppManagementPolicyActorExemptions
     from .app_management_restriction_state import AppManagementRestrictionState
 
 @dataclass
@@ -17,6 +18,8 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsabl
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # Collection of custom security attribute exemptions. If an actor user or service principal has the custom security attribute defined in this section, they're exempted from the restriction.  This means that calls the user or service principal makes to create or update apps are exempt from this policy enforcement.
+    exclude_actors: Optional[AppManagementPolicyActorExemptions] = None
     # String value that indicates the maximum lifetime for password expiration, defined as an ISO 8601 duration. For example, P4DT12H30M5S represents four days, 12 hours, 30 minutes, and five seconds. This property is required when restrictionType is set to passwordLifetime.
     max_lifetime: Optional[datetime.timedelta] = None
     # The OdataType property
@@ -45,12 +48,15 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsabl
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_credential_restriction_type import AppCredentialRestrictionType
+        from .app_management_policy_actor_exemptions import AppManagementPolicyActorExemptions
         from .app_management_restriction_state import AppManagementRestrictionState
 
         from .app_credential_restriction_type import AppCredentialRestrictionType
+        from .app_management_policy_actor_exemptions import AppManagementPolicyActorExemptions
         from .app_management_restriction_state import AppManagementRestrictionState
 
         fields: dict[str, Callable[[Any], None]] = {
+            "excludeActors": lambda n : setattr(self, 'exclude_actors', n.get_object_value(AppManagementPolicyActorExemptions)),
             "maxLifetime": lambda n : setattr(self, 'max_lifetime', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "restrictForAppsCreatedAfterDateTime": lambda n : setattr(self, 'restrict_for_apps_created_after_date_time', n.get_datetime_value()),
@@ -67,6 +73,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsabl
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_object_value("excludeActors", self.exclude_actors)
         writer.write_timedelta_value("maxLifetime", self.max_lifetime)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("restrictForAppsCreatedAfterDateTime", self.restrict_for_apps_created_after_date_time)

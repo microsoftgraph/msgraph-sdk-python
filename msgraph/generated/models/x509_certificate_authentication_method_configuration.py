@@ -21,7 +21,7 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
     odata_type: Optional[str] = "#microsoft.graph.x509CertificateAuthenticationMethodConfiguration"
     # Defines strong authentication configurations. This configuration includes the default authentication mode and the different rules for strong authentication bindings.
     authentication_mode_configuration: Optional[X509CertificateAuthenticationModeConfiguration] = None
-    # The certificateAuthorityScopes property
+    # Defines configuration to allow a group of users to use certificates from specific issuing certificate authorities to successfully authenticate.
     certificate_authority_scopes: Optional[list[X509CertificateAuthorityScope]] = None
     # Defines fields in the X.509 certificate that map to attributes of the Microsoft Entra user object in order to bind the certificate to the user. The priority of the object determines the order in which the binding is carried out. The first binding that matches will be used and the rest ignored.
     certificate_user_bindings: Optional[list[X509CertificateUserBinding]] = None
@@ -29,7 +29,7 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
     crl_validation_configuration: Optional[X509CertificateCRLValidationConfiguration] = None
     # A collection of groups that are enabled to use the authentication method.
     include_targets: Optional[list[AuthenticationMethodTarget]] = None
-    # The issuerHintsConfiguration property
+    # Determines whether issuer(CA) hints are sent back to the client side to filter the certificates shown in certificate picker.
     issuer_hints_configuration: Optional[X509CertificateIssuerHintsConfiguration] = None
     
     @staticmethod

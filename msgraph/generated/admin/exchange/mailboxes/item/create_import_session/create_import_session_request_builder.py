@@ -32,9 +32,10 @@ class CreateImportSessionRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MailboxItemImportSession]:
         """
-        Invoke action createImportSession
+        Create a session to import an Exchange mailbox item that was exported using the exportItems API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailboxItemImportSession]
+        Find more info here: https://learn.microsoft.com/graph/api/mailbox-createimportsession?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -52,7 +53,7 @@ class CreateImportSessionRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action createImportSession
+        Create a session to import an Exchange mailbox item that was exported using the exportItems API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

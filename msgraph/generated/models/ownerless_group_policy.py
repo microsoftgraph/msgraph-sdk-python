@@ -15,17 +15,17 @@ from .entity import Entity
 class OwnerlessGroupPolicy(Entity, Parsable):
     # The emailInfo property
     email_info: Optional[EmailDetails] = None
-    # The enabledGroupIds property
+    # The collection of IDs for groups to which the policy is enabled. If empty, the policy is enabled for all groups in the tenant.
     enabled_group_ids: Optional[list[str]] = None
-    # The isEnabled property
+    # Indicates whether the ownerless group policy is enabled in the tenant. Setting this property to false clears the values of all other policy parameters.
     is_enabled: Optional[bool] = None
-    # The maxMembersToNotify property
+    # The maximum number of members to notify. Value range is 0-90. Members are prioritized by recent group activity (most active first). If there aren't enough active members to fill the limit, remaining slots are filled with other eligible group members from the directory.
     max_members_to_notify: Optional[int] = None
-    # The notificationDurationInWeeks property
+    # The number of weeks for the notification duration. Value range is 1-7.
     notification_duration_in_weeks: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The policyWebUrl property
+    # The URL to the policy documentation.
     policy_web_url: Optional[str] = None
     # The targetOwners property
     target_owners: Optional[TargetOwners] = None

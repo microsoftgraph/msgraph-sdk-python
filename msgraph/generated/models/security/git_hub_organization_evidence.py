@@ -13,17 +13,17 @@ from .alert_evidence import AlertEvidence
 class GitHubOrganizationEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.gitHubOrganizationEvidence"
-    # The company property
+    # The name of the company that owns the organization.
     company: Optional[str] = None
-    # The displayName property
+    # The display name of the organization.
     display_name: Optional[str] = None
-    # The email property
+    # The email address of the organization.
     email: Optional[str] = None
-    # The login property
+    # The login (name) of the organization.
     login: Optional[str] = None
-    # The orgId property
+    # The unique and immutable ID of the organization.
     org_id: Optional[str] = None
-    # The webUrl property
+    # The URL of the web page for the organization.
     web_url: Optional[str] = None
     
     @staticmethod

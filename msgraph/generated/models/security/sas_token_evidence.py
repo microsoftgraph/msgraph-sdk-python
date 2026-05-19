@@ -15,25 +15,25 @@ from .alert_evidence import AlertEvidence
 class SasTokenEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.sasTokenEvidence"
-    # The allowedIpAddresses property
+    # All IP addresses accessible with this SAS. The default value is Allows all IP addresses.
     allowed_ip_addresses: Optional[str] = None
-    # The allowedResourceTypes property
+    # All resource types accessible with this SAS.
     allowed_resource_types: Optional[list[str]] = None
-    # The allowedServices property
+    # All services accessible with this SAS.
     allowed_services: Optional[list[str]] = None
-    # The expiryDateTime property
+    # The SAS expiration time. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024 is 2024-01-01T00:00:00Z.
     expiry_date_time: Optional[datetime.datetime] = None
-    # The permissions property
+    # All permissions granted to this SAS.
     permissions: Optional[list[str]] = None
-    # The protocol property
+    # The protocol that is allowed with this SAS.
     protocol: Optional[str] = None
-    # The signatureHash property
+    # The SAS signature hash, which is a unique identifier for each SAS.
     signature_hash: Optional[str] = None
-    # The signedWith property
+    # The storage key that was used to generate the SAS.
     signed_with: Optional[str] = None
-    # The startDateTime property
+    # The SAS activation time. This property can be null. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024 is 2024-01-01T00:00:00Z.
     start_date_time: Optional[datetime.datetime] = None
-    # The storageResource property
+    # A link to the storage resource for this SAS.
     storage_resource: Optional[AzureResourceEvidence] = None
     
     @staticmethod

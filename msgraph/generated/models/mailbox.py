@@ -14,7 +14,7 @@ from .directory_object import DirectoryObject
 class Mailbox(DirectoryObject, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mailbox"
-    # The folders property
+    # The collection of folders in the mailbox.
     folders: Optional[list[MailboxFolder]] = None
     
     @staticmethod

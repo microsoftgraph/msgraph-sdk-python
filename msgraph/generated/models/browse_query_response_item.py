@@ -15,19 +15,19 @@ class BrowseQueryResponseItem(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The itemKey property
+    # Unique identifier of the returned item.
     item_key: Optional[str] = None
-    # The itemsCount property
+    # The count of items present within the items; for example, the count of files in a folder.
     items_count: Optional[int] = None
-    # The name property
+    # The name of the item.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The sizeInBytes property
+    # The size of the item in bytes.
     size_in_bytes: Optional[str] = None
     # The type property
     type: Optional[BrowseQueryResponseItemType] = None
-    # The webUrl property
+    # The web URL of the item.
     web_url: Optional[str] = None
     
     @staticmethod

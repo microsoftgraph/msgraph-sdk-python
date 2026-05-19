@@ -15,15 +15,15 @@ from .alert_evidence import AlertEvidence
 class NetworkConnectionEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.networkConnectionEvidence"
-    # The destinationAddress property
+    # An entity of type IP that is the destination for this connection.
     destination_address: Optional[IpEvidence] = None
-    # The destinationPort property
+    # The destination port number. For example, 80.
     destination_port: Optional[int] = None
-    # The protocol property
+    # The protocol type. Possible values are tcp, udp, unknownFutureValue.
     protocol: Optional[ProtocolType] = None
-    # The sourceAddress property
+    # An entity of type IP that is the source for this connection.
     source_address: Optional[IpEvidence] = None
-    # The sourcePort property
+    # The source port number. For example, 80.
     source_port: Optional[int] = None
     
     @staticmethod

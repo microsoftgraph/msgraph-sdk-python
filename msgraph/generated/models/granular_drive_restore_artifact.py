@@ -11,7 +11,7 @@ from .granular_restore_artifact_base import GranularRestoreArtifactBase
 
 @dataclass
 class GranularDriveRestoreArtifact(GranularRestoreArtifactBase, Parsable):
-    # The directoryObjectId property
+    # Id of the drive in which artifact is present.
     directory_object_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -14,13 +14,13 @@ from .alert_evidence import AlertEvidence
 class DnsEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.dnsEvidence"
-    # The dnsServerIp property
+    # An IP entity that represents the DNS server that resolves the request.
     dns_server_ip: Optional[IpEvidence] = None
-    # The domainName property
+    # The name of the DNS record associated with the alert.
     domain_name: Optional[str] = None
-    # The hostIpAddress property
+    # An IP entity that represents the DNS request client.
     host_ip_address: Optional[IpEvidence] = None
-    # The ipAddresses property
+    # IP entities that represent the resolved IP addresses.
     ip_addresses: Optional[list[IpEvidence]] = None
     
     @staticmethod

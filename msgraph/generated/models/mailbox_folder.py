@@ -14,25 +14,25 @@ from .entity import Entity
 
 @dataclass
 class MailboxFolder(Entity, Parsable):
-    # The childFolderCount property
+    # The number of immediate child folders in the current folder.
     child_folder_count: Optional[int] = None
-    # The childFolders property
+    # The collection of child folders in this folder.
     child_folders: Optional[list[MailboxFolder]] = None
-    # The displayName property
+    # The display name of the folder.
     display_name: Optional[str] = None
-    # The items property
+    # The collection of items in this folder.
     items: Optional[list[MailboxItem]] = None
-    # The multiValueExtendedProperties property
+    # The collection of multi-value extended properties defined for the mailboxFolder.
     multi_value_extended_properties: Optional[list[MultiValueLegacyExtendedProperty]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The parentFolderId property
+    # The unique identifier for the parent folder of this folder.
     parent_folder_id: Optional[str] = None
-    # The singleValueExtendedProperties property
+    # The collection of single-value extended properties defined for the mailboxFolder.
     single_value_extended_properties: Optional[list[SingleValueLegacyExtendedProperty]] = None
-    # The totalItemCount property
+    # The number of items in the folder.
     total_item_count: Optional[int] = None
-    # The type property
+    # Describes the folder class type.
     type: Optional[str] = None
     
     @staticmethod

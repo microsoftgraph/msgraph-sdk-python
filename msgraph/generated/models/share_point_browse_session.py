@@ -13,7 +13,7 @@ from .browse_session_base import BrowseSessionBase
 class SharePointBrowseSession(BrowseSessionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharePointBrowseSession"
-    # The siteId property
+    # Id of the backed-up SharePoint site.
     site_id: Optional[str] = None
     
     @staticmethod

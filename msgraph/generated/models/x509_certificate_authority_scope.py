@@ -15,13 +15,13 @@ class X509CertificateAuthorityScope(AdditionalDataHolder, BackedModel, Parsable)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The includeTargets property
+    # A collection of groups that are enabled to be in scope to use certificates issued by specific certificate authority.
     include_targets: Optional[list[IncludeTarget]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The publicKeyInfrastructureIdentifier property
+    # Public Key Infrastructure container object under which the certificate authorities are stored in the Entra PKI based trust store.
     public_key_infrastructure_identifier: Optional[str] = None
-    # The subjectKeyIdentifier property
+    # Subject Key Identifier that identifies the certificate authority uniquely.
     subject_key_identifier: Optional[str] = None
     
     @staticmethod

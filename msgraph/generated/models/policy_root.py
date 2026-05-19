@@ -64,7 +64,7 @@ class PolicyRoot(Entity, Parsable):
     identity_security_defaults_enforcement_policy: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The ownerlessGroupPolicy property
+    # The policy configuration for managing groups that have lost their sole owner.
     ownerless_group_policy: Optional[OwnerlessGroupPolicy] = None
     # The policy that specifies the conditions under which consent can be granted.
     permission_grant_policies: Optional[list[PermissionGrantPolicy]] = None

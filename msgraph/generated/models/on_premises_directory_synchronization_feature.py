@@ -12,6 +12,8 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The allowOnPremUpdateOfOnPremisesObjectIdentifierEnabled property
+    allow_on_prem_update_of_on_premises_object_identifier_enabled: Optional[bool] = None
     # Used to block cloud object takeover via source anchor hard match if enabled.
     block_cloud_object_takeover_through_hard_match_enabled: Optional[bool] = None
     # Use to block soft match for all objects if enabled for the  tenant. Customers are encouraged to enable this feature and keep it enabled until soft matching is required again for their tenancy. This flag should be enabled again after any soft matching has been completed and is no longer needed.
@@ -70,6 +72,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         fields: dict[str, Callable[[Any], None]] = {
+            "allowOnPremUpdateOfOnPremisesObjectIdentifierEnabled": lambda n : setattr(self, 'allow_on_prem_update_of_on_premises_object_identifier_enabled', n.get_bool_value()),
             "blockCloudObjectTakeoverThroughHardMatchEnabled": lambda n : setattr(self, 'block_cloud_object_takeover_through_hard_match_enabled', n.get_bool_value()),
             "blockSoftMatchEnabled": lambda n : setattr(self, 'block_soft_match_enabled', n.get_bool_value()),
             "bypassDirSyncOverridesEnabled": lambda n : setattr(self, 'bypass_dir_sync_overrides_enabled', n.get_bool_value()),
@@ -101,6 +104,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_bool_value("allowOnPremUpdateOfOnPremisesObjectIdentifierEnabled", self.allow_on_prem_update_of_on_premises_object_identifier_enabled)
         writer.write_bool_value("blockCloudObjectTakeoverThroughHardMatchEnabled", self.block_cloud_object_takeover_through_hard_match_enabled)
         writer.write_bool_value("blockSoftMatchEnabled", self.block_soft_match_enabled)
         writer.write_bool_value("bypassDirSyncOverridesEnabled", self.bypass_dir_sync_overrides_enabled)

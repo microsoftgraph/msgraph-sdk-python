@@ -48,11 +48,11 @@ class Channel(Entity, Parsable):
     membership_type: Optional[ChannelMembershipType] = None
     # A collection of all the messages in the channel. A navigation property. Nullable.
     messages: Optional[list[ChatMessage]] = None
-    # The migrationMode property
+    # Indicates whether a channel is in migration mode. This value is null for channels that never entered migration mode. The possible values are: inProgress, completed, unknownFutureValue.
     migration_mode: Optional[MigrationMode] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The originalCreatedDateTime property
+    # Timestamp of the original creation time for the channel. The value is null if the channel never entered migration mode.
     original_created_date_time: Optional[datetime.datetime] = None
     # A collection of teams with which a channel is shared.
     shared_with_teams: Optional[list[SharedWithChannelTeamInfo]] = None

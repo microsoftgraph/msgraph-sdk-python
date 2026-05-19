@@ -12,10 +12,10 @@ authors = [{name = "Microsoft", email = "graphtooling+python@microsoft.com"}]
 description = "The Microsoft Graph Python SDK"
 dependencies = [
     "azure-identity >=1.12.0",
-    "microsoft-kiota-serialization-json >=1.8.0,<2.0.0",
-    "microsoft-kiota-serialization-text >=1.8.0,<2.0.0",
-    "microsoft-kiota-serialization-form >=1.8.0,<2.0.0",
-    "microsoft-kiota-serialization-multipart >=1.8.0,<2.0.0",
+    "microsoft-kiota-serialization-json >=1.10.1,<2.0.0",
+    "microsoft-kiota-serialization-text >=1.10.1,<2.0.0",
+    "microsoft-kiota-serialization-form >=1.10.1,<2.0.0",
+    "microsoft-kiota-serialization-multipart >=1.10.1,<2.0.0",
     "msgraph_core >=1.3.1"
 
 ]

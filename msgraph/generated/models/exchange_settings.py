@@ -13,7 +13,7 @@ from .entity import Entity
 class ExchangeSettings(Entity, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The primaryMailboxId property
+    # The unique identifier for the user's primary mailbox.
     primary_mailbox_id: Optional[str] = None
     
     @staticmethod

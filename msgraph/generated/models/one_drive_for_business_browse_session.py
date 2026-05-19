@@ -13,7 +13,7 @@ from .browse_session_base import BrowseSessionBase
 class OneDriveForBusinessBrowseSession(BrowseSessionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.oneDriveForBusinessBrowseSession"
-    # The directoryObjectId property
+    # Id of the backed-up OneDrive.
     directory_object_id: Optional[str] = None
     
     @staticmethod

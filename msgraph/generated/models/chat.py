@@ -39,13 +39,13 @@ class Chat(Entity, Parsable):
     members: Optional[list[ConversationMember]] = None
     # A collection of all the messages in the chat. Nullable.
     messages: Optional[list[ChatMessage]] = None
-    # The migrationMode property
+    # Indicates whether a chat is in migration mode. This value is null for chats that never entered migration mode. The possible values are: inProgress, completed, unknownFutureValue.
     migration_mode: Optional[MigrationMode] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
     online_meeting_info: Optional[TeamworkOnlineMeetingInfo] = None
-    # The originalCreatedDateTime property
+    # Timestamp of the original creation time for the chat. The value is null if the chat never entered migration mode.
     original_created_date_time: Optional[datetime.datetime] = None
     # A collection of permissions granted to apps for the chat.
     permission_grants: Optional[list[ResourceSpecificPermissionGrant]] = None

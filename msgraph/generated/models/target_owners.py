@@ -19,7 +19,7 @@ class TargetOwners(AdditionalDataHolder, BackedModel, Parsable):
     notify_members: Optional[NotifyMembers] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The securityGroups property
+    # The collection of IDs for security groups used for allowing or blocking filtering. When notifyMembers is all, all members are eligible for ownership and this collection can be empty. When notifyMembers is allowSelected, only members in these security groups are eligible. When notifyMembers is blockSelected, members in these security groups are excluded.
     security_groups: Optional[list[str]] = None
     
     @staticmethod

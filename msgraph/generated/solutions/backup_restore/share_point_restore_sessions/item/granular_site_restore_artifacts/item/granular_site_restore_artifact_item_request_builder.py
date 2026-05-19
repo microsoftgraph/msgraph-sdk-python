@@ -50,7 +50,7 @@ class GranularSiteRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GranularSiteRestoreArtifactItemRequestBuilderGetQueryParameters]] = None) -> Optional[GranularSiteRestoreArtifact]:
         """
-        Get granularSiteRestoreArtifacts from solutions
+        A collection of browse session ID and item key details that can be used to restore SharePoint files and folders.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GranularSiteRestoreArtifact]
         """
@@ -104,7 +104,7 @@ class GranularSiteRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GranularSiteRestoreArtifactItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get granularSiteRestoreArtifacts from solutions
+        A collection of browse session ID and item key details that can be used to restore SharePoint files and folders.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class GranularSiteRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GranularSiteRestoreArtifactItemRequestBuilderGetQueryParameters():
         """
-        Get granularSiteRestoreArtifacts from solutions
+        A collection of browse session ID and item key details that can be used to restore SharePoint files and folders.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

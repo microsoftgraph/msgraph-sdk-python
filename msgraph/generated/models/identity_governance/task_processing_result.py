@@ -19,15 +19,15 @@ class TaskProcessingResult(Entity, Parsable):
     completed_date_time: Optional[datetime.datetime] = None
     # The date time when the taskProcessingResult was created.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     created_date_time: Optional[datetime.datetime] = None
-    # Describes why the taskProcessingResult has failed.
+    # Describes why the taskProcessingResult failed.
     failure_reason: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The processingInfo property
+    # Additional human-readable context about the task processing outcome. This property contains information about edge cases where the task completed successfully but the expected action wasn't performed because the target was already in the desired state, such as when the user was already a member of the specified group. Returns null when no additional context is needed. Nullable.
     processing_info: Optional[str] = None
     # The processingStatus property
     processing_status: Optional[LifecycleWorkflowProcessingStatus] = None
-    # The date time when taskProcessingResult execution started. Value is null if task execution has not yet started.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
+    # The date time when taskProcessingResult execution started. Value is null if task execution hasn't started yet.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     started_date_time: Optional[datetime.datetime] = None
     # The subject property
     subject: Optional[User] = None

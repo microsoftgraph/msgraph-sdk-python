@@ -21,7 +21,7 @@ class UserSettings(Entity, Parsable):
     contribution_to_content_discovery_as_organization_disabled: Optional[bool] = None
     # When set to true, the delegate access to the user's trending API is disabled. When set to true, documents in the user's Office Delve are disabled. When set to true, the relevancy of the content displayed in Microsoft 365, for example in Suggested sites in SharePoint Home and the Discover view in OneDrive for work or school is affected. Users can control this setting in Office Delve.
     contribution_to_content_discovery_disabled: Optional[bool] = None
-    # The exchange property
+    # The Exchange settings for mailbox discovery.
     exchange: Optional[ExchangeSettings] = None
     # The user's settings for the visibility of meeting hour insights, and insights derived between a user and other items in Microsoft 365, such as documents or sites. Get userInsightsSettings through this navigation property.
     item_insights: Optional[UserInsightsSettings] = None

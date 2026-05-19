@@ -16,7 +16,7 @@ from .restore_session_base import RestoreSessionBase
 class SharePointRestoreSession(RestoreSessionBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.sharePointRestoreSession"
-    # The granularSiteRestoreArtifacts property
+    # A collection of browse session ID and item key details that can be used to restore SharePoint files and folders.
     granular_site_restore_artifacts: Optional[list[GranularSiteRestoreArtifact]] = None
     # A collection of restore points and destination details that can be used to restore SharePoint sites.
     site_restore_artifacts: Optional[list[SiteRestoreArtifact]] = None

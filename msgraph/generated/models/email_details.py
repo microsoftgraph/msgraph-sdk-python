@@ -12,13 +12,13 @@ class EmailDetails(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The body property
+    # The body content of the notification email in plain text format.
     body: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The senderEmailAddress property
+    # The email address of the sender for notification emails. Shared mailboxes aren't supported.
     sender_email_address: Optional[str] = None
-    # The subject property
+    # The subject line of the notification email.
     subject: Optional[str] = None
     
     @staticmethod

@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .app_management_configuration import AppManagementConfiguration
+    from .identifier_uri_configuration import IdentifierUriConfiguration
 
 from .app_management_configuration import AppManagementConfiguration
 
@@ -13,6 +14,8 @@ from .app_management_configuration import AppManagementConfiguration
 class AppManagementApplicationConfiguration(AppManagementConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.appManagementApplicationConfiguration"
+    # Configuration object for restrictions on identifierUris property for an application.
+    identifier_uris: Optional[IdentifierUriConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AppManagementApplicationConfiguration:
@@ -31,10 +34,13 @@ class AppManagementApplicationConfiguration(AppManagementConfiguration, Parsable
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .app_management_configuration import AppManagementConfiguration
+        from .identifier_uri_configuration import IdentifierUriConfiguration
 
         from .app_management_configuration import AppManagementConfiguration
+        from .identifier_uri_configuration import IdentifierUriConfiguration
 
         fields: dict[str, Callable[[Any], None]] = {
+            "identifierUris": lambda n : setattr(self, 'identifier_uris', n.get_object_value(IdentifierUriConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -49,5 +55,6 @@ class AppManagementApplicationConfiguration(AppManagementConfiguration, Parsable
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("identifierUris", self.identifier_uris)
     
 

@@ -16,17 +16,17 @@ from .entity import Entity
 
 @dataclass
 class BrowseSessionBase(Entity, Parsable):
-    # The backupSizeInBytes property
+    # The size of the backup in bytes.
     backup_size_in_bytes: Optional[str] = None
-    # The createdDateTime property
+    # The date and time when the browse session was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The error property
+    # Contains the error details if the browse session creation fails.
     error: Optional[PublicError] = None
-    # The expirationDateTime property
+    # The date and time after which the browse session is deleted automatically.
     expiration_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The restorePointDateTime property
+    # The date and time of the restore point on which the browse session is created.
     restore_point_date_time: Optional[datetime.datetime] = None
     # The restorePointId property
     restore_point_id: Optional[str] = None

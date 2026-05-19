@@ -49,7 +49,7 @@ class MailboxesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxesRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxCollectionResponse]:
         """
-        Get mailboxes from admin
+        Represents a user's mailboxes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailboxCollectionResponse]
         """
@@ -92,7 +92,7 @@ class MailboxesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MailboxesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get mailboxes from admin
+        Represents a user's mailboxes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class MailboxesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MailboxesRequestBuilderGetQueryParameters():
         """
-        Get mailboxes from admin
+        Represents a user's mailboxes.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

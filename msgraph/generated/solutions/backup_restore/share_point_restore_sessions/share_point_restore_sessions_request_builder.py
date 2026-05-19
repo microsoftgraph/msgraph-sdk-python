@@ -69,7 +69,7 @@ class SharePointRestoreSessionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: SharePointRestoreSession, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SharePointRestoreSession]:
         """
-        Create a new sharePointRestoreSession object.
+        Create a new sharePointRestoreSession object. To create a granular restore session, granular site restore artifacts must be present in the payload. A request can't include both granularSiteRestoreArtifact and siteRestoreArtifact in the same create or update request. If no payload is provided when you create the restore session, the request creates an empty standard restore session by default.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharePointRestoreSession]
@@ -104,7 +104,7 @@ class SharePointRestoreSessionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: SharePointRestoreSession, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a new sharePointRestoreSession object.
+        Create a new sharePointRestoreSession object. To create a granular restore session, granular site restore artifacts must be present in the payload. A request can't include both granularSiteRestoreArtifact and siteRestoreArtifact in the same create or update request. If no payload is provided when you create the restore session, the request creates an empty standard restore session by default.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

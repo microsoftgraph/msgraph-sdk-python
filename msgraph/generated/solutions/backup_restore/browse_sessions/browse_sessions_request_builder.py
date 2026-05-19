@@ -49,9 +49,10 @@ class BrowseSessionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[BrowseSessionsRequestBuilderGetQueryParameters]] = None) -> Optional[BrowseSessionBaseCollectionResponse]:
         """
-        Get browseSessions from solutions
+        Get a list of the browseSessionBase objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowseSessionBaseCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/backuprestoreroot-list-browsesessions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class BrowseSessionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[BrowseSessionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get browseSessions from solutions
+        Get a list of the browseSessionBase objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class BrowseSessionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BrowseSessionsRequestBuilderGetQueryParameters():
         """
-        Get browseSessions from solutions
+        Get a list of the browseSessionBase objects and their properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

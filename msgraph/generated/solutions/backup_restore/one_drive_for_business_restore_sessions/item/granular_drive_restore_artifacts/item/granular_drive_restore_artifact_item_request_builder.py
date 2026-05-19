@@ -50,7 +50,7 @@ class GranularDriveRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GranularDriveRestoreArtifactItemRequestBuilderGetQueryParameters]] = None) -> Optional[GranularDriveRestoreArtifact]:
         """
-        Get granularDriveRestoreArtifacts from solutions
+        A collection of browse session ID and item key details that can be used to restore OneDrive for work or school files and folders.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GranularDriveRestoreArtifact]
         """
@@ -104,7 +104,7 @@ class GranularDriveRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GranularDriveRestoreArtifactItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get granularDriveRestoreArtifacts from solutions
+        A collection of browse session ID and item key details that can be used to restore OneDrive for work or school files and folders.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class GranularDriveRestoreArtifactItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GranularDriveRestoreArtifactItemRequestBuilderGetQueryParameters():
         """
-        Get granularDriveRestoreArtifacts from solutions
+        A collection of browse session ID and item key details that can be used to restore OneDrive for work or school files and folders.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

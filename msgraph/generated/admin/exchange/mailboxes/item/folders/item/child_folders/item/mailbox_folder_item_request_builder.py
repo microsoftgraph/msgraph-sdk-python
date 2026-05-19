@@ -33,7 +33,7 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxFolderItemRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxFolder]:
         """
-        Get childFolders from admin
+        The collection of child folders in this folder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailboxFolder]
         """
@@ -53,7 +53,7 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MailboxFolderItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get childFolders from admin
+        The collection of child folders in this folder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,7 +84,7 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MailboxFolderItemRequestBuilderGetQueryParameters():
         """
-        Get childFolders from admin
+        The collection of child folders in this folder.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

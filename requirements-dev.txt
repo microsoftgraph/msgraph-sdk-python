@@ -55,7 +55,7 @@ platformdirs==4.4.0
 portalocker==2.10.1
 pycparser==3.0
 PyJWT==2.12.1
-pylint==3.3.9
+pylint==4.0.5
 pyproject_hooks==1.2.0
 python-dateutil==2.9.0.post0
 requests==2.34.2

@@ -14,23 +14,23 @@ from .alert_evidence import AlertEvidence
 class SubmissionMailEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.submissionMailEvidence"
-    # The networkMessageId property
+    # The network message ID of the email to which the submission belongs.
     network_message_id: Optional[str] = None
-    # The recipient property
+    # The recipient of the email.
     recipient: Optional[str] = None
-    # The reportType property
+    # The submission type for the specified instance that maps to Junk, Phish, Malware, or NotJunk.
     report_type: Optional[str] = None
-    # The sender property
+    # The sender of the email.
     sender: Optional[str] = None
-    # The senderIp property
+    # The sender's IP.
     sender_ip: Optional[str] = None
-    # The subject property
+    # The subject of the submission mail.
     subject: Optional[str] = None
-    # The submissionDateTime property
+    # The reported date and time of this submission. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024 is 2024-01-01T00:00:00Z.
     submission_date_time: Optional[datetime.datetime] = None
-    # The submissionId property
+    # The submission ID.
     submission_id: Optional[str] = None
-    # The submitter property
+    # The submitter's email address.
     submitter: Optional[str] = None
     
     @staticmethod

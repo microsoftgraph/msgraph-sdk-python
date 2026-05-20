@@ -16,7 +16,7 @@ class FileHashEvidence(AlertEvidence, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.security.fileHashEvidence"
     # The algorithm property
     algorithm: Optional[FileHashAlgorithm] = None
-    # The value property
+    # The hash value.
     value: Optional[str] = None
     
     @staticmethod

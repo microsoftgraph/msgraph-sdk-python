@@ -50,9 +50,10 @@ class SharePointBrowseSessionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SharePointBrowseSessionItemRequestBuilderGetQueryParameters]] = None) -> Optional[SharePointBrowseSession]:
         """
-        Get sharePointBrowseSessions from solutions
+        Read the properties and relationships of sharePointBrowseSession object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharePointBrowseSession]
+        Find more info here: https://learn.microsoft.com/graph/api/sharepointbrowsesession-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +105,7 @@ class SharePointBrowseSessionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SharePointBrowseSessionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get sharePointBrowseSessions from solutions
+        Read the properties and relationships of sharePointBrowseSession object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +149,7 @@ class SharePointBrowseSessionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharePointBrowseSessionItemRequestBuilderGetQueryParameters():
         """
-        Get sharePointBrowseSessions from solutions
+        Read the properties and relationships of sharePointBrowseSession object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

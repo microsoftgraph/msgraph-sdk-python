@@ -28,7 +28,7 @@ class IoTDeviceEvidence(AlertEvidence, Parsable):
     device_sub_type: Optional[str] = None
     # The type of the device. For example, 'temperature sensor,' 'freezer,' 'wind turbine,' and so on.
     device_type: Optional[str] = None
-    # The importance level for the IoT device. Possible values are low, normal, high, and unknownFutureValue.
+    # The importance level for the IoT device. The possible values are: unknown, low, normal, high, unknownFutureValue.
     importance: Optional[IoTDeviceImportanceType] = None
     # The azureResourceEvidence entity that represents the IoT Hub that the device belongs to.
     io_t_hub: Optional[AzureResourceEvidence] = None

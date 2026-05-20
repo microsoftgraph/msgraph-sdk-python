@@ -32,9 +32,10 @@ class MailboxItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxItemItemRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxItem]:
         """
-        Get items from admin
+        Read the properties and relationships of a mailboxItem object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailboxItem]
+        Find more info here: https://learn.microsoft.com/graph/api/mailboxitem-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,7 +53,7 @@ class MailboxItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MailboxItemItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get items from admin
+        Read the properties and relationships of a mailboxItem object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +75,7 @@ class MailboxItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MailboxItemItemRequestBuilderGetQueryParameters():
         """
-        Get items from admin
+        Read the properties and relationships of a mailboxItem object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

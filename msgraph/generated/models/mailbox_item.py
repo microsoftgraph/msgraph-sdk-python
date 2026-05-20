@@ -15,13 +15,13 @@ from .outlook_item import OutlookItem
 class MailboxItem(OutlookItem, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mailboxItem"
-    # The multiValueExtendedProperties property
+    # The collection of multi-value extended properties defined for the mailboxItem.
     multi_value_extended_properties: Optional[list[MultiValueLegacyExtendedProperty]] = None
-    # The singleValueExtendedProperties property
+    # The collection of single-value extended properties defined for the mailboxItem.
     single_value_extended_properties: Optional[list[SingleValueLegacyExtendedProperty]] = None
-    # The size property
+    # The length of the item in bytes.
     size: Optional[int] = None
-    # The type property
+    # The message class ID of the item.
     type: Optional[str] = None
     
     @staticmethod

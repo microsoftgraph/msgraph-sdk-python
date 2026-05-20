@@ -86,6 +86,8 @@ class Group(DirectoryObject, Parsable):
     hide_from_address_lists: Optional[bool] = None
     # True if the group isn't displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. The default value is false. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     hide_from_outlook_clients: Optional[bool] = None
+    # The infoCatalogs property
+    info_catalogs: Optional[list[str]] = None
     # When a group is associated with a team, this property determines whether the team is in read-only mode.To read this property, use the /group/{groupId}/team endpoint or the Get team API. To update this property, use the archiveTeam and unarchiveTeam APIs.
     is_archived: Optional[bool] = None
     # Indicates whether this group can be assigned to a Microsoft Entra role. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group can't be a dynamic group (that is, groupTypes can't contain DynamicMembership). Only callers with at least the Privileged Role Administrator role can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Microsoft Entra role assignmentsUsing this feature requires a Microsoft Entra ID P1 license. Returned by default. Supports $filter (eq, ne, not).
@@ -270,6 +272,7 @@ class Group(DirectoryObject, Parsable):
             "hasMembersWithLicenseErrors": lambda n : setattr(self, 'has_members_with_license_errors', n.get_bool_value()),
             "hideFromAddressLists": lambda n : setattr(self, 'hide_from_address_lists', n.get_bool_value()),
             "hideFromOutlookClients": lambda n : setattr(self, 'hide_from_outlook_clients', n.get_bool_value()),
+            "infoCatalogs": lambda n : setattr(self, 'info_catalogs', n.get_collection_of_primitive_values(str)),
             "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "isAssignableToRole": lambda n : setattr(self, 'is_assignable_to_role', n.get_bool_value()),
             "isManagementRestricted": lambda n : setattr(self, 'is_management_restricted', n.get_bool_value()),
@@ -356,6 +359,7 @@ class Group(DirectoryObject, Parsable):
         writer.write_bool_value("hasMembersWithLicenseErrors", self.has_members_with_license_errors)
         writer.write_bool_value("hideFromAddressLists", self.hide_from_address_lists)
         writer.write_bool_value("hideFromOutlookClients", self.hide_from_outlook_clients)
+        writer.write_collection_of_primitive_values("infoCatalogs", self.info_catalogs)
         writer.write_bool_value("isArchived", self.is_archived)
         writer.write_bool_value("isAssignableToRole", self.is_assignable_to_role)
         writer.write_bool_value("isManagementRestricted", self.is_management_restricted)

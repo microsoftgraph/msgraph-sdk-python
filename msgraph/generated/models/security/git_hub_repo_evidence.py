@@ -13,15 +13,15 @@ from .alert_evidence import AlertEvidence
 class GitHubRepoEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.gitHubRepoEvidence"
-    # The baseUrl property
+    # The base URL of the web page for the repository.
     base_url: Optional[str] = None
-    # The login property
+    # The login (name) of the repository.
     login: Optional[str] = None
-    # The owner property
+    # The login of the owner of the repository.
     owner: Optional[str] = None
-    # The ownerType property
+    # The type of owner of the repository, for example, User or Organization.
     owner_type: Optional[str] = None
-    # The repoId property
+    # The unique and immutable ID of the GitHub repository.
     repo_id: Optional[str] = None
     
     @staticmethod

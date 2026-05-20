@@ -64,7 +64,7 @@ class BrowseSessionBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[BrowseSessionBaseItemRequestBuilderGetQueryParameters]] = None) -> Optional[BrowseSessionBase]:
         """
-        Get browseSessions from solutions
+        The list of browse sessions in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowseSessionBase]
         """
@@ -118,7 +118,7 @@ class BrowseSessionBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[BrowseSessionBaseItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get browseSessions from solutions
+        The list of browse sessions in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -171,7 +171,7 @@ class BrowseSessionBaseItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BrowseSessionBaseItemRequestBuilderGetQueryParameters():
         """
-        Get browseSessions from solutions
+        The list of browse sessions in the tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

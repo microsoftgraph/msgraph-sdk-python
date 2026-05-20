@@ -13,9 +13,9 @@ class MailboxItemImportSession(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The expirationDateTime property
+    # The date and time in UTC when the import session expires. The date and time information uses ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z.
     expiration_date_time: Optional[datetime.datetime] = None
-    # The importUrl property
+    # The URL endpoint that accepts POST requests for uploading a mailbox item exported using exportItems.
     import_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

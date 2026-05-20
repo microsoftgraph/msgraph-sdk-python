@@ -15,13 +15,13 @@ class ExportItemResponse(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The changeKey property
+    # The version of the item.
     change_key: Optional[str] = None
-    # The data property
+    # Data that represents an item in a Base64-encoded opaque stream.
     data: Optional[bytes] = None
-    # The error property
+    # An error that occurs during an action.
     error: Optional[MailTipsError] = None
-    # The itemId property
+    # The unique identifier of the item.
     item_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

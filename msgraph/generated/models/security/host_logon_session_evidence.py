@@ -16,15 +16,15 @@ from .alert_evidence import AlertEvidence
 class HostLogonSessionEvidence(AlertEvidence, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.hostLogonSessionEvidence"
-    # The account property
+    # The account that is associated with the sign-in session ID.
     account: Optional[UserEvidence] = None
-    # The endUtcDateTime property
+    # The session end time, if known. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024 is 2024-01-01T00:00:00Z.
     end_utc_date_time: Optional[datetime.datetime] = None
-    # The host property
+    # The host for the session.
     host: Optional[DeviceEvidence] = None
-    # The sessionId property
+    # The session ID for the account reported in the alert, for example, 0x3e7.
     session_id: Optional[str] = None
-    # The startUtcDateTime property
+    # The session start time, if known. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024 is 2024-01-01T00:00:00Z.
     start_utc_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

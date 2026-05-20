@@ -32,7 +32,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> Optional[DeltaGetResponse]:
         """
-        Invoke function delta
+        Get a set of mailboxItem objects that were added, deleted, or updated in a specified mailboxFolder. A delta function call for items in a folder is similar to a GET request, except that by appropriately applying state tokens in one or more of these calls, you can query for incremental changes in the items in that folder. This approach allows you to maintain and synchronize a local store of a user's mailbox items without having to fetch the entire set of items from the server every time.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
         """
@@ -52,7 +52,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeltaRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Invoke function delta
+        Get a set of mailboxItem objects that were added, deleted, or updated in a specified mailboxFolder. A delta function call for items in a folder is similar to a GET request, except that by appropriately applying state tokens in one or more of these calls, you can query for incremental changes in the items in that folder. This approach allows you to maintain and synchronize a local store of a user's mailbox items without having to fetch the entire set of items from the server every time.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeltaRequestBuilderGetQueryParameters():
         """
-        Invoke function delta
+        Get a set of mailboxItem objects that were added, deleted, or updated in a specified mailboxFolder. A delta function call for items in a folder is similar to a GET request, except that by appropriately applying state tokens in one or more of these calls, you can query for incremental changes in the items in that folder. This approach allows you to maintain and synchronize a local store of a user's mailbox items without having to fetch the entire set of items from the server every time.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -20,7 +20,7 @@ class OneDriveForBusinessRestoreSession(RestoreSessionBase, Parsable):
     drive_restore_artifacts: Optional[list[DriveRestoreArtifact]] = None
     # A collection of user mailboxes and destination details that can be used to restore a OneDrive for work or school drive.
     drive_restore_artifacts_bulk_addition_requests: Optional[list[DriveRestoreArtifactsBulkAdditionRequest]] = None
-    # The granularDriveRestoreArtifacts property
+    # A collection of browse session ID and item key details that can be used to restore OneDrive for work or school files and folders.
     granular_drive_restore_artifacts: Optional[list[GranularDriveRestoreArtifact]] = None
     
     @staticmethod

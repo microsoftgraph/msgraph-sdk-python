@@ -1,6 +1,6 @@
 aiohttp==3.13.5
 aiosignal==1.4.0
-anyio==4.12.1
+anyio==4.13.0
 astroid==4.0.2
 async-timeout==5.0.1
 attrs==26.1.0

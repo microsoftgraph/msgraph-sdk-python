@@ -21,6 +21,7 @@ extends:
   parameters:
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
+      image: ubuntu-latest
       os: linux
     sdl:
       sourceAnalysisPool:
@@ -47,10 +48,16 @@ extends:
                 inputs:
                   versionSpec: '3.12'
 
+              - task: PipAuthenticate@1
+                displayName: Authenticate with Azure Artifacts
+                inputs:
+                  artifactFeeds: Graph Developer Experiences/GraphDeveloperExperiences_Public
+                  onlyAddExtraIndex: false
+
               - script: python -m pip install --upgrade pip
                 displayName: Upgrade pip
                 workingDirectory: $(Build.SourcesDirectory)
 
-              - script: pip install -e ".[dev]"
+              - script: pip install -r requirements-dev.txt
                 displayName: Install dependencies
                 workingDirectory: $(Build.SourcesDirectory)

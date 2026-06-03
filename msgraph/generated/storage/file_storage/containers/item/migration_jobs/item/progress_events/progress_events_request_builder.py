@@ -31,7 +31,7 @@ class ProgressEventsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/storage/fileStorage/containers/{fileStorageContainer%2Did}/migrationJobs/{sharePointMigrationJob%2Did}/progressEvents{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_share_point_migration_event_id(self,share_point_migration_event_id: str) -> SharePointMigrationEventItemRequestBuilder:
         """

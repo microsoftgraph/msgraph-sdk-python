@@ -31,7 +31,7 @@ class CaseMembersRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/caseMembers{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_ediscovery_case_member_id(self,ediscovery_case_member_id: str) -> EdiscoveryCaseMemberItemRequestBuilder:
         """

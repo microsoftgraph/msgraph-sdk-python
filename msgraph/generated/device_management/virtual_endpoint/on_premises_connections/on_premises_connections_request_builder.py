@@ -31,7 +31,7 @@ class OnPremisesConnectionsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceManagement/virtualEndpoint/onPremisesConnections{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_cloud_pc_on_premises_connection_id(self,cloud_pc_on_premises_connection_id: str) -> CloudPcOnPremisesConnectionItemRequestBuilder:
         """

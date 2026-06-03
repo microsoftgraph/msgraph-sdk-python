@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .assigned_roles.assigned_roles_request_builder import AssignedRolesRequestBuilder
     from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
-    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
 
 class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
     """
@@ -31,7 +31,7 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/employeeExperience{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/employeeExperience", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -71,17 +71,17 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EmployeeExperienceUser, error_mapping)
     
-    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder:
+    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28:
         """
         Provides operations to manage the learningCourseActivities property of the microsoft.graph.employeeExperienceUser entity.
         param externalcourse_activity_id: Alternate key of learningCourseActivity
-        Returns: LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        Returns: LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
         """
         if externalcourse_activity_id is None:
             raise TypeError("externalcourse_activity_id cannot be null.")
-        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
 
-        return LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(self.request_adapter, self.path_parameters, externalcourse_activity_id)
+        return LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28(self.request_adapter, self.path_parameters, externalcourse_activity_id)
     
     async def patch(self,body: EmployeeExperienceUser, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EmployeeExperienceUser]:
         """

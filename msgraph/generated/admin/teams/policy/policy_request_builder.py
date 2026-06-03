@@ -16,7 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.teams_administration.teams_policy_assignment import TeamsPolicyAssignment
-    from .microsoft_graph_teams_administration_get_policy_id_with_type_with_name.microsoft_graph_teams_administration_get_policy_id_with_type_with_name_request_builder import MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWithNameRequestBuilder
+    from .microsoft_graph_teams_administration_get_policy_id_with_type_with_name.microsoft_graph_teams_administration_get_policy_id_with_type_wit_a7f81604 import MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWit_a7f81604
     from .user_assignments.user_assignments_request_builder import UserAssignmentsRequestBuilder
 
 class PolicyRequestBuilder(BaseRequestBuilder):
@@ -30,7 +30,7 @@ class PolicyRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/admin/teams/policy{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/admin/teams/policy", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -70,20 +70,20 @@ class PolicyRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsPolicyAssignment, error_mapping)
     
-    def microsoft_graph_teams_administration_get_policy_id_with_type_with_name(self,name: str, type: str) -> MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWithNameRequestBuilder:
+    def microsoft_graph_teams_administration_get_policy_id_with_type_with_name(self,name: str, type: str) -> MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWit_a7f81604:
         """
         Provides operations to call the getPolicyId method.
         param name: Usage: name='{name}'
         param type: Usage: type='{type}'
-        Returns: MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWithNameRequestBuilder
+        Returns: MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWit_a7f81604
         """
         if name is None:
             raise TypeError("name cannot be null.")
         if type is None:
             raise TypeError("type cannot be null.")
-        from .microsoft_graph_teams_administration_get_policy_id_with_type_with_name.microsoft_graph_teams_administration_get_policy_id_with_type_with_name_request_builder import MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWithNameRequestBuilder
+        from .microsoft_graph_teams_administration_get_policy_id_with_type_with_name.microsoft_graph_teams_administration_get_policy_id_with_type_wit_a7f81604 import MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWit_a7f81604
 
-        return MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWithNameRequestBuilder(self.request_adapter, self.path_parameters, name, type)
+        return MicrosoftGraphTeamsAdministrationGetPolicyIdWithTypeWit_a7f81604(self.request_adapter, self.path_parameters, name, type)
     
     async def patch(self,body: TeamsPolicyAssignment, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TeamsPolicyAssignment]:
         """

@@ -31,7 +31,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/directory/onPremisesSynchronization{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_on_premises_directory_synchronization_id(self,on_premises_directory_synchronization_id: str) -> OnPremisesDirectorySynchronizationItemRequestBuilder:
         """

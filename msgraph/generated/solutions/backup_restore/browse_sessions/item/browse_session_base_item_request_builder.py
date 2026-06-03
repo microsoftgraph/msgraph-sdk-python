@@ -30,7 +30,7 @@ class BrowseSessionBaseItemRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/solutions/backupRestore/browseSessions/{browseSessionBase%2Did}{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/solutions/backupRestore/browseSessions/{browseSessionBase%2Did}", path_parameters)
     
     def browse_with_next_fetch_token(self,next_fetch_token: str) -> BrowseWithNextFetchTokenRequestBuilder:
         """

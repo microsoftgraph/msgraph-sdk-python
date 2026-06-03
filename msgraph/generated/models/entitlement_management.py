@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .access_package_resource_environment import AccessPackageResourceEnvironment
     from .access_package_resource_request import AccessPackageResourceRequest
     from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+    from .access_package_subject import AccessPackageSubject
     from .approval import Approval
     from .connected_organization import ConnectedOrganization
     from .entitlement_management_settings import EntitlementManagementSettings
@@ -49,6 +50,8 @@ class EntitlementManagement(Entity, Parsable):
     resources: Optional[list[AccessPackageResource]] = None
     # The settings that control the behavior of Microsoft Entra entitlement management.
     settings: Optional[EntitlementManagementSettings] = None
+    # The subjects property
+    subjects: Optional[list[AccessPackageSubject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EntitlementManagement:
@@ -75,6 +78,7 @@ class EntitlementManagement(Entity, Parsable):
         from .access_package_resource_environment import AccessPackageResourceEnvironment
         from .access_package_resource_request import AccessPackageResourceRequest
         from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .access_package_subject import AccessPackageSubject
         from .approval import Approval
         from .connected_organization import ConnectedOrganization
         from .entitlement_management_settings import EntitlementManagementSettings
@@ -89,6 +93,7 @@ class EntitlementManagement(Entity, Parsable):
         from .access_package_resource_environment import AccessPackageResourceEnvironment
         from .access_package_resource_request import AccessPackageResourceRequest
         from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .access_package_subject import AccessPackageSubject
         from .approval import Approval
         from .connected_organization import ConnectedOrganization
         from .entitlement_management_settings import EntitlementManagementSettings
@@ -107,6 +112,7 @@ class EntitlementManagement(Entity, Parsable):
             "resourceRoleScopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AccessPackageResource)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(EntitlementManagementSettings)),
+            "subjects": lambda n : setattr(self, 'subjects', n.get_collection_of_object_values(AccessPackageSubject)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -133,5 +139,6 @@ class EntitlementManagement(Entity, Parsable):
         writer.write_collection_of_object_values("resourceRoleScopes", self.resource_role_scopes)
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_object_value("settings", self.settings)
+        writer.write_collection_of_object_values("subjects", self.subjects)
     
 

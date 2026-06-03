@@ -31,7 +31,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/team/schedule/swapShiftsChangeRequests{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_swap_shifts_change_request_id(self,swap_shifts_change_request_id: str) -> SwapShiftsChangeRequestItemRequestBuilder:
         """

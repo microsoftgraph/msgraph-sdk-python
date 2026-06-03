@@ -31,7 +31,7 @@ class DriveProtectionUnitsBulkAdditionJobsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/solutions/backupRestore/driveProtectionUnitsBulkAdditionJobs{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_drive_protection_units_bulk_addition_job_id(self,drive_protection_units_bulk_addition_job_id: str) -> DriveProtectionUnitsBulkAdditionJobItemRequestBuilder:
         """

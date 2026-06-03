@@ -28,7 +28,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}/driveItem/content{?%24format*}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ContentRequestBuilderGetQueryParameters]] = None) -> Optional[bytes]:
         """

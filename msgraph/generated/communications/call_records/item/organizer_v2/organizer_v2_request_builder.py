@@ -28,7 +28,7 @@ class Organizer_v2RequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/communications/callRecords/{callRecord%2Did}/organizer_v2{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/communications/callRecords/{callRecord%2Did}/organizer_v2", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

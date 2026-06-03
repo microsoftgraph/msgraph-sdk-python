@@ -17,6 +17,9 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.user_teamwork import UserTeamwork
     from .associated_teams.associated_teams_request_builder import AssociatedTeamsRequestBuilder
+    from .delete_targeted_message.delete_targeted_message_request_builder import DeleteTargetedMessageRequestBuilder
+    from .get_all_retained_targeted_messages.get_all_retained_targeted_messages_request_builder import GetAllRetainedTargetedMessagesRequestBuilder
+    from .get_all_targeted_messages.get_all_targeted_messages_request_builder import GetAllTargetedMessagesRequestBuilder
     from .installed_apps.installed_apps_request_builder import InstalledAppsRequestBuilder
     from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
 
@@ -31,7 +34,7 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/teamwork{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/teamwork", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -150,6 +153,33 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
         from .associated_teams.associated_teams_request_builder import AssociatedTeamsRequestBuilder
 
         return AssociatedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delete_targeted_message(self) -> DeleteTargetedMessageRequestBuilder:
+        """
+        Provides operations to call the deleteTargetedMessage method.
+        """
+        from .delete_targeted_message.delete_targeted_message_request_builder import DeleteTargetedMessageRequestBuilder
+
+        return DeleteTargetedMessageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_all_retained_targeted_messages(self) -> GetAllRetainedTargetedMessagesRequestBuilder:
+        """
+        Provides operations to call the getAllRetainedTargetedMessages method.
+        """
+        from .get_all_retained_targeted_messages.get_all_retained_targeted_messages_request_builder import GetAllRetainedTargetedMessagesRequestBuilder
+
+        return GetAllRetainedTargetedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_all_targeted_messages(self) -> GetAllTargetedMessagesRequestBuilder:
+        """
+        Provides operations to call the getAllTargetedMessages method.
+        """
+        from .get_all_targeted_messages.get_all_targeted_messages_request_builder import GetAllTargetedMessagesRequestBuilder
+
+        return GetAllTargetedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def installed_apps(self) -> InstalledAppsRequestBuilder:

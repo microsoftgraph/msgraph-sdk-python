@@ -36,7 +36,7 @@ class SubjectRightsRequestItemRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}", path_parameters)
     
     def approvers_with_user_principal_name(self,user_principal_name: str) -> ApproversWithUserPrincipalNameRequestBuilder:
         """

@@ -31,7 +31,7 @@ class LearningContentsWithExternalIdRequestBuilder(BaseRequestBuilder):
         """
         if isinstance(path_parameters, dict):
             path_parameters['externalId'] = external_id
-        super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}/learningContents(externalId='{externalId}'){?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}/learningContents(externalId='{externalId}')", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

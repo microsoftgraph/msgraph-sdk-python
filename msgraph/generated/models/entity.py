@@ -886,6 +886,7 @@ if TYPE_CHECKING:
     from .synchronization_job import SynchronizationJob
     from .synchronization_schema import SynchronizationSchema
     from .synchronization_template import SynchronizationTemplate
+    from .targeted_chat_message import TargetedChatMessage
     from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
     from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
     from .targeted_managed_app_protection import TargetedManagedAppProtection
@@ -975,8 +976,8 @@ if TYPE_CHECKING:
     from .user_consent_request import UserConsentRequest
     from .user_data_security_and_governance import UserDataSecurityAndGovernance
     from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
-    from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
-    from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+    from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
+    from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
     from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
     from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
     from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
@@ -4685,6 +4686,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .target_device_group import TargetDeviceGroup
 
             return TargetDeviceGroup()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedChatMessage".casefold():
+            from .targeted_chat_message import TargetedChatMessage
+
+            return TargetedChatMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
             from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
@@ -5040,13 +5045,13 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
 
             return UserExperienceAnalyticsAppHealthApplicationPerformance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails".casefold():
-            from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
+            from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
 
-            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails()
+            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId".casefold():
-            from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+            from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
 
-            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId()
+            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByOSVersion".casefold():
             from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
 
@@ -6522,6 +6527,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_job import SynchronizationJob
         from .synchronization_schema import SynchronizationSchema
         from .synchronization_template import SynchronizationTemplate
+        from .targeted_chat_message import TargetedChatMessage
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
         from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
         from .targeted_managed_app_protection import TargetedManagedAppProtection
@@ -6611,8 +6617,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_consent_request import UserConsentRequest
         from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
-        from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
-        from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
         from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
         from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
         from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
@@ -7641,6 +7647,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_job import SynchronizationJob
         from .synchronization_schema import SynchronizationSchema
         from .synchronization_template import SynchronizationTemplate
+        from .targeted_chat_message import TargetedChatMessage
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
         from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
         from .targeted_managed_app_protection import TargetedManagedAppProtection
@@ -7730,8 +7737,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_consent_request import UserConsentRequest
         from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
-        from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
-        from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
         from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
         from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
         from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance

@@ -24,7 +24,7 @@ if TYPE_CHECKING:
     from .drives.drives_request_builder import DrivesRequestBuilder
     from .external_columns.external_columns_request_builder import ExternalColumnsRequestBuilder
     from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
-    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+    from .get_activities_by_interval_with_start_date_time_with_end_date_time_58a4aa2a.get_activities_by_interval_with_start_date_time_with_end_date_time_41999afb import GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb
     from .get_applicable_content_types_for_list_with_list_id.get_applicable_content_types_for_list_with_list_id_request_builder import GetApplicableContentTypesForListWithListIdRequestBuilder
     from .get_by_path_with_path.get_by_path_with_path_request_builder import GetByPathWithPathRequestBuilder
     from .items.items_request_builder import ItemsRequestBuilder
@@ -49,7 +49,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SiteItemRequestBuilderGetQueryParameters]] = None) -> Optional[Site]:
         """
@@ -72,13 +72,13 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Site, error_mapping)
     
-    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: str, interval: str, start_date_time: str) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: str, interval: str, start_date_time: str) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb:
         """
         Provides operations to call the getActivitiesByInterval method.
         param end_date_time: Usage: endDateTime='{endDateTime}'
         param interval: Usage: interval='{interval}'
         param start_date_time: Usage: startDateTime='{startDateTime}'
-        Returns: GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        Returns: GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
@@ -86,9 +86,9 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("interval cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        from .get_activities_by_interval_with_start_date_time_with_end_date_time_58a4aa2a.get_activities_by_interval_with_start_date_time_with_end_date_time_41999afb import GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb
 
-        return GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
+        return GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
     
     def get_applicable_content_types_for_list_with_list_id(self,list_id: str) -> GetApplicableContentTypesForListWithListIdRequestBuilder:
         """

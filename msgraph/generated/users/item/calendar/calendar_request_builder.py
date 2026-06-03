@@ -34,7 +34,7 @@ class CalendarRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def allowed_calendar_sharing_roles_with_user(self,user: str) -> AllowedCalendarSharingRolesWithUserRequestBuilder:
         """

@@ -1,0 +1,137 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+# Build, package, and deploy msgraph-sdk-python to PyPI.
+
+name: $(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - main
+  tags:
+    include:
+      - v*
+
+pr: none
+
+variables:
+  pythonVersion: '3.14'
+
+resources:
+  repositories:
+    - repository: 1ESPipelineTemplates
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
+
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: ubuntu-latest
+      os: linux
+    sdl:
+      sourceAnalysisPool:
+        name: Azure-Pipelines-1ESPT-ExDShared
+        image: windows-2022
+        os: windows
+    stages:
+      - stage: build
+        displayName: Build and Package msgraph-sdk-python
+        condition: or(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), eq(variables['Build.Reason'], 'Manual'))
+        jobs:
+          - job: build_python
+            displayName: Build and Package
+            pool:
+              name: Azure-Pipelines-1ESPT-ExDShared
+              image: ubuntu-latest
+              os: linux
+            steps:
+              - checkout: self
+
+              - task: UsePythonVersion@0
+                displayName: Install Python $(pythonVersion)
+                inputs:
+                  versionSpec: $(pythonVersion)
+                  addToPath: true
+
+              - script: python -m pip install --upgrade pip
+                displayName: Upgrade pip
+
+              - task: PipAuthenticate@1
+                displayName: "Authenticate pip to Azure Artifacts"
+                inputs:
+                  artifactFeeds: "$(System.TeamProject)/msgraph-python-dev"                
+
+              - script: pip install -r requirements-dev.txt
+                displayName: Install dependencies
+
+              - script: pylint msgraph --disable=W --rcfile=.pylintrc
+                displayName: Lint with Pylint
+
+              - script: python -m build
+                displayName: Build package artifacts
+
+              - task: CopyFiles@2
+                displayName: Copy package artifacts to staging
+                inputs:
+                  CleanTargetFolder: true
+                  sourceFolder: $(Build.SourcesDirectory)
+                  targetFolder: $(Build.ArtifactStagingDirectory)/python/msgraph_sdk
+                  Contents: |
+                    dist/*.tar.gz
+                    dist/*.whl
+                  flattenFolders: true
+
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  displayName: Stage msgraph-sdk package artifacts
+                  artifactName: pypi_msgraph_sdk_package
+                  targetPath: $(Build.ArtifactStagingDirectory)/python/msgraph_sdk
+                  condition: or(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), eq(variables['Build.Reason'], 'Manual'))
+
+      - stage: deploy
+        displayName: Publish msgraph-sdk-python to PyPI
+        dependsOn: build
+        condition: or(and(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), succeeded()), eq(variables['Build.Reason'], 'Manual'))
+        jobs:
+          - deployment: publish_python_package
+            displayName: Publish msgraph-sdk package
+            environment: pypi_prod
+            pool:
+              name: Azure-Pipelines-1ESPT-ExDShared
+              image: ubuntu-latest
+              os: linux
+            templateContext:
+              type: releaseJob
+              isProduction: true
+              inputs:
+                - input: pipelineArtifact
+                  artifactName: pypi_msgraph_sdk_package
+                  targetPath: $(Build.ArtifactStagingDirectory)/python
+            strategy:
+              runOnce:
+                deploy:
+                  steps:
+                    - task: EsrpRelease@9
+                      displayName: Publish msgraph-sdk package via ESRP Release
+                      inputs:
+                        connectedservicename: Federated DevX ESRP Managed Identity Connection
+                        usemanagedidentity: false
+                        keyvaultname: akv-prod-eastus
+                        authcertname: ReferenceLibraryPrivateCert
+                        signcertname: ReferencePackagePublisherCertificate
+                        clientid: 65035b7f-7357-4f29-bf25-c5ee5c3949f8
+                        intent: PackageDistribution
+                        contenttype: PYPI
+                        contentsource: Folder
+                        folderlocation: $(Build.ArtifactStagingDirectory)/python
+                        waitforreleasecompletion: true
+                        owners: graphtooling+python@microsoft.com
+                        approvers: graphtooling+python@microsoft.com
+                        serviceendpointurl: https://api.esrp.microsoft.com
+                        mainpublisher: ESRPRELPACMAN
+                        domaintenantid: cdc5aeea-15c5-4db6-b079-fcadd2505dc2

@@ -16,7 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ......models.on_authentication_method_load_start_handler import OnAuthenticationMethodLoadStartHandler
     from ......models.o_data_errors.o_data_error import ODataError
-    from .graph_on_authentication_method_load_start_external_users_self_service_sign_up.graph_on_authentication_method_load_start_external_users_self_service_sign_up_request_builder import GraphOnAuthenticationMethodLoadStartExternalUsersSelfServiceSignUpRequestBuilder
+    from .graph_on_authentication_method_load_start_external_users_self_se_495b9e69.graph_on_authentication_method_load_start_external_users_self_se_42e72155 import GraphOnAuthenticationMethodLoadStartExternalUsersSelfSe_42e72155
 
 class OnAuthenticationMethodLoadStartRequestBuilder(BaseRequestBuilder):
     """
@@ -73,13 +73,13 @@ class OnAuthenticationMethodLoadStartRequestBuilder(BaseRequestBuilder):
         return OnAuthenticationMethodLoadStartRequestBuilder(self.request_adapter, raw_url)
     
     @property
-    def graph_on_authentication_method_load_start_external_users_self_service_sign_up(self) -> GraphOnAuthenticationMethodLoadStartExternalUsersSelfServiceSignUpRequestBuilder:
+    def graph_on_authentication_method_load_start_external_users_self_service_sign_up(self) -> GraphOnAuthenticationMethodLoadStartExternalUsersSelfSe_42e72155:
         """
         Casts the previous resource to onAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp.
         """
-        from .graph_on_authentication_method_load_start_external_users_self_service_sign_up.graph_on_authentication_method_load_start_external_users_self_service_sign_up_request_builder import GraphOnAuthenticationMethodLoadStartExternalUsersSelfServiceSignUpRequestBuilder
+        from .graph_on_authentication_method_load_start_external_users_self_se_495b9e69.graph_on_authentication_method_load_start_external_users_self_se_42e72155 import GraphOnAuthenticationMethodLoadStartExternalUsersSelfSe_42e72155
 
-        return GraphOnAuthenticationMethodLoadStartExternalUsersSelfServiceSignUpRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphOnAuthenticationMethodLoadStartExternalUsersSelfSe_42e72155(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OnAuthenticationMethodLoadStartRequestBuilderGetQueryParameters():

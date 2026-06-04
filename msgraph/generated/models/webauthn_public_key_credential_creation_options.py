@@ -20,25 +20,25 @@ class WebauthnPublicKeyCredentialCreationOptions(AdditionalDataHolder, BackedMod
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The attestation property
+    # Specifies the relying party's preference for attestation conveyance.
     attestation: Optional[str] = None
-    # The authenticatorSelection property
+    # Criteria for selecting an appropriate authenticator for credential creation.
     authenticator_selection: Optional[WebauthnAuthenticatorSelectionCriteria] = None
-    # The challenge property
+    # The challenge that the authenticator must sign to prove possession of the credential. This value is Base64URL-encoded without padding.
     challenge: Optional[str] = None
-    # The excludeCredentials property
+    # A list of credentials that are already registered for this user, which should be excluded from selection.
     exclude_credentials: Optional[list[WebauthnPublicKeyCredentialDescriptor]] = None
-    # The extensions property
+    # Inputs for requested WebAuthn extensions.
     extensions: Optional[WebauthnAuthenticationExtensionsClientInputs] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The pubKeyCredParams property
+    # The cryptographic parameters that the relying party supports, in order of preference.
     pub_key_cred_params: Optional[list[WebauthnPublicKeyCredentialParameters]] = None
-    # The rp property
+    # Information about the relying party (RP) requesting credential creation.
     rp: Optional[WebauthnPublicKeyCredentialRpEntity] = None
-    # The timeout property
+    # The time, in milliseconds, that the caller is willing to wait for the operation to complete.
     timeout: Optional[int] = None
-    # The user property
+    # Information about the user account for which the credential is being created.
     user: Optional[WebauthnPublicKeyCredentialUserEntity] = None
     
     @staticmethod

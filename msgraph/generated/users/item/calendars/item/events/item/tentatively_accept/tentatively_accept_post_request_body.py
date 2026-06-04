@@ -15,12 +15,12 @@ class TentativelyAcceptPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The SendResponse property
+    send_response: Optional[bool] = False
     # The Comment property
     comment: Optional[str] = None
     # The ProposedNewTime property
     proposed_new_time: Optional[TimeSlot] = None
-    # The SendResponse property
-    send_response: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> TentativelyAcceptPostRequestBody:

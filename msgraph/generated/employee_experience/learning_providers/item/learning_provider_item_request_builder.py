@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from .learning_contents.learning_contents_request_builder import LearningContentsRequestBuilder
     from .learning_contents_with_external_id.learning_contents_with_external_id_request_builder import LearningContentsWithExternalIdRequestBuilder
     from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
-    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
 
 class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     """
@@ -32,7 +32,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -86,17 +86,17 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
 
         return LearningContentsWithExternalIdRequestBuilder(self.request_adapter, self.path_parameters, external_id)
     
-    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder:
+    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28:
         """
         Provides operations to manage the learningCourseActivities property of the microsoft.graph.learningProvider entity.
         param externalcourse_activity_id: Alternate key of learningCourseActivity
-        Returns: LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        Returns: LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
         """
         if externalcourse_activity_id is None:
             raise TypeError("externalcourse_activity_id cannot be null.")
-        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
 
-        return LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(self.request_adapter, self.path_parameters, externalcourse_activity_id)
+        return LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28(self.request_adapter, self.path_parameters, externalcourse_activity_id)
     
     async def patch(self,body: LearningProvider, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[LearningProvider]:
         """
@@ -139,7 +139,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}{?%24expand,%24select}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info

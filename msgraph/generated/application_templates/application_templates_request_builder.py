@@ -48,7 +48,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ApplicationTemplatesRequestBuilderGetQueryParameters]] = None) -> Optional[ApplicationTemplateCollectionResponse]:
         """
-        Retrieve a list of applicationTemplate objects from the Microsoft Entra application gallery.
+        Retrieve a list of applicationTemplate objects from the Microsoft Entra application gallery. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license. If a risk property is included in the request without appropriate license, a @microsoft.graph.licenseRequired OData annotation is returned in the response.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApplicationTemplateCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ApplicationTemplatesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve a list of applicationTemplate objects from the Microsoft Entra application gallery.
+        Retrieve a list of applicationTemplate objects from the Microsoft Entra application gallery. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license. If a risk property is included in the request without appropriate license, a @microsoft.graph.licenseRequired OData annotation is returned in the response.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,7 +100,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApplicationTemplatesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of applicationTemplate objects from the Microsoft Entra application gallery.
+        Retrieve a list of applicationTemplate objects from the Microsoft Entra application gallery. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license. If a risk property is included in the request without appropriate license, a @microsoft.graph.licenseRequired OData annotation is returned in the response.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

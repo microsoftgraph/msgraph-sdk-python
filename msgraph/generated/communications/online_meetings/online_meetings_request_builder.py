@@ -19,8 +19,8 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .create_or_get.create_or_get_request_builder import CreateOrGetRequestBuilder
-    from .get_all_recordingsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time.get_all_recordingsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
-    from .get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .get_all_recordingsmeeting_organizer_user_id_meeting_organizer_u_be4c23e9.get_all_recordingsmeeting_organizer_user_id_meeting_organizer_u_37aeadf4 import GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerU_37aeadf4
+    from .get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_056e0011.get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_f6fef853 import GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizer_f6fef853
     from .item.online_meeting_item_request_builder import OnlineMeetingItemRequestBuilder
 
 class OnlineMeetingsRequestBuilder(BaseRequestBuilder):
@@ -34,7 +34,7 @@ class OnlineMeetingsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/communications/onlineMeetings{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_online_meeting_id(self,online_meeting_id: str) -> OnlineMeetingItemRequestBuilder:
         """
@@ -100,7 +100,7 @@ class OnlineMeetingsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/communications/onlineMeetings{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -114,7 +114,7 @@ class OnlineMeetingsRequestBuilder(BaseRequestBuilder):
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/communications/onlineMeetings', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -149,22 +149,22 @@ class OnlineMeetingsRequestBuilder(BaseRequestBuilder):
         return CreateOrGetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_all_recordingsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time(self) -> GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def get_all_recordingsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time(self) -> GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerU_37aeadf4:
         """
         Provides operations to call the getAllRecordings method.
         """
-        from .get_all_recordingsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time.get_all_recordingsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .get_all_recordingsmeeting_organizer_user_id_meeting_organizer_u_be4c23e9.get_all_recordingsmeeting_organizer_user_id_meeting_organizer_u_37aeadf4 import GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerU_37aeadf4
 
-        return GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAllRecordingsmeetingOrganizerUserIdMeetingOrganizerU_37aeadf4(self.request_adapter, self.path_parameters)
     
     @property
-    def get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time(self) -> GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time(self) -> GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizer_f6fef853:
         """
         Provides operations to call the getAllTranscripts method.
         """
-        from .get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_056e0011.get_all_transcriptsmeeting_organizer_user_id_meeting_organizer_f6fef853 import GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizer_f6fef853
 
-        return GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizerUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAllTranscriptsmeetingOrganizerUserIdMeetingOrganizer_f6fef853(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OnlineMeetingsRequestBuilderGetQueryParameters():

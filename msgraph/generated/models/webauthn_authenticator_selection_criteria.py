@@ -12,13 +12,13 @@ class WebauthnAuthenticatorSelectionCriteria(AdditionalDataHolder, BackedModel, 
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The authenticatorAttachment property
+    # Specifies the preferred attachment modality for the authenticator. Possible values: platform (device-bound authenticator, such as Windows Hello), cross-platform (removable authenticator, such as a USB security key), or null (no preference).
     authenticator_attachment: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The requireResidentKey property
+    # Indicates whether the authenticator must create a client-side-resident credential (also known as a discoverable credential). If true, the credential can be used without providing a credential ID.
     require_resident_key: Optional[bool] = None
-    # The userVerification property
+    # Specifies the relying party's preference for user verification during credential creation. Possible values: required, preferred, or discouraged.
     user_verification: Optional[str] = None
     
     @staticmethod

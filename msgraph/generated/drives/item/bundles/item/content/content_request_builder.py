@@ -28,7 +28,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/bundles/{driveItem%2Did}/content{?%24format*}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/bundles/{driveItem%2Did}/content", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -106,7 +106,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/drives/{drive%2Did}/bundles/{driveItem%2Did}/content{?%24format*}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/octet-stream, application/json")
         return request_info

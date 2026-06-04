@@ -127,8 +127,7 @@ extends:
                         contentsource: Folder
                         folderlocation: $(Build.ArtifactStagingDirectory)/python
                         waitforreleasecompletion: true
-                        owners: graphtooling+python@microsoft.com
-                        approvers: graphtooling+python@microsoft.com
-                        serviceendpointurl: https://api.esrp.microsoft.com
+                        owners: 'mmainer@microsoft.com,gavinbarron@microsoft.com'
+                        approvers: 'mmainer@microsoft.com,christiano@microsoft.com,gavinbarron@microsoft.com'
                         mainpublisher: ESRPRELPACMAN
                         domaintenantid: cdc5aeea-15c5-4db6-b079-fcadd2505dc2

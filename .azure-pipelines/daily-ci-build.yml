@@ -51,7 +51,7 @@ extends:
               - task: PipAuthenticate@1
                 displayName: Authenticate with Azure Artifacts
                 inputs:
-                  artifactFeeds: Graph Developer Experiences/GraphDeveloperExperiences_Public
+                  artifactFeeds: "$(System.TeamProject)/GraphDeveloperExperiences_Public"
                   onlyAddExtraIndex: false
 
               - script: python -m pip install --upgrade pip

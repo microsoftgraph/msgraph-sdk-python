@@ -6,9 +6,6 @@
 name: $(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
-  branches:
-    include:
-      - main
   tags:
     include:
       - v*

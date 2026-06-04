@@ -60,7 +60,7 @@ extends:
               - task: PipAuthenticate@1
                 displayName: "Authenticate pip to Azure Artifacts"
                 inputs:
-                  artifactFeeds: "$(System.TeamProject)/msgraph-python-dev"                
+                  artifactFeeds: "$(System.TeamProject)/GraphDeveloperExperiences_Public"                
 
               - script: pip install -r requirements-dev.txt
                 displayName: Install dependencies

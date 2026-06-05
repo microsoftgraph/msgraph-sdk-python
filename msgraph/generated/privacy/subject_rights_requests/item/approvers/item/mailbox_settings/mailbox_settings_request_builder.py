@@ -28,7 +28,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}/approvers/{user%2Did}/mailboxSettings{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxSettingsRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxSettings]:
         """
@@ -82,7 +82,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate on 2022-03-22 and will be removed 2025-03-20", DeprecationWarning)
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}/approvers/{user%2Did}/mailboxSettings{?%24expand,%24select}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -97,7 +97,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate on 2022-03-22 and will be removed 2025-03-20", DeprecationWarning)
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.PATCH, '{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}/approvers/{user%2Did}/mailboxSettings', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

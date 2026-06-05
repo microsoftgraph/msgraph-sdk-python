@@ -16,10 +16,10 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
-    from .....models.privileged_access_group_assignment_schedule_instance_collection_response import PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse
+    from .....models.privileged_access_group_assignment_schedule_instance_collecti_ac334b75 import PrivilegedAccessGroupAssignmentScheduleInstanceCollecti_ac334b75
     from .count.count_request_builder import CountRequestBuilder
     from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
-    from .item.privileged_access_group_assignment_schedule_instance_item_request_builder import PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder
+    from .item.privileged_access_group_assignment_schedule_instance_item_requ_595d3223 import PrivilegedAccessGroupAssignmentScheduleInstanceItemRequ_595d3223
 
 class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
     """
@@ -32,21 +32,21 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group/assignmentScheduleInstances{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
-    def by_privileged_access_group_assignment_schedule_instance_id(self,privileged_access_group_assignment_schedule_instance_id: str) -> PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder:
+    def by_privileged_access_group_assignment_schedule_instance_id(self,privileged_access_group_assignment_schedule_instance_id: str) -> PrivilegedAccessGroupAssignmentScheduleInstanceItemRequ_595d3223:
         """
         Provides operations to manage the assignmentScheduleInstances property of the microsoft.graph.privilegedAccessGroup entity.
         param privileged_access_group_assignment_schedule_instance_id: The unique identifier of privilegedAccessGroupAssignmentScheduleInstance
-        Returns: PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder
+        Returns: PrivilegedAccessGroupAssignmentScheduleInstanceItemRequ_595d3223
         """
         if privileged_access_group_assignment_schedule_instance_id is None:
             raise TypeError("privileged_access_group_assignment_schedule_instance_id cannot be null.")
-        from .item.privileged_access_group_assignment_schedule_instance_item_request_builder import PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder
+        from .item.privileged_access_group_assignment_schedule_instance_item_requ_595d3223 import PrivilegedAccessGroupAssignmentScheduleInstanceItemRequ_595d3223
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["privilegedAccessGroupAssignmentScheduleInstance%2Did"] = privileged_access_group_assignment_schedule_instance_id
-        return PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PrivilegedAccessGroupAssignmentScheduleInstanceItemRequ_595d3223(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: str) -> FilterByCurrentUserWithOnRequestBuilder:
         """
@@ -60,11 +60,11 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[AssignmentScheduleInstancesRequestBuilderGetQueryParameters]] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[AssignmentScheduleInstancesRequestBuilderGetQueryParameters]] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstanceCollecti_ac334b75]:
         """
         Get a list of the privilegedAccessGroupAssignmentScheduleInstance objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse]
+        Returns: Optional[PrivilegedAccessGroupAssignmentScheduleInstanceCollecti_ac334b75]
         Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroup-list-assignmentscheduleinstances?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -77,9 +77,9 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.privileged_access_group_assignment_schedule_instance_collection_response import PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse
+        from .....models.privileged_access_group_assignment_schedule_instance_collecti_ac334b75 import PrivilegedAccessGroupAssignmentScheduleInstanceCollecti_ac334b75
 
-        return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupAssignmentScheduleInstanceCollecti_ac334b75, error_mapping)
     
     async def post(self,body: PrivilegedAccessGroupAssignmentScheduleInstance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstance]:
         """
@@ -110,7 +110,7 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/identityGovernance/privilegedAccess/group/assignmentScheduleInstances{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -124,7 +124,7 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/identityGovernance/privilegedAccess/group/assignmentScheduleInstances', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

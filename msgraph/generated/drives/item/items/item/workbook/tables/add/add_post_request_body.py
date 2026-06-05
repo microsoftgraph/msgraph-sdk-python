@@ -12,10 +12,10 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The hasHeaders property
+    has_headers: Optional[bool] = False
     # The address property
     address: Optional[str] = None
-    # The hasHeaders property
-    has_headers: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AddPostRequestBody:

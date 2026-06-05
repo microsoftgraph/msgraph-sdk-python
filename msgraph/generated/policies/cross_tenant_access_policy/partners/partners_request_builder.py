@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from ....models.cross_tenant_access_policy_configuration_partner_collection_response import CrossTenantAccessPolicyConfigurationPartnerCollectionResponse
     from ....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
-    from .item.cross_tenant_access_policy_configuration_partner_tenant_item_request_builder import CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder
+    from .item.cross_tenant_access_policy_configuration_partner_tenant_item_re_81d401bf import CrossTenantAccessPolicyConfigurationPartnerTenantItemRe_81d401bf
 
 class PartnersRequestBuilder(BaseRequestBuilder):
     """
@@ -31,21 +31,21 @@ class PartnersRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/policies/crossTenantAccessPolicy/partners{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
-    def by_cross_tenant_access_policy_configuration_partner_tenant_id(self,cross_tenant_access_policy_configuration_partner_tenant_id: str) -> CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder:
+    def by_cross_tenant_access_policy_configuration_partner_tenant_id(self,cross_tenant_access_policy_configuration_partner_tenant_id: str) -> CrossTenantAccessPolicyConfigurationPartnerTenantItemRe_81d401bf:
         """
         Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
         param cross_tenant_access_policy_configuration_partner_tenant_id: The unique identifier of crossTenantAccessPolicyConfigurationPartner
-        Returns: CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder
+        Returns: CrossTenantAccessPolicyConfigurationPartnerTenantItemRe_81d401bf
         """
         if cross_tenant_access_policy_configuration_partner_tenant_id is None:
             raise TypeError("cross_tenant_access_policy_configuration_partner_tenant_id cannot be null.")
-        from .item.cross_tenant_access_policy_configuration_partner_tenant_item_request_builder import CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder
+        from .item.cross_tenant_access_policy_configuration_partner_tenant_item_re_81d401bf import CrossTenantAccessPolicyConfigurationPartnerTenantItemRe_81d401bf
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["crossTenantAccessPolicyConfigurationPartner%2DtenantId"] = cross_tenant_access_policy_configuration_partner_tenant_id
-        return CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return CrossTenantAccessPolicyConfigurationPartnerTenantItemRe_81d401bf(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PartnersRequestBuilderGetQueryParameters]] = None) -> Optional[CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]:
         """
@@ -98,7 +98,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/policies/crossTenantAccessPolicy/partners{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -112,7 +112,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/policies/crossTenantAccessPolicy/partners', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from ....models.access_package_assignment_collection_response import AccessPackageAssignmentCollectionResponse
     from ....models.o_data_errors.o_data_error import ODataError
     from .additional_access.additional_access_request_builder import AdditionalAccessRequestBuilder
-    from .additional_access_with_access_package_id_with_incompatible_access_package_id.additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
+    from .additional_access_with_access_package_id_with_incompatible_acce_de2a04b0.additional_access_with_access_package_id_with_incompatible_acce_2751ca00 import AdditionalAccessWithAccessPackageIdWithIncompatibleAcce_2751ca00
     from .count.count_request_builder import CountRequestBuilder
     from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
     from .item.access_package_assignment_item_request_builder import AccessPackageAssignmentItemRequestBuilder
@@ -34,22 +34,22 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/assignments{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
-    def additional_access_with_access_package_id_with_incompatible_access_package_id(self,access_package_id: str, incompatible_access_package_id: str) -> AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder:
+    def additional_access_with_access_package_id_with_incompatible_access_package_id(self,access_package_id: str, incompatible_access_package_id: str) -> AdditionalAccessWithAccessPackageIdWithIncompatibleAcce_2751ca00:
         """
         Provides operations to call the additionalAccess method.
         param access_package_id: Usage: accessPackageId='{accessPackageId}'
         param incompatible_access_package_id: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
-        Returns: AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
+        Returns: AdditionalAccessWithAccessPackageIdWithIncompatibleAcce_2751ca00
         """
         if access_package_id is None:
             raise TypeError("access_package_id cannot be null.")
         if incompatible_access_package_id is None:
             raise TypeError("incompatible_access_package_id cannot be null.")
-        from .additional_access_with_access_package_id_with_incompatible_access_package_id.additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
+        from .additional_access_with_access_package_id_with_incompatible_acce_de2a04b0.additional_access_with_access_package_id_with_incompatible_acce_2751ca00 import AdditionalAccessWithAccessPackageIdWithIncompatibleAcce_2751ca00
 
-        return AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(self.request_adapter, self.path_parameters, access_package_id, incompatible_access_package_id)
+        return AdditionalAccessWithAccessPackageIdWithIncompatibleAcce_2751ca00(self.request_adapter, self.path_parameters, access_package_id, incompatible_access_package_id)
     
     def by_access_package_assignment_id(self,access_package_assignment_id: str) -> AccessPackageAssignmentItemRequestBuilder:
         """
@@ -127,7 +127,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/identityGovernance/entitlementManagement/assignments{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -141,7 +141,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/identityGovernance/entitlementManagement/assignments', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

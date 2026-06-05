@@ -16,9 +16,9 @@ from warnings import warn
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
-    from ...models.user_experience_analytics_app_health_device_performance_collection_response import UserExperienceAnalyticsAppHealthDevicePerformanceCollectionResponse
+    from ...models.user_experience_analytics_app_health_device_performance_collec_a1e81389 import UserExperienceAnalyticsAppHealthDevicePerformanceCollec_a1e81389
     from .count.count_request_builder import CountRequestBuilder
-    from .item.user_experience_analytics_app_health_device_performance_item_request_builder import UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder
+    from .item.user_experience_analytics_app_health_device_performance_item_re_ef0ccf8e import UserExperienceAnalyticsAppHealthDevicePerformanceItemRe_ef0ccf8e
 
 class UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder(BaseRequestBuilder):
     """
@@ -31,27 +31,27 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder(BaseReques
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceManagement/userExperienceAnalyticsAppHealthDevicePerformance{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
-    def by_user_experience_analytics_app_health_device_performance_id(self,user_experience_analytics_app_health_device_performance_id: str) -> UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder:
+    def by_user_experience_analytics_app_health_device_performance_id(self,user_experience_analytics_app_health_device_performance_id: str) -> UserExperienceAnalyticsAppHealthDevicePerformanceItemRe_ef0ccf8e:
         """
         Provides operations to manage the userExperienceAnalyticsAppHealthDevicePerformance property of the microsoft.graph.deviceManagement entity.
         param user_experience_analytics_app_health_device_performance_id: The unique identifier of userExperienceAnalyticsAppHealthDevicePerformance
-        Returns: UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder
+        Returns: UserExperienceAnalyticsAppHealthDevicePerformanceItemRe_ef0ccf8e
         """
         if user_experience_analytics_app_health_device_performance_id is None:
             raise TypeError("user_experience_analytics_app_health_device_performance_id cannot be null.")
-        from .item.user_experience_analytics_app_health_device_performance_item_request_builder import UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder
+        from .item.user_experience_analytics_app_health_device_performance_item_re_ef0ccf8e import UserExperienceAnalyticsAppHealthDevicePerformanceItemRe_ef0ccf8e
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userExperienceAnalyticsAppHealthDevicePerformance%2Did"] = user_experience_analytics_app_health_device_performance_id
-        return UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UserExperienceAnalyticsAppHealthDevicePerformanceItemRe_ef0ccf8e(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilderGetQueryParameters]] = None) -> Optional[UserExperienceAnalyticsAppHealthDevicePerformanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilderGetQueryParameters]] = None) -> Optional[UserExperienceAnalyticsAppHealthDevicePerformanceCollec_a1e81389]:
         """
         User experience analytics appHealth Device Performance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[UserExperienceAnalyticsAppHealthDevicePerformanceCollectionResponse]
+        Returns: Optional[UserExperienceAnalyticsAppHealthDevicePerformanceCollec_a1e81389]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -63,9 +63,9 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder(BaseReques
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.user_experience_analytics_app_health_device_performance_collection_response import UserExperienceAnalyticsAppHealthDevicePerformanceCollectionResponse
+        from ...models.user_experience_analytics_app_health_device_performance_collec_a1e81389 import UserExperienceAnalyticsAppHealthDevicePerformanceCollec_a1e81389
 
-        return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsAppHealthDevicePerformanceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsAppHealthDevicePerformanceCollec_a1e81389, error_mapping)
     
     async def post(self,body: UserExperienceAnalyticsAppHealthDevicePerformance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[UserExperienceAnalyticsAppHealthDevicePerformance]:
         """
@@ -96,7 +96,7 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder(BaseReques
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/deviceManagement/userExperienceAnalyticsAppHealthDevicePerformance{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -110,7 +110,7 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder(BaseReques
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceManagement/userExperienceAnalyticsAppHealthDevicePerformance', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

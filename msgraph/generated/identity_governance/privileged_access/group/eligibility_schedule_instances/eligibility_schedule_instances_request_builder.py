@@ -16,10 +16,10 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
-    from .....models.privileged_access_group_eligibility_schedule_instance_collection_response import PrivilegedAccessGroupEligibilityScheduleInstanceCollectionResponse
+    from .....models.privileged_access_group_eligibility_schedule_instance_collect_a2e04c90 import PrivilegedAccessGroupEligibilityScheduleInstanceCollect_a2e04c90
     from .count.count_request_builder import CountRequestBuilder
     from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
-    from .item.privileged_access_group_eligibility_schedule_instance_item_request_builder import PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder
+    from .item.privileged_access_group_eligibility_schedule_instance_item_req_24448360 import PrivilegedAccessGroupEligibilityScheduleInstanceItemReq_24448360
 
 class EligibilityScheduleInstancesRequestBuilder(BaseRequestBuilder):
     """
@@ -32,21 +32,21 @@ class EligibilityScheduleInstancesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group/eligibilityScheduleInstances{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
-    def by_privileged_access_group_eligibility_schedule_instance_id(self,privileged_access_group_eligibility_schedule_instance_id: str) -> PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder:
+    def by_privileged_access_group_eligibility_schedule_instance_id(self,privileged_access_group_eligibility_schedule_instance_id: str) -> PrivilegedAccessGroupEligibilityScheduleInstanceItemReq_24448360:
         """
         Provides operations to manage the eligibilityScheduleInstances property of the microsoft.graph.privilegedAccessGroup entity.
         param privileged_access_group_eligibility_schedule_instance_id: The unique identifier of privilegedAccessGroupEligibilityScheduleInstance
-        Returns: PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder
+        Returns: PrivilegedAccessGroupEligibilityScheduleInstanceItemReq_24448360
         """
         if privileged_access_group_eligibility_schedule_instance_id is None:
             raise TypeError("privileged_access_group_eligibility_schedule_instance_id cannot be null.")
-        from .item.privileged_access_group_eligibility_schedule_instance_item_request_builder import PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder
+        from .item.privileged_access_group_eligibility_schedule_instance_item_req_24448360 import PrivilegedAccessGroupEligibilityScheduleInstanceItemReq_24448360
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["privilegedAccessGroupEligibilityScheduleInstance%2Did"] = privileged_access_group_eligibility_schedule_instance_id
-        return PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PrivilegedAccessGroupEligibilityScheduleInstanceItemReq_24448360(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: str) -> FilterByCurrentUserWithOnRequestBuilder:
         """
@@ -60,11 +60,11 @@ class EligibilityScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[EligibilityScheduleInstancesRequestBuilderGetQueryParameters]] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[EligibilityScheduleInstancesRequestBuilderGetQueryParameters]] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleInstanceCollect_a2e04c90]:
         """
         Get a list of the privilegedAccessGroupEligibilityScheduleInstance objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[PrivilegedAccessGroupEligibilityScheduleInstanceCollectionResponse]
+        Returns: Optional[PrivilegedAccessGroupEligibilityScheduleInstanceCollect_a2e04c90]
         Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroup-list-eligibilityscheduleinstances?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -77,9 +77,9 @@ class EligibilityScheduleInstancesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.privileged_access_group_eligibility_schedule_instance_collection_response import PrivilegedAccessGroupEligibilityScheduleInstanceCollectionResponse
+        from .....models.privileged_access_group_eligibility_schedule_instance_collect_a2e04c90 import PrivilegedAccessGroupEligibilityScheduleInstanceCollect_a2e04c90
 
-        return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilityScheduleInstanceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilityScheduleInstanceCollect_a2e04c90, error_mapping)
     
     async def post(self,body: PrivilegedAccessGroupEligibilityScheduleInstance, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleInstance]:
         """
@@ -110,7 +110,7 @@ class EligibilityScheduleInstancesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/identityGovernance/privilegedAccess/group/eligibilityScheduleInstances{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -124,7 +124,7 @@ class EligibilityScheduleInstancesRequestBuilder(BaseRequestBuilder):
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/identityGovernance/privilegedAccess/group/eligibilityScheduleInstances', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

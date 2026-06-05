@@ -31,7 +31,7 @@ class SharedRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/insights/shared{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_shared_insight_id(self,shared_insight_id: str) -> SharedInsightItemRequestBuilder:
         """
@@ -100,7 +100,7 @@ class SharedRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         warn("This API is deprecated and will stop returning data after January, 2028. as of 2026-01/Removal on 2026-01-28 and will be removed 2028-01-01", DeprecationWarning)
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/users/{user%2Did}/insights/shared{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -115,7 +115,7 @@ class SharedRequestBuilder(BaseRequestBuilder):
         warn("This API is deprecated and will stop returning data after January, 2028. as of 2026-01/Removal on 2026-01-28 and will be removed 2028-01-01", DeprecationWarning)
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/users/{user%2Did}/insights/shared', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

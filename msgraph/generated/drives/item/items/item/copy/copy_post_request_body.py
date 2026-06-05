@@ -16,9 +16,9 @@ class CopyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The childrenOnly property
-    children_only: Optional[bool] = None
+    children_only: Optional[bool] = False
     # The includeAllVersionHistory property
-    include_all_version_history: Optional[bool] = None
+    include_all_version_history: Optional[bool] = False
     # The name property
     name: Optional[str] = None
     # The parentReference property

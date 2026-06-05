@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from ...models.adhoc_call_collection_response import AdhocCallCollectionResponse
     from ...models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
-    from .get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
-    from .get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_recordingsuser_id_user_id_with_start_date_time_with_end_dat_5a15ee1d import GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDat_5a15ee1d
+    from .get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_da_d83c3382 import GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDa_d83c3382
     from .item.adhoc_call_item_request_builder import AdhocCallItemRequestBuilder
 
 class AdhocCallsRequestBuilder(BaseRequestBuilder):
@@ -33,7 +33,7 @@ class AdhocCallsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/communications/adhocCalls{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_adhoc_call_id(self,adhoc_call_id: str) -> AdhocCallItemRequestBuilder:
         """
@@ -98,7 +98,7 @@ class AdhocCallsRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/communications/adhocCalls{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -112,7 +112,7 @@ class AdhocCallsRequestBuilder(BaseRequestBuilder):
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/communications/adhocCalls', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -138,22 +138,22 @@ class AdhocCallsRequestBuilder(BaseRequestBuilder):
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time(self) -> GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time(self) -> GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDat_5a15ee1d:
         """
         Provides operations to call the getAllRecordings method.
         """
-        from .get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .get_all_recordingsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_recordingsuser_id_user_id_with_start_date_time_with_end_dat_5a15ee1d import GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDat_5a15ee1d
 
-        return GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAllRecordingsuserIdUserIdWithStartDateTimeWithEndDat_5a15ee1d(self.request_adapter, self.path_parameters)
     
     @property
-    def get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time(self) -> GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time(self) -> GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDa_d83c3382:
         """
         Provides operations to call the getAllTranscripts method.
         """
-        from .get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time_request_builder import GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_date_time.get_all_transcriptsuser_id_user_id_with_start_date_time_with_end_da_d83c3382 import GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDa_d83c3382
 
-        return GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAllTranscriptsuserIdUserIdWithStartDateTimeWithEndDa_d83c3382(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AdhocCallsRequestBuilderGetQueryParameters():

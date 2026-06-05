@@ -15,10 +15,10 @@ from warnings import warn
 
 if TYPE_CHECKING:
     from .....models.managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
-    from .....models.managed_device_mobile_app_configuration_device_status_collection_response import ManagedDeviceMobileAppConfigurationDeviceStatusCollectionResponse
+    from .....models.managed_device_mobile_app_configuration_device_status_collecti_0f16022f import ManagedDeviceMobileAppConfigurationDeviceStatusCollecti_0f16022f
     from .....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
-    from .item.managed_device_mobile_app_configuration_device_status_item_request_builder import ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder
+    from .item.managed_device_mobile_app_configuration_device_status_item_requ_fe086f3e import ManagedDeviceMobileAppConfigurationDeviceStatusItemRequ_fe086f3e
 
 class DeviceStatusesRequestBuilder(BaseRequestBuilder):
     """
@@ -31,27 +31,27 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/mobileAppConfigurations/{managedDeviceMobileAppConfiguration%2Did}/deviceStatuses{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
-    def by_managed_device_mobile_app_configuration_device_status_id(self,managed_device_mobile_app_configuration_device_status_id: str) -> ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder:
+    def by_managed_device_mobile_app_configuration_device_status_id(self,managed_device_mobile_app_configuration_device_status_id: str) -> ManagedDeviceMobileAppConfigurationDeviceStatusItemRequ_fe086f3e:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         param managed_device_mobile_app_configuration_device_status_id: The unique identifier of managedDeviceMobileAppConfigurationDeviceStatus
-        Returns: ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder
+        Returns: ManagedDeviceMobileAppConfigurationDeviceStatusItemRequ_fe086f3e
         """
         if managed_device_mobile_app_configuration_device_status_id is None:
             raise TypeError("managed_device_mobile_app_configuration_device_status_id cannot be null.")
-        from .item.managed_device_mobile_app_configuration_device_status_item_request_builder import ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder
+        from .item.managed_device_mobile_app_configuration_device_status_item_requ_fe086f3e import ManagedDeviceMobileAppConfigurationDeviceStatusItemRequ_fe086f3e
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDeviceMobileAppConfigurationDeviceStatus%2Did"] = managed_device_mobile_app_configuration_device_status_id
-        return ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ManagedDeviceMobileAppConfigurationDeviceStatusItemRequ_fe086f3e(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[DeviceStatusesRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedDeviceMobileAppConfigurationDeviceStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[DeviceStatusesRequestBuilderGetQueryParameters]] = None) -> Optional[ManagedDeviceMobileAppConfigurationDeviceStatusCollecti_0f16022f]:
         """
         List of ManagedDeviceMobileAppConfigurationDeviceStatus.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusCollectionResponse]
+        Returns: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusCollecti_0f16022f]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -63,9 +63,9 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.managed_device_mobile_app_configuration_device_status_collection_response import ManagedDeviceMobileAppConfigurationDeviceStatusCollectionResponse
+        from .....models.managed_device_mobile_app_configuration_device_status_collecti_0f16022f import ManagedDeviceMobileAppConfigurationDeviceStatusCollecti_0f16022f
 
-        return await self.request_adapter.send_async(request_info, ManagedDeviceMobileAppConfigurationDeviceStatusCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedDeviceMobileAppConfigurationDeviceStatusCollecti_0f16022f, error_mapping)
     
     async def post(self,body: ManagedDeviceMobileAppConfigurationDeviceStatus, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ManagedDeviceMobileAppConfigurationDeviceStatus]:
         """
@@ -96,7 +96,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.GET, '{+baseurl}/deviceAppManagement/mobileAppConfigurations/{managedDeviceMobileAppConfiguration%2Did}/deviceStatuses{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
@@ -110,7 +110,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         """
         if body is None:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
+        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceAppManagement/mobileAppConfigurations/{managedDeviceMobileAppConfiguration%2Did}/deviceStatuses', self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

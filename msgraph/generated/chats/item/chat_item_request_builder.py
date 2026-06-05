@@ -30,6 +30,7 @@ if TYPE_CHECKING:
     from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
     from .start_migration.start_migration_request_builder import StartMigrationRequestBuilder
     from .tabs.tabs_request_builder import TabsRequestBuilder
+    from .targeted_messages.targeted_messages_request_builder import TargetedMessagesRequestBuilder
     from .unhide_for_user.unhide_for_user_request_builder import UnhideForUserRequestBuilder
 
 class ChatItemRequestBuilder(BaseRequestBuilder):
@@ -43,7 +44,7 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/chats/{chat%2Did}{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/chats/{chat%2Did}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -281,6 +282,15 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
         from .tabs.tabs_request_builder import TabsRequestBuilder
 
         return TabsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def targeted_messages(self) -> TargetedMessagesRequestBuilder:
+        """
+        Provides operations to manage the targetedMessages property of the microsoft.graph.chat entity.
+        """
+        from .targeted_messages.targeted_messages_request_builder import TargetedMessagesRequestBuilder
+
+        return TargetedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def unhide_for_user(self) -> UnhideForUserRequestBuilder:

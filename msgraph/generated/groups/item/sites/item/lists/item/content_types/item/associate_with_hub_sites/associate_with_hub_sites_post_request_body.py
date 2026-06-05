@@ -12,10 +12,10 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, BackedModel, Pa
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The propagateToExistingLists property
+    propagate_to_existing_lists: Optional[bool] = False
     # The hubSiteUrls property
     hub_site_urls: Optional[list[str]] = None
-    # The propagateToExistingLists property
-    propagate_to_existing_lists: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AssociateWithHubSitesPostRequestBody:

@@ -31,7 +31,7 @@ class SegmentsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/communications/callRecords/{callRecord%2Did}/sessions/{session%2Did}/segments{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_segment_id(self,segment_id: str) -> SegmentItemRequestBuilder:
         """

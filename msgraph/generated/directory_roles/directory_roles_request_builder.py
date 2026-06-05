@@ -35,7 +35,7 @@ class DirectoryRolesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/directoryRoles{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_directory_role_id(self,directory_role_id: str) -> DirectoryRoleItemRequestBuilder:
         """

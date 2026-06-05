@@ -31,7 +31,7 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/tenantRelationships/delegatedAdminCustomers/{delegatedAdminCustomer%2Did}/serviceManagementDetails{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_delegated_admin_service_management_detail_id(self,delegated_admin_service_management_detail_id: str) -> DelegatedAdminServiceManagementDetailItemRequestBuilder:
         """

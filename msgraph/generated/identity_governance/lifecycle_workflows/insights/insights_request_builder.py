@@ -17,10 +17,10 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.identity_governance.insights import Insights
     from ....models.o_data_errors.o_data_error import ODataError
-    from .microsoft_graph_identity_governance_top_tasks_processed_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_top_tasks_processed_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
-    from .microsoft_graph_identity_governance_top_workflows_processed_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_top_workflows_processed_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
-    from .microsoft_graph_identity_governance_workflows_processed_by_category_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_workflows_processed_by_category_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCategoryWithStartDateTimeWithEndDateTimeRequestBuilder
-    from .microsoft_graph_identity_governance_workflows_processed_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_workflows_processed_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .microsoft_graph_identity_governance_top_tasks_processed_summar_bce5e128.microsoft_graph_identity_governance_top_tasks_processed_summar_f084ca11 import MicrosoftGraphIdentityGovernanceTopTasksProcessedSummar_f084ca11
+    from .microsoft_graph_identity_governance_top_workflows_processed_su_c71652b8.microsoft_graph_identity_governance_top_workflows_processed_su_7524a906 import MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSu_7524a906
+    from .microsoft_graph_identity_governance_workflows_processed_by_cat_c8c368d9.microsoft_graph_identity_governance_workflows_processed_by_cat_7e0e042c import MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCat_7e0e042c
+    from .microsoft_graph_identity_governance_workflows_processed_summa_74daca89.microsoft_graph_identity_governance_workflows_processed_summa_f0293aa7 import MicrosoftGraphIdentityGovernanceWorkflowsProcessedSumma_f0293aa7
 
 class InsightsRequestBuilder(BaseRequestBuilder):
     """
@@ -33,7 +33,7 @@ class InsightsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/insights{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/insights", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -73,65 +73,65 @@ class InsightsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Insights, error_mapping)
     
-    def microsoft_graph_identity_governance_top_tasks_processed_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_identity_governance_top_tasks_processed_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceTopTasksProcessedSummar_f084ca11:
         """
         Provides operations to call the topTasksProcessedSummary method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: MicrosoftGraphIdentityGovernanceTopTasksProcessedSummar_f084ca11
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .microsoft_graph_identity_governance_top_tasks_processed_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_top_tasks_processed_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .microsoft_graph_identity_governance_top_tasks_processed_summar_bce5e128.microsoft_graph_identity_governance_top_tasks_processed_summar_f084ca11 import MicrosoftGraphIdentityGovernanceTopTasksProcessedSummar_f084ca11
 
-        return MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
+        return MicrosoftGraphIdentityGovernanceTopTasksProcessedSummar_f084ca11(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
     
-    def microsoft_graph_identity_governance_top_workflows_processed_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_identity_governance_top_workflows_processed_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSu_7524a906:
         """
         Provides operations to call the topWorkflowsProcessedSummary method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSu_7524a906
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .microsoft_graph_identity_governance_top_workflows_processed_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_top_workflows_processed_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .microsoft_graph_identity_governance_top_workflows_processed_su_c71652b8.microsoft_graph_identity_governance_top_workflows_processed_su_7524a906 import MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSu_7524a906
 
-        return MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
+        return MicrosoftGraphIdentityGovernanceTopWorkflowsProcessedSu_7524a906(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
     
-    def microsoft_graph_identity_governance_workflows_processed_by_category_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCategoryWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_identity_governance_workflows_processed_by_category_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCat_7e0e042c:
         """
         Provides operations to call the workflowsProcessedByCategory method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCategoryWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCat_7e0e042c
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .microsoft_graph_identity_governance_workflows_processed_by_category_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_workflows_processed_by_category_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCategoryWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .microsoft_graph_identity_governance_workflows_processed_by_cat_c8c368d9.microsoft_graph_identity_governance_workflows_processed_by_cat_7e0e042c import MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCat_7e0e042c
 
-        return MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCategoryWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
+        return MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCat_7e0e042c(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
     
-    def microsoft_graph_identity_governance_workflows_processed_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_identity_governance_workflows_processed_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceWorkflowsProcessedSumma_f0293aa7:
         """
         Provides operations to call the workflowsProcessedSummary method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: MicrosoftGraphIdentityGovernanceWorkflowsProcessedSumma_f0293aa7
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .microsoft_graph_identity_governance_workflows_processed_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_workflows_processed_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .microsoft_graph_identity_governance_workflows_processed_summa_74daca89.microsoft_graph_identity_governance_workflows_processed_summa_f0293aa7 import MicrosoftGraphIdentityGovernanceWorkflowsProcessedSumma_f0293aa7
 
-        return MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
+        return MicrosoftGraphIdentityGovernanceWorkflowsProcessedSumma_f0293aa7(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
     
     async def patch(self,body: Insights, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[Insights]:
         """

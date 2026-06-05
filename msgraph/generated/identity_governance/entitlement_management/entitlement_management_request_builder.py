@@ -28,6 +28,8 @@ if TYPE_CHECKING:
     from .resource_requests.resource_requests_request_builder import ResourceRequestsRequestBuilder
     from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
+    from .subjects.subjects_request_builder import SubjectsRequestBuilder
+    from .subjects_with_object_id.subjects_with_object_id_request_builder import SubjectsWithObjectIdRequestBuilder
 
 class EntitlementManagementRequestBuilder(BaseRequestBuilder):
     """
@@ -40,7 +42,7 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
@@ -102,6 +104,18 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         from ...models.entitlement_management import EntitlementManagement
 
         return await self.request_adapter.send_async(request_info, EntitlementManagement, error_mapping)
+    
+    def subjects_with_object_id(self,object_id: str) -> SubjectsWithObjectIdRequestBuilder:
+        """
+        Provides operations to manage the subjects property of the microsoft.graph.entitlementManagement entity.
+        param object_id: Alternate key of accessPackageSubject
+        Returns: SubjectsWithObjectIdRequestBuilder
+        """
+        if object_id is None:
+            raise TypeError("object_id cannot be null.")
+        from .subjects_with_object_id.subjects_with_object_id_request_builder import SubjectsWithObjectIdRequestBuilder
+
+        return SubjectsWithObjectIdRequestBuilder(self.request_adapter, self.path_parameters, object_id)
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
@@ -257,6 +271,15 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         from .settings.settings_request_builder import SettingsRequestBuilder
 
         return SettingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def subjects(self) -> SubjectsRequestBuilder:
+        """
+        Provides operations to manage the subjects property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .subjects.subjects_request_builder import SubjectsRequestBuilder
+
+        return SubjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EntitlementManagementRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

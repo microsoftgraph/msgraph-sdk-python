@@ -33,7 +33,7 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/tenantRelationships{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def find_tenant_information_by_domain_name_with_domain_name(self,domain_name: str) -> FindTenantInformationByDomainNameWithDomainNameRequestBuilder:
         """

@@ -31,7 +31,7 @@ if TYPE_CHECKING:
     from .get_email_app_usage_user_detail_with_date.get_email_app_usage_user_detail_with_date_request_builder import GetEmailAppUsageUserDetailWithDateRequestBuilder
     from .get_email_app_usage_user_detail_with_period.get_email_app_usage_user_detail_with_period_request_builder import GetEmailAppUsageUserDetailWithPeriodRequestBuilder
     from .get_email_app_usage_versions_user_counts_with_period.get_email_app_usage_versions_user_counts_with_period_request_builder import GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder
-    from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time.get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .get_group_archived_print_jobs_with_group_id_with_start_date_time_wi_e2eac30b.get_group_archived_print_jobs_with_group_id_with_start_date_time_wi_146a4be3 import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWi_146a4be3
     from .get_m365_app_platform_user_counts_with_period.get_m365_app_platform_user_counts_with_period_request_builder import GetM365AppPlatformUserCountsWithPeriodRequestBuilder
     from .get_m365_app_user_counts_with_period.get_m365_app_user_counts_with_period_request_builder import GetM365AppUserCountsWithPeriodRequestBuilder
     from .get_m365_app_user_detail_with_date.get_m365_app_user_detail_with_date_request_builder import GetM365AppUserDetailWithDateRequestBuilder
@@ -62,7 +62,7 @@ if TYPE_CHECKING:
     from .get_one_drive_usage_account_detail_with_period.get_one_drive_usage_account_detail_with_period_request_builder import GetOneDriveUsageAccountDetailWithPeriodRequestBuilder
     from .get_one_drive_usage_file_counts_with_period.get_one_drive_usage_file_counts_with_period_request_builder import GetOneDriveUsageFileCountsWithPeriodRequestBuilder
     from .get_one_drive_usage_storage_with_period.get_one_drive_usage_storage_with_period_request_builder import GetOneDriveUsageStorageWithPeriodRequestBuilder
-    from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time.get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .get_printer_archived_print_jobs_with_printer_id_with_start_date_ti_41d6f486.get_printer_archived_print_jobs_with_printer_id_with_start_date_ti_ef6034cc import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTi_ef6034cc
     from .get_relying_party_detailed_summary_with_period.get_relying_party_detailed_summary_with_period_request_builder import GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder
     from .get_share_point_activity_file_counts_with_period.get_share_point_activity_file_counts_with_period_request_builder import GetSharePointActivityFileCountsWithPeriodRequestBuilder
     from .get_share_point_activity_pages_with_period.get_share_point_activity_pages_with_period_request_builder import GetSharePointActivityPagesWithPeriodRequestBuilder
@@ -79,20 +79,20 @@ if TYPE_CHECKING:
     from .get_skype_for_business_activity_user_counts_with_period.get_skype_for_business_activity_user_counts_with_period_request_builder import GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder
     from .get_skype_for_business_activity_user_detail_with_date.get_skype_for_business_activity_user_detail_with_date_request_builder import GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder
     from .get_skype_for_business_activity_user_detail_with_period.get_skype_for_business_activity_user_detail_with_period_request_builder import GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder
-    from .get_skype_for_business_device_usage_distribution_user_counts_with_period.get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder import GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+    from .get_skype_for_business_device_usage_distribution_user_counts_with_period.get_skype_for_business_device_usage_distribution_user_counts_wit_616f6a94 import GetSkypeForBusinessDeviceUsageDistributionUserCountsWit_616f6a94
     from .get_skype_for_business_device_usage_user_counts_with_period.get_skype_for_business_device_usage_user_counts_with_period_request_builder import GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder
     from .get_skype_for_business_device_usage_user_detail_with_date.get_skype_for_business_device_usage_user_detail_with_date_request_builder import GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder
     from .get_skype_for_business_device_usage_user_detail_with_period.get_skype_for_business_device_usage_user_detail_with_period_request_builder import GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder
-    from .get_skype_for_business_organizer_activity_counts_with_period.get_skype_for_business_organizer_activity_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_organizer_activity_minute_counts_with_period.get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_organizer_activity_user_counts_with_period.get_skype_for_business_organizer_activity_user_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_participant_activity_counts_with_period.get_skype_for_business_participant_activity_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_participant_activity_minute_counts_with_period.get_skype_for_business_participant_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_participant_activity_user_counts_with_period.get_skype_for_business_participant_activity_user_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_peer_to_peer_activity_counts_with_period.get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_peer_to_peer_activity_minute_counts_with_period.get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
-    from .get_skype_for_business_peer_to_peer_activity_user_counts_with_period.get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
-    from .get_teams_device_usage_distribution_user_counts_with_period.get_teams_device_usage_distribution_user_counts_with_period_request_builder import GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+    from .get_skype_for_business_organizer_activity_counts_with_period.get_skype_for_business_organizer_activity_counts_with_period_req_2bbcab82 import GetSkypeForBusinessOrganizerActivityCountsWithPeriodReq_2bbcab82
+    from .get_skype_for_business_organizer_activity_minute_counts_with_period.get_skype_for_business_organizer_activity_minute_counts_with_per_4abffb88 import GetSkypeForBusinessOrganizerActivityMinuteCountsWithPer_4abffb88
+    from .get_skype_for_business_organizer_activity_user_counts_with_period.get_skype_for_business_organizer_activity_user_counts_with_perio_a2cc3a13 import GetSkypeForBusinessOrganizerActivityUserCountsWithPerio_a2cc3a13
+    from .get_skype_for_business_participant_activity_counts_with_period.get_skype_for_business_participant_activity_counts_with_period_r_7c266894 import GetSkypeForBusinessParticipantActivityCountsWithPeriodR_7c266894
+    from .get_skype_for_business_participant_activity_minute_counts_with_period.get_skype_for_business_participant_activity_minute_counts_with_p_b63f3625 import GetSkypeForBusinessParticipantActivityMinuteCountsWithP_b63f3625
+    from .get_skype_for_business_participant_activity_user_counts_with_period.get_skype_for_business_participant_activity_user_counts_with_per_3fafe971 import GetSkypeForBusinessParticipantActivityUserCountsWithPer_3fafe971
+    from .get_skype_for_business_peer_to_peer_activity_counts_with_period.get_skype_for_business_peer_to_peer_activity_counts_with_period_re_a8e49833 import GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRe_a8e49833
+    from .get_skype_for_business_peer_to_peer_activity_minute_counts_with_period.get_skype_for_business_peer_to_peer_activity_minute_counts_with_pe_f7936023 import GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPe_f7936023
+    from .get_skype_for_business_peer_to_peer_activity_user_counts_with_period.get_skype_for_business_peer_to_peer_activity_user_counts_with_peri_417e02f1 import GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeri_417e02f1
+    from .get_teams_device_usage_distribution_user_counts_with_period.get_teams_device_usage_distribution_user_counts_with_period_requ_6f50b0f5 import GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequ_6f50b0f5
     from .get_teams_device_usage_user_counts_with_period.get_teams_device_usage_user_counts_with_period_request_builder import GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder
     from .get_teams_device_usage_user_detail_with_date.get_teams_device_usage_user_detail_with_date_request_builder import GetTeamsDeviceUsageUserDetailWithDateRequestBuilder
     from .get_teams_device_usage_user_detail_with_period.get_teams_device_usage_user_detail_with_period_request_builder import GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder
@@ -105,12 +105,12 @@ if TYPE_CHECKING:
     from .get_teams_user_activity_user_counts_with_period.get_teams_user_activity_user_counts_with_period_request_builder import GetTeamsUserActivityUserCountsWithPeriodRequestBuilder
     from .get_teams_user_activity_user_detail_with_date.get_teams_user_activity_user_detail_with_date_request_builder import GetTeamsUserActivityUserDetailWithDateRequestBuilder
     from .get_teams_user_activity_user_detail_with_period.get_teams_user_activity_user_detail_with_period_request_builder import GetTeamsUserActivityUserDetailWithPeriodRequestBuilder
-    from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time.get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_2be0aad7.get_user_archived_print_jobs_with_user_id_with_start_date_time_with_3d550e0f import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWith_3d550e0f
     from .get_yammer_activity_counts_with_period.get_yammer_activity_counts_with_period_request_builder import GetYammerActivityCountsWithPeriodRequestBuilder
     from .get_yammer_activity_user_counts_with_period.get_yammer_activity_user_counts_with_period_request_builder import GetYammerActivityUserCountsWithPeriodRequestBuilder
     from .get_yammer_activity_user_detail_with_date.get_yammer_activity_user_detail_with_date_request_builder import GetYammerActivityUserDetailWithDateRequestBuilder
     from .get_yammer_activity_user_detail_with_period.get_yammer_activity_user_detail_with_period_request_builder import GetYammerActivityUserDetailWithPeriodRequestBuilder
-    from .get_yammer_device_usage_distribution_user_counts_with_period.get_yammer_device_usage_distribution_user_counts_with_period_request_builder import GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+    from .get_yammer_device_usage_distribution_user_counts_with_period.get_yammer_device_usage_distribution_user_counts_with_period_req_19decbc0 import GetYammerDeviceUsageDistributionUserCountsWithPeriodReq_19decbc0
     from .get_yammer_device_usage_user_counts_with_period.get_yammer_device_usage_user_counts_with_period_request_builder import GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder
     from .get_yammer_device_usage_user_detail_with_date.get_yammer_device_usage_user_detail_with_date_request_builder import GetYammerDeviceUsageUserDetailWithDateRequestBuilder
     from .get_yammer_device_usage_user_detail_with_period.get_yammer_device_usage_user_detail_with_period_request_builder import GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder
@@ -119,7 +119,7 @@ if TYPE_CHECKING:
     from .get_yammer_groups_activity_detail_with_period.get_yammer_groups_activity_detail_with_period_request_builder import GetYammerGroupsActivityDetailWithPeriodRequestBuilder
     from .get_yammer_groups_activity_group_counts_with_period.get_yammer_groups_activity_group_counts_with_period_request_builder import GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder
     from .managed_device_enrollment_failure_details.managed_device_enrollment_failure_details_request_builder import ManagedDeviceEnrollmentFailureDetailsRequestBuilder
-    from .managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token.managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder import ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
+    from .managed_device_enrollment_failure_details_with_skip_with_top_wit_5d97720e.managed_device_enrollment_failure_details_with_skip_with_top_wit_20e92280 import ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWit_20e92280
     from .managed_device_enrollment_top_failures.managed_device_enrollment_top_failures_request_builder import ManagedDeviceEnrollmentTopFailuresRequestBuilder
     from .managed_device_enrollment_top_failures_with_period.managed_device_enrollment_top_failures_with_period_request_builder import ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder
     from .monthly_print_usage_by_printer.monthly_print_usage_by_printer_request_builder import MonthlyPrintUsageByPrinterRequestBuilder
@@ -138,7 +138,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/reports{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ReportsRequestBuilderGetQueryParameters]] = None) -> Optional[ReportRoot]:
         """
@@ -268,13 +268,13 @@ class ReportsRequestBuilder(BaseRequestBuilder):
 
         return GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, group_id: str, start_date_time: datetime.datetime) -> GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, group_id: str, start_date_time: datetime.datetime) -> GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWi_146a4be3:
         """
         Provides operations to call the getGroupArchivedPrintJobs method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param group_id: Usage: groupId='{groupId}'
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWi_146a4be3
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
@@ -282,9 +282,9 @@ class ReportsRequestBuilder(BaseRequestBuilder):
             raise TypeError("group_id cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time.get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .get_group_archived_print_jobs_with_group_id_with_start_date_time_wi_e2eac30b.get_group_archived_print_jobs_with_group_id_with_start_date_time_wi_146a4be3 import GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWi_146a4be3
 
-        return GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, group_id, start_date_time)
+        return GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWi_146a4be3(self.request_adapter, self.path_parameters, end_date_time, group_id, start_date_time)
     
     def get_m365_app_platform_user_counts_with_period(self,period: str) -> GetM365AppPlatformUserCountsWithPeriodRequestBuilder:
         """
@@ -610,13 +610,13 @@ class ReportsRequestBuilder(BaseRequestBuilder):
 
         return GetOneDriveUsageStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, printer_id: str, start_date_time: datetime.datetime) -> GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, printer_id: str, start_date_time: datetime.datetime) -> GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTi_ef6034cc:
         """
         Provides operations to call the getPrinterArchivedPrintJobs method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param printer_id: Usage: printerId='{printerId}'
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTi_ef6034cc
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
@@ -624,9 +624,9 @@ class ReportsRequestBuilder(BaseRequestBuilder):
             raise TypeError("printer_id cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time.get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .get_printer_archived_print_jobs_with_printer_id_with_start_date_ti_41d6f486.get_printer_archived_print_jobs_with_printer_id_with_start_date_ti_ef6034cc import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTi_ef6034cc
 
-        return GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, printer_id, start_date_time)
+        return GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTi_ef6034cc(self.request_adapter, self.path_parameters, end_date_time, printer_id, start_date_time)
     
     def get_relying_party_detailed_summary_with_period(self,period: str) -> GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder:
         """
@@ -820,17 +820,17 @@ class ReportsRequestBuilder(BaseRequestBuilder):
 
         return GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_device_usage_distribution_user_counts_with_period(self,period: str) -> GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_device_usage_distribution_user_counts_with_period(self,period: str) -> GetSkypeForBusinessDeviceUsageDistributionUserCountsWit_616f6a94:
         """
         Provides operations to call the getSkypeForBusinessDeviceUsageDistributionUserCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessDeviceUsageDistributionUserCountsWit_616f6a94
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_device_usage_distribution_user_counts_with_period.get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder import GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_device_usage_distribution_user_counts_with_period.get_skype_for_business_device_usage_distribution_user_counts_wit_616f6a94 import GetSkypeForBusinessDeviceUsageDistributionUserCountsWit_616f6a94
 
-        return GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessDeviceUsageDistributionUserCountsWit_616f6a94(self.request_adapter, self.path_parameters, period)
     
     def get_skype_for_business_device_usage_user_counts_with_period(self,period: str) -> GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder:
         """
@@ -868,125 +868,125 @@ class ReportsRequestBuilder(BaseRequestBuilder):
 
         return GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_organizer_activity_counts_with_period(self,period: str) -> GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_organizer_activity_counts_with_period(self,period: str) -> GetSkypeForBusinessOrganizerActivityCountsWithPeriodReq_2bbcab82:
         """
         Provides operations to call the getSkypeForBusinessOrganizerActivityCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessOrganizerActivityCountsWithPeriodReq_2bbcab82
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_organizer_activity_counts_with_period.get_skype_for_business_organizer_activity_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_organizer_activity_counts_with_period.get_skype_for_business_organizer_activity_counts_with_period_req_2bbcab82 import GetSkypeForBusinessOrganizerActivityCountsWithPeriodReq_2bbcab82
 
-        return GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessOrganizerActivityCountsWithPeriodReq_2bbcab82(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_organizer_activity_minute_counts_with_period(self,period: str) -> GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_organizer_activity_minute_counts_with_period(self,period: str) -> GetSkypeForBusinessOrganizerActivityMinuteCountsWithPer_4abffb88:
         """
         Provides operations to call the getSkypeForBusinessOrganizerActivityMinuteCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessOrganizerActivityMinuteCountsWithPer_4abffb88
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_organizer_activity_minute_counts_with_period.get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_organizer_activity_minute_counts_with_period.get_skype_for_business_organizer_activity_minute_counts_with_per_4abffb88 import GetSkypeForBusinessOrganizerActivityMinuteCountsWithPer_4abffb88
 
-        return GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessOrganizerActivityMinuteCountsWithPer_4abffb88(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_organizer_activity_user_counts_with_period(self,period: str) -> GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_organizer_activity_user_counts_with_period(self,period: str) -> GetSkypeForBusinessOrganizerActivityUserCountsWithPerio_a2cc3a13:
         """
         Provides operations to call the getSkypeForBusinessOrganizerActivityUserCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessOrganizerActivityUserCountsWithPerio_a2cc3a13
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_organizer_activity_user_counts_with_period.get_skype_for_business_organizer_activity_user_counts_with_period_request_builder import GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_organizer_activity_user_counts_with_period.get_skype_for_business_organizer_activity_user_counts_with_perio_a2cc3a13 import GetSkypeForBusinessOrganizerActivityUserCountsWithPerio_a2cc3a13
 
-        return GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessOrganizerActivityUserCountsWithPerio_a2cc3a13(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_participant_activity_counts_with_period(self,period: str) -> GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_participant_activity_counts_with_period(self,period: str) -> GetSkypeForBusinessParticipantActivityCountsWithPeriodR_7c266894:
         """
         Provides operations to call the getSkypeForBusinessParticipantActivityCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessParticipantActivityCountsWithPeriodR_7c266894
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_participant_activity_counts_with_period.get_skype_for_business_participant_activity_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_participant_activity_counts_with_period.get_skype_for_business_participant_activity_counts_with_period_r_7c266894 import GetSkypeForBusinessParticipantActivityCountsWithPeriodR_7c266894
 
-        return GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessParticipantActivityCountsWithPeriodR_7c266894(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_participant_activity_minute_counts_with_period(self,period: str) -> GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_participant_activity_minute_counts_with_period(self,period: str) -> GetSkypeForBusinessParticipantActivityMinuteCountsWithP_b63f3625:
         """
         Provides operations to call the getSkypeForBusinessParticipantActivityMinuteCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessParticipantActivityMinuteCountsWithP_b63f3625
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_participant_activity_minute_counts_with_period.get_skype_for_business_participant_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_participant_activity_minute_counts_with_period.get_skype_for_business_participant_activity_minute_counts_with_p_b63f3625 import GetSkypeForBusinessParticipantActivityMinuteCountsWithP_b63f3625
 
-        return GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessParticipantActivityMinuteCountsWithP_b63f3625(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_participant_activity_user_counts_with_period(self,period: str) -> GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_participant_activity_user_counts_with_period(self,period: str) -> GetSkypeForBusinessParticipantActivityUserCountsWithPer_3fafe971:
         """
         Provides operations to call the getSkypeForBusinessParticipantActivityUserCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessParticipantActivityUserCountsWithPer_3fafe971
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_participant_activity_user_counts_with_period.get_skype_for_business_participant_activity_user_counts_with_period_request_builder import GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_participant_activity_user_counts_with_period.get_skype_for_business_participant_activity_user_counts_with_per_3fafe971 import GetSkypeForBusinessParticipantActivityUserCountsWithPer_3fafe971
 
-        return GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessParticipantActivityUserCountsWithPer_3fafe971(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_peer_to_peer_activity_counts_with_period(self,period: str) -> GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_peer_to_peer_activity_counts_with_period(self,period: str) -> GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRe_a8e49833:
         """
         Provides operations to call the getSkypeForBusinessPeerToPeerActivityCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRe_a8e49833
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_peer_to_peer_activity_counts_with_period.get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_peer_to_peer_activity_counts_with_period.get_skype_for_business_peer_to_peer_activity_counts_with_period_re_a8e49833 import GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRe_a8e49833
 
-        return GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRe_a8e49833(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_peer_to_peer_activity_minute_counts_with_period(self,period: str) -> GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_peer_to_peer_activity_minute_counts_with_period(self,period: str) -> GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPe_f7936023:
         """
         Provides operations to call the getSkypeForBusinessPeerToPeerActivityMinuteCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPe_f7936023
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_peer_to_peer_activity_minute_counts_with_period.get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_peer_to_peer_activity_minute_counts_with_period.get_skype_for_business_peer_to_peer_activity_minute_counts_with_pe_f7936023 import GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPe_f7936023
 
-        return GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPe_f7936023(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_peer_to_peer_activity_user_counts_with_period(self,period: str) -> GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder:
+    def get_skype_for_business_peer_to_peer_activity_user_counts_with_period(self,period: str) -> GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeri_417e02f1:
         """
         Provides operations to call the getSkypeForBusinessPeerToPeerActivityUserCounts method.
         param period: Usage: period='{period}'
-        Returns: GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
+        Returns: GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeri_417e02f1
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_skype_for_business_peer_to_peer_activity_user_counts_with_period.get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder import GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
+        from .get_skype_for_business_peer_to_peer_activity_user_counts_with_period.get_skype_for_business_peer_to_peer_activity_user_counts_with_peri_417e02f1 import GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeri_417e02f1
 
-        return GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeri_417e02f1(self.request_adapter, self.path_parameters, period)
     
-    def get_teams_device_usage_distribution_user_counts_with_period(self,period: str) -> GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder:
+    def get_teams_device_usage_distribution_user_counts_with_period(self,period: str) -> GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequ_6f50b0f5:
         """
         Provides operations to call the getTeamsDeviceUsageDistributionUserCounts method.
         param period: Usage: period='{period}'
-        Returns: GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+        Returns: GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequ_6f50b0f5
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_teams_device_usage_distribution_user_counts_with_period.get_teams_device_usage_distribution_user_counts_with_period_request_builder import GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+        from .get_teams_device_usage_distribution_user_counts_with_period.get_teams_device_usage_distribution_user_counts_with_period_requ_6f50b0f5 import GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequ_6f50b0f5
 
-        return GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequ_6f50b0f5(self.request_adapter, self.path_parameters, period)
     
     def get_teams_device_usage_user_counts_with_period(self,period: str) -> GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder:
         """
@@ -1132,13 +1132,13 @@ class ReportsRequestBuilder(BaseRequestBuilder):
 
         return GetTeamsUserActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime, user_id: str) -> GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime, user_id: str) -> GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWith_3d550e0f:
         """
         Provides operations to call the getUserArchivedPrintJobs method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param start_date_time: Usage: startDateTime={startDateTime}
         param user_id: Usage: userId='{userId}'
-        Returns: GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWith_3d550e0f
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
@@ -1146,9 +1146,9 @@ class ReportsRequestBuilder(BaseRequestBuilder):
             raise TypeError("start_date_time cannot be null.")
         if user_id is None:
             raise TypeError("user_id cannot be null.")
-        from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time.get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_2be0aad7.get_user_archived_print_jobs_with_user_id_with_start_date_time_with_3d550e0f import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWith_3d550e0f
 
-        return GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time, user_id)
+        return GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWith_3d550e0f(self.request_adapter, self.path_parameters, end_date_time, start_date_time, user_id)
     
     def get_yammer_activity_counts_with_period(self,period: str) -> GetYammerActivityCountsWithPeriodRequestBuilder:
         """
@@ -1198,17 +1198,17 @@ class ReportsRequestBuilder(BaseRequestBuilder):
 
         return GetYammerActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_yammer_device_usage_distribution_user_counts_with_period(self,period: str) -> GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder:
+    def get_yammer_device_usage_distribution_user_counts_with_period(self,period: str) -> GetYammerDeviceUsageDistributionUserCountsWithPeriodReq_19decbc0:
         """
         Provides operations to call the getYammerDeviceUsageDistributionUserCounts method.
         param period: Usage: period='{period}'
-        Returns: GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+        Returns: GetYammerDeviceUsageDistributionUserCountsWithPeriodReq_19decbc0
         """
         if period is None:
             raise TypeError("period cannot be null.")
-        from .get_yammer_device_usage_distribution_user_counts_with_period.get_yammer_device_usage_distribution_user_counts_with_period_request_builder import GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
+        from .get_yammer_device_usage_distribution_user_counts_with_period.get_yammer_device_usage_distribution_user_counts_with_period_req_19decbc0 import GetYammerDeviceUsageDistributionUserCountsWithPeriodReq_19decbc0
 
-        return GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+        return GetYammerDeviceUsageDistributionUserCountsWithPeriodReq_19decbc0(self.request_adapter, self.path_parameters, period)
     
     def get_yammer_device_usage_user_counts_with_period(self,period: str) -> GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder:
         """
@@ -1294,14 +1294,14 @@ class ReportsRequestBuilder(BaseRequestBuilder):
 
         return GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token(self,filter: str, skip: int, skip_token: str, top: int) -> ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder:
+    def managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token(self,filter: str, skip: int, skip_token: str, top: int) -> ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWit_20e92280:
         """
         Provides operations to call the managedDeviceEnrollmentFailureDetails method.
         param filter: Usage: filter='{filter}'
         param skip: Usage: skip={skip}
         param skip_token: Usage: skipToken='{skipToken}'
         param top: Usage: top={top}
-        Returns: ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
+        Returns: ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWit_20e92280
         """
         if filter is None:
             raise TypeError("filter cannot be null.")
@@ -1311,9 +1311,9 @@ class ReportsRequestBuilder(BaseRequestBuilder):
             raise TypeError("skip_token cannot be null.")
         if top is None:
             raise TypeError("top cannot be null.")
-        from .managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token.managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder import ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
+        from .managed_device_enrollment_failure_details_with_skip_with_top_wit_5d97720e.managed_device_enrollment_failure_details_with_skip_with_top_wit_20e92280 import ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWit_20e92280
 
-        return ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder(self.request_adapter, self.path_parameters, filter, skip, skip_token, top)
+        return ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWit_20e92280(self.request_adapter, self.path_parameters, filter, skip, skip_token, top)
     
     def managed_device_enrollment_top_failures_with_period(self,period: str) -> ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder:
         """

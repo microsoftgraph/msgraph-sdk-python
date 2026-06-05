@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from ...models.security.incident_collection_response import IncidentCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
     from .item.incident_item_request_builder import IncidentItemRequestBuilder
+    from .microsoft_graph_security_merge_incidents.microsoft_graph_security_merge_incidents_request_builder import MicrosoftGraphSecurityMergeIncidentsRequestBuilder
 
 class IncidentsRequestBuilder(BaseRequestBuilder):
     """
@@ -31,7 +32,7 @@ class IncidentsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/security/incidents{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_incident_id(self,incident_id: str) -> IncidentItemRequestBuilder:
         """
@@ -135,6 +136,15 @@ class IncidentsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_merge_incidents(self) -> MicrosoftGraphSecurityMergeIncidentsRequestBuilder:
+        """
+        Provides operations to call the mergeIncidents method.
+        """
+        from .microsoft_graph_security_merge_incidents.microsoft_graph_security_merge_incidents_request_builder import MicrosoftGraphSecurityMergeIncidentsRequestBuilder
+
+        return MicrosoftGraphSecurityMergeIncidentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IncidentsRequestBuilderGetQueryParameters():

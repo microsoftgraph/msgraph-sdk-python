@@ -28,7 +28,7 @@ class ProgressTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/planner/plans/{plannerPlan%2Did}/tasks/{plannerTask%2Did}/progressTaskBoardFormat{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/planner/plans/{plannerPlan%2Did}/tasks/{plannerTask%2Did}/progressTaskBoardFormat", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

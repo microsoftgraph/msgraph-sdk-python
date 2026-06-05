@@ -31,7 +31,7 @@ class ReactionsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/communications/onlineMeetingConversations/{onlineMeetingEngagementConversation%2Did}/messages/{engagementConversationMessage%2Did}/reactions{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_engagement_conversation_message_reaction_id(self,engagement_conversation_message_reaction_id: str) -> EngagementConversationMessageReactionItemRequestBuilder:
         """

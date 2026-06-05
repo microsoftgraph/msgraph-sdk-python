@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .event_message_detail import EventMessageDetail
     from .item_body import ItemBody
+    from .targeted_chat_message import TargetedChatMessage
 
 from .entity import Entity
 
@@ -84,6 +85,15 @@ class ChatMessage(Entity, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedChatMessage".casefold():
+            from .targeted_chat_message import TargetedChatMessage
+
+            return TargetedChatMessage()
         return ChatMessage()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -104,6 +114,7 @@ class ChatMessage(Entity, Parsable):
         from .entity import Entity
         from .event_message_detail import EventMessageDetail
         from .item_body import ItemBody
+        from .targeted_chat_message import TargetedChatMessage
 
         from .channel_identity import ChannelIdentity
         from .chat_message_attachment import ChatMessageAttachment
@@ -118,6 +129,7 @@ class ChatMessage(Entity, Parsable):
         from .entity import Entity
         from .event_message_detail import EventMessageDetail
         from .item_body import ItemBody
+        from .targeted_chat_message import TargetedChatMessage
 
         fields: dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(ChatMessageAttachment)),

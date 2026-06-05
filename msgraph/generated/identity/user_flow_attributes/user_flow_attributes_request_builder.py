@@ -31,7 +31,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identity/userFlowAttributes{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_identity_user_flow_attribute_id(self,identity_user_flow_attribute_id: str) -> IdentityUserFlowAttributeItemRequestBuilder:
         """

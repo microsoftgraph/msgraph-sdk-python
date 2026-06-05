@@ -32,7 +32,7 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identityGovernance/appConsent/appConsentRequests{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_app_consent_request_id(self,app_consent_request_id: str) -> AppConsentRequestItemRequestBuilder:
         """

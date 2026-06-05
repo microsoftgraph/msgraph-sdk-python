@@ -31,7 +31,7 @@ class LanguageDetailsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/security/attackSimulation/trainings/{training%2Did}/languageDetails{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_training_language_detail_id(self,training_language_detail_id: str) -> TrainingLanguageDetailItemRequestBuilder:
         """

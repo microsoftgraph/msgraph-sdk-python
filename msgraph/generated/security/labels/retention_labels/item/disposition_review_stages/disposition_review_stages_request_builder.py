@@ -31,7 +31,7 @@ class DispositionReviewStagesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/security/labels/retentionLabels/{retentionLabel%2Did}/dispositionReviewStages{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_disposition_review_stage_stage_number(self,disposition_review_stage_stage_number: str) -> DispositionReviewStageStageNumberItemRequestBuilder:
         """

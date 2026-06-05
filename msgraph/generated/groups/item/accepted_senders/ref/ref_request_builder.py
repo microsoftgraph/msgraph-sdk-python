@@ -29,7 +29,7 @@ class RefRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/acceptedSenders/$ref?@id={%40id}{&%24count,%24filter,%24orderby,%24search,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[RefRequestBuilderDeleteQueryParameters]] = None) -> None:
         """

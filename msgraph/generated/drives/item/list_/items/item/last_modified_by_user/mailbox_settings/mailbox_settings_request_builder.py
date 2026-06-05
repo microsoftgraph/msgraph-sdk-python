@@ -28,7 +28,7 @@ class MailboxSettingsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/list/items/{listItem%2Did}/lastModifiedByUser/mailboxSettings{?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxSettingsRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxSettings]:
         """

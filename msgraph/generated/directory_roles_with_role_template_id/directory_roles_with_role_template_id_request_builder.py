@@ -31,7 +31,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
         """
         if isinstance(path_parameters, dict):
             path_parameters['roleTemplateId'] = role_template_id
-        super().__init__(request_adapter, "{+baseurl}/directoryRoles(roleTemplateId='{roleTemplateId}'){?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/directoryRoles(roleTemplateId='{roleTemplateId}')", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

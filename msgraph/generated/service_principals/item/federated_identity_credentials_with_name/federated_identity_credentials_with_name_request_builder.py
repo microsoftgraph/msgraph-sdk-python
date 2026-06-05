@@ -31,7 +31,7 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
         """
         if isinstance(path_parameters, dict):
             path_parameters['name'] = name
-        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/federatedIdentityCredentials(name='{name}'){?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/federatedIdentityCredentials(name='{name}')", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

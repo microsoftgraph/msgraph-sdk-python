@@ -15,10 +15,10 @@ class SendMailPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The SaveToSentItems property
+    save_to_sent_items: Optional[bool] = False
     # The Message property
     message: Optional[Message] = None
-    # The SaveToSentItems property
-    save_to_sent_items: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SendMailPostRequestBody:

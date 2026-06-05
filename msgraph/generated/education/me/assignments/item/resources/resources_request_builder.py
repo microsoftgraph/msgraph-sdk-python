@@ -31,7 +31,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/education/me/assignments/{educationAssignment%2Did}/resources{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_education_assignment_resource_id(self,education_assignment_resource_id: str) -> EducationAssignmentResourceItemRequestBuilder:
         """

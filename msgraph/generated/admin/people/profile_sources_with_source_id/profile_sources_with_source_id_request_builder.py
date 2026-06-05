@@ -31,7 +31,7 @@ class ProfileSourcesWithSourceIdRequestBuilder(BaseRequestBuilder):
         """
         if isinstance(path_parameters, dict):
             path_parameters['sourceId'] = source_id
-        super().__init__(request_adapter, "{+baseurl}/admin/people/profileSources(sourceId='{sourceId}'){?%24expand,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/admin/people/profileSources(sourceId='{sourceId}')", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

@@ -31,7 +31,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/policies/authenticationStrengthPolicies/{authenticationStrengthPolicy%2Did}/combinationConfigurations{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_authentication_combination_configuration_id(self,authentication_combination_configuration_id: str) -> AuthenticationCombinationConfigurationItemRequestBuilder:
         """

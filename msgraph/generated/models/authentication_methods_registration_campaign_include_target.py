@@ -21,7 +21,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
     odata_type: Optional[str] = None
     # The targetType property
     target_type: Optional[AuthenticationMethodTargetType] = None
-    # The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
+    # The authentication method that the user is prompted to register. The value can be Fido2 or microsoftAuthenticator.
     targeted_authentication_method: Optional[str] = None
     
     @staticmethod

@@ -28,7 +28,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/primaryChannel/filesFolder/content{?%24format*}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/primaryChannel/filesFolder/content", path_parameters)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """

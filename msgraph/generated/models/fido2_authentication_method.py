@@ -28,7 +28,7 @@ class Fido2AuthenticationMethod(AuthenticationMethod, Parsable):
     model: Optional[str] = None
     # The type of passkey. The possible values are: deviceBound, synced, unknownFutureValue.
     passkey_type: Optional[PasskeyType] = None
-    # The publicKeyCredential property
+    # Contains the WebAuthn public key credential information being registered. This property is used only for write requests and isn't returned on read operations.
     public_key_credential: Optional[WebauthnPublicKeyCredential] = None
     
     @staticmethod

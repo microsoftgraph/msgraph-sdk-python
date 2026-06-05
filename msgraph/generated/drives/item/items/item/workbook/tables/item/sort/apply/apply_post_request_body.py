@@ -15,10 +15,10 @@ class ApplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The matchCase property
+    match_case: Optional[bool] = False
     # The fields property
     fields: Optional[list[WorkbookSortField]] = None
-    # The matchCase property
-    match_case: Optional[bool] = None
     # The method property
     method: Optional[str] = None
     

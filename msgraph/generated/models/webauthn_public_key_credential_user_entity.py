@@ -12,11 +12,11 @@ class WebauthnPublicKeyCredentialUserEntity(AdditionalDataHolder, BackedModel, P
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The displayName property
+    # A human-readable name for the user account, intended for display.
     display_name: Optional[str] = None
-    # The id property
+    # A user identifier, determined by the relying party. This value is opaque to the authenticator and is Base64URL-encoded without padding.
     id: Optional[str] = None
-    # The name property
+    # A human-readable identifier for the user account, such as a username or email address.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

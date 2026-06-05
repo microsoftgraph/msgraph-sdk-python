@@ -16,13 +16,13 @@ class WebauthnPublicKeyCredential(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The clientExtensionResults property
+    # The output of the WebAuthn extension processing.
     client_extension_results: Optional[WebauthnAuthenticationExtensionsClientOutputs] = None
-    # The id property
+    # The credential ID created by the WebAuthn Authenticator. This value is Base64URL-encoded without padding.
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The response property
+    # The response from the WebAuthn Authenticator after generating an attestation.
     response: Optional[WebauthnAuthenticatorAttestationResponse] = None
     
     @staticmethod

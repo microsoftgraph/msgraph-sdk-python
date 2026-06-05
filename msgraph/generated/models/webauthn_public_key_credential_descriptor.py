@@ -12,13 +12,13 @@ class WebauthnPublicKeyCredentialDescriptor(AdditionalDataHolder, BackedModel, P
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The id property
+    # The credential ID of the credential being described. This value is Base64URL-encoded without padding.
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The transports property
+    # A hint about the types of transport that the authenticator supports. Possible values include: usb, nfc, ble, internal.
     transports: Optional[list[str]] = None
-    # The type property
+    # The type of credential. Currently, the only supported value is public-key.
     type: Optional[str] = None
     
     @staticmethod

@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from .item.sensor_item_request_builder import SensorItemRequestBuilder
     from .microsoft_graph_security_get_deployment_access_key.microsoft_graph_security_get_deployment_access_key_request_builder import MicrosoftGraphSecurityGetDeploymentAccessKeyRequestBuilder
     from .microsoft_graph_security_get_deployment_package_uri.microsoft_graph_security_get_deployment_package_uri_request_builder import MicrosoftGraphSecurityGetDeploymentPackageUriRequestBuilder
-    from .microsoft_graph_security_regenerate_deployment_access_key.microsoft_graph_security_regenerate_deployment_access_key_request_builder import MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequestBuilder
+    from .microsoft_graph_security_regenerate_deployment_access_key.microsoft_graph_security_regenerate_deployment_access_key_requ_9ca57bf4 import MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequ_9ca57bf4
 
 class SensorsRequestBuilder(BaseRequestBuilder):
     """
@@ -158,13 +158,13 @@ class SensorsRequestBuilder(BaseRequestBuilder):
         return MicrosoftGraphSecurityGetDeploymentPackageUriRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_regenerate_deployment_access_key(self) -> MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequestBuilder:
+    def microsoft_graph_security_regenerate_deployment_access_key(self) -> MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequ_9ca57bf4:
         """
         Provides operations to call the regenerateDeploymentAccessKey method.
         """
-        from .microsoft_graph_security_regenerate_deployment_access_key.microsoft_graph_security_regenerate_deployment_access_key_request_builder import MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequestBuilder
+        from .microsoft_graph_security_regenerate_deployment_access_key.microsoft_graph_security_regenerate_deployment_access_key_requ_9ca57bf4 import MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequ_9ca57bf4
 
-        return MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityRegenerateDeploymentAccessKeyRequ_9ca57bf4(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SensorsRequestBuilderGetQueryParameters():

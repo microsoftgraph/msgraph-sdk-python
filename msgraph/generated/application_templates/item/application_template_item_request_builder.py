@@ -33,7 +33,7 @@ class ApplicationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ApplicationTemplateItemRequestBuilderGetQueryParameters]] = None) -> Optional[ApplicationTemplate]:
         """
-        Retrieve the properties of an applicationTemplate object.
+        Retrieve the properties of an applicationTemplate object. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApplicationTemplate]
         Find more info here: https://learn.microsoft.com/graph/api/applicationtemplate-get?view=graph-rest-1.0
@@ -54,7 +54,7 @@ class ApplicationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ApplicationTemplateItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the properties of an applicationTemplate object.
+        Retrieve the properties of an applicationTemplate object. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -85,7 +85,7 @@ class ApplicationTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApplicationTemplateItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of an applicationTemplate object.
+        Retrieve the properties of an applicationTemplate object. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

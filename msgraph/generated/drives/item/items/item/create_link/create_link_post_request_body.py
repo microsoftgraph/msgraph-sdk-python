@@ -16,6 +16,10 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The retainInheritedPermissions property
+    retain_inherited_permissions: Optional[bool] = False
+    # The sendNotification property
+    send_notification: Optional[bool] = False
     # The expirationDateTime property
     expiration_date_time: Optional[datetime.datetime] = None
     # The message property
@@ -24,12 +28,8 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     password: Optional[str] = None
     # The recipients property
     recipients: Optional[list[DriveRecipient]] = None
-    # The retainInheritedPermissions property
-    retain_inherited_permissions: Optional[bool] = None
     # The scope property
     scope: Optional[str] = None
-    # The sendNotification property
-    send_notification: Optional[bool] = None
     # The type property
     type: Optional[str] = None
     

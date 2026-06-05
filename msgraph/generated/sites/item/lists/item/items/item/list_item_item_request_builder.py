@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
     from .fields.fields_request_builder import FieldsRequestBuilder
     from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
-    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+    from .get_activities_by_interval_with_start_date_time_with_end_date_time_58a4aa2a.get_activities_by_interval_with_start_date_time_with_end_date_time_41999afb import GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb
     from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
     from .versions.versions_request_builder import VersionsRequestBuilder
 
@@ -80,13 +80,13 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListItem, error_mapping)
     
-    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: str, interval: str, start_date_time: str) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: str, interval: str, start_date_time: str) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb:
         """
         Provides operations to call the getActivitiesByInterval method.
         param end_date_time: Usage: endDateTime='{endDateTime}'
         param interval: Usage: interval='{interval}'
         param start_date_time: Usage: startDateTime='{startDateTime}'
-        Returns: GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        Returns: GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
@@ -94,9 +94,9 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("interval cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        from .get_activities_by_interval_with_start_date_time_with_end_date_time_58a4aa2a.get_activities_by_interval_with_start_date_time_with_end_date_time_41999afb import GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb
 
-        return GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
+        return GetActivitiesByIntervalWithStartDateTimeWithEndDateTime_41999afb(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
     
     async def patch(self,body: ListItem, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ListItem]:
         """

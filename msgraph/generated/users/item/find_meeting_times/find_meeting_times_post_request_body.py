@@ -18,10 +18,12 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The isOrganizerOptional property
+    is_organizer_optional: Optional[bool] = False
+    # The returnSuggestionReasons property
+    return_suggestion_reasons: Optional[bool] = False
     # The attendees property
     attendees: Optional[list[AttendeeBase]] = None
-    # The isOrganizerOptional property
-    is_organizer_optional: Optional[bool] = None
     # The locationConstraint property
     location_constraint: Optional[LocationConstraint] = None
     # The maxCandidates property
@@ -30,8 +32,6 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
     meeting_duration: Optional[datetime.timedelta] = None
     # The minimumAttendeePercentage property
     minimum_attendee_percentage: Optional[float] = None
-    # The returnSuggestionReasons property
-    return_suggestion_reasons: Optional[bool] = None
     # The timeConstraint property
     time_constraint: Optional[TimeConstraint] = None
     

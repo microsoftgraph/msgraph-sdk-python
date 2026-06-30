@@ -18,7 +18,7 @@ class EvaluatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The appliedPoliciesOnly property
-    applied_policies_only: Optional[bool] = None
+    applied_policies_only: Optional[bool] = False
     # The signInConditions property
     sign_in_conditions: Optional[SignInConditions] = None
     # The signInContext property

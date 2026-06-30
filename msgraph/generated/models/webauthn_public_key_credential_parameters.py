@@ -12,11 +12,11 @@ class WebauthnPublicKeyCredentialParameters(AdditionalDataHolder, BackedModel, P
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The alg property
+    # A COSE algorithm identifier representing the cryptographic algorithm to use for this credential type. For example, -7 represents ES256.
     alg: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The type property
+    # The type of credential to create. Currently, the only supported value is public-key.
     type: Optional[str] = None
     
     @staticmethod

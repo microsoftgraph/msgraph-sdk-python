@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .access_package_resource_role_scope import AccessPackageResourceRoleScope
     from .access_package_resource_scope import AccessPackageResourceScope
     from .access_package_subject import AccessPackageSubject
+    from .access_package_suggestion import AccessPackageSuggestion
     from .access_package_text_input_question import AccessPackageTextInputQuestion
     from .access_review_history_definition import AccessReviewHistoryDefinition
     from .access_review_history_instance import AccessReviewHistoryInstance
@@ -113,6 +114,7 @@ if TYPE_CHECKING:
     from .authentication_strength_root import AuthenticationStrengthRoot
     from .authored_note import AuthoredNote
     from .authorization_policy import AuthorizationPolicy
+    from .available_access_package import AvailableAccessPackage
     from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
     from .b2x_identity_user_flow import B2xIdentityUserFlow
     from .backup_restore_root import BackupRestoreRoot
@@ -202,12 +204,16 @@ if TYPE_CHECKING:
     from .content_sharing_session import ContentSharingSession
     from .content_type import ContentType
     from .contract import Contract
+    from .control_configuration import ControlConfiguration
     from .conversation import Conversation
     from .conversation_member import ConversationMember
     from .conversation_thread import ConversationThread
     from .copilot_admin import CopilotAdmin
+    from .copilot_admin_catalog import CopilotAdminCatalog
     from .copilot_admin_limited_mode import CopilotAdminLimitedMode
     from .copilot_admin_setting import CopilotAdminSetting
+    from .copilot_package import CopilotPackage
+    from .copilot_package_detail import CopilotPackageDetail
     from .copilot_report_root import CopilotReportRoot
     from .cross_tenant_access_policy import CrossTenantAccessPolicy
     from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
@@ -321,11 +327,13 @@ if TYPE_CHECKING:
     from .email_authentication_method import EmailAuthenticationMethod
     from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
     from .email_file_assessment_request import EmailFileAssessmentRequest
+    from .email_notifications_setting import EmailNotificationsSetting
     from .emergency_call_event import EmergencyCallEvent
     from .employee_experience_user import EmployeeExperienceUser
     from .endpoint import Endpoint
     from .end_user_notification import EndUserNotification
     from .end_user_notification_detail import EndUserNotificationDetail
+    from .end_user_settings import EndUserSettings
     from .engagement_async_operation import EngagementAsyncOperation
     from .engagement_conversation import EngagementConversation
     from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
@@ -367,6 +375,7 @@ if TYPE_CHECKING:
     from .e_book_install_summary import EBookInstallSummary
     from .feature_rollout_policy import FeatureRolloutPolicy
     from .federated_identity_credential import FederatedIdentityCredential
+    from .federated_token_validation_policy import FederatedTokenValidationPolicy
     from .fido2_authentication_method import Fido2AuthenticationMethod
     from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
     from .fido2_combination_configuration import Fido2CombinationConfiguration
@@ -731,6 +740,7 @@ if TYPE_CHECKING:
     from .secure_score import SecureScore
     from .secure_score_control_profile import SecureScoreControlProfile
     from .security.alert import Alert
+    from .security.analyzed_email import AnalyzedEmail
     from .security.article import Article
     from .security.article_indicator import ArticleIndicator
     from .security.artifact import Artifact
@@ -741,6 +751,7 @@ if TYPE_CHECKING:
     from .security.case_operation import CaseOperation
     from .security.category_template import CategoryTemplate
     from .security.citation_template import CitationTemplate
+    from .security.collaboration_root import CollaborationRoot
     from .security.data_set import DataSet
     from .security.data_source import DataSource
     from .security.data_source_container import DataSourceContainer
@@ -886,6 +897,7 @@ if TYPE_CHECKING:
     from .synchronization_job import SynchronizationJob
     from .synchronization_schema import SynchronizationSchema
     from .synchronization_template import SynchronizationTemplate
+    from .targeted_chat_message import TargetedChatMessage
     from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
     from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
     from .targeted_managed_app_protection import TargetedManagedAppProtection
@@ -975,8 +987,8 @@ if TYPE_CHECKING:
     from .user_consent_request import UserConsentRequest
     from .user_data_security_and_governance import UserDataSecurityAndGovernance
     from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
-    from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
-    from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+    from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
+    from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
     from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
     from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
     from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
@@ -1219,6 +1231,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .access_package_subject import AccessPackageSubject
 
             return AccessPackageSubject()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageSuggestion".casefold():
+            from .access_package_suggestion import AccessPackageSuggestion
+
+            return AccessPackageSuggestion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageTextInputQuestion".casefold():
             from .access_package_text_input_question import AccessPackageTextInputQuestion
 
@@ -1580,6 +1596,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .authorization_policy import AuthorizationPolicy
 
             return AuthorizationPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.availableAccessPackage".casefold():
+            from .available_access_package import AvailableAccessPackage
+
+            return AvailableAccessPackage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserConversationMember".casefold():
             from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
 
@@ -1937,6 +1957,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .contract import Contract
 
             return Contract()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.controlConfiguration".casefold():
+            from .control_configuration import ControlConfiguration
+
+            return ControlConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conversation".casefold():
             from .conversation import Conversation
 
@@ -1953,6 +1977,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .copilot_admin import CopilotAdmin
 
             return CopilotAdmin()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotAdminCatalog".casefold():
+            from .copilot_admin_catalog import CopilotAdminCatalog
+
+            return CopilotAdminCatalog()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotAdminLimitedMode".casefold():
             from .copilot_admin_limited_mode import CopilotAdminLimitedMode
 
@@ -1961,6 +1989,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .copilot_admin_setting import CopilotAdminSetting
 
             return CopilotAdminSetting()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotPackage".casefold():
+            from .copilot_package import CopilotPackage
+
+            return CopilotPackage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotPackageDetail".casefold():
+            from .copilot_package_detail import CopilotPackageDetail
+
+            return CopilotPackageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.copilotReportRoot".casefold():
             from .copilot_report_root import CopilotReportRoot
 
@@ -2417,6 +2453,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .email_file_assessment_request import EmailFileAssessmentRequest
 
             return EmailFileAssessmentRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailNotificationsSetting".casefold():
+            from .email_notifications_setting import EmailNotificationsSetting
+
+            return EmailNotificationsSetting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emergencyCallEvent".casefold():
             from .emergency_call_event import EmergencyCallEvent
 
@@ -2437,6 +2477,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .end_user_notification_detail import EndUserNotificationDetail
 
             return EndUserNotificationDetail()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.endUserSettings".casefold():
+            from .end_user_settings import EndUserSettings
+
+            return EndUserSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementAsyncOperation".casefold():
             from .engagement_async_operation import EngagementAsyncOperation
 
@@ -2597,6 +2641,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .federated_identity_credential import FederatedIdentityCredential
 
             return FederatedIdentityCredential()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.federatedTokenValidationPolicy".casefold():
+            from .federated_token_validation_policy import FederatedTokenValidationPolicy
+
+            return FederatedTokenValidationPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethod".casefold():
             from .fido2_authentication_method import Fido2AuthenticationMethod
 
@@ -4063,6 +4111,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.alert import Alert
 
             return Alert()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.analyzedEmail".casefold():
+            from .security.analyzed_email import AnalyzedEmail
+
+            return AnalyzedEmail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.article".casefold():
             from .security.article import Article
 
@@ -4103,6 +4155,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.citation_template import CitationTemplate
 
             return CitationTemplate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.collaborationRoot".casefold():
+            from .security.collaboration_root import CollaborationRoot
+
+            return CollaborationRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.dataSet".casefold():
             from .security.data_set import DataSet
 
@@ -4685,6 +4741,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .target_device_group import TargetDeviceGroup
 
             return TargetDeviceGroup()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedChatMessage".casefold():
+            from .targeted_chat_message import TargetedChatMessage
+
+            return TargetedChatMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
             from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
@@ -5040,13 +5100,13 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
 
             return UserExperienceAnalyticsAppHealthApplicationPerformance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails".casefold():
-            from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
+            from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
 
-            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails()
+            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId".casefold():
-            from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+            from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
 
-            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId()
+            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByOSVersion".casefold():
             from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
 
@@ -5659,6 +5719,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .access_package_resource_role_scope import AccessPackageResourceRoleScope
         from .access_package_resource_scope import AccessPackageResourceScope
         from .access_package_subject import AccessPackageSubject
+        from .access_package_suggestion import AccessPackageSuggestion
         from .access_package_text_input_question import AccessPackageTextInputQuestion
         from .access_review_history_definition import AccessReviewHistoryDefinition
         from .access_review_history_instance import AccessReviewHistoryInstance
@@ -5749,6 +5810,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authentication_strength_root import AuthenticationStrengthRoot
         from .authored_note import AuthoredNote
         from .authorization_policy import AuthorizationPolicy
+        from .available_access_package import AvailableAccessPackage
         from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .backup_restore_root import BackupRestoreRoot
@@ -5838,12 +5900,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .content_sharing_session import ContentSharingSession
         from .content_type import ContentType
         from .contract import Contract
+        from .control_configuration import ControlConfiguration
         from .conversation import Conversation
         from .conversation_member import ConversationMember
         from .conversation_thread import ConversationThread
         from .copilot_admin import CopilotAdmin
+        from .copilot_admin_catalog import CopilotAdminCatalog
         from .copilot_admin_limited_mode import CopilotAdminLimitedMode
         from .copilot_admin_setting import CopilotAdminSetting
+        from .copilot_package import CopilotPackage
+        from .copilot_package_detail import CopilotPackageDetail
         from .copilot_report_root import CopilotReportRoot
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
@@ -5957,11 +6023,13 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .email_authentication_method import EmailAuthenticationMethod
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .email_notifications_setting import EmailNotificationsSetting
         from .emergency_call_event import EmergencyCallEvent
         from .employee_experience_user import EmployeeExperienceUser
         from .endpoint import Endpoint
         from .end_user_notification import EndUserNotification
         from .end_user_notification_detail import EndUserNotificationDetail
+        from .end_user_settings import EndUserSettings
         from .engagement_async_operation import EngagementAsyncOperation
         from .engagement_conversation import EngagementConversation
         from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
@@ -6003,6 +6071,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .e_book_install_summary import EBookInstallSummary
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .federated_identity_credential import FederatedIdentityCredential
+        from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .fido2_authentication_method import Fido2AuthenticationMethod
         from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
         from .fido2_combination_configuration import Fido2CombinationConfiguration
@@ -6367,6 +6436,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .secure_score import SecureScore
         from .secure_score_control_profile import SecureScoreControlProfile
         from .security.alert import Alert
+        from .security.analyzed_email import AnalyzedEmail
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
@@ -6377,6 +6447,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.case_operation import CaseOperation
         from .security.category_template import CategoryTemplate
         from .security.citation_template import CitationTemplate
+        from .security.collaboration_root import CollaborationRoot
         from .security.data_set import DataSet
         from .security.data_source import DataSource
         from .security.data_source_container import DataSourceContainer
@@ -6522,6 +6593,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_job import SynchronizationJob
         from .synchronization_schema import SynchronizationSchema
         from .synchronization_template import SynchronizationTemplate
+        from .targeted_chat_message import TargetedChatMessage
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
         from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
         from .targeted_managed_app_protection import TargetedManagedAppProtection
@@ -6611,8 +6683,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_consent_request import UserConsentRequest
         from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
-        from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
-        from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
         from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
         from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
         from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
@@ -6778,6 +6850,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .access_package_resource_role_scope import AccessPackageResourceRoleScope
         from .access_package_resource_scope import AccessPackageResourceScope
         from .access_package_subject import AccessPackageSubject
+        from .access_package_suggestion import AccessPackageSuggestion
         from .access_package_text_input_question import AccessPackageTextInputQuestion
         from .access_review_history_definition import AccessReviewHistoryDefinition
         from .access_review_history_instance import AccessReviewHistoryInstance
@@ -6868,6 +6941,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authentication_strength_root import AuthenticationStrengthRoot
         from .authored_note import AuthoredNote
         from .authorization_policy import AuthorizationPolicy
+        from .available_access_package import AvailableAccessPackage
         from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .backup_restore_root import BackupRestoreRoot
@@ -6957,12 +7031,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .content_sharing_session import ContentSharingSession
         from .content_type import ContentType
         from .contract import Contract
+        from .control_configuration import ControlConfiguration
         from .conversation import Conversation
         from .conversation_member import ConversationMember
         from .conversation_thread import ConversationThread
         from .copilot_admin import CopilotAdmin
+        from .copilot_admin_catalog import CopilotAdminCatalog
         from .copilot_admin_limited_mode import CopilotAdminLimitedMode
         from .copilot_admin_setting import CopilotAdminSetting
+        from .copilot_package import CopilotPackage
+        from .copilot_package_detail import CopilotPackageDetail
         from .copilot_report_root import CopilotReportRoot
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
@@ -7076,11 +7154,13 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .email_authentication_method import EmailAuthenticationMethod
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .email_notifications_setting import EmailNotificationsSetting
         from .emergency_call_event import EmergencyCallEvent
         from .employee_experience_user import EmployeeExperienceUser
         from .endpoint import Endpoint
         from .end_user_notification import EndUserNotification
         from .end_user_notification_detail import EndUserNotificationDetail
+        from .end_user_settings import EndUserSettings
         from .engagement_async_operation import EngagementAsyncOperation
         from .engagement_conversation import EngagementConversation
         from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
@@ -7122,6 +7202,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .e_book_install_summary import EBookInstallSummary
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .federated_identity_credential import FederatedIdentityCredential
+        from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .fido2_authentication_method import Fido2AuthenticationMethod
         from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
         from .fido2_combination_configuration import Fido2CombinationConfiguration
@@ -7486,6 +7567,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .secure_score import SecureScore
         from .secure_score_control_profile import SecureScoreControlProfile
         from .security.alert import Alert
+        from .security.analyzed_email import AnalyzedEmail
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
@@ -7496,6 +7578,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.case_operation import CaseOperation
         from .security.category_template import CategoryTemplate
         from .security.citation_template import CitationTemplate
+        from .security.collaboration_root import CollaborationRoot
         from .security.data_set import DataSet
         from .security.data_source import DataSource
         from .security.data_source_container import DataSourceContainer
@@ -7641,6 +7724,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_job import SynchronizationJob
         from .synchronization_schema import SynchronizationSchema
         from .synchronization_template import SynchronizationTemplate
+        from .targeted_chat_message import TargetedChatMessage
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
         from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
         from .targeted_managed_app_protection import TargetedManagedAppProtection
@@ -7730,8 +7814,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_consent_request import UserConsentRequest
         from .user_data_security_and_governance import UserDataSecurityAndGovernance
         from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
-        from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
-        from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_2e6b881b import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_2e6b881b
+        from .user_experience_analytics_app_health_app_performance_by_app_vers_ba5b7522 import UserExperienceAnalyticsAppHealthAppPerformanceByAppVers_ba5b7522
         from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
         from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
         from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance

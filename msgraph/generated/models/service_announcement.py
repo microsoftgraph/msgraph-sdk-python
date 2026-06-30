@@ -14,11 +14,11 @@ from .entity import Entity
 
 @dataclass
 class ServiceAnnouncement(Entity, Parsable):
-    # A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
+    # A collection of service health information for tenant. This property is a contained navigation property, it is nullable and read-only.
     health_overviews: Optional[list[ServiceHealth]] = None
-    # A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
+    # A collection of service issues for tenant. This property is a contained navigation property, it is nullable and read-only.
     issues: Optional[list[ServiceHealthIssue]] = None
-    # A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
+    # A collection of service messages for tenant. This property is a contained navigation property, it is nullable and read-only.
     messages: Optional[list[ServiceUpdateMessage]] = None
     # The OdataType property
     odata_type: Optional[str] = None

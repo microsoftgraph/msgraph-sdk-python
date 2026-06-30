@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .device_registration_policy import DeviceRegistrationPolicy
     from .entity import Entity
     from .feature_rollout_policy import FeatureRolloutPolicy
+    from .federated_token_validation_policy import FederatedTokenValidationPolicy
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
     from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
     from .ownerless_group_policy import OwnerlessGroupPolicy
@@ -58,6 +59,8 @@ class PolicyRoot(Entity, Parsable):
     device_registration_policy: Optional[DeviceRegistrationPolicy] = None
     # The feature rollout policy associated with a directory object.
     feature_rollout_policies: Optional[list[FeatureRolloutPolicy]] = None
+    # The federatedTokenValidationPolicy property
+    federated_token_validation_policy: Optional[FederatedTokenValidationPolicy] = None
     # The policy to control Microsoft Entra authentication behavior for federated users.
     home_realm_discovery_policies: Optional[list[HomeRealmDiscoveryPolicy]] = None
     # The policy that represents the security defaults that protect against common attacks.
@@ -106,6 +109,7 @@ class PolicyRoot(Entity, Parsable):
         from .device_registration_policy import DeviceRegistrationPolicy
         from .entity import Entity
         from .feature_rollout_policy import FeatureRolloutPolicy
+        from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
         from .ownerless_group_policy import OwnerlessGroupPolicy
@@ -129,6 +133,7 @@ class PolicyRoot(Entity, Parsable):
         from .device_registration_policy import DeviceRegistrationPolicy
         from .entity import Entity
         from .feature_rollout_policy import FeatureRolloutPolicy
+        from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
         from .ownerless_group_policy import OwnerlessGroupPolicy
@@ -153,6 +158,7 @@ class PolicyRoot(Entity, Parsable):
             "defaultAppManagementPolicy": lambda n : setattr(self, 'default_app_management_policy', n.get_object_value(TenantAppManagementPolicy)),
             "deviceRegistrationPolicy": lambda n : setattr(self, 'device_registration_policy', n.get_object_value(DeviceRegistrationPolicy)),
             "featureRolloutPolicies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(FeatureRolloutPolicy)),
+            "federatedTokenValidationPolicy": lambda n : setattr(self, 'federated_token_validation_policy', n.get_object_value(FederatedTokenValidationPolicy)),
             "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
             "identitySecurityDefaultsEnforcementPolicy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(IdentitySecurityDefaultsEnforcementPolicy)),
             "ownerlessGroupPolicy": lambda n : setattr(self, 'ownerless_group_policy', n.get_object_value(OwnerlessGroupPolicy)),
@@ -188,6 +194,7 @@ class PolicyRoot(Entity, Parsable):
         writer.write_object_value("defaultAppManagementPolicy", self.default_app_management_policy)
         writer.write_object_value("deviceRegistrationPolicy", self.device_registration_policy)
         writer.write_collection_of_object_values("featureRolloutPolicies", self.feature_rollout_policies)
+        writer.write_object_value("federatedTokenValidationPolicy", self.federated_token_validation_policy)
         writer.write_collection_of_object_values("homeRealmDiscoveryPolicies", self.home_realm_discovery_policies)
         writer.write_object_value("identitySecurityDefaultsEnforcementPolicy", self.identity_security_defaults_enforcement_policy)
         writer.write_object_value("ownerlessGroupPolicy", self.ownerless_group_policy)

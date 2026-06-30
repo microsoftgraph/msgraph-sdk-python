@@ -16,10 +16,10 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
-    from .....models.privileged_access_group_eligibility_schedule_request_collection_response import PrivilegedAccessGroupEligibilityScheduleRequestCollectionResponse
+    from .....models.privileged_access_group_eligibility_schedule_request_collecti_d406580b import PrivilegedAccessGroupEligibilityScheduleRequestCollecti_d406580b
     from .count.count_request_builder import CountRequestBuilder
     from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
-    from .item.privileged_access_group_eligibility_schedule_request_item_request_builder import PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder
+    from .item.privileged_access_group_eligibility_schedule_request_item_requ_ae87ea31 import PrivilegedAccessGroupEligibilityScheduleRequestItemRequ_ae87ea31
 
 class EligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
     """
@@ -34,19 +34,19 @@ class EligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group/eligibilityScheduleRequests{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    def by_privileged_access_group_eligibility_schedule_request_id(self,privileged_access_group_eligibility_schedule_request_id: str) -> PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder:
+    def by_privileged_access_group_eligibility_schedule_request_id(self,privileged_access_group_eligibility_schedule_request_id: str) -> PrivilegedAccessGroupEligibilityScheduleRequestItemRequ_ae87ea31:
         """
         Provides operations to manage the eligibilityScheduleRequests property of the microsoft.graph.privilegedAccessGroup entity.
         param privileged_access_group_eligibility_schedule_request_id: The unique identifier of privilegedAccessGroupEligibilityScheduleRequest
-        Returns: PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder
+        Returns: PrivilegedAccessGroupEligibilityScheduleRequestItemRequ_ae87ea31
         """
         if privileged_access_group_eligibility_schedule_request_id is None:
             raise TypeError("privileged_access_group_eligibility_schedule_request_id cannot be null.")
-        from .item.privileged_access_group_eligibility_schedule_request_item_request_builder import PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder
+        from .item.privileged_access_group_eligibility_schedule_request_item_requ_ae87ea31 import PrivilegedAccessGroupEligibilityScheduleRequestItemRequ_ae87ea31
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["privilegedAccessGroupEligibilityScheduleRequest%2Did"] = privileged_access_group_eligibility_schedule_request_id
-        return PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PrivilegedAccessGroupEligibilityScheduleRequestItemRequ_ae87ea31(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: str) -> FilterByCurrentUserWithOnRequestBuilder:
         """
@@ -60,11 +60,11 @@ class EligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration[EligibilityScheduleRequestsRequestBuilderGetQueryParameters]] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[EligibilityScheduleRequestsRequestBuilderGetQueryParameters]] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequestCollecti_d406580b]:
         """
         Get a list of the privilegedAccessGroupEligibilityScheduleRequest objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[PrivilegedAccessGroupEligibilityScheduleRequestCollectionResponse]
+        Returns: Optional[PrivilegedAccessGroupEligibilityScheduleRequestCollecti_d406580b]
         Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroup-list-eligibilityschedulerequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
@@ -77,9 +77,9 @@ class EligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.privileged_access_group_eligibility_schedule_request_collection_response import PrivilegedAccessGroupEligibilityScheduleRequestCollectionResponse
+        from .....models.privileged_access_group_eligibility_schedule_request_collecti_d406580b import PrivilegedAccessGroupEligibilityScheduleRequestCollecti_d406580b
 
-        return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilityScheduleRequestCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilityScheduleRequestCollecti_d406580b, error_mapping)
     
     async def post(self,body: PrivilegedAccessGroupEligibilityScheduleRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequest]:
         """

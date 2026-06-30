@@ -17,9 +17,9 @@ if TYPE_CHECKING:
     from ...models.authentication_methods_root import AuthenticationMethodsRoot
     from ...models.o_data_errors.o_data_error import ODataError
     from .users_registered_by_feature.users_registered_by_feature_request_builder import UsersRegisteredByFeatureRequestBuilder
-    from .users_registered_by_feature_with_included_user_types_with_included_user_roles.users_registered_by_feature_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+    from .users_registered_by_feature_with_included_user_types_with_includ_40624112.users_registered_by_feature_with_included_user_types_with_includ_01ebc792 import UsersRegisteredByFeatureWithIncludedUserTypesWithInclud_01ebc792
     from .users_registered_by_method.users_registered_by_method_request_builder import UsersRegisteredByMethodRequestBuilder
-    from .users_registered_by_method_with_included_user_types_with_included_user_roles.users_registered_by_method_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+    from .users_registered_by_method_with_included_user_types_with_include_cee28f2b.users_registered_by_method_with_included_user_types_with_include_c7c52dcb import UsersRegisteredByMethodWithIncludedUserTypesWithInclude_c7c52dcb
     from .user_registration_details.user_registration_details_request_builder import UserRegistrationDetailsRequestBuilder
 
 class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
@@ -133,35 +133,35 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def users_registered_by_feature_with_included_user_types_with_included_user_roles(self,included_user_roles: str, included_user_types: str) -> UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder:
+    def users_registered_by_feature_with_included_user_types_with_included_user_roles(self,included_user_roles: str, included_user_types: str) -> UsersRegisteredByFeatureWithIncludedUserTypesWithInclud_01ebc792:
         """
         Provides operations to call the usersRegisteredByFeature method.
         param included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
         param included_user_types: Usage: includedUserTypes='{includedUserTypes}'
-        Returns: UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+        Returns: UsersRegisteredByFeatureWithIncludedUserTypesWithInclud_01ebc792
         """
         if included_user_roles is None:
             raise TypeError("included_user_roles cannot be null.")
         if included_user_types is None:
             raise TypeError("included_user_types cannot be null.")
-        from .users_registered_by_feature_with_included_user_types_with_included_user_roles.users_registered_by_feature_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+        from .users_registered_by_feature_with_included_user_types_with_includ_40624112.users_registered_by_feature_with_included_user_types_with_includ_01ebc792 import UsersRegisteredByFeatureWithIncludedUserTypesWithInclud_01ebc792
 
-        return UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder(self.request_adapter, self.path_parameters, included_user_roles, included_user_types)
+        return UsersRegisteredByFeatureWithIncludedUserTypesWithInclud_01ebc792(self.request_adapter, self.path_parameters, included_user_roles, included_user_types)
     
-    def users_registered_by_method_with_included_user_types_with_included_user_roles(self,included_user_roles: str, included_user_types: str) -> UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder:
+    def users_registered_by_method_with_included_user_types_with_included_user_roles(self,included_user_roles: str, included_user_types: str) -> UsersRegisteredByMethodWithIncludedUserTypesWithInclude_c7c52dcb:
         """
         Provides operations to call the usersRegisteredByMethod method.
         param included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
         param included_user_types: Usage: includedUserTypes='{includedUserTypes}'
-        Returns: UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+        Returns: UsersRegisteredByMethodWithIncludedUserTypesWithInclude_c7c52dcb
         """
         if included_user_roles is None:
             raise TypeError("included_user_roles cannot be null.")
         if included_user_types is None:
             raise TypeError("included_user_types cannot be null.")
-        from .users_registered_by_method_with_included_user_types_with_included_user_roles.users_registered_by_method_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+        from .users_registered_by_method_with_included_user_types_with_include_cee28f2b.users_registered_by_method_with_included_user_types_with_include_c7c52dcb import UsersRegisteredByMethodWithIncludedUserTypesWithInclude_c7c52dcb
 
-        return UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder(self.request_adapter, self.path_parameters, included_user_roles, included_user_types)
+        return UsersRegisteredByMethodWithIncludedUserTypesWithInclude_c7c52dcb(self.request_adapter, self.path_parameters, included_user_roles, included_user_types)
     
     def with_url(self,raw_url: str) -> AuthenticationMethodsRequestBuilder:
         """

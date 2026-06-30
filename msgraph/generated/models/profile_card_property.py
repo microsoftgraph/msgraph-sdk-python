@@ -16,6 +16,8 @@ class ProfileCardProperty(Entity, Parsable):
     annotations: Optional[list[ProfileCardAnnotation]] = None
     # Identifies a profileCardProperty resource in Get, Update, or Delete operations. Allows an administrator to surface hidden Microsoft Entra ID properties on the Microsoft 365 profile card within their tenant. When present, the Microsoft Entra ID field referenced in this property is visible to all users in your tenant on the contact pane of the profile card. Allowed values for this field are: UserPrincipalName, Fax, StreetAddress, PostalCode, StateOrProvince, Alias, CustomAttribute1,  CustomAttribute2, CustomAttribute3, CustomAttribute4, CustomAttribute5, CustomAttribute6, CustomAttribute7, CustomAttribute8, CustomAttribute9, CustomAttribute10, CustomAttribute11, CustomAttribute12, CustomAttribute13, CustomAttribute14, CustomAttribute15.
     directory_property_name: Optional[str] = None
+    # Indicates whether the given directory property should be shown on a user’s profile card.
+    is_visible: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -44,6 +46,7 @@ class ProfileCardProperty(Entity, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "annotations": lambda n : setattr(self, 'annotations', n.get_collection_of_object_values(ProfileCardAnnotation)),
             "directoryPropertyName": lambda n : setattr(self, 'directory_property_name', n.get_str_value()),
+            "isVisible": lambda n : setattr(self, 'is_visible', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,5 +63,6 @@ class ProfileCardProperty(Entity, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("annotations", self.annotations)
         writer.write_str_value("directoryPropertyName", self.directory_property_name)
+        writer.write_bool_value("isVisible", self.is_visible)
     
 

@@ -15,6 +15,12 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The requireSignIn property
+    require_sign_in: Optional[bool] = False
+    # The retainInheritedPermissions property
+    retain_inherited_permissions: Optional[bool] = False
+    # The sendInvitation property
+    send_invitation: Optional[bool] = False
     # The expirationDateTime property
     expiration_date_time: Optional[str] = None
     # The message property
@@ -23,14 +29,8 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     password: Optional[str] = None
     # The recipients property
     recipients: Optional[list[DriveRecipient]] = None
-    # The requireSignIn property
-    require_sign_in: Optional[bool] = None
-    # The retainInheritedPermissions property
-    retain_inherited_permissions: Optional[bool] = None
     # The roles property
     roles: Optional[list[str]] = None
-    # The sendInvitation property
-    send_invitation: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> InvitePostRequestBody:

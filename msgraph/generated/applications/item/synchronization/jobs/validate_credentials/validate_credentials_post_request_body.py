@@ -15,14 +15,14 @@ class ValidateCredentialsPostRequestBody(AdditionalDataHolder, BackedModel, Pars
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The useSavedCredentials property
+    use_saved_credentials: Optional[bool] = False
     # The applicationIdentifier property
     application_identifier: Optional[str] = None
     # The credentials property
     credentials: Optional[list[SynchronizationSecretKeyStringValuePair]] = None
     # The templateId property
     template_id: Optional[str] = None
-    # The useSavedCredentials property
-    use_saved_credentials: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ValidateCredentialsPostRequestBody:

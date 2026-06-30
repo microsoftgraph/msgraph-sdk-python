@@ -13,7 +13,7 @@ class WindowsDefenderScanPostRequestBody(AdditionalDataHolder, BackedModel, Pars
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The quickScan property
-    quick_scan: Optional[bool] = None
+    quick_scan: Optional[bool] = False
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WindowsDefenderScanPostRequestBody:

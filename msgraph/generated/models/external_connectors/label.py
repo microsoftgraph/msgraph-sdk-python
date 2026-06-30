@@ -55,4 +55,5 @@ class Label(str, Enum):
     PersonLanguages = "personLanguages",
     PersonPublications = "personPublications",
     PersonPatents = "personPatents",
+    PersonWorkPositions = "personWorkPositions",
 

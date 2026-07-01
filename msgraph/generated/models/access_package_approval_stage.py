@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
+    from .approver_information_visibility import ApproverInformationVisibility
     from .subject_set import SubjectSet
 
 @dataclass
@@ -17,11 +18,13 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The approverInformationVisibility property
+    approver_information_visibility: Optional[ApproverInformationVisibility] = None
     # The number of days that a request can be pending a response before it is automatically denied.
     duration_before_automatic_denial: Optional[datetime.timedelta] = None
     # If escalation is required, the time a request can be pending a response from a primary approver.
     duration_before_escalation: Optional[datetime.timedelta] = None
-    # If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests.
+    # If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who are asked to approve requests.
     escalation_approvers: Optional[list[SubjectSet]] = None
     # The subjects, typically users, who are the fallback escalation approvers.
     fallback_escalation_approvers: Optional[list[SubjectSet]] = None
@@ -33,7 +36,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
     is_escalation_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors, externalSponsors, or targetUserSponsors.
+    # The subjects, typically users, who are asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors, externalSponsors, or targetUserSponsors.
     primary_approvers: Optional[list[SubjectSet]] = None
     
     @staticmethod
@@ -62,12 +65,15 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
+        from .approver_information_visibility import ApproverInformationVisibility
         from .subject_set import SubjectSet
 
         from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
+        from .approver_information_visibility import ApproverInformationVisibility
         from .subject_set import SubjectSet
 
         fields: dict[str, Callable[[Any], None]] = {
+            "approverInformationVisibility": lambda n : setattr(self, 'approver_information_visibility', n.get_enum_value(ApproverInformationVisibility)),
             "durationBeforeAutomaticDenial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_timedelta_value()),
             "durationBeforeEscalation": lambda n : setattr(self, 'duration_before_escalation', n.get_timedelta_value()),
             "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
@@ -88,6 +94,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_enum_value("approverInformationVisibility", self.approver_information_visibility)
         writer.write_timedelta_value("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
         writer.write_timedelta_value("durationBeforeEscalation", self.duration_before_escalation)
         writer.write_collection_of_object_values("escalationApprovers", self.escalation_approvers)

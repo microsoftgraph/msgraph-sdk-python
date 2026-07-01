@@ -20,7 +20,7 @@ class Reminder(AdditionalDataHolder, BackedModel, Parsable):
     change_key: Optional[str] = None
     # The date, time and time zone that the event ends.
     event_end_time: Optional[DateTimeTimeZone] = None
-    # The unique ID of the event. Read only.
+    # The unique ID of the event. Read-only.
     event_id: Optional[str] = None
     # The location of the event.
     event_location: Optional[Location] = None

@@ -14,8 +14,12 @@ if TYPE_CHECKING:
     from .access_package_resource_environment import AccessPackageResourceEnvironment
     from .access_package_resource_request import AccessPackageResourceRequest
     from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+    from .access_package_subject import AccessPackageSubject
+    from .access_package_suggestion import AccessPackageSuggestion
     from .approval import Approval
+    from .available_access_package import AvailableAccessPackage
     from .connected_organization import ConnectedOrganization
+    from .control_configuration import ControlConfiguration
     from .entitlement_management_settings import EntitlementManagementSettings
     from .entity import Entity
 
@@ -25,6 +29,8 @@ from .entity import Entity
 class EntitlementManagement(Entity, Parsable):
     # Approval stages for decisions associated with access package assignment requests.
     access_package_assignment_approvals: Optional[list[Approval]] = None
+    # Suggested access packages for end users based on various criteria such as related people insights and assignment history.
+    access_package_suggestions: Optional[list[AccessPackageSuggestion]] = None
     # Access packages define the collection of resource roles and the policies for which subjects can request or be assigned access to those resources.
     access_packages: Optional[list[AccessPackage]] = None
     # Access package assignment policies govern which subjects can request or be assigned an access package via an access package assignment.
@@ -33,10 +39,14 @@ class EntitlementManagement(Entity, Parsable):
     assignment_requests: Optional[list[AccessPackageAssignmentRequest]] = None
     # The assignment of an access package to a subject for a period of time.
     assignments: Optional[list[AccessPackageAssignment]] = None
+    # Access packages available for end users to browse and request.
+    available_access_packages: Optional[list[AvailableAccessPackage]] = None
     # A container for access packages.
     catalogs: Optional[list[AccessPackageCatalog]] = None
     # References to a directory or domain of another organization whose users can request access.
     connected_organizations: Optional[list[ConnectedOrganization]] = None
+    # Configuration settings that control the lifecycle and access policies of entitlement management within a tenant.
+    control_configurations: Optional[list[ControlConfiguration]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A reference to the geolocation environments in which a resource is located.
@@ -49,6 +59,8 @@ class EntitlementManagement(Entity, Parsable):
     resources: Optional[list[AccessPackageResource]] = None
     # The settings that control the behavior of Microsoft Entra entitlement management.
     settings: Optional[EntitlementManagementSettings] = None
+    # The subjects property
+    subjects: Optional[list[AccessPackageSubject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> EntitlementManagement:
@@ -75,8 +87,12 @@ class EntitlementManagement(Entity, Parsable):
         from .access_package_resource_environment import AccessPackageResourceEnvironment
         from .access_package_resource_request import AccessPackageResourceRequest
         from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .access_package_subject import AccessPackageSubject
+        from .access_package_suggestion import AccessPackageSuggestion
         from .approval import Approval
+        from .available_access_package import AvailableAccessPackage
         from .connected_organization import ConnectedOrganization
+        from .control_configuration import ControlConfiguration
         from .entitlement_management_settings import EntitlementManagementSettings
         from .entity import Entity
 
@@ -89,24 +105,32 @@ class EntitlementManagement(Entity, Parsable):
         from .access_package_resource_environment import AccessPackageResourceEnvironment
         from .access_package_resource_request import AccessPackageResourceRequest
         from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .access_package_subject import AccessPackageSubject
+        from .access_package_suggestion import AccessPackageSuggestion
         from .approval import Approval
+        from .available_access_package import AvailableAccessPackage
         from .connected_organization import ConnectedOrganization
+        from .control_configuration import ControlConfiguration
         from .entitlement_management_settings import EntitlementManagementSettings
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
             "accessPackageAssignmentApprovals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(Approval)),
+            "accessPackageSuggestions": lambda n : setattr(self, 'access_package_suggestions', n.get_collection_of_object_values(AccessPackageSuggestion)),
             "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(AccessPackage)),
             "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
             "assignmentRequests": lambda n : setattr(self, 'assignment_requests', n.get_collection_of_object_values(AccessPackageAssignmentRequest)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(AccessPackageAssignment)),
+            "availableAccessPackages": lambda n : setattr(self, 'available_access_packages', n.get_collection_of_object_values(AvailableAccessPackage)),
             "catalogs": lambda n : setattr(self, 'catalogs', n.get_collection_of_object_values(AccessPackageCatalog)),
             "connectedOrganizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(ConnectedOrganization)),
+            "controlConfigurations": lambda n : setattr(self, 'control_configurations', n.get_collection_of_object_values(ControlConfiguration)),
             "resourceEnvironments": lambda n : setattr(self, 'resource_environments', n.get_collection_of_object_values(AccessPackageResourceEnvironment)),
             "resourceRequests": lambda n : setattr(self, 'resource_requests', n.get_collection_of_object_values(AccessPackageResourceRequest)),
             "resourceRoleScopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AccessPackageResource)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(EntitlementManagementSettings)),
+            "subjects": lambda n : setattr(self, 'subjects', n.get_collection_of_object_values(AccessPackageSubject)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -122,16 +146,20 @@ class EntitlementManagement(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("accessPackageAssignmentApprovals", self.access_package_assignment_approvals)
+        writer.write_collection_of_object_values("accessPackageSuggestions", self.access_package_suggestions)
         writer.write_collection_of_object_values("accessPackages", self.access_packages)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
         writer.write_collection_of_object_values("assignmentRequests", self.assignment_requests)
         writer.write_collection_of_object_values("assignments", self.assignments)
+        writer.write_collection_of_object_values("availableAccessPackages", self.available_access_packages)
         writer.write_collection_of_object_values("catalogs", self.catalogs)
         writer.write_collection_of_object_values("connectedOrganizations", self.connected_organizations)
+        writer.write_collection_of_object_values("controlConfigurations", self.control_configurations)
         writer.write_collection_of_object_values("resourceEnvironments", self.resource_environments)
         writer.write_collection_of_object_values("resourceRequests", self.resource_requests)
         writer.write_collection_of_object_values("resourceRoleScopes", self.resource_role_scopes)
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_object_value("settings", self.settings)
+        writer.write_collection_of_object_values("subjects", self.subjects)
     
 

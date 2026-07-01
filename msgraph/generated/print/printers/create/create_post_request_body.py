@@ -15,14 +15,14 @@ class CreatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The hasPhysicalDevice property
+    has_physical_device: Optional[bool] = False
     # The certificateSigningRequest property
     certificate_signing_request: Optional[PrintCertificateSigningRequest] = None
     # The connectorId property
     connector_id: Optional[str] = None
     # The displayName property
     display_name: Optional[str] = None
-    # The hasPhysicalDevice property
-    has_physical_device: Optional[bool] = None
     # The manufacturer property
     manufacturer: Optional[str] = None
     # The model property

@@ -16,7 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ......models.on_attribute_collection_handler import OnAttributeCollectionHandler
     from ......models.o_data_errors.o_data_error import ODataError
-    from .graph_on_attribute_collection_external_users_self_service_sign_up.graph_on_attribute_collection_external_users_self_service_sign_up_request_builder import GraphOnAttributeCollectionExternalUsersSelfServiceSignUpRequestBuilder
+    from .graph_on_attribute_collection_external_users_self_service_sign_up.graph_on_attribute_collection_external_users_self_service_sign_u_8d1599ba import GraphOnAttributeCollectionExternalUsersSelfServiceSignU_8d1599ba
 
 class OnAttributeCollectionRequestBuilder(BaseRequestBuilder):
     """
@@ -73,13 +73,13 @@ class OnAttributeCollectionRequestBuilder(BaseRequestBuilder):
         return OnAttributeCollectionRequestBuilder(self.request_adapter, raw_url)
     
     @property
-    def graph_on_attribute_collection_external_users_self_service_sign_up(self) -> GraphOnAttributeCollectionExternalUsersSelfServiceSignUpRequestBuilder:
+    def graph_on_attribute_collection_external_users_self_service_sign_up(self) -> GraphOnAttributeCollectionExternalUsersSelfServiceSignU_8d1599ba:
         """
         Casts the previous resource to onAttributeCollectionExternalUsersSelfServiceSignUp.
         """
-        from .graph_on_attribute_collection_external_users_self_service_sign_up.graph_on_attribute_collection_external_users_self_service_sign_up_request_builder import GraphOnAttributeCollectionExternalUsersSelfServiceSignUpRequestBuilder
+        from .graph_on_attribute_collection_external_users_self_service_sign_up.graph_on_attribute_collection_external_users_self_service_sign_u_8d1599ba import GraphOnAttributeCollectionExternalUsersSelfServiceSignU_8d1599ba
 
-        return GraphOnAttributeCollectionExternalUsersSelfServiceSignUpRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphOnAttributeCollectionExternalUsersSelfServiceSignU_8d1599ba(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OnAttributeCollectionRequestBuilderGetQueryParameters():

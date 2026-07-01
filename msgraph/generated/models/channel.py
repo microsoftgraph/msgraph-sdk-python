@@ -24,7 +24,7 @@ from .entity import Entity
 class Channel(Entity, Parsable):
     # A collection of membership records associated with the channel, including both direct and indirect members of shared channels.
     all_members: Optional[list[ConversationMember]] = None
-    # Read only. Timestamp at which the channel was created.
+    # Read-only. Timestamp at which the channel was created.
     created_date_time: Optional[datetime.datetime] = None
     # Optional textual description for the channel.
     description: Optional[str] = None

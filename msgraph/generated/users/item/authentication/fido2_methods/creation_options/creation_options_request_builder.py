@@ -32,9 +32,10 @@ class CreationOptionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WebauthnCredentialCreationOptions]:
         """
-        Invoke function creationOptions
+        Retrieve creation options required to generate and register a Microsoft Entra ID-compatible passkey. This function returns WebAuthn credential creation options that include a challenge, relying party information, and user information, which are used by the client to create a new FIDO2 credential. The challenge property and credential IDs in excludeCredentials are Base64URL-encoded without padding. All binary data in the response follows Base64URL encoding as defined in RFC 4648 Section 5.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WebauthnCredentialCreationOptions]
+        Find more info here: https://learn.microsoft.com/graph/api/fido2authenticationmethod-creationoptions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,7 +53,7 @@ class CreationOptionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke function creationOptions
+        Retrieve creation options required to generate and register a Microsoft Entra ID-compatible passkey. This function returns WebAuthn credential creation options that include a challenge, relying party information, and user information, which are used by the client to create a new FIDO2 credential. The challenge property and credential IDs in excludeCredentials are Base64URL-encoded without padding. All binary data in the response follows Base64URL encoding as defined in RFC 4648 Section 5.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

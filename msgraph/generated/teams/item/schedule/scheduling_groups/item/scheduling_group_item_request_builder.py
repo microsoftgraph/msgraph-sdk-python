@@ -32,7 +32,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
+        Mark a schedulingGroup as inactive by setting its isActive property.This method doesn't remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/schedulinggroup-delete?view=graph-rest-1.0
@@ -96,7 +96,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
+        Mark a schedulingGroup as inactive by setting its isActive property.This method doesn't remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

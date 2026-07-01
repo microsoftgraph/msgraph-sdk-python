@@ -20,8 +20,8 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.call_record_item_request_builder import CallRecordItemRequestBuilder
-    from .microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time.microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder import MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
-    from .microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time.microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder import MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
+    from .microsoft_graph_call_records_get_direct_routing_calls_with_from_d_0d33e661.microsoft_graph_call_records_get_direct_routing_calls_with_from_d_973ac11c import MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromD_973ac11c
+    from .microsoft_graph_call_records_get_pstn_calls_with_from_date_time_wi_03098e60.microsoft_graph_call_records_get_pstn_calls_with_from_date_time_wi_5a427c7c import MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWi_5a427c7c
 
 class CallRecordsRequestBuilder(BaseRequestBuilder):
     """
@@ -71,35 +71,35 @@ class CallRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CallRecordCollectionResponse, error_mapping)
     
-    def microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: datetime.datetime, to_date_time: datetime.datetime) -> MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder:
+    def microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: datetime.datetime, to_date_time: datetime.datetime) -> MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromD_973ac11c:
         """
         Provides operations to call the getDirectRoutingCalls method.
         param from_date_time: Usage: fromDateTime={fromDateTime}
         param to_date_time: Usage: toDateTime={toDateTime}
-        Returns: MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
+        Returns: MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromD_973ac11c
         """
         if from_date_time is None:
             raise TypeError("from_date_time cannot be null.")
         if to_date_time is None:
             raise TypeError("to_date_time cannot be null.")
-        from .microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time.microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder import MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
+        from .microsoft_graph_call_records_get_direct_routing_calls_with_from_d_0d33e661.microsoft_graph_call_records_get_direct_routing_calls_with_from_d_973ac11c import MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromD_973ac11c
 
-        return MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, from_date_time, to_date_time)
+        return MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromD_973ac11c(self.request_adapter, self.path_parameters, from_date_time, to_date_time)
     
-    def microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time(self,from_date_time: datetime.datetime, to_date_time: datetime.datetime) -> MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder:
+    def microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time(self,from_date_time: datetime.datetime, to_date_time: datetime.datetime) -> MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWi_5a427c7c:
         """
         Provides operations to call the getPstnCalls method.
         param from_date_time: Usage: fromDateTime={fromDateTime}
         param to_date_time: Usage: toDateTime={toDateTime}
-        Returns: MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
+        Returns: MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWi_5a427c7c
         """
         if from_date_time is None:
             raise TypeError("from_date_time cannot be null.")
         if to_date_time is None:
             raise TypeError("to_date_time cannot be null.")
-        from .microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time.microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder import MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
+        from .microsoft_graph_call_records_get_pstn_calls_with_from_date_time_wi_03098e60.microsoft_graph_call_records_get_pstn_calls_with_from_date_time_wi_5a427c7c import MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWi_5a427c7c
 
-        return MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, from_date_time, to_date_time)
+        return MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWi_5a427c7c(self.request_adapter, self.path_parameters, from_date_time, to_date_time)
     
     async def post(self,body: CallRecord, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CallRecord]:
         """

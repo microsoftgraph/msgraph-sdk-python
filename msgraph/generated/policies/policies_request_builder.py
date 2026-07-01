@@ -29,6 +29,7 @@ if TYPE_CHECKING:
     from .default_app_management_policy.default_app_management_policy_request_builder import DefaultAppManagementPolicyRequestBuilder
     from .device_registration_policy.device_registration_policy_request_builder import DeviceRegistrationPolicyRequestBuilder
     from .feature_rollout_policies.feature_rollout_policies_request_builder import FeatureRolloutPoliciesRequestBuilder
+    from .federated_token_validation_policy.federated_token_validation_policy_request_builder import FederatedTokenValidationPolicyRequestBuilder
     from .home_realm_discovery_policies.home_realm_discovery_policies_request_builder import HomeRealmDiscoveryPoliciesRequestBuilder
     from .identity_security_defaults_enforcement_policy.identity_security_defaults_enforcement_policy_request_builder import IdentitySecurityDefaultsEnforcementPolicyRequestBuilder
     from .ownerless_group_policy.ownerless_group_policy_request_builder import OwnerlessGroupPolicyRequestBuilder
@@ -246,6 +247,15 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
         from .feature_rollout_policies.feature_rollout_policies_request_builder import FeatureRolloutPoliciesRequestBuilder
 
         return FeatureRolloutPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def federated_token_validation_policy(self) -> FederatedTokenValidationPolicyRequestBuilder:
+        """
+        Provides operations to manage the federatedTokenValidationPolicy property of the microsoft.graph.policyRoot entity.
+        """
+        from .federated_token_validation_policy.federated_token_validation_policy_request_builder import FederatedTokenValidationPolicyRequestBuilder
+
+        return FederatedTokenValidationPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def home_realm_discovery_policies(self) -> HomeRealmDiscoveryPoliciesRequestBuilder:

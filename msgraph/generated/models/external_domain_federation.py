@@ -13,11 +13,11 @@ from .identity_source import IdentitySource
 class ExternalDomainFederation(IdentitySource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.externalDomainFederation"
-    # The name of the identity source, typically also the domain name. Read only.
+    # The name of the identity source, typically also the domain name. Read-only.
     display_name: Optional[str] = None
-    # The domain name. Read only.
+    # The domain name. Read-only.
     domain_name: Optional[str] = None
-    # The issuerURI of the incoming federation. Read only.
+    # The issuerURI of the incoming federation. Read-only.
     issuer_uri: Optional[str] = None
     
     @staticmethod

@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
+    from .access_review_instance_decision_item_access_package_assignment_0e602484 import AccessReviewInstanceDecisionItemAccessPackageAssignment_0e602484
     from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
     from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
@@ -41,9 +41,9 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, BackedModel
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource".casefold():
-            from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
+            from .access_review_instance_decision_item_access_package_assignment_0e602484 import AccessReviewInstanceDecisionItemAccessPackageAssignment_0e602484
 
-            return AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource()
+            return AccessReviewInstanceDecisionItemAccessPackageAssignment_0e602484()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAzureRoleResource".casefold():
             from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
 
@@ -59,11 +59,11 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, BackedModel
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
-        from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
+        from .access_review_instance_decision_item_access_package_assignment_0e602484 import AccessReviewInstanceDecisionItemAccessPackageAssignment_0e602484
         from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
         from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
-        from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
+        from .access_review_instance_decision_item_access_package_assignment_0e602484 import AccessReviewInstanceDecisionItemAccessPackageAssignment_0e602484
         from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
         from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 

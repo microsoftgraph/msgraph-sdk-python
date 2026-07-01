@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from .device_setting_state_summaries.device_setting_state_summaries_request_builder import DeviceSettingStateSummariesRequestBuilder
     from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
     from .device_status_overview.device_status_overview_request_builder import DeviceStatusOverviewRequestBuilder
-    from .get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder import GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
+    from .get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_re_c9047fb2 import GetOmaSettingPlainTextValueWithSecretReferenceValueIdRe_c9047fb2
     from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
     from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
@@ -76,17 +76,17 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceConfiguration, error_mapping)
     
-    def get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: str) -> GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
+    def get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: str) -> GetOmaSettingPlainTextValueWithSecretReferenceValueIdRe_c9047fb2:
         """
         Provides operations to call the getOmaSettingPlainTextValue method.
         param secret_reference_value_id: Usage: secretReferenceValueId='{secretReferenceValueId}'
-        Returns: GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
+        Returns: GetOmaSettingPlainTextValueWithSecretReferenceValueIdRe_c9047fb2
         """
         if secret_reference_value_id is None:
             raise TypeError("secret_reference_value_id cannot be null.")
-        from .get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder import GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
+        from .get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_re_c9047fb2 import GetOmaSettingPlainTextValueWithSecretReferenceValueIdRe_c9047fb2
 
-        return GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(self.request_adapter, self.path_parameters, secret_reference_value_id)
+        return GetOmaSettingPlainTextValueWithSecretReferenceValueIdRe_c9047fb2(self.request_adapter, self.path_parameters, secret_reference_value_id)
     
     async def patch(self,body: DeviceConfiguration, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[DeviceConfiguration]:
         """

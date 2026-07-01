@@ -13,10 +13,10 @@ class SharePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The notifyTeam property
+    notify_team: Optional[bool] = False
     # The endDateTime property
     end_date_time: Optional[datetime.datetime] = None
-    # The notifyTeam property
-    notify_team: Optional[bool] = None
     # The startDateTime property
     start_date_time: Optional[datetime.datetime] = None
     

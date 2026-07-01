@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.user_processing_result_item_request_builder import UserProcessingResultItemRequestBuilder
-    from .microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .microsoft_graph_identity_governance_summary_with_start_date_tim_5ae069f7.microsoft_graph_identity_governance_summary_with_start_date_tim_d3859c20 import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20
 
 class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     """
@@ -69,20 +69,20 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserProcessingResultCollectionResponse, error_mapping)
     
-    def microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20:
         """
         Provides operations to call the summary method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .microsoft_graph_identity_governance_summary_with_start_date_tim_5ae069f7.microsoft_graph_identity_governance_summary_with_start_date_tim_d3859c20 import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20
 
-        return MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
+        return MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[UserProcessingResultsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """

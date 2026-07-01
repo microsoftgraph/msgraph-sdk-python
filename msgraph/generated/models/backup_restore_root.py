@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .drive_protection_rule import DriveProtectionRule
     from .drive_protection_unit import DriveProtectionUnit
     from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
+    from .email_notifications_setting import EmailNotificationsSetting
     from .entity import Entity
     from .exchange_protection_policy import ExchangeProtectionPolicy
     from .exchange_restore_session import ExchangeRestoreSession
@@ -43,6 +44,8 @@ class BackupRestoreRoot(Entity, Parsable):
     drive_protection_units: Optional[list[DriveProtectionUnit]] = None
     # The driveProtectionUnitsBulkAdditionJobs property
     drive_protection_units_bulk_addition_jobs: Optional[list[DriveProtectionUnitsBulkAdditionJob]] = None
+    # The email notification settings in the tenant.
+    email_notifications_setting: Optional[EmailNotificationsSetting] = None
     # The list of Exchange protection policies in the tenant.
     exchange_protection_policies: Optional[list[ExchangeProtectionPolicy]] = None
     # The list of Exchange restore sessions available in the tenant.
@@ -106,6 +109,7 @@ class BackupRestoreRoot(Entity, Parsable):
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
         from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
+        from .email_notifications_setting import EmailNotificationsSetting
         from .entity import Entity
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
@@ -132,6 +136,7 @@ class BackupRestoreRoot(Entity, Parsable):
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
         from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
+        from .email_notifications_setting import EmailNotificationsSetting
         from .entity import Entity
         from .exchange_protection_policy import ExchangeProtectionPolicy
         from .exchange_restore_session import ExchangeRestoreSession
@@ -159,6 +164,7 @@ class BackupRestoreRoot(Entity, Parsable):
             "driveInclusionRules": lambda n : setattr(self, 'drive_inclusion_rules', n.get_collection_of_object_values(DriveProtectionRule)),
             "driveProtectionUnits": lambda n : setattr(self, 'drive_protection_units', n.get_collection_of_object_values(DriveProtectionUnit)),
             "driveProtectionUnitsBulkAdditionJobs": lambda n : setattr(self, 'drive_protection_units_bulk_addition_jobs', n.get_collection_of_object_values(DriveProtectionUnitsBulkAdditionJob)),
+            "emailNotificationsSetting": lambda n : setattr(self, 'email_notifications_setting', n.get_object_value(EmailNotificationsSetting)),
             "exchangeProtectionPolicies": lambda n : setattr(self, 'exchange_protection_policies', n.get_collection_of_object_values(ExchangeProtectionPolicy)),
             "exchangeRestoreSessions": lambda n : setattr(self, 'exchange_restore_sessions', n.get_collection_of_object_values(ExchangeRestoreSession)),
             "mailboxInclusionRules": lambda n : setattr(self, 'mailbox_inclusion_rules', n.get_collection_of_object_values(MailboxProtectionRule)),
@@ -197,6 +203,7 @@ class BackupRestoreRoot(Entity, Parsable):
         writer.write_collection_of_object_values("driveInclusionRules", self.drive_inclusion_rules)
         writer.write_collection_of_object_values("driveProtectionUnits", self.drive_protection_units)
         writer.write_collection_of_object_values("driveProtectionUnitsBulkAdditionJobs", self.drive_protection_units_bulk_addition_jobs)
+        writer.write_object_value("emailNotificationsSetting", self.email_notifications_setting)
         writer.write_collection_of_object_values("exchangeProtectionPolicies", self.exchange_protection_policies)
         writer.write_collection_of_object_values("exchangeRestoreSessions", self.exchange_restore_sessions)
         writer.write_collection_of_object_values("mailboxInclusionRules", self.mailbox_inclusion_rules)

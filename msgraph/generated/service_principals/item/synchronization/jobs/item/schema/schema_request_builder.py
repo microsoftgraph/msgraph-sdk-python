@@ -54,7 +54,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SchemaRequestBuilderGetQueryParameters]] = None) -> Optional[SynchronizationSchema]:
         """
-        Retrieve the schema for a given synchronization job or template.
+        Retrieve the synchronizationSchema for a given synchronization job or template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationSchema]
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-get?view=graph-rest-1.0
@@ -75,7 +75,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: SynchronizationSchema, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SynchronizationSchema]:
         """
-        Update the synchronization schema for a given job or template. This method fully replaces the current schema with the one provided in the request. To update the schema of a template, make the call on the application object. You must be the owner of the application.
+        Update the synchronizationSchema for a given job or template. This method fully replaces the current schema with the one provided in the request. To update the schema of a template, make the call on the application object. You must be the owner of the application.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationSchema]
@@ -110,7 +110,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SchemaRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the schema for a given synchronization job or template.
+        Retrieve the synchronizationSchema for a given synchronization job or template.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +121,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: SynchronizationSchema, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the synchronization schema for a given job or template. This method fully replaces the current schema with the one provided in the request. To update the schema of a template, make the call on the application object. You must be the owner of the application.
+        Update the synchronizationSchema for a given job or template. This method fully replaces the current schema with the one provided in the request. To update the schema of a template, make the call on the application object. You must be the owner of the application.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -190,7 +190,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SchemaRequestBuilderGetQueryParameters():
         """
-        Retrieve the schema for a given synchronization job or template.
+        Retrieve the synchronizationSchema for a given synchronization job or template.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

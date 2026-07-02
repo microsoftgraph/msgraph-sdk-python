@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..tenant_data_security_and_governance import TenantDataSecurityAndGovernance
     from .alert import Alert
     from .cases_root import CasesRoot
+    from .collaboration_root import CollaborationRoot
     from .identity_container import IdentityContainer
     from .incident import Incident
     from .labels_root import LabelsRoot
@@ -33,6 +34,8 @@ class Security(Entity, Parsable):
     attack_simulation: Optional[AttackSimulationRoot] = None
     # The cases property
     cases: Optional[CasesRoot] = None
+    # The collaboration property
+    collaboration: Optional[CollaborationRoot] = None
     # The dataSecurityAndGovernance property
     data_security_and_governance: Optional[TenantDataSecurityAndGovernance] = None
     # A container for security identities APIs.
@@ -81,6 +84,7 @@ class Security(Entity, Parsable):
         from ..tenant_data_security_and_governance import TenantDataSecurityAndGovernance
         from .alert import Alert
         from .cases_root import CasesRoot
+        from .collaboration_root import CollaborationRoot
         from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
@@ -97,6 +101,7 @@ class Security(Entity, Parsable):
         from ..tenant_data_security_and_governance import TenantDataSecurityAndGovernance
         from .alert import Alert
         from .cases_root import CasesRoot
+        from .collaboration_root import CollaborationRoot
         from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
@@ -109,6 +114,7 @@ class Security(Entity, Parsable):
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(Alert)),
             "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(AttackSimulationRoot)),
             "cases": lambda n : setattr(self, 'cases', n.get_object_value(CasesRoot)),
+            "collaboration": lambda n : setattr(self, 'collaboration', n.get_object_value(CollaborationRoot)),
             "dataSecurityAndGovernance": lambda n : setattr(self, 'data_security_and_governance', n.get_object_value(TenantDataSecurityAndGovernance)),
             "identities": lambda n : setattr(self, 'identities', n.get_object_value(IdentityContainer)),
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
@@ -137,6 +143,7 @@ class Security(Entity, Parsable):
         writer.write_collection_of_object_values("alerts_v2", self.alerts_v2)
         writer.write_object_value("attackSimulation", self.attack_simulation)
         writer.write_object_value("cases", self.cases)
+        writer.write_object_value("collaboration", self.collaboration)
         writer.write_object_value("dataSecurityAndGovernance", self.data_security_and_governance)
         writer.write_object_value("identities", self.identities)
         writer.write_collection_of_object_values("incidents", self.incidents)

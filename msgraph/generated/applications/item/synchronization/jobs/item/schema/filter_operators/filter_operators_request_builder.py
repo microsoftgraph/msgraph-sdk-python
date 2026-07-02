@@ -32,7 +32,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[FilterOperatorsRequestBuilderGetQueryParameters]] = None) -> Optional[FilterOperatorsGetResponse]:
         """
-        List all operators supported in the scoping filters.
+        List all operators supported in the scoping filters for a synchronizationSchema.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterOperatorsGetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-filteroperators?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[FilterOperatorsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        List all operators supported in the scoping filters.
+        List all operators supported in the scoping filters for a synchronizationSchema.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -75,7 +75,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FilterOperatorsRequestBuilderGetQueryParameters():
         """
-        List all operators supported in the scoping filters.
+        List all operators supported in the scoping filters for a synchronizationSchema.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

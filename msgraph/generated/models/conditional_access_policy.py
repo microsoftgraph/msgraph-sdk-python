@@ -21,7 +21,7 @@ class ConditionalAccessPolicy(PolicyDeletableItem, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.conditionalAccessPolicy"
     # The conditions property
     conditions: Optional[ConditionalAccessConditionSet] = None
-    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The description property
     description: Optional[str] = None
@@ -31,7 +31,7 @@ class ConditionalAccessPolicy(PolicyDeletableItem, Parsable):
     grant_controls: Optional[ConditionalAccessGrantControls] = None
     # Specifies the identifier of a conditionalAccessPolicy object. Read-only.
     id: Optional[str] = None
-    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     modified_date_time: Optional[datetime.datetime] = None
     # Specifies the session controls that are enforced after sign-in.
     session_controls: Optional[ConditionalAccessSessionControls] = None

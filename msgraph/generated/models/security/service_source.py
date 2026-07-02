@@ -15,4 +15,5 @@ class ServiceSource(str, Enum):
     MicrosoftSentinel = "microsoftSentinel",
     MicrosoftInsiderRiskManagement = "microsoftInsiderRiskManagement",
     MicrosoftThreatIntelligence = "microsoftThreatIntelligence",
+    MicrosoftSecurityForAI = "microsoftSecurityForAI",
 

@@ -54,9 +54,10 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RetentionLabelItemRequestBuilderGetQueryParameters]] = None) -> Optional[RetentionLabel]:
         """
-        Represents how customers can manage their data, whether and for how long to retain or delete it.
+        Read the properties and relationships of a retentionLabel object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionLabel]
+        Find more info here: https://learn.microsoft.com/graph/api/security-retentionlabel-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -109,7 +110,7 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RetentionLabelItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Represents how customers can manage their data, whether and for how long to retain or delete it.
+        Read the properties and relationships of a retentionLabel object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -180,7 +181,7 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RetentionLabelItemRequestBuilderGetQueryParameters():
         """
-        Represents how customers can manage their data, whether and for how long to retain or delete it.
+        Read the properties and relationships of a retentionLabel object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

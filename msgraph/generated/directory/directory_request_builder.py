@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from .federation_configurations.federation_configurations_request_builder import FederationConfigurationsRequestBuilder
     from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
     from .public_key_infrastructure.public_key_infrastructure_request_builder import PublicKeyInfrastructureRequestBuilder
+    from .recovery.recovery_request_builder import RecoveryRequestBuilder
     from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
     from .subscriptions_with_commerce_subscription_id.subscriptions_with_commerce_subscription_id_request_builder import SubscriptionsWithCommerceSubscriptionIdRequestBuilder
 
@@ -202,6 +203,15 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         from .public_key_infrastructure.public_key_infrastructure_request_builder import PublicKeyInfrastructureRequestBuilder
 
         return PublicKeyInfrastructureRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def recovery(self) -> RecoveryRequestBuilder:
+        """
+        Provides operations to manage the recovery property of the microsoft.graph.directory entity.
+        """
+        from .recovery.recovery_request_builder import RecoveryRequestBuilder
+
+        return RecoveryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def subscriptions(self) -> SubscriptionsRequestBuilder:

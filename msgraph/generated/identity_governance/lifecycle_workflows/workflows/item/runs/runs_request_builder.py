@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.run_item_request_builder import RunItemRequestBuilder
-    from .microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .microsoft_graph_identity_governance_summary_with_start_date_tim_5ae069f7.microsoft_graph_identity_governance_summary_with_start_date_tim_d3859c20 import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20
 
 class RunsRequestBuilder(BaseRequestBuilder):
     """
@@ -50,7 +50,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RunsRequestBuilderGetQueryParameters]] = None) -> Optional[RunCollectionResponse]:
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Get a list of run objects and their properties for a workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RunCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-list-runs?view=graph-rest-1.0
@@ -69,24 +69,24 @@ class RunsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RunCollectionResponse, error_mapping)
     
-    def microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time(self,end_date_time: datetime.datetime, start_date_time: datetime.datetime) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20:
         """
         Provides operations to call the summary method.
         param end_date_time: Usage: endDateTime={endDateTime}
         param start_date_time: Usage: startDateTime={startDateTime}
-        Returns: MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20
         """
         if end_date_time is None:
             raise TypeError("end_date_time cannot be null.")
         if start_date_time is None:
             raise TypeError("start_date_time cannot be null.")
-        from .microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time.microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time_request_builder import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
+        from .microsoft_graph_identity_governance_summary_with_start_date_tim_5ae069f7.microsoft_graph_identity_governance_summary_with_start_date_tim_d3859c20 import MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20
 
-        return MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
+        return MicrosoftGraphIdentityGovernanceSummaryWithStartDateTim_d3859c20(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RunsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Get a list of run objects and their properties for a workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +117,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RunsRequestBuilderGetQueryParameters():
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Get a list of run objects and their properties for a workflow.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

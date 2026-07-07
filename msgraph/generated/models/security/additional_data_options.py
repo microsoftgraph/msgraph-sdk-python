@@ -10,4 +10,5 @@ class AdditionalDataOptions(str, Enum):
     MessageConversationExpansion = "messageConversationExpansion",
     LocationsWithoutHits = "locationsWithoutHits",
     AllItemsInFolder = "allItemsInFolder",
+    CloudNativeHtmlConversion = "cloudNativeHtmlConversion",
 

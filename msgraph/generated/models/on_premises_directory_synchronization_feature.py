@@ -12,7 +12,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The allowOnPremUpdateOfOnPremisesObjectIdentifierEnabled property
+    # When true, allows on-premises directory sync clients to update the onPremisesObjectIdentifier property.
     allow_on_prem_update_of_on_premises_object_identifier_enabled: Optional[bool] = None
     # Used to block cloud object takeover via source anchor hard match if enabled.
     block_cloud_object_takeover_through_hard_match_enabled: Optional[bool] = None

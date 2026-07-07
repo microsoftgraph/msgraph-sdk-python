@@ -14,7 +14,7 @@ from .entity import Entity
 
 @dataclass
 class SharedInsight(Entity, Parsable):
-    # Details about the shared item. Read only.
+    # Details about the shared item. Read-only.
     last_shared: Optional[SharingDetail] = None
     # The lastSharedMethod property
     last_shared_method: Optional[Entity] = None

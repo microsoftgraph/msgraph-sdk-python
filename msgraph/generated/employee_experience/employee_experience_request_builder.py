@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from .communities.communities_request_builder import CommunitiesRequestBuilder
     from .engagement_async_operations.engagement_async_operations_request_builder import EngagementAsyncOperationsRequestBuilder
     from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
-    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
     from .learning_providers.learning_providers_request_builder import LearningProvidersRequestBuilder
     from .roles.roles_request_builder import RolesRequestBuilder
 
@@ -56,22 +56,22 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EmployeeExperience, error_mapping)
     
-    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder:
+    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28:
         """
         Provides operations to manage the learningCourseActivities property of the microsoft.graph.employeeExperience entity.
         param externalcourse_activity_id: Alternate key of learningCourseActivity
-        Returns: LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        Returns: LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
         """
         if externalcourse_activity_id is None:
             raise TypeError("externalcourse_activity_id cannot be null.")
-        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
 
-        return LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(self.request_adapter, self.path_parameters, externalcourse_activity_id)
+        return LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28(self.request_adapter, self.path_parameters, externalcourse_activity_id)
     
     async def patch(self,body: EmployeeExperience, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EmployeeExperience]:
         """
         Update employeeExperience
-        param body: Represents a container that exposes navigation properties for employee experience resources.
+        param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EmployeeExperience]
         """
@@ -105,7 +105,7 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: EmployeeExperience, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update employeeExperience
-        param body: Represents a container that exposes navigation properties for employee experience resources.
+        param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

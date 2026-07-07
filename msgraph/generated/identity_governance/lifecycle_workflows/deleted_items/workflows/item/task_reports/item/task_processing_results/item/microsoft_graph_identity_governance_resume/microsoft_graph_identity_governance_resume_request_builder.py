@@ -32,7 +32,7 @@ class MicrosoftGraphIdentityGovernanceResumeRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ResumePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.
+        Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -54,7 +54,7 @@ class MicrosoftGraphIdentityGovernanceResumeRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ResumePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.
+        Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

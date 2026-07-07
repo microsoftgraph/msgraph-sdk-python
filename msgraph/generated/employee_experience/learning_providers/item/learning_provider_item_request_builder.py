@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from .learning_contents.learning_contents_request_builder import LearningContentsRequestBuilder
     from .learning_contents_with_external_id.learning_contents_with_external_id_request_builder import LearningContentsWithExternalIdRequestBuilder
     from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
-    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
 
 class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     """
@@ -86,17 +86,17 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
 
         return LearningContentsWithExternalIdRequestBuilder(self.request_adapter, self.path_parameters, external_id)
     
-    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder:
+    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: str) -> LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28:
         """
         Provides operations to manage the learningCourseActivities property of the microsoft.graph.learningProvider entity.
         param externalcourse_activity_id: Alternate key of learningCourseActivity
-        Returns: LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        Returns: LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
         """
         if externalcourse_activity_id is None:
             raise TypeError("externalcourse_activity_id cannot be null.")
-        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_req_93f96b28 import LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28
 
-        return LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(self.request_adapter, self.path_parameters, externalcourse_activity_id)
+        return LearningCourseActivitiesWithExternalcourseActivityIdReq_93f96b28(self.request_adapter, self.path_parameters, externalcourse_activity_id)
     
     async def patch(self,body: LearningProvider, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[LearningProvider]:
         """

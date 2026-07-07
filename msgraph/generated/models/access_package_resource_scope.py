@@ -20,9 +20,9 @@ class AccessPackageResourceScope(Entity, Parsable):
     is_root_scope: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The unique identifier for the scope in the resource as defined in the origin system.
+    # The unique identifier of the resource in the origin system. If a Microsoft Entra group, originId is the identifier of the group. Supports $filter (eq).
     origin_id: Optional[str] = None
-    # The origin system for the scope.
+    # The type of the resource in the origin system, such as SharePointOnline, AadApplication, AadGroup, AzureResources, or CustomDataProvidedResource. Supports $filter (eq).
     origin_system: Optional[str] = None
     # The resource property
     resource: Optional[AccessPackageResource] = None

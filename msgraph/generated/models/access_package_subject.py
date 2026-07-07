@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_package_subject_lifecycle import AccessPackageSubjectLifecycle
     from .access_package_subject_type import AccessPackageSubjectType
     from .connected_organization import ConnectedOrganization
     from .entity import Entity
@@ -27,6 +28,8 @@ class AccessPackageSubject(Entity, Parsable):
     on_premises_security_identifier: Optional[str] = None
     # The principal name, if known, of the subject.
     principal_name: Optional[str] = None
+    # The subjectLifecycle property
+    subject_lifecycle: Optional[AccessPackageSubjectLifecycle] = None
     # The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
     subject_type: Optional[AccessPackageSubjectType] = None
     
@@ -46,10 +49,12 @@ class AccessPackageSubject(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .access_package_subject_lifecycle import AccessPackageSubjectLifecycle
         from .access_package_subject_type import AccessPackageSubjectType
         from .connected_organization import ConnectedOrganization
         from .entity import Entity
 
+        from .access_package_subject_lifecycle import AccessPackageSubjectLifecycle
         from .access_package_subject_type import AccessPackageSubjectType
         from .connected_organization import ConnectedOrganization
         from .entity import Entity
@@ -61,6 +66,7 @@ class AccessPackageSubject(Entity, Parsable):
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
+            "subjectLifecycle": lambda n : setattr(self, 'subject_lifecycle', n.get_enum_value(AccessPackageSubjectLifecycle)),
             "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(AccessPackageSubjectType)),
         }
         super_fields = super().get_field_deserializers()
@@ -82,6 +88,7 @@ class AccessPackageSubject(Entity, Parsable):
         writer.write_str_value("objectId", self.object_id)
         writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
         writer.write_str_value("principalName", self.principal_name)
+        writer.write_enum_value("subjectLifecycle", self.subject_lifecycle)
         writer.write_enum_value("subjectType", self.subject_type)
     
 

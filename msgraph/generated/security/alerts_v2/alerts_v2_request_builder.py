@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from ...models.security.alert_collection_response import AlertCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
     from .item.alert_item_request_builder import AlertItemRequestBuilder
+    from .microsoft_graph_security_move_alerts.microsoft_graph_security_move_alerts_request_builder import MicrosoftGraphSecurityMoveAlertsRequestBuilder
 
 class Alerts_v2RequestBuilder(BaseRequestBuilder):
     """
@@ -135,6 +136,15 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_move_alerts(self) -> MicrosoftGraphSecurityMoveAlertsRequestBuilder:
+        """
+        Provides operations to call the moveAlerts method.
+        """
+        from .microsoft_graph_security_move_alerts.microsoft_graph_security_move_alerts_request_builder import MicrosoftGraphSecurityMoveAlertsRequestBuilder
+
+        return MicrosoftGraphSecurityMoveAlertsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class Alerts_v2RequestBuilderGetQueryParameters():

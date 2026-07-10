@@ -22,8 +22,13 @@ if TYPE_CHECKING:
     from .last_modified_by.last_modified_by_request_builder import LastModifiedByRequestBuilder
     from .microsoft_graph_identity_governance_activate.microsoft_graph_identity_governance_activate_request_builder import MicrosoftGraphIdentityGovernanceActivateRequestBuilder
     from .microsoft_graph_identity_governance_activate_with_scope.microsoft_graph_identity_governance_activate_with_scope_request_builder import MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder
+    from .microsoft_graph_identity_governance_cancel_processing.microsoft_graph_identity_governance_cancel_processing_request_builder import MicrosoftGraphIdentityGovernanceCancelProcessingRequestBuilder
+    from .microsoft_graph_identity_governance_clear_quarantine.microsoft_graph_identity_governance_clear_quarantine_request_builder import MicrosoftGraphIdentityGovernanceClearQuarantineRequestBuilder
     from .microsoft_graph_identity_governance_create_new_version.microsoft_graph_identity_governance_create_new_version_request_builder import MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder
+    from .microsoft_graph_identity_governance_preview_task_failures.microsoft_graph_identity_governance_preview_task_failures_request_builder import MicrosoftGraphIdentityGovernancePreviewTaskFailuresRequestBuilder
+    from .microsoft_graph_identity_governance_preview_workflow.microsoft_graph_identity_governance_preview_workflow_request_builder import MicrosoftGraphIdentityGovernancePreviewWorkflowRequestBuilder
     from .microsoft_graph_identity_governance_restore.microsoft_graph_identity_governance_restore_request_builder import MicrosoftGraphIdentityGovernanceRestoreRequestBuilder
+    from .preview_scope.preview_scope_request_builder import PreviewScopeRequestBuilder
     from .runs.runs_request_builder import RunsRequestBuilder
     from .tasks.tasks_request_builder import TasksRequestBuilder
     from .task_reports.task_reports_request_builder import TaskReportsRequestBuilder
@@ -45,7 +50,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a workflow object and its associated tasks, taskProcessingResults and versions. You can restore a deleted workflow and its associated objects within 30 days of deletion.
+        Delete a workflow object and its associated tasks, taskProcessingResults and versions. The deleted workflow is sent to the deleted workflows container. You can restore a deleted workflow and its associated objects within 30 days of deletion.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-delete?view=graph-rest-1.0
@@ -109,7 +114,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a workflow object and its associated tasks, taskProcessingResults and versions. You can restore a deleted workflow and its associated objects within 30 days of deletion.
+        Delete a workflow object and its associated tasks, taskProcessingResults and versions. The deleted workflow is sent to the deleted workflows container. You can restore a deleted workflow and its associated objects within 30 days of deletion.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -209,6 +214,24 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
         return MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_identity_governance_cancel_processing(self) -> MicrosoftGraphIdentityGovernanceCancelProcessingRequestBuilder:
+        """
+        Provides operations to call the cancelProcessing method.
+        """
+        from .microsoft_graph_identity_governance_cancel_processing.microsoft_graph_identity_governance_cancel_processing_request_builder import MicrosoftGraphIdentityGovernanceCancelProcessingRequestBuilder
+
+        return MicrosoftGraphIdentityGovernanceCancelProcessingRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_identity_governance_clear_quarantine(self) -> MicrosoftGraphIdentityGovernanceClearQuarantineRequestBuilder:
+        """
+        Provides operations to call the clearQuarantine method.
+        """
+        from .microsoft_graph_identity_governance_clear_quarantine.microsoft_graph_identity_governance_clear_quarantine_request_builder import MicrosoftGraphIdentityGovernanceClearQuarantineRequestBuilder
+
+        return MicrosoftGraphIdentityGovernanceClearQuarantineRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def microsoft_graph_identity_governance_create_new_version(self) -> MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder:
         """
         Provides operations to call the createNewVersion method.
@@ -218,6 +241,24 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
         return MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_identity_governance_preview_task_failures(self) -> MicrosoftGraphIdentityGovernancePreviewTaskFailuresRequestBuilder:
+        """
+        Provides operations to call the previewTaskFailures method.
+        """
+        from .microsoft_graph_identity_governance_preview_task_failures.microsoft_graph_identity_governance_preview_task_failures_request_builder import MicrosoftGraphIdentityGovernancePreviewTaskFailuresRequestBuilder
+
+        return MicrosoftGraphIdentityGovernancePreviewTaskFailuresRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_identity_governance_preview_workflow(self) -> MicrosoftGraphIdentityGovernancePreviewWorkflowRequestBuilder:
+        """
+        Provides operations to call the previewWorkflow method.
+        """
+        from .microsoft_graph_identity_governance_preview_workflow.microsoft_graph_identity_governance_preview_workflow_request_builder import MicrosoftGraphIdentityGovernancePreviewWorkflowRequestBuilder
+
+        return MicrosoftGraphIdentityGovernancePreviewWorkflowRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def microsoft_graph_identity_governance_restore(self) -> MicrosoftGraphIdentityGovernanceRestoreRequestBuilder:
         """
         Provides operations to call the restore method.
@@ -225,6 +266,15 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
         from .microsoft_graph_identity_governance_restore.microsoft_graph_identity_governance_restore_request_builder import MicrosoftGraphIdentityGovernanceRestoreRequestBuilder
 
         return MicrosoftGraphIdentityGovernanceRestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def preview_scope(self) -> PreviewScopeRequestBuilder:
+        """
+        Provides operations to manage the previewScope property of the microsoft.graph.identityGovernance.workflow entity.
+        """
+        from .preview_scope.preview_scope_request_builder import PreviewScopeRequestBuilder
+
+        return PreviewScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def runs(self) -> RunsRequestBuilder:

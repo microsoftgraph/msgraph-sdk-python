@@ -69,7 +69,7 @@ class Schedule(Entity, Parsable):
     time_off_requests: Optional[list[TimeOffRequest]] = None
     # Indicates whether time off requests are enabled for the schedule.
     time_off_requests_enabled: Optional[bool] = None
-    # Indicates the time zone of the schedule team using tz database format. Required.
+    # The time zone of the schedule team as an IANA time zone database (tz database) name; for example, America/Chicago. For the full list of valid values, see List of tz database time zones. Required.
     time_zone: Optional[str] = None
     # The instances of times off in the schedule.
     times_off: Optional[list[TimeOff]] = None

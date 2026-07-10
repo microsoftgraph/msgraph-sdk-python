@@ -20,7 +20,7 @@ class DirectoryRole(DirectoryObject, Parsable):
     display_name: Optional[str] = None
     # Users that are members of this directory role. HTTP Methods: GET, POST, DELETE. Read-only. Nullable. Supports $expand.
     members: Optional[list[DirectoryObject]] = None
-    # The id of the directoryRoleTemplate that this role is based on. The property must be specified when activating a directory role in a tenant with a POST operation. After the directory role has been activated, the property is read only. Supports $filter (eq), $select.
+    # The id of the directoryRoleTemplate that this role is based on. The property must be specified when activating a directory role in a tenant with a POST operation. After the directory role has been activated, the property is read-only. Supports $filter (eq), $select.
     role_template_id: Optional[str] = None
     # Members of this directory role that are scoped to administrative units. Read-only. Nullable.
     scoped_members: Optional[list[ScopedRoleMembership]] = None

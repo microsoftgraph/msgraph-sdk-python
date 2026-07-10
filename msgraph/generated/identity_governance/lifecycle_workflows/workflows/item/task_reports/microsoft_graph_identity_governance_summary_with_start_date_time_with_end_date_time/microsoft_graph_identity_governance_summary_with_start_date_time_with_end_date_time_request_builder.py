@@ -38,7 +38,7 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TaskReportSummary]:
         """
-        Get a taskReportSummary object. This API provides a summary of task processing results for a specified time period. Because the volume of task processing results and task reports returned by the List API calls can be overwhelming, this summary allows the administrator to get a quick overview based on counts.
+        Get a taskReportSummary for a taskReport. This API provides a summary of task processing results for a specified time period. Because the volume of task processing results and task reports returned by the List API calls can be overwhelming, this summary allows the administrator to get a quick overview based on counts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TaskReportSummary]
         """
@@ -58,7 +58,7 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Get a taskReportSummary object. This API provides a summary of task processing results for a specified time period. Because the volume of task processing results and task reports returned by the List API calls can be overwhelming, this summary allows the administrator to get a quick overview based on counts.
+        Get a taskReportSummary for a taskReport. This API provides a summary of task processing results for a specified time period. Because the volume of task processing results and task reports returned by the List API calls can be overwhelming, this summary allows the administrator to get a quick overview based on counts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

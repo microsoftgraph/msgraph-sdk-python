@@ -16,10 +16,12 @@ if TYPE_CHECKING:
     from .drive import Drive
     from .event import Event
     from .extension import Extension
+    from .group_access_type import GroupAccessType
     from .group_lifecycle_policy import GroupLifecyclePolicy
     from .group_setting import GroupSetting
     from .license_processing_state import LicenseProcessingState
     from .onenote import Onenote
+    from .on_premises_extension_attributes import OnPremisesExtensionAttributes
     from .on_premises_provisioning_error import OnPremisesProvisioningError
     from .on_premises_sync_behavior import OnPremisesSyncBehavior
     from .planner_group import PlannerGroup
@@ -33,18 +35,17 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class Group(DirectoryObject, Parsable):
-    """
-    Represents a Microsoft Entra group.
-    """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.group"
     # The list of users or groups allowed to create posts or calendar events in this group. If this list is nonempty, then only users or groups listed here are allowed to post.
     accepted_senders: Optional[list[DirectoryObject]] = None
+    # Indicates the type of access to the group. The possible values are: none, private, secret, public, unknownFutureValue. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
+    access_type: Optional[GroupAccessType] = None
     # Indicates if people external to the organization can send messages to the group. The default value is false. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     allow_external_senders: Optional[bool] = None
     # Represents the app roles granted to a group for an application. Supports $expand.
     app_role_assignments: Optional[list[AppRoleAssignment]] = None
-    # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Requires $select to retrieve. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role.
+    # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group or a cloud security group. Requires a Microsoft Entra ID P1 license. Requires $select to retrieve. This property can be specified during group creation or update. However, for cloud security groups, it's immutable once set. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role. See Key differences from Microsoft 365 group labeling to learn more about managing this property for Microsoft 365 vs. cloud security groups.
     assigned_labels: Optional[list[AssignedLabel]] = None
     # The licenses that are assigned to the group. Requires $select to retrieve. Supports $filter (eq). Read-only.
     assigned_licenses: Optional[list[AssignedLicense]] = None
@@ -92,6 +93,8 @@ class Group(DirectoryObject, Parsable):
     is_archived: Optional[bool] = None
     # Indicates whether this group can be assigned to a Microsoft Entra role. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group can't be a dynamic group (that is, groupTypes can't contain DynamicMembership). Only callers with at least the Privileged Role Administrator role can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Microsoft Entra role assignmentsUsing this feature requires a Microsoft Entra ID P1 license. Returned by default. Supports $filter (eq, ne, not).
     is_assignable_to_role: Optional[bool] = None
+    # Indicates whether the user marked the group as favorite. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
+    is_favorite: Optional[bool] = None
     # Indicates whether the group is a member of a restricted management administrative unit. If not set, the default value is null and the default behavior is false. Read-only.  To manage a group member of a restricted management administrative unit, the administrator or calling app must be assigned a Microsoft Entra role at the scope of the restricted management administrative unit. Requires $select to retrieve.
     is_management_restricted: Optional[bool] = None
     # Indicates whether the signed-in user is subscribed to receive email conversations. The default value is true. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
@@ -116,6 +119,8 @@ class Group(DirectoryObject, Parsable):
     membership_rule_processing_state: Optional[str] = None
     # Contains the on-premises domain FQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect.Returned by default. Read-only.
     on_premises_domain_name: Optional[str] = None
+    # The onPremisesExtensionAttributes property
+    on_premises_extension_attributes: Optional[OnPremisesExtensionAttributes] = None
     # Indicates the last time at which the group was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on January 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in).
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
     # Contains the on-premises netBios name synchronized from the on-premises directory. The property is only populated for customers synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect.Returned by default. Read-only.
@@ -178,8 +183,12 @@ class Group(DirectoryObject, Parsable):
     transitive_members: Optional[list[DirectoryObject]] = None
     # The unique identifier that can be assigned to a group and used as an alternate key. Immutable. Read-only.
     unique_name: Optional[str] = None
-    # Count of conversations that received new posts since the signed-in user last visited the group. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
+    # Count of conversations that have had one or more new posts delivered since the signed-in user's last visit to the group. This property is the same as unseenCount. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
+    unseen_conversations_count: Optional[int] = None
+    # Count of conversations that have received new posts since the signed-in user last visited the group. This property is the same as unseenConversationsCount.Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
     unseen_count: Optional[int] = None
+    # Count of new posts that have been delivered to the group's conversations since the signed-in user's last visit to the group. Requires $select to retrieve. Supported only on the Get group API (GET /groups/{ID}).
+    unseen_messages_count: Optional[int] = None
     # Specifies the group join policy and group content visibility for groups. The possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value isn't specified during group creation on Microsoft Graph, a security group is created as Private by default, and the Microsoft 365 group is Public. Groups assignable to roles are always Private. To learn more, see group visibility options. Returned by default. Nullable.
     visibility: Optional[str] = None
     # The welcomeMessageEnabled property
@@ -211,10 +220,12 @@ class Group(DirectoryObject, Parsable):
         from .drive import Drive
         from .event import Event
         from .extension import Extension
+        from .group_access_type import GroupAccessType
         from .group_lifecycle_policy import GroupLifecyclePolicy
         from .group_setting import GroupSetting
         from .license_processing_state import LicenseProcessingState
         from .onenote import Onenote
+        from .on_premises_extension_attributes import OnPremisesExtensionAttributes
         from .on_premises_provisioning_error import OnPremisesProvisioningError
         from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .planner_group import PlannerGroup
@@ -234,10 +245,12 @@ class Group(DirectoryObject, Parsable):
         from .drive import Drive
         from .event import Event
         from .extension import Extension
+        from .group_access_type import GroupAccessType
         from .group_lifecycle_policy import GroupLifecyclePolicy
         from .group_setting import GroupSetting
         from .license_processing_state import LicenseProcessingState
         from .onenote import Onenote
+        from .on_premises_extension_attributes import OnPremisesExtensionAttributes
         from .on_premises_provisioning_error import OnPremisesProvisioningError
         from .on_premises_sync_behavior import OnPremisesSyncBehavior
         from .planner_group import PlannerGroup
@@ -249,6 +262,7 @@ class Group(DirectoryObject, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "acceptedSenders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(DirectoryObject)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(GroupAccessType)),
             "allowExternalSenders": lambda n : setattr(self, 'allow_external_senders', n.get_bool_value()),
             "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
             "assignedLabels": lambda n : setattr(self, 'assigned_labels', n.get_collection_of_object_values(AssignedLabel)),
@@ -275,6 +289,7 @@ class Group(DirectoryObject, Parsable):
             "infoCatalogs": lambda n : setattr(self, 'info_catalogs', n.get_collection_of_primitive_values(str)),
             "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "isAssignableToRole": lambda n : setattr(self, 'is_assignable_to_role', n.get_bool_value()),
+            "isFavorite": lambda n : setattr(self, 'is_favorite', n.get_bool_value()),
             "isManagementRestricted": lambda n : setattr(self, 'is_management_restricted', n.get_bool_value()),
             "isSubscribedByMail": lambda n : setattr(self, 'is_subscribed_by_mail', n.get_bool_value()),
             "licenseProcessingState": lambda n : setattr(self, 'license_processing_state', n.get_object_value(LicenseProcessingState)),
@@ -287,6 +302,7 @@ class Group(DirectoryObject, Parsable):
             "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
             "membershipRuleProcessingState": lambda n : setattr(self, 'membership_rule_processing_state', n.get_str_value()),
             "onPremisesDomainName": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
+            "onPremisesExtensionAttributes": lambda n : setattr(self, 'on_premises_extension_attributes', n.get_object_value(OnPremisesExtensionAttributes)),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
             "onPremisesNetBiosName": lambda n : setattr(self, 'on_premises_net_bios_name', n.get_str_value()),
             "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
@@ -318,7 +334,9 @@ class Group(DirectoryObject, Parsable):
             "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
             "transitiveMembers": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(DirectoryObject)),
             "uniqueName": lambda n : setattr(self, 'unique_name', n.get_str_value()),
+            "unseenConversationsCount": lambda n : setattr(self, 'unseen_conversations_count', n.get_int_value()),
             "unseenCount": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
+            "unseenMessagesCount": lambda n : setattr(self, 'unseen_messages_count', n.get_int_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
             "welcomeMessageEnabled": lambda n : setattr(self, 'welcome_message_enabled', n.get_bool_value()),
         }
@@ -336,6 +354,7 @@ class Group(DirectoryObject, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("acceptedSenders", self.accepted_senders)
+        writer.write_enum_value("accessType", self.access_type)
         writer.write_bool_value("allowExternalSenders", self.allow_external_senders)
         writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)
         writer.write_collection_of_object_values("assignedLabels", self.assigned_labels)
@@ -362,6 +381,7 @@ class Group(DirectoryObject, Parsable):
         writer.write_collection_of_primitive_values("infoCatalogs", self.info_catalogs)
         writer.write_bool_value("isArchived", self.is_archived)
         writer.write_bool_value("isAssignableToRole", self.is_assignable_to_role)
+        writer.write_bool_value("isFavorite", self.is_favorite)
         writer.write_bool_value("isManagementRestricted", self.is_management_restricted)
         writer.write_bool_value("isSubscribedByMail", self.is_subscribed_by_mail)
         writer.write_object_value("licenseProcessingState", self.license_processing_state)
@@ -374,6 +394,7 @@ class Group(DirectoryObject, Parsable):
         writer.write_str_value("membershipRule", self.membership_rule)
         writer.write_str_value("membershipRuleProcessingState", self.membership_rule_processing_state)
         writer.write_str_value("onPremisesDomainName", self.on_premises_domain_name)
+        writer.write_object_value("onPremisesExtensionAttributes", self.on_premises_extension_attributes)
         writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_str_value("onPremisesNetBiosName", self.on_premises_net_bios_name)
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
@@ -405,7 +426,9 @@ class Group(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
         writer.write_collection_of_object_values("transitiveMembers", self.transitive_members)
         writer.write_str_value("uniqueName", self.unique_name)
+        writer.write_int_value("unseenConversationsCount", self.unseen_conversations_count)
         writer.write_int_value("unseenCount", self.unseen_count)
+        writer.write_int_value("unseenMessagesCount", self.unseen_messages_count)
         writer.write_str_value("visibility", self.visibility)
         writer.write_bool_value("welcomeMessageEnabled", self.welcome_message_enabled)
     

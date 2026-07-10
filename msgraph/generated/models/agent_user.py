@@ -11,9 +11,6 @@ from .user import User
 
 @dataclass
 class AgentUser(User, Parsable):
-    """
-    Represents a Microsoft Entra user account.
-    """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.agentUser"
     

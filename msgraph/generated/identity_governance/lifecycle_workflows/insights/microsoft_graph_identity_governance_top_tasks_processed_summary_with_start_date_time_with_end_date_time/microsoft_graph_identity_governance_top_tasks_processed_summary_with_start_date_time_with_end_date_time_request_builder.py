@@ -38,7 +38,7 @@ class MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeW
     
     async def get(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[TopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse]:
         """
-        Provide a summary of the most processed tasks, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights: topWorkflowsProcessedSummary.
+        Provide a summary from the insights resource of the most processed task objects, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights: topWorkflowsProcessedSummary.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeGetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-insights-toptasksprocessedsummary?view=graph-rest-1.0
@@ -59,7 +59,7 @@ class MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeW
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Provide a summary of the most processed tasks, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights: topWorkflowsProcessedSummary.
+        Provide a summary from the insights resource of the most processed task objects, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights: topWorkflowsProcessedSummary.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -81,7 +81,7 @@ class MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeW
     @dataclass
     class MicrosoftGraphIdentityGovernanceTopTasksProcessedSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters():
         """
-        Provide a summary of the most processed tasks, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights: topWorkflowsProcessedSummary.
+        Provide a summary from the insights resource of the most processed task objects, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights: topWorkflowsProcessedSummary.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

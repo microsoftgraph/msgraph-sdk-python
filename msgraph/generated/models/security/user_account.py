@@ -30,6 +30,8 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # Information on resource access attempts made by the user account.
     resource_access_events: Optional[list[ResourceAccessEvent]] = None
+    # The Microsoft Entra tenant ID of the user account.
+    tenant_id: Optional[str] = None
     # The user principal name of the account in Microsoft Entra ID.
     user_principal_name: Optional[str] = None
     # The local security identifier of the user account.
@@ -63,6 +65,7 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resourceAccessEvents": lambda n : setattr(self, 'resource_access_events', n.get_collection_of_object_values(ResourceAccessEvent)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
             "userSid": lambda n : setattr(self, 'user_sid', n.get_str_value()),
         }
@@ -83,6 +86,7 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("domainName", self.domain_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("resourceAccessEvents", self.resource_access_events)
+        writer.write_str_value("tenantId", self.tenant_id)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_str_value("userSid", self.user_sid)
         writer.write_additional_data_value(self.additional_data)

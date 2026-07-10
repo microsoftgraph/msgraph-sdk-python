@@ -71,7 +71,7 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: EmployeeExperience, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[EmployeeExperience]:
         """
         Update employeeExperience
-        param body: Represents a container that exposes navigation properties for employee experience resources.
+        param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EmployeeExperience]
         """
@@ -105,7 +105,7 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: EmployeeExperience, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update employeeExperience
-        param body: Represents a container that exposes navigation properties for employee experience resources.
+        param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

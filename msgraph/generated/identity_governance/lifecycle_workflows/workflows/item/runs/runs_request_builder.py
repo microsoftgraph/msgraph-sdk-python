@@ -50,7 +50,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RunsRequestBuilderGetQueryParameters]] = None) -> Optional[RunCollectionResponse]:
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Get a list of run objects and their properties for a workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RunCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-list-runs?view=graph-rest-1.0
@@ -86,7 +86,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RunsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Get a list of run objects and their properties for a workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +117,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RunsRequestBuilderGetQueryParameters():
         """
-        Get a list of the run objects and their properties for a lifecycle workflow.
+        Get a list of run objects and their properties for a workflow.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

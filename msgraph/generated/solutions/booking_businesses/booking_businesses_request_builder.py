@@ -49,7 +49,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[BookingBusinessesRequestBuilderGetQueryParameters]] = None) -> Optional[BookingBusinessCollectionResponse]:
         """
-        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
+        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it doesn't return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusinessCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[BookingBusinessesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
+        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it doesn't return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +140,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingBusinessesRequestBuilderGetQueryParameters():
         """
-        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
+        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it doesn't return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

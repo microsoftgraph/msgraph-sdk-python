@@ -6,10 +6,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from ..directory_object import DirectoryObject
+    from .quarantine_details import QuarantineDetails
     from .run import Run
     from .task_report import TaskReport
     from .user_processing_result import UserProcessingResult
     from .workflow_base import WorkflowBase
+    from .workflow_setting import WorkflowSetting
     from .workflow_version import WorkflowVersion
 
 from .workflow_base import WorkflowBase
@@ -26,8 +29,14 @@ class Workflow(WorkflowBase, Parsable):
     id: Optional[str] = None
     # The date time when the workflow is expected to run next based on the schedule interval, if there are any users matching the execution conditions. Supports $filter(lt,gt) and $orderby.
     next_schedule_run_date_time: Optional[datetime.datetime] = None
+    # The preview scope for the workflow.
+    preview_scope: Optional[list[DirectoryObject]] = None
+    # The quarantineDetails property
+    quarantine_details: Optional[QuarantineDetails] = None
     # Workflow runs.
     runs: Optional[list[Run]] = None
+    # The settings property
+    settings: Optional[WorkflowSetting] = None
     # Represents the aggregation of task execution data for tasks within a workflow object.
     task_reports: Optional[list[TaskReport]] = None
     # Per-user workflow execution results.
@@ -53,16 +62,22 @@ class Workflow(WorkflowBase, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from ..directory_object import DirectoryObject
+        from .quarantine_details import QuarantineDetails
         from .run import Run
         from .task_report import TaskReport
         from .user_processing_result import UserProcessingResult
         from .workflow_base import WorkflowBase
+        from .workflow_setting import WorkflowSetting
         from .workflow_version import WorkflowVersion
 
+        from ..directory_object import DirectoryObject
+        from .quarantine_details import QuarantineDetails
         from .run import Run
         from .task_report import TaskReport
         from .user_processing_result import UserProcessingResult
         from .workflow_base import WorkflowBase
+        from .workflow_setting import WorkflowSetting
         from .workflow_version import WorkflowVersion
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -70,7 +85,10 @@ class Workflow(WorkflowBase, Parsable):
             "executionScope": lambda n : setattr(self, 'execution_scope', n.get_collection_of_object_values(UserProcessingResult)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "nextScheduleRunDateTime": lambda n : setattr(self, 'next_schedule_run_date_time', n.get_datetime_value()),
+            "previewScope": lambda n : setattr(self, 'preview_scope', n.get_collection_of_object_values(DirectoryObject)),
+            "quarantineDetails": lambda n : setattr(self, 'quarantine_details', n.get_object_value(QuarantineDetails)),
             "runs": lambda n : setattr(self, 'runs', n.get_collection_of_object_values(Run)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(WorkflowSetting)),
             "taskReports": lambda n : setattr(self, 'task_reports', n.get_collection_of_object_values(TaskReport)),
             "userProcessingResults": lambda n : setattr(self, 'user_processing_results', n.get_collection_of_object_values(UserProcessingResult)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
@@ -93,7 +111,10 @@ class Workflow(WorkflowBase, Parsable):
         writer.write_collection_of_object_values("executionScope", self.execution_scope)
         writer.write_str_value("id", self.id)
         writer.write_datetime_value("nextScheduleRunDateTime", self.next_schedule_run_date_time)
+        writer.write_collection_of_object_values("previewScope", self.preview_scope)
+        writer.write_object_value("quarantineDetails", self.quarantine_details)
         writer.write_collection_of_object_values("runs", self.runs)
+        writer.write_object_value("settings", self.settings)
         writer.write_collection_of_object_values("taskReports", self.task_reports)
         writer.write_collection_of_object_values("userProcessingResults", self.user_processing_results)
         writer.write_int_value("version", self.version)

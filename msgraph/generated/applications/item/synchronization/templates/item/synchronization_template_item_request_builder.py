@@ -71,7 +71,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: SynchronizationTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SynchronizationTemplate]:
         """
-        Update (override) the synchronization template associated with a given application.
+        Update (override) the synchronizationTemplate associated with a given application.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationTemplate]
@@ -117,7 +117,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: SynchronizationTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update (override) the synchronization template associated with a given application.
+        Update (override) the synchronizationTemplate associated with a given application.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -13,7 +13,7 @@ class ArchivePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The shouldSetSpoSiteReadOnlyForMembers property
-    should_set_spo_site_read_only_for_members: Optional[bool] = None
+    should_set_spo_site_read_only_for_members: Optional[bool] = False
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ArchivePostRequestBody:

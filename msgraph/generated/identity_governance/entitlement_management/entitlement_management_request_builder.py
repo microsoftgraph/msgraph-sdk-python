@@ -18,16 +18,21 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
     from .access_package_assignment_approvals.access_package_assignment_approvals_request_builder import AccessPackageAssignmentApprovalsRequestBuilder
+    from .access_package_suggestions.access_package_suggestions_request_builder import AccessPackageSuggestionsRequestBuilder
     from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .assignment_policies.assignment_policies_request_builder import AssignmentPoliciesRequestBuilder
     from .assignment_requests.assignment_requests_request_builder import AssignmentRequestsRequestBuilder
+    from .available_access_packages.available_access_packages_request_builder import AvailableAccessPackagesRequestBuilder
     from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
     from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
+    from .control_configurations.control_configurations_request_builder import ControlConfigurationsRequestBuilder
     from .resources.resources_request_builder import ResourcesRequestBuilder
     from .resource_environments.resource_environments_request_builder import ResourceEnvironmentsRequestBuilder
     from .resource_requests.resource_requests_request_builder import ResourceRequestsRequestBuilder
     from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
+    from .subjects.subjects_request_builder import SubjectsRequestBuilder
+    from .subjects_with_object_id.subjects_with_object_id_request_builder import SubjectsWithObjectIdRequestBuilder
 
 class EntitlementManagementRequestBuilder(BaseRequestBuilder):
     """
@@ -103,6 +108,18 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EntitlementManagement, error_mapping)
     
+    def subjects_with_object_id(self,object_id: str) -> SubjectsWithObjectIdRequestBuilder:
+        """
+        Provides operations to manage the subjects property of the microsoft.graph.entitlementManagement entity.
+        param object_id: Alternate key of accessPackageSubject
+        Returns: SubjectsWithObjectIdRequestBuilder
+        """
+        if object_id is None:
+            raise TypeError("object_id cannot be null.")
+        from .subjects_with_object_id.subjects_with_object_id_request_builder import SubjectsWithObjectIdRequestBuilder
+
+        return SubjectsWithObjectIdRequestBuilder(self.request_adapter, self.path_parameters, object_id)
+    
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Delete navigation property entitlementManagement for identityGovernance
@@ -160,6 +177,15 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         return AccessPackageAssignmentApprovalsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def access_package_suggestions(self) -> AccessPackageSuggestionsRequestBuilder:
+        """
+        Provides operations to manage the accessPackageSuggestions property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .access_package_suggestions.access_package_suggestions_request_builder import AccessPackageSuggestionsRequestBuilder
+
+        return AccessPackageSuggestionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def access_packages(self) -> AccessPackagesRequestBuilder:
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
@@ -196,6 +222,15 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def available_access_packages(self) -> AvailableAccessPackagesRequestBuilder:
+        """
+        Provides operations to manage the availableAccessPackages property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .available_access_packages.available_access_packages_request_builder import AvailableAccessPackagesRequestBuilder
+
+        return AvailableAccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def catalogs(self) -> CatalogsRequestBuilder:
         """
         Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
@@ -212,6 +247,15 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
 
         return ConnectedOrganizationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def control_configurations(self) -> ControlConfigurationsRequestBuilder:
+        """
+        Provides operations to manage the controlConfigurations property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .control_configurations.control_configurations_request_builder import ControlConfigurationsRequestBuilder
+
+        return ControlConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def resource_environments(self) -> ResourceEnvironmentsRequestBuilder:
@@ -257,6 +301,15 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         from .settings.settings_request_builder import SettingsRequestBuilder
 
         return SettingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def subjects(self) -> SubjectsRequestBuilder:
+        """
+        Provides operations to manage the subjects property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .subjects.subjects_request_builder import SubjectsRequestBuilder
+
+        return SubjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EntitlementManagementRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

@@ -38,7 +38,7 @@ class MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTime
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WorkflowsInsightsSummary]:
         """
-        Provide a summary of all workflows processed within a tenant for a specified period. Because the amount of results for listed workflows as returned by the List workflows does not tell you which workflows were processed from the list of created workflows, this summary gives you a quick overview of processed status based on counts.
+        Provide a summary from the insights resource of workflow objects processed within a tenant for a specified period. Because the list returned by List workflows doesn't indicate which workflows were processed, this summary gives you a quick overview based on counts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkflowsInsightsSummary]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-insights-workflowsprocessedsummary?view=graph-rest-1.0
@@ -59,7 +59,7 @@ class MicrosoftGraphIdentityGovernanceWorkflowsProcessedSummaryWithStartDateTime
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Provide a summary of all workflows processed within a tenant for a specified period. Because the amount of results for listed workflows as returned by the List workflows does not tell you which workflows were processed from the list of created workflows, this summary gives you a quick overview of processed status based on counts.
+        Provide a summary from the insights resource of workflow objects processed within a tenant for a specified period. Because the list returned by List workflows doesn't indicate which workflows were processed, this summary gives you a quick overview based on counts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -75,7 +75,7 @@ class UsersWithUserPrincipalNameRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: User, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[User]:
         """
-        Update the properties of a user object.
+        Update the properties of a user object. To use this API to update an agentUser, specify an @odata.type property with a value of #microsoft.graph.agentUser in the request body.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
@@ -121,7 +121,7 @@ class UsersWithUserPrincipalNameRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: User, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the properties of a user object.
+        Update the properties of a user object. To use this API to update an agentUser, specify an @odata.type property with a value of #microsoft.graph.agentUser in the request body.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

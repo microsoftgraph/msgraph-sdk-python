@@ -20,6 +20,8 @@ class ExportResultPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The exportSingleItems property
+    export_single_items: Optional[bool] = False
     # The additionalOptions property
     additional_options: Optional[AdditionalOptions] = None
     # The cloudAttachmentVersion property
@@ -36,8 +38,6 @@ class ExportResultPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     export_format: Optional[ExportFormat] = None
     # The exportLocation property
     export_location: Optional[ExportLocation] = None
-    # The exportSingleItems property
-    export_single_items: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> ExportResultPostRequestBody:

@@ -38,7 +38,7 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RunSummary]:
         """
-        Get a summary of runs for a specified time period. Because the amount of runs returned by the List API call can be overwhelming, this summary allows the administrator to get a quick overview based on counts.
+        Get a runSummary for run objects over a specified time period. Because the number of runs returned by the list API call can be overwhelming, this summary allows administrators to get a quick overview based on counts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RunSummary]
         """
@@ -58,7 +58,7 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Get a summary of runs for a specified time period. Because the amount of runs returned by the List API call can be overwhelming, this summary allows the administrator to get a quick overview based on counts.
+        Get a runSummary for run objects over a specified time period. Because the number of runs returned by the list API call can be overwhelming, this summary allows administrators to get a quick overview based on counts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

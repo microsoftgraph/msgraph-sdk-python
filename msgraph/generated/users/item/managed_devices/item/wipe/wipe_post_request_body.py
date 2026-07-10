@@ -13,13 +13,13 @@ class WipePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The keepEnrollmentData property
-    keep_enrollment_data: Optional[bool] = None
+    keep_enrollment_data: Optional[bool] = False
     # The keepUserData property
-    keep_user_data: Optional[bool] = None
+    keep_user_data: Optional[bool] = False
+    # The persistEsimDataPlan property
+    persist_esim_data_plan: Optional[bool] = False
     # The macOsUnlockCode property
     mac_os_unlock_code: Optional[str] = None
-    # The persistEsimDataPlan property
-    persist_esim_data_plan: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> WipePostRequestBody:

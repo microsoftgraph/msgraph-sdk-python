@@ -38,7 +38,7 @@ class MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCategoryWithStartDateT
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[WorkflowsInsightsByCategory]:
         """
-        Provide a summary of workflows processed, by category, in a tenant. This allows you to quickly get category information, by numerical value, bypassing other information found in the WorkflowsProcessedSummary call.
+        Provide a summary from the insights resource of workflow objects processed by category in a tenant. This allows you to quickly get category information, by numerical value, without retrieving the other information included in the workflowsProcessedSummary call.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkflowsInsightsByCategory]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-insights-workflowsprocessedbycategory?view=graph-rest-1.0
@@ -59,7 +59,7 @@ class MicrosoftGraphIdentityGovernanceWorkflowsProcessedByCategoryWithStartDateT
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Provide a summary of workflows processed, by category, in a tenant. This allows you to quickly get category information, by numerical value, bypassing other information found in the WorkflowsProcessedSummary call.
+        Provide a summary from the insights resource of workflow objects processed by category in a tenant. This allows you to quickly get category information, by numerical value, without retrieving the other information included in the workflowsProcessedSummary call.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

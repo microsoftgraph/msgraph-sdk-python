@@ -12,9 +12,9 @@ class WebauthnPublicKeyCredentialRpEntity(AdditionalDataHolder, BackedModel, Par
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The id property
+    # The relying party identifier. For web applications, this value is typically the domain name.
     id: Optional[str] = None
-    # The name property
+    # The human-readable name for the relying party.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

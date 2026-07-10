@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .drive_inclusion_rules.drive_inclusion_rules_request_builder import DriveInclusionRulesRequestBuilder
     from .drive_protection_units.drive_protection_units_request_builder import DriveProtectionUnitsRequestBuilder
     from .drive_protection_units_bulk_addition_jobs.drive_protection_units_bulk_addition_jobs_request_builder import DriveProtectionUnitsBulkAdditionJobsRequestBuilder
+    from .email_notifications_setting.email_notifications_setting_request_builder import EmailNotificationsSettingRequestBuilder
     from .enable.enable_request_builder import EnableRequestBuilder
     from .exchange_protection_policies.exchange_protection_policies_request_builder import ExchangeProtectionPoliciesRequestBuilder
     from .exchange_restore_sessions.exchange_restore_sessions_request_builder import ExchangeRestoreSessionsRequestBuilder
@@ -198,6 +199,15 @@ class BackupRestoreRequestBuilder(BaseRequestBuilder):
         from .drive_protection_units_bulk_addition_jobs.drive_protection_units_bulk_addition_jobs_request_builder import DriveProtectionUnitsBulkAdditionJobsRequestBuilder
 
         return DriveProtectionUnitsBulkAdditionJobsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def email_notifications_setting(self) -> EmailNotificationsSettingRequestBuilder:
+        """
+        Provides operations to manage the emailNotificationsSetting property of the microsoft.graph.backupRestoreRoot entity.
+        """
+        from .email_notifications_setting.email_notifications_setting_request_builder import EmailNotificationsSettingRequestBuilder
+
+        return EmailNotificationsSettingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def enable(self) -> EnableRequestBuilder:

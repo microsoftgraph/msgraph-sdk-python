@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..email_settings import EmailSettings
     from ..entity import Entity
+    from .quarantine_configuration import QuarantineConfiguration
 
 from ..entity import Entity
 
@@ -16,6 +17,8 @@ class LifecycleManagementSettings(Entity, Parsable):
     email_settings: Optional[EmailSettings] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The tenant-level quarantine configuration that automatically halts a workflow when its threshold conditions are met. Optional.
+    quarantine_configuration: Optional[QuarantineConfiguration] = None
     # The interval in hours at which all workflows running in the tenant should be scheduled for execution. This interval has a minimum value of 1 and a maximum value of 24. The default value is 3 hours.
     workflow_schedule_interval_in_hours: Optional[int] = None
     
@@ -37,12 +40,15 @@ class LifecycleManagementSettings(Entity, Parsable):
         """
         from ..email_settings import EmailSettings
         from ..entity import Entity
+        from .quarantine_configuration import QuarantineConfiguration
 
         from ..email_settings import EmailSettings
         from ..entity import Entity
+        from .quarantine_configuration import QuarantineConfiguration
 
         fields: dict[str, Callable[[Any], None]] = {
             "emailSettings": lambda n : setattr(self, 'email_settings', n.get_object_value(EmailSettings)),
+            "quarantineConfiguration": lambda n : setattr(self, 'quarantine_configuration', n.get_object_value(QuarantineConfiguration)),
             "workflowScheduleIntervalInHours": lambda n : setattr(self, 'workflow_schedule_interval_in_hours', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -59,6 +65,7 @@ class LifecycleManagementSettings(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("emailSettings", self.email_settings)
+        writer.write_object_value("quarantineConfiguration", self.quarantine_configuration)
         writer.write_int_value("workflowScheduleIntervalInHours", self.workflow_schedule_interval_in_hours)
     
 

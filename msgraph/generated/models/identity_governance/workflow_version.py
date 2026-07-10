@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .workflow_base import WorkflowBase
+    from .workflow_setting import WorkflowSetting
 
 from .workflow_base import WorkflowBase
 
@@ -13,6 +14,8 @@ from .workflow_base import WorkflowBase
 class WorkflowVersion(WorkflowBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.workflowVersion"
+    # The settings property
+    settings: Optional[WorkflowSetting] = None
     # The version of the workflow.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     version_number: Optional[int] = None
     
@@ -33,10 +36,13 @@ class WorkflowVersion(WorkflowBase, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .workflow_base import WorkflowBase
+        from .workflow_setting import WorkflowSetting
 
         from .workflow_base import WorkflowBase
+        from .workflow_setting import WorkflowSetting
 
         fields: dict[str, Callable[[Any], None]] = {
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(WorkflowSetting)),
             "versionNumber": lambda n : setattr(self, 'version_number', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -52,6 +58,7 @@ class WorkflowVersion(WorkflowBase, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("settings", self.settings)
         writer.write_int_value("versionNumber", self.version_number)
     
 

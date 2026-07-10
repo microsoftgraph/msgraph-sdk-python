@@ -33,7 +33,7 @@ class ProvisionOnDemandRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ProvisionOnDemandPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[StringKeyStringValuePair]:
         """
-        Select a user and provision the account on-demand. The rate limit for this API is 5 requests per 10 seconds.
+        Select a user and provision the account on-demand for a synchronizationJob. The rate limit for this API is 5 requests per 10 seconds.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringKeyStringValuePair]
@@ -57,7 +57,7 @@ class ProvisionOnDemandRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ProvisionOnDemandPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Select a user and provision the account on-demand. The rate limit for this API is 5 requests per 10 seconds.
+        Select a user and provision the account on-demand for a synchronizationJob. The rate limit for this API is 5 requests per 10 seconds.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

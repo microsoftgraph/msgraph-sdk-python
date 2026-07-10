@@ -28,6 +28,7 @@ if TYPE_CHECKING:
     from .endpoint import Endpoint
     from .entity import Entity
     from .extension_property import ExtensionProperty
+    from .federated_token_validation_policy import FederatedTokenValidationPolicy
     from .group import Group
     from .group_setting_template import GroupSettingTemplate
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -153,6 +154,10 @@ class DirectoryObject(Entity, Parsable):
             from .extension_property import ExtensionProperty
 
             return ExtensionProperty()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.federatedTokenValidationPolicy".casefold():
+            from .federated_token_validation_policy import FederatedTokenValidationPolicy
+
+            return FederatedTokenValidationPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.group".casefold():
             from .group import Group
 
@@ -250,6 +255,7 @@ class DirectoryObject(Entity, Parsable):
         from .endpoint import Endpoint
         from .entity import Entity
         from .extension_property import ExtensionProperty
+        from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .group import Group
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -290,6 +296,7 @@ class DirectoryObject(Entity, Parsable):
         from .endpoint import Endpoint
         from .entity import Entity
         from .extension_property import ExtensionProperty
+        from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .group import Group
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy

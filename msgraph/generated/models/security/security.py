@@ -13,7 +13,9 @@ if TYPE_CHECKING:
     from ..subject_rights_request import SubjectRightsRequest
     from ..tenant_data_security_and_governance import TenantDataSecurityAndGovernance
     from .alert import Alert
+    from .audit_core_root import AuditCoreRoot
     from .cases_root import CasesRoot
+    from .collaboration_root import CollaborationRoot
     from .identity_container import IdentityContainer
     from .incident import Incident
     from .labels_root import LabelsRoot
@@ -25,14 +27,21 @@ from ..entity import Entity
 
 @dataclass
 class Security(Entity, Parsable):
+    """
+    Security singleton providing access to audit log resources.
+    """
     # The alerts property
     alerts: Optional[list[Alert]] = None
     # A collection of alerts in Microsoft 365 Defender.
     alerts_v2: Optional[list[Alert]] = None
     # The attackSimulation property
     attack_simulation: Optional[AttackSimulationRoot] = None
+    # The auditLog property
+    audit_log: Optional[AuditCoreRoot] = None
     # The cases property
     cases: Optional[CasesRoot] = None
+    # The collaboration property
+    collaboration: Optional[CollaborationRoot] = None
     # The dataSecurityAndGovernance property
     data_security_and_governance: Optional[TenantDataSecurityAndGovernance] = None
     # A container for security identities APIs.
@@ -80,7 +89,9 @@ class Security(Entity, Parsable):
         from ..subject_rights_request import SubjectRightsRequest
         from ..tenant_data_security_and_governance import TenantDataSecurityAndGovernance
         from .alert import Alert
+        from .audit_core_root import AuditCoreRoot
         from .cases_root import CasesRoot
+        from .collaboration_root import CollaborationRoot
         from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
@@ -96,7 +107,9 @@ class Security(Entity, Parsable):
         from ..subject_rights_request import SubjectRightsRequest
         from ..tenant_data_security_and_governance import TenantDataSecurityAndGovernance
         from .alert import Alert
+        from .audit_core_root import AuditCoreRoot
         from .cases_root import CasesRoot
+        from .collaboration_root import CollaborationRoot
         from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
@@ -108,7 +121,9 @@ class Security(Entity, Parsable):
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(Alert)),
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(Alert)),
             "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(AttackSimulationRoot)),
+            "auditLog": lambda n : setattr(self, 'audit_log', n.get_object_value(AuditCoreRoot)),
             "cases": lambda n : setattr(self, 'cases', n.get_object_value(CasesRoot)),
+            "collaboration": lambda n : setattr(self, 'collaboration', n.get_object_value(CollaborationRoot)),
             "dataSecurityAndGovernance": lambda n : setattr(self, 'data_security_and_governance', n.get_object_value(TenantDataSecurityAndGovernance)),
             "identities": lambda n : setattr(self, 'identities', n.get_object_value(IdentityContainer)),
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
@@ -136,7 +151,9 @@ class Security(Entity, Parsable):
         writer.write_collection_of_object_values("alerts", self.alerts)
         writer.write_collection_of_object_values("alerts_v2", self.alerts_v2)
         writer.write_object_value("attackSimulation", self.attack_simulation)
+        writer.write_object_value("auditLog", self.audit_log)
         writer.write_object_value("cases", self.cases)
+        writer.write_object_value("collaboration", self.collaboration)
         writer.write_object_value("dataSecurityAndGovernance", self.data_security_and_governance)
         writer.write_object_value("identities", self.identities)
         writer.write_collection_of_object_values("incidents", self.incidents)

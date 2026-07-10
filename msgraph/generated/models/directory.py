@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .device_local_credential_info import DeviceLocalCredentialInfo
     from .directory_object import DirectoryObject
     from .entity import Entity
+    from .entra_recovery_services.recovery import Recovery
     from .identity_provider_base import IdentityProviderBase
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
     from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
@@ -38,6 +39,8 @@ class Directory(Entity, Parsable):
     on_premises_synchronization: Optional[list[OnPremisesDirectorySynchronization]] = None
     # The collection of public key infrastructure instances for the certificate-based authentication feature for users in a Microsoft Entra tenant.
     public_key_infrastructure: Optional[PublicKeyInfrastructureRoot] = None
+    # The recovery property
+    recovery: Optional[Recovery] = None
     # List of commercial subscriptions that an organization acquired.
     subscriptions: Optional[list[CompanySubscription]] = None
     
@@ -64,6 +67,7 @@ class Directory(Entity, Parsable):
         from .device_local_credential_info import DeviceLocalCredentialInfo
         from .directory_object import DirectoryObject
         from .entity import Entity
+        from .entra_recovery_services.recovery import Recovery
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
@@ -75,6 +79,7 @@ class Directory(Entity, Parsable):
         from .device_local_credential_info import DeviceLocalCredentialInfo
         from .directory_object import DirectoryObject
         from .entity import Entity
+        from .entra_recovery_services.recovery import Recovery
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
@@ -88,6 +93,7 @@ class Directory(Entity, Parsable):
             "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(IdentityProviderBase)),
             "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(OnPremisesDirectorySynchronization)),
             "publicKeyInfrastructure": lambda n : setattr(self, 'public_key_infrastructure', n.get_object_value(PublicKeyInfrastructureRoot)),
+            "recovery": lambda n : setattr(self, 'recovery', n.get_object_value(Recovery)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(CompanySubscription)),
         }
         super_fields = super().get_field_deserializers()
@@ -111,6 +117,7 @@ class Directory(Entity, Parsable):
         writer.write_collection_of_object_values("federationConfigurations", self.federation_configurations)
         writer.write_collection_of_object_values("onPremisesSynchronization", self.on_premises_synchronization)
         writer.write_object_value("publicKeyInfrastructure", self.public_key_infrastructure)
+        writer.write_object_value("recovery", self.recovery)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
     
 

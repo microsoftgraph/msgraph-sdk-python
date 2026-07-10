@@ -18,7 +18,7 @@ from .case_operation import CaseOperation
 
 @dataclass
 class EdiscoveryAddToReviewSetOperation(CaseOperation, Parsable):
-    # The options to add items to the review set. The possible values are: allVersions, linkedFiles, unknownFutureValue, advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder.
+    # The options to add items to the review set. The possible values are: allVersions, linkedFiles, unknownFutureValue, advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder, cloudNativeHtmlConversion. Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder, cloudNativeHtmlConversion.
     additional_data_options: Optional[AdditionalDataOptions] = None
     # Specifies the number of most recent versions of cloud attachments to collect. The possible values are: latest, recent10, recent100, all, unknownFutureValue.
     cloud_attachment_version: Optional[CloudAttachmentVersion] = None

@@ -16,7 +16,9 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The bargeInAllowed property
-    barge_in_allowed: Optional[bool] = None
+    barge_in_allowed: Optional[bool] = False
+    # The playBeep property
+    play_beep: Optional[bool] = False
     # The clientContext property
     client_context: Optional[str] = None
     # The initialSilenceTimeoutInSeconds property
@@ -25,8 +27,6 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
     max_record_duration_in_seconds: Optional[int] = None
     # The maxSilenceTimeoutInSeconds property
     max_silence_timeout_in_seconds: Optional[int] = None
-    # The playBeep property
-    play_beep: Optional[bool] = None
     # The prompts property
     prompts: Optional[list[Prompt]] = None
     # The stopTones property

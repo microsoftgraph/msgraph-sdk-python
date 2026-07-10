@@ -33,7 +33,7 @@ class ParseExpressionRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: ParseExpressionPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ParseExpressionResponse]:
         """
-        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.
+        Parse a given string expression into an attributeMappingSource object for a synchronizationSchema. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ParseExpressionResponse]
@@ -57,7 +57,7 @@ class ParseExpressionRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: ParseExpressionPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.
+        Parse a given string expression into an attributeMappingSource object for a synchronizationSchema. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

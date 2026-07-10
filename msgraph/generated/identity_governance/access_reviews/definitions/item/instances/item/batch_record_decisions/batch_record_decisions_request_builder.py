@@ -32,7 +32,7 @@ class BatchRecordDecisionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: BatchRecordDecisionsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.
+        Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using principalId, resourceId, or neither.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -54,7 +54,7 @@ class BatchRecordDecisionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: BatchRecordDecisionsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.
+        Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using principalId, resourceId, or neither.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

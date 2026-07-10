@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .copilot_admin_catalog import CopilotAdminCatalog
     from .copilot_admin_setting import CopilotAdminSetting
     from .entity import Entity
 
@@ -12,6 +13,8 @@ from .entity import Entity
 
 @dataclass
 class CopilotAdmin(Entity, Parsable):
+    # The catalog property
+    catalog: Optional[CopilotAdminCatalog] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The settings property
@@ -33,13 +36,16 @@ class CopilotAdmin(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .copilot_admin_catalog import CopilotAdminCatalog
         from .copilot_admin_setting import CopilotAdminSetting
         from .entity import Entity
 
+        from .copilot_admin_catalog import CopilotAdminCatalog
         from .copilot_admin_setting import CopilotAdminSetting
         from .entity import Entity
 
         fields: dict[str, Callable[[Any], None]] = {
+            "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(CopilotAdminCatalog)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(CopilotAdminSetting)),
         }
         super_fields = super().get_field_deserializers()
@@ -55,6 +61,7 @@ class CopilotAdmin(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("catalog", self.catalog)
         writer.write_object_value("settings", self.settings)
     
 

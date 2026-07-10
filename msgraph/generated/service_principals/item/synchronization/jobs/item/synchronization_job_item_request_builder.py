@@ -39,7 +39,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Stop the synchronization job, and permanently delete all the state associated with it. Synchronized accounts are left as-is.
+        Stop the synchronizationJob, and permanently delete all the state associated with it. Synchronized accounts are left as-is.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationjob-delete?view=graph-rest-1.0
@@ -58,7 +58,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SynchronizationJobItemRequestBuilderGetQueryParameters]] = None) -> Optional[SynchronizationJob]:
         """
-        Retrieve the existing synchronization job and its properties.
+        Retrieve an existing synchronizationJob and its properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationJob]
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-1.0
@@ -102,7 +102,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Stop the synchronization job, and permanently delete all the state associated with it. Synchronized accounts are left as-is.
+        Stop the synchronizationJob, and permanently delete all the state associated with it. Synchronized accounts are left as-is.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +113,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SynchronizationJobItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Retrieve the existing synchronization job and its properties.
+        Retrieve an existing synchronizationJob and its properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -220,7 +220,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SynchronizationJobItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the existing synchronization job and its properties.
+        Retrieve an existing synchronizationJob and its properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

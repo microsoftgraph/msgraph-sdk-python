@@ -62,7 +62,7 @@ class DecisionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DecisionsRequestBuilderGetQueryParameters]] = None) -> Optional[AccessReviewInstanceDecisionItemCollectionResponse]:
         """
-        Get the decisions from a stage in a multi-stage access review. The decisions in an accessReviewStage object are represented by an accessReviewInstanceDecisionItem object.
+        Get the accessReviewInstanceDecisionItem objects from an accessReviewStage in a multi-stage access review.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewInstanceDecisionItemCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewstage-list-decisions?view=graph-rest-1.0
@@ -106,7 +106,7 @@ class DecisionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DecisionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the decisions from a stage in a multi-stage access review. The decisions in an accessReviewStage object are represented by an accessReviewInstanceDecisionItem object.
+        Get the accessReviewInstanceDecisionItem objects from an accessReviewStage in a multi-stage access review.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +152,7 @@ class DecisionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DecisionsRequestBuilderGetQueryParameters():
         """
-        Get the decisions from a stage in a multi-stage access review. The decisions in an accessReviewStage object are represented by an accessReviewInstanceDecisionItem object.
+        Get the accessReviewInstanceDecisionItem objects from an accessReviewStage in a multi-stage access review.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

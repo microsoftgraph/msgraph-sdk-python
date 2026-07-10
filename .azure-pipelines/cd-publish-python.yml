@@ -127,7 +127,7 @@ extends:
                         contentsource: Folder
                         folderlocation: $(Build.ArtifactStagingDirectory)/python
                         waitforreleasecompletion: true
-                        owners: 'gavinbarron@microsoft.com'
-                        approvers: 'christiano@microsoft.com,gavinbarron@microsoft.com'
+                        owners: 'christiano@microsoft.com,ramsess@microsoft.com,gavinbarron@microsoft.com,jingjingjia@microsoft.com,peombwa@microsoft.com,treicys@microsoft.com'
+                        approvers: 'christiano@microsoft.com,ramsess@microsoft.com,gavinbarron@microsoft.com,jingjingjia@microsoft.com,peombwa@microsoft.com,treicys@microsoft.com'
                         mainpublisher: ESRPRELPACMAN
                         domaintenantid: cdc5aeea-15c5-4db6-b079-fcadd2505dc2

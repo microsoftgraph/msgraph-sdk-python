@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.59.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.58.0...v1.59.0) (2026-07-10)
+
+
+### Features
+
+* **generation:** update request builders and models ([5e7e5d3](https://github.com/microsoftgraph/msgraph-sdk-python/commit/5e7e5d398d3a34f49f729af77d9ccdbf44516a6e))
+* **pipeline:** add Azure Pipelines configuration for building and publishing library ([8a8b4a5](https://github.com/microsoftgraph/msgraph-sdk-python/commit/8a8b4a56f36267042f2dbb10e3ad89cc4f1e5221))
+* **pipeline:** add Azure Pipelines configuration for building and publishing library ([d4f8a3b](https://github.com/microsoftgraph/msgraph-sdk-python/commit/d4f8a3b3250d92a4c50bd719c20640f9d4b8b7e7))
+
+
+### Bug Fixes
+
+* update package owners and approvers in Azure Pipelines configuration ([d4e675d](https://github.com/microsoftgraph/msgraph-sdk-python/commit/d4e675d24cbda3ac93f92d906dfde142614e63f2))
+
 ## [1.58.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.57.0...v1.58.0) (2026-05-20)
 
 

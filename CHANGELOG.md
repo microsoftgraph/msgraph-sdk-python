@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.59.1](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.59.0...v1.59.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* Merge pull request [#1543](https://github.com/microsoftgraph/msgraph-sdk-python/issues/1543) from microsoftgraph/ci/remove-mmainer-esrp ([77d5cee](https://github.com/microsoftgraph/msgraph-sdk-python/commit/77d5ceebb3cbd5d2ca3bb333b95715a29c0db714))
+
 ## [1.59.0](https://github.com/microsoftgraph/msgraph-sdk-python/compare/v1.58.0...v1.59.0) (2026-07-10)
 
 

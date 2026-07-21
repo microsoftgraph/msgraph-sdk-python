@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
     from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
     from .cloud_pc_report import CloudPcReport
+    from .cloud_pc_service_plan import CloudPcServicePlan
     from .cloud_pc_user_setting import CloudPcUserSetting
     from .cloud_p_c import CloudPC
     from .entity import Entity
@@ -35,6 +36,8 @@ class VirtualEndpoint(Entity, Parsable):
     provisioning_policies: Optional[list[CloudPcProvisioningPolicy]] = None
     # Cloud PC-related reports. Read-only.
     report: Optional[CloudPcReport] = None
+    # A collection of Cloud PC service plans.
+    service_plans: Optional[list[CloudPcServicePlan]] = None
     # A collection of Cloud PC user settings.
     user_settings: Optional[list[CloudPcUserSetting]] = None
     
@@ -60,6 +63,7 @@ class VirtualEndpoint(Entity, Parsable):
         from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
         from .cloud_pc_report import CloudPcReport
+        from .cloud_pc_service_plan import CloudPcServicePlan
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_p_c import CloudPC
         from .entity import Entity
@@ -70,6 +74,7 @@ class VirtualEndpoint(Entity, Parsable):
         from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
         from .cloud_pc_report import CloudPcReport
+        from .cloud_pc_service_plan import CloudPcServicePlan
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_p_c import CloudPC
         from .entity import Entity
@@ -82,6 +87,7 @@ class VirtualEndpoint(Entity, Parsable):
             "onPremisesConnections": lambda n : setattr(self, 'on_premises_connections', n.get_collection_of_object_values(CloudPcOnPremisesConnection)),
             "provisioningPolicies": lambda n : setattr(self, 'provisioning_policies', n.get_collection_of_object_values(CloudPcProvisioningPolicy)),
             "report": lambda n : setattr(self, 'report', n.get_object_value(CloudPcReport)),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(CloudPcServicePlan)),
             "userSettings": lambda n : setattr(self, 'user_settings', n.get_collection_of_object_values(CloudPcUserSetting)),
         }
         super_fields = super().get_field_deserializers()
@@ -104,6 +110,7 @@ class VirtualEndpoint(Entity, Parsable):
         writer.write_collection_of_object_values("onPremisesConnections", self.on_premises_connections)
         writer.write_collection_of_object_values("provisioningPolicies", self.provisioning_policies)
         writer.write_object_value("report", self.report)
+        writer.write_collection_of_object_values("servicePlans", self.service_plans)
         writer.write_collection_of_object_values("userSettings", self.user_settings)
     
 

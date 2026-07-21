@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .drive import Drive
     from .list_info import ListInfo
     from .list_item import ListItem
+    from .permission import Permission
     from .rich_long_running_operation import RichLongRunningOperation
     from .sharepoint_ids import SharepointIds
     from .subscription import Subscription
@@ -36,6 +37,8 @@ class List_(BaseItem, Parsable):
     list_: Optional[ListInfo] = None
     # The collection of long-running operations on the list.
     operations: Optional[list[RichLongRunningOperation]] = None
+    # The permissions property
+    permissions: Optional[list[Permission]] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
     sharepoint_ids: Optional[SharepointIds] = None
     # The set of subscriptions on the list.
@@ -65,6 +68,7 @@ class List_(BaseItem, Parsable):
         from .drive import Drive
         from .list_info import ListInfo
         from .list_item import ListItem
+        from .permission import Permission
         from .rich_long_running_operation import RichLongRunningOperation
         from .sharepoint_ids import SharepointIds
         from .subscription import Subscription
@@ -76,6 +80,7 @@ class List_(BaseItem, Parsable):
         from .drive import Drive
         from .list_info import ListInfo
         from .list_item import ListItem
+        from .permission import Permission
         from .rich_long_running_operation import RichLongRunningOperation
         from .sharepoint_ids import SharepointIds
         from .subscription import Subscription
@@ -89,6 +94,7 @@ class List_(BaseItem, Parsable):
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(ListItem)),
             "list": lambda n : setattr(self, 'list_', n.get_object_value(ListInfo)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(RichLongRunningOperation)),
+            "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),
             "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(Subscription)),
             "system": lambda n : setattr(self, 'system', n.get_object_value(SystemFacet)),
@@ -113,6 +119,7 @@ class List_(BaseItem, Parsable):
         writer.write_collection_of_object_values("items", self.items)
         writer.write_object_value("list", self.list_)
         writer.write_collection_of_object_values("operations", self.operations)
+        writer.write_collection_of_object_values("permissions", self.permissions)
         writer.write_object_value("sharepointIds", self.sharepoint_ids)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
         writer.write_object_value("system", self.system)

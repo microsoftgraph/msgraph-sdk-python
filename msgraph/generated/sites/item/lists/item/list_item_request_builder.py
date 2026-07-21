@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .items.items_request_builder import ItemsRequestBuilder
     from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
     from .operations.operations_request_builder import OperationsRequestBuilder
+    from .permissions.permissions_request_builder import PermissionsRequestBuilder
     from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
 
 class ListItemRequestBuilder(BaseRequestBuilder):
@@ -209,6 +210,15 @@ class ListItemRequestBuilder(BaseRequestBuilder):
         from .operations.operations_request_builder import OperationsRequestBuilder
 
         return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permissions(self) -> PermissionsRequestBuilder:
+        """
+        Provides operations to manage the permissions property of the microsoft.graph.list entity.
+        """
+        from .permissions.permissions_request_builder import PermissionsRequestBuilder
+
+        return PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def subscriptions(self) -> SubscriptionsRequestBuilder:

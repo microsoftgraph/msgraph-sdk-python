@@ -39,6 +39,8 @@ class Place(Entity, Parsable):
     parent_id: Optional[str] = None
     # The phone number of the place.
     phone: Optional[str] = None
+    # A stable service-level identifier for the place object used by Places workloads.
+    place_id: Optional[str] = None
     # Custom tags that are associated with the place for categorization or filtering.
     tags: Optional[list[str]] = None
     
@@ -124,6 +126,7 @@ class Place(Entity, Parsable):
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "parentId": lambda n : setattr(self, 'parent_id', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
+            "placeId": lambda n : setattr(self, 'place_id', n.get_str_value()),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
@@ -147,6 +150,7 @@ class Place(Entity, Parsable):
         writer.write_str_value("label", self.label)
         writer.write_str_value("parentId", self.parent_id)
         writer.write_str_value("phone", self.phone)
+        writer.write_str_value("placeId", self.place_id)
         writer.write_collection_of_primitive_values("tags", self.tags)
     
 

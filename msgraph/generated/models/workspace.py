@@ -24,8 +24,6 @@ class Workspace(Place, Parsable):
     mode: Optional[PlaceMode] = None
     # A short, friendly name for the workspace, often used for easier identification or display in the UI.
     nickname: Optional[str] = None
-    # An alternative immutable unique identifier of the workspace. Read-only.
-    place_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Workspace:
@@ -55,7 +53,6 @@ class Workspace(Place, Parsable):
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "mode": lambda n : setattr(self, 'mode', n.get_object_value(PlaceMode)),
             "nickname": lambda n : setattr(self, 'nickname', n.get_str_value()),
-            "placeId": lambda n : setattr(self, 'place_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,6 +72,5 @@ class Workspace(Place, Parsable):
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_object_value("mode", self.mode)
         writer.write_str_value("nickname", self.nickname)
-        writer.write_str_value("placeId", self.place_id)
     
 

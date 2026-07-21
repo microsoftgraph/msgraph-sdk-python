@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .place import Place
     from .place_feature_enablement import PlaceFeatureEnablement
     from .place_mode import PlaceMode
+    from .place_service_plan_info import PlaceServicePlanInfo
 
 from .place import Place
 
@@ -24,6 +25,8 @@ class Desk(Place, Parsable):
     mailbox_details: Optional[MailboxDetails] = None
     # The mode of the desk. The supported modes are:assignedPlaceMode - Desks that are assigned to a user.reservablePlaceMode - Desks that can be booked in advance using desk reservation tools.dropInPlaceMode - First come, first served desks. When you plug into a peripheral on one of these desks, the desk is booked for you, assuming the peripheral is associated with the desk in the Microsoft Teams Rooms pro management portal.unavailablePlaceMode - Desks that are taken down for maintenance or marked as not reservable.
     mode: Optional[PlaceMode] = None
+    # The service plans associated with the desk.
+    service_plans: Optional[list[PlaceServicePlanInfo]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Desk:
@@ -45,17 +48,20 @@ class Desk(Place, Parsable):
         from .place import Place
         from .place_feature_enablement import PlaceFeatureEnablement
         from .place_mode import PlaceMode
+        from .place_service_plan_info import PlaceServicePlanInfo
 
         from .mailbox_details import MailboxDetails
         from .place import Place
         from .place_feature_enablement import PlaceFeatureEnablement
         from .place_mode import PlaceMode
+        from .place_service_plan_info import PlaceServicePlanInfo
 
         fields: dict[str, Callable[[Any], None]] = {
             "displayDeviceName": lambda n : setattr(self, 'display_device_name', n.get_str_value()),
             "heightAdjustableState": lambda n : setattr(self, 'height_adjustable_state', n.get_enum_value(PlaceFeatureEnablement)),
             "mailboxDetails": lambda n : setattr(self, 'mailbox_details', n.get_object_value(MailboxDetails)),
             "mode": lambda n : setattr(self, 'mode', n.get_object_value(PlaceMode)),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(PlaceServicePlanInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,5 +80,6 @@ class Desk(Place, Parsable):
         writer.write_enum_value("heightAdjustableState", self.height_adjustable_state)
         writer.write_object_value("mailboxDetails", self.mailbox_details)
         writer.write_object_value("mode", self.mode)
+        writer.write_collection_of_object_values("servicePlans", self.service_plans)
     
 

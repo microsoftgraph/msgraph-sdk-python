@@ -180,6 +180,7 @@ if TYPE_CHECKING:
     from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
     from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
     from .cloud_pc_report import CloudPcReport
+    from .cloud_pc_service_plan import CloudPcServicePlan
     from .cloud_pc_user_setting import CloudPcUserSetting
     from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
     from .cloud_p_c import CloudPC
@@ -1874,6 +1875,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .cloud_pc_report import CloudPcReport
 
             return CloudPcReport()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcServicePlan".casefold():
+            from .cloud_pc_service_plan import CloudPcServicePlan
+
+            return CloudPcServicePlan()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcUserSetting".casefold():
             from .cloud_pc_user_setting import CloudPcUserSetting
 
@@ -5921,6 +5926,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
         from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
         from .cloud_pc_report import CloudPcReport
+        from .cloud_pc_service_plan import CloudPcServicePlan
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
         from .cloud_p_c import CloudPC
@@ -7061,6 +7067,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
         from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
         from .cloud_pc_report import CloudPcReport
+        from .cloud_pc_service_plan import CloudPcServicePlan
         from .cloud_pc_user_setting import CloudPcUserSetting
         from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
         from .cloud_p_c import CloudPC

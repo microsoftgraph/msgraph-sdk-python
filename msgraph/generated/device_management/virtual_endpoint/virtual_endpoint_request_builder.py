@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .on_premises_connections.on_premises_connections_request_builder import OnPremisesConnectionsRequestBuilder
     from .provisioning_policies.provisioning_policies_request_builder import ProvisioningPoliciesRequestBuilder
     from .report.report_request_builder import ReportRequestBuilder
+    from .service_plans.service_plans_request_builder import ServicePlansRequestBuilder
     from .user_settings.user_settings_request_builder import UserSettingsRequestBuilder
 
 class VirtualEndpointRequestBuilder(BaseRequestBuilder):
@@ -208,6 +209,15 @@ class VirtualEndpointRequestBuilder(BaseRequestBuilder):
         from .report.report_request_builder import ReportRequestBuilder
 
         return ReportRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def service_plans(self) -> ServicePlansRequestBuilder:
+        """
+        Provides operations to manage the servicePlans property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .service_plans.service_plans_request_builder import ServicePlansRequestBuilder
+
+        return ServicePlansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_settings(self) -> UserSettingsRequestBuilder:

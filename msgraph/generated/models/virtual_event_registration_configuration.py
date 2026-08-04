@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
+    from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
     from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
 from .entity import Entity
@@ -15,6 +16,10 @@ from .entity import Entity
 class VirtualEventRegistrationConfiguration(Entity, Parsable):
     # Total capacity of the virtual event.
     capacity: Optional[int] = None
+    # Indicates whether registrations require organizer approval before a participant is confirmed.
+    is_manual_approval_enabled: Optional[bool] = None
+    # Indicates whether more registrants are automatically placed on a waitlist when capacity is reached.
+    is_waitlist_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Registration questions.
@@ -36,6 +41,10 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventTownhallRegistrationConfiguration".casefold():
+            from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
+
+            return VirtualEventTownhallRegistrationConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventWebinarRegistrationConfiguration".casefold():
             from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
@@ -49,14 +58,18 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
         """
         from .entity import Entity
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
+        from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
         from .entity import Entity
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
+        from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
         fields: dict[str, Callable[[Any], None]] = {
             "capacity": lambda n : setattr(self, 'capacity', n.get_int_value()),
+            "isManualApprovalEnabled": lambda n : setattr(self, 'is_manual_approval_enabled', n.get_bool_value()),
+            "isWaitlistEnabled": lambda n : setattr(self, 'is_waitlist_enabled', n.get_bool_value()),
             "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(VirtualEventRegistrationQuestionBase)),
             "registrationWebUrl": lambda n : setattr(self, 'registration_web_url', n.get_str_value()),
         }
@@ -74,6 +87,8 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("capacity", self.capacity)
+        writer.write_bool_value("isManualApprovalEnabled", self.is_manual_approval_enabled)
+        writer.write_bool_value("isWaitlistEnabled", self.is_waitlist_enabled)
         writer.write_collection_of_object_values("questions", self.questions)
         writer.write_str_value("registrationWebUrl", self.registration_web_url)
     

@@ -6,6 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from ..access_package_catalog import AccessPackageCatalog
     from ..access_review_set import AccessReviewSet
     from ..app_consent_approval_route import AppConsentApprovalRoute
     from ..entitlement_management import EntitlementManagement
@@ -24,6 +25,8 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
     access_reviews: Optional[AccessReviewSet] = None
     # The appConsent property
     app_consent: Optional[AppConsentApprovalRoute] = None
+    # The catalogs property
+    catalogs: Optional[list[AccessPackageCatalog]] = None
     # The entitlementManagement property
     entitlement_management: Optional[EntitlementManagement] = None
     # The lifecycleWorkflows property
@@ -51,6 +54,7 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from ..access_package_catalog import AccessPackageCatalog
         from ..access_review_set import AccessReviewSet
         from ..app_consent_approval_route import AppConsentApprovalRoute
         from ..entitlement_management import EntitlementManagement
@@ -58,6 +62,7 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
         from ..terms_of_use_container import TermsOfUseContainer
         from .lifecycle_workflows_container import LifecycleWorkflowsContainer
 
+        from ..access_package_catalog import AccessPackageCatalog
         from ..access_review_set import AccessReviewSet
         from ..app_consent_approval_route import AppConsentApprovalRoute
         from ..entitlement_management import EntitlementManagement
@@ -68,6 +73,7 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "accessReviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(AccessReviewSet)),
             "appConsent": lambda n : setattr(self, 'app_consent', n.get_object_value(AppConsentApprovalRoute)),
+            "catalogs": lambda n : setattr(self, 'catalogs', n.get_collection_of_object_values(AccessPackageCatalog)),
             "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(EntitlementManagement)),
             "lifecycleWorkflows": lambda n : setattr(self, 'lifecycle_workflows', n.get_object_value(LifecycleWorkflowsContainer)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -86,6 +92,7 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("accessReviews", self.access_reviews)
         writer.write_object_value("appConsent", self.app_consent)
+        writer.write_collection_of_object_values("catalogs", self.catalogs)
         writer.write_object_value("entitlementManagement", self.entitlement_management)
         writer.write_object_value("lifecycleWorkflows", self.lifecycle_workflows)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -6,4 +6,8 @@ class UserActivityType(str, Enum):
     DownloadText = "downloadText",
     DownloadFile = "downloadFile",
     UnknownFutureValue = "unknownFutureValue",
+    CopyToClipboard = "copyToClipboard",
+    PasteFromClipboard = "pasteFromClipboard",
+    Print = "print",
+    AccessDebugTools = "accessDebugTools",
 

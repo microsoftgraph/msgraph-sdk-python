@@ -91,6 +91,7 @@ if TYPE_CHECKING:
     from .settings.settings_request_builder import SettingsRequestBuilder
     from .solutions.solutions_request_builder import SolutionsRequestBuilder
     from .sponsors.sponsors_request_builder import SponsorsRequestBuilder
+    from .sponsor_of.sponsor_of_request_builder import SponsorOfRequestBuilder
     from .teamwork.teamwork_request_builder import TeamworkRequestBuilder
     from .todo.todo_request_builder import TodoRequestBuilder
     from .transitive_member_of.transitive_member_of_request_builder import TransitiveMemberOfRequestBuilder
@@ -898,6 +899,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         from .solutions.solutions_request_builder import SolutionsRequestBuilder
 
         return SolutionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sponsor_of(self) -> SponsorOfRequestBuilder:
+        """
+        Provides operations to manage the sponsorOf property of the microsoft.graph.user entity.
+        """
+        from .sponsor_of.sponsor_of_request_builder import SponsorOfRequestBuilder
+
+        return SponsorOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def sponsors(self) -> SponsorsRequestBuilder:

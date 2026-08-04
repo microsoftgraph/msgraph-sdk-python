@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .audio_conferencing import AudioConferencing
     from .chat_info import ChatInfo
     from .chat_restrictions import ChatRestrictions
+    from .cloud_video_interop_info import CloudVideoInteropInfo
     from .entity import Entity
     from .item_body import ItemBody
     from .join_meeting_id_settings import JoinMeetingIdSettings
@@ -21,6 +22,7 @@ if TYPE_CHECKING:
     from .online_meeting import OnlineMeeting
     from .online_meeting_presenters import OnlineMeetingPresenters
     from .online_meeting_sensitivity_label_assignment import OnlineMeetingSensitivityLabelAssignment
+    from .online_meeting_type import OnlineMeetingType
     from .virtual_event_session import VirtualEventSession
     from .watermark_protection_values import WatermarkProtectionValues
 
@@ -64,6 +66,8 @@ class OnlineMeetingBase(Entity, Parsable):
     chat_info: Optional[ChatInfo] = None
     # Specifies the configuration settings for meeting chat restrictions.
     chat_restrictions: Optional[ChatRestrictions] = None
+    # Conferencing device integration settings for Cloud Video Interop (CVI). Read-only.
+    cloud_video_interop_info: Optional[CloudVideoInteropInfo] = None
     # Indicates the date and time when the meeting resource expires. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     expiry_date_time: Optional[datetime.datetime] = None
     # Indicates whether end-to-end encryption (E2EE) is enabled for the online meeting.
@@ -82,6 +86,8 @@ class OnlineMeetingBase(Entity, Parsable):
     meeting_options_web_url: Optional[str] = None
     # Specifies the spoken language used during the meeting for recording and transcription purposes.
     meeting_spoken_language_tag: Optional[str] = None
+    # The type of the online meeting. The possible values are: adhoc, scheduled, recurring, broadcast, meetnow, unknownFutureValue. Read-only.
+    meeting_type: Optional[OnlineMeetingType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates whether to record the meeting automatically.
@@ -130,6 +136,7 @@ class OnlineMeetingBase(Entity, Parsable):
         from .audio_conferencing import AudioConferencing
         from .chat_info import ChatInfo
         from .chat_restrictions import ChatRestrictions
+        from .cloud_video_interop_info import CloudVideoInteropInfo
         from .entity import Entity
         from .item_body import ItemBody
         from .join_meeting_id_settings import JoinMeetingIdSettings
@@ -141,6 +148,7 @@ class OnlineMeetingBase(Entity, Parsable):
         from .online_meeting import OnlineMeeting
         from .online_meeting_presenters import OnlineMeetingPresenters
         from .online_meeting_sensitivity_label_assignment import OnlineMeetingSensitivityLabelAssignment
+        from .online_meeting_type import OnlineMeetingType
         from .virtual_event_session import VirtualEventSession
         from .watermark_protection_values import WatermarkProtectionValues
 
@@ -148,6 +156,7 @@ class OnlineMeetingBase(Entity, Parsable):
         from .audio_conferencing import AudioConferencing
         from .chat_info import ChatInfo
         from .chat_restrictions import ChatRestrictions
+        from .cloud_video_interop_info import CloudVideoInteropInfo
         from .entity import Entity
         from .item_body import ItemBody
         from .join_meeting_id_settings import JoinMeetingIdSettings
@@ -159,6 +168,7 @@ class OnlineMeetingBase(Entity, Parsable):
         from .online_meeting import OnlineMeeting
         from .online_meeting_presenters import OnlineMeetingPresenters
         from .online_meeting_sensitivity_label_assignment import OnlineMeetingSensitivityLabelAssignment
+        from .online_meeting_type import OnlineMeetingType
         from .virtual_event_session import VirtualEventSession
         from .watermark_protection_values import WatermarkProtectionValues
 
@@ -181,6 +191,7 @@ class OnlineMeetingBase(Entity, Parsable):
             "audioConferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(AudioConferencing)),
             "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
             "chatRestrictions": lambda n : setattr(self, 'chat_restrictions', n.get_object_value(ChatRestrictions)),
+            "cloudVideoInteropInfo": lambda n : setattr(self, 'cloud_video_interop_info', n.get_object_value(CloudVideoInteropInfo)),
             "expiryDateTime": lambda n : setattr(self, 'expiry_date_time', n.get_datetime_value()),
             "isEndToEndEncryptionEnabled": lambda n : setattr(self, 'is_end_to_end_encryption_enabled', n.get_bool_value()),
             "isEntryExitAnnounced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
@@ -190,6 +201,7 @@ class OnlineMeetingBase(Entity, Parsable):
             "lobbyBypassSettings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(LobbyBypassSettings)),
             "meetingOptionsWebUrl": lambda n : setattr(self, 'meeting_options_web_url', n.get_str_value()),
             "meetingSpokenLanguageTag": lambda n : setattr(self, 'meeting_spoken_language_tag', n.get_str_value()),
+            "meetingType": lambda n : setattr(self, 'meeting_type', n.get_enum_value(OnlineMeetingType)),
             "recordAutomatically": lambda n : setattr(self, 'record_automatically', n.get_bool_value()),
             "sensitivityLabelAssignment": lambda n : setattr(self, 'sensitivity_label_assignment', n.get_object_value(OnlineMeetingSensitivityLabelAssignment)),
             "shareMeetingChatHistoryDefault": lambda n : setattr(self, 'share_meeting_chat_history_default', n.get_enum_value(MeetingChatHistoryDefaultMode)),
@@ -228,6 +240,7 @@ class OnlineMeetingBase(Entity, Parsable):
         writer.write_object_value("audioConferencing", self.audio_conferencing)
         writer.write_object_value("chatInfo", self.chat_info)
         writer.write_object_value("chatRestrictions", self.chat_restrictions)
+        writer.write_object_value("cloudVideoInteropInfo", self.cloud_video_interop_info)
         writer.write_datetime_value("expiryDateTime", self.expiry_date_time)
         writer.write_bool_value("isEndToEndEncryptionEnabled", self.is_end_to_end_encryption_enabled)
         writer.write_bool_value("isEntryExitAnnounced", self.is_entry_exit_announced)
@@ -237,6 +250,7 @@ class OnlineMeetingBase(Entity, Parsable):
         writer.write_object_value("lobbyBypassSettings", self.lobby_bypass_settings)
         writer.write_str_value("meetingOptionsWebUrl", self.meeting_options_web_url)
         writer.write_str_value("meetingSpokenLanguageTag", self.meeting_spoken_language_tag)
+        writer.write_enum_value("meetingType", self.meeting_type)
         writer.write_bool_value("recordAutomatically", self.record_automatically)
         writer.write_object_value("sensitivityLabelAssignment", self.sensitivity_label_assignment)
         writer.write_enum_value("shareMeetingChatHistoryDefault", self.share_meeting_chat_history_default)

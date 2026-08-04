@@ -34,7 +34,7 @@ class ListItem(BaseItem, Parsable):
     drive_item: Optional[DriveItem] = None
     # The values of the columns set on this list item.
     fields: Optional[FieldValueSet] = None
-    # The permissions property
+    # The set of permissions for the item. Read-only. Nullable.
     permissions: Optional[list[Permission]] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
     sharepoint_ids: Optional[SharepointIds] = None

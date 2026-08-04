@@ -220,6 +220,10 @@ if TYPE_CHECKING:
     from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
     from .custom_authentication_extension import CustomAuthenticationExtension
     from .custom_callout_extension import CustomCalloutExtension
+    from .custom_data_provided_resource import CustomDataProvidedResource
+    from .custom_data_provided_resource_access_review_upload_session import CustomDataProvidedResourceAccessReviewUploadSession
+    from .custom_data_provided_resource_file import CustomDataProvidedResourceFile
+    from .custom_data_provided_resource_upload_session import CustomDataProvidedResourceUploadSession
     from .custom_extension_stage_setting import CustomExtensionStageSetting
     from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
     from .data_policy_operation import DataPolicyOperation
@@ -232,6 +236,7 @@ if TYPE_CHECKING:
     from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
     from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
     from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+    from .delegated_admin_service_provider_constraints import DelegatedAdminServiceProviderConstraints
     from .delegated_permission_classification import DelegatedPermissionClassification
     from .deleted_chat import DeletedChat
     from .deleted_item_container import DeletedItemContainer
@@ -710,6 +715,7 @@ if TYPE_CHECKING:
     from .relying_party_detailed_summary import RelyingPartyDetailedSummary
     from .remote_assistance_partner import RemoteAssistancePartner
     from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+    from .remote_tenant_group import RemoteTenantGroup
     from .reports_root import ReportsRoot
     from .request import Request
     from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
@@ -845,6 +851,7 @@ if TYPE_CHECKING:
     from .service_health_issue import ServiceHealthIssue
     from .service_principal import ServicePrincipal
     from .service_principal_risk_detection import ServicePrincipalRiskDetection
+    from .service_provider_constraints import ServiceProviderConstraints
     from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
     from .service_update_message import ServiceUpdateMessage
     from .setting_state_device_summary import SettingStateDeviceSummary
@@ -1047,6 +1054,7 @@ if TYPE_CHECKING:
     from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
     from .virtual_event_session import VirtualEventSession
     from .virtual_event_townhall import VirtualEventTownhall
+    from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
     from .virtual_event_webinar import VirtualEventWebinar
     from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
     from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
@@ -2031,6 +2039,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .custom_callout_extension import CustomCalloutExtension
 
             return CustomCalloutExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResource".casefold():
+            from .custom_data_provided_resource import CustomDataProvidedResource
+
+            return CustomDataProvidedResource()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourceAccessReviewUploadSession".casefold():
+            from .custom_data_provided_resource_access_review_upload_session import CustomDataProvidedResourceAccessReviewUploadSession
+
+            return CustomDataProvidedResourceAccessReviewUploadSession()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourceFile".casefold():
+            from .custom_data_provided_resource_file import CustomDataProvidedResourceFile
+
+            return CustomDataProvidedResourceFile()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourceUploadSession".casefold():
+            from .custom_data_provided_resource_upload_session import CustomDataProvidedResourceUploadSession
+
+            return CustomDataProvidedResourceUploadSession()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.customExtensionStageSetting".casefold():
             from .custom_extension_stage_setting import CustomExtensionStageSetting
 
@@ -2079,6 +2103,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
 
             return DelegatedAdminServiceManagementDetail()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminServiceProviderConstraints".casefold():
+            from .delegated_admin_service_provider_constraints import DelegatedAdminServiceProviderConstraints
+
+            return DelegatedAdminServiceProviderConstraints()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedPermissionClassification".casefold():
             from .delegated_permission_classification import DelegatedPermissionClassification
 
@@ -3996,6 +4024,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
 
             return RemoteDesktopSecurityConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteTenantGroup".casefold():
+            from .remote_tenant_group import RemoteTenantGroup
+
+            return RemoteTenantGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.reportsRoot".casefold():
             from .reports_root import ReportsRoot
 
@@ -4539,6 +4571,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
             return ServicePrincipalRiskDetection()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceProviderConstraints".casefold():
+            from .service_provider_constraints import ServiceProviderConstraints
+
+            return ServiceProviderConstraints()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceStorageQuotaBreakdown".casefold():
             from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
 
@@ -5349,6 +5385,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .virtual_event_townhall import VirtualEventTownhall
 
             return VirtualEventTownhall()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventTownhallRegistrationConfiguration".casefold():
+            from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
+
+            return VirtualEventTownhallRegistrationConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventWebinar".casefold():
             from .virtual_event_webinar import VirtualEventWebinar
 
@@ -5966,6 +6006,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
         from .custom_authentication_extension import CustomAuthenticationExtension
         from .custom_callout_extension import CustomCalloutExtension
+        from .custom_data_provided_resource import CustomDataProvidedResource
+        from .custom_data_provided_resource_access_review_upload_session import CustomDataProvidedResourceAccessReviewUploadSession
+        from .custom_data_provided_resource_file import CustomDataProvidedResourceFile
+        from .custom_data_provided_resource_upload_session import CustomDataProvidedResourceUploadSession
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
@@ -5978,6 +6022,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+        from .delegated_admin_service_provider_constraints import DelegatedAdminServiceProviderConstraints
         from .delegated_permission_classification import DelegatedPermissionClassification
         from .deleted_chat import DeletedChat
         from .deleted_item_container import DeletedItemContainer
@@ -6456,6 +6501,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+        from .remote_tenant_group import RemoteTenantGroup
         from .reports_root import ReportsRoot
         from .request import Request
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
@@ -6591,6 +6637,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .service_health_issue import ServiceHealthIssue
         from .service_principal import ServicePrincipal
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
+        from .service_provider_constraints import ServiceProviderConstraints
         from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
         from .service_update_message import ServiceUpdateMessage
         from .setting_state_device_summary import SettingStateDeviceSummary
@@ -6793,6 +6840,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
         from .virtual_event_session import VirtualEventSession
         from .virtual_event_townhall import VirtualEventTownhall
+        from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
         from .virtual_event_webinar import VirtualEventWebinar
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
@@ -7107,6 +7155,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
         from .custom_authentication_extension import CustomAuthenticationExtension
         from .custom_callout_extension import CustomCalloutExtension
+        from .custom_data_provided_resource import CustomDataProvidedResource
+        from .custom_data_provided_resource_access_review_upload_session import CustomDataProvidedResourceAccessReviewUploadSession
+        from .custom_data_provided_resource_file import CustomDataProvidedResourceFile
+        from .custom_data_provided_resource_upload_session import CustomDataProvidedResourceUploadSession
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
@@ -7119,6 +7171,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+        from .delegated_admin_service_provider_constraints import DelegatedAdminServiceProviderConstraints
         from .delegated_permission_classification import DelegatedPermissionClassification
         from .deleted_chat import DeletedChat
         from .deleted_item_container import DeletedItemContainer
@@ -7597,6 +7650,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
+        from .remote_tenant_group import RemoteTenantGroup
         from .reports_root import ReportsRoot
         from .request import Request
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
@@ -7732,6 +7786,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .service_health_issue import ServiceHealthIssue
         from .service_principal import ServicePrincipal
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
+        from .service_provider_constraints import ServiceProviderConstraints
         from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
         from .service_update_message import ServiceUpdateMessage
         from .setting_state_device_summary import SettingStateDeviceSummary
@@ -7934,6 +7989,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .virtual_event_registration_question_base import VirtualEventRegistrationQuestionBase
         from .virtual_event_session import VirtualEventSession
         from .virtual_event_townhall import VirtualEventTownhall
+        from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
         from .virtual_event_webinar import VirtualEventWebinar
         from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration

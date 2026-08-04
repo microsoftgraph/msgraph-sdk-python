@@ -30,6 +30,8 @@ class UnifiedRoleAssignment(Entity, Parsable):
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal to which the assignment is granted. Supported principals are users, role-assignable groups, and service principals. Supports $filter (eq, in).
     principal_id: Optional[str] = None
+    # The principalOrganizationId property
+    principal_organization_id: Optional[str] = None
     # The roleDefinition the assignment is for. Supports $expand.
     role_definition: Optional[UnifiedRoleDefinition] = None
     # Identifier of the unifiedRoleDefinition the assignment is for. Read-only. Supports $filter (eq, in).
@@ -69,6 +71,7 @@ class UnifiedRoleAssignment(Entity, Parsable):
             "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),
             "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "principalOrganizationId": lambda n : setattr(self, 'principal_organization_id', n.get_str_value()),
             "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(UnifiedRoleDefinition)),
             "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
         }
@@ -92,6 +95,7 @@ class UnifiedRoleAssignment(Entity, Parsable):
         writer.write_str_value("directoryScopeId", self.directory_scope_id)
         writer.write_object_value("principal", self.principal)
         writer.write_str_value("principalId", self.principal_id)
+        writer.write_str_value("principalOrganizationId", self.principal_organization_id)
         writer.write_object_value("roleDefinition", self.role_definition)
         writer.write_str_value("roleDefinitionId", self.role_definition_id)
     

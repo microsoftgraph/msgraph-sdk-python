@@ -137,6 +137,8 @@ class Group(DirectoryObject, Parsable):
     on_premises_sync_enabled: Optional[bool] = None
     # The onenote property
     onenote: Optional[Onenote] = None
+    # The organizationId property
+    organization_id: Optional[str] = None
     # The owners of the group who can be users or service principals. Limited to 100 owners. Nullable. If this property isn't specified when creating a Microsoft 365 group the calling user (admin or non-admin) is automatically assigned as the group owner. A non-admin user can't explicitly add themselves to this collection when they're creating the group. For more information, see the related known issue. For security groups, the admin user isn't automatically added to this collection. For more information, see the related known issue. Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1); Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
     owners: Optional[list[DirectoryObject]] = None
     # The permissionGrants property
@@ -311,6 +313,7 @@ class Group(DirectoryObject, Parsable):
             "onPremisesSyncBehavior": lambda n : setattr(self, 'on_premises_sync_behavior', n.get_object_value(OnPremisesSyncBehavior)),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
+            "organizationId": lambda n : setattr(self, 'organization_id', n.get_str_value()),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(DirectoryObject)),
             "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
@@ -403,6 +406,7 @@ class Group(DirectoryObject, Parsable):
         writer.write_object_value("onPremisesSyncBehavior", self.on_premises_sync_behavior)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_object_value("onenote", self.onenote)
+        writer.write_str_value("organizationId", self.organization_id)
         writer.write_collection_of_object_values("owners", self.owners)
         writer.write_collection_of_object_values("permissionGrants", self.permission_grants)
         writer.write_object_value("photo", self.photo)

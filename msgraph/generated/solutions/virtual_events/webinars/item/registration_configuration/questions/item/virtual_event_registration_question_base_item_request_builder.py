@@ -32,7 +32,7 @@ class VirtualEventRegistrationQuestionBaseItemRequestBuilder(BaseRequestBuilder)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete a registration question from a webinar. The question can either be a predefined registration question or a custom registration question. 
+        Delete a registration question from a webinar or town hall. The question can either be a predefined registration question or a custom registration question. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/virtualeventregistrationquestionbase-delete?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class VirtualEventRegistrationQuestionBaseItemRequestBuilder(BaseRequestBuilder)
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete a registration question from a webinar. The question can either be a predefined registration question or a custom registration question. 
+        Delete a registration question from a webinar or town hall. The question can either be a predefined registration question or a custom registration question. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

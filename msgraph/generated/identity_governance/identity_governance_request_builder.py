@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from .access_reviews.access_reviews_request_builder import AccessReviewsRequestBuilder
     from .app_consent.app_consent_request_builder import AppConsentRequestBuilder
+    from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
     from .entitlement_management.entitlement_management_request_builder import EntitlementManagementRequestBuilder
     from .lifecycle_workflows.lifecycle_workflows_request_builder import LifecycleWorkflowsRequestBuilder
     from .privileged_access.privileged_access_request_builder import PrivilegedAccessRequestBuilder
@@ -132,6 +133,15 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         from .app_consent.app_consent_request_builder import AppConsentRequestBuilder
 
         return AppConsentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def catalogs(self) -> CatalogsRequestBuilder:
+        """
+        Provides operations to manage the catalogs property of the microsoft.graph.identityGovernance entity.
+        """
+        from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
+
+        return CatalogsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def entitlement_management(self) -> EntitlementManagementRequestBuilder:

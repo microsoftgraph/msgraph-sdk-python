@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from .....models.multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
     from .....models.o_data_errors.o_data_error import ODataError
+    from .reset_to_default_settings.reset_to_default_settings_request_builder import ResetToDefaultSettingsRequestBuilder
 
 class MultiTenantOrganizationIdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     """
@@ -139,6 +140,15 @@ class MultiTenantOrganizationIdentitySynchronizationRequestBuilder(BaseRequestBu
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return MultiTenantOrganizationIdentitySynchronizationRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def reset_to_default_settings(self) -> ResetToDefaultSettingsRequestBuilder:
+        """
+        Provides operations to call the resetToDefaultSettings method.
+        """
+        from .reset_to_default_settings.reset_to_default_settings_request_builder import ResetToDefaultSettingsRequestBuilder
+
+        return ResetToDefaultSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MultiTenantOrganizationIdentitySynchronizationRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

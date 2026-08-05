@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
     from .public_key_infrastructure.public_key_infrastructure_request_builder import PublicKeyInfrastructureRequestBuilder
     from .recovery.recovery_request_builder import RecoveryRequestBuilder
+    from .remote_tenant_groups.remote_tenant_groups_request_builder import RemoteTenantGroupsRequestBuilder
     from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
     from .subscriptions_with_commerce_subscription_id.subscriptions_with_commerce_subscription_id_request_builder import SubscriptionsWithCommerceSubscriptionIdRequestBuilder
 
@@ -212,6 +213,15 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         from .recovery.recovery_request_builder import RecoveryRequestBuilder
 
         return RecoveryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def remote_tenant_groups(self) -> RemoteTenantGroupsRequestBuilder:
+        """
+        Provides operations to manage the remoteTenantGroups property of the microsoft.graph.directory entity.
+        """
+        from .remote_tenant_groups.remote_tenant_groups_request_builder import RemoteTenantGroupsRequestBuilder
+
+        return RemoteTenantGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def subscriptions(self) -> SubscriptionsRequestBuilder:

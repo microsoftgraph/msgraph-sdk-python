@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .acl import Acl
     from .external_activity import ExternalActivity
     from .external_item_content import ExternalItemContent
+    from .external_item_information_protection_label import ExternalItemInformationProtectionLabel
     from .properties import Properties
 
 from ..entity import Entity
@@ -21,6 +22,8 @@ class ExternalItem(Entity, Parsable):
     activities: Optional[list[ExternalActivity]] = None
     # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
     content: Optional[ExternalItemContent] = None
+    # The informationProtectionLabel property
+    information_protection_label: Optional[ExternalItemInformationProtectionLabel] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.
@@ -46,18 +49,21 @@ class ExternalItem(Entity, Parsable):
         from .acl import Acl
         from .external_activity import ExternalActivity
         from .external_item_content import ExternalItemContent
+        from .external_item_information_protection_label import ExternalItemInformationProtectionLabel
         from .properties import Properties
 
         from ..entity import Entity
         from .acl import Acl
         from .external_activity import ExternalActivity
         from .external_item_content import ExternalItemContent
+        from .external_item_information_protection_label import ExternalItemInformationProtectionLabel
         from .properties import Properties
 
         fields: dict[str, Callable[[Any], None]] = {
             "acl": lambda n : setattr(self, 'acl', n.get_collection_of_object_values(Acl)),
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(ExternalActivity)),
             "content": lambda n : setattr(self, 'content', n.get_object_value(ExternalItemContent)),
+            "informationProtectionLabel": lambda n : setattr(self, 'information_protection_label', n.get_object_value(ExternalItemInformationProtectionLabel)),
             "properties": lambda n : setattr(self, 'properties', n.get_object_value(Properties)),
         }
         super_fields = super().get_field_deserializers()
@@ -76,6 +82,7 @@ class ExternalItem(Entity, Parsable):
         writer.write_collection_of_object_values("acl", self.acl)
         writer.write_collection_of_object_values("activities", self.activities)
         writer.write_object_value("content", self.content)
+        writer.write_object_value("informationProtectionLabel", self.information_protection_label)
         writer.write_object_value("properties", self.properties)
     
 

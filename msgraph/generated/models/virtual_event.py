@@ -31,6 +31,8 @@ class VirtualEvent(Entity, Parsable):
     end_date_time: Optional[DateTimeTimeZone] = None
     # The external information of a virtual event. Returned only for event organizers or coorganizers; otherwise, null.
     external_event_information: Optional[list[VirtualEventExternalInformation]] = None
+    # Indicates whether attendee registration is enabled for the virtual event.
+    is_registration_required: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The virtual event presenters.
@@ -103,6 +105,7 @@ class VirtualEvent(Entity, Parsable):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
             "externalEventInformation": lambda n : setattr(self, 'external_event_information', n.get_collection_of_object_values(VirtualEventExternalInformation)),
+            "isRegistrationRequired": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
             "presenters": lambda n : setattr(self, 'presenters', n.get_collection_of_object_values(VirtualEventPresenter)),
             "sessions": lambda n : setattr(self, 'sessions', n.get_collection_of_object_values(VirtualEventSession)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(VirtualEventSettings)),
@@ -127,6 +130,7 @@ class VirtualEvent(Entity, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("endDateTime", self.end_date_time)
         writer.write_collection_of_object_values("externalEventInformation", self.external_event_information)
+        writer.write_bool_value("isRegistrationRequired", self.is_registration_required)
         writer.write_collection_of_object_values("presenters", self.presenters)
         writer.write_collection_of_object_values("sessions", self.sessions)
         writer.write_object_value("settings", self.settings)

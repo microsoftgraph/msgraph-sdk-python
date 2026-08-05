@@ -49,7 +49,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[PermissionsRequestBuilderGetQueryParameters]] = None) -> Optional[PermissionCollectionResponse]:
         """
-        Get permissions from groups
+        The set of permissions for the item. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionCollectionResponse]
         """
@@ -92,7 +92,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[PermissionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get permissions from groups
+        The set of permissions for the item. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionsRequestBuilderGetQueryParameters():
         """
-        Get permissions from groups
+        The set of permissions for the item. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

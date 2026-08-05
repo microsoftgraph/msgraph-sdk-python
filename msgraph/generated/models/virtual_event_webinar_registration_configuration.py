@@ -11,10 +11,6 @@ from .virtual_event_registration_configuration import VirtualEventRegistrationCo
 
 @dataclass
 class VirtualEventWebinarRegistrationConfiguration(VirtualEventRegistrationConfiguration, Parsable):
-    # The isManualApprovalEnabled property
-    is_manual_approval_enabled: Optional[bool] = None
-    # The isWaitlistEnabled property
-    is_waitlist_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -39,8 +35,6 @@ class VirtualEventWebinarRegistrationConfiguration(VirtualEventRegistrationConfi
         from .virtual_event_registration_configuration import VirtualEventRegistrationConfiguration
 
         fields: dict[str, Callable[[Any], None]] = {
-            "isManualApprovalEnabled": lambda n : setattr(self, 'is_manual_approval_enabled', n.get_bool_value()),
-            "isWaitlistEnabled": lambda n : setattr(self, 'is_waitlist_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +49,5 @@ class VirtualEventWebinarRegistrationConfiguration(VirtualEventRegistrationConfi
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isManualApprovalEnabled", self.is_manual_approval_enabled)
-        writer.write_bool_value("isWaitlistEnabled", self.is_waitlist_enabled)
     
 

@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .refresh.refresh_request_builder import RefreshRequestBuilder
     from .roles.roles_request_builder import RolesRequestBuilder
     from .scopes.scopes_request_builder import ScopesRequestBuilder
+    from .upload_sessions.upload_sessions_request_builder import UploadSessionsRequestBuilder
 
 class AccessPackageResourceItemRequestBuilder(BaseRequestBuilder):
     """
@@ -177,6 +178,15 @@ class AccessPackageResourceItemRequestBuilder(BaseRequestBuilder):
         from .scopes.scopes_request_builder import ScopesRequestBuilder
 
         return ScopesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def upload_sessions(self) -> UploadSessionsRequestBuilder:
+        """
+        Provides operations to manage the uploadSessions property of the microsoft.graph.accessPackageResource entity.
+        """
+        from .upload_sessions.upload_sessions_request_builder import UploadSessionsRequestBuilder
+
+        return UploadSessionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AccessPackageResourceItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

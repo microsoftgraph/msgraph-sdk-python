@@ -39,6 +39,7 @@ if TYPE_CHECKING:
     from .org_contact import OrgContact
     from .permission_grant_policy import PermissionGrantPolicy
     from .policy_base import PolicyBase
+    from .remote_tenant_group import RemoteTenantGroup
     from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
     from .service_principal import ServicePrincipal
     from .sts_policy import StsPolicy
@@ -198,6 +199,10 @@ class DirectoryObject(Entity, Parsable):
             from .policy_base import PolicyBase
 
             return PolicyBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteTenantGroup".casefold():
+            from .remote_tenant_group import RemoteTenantGroup
+
+            return RemoteTenantGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceSpecificPermissionGrant".casefold():
             from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
 
@@ -266,6 +271,7 @@ class DirectoryObject(Entity, Parsable):
         from .org_contact import OrgContact
         from .permission_grant_policy import PermissionGrantPolicy
         from .policy_base import PolicyBase
+        from .remote_tenant_group import RemoteTenantGroup
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .service_principal import ServicePrincipal
         from .sts_policy import StsPolicy
@@ -307,6 +313,7 @@ class DirectoryObject(Entity, Parsable):
         from .org_contact import OrgContact
         from .permission_grant_policy import PermissionGrantPolicy
         from .policy_base import PolicyBase
+        from .remote_tenant_group import RemoteTenantGroup
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .service_principal import ServicePrincipal
         from .sts_policy import StsPolicy

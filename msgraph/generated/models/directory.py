@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .identity_provider_base import IdentityProviderBase
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
     from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
+    from .remote_tenant_group import RemoteTenantGroup
 
 from .entity import Entity
 
@@ -41,6 +42,8 @@ class Directory(Entity, Parsable):
     public_key_infrastructure: Optional[PublicKeyInfrastructureRoot] = None
     # The recovery property
     recovery: Optional[Recovery] = None
+    # Collection of groups in remote Microsoft Entra tenants that are available in the directory.
+    remote_tenant_groups: Optional[list[RemoteTenantGroup]] = None
     # List of commercial subscriptions that an organization acquired.
     subscriptions: Optional[list[CompanySubscription]] = None
     
@@ -71,6 +74,7 @@ class Directory(Entity, Parsable):
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
+        from .remote_tenant_group import RemoteTenantGroup
 
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
@@ -83,6 +87,7 @@ class Directory(Entity, Parsable):
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
+        from .remote_tenant_group import RemoteTenantGroup
 
         fields: dict[str, Callable[[Any], None]] = {
             "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(AdministrativeUnit)),
@@ -94,6 +99,7 @@ class Directory(Entity, Parsable):
             "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(OnPremisesDirectorySynchronization)),
             "publicKeyInfrastructure": lambda n : setattr(self, 'public_key_infrastructure', n.get_object_value(PublicKeyInfrastructureRoot)),
             "recovery": lambda n : setattr(self, 'recovery', n.get_object_value(Recovery)),
+            "remoteTenantGroups": lambda n : setattr(self, 'remote_tenant_groups', n.get_collection_of_object_values(RemoteTenantGroup)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(CompanySubscription)),
         }
         super_fields = super().get_field_deserializers()
@@ -118,6 +124,7 @@ class Directory(Entity, Parsable):
         writer.write_collection_of_object_values("onPremisesSynchronization", self.on_premises_synchronization)
         writer.write_object_value("publicKeyInfrastructure", self.public_key_infrastructure)
         writer.write_object_value("recovery", self.recovery)
+        writer.write_collection_of_object_values("remoteTenantGroups", self.remote_tenant_groups)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
     
 

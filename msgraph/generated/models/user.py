@@ -320,6 +320,8 @@ class User(DirectoryObject, Parsable):
     skills: Optional[list[str]] = None
     # The identifier that relates the user to the working time schedule triggers. Read-Only. Nullable
     solutions: Optional[UserSolutionRoot] = None
+    # Directory objects that this user sponsors, such as guest users, agent users, agent blueprints, agent blueprint principals, and agent identities. If the user is a member of a group that's a sponsor, the objects sponsored by that group are also included. Read-only. Nullable. Supports $filter, $count, $select, $expand, $top, and $skip.
+    sponsor_of: Optional[list[DirectoryObject]] = None
     # The users and groups responsible for this guest's privileges in the tenant and keeping the guest's information and access updated. (HTTP Methods: GET, POST, DELETE.). Supports $expand.
     sponsors: Optional[list[DirectoryObject]] = None
     # The state or province in the user's address. Maximum length is 128 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
@@ -611,6 +613,7 @@ class User(DirectoryObject, Parsable):
             "signInSessionsValidFromDateTime": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
             "skills": lambda n : setattr(self, 'skills', n.get_collection_of_primitive_values(str)),
             "solutions": lambda n : setattr(self, 'solutions', n.get_object_value(UserSolutionRoot)),
+            "sponsorOf": lambda n : setattr(self, 'sponsor_of', n.get_collection_of_object_values(DirectoryObject)),
             "sponsors": lambda n : setattr(self, 'sponsors', n.get_collection_of_object_values(DirectoryObject)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
@@ -759,6 +762,7 @@ class User(DirectoryObject, Parsable):
         writer.write_datetime_value("signInSessionsValidFromDateTime", self.sign_in_sessions_valid_from_date_time)
         writer.write_collection_of_primitive_values("skills", self.skills)
         writer.write_object_value("solutions", self.solutions)
+        writer.write_collection_of_object_values("sponsorOf", self.sponsor_of)
         writer.write_collection_of_object_values("sponsors", self.sponsors)
         writer.write_str_value("state", self.state)
         writer.write_str_value("streetAddress", self.street_address)

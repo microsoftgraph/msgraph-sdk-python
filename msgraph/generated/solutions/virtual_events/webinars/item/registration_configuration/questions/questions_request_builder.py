@@ -49,7 +49,7 @@ class QuestionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QuestionsRequestBuilderGetQueryParameters]] = None) -> Optional[VirtualEventRegistrationQuestionBaseCollectionResponse]:
         """
-        Get a list of all registration questions for a webinar. The list can include either predefined registration questions or custom registration questions.
+        Get a list of all registration questions for a webinar or town hall. The list can include either predefined registration questions or custom registration questions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventRegistrationQuestionBaseCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/virtualeventregistrationconfiguration-list-questions?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class QuestionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: VirtualEventRegistrationQuestionBase, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[VirtualEventRegistrationQuestionBase]:
         """
-        Create a registration question for a webinar. You can create either a predefined registration question or a custom registration question.
+        Create a registration question for a webinar or town hall. You can create either a predefined registration question or a custom registration question.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VirtualEventRegistrationQuestionBase]
@@ -94,7 +94,7 @@ class QuestionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QuestionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get a list of all registration questions for a webinar. The list can include either predefined registration questions or custom registration questions.
+        Get a list of all registration questions for a webinar or town hall. The list can include either predefined registration questions or custom registration questions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +105,7 @@ class QuestionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: VirtualEventRegistrationQuestionBase, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create a registration question for a webinar. You can create either a predefined registration question or a custom registration question.
+        Create a registration question for a webinar or town hall. You can create either a predefined registration question or a custom registration question.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class QuestionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class QuestionsRequestBuilderGetQueryParameters():
         """
-        Get a list of all registration questions for a webinar. The list can include either predefined registration questions or custom registration questions.
+        Get a list of all registration questions for a webinar or town hall. The list can include either predefined registration questions or custom registration questions.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

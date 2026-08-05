@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
     from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
     from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+    from .service_provider_constraints import ServiceProviderConstraints
 
 @dataclass
 class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedModel, Parsable):
@@ -48,6 +49,8 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
     m365_collaboration_outbound: Optional[CrossTenantAccessPolicyM365CollaborationOutboundSetting] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The serviceProviderConstraints property
+    service_provider_constraints: Optional[ServiceProviderConstraints] = None
     # The tenant identifier for the partner Microsoft Entra organization. Read-only. Key.
     tenant_id: Optional[str] = None
     # Defines the partner-specific tenant restrictions configuration for users in your organization who access a partner organization using partner supplied identities on your network or devices.
@@ -77,6 +80,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+        from .service_provider_constraints import ServiceProviderConstraints
 
         from .cross_tenant_access_policy_app_service_connect_setting import CrossTenantAccessPolicyAppServiceConnectSetting
         from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
@@ -86,6 +90,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+        from .service_provider_constraints import ServiceProviderConstraints
 
         fields: dict[str, Callable[[Any], None]] = {
             "appServiceConnectInbound": lambda n : setattr(self, 'app_service_connect_inbound', n.get_object_value(CrossTenantAccessPolicyAppServiceConnectSetting)),
@@ -101,6 +106,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
             "m365CollaborationInbound": lambda n : setattr(self, 'm365_collaboration_inbound', n.get_object_value(CrossTenantAccessPolicyM365CollaborationInboundSetting)),
             "m365CollaborationOutbound": lambda n : setattr(self, 'm365_collaboration_outbound', n.get_object_value(CrossTenantAccessPolicyM365CollaborationOutboundSetting)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "serviceProviderConstraints": lambda n : setattr(self, 'service_provider_constraints', n.get_object_value(ServiceProviderConstraints)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "tenantRestrictions": lambda n : setattr(self, 'tenant_restrictions', n.get_object_value(CrossTenantAccessPolicyTenantRestrictions)),
         }
@@ -127,6 +133,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         writer.write_object_value("m365CollaborationInbound", self.m365_collaboration_inbound)
         writer.write_object_value("m365CollaborationOutbound", self.m365_collaboration_outbound)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("serviceProviderConstraints", self.service_provider_constraints)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_object_value("tenantRestrictions", self.tenant_restrictions)
         writer.write_additional_data_value(self.additional_data)

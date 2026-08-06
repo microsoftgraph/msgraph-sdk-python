@@ -14,7 +14,7 @@ from .chat_message import ChatMessage
 class TargetedChatMessage(ChatMessage, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.targetedChatMessage"
-    # The recipient property
+    # The intended recipient of the targeted message.
     recipient: Optional[Identity] = None
     
     @staticmethod

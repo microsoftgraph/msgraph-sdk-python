@@ -54,7 +54,7 @@ class Chat(Entity, Parsable):
     pinned_messages: Optional[list[PinnedChatMessageInfo]] = None
     # A collection of all the tabs in the chat. Nullable.
     tabs: Optional[list[TeamsTab]] = None
-    # The targetedMessages property
+    # A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.
     targeted_messages: Optional[list[TargetedChatMessage]] = None
     # The identifier of the tenant in which the chat was created. Read-only.
     tenant_id: Optional[str] = None

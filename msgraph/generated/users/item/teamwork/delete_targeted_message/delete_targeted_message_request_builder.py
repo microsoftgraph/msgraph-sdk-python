@@ -32,10 +32,11 @@ class DeleteTargetedMessageRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: DeleteTargetedMessagePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Invoke action deleteTargetedMessage
+        Delete a specific targeted message from a channel context. Teams administrators can use this API to remove targeted messages by providing the message ID, team ID, and channel ID.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/userteamwork-deletetargetedmessage?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -53,7 +54,7 @@ class DeleteTargetedMessageRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: DeleteTargetedMessagePostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action deleteTargetedMessage
+        Delete a specific targeted message from a channel context. Teams administrators can use this API to remove targeted messages by providing the message ID, team ID, and channel ID.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

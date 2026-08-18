@@ -15,7 +15,7 @@ class EntityTypeAndIds(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The entityIds property
+    # The list of entity IDs for the specified entity type.
     entity_ids: Optional[list[str]] = None
     # The entityType property
     entity_type: Optional[ResourceTypeName] = None

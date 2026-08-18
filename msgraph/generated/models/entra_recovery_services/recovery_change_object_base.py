@@ -13,11 +13,11 @@ from ..entity import Entity
 
 @dataclass
 class RecoveryChangeObjectBase(Entity, Parsable):
-    # The displayName property
+    # The display name of the changed object in its current state, used to uniquely identify the object. Supports $filter (eq, ne, startswith).
     display_name: Optional[str] = None
     # The entityTypeName property
     entity_type_name: Optional[ResourceTypeName] = None
-    # The failureMessage property
+    # The error message if the change failed to apply. Only populated in getFailedChanges responses. null otherwise.
     failure_message: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -16,21 +16,21 @@ from ..entity import Entity
 
 @dataclass
 class RecoveryJobBase(Entity, Parsable):
-    # The filteringCriteria property
+    # Optional filtering criteria used to scope the job to specific entity types or entity IDs.
     filtering_criteria: Optional[RecoveryJobFilteringCriteriaBase] = None
-    # The jobCompletionDateTime property
+    # The date and time when the job completed. Null if the job is still running.
     job_completion_date_time: Optional[datetime.datetime] = None
-    # The jobStartDateTime property
+    # The date and time when the job started.
     job_start_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
     status: Optional[RecoveryStatus] = None
-    # The targetStateDateTime property
+    # The target snapshot timestamp to which the tenant is being restored. Supports $filter (eq, ne).
     target_state_date_time: Optional[datetime.datetime] = None
-    # The totalChangedLinksCalculated property
+    # The total count of changed directory object links (relationships) calculated by the job. null until the job completes calculation. Not all calculated link changes may be successfully applied; see totalLinksModified on derived types for the count of links that were actually modified.
     total_changed_links_calculated: Optional[int] = None
-    # The totalChangedObjectsCalculated property
+    # The total count of changed directory objects calculated by the job. null until the job completes calculation. Not all calculated object changes may be successfully applied; see totalObjectsModified on derived types for the count of objects that were actually modified.
     total_changed_objects_calculated: Optional[int] = None
     
     @staticmethod

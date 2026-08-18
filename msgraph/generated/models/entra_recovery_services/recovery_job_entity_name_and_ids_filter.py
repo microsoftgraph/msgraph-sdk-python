@@ -14,7 +14,7 @@ from .recovery_job_filtering_criteria_base import RecoveryJobFilteringCriteriaBa
 class RecoveryJobEntityNameAndIdsFilter(RecoveryJobFilteringCriteriaBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.entraRecoveryServices.recoveryJobEntityNameAndIdsFilter"
-    # The filterValues property
+    # The list of entity type and ID pairs to include in the recovery job. Duplicate entity types are not allowed and return a 400 Bad Request error.
     filter_values: Optional[list[EntityTypeAndIds]] = None
     
     @staticmethod

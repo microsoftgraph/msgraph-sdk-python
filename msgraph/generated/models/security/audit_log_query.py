@@ -18,33 +18,33 @@ class AuditLogQuery(Entity, Parsable):
     """
     Represents a query against the unified audit log.
     """
-    # The administrative units tagged to an audit log record.
+    # The collection of administrative unit IDs to filter on.
     administrative_unit_id_filters: Optional[list[str]] = None
-    # The display name of the saved audit log query.
+    # The display name of the audit log query.
     display_name: Optional[str] = None
-    # The end date of the date range in the query.
+    # The end date and time of the audit log query filter.
     filter_end_date_time: Optional[datetime.datetime] = None
-    # The start date of the date range in the query.
+    # The start date and time of the audit log query filter.
     filter_start_date_time: Optional[datetime.datetime] = None
-    # The IP address of the device that was used when the activity was logged.
+    # The collection of IP addresses to filter on.
     ip_address_filters: Optional[list[str]] = None
-    # Free text field to search non-indexed properties of the audit log.
+    # The keyword to filter on.
     keyword_filter: Optional[str] = None
-    # For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.
+    # The collection of object IDs to filter on.
     object_id_filters: Optional[list[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The name of the user or admin activity. For a description of the most common operations/activities, see Search the audit log in the Office 365 Protection Center.
+    # The collection of operations to filter on.
     operation_filters: Optional[list[str]] = None
-    # The type of operation indicated by the record. For the list of member values, see auditLogRecordType.
+    # The collection of record types to filter on.
     record_type_filters: Optional[list[AuditLogRecordType]] = None
-    # An individual audit log record.
+    # The collection of audit log records retrieved by the query.
     records: Optional[list[AuditLogRecord]] = None
-    # The serviceFilters property
+    # The collection of services to filter on.
     service_filters: Optional[list[str]] = None
-    # Describes the current status of the query. The possible values are: notStarted, running, succeeded, failed, cancelled, unknownFutureValue.
+    # The status of the audit log query. Possible values are: notStarted, running, succeeded, failed, cancelled, unknownFutureValue.
     status: Optional[AuditLogQueryStatus] = None
-    # The UPN (user principal name) of the user who performed the action (specified in the operation property) that resulted in the record being logged; for example, myname@mydomain_name.
+    # The collection of user principal names to filter on.
     user_principal_name_filters: Optional[list[str]] = None
     
     @staticmethod

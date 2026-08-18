@@ -13,11 +13,11 @@ from ..entity import Entity
 
 @dataclass
 class Recovery(Entity, Parsable):
-    # The jobs property
+    # Collection of all recovery jobs (both preview and recovery) for the tenant.
     jobs: Optional[list[RecoveryJobBase]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The snapshots property
+    # Collection of backup snapshots available for the tenant.
     snapshots: Optional[list[Snapshot]] = None
     
     @staticmethod

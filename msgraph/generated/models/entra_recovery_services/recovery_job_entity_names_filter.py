@@ -14,7 +14,7 @@ from .recovery_job_filtering_criteria_base import RecoveryJobFilteringCriteriaBa
 class RecoveryJobEntityNamesFilter(RecoveryJobFilteringCriteriaBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.entraRecoveryServices.recoveryJobEntityNamesFilter"
-    # The entityTypes property
+    # The list of entity types to include in the recovery job.
     entity_types: Optional[list[ResourceTypeName]] = None
     
     @staticmethod

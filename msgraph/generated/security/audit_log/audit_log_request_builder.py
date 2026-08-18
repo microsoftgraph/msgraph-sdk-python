@@ -51,7 +51,7 @@ class AuditLogRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[AuditLogRequestBuilderGetQueryParameters]] = None) -> Optional[AuditCoreRoot]:
         """
-        Get auditLog from security
+        The entry point for the audit log query API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuditCoreRoot]
         """
@@ -105,7 +105,7 @@ class AuditLogRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[AuditLogRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get auditLog from security
+        The entry point for the audit log query API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class AuditLogRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuditLogRequestBuilderGetQueryParameters():
         """
-        Get auditLog from security
+        The entry point for the audit log query API.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

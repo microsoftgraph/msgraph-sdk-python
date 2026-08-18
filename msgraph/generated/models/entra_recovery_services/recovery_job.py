@@ -13,11 +13,11 @@ from .recovery_job_base import RecoveryJobBase
 class RecoveryJob(RecoveryJobBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.entraRecoveryServices.recoveryJob"
-    # The totalFailedChanges property
+    # The count of changes (including both objects and links) that failed to apply during recovery.
     total_failed_changes: Optional[int] = None
-    # The totalLinksModified property
+    # The count of directory object links (relationships) that were successfully modified during recovery. This value may be less than totalChangedLinksCalculated if some link changes failed.
     total_links_modified: Optional[int] = None
-    # The totalObjectsModified property
+    # The count of directory objects that were successfully modified during recovery. This value may be less than totalChangedObjectsCalculated if some object changes failed.
     total_objects_modified: Optional[int] = None
     
     @staticmethod

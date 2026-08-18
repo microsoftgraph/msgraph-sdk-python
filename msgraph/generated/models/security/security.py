@@ -36,7 +36,7 @@ class Security(Entity, Parsable):
     alerts_v2: Optional[list[Alert]] = None
     # The attackSimulation property
     attack_simulation: Optional[AttackSimulationRoot] = None
-    # The auditLog property
+    # The entry point for the audit log query API.
     audit_log: Optional[AuditCoreRoot] = None
     # The cases property
     cases: Optional[CasesRoot] = None

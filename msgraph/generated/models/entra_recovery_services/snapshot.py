@@ -14,15 +14,15 @@ from ..entity import Entity
 
 @dataclass
 class Snapshot(Entity, Parsable):
-    # The createdDateTime property
+    # The date and time when the snapshot was created.
     created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The recoveryJobs property
+    # Collection of recovery jobs created for this snapshot.
     recovery_jobs: Optional[list[RecoveryJob]] = None
-    # The recoveryPreviewJobs property
+    # Collection of preview jobs created for this snapshot.
     recovery_preview_jobs: Optional[list[RecoveryPreviewJob]] = None
-    # The totalChangedObjects property
+    # The total number of changed objects identified in this snapshot.
     total_changed_objects: Optional[int] = None
     
     @staticmethod

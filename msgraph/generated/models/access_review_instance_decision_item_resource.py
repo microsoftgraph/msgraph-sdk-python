@@ -23,7 +23,7 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, BackedModel
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Type of resource. Types include: Group, ServicePrincipal, DirectoryRole, AzureRole, AccessPackageAssignmentPolicy.
+    # Type of resource. Types include: Group, ServicePrincipal, DirectoryRole, AzureRole, AccessPackage, AccessPackageAssignmentPolicy.
     type: Optional[str] = None
     
     @staticmethod

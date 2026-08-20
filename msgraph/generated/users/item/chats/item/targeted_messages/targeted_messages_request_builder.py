@@ -49,7 +49,7 @@ class TargetedMessagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TargetedMessagesRequestBuilderGetQueryParameters]] = None) -> Optional[TargetedChatMessageCollectionResponse]:
         """
-        Get targetedMessages from users
+        A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetedChatMessageCollectionResponse]
         """
@@ -92,7 +92,7 @@ class TargetedMessagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TargetedMessagesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get targetedMessages from users
+        A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class TargetedMessagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TargetedMessagesRequestBuilderGetQueryParameters():
         """
-        Get targetedMessages from users
+        A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -17,7 +17,7 @@ class AuditCoreRoot(Entity, Parsable):
     """
     # The OdataType property
     odata_type: Optional[str] = None
-    # The queries property
+    # The collection of audit log queries.
     queries: Optional[list[AuditLogQuery]] = None
     
     @staticmethod

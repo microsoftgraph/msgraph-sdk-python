@@ -49,9 +49,10 @@ class SnapshotsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[SnapshotsRequestBuilderGetQueryParameters]] = None) -> Optional[SnapshotCollectionResponse]:
         """
-        Get snapshots from directory
+        Get a list of available backup snapshot objects for the tenant. Snapshots represent points in time to which the tenant can be restored.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SnapshotCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-snapshots?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class SnapshotsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[SnapshotsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get snapshots from directory
+        Get a list of available backup snapshot objects for the tenant. Snapshots represent points in time to which the tenant can be restored.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class SnapshotsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SnapshotsRequestBuilderGetQueryParameters():
         """
-        Get snapshots from directory
+        Get a list of available backup snapshot objects for the tenant. Snapshots represent points in time to which the tenant can be restored.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

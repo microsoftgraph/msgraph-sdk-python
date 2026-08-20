@@ -48,7 +48,7 @@ class RecordsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RecordsRequestBuilderGetQueryParameters]] = None) -> Optional[AuditLogRecordCollectionResponse]:
         """
-        An individual audit log record.
+        The collection of audit log records retrieved by the query.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuditLogRecordCollectionResponse]
         """
@@ -68,7 +68,7 @@ class RecordsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RecordsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        An individual audit log record.
+        The collection of audit log records retrieved by the query.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +99,7 @@ class RecordsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RecordsRequestBuilderGetQueryParameters():
         """
-        An individual audit log record.
+        The collection of audit log records retrieved by the query.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

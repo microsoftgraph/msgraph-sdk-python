@@ -49,9 +49,10 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[JobsRequestBuilderGetQueryParameters]] = None) -> Optional[RecoveryJobBaseCollectionResponse]:
         """
-        Get jobs from directory
+        Get a list of all recovery recoveryJobBase objects (both preview and recovery jobs) across all snapshots for the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RecoveryJobBaseCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-jobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[JobsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get jobs from directory
+        Get a list of all recovery recoveryJobBase objects (both preview and recovery jobs) across all snapshots for the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class JobsRequestBuilderGetQueryParameters():
         """
-        Get jobs from directory
+        Get a list of all recovery recoveryJobBase objects (both preview and recovery jobs) across all snapshots for the tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

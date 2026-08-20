@@ -18,31 +18,31 @@ class AuditLogRecord(Entity, Parsable):
     """
     Represents an individual audit log record.
     """
-    # The administrative units tagged to an audit log record.
+    # The collection of administrative units associated with the record.
     administrative_units: Optional[list[str]] = None
-    # A JSON object that contains the actual audit log data.
+    # The audit data associated with the record.
     audit_data: Optional[AuditData] = None
-    # The type of operation indicated by the record. For the list of member values, see auditLogRecordType.
+    # The type of the audit log record.
     audit_log_record_type: Optional[AuditLogRecordType] = None
-    # The IP address of the device used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.
+    # The IP address of the client that performed the activity.
     client_ip: Optional[str] = None
-    # The date and time in UTC when the user performed the activity.
+    # The date and time when the activity was performed.
     created_date_time: Optional[datetime.datetime] = None
-    # For Exchange admin audit logging, the name of the object modified by the cmdlet. For SharePoint activity, the full URL path name of the file or folder accessed by a user. For Microsoft Entra activity, the name of the user account that was modified.
+    # The identifier of the object that was affected by the activity.
     object_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The name of the user or admin activity.
+    # The name of the activity that was performed.
     operation: Optional[str] = None
-    # The GUID for your organization.
+    # The GUID of the organization's Microsoft 365 tenant.
     organization_id: Optional[str] = None
     # The Microsoft 365 service where the activity occurred.
     service: Optional[str] = None
-    # The user who performed the action (specified in the Operation property) that resulted in the record being logged. Audit records for activity performed by system accounts (such as SHAREPOINT/system or NT AUTHORITY/SYSTEM) are also included in the audit log. Another common value for the UserId property is app@sharepoint. It indicates that the 'user' who performed the activity was an application with the necessary permissions in SharePoint to perform organization-wide actions (such as searching a SharePoint site or OneDrive account) on behalf of a user, admin, or service.
+    # The identifier of the user, system account, service, or application that performed the activity.
     user_id: Optional[str] = None
-    # UPN of the user who performed the action.
+    # The user principal name of the user who performed the activity.
     user_principal_name: Optional[str] = None
-    # The type of user that performed the operation. The possible values are: regular, reserved, admin, dcAdmin, system, application, servicePrincipal, customPolicy, systemPolicy, partnerTechnician, guest, unknownFutureValue.
+    # The type of user who performed the activity. Possible values are: regular, reserved, admin, dcAdmin, system, application, servicePrincipal, customPolicy, systemPolicy, partnerTechnician, guest, unknownFutureValue.
     user_type: Optional[AuditLogUserType] = None
     
     @staticmethod

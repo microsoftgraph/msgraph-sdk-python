@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
     from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
     from .remote_tenant_group import RemoteTenantGroup
+    from .tenant_governance import TenantGovernance
 
 from .entity import Entity
 
@@ -46,6 +47,8 @@ class Directory(Entity, Parsable):
     remote_tenant_groups: Optional[list[RemoteTenantGroup]] = None
     # List of commercial subscriptions that an organization acquired.
     subscriptions: Optional[list[CompanySubscription]] = None
+    # The tenantGovernance property
+    tenant_governance: Optional[TenantGovernance] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Directory:
@@ -75,6 +78,7 @@ class Directory(Entity, Parsable):
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .remote_tenant_group import RemoteTenantGroup
+        from .tenant_governance import TenantGovernance
 
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
@@ -88,6 +92,7 @@ class Directory(Entity, Parsable):
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .public_key_infrastructure_root import PublicKeyInfrastructureRoot
         from .remote_tenant_group import RemoteTenantGroup
+        from .tenant_governance import TenantGovernance
 
         fields: dict[str, Callable[[Any], None]] = {
             "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(AdministrativeUnit)),
@@ -101,6 +106,7 @@ class Directory(Entity, Parsable):
             "recovery": lambda n : setattr(self, 'recovery', n.get_object_value(Recovery)),
             "remoteTenantGroups": lambda n : setattr(self, 'remote_tenant_groups', n.get_collection_of_object_values(RemoteTenantGroup)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(CompanySubscription)),
+            "tenantGovernance": lambda n : setattr(self, 'tenant_governance', n.get_object_value(TenantGovernance)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -126,5 +132,6 @@ class Directory(Entity, Parsable):
         writer.write_object_value("recovery", self.recovery)
         writer.write_collection_of_object_values("remoteTenantGroups", self.remote_tenant_groups)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
+        writer.write_object_value("tenantGovernance", self.tenant_governance)
     
 

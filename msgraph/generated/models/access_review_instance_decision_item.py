@@ -6,6 +6,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_review_instance_decision_item_permission import AccessReviewInstanceDecisionItemPermission
     from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
     from .entity import Entity
     from .governance_insight import GovernanceInsight
@@ -34,6 +35,8 @@ class AccessReviewInstanceDecisionItem(Entity, Parsable):
     justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The permission property
+    permission: Optional[AccessReviewInstanceDecisionItemPermission] = None
     # Every decision item in an access review represents a principal's access to a resource. This property represents details of the principal. For example, if a decision item represents access of User 'Bob' to Group 'Sales' - The principal is 'Bob' and the resource is 'Sales'. Principals can be of two types - userIdentity and servicePrincipalIdentity. Supports $select. Read-only.
     principal: Optional[Identity] = None
     # A link to the principal object. For example, https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
@@ -65,12 +68,14 @@ class AccessReviewInstanceDecisionItem(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .access_review_instance_decision_item_permission import AccessReviewInstanceDecisionItemPermission
         from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
         from .entity import Entity
         from .governance_insight import GovernanceInsight
         from .identity import Identity
         from .user_identity import UserIdentity
 
+        from .access_review_instance_decision_item_permission import AccessReviewInstanceDecisionItemPermission
         from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
         from .entity import Entity
         from .governance_insight import GovernanceInsight
@@ -86,6 +91,7 @@ class AccessReviewInstanceDecisionItem(Entity, Parsable):
             "decision": lambda n : setattr(self, 'decision', n.get_str_value()),
             "insights": lambda n : setattr(self, 'insights', n.get_collection_of_object_values(GovernanceInsight)),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
+            "permission": lambda n : setattr(self, 'permission', n.get_object_value(AccessReviewInstanceDecisionItemPermission)),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(Identity)),
             "principalLink": lambda n : setattr(self, 'principal_link', n.get_str_value()),
             "recommendation": lambda n : setattr(self, 'recommendation', n.get_str_value()),
@@ -115,6 +121,7 @@ class AccessReviewInstanceDecisionItem(Entity, Parsable):
         writer.write_str_value("decision", self.decision)
         writer.write_collection_of_object_values("insights", self.insights)
         writer.write_str_value("justification", self.justification)
+        writer.write_object_value("permission", self.permission)
         writer.write_object_value("principal", self.principal)
         writer.write_str_value("principalLink", self.principal_link)
         writer.write_str_value("recommendation", self.recommendation)

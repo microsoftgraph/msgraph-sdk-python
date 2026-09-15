@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .accept_recommendations.accept_recommendations_request_builder import AcceptRecommendationsRequestBuilder
     from .apply_decisions.apply_decisions_request_builder import ApplyDecisionsRequestBuilder
+    from .batch_apply_custom_data_provided_resource_decisions.batch_apply_custom_data_provided_resource_decisions_request_builder import BatchApplyCustomDataProvidedResourceDecisionsRequestBuilder
     from .batch_record_decisions.batch_record_decisions_request_builder import BatchRecordDecisionsRequestBuilder
     from .contacted_reviewers.contacted_reviewers_request_builder import ContactedReviewersRequestBuilder
     from .decisions.decisions_request_builder import DecisionsRequestBuilder
@@ -164,6 +165,15 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         from .apply_decisions.apply_decisions_request_builder import ApplyDecisionsRequestBuilder
 
         return ApplyDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def batch_apply_custom_data_provided_resource_decisions(self) -> BatchApplyCustomDataProvidedResourceDecisionsRequestBuilder:
+        """
+        Provides operations to call the batchApplyCustomDataProvidedResourceDecisions method.
+        """
+        from .batch_apply_custom_data_provided_resource_decisions.batch_apply_custom_data_provided_resource_decisions_request_builder import BatchApplyCustomDataProvidedResourceDecisionsRequestBuilder
+
+        return BatchApplyCustomDataProvidedResourceDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def batch_record_decisions(self) -> BatchRecordDecisionsRequestBuilder:

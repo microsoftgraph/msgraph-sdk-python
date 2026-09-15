@@ -4,6 +4,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -19,6 +20,8 @@ class AgentIdentity(ServicePrincipal, Parsable):
     agent_identity_blueprint_id: Optional[str] = None
     # The date and time the agent identity was created. Read-only. Inherited from servicePrincipal.
     created_date_time: Optional[datetime.datetime] = None
+    # The collection of application IDs designated as managers of this agent identity's backing agentIdentityBlueprint. Read-only; the value is server-managed and reflects the managerApplications of the backing agentIdentityBlueprint. To change the managers, an owner or administrator must update the managerApplications property on the backing agentIdentityBlueprint in the tenant where it's registered. For multitenant agent identity blueprints, admins in a tenant where the blueprint is only consumed can't make this change — they must ask an owner or administrator in the blueprint's home tenant. Not nullable. Returned only on $select.
+    manager_applications: Optional[list[UUID]] = None
     # The sponsors for this agent identity.
     sponsors: Optional[list[DirectoryObject]] = None
     
@@ -47,6 +50,7 @@ class AgentIdentity(ServicePrincipal, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "agentIdentityBlueprintId": lambda n : setattr(self, 'agent_identity_blueprint_id', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "managerApplications": lambda n : setattr(self, 'manager_applications', n.get_collection_of_primitive_values(UUID)),
             "sponsors": lambda n : setattr(self, 'sponsors', n.get_collection_of_object_values(DirectoryObject)),
         }
         super_fields = super().get_field_deserializers()

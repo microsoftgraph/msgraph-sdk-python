@@ -28,6 +28,7 @@ if TYPE_CHECKING:
     from .remote_tenant_groups.remote_tenant_groups_request_builder import RemoteTenantGroupsRequestBuilder
     from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
     from .subscriptions_with_commerce_subscription_id.subscriptions_with_commerce_subscription_id_request_builder import SubscriptionsWithCommerceSubscriptionIdRequestBuilder
+    from .tenant_governance.tenant_governance_request_builder import TenantGovernanceRequestBuilder
 
 class DirectoryRequestBuilder(BaseRequestBuilder):
     """
@@ -231,6 +232,15 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
 
         return SubscriptionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def tenant_governance(self) -> TenantGovernanceRequestBuilder:
+        """
+        Provides operations to manage the tenantGovernance property of the microsoft.graph.directory entity.
+        """
+        from .tenant_governance.tenant_governance_request_builder import TenantGovernanceRequestBuilder
+
+        return TenantGovernanceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DirectoryRequestBuilderGetQueryParameters():

@@ -116,12 +116,24 @@ if TYPE_CHECKING:
     from .authorization_policy import AuthorizationPolicy
     from .available_access_package import AvailableAccessPackage
     from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+    from .b2b_registration_metrics import B2bRegistrationMetrics
     from .b2x_identity_user_flow import B2xIdentityUserFlow
+    from .b2_b_registration_metrics_base import B2BRegistrationMetricsBase
+    from .b2_b_registration_metrics_initial import B2BRegistrationMetricsInitial
+    from .b2_b_registration_metrics_recent import B2BRegistrationMetricsRecent
+    from .b2_b_sign_in_activity_metrics import B2BSignInActivityMetrics
+    from .b2_b_sign_in_activity_metrics_base import B2BSignInActivityMetricsBase
+    from .b2_b_sign_in_activity_metrics_initial import B2BSignInActivityMetricsInitial
+    from .b2_b_sign_in_activity_metrics_recent import B2BSignInActivityMetricsRecent
     from .backup_restore_root import BackupRestoreRoot
     from .base_item import BaseItem
     from .base_item_version import BaseItemVersion
     from .base_map_feature import BaseMapFeature
     from .base_site_page import BaseSitePage
+    from .billing_metrics import BillingMetrics
+    from .billing_metrics_base import BillingMetricsBase
+    from .billing_metrics_initial import BillingMetricsInitial
+    from .billing_metrics_recent import BillingMetricsRecent
     from .bitlocker import Bitlocker
     from .bitlocker_recovery_key import BitlockerRecoveryKey
     from .booking_appointment import BookingAppointment
@@ -415,12 +427,16 @@ if TYPE_CHECKING:
     from .footprint_map import FootprintMap
     from .fraud_protection_provider import FraudProtectionProvider
     from .governance_insight import GovernanceInsight
+    from .governance_invitation import GovernanceInvitation
+    from .governance_relationship import GovernanceRelationship
+    from .governance_request import GovernanceRequest
     from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
     from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
     from .granular_restore_artifact_base import GranularRestoreArtifactBase
     from .granular_site_restore_artifact import GranularSiteRestoreArtifact
     from .group import Group
     from .group_lifecycle_policy import GroupLifecyclePolicy
+    from .group_resource import GroupResource
     from .group_setting import GroupSetting
     from .group_setting_template import GroupSettingTemplate
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -568,6 +584,10 @@ if TYPE_CHECKING:
     from .mobile_contained_app import MobileContainedApp
     from .mobile_lob_app import MobileLobApp
     from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+    from .multi_tenant_application_metrics import MultiTenantApplicationMetrics
+    from .multi_tenant_application_metrics_base import MultiTenantApplicationMetricsBase
+    from .multi_tenant_application_metrics_initial import MultiTenantApplicationMetricsInitial
+    from .multi_tenant_application_metrics_recent import MultiTenantApplicationMetricsRecent
     from .multi_tenant_organization import MultiTenantOrganization
     from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
     from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
@@ -575,6 +595,7 @@ if TYPE_CHECKING:
     from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
     from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
     from .mute_participant_operation import MuteParticipantOperation
+    from .note import Note
     from .notebook import Notebook
     from .notification_message_template import NotificationMessageTemplate
     from .offer_shift_request import OfferShiftRequest
@@ -725,6 +746,8 @@ if TYPE_CHECKING:
     from .recycle_bin_item import RecycleBinItem
     from .reference_attachment import ReferenceAttachment
     from .reflect_check_in_response import ReflectCheckInResponse
+    from .related_tenant import RelatedTenant
+    from .related_tenants_refresh_request import RelatedTenantsRefreshRequest
     from .relying_party_detailed_summary import RelyingPartyDetailedSummary
     from .remote_assistance_partner import RemoteAssistancePartner
     from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
@@ -959,6 +982,9 @@ if TYPE_CHECKING:
     from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
     from .tenant_app_management_policy import TenantAppManagementPolicy
     from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
+    from .tenant_governance import TenantGovernance
+    from .tenant_governance_policy_template import TenantGovernancePolicyTemplate
+    from .tenant_governance_setting import TenantGovernanceSetting
     from .tenant_protection_scope_container import TenantProtectionScopeContainer
     from .terms_and_conditions import TermsAndConditions
     from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
@@ -1636,6 +1662,38 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
 
             return AzureCommunicationServicesUserConversationMember()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2bRegistrationMetrics".casefold():
+            from .b2b_registration_metrics import B2bRegistrationMetrics
+
+            return B2bRegistrationMetrics()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BRegistrationMetricsBase".casefold():
+            from .b2_b_registration_metrics_base import B2BRegistrationMetricsBase
+
+            return B2BRegistrationMetricsBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BRegistrationMetricsInitial".casefold():
+            from .b2_b_registration_metrics_initial import B2BRegistrationMetricsInitial
+
+            return B2BRegistrationMetricsInitial()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BRegistrationMetricsRecent".casefold():
+            from .b2_b_registration_metrics_recent import B2BRegistrationMetricsRecent
+
+            return B2BRegistrationMetricsRecent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetrics".casefold():
+            from .b2_b_sign_in_activity_metrics import B2BSignInActivityMetrics
+
+            return B2BSignInActivityMetrics()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetricsBase".casefold():
+            from .b2_b_sign_in_activity_metrics_base import B2BSignInActivityMetricsBase
+
+            return B2BSignInActivityMetricsBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetricsInitial".casefold():
+            from .b2_b_sign_in_activity_metrics_initial import B2BSignInActivityMetricsInitial
+
+            return B2BSignInActivityMetricsInitial()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetricsRecent".casefold():
+            from .b2_b_sign_in_activity_metrics_recent import B2BSignInActivityMetricsRecent
+
+            return B2BSignInActivityMetricsRecent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2xIdentityUserFlow".casefold():
             from .b2x_identity_user_flow import B2xIdentityUserFlow
 
@@ -1660,6 +1718,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .base_site_page import BaseSitePage
 
             return BaseSitePage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.billingMetrics".casefold():
+            from .billing_metrics import BillingMetrics
+
+            return BillingMetrics()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.billingMetricsBase".casefold():
+            from .billing_metrics_base import BillingMetricsBase
+
+            return BillingMetricsBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.billingMetricsInitial".casefold():
+            from .billing_metrics_initial import BillingMetricsInitial
+
+            return BillingMetricsInitial()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.billingMetricsRecent".casefold():
+            from .billing_metrics_recent import BillingMetricsRecent
+
+            return BillingMetricsRecent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bitlocker".casefold():
             from .bitlocker import Bitlocker
 
@@ -2833,6 +2907,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .governance_insight import GovernanceInsight
 
             return GovernanceInsight()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.governanceInvitation".casefold():
+            from .governance_invitation import GovernanceInvitation
+
+            return GovernanceInvitation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.governanceRelationship".casefold():
+            from .governance_relationship import GovernanceRelationship
+
+            return GovernanceRelationship()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.governanceRequest".casefold():
+            from .governance_request import GovernanceRequest
+
+            return GovernanceRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularDriveRestoreArtifact".casefold():
             from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
 
@@ -2858,6 +2944,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .group_lifecycle_policy import GroupLifecyclePolicy
 
             return GroupLifecyclePolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupResource".casefold():
+            from .group_resource import GroupResource
+
+            return GroupResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupSetting".casefold():
             from .group_setting import GroupSetting
 
@@ -3447,6 +3537,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .mobile_threat_defense_connector import MobileThreatDefenseConnector
 
             return MobileThreatDefenseConnector()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetrics".casefold():
+            from .multi_tenant_application_metrics import MultiTenantApplicationMetrics
+
+            return MultiTenantApplicationMetrics()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetricsBase".casefold():
+            from .multi_tenant_application_metrics_base import MultiTenantApplicationMetricsBase
+
+            return MultiTenantApplicationMetricsBase()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetricsInitial".casefold():
+            from .multi_tenant_application_metrics_initial import MultiTenantApplicationMetricsInitial
+
+            return MultiTenantApplicationMetricsInitial()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetricsRecent".casefold():
+            from .multi_tenant_application_metrics_recent import MultiTenantApplicationMetricsRecent
+
+            return MultiTenantApplicationMetricsRecent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganization".casefold():
             from .multi_tenant_organization import MultiTenantOrganization
 
@@ -3475,6 +3581,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .mute_participant_operation import MuteParticipantOperation
 
             return MuteParticipantOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.note".casefold():
+            from .note import Note
+
+            return Note()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.notebook".casefold():
             from .notebook import Notebook
 
@@ -4078,6 +4188,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .reflect_check_in_response import ReflectCheckInResponse
 
             return ReflectCheckInResponse()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.relatedTenant".casefold():
+            from .related_tenant import RelatedTenant
+
+            return RelatedTenant()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.relatedTenantsRefreshRequest".casefold():
+            from .related_tenants_refresh_request import RelatedTenantsRefreshRequest
+
+            return RelatedTenantsRefreshRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.relyingPartyDetailedSummary".casefold():
             from .relying_party_detailed_summary import RelyingPartyDetailedSummary
 
@@ -5017,6 +5135,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
 
             return TenantDataSecurityAndGovernance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantGovernance".casefold():
+            from .tenant_governance import TenantGovernance
+
+            return TenantGovernance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantGovernancePolicyTemplate".casefold():
+            from .tenant_governance_policy_template import TenantGovernancePolicyTemplate
+
+            return TenantGovernancePolicyTemplate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantGovernanceSetting".casefold():
+            from .tenant_governance_setting import TenantGovernanceSetting
+
+            return TenantGovernanceSetting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantProtectionScopeContainer".casefold():
             from .tenant_protection_scope_container import TenantProtectionScopeContainer
 
@@ -5972,12 +6102,24 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authorization_policy import AuthorizationPolicy
         from .available_access_package import AvailableAccessPackage
         from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+        from .b2b_registration_metrics import B2bRegistrationMetrics
         from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .b2_b_registration_metrics_base import B2BRegistrationMetricsBase
+        from .b2_b_registration_metrics_initial import B2BRegistrationMetricsInitial
+        from .b2_b_registration_metrics_recent import B2BRegistrationMetricsRecent
+        from .b2_b_sign_in_activity_metrics import B2BSignInActivityMetrics
+        from .b2_b_sign_in_activity_metrics_base import B2BSignInActivityMetricsBase
+        from .b2_b_sign_in_activity_metrics_initial import B2BSignInActivityMetricsInitial
+        from .b2_b_sign_in_activity_metrics_recent import B2BSignInActivityMetricsRecent
         from .backup_restore_root import BackupRestoreRoot
         from .base_item import BaseItem
         from .base_item_version import BaseItemVersion
         from .base_map_feature import BaseMapFeature
         from .base_site_page import BaseSitePage
+        from .billing_metrics import BillingMetrics
+        from .billing_metrics_base import BillingMetricsBase
+        from .billing_metrics_initial import BillingMetricsInitial
+        from .billing_metrics_recent import BillingMetricsRecent
         from .bitlocker import Bitlocker
         from .bitlocker_recovery_key import BitlockerRecoveryKey
         from .booking_appointment import BookingAppointment
@@ -6271,12 +6413,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .footprint_map import FootprintMap
         from .fraud_protection_provider import FraudProtectionProvider
         from .governance_insight import GovernanceInsight
+        from .governance_invitation import GovernanceInvitation
+        from .governance_relationship import GovernanceRelationship
+        from .governance_request import GovernanceRequest
         from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .granular_restore_artifact_base import GranularRestoreArtifactBase
         from .granular_site_restore_artifact import GranularSiteRestoreArtifact
         from .group import Group
         from .group_lifecycle_policy import GroupLifecyclePolicy
+        from .group_resource import GroupResource
         from .group_setting import GroupSetting
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -6424,6 +6570,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
         from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .multi_tenant_application_metrics import MultiTenantApplicationMetrics
+        from .multi_tenant_application_metrics_base import MultiTenantApplicationMetricsBase
+        from .multi_tenant_application_metrics_initial import MultiTenantApplicationMetricsInitial
+        from .multi_tenant_application_metrics_recent import MultiTenantApplicationMetricsRecent
         from .multi_tenant_organization import MultiTenantOrganization
         from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
         from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
@@ -6431,6 +6581,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .mute_participant_operation import MuteParticipantOperation
+        from .note import Note
         from .notebook import Notebook
         from .notification_message_template import NotificationMessageTemplate
         from .offer_shift_request import OfferShiftRequest
@@ -6581,6 +6732,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .recycle_bin_item import RecycleBinItem
         from .reference_attachment import ReferenceAttachment
         from .reflect_check_in_response import ReflectCheckInResponse
+        from .related_tenant import RelatedTenant
+        from .related_tenants_refresh_request import RelatedTenantsRefreshRequest
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
@@ -6815,6 +6968,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
         from .tenant_app_management_policy import TenantAppManagementPolicy
         from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
+        from .tenant_governance import TenantGovernance
+        from .tenant_governance_policy_template import TenantGovernancePolicyTemplate
+        from .tenant_governance_setting import TenantGovernanceSetting
         from .tenant_protection_scope_container import TenantProtectionScopeContainer
         from .terms_and_conditions import TermsAndConditions
         from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
@@ -7135,12 +7291,24 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authorization_policy import AuthorizationPolicy
         from .available_access_package import AvailableAccessPackage
         from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+        from .b2b_registration_metrics import B2bRegistrationMetrics
         from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .b2_b_registration_metrics_base import B2BRegistrationMetricsBase
+        from .b2_b_registration_metrics_initial import B2BRegistrationMetricsInitial
+        from .b2_b_registration_metrics_recent import B2BRegistrationMetricsRecent
+        from .b2_b_sign_in_activity_metrics import B2BSignInActivityMetrics
+        from .b2_b_sign_in_activity_metrics_base import B2BSignInActivityMetricsBase
+        from .b2_b_sign_in_activity_metrics_initial import B2BSignInActivityMetricsInitial
+        from .b2_b_sign_in_activity_metrics_recent import B2BSignInActivityMetricsRecent
         from .backup_restore_root import BackupRestoreRoot
         from .base_item import BaseItem
         from .base_item_version import BaseItemVersion
         from .base_map_feature import BaseMapFeature
         from .base_site_page import BaseSitePage
+        from .billing_metrics import BillingMetrics
+        from .billing_metrics_base import BillingMetricsBase
+        from .billing_metrics_initial import BillingMetricsInitial
+        from .billing_metrics_recent import BillingMetricsRecent
         from .bitlocker import Bitlocker
         from .bitlocker_recovery_key import BitlockerRecoveryKey
         from .booking_appointment import BookingAppointment
@@ -7434,12 +7602,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .footprint_map import FootprintMap
         from .fraud_protection_provider import FraudProtectionProvider
         from .governance_insight import GovernanceInsight
+        from .governance_invitation import GovernanceInvitation
+        from .governance_relationship import GovernanceRelationship
+        from .governance_request import GovernanceRequest
         from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
         from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
         from .granular_restore_artifact_base import GranularRestoreArtifactBase
         from .granular_site_restore_artifact import GranularSiteRestoreArtifact
         from .group import Group
         from .group_lifecycle_policy import GroupLifecyclePolicy
+        from .group_resource import GroupResource
         from .group_setting import GroupSetting
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -7587,6 +7759,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
         from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .multi_tenant_application_metrics import MultiTenantApplicationMetrics
+        from .multi_tenant_application_metrics_base import MultiTenantApplicationMetricsBase
+        from .multi_tenant_application_metrics_initial import MultiTenantApplicationMetricsInitial
+        from .multi_tenant_application_metrics_recent import MultiTenantApplicationMetricsRecent
         from .multi_tenant_organization import MultiTenantOrganization
         from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
         from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
@@ -7594,6 +7770,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .mute_participant_operation import MuteParticipantOperation
+        from .note import Note
         from .notebook import Notebook
         from .notification_message_template import NotificationMessageTemplate
         from .offer_shift_request import OfferShiftRequest
@@ -7744,6 +7921,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .recycle_bin_item import RecycleBinItem
         from .reference_attachment import ReferenceAttachment
         from .reflect_check_in_response import ReflectCheckInResponse
+        from .related_tenant import RelatedTenant
+        from .related_tenants_refresh_request import RelatedTenantsRefreshRequest
         from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
@@ -7978,6 +8157,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
         from .tenant_app_management_policy import TenantAppManagementPolicy
         from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
+        from .tenant_governance import TenantGovernance
+        from .tenant_governance_policy_template import TenantGovernancePolicyTemplate
+        from .tenant_governance_setting import TenantGovernanceSetting
         from .tenant_protection_scope_container import TenantProtectionScopeContainer
         from .terms_and_conditions import TermsAndConditions
         from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus

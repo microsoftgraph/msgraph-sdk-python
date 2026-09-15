@@ -30,6 +30,7 @@ if TYPE_CHECKING:
     from .extension_property import ExtensionProperty
     from .federated_token_validation_policy import FederatedTokenValidationPolicy
     from .group import Group
+    from .group_resource import GroupResource
     from .group_setting_template import GroupSettingTemplate
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
     from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
@@ -163,6 +164,10 @@ class DirectoryObject(Entity, Parsable):
             from .group import Group
 
             return Group()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupResource".casefold():
+            from .group_resource import GroupResource
+
+            return GroupResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupSettingTemplate".casefold():
             from .group_setting_template import GroupSettingTemplate
 
@@ -262,6 +267,7 @@ class DirectoryObject(Entity, Parsable):
         from .extension_property import ExtensionProperty
         from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .group import Group
+        from .group_resource import GroupResource
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
@@ -304,6 +310,7 @@ class DirectoryObject(Entity, Parsable):
         from .extension_property import ExtensionProperty
         from .federated_token_validation_policy import FederatedTokenValidationPolicy
         from .group import Group
+        from .group_resource import GroupResource
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy

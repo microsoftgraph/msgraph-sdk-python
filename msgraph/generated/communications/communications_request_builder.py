@@ -61,7 +61,7 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: CloudCommunications, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[CloudCommunications]:
         """
         Update communications
-        param body: Represents a container that exposes navigation properties for cloud communications resources.
+        param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudCommunications]
         """
@@ -95,7 +95,7 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: CloudCommunications, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
         Update communications
-        param body: Represents a container that exposes navigation properties for cloud communications resources.
+        param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

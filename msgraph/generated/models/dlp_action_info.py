@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .dlp_action import DlpAction
+    from .policy_tip_action import PolicyTipAction
     from .restrict_access_action import RestrictAccessAction
     from .restrict_access_action_base import RestrictAccessActionBase
 
@@ -36,6 +37,10 @@ class DlpActionInfo(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyTipAction".casefold():
+            from .policy_tip_action import PolicyTipAction
+
+            return PolicyTipAction()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.restrictAccessAction".casefold():
             from .restrict_access_action import RestrictAccessAction
 
@@ -52,10 +57,12 @@ class DlpActionInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .dlp_action import DlpAction
+        from .policy_tip_action import PolicyTipAction
         from .restrict_access_action import RestrictAccessAction
         from .restrict_access_action_base import RestrictAccessActionBase
 
         from .dlp_action import DlpAction
+        from .policy_tip_action import PolicyTipAction
         from .restrict_access_action import RestrictAccessAction
         from .restrict_access_action_base import RestrictAccessActionBase
 

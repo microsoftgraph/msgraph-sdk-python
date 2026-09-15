@@ -53,7 +53,7 @@ class Application(DirectoryObject, Parsable):
     app_roles: Optional[list[AppRole]] = None
     # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne). Read-only. null if the app wasn't created from an application template.
     application_template_id: Optional[str] = None
-    # The authenticationBehaviors property
+    # The set of breaking change behaviors related to token issuance that are configured for the application. Authentication behaviors are unset by default (null) and must be explicitly enabled or disabled. Nullable. Returned only on $select. Requires $select to retrieve.  For more information about authentication behaviors, see Manage application authenticationBehaviors.
     authentication_behaviors: Optional[AuthenticationBehaviors] = None
     # Specifies the certification status of the application.
     certification: Optional[Certification] = None

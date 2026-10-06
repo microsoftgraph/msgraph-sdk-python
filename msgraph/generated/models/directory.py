@@ -47,7 +47,7 @@ class Directory(Entity, Parsable):
     remote_tenant_groups: Optional[list[RemoteTenantGroup]] = None
     # List of commercial subscriptions that an organization acquired.
     subscriptions: Optional[list[CompanySubscription]] = None
-    # The tenantGovernance property
+    # Container for Microsoft Entra Tenant Governance capabilities.
     tenant_governance: Optional[TenantGovernance] = None
     
     @staticmethod

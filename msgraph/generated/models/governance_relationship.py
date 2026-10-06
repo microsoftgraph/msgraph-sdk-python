@@ -17,15 +17,15 @@ from .entity import Entity
 class GovernanceRelationship(Entity, Parsable):
     # The createdType property
     created_type: Optional[RelationshipCreationType] = None
-    # The creationDateTime property
+    # The date and time when the relationship was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2026 is 2026-01-01T00:00:00Z. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     creation_date_time: Optional[datetime.datetime] = None
-    # The governedTenantId property
+    # The Microsoft Entra tenant ID of the governed tenant. Supports $filter (eq, ne) and $orderBy.
     governed_tenant_id: Optional[str] = None
-    # The governedTenantName property
+    # The display name of the governed tenant. Supports $filter (eq, ne) and $orderBy.
     governed_tenant_name: Optional[str] = None
-    # The governingTenantId property
+    # The Microsoft Entra tenant ID of the governing tenant. Supports $filter (eq, ne) and $orderBy.
     governing_tenant_id: Optional[str] = None
-    # The governingTenantName property
+    # The display name of the governing tenant. Supports $filter (eq, ne) and $orderBy.
     governing_tenant_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

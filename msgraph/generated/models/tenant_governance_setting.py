@@ -11,9 +11,9 @@ from .entity import Entity
 
 @dataclass
 class TenantGovernanceSetting(Entity, Parsable):
-    # The canReceiveInvitations property
+    # Indicates whether the tenant can receive governance invitations. When set to false, the tenant cannot receive new governance invitations. When set to true, other tenants can send your tenant invitations by providing your tenant id or domain name. Default value is false.
     can_receive_invitations: Optional[bool] = None
-    # The isRelatedTenantsEnabled property
+    # Indicates whether the related tenants feature is enabled for tenant discovery. When set to false, related tenant APIs don't work. This property can be enabled by calling the enableRelatedTenants action. Default value is false.
     is_related_tenants_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

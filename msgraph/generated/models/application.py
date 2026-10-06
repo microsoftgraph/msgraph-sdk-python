@@ -49,7 +49,7 @@ class Application(DirectoryObject, Parsable):
     app_id: Optional[str] = None
     # The appManagementPolicy applied to this application.
     app_management_policies: Optional[list[AppManagementPolicy]] = None
-    # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
+    # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable. App roles and exposed delegated permission scopes (api.oauth2PermissionScopes) share a default limit of 700 permission definitions per application. Enabled and disabled definitions both count. This limit is separate from the aggregate 1,200-entry application manifest limit and from app role assignment limits. For counting rules, behavior for existing objects above the limit, and design guidance, see App role limits.
     app_roles: Optional[list[AppRole]] = None
     # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne). Read-only. null if the app wasn't created from an application template.
     application_template_id: Optional[str] = None

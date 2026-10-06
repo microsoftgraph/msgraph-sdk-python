@@ -14,17 +14,17 @@ from .entity import Entity
 
 @dataclass
 class B2BSignInActivityMetricsBase(Entity, Parsable):
-    # The inboundMonthlyTotalApplications property
+    # The total number of applications accessed by inbound users in the last month.
     inbound_monthly_total_applications: Optional[float] = None
-    # The inboundMonthlyTotalUsers property
+    # The total number of unique inbound users with sign-in activity in the last month.
     inbound_monthly_total_users: Optional[float] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The outboundMonthlyTotalApplications property
+    # The total number of applications accessed by outbound users in the last month.
     outbound_monthly_total_applications: Optional[float] = None
-    # The outboundMonthlyTotalUsers property
+    # The total number of unique outbound users with sign-in activity in the last month.
     outbound_monthly_total_users: Optional[float] = None
-    # The watermarkDateTime property
+    # The date and time when the metrics snapshot was taken.
     watermark_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

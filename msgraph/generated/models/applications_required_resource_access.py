@@ -17,9 +17,9 @@ class ApplicationsRequiredResourceAccess(AdditionalDataHolder, BackedModel, Pars
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # The permissions property
+    # The collection of resource permissions required by the application.
     permissions: Optional[list[ApplicationResourcePermission]] = None
-    # The resourceAppId property
+    # The appId (client ID) of the resource that the application needs to access.
     resource_app_id: Optional[str] = None
     
     @staticmethod

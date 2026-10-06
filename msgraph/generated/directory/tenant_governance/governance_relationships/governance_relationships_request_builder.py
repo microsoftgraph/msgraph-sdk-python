@@ -49,9 +49,10 @@ class GovernanceRelationshipsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GovernanceRelationshipsRequestBuilderGetQueryParameters]] = None) -> Optional[GovernanceRelationshipCollectionResponse]:
         """
-        Get governanceRelationships from directory
+        Get a list of the governanceRelationship objects and their properties. This API method returns all governance relationships where the calling tenant is either the governing tenant or the governed tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceRelationshipCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-list-governancerelationships?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class GovernanceRelationshipsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GovernanceRelationshipsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get governanceRelationships from directory
+        Get a list of the governanceRelationship objects and their properties. This API method returns all governance relationships where the calling tenant is either the governing tenant or the governed tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class GovernanceRelationshipsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GovernanceRelationshipsRequestBuilderGetQueryParameters():
         """
-        Get governanceRelationships from directory
+        Get a list of the governanceRelationship objects and their properties. This API method returns all governance relationships where the calling tenant is either the governing tenant or the governed tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

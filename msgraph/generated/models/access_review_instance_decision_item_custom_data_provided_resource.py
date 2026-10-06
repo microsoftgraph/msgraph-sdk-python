@@ -13,11 +13,11 @@ from .access_review_instance_decision_item_resource import AccessReviewInstanceD
 class AccessReviewInstanceDecisionItemCustomDataProvidedResource(AccessReviewInstanceDecisionItemResource, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.accessReviewInstanceDecisionItemCustomDataProvidedResource"
-    # The customData property
+    # Custom data to include with the decision.
     custom_data: Optional[str] = None
-    # The scopeDisplayName property
+    # The name of the scope for the decision.
     scope_display_name: Optional[str] = None
-    # The scopeId property
+    # The identifier of the scope for the decision.
     scope_id: Optional[str] = None
     
     @staticmethod

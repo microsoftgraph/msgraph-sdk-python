@@ -32,7 +32,7 @@ class B2BSignInActivityMetricsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[B2BSignInActivityMetricsRequestBuilderGetQueryParameters]] = None) -> Optional[B2BSignInActivityMetrics]:
         """
-        Get b2BSignInActivityMetrics from directory
+        B2B sign-in activity metrics for this related tenant. Expanded by default.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[B2BSignInActivityMetrics]
         """
@@ -52,7 +52,7 @@ class B2BSignInActivityMetricsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[B2BSignInActivityMetricsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get b2BSignInActivityMetrics from directory
+        B2B sign-in activity metrics for this related tenant. Expanded by default.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class B2BSignInActivityMetricsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class B2BSignInActivityMetricsRequestBuilderGetQueryParameters():
         """
-        Get b2BSignInActivityMetrics from directory
+        B2B sign-in activity metrics for this related tenant. Expanded by default.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

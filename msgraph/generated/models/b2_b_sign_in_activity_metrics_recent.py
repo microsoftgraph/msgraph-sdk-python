@@ -14,7 +14,7 @@ from .b2_b_sign_in_activity_metrics_base import B2BSignInActivityMetricsBase
 class B2BSignInActivityMetricsRecent(B2BSignInActivityMetricsBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.b2BSignInActivityMetricsRecent"
-    # The updateDateTime property
+    # Timestamp that represents the most recent time B2B registration data was aggregated and have sufficiently changed for the related tenant.
     update_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

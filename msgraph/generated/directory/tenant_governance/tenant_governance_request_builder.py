@@ -56,7 +56,7 @@ class TenantGovernanceRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[TenantGovernanceRequestBuilderGetQueryParameters]] = None) -> Optional[TenantGovernance]:
         """
-        Get tenantGovernance from directory
+        Container for Microsoft Entra Tenant Governance capabilities.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantGovernance]
         """
@@ -110,7 +110,7 @@ class TenantGovernanceRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[TenantGovernanceRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get tenantGovernance from directory
+        Container for Microsoft Entra Tenant Governance capabilities.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -208,7 +208,7 @@ class TenantGovernanceRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TenantGovernanceRequestBuilderGetQueryParameters():
         """
-        Get tenantGovernance from directory
+        Container for Microsoft Entra Tenant Governance capabilities.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

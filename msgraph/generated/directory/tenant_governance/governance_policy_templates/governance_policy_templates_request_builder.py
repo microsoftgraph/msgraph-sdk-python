@@ -49,9 +49,10 @@ class GovernancePolicyTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GovernancePolicyTemplatesRequestBuilderGetQueryParameters]] = None) -> Optional[TenantGovernancePolicyTemplateCollectionResponse]:
         """
-        Get governancePolicyTemplates from directory
+        Get a list of the tenantGovernancePolicyTemplate objects and their properties. Policy templates define the configuration that is applied when establishing governance relationships.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantGovernancePolicyTemplateCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-list-governancepolicytemplates?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class GovernancePolicyTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: TenantGovernancePolicyTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[TenantGovernancePolicyTemplate]:
         """
-        Create new navigation property to governancePolicyTemplates for directory
+        Create a new tenantGovernancePolicyTemplate that defines the configuration for establishing governance relationships, including role assignments and applications to provision.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantGovernancePolicyTemplate]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-post-governancepolicytemplates?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class GovernancePolicyTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GovernancePolicyTemplatesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get governancePolicyTemplates from directory
+        Get a list of the tenantGovernancePolicyTemplate objects and their properties. Policy templates define the configuration that is applied when establishing governance relationships.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class GovernancePolicyTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: TenantGovernancePolicyTemplate, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to governancePolicyTemplates for directory
+        Create a new tenantGovernancePolicyTemplate that defines the configuration for establishing governance relationships, including role assignments and applications to provision.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +140,7 @@ class GovernancePolicyTemplatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GovernancePolicyTemplatesRequestBuilderGetQueryParameters():
         """
-        Get governancePolicyTemplates from directory
+        Get a list of the tenantGovernancePolicyTemplate objects and their properties. Policy templates define the configuration that is applied when establishing governance relationships.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

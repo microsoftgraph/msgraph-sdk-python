@@ -49,9 +49,10 @@ class GovernanceRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GovernanceRequestsRequestBuilderGetQueryParameters]] = None) -> Optional[GovernanceRequestCollectionResponse]:
         """
-        Get governanceRequests from directory
+        Get a list of the governanceRequest objects and their properties. This API method returns all governance requests where the calling tenant is either the governing tenant or the governed tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceRequestCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-list-governancerequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class GovernanceRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: GovernanceRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GovernanceRequest]:
         """
-        Create new navigation property to governanceRequests for directory
+        Create a new governanceRequest to establish a governance relationship with a governed tenant. The governed tenant can then accept or reject the request.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceRequest]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-post-governancerequests?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class GovernanceRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GovernanceRequestsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get governanceRequests from directory
+        Get a list of the governanceRequest objects and their properties. This API method returns all governance requests where the calling tenant is either the governing tenant or the governed tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class GovernanceRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: GovernanceRequest, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to governanceRequests for directory
+        Create a new governanceRequest to establish a governance relationship with a governed tenant. The governed tenant can then accept or reject the request.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +140,7 @@ class GovernanceRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GovernanceRequestsRequestBuilderGetQueryParameters():
         """
-        Get governanceRequests from directory
+        Get a list of the governanceRequest objects and their properties. This API method returns all governance requests where the calling tenant is either the governing tenant or the governed tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

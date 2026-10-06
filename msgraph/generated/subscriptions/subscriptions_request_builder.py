@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from ..models.subscription import Subscription
     from ..models.subscription_collection_response import SubscriptionCollectionResponse
+    from .get_vapid_public_key.get_vapid_public_key_request_builder import GetVapidPublicKeyRequestBuilder
     from .item.subscription_item_request_builder import SubscriptionItemRequestBuilder
 
 class SubscriptionsRequestBuilder(BaseRequestBuilder):
@@ -126,6 +127,15 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return SubscriptionsRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def get_vapid_public_key(self) -> GetVapidPublicKeyRequestBuilder:
+        """
+        Provides operations to call the getVapidPublicKey method.
+        """
+        from .get_vapid_public_key.get_vapid_public_key_request_builder import GetVapidPublicKeyRequestBuilder
+
+        return GetVapidPublicKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SubscriptionsRequestBuilderGetQueryParameters():

@@ -12,17 +12,17 @@ from .entity import Entity
 
 @dataclass
 class GovernanceInvitation(Entity, Parsable):
-    # The createdDateTime property
+    # The date and time when the invitation was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     created_date_time: Optional[datetime.datetime] = None
-    # The expirationDateTime property
+    # The date and time when the invitation expires. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     expiration_date_time: Optional[datetime.datetime] = None
-    # The governedTenantId property
+    # The Microsoft Entra tenant ID of the governed tenant. Supports $filter (eq, ne) and $orderBy.
     governed_tenant_id: Optional[str] = None
-    # The governedTenantName property
+    # The display name of the governed tenant. Supports $filter (eq, ne) and $orderBy.
     governed_tenant_name: Optional[str] = None
-    # The governingTenantId property
+    # The Microsoft Entra tenant ID of the governing tenant. Supports $filter (eq, ne) and $orderBy.
     governing_tenant_id: Optional[str] = None
-    # The governingTenantName property
+    # The display name of the governing tenant. Supports $filter (eq, ne) and $orderBy.
     governing_tenant_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

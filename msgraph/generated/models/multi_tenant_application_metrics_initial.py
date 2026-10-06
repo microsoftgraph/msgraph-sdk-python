@@ -12,7 +12,7 @@ from .multi_tenant_application_metrics_base import MultiTenantApplicationMetrics
 
 @dataclass
 class MultiTenantApplicationMetricsInitial(MultiTenantApplicationMetricsBase, Parsable):
-    # The createdDateTime property
+    # Timestamp that represents when multitenant application metrics are initially aggregated for the related tenant.
     created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None

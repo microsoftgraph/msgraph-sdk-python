@@ -35,7 +35,7 @@ class AccessReviewInstanceDecisionItem(Entity, Parsable):
     justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The permission property
+    # The permission that grants the principal access to a resource. Read-only.
     permission: Optional[AccessReviewInstanceDecisionItemPermission] = None
     # Every decision item in an access review represents a principal's access to a resource. This property represents details of the principal. For example, if a decision item represents access of User 'Bob' to Group 'Sales' - The principal is 'Bob' and the resource is 'Sales'. Principals can be of two types - userIdentity and servicePrincipalIdentity. Supports $select. Read-only.
     principal: Optional[Identity] = None

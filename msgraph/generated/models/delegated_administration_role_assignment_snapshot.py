@@ -15,13 +15,13 @@ class DelegatedAdministrationRoleAssignmentSnapshot(AdditionalDataHolder, Backed
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The groupDisplayName property
+    # The display name of the security group identified by groupId at the time the snapshot was created. Read-only.
     group_display_name: Optional[str] = None
-    # The groupId property
+    # The object ID of the role-assignable security group in the governing tenant that will be assigned the specified roles.
     group_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The roleTemplates property
+    # The collection of role templates that define the Microsoft Entra roles to be assigned.
     role_templates: Optional[list[RoleTemplate]] = None
     
     @staticmethod

@@ -31,9 +31,10 @@ class EnableRelatedTenantsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Invoke action enableRelatedTenants
+        Enable the related tenants feature for tenant discovery. After calling this action, the isRelatedTenantsEnabled property of tenantGovernanceSetting is set to true, which allows the use of related tenant APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-tenantgovernancesetting-enablerelatedtenants?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -49,7 +50,7 @@ class EnableRelatedTenantsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action enableRelatedTenants
+        Enable the related tenants feature for tenant discovery. After calling this action, the isRelatedTenantsEnabled property of tenantGovernanceSetting is set to true, which allows the use of related tenant APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

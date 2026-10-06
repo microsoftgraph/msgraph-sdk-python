@@ -32,9 +32,10 @@ class GovernanceInvitationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property governanceInvitations for directory
+        Delete a governanceInvitation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-governanceinvitation-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,9 +51,10 @@ class GovernanceInvitationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GovernanceInvitationItemRequestBuilderGetQueryParameters]] = None) -> Optional[GovernanceInvitation]:
         """
-        Get governanceInvitations from directory
+        Read the properties of a governanceInvitation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceInvitation]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-governanceinvitation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,7 +95,7 @@ class GovernanceInvitationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property governanceInvitations for directory
+        Delete a governanceInvitation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +106,7 @@ class GovernanceInvitationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GovernanceInvitationItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get governanceInvitations from directory
+        Read the properties of a governanceInvitation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +150,7 @@ class GovernanceInvitationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GovernanceInvitationItemRequestBuilderGetQueryParameters():
         """
-        Get governanceInvitations from directory
+        Read the properties of a governanceInvitation object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

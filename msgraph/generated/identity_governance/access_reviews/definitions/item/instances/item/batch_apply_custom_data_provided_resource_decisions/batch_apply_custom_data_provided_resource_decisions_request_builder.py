@@ -32,10 +32,11 @@ class BatchApplyCustomDataProvidedResourceDecisionsRequestBuilder(BaseRequestBui
     
     async def post(self,body: BatchApplyCustomDataProvidedResourceDecisionsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Invoke action batchApplyCustomDataProvidedResourceDecisions
+        Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified access reviews surface and is available only through the /identityGovernance/accessReviews/unified route. For more information, see unifiedRoot.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstance-batchapplycustomdataprovidedresourcedecisions?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -53,7 +54,7 @@ class BatchApplyCustomDataProvidedResourceDecisionsRequestBuilder(BaseRequestBui
     
     def to_post_request_information(self,body: BatchApplyCustomDataProvidedResourceDecisionsPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action batchApplyCustomDataProvidedResourceDecisions
+        Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified access reviews surface and is available only through the /identityGovernance/accessReviews/unified route. For more information, see unifiedRoot.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

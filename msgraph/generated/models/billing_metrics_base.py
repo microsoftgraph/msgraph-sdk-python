@@ -14,23 +14,23 @@ from .entity import Entity
 
 @dataclass
 class BillingMetricsBase(Entity, Parsable):
-    # The foreignAssociatedTenantBillingManagementActiveCount property
+    # The number of foreign associated tenants with active billing management.
     foreign_associated_tenant_billing_management_active_count: Optional[float] = None
-    # The foreignAssociatedTenantCount property
+    # The total number of foreign associated tenants.
     foreign_associated_tenant_count: Optional[float] = None
-    # The foreignAssociatedTenantProvisioningActiveCount property
+    # The number of foreign associated tenants with active provisioning.
     foreign_associated_tenant_provisioning_active_count: Optional[float] = None
-    # The localAssociatedTenantBillingManagementActiveCount property
+    # The number of local associated tenants with active billing management.
     local_associated_tenant_billing_management_active_count: Optional[float] = None
-    # The localAssociatedTenantCount property
+    # The total number of local associated tenants.
     local_associated_tenant_count: Optional[float] = None
-    # The localAssociatedTenantIds property
+    # The list of local associated tenant IDs.
     local_associated_tenant_ids: Optional[list[str]] = None
-    # The localAssociatedTenantProvisioningActiveCount property
+    # The number of local associated tenants with active provisioning.
     local_associated_tenant_provisioning_active_count: Optional[float] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The watermarkDateTime property
+    # The date and time when the metrics snapshot was taken.
     watermark_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

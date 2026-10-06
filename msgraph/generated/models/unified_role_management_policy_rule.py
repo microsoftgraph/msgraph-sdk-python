@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
     from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+    from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
     from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
     from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
     from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
@@ -44,6 +45,10 @@ class UnifiedRoleManagementPolicyRule(Entity, Parsable):
             from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
 
             return UnifiedRoleManagementPolicyAuthenticationContextRule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyCustomExtensionRule".casefold():
+            from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
+
+            return UnifiedRoleManagementPolicyCustomExtensionRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule".casefold():
             from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
 
@@ -66,6 +71,7 @@ class UnifiedRoleManagementPolicyRule(Entity, Parsable):
         from .entity import Entity
         from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
         from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
         from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
         from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
         from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
@@ -74,6 +80,7 @@ class UnifiedRoleManagementPolicyRule(Entity, Parsable):
         from .entity import Entity
         from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
         from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
         from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
         from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
         from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule

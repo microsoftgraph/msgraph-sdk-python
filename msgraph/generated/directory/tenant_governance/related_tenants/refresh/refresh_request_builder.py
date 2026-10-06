@@ -31,9 +31,10 @@ class RefreshRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Invoke action refresh
+        Refresh the list of related tenants. The list is also automatically refreshed daily.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-relatedtenant-refresh?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -49,7 +50,7 @@ class RefreshRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action refresh
+        Refresh the list of related tenants. The list is also automatically refreshed daily.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

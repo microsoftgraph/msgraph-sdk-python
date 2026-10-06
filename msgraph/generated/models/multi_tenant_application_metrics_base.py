@@ -14,13 +14,13 @@ from .entity import Entity
 
 @dataclass
 class MultiTenantApplicationMetricsBase(Entity, Parsable):
-    # The inboundMonthlyTotalApplications property
+    # The total number of inbound multi-tenant applications in the last month.
     inbound_monthly_total_applications: Optional[float] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The outboundMonthlyTotalApplications property
+    # The total number of outbound multi-tenant applications in the last month.
     outbound_monthly_total_applications: Optional[float] = None
-    # The watermarkDateTime property
+    # The date and time when the metrics snapshot was taken.
     watermark_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

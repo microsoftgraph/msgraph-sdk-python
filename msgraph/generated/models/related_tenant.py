@@ -16,19 +16,19 @@ from .entity import Entity
 
 @dataclass
 class RelatedTenant(Entity, Parsable):
-    # The appB2BSignInActivityMetrics property
+    # B2B sign-in activity metrics for this related tenant. Expanded by default.
     app_b2_b_sign_in_activity_metrics: Optional[B2BSignInActivityMetrics] = None
-    # The b2BRegistrationMetrics property
+    # B2B registration metrics for this related tenant. Expanded by default.
     b2_b_registration_metrics: Optional[B2bRegistrationMetrics] = None
-    # The b2BSignInActivityMetrics property
+    # B2B sign-in activity metrics for this related tenant. Expanded by default.
     b2_b_sign_in_activity_metrics: Optional[B2BSignInActivityMetrics] = None
-    # The billingMetrics property
+    # Billing metrics for this related tenant. Expanded by default.
     billing_metrics: Optional[BillingMetrics] = None
-    # The createdDateTime property
+    # The date and time when the related tenant was discovered. The timestamp type represents date and time information using ISO 8601 format and is always in UTC.
     created_date_time: Optional[datetime.datetime] = None
-    # Indicates whether this tenant is a Microsoft infrastructure tenant.
+    # Indicates whether the related tenant is a Microsoft infrastructure tenant. Read-only.
     is_microsoft_infrastructure: Optional[bool] = None
-    # The multiTenantApplicationMetrics property
+    # Multi-tenant application usage metrics for this related tenant. Expanded by default.
     multi_tenant_application_metrics: Optional[MultiTenantApplicationMetrics] = None
     # The OdataType property
     odata_type: Optional[str] = None

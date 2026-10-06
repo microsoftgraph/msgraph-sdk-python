@@ -55,9 +55,10 @@ class RelatedTenantItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RelatedTenantItemRequestBuilderGetQueryParameters]] = None) -> Optional[RelatedTenant]:
         """
-        Get relatedTenants from directory
+        Read the properties and relationships of a relatedTenant object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RelatedTenant]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-relatedtenant-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -109,7 +110,7 @@ class RelatedTenantItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RelatedTenantItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get relatedTenants from directory
+        Read the properties and relationships of a relatedTenant object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -198,7 +199,7 @@ class RelatedTenantItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RelatedTenantItemRequestBuilderGetQueryParameters():
         """
-        Get relatedTenants from directory
+        Read the properties and relationships of a relatedTenant object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

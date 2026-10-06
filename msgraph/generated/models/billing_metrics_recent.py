@@ -14,7 +14,7 @@ from .billing_metrics_base import BillingMetricsBase
 class BillingMetricsRecent(BillingMetricsBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The updateDateTime property
+    # Timestamp that represents when billing metrics are aggregated and have sufficiently changed for the related tenant.
     update_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

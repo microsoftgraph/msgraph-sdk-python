@@ -14,7 +14,7 @@ from .b2_b_sign_in_activity_metrics_base import B2BSignInActivityMetricsBase
 class B2BSignInActivityMetricsInitial(B2BSignInActivityMetricsBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.b2BSignInActivityMetricsInitial"
-    # The createdDateTime property
+    # Timestamp that represents when the time B2B sign-in activity content was initially aggregated for the related tenant.
     created_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

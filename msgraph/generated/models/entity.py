@@ -769,6 +769,7 @@ if TYPE_CHECKING:
     from .risk_detection import RiskDetection
     from .role_assignment import RoleAssignment
     from .role_definition import RoleDefinition
+    from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
     from .room import Room
     from .room_list import RoomList
     from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
@@ -1025,6 +1026,7 @@ if TYPE_CHECKING:
     from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
     from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
     from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+    from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
     from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
     from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
     from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
@@ -4280,6 +4282,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .role_definition import RoleDefinition
 
             return RoleDefinition()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.roleManagementCustomCalloutExtension".casefold():
+            from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
+
+            return RoleManagementCustomCalloutExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.room".casefold():
             from .room import Room
 
@@ -5308,6 +5314,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
 
             return UnifiedRoleManagementPolicyAuthenticationContextRule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyCustomExtensionRule".casefold():
+            from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
+
+            return UnifiedRoleManagementPolicyCustomExtensionRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule".casefold():
             from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
 
@@ -6755,6 +6765,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .risk_detection import RiskDetection
         from .role_assignment import RoleAssignment
         from .role_definition import RoleDefinition
+        from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
         from .room import Room
         from .room_list import RoomList
         from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
@@ -7011,6 +7022,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
         from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
         from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
         from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
         from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
         from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
@@ -7944,6 +7956,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .risk_detection import RiskDetection
         from .role_assignment import RoleAssignment
         from .role_definition import RoleDefinition
+        from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
         from .room import Room
         from .room_list import RoomList
         from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
@@ -8200,6 +8213,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
         from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
         from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_custom_extension_rule import UnifiedRoleManagementPolicyCustomExtensionRule
         from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
         from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
         from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule

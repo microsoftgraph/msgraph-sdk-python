@@ -50,9 +50,10 @@ class GovernanceRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GovernanceRelationshipItemRequestBuilderGetQueryParameters]] = None) -> Optional[GovernanceRelationship]:
         """
-        Get governanceRelationships from directory
+        Read the properties of a governanceRelationship object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceRelationship]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-governancerelationship-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +71,11 @@ class GovernanceRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: GovernanceRelationship, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GovernanceRelationship]:
         """
-        Update the navigation property governanceRelationships in directory
+        Update the status property of a governanceRelationship to initiate the termination process. There are two models for termination:1) Initiated by the governing tenant: After the governing tenant updates the status to terminationRequestedByGoverningTenant, the governed tenant may subsequently update the status to terminated.1) Directly terminated by the governed tenant: The governed tenant updates the status to terminated to immediately terminate the relationship. When the governed tenant updates the status to terminated in either model, the resources that were provisioned in the governed tenant upon relationship creation are deleted.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceRelationship]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-governancerelationship-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -104,7 +106,7 @@ class GovernanceRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GovernanceRelationshipItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get governanceRelationships from directory
+        Read the properties of a governanceRelationship object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +117,7 @@ class GovernanceRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: GovernanceRelationship, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property governanceRelationships in directory
+        Update the status property of a governanceRelationship to initiate the termination process. There are two models for termination:1) Initiated by the governing tenant: After the governing tenant updates the status to terminationRequestedByGoverningTenant, the governed tenant may subsequently update the status to terminated.1) Directly terminated by the governed tenant: The governed tenant updates the status to terminated to immediately terminate the relationship. When the governed tenant updates the status to terminated in either model, the resources that were provisioned in the governed tenant upon relationship creation are deleted.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +150,7 @@ class GovernanceRelationshipItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GovernanceRelationshipItemRequestBuilderGetQueryParameters():
         """
-        Get governanceRelationships from directory
+        Read the properties of a governanceRelationship object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

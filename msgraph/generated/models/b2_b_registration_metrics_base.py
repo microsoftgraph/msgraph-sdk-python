@@ -14,13 +14,13 @@ from .entity import Entity
 
 @dataclass
 class B2BRegistrationMetricsBase(Entity, Parsable):
-    # The inboundTotalUsers property
+    # The total number of inbound B2B guest users registered.
     inbound_total_users: Optional[float] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The outboundTotalUsers property
+    # The total number of outbound B2B users from this tenant registered in other tenants.
     outbound_total_users: Optional[float] = None
-    # The watermarkDateTime property
+    # The date and time when the metrics snapshot was taken.
     watermark_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

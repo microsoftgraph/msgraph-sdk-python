@@ -49,9 +49,10 @@ class GovernanceInvitationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GovernanceInvitationsRequestBuilderGetQueryParameters]] = None) -> Optional[GovernanceInvitationCollectionResponse]:
         """
-        Get governanceInvitations from directory
+        Get a list of the governanceInvitation objects and their properties. This API method returns all governance invitations where the calling tenant is either the governing tenant or the governed tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceInvitationCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-list-governanceinvitations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class GovernanceInvitationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: GovernanceInvitation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[GovernanceInvitation]:
         """
-        Create new navigation property to governanceInvitations for directory
+        Create a new governanceInvitation to establish a governance relationship with a governed tenant. Invitations provide an alternative mechanism to governance requests for initiating relationships.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GovernanceInvitation]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-post-governanceinvitations?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class GovernanceInvitationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GovernanceInvitationsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get governanceInvitations from directory
+        Get a list of the governanceInvitation objects and their properties. This API method returns all governance invitations where the calling tenant is either the governing tenant or the governed tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class GovernanceInvitationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: GovernanceInvitation, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to governanceInvitations for directory
+        Create a new governanceInvitation to establish a governance relationship with a governed tenant. Invitations provide an alternative mechanism to governance requests for initiating relationships.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +140,7 @@ class GovernanceInvitationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GovernanceInvitationsRequestBuilderGetQueryParameters():
         """
-        Get governanceInvitations from directory
+        Get a list of the governanceInvitation objects and their properties. This API method returns all governance invitations where the calling tenant is either the governing tenant or the governed tenant.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

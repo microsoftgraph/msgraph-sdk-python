@@ -15,23 +15,23 @@ from .entity import Entity
 
 @dataclass
 class GovernanceRequest(Entity, Parsable):
-    # The expirationDateTime property
+    # The date and time when the request expires if not accepted or rejected. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     expiration_date_time: Optional[datetime.datetime] = None
-    # The governancePolicyTemplate property
+    # The governance policy template associated with this request.
     governance_policy_template: Optional[TenantGovernancePolicyTemplate] = None
-    # The governedTenantId property
+    # The Microsoft Entra tenant ID of the governed tenant. Supports $filter (eq, ne) and $orderBy.
     governed_tenant_id: Optional[str] = None
-    # The governedTenantName property
+    # The display name of the governed tenant. Supports $filter (eq, ne) and $orderBy.
     governed_tenant_name: Optional[str] = None
-    # The governingTenantId property
+    # The Microsoft Entra tenant ID of the governing tenant. Supports $filter (eq, ne) and $orderBy.
     governing_tenant_id: Optional[str] = None
-    # The governingTenantName property
+    # The display name of the governing tenant. Supports $filter (eq, ne) and $orderBy.
     governing_tenant_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The policySnapshot property
     policy_snapshot: Optional[RelationshipPolicy] = None
-    # The requestDateTime property
+    # The date and time when the request was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     request_date_time: Optional[datetime.datetime] = None
     # The status property
     status: Optional[RequestStatus] = None

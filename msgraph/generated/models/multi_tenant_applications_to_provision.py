@@ -15,15 +15,15 @@ class MultiTenantApplicationsToProvision(AdditionalDataHolder, BackedModel, Pars
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The appId property
+    # The appId (client ID) of the multi-tenant application.
     app_id: Optional[str] = None
-    # The displayName property
+    # The display name of the application.
     display_name: Optional[str] = None
-    # The objectId property
+    # The object ID of the service principal in the governing tenant.
     object_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The requiredResourceAccesses property
+    # The collection of resource accesses (permissions) required by the application.
     required_resource_accesses: Optional[list[ApplicationsRequiredResourceAccess]] = None
     
     @staticmethod

@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class RelatedTenantsRefreshRequest(Entity, Parsable):
-    # The location property
+    # The location URL where the status of the refresh request can be retrieved.
     location: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

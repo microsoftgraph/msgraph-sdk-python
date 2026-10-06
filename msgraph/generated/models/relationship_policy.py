@@ -16,17 +16,17 @@ class RelationshipPolicy(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The delegatedAdministrationRoleAssignments property
+    # A snapshot of the delegated administration role assignments configured in this policy.
     delegated_administration_role_assignments: Optional[list[DelegatedAdministrationRoleAssignmentSnapshot]] = None
-    # The governedTenantCanTerminate property
+    # Indicates whether the governed tenant can terminate the relationship.
     governed_tenant_can_terminate: Optional[bool] = None
-    # The multiTenantApplicationsToProvision property
+    # A snapshot of the multi-tenant applications to be provisioned in the governed tenant.
     multi_tenant_applications_to_provision: Optional[list[MultiTenantApplicationsToProvisionSnapshot]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The policyId property
+    # The identifier of the source policy template from which this snapshot was created.
     policy_id: Optional[str] = None
-    # The version property
+    # The version of the source policy template from which this snapshot was created.
     version: Optional[int] = None
     
     @staticmethod

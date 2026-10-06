@@ -32,7 +32,7 @@ class B2BRegistrationMetricsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[B2BRegistrationMetricsRequestBuilderGetQueryParameters]] = None) -> Optional[B2bRegistrationMetrics]:
         """
-        Get b2BRegistrationMetrics from directory
+        B2B registration metrics for this related tenant. Expanded by default.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[B2bRegistrationMetrics]
         """
@@ -52,7 +52,7 @@ class B2BRegistrationMetricsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[B2BRegistrationMetricsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get b2BRegistrationMetrics from directory
+        B2B registration metrics for this related tenant. Expanded by default.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class B2BRegistrationMetricsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class B2BRegistrationMetricsRequestBuilderGetQueryParameters():
         """
-        Get b2BRegistrationMetrics from directory
+        B2B registration metrics for this related tenant. Expanded by default.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

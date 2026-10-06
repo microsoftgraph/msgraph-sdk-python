@@ -18,11 +18,11 @@ class DelegatedAdministrationRoleAssignment(AdditionalDataHolder, BackedModel, P
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The group property
     group: Optional[Group] = None
-    # The groupDisplayName property
+    # The display name of the security group referenced by the group navigation property. Server-populated and read-only; returns null if the referenced group has been deleted.
     group_display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The roleTemplates property
+    # A collection of role templates that define the roles to be assigned to the group in the governed tenant.
     role_templates: Optional[list[RoleTemplate]] = None
     
     @staticmethod

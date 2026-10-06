@@ -17,19 +17,19 @@ from .entity import Entity
 
 @dataclass
 class TenantGovernance(Entity, Parsable):
-    # The governanceInvitations property
+    # Collection of governance invitations associated with the tenant.
     governance_invitations: Optional[list[GovernanceInvitation]] = None
-    # The governancePolicyTemplates property
+    # Collection of governance policy templates associated with the tenant.
     governance_policy_templates: Optional[list[TenantGovernancePolicyTemplate]] = None
-    # The governanceRelationships property
+    # Collection of governance relationships associated with the tenant.
     governance_relationships: Optional[list[GovernanceRelationship]] = None
-    # The governanceRequests property
+    # Collection of governance requests associated with the tenant.
     governance_requests: Optional[list[GovernanceRequest]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The relatedTenants property
+    # Collection of related tenants associated with the tenant.
     related_tenants: Optional[list[RelatedTenant]] = None
-    # The settings property
+    # Settings for the tenant governance container.
     settings: Optional[TenantGovernanceSetting] = None
     
     @staticmethod

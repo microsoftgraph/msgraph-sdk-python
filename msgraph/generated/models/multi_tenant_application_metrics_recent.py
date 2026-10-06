@@ -14,7 +14,7 @@ from .multi_tenant_application_metrics_base import MultiTenantApplicationMetrics
 class MultiTenantApplicationMetricsRecent(MultiTenantApplicationMetricsBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The updateDateTime property
+    # Timestamp that represents when multitenant application metrics are aggregated and have sufficiently changed for the related tenant.
     update_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

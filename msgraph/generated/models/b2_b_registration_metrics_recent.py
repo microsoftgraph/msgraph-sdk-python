@@ -14,7 +14,7 @@ from .b2_b_registration_metrics_base import B2BRegistrationMetricsBase
 class B2BRegistrationMetricsRecent(B2BRegistrationMetricsBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.b2BRegistrationMetricsRecent"
-    # The updateDateTime property
+    # Timestamp that represents the most recent time B2B registration data was aggregated and have sufficiently changed for the related tenant.
     update_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

@@ -32,7 +32,7 @@ class GovernancePolicyTemplateRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[GovernancePolicyTemplateRequestBuilderGetQueryParameters]] = None) -> Optional[TenantGovernancePolicyTemplate]:
         """
-        Get governancePolicyTemplate from directory
+        The governance policy template associated with this request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantGovernancePolicyTemplate]
         """
@@ -52,7 +52,7 @@ class GovernancePolicyTemplateRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[GovernancePolicyTemplateRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get governancePolicyTemplate from directory
+        The governance policy template associated with this request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class GovernancePolicyTemplateRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GovernancePolicyTemplateRequestBuilderGetQueryParameters():
         """
-        Get governancePolicyTemplate from directory
+        The governance policy template associated with this request.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -14,7 +14,7 @@ from .b2_b_registration_metrics_base import B2BRegistrationMetricsBase
 class B2BRegistrationMetricsInitial(B2BRegistrationMetricsBase, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.b2BRegistrationMetricsInitial"
-    # The createdDateTime property
+    # Timestamp that represents the date time that B2B registration data was initially aggregated.
     created_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

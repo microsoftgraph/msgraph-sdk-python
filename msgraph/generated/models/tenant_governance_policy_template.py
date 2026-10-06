@@ -14,23 +14,23 @@ from .entity import Entity
 
 @dataclass
 class TenantGovernancePolicyTemplate(Entity, Parsable):
-    # The createdDateTime property
+    # The date and time when the template was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     created_date_time: Optional[datetime.datetime] = None
-    # The delegatedAdministrationRoleAssignments property
+    # A collection of delegated administration role assignments to be applied in the governed tenant when the governance relationship is established.
     delegated_administration_role_assignments: Optional[list[DelegatedAdministrationRoleAssignment]] = None
-    # The description property
+    # A description of the policy template. Supports $filter (eq, ne) and $orderBy.
     description: Optional[str] = None
-    # The displayName property
+    # The display name of the policy template. Supports $filter (eq, ne) and $orderBy.
     display_name: Optional[str] = None
-    # The governedTenantCanTerminate property
+    # Not implemented.
     governed_tenant_can_terminate: Optional[bool] = None
-    # The lastModifiedDateTime property
+    # The date and time when the template was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     last_modified_date_time: Optional[datetime.datetime] = None
-    # The multiTenantApplicationsToProvision property
+    # A collection of multi-tenant applications to be provisioned in the governed tenant when the governance relationship is established.
     multi_tenant_applications_to_provision: Optional[list[MultiTenantApplicationsToProvision]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The version property
+    # The version of the policy template. Version count increased by 1 when updated. Supports $filter (lt, le, gt, ge, eq, ne) and $orderBy.
     version: Optional[str] = None
     
     @staticmethod

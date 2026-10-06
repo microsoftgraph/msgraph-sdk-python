@@ -12,7 +12,7 @@ from .billing_metrics_base import BillingMetricsBase
 
 @dataclass
 class BillingMetricsInitial(BillingMetricsBase, Parsable):
-    # The createdDateTime property
+    # Timestamp that represents when billing metrics are initially aggregated for the related tenant.
     created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None

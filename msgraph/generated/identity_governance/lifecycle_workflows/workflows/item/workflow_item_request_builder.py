@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from .execution_scope.execution_scope_request_builder import ExecutionScopeRequestBuilder
     from .last_modified_by.last_modified_by_request_builder import LastModifiedByRequestBuilder
     from .microsoft_graph_identity_governance_activate.microsoft_graph_identity_governance_activate_request_builder import MicrosoftGraphIdentityGovernanceActivateRequestBuilder
+    from .microsoft_graph_identity_governance_activate_and_wait.microsoft_graph_identity_governance_activate_and_wait_request_builder import MicrosoftGraphIdentityGovernanceActivateAndWaitRequestBuilder
     from .microsoft_graph_identity_governance_activate_with_scope.microsoft_graph_identity_governance_activate_with_scope_request_builder import MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder
     from .microsoft_graph_identity_governance_cancel_processing.microsoft_graph_identity_governance_cancel_processing_request_builder import MicrosoftGraphIdentityGovernanceCancelProcessingRequestBuilder
     from .microsoft_graph_identity_governance_clear_quarantine.microsoft_graph_identity_governance_clear_quarantine_request_builder import MicrosoftGraphIdentityGovernanceClearQuarantineRequestBuilder
@@ -30,6 +31,7 @@ if TYPE_CHECKING:
     from .microsoft_graph_identity_governance_restore.microsoft_graph_identity_governance_restore_request_builder import MicrosoftGraphIdentityGovernanceRestoreRequestBuilder
     from .preview_scope.preview_scope_request_builder import PreviewScopeRequestBuilder
     from .runs.runs_request_builder import RunsRequestBuilder
+    from .subject_processing_results.subject_processing_results_request_builder import SubjectProcessingResultsRequestBuilder
     from .tasks.tasks_request_builder import TasksRequestBuilder
     from .task_reports.task_reports_request_builder import TaskReportsRequestBuilder
     from .user_processing_results.user_processing_results_request_builder import UserProcessingResultsRequestBuilder
@@ -205,6 +207,15 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
         return MicrosoftGraphIdentityGovernanceActivateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_identity_governance_activate_and_wait(self) -> MicrosoftGraphIdentityGovernanceActivateAndWaitRequestBuilder:
+        """
+        Provides operations to call the activateAndWait method.
+        """
+        from .microsoft_graph_identity_governance_activate_and_wait.microsoft_graph_identity_governance_activate_and_wait_request_builder import MicrosoftGraphIdentityGovernanceActivateAndWaitRequestBuilder
+
+        return MicrosoftGraphIdentityGovernanceActivateAndWaitRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def microsoft_graph_identity_governance_activate_with_scope(self) -> MicrosoftGraphIdentityGovernanceActivateWithScopeRequestBuilder:
         """
         Provides operations to call the activateWithScope method.
@@ -284,6 +295,15 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
         from .runs.runs_request_builder import RunsRequestBuilder
 
         return RunsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def subject_processing_results(self) -> SubjectProcessingResultsRequestBuilder:
+        """
+        Provides operations to manage the subjectProcessingResults property of the microsoft.graph.identityGovernance.workflow entity.
+        """
+        from .subject_processing_results.subject_processing_results_request_builder import SubjectProcessingResultsRequestBuilder
+
+        return SubjectProcessingResultsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def task_reports(self) -> TaskReportsRequestBuilder:

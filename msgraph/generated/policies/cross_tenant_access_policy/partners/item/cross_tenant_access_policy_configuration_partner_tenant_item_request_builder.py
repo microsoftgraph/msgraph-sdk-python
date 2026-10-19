@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .....models.cross_tenant_access_policy_configuration_partner import CrossTenantAccessPolicyConfigurationPartner
     from .....models.o_data_errors.o_data_error import ODataError
     from .identity_synchronization.identity_synchronization_request_builder import IdentitySynchronizationRequestBuilder
+    from .m365_capabilities.m365_capabilities_request_builder import M365CapabilitiesRequestBuilder
     from .service_provider_constraints.service_provider_constraints_request_builder import ServiceProviderConstraintsRequestBuilder
 
 class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRequestBuilder):
@@ -151,6 +152,15 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
         from .identity_synchronization.identity_synchronization_request_builder import IdentitySynchronizationRequestBuilder
 
         return IdentitySynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def m365_capabilities(self) -> M365CapabilitiesRequestBuilder:
+        """
+        Provides operations to manage the m365Capabilities property of the microsoft.graph.crossTenantAccessPolicyConfigurationPartner entity.
+        """
+        from .m365_capabilities.m365_capabilities_request_builder import M365CapabilitiesRequestBuilder
+
+        return M365CapabilitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def service_provider_constraints(self) -> ServiceProviderConstraintsRequestBuilder:

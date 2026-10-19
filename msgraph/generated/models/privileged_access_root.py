@@ -7,11 +7,14 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .privileged_access_group import PrivilegedAccessGroup
+    from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
 
 from .entity import Entity
 
 @dataclass
 class PrivilegedAccessRoot(Entity, Parsable):
+    # The customExtensions property
+    custom_extensions: Optional[list[RoleManagementCustomCalloutExtension]] = None
     # A group that's governed through Privileged Identity Management (PIM).
     group: Optional[PrivilegedAccessGroup] = None
     # The OdataType property
@@ -35,11 +38,14 @@ class PrivilegedAccessRoot(Entity, Parsable):
         """
         from .entity import Entity
         from .privileged_access_group import PrivilegedAccessGroup
+        from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
 
         from .entity import Entity
         from .privileged_access_group import PrivilegedAccessGroup
+        from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
 
         fields: dict[str, Callable[[Any], None]] = {
+            "customExtensions": lambda n : setattr(self, 'custom_extensions', n.get_collection_of_object_values(RoleManagementCustomCalloutExtension)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(PrivilegedAccessGroup)),
         }
         super_fields = super().get_field_deserializers()
@@ -55,6 +61,7 @@ class PrivilegedAccessRoot(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("customExtensions", self.custom_extensions)
         writer.write_object_value("group", self.group)
     
 

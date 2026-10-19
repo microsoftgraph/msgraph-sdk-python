@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .custom_data_provided_resource import CustomDataProvidedResource
     from .custom_data_provided_resource_upload_session import CustomDataProvidedResourceUploadSession
     from .entity import Entity
+    from .external_origin_resource_connector import ExternalOriginResourceConnector
 
 from .entity import Entity
 
@@ -28,6 +29,8 @@ class AccessPackageResource(Entity, Parsable):
     display_name: Optional[str] = None
     # Contains the environment information for the resource. This can be set using either the @odata.bind annotation or the environment's originId.Supports $expand.
     environment: Optional[AccessPackageResourceEnvironment] = None
+    # The connector that integrates with external origin systems to provision access to resources from those systems. Read-only. Nullable.
+    external_origin_resource_connector: Optional[ExternalOriginResourceConnector] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
@@ -75,6 +78,7 @@ class AccessPackageResource(Entity, Parsable):
         from .custom_data_provided_resource import CustomDataProvidedResource
         from .custom_data_provided_resource_upload_session import CustomDataProvidedResourceUploadSession
         from .entity import Entity
+        from .external_origin_resource_connector import ExternalOriginResourceConnector
 
         from .access_package_resource_attribute import AccessPackageResourceAttribute
         from .access_package_resource_environment import AccessPackageResourceEnvironment
@@ -83,6 +87,7 @@ class AccessPackageResource(Entity, Parsable):
         from .custom_data_provided_resource import CustomDataProvidedResource
         from .custom_data_provided_resource_upload_session import CustomDataProvidedResourceUploadSession
         from .entity import Entity
+        from .external_origin_resource_connector import ExternalOriginResourceConnector
 
         fields: dict[str, Callable[[Any], None]] = {
             "attributes": lambda n : setattr(self, 'attributes', n.get_collection_of_object_values(AccessPackageResourceAttribute)),
@@ -90,6 +95,7 @@ class AccessPackageResource(Entity, Parsable):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "environment": lambda n : setattr(self, 'environment', n.get_object_value(AccessPackageResourceEnvironment)),
+            "externalOriginResourceConnector": lambda n : setattr(self, 'external_origin_resource_connector', n.get_object_value(ExternalOriginResourceConnector)),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "originId": lambda n : setattr(self, 'origin_id', n.get_str_value()),
             "originSystem": lambda n : setattr(self, 'origin_system', n.get_str_value()),
@@ -115,6 +121,7 @@ class AccessPackageResource(Entity, Parsable):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("environment", self.environment)
+        writer.write_object_value("externalOriginResourceConnector", self.external_origin_resource_connector)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_str_value("originId", self.origin_id)
         writer.write_str_value("originSystem", self.origin_system)

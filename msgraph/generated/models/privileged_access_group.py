@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .approval import Approval
     from .entity import Entity
+    from .group_resource import GroupResource
     from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
     from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
     from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
@@ -34,6 +35,8 @@ class PrivilegedAccessGroup(Entity, Parsable):
     eligibility_schedules: Optional[list[PrivilegedAccessGroupEligibilitySchedule]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The resources property
+    resources: Optional[list[GroupResource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> PrivilegedAccessGroup:
@@ -53,6 +56,7 @@ class PrivilegedAccessGroup(Entity, Parsable):
         """
         from .approval import Approval
         from .entity import Entity
+        from .group_resource import GroupResource
         from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
         from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
         from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
@@ -62,6 +66,7 @@ class PrivilegedAccessGroup(Entity, Parsable):
 
         from .approval import Approval
         from .entity import Entity
+        from .group_resource import GroupResource
         from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
         from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
         from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
@@ -77,6 +82,7 @@ class PrivilegedAccessGroup(Entity, Parsable):
             "eligibilityScheduleInstances": lambda n : setattr(self, 'eligibility_schedule_instances', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilityScheduleInstance)),
             "eligibilityScheduleRequests": lambda n : setattr(self, 'eligibility_schedule_requests', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilityScheduleRequest)),
             "eligibilitySchedules": lambda n : setattr(self, 'eligibility_schedules', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilitySchedule)),
+            "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(GroupResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -98,5 +104,6 @@ class PrivilegedAccessGroup(Entity, Parsable):
         writer.write_collection_of_object_values("eligibilityScheduleInstances", self.eligibility_schedule_instances)
         writer.write_collection_of_object_values("eligibilityScheduleRequests", self.eligibility_schedule_requests)
         writer.write_collection_of_object_values("eligibilitySchedules", self.eligibility_schedules)
+        writer.write_collection_of_object_values("resources", self.resources)
     
 

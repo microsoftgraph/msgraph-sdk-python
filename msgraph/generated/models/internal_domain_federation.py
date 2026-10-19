@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .prompt_login_behavior import PromptLoginBehavior
     from .saml_or_ws_fed_provider import SamlOrWsFedProvider
     from .signing_certificate_update_status import SigningCertificateUpdateStatus
+    from .system_browser_enabled_on import SystemBrowserEnabledOn
 
 from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
@@ -32,6 +33,8 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
     sign_out_uri: Optional[str] = None
     # Provides status and timestamp of the last update of the signing certificate.
     signing_certificate_update_status: Optional[SigningCertificateUpdateStatus] = None
+    # The systemBrowserEnabledOn property
+    system_browser_enabled_on: Optional[SystemBrowserEnabledOn] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> InternalDomainFederation:
@@ -53,11 +56,13 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
         from .prompt_login_behavior import PromptLoginBehavior
         from .saml_or_ws_fed_provider import SamlOrWsFedProvider
         from .signing_certificate_update_status import SigningCertificateUpdateStatus
+        from .system_browser_enabled_on import SystemBrowserEnabledOn
 
         from .federated_idp_mfa_behavior import FederatedIdpMfaBehavior
         from .prompt_login_behavior import PromptLoginBehavior
         from .saml_or_ws_fed_provider import SamlOrWsFedProvider
         from .signing_certificate_update_status import SigningCertificateUpdateStatus
+        from .system_browser_enabled_on import SystemBrowserEnabledOn
 
         fields: dict[str, Callable[[Any], None]] = {
             "activeSignInUri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
@@ -68,6 +73,7 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
             "promptLoginBehavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(PromptLoginBehavior)),
             "signOutUri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
             "signingCertificateUpdateStatus": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(SigningCertificateUpdateStatus)),
+            "systemBrowserEnabledOn": lambda n : setattr(self, 'system_browser_enabled_on', n.get_collection_of_enum_values(SystemBrowserEnabledOn)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,5 +96,6 @@ class InternalDomainFederation(SamlOrWsFedProvider, Parsable):
         writer.write_enum_value("promptLoginBehavior", self.prompt_login_behavior)
         writer.write_str_value("signOutUri", self.sign_out_uri)
         writer.write_object_value("signingCertificateUpdateStatus", self.signing_certificate_update_status)
+        writer.write_enum_value("systemBrowserEnabledOn", self.system_browser_enabled_on)
     
 

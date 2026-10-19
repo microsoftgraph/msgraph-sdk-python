@@ -2,13 +2,13 @@ from __future__ import annotations
 import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .android_managed_app_protection import AndroidManagedAppProtection
     from .default_managed_app_protection import DefaultManagedAppProtection
-    from .entity import Entity
     from .ios_managed_app_protection import IosManagedAppProtection
     from .managed_app_policy import ManagedAppPolicy
     from .managed_app_registration import ManagedAppRegistration
@@ -23,13 +23,16 @@ if TYPE_CHECKING:
     from .vpp_token import VppToken
     from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
-from .entity import Entity
-
 @dataclass
-class DeviceAppManagement(Entity, Parsable):
+class DeviceAppManagement(AdditionalDataHolder, BackedModel, Parsable):
     """
     Singleton entity that acts as a container for all device app management functionality.
     """
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: dict[str, Any] = field(default_factory=dict)
     # Android managed app policies.
     android_managed_app_protections: Optional[list[AndroidManagedAppProtection]] = None
     # Default managed app policies.
@@ -89,7 +92,6 @@ class DeviceAppManagement(Entity, Parsable):
         """
         from .android_managed_app_protection import AndroidManagedAppProtection
         from .default_managed_app_protection import DefaultManagedAppProtection
-        from .entity import Entity
         from .ios_managed_app_protection import IosManagedAppProtection
         from .managed_app_policy import ManagedAppPolicy
         from .managed_app_registration import ManagedAppRegistration
@@ -106,7 +108,6 @@ class DeviceAppManagement(Entity, Parsable):
 
         from .android_managed_app_protection import AndroidManagedAppProtection
         from .default_managed_app_protection import DefaultManagedAppProtection
-        from .entity import Entity
         from .ios_managed_app_protection import IosManagedAppProtection
         from .managed_app_policy import ManagedAppPolicy
         from .managed_app_registration import ManagedAppRegistration
@@ -138,12 +139,11 @@ class DeviceAppManagement(Entity, Parsable):
             "mobileAppConfigurations": lambda n : setattr(self, 'mobile_app_configurations', n.get_collection_of_object_values(ManagedDeviceMobileAppConfiguration)),
             "mobileAppRelationships": lambda n : setattr(self, 'mobile_app_relationships', n.get_collection_of_object_values(MobileAppRelationship)),
             "mobileApps": lambda n : setattr(self, 'mobile_apps', n.get_collection_of_object_values(MobileApp)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "targetedManagedAppConfigurations": lambda n : setattr(self, 'targeted_managed_app_configurations', n.get_collection_of_object_values(TargetedManagedAppConfiguration)),
             "vppTokens": lambda n : setattr(self, 'vpp_tokens', n.get_collection_of_object_values(VppToken)),
             "windowsInformationProtectionPolicies": lambda n : setattr(self, 'windows_information_protection_policies', n.get_collection_of_object_values(WindowsInformationProtectionPolicy)),
         }
-        super_fields = super().get_field_deserializers()
-        fields.update(super_fields)
         return fields
     
     def serialize(self,writer: SerializationWriter) -> None:
@@ -154,7 +154,6 @@ class DeviceAppManagement(Entity, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
-        super().serialize(writer)
         writer.write_collection_of_object_values("androidManagedAppProtections", self.android_managed_app_protections)
         writer.write_collection_of_object_values("defaultManagedAppProtections", self.default_managed_app_protections)
         writer.write_collection_of_object_values("iosManagedAppProtections", self.ios_managed_app_protections)
@@ -171,8 +170,10 @@ class DeviceAppManagement(Entity, Parsable):
         writer.write_collection_of_object_values("mobileAppConfigurations", self.mobile_app_configurations)
         writer.write_collection_of_object_values("mobileAppRelationships", self.mobile_app_relationships)
         writer.write_collection_of_object_values("mobileApps", self.mobile_apps)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("targetedManagedAppConfigurations", self.targeted_managed_app_configurations)
         writer.write_collection_of_object_values("vppTokens", self.vpp_tokens)
         writer.write_collection_of_object_values("windowsInformationProtectionPolicies", self.windows_information_protection_policies)
+        writer.write_additional_data_value(self.additional_data)
     
 

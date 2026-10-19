@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ..entity import Entity
     from .activation_scope import ActivationScope
     from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
+    from .subject_processing_result import SubjectProcessingResult
     from .task_processing_result import TaskProcessingResult
     from .user_processing_result import UserProcessingResult
     from .workflow_execution_type import WorkflowExecutionType
@@ -37,6 +38,8 @@ class Run(Entity, Parsable):
     scheduled_date_time: Optional[datetime.datetime] = None
     # The date time that the run execution started.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     started_date_time: Optional[datetime.datetime] = None
+    # The processing results for each subject in this workflow run.
+    subject_processing_results: Optional[list[SubjectProcessingResult]] = None
     # The number of successfully completed users in the run.
     successful_users_count: Optional[int] = None
     # The related taskProcessingResults.
@@ -71,6 +74,7 @@ class Run(Entity, Parsable):
         from ..entity import Entity
         from .activation_scope import ActivationScope
         from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
+        from .subject_processing_result import SubjectProcessingResult
         from .task_processing_result import TaskProcessingResult
         from .user_processing_result import UserProcessingResult
         from .workflow_execution_type import WorkflowExecutionType
@@ -78,6 +82,7 @@ class Run(Entity, Parsable):
         from ..entity import Entity
         from .activation_scope import ActivationScope
         from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
+        from .subject_processing_result import SubjectProcessingResult
         from .task_processing_result import TaskProcessingResult
         from .user_processing_result import UserProcessingResult
         from .workflow_execution_type import WorkflowExecutionType
@@ -92,6 +97,7 @@ class Run(Entity, Parsable):
             "reprocessedRuns": lambda n : setattr(self, 'reprocessed_runs', n.get_collection_of_object_values(Run)),
             "scheduledDateTime": lambda n : setattr(self, 'scheduled_date_time', n.get_datetime_value()),
             "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "subjectProcessingResults": lambda n : setattr(self, 'subject_processing_results', n.get_collection_of_object_values(SubjectProcessingResult)),
             "successfulUsersCount": lambda n : setattr(self, 'successful_users_count', n.get_int_value()),
             "taskProcessingResults": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
             "totalTasksCount": lambda n : setattr(self, 'total_tasks_count', n.get_int_value()),
@@ -122,6 +128,7 @@ class Run(Entity, Parsable):
         writer.write_collection_of_object_values("reprocessedRuns", self.reprocessed_runs)
         writer.write_datetime_value("scheduledDateTime", self.scheduled_date_time)
         writer.write_datetime_value("startedDateTime", self.started_date_time)
+        writer.write_collection_of_object_values("subjectProcessingResults", self.subject_processing_results)
         writer.write_int_value("successfulUsersCount", self.successful_users_count)
         writer.write_collection_of_object_values("taskProcessingResults", self.task_processing_results)
         writer.write_int_value("totalTasksCount", self.total_tasks_count)

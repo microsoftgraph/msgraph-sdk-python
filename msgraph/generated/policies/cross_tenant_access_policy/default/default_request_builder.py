@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
     from ....models.o_data_errors.o_data_error import ODataError
+    from .m365_capabilities.m365_capabilities_request_builder import M365CapabilitiesRequestBuilder
     from .reset_to_system_default.reset_to_system_default_request_builder import ResetToSystemDefaultRequestBuilder
 
 class DefaultRequestBuilder(BaseRequestBuilder):
@@ -140,6 +141,15 @@ class DefaultRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return DefaultRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def m365_capabilities(self) -> M365CapabilitiesRequestBuilder:
+        """
+        Provides operations to manage the m365Capabilities property of the microsoft.graph.crossTenantAccessPolicyConfigurationDefault entity.
+        """
+        from .m365_capabilities.m365_capabilities_request_builder import M365CapabilitiesRequestBuilder
+
+        return M365CapabilitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def reset_to_system_default(self) -> ResetToSystemDefaultRequestBuilder:

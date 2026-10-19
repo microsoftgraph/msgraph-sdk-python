@@ -3,6 +3,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
@@ -14,6 +15,8 @@ from .service_principal import ServicePrincipal
 class AgentIdentityBlueprintPrincipal(ServicePrincipal, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.agentIdentityBlueprintPrincipal"
+    # The collection of application IDs designated as managers of this agent identity blueprint principal's backing agentIdentityBlueprint. Read-only; the value is server-managed and reflects the managerApplications of the backing agentIdentityBlueprint. To change the managers, an owner or administrator must update the managerApplications property on the backing agentIdentityBlueprint in the tenant where it's registered. For multitenant agent identity blueprints, admins in a tenant where the blueprint is only consumed can't make this change — they must ask an owner or administrator in the blueprint's home tenant. Not nullable. Returned only on $select.
+    manager_applications: Optional[list[UUID]] = None
     # The sponsors for this agent identity blueprint principal. Sponsors are users or service principals who can authorize and manage the lifecycle of agent identity instances.
     sponsors: Optional[list[DirectoryObject]] = None
     
@@ -40,6 +43,7 @@ class AgentIdentityBlueprintPrincipal(ServicePrincipal, Parsable):
         from .service_principal import ServicePrincipal
 
         fields: dict[str, Callable[[Any], None]] = {
+            "managerApplications": lambda n : setattr(self, 'manager_applications', n.get_collection_of_primitive_values(UUID)),
             "sponsors": lambda n : setattr(self, 'sponsors', n.get_collection_of_object_values(DirectoryObject)),
         }
         super_fields = super().get_field_deserializers()

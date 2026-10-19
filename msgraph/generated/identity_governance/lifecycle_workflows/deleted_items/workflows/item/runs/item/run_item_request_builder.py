@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ........models.identity_governance.run import Run
     from ........models.o_data_errors.o_data_error import ODataError
     from .reprocessed_runs.reprocessed_runs_request_builder import ReprocessedRunsRequestBuilder
+    from .subject_processing_results.subject_processing_results_request_builder import SubjectProcessingResultsRequestBuilder
     from .task_processing_results.task_processing_results_request_builder import TaskProcessingResultsRequestBuilder
     from .user_processing_results.user_processing_results_request_builder import UserProcessingResultsRequestBuilder
 
@@ -82,6 +83,15 @@ class RunItemRequestBuilder(BaseRequestBuilder):
         from .reprocessed_runs.reprocessed_runs_request_builder import ReprocessedRunsRequestBuilder
 
         return ReprocessedRunsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def subject_processing_results(self) -> SubjectProcessingResultsRequestBuilder:
+        """
+        Provides operations to manage the subjectProcessingResults property of the microsoft.graph.identityGovernance.run entity.
+        """
+        from .subject_processing_results.subject_processing_results_request_builder import SubjectProcessingResultsRequestBuilder
+
+        return SubjectProcessingResultsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def task_processing_results(self) -> TaskProcessingResultsRequestBuilder:

@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from .access_review_history_definition import AccessReviewHistoryDefinition
     from .access_review_schedule_definition import AccessReviewScheduleDefinition
     from .entity import Entity
+    from .unified_root import UnifiedRoot
 
 from .entity import Entity
 
@@ -19,6 +20,8 @@ class AccessReviewSet(Entity, Parsable):
     history_definitions: Optional[list[AccessReviewHistoryDefinition]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # Entry point for the unified (vNext) access reviews API surface. Requests under this path are routed to the vNext service through the dedicated accessReviews/unified path segment.
+    unified: Optional[UnifiedRoot] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AccessReviewSet:
@@ -39,14 +42,17 @@ class AccessReviewSet(Entity, Parsable):
         from .access_review_history_definition import AccessReviewHistoryDefinition
         from .access_review_schedule_definition import AccessReviewScheduleDefinition
         from .entity import Entity
+        from .unified_root import UnifiedRoot
 
         from .access_review_history_definition import AccessReviewHistoryDefinition
         from .access_review_schedule_definition import AccessReviewScheduleDefinition
         from .entity import Entity
+        from .unified_root import UnifiedRoot
 
         fields: dict[str, Callable[[Any], None]] = {
             "definitions": lambda n : setattr(self, 'definitions', n.get_collection_of_object_values(AccessReviewScheduleDefinition)),
             "historyDefinitions": lambda n : setattr(self, 'history_definitions', n.get_collection_of_object_values(AccessReviewHistoryDefinition)),
+            "unified": lambda n : setattr(self, 'unified', n.get_object_value(UnifiedRoot)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,5 +69,6 @@ class AccessReviewSet(Entity, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("definitions", self.definitions)
         writer.write_collection_of_object_values("historyDefinitions", self.history_definitions)
+        writer.write_object_value("unified", self.unified)
     
 

@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .on_demand_execution_only import OnDemandExecutionOnly
+    from .provisioning_attribute_mapping import ProvisioningAttributeMapping
     from .trigger_and_scope_based_conditions import TriggerAndScopeBasedConditions
 
 @dataclass
@@ -37,6 +38,10 @@ class WorkflowExecutionConditions(AdditionalDataHolder, BackedModel, Parsable):
             from .on_demand_execution_only import OnDemandExecutionOnly
 
             return OnDemandExecutionOnly()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.provisioningAttributeMapping".casefold():
+            from .provisioning_attribute_mapping import ProvisioningAttributeMapping
+
+            return ProvisioningAttributeMapping()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions".casefold():
             from .trigger_and_scope_based_conditions import TriggerAndScopeBasedConditions
 
@@ -49,9 +54,11 @@ class WorkflowExecutionConditions(AdditionalDataHolder, BackedModel, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .on_demand_execution_only import OnDemandExecutionOnly
+        from .provisioning_attribute_mapping import ProvisioningAttributeMapping
         from .trigger_and_scope_based_conditions import TriggerAndScopeBasedConditions
 
         from .on_demand_execution_only import OnDemandExecutionOnly
+        from .provisioning_attribute_mapping import ProvisioningAttributeMapping
         from .trigger_and_scope_based_conditions import TriggerAndScopeBasedConditions
 
         fields: dict[str, Callable[[Any], None]] = {

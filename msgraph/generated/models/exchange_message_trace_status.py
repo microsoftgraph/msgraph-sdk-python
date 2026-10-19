@@ -9,4 +9,5 @@ class ExchangeMessageTraceStatus(str, Enum):
     Quarantined = "quarantined",
     FilteredAsSpam = "filteredAsSpam",
     UnknownFutureValue = "unknownFutureValue",
+    Recalled = "recalled",
 

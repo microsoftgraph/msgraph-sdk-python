@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from ..directory_object import DirectoryObject
     from ..user import User
     from .lifecycle_workflow_category import LifecycleWorkflowCategory
+    from .subject_type import SubjectType
     from .task import Task
     from .workflow import Workflow
     from .workflow_execution_conditions import WorkflowExecutionConditions
@@ -46,6 +47,8 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The targetSubjectType property
+    target_subject_type: Optional[SubjectType] = None
     # The tasks in the workflow.
     tasks: Optional[list[Task]] = None
     
@@ -81,6 +84,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         from ..directory_object import DirectoryObject
         from ..user import User
         from .lifecycle_workflow_category import LifecycleWorkflowCategory
+        from .subject_type import SubjectType
         from .task import Task
         from .workflow import Workflow
         from .workflow_execution_conditions import WorkflowExecutionConditions
@@ -89,6 +93,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         from ..directory_object import DirectoryObject
         from ..user import User
         from .lifecycle_workflow_category import LifecycleWorkflowCategory
+        from .subject_type import SubjectType
         from .task import Task
         from .workflow import Workflow
         from .workflow_execution_conditions import WorkflowExecutionConditions
@@ -107,6 +112,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(User)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "targetSubjectType": lambda n : setattr(self, 'target_subject_type', n.get_collection_of_enum_values(SubjectType)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(Task)),
         }
         return fields
@@ -131,6 +137,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("targetSubjectType", self.target_subject_type)
         writer.write_collection_of_object_values("tasks", self.tasks)
         writer.write_additional_data_value(self.additional_data)
     

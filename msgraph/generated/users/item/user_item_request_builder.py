@@ -65,6 +65,7 @@ if TYPE_CHECKING:
     from .manager.manager_request_builder import ManagerRequestBuilder
     from .member_of.member_of_request_builder import MemberOfRequestBuilder
     from .messages.messages_request_builder import MessagesRequestBuilder
+    from .notes.notes_request_builder import NotesRequestBuilder
     from .oauth2_permission_grants.oauth2_permission_grants_request_builder import Oauth2PermissionGrantsRequestBuilder
     from .onenote.onenote_request_builder import OnenoteRequestBuilder
     from .online_meetings.online_meetings_request_builder import OnlineMeetingsRequestBuilder
@@ -683,6 +684,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         from .messages.messages_request_builder import MessagesRequestBuilder
 
         return MessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def notes(self) -> NotesRequestBuilder:
+        """
+        Provides operations to manage the notes property of the microsoft.graph.user entity.
+        """
+        from .notes.notes_request_builder import NotesRequestBuilder
+
+        return NotesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def oauth2_permission_grants(self) -> Oauth2PermissionGrantsRequestBuilder:

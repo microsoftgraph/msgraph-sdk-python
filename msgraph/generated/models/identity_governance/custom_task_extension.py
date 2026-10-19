@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ..custom_callout_extension import CustomCalloutExtension
     from ..custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
     from ..user import User
+    from .custom_task_extension_reply_mode import CustomTaskExtensionReplyMode
 
 from ..custom_callout_extension import CustomCalloutExtension
 
@@ -26,6 +27,8 @@ class CustomTaskExtension(CustomCalloutExtension, Parsable):
     last_modified_by: Optional[User] = None
     # When the custom extension was last modified.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     last_modified_date_time: Optional[datetime.datetime] = None
+    # The replyMode property
+    reply_mode: Optional[CustomTaskExtensionReplyMode] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> CustomTaskExtension:
@@ -46,10 +49,12 @@ class CustomTaskExtension(CustomCalloutExtension, Parsable):
         from ..custom_callout_extension import CustomCalloutExtension
         from ..custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
         from ..user import User
+        from .custom_task_extension_reply_mode import CustomTaskExtensionReplyMode
 
         from ..custom_callout_extension import CustomCalloutExtension
         from ..custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
         from ..user import User
+        from .custom_task_extension_reply_mode import CustomTaskExtensionReplyMode
 
         fields: dict[str, Callable[[Any], None]] = {
             "callbackConfiguration": lambda n : setattr(self, 'callback_configuration', n.get_object_value(CustomExtensionCallbackConfiguration)),
@@ -57,6 +62,7 @@ class CustomTaskExtension(CustomCalloutExtension, Parsable):
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(User)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "replyMode": lambda n : setattr(self, 'reply_mode', n.get_enum_value(CustomTaskExtensionReplyMode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,5 +82,6 @@ class CustomTaskExtension(CustomCalloutExtension, Parsable):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_enum_value("replyMode", self.reply_mode)
     
 

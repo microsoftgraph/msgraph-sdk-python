@@ -121,7 +121,7 @@ class AdminRequestBuilder(BaseRequestBuilder):
     @property
     def configuration_management(self) -> ConfigurationManagementRequestBuilder:
         """
-        Provides operations to manage the configurationManagement property of the microsoft.graph.admin entity.
+        The configurationManagement property
         """
         from .configuration_management.configuration_management_request_builder import ConfigurationManagementRequestBuilder
 

@@ -32,7 +32,7 @@ class Incident(Entity, Parsable):
     custom_tags: Optional[list[str]] = None
     # Description of the incident.
     description: Optional[str] = None
-    # Specifies the determination of the incident. The possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
+    # Specifies the determination of the incident. The possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedActivity, lineOfBusinessApplication, unknownFutureValue.
     determination: Optional[AlertDetermination] = None
     # The incident name.
     display_name: Optional[str] = None

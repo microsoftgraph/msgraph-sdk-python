@@ -5,6 +5,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .access_review_error import AccessReviewError
+
 @dataclass
 class GenericError(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -28,6 +31,15 @@ class GenericError(AdditionalDataHolder, BackedModel, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewError".casefold():
+            from .access_review_error import AccessReviewError
+
+            return AccessReviewError()
         return GenericError()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -35,6 +47,10 @@ class GenericError(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .access_review_error import AccessReviewError
+
+        from .access_review_error import AccessReviewError
+
         fields: dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),

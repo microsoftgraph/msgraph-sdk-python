@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 @dataclass
 class RunHuntingQueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -16,6 +17,8 @@ class RunHuntingQueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
     query: Optional[str] = None
     # The timespan property
     timespan: Optional[str] = None
+    # The workspaceId property
+    workspace_id: Optional[UUID] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> RunHuntingQueryPostRequestBody:
@@ -36,6 +39,7 @@ class RunHuntingQueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         fields: dict[str, Callable[[Any], None]] = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
             "timespan": lambda n : setattr(self, 'timespan', n.get_str_value()),
+            "workspaceId": lambda n : setattr(self, 'workspace_id', n.get_uuid_value()),
         }
         return fields
     
@@ -49,6 +53,7 @@ class RunHuntingQueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
             raise TypeError("writer cannot be null.")
         writer.write_str_value("query", self.query)
         writer.write_str_value("timespan", self.timespan)
+        writer.write_uuid_value("workspaceId", self.workspace_id)
         writer.write_additional_data_value(self.additional_data)
     
 

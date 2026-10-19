@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .principal.principal_request_builder import PrincipalRequestBuilder
     from .role_definition.role_definition_request_builder import RoleDefinitionRequestBuilder
     from .target_schedule.target_schedule_request_builder import TargetScheduleRequestBuilder
+    from .update_request.update_request_request_builder import UpdateRequestRequestBuilder
 
 class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder):
     """
@@ -208,6 +209,15 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
         from .target_schedule.target_schedule_request_builder import TargetScheduleRequestBuilder
 
         return TargetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def update_request(self) -> UpdateRequestRequestBuilder:
+        """
+        Provides operations to call the updateRequest method.
+        """
+        from .update_request.update_request_request_builder import UpdateRequestRequestBuilder
+
+        return UpdateRequestRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UnifiedRoleAssignmentScheduleRequestItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

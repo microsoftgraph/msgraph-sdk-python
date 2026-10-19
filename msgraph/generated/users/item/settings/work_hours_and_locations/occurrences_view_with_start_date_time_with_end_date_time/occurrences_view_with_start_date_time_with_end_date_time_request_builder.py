@@ -37,7 +37,7 @@ class OccurrencesViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestB
     
     async def get(self,request_configuration: Optional[RequestConfiguration[OccurrencesViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> Optional[OccurrencesViewWithStartDateTimeWithEndDateTimeGetResponse]:
         """
-        Get work plan occurrences from your own work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.
+        Get work plan occurrences from a user's work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OccurrencesViewWithStartDateTimeWithEndDateTimeGetResponse]
         Find more info here: https://learn.microsoft.com/graph/api/workhoursandlocationssetting-occurrencesview?view=graph-rest-1.0
@@ -58,7 +58,7 @@ class OccurrencesViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestB
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[OccurrencesViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get work plan occurrences from your own work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.
+        Get work plan occurrences from a user's work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -80,7 +80,7 @@ class OccurrencesViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestB
     @dataclass
     class OccurrencesViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters():
         """
-        Get work plan occurrences from your own work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.
+        Get work plan occurrences from a user's work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

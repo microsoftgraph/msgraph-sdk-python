@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.privileged_access_root import PrivilegedAccessRoot
+    from .custom_extensions.custom_extensions_request_builder import CustomExtensionsRequestBuilder
     from .group.group_request_builder import GroupRequestBuilder
 
 class PrivilegedAccessRequestBuilder(BaseRequestBuilder):
@@ -138,6 +139,15 @@ class PrivilegedAccessRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return PrivilegedAccessRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def custom_extensions(self) -> CustomExtensionsRequestBuilder:
+        """
+        Provides operations to manage the customExtensions property of the microsoft.graph.privilegedAccessRoot entity.
+        """
+        from .custom_extensions.custom_extensions_request_builder import CustomExtensionsRequestBuilder
+
+        return CustomExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def group(self) -> GroupRequestBuilder:

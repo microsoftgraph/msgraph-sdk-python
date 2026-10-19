@@ -30,24 +30,6 @@ class BaselineRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/configurationManagement/configurationMonitors/{configurationMonitor%2Did}/baseline{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
-        """
-        Delete navigation property baseline for admin
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: None
-        """
-        request_info = self.to_delete_request_information(
-            request_configuration
-        )
-        from ......models.o_data_errors.o_data_error import ODataError
-
-        error_mapping: dict[str, type[ParsableFactory]] = {
-            "XXX": ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
     async def get(self,request_configuration: Optional[RequestConfiguration[BaselineRequestBuilderGetQueryParameters]] = None) -> Optional[ConfigurationBaseline]:
         """
         Read the properties and relationships of a configurationBaseline object that is attached to a specific monitor.
@@ -69,40 +51,6 @@ class BaselineRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConfigurationBaseline, error_mapping)
     
-    async def patch(self,body: ConfigurationBaseline, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ConfigurationBaseline]:
-        """
-        Update the navigation property baseline in admin
-        param body: The request body
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ConfigurationBaseline]
-        """
-        if body is None:
-            raise TypeError("body cannot be null.")
-        request_info = self.to_patch_request_information(
-            body, request_configuration
-        )
-        from ......models.o_data_errors.o_data_error import ODataError
-
-        error_mapping: dict[str, type[ParsableFactory]] = {
-            "XXX": ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        from ......models.configuration_baseline import ConfigurationBaseline
-
-        return await self.request_adapter.send_async(request_info, ConfigurationBaseline, error_mapping)
-    
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
-        """
-        Delete navigation property baseline for admin
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
-        request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
-        return request_info
-    
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[BaselineRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Read the properties and relationships of a configurationBaseline object that is attached to a specific monitor.
@@ -114,21 +62,6 @@ class BaselineRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: ConfigurationBaseline, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
-        """
-        Update the navigation property baseline in admin
-        param body: The request body
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
-        request_info.configure(request_configuration)
-        request_info.headers.try_add("Accept", "application/json")
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     def with_url(self,raw_url: str) -> BaselineRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
@@ -138,13 +71,6 @@ class BaselineRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return BaselineRequestBuilder(self.request_adapter, raw_url)
-    
-    @dataclass
-    class BaselineRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
     @dataclass
     class BaselineRequestBuilderGetQueryParameters():
@@ -174,13 +100,6 @@ class BaselineRequestBuilder(BaseRequestBuilder):
     
     @dataclass
     class BaselineRequestBuilderGetRequestConfiguration(RequestConfiguration[BaselineRequestBuilderGetQueryParameters]):
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
-    
-    @dataclass
-    class BaselineRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

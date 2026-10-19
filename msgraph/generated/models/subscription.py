@@ -42,6 +42,12 @@ class Subscription(Entity, Parsable):
     odata_type: Optional[str] = None
     # Required. Specifies the resource that is monitored for changes. Don't include the base URL (https://graph.microsoft.com/v1.0/). See the possible resource path values for each supported resource.
     resource: Optional[str] = None
+    # Optional. The application server's VAPID public key, base64url-encoded (P-256 uncompressed point, 65 bytes pre-encoding). Obtained by calling the getVapidPublicKey function on the subscription collection. The browser passes this value to PushManager.subscribe({ applicationServerKey: vapidPublicKey }) to bind the push subscription to this server identity. Required when notificationUrl targets a known Web Push service origin (for example, *.push.apple.com, fcm.googleapis.com, updates.push.services.mozilla.com); rejected with 400 Bad Request if supplied on a standard webhook subscription. For more information, see RFC 8292.
+    vapid_public_key: Optional[str] = None
+    # Optional. The subscriber's ECDH public key, base64url-encoded (P-256 uncompressed point, 65 bytes pre-encoding). Obtained from the browser via PushSubscription.getKey('p256dh'). Used as the peer public key during ECDH key agreement to derive the per-message content encryption key for RFC 8291 payload encryption. Required when notificationUrl targets a known Web Push service origin; rejected with 400 Bad Request if supplied on a standard webhook subscription. For more information, see RFC 8291 Section 3.
+    web_push_encryption_p256dh_public_key: Optional[str] = None
+    # Optional. The subscriber's auth secret, base64url-encoded (16 bytes pre-encoding). Obtained from the browser via PushSubscription.getKey('auth'). Used as the HMAC-SHA-256 salt for the HKDF combine step that derives key material for RFC 8291 payload encryption. Write-only: this value is never returned in GET responses (returned as null). Treat as a secret. Required when notificationUrl targets a known Web Push service origin; rejected with 400 Bad Request if supplied on a standard webhook subscription. For more information, see RFC 8291 Section 3.
+    web_push_encryption_secret: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> Subscription:
@@ -78,6 +84,9 @@ class Subscription(Entity, Parsable):
             "notificationUrl": lambda n : setattr(self, 'notification_url', n.get_str_value()),
             "notificationUrlAppId": lambda n : setattr(self, 'notification_url_app_id', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
+            "vapidPublicKey": lambda n : setattr(self, 'vapid_public_key', n.get_str_value()),
+            "webPushEncryptionP256dhPublicKey": lambda n : setattr(self, 'web_push_encryption_p256dh_public_key', n.get_str_value()),
+            "webPushEncryptionSecret": lambda n : setattr(self, 'web_push_encryption_secret', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -106,5 +115,8 @@ class Subscription(Entity, Parsable):
         writer.write_str_value("notificationUrl", self.notification_url)
         writer.write_str_value("notificationUrlAppId", self.notification_url_app_id)
         writer.write_str_value("resource", self.resource)
+        writer.write_str_value("vapidPublicKey", self.vapid_public_key)
+        writer.write_str_value("webPushEncryptionP256dhPublicKey", self.web_push_encryption_p256dh_public_key)
+        writer.write_str_value("webPushEncryptionSecret", self.web_push_encryption_secret)
     
 

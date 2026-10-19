@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .task import Task
     from .task_processing_result import TaskProcessingResult
     from .workflow import Workflow
+    from .workflow_subject import WorkflowSubject
 
 from ..custom_extension_data import CustomExtensionData
 
@@ -19,6 +20,8 @@ class CustomTaskExtensionCalloutData(CustomExtensionData, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCalloutData"
     # The subject property
     subject: Optional[User] = None
+    # The target subject for workflow execution.
+    target_subject: Optional[WorkflowSubject] = None
     # The task property
     task: Optional[Task] = None
     # The taskProcessingresult property
@@ -47,15 +50,18 @@ class CustomTaskExtensionCalloutData(CustomExtensionData, Parsable):
         from .task import Task
         from .task_processing_result import TaskProcessingResult
         from .workflow import Workflow
+        from .workflow_subject import WorkflowSubject
 
         from ..custom_extension_data import CustomExtensionData
         from ..user import User
         from .task import Task
         from .task_processing_result import TaskProcessingResult
         from .workflow import Workflow
+        from .workflow_subject import WorkflowSubject
 
         fields: dict[str, Callable[[Any], None]] = {
             "subject": lambda n : setattr(self, 'subject', n.get_object_value(User)),
+            "targetSubject": lambda n : setattr(self, 'target_subject', n.get_object_value(WorkflowSubject)),
             "task": lambda n : setattr(self, 'task', n.get_object_value(Task)),
             "taskProcessingresult": lambda n : setattr(self, 'task_processingresult', n.get_object_value(TaskProcessingResult)),
             "workflow": lambda n : setattr(self, 'workflow', n.get_object_value(Workflow)),
@@ -74,6 +80,7 @@ class CustomTaskExtensionCalloutData(CustomExtensionData, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("subject", self.subject)
+        writer.write_object_value("targetSubject", self.target_subject)
         writer.write_object_value("task", self.task)
         writer.write_object_value("taskProcessingresult", self.task_processingresult)
         writer.write_object_value("workflow", self.workflow)

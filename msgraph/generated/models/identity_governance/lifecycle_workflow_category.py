@@ -5,4 +5,5 @@ class LifecycleWorkflowCategory(str, Enum):
     Leaver = "leaver",
     UnknownFutureValue = "unknownFutureValue",
     Mover = "mover",
+    Extensibility = "extensibility",
 

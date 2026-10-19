@@ -32,7 +32,7 @@ class SetCurrentLocationRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: SetCurrentLocationPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Update your work location for the current day or current active segment. This action allows you to quickly update your work location without modifying individual occurrences.
+        Update a user's work location for the current day or current active segment. This action quickly updates the user's work location without modifying individual occurrences.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -54,7 +54,7 @@ class SetCurrentLocationRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: SetCurrentLocationPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update your work location for the current day or current active segment. This action allows you to quickly update your work location without modifying individual occurrences.
+        Update a user's work location for the current day or current active segment. This action quickly updates the user's work location without modifying individual occurrences.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

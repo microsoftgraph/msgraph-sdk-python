@@ -13,9 +13,9 @@ from .access_review_scope import AccessReviewScope
 class PrincipalResourceMembershipsScope(AccessReviewScope, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.principalResourceMembershipsScope"
-    # Defines the scopes of the principals whose access to resources are reviewed in the access review.
+    # Defines the scopes of the principals whose access to resources are reviewed in the access review. Use an accessReviewPrincipalScope object to select a well-known population of principals, such as all guest users.
     principal_scopes: Optional[list[AccessReviewScope]] = None
-    # Defines the scopes of the resources for which access is reviewed.
+    # Defines the scopes of the resources for which access is reviewed. Use an accessReviewResourceScope object to identify the resource, or an accessReviewAccessPackageAssignmentPolicyScope object when the resource is an access package assignment policy.
     resource_scopes: Optional[list[AccessReviewScope]] = None
     
     @staticmethod

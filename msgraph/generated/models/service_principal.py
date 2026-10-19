@@ -60,7 +60,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
     app_role_assignment_required: Optional[bool] = None
     # App role assignment for another app or service, granted to this service principal. Supports $expand.
     app_role_assignments: Optional[list[AppRoleAssignment]] = None
-    # The roles exposed by the application that's linked to this service principal. For more information, see the appRoles property definition on the application entity. Not nullable.
+    # The roles exposed by the application that's linked to this service principal. For more information, see the appRoles property definition on the application entity. Not nullable. App roles and exposed delegated permission scopes (oauth2PermissionScopes) share a default limit of 700 permission definitions per service principal, including definitions inherited from the application and definitions added directly to the service principal. Enabled and disabled definitions both count. This limit counts definitions, not app role assignments. For counting rules, behavior for existing objects above the limit, and design guidance, see App role limits.
     app_roles: Optional[list[AppRole]] = None
     # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne). Read-only. null if the service principal wasn't created from an application template.
     application_template_id: Optional[str] = None
@@ -106,7 +106,7 @@ class ServicePrincipal(DirectoryObject, Parsable):
     notification_email_addresses: Optional[list[str]] = None
     # Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.
     oauth2_permission_grants: Optional[list[OAuth2PermissionGrant]] = None
-    # The delegated permissions exposed by the application. For more information, see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
+    # The delegated permissions exposed by the application. For more information, see the oauth2PermissionScopes property on the application entity's api property. Not nullable. These scopes and appRoles share a default limit of 700 permission definitions per service principal. Enabled and disabled definitions both count. For counting rules, behavior for existing objects above the limit, and design guidance, see App role limits.
     oauth2_permission_scopes: Optional[list[PermissionScope]] = None
     # Directory objects that this service principal owns. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_objects: Optional[list[DirectoryObject]] = None

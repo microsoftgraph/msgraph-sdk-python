@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from ..user import User
     from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
     from .task import Task
+    from .workflow_subject import WorkflowSubject
 
 from ..entity import Entity
 
@@ -33,6 +34,8 @@ class TaskProcessingResult(Entity, Parsable):
     subject: Optional[User] = None
     # The task property
     task: Optional[Task] = None
+    # The workflow subject associated with this task processing result. Populated for extensibility and provisioning workflows.
+    workflow_subject: Optional[WorkflowSubject] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> TaskProcessingResult:
@@ -54,11 +57,13 @@ class TaskProcessingResult(Entity, Parsable):
         from ..user import User
         from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
         from .task import Task
+        from .workflow_subject import WorkflowSubject
 
         from ..entity import Entity
         from ..user import User
         from .lifecycle_workflow_processing_status import LifecycleWorkflowProcessingStatus
         from .task import Task
+        from .workflow_subject import WorkflowSubject
 
         fields: dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
@@ -69,6 +74,7 @@ class TaskProcessingResult(Entity, Parsable):
             "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_object_value(User)),
             "task": lambda n : setattr(self, 'task', n.get_object_value(Task)),
+            "workflowSubject": lambda n : setattr(self, 'workflow_subject', n.get_object_value(WorkflowSubject)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -91,5 +97,6 @@ class TaskProcessingResult(Entity, Parsable):
         writer.write_datetime_value("startedDateTime", self.started_date_time)
         writer.write_object_value("subject", self.subject)
         writer.write_object_value("task", self.task)
+        writer.write_object_value("workflowSubject", self.workflow_subject)
     
 

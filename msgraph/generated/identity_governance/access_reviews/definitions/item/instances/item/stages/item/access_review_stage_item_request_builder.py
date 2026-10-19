@@ -16,6 +16,8 @@ from warnings import warn
 if TYPE_CHECKING:
     from .........models.access_review_stage import AccessReviewStage
     from .........models.o_data_errors.o_data_error import ODataError
+    from .accept_recommendations.accept_recommendations_request_builder import AcceptRecommendationsRequestBuilder
+    from .batch_record_decisions.batch_record_decisions_request_builder import BatchRecordDecisionsRequestBuilder
     from .decisions.decisions_request_builder import DecisionsRequestBuilder
     from .stop.stop_request_builder import StopRequestBuilder
 
@@ -141,6 +143,24 @@ class AccessReviewStageItemRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return AccessReviewStageItemRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def accept_recommendations(self) -> AcceptRecommendationsRequestBuilder:
+        """
+        Provides operations to call the acceptRecommendations method.
+        """
+        from .accept_recommendations.accept_recommendations_request_builder import AcceptRecommendationsRequestBuilder
+
+        return AcceptRecommendationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def batch_record_decisions(self) -> BatchRecordDecisionsRequestBuilder:
+        """
+        Provides operations to call the batchRecordDecisions method.
+        """
+        from .batch_record_decisions.batch_record_decisions_request_builder import BatchRecordDecisionsRequestBuilder
+
+        return BatchRecordDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def decisions(self) -> DecisionsRequestBuilder:

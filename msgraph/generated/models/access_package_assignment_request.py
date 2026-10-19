@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .access_package import AccessPackage
     from .access_package_answer import AccessPackageAnswer
     from .access_package_assignment import AccessPackageAssignment
+    from .access_package_assignment_request_parameters import AccessPackageAssignmentRequestParameters
     from .access_package_request_state import AccessPackageRequestState
     from .access_package_request_type import AccessPackageRequestType
     from .access_package_subject import AccessPackageSubject
@@ -36,6 +37,8 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The parameters property
+    parameters: Optional[AccessPackageAssignmentRequestParameters] = None
     # The type of the request. The possible values are: notSpecified, userAdd, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. Use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: approverRemove. Requests from the user have a requestType of userAdd, userUpdate, or userRemove. This property can't be changed once set.
     request_type: Optional[AccessPackageRequestType] = None
     # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
@@ -66,6 +69,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
         from .access_package import AccessPackage
         from .access_package_answer import AccessPackageAnswer
         from .access_package_assignment import AccessPackageAssignment
+        from .access_package_assignment_request_parameters import AccessPackageAssignmentRequestParameters
         from .access_package_request_state import AccessPackageRequestState
         from .access_package_request_type import AccessPackageRequestType
         from .access_package_subject import AccessPackageSubject
@@ -76,6 +80,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
         from .access_package import AccessPackage
         from .access_package_answer import AccessPackageAnswer
         from .access_package_assignment import AccessPackageAssignment
+        from .access_package_assignment_request_parameters import AccessPackageAssignmentRequestParameters
         from .access_package_request_state import AccessPackageRequestState
         from .access_package_request_type import AccessPackageRequestType
         from .access_package_subject import AccessPackageSubject
@@ -91,6 +96,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
+            "parameters": lambda n : setattr(self, 'parameters', n.get_object_value(AccessPackageAssignmentRequestParameters)),
             "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
             "requestor": lambda n : setattr(self, 'requestor', n.get_object_value(AccessPackageSubject)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
@@ -117,6 +123,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("customExtensionCalloutInstances", self.custom_extension_callout_instances)
         writer.write_str_value("justification", self.justification)
+        writer.write_object_value("parameters", self.parameters)
         writer.write_enum_value("requestType", self.request_type)
         writer.write_object_value("requestor", self.requestor)
         writer.write_object_value("schedule", self.schedule)

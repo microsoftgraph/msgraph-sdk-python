@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ........models.subscription import Subscription
     from ........models.subscription_collection_response import SubscriptionCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
+    from .get_vapid_public_key.get_vapid_public_key_request_builder import GetVapidPublicKeyRequestBuilder
     from .item.subscription_item_request_builder import SubscriptionItemRequestBuilder
 
 class SubscriptionsRequestBuilder(BaseRequestBuilder):
@@ -134,6 +135,15 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_vapid_public_key(self) -> GetVapidPublicKeyRequestBuilder:
+        """
+        Provides operations to call the getVapidPublicKey method.
+        """
+        from .get_vapid_public_key.get_vapid_public_key_request_builder import GetVapidPublicKeyRequestBuilder
+
+        return GetVapidPublicKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SubscriptionsRequestBuilderGetQueryParameters():

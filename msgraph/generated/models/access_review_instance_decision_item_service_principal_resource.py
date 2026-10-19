@@ -15,6 +15,10 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(AccessReviewInsta
     odata_type: Optional[str] = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
     # The globally unique identifier of the application to which access has been granted.
     app_id: Optional[str] = None
+    # The display name of the app role.
+    app_role_display_name: Optional[str] = None
+    # The identifier of the app role.
+    app_role_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AccessReviewInstanceDecisionItemServicePrincipalResource:
@@ -38,6 +42,8 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(AccessReviewInsta
 
         fields: dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appRoleDisplayName": lambda n : setattr(self, 'app_role_display_name', n.get_str_value()),
+            "appRoleId": lambda n : setattr(self, 'app_role_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -53,5 +59,7 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(AccessReviewInsta
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("appId", self.app_id)
+        writer.write_str_value("appRoleDisplayName", self.app_role_display_name)
+        writer.write_str_value("appRoleId", self.app_role_id)
     
 

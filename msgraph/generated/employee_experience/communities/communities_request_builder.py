@@ -17,7 +17,6 @@ if TYPE_CHECKING:
     from ...models.community import Community
     from ...models.community_collection_response import CommunityCollectionResponse
     from ...models.o_data_errors.o_data_error import ODataError
-    from .count.count_request_builder import CountRequestBuilder
     from .item.community_item_request_builder import CommunityItemRequestBuilder
 
 class CommunitiesRequestBuilder(BaseRequestBuilder):
@@ -127,15 +126,6 @@ class CommunitiesRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return CommunitiesRequestBuilder(self.request_adapter, raw_url)
-    
-    @property
-    def count(self) -> CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count.count_request_builder import CountRequestBuilder
-
-        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CommunitiesRequestBuilderGetQueryParameters():

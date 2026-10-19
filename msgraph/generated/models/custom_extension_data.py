@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
     from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
     from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
+    from .identity_governance.custom_task_extension_response_data import CustomTaskExtensionResponseData
 
 @dataclass
 class CustomExtensionData(AdditionalDataHolder, BackedModel, Parsable):
@@ -51,6 +52,10 @@ class CustomExtensionData(AdditionalDataHolder, BackedModel, Parsable):
             from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
 
             return CustomTaskExtensionCalloutData()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionResponseData".casefold():
+            from .identity_governance.custom_task_extension_response_data import CustomTaskExtensionResponseData
+
+            return CustomTaskExtensionResponseData()
         return CustomExtensionData()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -62,11 +67,13 @@ class CustomExtensionData(AdditionalDataHolder, BackedModel, Parsable):
         from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
         from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
         from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
+        from .identity_governance.custom_task_extension_response_data import CustomTaskExtensionResponseData
 
         from .access_package_assignment_request_callback_data import AccessPackageAssignmentRequestCallbackData
         from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
         from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
         from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
+        from .identity_governance.custom_task_extension_response_data import CustomTaskExtensionResponseData
 
         fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -6,6 +6,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_review_error import AccessReviewError
     from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
     from .access_review_reviewer import AccessReviewReviewer
     from .access_review_reviewer_scope import AccessReviewReviewerScope
@@ -23,6 +24,8 @@ class AccessReviewInstance(Entity, Parsable):
     decisions: Optional[list[AccessReviewInstanceDecisionItem]] = None
     # DateTime when review instance is scheduled to end.The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $select. Read-only.
     end_date_time: Optional[datetime.datetime] = None
+    # Collection of errors in an access review instance lifecycle. Read-only.
+    errors: Optional[list[AccessReviewError]] = None
     # This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers will be notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner does not exist, or manager is specified as reviewer but a user's manager does not exist. Supports $select.
     fallback_reviewers: Optional[list[AccessReviewReviewerScope]] = None
     # The OdataType property
@@ -54,6 +57,7 @@ class AccessReviewInstance(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .access_review_error import AccessReviewError
         from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
         from .access_review_reviewer import AccessReviewReviewer
         from .access_review_reviewer_scope import AccessReviewReviewerScope
@@ -61,6 +65,7 @@ class AccessReviewInstance(Entity, Parsable):
         from .access_review_stage import AccessReviewStage
         from .entity import Entity
 
+        from .access_review_error import AccessReviewError
         from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
         from .access_review_reviewer import AccessReviewReviewer
         from .access_review_reviewer_scope import AccessReviewReviewerScope
@@ -72,6 +77,7 @@ class AccessReviewInstance(Entity, Parsable):
             "contactedReviewers": lambda n : setattr(self, 'contacted_reviewers', n.get_collection_of_object_values(AccessReviewReviewer)),
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_object_values(AccessReviewInstanceDecisionItem)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "errors": lambda n : setattr(self, 'errors', n.get_collection_of_object_values(AccessReviewError)),
             "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
             "scope": lambda n : setattr(self, 'scope', n.get_object_value(AccessReviewScope)),
@@ -95,6 +101,7 @@ class AccessReviewInstance(Entity, Parsable):
         writer.write_collection_of_object_values("contactedReviewers", self.contacted_reviewers)
         writer.write_collection_of_object_values("decisions", self.decisions)
         writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_collection_of_object_values("errors", self.errors)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_object_value("scope", self.scope)

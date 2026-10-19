@@ -14,4 +14,5 @@ class DlpAction(str, Enum):
     SPSharingNotifyUser = "sPSharingNotifyUser",
     SPSharingGenerateIncidentReport = "sPSharingGenerateIncidentReport",
     RestrictWebGrounding = "restrictWebGrounding",
+    PolicyTip = "policyTip",
 

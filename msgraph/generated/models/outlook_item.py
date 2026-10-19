@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .event_message_response import EventMessageResponse
     from .mailbox_item import MailboxItem
     from .message import Message
+    from .note import Note
     from .post import Post
 
 from .entity import Entity
@@ -78,6 +79,10 @@ class OutlookItem(Entity, Parsable):
             from .message import Message
 
             return Message()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.note".casefold():
+            from .note import Note
+
+            return Note()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.post".casefold():
             from .post import Post
 
@@ -98,6 +103,7 @@ class OutlookItem(Entity, Parsable):
         from .event_message_response import EventMessageResponse
         from .mailbox_item import MailboxItem
         from .message import Message
+        from .note import Note
         from .post import Post
 
         from .calendar_sharing_message import CalendarSharingMessage
@@ -109,6 +115,7 @@ class OutlookItem(Entity, Parsable):
         from .event_message_response import EventMessageResponse
         from .mailbox_item import MailboxItem
         from .message import Message
+        from .note import Note
         from .post import Post
 
         fields: dict[str, Callable[[Any], None]] = {

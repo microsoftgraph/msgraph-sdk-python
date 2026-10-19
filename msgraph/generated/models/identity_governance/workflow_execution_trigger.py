@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attribute_change_trigger import AttributeChangeTrigger
+    from .guest_sponsor_trigger import GuestSponsorTrigger
     from .membership_change_trigger import MembershipChangeTrigger
     from .time_based_attribute_trigger import TimeBasedAttributeTrigger
     from .user_inactivity_trigger import UserInactivityTrigger
@@ -39,6 +40,10 @@ class WorkflowExecutionTrigger(AdditionalDataHolder, BackedModel, Parsable):
             from .attribute_change_trigger import AttributeChangeTrigger
 
             return AttributeChangeTrigger()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.guestSponsorTrigger".casefold():
+            from .guest_sponsor_trigger import GuestSponsorTrigger
+
+            return GuestSponsorTrigger()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.membershipChangeTrigger".casefold():
             from .membership_change_trigger import MembershipChangeTrigger
 
@@ -59,11 +64,13 @@ class WorkflowExecutionTrigger(AdditionalDataHolder, BackedModel, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .attribute_change_trigger import AttributeChangeTrigger
+        from .guest_sponsor_trigger import GuestSponsorTrigger
         from .membership_change_trigger import MembershipChangeTrigger
         from .time_based_attribute_trigger import TimeBasedAttributeTrigger
         from .user_inactivity_trigger import UserInactivityTrigger
 
         from .attribute_change_trigger import AttributeChangeTrigger
+        from .guest_sponsor_trigger import GuestSponsorTrigger
         from .membership_change_trigger import MembershipChangeTrigger
         from .time_based_attribute_trigger import TimeBasedAttributeTrigger
         from .user_inactivity_trigger import UserInactivityTrigger

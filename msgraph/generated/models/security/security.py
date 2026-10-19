@@ -27,9 +27,6 @@ from ..entity import Entity
 
 @dataclass
 class Security(Entity, Parsable):
-    """
-    Security singleton providing access to audit log resources.
-    """
     # The alerts property
     alerts: Optional[list[Alert]] = None
     # A collection of alerts in Microsoft 365 Defender.

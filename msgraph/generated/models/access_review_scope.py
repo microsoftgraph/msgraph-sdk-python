@@ -6,8 +6,11 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_review_access_package_assignment_policy_scope import AccessReviewAccessPackageAssignmentPolicyScope
     from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+    from .access_review_principal_scope import AccessReviewPrincipalScope
     from .access_review_query_scope import AccessReviewQueryScope
+    from .access_review_resource_scope import AccessReviewResourceScope
     from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
 @dataclass
@@ -34,14 +37,26 @@ class AccessReviewScope(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewAccessPackageAssignmentPolicyScope".casefold():
+            from .access_review_access_package_assignment_policy_scope import AccessReviewAccessPackageAssignmentPolicyScope
+
+            return AccessReviewAccessPackageAssignmentPolicyScope()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInactiveUsersQueryScope".casefold():
             from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
 
             return AccessReviewInactiveUsersQueryScope()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewPrincipalScope".casefold():
+            from .access_review_principal_scope import AccessReviewPrincipalScope
+
+            return AccessReviewPrincipalScope()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewQueryScope".casefold():
             from .access_review_query_scope import AccessReviewQueryScope
 
             return AccessReviewQueryScope()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewResourceScope".casefold():
+            from .access_review_resource_scope import AccessReviewResourceScope
+
+            return AccessReviewResourceScope()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.principalResourceMembershipsScope".casefold():
             from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
@@ -53,12 +68,18 @@ class AccessReviewScope(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .access_review_access_package_assignment_policy_scope import AccessReviewAccessPackageAssignmentPolicyScope
         from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+        from .access_review_principal_scope import AccessReviewPrincipalScope
         from .access_review_query_scope import AccessReviewQueryScope
+        from .access_review_resource_scope import AccessReviewResourceScope
         from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
+        from .access_review_access_package_assignment_policy_scope import AccessReviewAccessPackageAssignmentPolicyScope
         from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+        from .access_review_principal_scope import AccessReviewPrincipalScope
         from .access_review_query_scope import AccessReviewQueryScope
+        from .access_review_resource_scope import AccessReviewResourceScope
         from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
         fields: dict[str, Callable[[Any], None]] = {

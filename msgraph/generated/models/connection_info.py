@@ -5,6 +5,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .external_token_based_sap_iag_connection_info import ExternalTokenBasedSapIagConnectionInfo
+
 @dataclass
 class ConnectionInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -26,6 +29,15 @@ class ConnectionInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if parse_node is None:
             raise TypeError("parse_node cannot be null.")
+        try:
+            child_node = parse_node.get_child_node("@odata.type")
+            mapping_value = child_node.get_str_value() if child_node else None
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalTokenBasedSapIagConnectionInfo".casefold():
+            from .external_token_based_sap_iag_connection_info import ExternalTokenBasedSapIagConnectionInfo
+
+            return ExternalTokenBasedSapIagConnectionInfo()
         return ConnectionInfo()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -33,6 +45,10 @@ class ConnectionInfo(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .external_token_based_sap_iag_connection_info import ExternalTokenBasedSapIagConnectionInfo
+
+        from .external_token_based_sap_iag_connection_info import ExternalTokenBasedSapIagConnectionInfo
+
         fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),

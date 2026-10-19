@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .default_invitation_redemption_identity_provider_configuration import DefaultInvitationRedemptionIdentityProviderConfiguration
     from .entity import Entity
     from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+    from .m365_capability_base import M365CapabilityBase
 
 from .entity import Entity
 
@@ -37,6 +38,8 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
     invitation_redemption_identity_provider_configuration: Optional[DefaultInvitationRedemptionIdentityProviderConfiguration] = None
     # If true, the default configuration is set to the system default configuration. If false, the default settings are customized.
     is_service_default: Optional[bool] = None
+    # Defines the default Microsoft 365 cross-tenant capabilities for inbound access from external organizations.
+    m365_capabilities: Optional[list[M365CapabilityBase]] = None
     # Defines your default configuration for inbound Microsoft 365 collaboration settings that determine which users from other organizations can collaborate with your organization using Microsoft 365 apps.
     m365_collaboration_inbound: Optional[CrossTenantAccessPolicyM365CollaborationInboundSetting] = None
     # Defines your default configuration for outbound Microsoft 365 collaboration settings that determine which users in your organization can collaborate with other organizations using Microsoft 365 apps.
@@ -71,6 +74,7 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
         from .default_invitation_redemption_identity_provider_configuration import DefaultInvitationRedemptionIdentityProviderConfiguration
         from .entity import Entity
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+        from .m365_capability_base import M365CapabilityBase
 
         from .cross_tenant_access_policy_app_service_connect_setting import CrossTenantAccessPolicyAppServiceConnectSetting
         from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
@@ -81,6 +85,7 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
         from .default_invitation_redemption_identity_provider_configuration import DefaultInvitationRedemptionIdentityProviderConfiguration
         from .entity import Entity
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+        from .m365_capability_base import M365CapabilityBase
 
         fields: dict[str, Callable[[Any], None]] = {
             "appServiceConnectInbound": lambda n : setattr(self, 'app_service_connect_inbound', n.get_object_value(CrossTenantAccessPolicyAppServiceConnectSetting)),
@@ -92,6 +97,7 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
             "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
             "invitationRedemptionIdentityProviderConfiguration": lambda n : setattr(self, 'invitation_redemption_identity_provider_configuration', n.get_object_value(DefaultInvitationRedemptionIdentityProviderConfiguration)),
             "isServiceDefault": lambda n : setattr(self, 'is_service_default', n.get_bool_value()),
+            "m365Capabilities": lambda n : setattr(self, 'm365_capabilities', n.get_collection_of_object_values(M365CapabilityBase)),
             "m365CollaborationInbound": lambda n : setattr(self, 'm365_collaboration_inbound', n.get_object_value(CrossTenantAccessPolicyM365CollaborationInboundSetting)),
             "m365CollaborationOutbound": lambda n : setattr(self, 'm365_collaboration_outbound', n.get_object_value(CrossTenantAccessPolicyM365CollaborationOutboundSetting)),
             "tenantRestrictions": lambda n : setattr(self, 'tenant_restrictions', n.get_object_value(CrossTenantAccessPolicyTenantRestrictions)),
@@ -118,6 +124,7 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity, Parsable):
         writer.write_object_value("inboundTrust", self.inbound_trust)
         writer.write_object_value("invitationRedemptionIdentityProviderConfiguration", self.invitation_redemption_identity_provider_configuration)
         writer.write_bool_value("isServiceDefault", self.is_service_default)
+        writer.write_collection_of_object_values("m365Capabilities", self.m365_capabilities)
         writer.write_object_value("m365CollaborationInbound", self.m365_collaboration_inbound)
         writer.write_object_value("m365CollaborationOutbound", self.m365_collaboration_outbound)
         writer.write_object_value("tenantRestrictions", self.tenant_restrictions)

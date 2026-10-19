@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from .control_configuration import ControlConfiguration
     from .entitlement_management_settings import EntitlementManagementSettings
     from .entity import Entity
+    from .external_origin_resource_connector import ExternalOriginResourceConnector
 
 from .entity import Entity
 
@@ -47,6 +48,8 @@ class EntitlementManagement(Entity, Parsable):
     connected_organizations: Optional[list[ConnectedOrganization]] = None
     # Configuration settings that control the lifecycle and access policies of entitlement management within a tenant.
     control_configurations: Optional[list[ControlConfiguration]] = None
+    # Represents the connectors used to communicate with external resource systems.
+    external_origin_resource_connectors: Optional[list[ExternalOriginResourceConnector]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A reference to the geolocation environments in which a resource is located.
@@ -95,6 +98,7 @@ class EntitlementManagement(Entity, Parsable):
         from .control_configuration import ControlConfiguration
         from .entitlement_management_settings import EntitlementManagementSettings
         from .entity import Entity
+        from .external_origin_resource_connector import ExternalOriginResourceConnector
 
         from .access_package import AccessPackage
         from .access_package_assignment import AccessPackageAssignment
@@ -113,6 +117,7 @@ class EntitlementManagement(Entity, Parsable):
         from .control_configuration import ControlConfiguration
         from .entitlement_management_settings import EntitlementManagementSettings
         from .entity import Entity
+        from .external_origin_resource_connector import ExternalOriginResourceConnector
 
         fields: dict[str, Callable[[Any], None]] = {
             "accessPackageAssignmentApprovals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(Approval)),
@@ -125,6 +130,7 @@ class EntitlementManagement(Entity, Parsable):
             "catalogs": lambda n : setattr(self, 'catalogs', n.get_collection_of_object_values(AccessPackageCatalog)),
             "connectedOrganizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(ConnectedOrganization)),
             "controlConfigurations": lambda n : setattr(self, 'control_configurations', n.get_collection_of_object_values(ControlConfiguration)),
+            "externalOriginResourceConnectors": lambda n : setattr(self, 'external_origin_resource_connectors', n.get_collection_of_object_values(ExternalOriginResourceConnector)),
             "resourceEnvironments": lambda n : setattr(self, 'resource_environments', n.get_collection_of_object_values(AccessPackageResourceEnvironment)),
             "resourceRequests": lambda n : setattr(self, 'resource_requests', n.get_collection_of_object_values(AccessPackageResourceRequest)),
             "resourceRoleScopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
@@ -155,6 +161,7 @@ class EntitlementManagement(Entity, Parsable):
         writer.write_collection_of_object_values("catalogs", self.catalogs)
         writer.write_collection_of_object_values("connectedOrganizations", self.connected_organizations)
         writer.write_collection_of_object_values("controlConfigurations", self.control_configurations)
+        writer.write_collection_of_object_values("externalOriginResourceConnectors", self.external_origin_resource_connectors)
         writer.write_collection_of_object_values("resourceEnvironments", self.resource_environments)
         writer.write_collection_of_object_values("resourceRequests", self.resource_requests)
         writer.write_collection_of_object_values("resourceRoleScopes", self.resource_role_scopes)

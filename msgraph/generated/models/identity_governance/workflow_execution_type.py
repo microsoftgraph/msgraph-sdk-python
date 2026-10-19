@@ -6,4 +6,5 @@ class WorkflowExecutionType(str, Enum):
     UnknownFutureValue = "unknownFutureValue",
     ActivatedWithScope = "activatedWithScope",
     Preview = "preview",
+    ExtensibilityOnDemand = "extensibilityOnDemand",
 

@@ -38,6 +38,7 @@ if TYPE_CHECKING:
     from .managed_app_registration import ManagedAppRegistration
     from .managed_device import ManagedDevice
     from .message import Message
+    from .note import Note
     from .object_identity import ObjectIdentity
     from .onenote import Onenote
     from .online_meeting import OnlineMeeting
@@ -226,6 +227,8 @@ class User(DirectoryObject, Parsable):
     mobile_phone: Optional[str] = None
     # The URL for the user's site. Requires $select to retrieve.
     my_site: Optional[str] = None
+    # The notes in the user's Notes folder. Read-only. Nullable.
+    notes: Optional[list[Note]] = None
     # The oauth2PermissionGrants property
     oauth2_permission_grants: Optional[list[OAuth2PermissionGrant]] = None
     # The office location in the user's place of business. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
@@ -400,6 +403,7 @@ class User(DirectoryObject, Parsable):
         from .managed_app_registration import ManagedAppRegistration
         from .managed_device import ManagedDevice
         from .message import Message
+        from .note import Note
         from .object_identity import ObjectIdentity
         from .onenote import Onenote
         from .online_meeting import OnlineMeeting
@@ -460,6 +464,7 @@ class User(DirectoryObject, Parsable):
         from .managed_app_registration import ManagedAppRegistration
         from .managed_device import ManagedDevice
         from .message import Message
+        from .note import Note
         from .object_identity import ObjectIdentity
         from .onenote import Onenote
         from .online_meeting import OnlineMeeting
@@ -566,6 +571,7 @@ class User(DirectoryObject, Parsable):
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(Message)),
             "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
             "mySite": lambda n : setattr(self, 'my_site', n.get_str_value()),
+            "notes": lambda n : setattr(self, 'notes', n.get_collection_of_object_values(Note)),
             "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(OAuth2PermissionGrant)),
             "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
             "onPremisesDistinguishedName": lambda n : setattr(self, 'on_premises_distinguished_name', n.get_str_value()),
@@ -715,6 +721,7 @@ class User(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("messages", self.messages)
         writer.write_str_value("mobilePhone", self.mobile_phone)
         writer.write_str_value("mySite", self.my_site)
+        writer.write_collection_of_object_values("notes", self.notes)
         writer.write_collection_of_object_values("oauth2PermissionGrants", self.oauth2_permission_grants)
         writer.write_str_value("officeLocation", self.office_location)
         writer.write_str_value("onPremisesDistinguishedName", self.on_premises_distinguished_name)

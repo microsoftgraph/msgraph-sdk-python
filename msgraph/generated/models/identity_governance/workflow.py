@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ..directory_object import DirectoryObject
     from .quarantine_details import QuarantineDetails
     from .run import Run
+    from .subject_processing_result import SubjectProcessingResult
     from .task_report import TaskReport
     from .user_processing_result import UserProcessingResult
     from .workflow_base import WorkflowBase
@@ -37,6 +38,8 @@ class Workflow(WorkflowBase, Parsable):
     runs: Optional[list[Run]] = None
     # The settings property
     settings: Optional[WorkflowSetting] = None
+    # Per-subject workflow execution results.
+    subject_processing_results: Optional[list[SubjectProcessingResult]] = None
     # Represents the aggregation of task execution data for tasks within a workflow object.
     task_reports: Optional[list[TaskReport]] = None
     # Per-user workflow execution results.
@@ -65,6 +68,7 @@ class Workflow(WorkflowBase, Parsable):
         from ..directory_object import DirectoryObject
         from .quarantine_details import QuarantineDetails
         from .run import Run
+        from .subject_processing_result import SubjectProcessingResult
         from .task_report import TaskReport
         from .user_processing_result import UserProcessingResult
         from .workflow_base import WorkflowBase
@@ -74,6 +78,7 @@ class Workflow(WorkflowBase, Parsable):
         from ..directory_object import DirectoryObject
         from .quarantine_details import QuarantineDetails
         from .run import Run
+        from .subject_processing_result import SubjectProcessingResult
         from .task_report import TaskReport
         from .user_processing_result import UserProcessingResult
         from .workflow_base import WorkflowBase
@@ -89,6 +94,7 @@ class Workflow(WorkflowBase, Parsable):
             "quarantineDetails": lambda n : setattr(self, 'quarantine_details', n.get_object_value(QuarantineDetails)),
             "runs": lambda n : setattr(self, 'runs', n.get_collection_of_object_values(Run)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(WorkflowSetting)),
+            "subjectProcessingResults": lambda n : setattr(self, 'subject_processing_results', n.get_collection_of_object_values(SubjectProcessingResult)),
             "taskReports": lambda n : setattr(self, 'task_reports', n.get_collection_of_object_values(TaskReport)),
             "userProcessingResults": lambda n : setattr(self, 'user_processing_results', n.get_collection_of_object_values(UserProcessingResult)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
@@ -115,6 +121,7 @@ class Workflow(WorkflowBase, Parsable):
         writer.write_object_value("quarantineDetails", self.quarantine_details)
         writer.write_collection_of_object_values("runs", self.runs)
         writer.write_object_value("settings", self.settings)
+        writer.write_collection_of_object_values("subjectProcessingResults", self.subject_processing_results)
         writer.write_collection_of_object_values("taskReports", self.task_reports)
         writer.write_collection_of_object_values("userProcessingResults", self.user_processing_results)
         writer.write_int_value("version", self.version)

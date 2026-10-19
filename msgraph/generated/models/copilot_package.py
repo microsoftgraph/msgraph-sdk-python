@@ -7,6 +7,8 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .copilot_package_detail import CopilotPackageDetail
+    from .copilot_package_request_status import CopilotPackageRequestStatus
+    from .copilot_package_request_type import CopilotPackageRequestType
     from .entity import Entity
     from .package_status import PackageStatus
     from .package_type import PackageType
@@ -15,6 +17,8 @@ from .entity import Entity
 
 @dataclass
 class CopilotPackage(Entity, Parsable):
+    # The agentIdentityId property
+    agent_identity_id: Optional[str] = None
     # The appId property
     app_id: Optional[str] = None
     # The assetId property
@@ -45,6 +49,10 @@ class CopilotPackage(Entity, Parsable):
     platform: Optional[str] = None
     # The publisher property
     publisher: Optional[str] = None
+    # The requestStatus property
+    request_status: Optional[CopilotPackageRequestStatus] = None
+    # The requestType property
+    request_type: Optional[CopilotPackageRequestType] = None
     # The shortDescription property
     short_description: Optional[str] = None
     # The supportedHosts property
@@ -82,16 +90,21 @@ class CopilotPackage(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .copilot_package_detail import CopilotPackageDetail
+        from .copilot_package_request_status import CopilotPackageRequestStatus
+        from .copilot_package_request_type import CopilotPackageRequestType
         from .entity import Entity
         from .package_status import PackageStatus
         from .package_type import PackageType
 
         from .copilot_package_detail import CopilotPackageDetail
+        from .copilot_package_request_status import CopilotPackageRequestStatus
+        from .copilot_package_request_type import CopilotPackageRequestType
         from .entity import Entity
         from .package_status import PackageStatus
         from .package_type import PackageType
 
         fields: dict[str, Callable[[Any], None]] = {
+            "agentIdentityId": lambda n : setattr(self, 'agent_identity_id', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "assetId": lambda n : setattr(self, 'asset_id', n.get_str_value()),
             "availableTo": lambda n : setattr(self, 'available_to', n.get_enum_value(PackageStatus)),
@@ -106,6 +119,8 @@ class CopilotPackage(Entity, Parsable):
             "ownerId": lambda n : setattr(self, 'owner_id', n.get_str_value()),
             "platform": lambda n : setattr(self, 'platform', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
+            "requestStatus": lambda n : setattr(self, 'request_status', n.get_enum_value(CopilotPackageRequestStatus)),
+            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(CopilotPackageRequestType)),
             "shortDescription": lambda n : setattr(self, 'short_description', n.get_str_value()),
             "supportedHosts": lambda n : setattr(self, 'supported_hosts', n.get_collection_of_primitive_values(str)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(PackageType)),
@@ -125,6 +140,7 @@ class CopilotPackage(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("agentIdentityId", self.agent_identity_id)
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("assetId", self.asset_id)
         writer.write_enum_value("availableTo", self.available_to)
@@ -139,6 +155,8 @@ class CopilotPackage(Entity, Parsable):
         writer.write_str_value("ownerId", self.owner_id)
         writer.write_str_value("platform", self.platform)
         writer.write_str_value("publisher", self.publisher)
+        writer.write_enum_value("requestStatus", self.request_status)
+        writer.write_enum_value("requestType", self.request_type)
         writer.write_str_value("shortDescription", self.short_description)
         writer.write_collection_of_primitive_values("supportedHosts", self.supported_hosts)
         writer.write_enum_value("type", self.type)

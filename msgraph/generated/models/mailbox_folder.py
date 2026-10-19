@@ -34,6 +34,8 @@ class MailboxFolder(Entity, Parsable):
     total_item_count: Optional[int] = None
     # Describes the folder class type.
     type: Optional[str] = None
+    # The locale-independent well-known name of the folder for folders created by Outlook, such as inbox, sentitems, drafts, deleteditems, or archive. For user-created folders, the value is null. Read-only.
+    well_known_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> MailboxFolder:
@@ -71,6 +73,7 @@ class MailboxFolder(Entity, Parsable):
             "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
             "totalItemCount": lambda n : setattr(self, 'total_item_count', n.get_int_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
+            "wellKnownName": lambda n : setattr(self, 'well_known_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,5 +97,6 @@ class MailboxFolder(Entity, Parsable):
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
         writer.write_int_value("totalItemCount", self.total_item_count)
         writer.write_str_value("type", self.type)
+        writer.write_str_value("wellKnownName", self.well_known_name)
     
 

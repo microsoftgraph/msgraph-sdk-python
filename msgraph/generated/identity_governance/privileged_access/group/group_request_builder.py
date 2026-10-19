@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .eligibility_schedules.eligibility_schedules_request_builder import EligibilitySchedulesRequestBuilder
     from .eligibility_schedule_instances.eligibility_schedule_instances_request_builder import EligibilityScheduleInstancesRequestBuilder
     from .eligibility_schedule_requests.eligibility_schedule_requests_request_builder import EligibilityScheduleRequestsRequestBuilder
+    from .resources.resources_request_builder import ResourcesRequestBuilder
 
 class GroupRequestBuilder(BaseRequestBuilder):
     """
@@ -207,6 +208,15 @@ class GroupRequestBuilder(BaseRequestBuilder):
         from .eligibility_schedules.eligibility_schedules_request_builder import EligibilitySchedulesRequestBuilder
 
         return EligibilitySchedulesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resources(self) -> ResourcesRequestBuilder:
+        """
+        Provides operations to manage the resources property of the microsoft.graph.privilegedAccessGroup entity.
+        """
+        from .resources.resources_request_builder import ResourcesRequestBuilder
+
+        return ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GroupRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

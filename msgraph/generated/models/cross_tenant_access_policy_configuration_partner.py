@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
     from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
     from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+    from .m365_capability_base import M365CapabilityBase
     from .service_provider_constraints import ServiceProviderConstraints
 
 @dataclass
@@ -43,6 +44,8 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
     is_in_multi_tenant_organization: Optional[bool] = None
     # Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
     is_service_provider: Optional[bool] = None
+    # Defines the partner-specific Microsoft 365 cross-tenant capabilities for inbound access from the partner organization.
+    m365_capabilities: Optional[list[M365CapabilityBase]] = None
     # Defines your partner-specific configuration for inbound Microsoft 365 collaboration settings that determine which users from the partner organization can collaborate with your organization using Microsoft 365 apps.
     m365_collaboration_inbound: Optional[CrossTenantAccessPolicyM365CollaborationInboundSetting] = None
     # Defines your partner-specific configuration for outbound Microsoft 365 collaboration settings that determine which users in your organization can collaborate with the partner organization using Microsoft 365 apps.
@@ -80,6 +83,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+        from .m365_capability_base import M365CapabilityBase
         from .service_provider_constraints import ServiceProviderConstraints
 
         from .cross_tenant_access_policy_app_service_connect_setting import CrossTenantAccessPolicyAppServiceConnectSetting
@@ -90,6 +94,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
         from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
+        from .m365_capability_base import M365CapabilityBase
         from .service_provider_constraints import ServiceProviderConstraints
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -103,6 +108,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
             "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
             "isInMultiTenantOrganization": lambda n : setattr(self, 'is_in_multi_tenant_organization', n.get_bool_value()),
             "isServiceProvider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
+            "m365Capabilities": lambda n : setattr(self, 'm365_capabilities', n.get_collection_of_object_values(M365CapabilityBase)),
             "m365CollaborationInbound": lambda n : setattr(self, 'm365_collaboration_inbound', n.get_object_value(CrossTenantAccessPolicyM365CollaborationInboundSetting)),
             "m365CollaborationOutbound": lambda n : setattr(self, 'm365_collaboration_outbound', n.get_object_value(CrossTenantAccessPolicyM365CollaborationOutboundSetting)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -130,6 +136,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         writer.write_object_value("inboundTrust", self.inbound_trust)
         writer.write_bool_value("isInMultiTenantOrganization", self.is_in_multi_tenant_organization)
         writer.write_bool_value("isServiceProvider", self.is_service_provider)
+        writer.write_collection_of_object_values("m365Capabilities", self.m365_capabilities)
         writer.write_object_value("m365CollaborationInbound", self.m365_collaboration_inbound)
         writer.write_object_value("m365CollaborationOutbound", self.m365_collaboration_outbound)
         writer.write_str_value("@odata.type", self.odata_type)

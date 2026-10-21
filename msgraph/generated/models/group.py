@@ -45,7 +45,7 @@ class Group(DirectoryObject, Parsable):
     allow_external_senders: Optional[bool] = None
     # Represents the app roles granted to a group for an application. Supports $expand.
     app_role_assignments: Optional[list[AppRoleAssignment]] = None
-    # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group or a cloud security group. Requires a Microsoft Entra ID P1 license. Requires $select to retrieve. This property can be specified during group creation or update. However, for cloud security groups, it's immutable once set. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role. See Key differences from Microsoft 365 group labeling to learn more about managing this property for Microsoft 365 vs. cloud security groups.
+    # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group or a cloud security group. Requires a Microsoft Entra ID P1 license. Requires $select to retrieve. This property can be specified during group creation or update. However, for cloud security groups, it's immutable once set. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role. To learn more about managing this property for Microsoft 365 vs. cloud security groups, see Key differences from Microsoft 365 group labeling.
     assigned_labels: Optional[list[AssignedLabel]] = None
     # The licenses that are assigned to the group. Requires $select to retrieve. Supports $filter (eq). Read-only.
     assigned_licenses: Optional[list[AssignedLicense]] = None

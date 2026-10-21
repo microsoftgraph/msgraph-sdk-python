@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from .password_methods.password_methods_request_builder import PasswordMethodsRequestBuilder
     from .phone_methods.phone_methods_request_builder import PhoneMethodsRequestBuilder
     from .platform_credential_methods.platform_credential_methods_request_builder import PlatformCredentialMethodsRequestBuilder
+    from .resource_account_key_authentication_methods.resource_account_key_authentication_methods_request_builder import ResourceAccountKeyAuthenticationMethodsRequestBuilder
     from .software_oath_methods.software_oath_methods_request_builder import SoftwareOathMethodsRequestBuilder
     from .temporary_access_pass_methods.temporary_access_pass_methods_request_builder import TemporaryAccessPassMethodsRequestBuilder
     from .windows_hello_for_business_methods.windows_hello_for_business_methods_request_builder import WindowsHelloForBusinessMethodsRequestBuilder
@@ -230,6 +231,15 @@ class AuthenticationRequestBuilder(BaseRequestBuilder):
         from .platform_credential_methods.platform_credential_methods_request_builder import PlatformCredentialMethodsRequestBuilder
 
         return PlatformCredentialMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_account_key_authentication_methods(self) -> ResourceAccountKeyAuthenticationMethodsRequestBuilder:
+        """
+        Provides operations to manage the resourceAccountKeyAuthenticationMethods property of the microsoft.graph.authentication entity.
+        """
+        from .resource_account_key_authentication_methods.resource_account_key_authentication_methods_request_builder import ResourceAccountKeyAuthenticationMethodsRequestBuilder
+
+        return ResourceAccountKeyAuthenticationMethodsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def software_oath_methods(self) -> SoftwareOathMethodsRequestBuilder:

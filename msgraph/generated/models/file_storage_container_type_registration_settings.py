@@ -19,6 +19,8 @@ class FileStorageContainerTypeRegistrationSettings(AdditionalDataHolder, BackedM
     is_discoverability_enabled: Optional[bool] = None
     # Indicates whether item versioning is enabled.
     is_item_versioning_enabled: Optional[bool] = None
+    # Indicates whether Office apps (Word, Excel, and PowerPoint) for desktop and web are restricted for containers of this container type.
+    is_office_restricted: Optional[bool] = None
     # Indicates whether search is enabled.
     is_search_enabled: Optional[bool] = None
     # Only the manager and owner can share files in the container if restricted sharing is enabled.
@@ -57,6 +59,7 @@ class FileStorageContainerTypeRegistrationSettings(AdditionalDataHolder, BackedM
         fields: dict[str, Callable[[Any], None]] = {
             "isDiscoverabilityEnabled": lambda n : setattr(self, 'is_discoverability_enabled', n.get_bool_value()),
             "isItemVersioningEnabled": lambda n : setattr(self, 'is_item_versioning_enabled', n.get_bool_value()),
+            "isOfficeRestricted": lambda n : setattr(self, 'is_office_restricted', n.get_bool_value()),
             "isSearchEnabled": lambda n : setattr(self, 'is_search_enabled', n.get_bool_value()),
             "isSharingRestricted": lambda n : setattr(self, 'is_sharing_restricted', n.get_bool_value()),
             "itemMajorVersionLimit": lambda n : setattr(self, 'item_major_version_limit', n.get_int_value()),
@@ -77,6 +80,7 @@ class FileStorageContainerTypeRegistrationSettings(AdditionalDataHolder, BackedM
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isDiscoverabilityEnabled", self.is_discoverability_enabled)
         writer.write_bool_value("isItemVersioningEnabled", self.is_item_versioning_enabled)
+        writer.write_bool_value("isOfficeRestricted", self.is_office_restricted)
         writer.write_bool_value("isSearchEnabled", self.is_search_enabled)
         writer.write_bool_value("isSharingRestricted", self.is_sharing_restricted)
         writer.write_int_value("itemMajorVersionLimit", self.item_major_version_limit)

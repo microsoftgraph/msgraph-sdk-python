@@ -69,6 +69,9 @@ if TYPE_CHECKING:
     from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
     from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
     from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
+    from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+    from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+    from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
     from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
     from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
     from .apple_managed_identity_provider import AppleManagedIdentityProvider
@@ -755,6 +758,7 @@ if TYPE_CHECKING:
     from .reports_root import ReportsRoot
     from .request import Request
     from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
+    from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
     from .resource_operation import ResourceOperation
     from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
     from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase
@@ -1476,6 +1480,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
 
             return AndroidWorkProfileGeneralDeviceConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyDetail".casefold():
+            from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+
+            return AnonymousCalendarSharingFreeBusyDetail()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyReviewer".casefold():
+            from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+
+            return AnonymousCalendarSharingFreeBusyReviewer()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusySimple".casefold():
+            from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
+
+            return AnonymousCalendarSharingFreeBusySimple()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousGuestConversationMember".casefold():
             from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
 
@@ -4226,6 +4242,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
             return ResellerDelegatedAdminRelationship()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceAccountKeyAuthenticationMethod".casefold():
+            from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
+
+            return ResourceAccountKeyAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceOperation".casefold():
             from .resource_operation import ResourceOperation
 
@@ -6065,6 +6085,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
         from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
         from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
+        from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+        from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+        from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
         from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
         from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
         from .apple_managed_identity_provider import AppleManagedIdentityProvider
@@ -6751,6 +6774,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .reports_root import ReportsRoot
         from .request import Request
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
+        from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
         from .resource_operation import ResourceOperation
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase
@@ -7256,6 +7280,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
         from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
         from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
+        from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+        from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+        from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
         from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
         from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
         from .apple_managed_identity_provider import AppleManagedIdentityProvider
@@ -7942,6 +7969,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .reports_root import ReportsRoot
         from .request import Request
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
+        from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
         from .resource_operation import ResourceOperation
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .restore_artifacts_bulk_request_base import RestoreArtifactsBulkRequestBase

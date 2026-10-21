@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
     from ........models.permission import Permission
     from .grant.grant_request_builder import GrantRequestBuilder
+    from .revoke_grants.revoke_grants_request_builder import RevokeGrantsRequestBuilder
 
 class PermissionItemRequestBuilder(BaseRequestBuilder):
     """
@@ -147,6 +148,15 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
         from .grant.grant_request_builder import GrantRequestBuilder
 
         return GrantRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def revoke_grants(self) -> RevokeGrantsRequestBuilder:
+        """
+        Provides operations to call the revokeGrants method.
+        """
+        from .revoke_grants.revoke_grants_request_builder import RevokeGrantsRequestBuilder
+
+        return RevokeGrantsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PermissionItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

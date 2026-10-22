@@ -32,9 +32,10 @@ class RoleManagementCustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder)
     
     async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
         """
-        Delete navigation property customExtensions for identityGovernance
+        Delete a roleManagementCustomCalloutExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/rolemanagementcustomcalloutextension-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,9 +51,10 @@ class RoleManagementCustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder)
     
     async def get(self,request_configuration: Optional[RequestConfiguration[RoleManagementCustomCalloutExtensionItemRequestBuilderGetQueryParameters]] = None) -> Optional[RoleManagementCustomCalloutExtension]:
         """
-        Get customExtensions from identityGovernance
+        Retrieve the properties of a roleManagementCustomCalloutExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleManagementCustomCalloutExtension]
+        Find more info here: https://learn.microsoft.com/graph/api/rolemanagementcustomcalloutextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +72,11 @@ class RoleManagementCustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder)
     
     async def patch(self,body: RoleManagementCustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RoleManagementCustomCalloutExtension]:
         """
-        Update the navigation property customExtensions in identityGovernance
+        Update the properties of a roleManagementCustomCalloutExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleManagementCustomCalloutExtension]
+        Find more info here: https://learn.microsoft.com/graph/api/rolemanagementcustomcalloutextension-update?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -93,7 +96,7 @@ class RoleManagementCustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder)
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Delete navigation property customExtensions for identityGovernance
+        Delete a roleManagementCustomCalloutExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +107,7 @@ class RoleManagementCustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[RoleManagementCustomCalloutExtensionItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get customExtensions from identityGovernance
+        Retrieve the properties of a roleManagementCustomCalloutExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +118,7 @@ class RoleManagementCustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder)
     
     def to_patch_request_information(self,body: RoleManagementCustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the navigation property customExtensions in identityGovernance
+        Update the properties of a roleManagementCustomCalloutExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +151,7 @@ class RoleManagementCustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder)
     @dataclass
     class RoleManagementCustomCalloutExtensionItemRequestBuilderGetQueryParameters():
         """
-        Get customExtensions from identityGovernance
+        Retrieve the properties of a roleManagementCustomCalloutExtension object.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

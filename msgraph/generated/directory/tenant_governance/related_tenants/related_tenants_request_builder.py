@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .count.count_request_builder import CountRequestBuilder
     from .item.related_tenant_item_request_builder import RelatedTenantItemRequestBuilder
     from .refresh.refresh_request_builder import RefreshRequestBuilder
+    from .refresh_status.refresh_status_request_builder import RefreshStatusRequestBuilder
 
 class RelatedTenantsRequestBuilder(BaseRequestBuilder):
     """
@@ -145,6 +146,15 @@ class RelatedTenantsRequestBuilder(BaseRequestBuilder):
         from .refresh.refresh_request_builder import RefreshRequestBuilder
 
         return RefreshRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def refresh_status(self) -> RefreshStatusRequestBuilder:
+        """
+        Provides operations to call the refreshStatus method.
+        """
+        from .refresh_status.refresh_status_request_builder import RefreshStatusRequestBuilder
+
+        return RefreshStatusRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RelatedTenantsRequestBuilderGetQueryParameters():

@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .password_authentication_method import PasswordAuthenticationMethod
     from .phone_authentication_method import PhoneAuthenticationMethod
     from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
+    from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
     from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
     from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
     from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
@@ -43,6 +44,8 @@ class Authentication(Entity, Parsable):
     phone_methods: Optional[list[PhoneAuthenticationMethod]] = None
     # Represents a platform credential instance registered to a user on Mac OS.
     platform_credential_methods: Optional[list[PlatformCredentialAuthenticationMethod]] = None
+    # Represents the resource account key credentials registered to a user for authentication on shared devices.
+    resource_account_key_authentication_methods: Optional[list[ResourceAccountKeyAuthenticationMethod]] = None
     # The software OATH time-based one-time password (TOTP) applications registered to a user for authentication.
     software_oath_methods: Optional[list[SoftwareOathAuthenticationMethod]] = None
     # Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
@@ -76,6 +79,7 @@ class Authentication(Entity, Parsable):
         from .password_authentication_method import PasswordAuthenticationMethod
         from .phone_authentication_method import PhoneAuthenticationMethod
         from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
+        from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
@@ -90,6 +94,7 @@ class Authentication(Entity, Parsable):
         from .password_authentication_method import PasswordAuthenticationMethod
         from .phone_authentication_method import PhoneAuthenticationMethod
         from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
+        from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
@@ -104,6 +109,7 @@ class Authentication(Entity, Parsable):
             "passwordMethods": lambda n : setattr(self, 'password_methods', n.get_collection_of_object_values(PasswordAuthenticationMethod)),
             "phoneMethods": lambda n : setattr(self, 'phone_methods', n.get_collection_of_object_values(PhoneAuthenticationMethod)),
             "platformCredentialMethods": lambda n : setattr(self, 'platform_credential_methods', n.get_collection_of_object_values(PlatformCredentialAuthenticationMethod)),
+            "resourceAccountKeyAuthenticationMethods": lambda n : setattr(self, 'resource_account_key_authentication_methods', n.get_collection_of_object_values(ResourceAccountKeyAuthenticationMethod)),
             "softwareOathMethods": lambda n : setattr(self, 'software_oath_methods', n.get_collection_of_object_values(SoftwareOathAuthenticationMethod)),
             "temporaryAccessPassMethods": lambda n : setattr(self, 'temporary_access_pass_methods', n.get_collection_of_object_values(TemporaryAccessPassAuthenticationMethod)),
             "windowsHelloForBusinessMethods": lambda n : setattr(self, 'windows_hello_for_business_methods', n.get_collection_of_object_values(WindowsHelloForBusinessAuthenticationMethod)),
@@ -130,6 +136,7 @@ class Authentication(Entity, Parsable):
         writer.write_collection_of_object_values("passwordMethods", self.password_methods)
         writer.write_collection_of_object_values("phoneMethods", self.phone_methods)
         writer.write_collection_of_object_values("platformCredentialMethods", self.platform_credential_methods)
+        writer.write_collection_of_object_values("resourceAccountKeyAuthenticationMethods", self.resource_account_key_authentication_methods)
         writer.write_collection_of_object_values("softwareOathMethods", self.software_oath_methods)
         writer.write_collection_of_object_values("temporaryAccessPassMethods", self.temporary_access_pass_methods)
         writer.write_collection_of_object_values("windowsHelloForBusinessMethods", self.windows_hello_for_business_methods)

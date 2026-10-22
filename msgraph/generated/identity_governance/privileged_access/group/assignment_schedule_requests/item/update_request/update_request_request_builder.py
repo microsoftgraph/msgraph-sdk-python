@@ -33,10 +33,11 @@ class UpdateRequestRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: UpdateRequestPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequest]:
         """
-        Invoke action updateRequest
+        Update a privilegedAccessGroupAssignmentScheduleRequest object with the result of a custom extension evaluation. This action is used to submit the result of a custom extension evaluation for a role assignment request.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupAssignmentScheduleRequest]
+        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupassignmentschedulerequest-updaterequest?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -56,7 +57,7 @@ class UpdateRequestRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: UpdateRequestPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke action updateRequest
+        Update a privilegedAccessGroupAssignmentScheduleRequest object with the result of a custom extension evaluation. This action is used to submit the result of a custom extension evaluation for a role assignment request.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

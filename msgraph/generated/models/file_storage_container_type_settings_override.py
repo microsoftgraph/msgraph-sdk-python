@@ -8,4 +8,5 @@ class FileStorageContainerTypeSettingsOverride(str, Enum):
     ItemMajorVersionLimit = "itemMajorVersionLimit",
     MaxStoragePerContainerInBytes = "maxStoragePerContainerInBytes",
     UnknownFutureValue = "unknownFutureValue",
+    IsOfficeRestricted = "isOfficeRestricted",
 

@@ -15,7 +15,7 @@ from .custom_callout_extension import CustomCalloutExtension
 class RoleManagementCustomCalloutExtension(CustomCalloutExtension, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.roleManagementCustomCalloutExtension"
-    # The customAttributes property
+    # The custom attribute names to include in the callout payload.
     custom_attributes: Optional[list[str]] = None
     # The resourceType property
     resource_type: Optional[CustomExtensionResourceType] = None

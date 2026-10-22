@@ -5,5 +5,6 @@ class SystemBrowserEnabledOn(str, Enum):
     Ios = "ios",
     Android = "android",
     Mac = "mac",
+    Linux = "linux",
     UnknownFutureValue = "unknownFutureValue",
 

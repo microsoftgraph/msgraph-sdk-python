@@ -14,9 +14,9 @@ from .entity import Entity
 
 @dataclass
 class Presence(Entity, Parsable):
-    # The supplemental information to a user's availability. Possible values are available, away, beRightBack, busy, doNotDisturb, offline, outOfOffice, presenceUnknown.
+    # The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, Offline, OutOfOffice, PresenceUnknown.
     activity: Optional[str] = None
-    # The base presence information for a user. Possible values are available, away, beRightBack, busy, doNotDisturb, focusing, inACall, inAMeeting, offline, presenting, presenceUnknown.
+    # The base presence information for a user. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, Focusing, InACall, InAMeeting, Offline, Presenting, PresenceUnknown.
     availability: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

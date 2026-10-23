@@ -13,7 +13,7 @@ from .entity import Entity
 
 @dataclass
 class PrivilegedAccessRoot(Entity, Parsable):
-    # The customExtensions property
+    # The custom extensions configured for PIM role management operations.
     custom_extensions: Optional[list[RoleManagementCustomCalloutExtension]] = None
     # A group that's governed through Privileged Identity Management (PIM).
     group: Optional[PrivilegedAccessGroup] = None

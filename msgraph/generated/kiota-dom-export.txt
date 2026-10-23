@@ -24564,6 +24564,7 @@ msgraph.generated.devices.DevicesRequestBuilder::|public|get_available_extension
 msgraph.generated.devices.DevicesRequestBuilder::|public|get_by_ids:GetByIdsRequestBuilder
 msgraph.generated.devices.DevicesRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.devices.DevicesRequestBuilder::|public|post(body:Device; request_configuration?:RequestConfiguration[QueryParameters]):Device
+msgraph.generated.devices.DevicesRequestBuilder::|public|provision:ProvisionRequestBuilder
 msgraph.generated.devices.DevicesRequestBuilder::|public|request_adapter:RequestAdapter
 msgraph.generated.devices.DevicesRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[DevicesRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.devices.DevicesRequestBuilder::|public|to_post_request_information(body:Device; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
@@ -25590,6 +25591,25 @@ msgraph.generated.devices.item.transitiveMemberOf.TransitiveMemberOfRequestBuild
 msgraph.generated.devices.item.transitiveMemberOf.TransitiveMemberOfRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[TransitiveMemberOfRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.devices.item.transitiveMemberOf.TransitiveMemberOfRequestBuilder::|public|url_template:str
 msgraph.generated.devices.item.transitiveMemberOf.TransitiveMemberOfRequestBuilder::|public|with_url(raw_url:str):TransitiveMemberOfRequestBuilder
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|constructor():None
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|provisioning_blob():str
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|provisioning_blob(value:str):None
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.devices.provision.ProvisionPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):ProvisionPostRequestBody
+msgraph.generated.devices.provision.ProvisionPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.devices.provision.ProvisionRequestBuilder-->BaseRequestBuilder
+msgraph.generated.devices.provision.ProvisionRequestBuilder.ProvisionRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.devices.provision.ProvisionRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.devices.provision.ProvisionRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.devices.provision.ProvisionRequestBuilder::|public|post(body:ProvisionPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):ProvisionResponse
+msgraph.generated.devices.provision.ProvisionRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.devices.provision.ProvisionRequestBuilder::|public|to_post_request_information(body:ProvisionPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.devices.provision.ProvisionRequestBuilder::|public|url_template:str
+msgraph.generated.devices.provision.ProvisionRequestBuilder::|public|with_url(raw_url:str):ProvisionRequestBuilder
 msgraph.generated.devices.validateProperties.ValidatePropertiesPostRequestBody::|public|additional_data():dict[str, Any]
 msgraph.generated.devices.validateProperties.ValidatePropertiesPostRequestBody::|public|additional_data(value:dict[str, Any]):None
 msgraph.generated.devices.validateProperties.ValidatePropertiesPostRequestBody::|public|backing_store:BackingStore
@@ -27880,6 +27900,15 @@ msgraph.generated.directory.tenantGovernance.relatedTenants.refresh.RefreshReque
 msgraph.generated.directory.tenantGovernance.relatedTenants.refresh.RefreshRequestBuilder::|public|to_post_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.directory.tenantGovernance.relatedTenants.refresh.RefreshRequestBuilder::|public|url_template:str
 msgraph.generated.directory.tenantGovernance.relatedTenants.refresh.RefreshRequestBuilder::|public|with_url(raw_url:str):RefreshRequestBuilder
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder-->BaseRequestBuilder
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder.RefreshStatusRequestBuilderGetRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder::|public|get(request_configuration?:RequestConfiguration[QueryParameters]):RelatedTenantsRefreshStatus
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder::|public|url_template:str
+msgraph.generated.directory.tenantGovernance.relatedTenants.refreshStatus.RefreshStatusRequestBuilder::|public|with_url(raw_url:str):RefreshStatusRequestBuilder
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder.RelatedTenantsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder.RelatedTenantsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -27899,6 +27928,7 @@ msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsReques
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder::|public|post(body:RelatedTenant; request_configuration?:RequestConfiguration[QueryParameters]):RelatedTenant
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder::|public|refresh:RefreshRequestBuilder
+msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder::|public|refresh_status:RefreshStatusRequestBuilder
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder::|public|request_adapter:RequestAdapter
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[RelatedTenantsRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.directory.tenantGovernance.relatedTenants.RelatedTenantsRequestBuilder::|public|to_post_request_information(body:RelatedTenant; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
@@ -30640,11 +30670,31 @@ msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestB
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.drives.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.drives.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.drives.item.items.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.drives.item.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.drives.item.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -52927,11 +52977,31 @@ msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRe
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.drives.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.drives.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.drives.item.list_.items.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.drives.item.list_.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.drives.item.list_.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -53256,11 +53326,31 @@ msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilde
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.drives.item.list_.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.drives.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.drives.item.list_.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.drives.item.list_.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.drives.item.list_.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -67535,11 +67625,31 @@ msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.groups.item.sites.item.lists.item.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -67863,11 +67973,31 @@ msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionI
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.groups.item.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.groups.item.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.groups.item.sites.item.lists.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.groups.item.sites.item.lists.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.groups.item.sites.item.lists.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -70605,11 +70735,31 @@ msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestB
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.groups.item.sites.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.groups.item.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.groups.item.sites.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.groups.item.sites.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.groups.item.sites.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -111877,6 +112027,24 @@ msgraph.generated.models.AndroidWorkProfileRequiredPasswordType::0004-NumericCom
 msgraph.generated.models.AndroidWorkProfileRequiredPasswordType::0005-AtLeastAlphabetic
 msgraph.generated.models.AndroidWorkProfileRequiredPasswordType::0006-AtLeastAlphanumeric
 msgraph.generated.models.AndroidWorkProfileRequiredPasswordType::0007-AlphanumericWithSymbols
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyDetail-->M365CapabilityBase
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyDetail::|public|constructor():None
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyDetail::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyDetail::|public|odata_type:str
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyDetail::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyDetail::|static|public|create_from_discriminator_value(parse_node:ParseNode):AnonymousCalendarSharingFreeBusyDetail
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyReviewer-->M365CapabilityBase
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyReviewer::|public|constructor():None
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyReviewer::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyReviewer::|public|odata_type:str
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyReviewer::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.models.AnonymousCalendarSharingFreeBusyReviewer::|static|public|create_from_discriminator_value(parse_node:ParseNode):AnonymousCalendarSharingFreeBusyReviewer
+msgraph.generated.models.AnonymousCalendarSharingFreeBusySimple-->M365CapabilityBase
+msgraph.generated.models.AnonymousCalendarSharingFreeBusySimple::|public|constructor():None
+msgraph.generated.models.AnonymousCalendarSharingFreeBusySimple::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.models.AnonymousCalendarSharingFreeBusySimple::|public|odata_type:str
+msgraph.generated.models.AnonymousCalendarSharingFreeBusySimple::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.models.AnonymousCalendarSharingFreeBusySimple::|static|public|create_from_discriminator_value(parse_node:ParseNode):AnonymousCalendarSharingFreeBusySimple
 msgraph.generated.models.AnonymousGuestConversationMember-->ConversationMember
 msgraph.generated.models.AnonymousGuestConversationMember::|public|anonymous_guest_id():str
 msgraph.generated.models.AnonymousGuestConversationMember::|public|anonymous_guest_id(value:str):None
@@ -113807,6 +113975,8 @@ msgraph.generated.models.Authentication::|public|phone_methods():list[PhoneAuthe
 msgraph.generated.models.Authentication::|public|phone_methods(value:list[PhoneAuthenticationMethod]):None
 msgraph.generated.models.Authentication::|public|platform_credential_methods():list[PlatformCredentialAuthenticationMethod]
 msgraph.generated.models.Authentication::|public|platform_credential_methods(value:list[PlatformCredentialAuthenticationMethod]):None
+msgraph.generated.models.Authentication::|public|resource_account_key_authentication_methods():list[ResourceAccountKeyAuthenticationMethod]
+msgraph.generated.models.Authentication::|public|resource_account_key_authentication_methods(value:list[ResourceAccountKeyAuthenticationMethod]):None
 msgraph.generated.models.Authentication::|public|serialize(writer:SerializationWriter):None
 msgraph.generated.models.Authentication::|public|software_oath_methods():list[SoftwareOathAuthenticationMethod]
 msgraph.generated.models.Authentication::|public|software_oath_methods(value:list[SoftwareOathAuthenticationMethod]):None
@@ -128185,6 +128355,8 @@ msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|i
 msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_discoverability_enabled(value:bool):None
 msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_item_versioning_enabled():bool
 msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_item_versioning_enabled(value:bool):None
+msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_office_restricted():bool
+msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_office_restricted(value:bool):None
 msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_search_enabled():bool
 msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_search_enabled(value:bool):None
 msgraph.generated.models.FileStorageContainerTypeRegistrationSettings::|public|is_sharing_restricted():bool
@@ -128213,6 +128385,8 @@ msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_discoverab
 msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_discoverability_enabled(value:bool):None
 msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_item_versioning_enabled():bool
 msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_item_versioning_enabled(value:bool):None
+msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_office_restricted():bool
+msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_office_restricted(value:bool):None
 msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_search_enabled():bool
 msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_search_enabled(value:bool):None
 msgraph.generated.models.FileStorageContainerTypeSettings::|public|is_sharing_restricted():bool
@@ -128236,6 +128410,7 @@ msgraph.generated.models.FileStorageContainerTypeSettingsOverride::0003-IsItemVe
 msgraph.generated.models.FileStorageContainerTypeSettingsOverride::0004-ItemMajorVersionLimit
 msgraph.generated.models.FileStorageContainerTypeSettingsOverride::0005-MaxStoragePerContainerInBytes
 msgraph.generated.models.FileStorageContainerTypeSettingsOverride::0006-UnknownFutureValue
+msgraph.generated.models.FileStorageContainerTypeSettingsOverride::0007-IsOfficeRestricted
 msgraph.generated.models.FileStorageContainerTypeSettings~~>AdditionalDataHolder; BackedModel; Parsable
 msgraph.generated.models.FileStorageContainerViewpoint::|public|additional_data():dict[str, Any]
 msgraph.generated.models.FileStorageContainerViewpoint::|public|additional_data(value:dict[str, Any]):None
@@ -142521,6 +142696,20 @@ msgraph.generated.models.ProvisioningSystem::|public|get_field_deserializers():d
 msgraph.generated.models.ProvisioningSystem::|public|odata_type:str
 msgraph.generated.models.ProvisioningSystem::|public|serialize(writer:SerializationWriter):None
 msgraph.generated.models.ProvisioningSystem::|static|public|create_from_discriminator_value(parse_node:ParseNode):ProvisioningSystem
+msgraph.generated.models.ProvisionResponse::|public|additional_data():dict[str, Any]
+msgraph.generated.models.ProvisionResponse::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.models.ProvisionResponse::|public|backing_store:BackingStore
+msgraph.generated.models.ProvisionResponse::|public|challenge():str
+msgraph.generated.models.ProvisionResponse::|public|challenge(value:str):None
+msgraph.generated.models.ProvisionResponse::|public|constructor():None
+msgraph.generated.models.ProvisionResponse::|public|device_id():str
+msgraph.generated.models.ProvisionResponse::|public|device_id(value:str):None
+msgraph.generated.models.ProvisionResponse::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.models.ProvisionResponse::|public|odata_type():str
+msgraph.generated.models.ProvisionResponse::|public|odata_type(value:str):None
+msgraph.generated.models.ProvisionResponse::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.models.ProvisionResponse::|static|public|create_from_discriminator_value(parse_node:ParseNode):ProvisionResponse
+msgraph.generated.models.ProvisionResponse~~>AdditionalDataHolder; BackedModel; Parsable
 msgraph.generated.models.ProxiedDomain::|public|additional_data():dict[str, Any]
 msgraph.generated.models.ProxiedDomain::|public|additional_data(value:dict[str, Any]):None
 msgraph.generated.models.ProxiedDomain::|public|backing_store:BackingStore
@@ -143392,6 +143581,22 @@ msgraph.generated.models.RelatedTenantsRefreshRequest::|public|location(value:st
 msgraph.generated.models.RelatedTenantsRefreshRequest::|public|odata_type:str
 msgraph.generated.models.RelatedTenantsRefreshRequest::|public|serialize(writer:SerializationWriter):None
 msgraph.generated.models.RelatedTenantsRefreshRequest::|static|public|create_from_discriminator_value(parse_node:ParseNode):RelatedTenantsRefreshRequest
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|additional_data():dict[str, Any]
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|backing_store:BackingStore
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|constructor():None
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|is_first_refresh():bool
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|is_first_refresh(value:bool):None
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|most_recent_refresh_date_time():datetime.datetime
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|most_recent_refresh_date_time(value:datetime.datetime):None
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|most_recent_refresh_request_status():str
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|most_recent_refresh_request_status(value:str):None
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|odata_type():str
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|odata_type(value:str):None
+msgraph.generated.models.RelatedTenantsRefreshStatus::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.models.RelatedTenantsRefreshStatus::|static|public|create_from_discriminator_value(parse_node:ParseNode):RelatedTenantsRefreshStatus
+msgraph.generated.models.RelatedTenantsRefreshStatus~~>AdditionalDataHolder; BackedModel; Parsable
 msgraph.generated.models.RelationshipCreationType::0000-ApprovedByAdmin
 msgraph.generated.models.RelationshipCreationType::0001-AddOnTenant
 msgraph.generated.models.RelationshipCreationType::0002-UnknownFutureValue
@@ -143810,6 +144015,23 @@ msgraph.generated.models.ResourceAccessType::0002-Write
 msgraph.generated.models.ResourceAccessType::0003-Create
 msgraph.generated.models.ResourceAccessType::0004-UnknownFutureValue
 msgraph.generated.models.ResourceAccess~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod-->AuthenticationMethod
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|constructor():None
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|device():Device
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|device(value:Device):None
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|display_name():str
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|display_name(value:str):None
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|odata_type:str
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethod::|static|public|create_from_discriminator_value(parse_node:ParseNode):ResourceAccountKeyAuthenticationMethod
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethodCollectionResponse-->BaseCollectionPaginationCountResponse
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethodCollectionResponse::|public|constructor():None
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethodCollectionResponse::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethodCollectionResponse::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethodCollectionResponse::|public|value():list[ResourceAccountKeyAuthenticationMethod]
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethodCollectionResponse::|public|value(value:list[ResourceAccountKeyAuthenticationMethod]):None
+msgraph.generated.models.ResourceAccountKeyAuthenticationMethodCollectionResponse::|static|public|create_from_discriminator_value(parse_node:ParseNode):ResourceAccountKeyAuthenticationMethodCollectionResponse
 msgraph.generated.models.ResourceAction::|public|additional_data():dict[str, Any]
 msgraph.generated.models.ResourceAction::|public|additional_data(value:dict[str, Any]):None
 msgraph.generated.models.ResourceAction::|public|allowed_resource_actions():list[str]
@@ -146542,6 +146764,8 @@ msgraph.generated.models.security.AuditData~~>AdditionalDataHolder; BackedModel;
 msgraph.generated.models.security.AuditLogQuery-->Entity
 msgraph.generated.models.security.AuditLogQuery::|public|administrative_unit_id_filters():list[str]
 msgraph.generated.models.security.AuditLogQuery::|public|administrative_unit_id_filters(value:list[str]):None
+msgraph.generated.models.security.AuditLogQuery::|public|approximate_returned_record_count():int
+msgraph.generated.models.security.AuditLogQuery::|public|approximate_returned_record_count(value:int):None
 msgraph.generated.models.security.AuditLogQuery::|public|constructor():None
 msgraph.generated.models.security.AuditLogQuery::|public|display_name():str
 msgraph.generated.models.security.AuditLogQuery::|public|display_name(value:str):None
@@ -146552,6 +146776,8 @@ msgraph.generated.models.security.AuditLogQuery::|public|filter_start_date_time(
 msgraph.generated.models.security.AuditLogQuery::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
 msgraph.generated.models.security.AuditLogQuery::|public|ip_address_filters():list[str]
 msgraph.generated.models.security.AuditLogQuery::|public|ip_address_filters(value:list[str]):None
+msgraph.generated.models.security.AuditLogQuery::|public|is_record_count_limit_exceeded():bool
+msgraph.generated.models.security.AuditLogQuery::|public|is_record_count_limit_exceeded(value:bool):None
 msgraph.generated.models.security.AuditLogQuery::|public|keyword_filter():str
 msgraph.generated.models.security.AuditLogQuery::|public|keyword_filter(value:str):None
 msgraph.generated.models.security.AuditLogQuery::|public|object_id_filters():list[str]
@@ -146561,6 +146787,8 @@ msgraph.generated.models.security.AuditLogQuery::|public|operation_filters():lis
 msgraph.generated.models.security.AuditLogQuery::|public|operation_filters(value:list[str]):None
 msgraph.generated.models.security.AuditLogQuery::|public|records():list[AuditLogRecord]
 msgraph.generated.models.security.AuditLogQuery::|public|records(value:list[AuditLogRecord]):None
+msgraph.generated.models.security.AuditLogQuery::|public|record_count_limit():int
+msgraph.generated.models.security.AuditLogQuery::|public|record_count_limit(value:int):None
 msgraph.generated.models.security.AuditLogQuery::|public|record_type_filters():list[AuditLogRecordType]
 msgraph.generated.models.security.AuditLogQuery::|public|record_type_filters(value:list[AuditLogRecordType]):None
 msgraph.generated.models.security.AuditLogQuery::|public|serialize(writer:SerializationWriter):None
@@ -156448,7 +156676,8 @@ msgraph.generated.models.SystemBrowserEnabledOn::0000-None_
 msgraph.generated.models.SystemBrowserEnabledOn::0001-Ios
 msgraph.generated.models.SystemBrowserEnabledOn::0002-Android
 msgraph.generated.models.SystemBrowserEnabledOn::0003-Mac
-msgraph.generated.models.SystemBrowserEnabledOn::0004-UnknownFutureValue
+msgraph.generated.models.SystemBrowserEnabledOn::0004-Linux
+msgraph.generated.models.SystemBrowserEnabledOn::0005-UnknownFutureValue
 msgraph.generated.models.SystemFacet::|public|additional_data():dict[str, Any]
 msgraph.generated.models.SystemFacet::|public|additional_data(value:dict[str, Any]):None
 msgraph.generated.models.SystemFacet::|public|backing_store:BackingStore
@@ -188233,11 +188462,31 @@ msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRe
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.shares.item.list_.items.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.shares.item.list_.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.shares.item.list_.items.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.shares.item.list_.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.shares.item.list_.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -188561,11 +188810,31 @@ msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilde
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.shares.item.list_.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.shares.item.list_.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.shares.item.list_.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.shares.item.list_.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.shares.item.list_.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -188714,11 +188983,31 @@ msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|grant
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|url_template:str
 msgraph.generated.shares.item.permission.PermissionRequestBuilder::|public|with_url(raw_url:str):PermissionRequestBuilder
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.shares.item.permission.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.shares.item.root.content.ContentRequestBuilder-->BaseRequestBuilder
 msgraph.generated.shares.item.root.content.ContentRequestBuilder.ContentRequestBuilderDeleteRequestConfiguration-->RequestConfiguration[QueryParameters]
 msgraph.generated.shares.item.root.content.ContentRequestBuilder.ContentRequestBuilderGetQueryParameters::|public|format:str
@@ -191376,11 +191665,31 @@ msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionIt
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.sites.item.lists.item.items.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.sites.item.lists.item.items.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.sites.item.lists.item.items.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.sites.item.lists.item.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.sites.item.lists.item.items.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -191704,11 +192013,31 @@ msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBu
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.sites.item.lists.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.sites.item.lists.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.sites.item.lists.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.sites.item.lists.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.sites.item.lists.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -194428,11 +194757,31 @@ msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|pub
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.sites.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.sites.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.sites.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.sites.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.sites.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -204447,11 +204796,31 @@ msgraph.generated.storage.fileStorage.containers.item.permissions.item.Permissio
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.storage.fileStorage.containers.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.storage.fileStorage.containers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.storage.fileStorage.containers.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.storage.fileStorage.containers.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.storage.fileStorage.containers.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -205426,11 +205795,31 @@ msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.Pe
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|patch(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):Permission
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|revoke_grants:RevokeGrantsRequestBuilder
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PermissionItemRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|to_patch_request_information(body:Permission; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|url_template:str
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.PermissionItemRequestBuilder::|public|with_url(raw_url:str):PermissionItemRequestBuilder
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data():dict[str, Any]
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|additional_data(value:dict[str, Any]):None
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|backing_store:BackingStore
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|constructor():None
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|get_field_deserializers():dict[str, Callable[[ParseNode], None]]
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees():list[DriveRecipient]
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|grantees(value:list[DriveRecipient]):None
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|public|serialize(writer:SerializationWriter):None
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody::|static|public|create_from_discriminator_value(parse_node:ParseNode):RevokeGrantsPostRequestBody
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsPostRequestBody~~>AdditionalDataHolder; BackedModel; Parsable
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder.RevokeGrantsRequestBuilderPostRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|post(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):Permission
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|to_post_request_information(body:RevokeGrantsPostRequestBody; request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|url_template:str
+msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.item.revokeGrants.RevokeGrantsRequestBuilder::|public|with_url(raw_url:str):RevokeGrantsRequestBuilder
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.PermissionsRequestBuilder-->BaseRequestBuilder
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|count:bool
 msgraph.generated.storage.fileStorage.deletedContainers.item.permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters::|public|expand:list[str]
@@ -212478,6 +212867,7 @@ msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|publi
 msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|public|phone_methods:PhoneMethodsRequestBuilder
 msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|public|platform_credential_methods:PlatformCredentialMethodsRequestBuilder
 msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|public|resource_account_key_authentication_methods:ResourceAccountKeyAuthenticationMethodsRequestBuilder
 msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|public|software_oath_methods:SoftwareOathMethodsRequestBuilder
 msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|public|temporary_access_pass_methods:TemporaryAccessPassMethodsRequestBuilder
 msgraph.generated.users.item.authentication.AuthenticationRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
@@ -213012,6 +213402,66 @@ msgraph.generated.users.item.authentication.platformCredentialMethods.PlatformCr
 msgraph.generated.users.item.authentication.platformCredentialMethods.PlatformCredentialMethodsRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[PlatformCredentialMethodsRequestBuilderGetQueryParameters]):RequestInformation
 msgraph.generated.users.item.authentication.platformCredentialMethods.PlatformCredentialMethodsRequestBuilder::|public|url_template:str
 msgraph.generated.users.item.authentication.platformCredentialMethods.PlatformCredentialMethodsRequestBuilder::|public|with_url(raw_url:str):PlatformCredentialMethodsRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder-->BaseRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder.CountRequestBuilderGetQueryParameters::|public|filter:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder.CountRequestBuilderGetQueryParameters::|public|get_query_parameter(original_name:str):str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder.CountRequestBuilderGetQueryParameters::|public|search:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder.CountRequestBuilderGetRequestConfiguration-->RequestConfiguration[CountRequestBuilderGetQueryParameters]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder::|public|get(request_configuration?:RequestConfiguration[CountRequestBuilderGetQueryParameters]):int
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[CountRequestBuilderGetQueryParameters]):RequestInformation
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder::|public|url_template:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.count.CountRequestBuilder::|public|with_url(raw_url:str):CountRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder-->BaseRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder.DeviceRequestBuilderGetQueryParameters::|public|expand:list[str]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder.DeviceRequestBuilderGetQueryParameters::|public|get_query_parameter(original_name:str):str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder.DeviceRequestBuilderGetQueryParameters::|public|select:list[str]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder.DeviceRequestBuilderGetRequestConfiguration-->RequestConfiguration[DeviceRequestBuilderGetQueryParameters]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder::|public|get(request_configuration?:RequestConfiguration[DeviceRequestBuilderGetQueryParameters]):Device
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[DeviceRequestBuilderGetQueryParameters]):RequestInformation
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder::|public|url_template:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.device.DeviceRequestBuilder::|public|with_url(raw_url:str):DeviceRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder-->BaseRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder.ResourceAccountKeyAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration-->RequestConfiguration[QueryParameters]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder.ResourceAccountKeyAuthenticationMethodItemRequestBuilderGetQueryParameters::|public|expand:list[str]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder.ResourceAccountKeyAuthenticationMethodItemRequestBuilderGetQueryParameters::|public|get_query_parameter(original_name:str):str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder.ResourceAccountKeyAuthenticationMethodItemRequestBuilderGetQueryParameters::|public|select:list[str]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder.ResourceAccountKeyAuthenticationMethodItemRequestBuilderGetRequestConfiguration-->RequestConfiguration[ResourceAccountKeyAuthenticationMethodItemRequestBuilderGetQueryParameters]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|delete(request_configuration?:RequestConfiguration[QueryParameters]):None
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|device:DeviceRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|get(request_configuration?:RequestConfiguration[ResourceAccountKeyAuthenticationMethodItemRequestBuilderGetQueryParameters]):ResourceAccountKeyAuthenticationMethod
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|to_delete_request_information(request_configuration?:RequestConfiguration[QueryParameters]):RequestInformation
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[ResourceAccountKeyAuthenticationMethodItemRequestBuilderGetQueryParameters]):RequestInformation
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|url_template:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.item.ResourceAccountKeyAuthenticationMethodItemRequestBuilder::|public|with_url(raw_url:str):ResourceAccountKeyAuthenticationMethodItemRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder-->BaseRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|count:bool
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|expand:list[str]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|filter:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|get_query_parameter(original_name:str):str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|orderby:list[str]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|search:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|select:list[str]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|skip:int
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters::|public|top:int
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder.ResourceAccountKeyAuthenticationMethodsRequestBuilderGetRequestConfiguration-->RequestConfiguration[ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|by_resource_account_key_authentication_method_id(resource_account_key_authentication_method_id:str):ResourceAccountKeyAuthenticationMethodItemRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|constructor(path_parameters:Union[str, dict[str, Any]]; request_adapter:RequestAdapter):None
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|count:CountRequestBuilder
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|get(request_configuration?:RequestConfiguration[ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters]):ResourceAccountKeyAuthenticationMethodCollectionResponse
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|path_parameters:Union[str, dict[str, Any]]
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|request_adapter:RequestAdapter
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|to_get_request_information(request_configuration?:RequestConfiguration[ResourceAccountKeyAuthenticationMethodsRequestBuilderGetQueryParameters]):RequestInformation
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|url_template:str
+msgraph.generated.users.item.authentication.resourceAccountKeyAuthenticationMethods.ResourceAccountKeyAuthenticationMethodsRequestBuilder::|public|with_url(raw_url:str):ResourceAccountKeyAuthenticationMethodsRequestBuilder
 msgraph.generated.users.item.authentication.softwareOathMethods.count.CountRequestBuilder-->BaseRequestBuilder
 msgraph.generated.users.item.authentication.softwareOathMethods.count.CountRequestBuilder.CountRequestBuilderGetQueryParameters::|public|filter:str
 msgraph.generated.users.item.authentication.softwareOathMethods.count.CountRequestBuilder.CountRequestBuilderGetQueryParameters::|public|get_query_parameter(original_name:str):str

@@ -49,9 +49,10 @@ class CustomExtensionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[CustomExtensionsRequestBuilderGetQueryParameters]] = None) -> Optional[RoleManagementCustomCalloutExtensionCollectionResponse]:
         """
-        Get customExtensions from identityGovernance
+        Get a list of roleManagementCustomCalloutExtension objects configured for Privileged Identity Management (PIM).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleManagementCustomCalloutExtensionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessroot-list-customextensions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +70,11 @@ class CustomExtensionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: RoleManagementCustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RoleManagementCustomCalloutExtension]:
         """
-        Create new navigation property to customExtensions for identityGovernance
+        Create a new roleManagementCustomCalloutExtension object for Privileged Identity Management (PIM).
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleManagementCustomCalloutExtension]
+        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessroot-post-customextensions?view=graph-rest-1.0
         """
         if body is None:
             raise TypeError("body cannot be null.")
@@ -92,7 +94,7 @@ class CustomExtensionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[CustomExtensionsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get customExtensions from identityGovernance
+        Get a list of roleManagementCustomCalloutExtension objects configured for Privileged Identity Management (PIM).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class CustomExtensionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: RoleManagementCustomCalloutExtension, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Create new navigation property to customExtensions for identityGovernance
+        Create a new roleManagementCustomCalloutExtension object for Privileged Identity Management (PIM).
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +140,7 @@ class CustomExtensionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomExtensionsRequestBuilderGetQueryParameters():
         """
-        Get customExtensions from identityGovernance
+        Get a list of roleManagementCustomCalloutExtension objects configured for Privileged Identity Management (PIM).
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

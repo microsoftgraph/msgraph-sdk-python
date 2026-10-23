@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
     from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
     from .item.device_item_request_builder import DeviceItemRequestBuilder
+    from .provision.provision_request_builder import ProvisionRequestBuilder
     from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
 class DevicesRequestBuilder(BaseRequestBuilder):
@@ -167,6 +168,15 @@ class DevicesRequestBuilder(BaseRequestBuilder):
         from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
 
         return GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def provision(self) -> ProvisionRequestBuilder:
+        """
+        Provides operations to call the provision method.
+        """
+        from .provision.provision_request_builder import ProvisionRequestBuilder
+
+        return ProvisionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def validate_properties(self) -> ValidatePropertiesRequestBuilder:

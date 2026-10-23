@@ -13,7 +13,7 @@ from .custom_extension_endpoint_configuration import CustomExtensionEndpointConf
 class HttpRequestEndpoint(CustomExtensionEndpointConfiguration, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.httpRequestEndpoint"
-    # The HTTP endpoint that a custom extension calls.
+    # The URL of the HTTP endpoint that Microsoft Entra ID calls for the custom extension.
     target_url: Optional[str] = None
     
     @staticmethod

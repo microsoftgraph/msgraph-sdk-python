@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .phone_authentication_method import PhoneAuthenticationMethod
     from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
     from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
+    from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
     from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
     from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
     from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
@@ -74,6 +75,10 @@ class AuthenticationMethod(Entity, Parsable):
             from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
 
             return QrCodePinAuthenticationMethod()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceAccountKeyAuthenticationMethod".casefold():
+            from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
+
+            return ResourceAccountKeyAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethod".casefold():
             from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
 
@@ -102,6 +107,7 @@ class AuthenticationMethod(Entity, Parsable):
         from .phone_authentication_method import PhoneAuthenticationMethod
         from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
         from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
+        from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
@@ -115,6 +121,7 @@ class AuthenticationMethod(Entity, Parsable):
         from .phone_authentication_method import PhoneAuthenticationMethod
         from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
         from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
+        from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod

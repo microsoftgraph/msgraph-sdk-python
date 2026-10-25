@@ -13,13 +13,13 @@ from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 class UnifiedRoleManagementPolicyCustomExtensionRule(UnifiedRoleManagementPolicyRule, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyCustomExtensionRule"
-    # The customAttributes property
+    # The custom attributes associated with the policy rule. Read-only.
     custom_attributes: Optional[list[str]] = None
-    # The customExtensionId property
+    # The unique identifier of the roleManagementCustomCalloutExtension associated with this rule.
     custom_extension_id: Optional[str] = None
-    # The displayName property
+    # The display name of the policy rule. Read-only.
     display_name: Optional[str] = None
-    # The isEnabled property
+    # Indicates whether the custom extension rule is enabled.
     is_enabled: Optional[bool] = None
     
     @staticmethod

@@ -6,6 +6,9 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+    from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+    from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
     from .cross_tenant_calendar_availability_basic import CrossTenantCalendarAvailabilityBasic
     from .cross_tenant_calendar_availability_limited_details import CrossTenantCalendarAvailabilityLimitedDetails
     from .cross_tenant_calendar_sharing_free_busy_detail import CrossTenantCalendarSharingFreeBusyDetail
@@ -47,6 +50,18 @@ class M365CapabilityBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyDetail".casefold():
+            from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+
+            return AnonymousCalendarSharingFreeBusyDetail()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyReviewer".casefold():
+            from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+
+            return AnonymousCalendarSharingFreeBusyReviewer()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusySimple".casefold():
+            from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
+
+            return AnonymousCalendarSharingFreeBusySimple()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarAvailabilityBasic".casefold():
             from .cross_tenant_calendar_availability_basic import CrossTenantCalendarAvailabilityBasic
 
@@ -98,6 +113,9 @@ class M365CapabilityBase(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+        from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+        from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
         from .cross_tenant_calendar_availability_basic import CrossTenantCalendarAvailabilityBasic
         from .cross_tenant_calendar_availability_limited_details import CrossTenantCalendarAvailabilityLimitedDetails
         from .cross_tenant_calendar_sharing_free_busy_detail import CrossTenantCalendarSharingFreeBusyDetail
@@ -112,6 +130,9 @@ class M365CapabilityBase(Entity, Parsable):
         from .entity import Entity
         from .m365_capability_inbound_access import M365CapabilityInboundAccess
 
+        from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
+        from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
+        from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
         from .cross_tenant_calendar_availability_basic import CrossTenantCalendarAvailabilityBasic
         from .cross_tenant_calendar_availability_limited_details import CrossTenantCalendarAvailabilityLimitedDetails
         from .cross_tenant_calendar_sharing_free_busy_detail import CrossTenantCalendarSharingFreeBusyDetail

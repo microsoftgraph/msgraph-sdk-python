@@ -1,6 +1,6 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "msgraph-sdk"
@@ -41,8 +41,12 @@ homepage = "https://github.com/microsoftgraph/msgraph-sdk-python#readme"
 repository = "https://github.com/microsoftgraph/msgraph-sdk-python"
 documentation = "https://github.com/microsoftgraph/msgraph-sdk-python/docs"
 
-[tool.flit.module]
-name = "msgraph"
+[tool.hatch.build.targets.wheel]
+packages = ["msgraph"]
+exclude = ["msgraph/generated/kiota-dom-export.txt"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["msgraph/generated/kiota-dom-export.txt"]
 
 [tool.mypy]
 warn_unused_configs = true

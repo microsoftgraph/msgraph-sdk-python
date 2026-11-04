@@ -33,7 +33,7 @@ class SearchRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: SearchPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RestorePointSearchResponse]:
         """
-        Search for the restorePoint objects associated with a protectionUnit.
+        Search for the restorePoint objects associated with a protectionUnit. You can also provide policyId to scope the search to a protection policy and validate that the specified protection units belong to that policy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RestorePointSearchResponse]
@@ -57,7 +57,7 @@ class SearchRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: SearchPostRequestBody, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Search for the restorePoint objects associated with a protectionUnit.
+        Search for the restorePoint objects associated with a protectionUnit. You can also provide policyId to scope the search to a protection policy and validate that the specified protection units belong to that policy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

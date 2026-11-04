@@ -90,7 +90,9 @@ class ChatMessage(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedChatMessage".casefold():
+        if not mapping_value:
+            return ChatMessage()
+        if mapping_value.casefold() == "#microsoft.graph.targetedChatMessage".casefold():
             from .targeted_chat_message import TargetedChatMessage
 
             return TargetedChatMessage()

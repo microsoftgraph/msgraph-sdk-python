@@ -42,15 +42,17 @@ class DataSource(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.siteSource".casefold():
+        if not mapping_value:
+            return DataSource()
+        if mapping_value.casefold() == "#microsoft.graph.security.siteSource".casefold():
             from .site_source import SiteSource
 
             return SiteSource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.unifiedGroupSource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.unifiedGroupSource".casefold():
             from .unified_group_source import UnifiedGroupSource
 
             return UnifiedGroupSource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.userSource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.userSource".casefold():
             from .user_source import UserSource
 
             return UserSource()

@@ -61,123 +61,125 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callEndedEventMessageDetail".casefold():
+        if not mapping_value:
+            return EventMessageDetail()
+        if mapping_value.casefold() == "#microsoft.graph.callEndedEventMessageDetail".casefold():
             from .call_ended_event_message_detail import CallEndedEventMessageDetail
 
             return CallEndedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecordingEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.callRecordingEventMessageDetail".casefold():
             from .call_recording_event_message_detail import CallRecordingEventMessageDetail
 
             return CallRecordingEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callStartedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.callStartedEventMessageDetail".casefold():
             from .call_started_event_message_detail import CallStartedEventMessageDetail
 
             return CallStartedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callTranscriptEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.callTranscriptEventMessageDetail".casefold():
             from .call_transcript_event_message_detail import CallTranscriptEventMessageDetail
 
             return CallTranscriptEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelAddedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.channelAddedEventMessageDetail".casefold():
             from .channel_added_event_message_detail import ChannelAddedEventMessageDetail
 
             return ChannelAddedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelDeletedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.channelDeletedEventMessageDetail".casefold():
             from .channel_deleted_event_message_detail import ChannelDeletedEventMessageDetail
 
             return ChannelDeletedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelDescriptionUpdatedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.channelDescriptionUpdatedEventMessageDetail".casefold():
             from .channel_description_updated_event_message_detail import ChannelDescriptionUpdatedEventMessageDetail
 
             return ChannelDescriptionUpdatedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelRenamedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.channelRenamedEventMessageDetail".casefold():
             from .channel_renamed_event_message_detail import ChannelRenamedEventMessageDetail
 
             return ChannelRenamedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelSetAsFavoriteByDefaultEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.channelSetAsFavoriteByDefaultEventMessageDetail".casefold():
             from .channel_set_as_favorite_by_default_event_message_detail import ChannelSetAsFavoriteByDefaultEventMessageDetail
 
             return ChannelSetAsFavoriteByDefaultEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail".casefold():
             from .channel_unset_as_favorite_by_default_event_message_detail import ChannelUnsetAsFavoriteByDefaultEventMessageDetail
 
             return ChannelUnsetAsFavoriteByDefaultEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatRenamedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.chatRenamedEventMessageDetail".casefold():
             from .chat_renamed_event_message_detail import ChatRenamedEventMessageDetail
 
             return ChatRenamedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail".casefold():
             from .conversation_member_role_updated_event_message_detail import ConversationMemberRoleUpdatedEventMessageDetail
 
             return ConversationMemberRoleUpdatedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail".casefold():
             from .meeting_policy_updated_event_message_detail import MeetingPolicyUpdatedEventMessageDetail
 
             return MeetingPolicyUpdatedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersAddedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.membersAddedEventMessageDetail".casefold():
             from .members_added_event_message_detail import MembersAddedEventMessageDetail
 
             return MembersAddedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersDeletedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.membersDeletedEventMessageDetail".casefold():
             from .members_deleted_event_message_detail import MembersDeletedEventMessageDetail
 
             return MembersDeletedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersJoinedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.membersJoinedEventMessageDetail".casefold():
             from .members_joined_event_message_detail import MembersJoinedEventMessageDetail
 
             return MembersJoinedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersLeftEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.membersLeftEventMessageDetail".casefold():
             from .members_left_event_message_detail import MembersLeftEventMessageDetail
 
             return MembersLeftEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.messagePinnedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.messagePinnedEventMessageDetail".casefold():
             from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
 
             return MessagePinnedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.messageUnpinnedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.messageUnpinnedEventMessageDetail".casefold():
             from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
 
             return MessageUnpinnedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tabUpdatedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.tabUpdatedEventMessageDetail".casefold():
             from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
 
             return TabUpdatedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamArchivedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamArchivedEventMessageDetail".casefold():
             from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
 
             return TeamArchivedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamCreatedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamCreatedEventMessageDetail".casefold():
             from .team_created_event_message_detail import TeamCreatedEventMessageDetail
 
             return TeamCreatedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamDescriptionUpdatedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamDescriptionUpdatedEventMessageDetail".casefold():
             from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
 
             return TeamDescriptionUpdatedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamJoiningDisabledEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamJoiningDisabledEventMessageDetail".casefold():
             from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
 
             return TeamJoiningDisabledEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamJoiningEnabledEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamJoiningEnabledEventMessageDetail".casefold():
             from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
 
             return TeamJoiningEnabledEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamRenamedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamRenamedEventMessageDetail".casefold():
             from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
 
             return TeamRenamedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppInstalledEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamsAppInstalledEventMessageDetail".casefold():
             from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
 
             return TeamsAppInstalledEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppRemovedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamsAppRemovedEventMessageDetail".casefold():
             from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
 
             return TeamsAppRemovedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppUpgradedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamsAppUpgradedEventMessageDetail".casefold():
             from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
 
             return TeamsAppUpgradedEventMessageDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamUnarchivedEventMessageDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamUnarchivedEventMessageDetail".casefold():
             from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
             return TeamUnarchivedEventMessageDetail()

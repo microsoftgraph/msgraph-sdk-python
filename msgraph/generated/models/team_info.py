@@ -37,11 +37,13 @@ class TeamInfo(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.associatedTeamInfo".casefold():
+        if not mapping_value:
+            return TeamInfo()
+        if mapping_value.casefold() == "#microsoft.graph.associatedTeamInfo".casefold():
             from .associated_team_info import AssociatedTeamInfo
 
             return AssociatedTeamInfo()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharedWithChannelTeamInfo".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharedWithChannelTeamInfo".casefold():
             from .shared_with_channel_team_info import SharedWithChannelTeamInfo
 
             return SharedWithChannelTeamInfo()

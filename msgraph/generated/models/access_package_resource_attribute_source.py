@@ -32,7 +32,9 @@ class AccessPackageResourceAttributeSource(AdditionalDataHolder, BackedModel, Pa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageResourceAttributeQuestion".casefold():
+        if not mapping_value:
+            return AccessPackageResourceAttributeSource()
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageResourceAttributeQuestion".casefold():
             from .access_package_resource_attribute_question import AccessPackageResourceAttributeQuestion
 
             return AccessPackageResourceAttributeQuestion()

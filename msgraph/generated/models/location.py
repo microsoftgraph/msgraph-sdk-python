@@ -52,7 +52,9 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.locationConstraintItem".casefold():
+        if not mapping_value:
+            return Location()
+        if mapping_value.casefold() == "#microsoft.graph.locationConstraintItem".casefold():
             from .location_constraint_item import LocationConstraintItem
 
             return LocationConstraintItem()

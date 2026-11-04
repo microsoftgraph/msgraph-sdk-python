@@ -39,11 +39,13 @@ class NamedLocation(PolicyDeletableItem, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.countryNamedLocation".casefold():
+        if not mapping_value:
+            return NamedLocation()
+        if mapping_value.casefold() == "#microsoft.graph.countryNamedLocation".casefold():
             from .country_named_location import CountryNamedLocation
 
             return CountryNamedLocation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.ipNamedLocation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.ipNamedLocation".casefold():
             from .ip_named_location import IpNamedLocation
 
             return IpNamedLocation()

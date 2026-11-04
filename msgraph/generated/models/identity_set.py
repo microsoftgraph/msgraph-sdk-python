@@ -45,31 +45,33 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiInteractionMentionedIdentitySet".casefold():
+        if not mapping_value:
+            return IdentitySet()
+        if mapping_value.casefold() == "#microsoft.graph.aiInteractionMentionedIdentitySet".casefold():
             from .ai_interaction_mentioned_identity_set import AiInteractionMentionedIdentitySet
 
             return AiInteractionMentionedIdentitySet()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageFromIdentitySet".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.chatMessageFromIdentitySet".casefold():
             from .chat_message_from_identity_set import ChatMessageFromIdentitySet
 
             return ChatMessageFromIdentitySet()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageMentionedIdentitySet".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.chatMessageMentionedIdentitySet".casefold():
             from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
 
             return ChatMessageMentionedIdentitySet()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageReactionIdentitySet".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.chatMessageReactionIdentitySet".casefold():
             from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
 
             return ChatMessageReactionIdentitySet()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsIdentitySet".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.communicationsIdentitySet".casefold():
             from .communications_identity_set import CommunicationsIdentitySet
 
             return CommunicationsIdentitySet()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementIdentitySet".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.engagementIdentitySet".casefold():
             from .engagement_identity_set import EngagementIdentitySet
 
             return EngagementIdentitySet()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointIdentitySet".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointIdentitySet".casefold():
             from .share_point_identity_set import SharePointIdentitySet
 
             return SharePointIdentitySet()

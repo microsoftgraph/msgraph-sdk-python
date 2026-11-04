@@ -37,7 +37,9 @@ class Operation(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteOperation".casefold():
+        if not mapping_value:
+            return Operation()
+        if mapping_value.casefold() == "#microsoft.graph.onenoteOperation".casefold():
             from .onenote_operation import OnenoteOperation
 
             return OnenoteOperation()

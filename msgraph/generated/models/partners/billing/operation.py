@@ -39,15 +39,17 @@ class Operation(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.exportSuccessOperation".casefold():
+        if not mapping_value:
+            return Operation()
+        if mapping_value.casefold() == "#microsoft.graph.partners.billing.exportSuccessOperation".casefold():
             from .export_success_operation import ExportSuccessOperation
 
             return ExportSuccessOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.failedOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.partners.billing.failedOperation".casefold():
             from .failed_operation import FailedOperation
 
             return FailedOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.runningOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.partners.billing.runningOperation".casefold():
             from .running_operation import RunningOperation
 
             return RunningOperation()

@@ -34,15 +34,17 @@ class SignInContext(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.applicationContext".casefold():
+        if not mapping_value:
+            return SignInContext()
+        if mapping_value.casefold() == "#microsoft.graph.applicationContext".casefold():
             from .application_context import ApplicationContext
 
             return ApplicationContext()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.authContext".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.authContext".casefold():
             from .auth_context import AuthContext
 
             return AuthContext()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userActionContext".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.userActionContext".casefold():
             from .user_action_context import UserActionContext
 
             return UserActionContext()

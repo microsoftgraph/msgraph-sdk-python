@@ -39,7 +39,9 @@ class Tag(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewTag".casefold():
+        if not mapping_value:
+            return Tag()
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewTag".casefold():
             from .ediscovery_review_tag import EdiscoveryReviewTag
 
             return EdiscoveryReviewTag()

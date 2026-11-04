@@ -44,7 +44,9 @@ class Case(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryCase".casefold():
+        if not mapping_value:
+            return Case()
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryCase".casefold():
             from .ediscovery_case import EdiscoveryCase
 
             return EdiscoveryCase()

@@ -32,11 +32,13 @@ class WebApplicationFirewallProvider(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.akamaiWebApplicationFirewallProvider".casefold():
+        if not mapping_value:
+            return WebApplicationFirewallProvider()
+        if mapping_value.casefold() == "#microsoft.graph.akamaiWebApplicationFirewallProvider".casefold():
             from .akamai_web_application_firewall_provider import AkamaiWebApplicationFirewallProvider
 
             return AkamaiWebApplicationFirewallProvider()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudFlareWebApplicationFirewallProvider".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.cloudFlareWebApplicationFirewallProvider".casefold():
             from .cloud_flare_web_application_firewall_provider import CloudFlareWebApplicationFirewallProvider
 
             return CloudFlareWebApplicationFirewallProvider()

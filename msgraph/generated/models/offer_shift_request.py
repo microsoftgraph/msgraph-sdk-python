@@ -38,7 +38,9 @@ class OfferShiftRequest(ScheduleChangeRequest, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
+        if not mapping_value:
+            return OfferShiftRequest()
+        if mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
             from .swap_shifts_change_request import SwapShiftsChangeRequest
 
             return SwapShiftsChangeRequest()

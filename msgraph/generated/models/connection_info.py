@@ -34,7 +34,9 @@ class ConnectionInfo(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalTokenBasedSapIagConnectionInfo".casefold():
+        if not mapping_value:
+            return ConnectionInfo()
+        if mapping_value.casefold() == "#microsoft.graph.externalTokenBasedSapIagConnectionInfo".casefold():
             from .external_token_based_sap_iag_connection_info import ExternalTokenBasedSapIagConnectionInfo
 
             return ExternalTokenBasedSapIagConnectionInfo()

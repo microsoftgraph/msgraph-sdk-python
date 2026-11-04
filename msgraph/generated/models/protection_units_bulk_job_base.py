@@ -49,15 +49,17 @@ class ProtectionUnitsBulkJobBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveProtectionUnitsBulkAdditionJob".casefold():
+        if not mapping_value:
+            return ProtectionUnitsBulkJobBase()
+        if mapping_value.casefold() == "#microsoft.graph.driveProtectionUnitsBulkAdditionJob".casefold():
             from .drive_protection_units_bulk_addition_job import DriveProtectionUnitsBulkAdditionJob
 
             return DriveProtectionUnitsBulkAdditionJob()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxProtectionUnitsBulkAdditionJob".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.mailboxProtectionUnitsBulkAdditionJob".casefold():
             from .mailbox_protection_units_bulk_addition_job import MailboxProtectionUnitsBulkAdditionJob
 
             return MailboxProtectionUnitsBulkAdditionJob()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.siteProtectionUnitsBulkAdditionJob".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.siteProtectionUnitsBulkAdditionJob".casefold():
             from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
             return SiteProtectionUnitsBulkAdditionJob()

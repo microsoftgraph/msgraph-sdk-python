@@ -38,43 +38,45 @@ class Artifact(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.host".casefold():
+        if not mapping_value:
+            return Artifact()
+        if mapping_value.casefold() == "#microsoft.graph.security.host".casefold():
             from .host import Host
 
             return Host()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostComponent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.hostComponent".casefold():
             from .host_component import HostComponent
 
             return HostComponent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostCookie".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.hostCookie".casefold():
             from .host_cookie import HostCookie
 
             return HostCookie()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostname".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.hostname".casefold():
             from .hostname import Hostname
 
             return Hostname()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostSslCertificate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.hostSslCertificate".casefold():
             from .host_ssl_certificate import HostSslCertificate
 
             return HostSslCertificate()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostTracker".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.hostTracker".casefold():
             from .host_tracker import HostTracker
 
             return HostTracker()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ipAddress".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ipAddress".casefold():
             from .ip_address import IpAddress
 
             return IpAddress()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.passiveDnsRecord".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.passiveDnsRecord".casefold():
             from .passive_dns_record import PassiveDnsRecord
 
             return PassiveDnsRecord()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.sslCertificate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.sslCertificate".casefold():
             from .ssl_certificate import SslCertificate
 
             return SslCertificate()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.unclassifiedArtifact".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.unclassifiedArtifact".casefold():
             from .unclassified_artifact import UnclassifiedArtifact
 
             return UnclassifiedArtifact()

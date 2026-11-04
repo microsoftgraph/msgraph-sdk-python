@@ -36,7 +36,9 @@ class AccessReviewResourceScope(AccessReviewScope, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewAccessPackageAssignmentPolicyScope".casefold():
+        if not mapping_value:
+            return AccessReviewResourceScope()
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewAccessPackageAssignmentPolicyScope".casefold():
             from .access_review_access_package_assignment_policy_scope import AccessReviewAccessPackageAssignmentPolicyScope
 
             return AccessReviewAccessPackageAssignmentPolicyScope()

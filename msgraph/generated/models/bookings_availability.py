@@ -38,7 +38,9 @@ class BookingsAvailability(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingsAvailabilityWindow".casefold():
+        if not mapping_value:
+            return BookingsAvailability()
+        if mapping_value.casefold() == "#microsoft.graph.bookingsAvailabilityWindow".casefold():
             from .bookings_availability_window import BookingsAvailabilityWindow
 
             return BookingsAvailabilityWindow()

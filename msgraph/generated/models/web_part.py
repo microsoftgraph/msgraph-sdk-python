@@ -30,11 +30,13 @@ class WebPart(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.standardWebPart".casefold():
+        if not mapping_value:
+            return WebPart()
+        if mapping_value.casefold() == "#microsoft.graph.standardWebPart".casefold():
             from .standard_web_part import StandardWebPart
 
             return StandardWebPart()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.textWebPart".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.textWebPart".casefold():
             from .text_web_part import TextWebPart
 
             return TextWebPart()

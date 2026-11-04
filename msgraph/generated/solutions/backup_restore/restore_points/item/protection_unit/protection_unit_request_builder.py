@@ -32,7 +32,7 @@ class ProtectionUnitRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ProtectionUnitRequestBuilderGetQueryParameters]] = None) -> Optional[ProtectionUnitBase]:
         """
-        The site, drive, or mailbox units that are protected under a protection policy.
+        The site, drive, or mailbox unit protected under a protection policy. Supports $expand and $filter on protectionUnit/policyId using the eq operator.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProtectionUnitBase]
         """
@@ -52,7 +52,7 @@ class ProtectionUnitRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ProtectionUnitRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        The site, drive, or mailbox units that are protected under a protection policy.
+        The site, drive, or mailbox unit protected under a protection policy. Supports $expand and $filter on protectionUnit/policyId using the eq operator.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class ProtectionUnitRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProtectionUnitRequestBuilderGetQueryParameters():
         """
-        The site, drive, or mailbox units that are protected under a protection policy.
+        The site, drive, or mailbox unit protected under a protection policy. Supports $expand and $filter on protectionUnit/policyId using the eq operator.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

@@ -37,11 +37,13 @@ class UserAgent(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.clientUserAgent".casefold():
+        if not mapping_value:
+            return UserAgent()
+        if mapping_value.casefold() == "#microsoft.graph.callRecords.clientUserAgent".casefold():
             from .client_user_agent import ClientUserAgent
 
             return ClientUserAgent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.serviceUserAgent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.callRecords.serviceUserAgent".casefold():
             from .service_user_agent import ServiceUserAgent
 
             return ServiceUserAgent()

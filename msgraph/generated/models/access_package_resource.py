@@ -60,7 +60,9 @@ class AccessPackageResource(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResource".casefold():
+        if not mapping_value:
+            return AccessPackageResource()
+        if mapping_value.casefold() == "#microsoft.graph.customDataProvidedResource".casefold():
             from .custom_data_provided_resource import CustomDataProvidedResource
 
             return CustomDataProvidedResource()

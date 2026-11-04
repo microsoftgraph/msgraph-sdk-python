@@ -33,11 +33,13 @@ class DataSecurityAndGovernance(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantDataSecurityAndGovernance".casefold():
+        if not mapping_value:
+            return DataSecurityAndGovernance()
+        if mapping_value.casefold() == "#microsoft.graph.tenantDataSecurityAndGovernance".casefold():
             from .tenant_data_security_and_governance import TenantDataSecurityAndGovernance
 
             return TenantDataSecurityAndGovernance()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userDataSecurityAndGovernance".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.userDataSecurityAndGovernance".casefold():
             from .user_data_security_and_governance import UserDataSecurityAndGovernance
 
             return UserDataSecurityAndGovernance()

@@ -58,11 +58,13 @@ class UnifiedRoleScheduleBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentSchedule".casefold():
+        if not mapping_value:
+            return UnifiedRoleScheduleBase()
+        if mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentSchedule".casefold():
             from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
 
             return UnifiedRoleAssignmentSchedule()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilitySchedule".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilitySchedule".casefold():
             from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
 
             return UnifiedRoleEligibilitySchedule()

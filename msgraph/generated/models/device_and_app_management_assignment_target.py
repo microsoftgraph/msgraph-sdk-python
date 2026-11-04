@@ -39,23 +39,25 @@ class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, BackedModel, 
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.allDevicesAssignmentTarget".casefold():
+        if not mapping_value:
+            return DeviceAndAppManagementAssignmentTarget()
+        if mapping_value.casefold() == "#microsoft.graph.allDevicesAssignmentTarget".casefold():
             from .all_devices_assignment_target import AllDevicesAssignmentTarget
 
             return AllDevicesAssignmentTarget()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.allLicensedUsersAssignmentTarget".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.allLicensedUsersAssignmentTarget".casefold():
             from .all_licensed_users_assignment_target import AllLicensedUsersAssignmentTarget
 
             return AllLicensedUsersAssignmentTarget()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.configurationManagerCollectionAssignmentTarget".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.configurationManagerCollectionAssignmentTarget".casefold():
             from .configuration_manager_collection_assignment_target import ConfigurationManagerCollectionAssignmentTarget
 
             return ConfigurationManagerCollectionAssignmentTarget()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exclusionGroupAssignmentTarget".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.exclusionGroupAssignmentTarget".casefold():
             from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
 
             return ExclusionGroupAssignmentTarget()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupAssignmentTarget".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.groupAssignmentTarget".casefold():
             from .group_assignment_target import GroupAssignmentTarget
 
             return GroupAssignmentTarget()

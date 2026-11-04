@@ -38,7 +38,9 @@ class ManagedEBookAssignment(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosVppEBookAssignment".casefold():
+        if not mapping_value:
+            return ManagedEBookAssignment()
+        if mapping_value.casefold() == "#microsoft.graph.iosVppEBookAssignment".casefold():
             from .ios_vpp_e_book_assignment import IosVppEBookAssignment
 
             return IosVppEBookAssignment()

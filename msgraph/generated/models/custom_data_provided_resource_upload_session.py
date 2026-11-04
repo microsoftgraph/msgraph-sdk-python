@@ -48,7 +48,9 @@ class CustomDataProvidedResourceUploadSession(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourceAccessReviewUploadSession".casefold():
+        if not mapping_value:
+            return CustomDataProvidedResourceUploadSession()
+        if mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourceAccessReviewUploadSession".casefold():
             from .custom_data_provided_resource_access_review_upload_session import CustomDataProvidedResourceAccessReviewUploadSession
 
             return CustomDataProvidedResourceAccessReviewUploadSession()

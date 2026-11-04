@@ -33,11 +33,13 @@ class AccessReviewApplyAction(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.disableAndDeleteUserApplyAction".casefold():
+        if not mapping_value:
+            return AccessReviewApplyAction()
+        if mapping_value.casefold() == "#microsoft.graph.disableAndDeleteUserApplyAction".casefold():
             from .disable_and_delete_user_apply_action import DisableAndDeleteUserApplyAction
 
             return DisableAndDeleteUserApplyAction()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.removeAccessApplyAction".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.removeAccessApplyAction".casefold():
             from .remove_access_apply_action import RemoveAccessApplyAction
 
             return RemoveAccessApplyAction()

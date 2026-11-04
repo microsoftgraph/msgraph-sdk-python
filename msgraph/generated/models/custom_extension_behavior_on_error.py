@@ -32,7 +32,9 @@ class CustomExtensionBehaviorOnError(AdditionalDataHolder, BackedModel, Parsable
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fallbackToMicrosoftProviderOnError".casefold():
+        if not mapping_value:
+            return CustomExtensionBehaviorOnError()
+        if mapping_value.casefold() == "#microsoft.graph.fallbackToMicrosoftProviderOnError".casefold():
             from .fallback_to_microsoft_provider_on_error import FallbackToMicrosoftProviderOnError
 
             return FallbackToMicrosoftProviderOnError()

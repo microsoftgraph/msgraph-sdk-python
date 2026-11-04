@@ -43,23 +43,25 @@ class DomainDnsRecord(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsCnameRecord".casefold():
+        if not mapping_value:
+            return DomainDnsRecord()
+        if mapping_value.casefold() == "#microsoft.graph.domainDnsCnameRecord".casefold():
             from .domain_dns_cname_record import DomainDnsCnameRecord
 
             return DomainDnsCnameRecord()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsMxRecord".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.domainDnsMxRecord".casefold():
             from .domain_dns_mx_record import DomainDnsMxRecord
 
             return DomainDnsMxRecord()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsSrvRecord".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.domainDnsSrvRecord".casefold():
             from .domain_dns_srv_record import DomainDnsSrvRecord
 
             return DomainDnsSrvRecord()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsTxtRecord".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.domainDnsTxtRecord".casefold():
             from .domain_dns_txt_record import DomainDnsTxtRecord
 
             return DomainDnsTxtRecord()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsUnavailableRecord".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.domainDnsUnavailableRecord".casefold():
             from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
 
             return DomainDnsUnavailableRecord()

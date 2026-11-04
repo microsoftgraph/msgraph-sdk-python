@@ -45,47 +45,49 @@ class AuthenticationMethodConfiguration(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethodConfiguration".casefold():
+        if not mapping_value:
+            return AuthenticationMethodConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethodConfiguration".casefold():
             from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
 
             return EmailAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethodConfiguration".casefold():
             from .external_authentication_method_configuration import ExternalAuthenticationMethodConfiguration
 
             return ExternalAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethodConfiguration".casefold():
             from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
 
             return Fido2AuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration".casefold():
             from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
 
             return MicrosoftAuthenticatorAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.qrCodePinAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.qrCodePinAuthenticationMethodConfiguration".casefold():
             from .qr_code_pin_authentication_method_configuration import QrCodePinAuthenticationMethodConfiguration
 
             return QrCodePinAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodConfiguration".casefold():
             from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
 
             return SmsAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethodConfiguration".casefold():
             from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
 
             return SoftwareOathAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration".casefold():
             from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
 
             return TemporaryAccessPassAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.verifiableCredentialsAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.verifiableCredentialsAuthenticationMethodConfiguration".casefold():
             from .verifiable_credentials_authentication_method_configuration import VerifiableCredentialsAuthenticationMethodConfiguration
 
             return VerifiableCredentialsAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.voiceAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.voiceAuthenticationMethodConfiguration".casefold():
             from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
 
             return VoiceAuthenticationMethodConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.x509CertificateAuthenticationMethodConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.x509CertificateAuthenticationMethodConfiguration".casefold():
             from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
             return X509CertificateAuthenticationMethodConfiguration()

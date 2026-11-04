@@ -33,11 +33,13 @@ class RetentionDuration(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.retentionDurationForever".casefold():
+        if not mapping_value:
+            return RetentionDuration()
+        if mapping_value.casefold() == "#microsoft.graph.security.retentionDurationForever".casefold():
             from .retention_duration_forever import RetentionDurationForever
 
             return RetentionDurationForever()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.retentionDurationInDays".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.retentionDurationInDays".casefold():
             from .retention_duration_in_days import RetentionDurationInDays
 
             return RetentionDurationInDays()

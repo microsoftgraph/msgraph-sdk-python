@@ -64,43 +64,45 @@ class BaseItem(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.baseSitePage".casefold():
+        if not mapping_value:
+            return BaseItem()
+        if mapping_value.casefold() == "#microsoft.graph.baseSitePage".casefold():
             from .base_site_page import BaseSitePage
 
             return BaseSitePage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.drive".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.drive".casefold():
             from .drive import Drive
 
             return Drive()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveItem".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.driveItem".casefold():
             from .drive_item import DriveItem
 
             return DriveItem()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.list".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.list".casefold():
             from .list_ import List_
 
             return List_()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.listItem".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.listItem".casefold():
             from .list_item import ListItem
 
             return ListItem()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.recycleBin".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.recycleBin".casefold():
             from .recycle_bin import RecycleBin
 
             return RecycleBin()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.recycleBinItem".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.recycleBinItem".casefold():
             from .recycle_bin_item import RecycleBinItem
 
             return RecycleBinItem()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharedDriveItem".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharedDriveItem".casefold():
             from .shared_drive_item import SharedDriveItem
 
             return SharedDriveItem()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.site".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.site".casefold():
             from .site import Site
 
             return Site()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sitePage".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sitePage".casefold():
             from .site_page import SitePage
 
             return SitePage()

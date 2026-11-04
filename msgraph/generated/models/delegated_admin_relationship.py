@@ -62,7 +62,9 @@ class DelegatedAdminRelationship(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resellerDelegatedAdminRelationship".casefold():
+        if not mapping_value:
+            return DelegatedAdminRelationship()
+        if mapping_value.casefold() == "#microsoft.graph.resellerDelegatedAdminRelationship".casefold():
             from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
             return ResellerDelegatedAdminRelationship()

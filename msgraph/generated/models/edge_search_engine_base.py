@@ -36,11 +36,13 @@ class EdgeSearchEngineBase(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.edgeSearchEngine".casefold():
+        if not mapping_value:
+            return EdgeSearchEngineBase()
+        if mapping_value.casefold() == "#microsoft.graph.edgeSearchEngine".casefold():
             from .edge_search_engine import EdgeSearchEngine
 
             return EdgeSearchEngine()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.edgeSearchEngineCustom".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.edgeSearchEngineCustom".casefold():
             from .edge_search_engine_custom import EdgeSearchEngineCustom
 
             return EdgeSearchEngineCustom()

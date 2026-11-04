@@ -53,7 +53,9 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageDynamicApprovalStage".casefold():
+        if not mapping_value:
+            return AccessPackageApprovalStage()
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageDynamicApprovalStage".casefold():
             from .access_package_dynamic_approval_stage import AccessPackageDynamicApprovalStage
 
             return AccessPackageDynamicApprovalStage()

@@ -47,31 +47,33 @@ class OmaSetting(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingBase64".casefold():
+        if not mapping_value:
+            return OmaSetting()
+        if mapping_value.casefold() == "#microsoft.graph.omaSettingBase64".casefold():
             from .oma_setting_base64 import OmaSettingBase64
 
             return OmaSettingBase64()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingBoolean".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.omaSettingBoolean".casefold():
             from .oma_setting_boolean import OmaSettingBoolean
 
             return OmaSettingBoolean()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingDateTime".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.omaSettingDateTime".casefold():
             from .oma_setting_date_time import OmaSettingDateTime
 
             return OmaSettingDateTime()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingFloatingPoint".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.omaSettingFloatingPoint".casefold():
             from .oma_setting_floating_point import OmaSettingFloatingPoint
 
             return OmaSettingFloatingPoint()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingInteger".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.omaSettingInteger".casefold():
             from .oma_setting_integer import OmaSettingInteger
 
             return OmaSettingInteger()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingString".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.omaSettingString".casefold():
             from .oma_setting_string import OmaSettingString
 
             return OmaSettingString()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingStringXml".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.omaSettingStringXml".casefold():
             from .oma_setting_string_xml import OmaSettingStringXml
 
             return OmaSettingStringXml()

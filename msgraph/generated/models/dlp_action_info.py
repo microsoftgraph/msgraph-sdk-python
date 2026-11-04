@@ -37,15 +37,17 @@ class DlpActionInfo(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyTipAction".casefold():
+        if not mapping_value:
+            return DlpActionInfo()
+        if mapping_value.casefold() == "#microsoft.graph.policyTipAction".casefold():
             from .policy_tip_action import PolicyTipAction
 
             return PolicyTipAction()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.restrictAccessAction".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.restrictAccessAction".casefold():
             from .restrict_access_action import RestrictAccessAction
 
             return RestrictAccessAction()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.restrictAccessActionBase".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.restrictAccessActionBase".casefold():
             from .restrict_access_action_base import RestrictAccessActionBase
 
             return RestrictAccessActionBase()

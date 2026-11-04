@@ -95,19 +95,21 @@ class ManagedAppProtection(ManagedAppPolicy, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
+        if not mapping_value:
+            return ManagedAppProtection()
+        if mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
             from .android_managed_app_protection import AndroidManagedAppProtection
 
             return AndroidManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
             from .default_managed_app_protection import DefaultManagedAppProtection
 
             return DefaultManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
             from .ios_managed_app_protection import IosManagedAppProtection
 
             return IosManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.targetedManagedAppProtection".casefold():
             from .targeted_managed_app_protection import TargetedManagedAppProtection
 
             return TargetedManagedAppProtection()

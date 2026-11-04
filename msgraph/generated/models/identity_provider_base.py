@@ -37,31 +37,33 @@ class IdentityProviderBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.appleManagedIdentityProvider".casefold():
+        if not mapping_value:
+            return IdentityProviderBase()
+        if mapping_value.casefold() == "#microsoft.graph.appleManagedIdentityProvider".casefold():
             from .apple_managed_identity_provider import AppleManagedIdentityProvider
 
             return AppleManagedIdentityProvider()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.builtInIdentityProvider".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.builtInIdentityProvider".casefold():
             from .built_in_identity_provider import BuiltInIdentityProvider
 
             return BuiltInIdentityProvider()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
             from .internal_domain_federation import InternalDomainFederation
 
             return InternalDomainFederation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.oidcIdentityProvider".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.oidcIdentityProvider".casefold():
             from .oidc_identity_provider import OidcIdentityProvider
 
             return OidcIdentityProvider()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedExternalDomainFederation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.samlOrWsFedExternalDomainFederation".casefold():
             from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
 
             return SamlOrWsFedExternalDomainFederation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedProvider".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.samlOrWsFedProvider".casefold():
             from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
             return SamlOrWsFedProvider()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.socialIdentityProvider".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.socialIdentityProvider".casefold():
             from .social_identity_provider import SocialIdentityProvider
 
             return SocialIdentityProvider()

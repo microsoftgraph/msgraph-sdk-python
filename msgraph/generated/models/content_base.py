@@ -33,11 +33,13 @@ class ContentBase(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.binaryContent".casefold():
+        if not mapping_value:
+            return ContentBase()
+        if mapping_value.casefold() == "#microsoft.graph.binaryContent".casefold():
             from .binary_content import BinaryContent
 
             return BinaryContent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.textContent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.textContent".casefold():
             from .text_content import TextContent
 
             return TextContent()

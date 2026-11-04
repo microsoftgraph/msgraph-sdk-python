@@ -44,6 +44,8 @@ class Calendar(Entity, Parsable):
     is_default_calendar: Optional[bool] = None
     # Indicates whether this user calendar can be deleted from the user mailbox.
     is_removable: Optional[bool] = None
+    # true if someone shared this calendar with the user; false otherwise. This property is always false for a calendar owner. This property is set when sharing is initiated in an Outlook client and can be reset when sharing is canceled through the client or the corresponding calendarPermission resource. Read-only.
+    is_shared_with_me: Optional[bool] = None
     # Indicates whether this user calendar supports tracking of meeting responses. Only meeting invites sent from users' primary calendars support tracking of meeting responses.
     is_tallying_responses: Optional[bool] = None
     # The collection of multi-value extended properties defined for the calendar. Read-only. Nullable.
@@ -105,6 +107,7 @@ class Calendar(Entity, Parsable):
             "hexColor": lambda n : setattr(self, 'hex_color', n.get_str_value()),
             "isDefaultCalendar": lambda n : setattr(self, 'is_default_calendar', n.get_bool_value()),
             "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "isSharedWithMe": lambda n : setattr(self, 'is_shared_with_me', n.get_bool_value()),
             "isTallyingResponses": lambda n : setattr(self, 'is_tallying_responses', n.get_bool_value()),
             "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
@@ -137,6 +140,7 @@ class Calendar(Entity, Parsable):
         writer.write_str_value("hexColor", self.hex_color)
         writer.write_bool_value("isDefaultCalendar", self.is_default_calendar)
         writer.write_bool_value("isRemovable", self.is_removable)
+        writer.write_bool_value("isSharedWithMe", self.is_shared_with_me)
         writer.write_bool_value("isTallyingResponses", self.is_tallying_responses)
         writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
         writer.write_str_value("name", self.name)

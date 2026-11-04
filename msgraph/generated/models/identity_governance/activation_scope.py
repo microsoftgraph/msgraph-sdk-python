@@ -35,19 +35,21 @@ class ActivationScope(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateGroupScope".casefold():
+        if not mapping_value:
+            return ActivationScope()
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateGroupScope".casefold():
             from .activate_group_scope import ActivateGroupScope
 
             return ActivateGroupScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateProcessingResultScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateProcessingResultScope".casefold():
             from .activate_processing_result_scope import ActivateProcessingResultScope
 
             return ActivateProcessingResultScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateRunScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateRunScope".casefold():
             from .activate_run_scope import ActivateRunScope
 
             return ActivateRunScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateUserScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.activateUserScope".casefold():
             from .activate_user_scope import ActivateUserScope
 
             return ActivateUserScope()

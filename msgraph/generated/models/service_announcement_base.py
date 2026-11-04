@@ -42,11 +42,13 @@ class ServiceAnnouncementBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceHealthIssue".casefold():
+        if not mapping_value:
+            return ServiceAnnouncementBase()
+        if mapping_value.casefold() == "#microsoft.graph.serviceHealthIssue".casefold():
             from .service_health_issue import ServiceHealthIssue
 
             return ServiceHealthIssue()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceUpdateMessage".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.serviceUpdateMessage".casefold():
             from .service_update_message import ServiceUpdateMessage
 
             return ServiceUpdateMessage()

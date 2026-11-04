@@ -34,15 +34,17 @@ class WorkflowExecutionConditions(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.onDemandExecutionOnly".casefold():
+        if not mapping_value:
+            return WorkflowExecutionConditions()
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.onDemandExecutionOnly".casefold():
             from .on_demand_execution_only import OnDemandExecutionOnly
 
             return OnDemandExecutionOnly()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.provisioningAttributeMapping".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.provisioningAttributeMapping".casefold():
             from .provisioning_attribute_mapping import ProvisioningAttributeMapping
 
             return ProvisioningAttributeMapping()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions".casefold():
             from .trigger_and_scope_based_conditions import TriggerAndScopeBasedConditions
 
             return TriggerAndScopeBasedConditions()

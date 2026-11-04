@@ -37,11 +37,13 @@ class MultiTenantApplicationMetricsBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetricsInitial".casefold():
+        if not mapping_value:
+            return MultiTenantApplicationMetricsBase()
+        if mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetricsInitial".casefold():
             from .multi_tenant_application_metrics_initial import MultiTenantApplicationMetricsInitial
 
             return MultiTenantApplicationMetricsInitial()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetricsRecent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.multiTenantApplicationMetricsRecent".casefold():
             from .multi_tenant_application_metrics_recent import MultiTenantApplicationMetricsRecent
 
             return MultiTenantApplicationMetricsRecent()

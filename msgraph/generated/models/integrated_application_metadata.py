@@ -36,7 +36,9 @@ class IntegratedApplicationMetadata(AdditionalDataHolder, BackedModel, Parsable)
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.protectedApplicationMetadata".casefold():
+        if not mapping_value:
+            return IntegratedApplicationMetadata()
+        if mapping_value.casefold() == "#microsoft.graph.protectedApplicationMetadata".casefold():
             from .protected_application_metadata import ProtectedApplicationMetadata
 
             return ProtectedApplicationMetadata()

@@ -39,23 +39,25 @@ class PolicyDeletableItem(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessPolicy".casefold():
+        if not mapping_value:
+            return PolicyDeletableItem()
+        if mapping_value.casefold() == "#microsoft.graph.conditionalAccessPolicy".casefold():
             from .conditional_access_policy import ConditionalAccessPolicy
 
             return ConditionalAccessPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.countryNamedLocation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.countryNamedLocation".casefold():
             from .country_named_location import CountryNamedLocation
 
             return CountryNamedLocation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.ipNamedLocation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.ipNamedLocation".casefold():
             from .ip_named_location import IpNamedLocation
 
             return IpNamedLocation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.namedLocation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.namedLocation".casefold():
             from .named_location import NamedLocation
 
             return NamedLocation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.whatIfAnalysisResult".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.whatIfAnalysisResult".casefold():
             from .what_if_analysis_result import WhatIfAnalysisResult
 
             return WhatIfAnalysisResult()

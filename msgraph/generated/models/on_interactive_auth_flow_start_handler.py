@@ -32,7 +32,9 @@ class OnInteractiveAuthFlowStartHandler(AdditionalDataHolder, BackedModel, Parsa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartExternalUsersSelfServiceSignUp".casefold():
+        if not mapping_value:
+            return OnInteractiveAuthFlowStartHandler()
+        if mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartExternalUsersSelfServiceSignUp".casefold():
             from .on_interactive_auth_flow_start_external_users_self_service_sign_up import OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp
 
             return OnInteractiveAuthFlowStartExternalUsersSelfServiceSignUp()

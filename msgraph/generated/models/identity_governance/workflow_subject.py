@@ -33,11 +33,13 @@ class WorkflowSubject(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.directoryObjectWorkflowSubject".casefold():
+        if not mapping_value:
+            return WorkflowSubject()
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.directoryObjectWorkflowSubject".casefold():
             from .directory_object_workflow_subject import DirectoryObjectWorkflowSubject
 
             return DirectoryObjectWorkflowSubject()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.provisioningObjectWorkflowSubject".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.provisioningObjectWorkflowSubject".casefold():
             from .provisioning_object_workflow_subject import ProvisioningObjectWorkflowSubject
 
             return ProvisioningObjectWorkflowSubject()

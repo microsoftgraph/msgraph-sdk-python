@@ -33,11 +33,13 @@ class QuarantineCondition(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.countBasedQuarantineCondition".casefold():
+        if not mapping_value:
+            return QuarantineCondition()
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.countBasedQuarantineCondition".casefold():
             from .count_based_quarantine_condition import CountBasedQuarantineCondition
 
             return CountBasedQuarantineCondition()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.percentageBasedQuarantineCondition".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.percentageBasedQuarantineCondition".casefold():
             from .percentage_based_quarantine_condition import PercentageBasedQuarantineCondition
 
             return PercentageBasedQuarantineCondition()

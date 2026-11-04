@@ -32,9 +32,10 @@ class RefreshStatusRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[RelatedTenantsRefreshStatus]:
         """
-        Invoke function refreshStatus
+        Get the status of the most recent related tenants refresh operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RelatedTenantsRefreshStatus]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantgovernanceservices-relatedtenant-refreshstatus?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -52,7 +53,7 @@ class RefreshStatusRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Invoke function refreshStatus
+        Get the status of the most recent related tenants refresh operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

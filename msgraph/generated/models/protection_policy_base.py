@@ -54,15 +54,17 @@ class ProtectionPolicyBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.exchangeProtectionPolicy".casefold():
+        if not mapping_value:
+            return ProtectionPolicyBase()
+        if mapping_value.casefold() == "#microsoft.graph.exchangeProtectionPolicy".casefold():
             from .exchange_protection_policy import ExchangeProtectionPolicy
 
             return ExchangeProtectionPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.oneDriveForBusinessProtectionPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.oneDriveForBusinessProtectionPolicy".casefold():
             from .one_drive_for_business_protection_policy import OneDriveForBusinessProtectionPolicy
 
             return OneDriveForBusinessProtectionPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointProtectionPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointProtectionPolicy".casefold():
             from .share_point_protection_policy import SharePointProtectionPolicy
 
             return SharePointProtectionPolicy()

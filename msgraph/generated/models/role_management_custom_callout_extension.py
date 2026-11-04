@@ -17,6 +17,8 @@ class RoleManagementCustomCalloutExtension(CustomCalloutExtension, Parsable):
     odata_type: Optional[str] = "#microsoft.graph.roleManagementCustomCalloutExtension"
     # The custom attribute names to include in the callout payload.
     custom_attributes: Optional[list[str]] = None
+    # When true, enables the custom extension. When false, disables it. Nullable.
+    is_enabled: Optional[bool] = None
     # The resourceType property
     resource_type: Optional[CustomExtensionResourceType] = None
     # The type property
@@ -48,6 +50,7 @@ class RoleManagementCustomCalloutExtension(CustomCalloutExtension, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "customAttributes": lambda n : setattr(self, 'custom_attributes', n.get_collection_of_primitive_values(str)),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "resourceType": lambda n : setattr(self, 'resource_type', n.get_enum_value(CustomExtensionResourceType)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(CustomCalloutExtensionType)),
         }
@@ -65,6 +68,7 @@ class RoleManagementCustomCalloutExtension(CustomCalloutExtension, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("customAttributes", self.custom_attributes)
+        writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_enum_value("resourceType", self.resource_type)
         writer.write_enum_value("type", self.type)
     

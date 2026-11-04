@@ -35,11 +35,13 @@ class WindowsDeviceAccount(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDeviceADAccount".casefold():
+        if not mapping_value:
+            return WindowsDeviceAccount()
+        if mapping_value.casefold() == "#microsoft.graph.windowsDeviceADAccount".casefold():
             from .windows_device_a_d_account import WindowsDeviceADAccount
 
             return WindowsDeviceADAccount()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDeviceAzureADAccount".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsDeviceAzureADAccount".casefold():
             from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
 
             return WindowsDeviceAzureADAccount()

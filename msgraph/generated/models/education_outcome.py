@@ -38,19 +38,21 @@ class EducationOutcome(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFeedbackOutcome".casefold():
+        if not mapping_value:
+            return EducationOutcome()
+        if mapping_value.casefold() == "#microsoft.graph.educationFeedbackOutcome".casefold():
             from .education_feedback_outcome import EducationFeedbackOutcome
 
             return EducationFeedbackOutcome()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFeedbackResourceOutcome".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationFeedbackResourceOutcome".casefold():
             from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
 
             return EducationFeedbackResourceOutcome()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationPointsOutcome".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationPointsOutcome".casefold():
             from .education_points_outcome import EducationPointsOutcome
 
             return EducationPointsOutcome()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationRubricOutcome".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationRubricOutcome".casefold():
             from .education_rubric_outcome import EducationRubricOutcome
 
             return EducationRubricOutcome()

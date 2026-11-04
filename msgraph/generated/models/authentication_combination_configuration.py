@@ -33,11 +33,13 @@ class AuthenticationCombinationConfiguration(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2CombinationConfiguration".casefold():
+        if not mapping_value:
+            return AuthenticationCombinationConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.fido2CombinationConfiguration".casefold():
             from .fido2_combination_configuration import Fido2CombinationConfiguration
 
             return Fido2CombinationConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.x509CertificateCombinationConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.x509CertificateCombinationConfiguration".casefold():
             from .x509_certificate_combination_configuration import X509CertificateCombinationConfiguration
 
             return X509CertificateCombinationConfiguration()

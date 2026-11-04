@@ -37,7 +37,9 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicyTenantRestrictions".casefold():
+        if not mapping_value:
+            return CrossTenantAccessPolicyB2BSetting()
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicyTenantRestrictions".casefold():
             from .cross_tenant_access_policy_tenant_restrictions import CrossTenantAccessPolicyTenantRestrictions
 
             return CrossTenantAccessPolicyTenantRestrictions()

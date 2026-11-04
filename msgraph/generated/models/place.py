@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -15,6 +16,7 @@ if TYPE_CHECKING:
     from .room import Room
     from .room_list import RoomList
     from .section import Section
+    from .string_dictionary import StringDictionary
     from .workspace import Workspace
 
 from .entity import Entity
@@ -25,6 +27,8 @@ class Place(Entity, Parsable):
     address: Optional[PhysicalAddress] = None
     # A subresource of a place object that indicates the check-in status of an Outlook calendar event booked at the place.
     check_ins: Optional[list[CheckInClaim]] = None
+    # Custom properties for the place. Each property has a string key and a string value. Nullable.
+    custom_properties: Optional[StringDictionary] = None
     # The name that is associated with the place.
     display_name: Optional[str] = None
     # Specifies the place location in latitude, longitude, and (optionally) altitude coordinates.
@@ -33,6 +37,8 @@ class Place(Entity, Parsable):
     is_wheel_chair_accessible: Optional[bool] = None
     # User-defined description of the place.
     label: Optional[str] = None
+    # The date and time when the place was last updated. The timestamp is in ISO 8601 format and is always in UTC. Read-only. Nullable.
+    last_updated_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The ID of a parent place.
@@ -58,31 +64,33 @@ class Place(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.building".casefold():
+        if not mapping_value:
+            return Place()
+        if mapping_value.casefold() == "#microsoft.graph.building".casefold():
             from .building import Building
 
             return Building()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.desk".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.desk".casefold():
             from .desk import Desk
 
             return Desk()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.floor".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.floor".casefold():
             from .floor import Floor
 
             return Floor()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.room".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.room".casefold():
             from .room import Room
 
             return Room()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.roomList".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.roomList".casefold():
             from .room_list import RoomList
 
             return RoomList()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.section".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.section".casefold():
             from .section import Section
 
             return Section()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.workspace".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.workspace".casefold():
             from .workspace import Workspace
 
             return Workspace()
@@ -103,6 +111,7 @@ class Place(Entity, Parsable):
         from .room import Room
         from .room_list import RoomList
         from .section import Section
+        from .string_dictionary import StringDictionary
         from .workspace import Workspace
 
         from .building import Building
@@ -115,15 +124,18 @@ class Place(Entity, Parsable):
         from .room import Room
         from .room_list import RoomList
         from .section import Section
+        from .string_dictionary import StringDictionary
         from .workspace import Workspace
 
         fields: dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
             "checkIns": lambda n : setattr(self, 'check_ins', n.get_collection_of_object_values(CheckInClaim)),
+            "customProperties": lambda n : setattr(self, 'custom_properties', n.get_object_value(StringDictionary)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(OutlookGeoCoordinates)),
             "isWheelChairAccessible": lambda n : setattr(self, 'is_wheel_chair_accessible', n.get_bool_value()),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
+            "lastUpdatedTime": lambda n : setattr(self, 'last_updated_time', n.get_datetime_value()),
             "parentId": lambda n : setattr(self, 'parent_id', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
             "placeId": lambda n : setattr(self, 'place_id', n.get_str_value()),
@@ -144,6 +156,7 @@ class Place(Entity, Parsable):
         super().serialize(writer)
         writer.write_object_value("address", self.address)
         writer.write_collection_of_object_values("checkIns", self.check_ins)
+        writer.write_object_value("customProperties", self.custom_properties)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("geoCoordinates", self.geo_coordinates)
         writer.write_bool_value("isWheelChairAccessible", self.is_wheel_chair_accessible)

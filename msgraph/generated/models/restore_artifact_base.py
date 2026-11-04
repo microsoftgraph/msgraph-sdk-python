@@ -49,19 +49,21 @@ class RestoreArtifactBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveRestoreArtifact".casefold():
+        if not mapping_value:
+            return RestoreArtifactBase()
+        if mapping_value.casefold() == "#microsoft.graph.driveRestoreArtifact".casefold():
             from .drive_restore_artifact import DriveRestoreArtifact
 
             return DriveRestoreArtifact()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularMailboxRestoreArtifact".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.granularMailboxRestoreArtifact".casefold():
             from .granular_mailbox_restore_artifact import GranularMailboxRestoreArtifact
 
             return GranularMailboxRestoreArtifact()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxRestoreArtifact".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.mailboxRestoreArtifact".casefold():
             from .mailbox_restore_artifact import MailboxRestoreArtifact
 
             return MailboxRestoreArtifact()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.siteRestoreArtifact".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.siteRestoreArtifact".casefold():
             from .site_restore_artifact import SiteRestoreArtifact
 
             return SiteRestoreArtifact()

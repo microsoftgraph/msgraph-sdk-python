@@ -19,6 +19,8 @@ class OptionalClaims(AdditionalDataHolder, BackedModel, Parsable):
     access_token: Optional[list[OptionalClaim]] = None
     # The optional claims returned in the JWT ID token.
     id_token: Optional[list[OptionalClaim]] = None
+    # The kerberosTicket property
+    kerberos_ticket: Optional[list[OptionalClaim]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The optional claims returned in the SAML token.
@@ -47,6 +49,7 @@ class OptionalClaims(AdditionalDataHolder, BackedModel, Parsable):
         fields: dict[str, Callable[[Any], None]] = {
             "accessToken": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(OptionalClaim)),
             "idToken": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(OptionalClaim)),
+            "kerberosTicket": lambda n : setattr(self, 'kerberos_ticket', n.get_collection_of_object_values(OptionalClaim)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "saml2Token": lambda n : setattr(self, 'saml2_token', n.get_collection_of_object_values(OptionalClaim)),
         }
@@ -62,6 +65,7 @@ class OptionalClaims(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("accessToken", self.access_token)
         writer.write_collection_of_object_values("idToken", self.id_token)
+        writer.write_collection_of_object_values("kerberosTicket", self.kerberos_ticket)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("saml2Token", self.saml2_token)
         writer.write_additional_data_value(self.additional_data)

@@ -37,27 +37,29 @@ class AccessReviewScope(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewAccessPackageAssignmentPolicyScope".casefold():
+        if not mapping_value:
+            return AccessReviewScope()
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewAccessPackageAssignmentPolicyScope".casefold():
             from .access_review_access_package_assignment_policy_scope import AccessReviewAccessPackageAssignmentPolicyScope
 
             return AccessReviewAccessPackageAssignmentPolicyScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInactiveUsersQueryScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewInactiveUsersQueryScope".casefold():
             from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
 
             return AccessReviewInactiveUsersQueryScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewPrincipalScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewPrincipalScope".casefold():
             from .access_review_principal_scope import AccessReviewPrincipalScope
 
             return AccessReviewPrincipalScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewQueryScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewQueryScope".casefold():
             from .access_review_query_scope import AccessReviewQueryScope
 
             return AccessReviewQueryScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewResourceScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewResourceScope".casefold():
             from .access_review_resource_scope import AccessReviewResourceScope
 
             return AccessReviewResourceScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.principalResourceMembershipsScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.principalResourceMembershipsScope".casefold():
             from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
             return PrincipalResourceMembershipsScope()

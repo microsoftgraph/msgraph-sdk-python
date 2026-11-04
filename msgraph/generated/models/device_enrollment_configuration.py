@@ -51,19 +51,21 @@ class DeviceEnrollmentConfiguration(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentLimitConfiguration".casefold():
+        if not mapping_value:
+            return DeviceEnrollmentConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentLimitConfiguration".casefold():
             from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
 
             return DeviceEnrollmentLimitConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration".casefold():
             from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
 
             return DeviceEnrollmentPlatformRestrictionsConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration".casefold():
             from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
 
             return DeviceEnrollmentWindowsHelloForBusinessConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10EnrollmentCompletionPageConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windows10EnrollmentCompletionPageConfiguration".casefold():
             from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
 
             return Windows10EnrollmentCompletionPageConfiguration()

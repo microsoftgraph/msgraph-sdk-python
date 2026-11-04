@@ -16,11 +16,11 @@ class RelatedTenantsRefreshStatus(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
-    # The isFirstRefresh property
+    # Indicates whether the operation is the first refresh of the related tenants list.
     is_first_refresh: Optional[bool] = None
-    # The mostRecentRefreshDateTime property
+    # The date and time of the most recent refresh operation. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024, is 2024-01-01T00:00:00Z.
     most_recent_refresh_date_time: Optional[datetime.datetime] = None
-    # The mostRecentRefreshRequestStatus property
+    # The status of the most recent refresh operation.
     most_recent_refresh_request_status: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

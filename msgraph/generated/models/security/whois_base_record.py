@@ -70,11 +70,13 @@ class WhoisBaseRecord(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.whoisHistoryRecord".casefold():
+        if not mapping_value:
+            return WhoisBaseRecord()
+        if mapping_value.casefold() == "#microsoft.graph.security.whoisHistoryRecord".casefold():
             from .whois_history_record import WhoisHistoryRecord
 
             return WhoisHistoryRecord()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.whoisRecord".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.whoisRecord".casefold():
             from .whois_record import WhoisRecord
 
             return WhoisRecord()

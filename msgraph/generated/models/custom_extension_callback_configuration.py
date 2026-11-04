@@ -36,11 +36,13 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, BackedModel, Pa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageRequestApprovalStageCallbackConfiguration".casefold():
+        if not mapping_value:
+            return CustomExtensionCallbackConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageRequestApprovalStageCallbackConfiguration".casefold():
             from .access_package_request_approval_stage_callback_configuration import AccessPackageRequestApprovalStageCallbackConfiguration
 
             return AccessPackageRequestApprovalStageCallbackConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCallbackConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCallbackConfiguration".casefold():
             from .identity_governance.custom_task_extension_callback_configuration import CustomTaskExtensionCallbackConfiguration
 
             return CustomTaskExtensionCallbackConfiguration()

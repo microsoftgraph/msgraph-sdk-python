@@ -29,7 +29,9 @@ class ServiceProviderConstraints(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminServiceProviderConstraints".casefold():
+        if not mapping_value:
+            return ServiceProviderConstraints()
+        if mapping_value.casefold() == "#microsoft.graph.delegatedAdminServiceProviderConstraints".casefold():
             from .delegated_admin_service_provider_constraints import DelegatedAdminServiceProviderConstraints
 
             return DelegatedAdminServiceProviderConstraints()

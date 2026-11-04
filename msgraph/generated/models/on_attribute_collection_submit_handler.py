@@ -32,7 +32,9 @@ class OnAttributeCollectionSubmitHandler(AdditionalDataHolder, BackedModel, Pars
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitCustomExtensionHandler".casefold():
+        if not mapping_value:
+            return OnAttributeCollectionSubmitHandler()
+        if mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitCustomExtensionHandler".casefold():
             from .on_attribute_collection_submit_custom_extension_handler import OnAttributeCollectionSubmitCustomExtensionHandler
 
             return OnAttributeCollectionSubmitCustomExtensionHandler()

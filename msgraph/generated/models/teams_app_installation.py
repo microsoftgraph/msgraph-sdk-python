@@ -38,7 +38,9 @@ class TeamsAppInstallation(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userScopeTeamsAppInstallation".casefold():
+        if not mapping_value:
+            return TeamsAppInstallation()
+        if mapping_value.casefold() == "#microsoft.graph.userScopeTeamsAppInstallation".casefold():
             from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
             return UserScopeTeamsAppInstallation()

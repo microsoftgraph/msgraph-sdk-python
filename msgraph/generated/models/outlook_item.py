@@ -47,43 +47,45 @@ class OutlookItem(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendarSharingMessage".casefold():
+        if not mapping_value:
+            return OutlookItem()
+        if mapping_value.casefold() == "#microsoft.graph.calendarSharingMessage".casefold():
             from .calendar_sharing_message import CalendarSharingMessage
 
             return CalendarSharingMessage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.contact".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.contact".casefold():
             from .contact import Contact
 
             return Contact()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.event".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.event".casefold():
             from .event import Event
 
             return Event()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessage".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.eventMessage".casefold():
             from .event_message import EventMessage
 
             return EventMessage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
             from .event_message_request import EventMessageRequest
 
             return EventMessageRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
             from .event_message_response import EventMessageResponse
 
             return EventMessageResponse()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxItem".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.mailboxItem".casefold():
             from .mailbox_item import MailboxItem
 
             return MailboxItem()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.message".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.message".casefold():
             from .message import Message
 
             return Message()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.note".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.note".casefold():
             from .note import Note
 
             return Note()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.post".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.post".casefold():
             from .post import Post
 
             return Post()

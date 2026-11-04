@@ -44,7 +44,9 @@ class RoleDefinition(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceAndAppManagementRoleDefinition".casefold():
+        if not mapping_value:
+            return RoleDefinition()
+        if mapping_value.casefold() == "#microsoft.graph.deviceAndAppManagementRoleDefinition".casefold():
             from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
 
             return DeviceAndAppManagementRoleDefinition()

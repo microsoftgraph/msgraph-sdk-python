@@ -37,19 +37,21 @@ class AuthenticationMethodTarget(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodTarget".casefold():
+        if not mapping_value:
+            return AuthenticationMethodTarget()
+        if mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodTarget".casefold():
             from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
 
             return MicrosoftAuthenticatorAuthenticationMethodTarget()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.passkeyAuthenticationMethodTarget".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.passkeyAuthenticationMethodTarget".casefold():
             from .passkey_authentication_method_target import PasskeyAuthenticationMethodTarget
 
             return PasskeyAuthenticationMethodTarget()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodTarget".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodTarget".casefold():
             from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
             return SmsAuthenticationMethodTarget()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.verifiableCredentialAuthenticationMethodTarget".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.verifiableCredentialAuthenticationMethodTarget".casefold():
             from .verifiable_credential_authentication_method_target import VerifiableCredentialAuthenticationMethodTarget
 
             return VerifiableCredentialAuthenticationMethodTarget()

@@ -53,11 +53,13 @@ class PrintUsage(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsageByPrinter".casefold():
+        if not mapping_value:
+            return PrintUsage()
+        if mapping_value.casefold() == "#microsoft.graph.printUsageByPrinter".casefold():
             from .print_usage_by_printer import PrintUsageByPrinter
 
             return PrintUsageByPrinter()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsageByUser".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.printUsageByUser".casefold():
             from .print_usage_by_user import PrintUsageByUser
 
             return PrintUsageByUser()

@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .extension import Extension
+    from .single_value_extended_property import SingleValueExtendedProperty
     from .todo_task import TodoTask
     from .wellknown_list_name import WellknownListName
 
@@ -24,6 +25,8 @@ class TodoTaskList(Entity, Parsable):
     is_shared: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The collection of single-value extended properties defined for the task list. Nullable.
+    single_value_extended_properties: Optional[list[SingleValueExtendedProperty]] = None
     # The tasks in this task list. Read-only. Nullable.
     tasks: Optional[list[TodoTask]] = None
     # The wellknownListName property
@@ -47,11 +50,13 @@ class TodoTaskList(Entity, Parsable):
         """
         from .entity import Entity
         from .extension import Extension
+        from .single_value_extended_property import SingleValueExtendedProperty
         from .todo_task import TodoTask
         from .wellknown_list_name import WellknownListName
 
         from .entity import Entity
         from .extension import Extension
+        from .single_value_extended_property import SingleValueExtendedProperty
         from .todo_task import TodoTask
         from .wellknown_list_name import WellknownListName
 
@@ -60,6 +65,7 @@ class TodoTaskList(Entity, Parsable):
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "isOwner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueExtendedProperty)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(TodoTask)),
             "wellknownListName": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(WellknownListName)),
         }
@@ -80,6 +86,7 @@ class TodoTaskList(Entity, Parsable):
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_bool_value("isOwner", self.is_owner)
         writer.write_bool_value("isShared", self.is_shared)
+        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
         writer.write_collection_of_object_values("tasks", self.tasks)
         writer.write_enum_value("wellknownListName", self.wellknown_list_name)
     

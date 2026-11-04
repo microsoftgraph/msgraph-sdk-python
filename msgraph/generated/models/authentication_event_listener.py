@@ -46,47 +46,49 @@ class AuthenticationEventListener(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionListener".casefold():
+        if not mapping_value:
+            return AuthenticationEventListener()
+        if mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionListener".casefold():
             from .on_attribute_collection_listener import OnAttributeCollectionListener
 
             return OnAttributeCollectionListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionStartListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionStartListener".casefold():
             from .on_attribute_collection_start_listener import OnAttributeCollectionStartListener
 
             return OnAttributeCollectionStartListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitListener".casefold():
             from .on_attribute_collection_submit_listener import OnAttributeCollectionSubmitListener
 
             return OnAttributeCollectionSubmitListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAuthenticationMethodLoadStartListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onAuthenticationMethodLoadStartListener".casefold():
             from .on_authentication_method_load_start_listener import OnAuthenticationMethodLoadStartListener
 
             return OnAuthenticationMethodLoadStartListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onEmailOtpSendListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onEmailOtpSendListener".casefold():
             from .on_email_otp_send_listener import OnEmailOtpSendListener
 
             return OnEmailOtpSendListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onFraudProtectionLoadStartListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onFraudProtectionLoadStartListener".casefold():
             from .on_fraud_protection_load_start_listener import OnFraudProtectionLoadStartListener
 
             return OnFraudProtectionLoadStartListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onInteractiveAuthFlowStartListener".casefold():
             from .on_interactive_auth_flow_start_listener import OnInteractiveAuthFlowStartListener
 
             return OnInteractiveAuthFlowStartListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onPasswordSubmitListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onPasswordSubmitListener".casefold():
             from .on_password_submit_listener import OnPasswordSubmitListener
 
             return OnPasswordSubmitListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartListener".casefold():
             from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
 
             return OnTokenIssuanceStartListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onUserCreateStartListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onUserCreateStartListener".casefold():
             from .on_user_create_start_listener import OnUserCreateStartListener
 
             return OnUserCreateStartListener()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onVerifiedIdClaimValidationListener".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onVerifiedIdClaimValidationListener".casefold():
             from .on_verified_id_claim_validation_listener import OnVerifiedIdClaimValidationListener
 
             return OnVerifiedIdClaimValidationListener()

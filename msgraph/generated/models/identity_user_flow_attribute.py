@@ -40,11 +40,13 @@ class IdentityUserFlowAttribute(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityBuiltInUserFlowAttribute".casefold():
+        if not mapping_value:
+            return IdentityUserFlowAttribute()
+        if mapping_value.casefold() == "#microsoft.graph.identityBuiltInUserFlowAttribute".casefold():
             from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
 
             return IdentityBuiltInUserFlowAttribute()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityCustomUserFlowAttribute".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityCustomUserFlowAttribute".casefold():
             from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
 
             return IdentityCustomUserFlowAttribute()

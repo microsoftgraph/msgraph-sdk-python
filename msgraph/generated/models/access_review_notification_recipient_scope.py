@@ -32,7 +32,9 @@ class AccessReviewNotificationRecipientScope(AdditionalDataHolder, BackedModel, 
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewNotificationRecipientQueryScope".casefold():
+        if not mapping_value:
+            return AccessReviewNotificationRecipientScope()
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewNotificationRecipientQueryScope".casefold():
             from .access_review_notification_recipient_query_scope import AccessReviewNotificationRecipientQueryScope
 
             return AccessReviewNotificationRecipientQueryScope()

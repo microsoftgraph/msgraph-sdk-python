@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
     from .open_complex_dictionary_type import OpenComplexDictionaryType
     from .result_template_dictionary import ResultTemplateDictionary
+    from .string_dictionary import StringDictionary
 
 @dataclass
 class Dictionary(AdditionalDataHolder, BackedModel, Parsable):
@@ -35,22 +36,28 @@ class Dictionary(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customMetadataDictionary".casefold():
+        if not mapping_value:
+            return Dictionary()
+        if mapping_value.casefold() == "#microsoft.graph.customMetadataDictionary".casefold():
             from .custom_metadata_dictionary import CustomMetadataDictionary
 
             return CustomMetadataDictionary()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileStorageContainerCustomPropertyDictionary".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.fileStorageContainerCustomPropertyDictionary".casefold():
             from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
 
             return FileStorageContainerCustomPropertyDictionary()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.openComplexDictionaryType".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.openComplexDictionaryType".casefold():
             from .open_complex_dictionary_type import OpenComplexDictionaryType
 
             return OpenComplexDictionaryType()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resultTemplateDictionary".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.resultTemplateDictionary".casefold():
             from .result_template_dictionary import ResultTemplateDictionary
 
             return ResultTemplateDictionary()
+        if mapping_value.casefold() == "#microsoft.graph.stringDictionary".casefold():
+            from .string_dictionary import StringDictionary
+
+            return StringDictionary()
         return Dictionary()
     
     def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
@@ -62,11 +69,13 @@ class Dictionary(AdditionalDataHolder, BackedModel, Parsable):
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
         from .open_complex_dictionary_type import OpenComplexDictionaryType
         from .result_template_dictionary import ResultTemplateDictionary
+        from .string_dictionary import StringDictionary
 
         from .custom_metadata_dictionary import CustomMetadataDictionary
         from .file_storage_container_custom_property_dictionary import FileStorageContainerCustomPropertyDictionary
         from .open_complex_dictionary_type import OpenComplexDictionaryType
         from .result_template_dictionary import ResultTemplateDictionary
+        from .string_dictionary import StringDictionary
 
         fields: dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

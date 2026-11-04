@@ -52,43 +52,45 @@ class ManagedAppPolicy(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
+        if not mapping_value:
+            return ManagedAppPolicy()
+        if mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
             from .android_managed_app_protection import AndroidManagedAppProtection
 
             return AndroidManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
             from .default_managed_app_protection import DefaultManagedAppProtection
 
             return DefaultManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
             from .ios_managed_app_protection import IosManagedAppProtection
 
             return IosManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.managedAppConfiguration".casefold():
             from .managed_app_configuration import ManagedAppConfiguration
 
             return ManagedAppConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.managedAppProtection".casefold():
             from .managed_app_protection import ManagedAppProtection
 
             return ManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mdmWindowsInformationProtectionPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.mdmWindowsInformationProtectionPolicy".casefold():
             from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
 
             return MdmWindowsInformationProtectionPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
             from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
             return TargetedManagedAppConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.targetedManagedAppProtection".casefold():
             from .targeted_managed_app_protection import TargetedManagedAppProtection
 
             return TargetedManagedAppProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsInformationProtection".casefold():
             from .windows_information_protection import WindowsInformationProtection
 
             return WindowsInformationProtection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionPolicy".casefold():
             from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
             return WindowsInformationProtectionPolicy()

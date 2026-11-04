@@ -39,7 +39,9 @@ class DataSet(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewSet".casefold():
+        if not mapping_value:
+            return DataSet()
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewSet".casefold():
             from .ediscovery_review_set import EdiscoveryReviewSet
 
             return EdiscoveryReviewSet()

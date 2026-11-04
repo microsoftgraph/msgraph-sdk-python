@@ -34,15 +34,17 @@ class EducationAssignmentRecipient(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentClassRecipient".casefold():
+        if not mapping_value:
+            return EducationAssignmentRecipient()
+        if mapping_value.casefold() == "#microsoft.graph.educationAssignmentClassRecipient".casefold():
             from .education_assignment_class_recipient import EducationAssignmentClassRecipient
 
             return EducationAssignmentClassRecipient()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentGroupRecipient".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationAssignmentGroupRecipient".casefold():
             from .education_assignment_group_recipient import EducationAssignmentGroupRecipient
 
             return EducationAssignmentGroupRecipient()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentIndividualRecipient".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationAssignmentIndividualRecipient".casefold():
             from .education_assignment_individual_recipient import EducationAssignmentIndividualRecipient
 
             return EducationAssignmentIndividualRecipient()

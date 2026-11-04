@@ -33,11 +33,13 @@ class SubjectRightsRequestSiteLocation(AdditionalDataHolder, BackedModel, Parsab
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestAllSiteLocation".casefold():
+        if not mapping_value:
+            return SubjectRightsRequestSiteLocation()
+        if mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestAllSiteLocation".casefold():
             from .subject_rights_request_all_site_location import SubjectRightsRequestAllSiteLocation
 
             return SubjectRightsRequestAllSiteLocation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestEnumeratedSiteLocation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestEnumeratedSiteLocation".casefold():
             from .subject_rights_request_enumerated_site_location import SubjectRightsRequestEnumeratedSiteLocation
 
             return SubjectRightsRequestEnumeratedSiteLocation()

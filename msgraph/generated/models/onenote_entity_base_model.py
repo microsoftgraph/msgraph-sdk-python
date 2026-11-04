@@ -37,31 +37,33 @@ class OnenoteEntityBaseModel(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.notebook".casefold():
+        if not mapping_value:
+            return OnenoteEntityBaseModel()
+        if mapping_value.casefold() == "#microsoft.graph.notebook".casefold():
             from .notebook import Notebook
 
             return Notebook()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteEntityHierarchyModel".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onenoteEntityHierarchyModel".casefold():
             from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
             return OnenoteEntityHierarchyModel()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteEntitySchemaObjectModel".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onenoteEntitySchemaObjectModel".casefold():
             from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 
             return OnenoteEntitySchemaObjectModel()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenotePage".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onenotePage".casefold():
             from .onenote_page import OnenotePage
 
             return OnenotePage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onenoteResource".casefold():
             from .onenote_resource import OnenoteResource
 
             return OnenoteResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteSection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onenoteSection".casefold():
             from .onenote_section import OnenoteSection
 
             return OnenoteSection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sectionGroup".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sectionGroup".casefold():
             from .section_group import SectionGroup
 
             return SectionGroup()

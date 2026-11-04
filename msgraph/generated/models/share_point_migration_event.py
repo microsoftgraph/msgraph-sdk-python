@@ -43,35 +43,37 @@ class SharePointMigrationEvent(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationFinishManifestFileUploadEvent".casefold():
+        if not mapping_value:
+            return SharePointMigrationEvent()
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationFinishManifestFileUploadEvent".casefold():
             from .share_point_migration_finish_manifest_file_upload_event import SharePointMigrationFinishManifestFileUploadEvent
 
             return SharePointMigrationFinishManifestFileUploadEvent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobCancelledEvent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobCancelledEvent".casefold():
             from .share_point_migration_job_cancelled_event import SharePointMigrationJobCancelledEvent
 
             return SharePointMigrationJobCancelledEvent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobDeletedEvent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobDeletedEvent".casefold():
             from .share_point_migration_job_deleted_event import SharePointMigrationJobDeletedEvent
 
             return SharePointMigrationJobDeletedEvent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobErrorEvent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobErrorEvent".casefold():
             from .share_point_migration_job_error_event import SharePointMigrationJobErrorEvent
 
             return SharePointMigrationJobErrorEvent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobPostponedEvent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobPostponedEvent".casefold():
             from .share_point_migration_job_postponed_event import SharePointMigrationJobPostponedEvent
 
             return SharePointMigrationJobPostponedEvent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobProgressEvent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobProgressEvent".casefold():
             from .share_point_migration_job_progress_event import SharePointMigrationJobProgressEvent
 
             return SharePointMigrationJobProgressEvent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobQueuedEvent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobQueuedEvent".casefold():
             from .share_point_migration_job_queued_event import SharePointMigrationJobQueuedEvent
 
             return SharePointMigrationJobQueuedEvent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobStartEvent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointMigrationJobStartEvent".casefold():
             from .share_point_migration_job_start_event import SharePointMigrationJobStartEvent
 
             return SharePointMigrationJobStartEvent()

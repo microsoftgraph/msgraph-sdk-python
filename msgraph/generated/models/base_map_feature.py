@@ -36,27 +36,29 @@ class BaseMapFeature(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.buildingMap".casefold():
+        if not mapping_value:
+            return BaseMapFeature()
+        if mapping_value.casefold() == "#microsoft.graph.buildingMap".casefold():
             from .building_map import BuildingMap
 
             return BuildingMap()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fixtureMap".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.fixtureMap".casefold():
             from .fixture_map import FixtureMap
 
             return FixtureMap()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.footprintMap".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.footprintMap".casefold():
             from .footprint_map import FootprintMap
 
             return FootprintMap()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.levelMap".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.levelMap".casefold():
             from .level_map import LevelMap
 
             return LevelMap()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sectionMap".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sectionMap".casefold():
             from .section_map import SectionMap
 
             return SectionMap()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unitMap".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.unitMap".casefold():
             from .unit_map import UnitMap
 
             return UnitMap()

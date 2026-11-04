@@ -47,11 +47,13 @@ class RecoveryJobBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryJob".casefold():
+        if not mapping_value:
+            return RecoveryJobBase()
+        if mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryJob".casefold():
             from .recovery_job import RecoveryJob
 
             return RecoveryJob()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryPreviewJob".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryPreviewJob".casefold():
             from .recovery_preview_job import RecoveryPreviewJob
 
             return RecoveryPreviewJob()

@@ -33,11 +33,13 @@ class SubjectRightsRequestMailboxLocation(AdditionalDataHolder, BackedModel, Par
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestAllMailboxLocation".casefold():
+        if not mapping_value:
+            return SubjectRightsRequestMailboxLocation()
+        if mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestAllMailboxLocation".casefold():
             from .subject_rights_request_all_mailbox_location import SubjectRightsRequestAllMailboxLocation
 
             return SubjectRightsRequestAllMailboxLocation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestEnumeratedMailboxLocation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.subjectRightsRequestEnumeratedMailboxLocation".casefold():
             from .subject_rights_request_enumerated_mailbox_location import SubjectRightsRequestEnumeratedMailboxLocation
 
             return SubjectRightsRequestEnumeratedMailboxLocation()

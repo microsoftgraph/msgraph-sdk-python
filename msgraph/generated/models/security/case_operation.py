@@ -56,39 +56,41 @@ class CaseOperation(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryAddToReviewSetOperation".casefold():
+        if not mapping_value:
+            return CaseOperation()
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryAddToReviewSetOperation".casefold():
             from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
 
             return EdiscoveryAddToReviewSetOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryEstimateOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryEstimateOperation".casefold():
             from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
 
             return EdiscoveryEstimateOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryExportOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryExportOperation".casefold():
             from .ediscovery_export_operation import EdiscoveryExportOperation
 
             return EdiscoveryExportOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldOperation".casefold():
             from .ediscovery_hold_operation import EdiscoveryHoldOperation
 
             return EdiscoveryHoldOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldPolicySyncOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldPolicySyncOperation".casefold():
             from .ediscovery_hold_policy_sync_operation import EdiscoveryHoldPolicySyncOperation
 
             return EdiscoveryHoldPolicySyncOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryIndexOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryIndexOperation".casefold():
             from .ediscovery_index_operation import EdiscoveryIndexOperation
 
             return EdiscoveryIndexOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryPurgeDataOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryPurgeDataOperation".casefold():
             from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
 
             return EdiscoveryPurgeDataOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoverySearchExportOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoverySearchExportOperation".casefold():
             from .ediscovery_search_export_operation import EdiscoverySearchExportOperation
 
             return EdiscoverySearchExportOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryTagOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ediscoveryTagOperation".casefold():
             from .ediscovery_tag_operation import EdiscoveryTagOperation
 
             return EdiscoveryTagOperation()

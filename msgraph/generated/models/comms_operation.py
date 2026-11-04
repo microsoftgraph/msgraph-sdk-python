@@ -48,51 +48,53 @@ class CommsOperation(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.addLargeGalleryViewOperation".casefold():
+        if not mapping_value:
+            return CommsOperation()
+        if mapping_value.casefold() == "#microsoft.graph.addLargeGalleryViewOperation".casefold():
             from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
 
             return AddLargeGalleryViewOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cancelMediaProcessingOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.cancelMediaProcessingOperation".casefold():
             from .cancel_media_processing_operation import CancelMediaProcessingOperation
 
             return CancelMediaProcessingOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.inviteParticipantsOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.inviteParticipantsOperation".casefold():
             from .invite_participants_operation import InviteParticipantsOperation
 
             return InviteParticipantsOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.muteParticipantOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.muteParticipantOperation".casefold():
             from .mute_participant_operation import MuteParticipantOperation
 
             return MuteParticipantOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.playPromptOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.playPromptOperation".casefold():
             from .play_prompt_operation import PlayPromptOperation
 
             return PlayPromptOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.recordOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.recordOperation".casefold():
             from .record_operation import RecordOperation
 
             return RecordOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sendDtmfTonesOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sendDtmfTonesOperation".casefold():
             from .send_dtmf_tones_operation import SendDtmfTonesOperation
 
             return SendDtmfTonesOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.startHoldMusicOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.startHoldMusicOperation".casefold():
             from .start_hold_music_operation import StartHoldMusicOperation
 
             return StartHoldMusicOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.stopHoldMusicOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.stopHoldMusicOperation".casefold():
             from .stop_hold_music_operation import StopHoldMusicOperation
 
             return StopHoldMusicOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.subscribeToToneOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.subscribeToToneOperation".casefold():
             from .subscribe_to_tone_operation import SubscribeToToneOperation
 
             return SubscribeToToneOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unmuteParticipantOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.unmuteParticipantOperation".casefold():
             from .unmute_participant_operation import UnmuteParticipantOperation
 
             return UnmuteParticipantOperation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.updateRecordingStatusOperation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.updateRecordingStatusOperation".casefold():
             from .update_recording_status_operation import UpdateRecordingStatusOperation
 
             return UpdateRecordingStatusOperation()

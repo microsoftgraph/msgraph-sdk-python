@@ -97,195 +97,197 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.activeDirectoryDomainEvidence".casefold():
+        if not mapping_value:
+            return AlertEvidence()
+        if mapping_value.casefold() == "#microsoft.graph.security.activeDirectoryDomainEvidence".casefold():
             from .active_directory_domain_evidence import ActiveDirectoryDomainEvidence
 
             return ActiveDirectoryDomainEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.aiAgentEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.aiAgentEvidence".casefold():
             from .ai_agent_evidence import AiAgentEvidence
 
             return AiAgentEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.amazonResourceEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.amazonResourceEvidence".casefold():
             from .amazon_resource_evidence import AmazonResourceEvidence
 
             return AmazonResourceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.analyzedMessageEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.analyzedMessageEvidence".casefold():
             from .analyzed_message_evidence import AnalyzedMessageEvidence
 
             return AnalyzedMessageEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.azureResourceEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.azureResourceEvidence".casefold():
             from .azure_resource_evidence import AzureResourceEvidence
 
             return AzureResourceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.blobContainerEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.blobContainerEvidence".casefold():
             from .blob_container_evidence import BlobContainerEvidence
 
             return BlobContainerEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.blobEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.blobEvidence".casefold():
             from .blob_evidence import BlobEvidence
 
             return BlobEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudApplicationEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.cloudApplicationEvidence".casefold():
             from .cloud_application_evidence import CloudApplicationEvidence
 
             return CloudApplicationEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudLogonRequestEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.cloudLogonRequestEvidence".casefold():
             from .cloud_logon_request_evidence import CloudLogonRequestEvidence
 
             return CloudLogonRequestEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudLogonSessionEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.cloudLogonSessionEvidence".casefold():
             from .cloud_logon_session_evidence import CloudLogonSessionEvidence
 
             return CloudLogonSessionEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.containerEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.containerEvidence".casefold():
             from .container_evidence import ContainerEvidence
 
             return ContainerEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.containerImageEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.containerImageEvidence".casefold():
             from .container_image_evidence import ContainerImageEvidence
 
             return ContainerImageEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.containerRegistryEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.containerRegistryEvidence".casefold():
             from .container_registry_evidence import ContainerRegistryEvidence
 
             return ContainerRegistryEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.deviceEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.deviceEvidence".casefold():
             from .device_evidence import DeviceEvidence
 
             return DeviceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.dnsEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.dnsEvidence".casefold():
             from .dns_evidence import DnsEvidence
 
             return DnsEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.fileEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.fileEvidence".casefold():
             from .file_evidence import FileEvidence
 
             return FileEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.fileHashEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.fileHashEvidence".casefold():
             from .file_hash_evidence import FileHashEvidence
 
             return FileHashEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.gitHubOrganizationEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.gitHubOrganizationEvidence".casefold():
             from .git_hub_organization_evidence import GitHubOrganizationEvidence
 
             return GitHubOrganizationEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.gitHubRepoEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.gitHubRepoEvidence".casefold():
             from .git_hub_repo_evidence import GitHubRepoEvidence
 
             return GitHubRepoEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.gitHubUserEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.gitHubUserEvidence".casefold():
             from .git_hub_user_evidence import GitHubUserEvidence
 
             return GitHubUserEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.googleCloudResourceEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.googleCloudResourceEvidence".casefold():
             from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
 
             return GoogleCloudResourceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostLogonSessionEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.hostLogonSessionEvidence".casefold():
             from .host_logon_session_evidence import HostLogonSessionEvidence
 
             return HostLogonSessionEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ioTDeviceEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ioTDeviceEvidence".casefold():
             from .io_t_device_evidence import IoTDeviceEvidence
 
             return IoTDeviceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ipEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ipEvidence".casefold():
             from .ip_evidence import IpEvidence
 
             return IpEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesClusterEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.kubernetesClusterEvidence".casefold():
             from .kubernetes_cluster_evidence import KubernetesClusterEvidence
 
             return KubernetesClusterEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesControllerEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.kubernetesControllerEvidence".casefold():
             from .kubernetes_controller_evidence import KubernetesControllerEvidence
 
             return KubernetesControllerEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesNamespaceEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.kubernetesNamespaceEvidence".casefold():
             from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
 
             return KubernetesNamespaceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesPodEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.kubernetesPodEvidence".casefold():
             from .kubernetes_pod_evidence import KubernetesPodEvidence
 
             return KubernetesPodEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesSecretEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.kubernetesSecretEvidence".casefold():
             from .kubernetes_secret_evidence import KubernetesSecretEvidence
 
             return KubernetesSecretEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesServiceAccountEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.kubernetesServiceAccountEvidence".casefold():
             from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
 
             return KubernetesServiceAccountEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesServiceEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.kubernetesServiceEvidence".casefold():
             from .kubernetes_service_evidence import KubernetesServiceEvidence
 
             return KubernetesServiceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailboxConfigurationEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.mailboxConfigurationEvidence".casefold():
             from .mailbox_configuration_evidence import MailboxConfigurationEvidence
 
             return MailboxConfigurationEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailboxEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.mailboxEvidence".casefold():
             from .mailbox_evidence import MailboxEvidence
 
             return MailboxEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailClusterEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.mailClusterEvidence".casefold():
             from .mail_cluster_evidence import MailClusterEvidence
 
             return MailClusterEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.malwareEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.malwareEvidence".casefold():
             from .malware_evidence import MalwareEvidence
 
             return MalwareEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.networkConnectionEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.networkConnectionEvidence".casefold():
             from .network_connection_evidence import NetworkConnectionEvidence
 
             return NetworkConnectionEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.nicEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.nicEvidence".casefold():
             from .nic_evidence import NicEvidence
 
             return NicEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.oauthApplicationEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.oauthApplicationEvidence".casefold():
             from .oauth_application_evidence import OauthApplicationEvidence
 
             return OauthApplicationEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.processEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.processEvidence".casefold():
             from .process_evidence import ProcessEvidence
 
             return ProcessEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.registryKeyEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.registryKeyEvidence".casefold():
             from .registry_key_evidence import RegistryKeyEvidence
 
             return RegistryKeyEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.registryValueEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.registryValueEvidence".casefold():
             from .registry_value_evidence import RegistryValueEvidence
 
             return RegistryValueEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.sasTokenEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.sasTokenEvidence".casefold():
             from .sas_token_evidence import SasTokenEvidence
 
             return SasTokenEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.securityGroupEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.securityGroupEvidence".casefold():
             from .security_group_evidence import SecurityGroupEvidence
 
             return SecurityGroupEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.servicePrincipalEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.servicePrincipalEvidence".casefold():
             from .service_principal_evidence import ServicePrincipalEvidence
 
             return ServicePrincipalEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.submissionMailEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.submissionMailEvidence".casefold():
             from .submission_mail_evidence import SubmissionMailEvidence
 
             return SubmissionMailEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.teamsMessageEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.teamsMessageEvidence".casefold():
             from .teams_message_evidence import TeamsMessageEvidence
 
             return TeamsMessageEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.urlEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.urlEvidence".casefold():
             from .url_evidence import UrlEvidence
 
             return UrlEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.userEvidence".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.userEvidence".casefold():
             from .user_evidence import UserEvidence
 
             return UserEvidence()

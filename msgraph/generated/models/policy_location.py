@@ -36,15 +36,17 @@ class PolicyLocation(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyLocationApplication".casefold():
+        if not mapping_value:
+            return PolicyLocation()
+        if mapping_value.casefold() == "#microsoft.graph.policyLocationApplication".casefold():
             from .policy_location_application import PolicyLocationApplication
 
             return PolicyLocationApplication()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyLocationDomain".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.policyLocationDomain".casefold():
             from .policy_location_domain import PolicyLocationDomain
 
             return PolicyLocationDomain()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyLocationUrl".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.policyLocationUrl".casefold():
             from .policy_location_url import PolicyLocationUrl
 
             return PolicyLocationUrl()

@@ -33,11 +33,13 @@ class CustomExtensionEndpointConfiguration(AdditionalDataHolder, BackedModel, Pa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.httpRequestEndpoint".casefold():
+        if not mapping_value:
+            return CustomExtensionEndpointConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.httpRequestEndpoint".casefold():
             from .http_request_endpoint import HttpRequestEndpoint
 
             return HttpRequestEndpoint()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.logicAppTriggerEndpointConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.logicAppTriggerEndpointConfiguration".casefold():
             from .logic_app_trigger_endpoint_configuration import LogicAppTriggerEndpointConfiguration
 
             return LogicAppTriggerEndpointConfiguration()

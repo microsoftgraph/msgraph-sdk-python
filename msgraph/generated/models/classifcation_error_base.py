@@ -42,11 +42,13 @@ class ClassifcationErrorBase(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.classificationError".casefold():
+        if not mapping_value:
+            return ClassifcationErrorBase()
+        if mapping_value.casefold() == "#microsoft.graph.classificationError".casefold():
             from .classification_error import ClassificationError
 
             return ClassificationError()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.processingError".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.processingError".casefold():
             from .processing_error import ProcessingError
 
             return ProcessingError()

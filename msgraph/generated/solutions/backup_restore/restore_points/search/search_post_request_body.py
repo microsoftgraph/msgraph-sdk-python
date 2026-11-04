@@ -20,6 +20,8 @@ class SearchPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: dict[str, Any] = field(default_factory=dict)
     # The artifactQuery property
     artifact_query: Optional[ArtifactQuery] = None
+    # The policyId property
+    policy_id: Optional[str] = None
     # The protectionTimePeriod property
     protection_time_period: Optional[TimePeriod] = None
     # The protectionUnitIds property
@@ -57,6 +59,7 @@ class SearchPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: dict[str, Callable[[Any], None]] = {
             "artifactQuery": lambda n : setattr(self, 'artifact_query', n.get_object_value(ArtifactQuery)),
+            "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
             "protectionTimePeriod": lambda n : setattr(self, 'protection_time_period', n.get_object_value(TimePeriod)),
             "protectionUnitIds": lambda n : setattr(self, 'protection_unit_ids', n.get_collection_of_primitive_values(str)),
             "restorePointPreference": lambda n : setattr(self, 'restore_point_preference', n.get_enum_value(RestorePointPreference)),
@@ -73,6 +76,7 @@ class SearchPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("artifactQuery", self.artifact_query)
+        writer.write_str_value("policyId", self.policy_id)
         writer.write_object_value("protectionTimePeriod", self.protection_time_period)
         writer.write_collection_of_primitive_values("protectionUnitIds", self.protection_unit_ids)
         writer.write_enum_value("restorePointPreference", self.restore_point_preference)

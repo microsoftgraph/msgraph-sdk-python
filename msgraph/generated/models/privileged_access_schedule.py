@@ -42,11 +42,13 @@ class PrivilegedAccessSchedule(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentSchedule".casefold():
+        if not mapping_value:
+            return PrivilegedAccessSchedule()
+        if mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentSchedule".casefold():
             from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
 
             return PrivilegedAccessGroupAssignmentSchedule()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilitySchedule".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilitySchedule".casefold():
             from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
 
             return PrivilegedAccessGroupEligibilitySchedule()

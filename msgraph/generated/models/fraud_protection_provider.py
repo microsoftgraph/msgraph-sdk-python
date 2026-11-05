@@ -32,11 +32,13 @@ class FraudProtectionProvider(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.arkoseFraudProtectionProvider".casefold():
+        if not mapping_value:
+            return FraudProtectionProvider()
+        if mapping_value.casefold() == "#microsoft.graph.arkoseFraudProtectionProvider".casefold():
             from .arkose_fraud_protection_provider import ArkoseFraudProtectionProvider
 
             return ArkoseFraudProtectionProvider()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.humanSecurityFraudProtectionProvider".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.humanSecurityFraudProtectionProvider".casefold():
             from .human_security_fraud_protection_provider import HumanSecurityFraudProtectionProvider
 
             return HumanSecurityFraudProtectionProvider()

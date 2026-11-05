@@ -35,7 +35,7 @@ class PrivilegedAccessGroup(Entity, Parsable):
     eligibility_schedules: Optional[list[PrivilegedAccessGroupEligibilitySchedule]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resources property
+    # The groups managed through PIM for groups.
     resources: Optional[list[GroupResource]] = None
     
     @staticmethod

@@ -32,7 +32,9 @@ class OnFraudProtectionLoadStartHandler(AdditionalDataHolder, BackedModel, Parsa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onFraudProtectionLoadStartExternalUsersAuthHandler".casefold():
+        if not mapping_value:
+            return OnFraudProtectionLoadStartHandler()
+        if mapping_value.casefold() == "#microsoft.graph.onFraudProtectionLoadStartExternalUsersAuthHandler".casefold():
             from .on_fraud_protection_load_start_external_users_auth_handler import OnFraudProtectionLoadStartExternalUsersAuthHandler
 
             return OnFraudProtectionLoadStartExternalUsersAuthHandler()

@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.rbac_application import RbacApplication
+    from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
     from .resource_namespaces.resource_namespaces_request_builder import ResourceNamespacesRequestBuilder
     from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
     from .role_assignment_schedules.role_assignment_schedules_request_builder import RoleAssignmentSchedulesRequestBuilder
@@ -146,6 +147,15 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return EntitlementManagementRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def deleted_items(self) -> DeletedItemsRequestBuilder:
+        """
+        Provides operations to manage the deletedItems property of the microsoft.graph.rbacApplication entity.
+        """
+        from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
+
+        return DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def resource_namespaces(self) -> ResourceNamespacesRequestBuilder:

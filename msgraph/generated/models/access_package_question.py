@@ -41,11 +41,13 @@ class AccessPackageQuestion(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageMultipleChoiceQuestion".casefold():
+        if not mapping_value:
+            return AccessPackageQuestion()
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageMultipleChoiceQuestion".casefold():
             from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
 
             return AccessPackageMultipleChoiceQuestion()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageTextInputQuestion".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageTextInputQuestion".casefold():
             from .access_package_text_input_question import AccessPackageTextInputQuestion
 
             return AccessPackageTextInputQuestion()

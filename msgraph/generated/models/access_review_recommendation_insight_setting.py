@@ -33,11 +33,13 @@ class AccessReviewRecommendationInsightSetting(AdditionalDataHolder, BackedModel
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupPeerOutlierRecommendationInsightSettings".casefold():
+        if not mapping_value:
+            return AccessReviewRecommendationInsightSetting()
+        if mapping_value.casefold() == "#microsoft.graph.groupPeerOutlierRecommendationInsightSettings".casefold():
             from .group_peer_outlier_recommendation_insight_settings import GroupPeerOutlierRecommendationInsightSettings
 
             return GroupPeerOutlierRecommendationInsightSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userLastSignInRecommendationInsightSetting".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.userLastSignInRecommendationInsightSetting".casefold():
             from .user_last_sign_in_recommendation_insight_setting import UserLastSignInRecommendationInsightSetting
 
             return UserLastSignInRecommendationInsightSetting()

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .communications_guest_identity import CommunicationsGuestIdentity
     from .communications_phone_identity import CommunicationsPhoneIdentity
     from .communications_user_identity import CommunicationsUserIdentity
+    from .copilot_package_request_principal import CopilotPackageRequestPrincipal
     from .email_identity import EmailIdentity
     from .initiator import Initiator
     from .provisioned_identity import ProvisionedIdentity
@@ -56,88 +57,94 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserIdentity".casefold():
+        if not mapping_value:
+            return Identity()
+        if mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserIdentity".casefold():
             from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
 
             return AzureCommunicationServicesUserIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.userIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.callRecords.userIdentity".casefold():
             from .call_records.user_identity import UserIdentity
             from .user_identity import UserIdentity
 
             return UserIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsApplicationIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.communicationsApplicationIdentity".casefold():
             from .communications_application_identity import CommunicationsApplicationIdentity
 
             return CommunicationsApplicationIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsApplicationInstanceIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.communicationsApplicationInstanceIdentity".casefold():
             from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
 
             return CommunicationsApplicationInstanceIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsEncryptedIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.communicationsEncryptedIdentity".casefold():
             from .communications_encrypted_identity import CommunicationsEncryptedIdentity
 
             return CommunicationsEncryptedIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsGuestIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.communicationsGuestIdentity".casefold():
             from .communications_guest_identity import CommunicationsGuestIdentity
 
             return CommunicationsGuestIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsPhoneIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.communicationsPhoneIdentity".casefold():
             from .communications_phone_identity import CommunicationsPhoneIdentity
 
             return CommunicationsPhoneIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsUserIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.communicationsUserIdentity".casefold():
             from .communications_user_identity import CommunicationsUserIdentity
 
             return CommunicationsUserIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.copilotPackageRequestPrincipal".casefold():
+            from .copilot_package_request_principal import CopilotPackageRequestPrincipal
+
+            return CopilotPackageRequestPrincipal()
+        if mapping_value.casefold() == "#microsoft.graph.emailIdentity".casefold():
             from .email_identity import EmailIdentity
 
             return EmailIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.initiator".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.initiator".casefold():
             from .initiator import Initiator
 
             return Initiator()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisionedIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.provisionedIdentity".casefold():
             from .provisioned_identity import ProvisionedIdentity
 
             return ProvisionedIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisioningServicePrincipal".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.provisioningServicePrincipal".casefold():
             from .provisioning_service_principal import ProvisioningServicePrincipal
 
             return ProvisioningServicePrincipal()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisioningSystem".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.provisioningSystem".casefold():
             from .provisioning_system import ProvisioningSystem
 
             return ProvisioningSystem()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.servicePrincipalIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.servicePrincipalIdentity".casefold():
             from .service_principal_identity import ServicePrincipalIdentity
 
             return ServicePrincipalIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointGroupIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointGroupIdentity".casefold():
             from .share_point_group_identity import SharePointGroupIdentity
 
             return SharePointGroupIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointIdentity".casefold():
             from .share_point_identity import SharePointIdentity
 
             return SharePointIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkApplicationIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamworkApplicationIdentity".casefold():
             from .teamwork_application_identity import TeamworkApplicationIdentity
 
             return TeamworkApplicationIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkConversationIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamworkConversationIdentity".casefold():
             from .teamwork_conversation_identity import TeamworkConversationIdentity
 
             return TeamworkConversationIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkTagIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamworkTagIdentity".casefold():
             from .teamwork_tag_identity import TeamworkTagIdentity
 
             return TeamworkTagIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkUserIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamworkUserIdentity".casefold():
             from .teamwork_user_identity import TeamworkUserIdentity
 
             return TeamworkUserIdentity()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userIdentity".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.userIdentity".casefold():
             from .call_records.user_identity import UserIdentity
             from .user_identity import UserIdentity
 
@@ -157,6 +164,7 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         from .communications_guest_identity import CommunicationsGuestIdentity
         from .communications_phone_identity import CommunicationsPhoneIdentity
         from .communications_user_identity import CommunicationsUserIdentity
+        from .copilot_package_request_principal import CopilotPackageRequestPrincipal
         from .email_identity import EmailIdentity
         from .initiator import Initiator
         from .provisioned_identity import ProvisionedIdentity
@@ -179,6 +187,7 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         from .communications_guest_identity import CommunicationsGuestIdentity
         from .communications_phone_identity import CommunicationsPhoneIdentity
         from .communications_user_identity import CommunicationsUserIdentity
+        from .copilot_package_request_principal import CopilotPackageRequestPrincipal
         from .email_identity import EmailIdentity
         from .initiator import Initiator
         from .provisioned_identity import ProvisionedIdentity

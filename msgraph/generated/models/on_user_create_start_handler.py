@@ -32,7 +32,9 @@ class OnUserCreateStartHandler(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onUserCreateStartExternalUsersSelfServiceSignUp".casefold():
+        if not mapping_value:
+            return OnUserCreateStartHandler()
+        if mapping_value.casefold() == "#microsoft.graph.onUserCreateStartExternalUsersSelfServiceSignUp".casefold():
             from .on_user_create_start_external_users_self_service_sign_up import OnUserCreateStartExternalUsersSelfServiceSignUp
 
             return OnUserCreateStartExternalUsersSelfServiceSignUp()

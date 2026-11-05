@@ -56,19 +56,21 @@ class ThreatAssessmentRequest(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailFileAssessmentRequest".casefold():
+        if not mapping_value:
+            return ThreatAssessmentRequest()
+        if mapping_value.casefold() == "#microsoft.graph.emailFileAssessmentRequest".casefold():
             from .email_file_assessment_request import EmailFileAssessmentRequest
 
             return EmailFileAssessmentRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileAssessmentRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.fileAssessmentRequest".casefold():
             from .file_assessment_request import FileAssessmentRequest
 
             return FileAssessmentRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailAssessmentRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.mailAssessmentRequest".casefold():
             from .mail_assessment_request import MailAssessmentRequest
 
             return MailAssessmentRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.urlAssessmentRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.urlAssessmentRequest".casefold():
             from .url_assessment_request import UrlAssessmentRequest
 
             return UrlAssessmentRequest()

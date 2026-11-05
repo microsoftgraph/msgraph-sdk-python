@@ -36,23 +36,25 @@ class IdentitySource(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureActiveDirectoryTenant".casefold():
+        if not mapping_value:
+            return IdentitySource()
+        if mapping_value.casefold() == "#microsoft.graph.azureActiveDirectoryTenant".casefold():
             from .azure_active_directory_tenant import AzureActiveDirectoryTenant
 
             return AzureActiveDirectoryTenant()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossCloudAzureActiveDirectoryTenant".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossCloudAzureActiveDirectoryTenant".casefold():
             from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
 
             return CrossCloudAzureActiveDirectoryTenant()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainIdentitySource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.domainIdentitySource".casefold():
             from .domain_identity_source import DomainIdentitySource
 
             return DomainIdentitySource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalDomainFederation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.externalDomainFederation".casefold():
             from .external_domain_federation import ExternalDomainFederation
 
             return ExternalDomainFederation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.socialIdentitySource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.socialIdentitySource".casefold():
             from .social_identity_source import SocialIdentitySource
 
             return SocialIdentitySource()

@@ -42,27 +42,29 @@ class FilePlanDescriptorTemplate(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.authorityTemplate".casefold():
+        if not mapping_value:
+            return FilePlanDescriptorTemplate()
+        if mapping_value.casefold() == "#microsoft.graph.security.authorityTemplate".casefold():
             from .authority_template import AuthorityTemplate
 
             return AuthorityTemplate()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.categoryTemplate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.categoryTemplate".casefold():
             from .category_template import CategoryTemplate
 
             return CategoryTemplate()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.citationTemplate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.citationTemplate".casefold():
             from .citation_template import CitationTemplate
 
             return CitationTemplate()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.departmentTemplate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.departmentTemplate".casefold():
             from .department_template import DepartmentTemplate
 
             return DepartmentTemplate()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanReferenceTemplate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.filePlanReferenceTemplate".casefold():
             from .file_plan_reference_template import FilePlanReferenceTemplate
 
             return FilePlanReferenceTemplate()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.subcategoryTemplate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.subcategoryTemplate".casefold():
             from .subcategory_template import SubcategoryTemplate
 
             return SubcategoryTemplate()

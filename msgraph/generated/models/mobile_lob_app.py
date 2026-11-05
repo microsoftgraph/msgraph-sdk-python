@@ -48,35 +48,37 @@ class MobileLobApp(MobileApp, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidLobApp".casefold():
+        if not mapping_value:
+            return MobileLobApp()
+        if mapping_value.casefold() == "#microsoft.graph.androidLobApp".casefold():
             from .android_lob_app import AndroidLobApp
 
             return AndroidLobApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iosLobApp".casefold():
             from .ios_lob_app import IosLobApp
 
             return IosLobApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSDmgApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.macOSDmgApp".casefold():
             from .mac_o_s_dmg_app import MacOSDmgApp
 
             return MacOSDmgApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSLobApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.macOSLobApp".casefold():
             from .mac_o_s_lob_app import MacOSLobApp
 
             return MacOSLobApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.win32LobApp".casefold():
             from .win32_lob_app import Win32LobApp
 
             return Win32LobApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAppX".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsAppX".casefold():
             from .windows_app_x import WindowsAppX
 
             return WindowsAppX()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsMobileMSI".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsMobileMSI".casefold():
             from .windows_mobile_m_s_i import WindowsMobileMSI
 
             return WindowsMobileMSI()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppX".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppX".casefold():
             from .windows_universal_app_x import WindowsUniversalAppX
 
             return WindowsUniversalAppX()

@@ -16,6 +16,7 @@ from warnings import warn
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.partners.billing.billing import Billing
+    from .aggregated_usage.aggregated_usage_request_builder import AggregatedUsageRequestBuilder
     from .manifests.manifests_request_builder import ManifestsRequestBuilder
     from .operations.operations_request_builder import OperationsRequestBuilder
     from .reconciliation.reconciliation_request_builder import ReconciliationRequestBuilder
@@ -141,6 +142,15 @@ class BillingRequestBuilder(BaseRequestBuilder):
         if raw_url is None:
             raise TypeError("raw_url cannot be null.")
         return BillingRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def aggregated_usage(self) -> AggregatedUsageRequestBuilder:
+        """
+        Provides operations to manage the aggregatedUsage property of the microsoft.graph.partners.billing.billing entity.
+        """
+        from .aggregated_usage.aggregated_usage_request_builder import AggregatedUsageRequestBuilder
+
+        return AggregatedUsageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def manifests(self) -> ManifestsRequestBuilder:

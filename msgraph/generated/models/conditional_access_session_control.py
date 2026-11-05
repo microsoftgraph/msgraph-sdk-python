@@ -38,23 +38,25 @@ class ConditionalAccessSessionControl(AdditionalDataHolder, BackedModel, Parsabl
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.applicationEnforcedRestrictionsSessionControl".casefold():
+        if not mapping_value:
+            return ConditionalAccessSessionControl()
+        if mapping_value.casefold() == "#microsoft.graph.applicationEnforcedRestrictionsSessionControl".casefold():
             from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
 
             return ApplicationEnforcedRestrictionsSessionControl()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudAppSecuritySessionControl".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.cloudAppSecuritySessionControl".casefold():
             from .cloud_app_security_session_control import CloudAppSecuritySessionControl
 
             return CloudAppSecuritySessionControl()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.persistentBrowserSessionControl".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.persistentBrowserSessionControl".casefold():
             from .persistent_browser_session_control import PersistentBrowserSessionControl
 
             return PersistentBrowserSessionControl()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.secureSignInSessionControl".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.secureSignInSessionControl".casefold():
             from .secure_sign_in_session_control import SecureSignInSessionControl
 
             return SecureSignInSessionControl()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.signInFrequencySessionControl".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.signInFrequencySessionControl".casefold():
             from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
             return SignInFrequencySessionControl()

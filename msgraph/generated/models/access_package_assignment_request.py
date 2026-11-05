@@ -37,7 +37,7 @@ class AccessPackageAssignmentRequest(Entity, Parsable):
     justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The parameters property
+    # Additional parameters that control how the request is processed, such as bypassing the approval requirement configured on the access package policy.
     parameters: Optional[AccessPackageAssignmentRequestParameters] = None
     # The type of the request. The possible values are: notSpecified, userAdd, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. Use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: approverRemove. Requests from the user have a requestType of userAdd, userUpdate, or userRemove. This property can't be changed once set.
     request_type: Optional[AccessPackageRequestType] = None

@@ -50,11 +50,13 @@ class GranularRestoreArtifactBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularDriveRestoreArtifact".casefold():
+        if not mapping_value:
+            return GranularRestoreArtifactBase()
+        if mapping_value.casefold() == "#microsoft.graph.granularDriveRestoreArtifact".casefold():
             from .granular_drive_restore_artifact import GranularDriveRestoreArtifact
 
             return GranularDriveRestoreArtifact()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.granularSiteRestoreArtifact".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.granularSiteRestoreArtifact".casefold():
             from .granular_site_restore_artifact import GranularSiteRestoreArtifact
 
             return GranularSiteRestoreArtifact()

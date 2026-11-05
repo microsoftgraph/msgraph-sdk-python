@@ -47,11 +47,13 @@ class BrowseSessionBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.oneDriveForBusinessBrowseSession".casefold():
+        if not mapping_value:
+            return BrowseSessionBase()
+        if mapping_value.casefold() == "#microsoft.graph.oneDriveForBusinessBrowseSession".casefold():
             from .one_drive_for_business_browse_session import OneDriveForBusinessBrowseSession
 
             return OneDriveForBusinessBrowseSession()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointBrowseSession".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sharePointBrowseSession".casefold():
             from .share_point_browse_session import SharePointBrowseSession
 
             return SharePointBrowseSession()

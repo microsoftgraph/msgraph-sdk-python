@@ -59,7 +59,7 @@ class PolicyRoot(Entity, Parsable):
     device_registration_policy: Optional[DeviceRegistrationPolicy] = None
     # The feature rollout policy associated with a directory object.
     feature_rollout_policies: Optional[list[FeatureRolloutPolicy]] = None
-    # The federatedTokenValidationPolicy property
+    # Represents a policy to control enabling or disabling validation of federation authentication tokens.
     federated_token_validation_policy: Optional[FederatedTokenValidationPolicy] = None
     # The policy to control Microsoft Entra authentication behavior for federated users.
     home_realm_discovery_policies: Optional[list[HomeRealmDiscoveryPolicy]] = None

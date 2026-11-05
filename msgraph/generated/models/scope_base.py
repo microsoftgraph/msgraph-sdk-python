@@ -36,15 +36,17 @@ class ScopeBase(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupScope".casefold():
+        if not mapping_value:
+            return ScopeBase()
+        if mapping_value.casefold() == "#microsoft.graph.groupScope".casefold():
             from .group_scope import GroupScope
 
             return GroupScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.tenantScope".casefold():
             from .tenant_scope import TenantScope
 
             return TenantScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.userScope".casefold():
             from .user_scope import UserScope
 
             return UserScope()

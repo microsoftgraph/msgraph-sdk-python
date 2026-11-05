@@ -51,7 +51,9 @@ class RiskyUser(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyUserHistoryItem".casefold():
+        if not mapping_value:
+            return RiskyUser()
+        if mapping_value.casefold() == "#microsoft.graph.riskyUserHistoryItem".casefold():
             from .risky_user_history_item import RiskyUserHistoryItem
 
             return RiskyUserHistoryItem()

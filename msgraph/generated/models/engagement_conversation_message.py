@@ -60,15 +60,17 @@ class EngagementConversationMessage(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationDiscussionMessage".casefold():
+        if not mapping_value:
+            return EngagementConversationMessage()
+        if mapping_value.casefold() == "#microsoft.graph.engagementConversationDiscussionMessage".casefold():
             from .engagement_conversation_discussion_message import EngagementConversationDiscussionMessage
 
             return EngagementConversationDiscussionMessage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationQuestionMessage".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.engagementConversationQuestionMessage".casefold():
             from .engagement_conversation_question_message import EngagementConversationQuestionMessage
 
             return EngagementConversationQuestionMessage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.engagementConversationSystemMessage".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.engagementConversationSystemMessage".casefold():
             from .engagement_conversation_system_message import EngagementConversationSystemMessage
 
             return EngagementConversationSystemMessage()

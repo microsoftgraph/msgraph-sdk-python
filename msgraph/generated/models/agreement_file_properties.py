@@ -47,15 +47,17 @@ class AgreementFileProperties(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFile".casefold():
+        if not mapping_value:
+            return AgreementFileProperties()
+        if mapping_value.casefold() == "#microsoft.graph.agreementFile".casefold():
             from .agreement_file import AgreementFile
 
             return AgreementFile()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFileLocalization".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.agreementFileLocalization".casefold():
             from .agreement_file_localization import AgreementFileLocalization
 
             return AgreementFileLocalization()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFileVersion".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.agreementFileVersion".casefold():
             from .agreement_file_version import AgreementFileVersion
 
             return AgreementFileVersion()

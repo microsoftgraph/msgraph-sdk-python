@@ -32,7 +32,9 @@ class CloudPcManagementAssignmentTarget(AdditionalDataHolder, BackedModel, Parsa
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcManagementGroupAssignmentTarget".casefold():
+        if not mapping_value:
+            return CloudPcManagementAssignmentTarget()
+        if mapping_value.casefold() == "#microsoft.graph.cloudPcManagementGroupAssignmentTarget".casefold():
             from .cloud_pc_management_group_assignment_target import CloudPcManagementGroupAssignmentTarget
 
             return CloudPcManagementGroupAssignmentTarget()

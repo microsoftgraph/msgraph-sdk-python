@@ -36,23 +36,25 @@ class CustomExtensionData(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestCallbackData".casefold():
+        if not mapping_value:
+            return CustomExtensionData()
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestCallbackData".casefold():
             from .access_package_assignment_request_callback_data import AccessPackageAssignmentRequestCallbackData
 
             return AccessPackageAssignmentRequestCallbackData()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.assignmentRequestApprovalStageCallbackData".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.assignmentRequestApprovalStageCallbackData".casefold():
             from .assignment_request_approval_stage_callback_data import AssignmentRequestApprovalStageCallbackData
 
             return AssignmentRequestApprovalStageCallbackData()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCallbackData".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCallbackData".casefold():
             from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
 
             return CustomTaskExtensionCallbackData()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCalloutData".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCalloutData".casefold():
             from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
 
             return CustomTaskExtensionCalloutData()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionResponseData".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionResponseData".casefold():
             from .identity_governance.custom_task_extension_response_data import CustomTaskExtensionResponseData
 
             return CustomTaskExtensionResponseData()

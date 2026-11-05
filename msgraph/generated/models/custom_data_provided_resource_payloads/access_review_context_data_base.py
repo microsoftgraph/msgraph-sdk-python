@@ -34,11 +34,13 @@ class AccessReviewContextDataBase(Data, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourcePayloads.accessReviewContextData".casefold():
+        if not mapping_value:
+            return AccessReviewContextDataBase()
+        if mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourcePayloads.accessReviewContextData".casefold():
             from .access_review_context_data import AccessReviewContextData
 
             return AccessReviewContextData()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourcePayloads.applyDecisionContextData".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.customDataProvidedResourcePayloads.applyDecisionContextData".casefold():
             from .apply_decision_context_data import ApplyDecisionContextData
 
             return ApplyDecisionContextData()

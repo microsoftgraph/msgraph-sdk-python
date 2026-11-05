@@ -44,51 +44,53 @@ class PolicyBase(DirectoryObject, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
+        if not mapping_value:
+            return PolicyBase()
+        if mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
             from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
 
             return ActivityBasedTimeoutPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.appManagementPolicy".casefold():
             from .app_management_policy import AppManagementPolicy
 
             return AppManagementPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.authorizationPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.authorizationPolicy".casefold():
             from .authorization_policy import AuthorizationPolicy
 
             return AuthorizationPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.claimsMappingPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.claimsMappingPolicy".casefold():
             from .claims_mapping_policy import ClaimsMappingPolicy
 
             return ClaimsMappingPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicy".casefold():
             from .cross_tenant_access_policy import CrossTenantAccessPolicy
 
             return CrossTenantAccessPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.homeRealmDiscoveryPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.homeRealmDiscoveryPolicy".casefold():
             from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
 
             return HomeRealmDiscoveryPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy".casefold():
             from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
 
             return IdentitySecurityDefaultsEnforcementPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.permissionGrantPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.permissionGrantPolicy".casefold():
             from .permission_grant_policy import PermissionGrantPolicy
 
             return PermissionGrantPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.stsPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.stsPolicy".casefold():
             from .sts_policy import StsPolicy
 
             return StsPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantAppManagementPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.tenantAppManagementPolicy".casefold():
             from .tenant_app_management_policy import TenantAppManagementPolicy
 
             return TenantAppManagementPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenIssuancePolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.tokenIssuancePolicy".casefold():
             from .token_issuance_policy import TokenIssuancePolicy
 
             return TokenIssuancePolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenLifetimePolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.tokenLifetimePolicy".casefold():
             from .token_lifetime_policy import TokenLifetimePolicy
 
             return TokenLifetimePolicy()

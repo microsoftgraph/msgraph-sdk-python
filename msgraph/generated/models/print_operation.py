@@ -35,7 +35,9 @@ class PrintOperation(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.printerCreateOperation".casefold():
+        if not mapping_value:
+            return PrintOperation()
+        if mapping_value.casefold() == "#microsoft.graph.printerCreateOperation".casefold():
             from .printer_create_operation import PrinterCreateOperation
 
             return PrinterCreateOperation()

@@ -54,47 +54,49 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationChannelResource".casefold():
+        if not mapping_value:
+            return EducationResource()
+        if mapping_value.casefold() == "#microsoft.graph.educationChannelResource".casefold():
             from .education_channel_resource import EducationChannelResource
 
             return EducationChannelResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationExcelResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationExcelResource".casefold():
             from .education_excel_resource import EducationExcelResource
 
             return EducationExcelResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationExternalResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationExternalResource".casefold():
             from .education_external_resource import EducationExternalResource
 
             return EducationExternalResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFileResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationFileResource".casefold():
             from .education_file_resource import EducationFileResource
 
             return EducationFileResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationLinkedAssignmentResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationLinkedAssignmentResource".casefold():
             from .education_linked_assignment_resource import EducationLinkedAssignmentResource
 
             return EducationLinkedAssignmentResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationLinkResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationLinkResource".casefold():
             from .education_link_resource import EducationLinkResource
 
             return EducationLinkResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationMediaResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationMediaResource".casefold():
             from .education_media_resource import EducationMediaResource
 
             return EducationMediaResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationPowerPointResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationPowerPointResource".casefold():
             from .education_power_point_resource import EducationPowerPointResource
 
             return EducationPowerPointResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationSpeakerProgressResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationSpeakerProgressResource".casefold():
             from .education_speaker_progress_resource import EducationSpeakerProgressResource
 
             return EducationSpeakerProgressResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationTeamsAppResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationTeamsAppResource".casefold():
             from .education_teams_app_resource import EducationTeamsAppResource
 
             return EducationTeamsAppResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationWordResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.educationWordResource".casefold():
             from .education_word_resource import EducationWordResource
 
             return EducationWordResource()

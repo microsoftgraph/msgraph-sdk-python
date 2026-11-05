@@ -36,11 +36,13 @@ class ParticipantBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.organizer".casefold():
+        if not mapping_value:
+            return ParticipantBase()
+        if mapping_value.casefold() == "#microsoft.graph.callRecords.organizer".casefold():
             from .organizer import Organizer
 
             return Organizer()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.participant".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.callRecords.participant".casefold():
             from .participant import Participant
 
             return Participant()

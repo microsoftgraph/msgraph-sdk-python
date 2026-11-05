@@ -68,11 +68,13 @@ class ManagedAppRegistration(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppRegistration".casefold():
+        if not mapping_value:
+            return ManagedAppRegistration()
+        if mapping_value.casefold() == "#microsoft.graph.androidManagedAppRegistration".casefold():
             from .android_managed_app_registration import AndroidManagedAppRegistration
 
             return AndroidManagedAppRegistration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppRegistration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iosManagedAppRegistration".casefold():
             from .ios_managed_app_registration import IosManagedAppRegistration
 
             return IosManagedAppRegistration()

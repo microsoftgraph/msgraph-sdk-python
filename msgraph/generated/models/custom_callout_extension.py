@@ -52,47 +52,49 @@ class CustomCalloutExtension(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestWorkflowExtension".casefold():
+        if not mapping_value:
+            return CustomCalloutExtension()
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestWorkflowExtension".casefold():
             from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
 
             return AccessPackageAssignmentRequestWorkflowExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentWorkflowExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentWorkflowExtension".casefold():
             from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
 
             return AccessPackageAssignmentWorkflowExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customAuthenticationExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.customAuthenticationExtension".casefold():
             from .custom_authentication_extension import CustomAuthenticationExtension
 
             return CustomAuthenticationExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtension".casefold():
             from .identity_governance.custom_task_extension import CustomTaskExtension
 
             return CustomTaskExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionStartCustomExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionStartCustomExtension".casefold():
             from .on_attribute_collection_start_custom_extension import OnAttributeCollectionStartCustomExtension
 
             return OnAttributeCollectionStartCustomExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitCustomExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionSubmitCustomExtension".casefold():
             from .on_attribute_collection_submit_custom_extension import OnAttributeCollectionSubmitCustomExtension
 
             return OnAttributeCollectionSubmitCustomExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onOtpSendCustomExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onOtpSendCustomExtension".casefold():
             from .on_otp_send_custom_extension import OnOtpSendCustomExtension
 
             return OnOtpSendCustomExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onPasswordSubmitCustomExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onPasswordSubmitCustomExtension".casefold():
             from .on_password_submit_custom_extension import OnPasswordSubmitCustomExtension
 
             return OnPasswordSubmitCustomExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartCustomExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartCustomExtension".casefold():
             from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
 
             return OnTokenIssuanceStartCustomExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onVerifiedIdClaimValidationCustomExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onVerifiedIdClaimValidationCustomExtension".casefold():
             from .on_verified_id_claim_validation_custom_extension import OnVerifiedIdClaimValidationCustomExtension
 
             return OnVerifiedIdClaimValidationCustomExtension()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.roleManagementCustomCalloutExtension".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.roleManagementCustomCalloutExtension".casefold():
             from .role_management_custom_callout_extension import RoleManagementCustomCalloutExtension
 
             return RoleManagementCustomCalloutExtension()

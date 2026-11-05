@@ -41,11 +41,13 @@ class B2BSignInActivityMetricsBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetricsInitial".casefold():
+        if not mapping_value:
+            return B2BSignInActivityMetricsBase()
+        if mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetricsInitial".casefold():
             from .b2_b_sign_in_activity_metrics_initial import B2BSignInActivityMetricsInitial
 
             return B2BSignInActivityMetricsInitial()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetricsRecent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.b2BSignInActivityMetricsRecent".casefold():
             from .b2_b_sign_in_activity_metrics_recent import B2BSignInActivityMetricsRecent
 
             return B2BSignInActivityMetricsRecent()

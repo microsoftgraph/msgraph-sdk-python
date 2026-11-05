@@ -34,15 +34,17 @@ class MeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.joinMeetingIdMeetingInfo".casefold():
+        if not mapping_value:
+            return MeetingInfo()
+        if mapping_value.casefold() == "#microsoft.graph.joinMeetingIdMeetingInfo".casefold():
             from .join_meeting_id_meeting_info import JoinMeetingIdMeetingInfo
 
             return JoinMeetingIdMeetingInfo()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizerMeetingInfo".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.organizerMeetingInfo".casefold():
             from .organizer_meeting_info import OrganizerMeetingInfo
 
             return OrganizerMeetingInfo()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenMeetingInfo".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.tokenMeetingInfo".casefold():
             from .token_meeting_info import TokenMeetingInfo
 
             return TokenMeetingInfo()

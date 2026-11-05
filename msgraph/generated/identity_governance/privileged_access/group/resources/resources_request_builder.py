@@ -49,9 +49,10 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ResourcesRequestBuilderGetQueryParameters]] = None) -> Optional[GroupResourceCollectionResponse]:
         """
-        Get resources from identityGovernance
+        Get a list of the groupResource objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupResourceCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroup-list-resources?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +93,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ResourcesRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get resources from identityGovernance
+        Get a list of the groupResource objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ResourcesRequestBuilderGetQueryParameters():
         """
-        Get resources from identityGovernance
+        Get a list of the groupResource objects and their properties.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

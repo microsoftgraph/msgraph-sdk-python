@@ -36,11 +36,13 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessAllExternalTenants".casefold():
+        if not mapping_value:
+            return ConditionalAccessExternalTenants()
+        if mapping_value.casefold() == "#microsoft.graph.conditionalAccessAllExternalTenants".casefold():
             from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
 
             return ConditionalAccessAllExternalTenants()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessEnumeratedExternalTenants".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.conditionalAccessEnumeratedExternalTenants".casefold():
             from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
 
             return ConditionalAccessEnumeratedExternalTenants()

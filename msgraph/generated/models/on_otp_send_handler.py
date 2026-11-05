@@ -32,7 +32,9 @@ class OnOtpSendHandler(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onOtpSendCustomExtensionHandler".casefold():
+        if not mapping_value:
+            return OnOtpSendHandler()
+        if mapping_value.casefold() == "#microsoft.graph.onOtpSendCustomExtensionHandler".casefold():
             from .on_otp_send_custom_extension_handler import OnOtpSendCustomExtensionHandler
 
             return OnOtpSendCustomExtensionHandler()

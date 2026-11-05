@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .application_mode import ApplicationMode
     from .entity import Entity
     from .label_action_source import LabelActionSource
     from .usage_rights_included import UsageRightsIncluded
@@ -15,6 +16,8 @@ from .entity import Entity
 class SensitivityLabel(Entity, Parsable):
     # The actionSource property
     action_source: Optional[LabelActionSource] = None
+    # The applicationMode property
+    application_mode: Optional[ApplicationMode] = None
     # The autoTooltip property
     auto_tooltip: Optional[str] = None
     # The description property
@@ -60,16 +63,19 @@ class SensitivityLabel(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .application_mode import ApplicationMode
         from .entity import Entity
         from .label_action_source import LabelActionSource
         from .usage_rights_included import UsageRightsIncluded
 
+        from .application_mode import ApplicationMode
         from .entity import Entity
         from .label_action_source import LabelActionSource
         from .usage_rights_included import UsageRightsIncluded
 
         fields: dict[str, Callable[[Any], None]] = {
             "actionSource": lambda n : setattr(self, 'action_source', n.get_enum_value(LabelActionSource)),
+            "applicationMode": lambda n : setattr(self, 'application_mode', n.get_enum_value(ApplicationMode)),
             "autoTooltip": lambda n : setattr(self, 'auto_tooltip', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -98,6 +104,7 @@ class SensitivityLabel(Entity, Parsable):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("actionSource", self.action_source)
+        writer.write_enum_value("applicationMode", self.application_mode)
         writer.write_str_value("autoTooltip", self.auto_tooltip)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

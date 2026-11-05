@@ -41,11 +41,13 @@ class VirtualEventRegistrationConfiguration(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventTownhallRegistrationConfiguration".casefold():
+        if not mapping_value:
+            return VirtualEventRegistrationConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.virtualEventTownhallRegistrationConfiguration".casefold():
             from .virtual_event_townhall_registration_configuration import VirtualEventTownhallRegistrationConfiguration
 
             return VirtualEventTownhallRegistrationConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventWebinarRegistrationConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.virtualEventWebinarRegistrationConfiguration".casefold():
             from .virtual_event_webinar_registration_configuration import VirtualEventWebinarRegistrationConfiguration
 
             return VirtualEventWebinarRegistrationConfiguration()

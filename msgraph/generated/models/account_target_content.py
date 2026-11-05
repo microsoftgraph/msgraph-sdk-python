@@ -36,11 +36,13 @@ class AccountTargetContent(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.addressBookAccountTargetContent".casefold():
+        if not mapping_value:
+            return AccountTargetContent()
+        if mapping_value.casefold() == "#microsoft.graph.addressBookAccountTargetContent".casefold():
             from .address_book_account_target_content import AddressBookAccountTargetContent
 
             return AddressBookAccountTargetContent()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.includeAllAccountTargetContent".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.includeAllAccountTargetContent".casefold():
             from .include_all_account_target_content import IncludeAllAccountTargetContent
 
             return IncludeAllAccountTargetContent()

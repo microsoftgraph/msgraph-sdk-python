@@ -39,11 +39,13 @@ class AiInteractionEntity(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiAgentInfo".casefold():
+        if not mapping_value:
+            return AiInteractionEntity()
+        if mapping_value.casefold() == "#microsoft.graph.aiAgentInfo".casefold():
             from .ai_agent_info import AiAgentInfo
 
             return AiAgentInfo()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aiInteractionPlugin".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.aiInteractionPlugin".casefold():
             from .ai_interaction_plugin import AiInteractionPlugin
 
             return AiInteractionPlugin()

@@ -5,4 +5,6 @@ class CustomExtensionResourceType(str, Enum):
     AzureResources = "azureResources",
     EntraGroups = "entraGroups",
     UnknownFutureValue = "unknownFutureValue",
+    ApplicationAuthorization = "applicationAuthorization",
+    AppRoles = "appRoles",
 

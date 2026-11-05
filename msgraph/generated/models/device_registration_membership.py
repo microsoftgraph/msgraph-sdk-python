@@ -34,15 +34,17 @@ class DeviceRegistrationMembership(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.allDeviceRegistrationMembership".casefold():
+        if not mapping_value:
+            return DeviceRegistrationMembership()
+        if mapping_value.casefold() == "#microsoft.graph.allDeviceRegistrationMembership".casefold():
             from .all_device_registration_membership import AllDeviceRegistrationMembership
 
             return AllDeviceRegistrationMembership()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.enumeratedDeviceRegistrationMembership".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.enumeratedDeviceRegistrationMembership".casefold():
             from .enumerated_device_registration_membership import EnumeratedDeviceRegistrationMembership
 
             return EnumeratedDeviceRegistrationMembership()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.noDeviceRegistrationMembership".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.noDeviceRegistrationMembership".casefold():
             from .no_device_registration_membership import NoDeviceRegistrationMembership
 
             return NoDeviceRegistrationMembership()

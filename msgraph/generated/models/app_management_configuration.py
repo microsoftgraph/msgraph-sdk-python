@@ -40,15 +40,17 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementApplicationConfiguration".casefold():
+        if not mapping_value:
+            return AppManagementConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.appManagementApplicationConfiguration".casefold():
             from .app_management_application_configuration import AppManagementApplicationConfiguration
 
             return AppManagementApplicationConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementServicePrincipalConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.appManagementServicePrincipalConfiguration".casefold():
             from .app_management_service_principal_configuration import AppManagementServicePrincipalConfiguration
 
             return AppManagementServicePrincipalConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customAppManagementConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.customAppManagementConfiguration".casefold():
             from .custom_app_management_configuration import CustomAppManagementConfiguration
 
             return CustomAppManagementConfiguration()

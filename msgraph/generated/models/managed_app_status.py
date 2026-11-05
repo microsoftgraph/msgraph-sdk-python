@@ -36,7 +36,9 @@ class ManagedAppStatus(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppStatusRaw".casefold():
+        if not mapping_value:
+            return ManagedAppStatus()
+        if mapping_value.casefold() == "#microsoft.graph.managedAppStatusRaw".casefold():
             from .managed_app_status_raw import ManagedAppStatusRaw
 
             return ManagedAppStatusRaw()

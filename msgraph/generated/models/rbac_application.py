@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .directory_role_management_deleted_item_container import DirectoryRoleManagementDeletedItemContainer
     from .entity import Entity
     from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
     from .unified_role_assignment import UnifiedRoleAssignment
@@ -20,6 +21,8 @@ from .entity import Entity
 
 @dataclass
 class RbacApplication(Entity, Parsable):
+    # Container for custom role definitions that have been soft-deleted from Microsoft Entra directory role management.
+    deleted_items: Optional[DirectoryRoleManagementDeletedItemContainer] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The resourceNamespaces property
@@ -57,6 +60,7 @@ class RbacApplication(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .directory_role_management_deleted_item_container import DirectoryRoleManagementDeletedItemContainer
         from .entity import Entity
         from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
         from .unified_role_assignment import UnifiedRoleAssignment
@@ -68,6 +72,7 @@ class RbacApplication(Entity, Parsable):
         from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
         from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
+        from .directory_role_management_deleted_item_container import DirectoryRoleManagementDeletedItemContainer
         from .entity import Entity
         from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
         from .unified_role_assignment import UnifiedRoleAssignment
@@ -80,6 +85,7 @@ class RbacApplication(Entity, Parsable):
         from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
         fields: dict[str, Callable[[Any], None]] = {
+            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_object_value(DirectoryRoleManagementDeletedItemContainer)),
             "resourceNamespaces": lambda n : setattr(self, 'resource_namespaces', n.get_collection_of_object_values(UnifiedRbacResourceNamespace)),
             "roleAssignmentScheduleInstances": lambda n : setattr(self, 'role_assignment_schedule_instances', n.get_collection_of_object_values(UnifiedRoleAssignmentScheduleInstance)),
             "roleAssignmentScheduleRequests": lambda n : setattr(self, 'role_assignment_schedule_requests', n.get_collection_of_object_values(UnifiedRoleAssignmentScheduleRequest)),
@@ -103,6 +109,7 @@ class RbacApplication(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("deletedItems", self.deleted_items)
         writer.write_collection_of_object_values("resourceNamespaces", self.resource_namespaces)
         writer.write_collection_of_object_values("roleAssignmentScheduleInstances", self.role_assignment_schedule_instances)
         writer.write_collection_of_object_values("roleAssignmentScheduleRequests", self.role_assignment_schedule_requests)

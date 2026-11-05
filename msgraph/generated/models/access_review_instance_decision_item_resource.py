@@ -44,23 +44,25 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, BackedModel
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource".casefold():
+        if not mapping_value:
+            return AccessReviewInstanceDecisionItemResource()
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource".casefold():
             from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
 
             return AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageResource".casefold():
             from .access_review_instance_decision_item_access_package_resource import AccessReviewInstanceDecisionItemAccessPackageResource
 
             return AccessReviewInstanceDecisionItemAccessPackageResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAzureRoleResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAzureRoleResource".casefold():
             from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
 
             return AccessReviewInstanceDecisionItemAzureRoleResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemCustomDataProvidedResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemCustomDataProvidedResource".casefold():
             from .access_review_instance_decision_item_custom_data_provided_resource import AccessReviewInstanceDecisionItemCustomDataProvidedResource
 
             return AccessReviewInstanceDecisionItemCustomDataProvidedResource()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource".casefold():
             from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
             return AccessReviewInstanceDecisionItemServicePrincipalResource()

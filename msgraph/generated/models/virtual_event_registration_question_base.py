@@ -34,11 +34,13 @@ class VirtualEventRegistrationQuestionBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationCustomQuestion".casefold():
+        if not mapping_value:
+            return VirtualEventRegistrationQuestionBase()
+        if mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationCustomQuestion".casefold():
             from .virtual_event_registration_custom_question import VirtualEventRegistrationCustomQuestion
 
             return VirtualEventRegistrationCustomQuestion()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationPredefinedQuestion".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.virtualEventRegistrationPredefinedQuestion".casefold():
             from .virtual_event_registration_predefined_question import VirtualEventRegistrationPredefinedQuestion
 
             return VirtualEventRegistrationPredefinedQuestion()

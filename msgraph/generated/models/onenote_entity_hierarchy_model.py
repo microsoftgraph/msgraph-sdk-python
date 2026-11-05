@@ -41,15 +41,17 @@ class OnenoteEntityHierarchyModel(OnenoteEntitySchemaObjectModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.notebook".casefold():
+        if not mapping_value:
+            return OnenoteEntityHierarchyModel()
+        if mapping_value.casefold() == "#microsoft.graph.notebook".casefold():
             from .notebook import Notebook
 
             return Notebook()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteSection".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.onenoteSection".casefold():
             from .onenote_section import OnenoteSection
 
             return OnenoteSection()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sectionGroup".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.sectionGroup".casefold():
             from .section_group import SectionGroup
 
             return SectionGroup()

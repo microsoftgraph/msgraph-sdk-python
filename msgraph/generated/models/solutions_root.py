@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .backup_restore_root import BackupRestoreRoot
     from .booking_business import BookingBusiness
     from .booking_currency import BookingCurrency
+    from .migrations_root import MigrationsRoot
     from .virtual_events_root import VirtualEventsRoot
 
 @dataclass
@@ -24,6 +25,8 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
     booking_businesses: Optional[list[BookingBusiness]] = None
     # The bookingCurrencies property
     booking_currencies: Optional[list[BookingCurrency]] = None
+    # The entry point for cross-tenant migration operations.
+    migrations: Optional[MigrationsRoot] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The virtualEvents property
@@ -48,17 +51,20 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
         from .backup_restore_root import BackupRestoreRoot
         from .booking_business import BookingBusiness
         from .booking_currency import BookingCurrency
+        from .migrations_root import MigrationsRoot
         from .virtual_events_root import VirtualEventsRoot
 
         from .backup_restore_root import BackupRestoreRoot
         from .booking_business import BookingBusiness
         from .booking_currency import BookingCurrency
+        from .migrations_root import MigrationsRoot
         from .virtual_events_root import VirtualEventsRoot
 
         fields: dict[str, Callable[[Any], None]] = {
             "backupRestore": lambda n : setattr(self, 'backup_restore', n.get_object_value(BackupRestoreRoot)),
             "bookingBusinesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(BookingBusiness)),
             "bookingCurrencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(BookingCurrency)),
+            "migrations": lambda n : setattr(self, 'migrations', n.get_object_value(MigrationsRoot)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "virtualEvents": lambda n : setattr(self, 'virtual_events', n.get_object_value(VirtualEventsRoot)),
         }
@@ -75,6 +81,7 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("backupRestore", self.backup_restore)
         writer.write_collection_of_object_values("bookingBusinesses", self.booking_businesses)
         writer.write_collection_of_object_values("bookingCurrencies", self.booking_currencies)
+        writer.write_object_value("migrations", self.migrations)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("virtualEvents", self.virtual_events)
         writer.write_additional_data_value(self.additional_data)

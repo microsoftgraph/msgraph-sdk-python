@@ -42,31 +42,33 @@ class ConversationMember(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aadUserConversationMember".casefold():
+        if not mapping_value:
+            return ConversationMember()
+        if mapping_value.casefold() == "#microsoft.graph.aadUserConversationMember".casefold():
             from .aad_user_conversation_member import AadUserConversationMember
 
             return AadUserConversationMember()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousGuestConversationMember".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.anonymousGuestConversationMember".casefold():
             from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
 
             return AnonymousGuestConversationMember()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserConversationMember".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserConversationMember".casefold():
             from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
 
             return AzureCommunicationServicesUserConversationMember()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAccountUserConversationMember".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.microsoftAccountUserConversationMember".casefold():
             from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
 
             return MicrosoftAccountUserConversationMember()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.phoneUserConversationMember".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.phoneUserConversationMember".casefold():
             from .phone_user_conversation_member import PhoneUserConversationMember
 
             return PhoneUserConversationMember()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeForBusinessUserConversationMember".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.skypeForBusinessUserConversationMember".casefold():
             from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
 
             return SkypeForBusinessUserConversationMember()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeUserConversationMember".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.skypeUserConversationMember".casefold():
             from .skype_user_conversation_member import SkypeUserConversationMember
 
             return SkypeUserConversationMember()

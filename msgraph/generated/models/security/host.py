@@ -71,11 +71,13 @@ class Host(Artifact, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostname".casefold():
+        if not mapping_value:
+            return Host()
+        if mapping_value.casefold() == "#microsoft.graph.security.hostname".casefold():
             from .hostname import Hostname
 
             return Hostname()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ipAddress".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.ipAddress".casefold():
             from .ip_address import IpAddress
 
             return IpAddress()

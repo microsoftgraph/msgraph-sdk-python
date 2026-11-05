@@ -39,27 +39,29 @@ class FilePlanDescriptorBase(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanAppliedCategory".casefold():
+        if not mapping_value:
+            return FilePlanDescriptorBase()
+        if mapping_value.casefold() == "#microsoft.graph.security.filePlanAppliedCategory".casefold():
             from .file_plan_applied_category import FilePlanAppliedCategory
 
             return FilePlanAppliedCategory()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanAuthority".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.filePlanAuthority".casefold():
             from .file_plan_authority import FilePlanAuthority
 
             return FilePlanAuthority()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanCitation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.filePlanCitation".casefold():
             from .file_plan_citation import FilePlanCitation
 
             return FilePlanCitation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanDepartment".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.filePlanDepartment".casefold():
             from .file_plan_department import FilePlanDepartment
 
             return FilePlanDepartment()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanReference".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.filePlanReference".casefold():
             from .file_plan_reference import FilePlanReference
 
             return FilePlanReference()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanSubcategory".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.security.filePlanSubcategory".casefold():
             from .file_plan_subcategory import FilePlanSubcategory
 
             return FilePlanSubcategory()

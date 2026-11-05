@@ -34,15 +34,17 @@ class ApiAuthenticationConfigurationBase(AdditionalDataHolder, BackedModel, Pars
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.basicAuthentication".casefold():
+        if not mapping_value:
+            return ApiAuthenticationConfigurationBase()
+        if mapping_value.casefold() == "#microsoft.graph.basicAuthentication".casefold():
             from .basic_authentication import BasicAuthentication
 
             return BasicAuthentication()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.clientCertificateAuthentication".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.clientCertificateAuthentication".casefold():
             from .client_certificate_authentication import ClientCertificateAuthentication
 
             return ClientCertificateAuthentication()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.pkcs12Certificate".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.pkcs12Certificate".casefold():
             from .pkcs12_certificate import Pkcs12Certificate
 
             return Pkcs12Certificate()

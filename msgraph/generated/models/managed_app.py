@@ -41,23 +41,25 @@ class ManagedApp(MobileApp, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
+        if not mapping_value:
+            return ManagedApp()
+        if mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
             from .managed_android_lob_app import ManagedAndroidLobApp
 
             return ManagedAndroidLobApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidStoreApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.managedAndroidStoreApp".casefold():
             from .managed_android_store_app import ManagedAndroidStoreApp
 
             return ManagedAndroidStoreApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSLobApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.managedIOSLobApp".casefold():
             from .managed_i_o_s_lob_app import ManagedIOSLobApp
 
             return ManagedIOSLobApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSStoreApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.managedIOSStoreApp".casefold():
             from .managed_i_o_s_store_app import ManagedIOSStoreApp
 
             return ManagedIOSStoreApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedMobileLobApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.managedMobileLobApp".casefold():
             from .managed_mobile_lob_app import ManagedMobileLobApp
 
             return ManagedMobileLobApp()

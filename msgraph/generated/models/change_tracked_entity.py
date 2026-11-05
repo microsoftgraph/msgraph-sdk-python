@@ -52,59 +52,61 @@ class ChangeTrackedEntity(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.dayNote".casefold():
+        if not mapping_value:
+            return ChangeTrackedEntity()
+        if mapping_value.casefold() == "#microsoft.graph.dayNote".casefold():
             from .day_note import DayNote
 
             return DayNote()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
             from .offer_shift_request import OfferShiftRequest
 
             return OfferShiftRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShift".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.openShift".casefold():
             from .open_shift import OpenShift
 
             return OpenShift()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShiftChangeRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.openShiftChangeRequest".casefold():
             from .open_shift_change_request import OpenShiftChangeRequest
 
             return OpenShiftChangeRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.scheduleChangeRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.scheduleChangeRequest".casefold():
             from .schedule_change_request import ScheduleChangeRequest
 
             return ScheduleChangeRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.schedulingGroup".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.schedulingGroup".casefold():
             from .scheduling_group import SchedulingGroup
 
             return SchedulingGroup()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.shift".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.shift".casefold():
             from .shift import Shift
 
             return Shift()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.shiftPreferences".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.shiftPreferences".casefold():
             from .shift_preferences import ShiftPreferences
 
             return ShiftPreferences()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
             from .swap_shifts_change_request import SwapShiftsChangeRequest
 
             return SwapShiftsChangeRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeCard".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.timeCard".casefold():
             from .time_card import TimeCard
 
             return TimeCard()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOff".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.timeOff".casefold():
             from .time_off import TimeOff
 
             return TimeOff()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOffReason".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.timeOffReason".casefold():
             from .time_off_reason import TimeOffReason
 
             return TimeOffReason()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOffRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.timeOffRequest".casefold():
             from .time_off_request import TimeOffRequest
 
             return TimeOffRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.workforceIntegration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.workforceIntegration".casefold():
             from .workforce_integration import WorkforceIntegration
 
             return WorkforceIntegration()

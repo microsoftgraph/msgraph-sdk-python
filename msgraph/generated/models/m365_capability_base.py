@@ -50,59 +50,61 @@ class M365CapabilityBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyDetail".casefold():
+        if not mapping_value:
+            return M365CapabilityBase()
+        if mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyDetail".casefold():
             from .anonymous_calendar_sharing_free_busy_detail import AnonymousCalendarSharingFreeBusyDetail
 
             return AnonymousCalendarSharingFreeBusyDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyReviewer".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusyReviewer".casefold():
             from .anonymous_calendar_sharing_free_busy_reviewer import AnonymousCalendarSharingFreeBusyReviewer
 
             return AnonymousCalendarSharingFreeBusyReviewer()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusySimple".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.anonymousCalendarSharingFreeBusySimple".casefold():
             from .anonymous_calendar_sharing_free_busy_simple import AnonymousCalendarSharingFreeBusySimple
 
             return AnonymousCalendarSharingFreeBusySimple()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarAvailabilityBasic".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarAvailabilityBasic".casefold():
             from .cross_tenant_calendar_availability_basic import CrossTenantCalendarAvailabilityBasic
 
             return CrossTenantCalendarAvailabilityBasic()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarAvailabilityLimitedDetails".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarAvailabilityLimitedDetails".casefold():
             from .cross_tenant_calendar_availability_limited_details import CrossTenantCalendarAvailabilityLimitedDetails
 
             return CrossTenantCalendarAvailabilityLimitedDetails()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarSharingFreeBusyDetail".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarSharingFreeBusyDetail".casefold():
             from .cross_tenant_calendar_sharing_free_busy_detail import CrossTenantCalendarSharingFreeBusyDetail
 
             return CrossTenantCalendarSharingFreeBusyDetail()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarSharingFreeBusyReviewer".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarSharingFreeBusyReviewer".casefold():
             from .cross_tenant_calendar_sharing_free_busy_reviewer import CrossTenantCalendarSharingFreeBusyReviewer
 
             return CrossTenantCalendarSharingFreeBusyReviewer()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarSharingFreeBusySimple".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantCalendarSharingFreeBusySimple".casefold():
             from .cross_tenant_calendar_sharing_free_busy_simple import CrossTenantCalendarSharingFreeBusySimple
 
             return CrossTenantCalendarSharingFreeBusySimple()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantMailTipsAll".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantMailTipsAll".casefold():
             from .cross_tenant_mail_tips_all import CrossTenantMailTipsAll
 
             return CrossTenantMailTipsAll()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantMailTipsLimited".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantMailTipsLimited".casefold():
             from .cross_tenant_mail_tips_limited import CrossTenantMailTipsLimited
 
             return CrossTenantMailTipsLimited()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantMigration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantMigration".casefold():
             from .cross_tenant_migration import CrossTenantMigration
 
             return CrossTenantMigration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantOpenProfileCard".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantOpenProfileCard".casefold():
             from .cross_tenant_open_profile_card import CrossTenantOpenProfileCard
 
             return CrossTenantOpenProfileCard()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantPlacesDeskBooking".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantPlacesDeskBooking".casefold():
             from .cross_tenant_places_desk_booking import CrossTenantPlacesDeskBooking
 
             return CrossTenantPlacesDeskBooking()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantPlacesRoomBooking".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.crossTenantPlacesRoomBooking".casefold():
             from .cross_tenant_places_room_booking import CrossTenantPlacesRoomBooking
 
             return CrossTenantPlacesRoomBooking()

@@ -48,27 +48,29 @@ class Request(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest".casefold():
+        if not mapping_value:
+            return Request()
+        if mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest".casefold():
             from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
 
             return PrivilegedAccessGroupAssignmentScheduleRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilityScheduleRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilityScheduleRequest".casefold():
             from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
 
             return PrivilegedAccessGroupEligibilityScheduleRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessScheduleRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.privilegedAccessScheduleRequest".casefold():
             from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
 
             return PrivilegedAccessScheduleRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentScheduleRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentScheduleRequest".casefold():
             from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
 
             return UnifiedRoleAssignmentScheduleRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilityScheduleRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilityScheduleRequest".casefold():
             from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
             return UnifiedRoleEligibilityScheduleRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userConsentRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.userConsentRequest".casefold():
             from .user_consent_request import UserConsentRequest
 
             return UserConsentRequest()

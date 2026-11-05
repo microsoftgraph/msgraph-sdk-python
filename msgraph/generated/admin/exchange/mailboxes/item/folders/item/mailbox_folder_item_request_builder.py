@@ -32,6 +32,25 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/exchange/mailboxes/{mailbox%2Did}/folders/{mailboxFolder%2Did}{?%24expand,%24select}", path_parameters)
     
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> None:
+        """
+        Delete a mailboxFolder or a child mailboxFolder within a mailbox.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/mailbox-delete-folders?view=graph-rest-1.0
+        """
+        request_info = self.to_delete_request_information(
+            request_configuration
+        )
+        from .......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: dict[str, type[ParsableFactory]] = {
+            "XXX": ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+    
     async def get(self,request_configuration: Optional[RequestConfiguration[MailboxFolderItemRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxFolder]:
         """
         Read the properties and relationships of a mailboxFolder object.
@@ -53,6 +72,41 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MailboxFolder, error_mapping)
     
+    async def patch(self,body: MailboxFolder, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MailboxFolder]:
+        """
+        Update mailboxFolder properties such as the displayName within a mailbox.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[MailboxFolder]
+        Find more info here: https://learn.microsoft.com/graph/api/mailboxfolder-update?view=graph-rest-1.0
+        """
+        if body is None:
+            raise TypeError("body cannot be null.")
+        request_info = self.to_patch_request_information(
+            body, request_configuration
+        )
+        from .......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: dict[str, type[ParsableFactory]] = {
+            "XXX": ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        from .......models.mailbox_folder import MailboxFolder
+
+        return await self.request_adapter.send_async(request_info, MailboxFolder, error_mapping)
+    
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+        """
+        Delete a mailboxFolder or a child mailboxFolder within a mailbox.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
+        request_info.headers.try_add("Accept", "application/json")
+        return request_info
+    
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MailboxFolderItemRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         Read the properties and relationships of a mailboxFolder object.
@@ -62,6 +116,21 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
         request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
+        return request_info
+    
+    def to_patch_request_information(self,body: MailboxFolder, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
+        """
+        Update mailboxFolder properties such as the displayName within a mailbox.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise TypeError("body cannot be null.")
+        request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
+        request_info.headers.try_add("Accept", "application/json")
+        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
     def with_url(self,raw_url: str) -> MailboxFolderItemRequestBuilder:
@@ -93,6 +162,13 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
         return ItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
+    class MailboxFolderItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
     class MailboxFolderItemRequestBuilderGetQueryParameters():
         """
         Read the properties and relationships of a mailboxFolder object.
@@ -120,6 +196,13 @@ class MailboxFolderItemRequestBuilder(BaseRequestBuilder):
     
     @dataclass
     class MailboxFolderItemRequestBuilderGetRequestConfiguration(RequestConfiguration[MailboxFolderItemRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class MailboxFolderItemRequestBuilderPatchRequestConfiguration(RequestConfiguration[QueryParameters]):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

@@ -37,7 +37,9 @@ class DeviceManagementTroubleshootingEvent(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.enrollmentTroubleshootingEvent".casefold():
+        if not mapping_value:
+            return DeviceManagementTroubleshootingEvent()
+        if mapping_value.casefold() == "#microsoft.graph.enrollmentTroubleshootingEvent".casefold():
             from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
 
             return EnrollmentTroubleshootingEvent()

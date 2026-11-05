@@ -92,11 +92,13 @@ class WindowsInformationProtection(ManagedAppPolicy, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mdmWindowsInformationProtectionPolicy".casefold():
+        if not mapping_value:
+            return WindowsInformationProtection()
+        if mapping_value.casefold() == "#microsoft.graph.mdmWindowsInformationProtectionPolicy".casefold():
             from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
 
             return MdmWindowsInformationProtectionPolicy()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionPolicy".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionPolicy".casefold():
             from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
             return WindowsInformationProtectionPolicy()

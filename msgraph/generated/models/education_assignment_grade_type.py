@@ -32,7 +32,9 @@ class EducationAssignmentGradeType(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentPointsGradeType".casefold():
+        if not mapping_value:
+            return EducationAssignmentGradeType()
+        if mapping_value.casefold() == "#microsoft.graph.educationAssignmentPointsGradeType".casefold():
             from .education_assignment_points_grade_type import EducationAssignmentPointsGradeType
 
             return EducationAssignmentPointsGradeType()

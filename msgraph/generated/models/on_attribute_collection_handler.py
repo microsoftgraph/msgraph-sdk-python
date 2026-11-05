@@ -32,7 +32,9 @@ class OnAttributeCollectionHandler(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionExternalUsersSelfServiceSignUp".casefold():
+        if not mapping_value:
+            return OnAttributeCollectionHandler()
+        if mapping_value.casefold() == "#microsoft.graph.onAttributeCollectionExternalUsersSelfServiceSignUp".casefold():
             from .on_attribute_collection_external_users_self_service_sign_up import OnAttributeCollectionExternalUsersSelfServiceSignUp
 
             return OnAttributeCollectionExternalUsersSelfServiceSignUp()

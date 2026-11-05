@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .copilot_package import CopilotPackage
+    from .copilot_package_request_metadata import CopilotPackageRequestMetadata
     from .package_access_entity import PackageAccessEntity
     from .package_element_detail import PackageElementDetail
 
@@ -32,6 +33,8 @@ class CopilotPackageDetail(CopilotPackage, Parsable):
     long_description: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # Request metadata returned by an explicit opt-in package detail read. Null when not loaded.
+    request_metadata: Optional[CopilotPackageRequestMetadata] = None
     # The sensitivity property
     sensitivity: Optional[str] = None
     # The sharedWithUsersAndGroups property
@@ -58,10 +61,12 @@ class CopilotPackageDetail(CopilotPackage, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .copilot_package import CopilotPackage
+        from .copilot_package_request_metadata import CopilotPackageRequestMetadata
         from .package_access_entity import PackageAccessEntity
         from .package_element_detail import PackageElementDetail
 
         from .copilot_package import CopilotPackage
+        from .copilot_package_request_metadata import CopilotPackageRequestMetadata
         from .package_access_entity import PackageAccessEntity
         from .package_element_detail import PackageElementDetail
 
@@ -74,6 +79,7 @@ class CopilotPackageDetail(CopilotPackage, Parsable):
             "exceptionRate": lambda n : setattr(self, 'exception_rate', n.get_float_value()),
             "lastUsedDateTime": lambda n : setattr(self, 'last_used_date_time', n.get_datetime_value()),
             "longDescription": lambda n : setattr(self, 'long_description', n.get_str_value()),
+            "requestMetadata": lambda n : setattr(self, 'request_metadata', n.get_object_value(CopilotPackageRequestMetadata)),
             "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_str_value()),
             "sharedWithUsersAndGroups": lambda n : setattr(self, 'shared_with_users_and_groups', n.get_collection_of_object_values(PackageAccessEntity)),
             "totalRunTimeInHours": lambda n : setattr(self, 'total_run_time_in_hours', n.get_float_value()),

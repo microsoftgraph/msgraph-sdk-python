@@ -27,6 +27,7 @@ if TYPE_CHECKING:
     from .incidents.incidents_request_builder import IncidentsRequestBuilder
     from .labels.labels_request_builder import LabelsRequestBuilder
     from .microsoft_graph_security_run_hunting_query.microsoft_graph_security_run_hunting_query_request_builder import MicrosoftGraphSecurityRunHuntingQueryRequestBuilder
+    from .rules.rules_request_builder import RulesRequestBuilder
     from .secure_scores.secure_scores_request_builder import SecureScoresRequestBuilder
     from .secure_score_control_profiles.secure_score_control_profiles_request_builder import SecureScoreControlProfilesRequestBuilder
     from .subject_rights_requests.subject_rights_requests_request_builder import SubjectRightsRequestsRequestBuilder
@@ -224,6 +225,15 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         from .microsoft_graph_security_run_hunting_query.microsoft_graph_security_run_hunting_query_request_builder import MicrosoftGraphSecurityRunHuntingQueryRequestBuilder
 
         return MicrosoftGraphSecurityRunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def rules(self) -> RulesRequestBuilder:
+        """
+        Provides operations to manage the rules property of the microsoft.graph.security entity.
+        """
+        from .rules.rules_request_builder import RulesRequestBuilder
+
+        return RulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def secure_score_control_profiles(self) -> SecureScoreControlProfilesRequestBuilder:

@@ -46,11 +46,13 @@ class LearningCourseActivity(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningAssignment".casefold():
+        if not mapping_value:
+            return LearningCourseActivity()
+        if mapping_value.casefold() == "#microsoft.graph.learningAssignment".casefold():
             from .learning_assignment import LearningAssignment
 
             return LearningAssignment()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningSelfInitiatedCourse".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.learningSelfInitiatedCourse".casefold():
             from .learning_self_initiated_course import LearningSelfInitiatedCourse
 
             return LearningSelfInitiatedCourse()

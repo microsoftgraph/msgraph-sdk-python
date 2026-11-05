@@ -35,19 +35,21 @@ class IpRange(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv4CidrRange".casefold():
+        if not mapping_value:
+            return IpRange()
+        if mapping_value.casefold() == "#microsoft.graph.iPv4CidrRange".casefold():
             from .i_pv4_cidr_range import IPv4CidrRange
 
             return IPv4CidrRange()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv4Range".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iPv4Range".casefold():
             from .i_pv4_range import IPv4Range
 
             return IPv4Range()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv6CidrRange".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iPv6CidrRange".casefold():
             from .i_pv6_cidr_range import IPv6CidrRange
 
             return IPv6CidrRange()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv6Range".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iPv6Range".casefold():
             from .i_pv6_range import IPv6Range
 
             return IPv6Range()

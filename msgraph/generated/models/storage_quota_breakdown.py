@@ -35,7 +35,9 @@ class StorageQuotaBreakdown(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceStorageQuotaBreakdown".casefold():
+        if not mapping_value:
+            return StorageQuotaBreakdown()
+        if mapping_value.casefold() == "#microsoft.graph.serviceStorageQuotaBreakdown".casefold():
             from .service_storage_quota_breakdown import ServiceStorageQuotaBreakdown
 
             return ServiceStorageQuotaBreakdown()

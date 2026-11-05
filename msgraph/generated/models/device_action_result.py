@@ -50,27 +50,29 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deleteUserFromSharedAppleDeviceActionResult".casefold():
+        if not mapping_value:
+            return DeviceActionResult()
+        if mapping_value.casefold() == "#microsoft.graph.deleteUserFromSharedAppleDeviceActionResult".casefold():
             from .delete_user_from_shared_apple_device_action_result import DeleteUserFromSharedAppleDeviceActionResult
 
             return DeleteUserFromSharedAppleDeviceActionResult()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.locateDeviceActionResult".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.locateDeviceActionResult".casefold():
             from .locate_device_action_result import LocateDeviceActionResult
 
             return LocateDeviceActionResult()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteLockActionResult".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.remoteLockActionResult".casefold():
             from .remote_lock_action_result import RemoteLockActionResult
 
             return RemoteLockActionResult()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resetPasscodeActionResult".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.resetPasscodeActionResult".casefold():
             from .reset_passcode_action_result import ResetPasscodeActionResult
 
             return ResetPasscodeActionResult()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.rotateBitLockerKeysDeviceActionResult".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.rotateBitLockerKeysDeviceActionResult".casefold():
             from .rotate_bit_locker_keys_device_action_result import RotateBitLockerKeysDeviceActionResult
 
             return RotateBitLockerKeysDeviceActionResult()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDefenderScanActionResult".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsDefenderScanActionResult".casefold():
             from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
             return WindowsDefenderScanActionResult()

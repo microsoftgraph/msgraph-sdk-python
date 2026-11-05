@@ -36,11 +36,13 @@ class ValidatingDomains(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.allDomains".casefold():
+        if not mapping_value:
+            return ValidatingDomains()
+        if mapping_value.casefold() == "#microsoft.graph.allDomains".casefold():
             from .all_domains import AllDomains
 
             return AllDomains()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.enumeratedDomains".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.enumeratedDomains".casefold():
             from .enumerated_domains import EnumeratedDomains
 
             return EnumeratedDomains()

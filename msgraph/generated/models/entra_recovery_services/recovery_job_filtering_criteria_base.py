@@ -33,11 +33,13 @@ class RecoveryJobFilteringCriteriaBase(AdditionalDataHolder, BackedModel, Parsab
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryJobEntityNameAndIdsFilter".casefold():
+        if not mapping_value:
+            return RecoveryJobFilteringCriteriaBase()
+        if mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryJobEntityNameAndIdsFilter".casefold():
             from .recovery_job_entity_name_and_ids_filter import RecoveryJobEntityNameAndIdsFilter
 
             return RecoveryJobEntityNameAndIdsFilter()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryJobEntityNamesFilter".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.entraRecoveryServices.recoveryJobEntityNamesFilter".casefold():
             from .recovery_job_entity_names_filter import RecoveryJobEntityNamesFilter
 
             return RecoveryJobEntityNamesFilter()

@@ -42,11 +42,13 @@ class ManagedMobileLobApp(ManagedApp, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
+        if not mapping_value:
+            return ManagedMobileLobApp()
+        if mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
             from .managed_android_lob_app import ManagedAndroidLobApp
 
             return ManagedAndroidLobApp()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSLobApp".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.managedIOSLobApp".casefold():
             from .managed_i_o_s_lob_app import ManagedIOSLobApp
 
             return ManagedIOSLobApp()

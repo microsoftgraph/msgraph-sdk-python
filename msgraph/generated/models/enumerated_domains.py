@@ -13,7 +13,7 @@ from .validating_domains import ValidatingDomains
 class EnumeratedDomains(ValidatingDomains, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.enumeratedDomains"
-    # The domainNames property
+    # List of federated or managed root domains that Microsoft Entra ID validates.
     domain_names: Optional[list[str]] = None
     
     @staticmethod

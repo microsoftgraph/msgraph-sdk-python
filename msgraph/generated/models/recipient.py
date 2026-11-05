@@ -36,11 +36,13 @@ class Recipient(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.attendee".casefold():
+        if not mapping_value:
+            return Recipient()
+        if mapping_value.casefold() == "#microsoft.graph.attendee".casefold():
             from .attendee import Attendee
 
             return Attendee()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.attendeeBase".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.attendeeBase".casefold():
             from .attendee_base import AttendeeBase
 
             return AttendeeBase()

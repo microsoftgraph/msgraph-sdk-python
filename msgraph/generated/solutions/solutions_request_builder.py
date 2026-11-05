@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .backup_restore.backup_restore_request_builder import BackupRestoreRequestBuilder
     from .booking_businesses.booking_businesses_request_builder import BookingBusinessesRequestBuilder
     from .booking_currencies.booking_currencies_request_builder import BookingCurrenciesRequestBuilder
+    from .migrations.migrations_request_builder import MigrationsRequestBuilder
     from .virtual_events.virtual_events_request_builder import VirtualEventsRequestBuilder
 
 class SolutionsRequestBuilder(BaseRequestBuilder):
@@ -139,6 +140,15 @@ class SolutionsRequestBuilder(BaseRequestBuilder):
         from .booking_currencies.booking_currencies_request_builder import BookingCurrenciesRequestBuilder
 
         return BookingCurrenciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def migrations(self) -> MigrationsRequestBuilder:
+        """
+        Provides operations to manage the migrations property of the microsoft.graph.solutionsRoot entity.
+        """
+        from .migrations.migrations_request_builder import MigrationsRequestBuilder
+
+        return MigrationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def virtual_events(self) -> VirtualEventsRequestBuilder:

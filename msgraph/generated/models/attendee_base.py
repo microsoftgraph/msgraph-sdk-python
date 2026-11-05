@@ -32,7 +32,9 @@ class AttendeeBase(Recipient, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.attendee".casefold():
+        if not mapping_value:
+            return AttendeeBase()
+        if mapping_value.casefold() == "#microsoft.graph.attendee".casefold():
             from .attendee import Attendee
 
             return Attendee()

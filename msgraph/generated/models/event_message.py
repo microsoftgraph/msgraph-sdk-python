@@ -56,11 +56,13 @@ class EventMessage(Message, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
+        if not mapping_value:
+            return EventMessage()
+        if mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
             from .event_message_request import EventMessageRequest
 
             return EventMessageRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
             from .event_message_response import EventMessageResponse
 
             return EventMessageResponse()

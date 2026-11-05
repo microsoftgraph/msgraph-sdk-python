@@ -63,15 +63,17 @@ class RestoreArtifactsBulkRequestBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveRestoreArtifactsBulkAdditionRequest".casefold():
+        if not mapping_value:
+            return RestoreArtifactsBulkRequestBase()
+        if mapping_value.casefold() == "#microsoft.graph.driveRestoreArtifactsBulkAdditionRequest".casefold():
             from .drive_restore_artifacts_bulk_addition_request import DriveRestoreArtifactsBulkAdditionRequest
 
             return DriveRestoreArtifactsBulkAdditionRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxRestoreArtifactsBulkAdditionRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.mailboxRestoreArtifactsBulkAdditionRequest".casefold():
             from .mailbox_restore_artifacts_bulk_addition_request import MailboxRestoreArtifactsBulkAdditionRequest
 
             return MailboxRestoreArtifactsBulkAdditionRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.siteRestoreArtifactsBulkAdditionRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.siteRestoreArtifactsBulkAdditionRequest".casefold():
             from .site_restore_artifacts_bulk_addition_request import SiteRestoreArtifactsBulkAdditionRequest
 
             return SiteRestoreArtifactsBulkAdditionRequest()

@@ -42,35 +42,37 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobAppAssignmentSettings".casefold():
+        if not mapping_value:
+            return MobileAppAssignmentSettings()
+        if mapping_value.casefold() == "#microsoft.graph.iosLobAppAssignmentSettings".casefold():
             from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
 
             return IosLobAppAssignmentSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosStoreAppAssignmentSettings".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iosStoreAppAssignmentSettings".casefold():
             from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
 
             return IosStoreAppAssignmentSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosVppAppAssignmentSettings".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.iosVppAppAssignmentSettings".casefold():
             from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
 
             return IosVppAppAssignmentSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOsLobAppAssignmentSettings".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.macOsLobAppAssignmentSettings".casefold():
             from .mac_os_lob_app_assignment_settings import MacOsLobAppAssignmentSettings
 
             return MacOsLobAppAssignmentSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings".casefold():
             from .microsoft_store_for_business_app_assignment_settings import MicrosoftStoreForBusinessAppAssignmentSettings
 
             return MicrosoftStoreForBusinessAppAssignmentSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppAssignmentSettings".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppAssignmentSettings".casefold():
             from .win32_lob_app_assignment_settings import Win32LobAppAssignmentSettings
 
             return Win32LobAppAssignmentSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAppXAppAssignmentSettings".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsAppXAppAssignmentSettings".casefold():
             from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
 
             return WindowsAppXAppAssignmentSettings()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppXAppAssignmentSettings".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppXAppAssignmentSettings".casefold():
             from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
 
             return WindowsUniversalAppXAppAssignmentSettings()

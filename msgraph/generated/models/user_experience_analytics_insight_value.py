@@ -36,11 +36,13 @@ class UserExperienceAnalyticsInsightValue(AdditionalDataHolder, BackedModel, Par
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.insightValueDouble".casefold():
+        if not mapping_value:
+            return UserExperienceAnalyticsInsightValue()
+        if mapping_value.casefold() == "#microsoft.graph.insightValueDouble".casefold():
             from .insight_value_double import InsightValueDouble
 
             return InsightValueDouble()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.insightValueInt".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.insightValueInt".casefold():
             from .insight_value_int import InsightValueInt
 
             return InsightValueInt()

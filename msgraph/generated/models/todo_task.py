@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .item_body import ItemBody
     from .linked_resource import LinkedResource
     from .patterned_recurrence import PatternedRecurrence
+    from .single_value_extended_property import SingleValueExtendedProperty
     from .task_status import TaskStatus
 
 from .entity import Entity
@@ -58,6 +59,8 @@ class TodoTask(Entity, Parsable):
     recurrence: Optional[PatternedRecurrence] = None
     # The date and time in the specified time zone for a reminder alert of the task to occur.
     reminder_date_time: Optional[DateTimeTimeZone] = None
+    # A collection of custom fields linked to the task.
+    single_value_extended_properties: Optional[list[SingleValueExtendedProperty]] = None
     # The date and time in the specified time zone at which the task is scheduled to start.
     start_date_time: Optional[DateTimeTimeZone] = None
     # The status property
@@ -91,6 +94,7 @@ class TodoTask(Entity, Parsable):
         from .item_body import ItemBody
         from .linked_resource import LinkedResource
         from .patterned_recurrence import PatternedRecurrence
+        from .single_value_extended_property import SingleValueExtendedProperty
         from .task_status import TaskStatus
 
         from .attachment_base import AttachmentBase
@@ -103,6 +107,7 @@ class TodoTask(Entity, Parsable):
         from .item_body import ItemBody
         from .linked_resource import LinkedResource
         from .patterned_recurrence import PatternedRecurrence
+        from .single_value_extended_property import SingleValueExtendedProperty
         from .task_status import TaskStatus
 
         fields: dict[str, Callable[[Any], None]] = {
@@ -123,6 +128,7 @@ class TodoTask(Entity, Parsable):
             "linkedResources": lambda n : setattr(self, 'linked_resources', n.get_collection_of_object_values(LinkedResource)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
             "reminderDateTime": lambda n : setattr(self, 'reminder_date_time', n.get_object_value(DateTimeTimeZone)),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueExtendedProperty)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(TaskStatus)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
@@ -157,6 +163,7 @@ class TodoTask(Entity, Parsable):
         writer.write_collection_of_object_values("linkedResources", self.linked_resources)
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_object_value("reminderDateTime", self.reminder_date_time)
+        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("title", self.title)

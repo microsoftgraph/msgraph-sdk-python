@@ -41,19 +41,21 @@ class Win32LobAppRule(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppFileSystemRule".casefold():
+        if not mapping_value:
+            return Win32LobAppRule()
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppFileSystemRule".casefold():
             from .win32_lob_app_file_system_rule import Win32LobAppFileSystemRule
 
             return Win32LobAppFileSystemRule()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppPowerShellScriptRule".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppPowerShellScriptRule".casefold():
             from .win32_lob_app_power_shell_script_rule import Win32LobAppPowerShellScriptRule
 
             return Win32LobAppPowerShellScriptRule()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppProductCodeRule".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppProductCodeRule".casefold():
             from .win32_lob_app_product_code_rule import Win32LobAppProductCodeRule
 
             return Win32LobAppProductCodeRule()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppRegistryRule".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppRegistryRule".casefold():
             from .win32_lob_app_registry_rule import Win32LobAppRegistryRule
 
             return Win32LobAppRegistryRule()

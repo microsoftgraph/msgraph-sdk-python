@@ -39,23 +39,25 @@ class TrainingSetting(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customTrainingSetting".casefold():
+        if not mapping_value:
+            return TrainingSetting()
+        if mapping_value.casefold() == "#microsoft.graph.customTrainingSetting".casefold():
             from .custom_training_setting import CustomTrainingSetting
 
             return CustomTrainingSetting()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftCustomTrainingSetting".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.microsoftCustomTrainingSetting".casefold():
             from .microsoft_custom_training_setting import MicrosoftCustomTrainingSetting
 
             return MicrosoftCustomTrainingSetting()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftManagedTrainingSetting".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.microsoftManagedTrainingSetting".casefold():
             from .microsoft_managed_training_setting import MicrosoftManagedTrainingSetting
 
             return MicrosoftManagedTrainingSetting()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftTrainingAssignmentMapping".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.microsoftTrainingAssignmentMapping".casefold():
             from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
 
             return MicrosoftTrainingAssignmentMapping()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.noTrainingSetting".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.noTrainingSetting".casefold():
             from .no_training_setting import NoTrainingSetting
 
             return NoTrainingSetting()

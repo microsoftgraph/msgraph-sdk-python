@@ -95,11 +95,13 @@ class OrganizationalBrandingProperties(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBranding".casefold():
+        if not mapping_value:
+            return OrganizationalBrandingProperties()
+        if mapping_value.casefold() == "#microsoft.graph.organizationalBranding".casefold():
             from .organizational_branding import OrganizationalBranding
 
             return OrganizationalBranding()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBrandingLocalization".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.organizationalBrandingLocalization".casefold():
             from .organizational_branding_localization import OrganizationalBrandingLocalization
 
             return OrganizationalBrandingLocalization()

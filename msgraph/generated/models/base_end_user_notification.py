@@ -39,15 +39,17 @@ class BaseEndUserNotification(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.positiveReinforcementNotification".casefold():
+        if not mapping_value:
+            return BaseEndUserNotification()
+        if mapping_value.casefold() == "#microsoft.graph.positiveReinforcementNotification".casefold():
             from .positive_reinforcement_notification import PositiveReinforcementNotification
 
             return PositiveReinforcementNotification()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.simulationNotification".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.simulationNotification".casefold():
             from .simulation_notification import SimulationNotification
 
             return SimulationNotification()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.trainingReminderNotification".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.trainingReminderNotification".casefold():
             from .training_reminder_notification import TrainingReminderNotification
 
             return TrainingReminderNotification()

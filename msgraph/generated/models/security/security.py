@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .identity_container import IdentityContainer
     from .incident import Incident
     from .labels_root import LabelsRoot
+    from .rules_root import RulesRoot
     from .threat_intelligence import ThreatIntelligence
     from .triggers_root import TriggersRoot
     from .trigger_types_root import TriggerTypesRoot
@@ -49,6 +50,8 @@ class Security(Entity, Parsable):
     labels: Optional[LabelsRoot] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # Container for the security rules configured in Microsoft Defender XDR, including custom detection rules.
+    rules: Optional[RulesRoot] = None
     # The secureScoreControlProfiles property
     secure_score_control_profiles: Optional[list[SecureScoreControlProfile]] = None
     # The secureScores property
@@ -92,6 +95,7 @@ class Security(Entity, Parsable):
         from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
+        from .rules_root import RulesRoot
         from .threat_intelligence import ThreatIntelligence
         from .triggers_root import TriggersRoot
         from .trigger_types_root import TriggerTypesRoot
@@ -110,6 +114,7 @@ class Security(Entity, Parsable):
         from .identity_container import IdentityContainer
         from .incident import Incident
         from .labels_root import LabelsRoot
+        from .rules_root import RulesRoot
         from .threat_intelligence import ThreatIntelligence
         from .triggers_root import TriggersRoot
         from .trigger_types_root import TriggerTypesRoot
@@ -125,6 +130,7 @@ class Security(Entity, Parsable):
             "identities": lambda n : setattr(self, 'identities', n.get_object_value(IdentityContainer)),
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
             "labels": lambda n : setattr(self, 'labels', n.get_object_value(LabelsRoot)),
+            "rules": lambda n : setattr(self, 'rules', n.get_object_value(RulesRoot)),
             "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(SecureScoreControlProfile)),
             "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(SecureScore)),
             "subjectRightsRequests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(SubjectRightsRequest)),
@@ -155,6 +161,7 @@ class Security(Entity, Parsable):
         writer.write_object_value("identities", self.identities)
         writer.write_collection_of_object_values("incidents", self.incidents)
         writer.write_object_value("labels", self.labels)
+        writer.write_object_value("rules", self.rules)
         writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
         writer.write_collection_of_object_values("secureScores", self.secure_scores)
         writer.write_collection_of_object_values("subjectRightsRequests", self.subject_rights_requests)

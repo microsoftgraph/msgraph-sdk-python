@@ -38,7 +38,9 @@ class ExternalActivity(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalActivityResult".casefold():
+        if not mapping_value:
+            return ExternalActivity()
+        if mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalActivityResult".casefold():
             from .external_activity_result import ExternalActivityResult
 
             return ExternalActivityResult()

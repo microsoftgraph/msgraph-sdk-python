@@ -41,11 +41,13 @@ class SamlOrWsFedProvider(IdentityProviderBase, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
+        if not mapping_value:
+            return SamlOrWsFedProvider()
+        if mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
             from .internal_domain_federation import InternalDomainFederation
 
             return InternalDomainFederation()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedExternalDomainFederation".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.samlOrWsFedExternalDomainFederation".casefold():
             from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
 
             return SamlOrWsFedExternalDomainFederation()

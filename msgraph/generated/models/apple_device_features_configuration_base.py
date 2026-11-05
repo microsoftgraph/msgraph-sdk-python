@@ -33,11 +33,13 @@ class AppleDeviceFeaturesConfigurationBase(DeviceConfiguration, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosDeviceFeaturesConfiguration".casefold():
+        if not mapping_value:
+            return AppleDeviceFeaturesConfigurationBase()
+        if mapping_value.casefold() == "#microsoft.graph.iosDeviceFeaturesConfiguration".casefold():
             from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
 
             return IosDeviceFeaturesConfiguration()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSDeviceFeaturesConfiguration".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.macOSDeviceFeaturesConfiguration".casefold():
             from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
 
             return MacOSDeviceFeaturesConfiguration()

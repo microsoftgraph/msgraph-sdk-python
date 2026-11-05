@@ -33,11 +33,13 @@ class CustomExtensionAuthenticationConfiguration(AdditionalDataHolder, BackedMod
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureAdPopTokenAuthentication".casefold():
+        if not mapping_value:
+            return CustomExtensionAuthenticationConfiguration()
+        if mapping_value.casefold() == "#microsoft.graph.azureAdPopTokenAuthentication".casefold():
             from .azure_ad_pop_token_authentication import AzureAdPopTokenAuthentication
 
             return AzureAdPopTokenAuthentication()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureAdTokenAuthentication".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.azureAdTokenAuthentication".casefold():
             from .azure_ad_token_authentication import AzureAdTokenAuthentication
 
             return AzureAdTokenAuthentication()

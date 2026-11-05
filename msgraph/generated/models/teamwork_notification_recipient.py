@@ -35,19 +35,21 @@ class TeamworkNotificationRecipient(AdditionalDataHolder, BackedModel, Parsable)
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.aadUserNotificationRecipient".casefold():
+        if not mapping_value:
+            return TeamworkNotificationRecipient()
+        if mapping_value.casefold() == "#microsoft.graph.aadUserNotificationRecipient".casefold():
             from .aad_user_notification_recipient import AadUserNotificationRecipient
 
             return AadUserNotificationRecipient()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelMembersNotificationRecipient".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.channelMembersNotificationRecipient".casefold():
             from .channel_members_notification_recipient import ChannelMembersNotificationRecipient
 
             return ChannelMembersNotificationRecipient()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMembersNotificationRecipient".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.chatMembersNotificationRecipient".casefold():
             from .chat_members_notification_recipient import ChatMembersNotificationRecipient
 
             return ChatMembersNotificationRecipient()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamMembersNotificationRecipient".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.teamMembersNotificationRecipient".casefold():
             from .team_members_notification_recipient import TeamMembersNotificationRecipient
 
             return TeamMembersNotificationRecipient()

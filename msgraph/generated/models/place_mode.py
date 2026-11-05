@@ -35,19 +35,21 @@ class PlaceMode(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.assignedPlaceMode".casefold():
+        if not mapping_value:
+            return PlaceMode()
+        if mapping_value.casefold() == "#microsoft.graph.assignedPlaceMode".casefold():
             from .assigned_place_mode import AssignedPlaceMode
 
             return AssignedPlaceMode()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.dropInPlaceMode".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.dropInPlaceMode".casefold():
             from .drop_in_place_mode import DropInPlaceMode
 
             return DropInPlaceMode()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.reservablePlaceMode".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.reservablePlaceMode".casefold():
             from .reservable_place_mode import ReservablePlaceMode
 
             return ReservablePlaceMode()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.unavailablePlaceMode".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.unavailablePlaceMode".casefold():
             from .unavailable_place_mode import UnavailablePlaceMode
 
             return UnavailablePlaceMode()

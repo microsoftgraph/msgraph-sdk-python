@@ -32,6 +32,7 @@ if TYPE_CHECKING:
     from .one_drive_for_business_restore_sessions.one_drive_for_business_restore_sessions_request_builder import OneDriveForBusinessRestoreSessionsRequestBuilder
     from .protection_policies.protection_policies_request_builder import ProtectionPoliciesRequestBuilder
     from .protection_units.protection_units_request_builder import ProtectionUnitsRequestBuilder
+    from .reports.reports_request_builder import ReportsRequestBuilder
     from .restore_points.restore_points_request_builder import RestorePointsRequestBuilder
     from .restore_sessions.restore_sessions_request_builder import RestoreSessionsRequestBuilder
     from .service_apps.service_apps_request_builder import ServiceAppsRequestBuilder
@@ -307,6 +308,15 @@ class BackupRestoreRequestBuilder(BaseRequestBuilder):
         from .protection_units.protection_units_request_builder import ProtectionUnitsRequestBuilder
 
         return ProtectionUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reports(self) -> ReportsRequestBuilder:
+        """
+        Provides operations to manage the reports property of the microsoft.graph.backupRestoreRoot entity.
+        """
+        from .reports.reports_request_builder import ReportsRequestBuilder
+
+        return ReportsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def restore_points(self) -> RestorePointsRequestBuilder:

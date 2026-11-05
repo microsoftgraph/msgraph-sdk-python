@@ -6,6 +6,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...entity import Entity
+    from .azure_aggregated_usage import AzureAggregatedUsage
     from .azure_usage import AzureUsage
     from .billing_reconciliation import BillingReconciliation
     from .manifest import Manifest
@@ -15,6 +16,8 @@ from ...entity import Entity
 
 @dataclass
 class Billing(Entity, Parsable):
+    # The aggregatedUsage property
+    aggregated_usage: Optional[AzureAggregatedUsage] = None
     # Represents metadata for the exported data.
     manifests: Optional[list[Manifest]] = None
     # The OdataType property
@@ -43,18 +46,21 @@ class Billing(Entity, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from ...entity import Entity
+        from .azure_aggregated_usage import AzureAggregatedUsage
         from .azure_usage import AzureUsage
         from .billing_reconciliation import BillingReconciliation
         from .manifest import Manifest
         from .operation import Operation
 
         from ...entity import Entity
+        from .azure_aggregated_usage import AzureAggregatedUsage
         from .azure_usage import AzureUsage
         from .billing_reconciliation import BillingReconciliation
         from .manifest import Manifest
         from .operation import Operation
 
         fields: dict[str, Callable[[Any], None]] = {
+            "aggregatedUsage": lambda n : setattr(self, 'aggregated_usage', n.get_object_value(AzureAggregatedUsage)),
             "manifests": lambda n : setattr(self, 'manifests', n.get_collection_of_object_values(Manifest)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(Operation)),
             "reconciliation": lambda n : setattr(self, 'reconciliation', n.get_object_value(BillingReconciliation)),
@@ -73,6 +79,7 @@ class Billing(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("aggregatedUsage", self.aggregated_usage)
         writer.write_collection_of_object_values("manifests", self.manifests)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_object_value("reconciliation", self.reconciliation)

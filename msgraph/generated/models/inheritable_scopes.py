@@ -37,15 +37,17 @@ class InheritableScopes(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.allAllowedScopes".casefold():
+        if not mapping_value:
+            return InheritableScopes()
+        if mapping_value.casefold() == "#microsoft.graph.allAllowedScopes".casefold():
             from .all_allowed_scopes import AllAllowedScopes
 
             return AllAllowedScopes()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.enumeratedScopes".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.enumeratedScopes".casefold():
             from .enumerated_scopes import EnumeratedScopes
 
             return EnumeratedScopes()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.noScopes".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.noScopes".casefold():
             from .no_scopes import NoScopes
 
             return NoScopes()

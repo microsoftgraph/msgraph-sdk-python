@@ -54,7 +54,9 @@ class ConditionalAccessPolicy(PolicyDeletableItem, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.whatIfAnalysisResult".casefold():
+        if not mapping_value:
+            return ConditionalAccessPolicy()
+        if mapping_value.casefold() == "#microsoft.graph.whatIfAnalysisResult".casefold():
             from .what_if_analysis_result import WhatIfAnalysisResult
 
             return WhatIfAnalysisResult()

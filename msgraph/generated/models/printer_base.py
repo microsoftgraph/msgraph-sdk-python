@@ -53,11 +53,13 @@ class PrinterBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.printer".casefold():
+        if not mapping_value:
+            return PrinterBase()
+        if mapping_value.casefold() == "#microsoft.graph.printer".casefold():
             from .printer import Printer
 
             return Printer()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.printerShare".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.printerShare".casefold():
             from .printer_share import PrinterShare
 
             return PrinterShare()

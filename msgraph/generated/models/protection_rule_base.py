@@ -49,15 +49,17 @@ class ProtectionRuleBase(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveProtectionRule".casefold():
+        if not mapping_value:
+            return ProtectionRuleBase()
+        if mapping_value.casefold() == "#microsoft.graph.driveProtectionRule".casefold():
             from .drive_protection_rule import DriveProtectionRule
 
             return DriveProtectionRule()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailboxProtectionRule".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.mailboxProtectionRule".casefold():
             from .mailbox_protection_rule import MailboxProtectionRule
 
             return MailboxProtectionRule()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.siteProtectionRule".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.siteProtectionRule".casefold():
             from .site_protection_rule import SiteProtectionRule
 
             return SiteProtectionRule()

@@ -42,11 +42,13 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.noTrainingNotificationSetting".casefold():
+        if not mapping_value:
+            return EndUserNotificationSetting()
+        if mapping_value.casefold() == "#microsoft.graph.noTrainingNotificationSetting".casefold():
             from .no_training_notification_setting import NoTrainingNotificationSetting
 
             return NoTrainingNotificationSetting()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.trainingNotificationSetting".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.trainingNotificationSetting".casefold():
             from .training_notification_setting import TrainingNotificationSetting
 
             return TrainingNotificationSetting()

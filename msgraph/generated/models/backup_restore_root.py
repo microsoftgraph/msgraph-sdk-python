@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .backup_report import BackupReport
     from .browse_session_base import BrowseSessionBase
     from .drive_protection_rule import DriveProtectionRule
     from .drive_protection_unit import DriveProtectionUnit
@@ -68,6 +69,8 @@ class BackupRestoreRoot(Entity, Parsable):
     protection_policies: Optional[list[ProtectionPolicyBase]] = None
     # List of protection units in the tenant.
     protection_units: Optional[list[ProtectionUnitBase]] = None
+    # The backup reports available in the tenant.
+    reports: Optional[BackupReport] = None
     # List of restore points in the tenant.
     restore_points: Optional[list[RestorePoint]] = None
     # List of restore sessions in the tenant.
@@ -105,6 +108,7 @@ class BackupRestoreRoot(Entity, Parsable):
         The deserialization information for the current model
         Returns: dict[str, Callable[[ParseNode], None]]
         """
+        from .backup_report import BackupReport
         from .browse_session_base import BrowseSessionBase
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
@@ -132,6 +136,7 @@ class BackupRestoreRoot(Entity, Parsable):
         from .site_protection_unit import SiteProtectionUnit
         from .site_protection_units_bulk_addition_job import SiteProtectionUnitsBulkAdditionJob
 
+        from .backup_report import BackupReport
         from .browse_session_base import BrowseSessionBase
         from .drive_protection_rule import DriveProtectionRule
         from .drive_protection_unit import DriveProtectionUnit
@@ -175,6 +180,7 @@ class BackupRestoreRoot(Entity, Parsable):
             "oneDriveForBusinessRestoreSessions": lambda n : setattr(self, 'one_drive_for_business_restore_sessions', n.get_collection_of_object_values(OneDriveForBusinessRestoreSession)),
             "protectionPolicies": lambda n : setattr(self, 'protection_policies', n.get_collection_of_object_values(ProtectionPolicyBase)),
             "protectionUnits": lambda n : setattr(self, 'protection_units', n.get_collection_of_object_values(ProtectionUnitBase)),
+            "reports": lambda n : setattr(self, 'reports', n.get_object_value(BackupReport)),
             "restorePoints": lambda n : setattr(self, 'restore_points', n.get_collection_of_object_values(RestorePoint)),
             "restoreSessions": lambda n : setattr(self, 'restore_sessions', n.get_collection_of_object_values(RestoreSessionBase)),
             "serviceApps": lambda n : setattr(self, 'service_apps', n.get_collection_of_object_values(ServiceApp)),
@@ -214,6 +220,7 @@ class BackupRestoreRoot(Entity, Parsable):
         writer.write_collection_of_object_values("oneDriveForBusinessRestoreSessions", self.one_drive_for_business_restore_sessions)
         writer.write_collection_of_object_values("protectionPolicies", self.protection_policies)
         writer.write_collection_of_object_values("protectionUnits", self.protection_units)
+        writer.write_object_value("reports", self.reports)
         writer.write_collection_of_object_values("restorePoints", self.restore_points)
         writer.write_collection_of_object_values("restoreSessions", self.restore_sessions)
         writer.write_collection_of_object_values("serviceApps", self.service_apps)

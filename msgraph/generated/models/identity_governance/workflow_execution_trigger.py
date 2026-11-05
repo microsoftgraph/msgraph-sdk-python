@@ -36,23 +36,25 @@ class WorkflowExecutionTrigger(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.attributeChangeTrigger".casefold():
+        if not mapping_value:
+            return WorkflowExecutionTrigger()
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.attributeChangeTrigger".casefold():
             from .attribute_change_trigger import AttributeChangeTrigger
 
             return AttributeChangeTrigger()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.guestSponsorTrigger".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.guestSponsorTrigger".casefold():
             from .guest_sponsor_trigger import GuestSponsorTrigger
 
             return GuestSponsorTrigger()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.membershipChangeTrigger".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.membershipChangeTrigger".casefold():
             from .membership_change_trigger import MembershipChangeTrigger
 
             return MembershipChangeTrigger()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.timeBasedAttributeTrigger".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.timeBasedAttributeTrigger".casefold():
             from .time_based_attribute_trigger import TimeBasedAttributeTrigger
 
             return TimeBasedAttributeTrigger()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.userInactivityTrigger".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.identityGovernance.userInactivityTrigger".casefold():
             from .user_inactivity_trigger import UserInactivityTrigger
 
             return UserInactivityTrigger()

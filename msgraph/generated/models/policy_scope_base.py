@@ -45,11 +45,13 @@ class PolicyScopeBase(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyTenantScope".casefold():
+        if not mapping_value:
+            return PolicyScopeBase()
+        if mapping_value.casefold() == "#microsoft.graph.policyTenantScope".casefold():
             from .policy_tenant_scope import PolicyTenantScope
 
             return PolicyTenantScope()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyUserScope".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.policyUserScope".casefold():
             from .policy_user_scope import PolicyUserScope
 
             return PolicyUserScope()

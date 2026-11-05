@@ -43,51 +43,53 @@ class AuthenticationMethod(Entity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethod".casefold():
+        if not mapping_value:
+            return AuthenticationMethod()
+        if mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethod".casefold():
             from .email_authentication_method import EmailAuthenticationMethod
 
             return EmailAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.externalAuthenticationMethod".casefold():
             from .external_authentication_method import ExternalAuthenticationMethod
 
             return ExternalAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethod".casefold():
             from .fido2_authentication_method import Fido2AuthenticationMethod
 
             return Fido2AuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod".casefold():
             from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
 
             return MicrosoftAuthenticatorAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.passwordAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.passwordAuthenticationMethod".casefold():
             from .password_authentication_method import PasswordAuthenticationMethod
 
             return PasswordAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.phoneAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.phoneAuthenticationMethod".casefold():
             from .phone_authentication_method import PhoneAuthenticationMethod
 
             return PhoneAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.platformCredentialAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.platformCredentialAuthenticationMethod".casefold():
             from .platform_credential_authentication_method import PlatformCredentialAuthenticationMethod
 
             return PlatformCredentialAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.qrCodePinAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.qrCodePinAuthenticationMethod".casefold():
             from .qr_code_pin_authentication_method import QrCodePinAuthenticationMethod
 
             return QrCodePinAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceAccountKeyAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.resourceAccountKeyAuthenticationMethod".casefold():
             from .resource_account_key_authentication_method import ResourceAccountKeyAuthenticationMethod
 
             return ResourceAccountKeyAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethod".casefold():
             from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
 
             return SoftwareOathAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethod".casefold():
             from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
 
             return TemporaryAccessPassAuthenticationMethod()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod".casefold():
             from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
             return WindowsHelloForBusinessAuthenticationMethod()

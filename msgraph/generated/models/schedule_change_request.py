@@ -51,19 +51,21 @@ class ScheduleChangeRequest(ChangeTrackedEntity, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
+        if not mapping_value:
+            return ScheduleChangeRequest()
+        if mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
             from .offer_shift_request import OfferShiftRequest
 
             return OfferShiftRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShiftChangeRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.openShiftChangeRequest".casefold():
             from .open_shift_change_request import OpenShiftChangeRequest
 
             return OpenShiftChangeRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
             from .swap_shifts_change_request import SwapShiftsChangeRequest
 
             return SwapShiftsChangeRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOffRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.timeOffRequest".casefold():
             from .time_off_request import TimeOffRequest
 
             return TimeOffRequest()

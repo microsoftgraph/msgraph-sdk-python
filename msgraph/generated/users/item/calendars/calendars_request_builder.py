@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ....models.calendar_collection_response import CalendarCollectionResponse
     from ....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
     from .item.calendar_item_request_builder import CalendarItemRequestBuilder
 
 class CalendarsRequestBuilder(BaseRequestBuilder):
@@ -134,6 +135,15 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        from .delta.delta_request_builder import DeltaRequestBuilder
+
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CalendarsRequestBuilderGetQueryParameters():

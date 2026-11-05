@@ -103,19 +103,21 @@ class Message(OutlookItem, Parsable):
             mapping_value = child_node.get_str_value() if child_node else None
         except AttributeError:
             mapping_value = None
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendarSharingMessage".casefold():
+        if not mapping_value:
+            return Message()
+        if mapping_value.casefold() == "#microsoft.graph.calendarSharingMessage".casefold():
             from .calendar_sharing_message import CalendarSharingMessage
 
             return CalendarSharingMessage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessage".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.eventMessage".casefold():
             from .event_message import EventMessage
 
             return EventMessage()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
             from .event_message_request import EventMessageRequest
 
             return EventMessageRequest()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
+        if mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
             from .event_message_response import EventMessageResponse
 
             return EventMessageResponse()

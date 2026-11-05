@@ -44,6 +44,9 @@ documentation = "https://github.com/microsoftgraph/msgraph-sdk-python/docs"
 [tool.flit.module]
 name = "msgraph"
 
+[tool.flit.sdist]
+exclude = ["msgraph/generated/kiota-dom-export.txt"]
+
 [tool.mypy]
 warn_unused_configs = true
 files = "msgraph"

@@ -13,12 +13,15 @@ if TYPE_CHECKING:
     from .protection_source import ProtectionSource
     from .protection_unit_status import ProtectionUnitStatus
     from .public_error import PublicError
+    from .retention_period_change import RetentionPeriodChange
     from .site_protection_unit import SiteProtectionUnit
 
 from .entity import Entity
 
 @dataclass
 class ProtectionUnitBase(Entity, Parsable):
+    # The policy-configured retention period of the backup, in days. Not nullable.
+    backup_retention_period_in_days: Optional[int] = None
     # The identity of the person who created the protection unit.
     created_by: Optional[IdentitySet] = None
     # The time of creation of the protection unit. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -33,6 +36,8 @@ class ProtectionUnitBase(Entity, Parsable):
     odata_type: Optional[str] = None
     # The date and time when protection unit offboard was requested. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     offboard_requested_date_time: Optional[datetime.datetime] = None
+    # The retention period change to be applied to the protection unit when it moves between policies with different retention periods. Read-only. null when no change is pending.
+    pending_retention_period_change: Optional[RetentionPeriodChange] = None
     # The unique identifier of the protection policy based on which protection unit was created.
     policy_id: Optional[str] = None
     # The protectionSources property
@@ -82,6 +87,7 @@ class ProtectionUnitBase(Entity, Parsable):
         from .protection_source import ProtectionSource
         from .protection_unit_status import ProtectionUnitStatus
         from .public_error import PublicError
+        from .retention_period_change import RetentionPeriodChange
         from .site_protection_unit import SiteProtectionUnit
 
         from .drive_protection_unit import DriveProtectionUnit
@@ -91,15 +97,18 @@ class ProtectionUnitBase(Entity, Parsable):
         from .protection_source import ProtectionSource
         from .protection_unit_status import ProtectionUnitStatus
         from .public_error import PublicError
+        from .retention_period_change import RetentionPeriodChange
         from .site_protection_unit import SiteProtectionUnit
 
         fields: dict[str, Callable[[Any], None]] = {
+            "backupRetentionPeriodInDays": lambda n : setattr(self, 'backup_retention_period_in_days', n.get_int_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "offboardRequestedDateTime": lambda n : setattr(self, 'offboard_requested_date_time', n.get_datetime_value()),
+            "pendingRetentionPeriodChange": lambda n : setattr(self, 'pending_retention_period_change', n.get_object_value(RetentionPeriodChange)),
             "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
             "protectionSources": lambda n : setattr(self, 'protection_sources', n.get_collection_of_enum_values(ProtectionSource)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ProtectionUnitStatus)),
@@ -117,6 +126,7 @@ class ProtectionUnitBase(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_int_value("backupRetentionPeriodInDays", self.backup_retention_period_in_days)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("error", self.error)

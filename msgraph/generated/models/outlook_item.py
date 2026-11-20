@@ -8,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .calendar_sharing_message import CalendarSharingMessage
     from .contact import Contact
+    from .distribution_list import DistributionList
     from .entity import Entity
     from .event import Event
     from .event_message import EventMessage
@@ -57,6 +58,10 @@ class OutlookItem(Entity, Parsable):
             from .contact import Contact
 
             return Contact()
+        if mapping_value.casefold() == "#microsoft.graph.distributionList".casefold():
+            from .distribution_list import DistributionList
+
+            return DistributionList()
         if mapping_value.casefold() == "#microsoft.graph.event".casefold():
             from .event import Event
 
@@ -98,6 +103,7 @@ class OutlookItem(Entity, Parsable):
         """
         from .calendar_sharing_message import CalendarSharingMessage
         from .contact import Contact
+        from .distribution_list import DistributionList
         from .entity import Entity
         from .event import Event
         from .event_message import EventMessage
@@ -110,6 +116,7 @@ class OutlookItem(Entity, Parsable):
 
         from .calendar_sharing_message import CalendarSharingMessage
         from .contact import Contact
+        from .distribution_list import DistributionList
         from .entity import Entity
         from .event import Event
         from .event_message import EventMessage

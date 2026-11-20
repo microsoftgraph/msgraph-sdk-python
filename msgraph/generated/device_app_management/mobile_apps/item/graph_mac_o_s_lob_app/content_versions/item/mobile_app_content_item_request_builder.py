@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
     from .contained_apps.contained_apps_request_builder import ContainedAppsRequestBuilder
     from .files.files_request_builder import FilesRequestBuilder
+    from .scripts.scripts_request_builder import ScriptsRequestBuilder
 
 class MobileAppContentItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class MobileAppContentItemRequestBuilder(BaseRequestBuilder):
         from .files.files_request_builder import FilesRequestBuilder
 
         return FilesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def scripts(self) -> ScriptsRequestBuilder:
+        """
+        Provides operations to manage the scripts property of the microsoft.graph.mobileAppContent entity.
+        """
+        from .scripts.scripts_request_builder import ScriptsRequestBuilder
+
+        return ScriptsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MobileAppContentItemRequestBuilderDeleteRequestConfiguration(RequestConfiguration[QueryParameters]):

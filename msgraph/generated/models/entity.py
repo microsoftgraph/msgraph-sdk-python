@@ -320,6 +320,8 @@ if TYPE_CHECKING:
     from .directory_role import DirectoryRole
     from .directory_role_management_deleted_item_container import DirectoryRoleManagementDeletedItemContainer
     from .directory_role_template import DirectoryRoleTemplate
+    from .distribution_list import DistributionList
+    from .distribution_list_member import DistributionListMember
     from .document_set_version import DocumentSetVersion
     from .domain import Domain
     from .domain_dns_cname_record import DomainDnsCnameRecord
@@ -587,6 +589,7 @@ if TYPE_CHECKING:
     from .mobile_app_category import MobileAppCategory
     from .mobile_app_content import MobileAppContent
     from .mobile_app_content_file import MobileAppContentFile
+    from .mobile_app_content_script import MobileAppContentScript
     from .mobile_app_relationship import MobileAppRelationship
     from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
     from .mobile_contained_app import MobileContainedApp
@@ -1120,6 +1123,9 @@ if TYPE_CHECKING:
     from .web_application_firewall_verification_model import WebApplicationFirewallVerificationModel
     from .web_part import WebPart
     from .win32_lob_app import Win32LobApp
+    from .win32_lob_app_install_power_shell_script import Win32LobAppInstallPowerShellScript
+    from .win32_lob_app_script import Win32LobAppScript
+    from .win32_lob_app_uninstall_power_shell_script import Win32LobAppUninstallPowerShellScript
     from .windows10_compliance_policy import Windows10CompliancePolicy
     from .windows10_custom_configuration import Windows10CustomConfiguration
     from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
@@ -2497,6 +2503,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .directory_role_template import DirectoryRoleTemplate
 
             return DirectoryRoleTemplate()
+        if mapping_value.casefold() == "#microsoft.graph.distributionList".casefold():
+            from .distribution_list import DistributionList
+
+            return DistributionList()
+        if mapping_value.casefold() == "#microsoft.graph.distributionListMember".casefold():
+            from .distribution_list_member import DistributionListMember
+
+            return DistributionListMember()
         if mapping_value.casefold() == "#microsoft.graph.documentSetVersion".casefold():
             from .document_set_version import DocumentSetVersion
 
@@ -3567,6 +3581,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .mobile_app_content_file import MobileAppContentFile
 
             return MobileAppContentFile()
+        if mapping_value.casefold() == "#microsoft.graph.mobileAppContentScript".casefold():
+            from .mobile_app_content_script import MobileAppContentScript
+
+            return MobileAppContentScript()
         if mapping_value.casefold() == "#microsoft.graph.mobileAppRelationship".casefold():
             from .mobile_app_relationship import MobileAppRelationship
 
@@ -5707,6 +5725,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .win32_lob_app import Win32LobApp
 
             return Win32LobApp()
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppInstallPowerShellScript".casefold():
+            from .win32_lob_app_install_power_shell_script import Win32LobAppInstallPowerShellScript
+
+            return Win32LobAppInstallPowerShellScript()
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppScript".casefold():
+            from .win32_lob_app_script import Win32LobAppScript
+
+            return Win32LobAppScript()
+        if mapping_value.casefold() == "#microsoft.graph.win32LobAppUninstallPowerShellScript".casefold():
+            from .win32_lob_app_uninstall_power_shell_script import Win32LobAppUninstallPowerShellScript
+
+            return Win32LobAppUninstallPowerShellScript()
         if mapping_value.casefold() == "#microsoft.graph.windows10CompliancePolicy".casefold():
             from .windows10_compliance_policy import Windows10CompliancePolicy
 
@@ -6388,6 +6418,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .directory_role import DirectoryRole
         from .directory_role_management_deleted_item_container import DirectoryRoleManagementDeletedItemContainer
         from .directory_role_template import DirectoryRoleTemplate
+        from .distribution_list import DistributionList
+        from .distribution_list_member import DistributionListMember
         from .document_set_version import DocumentSetVersion
         from .domain import Domain
         from .domain_dns_cname_record import DomainDnsCnameRecord
@@ -6655,6 +6687,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_app_category import MobileAppCategory
         from .mobile_app_content import MobileAppContent
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_content_script import MobileAppContentScript
         from .mobile_app_relationship import MobileAppRelationship
         from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
         from .mobile_contained_app import MobileContainedApp
@@ -7188,6 +7221,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .web_application_firewall_verification_model import WebApplicationFirewallVerificationModel
         from .web_part import WebPart
         from .win32_lob_app import Win32LobApp
+        from .win32_lob_app_install_power_shell_script import Win32LobAppInstallPowerShellScript
+        from .win32_lob_app_script import Win32LobAppScript
+        from .win32_lob_app_uninstall_power_shell_script import Win32LobAppUninstallPowerShellScript
         from .windows10_compliance_policy import Windows10CompliancePolicy
         from .windows10_custom_configuration import Windows10CustomConfiguration
         from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
@@ -7593,6 +7629,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .directory_role import DirectoryRole
         from .directory_role_management_deleted_item_container import DirectoryRoleManagementDeletedItemContainer
         from .directory_role_template import DirectoryRoleTemplate
+        from .distribution_list import DistributionList
+        from .distribution_list_member import DistributionListMember
         from .document_set_version import DocumentSetVersion
         from .domain import Domain
         from .domain_dns_cname_record import DomainDnsCnameRecord
@@ -7860,6 +7898,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_app_category import MobileAppCategory
         from .mobile_app_content import MobileAppContent
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_content_script import MobileAppContentScript
         from .mobile_app_relationship import MobileAppRelationship
         from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
         from .mobile_contained_app import MobileContainedApp
@@ -8393,6 +8432,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .web_application_firewall_verification_model import WebApplicationFirewallVerificationModel
         from .web_part import WebPart
         from .win32_lob_app import Win32LobApp
+        from .win32_lob_app_install_power_shell_script import Win32LobAppInstallPowerShellScript
+        from .win32_lob_app_script import Win32LobAppScript
+        from .win32_lob_app_uninstall_power_shell_script import Win32LobAppUninstallPowerShellScript
         from .windows10_compliance_policy import Windows10CompliancePolicy
         from .windows10_custom_configuration import Windows10CustomConfiguration
         from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration

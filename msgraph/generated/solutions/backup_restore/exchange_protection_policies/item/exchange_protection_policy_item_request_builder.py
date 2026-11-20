@@ -73,7 +73,7 @@ class ExchangeProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: ExchangeProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[ExchangeProtectionPolicy]:
         """
-        Update an Exchange protection policy. This method adds a mailboxprotectionunit to or removes it from the protection policy.
+        Update an Exchange protection policy. This method updates retention settings or adds a mailboxProtectionUnit to or removes it from the protection policy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExchangeProtectionPolicy]
@@ -119,7 +119,7 @@ class ExchangeProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: ExchangeProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update an Exchange protection policy. This method adds a mailboxprotectionunit to or removes it from the protection policy.
+        Update an Exchange protection policy. This method updates retention settings or adds a mailboxProtectionUnit to or removes it from the protection policy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

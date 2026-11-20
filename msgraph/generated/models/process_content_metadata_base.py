@@ -40,7 +40,7 @@ class ProcessContentMetadataBase(AdditionalDataHolder, BackedModel, Parsable):
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The sensitivityLabels property
+    # Caller-supplied sensitivity labels describing the content.
     sensitivity_labels: Optional[list[CurrentLabel]] = None
     # A sequence number indicating the order in which content was generated or should be processed, required when correlationId is used.
     sequence_number: Optional[int] = None

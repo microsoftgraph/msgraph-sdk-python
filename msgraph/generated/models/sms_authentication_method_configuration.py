@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
     from .sms_authentication_method_target import SmsAuthenticationMethodTarget
+    from .telecom_provider_settings import TelecomProviderSettings
 
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
@@ -16,6 +17,8 @@ class SmsAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Pa
     odata_type: Optional[str] = "#microsoft.graph.smsAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method.
     include_targets: Optional[list[SmsAuthenticationMethodTarget]] = None
+    # Settings for routing SMS authentication traffic through a telecom provider integration.
+    telecom_provider_settings: Optional[TelecomProviderSettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> SmsAuthenticationMethodConfiguration:
@@ -35,12 +38,15 @@ class SmsAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Pa
         """
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .sms_authentication_method_target import SmsAuthenticationMethodTarget
+        from .telecom_provider_settings import TelecomProviderSettings
 
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .sms_authentication_method_target import SmsAuthenticationMethodTarget
+        from .telecom_provider_settings import TelecomProviderSettings
 
         fields: dict[str, Callable[[Any], None]] = {
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(SmsAuthenticationMethodTarget)),
+            "telecomProviderSettings": lambda n : setattr(self, 'telecom_provider_settings', n.get_object_value(TelecomProviderSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -56,5 +62,6 @@ class SmsAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, Pa
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
+        writer.write_object_value("telecomProviderSettings", self.telecom_provider_settings)
     
 

@@ -20,7 +20,7 @@ from ..entity import Entity
 class LifecycleWorkflowsContainer(Entity, Parsable):
     # The customTaskExtension instance.
     custom_task_extensions: Optional[list[CustomTaskExtension]] = None
-    # Deleted workflows in your lifecycle workflows instance.
+    # Deleted workflows and lifecycle policies in your lifecycle workflows instance.
     deleted_items: Optional[DeletedItemContainer] = None
     # The insight container holding workflow insight summaries for a tenant.
     insights: Optional[Insights] = None

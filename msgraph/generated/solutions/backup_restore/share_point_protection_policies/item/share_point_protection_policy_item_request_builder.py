@@ -73,7 +73,7 @@ class SharePointProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: SharePointProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[SharePointProtectionPolicy]:
         """
-        Update a SharePoint protection policy. This method adds a siteprotectionunit to or removes it from the protection policy.
+        Update a SharePoint protection policy. This method updates retention settings or adds a siteProtectionUnit to or removes it from the protection policy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharePointProtectionPolicy]
@@ -119,7 +119,7 @@ class SharePointProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: SharePointProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update a SharePoint protection policy. This method adds a siteprotectionunit to or removes it from the protection policy.
+        Update a SharePoint protection policy. This method updates retention settings or adds a siteProtectionUnit to or removes it from the protection policy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

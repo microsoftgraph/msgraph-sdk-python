@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from .custom_security_attribute_value import CustomSecurityAttributeValue
     from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
     from .directory_object import DirectoryObject
+    from .distribution_list import DistributionList
     from .drive import Drive
     from .employee_experience_user import EmployeeExperienceUser
     from .employee_org_data import EmployeeOrgData
@@ -145,6 +146,8 @@ class User(DirectoryObject, Parsable):
     direct_reports: Optional[list[DirectoryObject]] = None
     # The name displayed in the address book for the user. This value is usually the combination of the user's first name, middle initial, and family name. This property is required when a user is created and it can't be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderby, and $search.
     display_name: Optional[str] = None
+    # The personal distribution lists in the user's mailbox. Read-only. Nullable.
+    distribution_lists: Optional[list[DistributionList]] = None
     # The user's OneDrive. Read-only.
     drive: Optional[Drive] = None
     # A collection of drives available for this user. Read-only.
@@ -391,6 +394,7 @@ class User(DirectoryObject, Parsable):
         from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
+        from .distribution_list import DistributionList
         from .drive import Drive
         from .employee_experience_user import EmployeeExperienceUser
         from .employee_org_data import EmployeeOrgData
@@ -452,6 +456,7 @@ class User(DirectoryObject, Parsable):
         from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
+        from .distribution_list import DistributionList
         from .drive import Drive
         from .employee_experience_user import EmployeeExperienceUser
         from .employee_org_data import EmployeeOrgData
@@ -532,6 +537,7 @@ class User(DirectoryObject, Parsable):
             "deviceManagementTroubleshootingEvents": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
             "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(DirectoryObject)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "distributionLists": lambda n : setattr(self, 'distribution_lists', n.get_collection_of_object_values(DistributionList)),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(Drive)),
             "employeeExperience": lambda n : setattr(self, 'employee_experience', n.get_object_value(EmployeeExperienceUser)),
@@ -682,6 +688,7 @@ class User(DirectoryObject, Parsable):
         writer.write_collection_of_object_values("deviceManagementTroubleshootingEvents", self.device_management_troubleshooting_events)
         writer.write_collection_of_object_values("directReports", self.direct_reports)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_collection_of_object_values("distributionLists", self.distribution_lists)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
         writer.write_object_value("employeeExperience", self.employee_experience)

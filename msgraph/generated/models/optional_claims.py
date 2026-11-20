@@ -19,7 +19,7 @@ class OptionalClaims(AdditionalDataHolder, BackedModel, Parsable):
     access_token: Optional[list[OptionalClaim]] = None
     # The optional claims returned in the JWT ID token.
     id_token: Optional[list[OptionalClaim]] = None
-    # The kerberosTicket property
+    # Optional claims that control group SID resolution for Kerberos tickets. The supported claim name is groups.
     kerberos_ticket: Optional[list[OptionalClaim]] = None
     # The OdataType property
     odata_type: Optional[str] = None

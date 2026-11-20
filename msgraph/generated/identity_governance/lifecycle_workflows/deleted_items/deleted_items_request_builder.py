@@ -51,7 +51,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[DeletedItemsRequestBuilderGetQueryParameters]] = None) -> Optional[DeletedItemContainer]:
         """
-        Deleted workflows in your lifecycle workflows instance.
+        Deleted workflows and lifecycle policies in your lifecycle workflows instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeletedItemContainer]
         """
@@ -82,7 +82,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[DeletedItemsRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Deleted workflows in your lifecycle workflows instance.
+        Deleted workflows and lifecycle policies in your lifecycle workflows instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeletedItemsRequestBuilderGetQueryParameters():
         """
-        Deleted workflows in your lifecycle workflows instance.
+        Deleted workflows and lifecycle policies in your lifecycle workflows instance.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

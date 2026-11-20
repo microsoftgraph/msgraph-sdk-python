@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
     from .authentication_method_target import AuthenticationMethodTarget
+    from .telecom_provider_settings import TelecomProviderSettings
 
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
@@ -18,6 +19,8 @@ class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
     include_targets: Optional[list[AuthenticationMethodTarget]] = None
     # true if users can register office phones, otherwise, false.
     is_office_phone_allowed: Optional[bool] = None
+    # Settings for routing voice authentication traffic through a telecom provider integration.
+    telecom_provider_settings: Optional[TelecomProviderSettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> VoiceAuthenticationMethodConfiguration:
@@ -37,13 +40,16 @@ class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
         """
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
+        from .telecom_provider_settings import TelecomProviderSettings
 
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
+        from .telecom_provider_settings import TelecomProviderSettings
 
         fields: dict[str, Callable[[Any], None]] = {
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
             "isOfficePhoneAllowed": lambda n : setattr(self, 'is_office_phone_allowed', n.get_bool_value()),
+            "telecomProviderSettings": lambda n : setattr(self, 'telecom_provider_settings', n.get_object_value(TelecomProviderSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,5 +66,6 @@ class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration, 
         super().serialize(writer)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
         writer.write_bool_value("isOfficePhoneAllowed", self.is_office_phone_allowed)
+        writer.write_object_value("telecomProviderSettings", self.telecom_provider_settings)
     
 

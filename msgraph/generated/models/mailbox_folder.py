@@ -20,6 +20,8 @@ class MailboxFolder(Entity, Parsable):
     child_folders: Optional[list[MailboxFolder]] = None
     # The display name of the folder.
     display_name: Optional[str] = None
+    # Indicates whether the folder is hidden. The default value is false. This property can be set only when you create the folder; it can't be updated using PATCH. By default, listing folders or listing child folders returns only folders that aren't hidden. To include hidden folders in the response, use the optional query parameter includeHiddenFolders=true. The response includes both hidden and nonhidden folders. If you use $select to limit the returned properties, include isHidden in the selection.
+    is_hidden: Optional[bool] = None
     # The collection of items in this folder.
     items: Optional[list[MailboxItem]] = None
     # The collection of multi-value extended properties defined for the mailboxFolder.
@@ -67,6 +69,7 @@ class MailboxFolder(Entity, Parsable):
             "childFolderCount": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
             "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailboxFolder)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(MailboxItem)),
             "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
             "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
@@ -91,6 +94,7 @@ class MailboxFolder(Entity, Parsable):
         writer.write_int_value("childFolderCount", self.child_folder_count)
         writer.write_collection_of_object_values("childFolders", self.child_folders)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_bool_value("isHidden", self.is_hidden)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
         writer.write_str_value("parentFolderId", self.parent_folder_id)

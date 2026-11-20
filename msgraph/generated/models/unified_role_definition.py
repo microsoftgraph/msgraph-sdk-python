@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
@@ -12,6 +13,8 @@ from .entity import Entity
 
 @dataclass
 class UnifiedRoleDefinition(Entity, Parsable):
+    # The date and time when the custom role definition was deleted. The value is null for active and restored role definitions. Read-only.
+    deleted_date_time: Optional[datetime.datetime] = None
     # The description for the unifiedRoleDefinition. Read-only when isBuiltIn is true.
     description: Optional[str] = None
     # The display name for the unifiedRoleDefinition. Read-only when isBuiltIn is true. Required.  Supports $filter (eq, in).
@@ -22,6 +25,8 @@ class UnifiedRoleDefinition(Entity, Parsable):
     is_built_in: Optional[bool] = None
     # Flag indicating whether the role is enabled for assignment. If false the role is not available for assignment. Read-only when isBuiltIn is true.
     is_enabled: Optional[bool] = None
+    # Flag indicating whether the role is privileged. Microsoft Entra ID defines a role as privileged if it contains at least one sensitive resource action in the allowedResourceActions collection of rolePermissions. Applies only to actions in the microsoft.directory resource namespace. Nullable. A value of null indicates that the privileged classification is unavailable, not that the role is nonprivileged. Read-only. Supports $filter (eq).
+    is_privileged: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # List of the scopes or permissions the role definition applies to. Currently only / is supported. Read-only when isBuiltIn is true. DO NOT USE. This will be deprecated soon. Attach scope to role assignment.
@@ -56,11 +61,13 @@ class UnifiedRoleDefinition(Entity, Parsable):
         from .unified_role_permission import UnifiedRolePermission
 
         fields: dict[str, Callable[[Any], None]] = {
+            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "inheritsPermissionsFrom": lambda n : setattr(self, 'inherits_permissions_from', n.get_collection_of_object_values(UnifiedRoleDefinition)),
             "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isPrivileged": lambda n : setattr(self, 'is_privileged', n.get_bool_value()),
             "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
             "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(UnifiedRolePermission)),
             "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
@@ -79,11 +86,13 @@ class UnifiedRoleDefinition(Entity, Parsable):
         if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("inheritsPermissionsFrom", self.inherits_permissions_from)
         writer.write_bool_value("isBuiltIn", self.is_built_in)
         writer.write_bool_value("isEnabled", self.is_enabled)
+        writer.write_bool_value("isPrivileged", self.is_privileged)
         writer.write_collection_of_primitive_values("resourceScopes", self.resource_scopes)
         writer.write_collection_of_object_values("rolePermissions", self.role_permissions)
         writer.write_str_value("templateId", self.template_id)

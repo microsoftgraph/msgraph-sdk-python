@@ -7,6 +7,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .mobile_app_content_file import MobileAppContentFile
+    from .mobile_app_content_script import MobileAppContentScript
     from .mobile_contained_app import MobileContainedApp
 
 from .entity import Entity
@@ -22,6 +23,8 @@ class MobileAppContent(Entity, Parsable):
     files: Optional[list[MobileAppContentFile]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The list of scripts for this app content version.
+    scripts: Optional[list[MobileAppContentScript]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> MobileAppContent:
@@ -41,15 +44,18 @@ class MobileAppContent(Entity, Parsable):
         """
         from .entity import Entity
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_content_script import MobileAppContentScript
         from .mobile_contained_app import MobileContainedApp
 
         from .entity import Entity
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_content_script import MobileAppContentScript
         from .mobile_contained_app import MobileContainedApp
 
         fields: dict[str, Callable[[Any], None]] = {
             "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(MobileAppContentFile)),
+            "scripts": lambda n : setattr(self, 'scripts', n.get_collection_of_object_values(MobileAppContentScript)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,5 +72,6 @@ class MobileAppContent(Entity, Parsable):
         super().serialize(writer)
         writer.write_collection_of_object_values("containedApps", self.contained_apps)
         writer.write_collection_of_object_values("files", self.files)
+        writer.write_collection_of_object_values("scripts", self.scripts)
     
 

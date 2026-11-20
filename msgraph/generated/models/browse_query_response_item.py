@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
@@ -7,6 +8,7 @@ from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .browse_query_response_item_type import BrowseQueryResponseItemType
+    from .identity_set import IdentitySet
 
 @dataclass
 class BrowseQueryResponseItem(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,10 +17,18 @@ class BrowseQueryResponseItem(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: dict[str, Any] = field(default_factory=dict)
+    # The identity of the user or application that created the item. Returned only when type is file or folder.
+    created_by: Optional[IdentitySet] = None
+    # The date and time when the item was created. Returned only when type is file or folder. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024, is 2024-01-01T00:00:00Z.
+    created_date_time: Optional[datetime.datetime] = None
     # Unique identifier of the returned item.
     item_key: Optional[str] = None
     # The count of items present within the items; for example, the count of files in a folder.
     items_count: Optional[int] = None
+    # The identity of the user or application that last modified the item. Returned only when type is file or folder.
+    last_modified_by: Optional[IdentitySet] = None
+    # The date and time when the item was last modified. Returned only when type is file or folder. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2024, is 2024-01-01T00:00:00Z.
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The name of the item.
     name: Optional[str] = None
     # The OdataType property
@@ -47,12 +57,18 @@ class BrowseQueryResponseItem(AdditionalDataHolder, BackedModel, Parsable):
         Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .browse_query_response_item_type import BrowseQueryResponseItemType
+        from .identity_set import IdentitySet
 
         from .browse_query_response_item_type import BrowseQueryResponseItemType
+        from .identity_set import IdentitySet
 
         fields: dict[str, Callable[[Any], None]] = {
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "itemKey": lambda n : setattr(self, 'item_key', n.get_str_value()),
             "itemsCount": lambda n : setattr(self, 'items_count', n.get_int_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sizeInBytes": lambda n : setattr(self, 'size_in_bytes', n.get_str_value()),
@@ -69,8 +85,12 @@ class BrowseQueryResponseItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if writer is None:
             raise TypeError("writer cannot be null.")
+        writer.write_object_value("createdBy", self.created_by)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("itemKey", self.item_key)
         writer.write_int_value("itemsCount", self.items_count)
+        writer.write_object_value("lastModifiedBy", self.last_modified_by)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sizeInBytes", self.size_in_bytes)

@@ -73,7 +73,7 @@ class OneDriveForBusinessProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: OneDriveForBusinessProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[OneDriveForBusinessProtectionPolicy]:
         """
-        Update the protection policy for the OneDrive service in Microsoft 365. This method adds a driveProtectionUnit to or removes it from a oneDriveForBusinessProtectionPolicy object.
+        Update the protection policy for the OneDrive service in Microsoft 365. This method updates retention settings or adds a driveProtectionUnit to or removes it from a oneDriveForBusinessProtectionPolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OneDriveForBusinessProtectionPolicy]
@@ -119,7 +119,7 @@ class OneDriveForBusinessProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: OneDriveForBusinessProtectionPolicy, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Update the protection policy for the OneDrive service in Microsoft 365. This method adds a driveProtectionUnit to or removes it from a oneDriveForBusinessProtectionPolicy object.
+        Update the protection policy for the OneDrive service in Microsoft 365. This method updates retention settings or adds a driveProtectionUnit to or removes it from a oneDriveForBusinessProtectionPolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

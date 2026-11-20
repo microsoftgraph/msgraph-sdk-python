@@ -3,6 +3,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from .user import User
@@ -13,6 +14,8 @@ from .user import User
 class AgentUser(User, Parsable):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.agentUser"
+    # The application IDs (appId values) authorized to manage the agent user's backing agent blueprint. Read-only. Not nullable. Returns an empty collection when no manager applications are configured. Returned only with $select and the microsoft.graph.agentUser type cast; see Get agentUser. Doesn't support $filter.
+    manager_applications: Optional[list[UUID]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: ParseNode) -> AgentUser:
@@ -35,6 +38,7 @@ class AgentUser(User, Parsable):
         from .user import User
 
         fields: dict[str, Callable[[Any], None]] = {
+            "managerApplications": lambda n : setattr(self, 'manager_applications', n.get_collection_of_primitive_values(UUID)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

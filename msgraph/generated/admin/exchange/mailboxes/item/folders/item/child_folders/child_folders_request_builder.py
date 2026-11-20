@@ -50,7 +50,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration[ChildFoldersRequestBuilderGetQueryParameters]] = None) -> Optional[MailboxFolderCollectionResponse]:
         """
-        Get the mailboxFolder collection under the specified mailboxFolder in a mailbox.
+        Get the mailboxFolder collection under the specified mailboxFolder in a mailbox. By default, hidden child folders aren't returned. To include them, specify includeHiddenFolders=true.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailboxFolderCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/mailboxfolder-list-childfolders?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[ChildFoldersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
-        Get the mailboxFolder collection under the specified mailboxFolder in a mailbox.
+        Get the mailboxFolder collection under the specified mailboxFolder in a mailbox. By default, hidden child folders aren't returned. To include them, specify includeHiddenFolders=true.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +149,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChildFoldersRequestBuilderGetQueryParameters():
         """
-        Get the mailboxFolder collection under the specified mailboxFolder in a mailbox.
+        Get the mailboxFolder collection under the specified mailboxFolder in a mailbox. By default, hidden child folders aren't returned. To include them, specify includeHiddenFolders=true.
         """
         def get_query_parameter(self,original_name: str) -> str:
             """

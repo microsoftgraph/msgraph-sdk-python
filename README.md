@@ -77,7 +77,7 @@ scopes = ['https://graph.microsoft.com/.default']
 
 ### 2.3 Initialize a GraphServiceClient object
 
-You must create **GraphServiceClient** object to make requests against the service. To create a new instance of this class, you need to provide credentials and scopes, which can authenticate requests to Microsoft Graph.
+You must create a **GraphServiceClient** object to make requests against the service. To create a new instance of this class, you need to provide credentials and scopes, which can authenticate requests to Microsoft Graph.
 
 ```py
 # Example using async credentials and application access.
